@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<SMS1Response> SMS1([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            SourceExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            SourceExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            SourceExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms1";
@@ -83,17 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<SMS2Response> SMS2([WorkflowExpression] Func<string> bodyconversationId = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<int> bodyvalidityPeriod = null, [WorkflowExpression] Func<bool> bodyopenTicket = null, [WorkflowExpression] Func<string> bodyemailResponses = null, [WorkflowExpression] Func<string> bodypushResponses = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
         {
-            SourceExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
-            SourceExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            SourceExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            SourceExpression.Validate(bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
-            SourceExpression.Validate(bodyopenTicket, nameof(bodyopenTicket), required: false);
-            SourceExpression.Validate(bodyemailResponses, nameof(bodyemailResponses), required: false);
-            SourceExpression.Validate(bodypushResponses, nameof(bodypushResponses), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            SourceExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            SourceExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms2";
@@ -180,13 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<SMS3Response> SMS3([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            SourceExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            SourceExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            SourceExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms3";
@@ -249,18 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<VOICEResponse> VOICE([WorkflowExpression] Func<string> bodyvoiceIntro = null, [WorkflowExpression] Func<string> bodyvoiceThankYou = null, [WorkflowExpression] Func<string> bodyvoiceRedirectMessage = null, [WorkflowExpression] Func<string> bodyvoiceRedirectNonumber = null, [WorkflowExpression] Func<int> bodyvoiceRetries = null, [WorkflowExpression] Func<int> bodyvoiceDelay = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
         {
-            SourceExpression.Validate(bodyvoiceIntro, nameof(bodyvoiceIntro), required: false);
-            SourceExpression.Validate(bodyvoiceThankYou, nameof(bodyvoiceThankYou), required: false);
-            SourceExpression.Validate(bodyvoiceRedirectMessage, nameof(bodyvoiceRedirectMessage), required: false);
-            SourceExpression.Validate(bodyvoiceRedirectNonumber, nameof(bodyvoiceRedirectNonumber), required: false);
-            SourceExpression.Validate(bodyvoiceRetries, nameof(bodyvoiceRetries), required: false);
-            SourceExpression.Validate(bodyvoiceDelay, nameof(bodyvoiceDelay), required: false);
-            SourceExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            SourceExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            SourceExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            SourceExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/voice";
@@ -361,17 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<EMAILResponse> EMAIL([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyemailSubject = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<string[]> bodyemailAddress = null, [WorkflowExpression] Func<int> bodyvalidityPeriod = null, [WorkflowExpression] Func<bool> bodyopenTicket = null, [WorkflowExpression] Func<string> bodyemailResponses = null, [WorkflowExpression] Func<string> bodypushResponses = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodyemailSubject, nameof(bodyemailSubject), required: false);
-            SourceExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
-            SourceExpression.Validate(bodyopenTicket, nameof(bodyopenTicket), required: false);
-            SourceExpression.Validate(bodyemailResponses, nameof(bodyemailResponses), required: false);
-            SourceExpression.Validate(bodypushResponses, nameof(bodypushResponses), required: false);
-            SourceExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            SourceExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            SourceExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/email";

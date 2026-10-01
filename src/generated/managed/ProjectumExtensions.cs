@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> GeneratePowerpointDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfoFile = null)
         {
-            SourceExpression.Validate(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            SourceExpression.Validate(generationInfoFile, nameof(generationInfoFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Powerpoint";
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> GenerateWordDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfoFile = null)
         {
-            SourceExpression.Validate(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            SourceExpression.Validate(generationInfoFile, nameof(generationInfoFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Word";
@@ -74,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> MergePowerpointDocuments([WorkflowExpression] Func<string[]> documents = null)
         {
-            SourceExpression.Validate(documents, nameof(documents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Powerpoint/Merge";
@@ -90,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> MergeWordDocuments([WorkflowExpression] Func<string[]> documents = null)
         {
-            SourceExpression.Validate(documents, nameof(documents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Word/Merge";

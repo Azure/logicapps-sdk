@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
         public IBodyWorkflowAction<ImageReportResponse> ImageReport([WorkflowExpression] Func<string> bodyObject)
         {
-            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/reports/image";

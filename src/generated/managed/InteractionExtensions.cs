@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadListByIdResponse> ReadListById([WorkflowExpression] Func<string> bodyvariablesid = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null, [WorkflowExpression] Func<string> bodyvariablesprimarySponsorName = null)
         {
-            SourceExpression.Validate(bodyvariablesid, nameof(bodyvariablesid), required: false);
-            SourceExpression.Validate(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            SourceExpression.Validate(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            SourceExpression.Validate(bodyvariablesprimarySponsorName, nameof(bodyvariablesprimarySponsorName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/ReadListByID";
@@ -92,9 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadListByNameResponse> ReadListByName([WorkflowExpression] Func<string> bodyvariablesfilterByName = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null)
         {
-            SourceExpression.Validate(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
-            SourceExpression.Validate(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            SourceExpression.Validate(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/ReadListByName";
@@ -163,9 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse> ReadAdditionalFieldDefinitionsAndValues([WorkflowExpression] Func<string> bodyvariablesid = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null)
         {
-            SourceExpression.Validate(bodyvariablesid, nameof(bodyvariablesid), required: false);
-            SourceExpression.Validate(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            SourceExpression.Validate(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/ReadAdditionalFieldDefinitionsAndValues";
@@ -234,8 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse> AddOrUpdateAdditionalFieldValues([WorkflowExpression] Func<string> bodyvariablesinputcontactId, [WorkflowExpression] Func<bodyvariablesinputadditionalFieldsInputItem[]> bodyvariablesinputadditionalFields)
         {
-            SourceExpression.Validate(bodyvariablesinputcontactId, nameof(bodyvariablesinputcontactId), required: true);
-            SourceExpression.Validate(bodyvariablesinputadditionalFields, nameof(bodyvariablesinputadditionalFields), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/UpdateAdditionalFieldValues";
@@ -278,8 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadContactByIdResponse> ReadContactById([WorkflowExpression] Func<string> bodyvariablescontactid = null, [WorkflowExpression] Func<string> bodyvariableslistid = null)
         {
-            SourceExpression.Validate(bodyvariablescontactid, nameof(bodyvariablescontactid), required: false);
-            SourceExpression.Validate(bodyvariableslistid, nameof(bodyvariableslistid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/ReadContactByID";
@@ -332,20 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodyvariablesinputlastName, [WorkflowExpression] Func<string> bodyvariablesinputfirstName = null, [WorkflowExpression] Func<string> bodyvariablesinputmiddleName = null, [WorkflowExpression] Func<string> bodyvariablesinputgoesBy = null, [WorkflowExpression] Func<string> bodyvariablesinputtitle = null, [WorkflowExpression] Func<string> bodyvariablesinputemailAddress = null, [WorkflowExpression] Func<string> bodyvariablesinputcompanyName = null, [WorkflowExpression] Func<string> bodyvariablesinputjobTitle = null, [WorkflowExpression] Func<string> bodyvariablesinputprimaryPhone = null, [WorkflowExpression] Func<bodyvariablesinputbusinessAddresscountryInput> bodyvariablesinputbusinessAddresscountry = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddressstreet = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddresscity = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddressadministrativeDivision = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddresspostalCode = null)
         {
-            SourceExpression.Validate(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
-            SourceExpression.Validate(bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
-            SourceExpression.Validate(bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
-            SourceExpression.Validate(bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
-            SourceExpression.Validate(bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
-            SourceExpression.Validate(bodyvariablesinputemailAddress, nameof(bodyvariablesinputemailAddress), required: false);
-            SourceExpression.Validate(bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
-            SourceExpression.Validate(bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
-            SourceExpression.Validate(bodyvariablesinputprimaryPhone, nameof(bodyvariablesinputprimaryPhone), required: false);
-            SourceExpression.Validate(bodyvariablesinputbusinessAddresscountry, nameof(bodyvariablesinputbusinessAddresscountry), required: false);
-            SourceExpression.Validate(bodyvariablesinputbusinessAddressstreet, nameof(bodyvariablesinputbusinessAddressstreet), required: false);
-            SourceExpression.Validate(bodyvariablesinputbusinessAddresscity, nameof(bodyvariablesinputbusinessAddresscity), required: false);
-            SourceExpression.Validate(bodyvariablesinputbusinessAddressadministrativeDivision, nameof(bodyvariablesinputbusinessAddressadministrativeDivision), required: false);
-            SourceExpression.Validate(bodyvariablesinputbusinessAddresspostalCode, nameof(bodyvariablesinputbusinessAddresspostalCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/CreateContact";
@@ -472,10 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ListResponse> ReadLists([WorkflowExpression] Func<bodyvariableslistClassInput> bodyvariableslistClass = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null, [WorkflowExpression] Func<string> bodyvariablesfilterByName = null)
         {
-            SourceExpression.Validate(bodyvariableslistClass, nameof(bodyvariableslistClass), required: false);
-            SourceExpression.Validate(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            SourceExpression.Validate(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            SourceExpression.Validate(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/ReadLists";
@@ -550,8 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<AddContactsToListsResponse> AddContactsToLists([WorkflowExpression] Func<string[]> bodyvariableslistIds = null, [WorkflowExpression] Func<string[]> bodyvariablescontactIds = null)
         {
-            SourceExpression.Validate(bodyvariableslistIds, nameof(bodyvariableslistIds), required: false);
-            SourceExpression.Validate(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/AddContactsToLists";
@@ -594,8 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<RemoveContactsfromListResponse> RemoveContactsfromList([WorkflowExpression] Func<string[]> bodyvariablescontactIds = null, [WorkflowExpression] Func<string> bodyvariableslistId = null)
         {
-            SourceExpression.Validate(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
-            SourceExpression.Validate(bodyvariableslistId, nameof(bodyvariableslistId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/RemoveContactsFromList";
@@ -638,21 +602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<UpdatePersonContactResponse> UpdatePersonContact([WorkflowExpression] Func<string> bodyvariablesinputid, [WorkflowExpression] Func<string> bodyvariablesinputlastName, [WorkflowExpression] Func<string> bodyvariablesinputtitle = null, [WorkflowExpression] Func<string> bodyvariablesinputfirstName = null, [WorkflowExpression] Func<string> bodyvariablesinputmiddleName = null, [WorkflowExpression] Func<string> bodyvariablesinputgoesBy = null, [WorkflowExpression] Func<string> bodyvariablesinputjobTitle = null, [WorkflowExpression] Func<string> bodyvariablesinputaddressstreet = null, [WorkflowExpression] Func<string> bodyvariablesinputaddresscity = null, [WorkflowExpression] Func<string> bodyvariablesinputaddressadministrativeDivision = null, [WorkflowExpression] Func<bodyvariablesinputaddresscountryInput> bodyvariablesinputaddresscountry = null, [WorkflowExpression] Func<string> bodyvariablesinputaddresspostalCode = null, [WorkflowExpression] Func<string> bodyvariablesinputemailelectronicAddress = null, [WorkflowExpression] Func<string> bodyvariablesinputprimaryPhonenumber = null, [WorkflowExpression] Func<string> bodyvariablesinputcompanyName = null)
         {
-            SourceExpression.Validate(bodyvariablesinputid, nameof(bodyvariablesinputid), required: true);
-            SourceExpression.Validate(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
-            SourceExpression.Validate(bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
-            SourceExpression.Validate(bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
-            SourceExpression.Validate(bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
-            SourceExpression.Validate(bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
-            SourceExpression.Validate(bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
-            SourceExpression.Validate(bodyvariablesinputaddressstreet, nameof(bodyvariablesinputaddressstreet), required: false);
-            SourceExpression.Validate(bodyvariablesinputaddresscity, nameof(bodyvariablesinputaddresscity), required: false);
-            SourceExpression.Validate(bodyvariablesinputaddressadministrativeDivision, nameof(bodyvariablesinputaddressadministrativeDivision), required: false);
-            SourceExpression.Validate(bodyvariablesinputaddresscountry, nameof(bodyvariablesinputaddresscountry), required: false);
-            SourceExpression.Validate(bodyvariablesinputaddresspostalCode, nameof(bodyvariablesinputaddresspostalCode), required: false);
-            SourceExpression.Validate(bodyvariablesinputemailelectronicAddress, nameof(bodyvariablesinputemailelectronicAddress), required: false);
-            SourceExpression.Validate(bodyvariablesinputprimaryPhonenumber, nameof(bodyvariablesinputprimaryPhonenumber), required: false);
-            SourceExpression.Validate(bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/UpdatePersonContact";
@@ -797,11 +746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<CreateActivityResponse> CreateActivity([WorkflowExpression] Func<string> bodyvariablesinputtypeId, [WorkflowExpression] Func<string> bodyvariablesinputactivityDate, [WorkflowExpression] Func<string> bodyvariablesinputsubject, [WorkflowExpression] Func<string[]> bodyvariablesinputlinkedEntityIds, [WorkflowExpression] Func<string> bodyvariablesinputsummary = null)
         {
-            SourceExpression.Validate(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
-            SourceExpression.Validate(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: true);
-            SourceExpression.Validate(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: true);
-            SourceExpression.Validate(bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
-            SourceExpression.Validate(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/CreateActivity";
@@ -854,9 +798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<SearchContactsResponse> SearchContacts([WorkflowExpression] Func<string> bodyvariablesemailAddress = null, [WorkflowExpression] Func<string> bodyvariablesfirstName = null, [WorkflowExpression] Func<string> bodyvariableslastName = null)
         {
-            SourceExpression.Validate(bodyvariablesemailAddress, nameof(bodyvariablesemailAddress), required: false);
-            SourceExpression.Validate(bodyvariablesfirstName, nameof(bodyvariablesfirstName), required: false);
-            SourceExpression.Validate(bodyvariableslastName, nameof(bodyvariableslastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/SearchContacts";
@@ -905,12 +846,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<UpdateActivityResponse> UpdateActivity([WorkflowExpression] Func<string> bodyvariablesinputactivityId, [WorkflowExpression] Func<string> bodyvariablesinputtypeId, [WorkflowExpression] Func<string[]> bodyvariablesinputlinkedEntityIds, [WorkflowExpression] Func<string> bodyvariablesinputactivityDate = null, [WorkflowExpression] Func<string> bodyvariablesinputsubject = null, [WorkflowExpression] Func<string> bodyvariablesinputsummary = null)
         {
-            SourceExpression.Validate(bodyvariablesinputactivityId, nameof(bodyvariablesinputactivityId), required: true);
-            SourceExpression.Validate(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
-            SourceExpression.Validate(bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
-            SourceExpression.Validate(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: false);
-            SourceExpression.Validate(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: false);
-            SourceExpression.Validate(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql/UpdateActivity";

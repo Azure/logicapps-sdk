@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<JToken> RecordSearchAdvanced([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> properties, [WorkflowExpression] Func<string> userToImpersonate = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FindRecordAdvanced";
@@ -37,9 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> properties, [WorkflowExpression] Func<string> userToImpersonate = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Record";
@@ -59,10 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> DeleteRecord([WorkflowExpression] Func<int> uri, [WorkflowExpression] Func<bool> deleteRecordDetailsdeleteContents, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> deleteRecordDetailsnewHomeForContents = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(deleteRecordDetailsdeleteContents, nameof(deleteRecordDetailsdeleteContents), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(deleteRecordDetailsnewHomeForContents, nameof(deleteRecordDetailsnewHomeForContents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/DeleteRecord/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(uri, 1));
@@ -93,14 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordSearchById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<bool> includePropertyDefs = null, [WorkflowExpression] Func<string> descendantProperties = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertySets = null, [WorkflowExpression] Func<propertyValueInput> propertyValue = null, [WorkflowExpression] Func<stringDisplayTypeInput> stringDisplayType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(includePropertyDefs, nameof(includePropertyDefs), required: false);
-            SourceExpression.Validate(descendantProperties, nameof(descendantProperties), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertySets, nameof(propertySets), required: false);
-            SourceExpression.Validate(propertyValue, nameof(propertyValue), required: false);
-            SourceExpression.Validate(stringDisplayType, nameof(stringDisplayType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Record/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -131,8 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<string> RecordElecDownload([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<string> userToImpersonate = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordElecDownload";
@@ -150,11 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordReassignAction([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> recordnewAssignee, [WorkflowExpression] Func<int> recordactionToReassign, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordnewAssignee, nameof(recordnewAssignee), required: true);
-            SourceExpression.Validate(recordactionToReassign, nameof(recordactionToReassign), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordReassignAction";
@@ -199,16 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMLogResponse> RecordClose([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<bool> recordcontinueOnError = null, [WorkflowExpression] Func<bool> recordencloseContents = null, [WorkflowExpression] Func<bool> recordfinalizeContents = null, [WorkflowExpression] Func<bool> recordlogErrorsOnly = null, [WorkflowExpression] Func<bool> recordlogResults = null, [WorkflowExpression] Func<bool> recordpurgeContentRevisions = null, [WorkflowExpression] Func<string> recordspecificCloseDate = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            SourceExpression.Validate(recordencloseContents, nameof(recordencloseContents), required: false);
-            SourceExpression.Validate(recordfinalizeContents, nameof(recordfinalizeContents), required: false);
-            SourceExpression.Validate(recordlogErrorsOnly, nameof(recordlogErrorsOnly), required: false);
-            SourceExpression.Validate(recordlogResults, nameof(recordlogResults), required: false);
-            SourceExpression.Validate(recordpurgeContentRevisions, nameof(recordpurgeContentRevisions), required: false);
-            SourceExpression.Validate(recordspecificCloseDate, nameof(recordspecificCloseDate), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordClose";
@@ -351,12 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMLogResponse> RecordReopen([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<bool> recordcontinueOnError = null, [WorkflowExpression] Func<bool> recordlogResults = null, [WorkflowExpression] Func<bool> recordunfinalizeContents = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            SourceExpression.Validate(recordlogResults, nameof(recordlogResults), required: false);
-            SourceExpression.Validate(recordunfinalizeContents, nameof(recordunfinalizeContents), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordReopen";
@@ -445,9 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<GetFileFromUrlResponse> GetFileFromUrl([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> filename = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetFileFromUrl";
@@ -468,15 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordAttachAction([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<int> recordactionToAttach, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<int> recordassigneeUniqueId = null, [WorkflowExpression] Func<recordassigneeOptionInput> recordassigneeOption = null, [WorkflowExpression] Func<string> recordscheduleStartDate = null, [WorkflowExpression] Func<int> recordexistingAction = null, [WorkflowExpression] Func<recordinsertPositionInput> recordinsertPosition = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordactionToAttach, nameof(recordactionToAttach), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordassigneeUniqueId, nameof(recordassigneeUniqueId), required: false);
-            SourceExpression.Validate(recordassigneeOption, nameof(recordassigneeOption), required: false);
-            SourceExpression.Validate(recordscheduleStartDate, nameof(recordscheduleStartDate), required: false);
-            SourceExpression.Validate(recordexistingAction, nameof(recordexistingAction), required: false);
-            SourceExpression.Validate(recordinsertPosition, nameof(recordinsertPosition), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordAttachAction";
@@ -569,13 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordCompleteActions([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<recordcompleteInput> recordcomplete, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<bool> recordcompletePreviousActions = null, [WorkflowExpression] Func<string> recordcompletionDate = null, [WorkflowExpression] Func<int> recordrecordActionUniqueId = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordcomplete, nameof(recordcomplete), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordcompletePreviousActions, nameof(recordcompletePreviousActions), required: false);
-            SourceExpression.Validate(recordcompletionDate, nameof(recordcompletionDate), required: false);
-            SourceExpression.Validate(recordrecordActionUniqueId, nameof(recordrecordActionUniqueId), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordCompleteActions";
@@ -646,9 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordRemoveAllActions([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordRemoveAllActions";
@@ -689,11 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordRescheduleActions([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordfromBaseDate = null, [WorkflowExpression] Func<bool> recorduseActualDurations = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordfromBaseDate, nameof(recordfromBaseDate), required: false);
-            SourceExpression.Validate(recorduseActualDurations, nameof(recorduseActualDurations), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordRescheduleActions";
@@ -756,11 +688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordDispose([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<bool> recordcontinueOnError = null, [WorkflowExpression] Func<recordmethodOfDisposalInput> recordmethodOfDisposal = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            SourceExpression.Validate(recordmethodOfDisposal, nameof(recordmethodOfDisposal), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordDispose";
@@ -823,10 +750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordUndispose([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<bool> recordcontinueOnError = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordUndispose";
@@ -883,11 +806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordCheckout([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordcomments = null, [WorkflowExpression] Func<string> recordsaveCheckoutPathAs = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordcomments, nameof(recordcomments), required: false);
-            SourceExpression.Validate(recordsaveCheckoutPathAs, nameof(recordsaveCheckoutPathAs), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordCheckout";
@@ -940,10 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordUndoCheckout([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordcomments = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordcomments, nameof(recordcomments), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordUndoCheckout";
@@ -990,12 +904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordAttachContact([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> recordcontactType, [WorkflowExpression] Func<string> recordcontactLocation, [WorkflowExpression] Func<bool> recordsetAsPrimaryContact, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordcontactType, nameof(recordcontactType), required: true);
-            SourceExpression.Validate(recordcontactLocation, nameof(recordcontactLocation), required: true);
-            SourceExpression.Validate(recordsetAsPrimaryContact, nameof(recordsetAsPrimaryContact), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordAttachContact";
@@ -1042,10 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordAttachKeyword([WorkflowExpression] Func<int> recordRecord, [WorkflowExpression] Func<string> recordthesaurusTerm, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recordRecord, nameof(recordRecord), required: true);
-            SourceExpression.Validate(recordthesaurusTerm, nameof(recordthesaurusTerm), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordAttachKeyword";
@@ -1088,11 +992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordSetUserLabel([WorkflowExpression] Func<int> recordRecord, [WorkflowExpression] Func<string> recorduserLabel, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordfavouriteType = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recordRecord, nameof(recordRecord), required: true);
-            SourceExpression.Validate(recorduserLabel, nameof(recorduserLabel), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordfavouriteType, nameof(recordfavouriteType), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordSetUserLabel";
@@ -1141,10 +1040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordRequestRendition([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> recordrenditionType, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordrenditionType, nameof(recordrenditionType), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordRequestRendition";
@@ -1187,13 +1082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RecordSetAssignee([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> recordnewAssignee = null, [WorkflowExpression] Func<recordassigneeTypeInput> recordassigneeType = null, [WorkflowExpression] Func<string> recorddueForReturnByDate = null, [WorkflowExpression] Func<string> recordactualTimeChangeOccurred = null, [WorkflowExpression] Func<string> recordproperties = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(recordnewAssignee, nameof(recordnewAssignee), required: false);
-            SourceExpression.Validate(recordassigneeType, nameof(recordassigneeType), required: false);
-            SourceExpression.Validate(recorddueForReturnByDate, nameof(recorddueForReturnByDate), required: false);
-            SourceExpression.Validate(recordactualTimeChangeOccurred, nameof(recordactualTimeChangeOccurred), required: false);
-            SourceExpression.Validate(recordproperties, nameof(recordproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordSetAssignee";
@@ -1268,25 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMLocationsResponse> LocationSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<bool> applyDefaults = null, [WorkflowExpression] Func<bool> countResults = null, [WorkflowExpression] Func<bool> excludeCount = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> fromSearch = null, [WorkflowExpression] Func<string> descendantProperties = null, [WorkflowExpression] Func<bool> includePropertyDefs = null, [WorkflowExpression] Func<string> options = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertySets = null, [WorkflowExpression] Func<propertyValueInput> propertyValue = null, [WorkflowExpression] Func<string> pageSize = null, [WorkflowExpression] Func<string> purpose = null, [WorkflowExpression] Func<string> purposeExtra = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<stringDisplayTypeInput> stringDisplayType = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(applyDefaults, nameof(applyDefaults), required: false);
-            SourceExpression.Validate(countResults, nameof(countResults), required: false);
-            SourceExpression.Validate(excludeCount, nameof(excludeCount), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(fromSearch, nameof(fromSearch), required: false);
-            SourceExpression.Validate(descendantProperties, nameof(descendantProperties), required: false);
-            SourceExpression.Validate(includePropertyDefs, nameof(includePropertyDefs), required: false);
-            SourceExpression.Validate(options, nameof(options), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertySets, nameof(propertySets), required: false);
-            SourceExpression.Validate(propertyValue, nameof(propertyValue), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(purpose, nameof(purpose), required: false);
-            SourceExpression.Validate(purposeExtra, nameof(purposeExtra), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(stringDisplayType, nameof(stringDisplayType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Location";
@@ -1339,14 +1208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMLocationsResponse> LocationSearchById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> userToImpersonate = null, [WorkflowExpression] Func<string> descendantProperties = null, [WorkflowExpression] Func<bool> includePropertyDefs = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertySets = null, [WorkflowExpression] Func<propertyValueInput> propertyValue = null, [WorkflowExpression] Func<stringDisplayTypeInput> stringDisplayType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
-            SourceExpression.Validate(descendantProperties, nameof(descendantProperties), required: false);
-            SourceExpression.Validate(includePropertyDefs, nameof(includePropertyDefs), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertySets, nameof(propertySets), required: false);
-            SourceExpression.Validate(propertyValue, nameof(propertyValue), required: false);
-            SourceExpression.Validate(stringDisplayType, nameof(stringDisplayType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1376,9 +1237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMLocationAddressUri> FindLocationChildAddressUri([WorkflowExpression] Func<string> locationUri, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> userToImpersonate = null)
         {
-            SourceExpression.Validate(locationUri, nameof(locationUri), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(userToImpersonate, nameof(userToImpersonate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FindLocationChildAddressUri/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationUri, 1));
@@ -1397,7 +1255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMEventData> ReadEventData([WorkflowExpression] Func<string> rawEventDatacontent = null)
         {
-            SourceExpression.Validate(rawEventDatacontent, nameof(rawEventDatacontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ReadEventData";
@@ -1424,15 +1281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> AddAccessControl([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> recordaccessControlListfunctionEnum = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddAccessControl";
@@ -1586,15 +1434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> RemoveAccessControl([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> recordaccessControlListfunctionEnum = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RemoveAccessControl";
@@ -1748,15 +1587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> SetAccessControl([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> recordaccessControlListfunctionEnum = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SetAccessControl";
@@ -1910,15 +1740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
         public IBodyWorkflowAction<CMRecordsResponse> InheritAccessControl([WorkflowExpression] Func<int> recorduniqueIdentifier, [WorkflowExpression] Func<string> recordaccessControlListfunctionEnum = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, [WorkflowExpression] Func<AccessLocationsItem[]> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
         {
-            SourceExpression.Validate(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            SourceExpression.Validate(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            SourceExpression.Validate(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/InheritAccessControl";

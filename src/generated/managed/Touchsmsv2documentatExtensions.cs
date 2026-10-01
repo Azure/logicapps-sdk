@@ -28,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Touchsmsv2documentat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "touchsmsv2documentat")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> messageto = null, [WorkflowExpression] Func<string> messagefrom = null, [WorkflowExpression] Func<string> messagebody = null, [WorkflowExpression] Func<string> messagecampaign = null, [WorkflowExpression] Func<string> messagereference = null, [WorkflowExpression] Func<string> messagedate = null)
         {
-            SourceExpression.Validate(messageto, nameof(messageto), required: false);
-            SourceExpression.Validate(messagefrom, nameof(messagefrom), required: false);
-            SourceExpression.Validate(messagebody, nameof(messagebody), required: false);
-            SourceExpression.Validate(messagecampaign, nameof(messagecampaign), required: false);
-            SourceExpression.Validate(messagereference, nameof(messagereference), required: false);
-            SourceExpression.Validate(messagedate, nameof(messagedate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/integrations/power-automate/send";
@@ -92,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Touchsmsv2documentat
     {
         public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> configdedicatedNumber = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(configdedicatedNumber, nameof(configdedicatedNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/integrations/power-automate/subscribe";

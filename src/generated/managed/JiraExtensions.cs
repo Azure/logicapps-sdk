@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<ListIssuesResponse> ListIssues([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> jql = null, [WorkflowExpression] Func<string> nextPageToken = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(jql, nameof(jql), required: false);
-            SourceExpression.Validate(nextPageToken, nameof(nextPageToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/2/search";
@@ -52,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<ListIssuesResponseDatacenter> ListIssuesDatacenter([WorkflowExpression] Func<string> xRequestJirainstance)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datacenter/search";
@@ -68,8 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<ListTransitionsResponse> ListTransitions([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> issueIdOrKey)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(issueIdOrKey, nameof(issueIdOrKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/3/issue/{0}/transitions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueIdOrKey, 1));
@@ -85,26 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction UpdateTransition([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> issueIdOrKey, [WorkflowExpression] Func<string> bodyfieldsassigneename = null, [WorkflowExpression] Func<string> bodyfieldsresolutionname = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactivityDescription = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactoravatarUrl = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactordisplayName = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactorid = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactortype = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactorurl = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacauseid = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacausetype = null, [WorkflowExpression] Func<string> bodyhistoryMetadatadescription = null, [WorkflowExpression] Func<string> bodyhistoryMetadataextraDataiteration = null, [WorkflowExpression] Func<string> bodyhistoryMetadataextraDatastep = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratorid = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratortype = null, [WorkflowExpression] Func<string> bodyhistoryMetadatatype = null, [WorkflowExpression] Func<string> bodytransitionid = null, [WorkflowExpression] Func<bodyupdatecommentInputItem[]> bodyupdatecomment = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(issueIdOrKey, nameof(issueIdOrKey), required: true);
-            SourceExpression.Validate(bodyfieldsassigneename, nameof(bodyfieldsassigneename), required: false);
-            SourceExpression.Validate(bodyfieldsresolutionname, nameof(bodyfieldsresolutionname), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactivityDescription, nameof(bodyhistoryMetadataactivityDescription), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactoravatarUrl, nameof(bodyhistoryMetadataactoravatarUrl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactordisplayName, nameof(bodyhistoryMetadataactordisplayName), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactorid, nameof(bodyhistoryMetadataactorid), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactortype, nameof(bodyhistoryMetadataactortype), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactorurl, nameof(bodyhistoryMetadataactorurl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacauseid, nameof(bodyhistoryMetadatacauseid), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacausetype, nameof(bodyhistoryMetadatacausetype), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatadescription, nameof(bodyhistoryMetadatadescription), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataextraDataiteration, nameof(bodyhistoryMetadataextraDataiteration), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataextraDatastep, nameof(bodyhistoryMetadataextraDatastep), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratorid, nameof(bodyhistoryMetadatageneratorid), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratortype, nameof(bodyhistoryMetadatageneratortype), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatatype, nameof(bodyhistoryMetadatatype), required: false);
-            SourceExpression.Validate(bodytransitionid, nameof(bodytransitionid), required: false);
-            SourceExpression.Validate(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/3/issue/{0}/transitions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueIdOrKey, 1));
@@ -314,8 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction GetCurrentUser([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/3/myself";
@@ -333,10 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<MCPQueryResponse> McpJiraIssueManagement([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mcp/JiraIssueManagement";
@@ -401,9 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<CommentResponse> AddComment([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> issueKey, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(issueKey, nameof(issueKey), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/issue/{0}/comment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueKey, 1));
@@ -427,10 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<CreateIssueResponse> CreateIssue([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> projectKey, [WorkflowExpression] Func<string> issueTypeIds, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(projectKey, nameof(projectKey), required: true);
-            SourceExpression.Validate(issueTypeIds, nameof(issueTypeIds), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/issue";
@@ -449,12 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> projectprojectKey, [WorkflowExpression] Func<string> projectname, [WorkflowExpression] Func<projecttypeInput> projecttype, [WorkflowExpression] Func<string> projectleadId, [WorkflowExpression] Func<string> projectdescription = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(projectprojectKey, nameof(projectprojectKey), required: true);
-            SourceExpression.Validate(projectname, nameof(projectname), required: true);
-            SourceExpression.Validate(projecttype, nameof(projecttype), required: true);
-            SourceExpression.Validate(projectleadId, nameof(projectleadId), required: true);
-            SourceExpression.Validate(projectdescription, nameof(projectdescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/project";
@@ -490,9 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction CreateProjectCategory([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/projectCategory";
@@ -526,9 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction DeleteProject([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> projectIdOrKey, [WorkflowExpression] Func<bool> enableUndo = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(projectIdOrKey, nameof(projectIdOrKey), required: true);
-            SourceExpression.Validate(enableUndo, nameof(enableUndo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectIdOrKey, 1));
@@ -547,40 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<JToken> EditIssue([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> issueIdOrKey, [WorkflowExpression] Func<bool> notifyUsers = null, [WorkflowExpression] Func<bool> overrideScreenSecurity = null, [WorkflowExpression] Func<bool> overrideEditableFlag = null, [WorkflowExpression] Func<string> bodytransitiontransitionId = null, [WorkflowExpression] Func<string> bodytransitiontransitionLooped = null, [WorkflowExpression] Func<string> bodyhistoryMetadatametadataType = null, [WorkflowExpression] Func<string> bodyhistoryMetadatametadataDescription = null, [WorkflowExpression] Func<string> bodyhistoryMetadatametadataDescriptionKey = null, [WorkflowExpression] Func<string> bodyhistoryMetadatametadataActivityDescription = null, [WorkflowExpression] Func<string> bodyhistoryMetadatametadataActivityDescriptionKey = null, [WorkflowExpression] Func<string> bodyhistoryMetadatametadataEmailDescription = null, [WorkflowExpression] Func<string> bodyhistoryMetadatametadataEmailDescriptionKey = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactoractorId = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactoractorDisplayName = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactoractorDisplayNameKey = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactoractorType = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactoractorAvatarUrl = null, [WorkflowExpression] Func<string> bodyhistoryMetadataactoractorUrl = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratorgeneratorId = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratorgeneratorDisplayName = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratorgeneratorDisplayNameKey = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratorgeneratorType = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratorgeneratorAvatarUrl = null, [WorkflowExpression] Func<string> bodyhistoryMetadatageneratorgeneratorUrl = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacausecauseId = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacausecauseDisplayName = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacausecauseDisplayNameKey = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacausecauseType = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacausecauseAvatarUrl = null, [WorkflowExpression] Func<string> bodyhistoryMetadatacausecauseUrl = null, [WorkflowExpression] Func<string> bodyhistoryMetadataextraData = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(issueIdOrKey, nameof(issueIdOrKey), required: true);
-            SourceExpression.Validate(notifyUsers, nameof(notifyUsers), required: false);
-            SourceExpression.Validate(overrideScreenSecurity, nameof(overrideScreenSecurity), required: false);
-            SourceExpression.Validate(overrideEditableFlag, nameof(overrideEditableFlag), required: false);
-            SourceExpression.Validate(bodytransitiontransitionId, nameof(bodytransitiontransitionId), required: false);
-            SourceExpression.Validate(bodytransitiontransitionLooped, nameof(bodytransitiontransitionLooped), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatametadataType, nameof(bodyhistoryMetadatametadataType), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatametadataDescription, nameof(bodyhistoryMetadatametadataDescription), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatametadataDescriptionKey, nameof(bodyhistoryMetadatametadataDescriptionKey), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatametadataActivityDescription, nameof(bodyhistoryMetadatametadataActivityDescription), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatametadataActivityDescriptionKey, nameof(bodyhistoryMetadatametadataActivityDescriptionKey), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatametadataEmailDescription, nameof(bodyhistoryMetadatametadataEmailDescription), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatametadataEmailDescriptionKey, nameof(bodyhistoryMetadatametadataEmailDescriptionKey), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactoractorId, nameof(bodyhistoryMetadataactoractorId), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactoractorDisplayName, nameof(bodyhistoryMetadataactoractorDisplayName), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactoractorDisplayNameKey, nameof(bodyhistoryMetadataactoractorDisplayNameKey), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactoractorType, nameof(bodyhistoryMetadataactoractorType), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactoractorAvatarUrl, nameof(bodyhistoryMetadataactoractorAvatarUrl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataactoractorUrl, nameof(bodyhistoryMetadataactoractorUrl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratorgeneratorId, nameof(bodyhistoryMetadatageneratorgeneratorId), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratorgeneratorDisplayName, nameof(bodyhistoryMetadatageneratorgeneratorDisplayName), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratorgeneratorDisplayNameKey, nameof(bodyhistoryMetadatageneratorgeneratorDisplayNameKey), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratorgeneratorType, nameof(bodyhistoryMetadatageneratorgeneratorType), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratorgeneratorAvatarUrl, nameof(bodyhistoryMetadatageneratorgeneratorAvatarUrl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatageneratorgeneratorUrl, nameof(bodyhistoryMetadatageneratorgeneratorUrl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacausecauseId, nameof(bodyhistoryMetadatacausecauseId), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacausecauseDisplayName, nameof(bodyhistoryMetadatacausecauseDisplayName), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacausecauseDisplayNameKey, nameof(bodyhistoryMetadatacausecauseDisplayNameKey), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacausecauseType, nameof(bodyhistoryMetadatacausecauseType), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacausecauseAvatarUrl, nameof(bodyhistoryMetadatacausecauseAvatarUrl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadatacausecauseUrl, nameof(bodyhistoryMetadatacausecauseUrl), required: false);
-            SourceExpression.Validate(bodyhistoryMetadataextraData, nameof(bodyhistoryMetadataextraData), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/3/issue/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueIdOrKey, 1));
@@ -838,7 +753,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<GetAllProjectCategoriesV2ResponseItem[]> GetAllProjectCategories([WorkflowExpression] Func<string> xRequestJirainstance)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/projectCategory";
@@ -854,8 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<FullIssue> GetIssue([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> issueKey)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(issueKey, nameof(issueKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/issue/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueKey, 1));
@@ -871,8 +783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction GetTask([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -888,9 +798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction GetUser([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/user";
@@ -909,7 +816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<ListFiltersResponse> ListFilters([WorkflowExpression] Func<string> xRequestJirainstance)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/filter/search";
@@ -925,7 +831,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<ListProjectsResponseV2> ListProjects([WorkflowExpression] Func<string> xRequestJirainstance)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/project/search";
@@ -941,8 +846,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IBodyWorkflowAction<UserListItem[]> ListProjectUsers([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> projectKey)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(projectKey, nameof(projectKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/user/permission/search";
@@ -959,8 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction RemoveProjectCategory([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/projectCategory/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -976,22 +877,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
         public IWorkflowAction UpdateProject([WorkflowExpression] Func<string> xRequestJirainstance, [WorkflowExpression] Func<string> projectIdOrKey, [WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectTypeKey = null, [WorkflowExpression] Func<string> bodyprojectTemplateKey = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylead = null, [WorkflowExpression] Func<string> bodyleadAccountId = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyassigneeType = null, [WorkflowExpression] Func<string> bodyavatarId = null, [WorkflowExpression] Func<string> bodyissueSecurityScheme = null, [WorkflowExpression] Func<string> bodypermissionScheme = null, [WorkflowExpression] Func<string> bodynotificationScheme = null, [WorkflowExpression] Func<string> bodycategoryId = null)
         {
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            SourceExpression.Validate(projectIdOrKey, nameof(projectIdOrKey), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyprojectTypeKey, nameof(bodyprojectTypeKey), required: false);
-            SourceExpression.Validate(bodyprojectTemplateKey, nameof(bodyprojectTemplateKey), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodylead, nameof(bodylead), required: false);
-            SourceExpression.Validate(bodyleadAccountId, nameof(bodyleadAccountId), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodyassigneeType, nameof(bodyassigneeType), required: false);
-            SourceExpression.Validate(bodyavatarId, nameof(bodyavatarId), required: false);
-            SourceExpression.Validate(bodyissueSecurityScheme, nameof(bodyissueSecurityScheme), required: false);
-            SourceExpression.Validate(bodypermissionScheme, nameof(bodypermissionScheme), required: false);
-            SourceExpression.Validate(bodynotificationScheme, nameof(bodynotificationScheme), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectIdOrKey, 1));
@@ -1099,8 +984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
     {
         public IBodyWorkflowTrigger<FullIssue[]> OnNewIssueDatacenter([WorkflowExpression] Func<string> projectKey, [WorkflowExpression] Func<string> xRequestJirainstance = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectKey, nameof(projectKey), required: true);
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datacenter/new_issue_trigger/search";
@@ -1117,8 +1000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
         public IBodyWorkflowTrigger<FullIssue[]> OnCloseIssueDatacenter([WorkflowExpression] Func<string> projectKey, [WorkflowExpression] Func<string> xRequestJirainstance = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectKey, nameof(projectKey), required: true);
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datacenter/close_issue_trigger/search";
@@ -1135,8 +1016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
         public IBodyWorkflowTrigger<FullIssue[]> OnNewIssueJQLDatacenter([WorkflowExpression] Func<string> jql, [WorkflowExpression] Func<string> xRequestJirainstance = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(jql, nameof(jql), required: true);
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datacenter/new_issue_jql_trigger/search";
@@ -1153,8 +1032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
         public IBodyWorkflowTrigger<FullIssue[]> OnCloseIssue([WorkflowExpression] Func<string> projectKey, [WorkflowExpression] Func<string> xRequestJirainstance = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectKey, nameof(projectKey), required: true);
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/close_issue_trigger/search";
@@ -1171,8 +1048,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
         public IBodyWorkflowTrigger<FullIssue[]> OnNewIssue([WorkflowExpression] Func<string> projectKey, [WorkflowExpression] Func<string> xRequestJirainstance = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectKey, nameof(projectKey), required: true);
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/new_issue_trigger/search";
@@ -1189,8 +1064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
         public IBodyWorkflowTrigger<FullIssue[]> OnNewIssueJQL([WorkflowExpression] Func<string> jql, [WorkflowExpression] Func<string> xRequestJirainstance = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(jql, nameof(jql), required: true);
-            SourceExpression.Validate(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/new_issue_jql_trigger/search";

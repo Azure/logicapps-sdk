@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<BankAccountListResponse> BankAccountList([WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> locationId = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bank-accounts";
@@ -37,10 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<BookingCreateResponse> BookingCreate([WorkflowExpression] Func<string> bodybookingcustomerId = null, [WorkflowExpression] Func<string> bodybookingstartAt = null, [WorkflowExpression] Func<string> bodybookinglocationId = null, [WorkflowExpression] Func<bodybookingappointmentSegmentsInputItem[]> bodybookingappointmentSegments = null)
         {
-            SourceExpression.Validate(bodybookingcustomerId, nameof(bodybookingcustomerId), required: false);
-            SourceExpression.Validate(bodybookingstartAt, nameof(bodybookingstartAt), required: false);
-            SourceExpression.Validate(bodybookinglocationId, nameof(bodybookinglocationId), required: false);
-            SourceExpression.Validate(bodybookingappointmentSegments, nameof(bodybookingappointmentSegments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bookings";
@@ -93,10 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<BookingAvailabilityResponse> BookingAvailability([WorkflowExpression] Func<string> bodyqueryfilterstartAtRangestartAt = null, [WorkflowExpression] Func<string> bodyqueryfilterstartAtRangeendAt = null, [WorkflowExpression] Func<string> bodyqueryfilterlocationId = null, [WorkflowExpression] Func<bodyqueryfiltersegmentFiltersInputItem[]> bodyqueryfiltersegmentFilters = null)
         {
-            SourceExpression.Validate(bodyqueryfilterstartAtRangestartAt, nameof(bodyqueryfilterstartAtRangestartAt), required: false);
-            SourceExpression.Validate(bodyqueryfilterstartAtRangeendAt, nameof(bodyqueryfilterstartAtRangeendAt), required: false);
-            SourceExpression.Validate(bodyqueryfilterlocationId, nameof(bodyqueryfilterlocationId), required: false);
-            SourceExpression.Validate(bodyqueryfiltersegmentFilters, nameof(bodyqueryfiltersegmentFilters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bookings/availability/search";
@@ -179,10 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<BookingListTeamProfilesResponse> BookingListTeamProfiles([WorkflowExpression] Func<bool> bookableOnly = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> locationId = null)
         {
-            SourceExpression.Validate(bookableOnly, nameof(bookableOnly), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bookings/team-member-booking-profiles";
@@ -205,12 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<CashDrawerListShiftsResponse> CashDrawerListShifts([WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<string> beginTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(beginTime, nameof(beginTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cash-drawers/shifts";
@@ -238,8 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<CashDrawerRetrieveShiftResponse> CashDrawerRetrieveShift([WorkflowExpression] Func<string> shiftId, [WorkflowExpression] Func<string> locationId)
         {
-            SourceExpression.Validate(shiftId, nameof(shiftId), required: true);
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cash-drawers/shifts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(shiftId, 1));
@@ -255,10 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<CashDrawerListEventsResponse> CashDrawerListEvents([WorkflowExpression] Func<string> shiftId, [WorkflowExpression] Func<string> locationId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(shiftId, nameof(shiftId), required: true);
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cash-drawers/shifts/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(shiftId, 1));
@@ -278,28 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<CheckoutCreateResponse> CheckoutCreate([WorkflowExpression] Func<string> locationId, [WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodyredirectUrl = null, [WorkflowExpression] Func<string> bodyorderidempotencyKey = null, [WorkflowExpression] Func<string> bodyorderorderlocationId = null, [WorkflowExpression] Func<string> bodyorderordercustomerId = null, [WorkflowExpression] Func<string> bodyorderorderreferenceId = null, [WorkflowExpression] Func<bodyorderorderlineItemsInputItem[]> bodyorderorderlineItems = null, [WorkflowExpression] Func<bodyorderordertaxesInputItem[]> bodyorderordertaxes = null, [WorkflowExpression] Func<bodyorderorderdiscountsInputItem[]> bodyorderorderdiscounts = null, [WorkflowExpression] Func<bodyadditionalRecipientsInputItem[]> bodyadditionalRecipients = null, [WorkflowExpression] Func<bool> bodyaskForShippingAddress = null, [WorkflowExpression] Func<string> bodymerchantSupportEmail = null, [WorkflowExpression] Func<string> bodyprePopulateBuyerEmail = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddressaddressLine1 = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddressaddressLine2 = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddresslocality = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddressadministrativeDistrictLevel1 = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddresspostalCode = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddresscountry = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddressfirstName = null, [WorkflowExpression] Func<string> bodyprePopulateShippingAddresslastName = null)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyredirectUrl, nameof(bodyredirectUrl), required: false);
-            SourceExpression.Validate(bodyorderidempotencyKey, nameof(bodyorderidempotencyKey), required: false);
-            SourceExpression.Validate(bodyorderorderlocationId, nameof(bodyorderorderlocationId), required: false);
-            SourceExpression.Validate(bodyorderordercustomerId, nameof(bodyorderordercustomerId), required: false);
-            SourceExpression.Validate(bodyorderorderreferenceId, nameof(bodyorderorderreferenceId), required: false);
-            SourceExpression.Validate(bodyorderorderlineItems, nameof(bodyorderorderlineItems), required: false);
-            SourceExpression.Validate(bodyorderordertaxes, nameof(bodyorderordertaxes), required: false);
-            SourceExpression.Validate(bodyorderorderdiscounts, nameof(bodyorderorderdiscounts), required: false);
-            SourceExpression.Validate(bodyadditionalRecipients, nameof(bodyadditionalRecipients), required: false);
-            SourceExpression.Validate(bodyaskForShippingAddress, nameof(bodyaskForShippingAddress), required: false);
-            SourceExpression.Validate(bodymerchantSupportEmail, nameof(bodymerchantSupportEmail), required: false);
-            SourceExpression.Validate(bodyprePopulateBuyerEmail, nameof(bodyprePopulateBuyerEmail), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddressaddressLine1, nameof(bodyprePopulateShippingAddressaddressLine1), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddressaddressLine2, nameof(bodyprePopulateShippingAddressaddressLine2), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddresslocality, nameof(bodyprePopulateShippingAddresslocality), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddressadministrativeDistrictLevel1, nameof(bodyprePopulateShippingAddressadministrativeDistrictLevel1), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddresspostalCode, nameof(bodyprePopulateShippingAddresspostalCode), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddresscountry, nameof(bodyprePopulateShippingAddresscountry), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddressfirstName, nameof(bodyprePopulateShippingAddressfirstName), required: false);
-            SourceExpression.Validate(bodyprePopulateShippingAddresslastName, nameof(bodyprePopulateShippingAddresslastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/{0}/checkouts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -470,10 +421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<DeviceListResponse> DeviceList([WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<string> productType = null, [WorkflowExpression] Func<statusInput> status = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(productType, nameof(productType), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/devices/codes";
@@ -496,10 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<DeviceCreateResponse> DeviceCreate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodydeviceCodename = null, [WorkflowExpression] Func<string> bodydeviceCodelocationId = null, [WorkflowExpression] Func<string> bodydeviceCodeproductType = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodydeviceCodename, nameof(bodydeviceCodename), required: false);
-            SourceExpression.Validate(bodydeviceCodelocationId, nameof(bodydeviceCodelocationId), required: false);
-            SourceExpression.Validate(bodydeviceCodeproductType, nameof(bodydeviceCodeproductType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/devices/codes";
@@ -552,7 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<DeviceGetResponse> DeviceGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/devices/codes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -567,14 +509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<GiftCardListResponse> GiftCardList([WorkflowExpression] Func<string> giftCardId = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<string> beginTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
-            SourceExpression.Validate(giftCardId, nameof(giftCardId), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(beginTime, nameof(beginTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift-cards/activities";
@@ -606,12 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<GiftCardCreateResponse> GiftCardCreate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodygiftCardActivitygiftCardId = null, [WorkflowExpression] Func<bodygiftCardActivitytypeInput> bodygiftCardActivitytype = null, [WorkflowExpression] Func<string> bodygiftCardActivitylocationId = null, [WorkflowExpression] Func<string> bodygiftCardActivityactivateActivityDetailsorderId = null, [WorkflowExpression] Func<string> bodygiftCardActivityactivateActivityDetailslineItemUid = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodygiftCardActivitygiftCardId, nameof(bodygiftCardActivitygiftCardId), required: false);
-            SourceExpression.Validate(bodygiftCardActivitytype, nameof(bodygiftCardActivitytype), required: false);
-            SourceExpression.Validate(bodygiftCardActivitylocationId, nameof(bodygiftCardActivitylocationId), required: false);
-            SourceExpression.Validate(bodygiftCardActivityactivateActivityDetailsorderId, nameof(bodygiftCardActivityactivateActivityDetailsorderId), required: false);
-            SourceExpression.Validate(bodygiftCardActivityactivateActivityDetailslineItemUid, nameof(bodygiftCardActivityactivateActivityDetailslineItemUid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift-cards/activities";
@@ -684,7 +612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<GiftCardRetrieveGANResponse> GiftCardRetrieveGAN([WorkflowExpression] Func<string> bodygan = null)
         {
-            SourceExpression.Validate(bodygan, nameof(bodygan), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift-cards/from-gan";
@@ -711,7 +638,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<GiftCardRetrieveNonceResponse> GiftCardRetrieveNonce([WorkflowExpression] Func<string> bodynonce = null)
         {
-            SourceExpression.Validate(bodynonce, nameof(bodynonce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift-cards/from-nonce";
@@ -738,8 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<GiftCardLinkResponse> GiftCardLink([WorkflowExpression] Func<string> giftCardId, [WorkflowExpression] Func<string> bodycustomerId = null)
         {
-            SourceExpression.Validate(giftCardId, nameof(giftCardId), required: true);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift-cards/{0}/link-customer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftCardId, 1));
@@ -766,8 +690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<GiftCardUnlinkResponse> GiftCardUnlink([WorkflowExpression] Func<string> giftCardId, [WorkflowExpression] Func<string> bodycustomerId = null)
         {
-            SourceExpression.Validate(giftCardId, nameof(giftCardId), required: true);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift-cards/{0}/unlink-customer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftCardId, 1));
@@ -794,7 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<GiftCardRetrieveResponse> GiftCardRetrieve([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift-cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -809,9 +730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborListBreakResponse> LaborListBreak([WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/labor/break-types";
@@ -832,11 +750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborCreateBreakResponse> LaborCreateBreak([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodybreakTypelocationId = null, [WorkflowExpression] Func<string> bodybreakTypebreakName = null, [WorkflowExpression] Func<string> bodybreakTypeexpectedDuration = null, [WorkflowExpression] Func<bool> bodybreakTypeisPaid = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodybreakTypelocationId, nameof(bodybreakTypelocationId), required: false);
-            SourceExpression.Validate(bodybreakTypebreakName, nameof(bodybreakTypebreakName), required: false);
-            SourceExpression.Validate(bodybreakTypeexpectedDuration, nameof(bodybreakTypeexpectedDuration), required: false);
-            SourceExpression.Validate(bodybreakTypeisPaid, nameof(bodybreakTypeisPaid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/labor/break-types";
@@ -895,7 +808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborGetBreakResponse> LaborGetBreak([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/break-types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -910,7 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<JToken> LaborDeleteBreak([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/break-types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -925,12 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborUpdateBreakResponse> LaborUpdateBreak([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodybreakTypelocationId = null, [WorkflowExpression] Func<string> bodybreakTypebreakName = null, [WorkflowExpression] Func<string> bodybreakTypeexpectedDuration = null, [WorkflowExpression] Func<bool> bodybreakTypeisPaid = null, [WorkflowExpression] Func<int> bodybreakTypeversion = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodybreakTypelocationId, nameof(bodybreakTypelocationId), required: false);
-            SourceExpression.Validate(bodybreakTypebreakName, nameof(bodybreakTypebreakName), required: false);
-            SourceExpression.Validate(bodybreakTypeexpectedDuration, nameof(bodybreakTypeexpectedDuration), required: false);
-            SourceExpression.Validate(bodybreakTypeisPaid, nameof(bodybreakTypeisPaid), required: false);
-            SourceExpression.Validate(bodybreakTypeversion, nameof(bodybreakTypeversion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/break-types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -989,15 +894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborCreateShiftResponse> LaborCreateShift([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodyshiftteamMemberId = null, [WorkflowExpression] Func<string> bodyshiftlocationId = null, [WorkflowExpression] Func<string> bodyshiftstartAt = null, [WorkflowExpression] Func<string> bodyshiftendAt = null, [WorkflowExpression] Func<string> bodyshiftwagetitle = null, [WorkflowExpression] Func<int> bodyshiftwagehourlyRateamount = null, [WorkflowExpression] Func<string> bodyshiftwagehourlyRatecurrency = null, [WorkflowExpression] Func<bodyshiftbreaksInputItem[]> bodyshiftbreaks = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyshiftteamMemberId, nameof(bodyshiftteamMemberId), required: false);
-            SourceExpression.Validate(bodyshiftlocationId, nameof(bodyshiftlocationId), required: false);
-            SourceExpression.Validate(bodyshiftstartAt, nameof(bodyshiftstartAt), required: false);
-            SourceExpression.Validate(bodyshiftendAt, nameof(bodyshiftendAt), required: false);
-            SourceExpression.Validate(bodyshiftwagetitle, nameof(bodyshiftwagetitle), required: false);
-            SourceExpression.Validate(bodyshiftwagehourlyRateamount, nameof(bodyshiftwagehourlyRateamount), required: false);
-            SourceExpression.Validate(bodyshiftwagehourlyRatecurrency, nameof(bodyshiftwagehourlyRatecurrency), required: false);
-            SourceExpression.Validate(bodyshiftbreaks, nameof(bodyshiftbreaks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/labor/shifts";
@@ -1096,11 +992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborSearchShiftsResponse> LaborSearchShifts([WorkflowExpression] Func<string> bodyqueryfilterworkdaydateRangestartDate = null, [WorkflowExpression] Func<string> bodyqueryfilterworkdaydateRangeendDate = null, [WorkflowExpression] Func<string> bodyqueryfilterworkdaymatchShiftsBy = null, [WorkflowExpression] Func<string> bodyqueryfilterworkdaydefaultTimezone = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodyqueryfilterworkdaydateRangestartDate, nameof(bodyqueryfilterworkdaydateRangestartDate), required: false);
-            SourceExpression.Validate(bodyqueryfilterworkdaydateRangeendDate, nameof(bodyqueryfilterworkdaydateRangeendDate), required: false);
-            SourceExpression.Validate(bodyqueryfilterworkdaymatchShiftsBy, nameof(bodyqueryfilterworkdaymatchShiftsBy), required: false);
-            SourceExpression.Validate(bodyqueryfilterworkdaydefaultTimezone, nameof(bodyqueryfilterworkdaydefaultTimezone), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/labor/shifts/search";
@@ -1183,7 +1074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborGetShiftResponse> LaborGetShift([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/shifts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1198,7 +1088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<JToken> LaborDeleteShift([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/shifts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1213,16 +1102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborUpdateShiftResponse> LaborUpdateShift([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyshiftteamMemberId = null, [WorkflowExpression] Func<string> bodyshiftlocationId = null, [WorkflowExpression] Func<string> bodyshiftstartAt = null, [WorkflowExpression] Func<string> bodyshiftendAt = null, [WorkflowExpression] Func<string> bodyshiftwagetitle = null, [WorkflowExpression] Func<int> bodyshiftwagehourlyRateamount = null, [WorkflowExpression] Func<string> bodyshiftwagehourlyRatecurrency = null, [WorkflowExpression] Func<bodyshiftbreaksInputItem2[]> bodyshiftbreaks = null, [WorkflowExpression] Func<int> bodyshiftversion = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyshiftteamMemberId, nameof(bodyshiftteamMemberId), required: false);
-            SourceExpression.Validate(bodyshiftlocationId, nameof(bodyshiftlocationId), required: false);
-            SourceExpression.Validate(bodyshiftstartAt, nameof(bodyshiftstartAt), required: false);
-            SourceExpression.Validate(bodyshiftendAt, nameof(bodyshiftendAt), required: false);
-            SourceExpression.Validate(bodyshiftwagetitle, nameof(bodyshiftwagetitle), required: false);
-            SourceExpression.Validate(bodyshiftwagehourlyRateamount, nameof(bodyshiftwagehourlyRateamount), required: false);
-            SourceExpression.Validate(bodyshiftwagehourlyRatecurrency, nameof(bodyshiftwagehourlyRatecurrency), required: false);
-            SourceExpression.Validate(bodyshiftbreaks, nameof(bodyshiftbreaks), required: false);
-            SourceExpression.Validate(bodyshiftversion, nameof(bodyshiftversion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/shifts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1321,9 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborListWagesResponse> LaborListWages([WorkflowExpression] Func<string> teamMemberId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(teamMemberId, nameof(teamMemberId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/labor/team-member-wages";
@@ -1344,7 +1220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborGetWageResponse> LaborGetWage([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/team-member-wages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1359,8 +1234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborListConfigsResponse> LaborListConfigs([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/labor/workweek-configs";
@@ -1379,10 +1252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LaborUpdateConfigResponse> LaborUpdateConfig([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyworkweekConfigstartOfWeek = null, [WorkflowExpression] Func<string> bodyworkweekConfigstartOfDayLocalTime = null, [WorkflowExpression] Func<int> bodyworkweekConfigversion = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyworkweekConfigstartOfWeek, nameof(bodyworkweekConfigstartOfWeek), required: false);
-            SourceExpression.Validate(bodyworkweekConfigstartOfDayLocalTime, nameof(bodyworkweekConfigstartOfDayLocalTime), required: false);
-            SourceExpression.Validate(bodyworkweekConfigversion, nameof(bodyworkweekConfigversion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/labor/workweek-configs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1443,13 +1312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LocationCreateResponse> LocationCreate([WorkflowExpression] Func<string> bodylocationname = null, [WorkflowExpression] Func<string> bodylocationdescription = null, [WorkflowExpression] Func<string> bodylocationfacebookUrl = null, [WorkflowExpression] Func<string> bodylocationaddressaddressLine1 = null, [WorkflowExpression] Func<string> bodylocationaddressadministrativeDistrictLevel1 = null, [WorkflowExpression] Func<string> bodylocationaddresslocality = null, [WorkflowExpression] Func<string> bodylocationaddresspostalCode = null)
         {
-            SourceExpression.Validate(bodylocationname, nameof(bodylocationname), required: false);
-            SourceExpression.Validate(bodylocationdescription, nameof(bodylocationdescription), required: false);
-            SourceExpression.Validate(bodylocationfacebookUrl, nameof(bodylocationfacebookUrl), required: false);
-            SourceExpression.Validate(bodylocationaddressaddressLine1, nameof(bodylocationaddressaddressLine1), required: false);
-            SourceExpression.Validate(bodylocationaddressadministrativeDistrictLevel1, nameof(bodylocationaddressadministrativeDistrictLevel1), required: false);
-            SourceExpression.Validate(bodylocationaddresslocality, nameof(bodylocationaddresslocality), required: false);
-            SourceExpression.Validate(bodylocationaddresspostalCode, nameof(bodylocationaddresspostalCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations";
@@ -1528,7 +1390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LocationRetrieveResponse> LocationRetrieve([WorkflowExpression] Func<string> locationId)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -1543,17 +1404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LocationUpdateResponse> LocationUpdate([WorkflowExpression] Func<string> locationId, [WorkflowExpression] Func<string> bodylocationname = null, [WorkflowExpression] Func<string> bodylocationdescription = null, [WorkflowExpression] Func<string> bodylocationfacebookUrl = null, [WorkflowExpression] Func<string> bodylocationtwitterUsername = null, [WorkflowExpression] Func<string> bodylocationinstagramUsername = null, [WorkflowExpression] Func<string> bodylocationaddressaddressLine1 = null, [WorkflowExpression] Func<string> bodylocationaddressadministrativeDistrictLevel1 = null, [WorkflowExpression] Func<string> bodylocationaddresslocality = null, [WorkflowExpression] Func<string> bodylocationaddresspostalCode = null, [WorkflowExpression] Func<bodylocationbusinessHoursperiodsInputItem[]> bodylocationbusinessHoursperiods = null)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
-            SourceExpression.Validate(bodylocationname, nameof(bodylocationname), required: false);
-            SourceExpression.Validate(bodylocationdescription, nameof(bodylocationdescription), required: false);
-            SourceExpression.Validate(bodylocationfacebookUrl, nameof(bodylocationfacebookUrl), required: false);
-            SourceExpression.Validate(bodylocationtwitterUsername, nameof(bodylocationtwitterUsername), required: false);
-            SourceExpression.Validate(bodylocationinstagramUsername, nameof(bodylocationinstagramUsername), required: false);
-            SourceExpression.Validate(bodylocationaddressaddressLine1, nameof(bodylocationaddressaddressLine1), required: false);
-            SourceExpression.Validate(bodylocationaddressadministrativeDistrictLevel1, nameof(bodylocationaddressadministrativeDistrictLevel1), required: false);
-            SourceExpression.Validate(bodylocationaddresslocality, nameof(bodylocationaddresslocality), required: false);
-            SourceExpression.Validate(bodylocationaddresspostalCode, nameof(bodylocationaddresspostalCode), required: false);
-            SourceExpression.Validate(bodylocationbusinessHoursperiods, nameof(bodylocationbusinessHoursperiods), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -1658,9 +1508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyCreateAccountResponse> LoyaltyCreateAccount([WorkflowExpression] Func<string> bodyloyaltyAccountmappingphoneNumber = null, [WorkflowExpression] Func<string> bodyloyaltyAccountprogramId = null, [WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(bodyloyaltyAccountmappingphoneNumber, nameof(bodyloyaltyAccountmappingphoneNumber), required: false);
-            SourceExpression.Validate(bodyloyaltyAccountprogramId, nameof(bodyloyaltyAccountprogramId), required: false);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/loyalty/accounts";
@@ -1715,7 +1562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltySearchAccountsResponse> LoyaltySearchAccounts([WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/loyalty/accounts/search";
@@ -1750,7 +1596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyRetrieveAccountResponse> LoyaltyRetrieveAccount([WorkflowExpression] Func<string> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/accounts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -1765,10 +1610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyAccumulatePointsResponse> LoyaltyAccumulatePoints([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyaccumulatePointsorderId = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyaccumulatePointsorderId, nameof(bodyaccumulatePointsorderId), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/accounts/{0}/accumulate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -1815,10 +1656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyAdjustPointsResponse> LoyaltyAdjustPoints([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<int> bodyadjustPointspoints = null, [WorkflowExpression] Func<string> bodyadjustPointsreason = null, [WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyadjustPointspoints, nameof(bodyadjustPointspoints), required: false);
-            SourceExpression.Validate(bodyadjustPointsreason, nameof(bodyadjustPointsreason), required: false);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/accounts/{0}/adjust", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -1865,8 +1702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltySearchEventsResponse> LoyaltySearchEvents([WorkflowExpression] Func<string> bodyqueryfilterorderFilterorderId = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodyqueryfilterorderFilterorderId, nameof(bodyqueryfilterorderFilterorderId), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/loyalty/events/search";
@@ -1923,7 +1758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyRetrieveProgramResponse> LoyaltyRetrieveProgram([WorkflowExpression] Func<string> programId)
         {
-            SourceExpression.Validate(programId, nameof(programId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/programs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(programId, 1));
@@ -1938,8 +1772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyCalculatePointsResponse> LoyaltyCalculatePoints([WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string> bodyorderId = null)
         {
-            SourceExpression.Validate(programId, nameof(programId), required: true);
-            SourceExpression.Validate(bodyorderId, nameof(bodyorderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/programs/{0}/calculate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(programId, 1));
@@ -1966,10 +1798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyCreateRewardResponse> LoyaltyCreateReward([WorkflowExpression] Func<string> bodyrewardloyaltyAccountId = null, [WorkflowExpression] Func<string> bodyrewardrewardTierId = null, [WorkflowExpression] Func<string> bodyrewardorderId = null, [WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(bodyrewardloyaltyAccountId, nameof(bodyrewardloyaltyAccountId), required: false);
-            SourceExpression.Validate(bodyrewardrewardTierId, nameof(bodyrewardrewardTierId), required: false);
-            SourceExpression.Validate(bodyrewardorderId, nameof(bodyrewardorderId), required: false);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/loyalty/rewards";
@@ -2022,8 +1850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltySearchRewardsResponse> LoyaltySearchRewards([WorkflowExpression] Func<string> bodyqueryloyaltyAccountId = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodyqueryloyaltyAccountId, nameof(bodyqueryloyaltyAccountId), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/loyalty/rewards/search";
@@ -2064,7 +1890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyRetrieveRewardResponse> LoyaltyRetrieveReward([WorkflowExpression] Func<string> rewardId)
         {
-            SourceExpression.Validate(rewardId, nameof(rewardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/rewards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rewardId, 1));
@@ -2079,7 +1904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<JToken> LoyaltyDeleteReward([WorkflowExpression] Func<string> rewardId)
         {
-            SourceExpression.Validate(rewardId, nameof(rewardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/rewards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rewardId, 1));
@@ -2094,9 +1918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<LoyaltyRedeemRewardResponse> LoyaltyRedeemReward([WorkflowExpression] Func<string> rewardId, [WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodylocationId = null)
         {
-            SourceExpression.Validate(rewardId, nameof(rewardId), required: true);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/loyalty/rewards/{0}/redeem", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rewardId, 1));
@@ -2129,7 +1950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<MerchantListResponse> MerchantList([WorkflowExpression] Func<int> cursor = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/merchants";
@@ -2146,7 +1966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<MerchantRetrieveResponse> MerchantRetrieve([WorkflowExpression] Func<string> merchantId)
         {
-            SourceExpression.Validate(merchantId, nameof(merchantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/merchants/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(merchantId, 1));
@@ -2161,7 +1980,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<MobileAuthorizationCreateResponse> MobileAuthorizationCreate([WorkflowExpression] Func<string> bodylocationId = null)
         {
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mobile/authorization-code";
@@ -2202,7 +2020,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<SnippetRetrieveResponse> SnippetRetrieve([WorkflowExpression] Func<string> siteId)
         {
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/snippet", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
@@ -2217,7 +2034,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<JToken> SnippetDelete([WorkflowExpression] Func<string> siteId)
         {
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/snippet", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
@@ -2232,8 +2048,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<SnippetUpsertResponse> SnippetUpsert([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> bodysnippetcontent = null)
         {
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
-            SourceExpression.Validate(bodysnippetcontent, nameof(bodysnippetcontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/snippet", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
@@ -2268,15 +2082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamCreateMemberResponse> TeamCreateMember([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodyteamMemberreferenceId = null, [WorkflowExpression] Func<string> bodyteamMemberstatus = null, [WorkflowExpression] Func<string> bodyteamMembergivenName = null, [WorkflowExpression] Func<string> bodyteamMemberfamilyName = null, [WorkflowExpression] Func<string> bodyteamMemberemailAddress = null, [WorkflowExpression] Func<string> bodyteamMemberphoneNumber = null, [WorkflowExpression] Func<string[]> bodyteamMemberassignedLocationslocationIds = null, [WorkflowExpression] Func<string> bodyteamMemberassignedLocationsassignmentType = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyteamMemberreferenceId, nameof(bodyteamMemberreferenceId), required: false);
-            SourceExpression.Validate(bodyteamMemberstatus, nameof(bodyteamMemberstatus), required: false);
-            SourceExpression.Validate(bodyteamMembergivenName, nameof(bodyteamMembergivenName), required: false);
-            SourceExpression.Validate(bodyteamMemberfamilyName, nameof(bodyteamMemberfamilyName), required: false);
-            SourceExpression.Validate(bodyteamMemberemailAddress, nameof(bodyteamMemberemailAddress), required: false);
-            SourceExpression.Validate(bodyteamMemberphoneNumber, nameof(bodyteamMemberphoneNumber), required: false);
-            SourceExpression.Validate(bodyteamMemberassignedLocationslocationIds, nameof(bodyteamMemberassignedLocationslocationIds), required: false);
-            SourceExpression.Validate(bodyteamMemberassignedLocationsassignmentType, nameof(bodyteamMemberassignedLocationsassignmentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/team-members";
@@ -2367,19 +2172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamCreateBulkMembersResponse> TeamCreateBulkMembers([WorkflowExpression] Func<string> bodyteamMembersidempotencyKey1teamMembergivenName = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey1teamMemberfamilyName = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey1teamMemberemailAddress = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey1teamMemberreferenceId = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey1teamMemberphoneNumber = null, [WorkflowExpression] Func<string[]> bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey2teamMembergivenName = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey2teamMemberfamilyName = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey2teamMemberemailAddress = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey2teamMemberreferenceId = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey2teamMemberphoneNumber = null, [WorkflowExpression] Func<string> bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType = null)
         {
-            SourceExpression.Validate(bodyteamMembersidempotencyKey1teamMembergivenName, nameof(bodyteamMembersidempotencyKey1teamMembergivenName), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey1teamMemberfamilyName, nameof(bodyteamMembersidempotencyKey1teamMemberfamilyName), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey1teamMemberemailAddress, nameof(bodyteamMembersidempotencyKey1teamMemberemailAddress), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey1teamMemberreferenceId, nameof(bodyteamMembersidempotencyKey1teamMemberreferenceId), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey1teamMemberphoneNumber, nameof(bodyteamMembersidempotencyKey1teamMemberphoneNumber), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds, nameof(bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType, nameof(bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey2teamMembergivenName, nameof(bodyteamMembersidempotencyKey2teamMembergivenName), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey2teamMemberfamilyName, nameof(bodyteamMembersidempotencyKey2teamMemberfamilyName), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey2teamMemberemailAddress, nameof(bodyteamMembersidempotencyKey2teamMemberemailAddress), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey2teamMemberreferenceId, nameof(bodyteamMembersidempotencyKey2teamMemberreferenceId), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey2teamMemberphoneNumber, nameof(bodyteamMembersidempotencyKey2teamMemberphoneNumber), required: false);
-            SourceExpression.Validate(bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType, nameof(bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/team-members/bulk-create";
@@ -2534,23 +2326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamUpdateBulkMembersResponse> TeamUpdateBulkMembers([WorkflowExpression] Func<string> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId = null, [WorkflowExpression] Func<bool> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner = null, [WorkflowExpression] Func<string> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus = null, [WorkflowExpression] Func<string> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName = null, [WorkflowExpression] Func<string> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName = null, [WorkflowExpression] Func<string> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress = null, [WorkflowExpression] Func<string> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber = null, [WorkflowExpression] Func<string[]> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds = null, [WorkflowExpression] Func<string> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType = null, [WorkflowExpression] Func<string> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId = null, [WorkflowExpression] Func<bool> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner = null, [WorkflowExpression] Func<string> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus = null, [WorkflowExpression] Func<string> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName = null, [WorkflowExpression] Func<string> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName = null, [WorkflowExpression] Func<string> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress = null, [WorkflowExpression] Func<string> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber = null, [WorkflowExpression] Func<string> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType = null)
         {
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds), required: false);
-            SourceExpression.Validate(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber), required: false);
-            SourceExpression.Validate(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/team-members/bulk-update";
@@ -2729,9 +2504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamSearchResponse> TeamSearch([WorkflowExpression] Func<string[]> bodyqueryfilterlocationIds = null, [WorkflowExpression] Func<string> bodyqueryfilterstatus = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodyqueryfilterlocationIds, nameof(bodyqueryfilterlocationIds), required: false);
-            SourceExpression.Validate(bodyqueryfilterstatus, nameof(bodyqueryfilterstatus), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/team-members/search";
@@ -2786,7 +2558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamRetrieveMemberResponse> TeamRetrieveMember([WorkflowExpression] Func<string> teamMemberId)
         {
-            SourceExpression.Validate(teamMemberId, nameof(teamMemberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/team-members/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamMemberId, 1));
@@ -2801,15 +2572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamUpdateResponse> TeamUpdate([WorkflowExpression] Func<string> teamMemberId, [WorkflowExpression] Func<string> bodyteamMemberreferenceId = null, [WorkflowExpression] Func<string> bodyteamMemberstatus = null, [WorkflowExpression] Func<string> bodyteamMembergivenName = null, [WorkflowExpression] Func<string> bodyteamMemberfamilyName = null, [WorkflowExpression] Func<string> bodyteamMemberemailAddress = null, [WorkflowExpression] Func<string> bodyteamMemberphoneNumber = null, [WorkflowExpression] Func<string[]> bodyteamMemberassignedLocationslocationIds = null, [WorkflowExpression] Func<string> bodyteamMemberassignedLocationsassignmentType = null)
         {
-            SourceExpression.Validate(teamMemberId, nameof(teamMemberId), required: true);
-            SourceExpression.Validate(bodyteamMemberreferenceId, nameof(bodyteamMemberreferenceId), required: false);
-            SourceExpression.Validate(bodyteamMemberstatus, nameof(bodyteamMemberstatus), required: false);
-            SourceExpression.Validate(bodyteamMembergivenName, nameof(bodyteamMembergivenName), required: false);
-            SourceExpression.Validate(bodyteamMemberfamilyName, nameof(bodyteamMemberfamilyName), required: false);
-            SourceExpression.Validate(bodyteamMemberemailAddress, nameof(bodyteamMemberemailAddress), required: false);
-            SourceExpression.Validate(bodyteamMemberphoneNumber, nameof(bodyteamMemberphoneNumber), required: false);
-            SourceExpression.Validate(bodyteamMemberassignedLocationslocationIds, nameof(bodyteamMemberassignedLocationslocationIds), required: false);
-            SourceExpression.Validate(bodyteamMemberassignedLocationsassignmentType, nameof(bodyteamMemberassignedLocationsassignmentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/team-members/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamMemberId, 1));
@@ -2894,7 +2656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamRetrieveWageResponse> TeamRetrieveWage([WorkflowExpression] Func<string> teamMemberId)
         {
-            SourceExpression.Validate(teamMemberId, nameof(teamMemberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/team-members/{0}/wage-setting", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamMemberId, 1));
@@ -2909,9 +2670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<TeamUpdateWageResponse> TeamUpdateWage([WorkflowExpression] Func<string> teamMemberId, [WorkflowExpression] Func<bool> bodywageSettingisOvertimeExempt = null, [WorkflowExpression] Func<bodywageSettingjobAssignmentsInputItem[]> bodywageSettingjobAssignments = null)
         {
-            SourceExpression.Validate(teamMemberId, nameof(teamMemberId), required: true);
-            SourceExpression.Validate(bodywageSettingisOvertimeExempt, nameof(bodywageSettingisOvertimeExempt), required: false);
-            SourceExpression.Validate(bodywageSettingjobAssignments, nameof(bodywageSettingjobAssignments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/team-members/{0}/wage-setting", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamMemberId, 1));
@@ -2952,7 +2710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
         public IBodyWorkflowAction<BankAccountGetV1Response> BankAccountGet([WorkflowExpression] Func<string> v1BankAccountId)
         {
-            SourceExpression.Validate(v1BankAccountId, nameof(v1BankAccountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bank-accounts/by-v1-id/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(v1BankAccountId, 1));

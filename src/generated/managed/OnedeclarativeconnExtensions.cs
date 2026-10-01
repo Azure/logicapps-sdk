@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedeclarativeconn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedeclarativeconn")]
         public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyapiKey)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";

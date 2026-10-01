@@ -16,13 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         public IBodyWorkflowAction<CreateJobOutput> CreateJob([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> runbookName, [WorkflowExpression] Func<bool> waitForJob = null, [WorkflowExpression] Func<object> hybridAutomationWorkerGroup = null, [WorkflowExpression] Func<object> runbookParameters = null)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
-            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
-            SourceExpression.Validate(runbookName, nameof(runbookName), required: true);
-            SourceExpression.Validate(waitForJob, nameof(waitForJob), required: false);
-            SourceExpression.Validate(hybridAutomationWorkerGroup, nameof(hybridAutomationWorkerGroup), required: false);
-            SourceExpression.Validate(runbookParameters, nameof(runbookParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -63,10 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         public IBodyWorkflowAction<string> GetJobOutput([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> jobId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
-            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -88,10 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         public IBodyWorkflowAction<GetJobStatusOutput> GetJobStatus([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> jobId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
-            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetReportResponse> GetReport([WorkflowExpression] Func<string> sampleId, [WorkflowExpression] Func<string> sandboxToken = null, [WorkflowExpression] Func<regionInput> region = null)
         {
-            SourceExpression.Validate(sampleId, nameof(sampleId), required: true);
-            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleId, 1));
@@ -36,9 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetSummaryResponse> GetSummary([WorkflowExpression] Func<string> sampleId, [WorkflowExpression] Func<string> sandboxToken = null, [WorkflowExpression] Func<regionInput> region = null)
         {
-            SourceExpression.Validate(sampleId, nameof(sampleId), required: true);
-            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/samples/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleId, 1));
@@ -58,9 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<SubmitUrlSampleResponse> SubmitUrlSample([WorkflowExpression] Func<string> sandboxToken = null, [WorkflowExpression] Func<regionInput> region = null, [WorkflowExpression] Func<string> bodyurl = null)
         {
-            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/samples/url";

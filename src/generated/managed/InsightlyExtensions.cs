@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<TaskObject> UpdateTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> updatedTasktaskTitle, [WorkflowExpression] Func<bool> updatedTaskisCompleted, [WorkflowExpression] Func<updatedTasktaskStatusInput> updatedTasktaskStatus, [WorkflowExpression] Func<bool> updatedTaskisTaskVisible, [WorkflowExpression] Func<string> updatedTaskdueDateTime = null, [WorkflowExpression] Func<string> updatedTasktaskDetails = null, [WorkflowExpression] Func<int> updatedTasktaskPriority = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(updatedTasktaskTitle, nameof(updatedTasktaskTitle), required: true);
-            SourceExpression.Validate(updatedTaskisCompleted, nameof(updatedTaskisCompleted), required: true);
-            SourceExpression.Validate(updatedTasktaskStatus, nameof(updatedTasktaskStatus), required: true);
-            SourceExpression.Validate(updatedTaskisTaskVisible, nameof(updatedTaskisTaskVisible), required: true);
-            SourceExpression.Validate(updatedTaskdueDateTime, nameof(updatedTaskdueDateTime), required: false);
-            SourceExpression.Validate(updatedTasktaskDetails, nameof(updatedTasktaskDetails), required: false);
-            SourceExpression.Validate(updatedTasktaskPriority, nameof(updatedTasktaskPriority), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Tasks";
@@ -83,13 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<TaskObject> AddTask([WorkflowExpression] Func<string> newTasktaskTitle, [WorkflowExpression] Func<bool> newTaskisCompleted, [WorkflowExpression] Func<newTasktaskStatusInput> newTasktaskStatus, [WorkflowExpression] Func<bool> newTaskisTaskVisible, [WorkflowExpression] Func<string> newTaskdueDateTime = null, [WorkflowExpression] Func<string> newTasktaskDetails = null, [WorkflowExpression] Func<int> newTasktaskPriority = null)
         {
-            SourceExpression.Validate(newTasktaskTitle, nameof(newTasktaskTitle), required: true);
-            SourceExpression.Validate(newTaskisCompleted, nameof(newTaskisCompleted), required: true);
-            SourceExpression.Validate(newTasktaskStatus, nameof(newTasktaskStatus), required: true);
-            SourceExpression.Validate(newTaskisTaskVisible, nameof(newTaskisTaskVisible), required: true);
-            SourceExpression.Validate(newTaskdueDateTime, nameof(newTaskdueDateTime), required: false);
-            SourceExpression.Validate(newTasktaskDetails, nameof(newTasktaskDetails), required: false);
-            SourceExpression.Validate(newTasktaskPriority, nameof(newTasktaskPriority), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Tasks";
@@ -150,18 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<Project> UpdateProject([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> updatedProjectprojectName, [WorkflowExpression] Func<updatedProjectprojectStatusInput> updatedProjectprojectStatus, [WorkflowExpression] Func<string> updatedProjectprojectDetails = null, [WorkflowExpression] Func<string> updatedProjectimageURL = null, [WorkflowExpression] Func<updatedProjectprojectVisibilityInput> updatedProjectprojectVisibility = null, [WorkflowExpression] Func<int> updatedProjectvisibleTeamId = null, [WorkflowExpression] Func<int> updatedProjectvisibleUserIDs = null, [WorkflowExpression] Func<int> updatedProjectopportunityId = null, [WorkflowExpression] Func<int> updatedProjectpipelineId = null, [WorkflowExpression] Func<int> updatedProjectstageId = null, [WorkflowExpression] Func<Tag[]> updatedProjecttags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(updatedProjectprojectName, nameof(updatedProjectprojectName), required: true);
-            SourceExpression.Validate(updatedProjectprojectStatus, nameof(updatedProjectprojectStatus), required: true);
-            SourceExpression.Validate(updatedProjectprojectDetails, nameof(updatedProjectprojectDetails), required: false);
-            SourceExpression.Validate(updatedProjectimageURL, nameof(updatedProjectimageURL), required: false);
-            SourceExpression.Validate(updatedProjectprojectVisibility, nameof(updatedProjectprojectVisibility), required: false);
-            SourceExpression.Validate(updatedProjectvisibleTeamId, nameof(updatedProjectvisibleTeamId), required: false);
-            SourceExpression.Validate(updatedProjectvisibleUserIDs, nameof(updatedProjectvisibleUserIDs), required: false);
-            SourceExpression.Validate(updatedProjectopportunityId, nameof(updatedProjectopportunityId), required: false);
-            SourceExpression.Validate(updatedProjectpipelineId, nameof(updatedProjectpipelineId), required: false);
-            SourceExpression.Validate(updatedProjectstageId, nameof(updatedProjectstageId), required: false);
-            SourceExpression.Validate(updatedProjecttags, nameof(updatedProjecttags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Projects";
@@ -241,17 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<Project> AddProject([WorkflowExpression] Func<string> newProjectprojectName, [WorkflowExpression] Func<newProjectprojectStatusInput> newProjectprojectStatus, [WorkflowExpression] Func<string> newProjectprojectDetails = null, [WorkflowExpression] Func<string> newProjectimageURL = null, [WorkflowExpression] Func<newProjectprojectVisibilityInput> newProjectprojectVisibility = null, [WorkflowExpression] Func<int> newProjectvisibleTeamId = null, [WorkflowExpression] Func<int> newProjectvisibleUserIDs = null, [WorkflowExpression] Func<int> newProjectopportunityId = null, [WorkflowExpression] Func<int> newProjectpipelineId = null, [WorkflowExpression] Func<int> newProjectstageId = null, [WorkflowExpression] Func<Tag[]> newProjecttags = null)
         {
-            SourceExpression.Validate(newProjectprojectName, nameof(newProjectprojectName), required: true);
-            SourceExpression.Validate(newProjectprojectStatus, nameof(newProjectprojectStatus), required: true);
-            SourceExpression.Validate(newProjectprojectDetails, nameof(newProjectprojectDetails), required: false);
-            SourceExpression.Validate(newProjectimageURL, nameof(newProjectimageURL), required: false);
-            SourceExpression.Validate(newProjectprojectVisibility, nameof(newProjectprojectVisibility), required: false);
-            SourceExpression.Validate(newProjectvisibleTeamId, nameof(newProjectvisibleTeamId), required: false);
-            SourceExpression.Validate(newProjectvisibleUserIDs, nameof(newProjectvisibleUserIDs), required: false);
-            SourceExpression.Validate(newProjectopportunityId, nameof(newProjectopportunityId), required: false);
-            SourceExpression.Validate(newProjectpipelineId, nameof(newProjectpipelineId), required: false);
-            SourceExpression.Validate(newProjectstageId, nameof(newProjectstageId), required: false);
-            SourceExpression.Validate(newProjecttags, nameof(newProjecttags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Projects";
@@ -344,27 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<Lead> UpdateLead([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> updatedLeadlastName, [WorkflowExpression] Func<string> updatedLeadtitle = null, [WorkflowExpression] Func<string> updatedLeadfirstName = null, [WorkflowExpression] Func<string> updatedLeadleadDescription = null, [WorkflowExpression] Func<string> updatedLeadconvertedDateTime = null, [WorkflowExpression] Func<updatedLeadleadVisibilityInput> updatedLeadleadVisibility = null, [WorkflowExpression] Func<int> updatedLeadvisibleTeamId = null, [WorkflowExpression] Func<int> updatedLeadvisibleUserIDs = null, [WorkflowExpression] Func<string> updatedLeadorganizationName = null, [WorkflowExpression] Func<string> updatedLeadphoneNumber = null, [WorkflowExpression] Func<string> updatedLeadmobilePhoneNumber = null, [WorkflowExpression] Func<string> updatedLeademailAddress = null, [WorkflowExpression] Func<bool> updatedLeadisConverted = null, [WorkflowExpression] Func<string> updatedLeadwebsiteURL = null, [WorkflowExpression] Func<int> updatedLeadleadOwner = null, [WorkflowExpression] Func<int> updatedLeadleadResponsible = null, [WorkflowExpression] Func<int> updatedLeadleadEmployeeCount = null, [WorkflowExpression] Func<int> updatedLeadleadRating = null, [WorkflowExpression] Func<string> updatedLeadindustry = null, [WorkflowExpression] Func<Tag[]> updatedLeadtag = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(updatedLeadlastName, nameof(updatedLeadlastName), required: true);
-            SourceExpression.Validate(updatedLeadtitle, nameof(updatedLeadtitle), required: false);
-            SourceExpression.Validate(updatedLeadfirstName, nameof(updatedLeadfirstName), required: false);
-            SourceExpression.Validate(updatedLeadleadDescription, nameof(updatedLeadleadDescription), required: false);
-            SourceExpression.Validate(updatedLeadconvertedDateTime, nameof(updatedLeadconvertedDateTime), required: false);
-            SourceExpression.Validate(updatedLeadleadVisibility, nameof(updatedLeadleadVisibility), required: false);
-            SourceExpression.Validate(updatedLeadvisibleTeamId, nameof(updatedLeadvisibleTeamId), required: false);
-            SourceExpression.Validate(updatedLeadvisibleUserIDs, nameof(updatedLeadvisibleUserIDs), required: false);
-            SourceExpression.Validate(updatedLeadorganizationName, nameof(updatedLeadorganizationName), required: false);
-            SourceExpression.Validate(updatedLeadphoneNumber, nameof(updatedLeadphoneNumber), required: false);
-            SourceExpression.Validate(updatedLeadmobilePhoneNumber, nameof(updatedLeadmobilePhoneNumber), required: false);
-            SourceExpression.Validate(updatedLeademailAddress, nameof(updatedLeademailAddress), required: false);
-            SourceExpression.Validate(updatedLeadisConverted, nameof(updatedLeadisConverted), required: false);
-            SourceExpression.Validate(updatedLeadwebsiteURL, nameof(updatedLeadwebsiteURL), required: false);
-            SourceExpression.Validate(updatedLeadleadOwner, nameof(updatedLeadleadOwner), required: false);
-            SourceExpression.Validate(updatedLeadleadResponsible, nameof(updatedLeadleadResponsible), required: false);
-            SourceExpression.Validate(updatedLeadleadEmployeeCount, nameof(updatedLeadleadEmployeeCount), required: false);
-            SourceExpression.Validate(updatedLeadleadRating, nameof(updatedLeadleadRating), required: false);
-            SourceExpression.Validate(updatedLeadindustry, nameof(updatedLeadindustry), required: false);
-            SourceExpression.Validate(updatedLeadtag, nameof(updatedLeadtag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Leads";
@@ -502,26 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<Lead> AddLead([WorkflowExpression] Func<string> newLeadlastName, [WorkflowExpression] Func<string> newLeadtitle = null, [WorkflowExpression] Func<string> newLeadfirstName = null, [WorkflowExpression] Func<string> newLeadleadDescription = null, [WorkflowExpression] Func<string> newLeadconvertedDateTime = null, [WorkflowExpression] Func<newLeadleadVisibilityInput> newLeadleadVisibility = null, [WorkflowExpression] Func<int> newLeadvisibleTeamId = null, [WorkflowExpression] Func<int> newLeadvisibleUserIDs = null, [WorkflowExpression] Func<string> newLeadorganizationName = null, [WorkflowExpression] Func<string> newLeadphoneNumber = null, [WorkflowExpression] Func<string> newLeadmobilePhoneNumber = null, [WorkflowExpression] Func<string> newLeademailAddress = null, [WorkflowExpression] Func<bool> newLeadisConverted = null, [WorkflowExpression] Func<string> newLeadwebsiteURL = null, [WorkflowExpression] Func<int> newLeadleadOwner = null, [WorkflowExpression] Func<int> newLeadleadResponsible = null, [WorkflowExpression] Func<int> newLeadleadEmployeeCount = null, [WorkflowExpression] Func<int> newLeadleadRating = null, [WorkflowExpression] Func<string> newLeadindustry = null, [WorkflowExpression] Func<Tag[]> newLeadtag = null)
         {
-            SourceExpression.Validate(newLeadlastName, nameof(newLeadlastName), required: true);
-            SourceExpression.Validate(newLeadtitle, nameof(newLeadtitle), required: false);
-            SourceExpression.Validate(newLeadfirstName, nameof(newLeadfirstName), required: false);
-            SourceExpression.Validate(newLeadleadDescription, nameof(newLeadleadDescription), required: false);
-            SourceExpression.Validate(newLeadconvertedDateTime, nameof(newLeadconvertedDateTime), required: false);
-            SourceExpression.Validate(newLeadleadVisibility, nameof(newLeadleadVisibility), required: false);
-            SourceExpression.Validate(newLeadvisibleTeamId, nameof(newLeadvisibleTeamId), required: false);
-            SourceExpression.Validate(newLeadvisibleUserIDs, nameof(newLeadvisibleUserIDs), required: false);
-            SourceExpression.Validate(newLeadorganizationName, nameof(newLeadorganizationName), required: false);
-            SourceExpression.Validate(newLeadphoneNumber, nameof(newLeadphoneNumber), required: false);
-            SourceExpression.Validate(newLeadmobilePhoneNumber, nameof(newLeadmobilePhoneNumber), required: false);
-            SourceExpression.Validate(newLeademailAddress, nameof(newLeademailAddress), required: false);
-            SourceExpression.Validate(newLeadisConverted, nameof(newLeadisConverted), required: false);
-            SourceExpression.Validate(newLeadwebsiteURL, nameof(newLeadwebsiteURL), required: false);
-            SourceExpression.Validate(newLeadleadOwner, nameof(newLeadleadOwner), required: false);
-            SourceExpression.Validate(newLeadleadResponsible, nameof(newLeadleadResponsible), required: false);
-            SourceExpression.Validate(newLeadleadEmployeeCount, nameof(newLeadleadEmployeeCount), required: false);
-            SourceExpression.Validate(newLeadleadRating, nameof(newLeadleadRating), required: false);
-            SourceExpression.Validate(newLeadindustry, nameof(newLeadindustry), required: false);
-            SourceExpression.Validate(newLeadtag, nameof(newLeadtag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Leads";
@@ -672,16 +593,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<Contact> UpdateContact([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> updatedContactfirstName, [WorkflowExpression] Func<string> updatedContactlastName, [WorkflowExpression] Func<string> updatedContactsalutation = null, [WorkflowExpression] Func<string> updatedContactbackground = null, [WorkflowExpression] Func<updatedContactcontactVisibilityInput> updatedContactcontactVisibility = null, [WorkflowExpression] Func<int> updatedContactvisibleTeamId = null, [WorkflowExpression] Func<int> updatedContactvisibleUserIDs = null, [WorkflowExpression] Func<ContactInfo[]> updatedContactcontactInformation = null, [WorkflowExpression] Func<Tag[]> updatedContacttag = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(updatedContactfirstName, nameof(updatedContactfirstName), required: true);
-            SourceExpression.Validate(updatedContactlastName, nameof(updatedContactlastName), required: true);
-            SourceExpression.Validate(updatedContactsalutation, nameof(updatedContactsalutation), required: false);
-            SourceExpression.Validate(updatedContactbackground, nameof(updatedContactbackground), required: false);
-            SourceExpression.Validate(updatedContactcontactVisibility, nameof(updatedContactcontactVisibility), required: false);
-            SourceExpression.Validate(updatedContactvisibleTeamId, nameof(updatedContactvisibleTeamId), required: false);
-            SourceExpression.Validate(updatedContactvisibleUserIDs, nameof(updatedContactvisibleUserIDs), required: false);
-            SourceExpression.Validate(updatedContactcontactInformation, nameof(updatedContactcontactInformation), required: false);
-            SourceExpression.Validate(updatedContacttag, nameof(updatedContacttag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Contacts";
@@ -749,15 +660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<Contact> AddContact([WorkflowExpression] Func<string> newContactfirstName, [WorkflowExpression] Func<string> newContactlastName, [WorkflowExpression] Func<string> newContactsalutation = null, [WorkflowExpression] Func<string> newContactbackground = null, [WorkflowExpression] Func<newContactcontactVisibilityInput> newContactcontactVisibility = null, [WorkflowExpression] Func<int> newContactvisibleTeamId = null, [WorkflowExpression] Func<int> newContactvisibleUserIDs = null, [WorkflowExpression] Func<ContactInfo[]> newContactcontactInformation = null, [WorkflowExpression] Func<Tag[]> newContacttag = null)
         {
-            SourceExpression.Validate(newContactfirstName, nameof(newContactfirstName), required: true);
-            SourceExpression.Validate(newContactlastName, nameof(newContactlastName), required: true);
-            SourceExpression.Validate(newContactsalutation, nameof(newContactsalutation), required: false);
-            SourceExpression.Validate(newContactbackground, nameof(newContactbackground), required: false);
-            SourceExpression.Validate(newContactcontactVisibility, nameof(newContactcontactVisibility), required: false);
-            SourceExpression.Validate(newContactvisibleTeamId, nameof(newContactvisibleTeamId), required: false);
-            SourceExpression.Validate(newContactvisibleUserIDs, nameof(newContactvisibleUserIDs), required: false);
-            SourceExpression.Validate(newContactcontactInformation, nameof(newContactcontactInformation), required: false);
-            SourceExpression.Validate(newContacttag, nameof(newContacttag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Contacts";
@@ -838,7 +740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<JToken> DeleteTask([WorkflowExpression] Func<int> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(taskId, 1));
@@ -853,7 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<JToken> FollowTask([WorkflowExpression] Func<int> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Tasks/{0}/Follow", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(taskId, 1));
@@ -868,7 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<JToken> DeleteProject([WorkflowExpression] Func<int> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(projectId, 1));
@@ -883,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<JToken> DeleteLead([WorkflowExpression] Func<int> leadId)
         {
-            SourceExpression.Validate(leadId, nameof(leadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Leads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(leadId, 1));
@@ -898,7 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<JToken> DeleteContact([WorkflowExpression] Func<int> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contactId, 1));
@@ -913,14 +810,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
         public IBodyWorkflowAction<OrganizationInfo> AddOrganization([WorkflowExpression] Func<string> newOrganizationorganizationName, [WorkflowExpression] Func<string> newOrganizationorganizationBackground = null, [WorkflowExpression] Func<newOrganizationorganizationVisibilityInput> newOrganizationorganizationVisibility = null, [WorkflowExpression] Func<int> newOrganizationvisibleTeamId = null, [WorkflowExpression] Func<int> newOrganizationvisibleUserIDs = null, [WorkflowExpression] Func<Address[]> newOrganizationorganizationAddress = null, [WorkflowExpression] Func<ContactInfo[]> newOrganizationcontactInformation = null, [WorkflowExpression] Func<Tag[]> newOrganizationtags = null)
         {
-            SourceExpression.Validate(newOrganizationorganizationName, nameof(newOrganizationorganizationName), required: true);
-            SourceExpression.Validate(newOrganizationorganizationBackground, nameof(newOrganizationorganizationBackground), required: false);
-            SourceExpression.Validate(newOrganizationorganizationVisibility, nameof(newOrganizationorganizationVisibility), required: false);
-            SourceExpression.Validate(newOrganizationvisibleTeamId, nameof(newOrganizationvisibleTeamId), required: false);
-            SourceExpression.Validate(newOrganizationvisibleUserIDs, nameof(newOrganizationvisibleUserIDs), required: false);
-            SourceExpression.Validate(newOrganizationorganizationAddress, nameof(newOrganizationorganizationAddress), required: false);
-            SourceExpression.Validate(newOrganizationcontactInformation, nameof(newOrganizationcontactInformation), required: false);
-            SourceExpression.Validate(newOrganizationtags, nameof(newOrganizationtags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Organisations";

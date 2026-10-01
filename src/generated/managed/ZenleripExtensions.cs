@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<UserListResponse> UserList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> role = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(role, nameof(role), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -48,19 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<int> bodycommission, [WorkflowExpression] Func<string> bodyroles, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
         {
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodycommission, nameof(bodycommission), required: true);
-            SourceExpression.Validate(bodyroles, nameof(bodyroles), required: true);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -135,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<UserGetResponse> UserGet([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -150,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<UserDeleteResponse> UserDelete([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -165,20 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<UserPutResponse> UserPut([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<int> bodycommission, [WorkflowExpression] Func<string> bodyroles, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodycommission, nameof(bodycommission), required: true);
-            SourceExpression.Validate(bodyroles, nameof(bodyroles), required: true);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -253,9 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<UserEnrollResponse> UserEnroll([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodycourseId, [WorkflowExpression] Func<string> bodyplanId = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: true);
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/enroll", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -284,8 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<UserUnenrollResponse> UserUnenroll([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodycourseId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/unenroll", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -308,13 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<CourseListResponse> CourseList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> type = null, [WorkflowExpression] Func<int> status = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/courses";
@@ -343,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<CourseGetResponse> CourseGet([WorkflowExpression] Func<string> courseId)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/courses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -358,12 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<FunnelListResponse> FunnelList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> status = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/funnels";
@@ -390,7 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<FunnelEnrollmentResponse> FunnelEnrollment([WorkflowExpression] Func<string> funnelId)
         {
-            SourceExpression.Validate(funnelId, nameof(funnelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funnels/enrollments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
@@ -405,17 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<FunnelSubscribeResponse> FunnelSubscribe([WorkflowExpression] Func<string> funnelId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
         {
-            SourceExpression.Validate(funnelId, nameof(funnelId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funnels/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
@@ -488,8 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<FunnelUnsubscribeResponse> FunnelUnsubscribe([WorkflowExpression] Func<string> funnelId, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(funnelId, nameof(funnelId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funnels/{0}/unsubscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
@@ -516,11 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ClassListResponse> ClassList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/live-class/get-live-classes-list";
@@ -546,10 +473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ClassRegisterResponse> ClassRegister([WorkflowExpression] Func<string> liveclassId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            SourceExpression.Validate(liveclassId, nameof(liveclassId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-class/{0}/register", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(liveclassId, 1));
@@ -580,8 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ClassUnregisterResponse> ClassUnregister([WorkflowExpression] Func<string> liveclassId, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(liveclassId, nameof(liveclassId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-class/{0}/unregister", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(liveclassId, 1));
@@ -608,11 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<WebinarListResponse> WebinarList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/live-webinar/get-live-webinars-list";
@@ -638,15 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<WebinarRegisterResponse> WebinarRegister([WorkflowExpression] Func<string> webinarId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null)
         {
-            SourceExpression.Validate(webinarId, nameof(webinarId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/register", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarId, 1));
@@ -707,8 +614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<WebinarUnregisterResponse> WebinarUnregister([WorkflowExpression] Func<string> webinarId, [WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(webinarId, nameof(webinarId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/unregister", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarId, 1));
@@ -731,9 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportEnrollBriefResponse> ReportEnrollBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> courseId = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(courseId, nameof(courseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/enrollments/brief";
@@ -754,9 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportEnrollDetailResponse> ReportEnrollDetail([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> courseId = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(courseId, nameof(courseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/enrollments/detailed";
@@ -777,12 +676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportSalesBriefResponse> ReportSalesBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> groupby = null, [WorkflowExpression] Func<string> courseIds = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(groupby, nameof(groupby), required: false);
-            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/sales/brief";
@@ -809,12 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportSalesDetailedResponse> ReportSalesDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<int> paymentType = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
-            SourceExpression.Validate(paymentType, nameof(paymentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/sales/detailed";
@@ -841,11 +728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportProgressBriefResponse> ReportProgressBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/course-progress/brief";
@@ -870,20 +752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportProgressDetailedResponse> ReportProgressDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> afV = null, [WorkflowExpression] Func<string> couponIs = null, [WorkflowExpression] Func<string> couponLike = null, [WorkflowExpression] Func<string> nameIs = null, [WorkflowExpression] Func<string> nameLike = null, [WorkflowExpression] Func<string> emailIs = null, [WorkflowExpression] Func<string> emailLike = null, [WorkflowExpression] Func<string> affiliateIs = null, [WorkflowExpression] Func<int> paymentType = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
-            SourceExpression.Validate(afV, nameof(afV), required: false);
-            SourceExpression.Validate(couponIs, nameof(couponIs), required: false);
-            SourceExpression.Validate(couponLike, nameof(couponLike), required: false);
-            SourceExpression.Validate(nameIs, nameof(nameIs), required: false);
-            SourceExpression.Validate(nameLike, nameof(nameLike), required: false);
-            SourceExpression.Validate(emailIs, nameof(emailIs), required: false);
-            SourceExpression.Validate(emailLike, nameof(emailLike), required: false);
-            SourceExpression.Validate(affiliateIs, nameof(affiliateIs), required: false);
-            SourceExpression.Validate(paymentType, nameof(paymentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/course-progress/detailed";
@@ -926,12 +794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportAffiliateBriefResponse> ReportAffiliateBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> affiliateIds = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
-            SourceExpression.Validate(affiliateIds, nameof(affiliateIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/affiliates/brief";
@@ -958,21 +820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
         public IBodyWorkflowAction<ReportAffiliateDetailedResponse> ReportAffiliateDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> affiliateIds = null, [WorkflowExpression] Func<string> afV = null, [WorkflowExpression] Func<string> couponIs = null, [WorkflowExpression] Func<string> couponLike = null, [WorkflowExpression] Func<string> nameIs = null, [WorkflowExpression] Func<string> nameLike = null, [WorkflowExpression] Func<string> emailIs = null, [WorkflowExpression] Func<string> emailLike = null, [WorkflowExpression] Func<string> affiliateIs = null, [WorkflowExpression] Func<string> paymentType = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
-            SourceExpression.Validate(affiliateIds, nameof(affiliateIds), required: false);
-            SourceExpression.Validate(afV, nameof(afV), required: false);
-            SourceExpression.Validate(couponIs, nameof(couponIs), required: false);
-            SourceExpression.Validate(couponLike, nameof(couponLike), required: false);
-            SourceExpression.Validate(nameIs, nameof(nameIs), required: false);
-            SourceExpression.Validate(nameLike, nameof(nameLike), required: false);
-            SourceExpression.Validate(emailIs, nameof(emailIs), required: false);
-            SourceExpression.Validate(emailLike, nameof(emailLike), required: false);
-            SourceExpression.Validate(affiliateIs, nameof(affiliateIs), required: false);
-            SourceExpression.Validate(paymentType, nameof(paymentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/affiliates/detailed";

@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connpassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connpassip")]
         public IBodyWorkflowAction<SearchEventResponse> SearchEvent([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> eventId = null, [WorkflowExpression] Func<string> keywordOr = null, [WorkflowExpression] Func<string> ym = null, [WorkflowExpression] Func<string> ymd = null, [WorkflowExpression] Func<string> nickname = null, [WorkflowExpression] Func<string> ownerNickname = null, [WorkflowExpression] Func<string> seriesId = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> count = null)
         {
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(eventId, nameof(eventId), required: false);
-            SourceExpression.Validate(keywordOr, nameof(keywordOr), required: false);
-            SourceExpression.Validate(ym, nameof(ym), required: false);
-            SourceExpression.Validate(ymd, nameof(ymd), required: false);
-            SourceExpression.Validate(nickname, nameof(nickname), required: false);
-            SourceExpression.Validate(ownerNickname, nameof(ownerNickname), required: false);
-            SourceExpression.Validate(seriesId, nameof(seriesId), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/event/";

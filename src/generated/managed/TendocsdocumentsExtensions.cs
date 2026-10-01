@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<AiCompareResponse> AiCompare([WorkflowExpression] Func<string> requestsourceDocumentfirstFile = null, [WorkflowExpression] Func<string> requestcomparisonDocumentsecondFile = null, [WorkflowExpression] Func<requestconfigurationprofessionInput> requestconfigurationprofession = null)
         {
-            SourceExpression.Validate(requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
-            SourceExpression.Validate(requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
-            SourceExpression.Validate(requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ai/v1/tasks/compare";
@@ -87,8 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<AiSummaryResponse> AiSummary([WorkflowExpression] Func<string> requestdocumentFile = null, [WorkflowExpression] Func<int> requestconfigurationtargetWordCount = null)
         {
-            SourceExpression.Validate(requestdocumentFile, nameof(requestdocumentFile), required: false);
-            SourceExpression.Validate(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ai/v1/tasks/summary";
@@ -145,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder([WorkflowExpression] Func<string> requestdescribeTheDocument1000Chars)
         {
-            SourceExpression.Validate(requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ai/v1/tasks/templateBuilder";
@@ -184,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<string> ConversionConvert([WorkflowExpression] Func<string> requestdocumentFile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
-            SourceExpression.Validate(requestdocumentFile, nameof(requestdocumentFile), required: false);
-            SourceExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversion/v1/convert";
@@ -242,8 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<string> DocumentJsonTemplate([WorkflowExpression] Func<string> requesttemplatetemplateFile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
-            SourceExpression.Validate(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            SourceExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/documents/v1/jsonTemplate";
@@ -308,11 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<string> DocumentTemplate([WorkflowExpression] Func<string> requesttemplatetemplateFile = null, [WorkflowExpression] Func<requestimageInputItem[]> requestimage = null, [WorkflowExpression] Func<requestdocumentInputItem[]> requestdocument = null, [WorkflowExpression] Func<requesttableInputItem[]> requesttable = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
-            SourceExpression.Validate(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            SourceExpression.Validate(requestimage, nameof(requestimage), required: false);
-            SourceExpression.Validate(requestdocument, nameof(requestdocument), required: false);
-            SourceExpression.Validate(requesttable, nameof(requesttable), required: false);
-            SourceExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/documents/v1/template";
@@ -395,27 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances([WorkflowExpression] Func<string> requestdocumentTitle, [WorkflowExpression] Func<string> requestdocumentIntroduction, [WorkflowExpression] Func<string> requestrecipientEmail, [WorkflowExpression] Func<string> requestrecipientFirstName, [WorkflowExpression] Func<string> requestrecipientLastName, [WorkflowExpression] Func<string> requestexpiryDate, [WorkflowExpression] Func<bool> requestsignatureRequired, [WorkflowExpression] Func<string> requestorgansiationTitle, [WorkflowExpression] Func<string> requestorganisationEmail, [WorkflowExpression] Func<string> requestorganisationOwner, [WorkflowExpression] Func<string> requestdocumentpDFDocument = null, [WorkflowExpression] Func<string> requestdocumentLogo = null, [WorkflowExpression] Func<string> requestcheckbox = null, [WorkflowExpression] Func<string> requestorganisationWebsite = null, [WorkflowExpression] Func<string> requestorganisationPhone = null, [WorkflowExpression] Func<string> requestoragnisationOwnerTitle = null, [WorkflowExpression] Func<bool> requestcomments = null, [WorkflowExpression] Func<string> requestprojectId = null, [WorkflowExpression] Func<string> requestcompleteButtonLabel = null, [WorkflowExpression] Func<string> requestcompleteDocumentLabel = null, [WorkflowExpression] Func<string> requestincompleteDocumentLabel = null)
         {
-            SourceExpression.Validate(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
-            SourceExpression.Validate(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
-            SourceExpression.Validate(requestrecipientEmail, nameof(requestrecipientEmail), required: true);
-            SourceExpression.Validate(requestrecipientFirstName, nameof(requestrecipientFirstName), required: true);
-            SourceExpression.Validate(requestrecipientLastName, nameof(requestrecipientLastName), required: true);
-            SourceExpression.Validate(requestexpiryDate, nameof(requestexpiryDate), required: true);
-            SourceExpression.Validate(requestsignatureRequired, nameof(requestsignatureRequired), required: true);
-            SourceExpression.Validate(requestorgansiationTitle, nameof(requestorgansiationTitle), required: true);
-            SourceExpression.Validate(requestorganisationEmail, nameof(requestorganisationEmail), required: true);
-            SourceExpression.Validate(requestorganisationOwner, nameof(requestorganisationOwner), required: true);
-            SourceExpression.Validate(requestdocumentpDFDocument, nameof(requestdocumentpDFDocument), required: false);
-            SourceExpression.Validate(requestdocumentLogo, nameof(requestdocumentLogo), required: false);
-            SourceExpression.Validate(requestcheckbox, nameof(requestcheckbox), required: false);
-            SourceExpression.Validate(requestorganisationWebsite, nameof(requestorganisationWebsite), required: false);
-            SourceExpression.Validate(requestorganisationPhone, nameof(requestorganisationPhone), required: false);
-            SourceExpression.Validate(requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
-            SourceExpression.Validate(requestcomments, nameof(requestcomments), required: false);
-            SourceExpression.Validate(requestprojectId, nameof(requestprojectId), required: false);
-            SourceExpression.Validate(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
-            SourceExpression.Validate(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
-            SourceExpression.Validate(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/envelopes/v1/instances";

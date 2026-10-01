@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IWorkflowAction POSTHttp([WorkflowExpression] Func<string> path = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/autoreview/";
@@ -67,12 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IBodyWorkflowAction<POSTJsonResponse> POSTJson([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<string[]> bodyconfigscomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigsscoring = null)
         {
-            SourceExpression.Validate(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
-            SourceExpression.Validate(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
-            SourceExpression.Validate(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
-            SourceExpression.Validate(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
-            SourceExpression.Validate(bodyconfigscomplexity, nameof(bodyconfigscomplexity), required: false);
-            SourceExpression.Validate(bodyconfigsscoring, nameof(bodyconfigsscoring), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/autoreview/json";
@@ -171,10 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram([WorkflowExpression] Func<string> bodypropertiesdisplayName = null, [WorkflowExpression] Func<string> bodypropertiesflowId = null, [WorkflowExpression] Func<string> bodypropertiesowner = null, [WorkflowExpression] Func<string> bodypropertiesenvironment = null)
         {
-            SourceExpression.Validate(bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
-            SourceExpression.Validate(bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
-            SourceExpression.Validate(bodypropertiesowner, nameof(bodypropertiesowner), required: false);
-            SourceExpression.Validate(bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/autoreview/diagram";
@@ -245,13 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IBodyWorkflowAction<POSTFileV2Response> POSTFile([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<bodyconfigfileTypeInput> bodyconfigfileType = null, [WorkflowExpression] Func<string[]> bodyconfigcomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigscoring = null)
         {
-            SourceExpression.Validate(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
-            SourceExpression.Validate(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
-            SourceExpression.Validate(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
-            SourceExpression.Validate(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
-            SourceExpression.Validate(bodyconfigfileType, nameof(bodyconfigfileType), required: false);
-            SourceExpression.Validate(bodyconfigcomplexity, nameof(bodyconfigcomplexity), required: false);
-            SourceExpression.Validate(bodyconfigscoring, nameof(bodyconfigscoring), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/autoreview/file";

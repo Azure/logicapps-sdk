@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetEmployeeResponseItem[]> GetEmployee([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -32,22 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IWorkflowAction AddEmployee([WorkflowExpression] Func<string> bodyxEmail, [WorkflowExpression] Func<string> bodyxFirstName, [WorkflowExpression] Func<string> bodyxLastName, [WorkflowExpression] Func<string> bodyxAddress1 = null, [WorkflowExpression] Func<string> bodyxCity = null, [WorkflowExpression] Func<string> bodyxPersonalEmail = null, [WorkflowExpression] Func<string> bodyxRecordStatus = null, [WorkflowExpression] Func<string> bodyxStartDate = null, [WorkflowExpression] Func<string> bodyxState = null, [WorkflowExpression] Func<string> bodyxZipCode = null, [WorkflowExpression] Func<string> bodyxEmployeeNumber = null, [WorkflowExpression] Func<string> bodyxEmploymentStatusLookup = null, [WorkflowExpression] Func<string> bodyxLocationLookup = null, [WorkflowExpression] Func<string> bodyxPositionLookup = null, [WorkflowExpression] Func<string> bodyxDivisionLookup = null, [WorkflowExpression] Func<string> bodyxDepartmentLookup = null)
         {
-            SourceExpression.Validate(bodyxEmail, nameof(bodyxEmail), required: true);
-            SourceExpression.Validate(bodyxFirstName, nameof(bodyxFirstName), required: true);
-            SourceExpression.Validate(bodyxLastName, nameof(bodyxLastName), required: true);
-            SourceExpression.Validate(bodyxAddress1, nameof(bodyxAddress1), required: false);
-            SourceExpression.Validate(bodyxCity, nameof(bodyxCity), required: false);
-            SourceExpression.Validate(bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
-            SourceExpression.Validate(bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
-            SourceExpression.Validate(bodyxStartDate, nameof(bodyxStartDate), required: false);
-            SourceExpression.Validate(bodyxState, nameof(bodyxState), required: false);
-            SourceExpression.Validate(bodyxZipCode, nameof(bodyxZipCode), required: false);
-            SourceExpression.Validate(bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
-            SourceExpression.Validate(bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
-            SourceExpression.Validate(bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
-            SourceExpression.Validate(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
-            SourceExpression.Validate(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
-            SourceExpression.Validate(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -162,23 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IWorkflowAction UpdateEmployee([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyxAddress1 = null, [WorkflowExpression] Func<string> bodyxCity = null, [WorkflowExpression] Func<string> bodyxEmail = null, [WorkflowExpression] Func<string> bodyxFirstName = null, [WorkflowExpression] Func<string> bodyxLastName = null, [WorkflowExpression] Func<string> bodyxPersonalEmail = null, [WorkflowExpression] Func<string> bodyxRecordStatus = null, [WorkflowExpression] Func<string> bodyxStartDate = null, [WorkflowExpression] Func<string> bodyxState = null, [WorkflowExpression] Func<string> bodyxZipCode = null, [WorkflowExpression] Func<string> bodyxEmployeeNumber = null, [WorkflowExpression] Func<string> bodyxEmploymentStatusLookup = null, [WorkflowExpression] Func<string> bodyxLocationLookup = null, [WorkflowExpression] Func<string> bodyxPositionLookup = null, [WorkflowExpression] Func<string> bodyxDivisionLookup = null, [WorkflowExpression] Func<string> bodyxDepartmentLookup = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyxAddress1, nameof(bodyxAddress1), required: false);
-            SourceExpression.Validate(bodyxCity, nameof(bodyxCity), required: false);
-            SourceExpression.Validate(bodyxEmail, nameof(bodyxEmail), required: false);
-            SourceExpression.Validate(bodyxFirstName, nameof(bodyxFirstName), required: false);
-            SourceExpression.Validate(bodyxLastName, nameof(bodyxLastName), required: false);
-            SourceExpression.Validate(bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
-            SourceExpression.Validate(bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
-            SourceExpression.Validate(bodyxStartDate, nameof(bodyxStartDate), required: false);
-            SourceExpression.Validate(bodyxState, nameof(bodyxState), required: false);
-            SourceExpression.Validate(bodyxZipCode, nameof(bodyxZipCode), required: false);
-            SourceExpression.Validate(bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
-            SourceExpression.Validate(bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
-            SourceExpression.Validate(bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
-            SourceExpression.Validate(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
-            SourceExpression.Validate(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
-            SourceExpression.Validate(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -297,7 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetDepartmentResponseItem[]> GetDepartment([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xDepartment";
@@ -315,7 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetLocationResponseItem[]> GetLocation([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xLocation";
@@ -333,7 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetPositionResponseItem[]> GetPosition([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xPosition";
@@ -351,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetDivisionResponseItem[]> GetDivision([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xDivision";
@@ -369,7 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetEmploymentStatusResponseItem[]> GetEmploymentStatus([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/cloud/xEmploymentStatus";

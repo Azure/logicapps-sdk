@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<string> PublishEvent([WorkflowExpression] Func<string> tenantName, [WorkflowExpression] Func<string> authorizationToken, [WorkflowExpression] Func<string> bodyeventDefinitionCode = null, [WorkflowExpression] Func<bool> bodyisTest = null, [WorkflowExpression] Func<bodyattributesInputItem[]> bodyattributes = null)
         {
-            SourceExpression.Validate(tenantName, nameof(tenantName), required: true);
-            SourceExpression.Validate(authorizationToken, nameof(authorizationToken), required: true);
-            SourceExpression.Validate(bodyeventDefinitionCode, nameof(bodyeventDefinitionCode), required: false);
-            SourceExpression.Validate(bodyisTest, nameof(bodyisTest), required: false);
-            SourceExpression.Validate(bodyattributes, nameof(bodyattributes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cems/api/Events";
@@ -60,11 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<string> PublishTransaction([WorkflowExpression] Func<string> tenantName, [WorkflowExpression] Func<string> authorizationToken, [WorkflowExpression] Func<string> bodytransactionDefinitionCode = null, [WorkflowExpression] Func<bool> bodyisTest = null, [WorkflowExpression] Func<bodyattributesInputItem[]> bodyattributes = null)
         {
-            SourceExpression.Validate(tenantName, nameof(tenantName), required: true);
-            SourceExpression.Validate(authorizationToken, nameof(authorizationToken), required: true);
-            SourceExpression.Validate(bodytransactionDefinitionCode, nameof(bodytransactionDefinitionCode), required: false);
-            SourceExpression.Validate(bodyisTest, nameof(bodyisTest), required: false);
-            SourceExpression.Validate(bodyattributes, nameof(bodyattributes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cems/api/Transactions";

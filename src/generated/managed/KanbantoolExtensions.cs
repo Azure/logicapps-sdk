@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetBoardResponse> GetBoard([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetTaskResponse[]> GetTasks([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -58,13 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskname, [WorkflowExpression] Func<string> taskdescription = null, [WorkflowExpression] Func<string> taskswimlaneId = null, [WorkflowExpression] Func<string> taskworkflowStageId = null, [WorkflowExpression] Func<string> taskcardTypeId = null, [WorkflowExpression] Func<string> taskassignedUserId = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskname, nameof(taskname), required: true);
-            SourceExpression.Validate(taskdescription, nameof(taskdescription), required: false);
-            SourceExpression.Validate(taskswimlaneId, nameof(taskswimlaneId), required: false);
-            SourceExpression.Validate(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
-            SourceExpression.Validate(taskcardTypeId, nameof(taskcardTypeId), required: false);
-            SourceExpression.Validate(taskassignedUserId, nameof(taskassignedUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -117,8 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetTaskResponse2> GetTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -133,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -149,12 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> taskname = null, [WorkflowExpression] Func<string> taskdescription = null, [WorkflowExpression] Func<string> taskcardTypeId = null, [WorkflowExpression] Func<string> taskassignedUserId = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(taskname, nameof(taskname), required: false);
-            SourceExpression.Validate(taskdescription, nameof(taskdescription), required: false);
-            SourceExpression.Validate(taskcardTypeId, nameof(taskcardTypeId), required: false);
-            SourceExpression.Validate(taskassignedUserId, nameof(taskassignedUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -199,11 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<MoveTaskResponse> MoveTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<taskdirectionInput> taskdirection = null, [WorkflowExpression] Func<string> taskswimlaneId = null, [WorkflowExpression] Func<string> taskworkflowStageId = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(taskdirection, nameof(taskdirection), required: false);
-            SourceExpression.Validate(taskswimlaneId, nameof(taskswimlaneId), required: false);
-            SourceExpression.Validate(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/move.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -242,8 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<ArchiveTaskResponse> ArchiveTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/archive.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -258,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> BoardActivities([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/changelog.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -273,8 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetCommentResponse[]> GetComments([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -289,9 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetCommentResponse> CreateComment([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> commentcontent)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(commentcontent, nameof(commentcontent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -314,8 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse[]> GetSubtasks([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -330,10 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse> CreateSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskname, [WorkflowExpression] Func<string> subtaskassignedUserId = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(subtaskname, nameof(subtaskname), required: true);
-            SourceExpression.Validate(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -362,9 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse> DeleteSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(subtaskId, nameof(subtaskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subtaskId, 1));
@@ -379,12 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse> UpdateSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskId, [WorkflowExpression] Func<string> subtaskname = null, [WorkflowExpression] Func<bool> subtaskisCompleted = null, [WorkflowExpression] Func<string> subtaskassignedUserId = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(subtaskId, nameof(subtaskId), required: true);
-            SourceExpression.Validate(subtaskname, nameof(subtaskname), required: false);
-            SourceExpression.Validate(subtaskisCompleted, nameof(subtaskisCompleted), required: false);
-            SourceExpression.Validate(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subtaskId, 1));

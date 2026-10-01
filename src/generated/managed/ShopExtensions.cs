@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<double> priceMin = null, [WorkflowExpression] Func<double> priceMax = null, [WorkflowExpression] Func<string> similarToId = null, [WorkflowExpression] Func<string> numResults = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(priceMin, nameof(priceMin), required: false);
-            SourceExpression.Validate(priceMax, nameof(priceMax), required: false);
-            SourceExpression.Validate(similarToId, nameof(similarToId), required: false);
-            SourceExpression.Validate(numResults, nameof(numResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/openai/search";
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
         public IBodyWorkflowAction<SearchResponse> Details([WorkflowExpression] Func<string> ids)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/openai/details";

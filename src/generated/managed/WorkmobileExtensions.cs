@@ -44,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
     {
         public IWorkflowTrigger FormDataHook([WorkflowExpression] Func<int> bodyuserFormId, [WorkflowExpression] Func<bool> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyuserFormId, nameof(bodyuserFormId), required: true);
-            SourceExpression.Validate(bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/notifications/external";

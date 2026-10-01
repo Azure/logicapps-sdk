@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<CampaignWrapped> CampaignsGet([WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/campaigns.json";
@@ -37,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<CampaignWrapped> CampaignGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/campaigns/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -52,10 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> CampaignMediaGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/campaigns/{0}/media.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -76,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<SyndicateMarshallerWrapped> CampaignSyndicateGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> displayMethod = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(displayMethod, nameof(displayMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/campaigns/{0}/syndicate.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -94,9 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<LanguageWrapped> LanguagesGet([WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/languages.json";
@@ -117,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<LanguageWrapped> LanguageGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/languages/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -132,59 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> MediaGet([WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> mediaTypes = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> collectionId = null, [WorkflowExpression] Func<string> nameContains = null, [WorkflowExpression] Func<string> descriptionContains = null, [WorkflowExpression] Func<string> sourceUrl = null, [WorkflowExpression] Func<string> sourceUrlContains = null, [WorkflowExpression] Func<string> customThumbnailUrl = null, [WorkflowExpression] Func<string> customThumbnailUrlContains = null, [WorkflowExpression] Func<string> dateContentAuthored = null, [WorkflowExpression] Func<string> dateContentUpdated = null, [WorkflowExpression] Func<string> dateContentPublished = null, [WorkflowExpression] Func<string> dateContentReviewed = null, [WorkflowExpression] Func<string> dateSyndicationCaptured = null, [WorkflowExpression] Func<string> dateSyndicationUpdated = null, [WorkflowExpression] Func<string> contentAuthoredSinceDate = null, [WorkflowExpression] Func<string> contentAuthoredBeforeDate = null, [WorkflowExpression] Func<string> contentAuthoredInRange = null, [WorkflowExpression] Func<string> contentUpdatedSinceDate = null, [WorkflowExpression] Func<string> contentUpdatedBeforeDate = null, [WorkflowExpression] Func<string> contentUpdatedInRange = null, [WorkflowExpression] Func<string> contentPublishedSinceDate = null, [WorkflowExpression] Func<string> contentPublishedBeforeDate = null, [WorkflowExpression] Func<string> contentPublishedInRange = null, [WorkflowExpression] Func<string> contentReviewedSinceDate = null, [WorkflowExpression] Func<string> contentReviewedBeforeDate = null, [WorkflowExpression] Func<string> contentReviewedInRange = null, [WorkflowExpression] Func<string> syndicationCapturedSinceDate = null, [WorkflowExpression] Func<string> syndicationCapturedBeforeDate = null, [WorkflowExpression] Func<string> syndicationCapturedInRange = null, [WorkflowExpression] Func<string> syndicationUpdatedSinceDate = null, [WorkflowExpression] Func<string> syndicationUpdatedBeforeDate = null, [WorkflowExpression] Func<string> syndicationUpdatedInRange = null, [WorkflowExpression] Func<string> syndicationVisibleSinceDate = null, [WorkflowExpression] Func<string> syndicationVisibleBeforeDate = null, [WorkflowExpression] Func<string> syndicationVisibleInRange = null, [WorkflowExpression] Func<int> languageId = null, [WorkflowExpression] Func<string> languageName = null, [WorkflowExpression] Func<string> languageIsoCode = null, [WorkflowExpression] Func<string> hash = null, [WorkflowExpression] Func<string> hashContains = null, [WorkflowExpression] Func<int> sourceId = null, [WorkflowExpression] Func<string> sourceName = null, [WorkflowExpression] Func<string> sourceNameContains = null, [WorkflowExpression] Func<string> sourceAcronym = null, [WorkflowExpression] Func<string> sourceAcronymContains = null, [WorkflowExpression] Func<string> tagIds = null, [WorkflowExpression] Func<string> restrictToSet = null, [WorkflowExpression] Func<string> createdBy = null)
         {
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(mediaTypes, nameof(mediaTypes), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: false);
-            SourceExpression.Validate(nameContains, nameof(nameContains), required: false);
-            SourceExpression.Validate(descriptionContains, nameof(descriptionContains), required: false);
-            SourceExpression.Validate(sourceUrl, nameof(sourceUrl), required: false);
-            SourceExpression.Validate(sourceUrlContains, nameof(sourceUrlContains), required: false);
-            SourceExpression.Validate(customThumbnailUrl, nameof(customThumbnailUrl), required: false);
-            SourceExpression.Validate(customThumbnailUrlContains, nameof(customThumbnailUrlContains), required: false);
-            SourceExpression.Validate(dateContentAuthored, nameof(dateContentAuthored), required: false);
-            SourceExpression.Validate(dateContentUpdated, nameof(dateContentUpdated), required: false);
-            SourceExpression.Validate(dateContentPublished, nameof(dateContentPublished), required: false);
-            SourceExpression.Validate(dateContentReviewed, nameof(dateContentReviewed), required: false);
-            SourceExpression.Validate(dateSyndicationCaptured, nameof(dateSyndicationCaptured), required: false);
-            SourceExpression.Validate(dateSyndicationUpdated, nameof(dateSyndicationUpdated), required: false);
-            SourceExpression.Validate(contentAuthoredSinceDate, nameof(contentAuthoredSinceDate), required: false);
-            SourceExpression.Validate(contentAuthoredBeforeDate, nameof(contentAuthoredBeforeDate), required: false);
-            SourceExpression.Validate(contentAuthoredInRange, nameof(contentAuthoredInRange), required: false);
-            SourceExpression.Validate(contentUpdatedSinceDate, nameof(contentUpdatedSinceDate), required: false);
-            SourceExpression.Validate(contentUpdatedBeforeDate, nameof(contentUpdatedBeforeDate), required: false);
-            SourceExpression.Validate(contentUpdatedInRange, nameof(contentUpdatedInRange), required: false);
-            SourceExpression.Validate(contentPublishedSinceDate, nameof(contentPublishedSinceDate), required: false);
-            SourceExpression.Validate(contentPublishedBeforeDate, nameof(contentPublishedBeforeDate), required: false);
-            SourceExpression.Validate(contentPublishedInRange, nameof(contentPublishedInRange), required: false);
-            SourceExpression.Validate(contentReviewedSinceDate, nameof(contentReviewedSinceDate), required: false);
-            SourceExpression.Validate(contentReviewedBeforeDate, nameof(contentReviewedBeforeDate), required: false);
-            SourceExpression.Validate(contentReviewedInRange, nameof(contentReviewedInRange), required: false);
-            SourceExpression.Validate(syndicationCapturedSinceDate, nameof(syndicationCapturedSinceDate), required: false);
-            SourceExpression.Validate(syndicationCapturedBeforeDate, nameof(syndicationCapturedBeforeDate), required: false);
-            SourceExpression.Validate(syndicationCapturedInRange, nameof(syndicationCapturedInRange), required: false);
-            SourceExpression.Validate(syndicationUpdatedSinceDate, nameof(syndicationUpdatedSinceDate), required: false);
-            SourceExpression.Validate(syndicationUpdatedBeforeDate, nameof(syndicationUpdatedBeforeDate), required: false);
-            SourceExpression.Validate(syndicationUpdatedInRange, nameof(syndicationUpdatedInRange), required: false);
-            SourceExpression.Validate(syndicationVisibleSinceDate, nameof(syndicationVisibleSinceDate), required: false);
-            SourceExpression.Validate(syndicationVisibleBeforeDate, nameof(syndicationVisibleBeforeDate), required: false);
-            SourceExpression.Validate(syndicationVisibleInRange, nameof(syndicationVisibleInRange), required: false);
-            SourceExpression.Validate(languageId, nameof(languageId), required: false);
-            SourceExpression.Validate(languageName, nameof(languageName), required: false);
-            SourceExpression.Validate(languageIsoCode, nameof(languageIsoCode), required: false);
-            SourceExpression.Validate(hash, nameof(hash), required: false);
-            SourceExpression.Validate(hashContains, nameof(hashContains), required: false);
-            SourceExpression.Validate(sourceId, nameof(sourceId), required: false);
-            SourceExpression.Validate(sourceName, nameof(sourceName), required: false);
-            SourceExpression.Validate(sourceNameContains, nameof(sourceNameContains), required: false);
-            SourceExpression.Validate(sourceAcronym, nameof(sourceAcronym), required: false);
-            SourceExpression.Validate(sourceAcronymContains, nameof(sourceAcronymContains), required: false);
-            SourceExpression.Validate(tagIds, nameof(tagIds), required: false);
-            SourceExpression.Validate(restrictToSet, nameof(restrictToSet), required: false);
-            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/media.json";
@@ -305,9 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItem> MediaFeaturedGet([WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/media/featured.json";
@@ -328,8 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> MediaPopularGet([WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/media/mostPopularMedia.json";
@@ -348,9 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> MediaSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/media/searchResults.json";
@@ -370,7 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> MediaItemGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -385,8 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<string> MediaContentGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<bool> calledByBuild = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(calledByBuild, nameof(calledByBuild), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -403,15 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<string> MediaEmbedGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> flavor = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<string> iframeName = null, [WorkflowExpression] Func<bool> excludeJquery = null, [WorkflowExpression] Func<bool> excludeDiv = null, [WorkflowExpression] Func<string> divId = null, [WorkflowExpression] Func<string> displayMethod = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(flavor, nameof(flavor), required: false);
-            SourceExpression.Validate(width, nameof(width), required: false);
-            SourceExpression.Validate(height, nameof(height), required: false);
-            SourceExpression.Validate(iframeName, nameof(iframeName), required: false);
-            SourceExpression.Validate(excludeJquery, nameof(excludeJquery), required: false);
-            SourceExpression.Validate(excludeDiv, nameof(excludeDiv), required: false);
-            SourceExpression.Validate(divId, nameof(divId), required: false);
-            SourceExpression.Validate(displayMethod, nameof(displayMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}/embed.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -444,7 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<JToken> TagPreviewGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}/preview.jpg", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -459,10 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> MediaRelatedGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}/relatedMedia.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -483,18 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<SyndicateMarshallerWrapped> MediaSyndicatedGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> cssClass = null, [WorkflowExpression] Func<bool> stripStyles = null, [WorkflowExpression] Func<bool> stripScripts = null, [WorkflowExpression] Func<bool> stripImages = null, [WorkflowExpression] Func<bool> stripBreaks = null, [WorkflowExpression] Func<bool> stripClasses = null, [WorkflowExpression] Func<int> fontSize = null, [WorkflowExpression] Func<string> imageFloat = null, [WorkflowExpression] Func<string> imageMargin = null, [WorkflowExpression] Func<bool> autoplay = null, [WorkflowExpression] Func<bool> rel = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(cssClass, nameof(cssClass), required: false);
-            SourceExpression.Validate(stripStyles, nameof(stripStyles), required: false);
-            SourceExpression.Validate(stripScripts, nameof(stripScripts), required: false);
-            SourceExpression.Validate(stripImages, nameof(stripImages), required: false);
-            SourceExpression.Validate(stripBreaks, nameof(stripBreaks), required: false);
-            SourceExpression.Validate(stripClasses, nameof(stripClasses), required: false);
-            SourceExpression.Validate(fontSize, nameof(fontSize), required: false);
-            SourceExpression.Validate(imageFloat, nameof(imageFloat), required: false);
-            SourceExpression.Validate(imageMargin, nameof(imageMargin), required: false);
-            SourceExpression.Validate(autoplay, nameof(autoplay), required: false);
-            SourceExpression.Validate(rel, nameof(rel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}/syndicate.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -539,7 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<JToken> MediaThumbnailGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}/thumbnail.jpg", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -554,7 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaYouTubeGetResponse> MediaYouTubeGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}/youtubeMetaData.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -583,9 +477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<SourceWrapped> SourcesGet([WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/sources.json";
@@ -606,7 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<SourceWrapped> SourceGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/sources/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -621,8 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> SourceMediaGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> displayMethod = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(displayMethod, nameof(displayMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/sources/{0}/syndicate.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -639,14 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<TagMarshallerWrapped> TagsGet([WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> nameContains = null, [WorkflowExpression] Func<int> mediaId = null, [WorkflowExpression] Func<int> typeId = null, [WorkflowExpression] Func<string> typeName = null)
         {
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(nameContains, nameof(nameContains), required: false);
-            SourceExpression.Validate(mediaId, nameof(mediaId), required: false);
-            SourceExpression.Validate(typeId, nameof(typeId), required: false);
-            SourceExpression.Validate(typeName, nameof(typeName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/tags.json";
@@ -705,7 +585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<TagMarshallerWrapped> TagGet([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -720,10 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> TagMediaGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -744,10 +619,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<TagMarshallerWrapped> TagRelatedGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -768,8 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<string> TagSyndicateGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> displayMethod = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(displayMethod, nameof(displayMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/syndicate.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -786,8 +655,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hhsmediaservices")]
         public IBodyWorkflowAction<MediaItemWrapped> MediaListGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> displayMethod = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(displayMethod, nameof(displayMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/userMediaLists/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

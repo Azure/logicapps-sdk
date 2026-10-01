@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
         public IBodyWorkflowAction<SendSMSSuccessResponseBody> SendInfobipSMS([WorkflowExpression] Func<string> requestBodyrecipientSPhoneNumber, [WorkflowExpression] Func<string> requestBodymessage, [WorkflowExpression] Func<string> requestBodysenderSPhoneNumber = null)
         {
-            SourceExpression.Validate(requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
-            SourceExpression.Validate(requestBodymessage, nameof(requestBodymessage), required: true);
-            SourceExpression.Validate(requestBodysenderSPhoneNumber, nameof(requestBodysenderSPhoneNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms/1/text/single";
@@ -47,10 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
         public IBodyWorkflowAction<VoiceCallSuccessResponseBody> MakeInfobipVoiceCall([WorkflowExpression] Func<string> requestBodyrecipientSPhoneNumber, [WorkflowExpression] Func<string> requestBodymessage, [WorkflowExpression] Func<requestBodylanguageInput> requestBodylanguage, [WorkflowExpression] Func<string> requestBodycallerSPhoneNumber = null)
         {
-            SourceExpression.Validate(requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
-            SourceExpression.Validate(requestBodymessage, nameof(requestBodymessage), required: true);
-            SourceExpression.Validate(requestBodylanguage, nameof(requestBodylanguage), required: true);
-            SourceExpression.Validate(requestBodycallerSPhoneNumber, nameof(requestBodycallerSPhoneNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tts/3/single";
@@ -99,8 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook([WorkflowExpression] Func<string> requestBodyOfWebhookphoneNumber, [WorkflowExpression] Func<string> requestBodyOfWebhookkeyword, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookphoneNumber, nameof(requestBodyOfWebhookphoneNumber), required: true);
-            SourceExpression.Validate(requestBodyOfWebhookkeyword, nameof(requestBodyOfWebhookkeyword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms/1/webhooks";

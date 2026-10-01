@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobsGetResponseItem[]> JobsGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<whenInput> when = null, [WorkflowExpression] Func<string> timestampMs = null, [WorkflowExpression] Func<sortByInput> sortBy = null, [WorkflowExpression] Func<directionInput> direction = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(when, nameof(when), required: false);
-            SourceExpression.Validate(timestampMs, nameof(timestampMs), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(direction, nameof(direction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/batch/jobs";
@@ -46,22 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobPostResponse> Job([WorkflowExpression] Func<double> bodymodelsfacefpsPred = null, [WorkflowExpression] Func<double> bodymodelsfaceprobThreshold = null, [WorkflowExpression] Func<bool> bodymodelsfaceidentifyFaces = null, [WorkflowExpression] Func<int> bodymodelsfaceminFaceSize = null, [WorkflowExpression] Func<bool> bodymodelsfacesaveFaces = null, [WorkflowExpression] Func<string> bodymodelsprosodygranularity = null, [WorkflowExpression] Func<bool> bodymodelsprosodyidentifySpeakers = null, [WorkflowExpression] Func<int> bodymodelsprosodywindowlength = null, [WorkflowExpression] Func<int> bodymodelsprosodywindowstep = null, [WorkflowExpression] Func<string> bodymodelslanguagegranularity = null, [WorkflowExpression] Func<bool> bodymodelslanguageidentifySpeakers = null, [WorkflowExpression] Func<bool> bodymodelsneridentifySpeakers = null, [WorkflowExpression] Func<string> bodytranscriptionlanguage = null, [WorkflowExpression] Func<string[]> bodyurls = null, [WorkflowExpression] Func<string> bodycallbackUrl = null, [WorkflowExpression] Func<bool> bodynotify = null)
         {
-            SourceExpression.Validate(bodymodelsfacefpsPred, nameof(bodymodelsfacefpsPred), required: false);
-            SourceExpression.Validate(bodymodelsfaceprobThreshold, nameof(bodymodelsfaceprobThreshold), required: false);
-            SourceExpression.Validate(bodymodelsfaceidentifyFaces, nameof(bodymodelsfaceidentifyFaces), required: false);
-            SourceExpression.Validate(bodymodelsfaceminFaceSize, nameof(bodymodelsfaceminFaceSize), required: false);
-            SourceExpression.Validate(bodymodelsfacesaveFaces, nameof(bodymodelsfacesaveFaces), required: false);
-            SourceExpression.Validate(bodymodelsprosodygranularity, nameof(bodymodelsprosodygranularity), required: false);
-            SourceExpression.Validate(bodymodelsprosodyidentifySpeakers, nameof(bodymodelsprosodyidentifySpeakers), required: false);
-            SourceExpression.Validate(bodymodelsprosodywindowlength, nameof(bodymodelsprosodywindowlength), required: false);
-            SourceExpression.Validate(bodymodelsprosodywindowstep, nameof(bodymodelsprosodywindowstep), required: false);
-            SourceExpression.Validate(bodymodelslanguagegranularity, nameof(bodymodelslanguagegranularity), required: false);
-            SourceExpression.Validate(bodymodelslanguageidentifySpeakers, nameof(bodymodelslanguageidentifySpeakers), required: false);
-            SourceExpression.Validate(bodymodelsneridentifySpeakers, nameof(bodymodelsneridentifySpeakers), required: false);
-            SourceExpression.Validate(bodytranscriptionlanguage, nameof(bodytranscriptionlanguage), required: false);
-            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: false);
-            SourceExpression.Validate(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/batch/jobs";
@@ -234,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobPredictionsGetResponseItem[]> JobPredictionsGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/predictions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -249,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<string> JobArtifactsGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/artifacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -265,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobDetailsGetResponse> JobDetailsGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

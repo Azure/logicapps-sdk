@@ -14,29 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openchargemapip")]
         public IBodyWorkflowAction<POI[]> POIGet([WorkflowExpression] Func<string> client = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<string> countrycode = null, [WorkflowExpression] Func<string[]> countryid = null, [WorkflowExpression] Func<double> latitude = null, [WorkflowExpression] Func<double> longitude = null, [WorkflowExpression] Func<double> distance = null, [WorkflowExpression] Func<string> distanceunit = null, [WorkflowExpression] Func<string[]> operatorid = null, [WorkflowExpression] Func<string[]> connectiontypeid = null, [WorkflowExpression] Func<string[]> levelid = null, [WorkflowExpression] Func<string[]> usagetypeid = null, [WorkflowExpression] Func<string[]> statustypeid = null, [WorkflowExpression] Func<string[]> dataproviderid = null, [WorkflowExpression] Func<bool> opendata = null, [WorkflowExpression] Func<bool> includecomments = null, [WorkflowExpression] Func<bool> verbose = null, [WorkflowExpression] Func<bool> compact = null, [WorkflowExpression] Func<bool> camelcase = null, [WorkflowExpression] Func<string> chargepointid = null, [WorkflowExpression] Func<string[]> boundingbox = null, [WorkflowExpression] Func<string> polygon = null, [WorkflowExpression] Func<string> polyline = null)
         {
-            SourceExpression.Validate(client, nameof(client), required: false);
-            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
-            SourceExpression.Validate(countrycode, nameof(countrycode), required: false);
-            SourceExpression.Validate(countryid, nameof(countryid), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(distance, nameof(distance), required: false);
-            SourceExpression.Validate(distanceunit, nameof(distanceunit), required: false);
-            SourceExpression.Validate(operatorid, nameof(operatorid), required: false);
-            SourceExpression.Validate(connectiontypeid, nameof(connectiontypeid), required: false);
-            SourceExpression.Validate(levelid, nameof(levelid), required: false);
-            SourceExpression.Validate(usagetypeid, nameof(usagetypeid), required: false);
-            SourceExpression.Validate(statustypeid, nameof(statustypeid), required: false);
-            SourceExpression.Validate(dataproviderid, nameof(dataproviderid), required: false);
-            SourceExpression.Validate(opendata, nameof(opendata), required: false);
-            SourceExpression.Validate(includecomments, nameof(includecomments), required: false);
-            SourceExpression.Validate(verbose, nameof(verbose), required: false);
-            SourceExpression.Validate(compact, nameof(compact), required: false);
-            SourceExpression.Validate(camelcase, nameof(camelcase), required: false);
-            SourceExpression.Validate(chargepointid, nameof(chargepointid), required: false);
-            SourceExpression.Validate(boundingbox, nameof(boundingbox), required: false);
-            SourceExpression.Validate(polygon, nameof(polygon), required: false);
-            SourceExpression.Validate(polyline, nameof(polyline), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/poi";
@@ -104,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openchargemapip")]
         public IBodyWorkflowAction<CoreReferenceData> ReferenceDataGet([WorkflowExpression] Func<string[]> countryid = null)
         {
-            SourceExpression.Validate(countryid, nameof(countryid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/referencedata";

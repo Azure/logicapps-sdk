@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<CreatePostInGroupResponse> CreatePostInGroup([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> createPostInGroupText)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            SourceExpression.Validate(createPostInGroupText, nameof(createPostInGroupText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/data/v38.0/chatter/feed-elements";
@@ -39,7 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -54,8 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<GroupMemberResponse> AddUserToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodysalesforceUserId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodysalesforceUserId, nameof(bodysalesforceUserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -78,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<UserUserResponse> GetUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -93,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
         public IBodyWorkflowAction<GetPostResponse> Get([WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/feed-elements/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -110,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     {
         public IBodyWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> Tafs([WorkflowExpression] Func<string> stationId)
         {
-            SourceExpression.Validate(stationId, nameof(stationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> Taf([WorkflowExpression] Func<string> stationId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> time)
         {
-            SourceExpression.Validate(stationId, nameof(stationId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(time, nameof(time), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(time, 1));
@@ -46,15 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> RadarQueue([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> arrived = null, [WorkflowExpression] Func<string> created = null, [WorkflowExpression] Func<string> published = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> feed = null, [WorkflowExpression] Func<int> resolution = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(arrived, nameof(arrived), required: false);
-            SourceExpression.Validate(created, nameof(created), required: false);
-            SourceExpression.Validate(published, nameof(published), required: false);
-            SourceExpression.Validate(station, nameof(station), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(feed, nameof(feed), required: false);
-            SourceExpression.Validate(resolution, nameof(resolution), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/radar/queues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
@@ -85,9 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
         public IBodyWorkflowAction<ProblemDetail> RadarProfiler([WorkflowExpression] Func<string> stationId, [WorkflowExpression] Func<string> time = null, [WorkflowExpression] Func<string> interval = null)
         {
-            SourceExpression.Validate(stationId, nameof(stationId), required: true);
-            SourceExpression.Validate(time, nameof(time), required: false);
-            SourceExpression.Validate(interval, nameof(interval), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/radar/profilers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));

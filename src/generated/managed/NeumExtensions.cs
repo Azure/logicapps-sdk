@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "neum")]
         public IBodyWorkflowAction<PipelinePostResponse> Pipeline([WorkflowExpression] Func<string> bodysourcesourceName, [WorkflowExpression] Func<string> bodysourcemetadataconnectionString, [WorkflowExpression] Func<string> bodysourcemetadatacontainerName, [WorkflowExpression] Func<string> bodyembedembedName, [WorkflowExpression] Func<string> bodyembedmetadataapiKey, [WorkflowExpression] Func<string> bodyembedmetadataorganization, [WorkflowExpression] Func<string> bodysinksinkName, [WorkflowExpression] Func<string> bodysinkmetadataapiKey, [WorkflowExpression] Func<string> bodysinkmetadataenvironment, [WorkflowExpression] Func<string> bodysinkmetadataindex, [WorkflowExpression] Func<string> bodysinkmetadataNamespace, [WorkflowExpression] Func<string> bodytriggerSchedulestartDate = null, [WorkflowExpression] Func<string> bodytriggerSchedulecadence = null)
         {
-            SourceExpression.Validate(bodysourcesourceName, nameof(bodysourcesourceName), required: true);
-            SourceExpression.Validate(bodysourcemetadataconnectionString, nameof(bodysourcemetadataconnectionString), required: true);
-            SourceExpression.Validate(bodysourcemetadatacontainerName, nameof(bodysourcemetadatacontainerName), required: true);
-            SourceExpression.Validate(bodyembedembedName, nameof(bodyembedembedName), required: true);
-            SourceExpression.Validate(bodyembedmetadataapiKey, nameof(bodyembedmetadataapiKey), required: true);
-            SourceExpression.Validate(bodyembedmetadataorganization, nameof(bodyembedmetadataorganization), required: true);
-            SourceExpression.Validate(bodysinksinkName, nameof(bodysinksinkName), required: true);
-            SourceExpression.Validate(bodysinkmetadataapiKey, nameof(bodysinkmetadataapiKey), required: true);
-            SourceExpression.Validate(bodysinkmetadataenvironment, nameof(bodysinkmetadataenvironment), required: true);
-            SourceExpression.Validate(bodysinkmetadataindex, nameof(bodysinkmetadataindex), required: true);
-            SourceExpression.Validate(bodysinkmetadataNamespace, nameof(bodysinkmetadataNamespace), required: true);
-            SourceExpression.Validate(bodytriggerSchedulestartDate, nameof(bodytriggerSchedulestartDate), required: false);
-            SourceExpression.Validate(bodytriggerSchedulecadence, nameof(bodytriggerSchedulecadence), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pipelines";
@@ -137,9 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "neum")]
         public IBodyWorkflowAction<PipelineTestPostResponse> PipelineTest([WorkflowExpression] Func<string> pipelineId, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<int> bodynumberOfResults)
         {
-            SourceExpression.Validate(pipelineId, nameof(pipelineId), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodynumberOfResults, nameof(bodynumberOfResults), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pipelines/{0}/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pipelineId, 1));

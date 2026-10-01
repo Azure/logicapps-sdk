@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytextContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(requestBodytextContent, nameof(requestBodytextContent), required: false);
-            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
-            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/file/upload/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -58,7 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         public IBodyWorkflowAction<string> GetFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/file/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -73,7 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder([WorkflowExpression] Func<string> folderId)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -88,9 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         public IBodyWorkflowAction<Folder> CreateFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodydescription = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: true);
-            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -119,11 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodyfileContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(requestBodyfileContent, nameof(requestBodyfileContent), required: false);
-            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
-            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}/upload", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -163,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         public IBodyWorkflowAction<TaskObject> MarkTaskComplete([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/task/{0}/markComplete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -178,14 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
         public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodyassignee = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodydueDate = null, [WorkflowExpression] Func<string> requestBodyfileId = null, [WorkflowExpression] Func<string> requestBodytaskId = null, [WorkflowExpression] Func<string> requestBodystatus = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: true);
-            SourceExpression.Validate(requestBodyassignee, nameof(requestBodyassignee), required: false);
-            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
-            SourceExpression.Validate(requestBodydueDate, nameof(requestBodydueDate), required: false);
-            SourceExpression.Validate(requestBodyfileId, nameof(requestBodyfileId), required: false);
-            SourceExpression.Validate(requestBodytaskId, nameof(requestBodytaskId), required: false);
-            SourceExpression.Validate(requestBodystatus, nameof(requestBodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/workspace/{0}/task", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
@@ -246,8 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
     {
         public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/folder/{0}/upload", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -262,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
 
         public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval([WorkflowExpression] Func<string> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));

@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<ErrorCodeDetailsDto> ErrorCodeUsingGET([WorkflowExpression] Func<valueInput> value)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/error-codes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(value, 1));
@@ -43,9 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<ConnectionDto> UpdateConnectionUsingPUT([WorkflowExpression] Func<int> connectionIdX, [WorkflowExpression] Func<string> connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication = null, [WorkflowExpression] Func<string> connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE = null)
         {
-            SourceExpression.Validate(connectionIdX, nameof(connectionIdX), required: true);
-            SourceExpression.Validate(connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication, nameof(connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication), required: false);
-            SourceExpression.Validate(connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE, nameof(connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/connections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(connectionIdX, 1));
@@ -78,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IWorkflowAction DeleteConnectionUsingDELETE([WorkflowExpression] Func<int> connectionIdX)
         {
-            SourceExpression.Validate(connectionIdX, nameof(connectionIdX), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/connections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(connectionIdX, 1));
@@ -93,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<ConnectionDto> GetConnectionUsingGET([WorkflowExpression] Func<int> connectionIdX)
         {
-            SourceExpression.Validate(connectionIdX, nameof(connectionIdX), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/connections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(connectionIdX, 1));
@@ -108,13 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<PageOfContactDto> GetContactsByFilterUsingGET([WorkflowExpression] Func<int[]> contactIds = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(contactIds, nameof(contactIds), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/contacts";
@@ -143,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<ContactDto> GetContactByIdUsingGET([WorkflowExpression] Func<int> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contactId, 1));
@@ -158,16 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<PageOfContractDto> GetContractsByFilterUsingGET([WorkflowExpression] Func<int> contactId = null, [WorkflowExpression] Func<int[]> contractIds = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> propertyId = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<typeInputItem[]> type = null, [WorkflowExpression] Func<int> unitId = null, [WorkflowExpression] Func<string> validAtDate = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: false);
-            SourceExpression.Validate(contractIds, nameof(contractIds), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(unitId, nameof(unitId), required: false);
-            SourceExpression.Validate(validAtDate, nameof(validAtDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/contracts";
@@ -202,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<ContractDto> GetContractByIdUsingGET([WorkflowExpression] Func<int> contractId)
         {
-            SourceExpression.Validate(contractId, nameof(contractId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contracts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contractId, 1));
@@ -217,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<DocumentTagDto[]> GetDocumentTagsUsingGET([WorkflowExpression] Func<string> description = null)
         {
-            SourceExpression.Validate(description, nameof(description), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/document-tags";
@@ -234,8 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<DocumentTagDto> CreateDocumentTagUsingPOST([WorkflowExpression] Func<string> createDtodescriptionOfTheNewlyCreatedDocumentTag = null, [WorkflowExpression] Func<string> createDtonameOfTheNewlyCreatedDocumentTag = null)
         {
-            SourceExpression.Validate(createDtodescriptionOfTheNewlyCreatedDocumentTag, nameof(createDtodescriptionOfTheNewlyCreatedDocumentTag), required: false);
-            SourceExpression.Validate(createDtonameOfTheNewlyCreatedDocumentTag, nameof(createDtonameOfTheNewlyCreatedDocumentTag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/document-tags";
@@ -268,9 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<DocumentTagDto> UpdateDocumentTagUsingPUT([WorkflowExpression] Func<int> tagId, [WorkflowExpression] Func<string> updateDtonewDescriptionOfTheDocumentTag = null, [WorkflowExpression] Func<string> updateDtonewNameOfTheDocumentTag = null)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(updateDtonewDescriptionOfTheDocumentTag, nameof(updateDtonewDescriptionOfTheDocumentTag), required: false);
-            SourceExpression.Validate(updateDtonewNameOfTheDocumentTag, nameof(updateDtonewNameOfTheDocumentTag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/document-tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(tagId, 1));
@@ -303,7 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IWorkflowAction DeleteDocumentTagUsingDELETE([WorkflowExpression] Func<int> tagId)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/document-tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(tagId, 1));
@@ -318,27 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<PageOfDocumentDto> GetDocumentsByFilterUsingGET([WorkflowExpression] Func<string> accountant = null, [WorkflowExpression] Func<string> administrator = null, [WorkflowExpression] Func<int> contactId = null, [WorkflowExpression] Func<string> contractName = null, [WorkflowExpression] Func<int[]> documentIds = null, [WorkflowExpression] Func<string> documentName = null, [WorkflowExpression] Func<string> issuedDate = null, [WorkflowExpression] Func<string> maxIssuedDate = null, [WorkflowExpression] Func<string> minIssuedDate = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> propertyHrId = null, [WorkflowExpression] Func<int> propertyId = null, [WorkflowExpression] Func<string> propertyName = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> sourceId = null, [WorkflowExpression] Func<sourceTypeInputItem[]> sourceType = null, [WorkflowExpression] Func<int[]> tagIds = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<int> unitId = null)
         {
-            SourceExpression.Validate(accountant, nameof(accountant), required: false);
-            SourceExpression.Validate(administrator, nameof(administrator), required: false);
-            SourceExpression.Validate(contactId, nameof(contactId), required: false);
-            SourceExpression.Validate(contractName, nameof(contractName), required: false);
-            SourceExpression.Validate(documentIds, nameof(documentIds), required: false);
-            SourceExpression.Validate(documentName, nameof(documentName), required: false);
-            SourceExpression.Validate(issuedDate, nameof(issuedDate), required: false);
-            SourceExpression.Validate(maxIssuedDate, nameof(maxIssuedDate), required: false);
-            SourceExpression.Validate(minIssuedDate, nameof(minIssuedDate), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(propertyHrId, nameof(propertyHrId), required: false);
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: false);
-            SourceExpression.Validate(propertyName, nameof(propertyName), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(sourceId, nameof(sourceId), required: false);
-            SourceExpression.Validate(sourceType, nameof(sourceType), required: false);
-            SourceExpression.Validate(tagIds, nameof(tagIds), required: false);
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
-            SourceExpression.Validate(unitId, nameof(unitId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/documents";
@@ -395,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<DocumentDto[]> UpdateDocumentsUsingPUT([WorkflowExpression] Func<DocumentUpdateDto[]> documentUpdateDtos = null)
         {
-            SourceExpression.Validate(documentUpdateDtos, nameof(documentUpdateDtos), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/documents";
@@ -411,23 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<object> DownloadDocumentsByFilterUsingGET([WorkflowExpression] Func<string> accountant = null, [WorkflowExpression] Func<string> administrator = null, [WorkflowExpression] Func<int> contactId = null, [WorkflowExpression] Func<string> contractName = null, [WorkflowExpression] Func<int[]> documentIds = null, [WorkflowExpression] Func<string> documentName = null, [WorkflowExpression] Func<string> issuedDate = null, [WorkflowExpression] Func<string> maxIssuedDate = null, [WorkflowExpression] Func<string> minIssuedDate = null, [WorkflowExpression] Func<string> propertyHrId = null, [WorkflowExpression] Func<int> propertyId = null, [WorkflowExpression] Func<string> propertyName = null, [WorkflowExpression] Func<int> sourceId = null, [WorkflowExpression] Func<sourceTypeInputItem[]> sourceType = null, [WorkflowExpression] Func<int[]> tagIds = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<int> unitId = null)
         {
-            SourceExpression.Validate(accountant, nameof(accountant), required: false);
-            SourceExpression.Validate(administrator, nameof(administrator), required: false);
-            SourceExpression.Validate(contactId, nameof(contactId), required: false);
-            SourceExpression.Validate(contractName, nameof(contractName), required: false);
-            SourceExpression.Validate(documentIds, nameof(documentIds), required: false);
-            SourceExpression.Validate(documentName, nameof(documentName), required: false);
-            SourceExpression.Validate(issuedDate, nameof(issuedDate), required: false);
-            SourceExpression.Validate(maxIssuedDate, nameof(maxIssuedDate), required: false);
-            SourceExpression.Validate(minIssuedDate, nameof(minIssuedDate), required: false);
-            SourceExpression.Validate(propertyHrId, nameof(propertyHrId), required: false);
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: false);
-            SourceExpression.Validate(propertyName, nameof(propertyName), required: false);
-            SourceExpression.Validate(sourceId, nameof(sourceId), required: false);
-            SourceExpression.Validate(sourceType, nameof(sourceType), required: false);
-            SourceExpression.Validate(tagIds, nameof(tagIds), required: false);
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
-            SourceExpression.Validate(unitId, nameof(unitId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/documents/download-zip";
@@ -476,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IWorkflowAction DeleteDocumentUsingDELETE([WorkflowExpression] Func<int> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -491,7 +419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<object> DownloadUsingGET([WorkflowExpression] Func<int> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -506,8 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<InvoiceItemDto> UpdateInvoiceItemUsingPUT([WorkflowExpression] Func<int> invoiceItemId, [WorkflowExpression] Func<string> updateDtobookingTextOfTheInvoiceItem = null)
         {
-            SourceExpression.Validate(invoiceItemId, nameof(invoiceItemId), required: true);
-            SourceExpression.Validate(updateDtobookingTextOfTheInvoiceItem, nameof(updateDtobookingTextOfTheInvoiceItem), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/invoice-items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(invoiceItemId, 1));
@@ -534,14 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<PageOfInvoiceDto> GetInvoicesByFilterUsingGET([WorkflowExpression] Func<int> counterpartContactId = null, [WorkflowExpression] Func<string> issuedDate = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> propertyId = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<statesInputItem[]> states = null)
         {
-            SourceExpression.Validate(counterpartContactId, nameof(counterpartContactId), required: false);
-            SourceExpression.Validate(issuedDate, nameof(issuedDate), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(states, nameof(states), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/invoices";
@@ -572,7 +489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<InvoiceDto> GetInvoiceByIdUsingGET([WorkflowExpression] Func<int> invoiceId)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(invoiceId, 1));
@@ -587,9 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<InvoiceDto> UpdateInvoiceUsingPUT([WorkflowExpression] Func<int> invoiceId, [WorkflowExpression] Func<string> updateDtonewIssuedDateOfTheInvoice = null, [WorkflowExpression] Func<string> updateDtonewNameOfTheInvoice = null)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
-            SourceExpression.Validate(updateDtonewIssuedDateOfTheInvoice, nameof(updateDtonewIssuedDateOfTheInvoice), required: false);
-            SourceExpression.Validate(updateDtonewNameOfTheInvoice, nameof(updateDtonewNameOfTheInvoice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(invoiceId, 1));
@@ -622,12 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<PageOfPropertyDto> GetPropertiesByFilterUsingGET([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> propertyHrId = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(propertyHrId, nameof(propertyHrId), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/properties";
@@ -654,7 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<PropertyDto> GetPropertyByIdUsingGET([WorkflowExpression] Func<int> propertyId)
         {
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/properties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(propertyId, 1));
@@ -669,11 +575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<PageOfUnitDto> GetUnitsByFilterUsingGET([WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> propertyId = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/units";
@@ -698,7 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<UnitDto> GetUnitByIdUsingGET([WorkflowExpression] Func<int> unitId)
         {
-            SourceExpression.Validate(unitId, nameof(unitId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/units/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(unitId, 1));
@@ -713,7 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
         public IBodyWorkflowAction<LegacyInvoiceDto> GetInvoice([WorkflowExpression] Func<int> invoiceId)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/pmp-accounting/api/v1/invoices/id";

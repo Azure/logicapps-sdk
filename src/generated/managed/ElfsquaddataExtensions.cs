@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
         public IBodyWorkflowAction<GetEntitiesResponse> GetEntities([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/data/1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1));
@@ -50,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
         public IBodyWorkflowAction<JToken> PostEntityById([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<object> entity = null)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/data/1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1));
@@ -67,8 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
         public IBodyWorkflowAction<JToken> GetEntityById([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/data/1/{0}({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -83,8 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
         public IWorkflowAction DeleteEntityById([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/data/1/{0}({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -99,9 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
         public IWorkflowAction PutEntityById([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> entity = null)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/data/1/{0}({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -117,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
         public IBodyWorkflowAction<JToken> InvokeFunction([WorkflowExpression] Func<string> functionPath, [WorkflowExpression] Func<object> functionInputSchema = null)
         {
-            SourceExpression.Validate(functionPath, nameof(functionPath), required: true);
-            SourceExpression.Validate(functionInputSchema, nameof(functionInputSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(functionPath, 1));
@@ -136,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
     {
         public IWorkflowTrigger CreateTrigger([WorkflowExpression] Func<string> triggerName2, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(triggerName2, nameof(triggerName2), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/2/webhooks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(triggerName2, 1));

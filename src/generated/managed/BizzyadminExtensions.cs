@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
         public IBodyWorkflowAction<AdminRedactBotMessagePayload> AdminRedactBotMessage([WorkflowExpression] Func<string> contentmessageReference, [WorkflowExpression] Func<string> contentredactionMessage)
         {
-            SourceExpression.Validate(contentmessageReference, nameof(contentmessageReference), required: true);
-            SourceExpression.Validate(contentredactionMessage, nameof(contentredactionMessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/admin/redactBotMessage";
@@ -40,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
         public IBodyWorkflowAction<JToken[]> GetAdminItem([WorkflowExpression] Func<int> type)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/admin/AdminItems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(type, 1));
@@ -55,8 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
         public IBodyWorkflowAction<JToken> CreateAdminItem([WorkflowExpression] Func<int> type, [WorkflowExpression] Func<object> content = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(content, nameof(content), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/admin/AdminItems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(type, 1));
@@ -72,8 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
         public IBodyWorkflowAction<JToken[]> UpdateAdminItem([WorkflowExpression] Func<int> type, [WorkflowExpression] Func<object> content = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(content, nameof(content), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/admin/AdminItems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(type, 1));
@@ -89,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
         public IBodyWorkflowAction<JToken> GetAdminItemById([WorkflowExpression] Func<int> type, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/admin/AdminItems/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -105,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
         public IWorkflowAction DeleteAdminItem([WorkflowExpression] Func<int> type, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/admin/AdminItems/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -123,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
     {
         public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPostSkillModified([WorkflowExpression] Func<string[]> webHookfilters = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerAdmin_SkillModified";

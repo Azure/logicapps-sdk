@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
         public IBodyWorkflowAction<SendMessageV2Response> SendMessage([WorkflowExpression] Func<string> bodyinboxEmail, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodymessageTo)
         {
-            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
-            SourceExpression.Validate(bodymessageText, nameof(bodymessageText), required: true);
-            SourceExpression.Validate(bodymessageTo, nameof(bodymessageTo), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Automation/SendMessage";
@@ -45,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
     {
         public IWorkflowTrigger BidirectionalMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
@@ -69,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
         public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Automation/InboundMessageNotification";
@@ -93,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
         public IWorkflowTrigger OutboundMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Automation/OutboundMessageNotification";

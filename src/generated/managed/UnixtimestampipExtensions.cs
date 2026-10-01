@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
         public IBodyWorkflowAction<Unix2UTCDateTimeResponse> Unix2UTCDateTime([WorkflowExpression] Func<int> unixtimestamp = null)
         {
-            SourceExpression.Validate(unixtimestamp, nameof(unixtimestamp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fromunixtimestamp";
@@ -31,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
         public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone([WorkflowExpression] Func<string> bodyunixTimeStamp = null, [WorkflowExpression] Func<string> bodytimezone = null)
         {
-            SourceExpression.Validate(bodyunixTimeStamp, nameof(bodyunixTimeStamp), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fromunixtimestamp";
@@ -65,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
         public IBodyWorkflowAction<DateTime2UnixTimestampResponse> DateTime2UnixTimestamp([WorkflowExpression] Func<string> datetime = null)
         {
-            SourceExpression.Validate(datetime, nameof(datetime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tounixtimestamp";

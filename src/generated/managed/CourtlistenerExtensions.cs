@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courtlistener")]
         public IBodyWorkflowAction<DocketList> SearchDockets([WorkflowExpression] Func<string> caseName = null, [WorkflowExpression] Func<string> docketNumber = null, [WorkflowExpression] Func<string> court = null, [WorkflowExpression] Func<string> dateFiledGte = null, [WorkflowExpression] Func<string> dateFiledLte = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(caseName, nameof(caseName), required: false);
-            SourceExpression.Validate(docketNumber, nameof(docketNumber), required: false);
-            SourceExpression.Validate(court, nameof(court), required: false);
-            SourceExpression.Validate(dateFiledGte, nameof(dateFiledGte), required: false);
-            SourceExpression.Validate(dateFiledLte, nameof(dateFiledLte), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dockets/";
@@ -55,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courtlistener")]
         public IBodyWorkflowAction<Docket> GetDocket([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dockets/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -73,14 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courtlistener")]
         public IBodyWorkflowAction<DocketEntryList> GetDocketEntries([WorkflowExpression] Func<int> docket, [WorkflowExpression] Func<int> entryNumber = null, [WorkflowExpression] Func<string> dateFiledGte = null, [WorkflowExpression] Func<string> dateFiledLte = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(docket, nameof(docket), required: true);
-            SourceExpression.Validate(entryNumber, nameof(entryNumber), required: false);
-            SourceExpression.Validate(dateFiledGte, nameof(dateFiledGte), required: false);
-            SourceExpression.Validate(dateFiledLte, nameof(dateFiledLte), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/docket-entries/";
@@ -110,13 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courtlistener")]
         public IBodyWorkflowAction<OpinionSearchList> SearchOpinions([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> court = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<string> filedAfter = null, [WorkflowExpression] Func<string> filedBefore = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(court, nameof(court), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(filedAfter, nameof(filedAfter), required: false);
-            SourceExpression.Validate(filedBefore, nameof(filedBefore), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search/";
@@ -146,10 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courtlistener")]
         public IBodyWorkflowAction<CitationResult[]> GetCitation([WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyvolume = null, [WorkflowExpression] Func<string> bodyreporter = null, [WorkflowExpression] Func<string> bodypage = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyvolume, nameof(bodyvolume), required: false);
-            SourceExpression.Validate(bodyreporter, nameof(bodyreporter), required: false);
-            SourceExpression.Validate(bodypage, nameof(bodypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/citation-lookup/";

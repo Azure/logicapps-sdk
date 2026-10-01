@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadata([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata> UpdateFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<bool> readFileMetadataFromServer = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -50,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IWorkflowAction DeleteFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> skipDeleteIfFileNotFoundOnServer = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(skipDeleteIfFileNotFoundOnServer, nameof(skipDeleteIfFileNotFoundOnServer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -69,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadataByPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/GetFileByPath";
@@ -86,8 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<string> GetFileContentByPath([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/GetFileContentByPath";
@@ -107,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -126,10 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata> CreateFile([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<bool> readFileMetadataFromServer = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/files";
@@ -151,9 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadataResponse> RenameFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> newName, [WorkflowExpression] Func<bool> readFileMetadataFromServer = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(newName, nameof(newName), required: true);
-            SourceExpression.Validate(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/rename", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -172,10 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata> CopyFile([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null, [WorkflowExpression] Func<bool> readFileMetadataFromServer = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
-            SourceExpression.Validate(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/copyFile";
@@ -199,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata[]> ListFolder([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -228,8 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata> CreateFolder([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/folders";
@@ -246,9 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
         public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/extractFolderV2";
@@ -271,9 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
     {
         public IBodyWorkflowTrigger<string> OnUpdatedFile([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeFileContent = null, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(includeFileContent, nameof(includeFileContent), required: false);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/triggers/onupdatedfile";
@@ -295,8 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
 
         public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";

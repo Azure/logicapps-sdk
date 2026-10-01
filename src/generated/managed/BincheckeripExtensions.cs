@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bincheckerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bincheckerip")]
         public IBodyWorkflowAction<SeachResponse> Seach([WorkflowExpression] Func<int> bIN)
         {
-            SourceExpression.Validate(bIN, nameof(bIN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(bIN, 1));

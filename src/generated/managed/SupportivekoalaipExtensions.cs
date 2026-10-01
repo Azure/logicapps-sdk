@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<ImagesPostResponse> Images([WorkflowExpression] Func<string> bodytemplate, [WorkflowExpression] Func<bodyformatInput> bodyformat = null)
         {
-            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/images/";
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/images/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -91,10 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyParams = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyParams, nameof(bodyParams), required: false);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/templates/";
@@ -135,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

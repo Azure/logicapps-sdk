@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
     {
         public IWorkflowTrigger NewEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(publisher, nameof(publisher), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/oauth/subscribenewentry";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
         public IWorkflowTrigger UpdateEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(publisher, nameof(publisher), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/oauth/subscribeupdateentry";
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
         public IWorkflowTrigger EntryDeleted([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(publisher, nameof(publisher), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/oauth/subscribeentrydeleted";

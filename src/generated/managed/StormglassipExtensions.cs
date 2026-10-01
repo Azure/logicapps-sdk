@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<WeatherPointRequestResponse> WeatherPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> @params, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> source = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(@params, nameof(@params), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/weather/point";
@@ -43,12 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<BioPointRequestResponse> BioPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> @params, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> source = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(@params, nameof(@params), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bio/point";
@@ -72,11 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<TimeExtremesPointRequestResponse> TimeExtremesPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> datum = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(datum, nameof(datum), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tide/extremes/point";
@@ -99,11 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<TimeSealLevelPointRequestResponse> TimeSealLevelPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> datum = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(datum, nameof(datum), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tide/sea-level/point";
@@ -140,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<GetTideStationsAreaResponse> GetTideStationsArea([WorkflowExpression] Func<string> box)
         {
-            SourceExpression.Validate(box, nameof(box), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tide/stations/area";
@@ -156,10 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<AstronomyPointRequestResponse> AstronomyPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> start = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/astronomy/point";
@@ -180,12 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<SolarPointRequestResponse> SolarPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> @params, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> source = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(@params, nameof(@params), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/solar/point";
@@ -209,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<ElevationPointRequestResponse> ElevationPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/elevation/point";

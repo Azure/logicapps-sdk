@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<SendEmailv31Response> SendEmailv31([WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<bool> bodysandboxMode = null, [WorkflowExpression] Func<bool> bodyadvanceErrorHandling = null)
         {
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
-            SourceExpression.Validate(bodyadvanceErrorHandling, nameof(bodyadvanceErrorHandling), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3.1/send";
@@ -52,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<SendEmailv3Response> SendEmailv3([WorkflowExpression] Func<bodymessagesInputItem2[]> bodymessages)
         {
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/send";
@@ -76,12 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetMessagesResponse> GetMessages([WorkflowExpression] Func<int> contact = null, [WorkflowExpression] Func<int> customId = null, [WorkflowExpression] Func<int> destination = null, [WorkflowExpression] Func<string> fromTS = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<fromTypeInput> fromType = null)
         {
-            SourceExpression.Validate(contact, nameof(contact), required: false);
-            SourceExpression.Validate(customId, nameof(customId), required: false);
-            SourceExpression.Validate(destination, nameof(destination), required: false);
-            SourceExpression.Validate(fromTS, nameof(fromTS), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(fromType, nameof(fromType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/message";
@@ -109,13 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetMessagesInformationResponse> GetMessagesInformation([WorkflowExpression] Func<int> campaignId = null, [WorkflowExpression] Func<int> contactsList = null, [WorkflowExpression] Func<int> customCampaign = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> fromDomain = null, [WorkflowExpression] Func<int> fromId = null, [WorkflowExpression] Func<string> fromTS = null)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: false);
-            SourceExpression.Validate(contactsList, nameof(contactsList), required: false);
-            SourceExpression.Validate(customCampaign, nameof(customCampaign), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(fromDomain, nameof(fromDomain), required: false);
-            SourceExpression.Validate(fromId, nameof(fromId), required: false);
-            SourceExpression.Validate(fromTS, nameof(fromTS), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/messageinformation";
@@ -144,10 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts([WorkflowExpression] Func<int> campaign = null, [WorkflowExpression] Func<int> contactsList = null, [WorkflowExpression] Func<bool> isExcludedFromCampaigns = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(campaign, nameof(campaign), required: false);
-            SourceExpression.Validate(contactsList, nameof(contactsList), required: false);
-            SourceExpression.Validate(isExcludedFromCampaigns, nameof(isExcludedFromCampaigns), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/contact";
@@ -171,9 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyisExcludedFromCampaigns = null, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyisExcludedFromCampaigns, nameof(bodyisExcludedFromCampaigns), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/contact";
@@ -209,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetContactByIdResponse> GetContactById([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/contact/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -224,9 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<UpdateContactResponse> UpdateContact([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<bool> bodyisExcludedFromCampaigns = null, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(bodyisExcludedFromCampaigns, nameof(bodyisExcludedFromCampaigns), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/contact/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -260,14 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetContactListsResponse> GetContactLists([WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<int> excludeId = null, [WorkflowExpression] Func<bool> isDeleted = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offSet = null, [WorkflowExpression] Func<bool> countOnly = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(excludeId, nameof(excludeId), required: false);
-            SourceExpression.Validate(isDeleted, nameof(isDeleted), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offSet, nameof(offSet), required: false);
-            SourceExpression.Validate(countOnly, nameof(countOnly), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/contactslist";
@@ -299,8 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<CreateContactListResponse> CreateContactList([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyisDeleted = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyisDeleted, nameof(bodyisDeleted), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/contactslist";
@@ -330,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetContactListByIdResponse> GetContactListById([WorkflowExpression] Func<string> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/contactslist/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -345,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IWorkflowAction DeleteContactList([WorkflowExpression] Func<string> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/contactslist/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -360,9 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<UpdateContactListResponse> UpdateContactList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyisDeleted = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyisDeleted, nameof(bodyisDeleted), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/contactslist/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -406,22 +363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<CreateCampaignDraftResponse> CreateCampaignDraft([WorkflowExpression] Func<string> bodylocale, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<int> bodycurrent = null, [WorkflowExpression] Func<bodyeditModeInput> bodyeditMode = null, [WorkflowExpression] Func<bool> bodyisStarred = null, [WorkflowExpression] Func<bool> bodyisTextPartIncluded = null, [WorkflowExpression] Func<string> bodyreplyEmail = null, [WorkflowExpression] Func<string> bodysenderName = null, [WorkflowExpression] Func<int> bodytemplateId = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycontactsListId = null, [WorkflowExpression] Func<string> bodycontactsListAlt = null, [WorkflowExpression] Func<int> bodysegmentationId = null, [WorkflowExpression] Func<string> bodysegmentationAlt = null, [WorkflowExpression] Func<string> bodysender = null, [WorkflowExpression] Func<string> bodysenderEmail = null)
         {
-            SourceExpression.Validate(bodylocale, nameof(bodylocale), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodycurrent, nameof(bodycurrent), required: false);
-            SourceExpression.Validate(bodyeditMode, nameof(bodyeditMode), required: false);
-            SourceExpression.Validate(bodyisStarred, nameof(bodyisStarred), required: false);
-            SourceExpression.Validate(bodyisTextPartIncluded, nameof(bodyisTextPartIncluded), required: false);
-            SourceExpression.Validate(bodyreplyEmail, nameof(bodyreplyEmail), required: false);
-            SourceExpression.Validate(bodysenderName, nameof(bodysenderName), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycontactsListId, nameof(bodycontactsListId), required: false);
-            SourceExpression.Validate(bodycontactsListAlt, nameof(bodycontactsListAlt), required: false);
-            SourceExpression.Validate(bodysegmentationId, nameof(bodysegmentationId), required: false);
-            SourceExpression.Validate(bodysegmentationAlt, nameof(bodysegmentationAlt), required: false);
-            SourceExpression.Validate(bodysender, nameof(bodysender), required: false);
-            SourceExpression.Validate(bodysenderEmail, nameof(bodysenderEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/campaigndraft";
@@ -531,7 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetCampaignDraftByIdResponse> GetCampaignDraftById([WorkflowExpression] Func<int> draftId)
         {
-            SourceExpression.Validate(draftId, nameof(draftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/campaigndraft/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(draftId, 1));
@@ -546,24 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<UpdateCampaignDraftResponse> UpdateCampaignDraft([WorkflowExpression] Func<int> draftId, [WorkflowExpression] Func<string> bodylocale, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<int> bodycurrent = null, [WorkflowExpression] Func<bodyeditModeInput> bodyeditMode = null, [WorkflowExpression] Func<bool> bodyisStarred = null, [WorkflowExpression] Func<bool> bodyisTextPartIncluded = null, [WorkflowExpression] Func<string> bodyreplyEmail = null, [WorkflowExpression] Func<string> bodysenderName = null, [WorkflowExpression] Func<int> bodytemplateId = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycontactsListId = null, [WorkflowExpression] Func<string> bodycontactsListAlt = null, [WorkflowExpression] Func<int> bodysegmentationId = null, [WorkflowExpression] Func<string> bodysegmentationAlt = null, [WorkflowExpression] Func<string> bodysender = null, [WorkflowExpression] Func<string> bodysenderEmail = null)
         {
-            SourceExpression.Validate(draftId, nameof(draftId), required: true);
-            SourceExpression.Validate(bodylocale, nameof(bodylocale), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodycurrent, nameof(bodycurrent), required: false);
-            SourceExpression.Validate(bodyeditMode, nameof(bodyeditMode), required: false);
-            SourceExpression.Validate(bodyisStarred, nameof(bodyisStarred), required: false);
-            SourceExpression.Validate(bodyisTextPartIncluded, nameof(bodyisTextPartIncluded), required: false);
-            SourceExpression.Validate(bodyreplyEmail, nameof(bodyreplyEmail), required: false);
-            SourceExpression.Validate(bodysenderName, nameof(bodysenderName), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycontactsListId, nameof(bodycontactsListId), required: false);
-            SourceExpression.Validate(bodycontactsListAlt, nameof(bodycontactsListAlt), required: false);
-            SourceExpression.Validate(bodysegmentationId, nameof(bodysegmentationId), required: false);
-            SourceExpression.Validate(bodysegmentationAlt, nameof(bodysegmentationAlt), required: false);
-            SourceExpression.Validate(bodysender, nameof(bodysender), required: false);
-            SourceExpression.Validate(bodysenderEmail, nameof(bodysenderEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/campaigndraft/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(draftId, 1));
@@ -702,15 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetContactsDataResponse> GetContactsData([WorkflowExpression] Func<int> campaign = null, [WorkflowExpression] Func<string> contactEmail = null, [WorkflowExpression] Func<int> contactsList = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> lastActivityAt = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offSet = null, [WorkflowExpression] Func<bool> countOnly = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(campaign, nameof(campaign), required: false);
-            SourceExpression.Validate(contactEmail, nameof(contactEmail), required: false);
-            SourceExpression.Validate(contactsList, nameof(contactsList), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(lastActivityAt, nameof(lastActivityAt), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offSet, nameof(offSet), required: false);
-            SourceExpression.Validate(countOnly, nameof(countOnly), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/REST/contactdata";
@@ -744,7 +657,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
         public IBodyWorkflowAction<GetContactDataByIdResponse> GetContactDataById([WorkflowExpression] Func<int> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/REST/contactdata/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contactId, 1));

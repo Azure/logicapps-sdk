@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
     {
         public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));

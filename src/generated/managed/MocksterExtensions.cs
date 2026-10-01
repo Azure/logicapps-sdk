@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airlines";
@@ -34,9 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/animals";
@@ -57,9 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/colors";
@@ -80,9 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/companies";
@@ -103,8 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/databases";
@@ -123,9 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dates";
@@ -146,9 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/finances";
@@ -169,9 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gits";
@@ -192,9 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hackers";
@@ -215,10 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<categoryInput> category = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(width, nameof(width), required: false);
-            SourceExpression.Validate(height, nameof(height), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/images";
@@ -241,8 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/internets";
@@ -261,9 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations";
@@ -284,8 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lorems";
@@ -304,9 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/musics";
@@ -327,8 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/numbers";
@@ -347,9 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/persons";
@@ -370,9 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/phones";
@@ -393,9 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/products";
@@ -416,8 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sciences";
@@ -436,8 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/strings";
@@ -456,8 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/systems";
@@ -476,9 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vehicles";
@@ -499,9 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            SourceExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/words";

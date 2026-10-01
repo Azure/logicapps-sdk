@@ -14,26 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
         public IBodyWorkflowAction<CreateEventResponse> CreateEvent([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> eventNameHtml, [WorkflowExpression] Func<string> eventDescriptionHtml, [WorkflowExpression] Func<string> eventStartUtc, [WorkflowExpression] Func<string> eventEndUtc, [WorkflowExpression] Func<eventStartTimezoneInput> eventStartTimezone, [WorkflowExpression] Func<eventEndTimezoneInput> eventEndTimezone, [WorkflowExpression] Func<eventCurrencyInput> eventCurrency, [WorkflowExpression] Func<string> eventOrganizerId = null, [WorkflowExpression] Func<string> eventVenueId = null, [WorkflowExpression] Func<string> eventCategoryId = null, [WorkflowExpression] Func<string> eventPassword = null, [WorkflowExpression] Func<string> eventCapacity = null, [WorkflowExpression] Func<bool> eventShareable = null, [WorkflowExpression] Func<bool> eventInviteOnly = null, [WorkflowExpression] Func<bool> eventOnlineEvent = null, [WorkflowExpression] Func<bool> eventListed = null, [WorkflowExpression] Func<bool> eventHideStartDate = null, [WorkflowExpression] Func<bool> eventHideEndDate = null, [WorkflowExpression] Func<bool> eventShowRemaining = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(eventNameHtml, nameof(eventNameHtml), required: true);
-            SourceExpression.Validate(eventDescriptionHtml, nameof(eventDescriptionHtml), required: true);
-            SourceExpression.Validate(eventStartUtc, nameof(eventStartUtc), required: true);
-            SourceExpression.Validate(eventEndUtc, nameof(eventEndUtc), required: true);
-            SourceExpression.Validate(eventStartTimezone, nameof(eventStartTimezone), required: true);
-            SourceExpression.Validate(eventEndTimezone, nameof(eventEndTimezone), required: true);
-            SourceExpression.Validate(eventCurrency, nameof(eventCurrency), required: true);
-            SourceExpression.Validate(eventOrganizerId, nameof(eventOrganizerId), required: false);
-            SourceExpression.Validate(eventVenueId, nameof(eventVenueId), required: false);
-            SourceExpression.Validate(eventCategoryId, nameof(eventCategoryId), required: false);
-            SourceExpression.Validate(eventPassword, nameof(eventPassword), required: false);
-            SourceExpression.Validate(eventCapacity, nameof(eventCapacity), required: false);
-            SourceExpression.Validate(eventShareable, nameof(eventShareable), required: false);
-            SourceExpression.Validate(eventInviteOnly, nameof(eventInviteOnly), required: false);
-            SourceExpression.Validate(eventOnlineEvent, nameof(eventOnlineEvent), required: false);
-            SourceExpression.Validate(eventListed, nameof(eventListed), required: false);
-            SourceExpression.Validate(eventHideStartDate, nameof(eventHideStartDate), required: false);
-            SourceExpression.Validate(eventHideEndDate, nameof(eventHideEndDate), required: false);
-            SourceExpression.Validate(eventShowRemaining, nameof(eventShowRemaining), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/organizations/{0}/events/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -79,27 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
         public IBodyWorkflowAction<CreateEventResponse> UpdateEvent([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<eventStartTimezoneInput> eventStartTimezone, [WorkflowExpression] Func<eventEndTimezoneInput> eventEndTimezone, [WorkflowExpression] Func<eventCurrencyInput> eventCurrency, [WorkflowExpression] Func<string> eventNameHtml = null, [WorkflowExpression] Func<string> eventDescriptionHtml = null, [WorkflowExpression] Func<string> eventStartUtc = null, [WorkflowExpression] Func<string> eventEndUtc = null, [WorkflowExpression] Func<string> eventOrganizerId = null, [WorkflowExpression] Func<string> eventVenueId = null, [WorkflowExpression] Func<string> eventCategoryId = null, [WorkflowExpression] Func<string> eventPassword = null, [WorkflowExpression] Func<string> eventCapacity = null, [WorkflowExpression] Func<bool> eventShareable = null, [WorkflowExpression] Func<bool> eventInviteOnly = null, [WorkflowExpression] Func<bool> eventOnlineEvent = null, [WorkflowExpression] Func<bool> eventListed = null, [WorkflowExpression] Func<bool> eventHideStartDate = null, [WorkflowExpression] Func<bool> eventHideEndDate = null, [WorkflowExpression] Func<bool> eventShowRemaining = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(eventStartTimezone, nameof(eventStartTimezone), required: true);
-            SourceExpression.Validate(eventEndTimezone, nameof(eventEndTimezone), required: true);
-            SourceExpression.Validate(eventCurrency, nameof(eventCurrency), required: true);
-            SourceExpression.Validate(eventNameHtml, nameof(eventNameHtml), required: false);
-            SourceExpression.Validate(eventDescriptionHtml, nameof(eventDescriptionHtml), required: false);
-            SourceExpression.Validate(eventStartUtc, nameof(eventStartUtc), required: false);
-            SourceExpression.Validate(eventEndUtc, nameof(eventEndUtc), required: false);
-            SourceExpression.Validate(eventOrganizerId, nameof(eventOrganizerId), required: false);
-            SourceExpression.Validate(eventVenueId, nameof(eventVenueId), required: false);
-            SourceExpression.Validate(eventCategoryId, nameof(eventCategoryId), required: false);
-            SourceExpression.Validate(eventPassword, nameof(eventPassword), required: false);
-            SourceExpression.Validate(eventCapacity, nameof(eventCapacity), required: false);
-            SourceExpression.Validate(eventShareable, nameof(eventShareable), required: false);
-            SourceExpression.Validate(eventInviteOnly, nameof(eventInviteOnly), required: false);
-            SourceExpression.Validate(eventOnlineEvent, nameof(eventOnlineEvent), required: false);
-            SourceExpression.Validate(eventListed, nameof(eventListed), required: false);
-            SourceExpression.Validate(eventHideStartDate, nameof(eventHideStartDate), required: false);
-            SourceExpression.Validate(eventHideEndDate, nameof(eventHideEndDate), required: false);
-            SourceExpression.Validate(eventShowRemaining, nameof(eventShowRemaining), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/v3/events/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -152,8 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
     {
         public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> organizerFilter, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(organizerFilter, nameof(organizerFilter), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/organizations/{0}/events/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -169,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 
         public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/events/{0}/orders/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
         public IBodyWorkflowAction<CommitteeCandidateHistoryResponse> CommitteeCommitteeIdCandidatesHistory([WorkflowExpression] Func<string> committeeId, [WorkflowExpression] Func<string> sortHideNull = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> sortNullsLast = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> sortNullOnly = null, [WorkflowExpression] Func<string> perPage = null, [WorkflowExpression] Func<string> electionFull = null)
         {
-            SourceExpression.Validate(committeeId, nameof(committeeId), required: true);
-            SourceExpression.Validate(sortHideNull, nameof(sortHideNull), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sortNullsLast, nameof(sortNullsLast), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(sortNullOnly, nameof(sortNullOnly), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(electionFull, nameof(electionFull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/committee/{0}/candidates/history/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(committeeId, 1));
@@ -57,25 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
         public IBodyWorkflowAction<OperationsLogResponse> OperationsLog([WorkflowExpression] Func<string> formType, [WorkflowExpression] Func<string> reportYear, [WorkflowExpression] Func<string> sort, [WorkflowExpression] Func<string> maxReceiptDate, [WorkflowExpression] Func<string> reportType, [WorkflowExpression] Func<string> perPage, [WorkflowExpression] Func<string> candidateCommitteeId, [WorkflowExpression] Func<string> minReceiptDate, [WorkflowExpression] Func<string> minCoverageEndDate, [WorkflowExpression] Func<string> page, [WorkflowExpression] Func<string> statusNum, [WorkflowExpression] Func<string> minTransactionDataCompleteDate, [WorkflowExpression] Func<string> maxCoverageEndDate, [WorkflowExpression] Func<string> maxTransactionDataCompleteDate, [WorkflowExpression] Func<string> beginningImageNumber, [WorkflowExpression] Func<string> sortNullsLast = null, [WorkflowExpression] Func<string> sortNullOnly = null, [WorkflowExpression] Func<string> sortHideNull = null, [WorkflowExpression] Func<string> amendmentIndicator = null)
         {
-            SourceExpression.Validate(formType, nameof(formType), required: true);
-            SourceExpression.Validate(reportYear, nameof(reportYear), required: true);
-            SourceExpression.Validate(sort, nameof(sort), required: true);
-            SourceExpression.Validate(maxReceiptDate, nameof(maxReceiptDate), required: true);
-            SourceExpression.Validate(reportType, nameof(reportType), required: true);
-            SourceExpression.Validate(perPage, nameof(perPage), required: true);
-            SourceExpression.Validate(candidateCommitteeId, nameof(candidateCommitteeId), required: true);
-            SourceExpression.Validate(minReceiptDate, nameof(minReceiptDate), required: true);
-            SourceExpression.Validate(minCoverageEndDate, nameof(minCoverageEndDate), required: true);
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(statusNum, nameof(statusNum), required: true);
-            SourceExpression.Validate(minTransactionDataCompleteDate, nameof(minTransactionDataCompleteDate), required: true);
-            SourceExpression.Validate(maxCoverageEndDate, nameof(maxCoverageEndDate), required: true);
-            SourceExpression.Validate(maxTransactionDataCompleteDate, nameof(maxTransactionDataCompleteDate), required: true);
-            SourceExpression.Validate(beginningImageNumber, nameof(beginningImageNumber), required: true);
-            SourceExpression.Validate(sortNullsLast, nameof(sortNullsLast), required: false);
-            SourceExpression.Validate(sortNullOnly, nameof(sortNullOnly), required: false);
-            SourceExpression.Validate(sortHideNull, nameof(sortHideNull), required: false);
-            SourceExpression.Validate(amendmentIndicator, nameof(amendmentIndicator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/operations-log/";

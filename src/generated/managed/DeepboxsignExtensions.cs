@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Document> GetDocumentDetails([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -29,11 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Observer> AddObserver([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<bool> bodyisAdmin = null, [WorkflowExpression] Func<string> bodylanguage = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -78,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction RemoveObserver([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> observerId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(observerId, nameof(observerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(observerId, 1));
@@ -94,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee[]> GetSignees([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -109,17 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> AddSignee([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<double> bodyautographPositionheight = null, [WorkflowExpression] Func<int> bodyautographPositionpageNumber = null, [WorkflowExpression] Func<double> bodyautographPositionwidth = null, [WorkflowExpression] Func<double> bodyautographPositionx = null, [WorkflowExpression] Func<double> bodyautographPositiony = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodysignFieldName = null, [WorkflowExpression] Func<int> bodysignOrder = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyautographPositionheight, nameof(bodyautographPositionheight), required: false);
-            SourceExpression.Validate(bodyautographPositionpageNumber, nameof(bodyautographPositionpageNumber), required: false);
-            SourceExpression.Validate(bodyautographPositionwidth, nameof(bodyautographPositionwidth), required: false);
-            SourceExpression.Validate(bodyautographPositionx, nameof(bodyautographPositionx), required: false);
-            SourceExpression.Validate(bodyautographPositiony, nameof(bodyautographPositiony), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodysignFieldName, nameof(bodysignFieldName), required: false);
-            SourceExpression.Validate(bodysignOrder, nameof(bodysignOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -208,8 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> GetSignee([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> signeeId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(signeeId, nameof(signeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
@@ -224,8 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction RemoveSignee([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> signeeId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(signeeId, nameof(signeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
@@ -240,17 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> UpdateSignee([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> signeeId, [WorkflowExpression] Func<double> bodyautographPositionheight = null, [WorkflowExpression] Func<int> bodyautographPositionpageNumber = null, [WorkflowExpression] Func<double> bodyautographPositionwidth = null, [WorkflowExpression] Func<double> bodyautographPositionx = null, [WorkflowExpression] Func<double> bodyautographPositiony = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<int> bodysignOrder = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(signeeId, nameof(signeeId), required: true);
-            SourceExpression.Validate(bodyautographPositionheight, nameof(bodyautographPositionheight), required: false);
-            SourceExpression.Validate(bodyautographPositionpageNumber, nameof(bodyautographPositionpageNumber), required: false);
-            SourceExpression.Validate(bodyautographPositionwidth, nameof(bodyautographPositionwidth), required: false);
-            SourceExpression.Validate(bodyautographPositionx, nameof(bodyautographPositionx), required: false);
-            SourceExpression.Validate(bodyautographPositiony, nameof(bodyautographPositiony), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodysignOrder, nameof(bodysignOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
@@ -333,8 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction ResendInvitation([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> signeeId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(signeeId, nameof(signeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}/resend-invitation", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeId, 1));
@@ -349,7 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction StartSignatureProcess([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));

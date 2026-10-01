@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<RfcTransactionDetails> AddRfcToTransaction([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(rfcName, nameof(rfcName), required: true);
-            SourceExpression.Validate(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
-            SourceExpression.Validate(autoCommit, nameof(autoCommit), required: false);
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddRfcToTransaction";
@@ -48,12 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<CallBapiResponse> CallBapi([WorkflowExpression] Func<string> businessObject, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(businessObject, nameof(businessObject), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(autoCommit, nameof(autoCommit), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CallBapi";
@@ -78,14 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<CallRfcResponse> CallRfc([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(rfcName, nameof(rfcName), required: true);
-            SourceExpression.Validate(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
-            SourceExpression.Validate(autoCommit, nameof(autoCommit), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CallRfc";
@@ -115,15 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> CallRfc3([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<object> rfcInputs = null, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<inputFormatInput> inputFormat = null, [WorkflowExpression] Func<returnFormatInput> returnFormat = null)
         {
-            SourceExpression.Validate(rfcName, nameof(rfcName), required: true);
-            SourceExpression.Validate(rfcInputs, nameof(rfcInputs), required: false);
-            SourceExpression.Validate(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
-            SourceExpression.Validate(autoCommit, nameof(autoCommit), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
-            SourceExpression.Validate(inputFormat, nameof(inputFormat), required: false);
-            SourceExpression.Validate(returnFormat, nameof(returnFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CallRfc3";
@@ -157,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> CloseSession([WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CloseSession";
@@ -173,9 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiRet2> CommitBapiTransaction([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> wait = null, [WorkflowExpression] Func<bool> closeSession = null)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(wait, nameof(wait), required: false);
-            SourceExpression.Validate(closeSession, nameof(closeSession), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CommitBapiTransaction";
@@ -197,8 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> CommitRfcTransaction([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CommitRfcTransaction";
@@ -217,7 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> ConfirmTid([WorkflowExpression] Func<string> tid)
         {
-            SourceExpression.Validate(tid, nameof(tid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ConfirmTid";
@@ -233,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<RfcTransactionDetails> CreateRfcTransaction([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CreateRfcTransaction";
@@ -267,8 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> GenerateSchemas([WorkflowExpression] Func<string[]> sapActionUris = null, [WorkflowExpression] Func<string> fileNamePrefix = null)
         {
-            SourceExpression.Validate(sapActionUris, nameof(sapActionUris), required: false);
-            SourceExpression.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GenerateSchemas";
@@ -287,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<IdocStatusResponse> GetIdocStatus([WorkflowExpression] Func<int> idocNumber)
         {
-            SourceExpression.Validate(idocNumber, nameof(idocNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetIdocStatus";
@@ -303,8 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<RfcTransactionDetails> GetTransactionDetails([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetTransactionDetails";
@@ -323,8 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<IdocNumbersList> GetTransactionIdocs([WorkflowExpression] Func<directionInput> direction, [WorkflowExpression] Func<string> tId)
         {
-            SourceExpression.Validate(direction, nameof(direction), required: true);
-            SourceExpression.Validate(tId, nameof(tId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetTransactionIdocs";
@@ -341,12 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<ReadTableResponse> ReadTableVersion2([WorkflowExpression] Func<string> inputParameterstableName, [WorkflowExpression] Func<string[]> inputParametersfieldsToRead = null, [WorkflowExpression] Func<string[]> inputParameterswhereFilters = null, [WorkflowExpression] Func<int> inputParametersstartingRowIndex = null, [WorkflowExpression] Func<int> inputParameterscountOfRowsToRead = null, [WorkflowExpression] Func<string> inputParametersfieldDelimiter = null)
         {
-            SourceExpression.Validate(inputParameterstableName, nameof(inputParameterstableName), required: true);
-            SourceExpression.Validate(inputParametersfieldsToRead, nameof(inputParametersfieldsToRead), required: false);
-            SourceExpression.Validate(inputParameterswhereFilters, nameof(inputParameterswhereFilters), required: false);
-            SourceExpression.Validate(inputParametersstartingRowIndex, nameof(inputParametersstartingRowIndex), required: false);
-            SourceExpression.Validate(inputParameterscountOfRowsToRead, nameof(inputParameterscountOfRowsToRead), required: false);
-            SourceExpression.Validate(inputParametersfieldDelimiter, nameof(inputParametersfieldDelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ReadTableVersion2";
@@ -399,8 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiRet2> RollbackBapiTransaction([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> closeSession = null)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(closeSession, nameof(closeSession), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RollbackBapiTransaction";
@@ -419,9 +365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> Send([WorkflowExpression] Func<string> sapAction, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(sapAction, nameof(sapAction), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Send";
@@ -440,13 +383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<SendIdocResponse> SendIDoc([WorkflowExpression] Func<string> idocType, [WorkflowExpression] Func<string> releaseVersion = null, [WorkflowExpression] Func<recordTypesVersionInput> recordTypesVersion = null, [WorkflowExpression] Func<bool> confirmTid = null, [WorkflowExpression] Func<string> tid = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(idocType, nameof(idocType), required: true);
-            SourceExpression.Validate(releaseVersion, nameof(releaseVersion), required: false);
-            SourceExpression.Validate(recordTypesVersion, nameof(recordTypesVersion), required: false);
-            SourceExpression.Validate(confirmTid, nameof(confirmTid), required: false);
-            SourceExpression.Validate(tid, nameof(tid), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SendIDoc";
@@ -476,10 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<SendIdocResponse> SendIDocVersion2([WorkflowExpression] Func<object> dynamicParameters = null, [WorkflowExpression] Func<idocFormatInput> idocFormat = null, [WorkflowExpression] Func<bool> confirmTid = null, [WorkflowExpression] Func<string> tid = null)
         {
-            SourceExpression.Validate(dynamicParameters, nameof(dynamicParameters), required: false);
-            SourceExpression.Validate(idocFormat, nameof(idocFormat), required: false);
-            SourceExpression.Validate(confirmTid, nameof(confirmTid), required: false);
-            SourceExpression.Validate(tid, nameof(tid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SendIDoc/v2";
@@ -503,14 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc([WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersrFCName, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, [WorkflowExpression] Func<bool> callRfcSubscriptionrfcCallParametersautoCommit = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersqueueName = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null)
         {
-            SourceExpression.Validate(callRfcSubscriptionrfcCallParametersrFCName, nameof(callRfcSubscriptionrfcCallParametersrFCName), required: true);
-            SourceExpression.Validate(callRfcSubscriptionrfcCallParametersinputRFCParametersInline, nameof(callRfcSubscriptionrfcCallParametersinputRFCParametersInline), required: false);
-            SourceExpression.Validate(callRfcSubscriptionrfcCallParametersinputRFCParametersReference, nameof(callRfcSubscriptionrfcCallParametersinputRFCParametersReference), required: false);
-            SourceExpression.Validate(callRfcSubscriptionrfcCallParametersrFCGroupFilter, nameof(callRfcSubscriptionrfcCallParametersrFCGroupFilter), required: false);
-            SourceExpression.Validate(callRfcSubscriptionrfcCallParametersautoCommit, nameof(callRfcSubscriptionrfcCallParametersautoCommit), required: false);
-            SourceExpression.Validate(callRfcSubscriptionrfcCallParametersqueueName, nameof(callRfcSubscriptionrfcCallParametersqueueName), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(tId, nameof(tId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StartLongRunningRfc";
@@ -579,14 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     {
         public IBodyWorkflowTrigger<SubscribeResponse> Subscribe([WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string[]> subscriptionsapActions = null, [WorkflowExpression] Func<subscriptionidOCFormatInput> subscriptionidOCFormat = null, [WorkflowExpression] Func<bool> subscriptionreceiveIdOCsWithUnreleasedSegments = null, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(gatewayHost, nameof(gatewayHost), required: true);
-            SourceExpression.Validate(gatewayService, nameof(gatewayService), required: true);
-            SourceExpression.Validate(programId, nameof(programId), required: true);
-            SourceExpression.Validate(subscriptionsapActions, nameof(subscriptionsapActions), required: false);
-            SourceExpression.Validate(subscriptionidOCFormat, nameof(subscriptionidOCFormat), required: false);
-            SourceExpression.Validate(subscriptionreceiveIdOCsWithUnreleasedSegments, nameof(subscriptionreceiveIdOCsWithUnreleasedSegments), required: false);
-            SourceExpression.Validate(sncPartnerNames, nameof(sncPartnerNames), required: false);
-            SourceExpression.Validate(degreeOfParallelism, nameof(degreeOfParallelism), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhooktrigger/subscribe";

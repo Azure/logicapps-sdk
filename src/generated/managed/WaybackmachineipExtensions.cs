@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waybackmachineip")]
         public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> timestamp = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(timestamp, nameof(timestamp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/wayback/available";

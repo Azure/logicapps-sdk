@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<JToken> CreateUser([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/User";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<JToken> FindUser([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/User/Find";
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<JToken> CreateAsset([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Asset";
@@ -62,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IWorkflowAction UpdateAsset([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Asset";
@@ -78,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<JToken[]> SearchAsset([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Asset/Search";
@@ -94,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<JToken> GetAsset([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Asset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -109,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<JToken> GetTicket([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Ticket/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -124,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<JToken> LogTicket([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Ticket";
@@ -140,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<bool> SetTicketType([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Ticket/Type";
@@ -156,7 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<bool> AddAction([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Ticket/Action";
@@ -172,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<bool> Reassign([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Ticket/Reassign";
@@ -188,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<bool> SetStatus([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Ticket/SetStatus";
@@ -204,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revelationhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revelationhelpdesk")]
         public IBodyWorkflowAction<bool> SetPriority([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Ticket/Priority";

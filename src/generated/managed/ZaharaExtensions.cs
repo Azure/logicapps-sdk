@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<int> CreateInvoice([WorkflowExpression] Func<string> modelinvoiceNumber = null, [WorkflowExpression] Func<string> modelpurchaseOrderNumber = null, [WorkflowExpression] Func<string> modelraisedDate = null, [WorkflowExpression] Func<string> modeldueDate = null, [WorkflowExpression] Func<string> modelsupplierReferenceNumber = null, [WorkflowExpression] Func<string> modeldescription = null, [WorkflowExpression] Func<string> modelcomments = null, [WorkflowExpression] Func<string> modeldivisionName = null, [WorkflowExpression] Func<string> modelcurrencyCode = null, [WorkflowExpression] Func<LineItemAddIntegrationModel[]> modellineItems = null)
         {
-            SourceExpression.Validate(modelinvoiceNumber, nameof(modelinvoiceNumber), required: false);
-            SourceExpression.Validate(modelpurchaseOrderNumber, nameof(modelpurchaseOrderNumber), required: false);
-            SourceExpression.Validate(modelraisedDate, nameof(modelraisedDate), required: false);
-            SourceExpression.Validate(modeldueDate, nameof(modeldueDate), required: false);
-            SourceExpression.Validate(modelsupplierReferenceNumber, nameof(modelsupplierReferenceNumber), required: false);
-            SourceExpression.Validate(modeldescription, nameof(modeldescription), required: false);
-            SourceExpression.Validate(modelcomments, nameof(modelcomments), required: false);
-            SourceExpression.Validate(modeldivisionName, nameof(modeldivisionName), required: false);
-            SourceExpression.Validate(modelcurrencyCode, nameof(modelcurrencyCode), required: false);
-            SourceExpression.Validate(modellineItems, nameof(modellineItems), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/InvoiceIntegration/Add";
@@ -104,14 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<int> CreatePurchaseOrder([WorkflowExpression] Func<string> modelrequisitorName = null, [WorkflowExpression] Func<string> modelrequiredDate = null, [WorkflowExpression] Func<string> modelsupplierReferenceNumber = null, [WorkflowExpression] Func<string> modeldescription = null, [WorkflowExpression] Func<string> modelcomments = null, [WorkflowExpression] Func<string> modeldivisionName = null, [WorkflowExpression] Func<string> modelcurrencyCode = null, [WorkflowExpression] Func<LineItemAddIntegrationModel[]> modellineItems = null)
         {
-            SourceExpression.Validate(modelrequisitorName, nameof(modelrequisitorName), required: false);
-            SourceExpression.Validate(modelrequiredDate, nameof(modelrequiredDate), required: false);
-            SourceExpression.Validate(modelsupplierReferenceNumber, nameof(modelsupplierReferenceNumber), required: false);
-            SourceExpression.Validate(modeldescription, nameof(modeldescription), required: false);
-            SourceExpression.Validate(modelcomments, nameof(modelcomments), required: false);
-            SourceExpression.Validate(modeldivisionName, nameof(modeldivisionName), required: false);
-            SourceExpression.Validate(modelcurrencyCode, nameof(modelcurrencyCode), required: false);
-            SourceExpression.Validate(modellineItems, nameof(modellineItems), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/PurchaseOrderIntegration/Add";
@@ -180,15 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<int> CreateSupplier([WorkflowExpression] Func<string> modeladdressLines = null, [WorkflowExpression] Func<string> modelcontactName = null, [WorkflowExpression] Func<string> modelcountryCode = null, [WorkflowExpression] Func<string> modelemail = null, [WorkflowExpression] Func<string> modelpostCode = null, [WorkflowExpression] Func<string> modelreferenceNumber = null, [WorkflowExpression] Func<string> modelsupplierName = null, [WorkflowExpression] Func<string> modeltelephone = null, [WorkflowExpression] Func<string> modeltype = null)
         {
-            SourceExpression.Validate(modeladdressLines, nameof(modeladdressLines), required: false);
-            SourceExpression.Validate(modelcontactName, nameof(modelcontactName), required: false);
-            SourceExpression.Validate(modelcountryCode, nameof(modelcountryCode), required: false);
-            SourceExpression.Validate(modelemail, nameof(modelemail), required: false);
-            SourceExpression.Validate(modelpostCode, nameof(modelpostCode), required: false);
-            SourceExpression.Validate(modelreferenceNumber, nameof(modelreferenceNumber), required: false);
-            SourceExpression.Validate(modelsupplierName, nameof(modelsupplierName), required: false);
-            SourceExpression.Validate(modeltelephone, nameof(modeltelephone), required: false);
-            SourceExpression.Validate(modeltype, nameof(modeltype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/SupplierIntegration/Add";
@@ -263,17 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<JToken> UpdateSupplier([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> modelid = null, [WorkflowExpression] Func<string> modeladdressLines = null, [WorkflowExpression] Func<string> modelcontactName = null, [WorkflowExpression] Func<string> modelcountryCode = null, [WorkflowExpression] Func<string> modelemail = null, [WorkflowExpression] Func<string> modelpostCode = null, [WorkflowExpression] Func<string> modelreferenceNumber = null, [WorkflowExpression] Func<string> modelsupplierName = null, [WorkflowExpression] Func<string> modeltelephone = null, [WorkflowExpression] Func<string> modeltype = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(modelid, nameof(modelid), required: false);
-            SourceExpression.Validate(modeladdressLines, nameof(modeladdressLines), required: false);
-            SourceExpression.Validate(modelcontactName, nameof(modelcontactName), required: false);
-            SourceExpression.Validate(modelcountryCode, nameof(modelcountryCode), required: false);
-            SourceExpression.Validate(modelemail, nameof(modelemail), required: false);
-            SourceExpression.Validate(modelpostCode, nameof(modelpostCode), required: false);
-            SourceExpression.Validate(modelreferenceNumber, nameof(modelreferenceNumber), required: false);
-            SourceExpression.Validate(modelsupplierName, nameof(modelsupplierName), required: false);
-            SourceExpression.Validate(modeltelephone, nameof(modeltelephone), required: false);
-            SourceExpression.Validate(modeltype, nameof(modeltype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/SupplierIntegration/Update";
@@ -383,7 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
 
         public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved([WorkflowExpression] Func<documentTypeInput> documentType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(documentType, nameof(documentType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/DocumentsIntegration/GetApproved";

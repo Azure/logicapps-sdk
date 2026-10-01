@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<HistoryResponse> History([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> dt = null, [WorkflowExpression] Func<string> focus = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(dt, nameof(dt), required: false);
-            SourceExpression.Validate(focus, nameof(focus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/account/history";
@@ -93,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<SourcesResponse> Sources([WorkflowExpression] Func<string> source = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/account/sources";
@@ -110,10 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<TeamstreamResponse> Teamstream([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> dt = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> focus = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(dt, nameof(dt), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(focus, nameof(focus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/account/organization/teamstream";
@@ -136,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ClassificationsResponse> Classifications([WorkflowExpression] Func<string> classification = null)
         {
-            SourceExpression.Validate(classification, nameof(classification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/account/classifications";
@@ -153,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<TagActionResponse> GetTags([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/tags";
@@ -229,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<BulkClassificationResponse> GetBulkClassificationStatus([WorkflowExpression] Func<string[]> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/bulk/classification";
@@ -265,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ClassificationInfo> GetClassificationStatus([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/classification";
@@ -301,7 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<CompromisedStatusResponse> GetCompromisedStatus([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/ever-compromised";
@@ -337,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<DynamicDnsResponse> GetDynamicDNSStatus([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/dynamic-dns";
@@ -373,7 +359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<MonitorStatusResponse> GetMonitorStatus([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/monitor";
@@ -389,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<SinkholeStatusResponse> GetSinkholeStatus([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/sinkhole";
@@ -425,7 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ActionSearchTagResponse> SearchTags([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/tags/search";
@@ -441,13 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<JToken> FindArtifact([WorkflowExpression] Func<string> artifact = null, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> owner = null, [WorkflowExpression] Func<string> creator = null, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(artifact, nameof(artifact), required: false);
-            SourceExpression.Validate(project, nameof(project), required: false);
-            SourceExpression.Validate(owner, nameof(owner), required: false);
-            SourceExpression.Validate(creator, nameof(creator), required: false);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/artifact";
@@ -596,8 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ArticlesIndicatorsResponse> GetArticlesIndicators([WorkflowExpression] Func<string> articleGuid = null, [WorkflowExpression] Func<string> startDate = null)
         {
-            SourceExpression.Validate(articleGuid, nameof(articleGuid), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/articles/indicators";
@@ -616,8 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ArticlesListResponse> GetArticlesByIndicator([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/articles/indicator";
@@ -635,7 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ArticlesResponse> GetArticleDetails([WorkflowExpression] Func<string> article)
         {
-            SourceExpression.Validate(article, nameof(article), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/articles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(article, 1));
@@ -650,9 +621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ArticlesListResponse> GetArticles([WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/articles";
@@ -676,7 +644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<SummaryDataCardResponse> SummaryDataCard([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards/summary";
@@ -692,7 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<EnrichmentResponse> GetEnrichment([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enrichment";
@@ -708,7 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<EnrichmentMalwareResponse> GetMalware([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enrichment/malware";
@@ -724,7 +689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<EnrichmentOsintResponse> GetOSINT([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enrichment/osint";
@@ -740,7 +704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<EnrichmentSubdomainsResponse> GetSubDomains([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enrichment/subdomains";
@@ -756,7 +719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ServicesResponse> GetOpenPorts([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services";
@@ -772,12 +734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<MonitorResponse> GetAlerts([WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> artifact = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: false);
-            SourceExpression.Validate(artifact, nameof(artifact), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/monitor";
@@ -806,12 +762,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<JToken> FindProject([WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> owner = null, [WorkflowExpression] Func<string> creator = null, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<visibilityInput> visibility = null, [WorkflowExpression] Func<bool> featured = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: false);
-            SourceExpression.Validate(owner, nameof(owner), required: false);
-            SourceExpression.Validate(creator, nameof(creator), required: false);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(visibility, nameof(visibility), required: false);
-            SourceExpression.Validate(featured, nameof(featured), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/project";
@@ -958,7 +908,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<SSLResponse> GetSSLCertificate([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ssl-certificate";
@@ -974,7 +923,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<SSLHistoryResponse> GetSSLCertificateHistory([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ssl-certificate/history";
@@ -990,8 +938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<SSLSearchResponse> SearchSSLCertificates([WorkflowExpression] Func<fieldInput> field, [WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(field, nameof(field), required: true);
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ssl-certificate/search";
@@ -1008,7 +954,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<SSLSearchKeywordResponse> SearchSSLCertificatesByKeyword([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ssl-certificate/search/keyword";
@@ -1024,7 +969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ArtifactTagResponse> GetArtifactTags([WorkflowExpression] Func<string> artifact)
         {
-            SourceExpression.Validate(artifact, nameof(artifact), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/artifact/tag";
@@ -1100,8 +1044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<TrackersSearchResponse> SearchTrackers([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trackers/search";
@@ -1118,10 +1060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ComponentInfo> GetComponents([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/host-attributes/components";
@@ -1144,11 +1082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<PairInfo> GetPairs([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<directionInput> direction, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(direction, nameof(direction), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/host-attributes/pairs";
@@ -1172,10 +1105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<TrackerInfo> GetTrackers([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/host-attributes/trackers";
@@ -1198,10 +1127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<CookiesResponse> GetCookies([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/host-attributes/cookies";
@@ -1224,10 +1149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<CookiesSearchResponse> GetAddressesByCookieDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<orderInput> order = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cookies/domain/{0}/addresses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
@@ -1251,10 +1172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<CookiesSearchResponse> GetAddressesByCookieName([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<orderInput> order = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cookies/name/{0}/addresses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -1278,10 +1195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<CookiesSearchResponse> GetHostsByCookieDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<orderInput> order = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cookies/domain/{0}/hosts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
@@ -1305,10 +1218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<CookiesSearchResponse> GetHostsByCookieName([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<orderInput> order = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cookies/name/{0}/hosts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -1332,12 +1241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ComponentsSearchAddressesResponse> GetAddressesByComponentName([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<orderInput> order = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/components/{0}/addresses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -1365,12 +1268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ComponentsSearchHostsResponse> GetHostsByComponentName([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<orderInput> order = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/components/{0}/hosts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -1398,10 +1295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<PassiveDnsSearchResponse> GetPassiveDNS([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> timeout = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(timeout, nameof(timeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dns/passive";
@@ -1424,10 +1317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<PassiveUniqueDnsSearchResponse> GetUniquePassiveDNS([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> timeout = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(timeout, nameof(timeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dns/passive/unique";
@@ -1450,7 +1339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<KeywordDnsSearchResponse> SearchByKeyword([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dns/search/keyword";
@@ -1466,9 +1354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<JToken> GetWHOIS([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<bool> compactRecord = null, [WorkflowExpression] Func<bool> history = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(compactRecord, nameof(compactRecord), required: false);
-            SourceExpression.Validate(history, nameof(history), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/whois";
@@ -1488,7 +1373,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<WhoisKeywordSearchResponse> SearchWHOISKeyword([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/whois/search/keyword";
@@ -1504,8 +1388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ResultListResponse> SearchWHOIS([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<fieldInput> field)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(field, nameof(field), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/whois/search";
@@ -1522,7 +1404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<EnrichmentBulkResponse> GetBulkEnrichment([WorkflowExpression] Func<string[]> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enrichment/bulk";
@@ -1538,7 +1419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<MalwareBulkSearchResults> GetMalwareBulk([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enrichment/bulk/malware";
@@ -1554,7 +1434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<OsintBulkResponse> GetOSINTBulk([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enrichment/bulk/osint";
@@ -1570,7 +1449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<ReputationResponse> Reputation([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reputation";
@@ -1586,7 +1464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<IntelProfilesResponse> GetProfile([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intel-profiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1601,13 +1478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<IntelProfilesIndicatorListResponse> GetIndicatorsOfProfile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> types = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(types, nameof(types), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(sources, nameof(sources), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intel-profiles/{0}/indicators", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1636,8 +1506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<IntelProfilesListResponse> GetAllProfiles([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/intel-profiles";
@@ -1656,10 +1524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<IntelProfilesListResponse> GetAllProfilesByIndicators([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> types = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> sources = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(types, nameof(types), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(sources, nameof(sources), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/intel-profiles/indicator";
@@ -1695,7 +1559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfacePriorityResponse> GetAttackSurfaceByLevel([WorkflowExpression] Func<levelInput> level)
         {
-            SourceExpression.Validate(level, nameof(level), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/priority/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(level, 1));
@@ -1710,11 +1573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfaceInsightResponse> GetAttackSurfaceByInsight([WorkflowExpression] Func<int> insightId, [WorkflowExpression] Func<string> groupBy = null, [WorkflowExpression] Func<string> segmentBy = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(insightId, nameof(insightId), required: true);
-            SourceExpression.Validate(groupBy, nameof(groupBy), required: false);
-            SourceExpression.Validate(segmentBy, nameof(segmentBy), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/insight/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(insightId, 1));
@@ -1740,7 +1598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<VendorInfo> GetVendorById([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/third-party/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -1755,8 +1612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfaceResponse> GetVendors([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/attack-surface/third-party";
@@ -1777,8 +1632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfacePriorityResponse> GetVendorsByLevel([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<levelInput> level)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(level, nameof(level), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/third-party/{0}/priority/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(level, 1));
@@ -1793,12 +1646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfaceInsightResponse> GetVendorsByInsightId([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> insightId, [WorkflowExpression] Func<string> groupBy = null, [WorkflowExpression] Func<string> segmentBy = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(insightId, nameof(insightId), required: true);
-            SourceExpression.Validate(groupBy, nameof(groupBy), required: false);
-            SourceExpression.Validate(segmentBy, nameof(segmentBy), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/third-party/{0}/insight/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(insightId, 1));
@@ -1824,8 +1671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<VulnerableComponentResponse> GetVulnComponents([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/attack-surface/vuln-intel/components";
@@ -1846,9 +1691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<VulnerableComponentResponse> GetThirdPartyVulnComponents([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/vuln-intel/third-party/{0}/components", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -1869,8 +1711,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfaceCveResponse> GetVulnInfo([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/attack-surface/vuln-intel/cves";
@@ -1891,9 +1731,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfaceCveResponse> GetThirdPartyVulnInfo([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/vuln-intel/third-party/{0}/cves", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -1914,9 +1751,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfaceCveObservationsResponse> GetVulnObservation([WorkflowExpression] Func<string> cveId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(cveId, nameof(cveId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/vuln-intel/cves/{0}/observations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cveId, 1));
@@ -1937,10 +1771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
         public IBodyWorkflowAction<AttackSurfaceCveObservationsResponse> GetThirdPartyVulnObservation([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> cveId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(cveId, nameof(cveId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attack-surface/vuln-intel/third-party/{0}/cves/{1}/observations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cveId, 1));

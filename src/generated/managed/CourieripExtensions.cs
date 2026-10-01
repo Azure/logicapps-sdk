@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageSendPostResponse> MessageSend([WorkflowExpression] Func<string> idempotency, [WorkflowExpression] Func<string> bodymessagecontenttitle = null, [WorkflowExpression] Func<string> bodymessagecontentbody = null, [WorkflowExpression] Func<string> bodymessagetouserId = null, [WorkflowExpression] Func<string> bodymessagetolistId = null, [WorkflowExpression] Func<string> bodymessagetoaudienceId = null, [WorkflowExpression] Func<string> bodymessagetoemail = null, [WorkflowExpression] Func<string> bodymessagetophoneNumber = null, [WorkflowExpression] Func<string> bodymessagetolocale = null)
         {
-            SourceExpression.Validate(idempotency, nameof(idempotency), required: true);
-            SourceExpression.Validate(bodymessagecontenttitle, nameof(bodymessagecontenttitle), required: false);
-            SourceExpression.Validate(bodymessagecontentbody, nameof(bodymessagecontentbody), required: false);
-            SourceExpression.Validate(bodymessagetouserId, nameof(bodymessagetouserId), required: false);
-            SourceExpression.Validate(bodymessagetolistId, nameof(bodymessagetolistId), required: false);
-            SourceExpression.Validate(bodymessagetoaudienceId, nameof(bodymessagetoaudienceId), required: false);
-            SourceExpression.Validate(bodymessagetoemail, nameof(bodymessagetoemail), required: false);
-            SourceExpression.Validate(bodymessagetophoneNumber, nameof(bodymessagetophoneNumber), required: false);
-            SourceExpression.Validate(bodymessagetolocale, nameof(bodymessagetolocale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/send";
@@ -132,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudienceGetResponse> AudienceGet([WorkflowExpression] Func<string> audienceId)
         {
-            SourceExpression.Validate(audienceId, nameof(audienceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audiences/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
@@ -147,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> AudienceDelete([WorkflowExpression] Func<string> audienceId)
         {
-            SourceExpression.Validate(audienceId, nameof(audienceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audiences/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
@@ -162,12 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudiencePutResponse> AudiencePut([WorkflowExpression] Func<string> audienceId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyfilterpath = null, [WorkflowExpression] Func<string> bodyfilterOperator = null, [WorkflowExpression] Func<string> bodyfiltervalue = null, [WorkflowExpression] Func<bodyfilterfiltersInputItem[]> bodyfilterfilters = null)
         {
-            SourceExpression.Validate(audienceId, nameof(audienceId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyfilterpath, nameof(bodyfilterpath), required: false);
-            SourceExpression.Validate(bodyfilterOperator, nameof(bodyfilterOperator), required: false);
-            SourceExpression.Validate(bodyfiltervalue, nameof(bodyfiltervalue), required: false);
-            SourceExpression.Validate(bodyfilterfilters, nameof(bodyfilterfilters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audiences/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
@@ -226,8 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudienceMembersGetResponse> AudienceMembersGet([WorkflowExpression] Func<string> audienceId, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(audienceId, nameof(audienceId), required: true);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audiences/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(audienceId, 1));
@@ -244,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudiencesGetResponse> AudiencesGet([WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/audiences";
@@ -261,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AuditEventsGetResponse> AuditEventsGet([WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/audit-events";
@@ -278,7 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AuditEventGetResponse> AuditEventGet([WorkflowExpression] Func<string> auditEventId)
         {
-            SourceExpression.Validate(auditEventId, nameof(auditEventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audit-events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditEventId, 1));
@@ -293,10 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AutomationTemplatedPostResponse> AutomationTemplated([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> bodybrand = null, [WorkflowExpression] Func<string> bodytemplate = null, [WorkflowExpression] Func<string> bodyrecipient = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(bodybrand, nameof(bodybrand), required: false);
-            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: false);
-            SourceExpression.Validate(bodyrecipient, nameof(bodyrecipient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/automations/{0}/invoke", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -351,11 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AutomationAdHocPostResponse> AutomationAdHoc([WorkflowExpression] Func<JToken[]> bodyautomationsteps = null, [WorkflowExpression] Func<string> bodyautomationcancelationToken = null, [WorkflowExpression] Func<string> bodybrand = null, [WorkflowExpression] Func<string> bodytemplate = null, [WorkflowExpression] Func<string> bodyrecipient = null)
         {
-            SourceExpression.Validate(bodyautomationsteps, nameof(bodyautomationsteps), required: false);
-            SourceExpression.Validate(bodyautomationcancelationToken, nameof(bodyautomationcancelationToken), required: false);
-            SourceExpression.Validate(bodybrand, nameof(bodybrand), required: false);
-            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: false);
-            SourceExpression.Validate(bodyrecipient, nameof(bodyrecipient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/automations/invoke";
@@ -430,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BrandsGetResponse> BrandsGet([WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/brands";
@@ -447,23 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> Brand([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodysettingscolorsprimary = null, [WorkflowExpression] Func<string> bodysettingscolorssecondary = null, [WorkflowExpression] Func<string> bodysettingscolorstertiary = null, [WorkflowExpression] Func<string> bodysettingsemailheaderbarColor = null, [WorkflowExpression] Func<string> bodysettingsemailheaderlogohref = null, [WorkflowExpression] Func<string> bodysettingsemailheaderlogoimage = null, [WorkflowExpression] Func<string> bodysettingsemailfootermarkdown = null, [WorkflowExpression] Func<string> bodysettingsemailfootersocialfacebookurl = null, [WorkflowExpression] Func<string> bodysettingsemailfootersocialinstagramurl = null, [WorkflowExpression] Func<string> bodysettingsemailfootersociallinkedinurl = null, [WorkflowExpression] Func<string> bodysettingsemailfootersocialmediumurl = null, [WorkflowExpression] Func<string> bodysettingsemailfootersocialtwitterurl = null, [WorkflowExpression] Func<bool> bodysettingsinappdisableMessageIcon = null, [WorkflowExpression] Func<string> bodysettingsinappplacement = null, [WorkflowExpression] Func<string[]> bodysnippetsitems = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodysettingscolorsprimary, nameof(bodysettingscolorsprimary), required: false);
-            SourceExpression.Validate(bodysettingscolorssecondary, nameof(bodysettingscolorssecondary), required: false);
-            SourceExpression.Validate(bodysettingscolorstertiary, nameof(bodysettingscolorstertiary), required: false);
-            SourceExpression.Validate(bodysettingsemailheaderbarColor, nameof(bodysettingsemailheaderbarColor), required: false);
-            SourceExpression.Validate(bodysettingsemailheaderlogohref, nameof(bodysettingsemailheaderlogohref), required: false);
-            SourceExpression.Validate(bodysettingsemailheaderlogoimage, nameof(bodysettingsemailheaderlogoimage), required: false);
-            SourceExpression.Validate(bodysettingsemailfootermarkdown, nameof(bodysettingsemailfootermarkdown), required: false);
-            SourceExpression.Validate(bodysettingsemailfootersocialfacebookurl, nameof(bodysettingsemailfootersocialfacebookurl), required: false);
-            SourceExpression.Validate(bodysettingsemailfootersocialinstagramurl, nameof(bodysettingsemailfootersocialinstagramurl), required: false);
-            SourceExpression.Validate(bodysettingsemailfootersociallinkedinurl, nameof(bodysettingsemailfootersociallinkedinurl), required: false);
-            SourceExpression.Validate(bodysettingsemailfootersocialmediumurl, nameof(bodysettingsemailfootersocialmediumurl), required: false);
-            SourceExpression.Validate(bodysettingsemailfootersocialtwitterurl, nameof(bodysettingsemailfootersocialtwitterurl), required: false);
-            SourceExpression.Validate(bodysettingsinappdisableMessageIcon, nameof(bodysettingsinappdisableMessageIcon), required: false);
-            SourceExpression.Validate(bodysettingsinappplacement, nameof(bodysettingsinappplacement), required: false);
-            SourceExpression.Validate(bodysnippetsitems, nameof(bodysnippetsitems), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/brands";
@@ -702,7 +653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BrandGetResponse> BrandGet([WorkflowExpression] Func<string> brandId)
         {
-            SourceExpression.Validate(brandId, nameof(brandId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/brands/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
@@ -717,20 +667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobPostResponse> BulkJob([WorkflowExpression] Func<string> bodymessageEvent = null, [WorkflowExpression] Func<string> bodymessagebrand = null, [WorkflowExpression] Func<string> bodymessagetemplate = null, [WorkflowExpression] Func<string> bodymessagebrandId = null, [WorkflowExpression] Func<string> bodymessageroutingmethod = null, [WorkflowExpression] Func<string[]> bodymessageroutingchannels = null, [WorkflowExpression] Func<string> bodymessagemetadataEvent = null, [WorkflowExpression] Func<string[]> bodymessagemetadatatags = null, [WorkflowExpression] Func<string> bodymessagemetadatatraceId = null, [WorkflowExpression] Func<string> bodymessagemetadatautmcampaign = null, [WorkflowExpression] Func<string> bodymessagemetadatautmcontent = null, [WorkflowExpression] Func<string> bodymessagemetadatautmmedium = null, [WorkflowExpression] Func<string> bodymessagemetadatautmsource = null, [WorkflowExpression] Func<string> bodymessagemetadatautmterm = null)
         {
-            SourceExpression.Validate(bodymessageEvent, nameof(bodymessageEvent), required: false);
-            SourceExpression.Validate(bodymessagebrand, nameof(bodymessagebrand), required: false);
-            SourceExpression.Validate(bodymessagetemplate, nameof(bodymessagetemplate), required: false);
-            SourceExpression.Validate(bodymessagebrandId, nameof(bodymessagebrandId), required: false);
-            SourceExpression.Validate(bodymessageroutingmethod, nameof(bodymessageroutingmethod), required: false);
-            SourceExpression.Validate(bodymessageroutingchannels, nameof(bodymessageroutingchannels), required: false);
-            SourceExpression.Validate(bodymessagemetadataEvent, nameof(bodymessagemetadataEvent), required: false);
-            SourceExpression.Validate(bodymessagemetadatatags, nameof(bodymessagemetadatatags), required: false);
-            SourceExpression.Validate(bodymessagemetadatatraceId, nameof(bodymessagemetadatatraceId), required: false);
-            SourceExpression.Validate(bodymessagemetadatautmcampaign, nameof(bodymessagemetadatautmcampaign), required: false);
-            SourceExpression.Validate(bodymessagemetadatautmcontent, nameof(bodymessagemetadatautmcontent), required: false);
-            SourceExpression.Validate(bodymessagemetadatautmmedium, nameof(bodymessagemetadatautmmedium), required: false);
-            SourceExpression.Validate(bodymessagemetadatautmsource, nameof(bodymessagemetadatautmsource), required: false);
-            SourceExpression.Validate(bodymessagemetadatautmterm, nameof(bodymessagemetadatautmterm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bulk";
@@ -899,7 +835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobGetResponse> BulkJobGet([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bulk/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -914,8 +849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> BulkJobUsers([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<bodyusersInputItem[]> bodyusers = null)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bulk/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -942,7 +875,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<JToken> BulkJobRun([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bulk/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -957,7 +889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobUsersGetResponse> BulkJobUsersGet([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bulk/{0}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -986,7 +917,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ListGetResponse> ListGet([WorkflowExpression] Func<string> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1001,7 +931,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListDelete([WorkflowExpression] Func<string> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1016,8 +945,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListPut([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1068,7 +995,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListRestorePut([WorkflowExpression] Func<string> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1083,8 +1009,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ListSubscriptionsGetResponse> ListSubscriptionsGet([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1101,8 +1025,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListSubscribers([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1129,8 +1051,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListSubscribeDelete([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -1145,15 +1065,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessagesGetResponse> MessagesGet([WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> @event = null, [WorkflowExpression] Func<string> list = null, [WorkflowExpression] Func<string> messageId = null, [WorkflowExpression] Func<string> notification = null, [WorkflowExpression] Func<string> recipient = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> tags = null)
         {
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(@event, nameof(@event), required: false);
-            SourceExpression.Validate(list, nameof(list), required: false);
-            SourceExpression.Validate(messageId, nameof(messageId), required: false);
-            SourceExpression.Validate(notification, nameof(notification), required: false);
-            SourceExpression.Validate(recipient, nameof(recipient), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(tags, nameof(tags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages";
@@ -1186,7 +1097,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageGetResponse> MessageGet([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/messages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -1201,8 +1111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageHistoryGetResponse> MessageHistoryGet([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/messages/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -1219,7 +1127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageContentGetResponse> MessageContentGet([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/messages/{0}/output", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -1234,7 +1141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> MessagePut([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -1249,7 +1155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<NotificationsGetResponse> NotificationsGet([WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notifications";
@@ -1266,7 +1171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfileGetResponse> ProfileGet([WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -1281,7 +1185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfileDeleteResponse> ProfileDelete([WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -1296,59 +1199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> Profile([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodyprofileemail = null, [WorkflowExpression] Func<string> bodyprofilephoneNumber = null, [WorkflowExpression] Func<string> bodyprofileaddressformatted = null, [WorkflowExpression] Func<string> bodyprofileaddressstreetAddress = null, [WorkflowExpression] Func<string> bodyprofileaddresslocality = null, [WorkflowExpression] Func<string> bodyprofileaddressregion = null, [WorkflowExpression] Func<string> bodyprofileaddresspostalCode = null, [WorkflowExpression] Func<string> bodyprofileaddresscountry = null, [WorkflowExpression] Func<string> bodyprofilebirthdate = null, [WorkflowExpression] Func<bool> bodyprofileemailVerified = null, [WorkflowExpression] Func<bool> bodyprofilephoneNumberVerified = null, [WorkflowExpression] Func<string> bodyprofilegivenName = null, [WorkflowExpression] Func<string> bodyprofilemiddleName = null, [WorkflowExpression] Func<string> bodyprofilefamilyName = null, [WorkflowExpression] Func<string> bodyprofilepreferredName = null, [WorkflowExpression] Func<string> bodyprofilegender = null, [WorkflowExpression] Func<string> bodyprofilelocale = null, [WorkflowExpression] Func<string> bodyprofilepicture = null, [WorkflowExpression] Func<string> bodyprofileprofile = null, [WorkflowExpression] Func<string> bodyprofilesub = null, [WorkflowExpression] Func<string> bodyprofileupdatedAt = null, [WorkflowExpression] Func<string> bodyprofilewebsite = null, [WorkflowExpression] Func<string> bodyprofilezoneinfo = null, [WorkflowExpression] Func<string> bodyprofileairshipaudiencenamedUser = null, [WorkflowExpression] Func<string[]> bodyprofileairshipdeviceTypes = null, [WorkflowExpression] Func<string> bodyprofileairshipapn = null, [WorkflowExpression] Func<string> bodyprofileairshiptargetArn = null, [WorkflowExpression] Func<string> bodyprofileairshipdiscordchannelId = null, [WorkflowExpression] Func<string> bodyprofileairshipdiscorduserId = null, [WorkflowExpression] Func<string> bodyprofileairshipexpotoken = null, [WorkflowExpression] Func<string[]> bodyprofileairshipexpotokens = null, [WorkflowExpression] Func<string> bodyprofileairshipfacebookPSId = null, [WorkflowExpression] Func<string> bodyprofileairshipfirebaseToken = null, [WorkflowExpression] Func<string> bodyprofileairshipintercomfrom = null, [WorkflowExpression] Func<string> bodyprofileairshipintercomtoid = null, [WorkflowExpression] Func<string> bodyprofileairshipmsTeamsuserId = null, [WorkflowExpression] Func<string> bodyprofileairshipmsTeamsconversationId = null, [WorkflowExpression] Func<string> bodyprofileairshipmsTeamstenantId = null, [WorkflowExpression] Func<string> bodyprofileairshipmsTeamsserviceUrl = null, [WorkflowExpression] Func<string> bodyprofileairshiponeSignalPlayerId = null, [WorkflowExpression] Func<string> bodyprofileairshipslackaccessToken = null, [WorkflowExpression] Func<string> bodyprofileairshipslackchannel = null, [WorkflowExpression] Func<string> bodyprofileairshipslackemail = null, [WorkflowExpression] Func<string> bodyprofileairshipslackuserId = null, [WorkflowExpression] Func<string> bodyprofileairshipslackincomingWebhookurl = null, [WorkflowExpression] Func<string> bodyprofileairshipwebhookurl = null, [WorkflowExpression] Func<string> bodyprofileairshipwebhookmethod = null, [WorkflowExpression] Func<string> bodyprofileairshipwebhookauthenticationmode = null, [WorkflowExpression] Func<string> bodyprofileairshipwebhookauthenticationusername = null, [WorkflowExpression] Func<string> bodyprofileairshipwebhookauthenticationpassword = null, [WorkflowExpression] Func<string> bodyprofileairshipwebhookauthenticationtoken = null, [WorkflowExpression] Func<string> bodyprofileairshipwebhookprofile = null)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(bodyprofileemail, nameof(bodyprofileemail), required: false);
-            SourceExpression.Validate(bodyprofilephoneNumber, nameof(bodyprofilephoneNumber), required: false);
-            SourceExpression.Validate(bodyprofileaddressformatted, nameof(bodyprofileaddressformatted), required: false);
-            SourceExpression.Validate(bodyprofileaddressstreetAddress, nameof(bodyprofileaddressstreetAddress), required: false);
-            SourceExpression.Validate(bodyprofileaddresslocality, nameof(bodyprofileaddresslocality), required: false);
-            SourceExpression.Validate(bodyprofileaddressregion, nameof(bodyprofileaddressregion), required: false);
-            SourceExpression.Validate(bodyprofileaddresspostalCode, nameof(bodyprofileaddresspostalCode), required: false);
-            SourceExpression.Validate(bodyprofileaddresscountry, nameof(bodyprofileaddresscountry), required: false);
-            SourceExpression.Validate(bodyprofilebirthdate, nameof(bodyprofilebirthdate), required: false);
-            SourceExpression.Validate(bodyprofileemailVerified, nameof(bodyprofileemailVerified), required: false);
-            SourceExpression.Validate(bodyprofilephoneNumberVerified, nameof(bodyprofilephoneNumberVerified), required: false);
-            SourceExpression.Validate(bodyprofilegivenName, nameof(bodyprofilegivenName), required: false);
-            SourceExpression.Validate(bodyprofilemiddleName, nameof(bodyprofilemiddleName), required: false);
-            SourceExpression.Validate(bodyprofilefamilyName, nameof(bodyprofilefamilyName), required: false);
-            SourceExpression.Validate(bodyprofilepreferredName, nameof(bodyprofilepreferredName), required: false);
-            SourceExpression.Validate(bodyprofilegender, nameof(bodyprofilegender), required: false);
-            SourceExpression.Validate(bodyprofilelocale, nameof(bodyprofilelocale), required: false);
-            SourceExpression.Validate(bodyprofilepicture, nameof(bodyprofilepicture), required: false);
-            SourceExpression.Validate(bodyprofileprofile, nameof(bodyprofileprofile), required: false);
-            SourceExpression.Validate(bodyprofilesub, nameof(bodyprofilesub), required: false);
-            SourceExpression.Validate(bodyprofileupdatedAt, nameof(bodyprofileupdatedAt), required: false);
-            SourceExpression.Validate(bodyprofilewebsite, nameof(bodyprofilewebsite), required: false);
-            SourceExpression.Validate(bodyprofilezoneinfo, nameof(bodyprofilezoneinfo), required: false);
-            SourceExpression.Validate(bodyprofileairshipaudiencenamedUser, nameof(bodyprofileairshipaudiencenamedUser), required: false);
-            SourceExpression.Validate(bodyprofileairshipdeviceTypes, nameof(bodyprofileairshipdeviceTypes), required: false);
-            SourceExpression.Validate(bodyprofileairshipapn, nameof(bodyprofileairshipapn), required: false);
-            SourceExpression.Validate(bodyprofileairshiptargetArn, nameof(bodyprofileairshiptargetArn), required: false);
-            SourceExpression.Validate(bodyprofileairshipdiscordchannelId, nameof(bodyprofileairshipdiscordchannelId), required: false);
-            SourceExpression.Validate(bodyprofileairshipdiscorduserId, nameof(bodyprofileairshipdiscorduserId), required: false);
-            SourceExpression.Validate(bodyprofileairshipexpotoken, nameof(bodyprofileairshipexpotoken), required: false);
-            SourceExpression.Validate(bodyprofileairshipexpotokens, nameof(bodyprofileairshipexpotokens), required: false);
-            SourceExpression.Validate(bodyprofileairshipfacebookPSId, nameof(bodyprofileairshipfacebookPSId), required: false);
-            SourceExpression.Validate(bodyprofileairshipfirebaseToken, nameof(bodyprofileairshipfirebaseToken), required: false);
-            SourceExpression.Validate(bodyprofileairshipintercomfrom, nameof(bodyprofileairshipintercomfrom), required: false);
-            SourceExpression.Validate(bodyprofileairshipintercomtoid, nameof(bodyprofileairshipintercomtoid), required: false);
-            SourceExpression.Validate(bodyprofileairshipmsTeamsuserId, nameof(bodyprofileairshipmsTeamsuserId), required: false);
-            SourceExpression.Validate(bodyprofileairshipmsTeamsconversationId, nameof(bodyprofileairshipmsTeamsconversationId), required: false);
-            SourceExpression.Validate(bodyprofileairshipmsTeamstenantId, nameof(bodyprofileairshipmsTeamstenantId), required: false);
-            SourceExpression.Validate(bodyprofileairshipmsTeamsserviceUrl, nameof(bodyprofileairshipmsTeamsserviceUrl), required: false);
-            SourceExpression.Validate(bodyprofileairshiponeSignalPlayerId, nameof(bodyprofileairshiponeSignalPlayerId), required: false);
-            SourceExpression.Validate(bodyprofileairshipslackaccessToken, nameof(bodyprofileairshipslackaccessToken), required: false);
-            SourceExpression.Validate(bodyprofileairshipslackchannel, nameof(bodyprofileairshipslackchannel), required: false);
-            SourceExpression.Validate(bodyprofileairshipslackemail, nameof(bodyprofileairshipslackemail), required: false);
-            SourceExpression.Validate(bodyprofileairshipslackuserId, nameof(bodyprofileairshipslackuserId), required: false);
-            SourceExpression.Validate(bodyprofileairshipslackincomingWebhookurl, nameof(bodyprofileairshipslackincomingWebhookurl), required: false);
-            SourceExpression.Validate(bodyprofileairshipwebhookurl, nameof(bodyprofileairshipwebhookurl), required: false);
-            SourceExpression.Validate(bodyprofileairshipwebhookmethod, nameof(bodyprofileairshipwebhookmethod), required: false);
-            SourceExpression.Validate(bodyprofileairshipwebhookauthenticationmode, nameof(bodyprofileairshipwebhookauthenticationmode), required: false);
-            SourceExpression.Validate(bodyprofileairshipwebhookauthenticationusername, nameof(bodyprofileairshipwebhookauthenticationusername), required: false);
-            SourceExpression.Validate(bodyprofileairshipwebhookauthenticationpassword, nameof(bodyprofileairshipwebhookauthenticationpassword), required: false);
-            SourceExpression.Validate(bodyprofileairshipwebhookauthenticationtoken, nameof(bodyprofileairshipwebhookauthenticationtoken), required: false);
-            SourceExpression.Validate(bodyprofileairshipwebhookprofile, nameof(bodyprofileairshipwebhookprofile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -1801,8 +1651,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfilePatchResponse> ProfilePatch([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));

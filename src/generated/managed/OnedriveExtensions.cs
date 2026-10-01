@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadata([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> UpdateFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -46,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IWorkflowAction DeleteFile([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -61,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadataByPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/GetFileByPath";
@@ -77,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<string> GetFileContentByPath([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/GetFileContentByPath";
@@ -97,8 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -116,9 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> CreateFile([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/files";
@@ -136,9 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> CopyFile([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/copyFile";
@@ -158,9 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> CopyDriveFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -179,9 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> CopyDriveFileByPath([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/CopyFileByPath";
@@ -201,9 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> MoveFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/move", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -222,9 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata> MoveFileByPath([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/MoveFileByPath";
@@ -244,8 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<string> ConvertFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<typeInput> type = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/convert", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -263,8 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<string> ConvertFileByPath([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<typeInput> type = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/ConvertFileByPath";
@@ -283,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<TagsInfo> GetFileTags([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -298,8 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<TagsInfo> AddFileTag([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> tag)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(tag, nameof(tag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -315,8 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IWorkflowAction RemoveFileTag([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> tag)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(tag, nameof(tag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -332,8 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<Thumbnail> GetFileThumbnail([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<sizeInput> size)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(size, nameof(size), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/thumbnail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -363,10 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata[]> FindFiles([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<findModeInput> findMode, [WorkflowExpression] Func<int> maxFileCount = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(findMode, nameof(findMode), required: true);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/folders/{0}/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -386,10 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata[]> FindFilesByPath([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<findModeInput> findMode, [WorkflowExpression] Func<int> maxFileCount = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(findMode, nameof(findMode), required: true);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/findFile";
@@ -410,8 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<SharingLink> CreateShareLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/shareV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -427,8 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<SharingLink> CreateShareLinkByPath([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/CreateShareLinkByPathV2";
@@ -445,9 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/extractFolderV2";
@@ -467,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
         public IBodyWorkflowAction<BlobMetadataPage> ListFolder([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/foldersV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -486,8 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     {
         public IBodyWorkflowTrigger<BlobMetadata[]> OnDeletedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/triggers/batch/ondeletedfile";
@@ -506,9 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
 
         public IBodyWorkflowTrigger<string> OnNewFile([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/triggers/onnewfilev2";
@@ -530,9 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
 
         public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onnewfilesv2";
@@ -554,9 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
 
         public IBodyWorkflowTrigger<string> OnUpdatedFile([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/triggers/onupdatedfilev2";
@@ -579,9 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
 
         public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onupdatedfilesv2";

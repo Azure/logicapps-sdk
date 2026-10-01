@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
     {
         public IWorkflowTrigger CreatePowerAutomateWorkflow([WorkflowExpression] Func<string> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(connectionString, nameof(connectionString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/powerAutomateFlow";

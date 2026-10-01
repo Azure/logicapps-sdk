@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> tag, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(tag, nameof(tag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/forms/{0}/webhooks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tag, 1));

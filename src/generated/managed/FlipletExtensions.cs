@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
         public IBodyWorkflowAction<AppInfo> GetAppsById([WorkflowExpression] Func<int> appId)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/apps/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(appId, 1));
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
         public IBodyWorkflowAction<DatasourceInfo> GetDataSourceById([WorkflowExpression] Func<int> dataSourceId)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data-sources/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceId, 1));
@@ -72,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
         public IBodyWorkflowAction<JToken> GetDataSourceEntry([WorkflowExpression] Func<int> dataSourceId, [WorkflowExpression] Func<int> dataSourceEntryId)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            SourceExpression.Validate(dataSourceEntryId, nameof(dataSourceEntryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data-sources/{0}/data/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceEntryId, 1));
@@ -88,8 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
         public IWorkflowAction DeleteDataSourceEntry([WorkflowExpression] Func<int> dataSourceId, [WorkflowExpression] Func<int> dataSourceEntryId)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            SourceExpression.Validate(dataSourceEntryId, nameof(dataSourceEntryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data-sources/{0}/data/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceEntryId, 1));
@@ -104,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
         public IWorkflowAction UpdateDataSourceEntry([WorkflowExpression] Func<int> dataSourceId, [WorkflowExpression] Func<int> dataSourceEntryId)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            SourceExpression.Validate(dataSourceEntryId, nameof(dataSourceEntryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data-sources/{0}/data/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceEntryId, 1));
@@ -126,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
         public IBodyWorkflowAction<FetchedData> GetDataSourceEntries([WorkflowExpression] Func<int> dataSourceId)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data-sources/{0}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceId, 1));
@@ -141,9 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
         public IWorkflowAction CreateDataSourceRows([WorkflowExpression] Func<int> dataSourceId, [WorkflowExpression] Func<bool> bodyappend, [WorkflowExpression] Func<JToken[]> bodyentries)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            SourceExpression.Validate(bodyappend, nameof(bodyappend), required: true);
-            SourceExpression.Validate(bodyentries, nameof(bodyentries), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data-sources/{0}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dataSourceId, 1));

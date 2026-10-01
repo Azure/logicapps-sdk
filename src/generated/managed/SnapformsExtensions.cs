@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Snapforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "snapforms")]
         public IBodyWorkflowAction<TemporaryUrl> TemporaryFileUrl([WorkflowExpression] Func<string> formSlug, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> fileKey)
         {
-            SourceExpression.Validate(formSlug, nameof(formSlug), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
-            SourceExpression.Validate(fileKey, nameof(fileKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/responses/{1}/temporary-file-url/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formSlug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileKey, 1));
@@ -31,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Snapforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "snapforms")]
         public IBodyWorkflowAction<TemporaryUrl> TemporaryPdfUrl([WorkflowExpression] Func<string> formSlug, [WorkflowExpression] Func<string> responseId)
         {
-            SourceExpression.Validate(formSlug, nameof(formSlug), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/responses/{1}/temporary-pdf-url", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formSlug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
@@ -49,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Snapforms
     {
         public IBodyWorkflowTrigger<WebhookCreationResource> WebhookTrigger([WorkflowExpression] Func<string> formSlug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formSlug, nameof(formSlug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/responses/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formSlug, 1));

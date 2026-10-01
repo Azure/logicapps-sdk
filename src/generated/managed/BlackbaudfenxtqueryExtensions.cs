@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IBodyWorkflowAction<QueryApiQueryExecutionJob> GetQueryJobStatus([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<includeReadUrlInput> includeReadUrl = null, [WorkflowExpression] Func<contentDispositionInput> contentDisposition = null)
         {
-            SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
-            SourceExpression.Validate(includeReadUrl, nameof(includeReadUrl), required: false);
-            SourceExpression.Validate(contentDisposition, nameof(contentDisposition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -40,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IBodyWorkflowAction<QueryApiExecuteQueryResponse> CancelJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -58,8 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IWorkflowAction DeleteQuery([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> queryId)
         {
-            SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(queryId, nameof(queryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query/queries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(queryId, 1));
@@ -77,12 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<string> bodyfilename = null, [WorkflowExpression] Func<int> bodytimeZoneOffset = null, [WorkflowExpression] Func<bool> bodyuseLongDescriptions = null)
         {
-            SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            SourceExpression.Validate(bodyformattingMode, nameof(bodyformattingMode), required: false);
-            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
-            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            SourceExpression.Validate(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/queries/execute";
@@ -165,17 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<bodysQLGenerationModeInput> bodysQLGenerationMode = null, [WorkflowExpression] Func<bool> bodyuseStaticQuery = null, [WorkflowExpression] Func<string> bodyfilename = null, [WorkflowExpression] Func<int> bodytimeZoneOffset = null, [WorkflowExpression] Func<bool> bodyuseLongDescriptions = null, [WorkflowExpression] Func<QueryApiAskFieldInformation[]> bodyaskField = null)
         {
-            SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            SourceExpression.Validate(bodyformattingMode, nameof(bodyformattingMode), required: false);
-            SourceExpression.Validate(bodysQLGenerationMode, nameof(bodysQLGenerationMode), required: false);
-            SourceExpression.Validate(bodyuseStaticQuery, nameof(bodyuseStaticQuery), required: false);
-            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
-            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            SourceExpression.Validate(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
-            SourceExpression.Validate(bodyaskField, nameof(bodyaskField), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/queries/executebyid";
@@ -282,12 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery, [WorkflowExpression] Func<int> bodytimeZoneOffset = null, [WorkflowExpression] Func<bool> bodyuseLongDescriptions = null, [WorkflowExpression] Func<QueryApiAskFieldInformation[]> bodyaskField = null)
         {
-            SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            SourceExpression.Validate(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
-            SourceExpression.Validate(bodyaskField, nameof(bodyaskField), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/queries/refreshstaticquery";
@@ -334,22 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
         public IBodyWorkflowAction<QueryApiQuerySummaryV2Collection> ListQueries([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> queryTypeIds = null, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<queryFormatInput> queryFormat = null, [WorkflowExpression] Func<resultLayoutInput> resultLayout = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<bool> myFavQueriesOnly = null, [WorkflowExpression] Func<bool> myQueriesOnly = null, [WorkflowExpression] Func<bool> mergedQueriesOnly = null, [WorkflowExpression] Func<listQueriesInput> listQueries = null, [WorkflowExpression] Func<sortColumnInput> sortColumn = null, [WorkflowExpression] Func<bool> sortDescending = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> addedBy = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(queryTypeIds, nameof(queryTypeIds), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(queryFormat, nameof(queryFormat), required: false);
-            SourceExpression.Validate(resultLayout, nameof(resultLayout), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
-            SourceExpression.Validate(myFavQueriesOnly, nameof(myFavQueriesOnly), required: false);
-            SourceExpression.Validate(myQueriesOnly, nameof(myQueriesOnly), required: false);
-            SourceExpression.Validate(mergedQueriesOnly, nameof(mergedQueriesOnly), required: false);
-            SourceExpression.Validate(listQueries, nameof(listQueries), required: false);
-            SourceExpression.Validate(sortColumn, nameof(sortColumn), required: false);
-            SourceExpression.Validate(sortDescending, nameof(sortDescending), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(addedBy, nameof(addedBy), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/v2/queries";

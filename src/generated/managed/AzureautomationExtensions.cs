@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<string> GetJobOutput([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> automationAccount, [WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}/output", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(automationAccount, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -33,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> GetStatusOfJob([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> automationAccount, [WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(automationAccount, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -52,13 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> automationAccount, [WorkflowExpression] Func<string> runbookName = null, [WorkflowExpression] Func<object> bodypropertiesrunbookParameters = null, [WorkflowExpression] Func<string> bodypropertieshybridAutomationWorkerGroup = null, [WorkflowExpression] Func<bool> wait = null)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
-            SourceExpression.Validate(runbookName, nameof(runbookName), required: false);
-            SourceExpression.Validate(bodypropertiesrunbookParameters, nameof(bodypropertiesrunbookParameters), required: false);
-            SourceExpression.Validate(bodypropertieshybridAutomationWorkerGroup, nameof(bodypropertieshybridAutomationWorkerGroup), required: false);
-            SourceExpression.Validate(wait, nameof(wait), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(automationAccount, 1));

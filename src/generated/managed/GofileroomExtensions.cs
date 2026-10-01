@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccessToApproveDocsOnly = null, [WorkflowExpression] Func<string> bodyallowAccessToReports = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyenableMfa = null, [WorkflowExpression] Func<string> bodyenforceMfaForUsers = null, [WorkflowExpression] Func<string> bodyfirmFlowRoutingNotification = null, [WorkflowExpression] Func<string> bodyfullAccessToDocTracking = null, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodymfaRequired = null, [WorkflowExpression] Func<string> bodypermissonToApproveDocs = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null, [WorkflowExpression] Func<string[]> bodyusers = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
-            SourceExpression.Validate(bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyenableMfa, nameof(bodyenableMfa), required: false);
-            SourceExpression.Validate(bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
-            SourceExpression.Validate(bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
-            SourceExpression.Validate(bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
-            SourceExpression.Validate(bodymfaRequired, nameof(bodymfaRequired), required: false);
-            SourceExpression.Validate(bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
-            SourceExpression.Validate(bodyreports, nameof(bodyreports), required: false);
-            SourceExpression.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/group/creategroup";
@@ -128,11 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetGroupDocSecurityResponse> SetGroupDocSecurity([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinetName = null, [WorkflowExpression] Func<bodydocumentSecurityInputItem[]> bodydocumentSecurity = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string> bodygroupName = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodycabinetName, nameof(bodycabinetName), required: false);
-            SourceExpression.Validate(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
-            SourceExpression.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/group/documentsecurity";
@@ -179,21 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<ModifyGroupResponse> ModifyGroup([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccessToApproveDocsOnly = null, [WorkflowExpression] Func<string> bodyallowAccessToReports = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyenableMfa = null, [WorkflowExpression] Func<string> bodyenforceMfaForUsers = null, [WorkflowExpression] Func<string> bodyfirmFlowRoutingNotification = null, [WorkflowExpression] Func<string> bodyfullAccessToDocTracking = null, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodymfaRequired = null, [WorkflowExpression] Func<string> bodypermissonToApproveDocs = null, [WorkflowExpression] Func<string> bodyrenameGroup = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null, [WorkflowExpression] Func<string[]> bodyusers = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
-            SourceExpression.Validate(bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyenableMfa, nameof(bodyenableMfa), required: false);
-            SourceExpression.Validate(bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
-            SourceExpression.Validate(bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
-            SourceExpression.Validate(bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
-            SourceExpression.Validate(bodymfaRequired, nameof(bodymfaRequired), required: false);
-            SourceExpression.Validate(bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
-            SourceExpression.Validate(bodyrenameGroup, nameof(bodyrenameGroup), required: false);
-            SourceExpression.Validate(bodyreports, nameof(bodyreports), required: false);
-            SourceExpression.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/group/modifygroup";
@@ -300,8 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetGroupPermissionsResponse> GetGroupPermissions([WorkflowExpression] Func<string> groupName = null, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(groupName, nameof(groupName), required: false);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/group/permissions";
@@ -320,16 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetGroupPermissionsResponse> SetGroupPermissions([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinet = null, [WorkflowExpression] Func<string> bodycabinetPermissionadd = null, [WorkflowExpression] Func<string> bodycabinetPermissiondelete = null, [WorkflowExpression] Func<string> bodycabinetPermissiondeny = null, [WorkflowExpression] Func<string> bodycabinetPermissionedit = null, [WorkflowExpression] Func<string> bodycabinetPermissionlookUp = null, [WorkflowExpression] Func<string> bodycabinetPermissionread = null, [WorkflowExpression] Func<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, [WorkflowExpression] Func<string> bodygroupName = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodycabinet, nameof(bodycabinet), required: false);
-            SourceExpression.Validate(bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
-            SourceExpression.Validate(bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
-            SourceExpression.Validate(bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
-            SourceExpression.Validate(bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
-            SourceExpression.Validate(bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
-            SourceExpression.Validate(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
-            SourceExpression.Validate(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/group/permissions";
@@ -414,10 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> GetGroupDocumentSecurity([WorkflowExpression] Func<string> groupName, [WorkflowExpression] Func<string> cabinetName, [WorkflowExpression] Func<string> drawerName, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(groupName, nameof(groupName), required: true);
-            SourceExpression.Validate(cabinetName, nameof(cabinetName), required: true);
-            SourceExpression.Validate(drawerName, nameof(drawerName), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerName, 1));
@@ -434,7 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetGroupsResponseItem[]> GetGroups([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/groups";
@@ -451,29 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateUsersResponse> CreateUsers([WorkflowExpression] Func<userTypeInput> userType = null, [WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccountExpiresDate = null, [WorkflowExpression] Func<string> bodydisabledComments = null, [WorkflowExpression] Func<string> bodyfullName = null, [WorkflowExpression] Func<string[]> bodygroups = null, [WorkflowExpression] Func<string> bodyisAccountExpires = null, [WorkflowExpression] Func<string> bodyisAdvanceFlow = null, [WorkflowExpression] Func<string> bodyisAllowAccessToReports = null, [WorkflowExpression] Func<string> bodyisAllowOffline = null, [WorkflowExpression] Func<string> bodyisDisabled = null, [WorkflowExpression] Func<string> bodyisFirmFlow = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationGroup = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationUser = null, [WorkflowExpression] Func<string> bodyisMfa = null, [WorkflowExpression] Func<string> bodyisUserAdministration = null, [WorkflowExpression] Func<string> bodyisWorkflowManagerUser = null, [WorkflowExpression] Func<string> bodylicenseType = null, [WorkflowExpression] Func<string> bodyloginName = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null)
         {
-            SourceExpression.Validate(userType, nameof(userType), required: false);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
-            SourceExpression.Validate(bodydisabledComments, nameof(bodydisabledComments), required: false);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
-            SourceExpression.Validate(bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
-            SourceExpression.Validate(bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
-            SourceExpression.Validate(bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
-            SourceExpression.Validate(bodyisDisabled, nameof(bodyisDisabled), required: false);
-            SourceExpression.Validate(bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
-            SourceExpression.Validate(bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
-            SourceExpression.Validate(bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
-            SourceExpression.Validate(bodyisMfa, nameof(bodyisMfa), required: false);
-            SourceExpression.Validate(bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
-            SourceExpression.Validate(bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
-            SourceExpression.Validate(bodylicenseType, nameof(bodylicenseType), required: false);
-            SourceExpression.Validate(bodyloginName, nameof(bodyloginName), required: false);
-            SourceExpression.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyreports, nameof(bodyreports), required: false);
-            SourceExpression.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/createuser";
@@ -625,9 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DeleteUserResponse> DeleteUser([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyloginId = null, [WorkflowExpression] Func<bodyuserTypeInput> bodyuserType = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyloginId, nameof(bodyloginId), required: false);
-            SourceExpression.Validate(bodyuserType, nameof(bodyuserType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/delete";
@@ -662,11 +585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinetName = null, [WorkflowExpression] Func<bodydocumentSecurityInputItem22[]> bodydocumentSecurity = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string> bodyloginId = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodycabinetName, nameof(bodycabinetName), required: false);
-            SourceExpression.Validate(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
-            SourceExpression.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
-            SourceExpression.Validate(bodyloginId, nameof(bodyloginId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/documentsecurity";
@@ -713,8 +631,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetLicensesResponse> GetLicenses([WorkflowExpression] Func<licenseInput> license = null, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(license, nameof(license), required: false);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/licenses";
@@ -733,30 +649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<ModifyUserResponse> ModifyUser([WorkflowExpression] Func<userTypeInput> userType = null, [WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccountExpiresDate = null, [WorkflowExpression] Func<string> bodydisabledComments = null, [WorkflowExpression] Func<string> bodyfullName = null, [WorkflowExpression] Func<string[]> bodygroups = null, [WorkflowExpression] Func<string> bodyisAccountExpires = null, [WorkflowExpression] Func<string> bodyisAdvanceFlow = null, [WorkflowExpression] Func<string> bodyisAllowAccessToReports = null, [WorkflowExpression] Func<string> bodyisAllowOffline = null, [WorkflowExpression] Func<string> bodyisChangeNextLogin = null, [WorkflowExpression] Func<string> bodyisDisabled = null, [WorkflowExpression] Func<string> bodyisFirmFlow = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationGroup = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationUser = null, [WorkflowExpression] Func<string> bodyisMfa = null, [WorkflowExpression] Func<string> bodyisUserAdministration = null, [WorkflowExpression] Func<string> bodyisWorkflowManagerUser = null, [WorkflowExpression] Func<string> bodylicenseType = null, [WorkflowExpression] Func<string> bodyloginName = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null)
         {
-            SourceExpression.Validate(userType, nameof(userType), required: false);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
-            SourceExpression.Validate(bodydisabledComments, nameof(bodydisabledComments), required: false);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
-            SourceExpression.Validate(bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
-            SourceExpression.Validate(bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
-            SourceExpression.Validate(bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
-            SourceExpression.Validate(bodyisChangeNextLogin, nameof(bodyisChangeNextLogin), required: false);
-            SourceExpression.Validate(bodyisDisabled, nameof(bodyisDisabled), required: false);
-            SourceExpression.Validate(bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
-            SourceExpression.Validate(bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
-            SourceExpression.Validate(bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
-            SourceExpression.Validate(bodyisMfa, nameof(bodyisMfa), required: false);
-            SourceExpression.Validate(bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
-            SourceExpression.Validate(bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
-            SourceExpression.Validate(bodylicenseType, nameof(bodylicenseType), required: false);
-            SourceExpression.Validate(bodyloginName, nameof(bodyloginName), required: false);
-            SourceExpression.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyreports, nameof(bodyreports), required: false);
-            SourceExpression.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/modifyuser";
@@ -913,7 +805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetPasswordPolicyResponse> GetPasswordPolicy([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/passwordpolicy";
@@ -930,16 +821,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetUserPermissionsResponse> SetUserPermissions([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinet = null, [WorkflowExpression] Func<string> bodycabinetPermissionadd = null, [WorkflowExpression] Func<string> bodycabinetPermissiondelete = null, [WorkflowExpression] Func<string> bodycabinetPermissiondeny = null, [WorkflowExpression] Func<string> bodycabinetPermissionedit = null, [WorkflowExpression] Func<string> bodycabinetPermissionlookUp = null, [WorkflowExpression] Func<string> bodycabinetPermissionread = null, [WorkflowExpression] Func<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, [WorkflowExpression] Func<string> bodyloginId = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodycabinet, nameof(bodycabinet), required: false);
-            SourceExpression.Validate(bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
-            SourceExpression.Validate(bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
-            SourceExpression.Validate(bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
-            SourceExpression.Validate(bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
-            SourceExpression.Validate(bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
-            SourceExpression.Validate(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
-            SourceExpression.Validate(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
-            SourceExpression.Validate(bodyloginId, nameof(bodyloginId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/permissions";
@@ -1024,7 +905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetListOfReportsResponse> GetListOfReports([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/reports";
@@ -1041,7 +921,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUploadLocationResponse> GetUploadLocation([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/user/uploadlocations";
@@ -1058,10 +937,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserDocumentSecurityResponse> GetUserDocumentSecurity([WorkflowExpression] Func<string> loginId, [WorkflowExpression] Func<string> cabinetName, [WorkflowExpression] Func<string> drawerName, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(loginId, nameof(loginId), required: true);
-            SourceExpression.Validate(cabinetName, nameof(cabinetName), required: true);
-            SourceExpression.Validate(drawerName, nameof(drawerName), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(loginId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cabinetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerName, 1));
@@ -1078,8 +953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserPermissionResponse> GetUserPermission([WorkflowExpression] Func<string> login, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(login, nameof(login), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/permissions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(login, 1));
@@ -1096,8 +969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers([WorkflowExpression] Func<userTypeInput> userType = null, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(userType, nameof(userType), required: false);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/administration/users";
@@ -1116,8 +987,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetLookupListResponseItem[]> GetLookupList([WorkflowExpression] Func<string> drawerId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(drawerId, nameof(drawerId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/administration/{0}/clients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerId, 1));
@@ -1134,9 +1003,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<bodyindexesInputItem[]> bodyindexes = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
-            SourceExpression.Validate(bodyindexes, nameof(bodyindexes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents";
@@ -1171,9 +1037,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CopyDocumentResponseItem[]> CopyDocument([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> bodydocumentIds = null, [WorkflowExpression] Func<bodyindexValuesInputItem[]> bodyindexValues = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydocumentIds, nameof(bodydocumentIds), required: false);
-            SourceExpression.Validate(bodyindexValues, nameof(bodyindexValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents/copy";
@@ -1208,8 +1071,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentStatusResponseItem[]> GetDocumentStatus([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents/getdocumentstatus";
@@ -1227,8 +1088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<string> MergePDF([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents/mergePDFs";
@@ -1246,9 +1105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DocumentReindexResponseItem[]> DocumentReindex([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> bodydocumentIds = null, [WorkflowExpression] Func<bodyindexValuesInputItem[]> bodyindexValues = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydocumentIds, nameof(bodydocumentIds), required: false);
-            SourceExpression.Validate(bodyindexValues, nameof(bodyindexValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents/reindex";
@@ -1283,13 +1139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DocumentSearchResponse> DocumentSearch([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<bodyfilterindexValuesInputItem[]> bodyfilterindexValues = null, [WorkflowExpression] Func<int> bodynumberOfRows = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<string> bodysortField = null, [WorkflowExpression] Func<bodysortOrderInput> bodysortOrder = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
-            SourceExpression.Validate(bodyfilterindexValues, nameof(bodyfilterindexValues), required: false);
-            SourceExpression.Validate(bodynumberOfRows, nameof(bodynumberOfRows), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodysortField, nameof(bodysortField), required: false);
-            SourceExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents/search";
@@ -1356,8 +1205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<TaxsortDocumentResponseItem[]> TaxsortDocument([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents/taxsort";
@@ -1375,8 +1222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DocumentDeleteResponseItem[]> DocumentDelete([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -1393,8 +1238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IWorkflowAction GetDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/file", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -1411,8 +1254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentHistoryResponse> GetDocumentHistory([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -1429,8 +1270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> GetDocumentIndexes([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/indexes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -1447,9 +1286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyisPublished, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyisPublished, nameof(bodyisPublished), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -1474,7 +1310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDrawersResponseItem[]> GetDrawers([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/drawers";
@@ -1491,8 +1326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> GetDrawerIndexes([WorkflowExpression] Func<string> drawerId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(drawerId, nameof(drawerId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/drawers/{0}/indexes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(drawerId, 1));
@@ -1509,39 +1342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> GetFirmFlowDeliverableReport([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccountable = null, [WorkflowExpression] Func<string> bodyassignedOn = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignmentHistory = null, [WorkflowExpression] Func<string> bodycompletedBy = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodycurrentDueDate = null, [WorkflowExpression] Func<string> bodycurrentStep = null, [WorkflowExpression] Func<string> bodydateExtended = null, [WorkflowExpression] Func<string> bodydaysAtStep = null, [WorkflowExpression] Func<string> bodydaysBetweenRoutings = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<string> bodyengagementType = null, [WorkflowExpression] Func<string> bodyinProcessOnly = null, [WorkflowExpression] Func<string[]> bodyindexes = null, [WorkflowExpression] Func<string[]> bodyinformationFields = null, [WorkflowExpression] Func<string> bodyoriginalDueDate = null, [WorkflowExpression] Func<string> bodypIC = null, [WorkflowExpression] Func<string> bodypageNumber = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyreceivedFrom = null, [WorkflowExpression] Func<string> bodyreceivedOn = null, [WorkflowExpression] Func<string> bodyresponsible = null, [WorkflowExpression] Func<string> bodyroutingDetails = null, [WorkflowExpression] Func<string> bodysentOn = null, [WorkflowExpression] Func<string> bodysentTo = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytotalDaysAtStep = null, [WorkflowExpression] Func<string> bodytotalDaysInProcess = null, [WorkflowExpression] Func<string> bodyworkflow = null, [WorkflowExpression] Func<string> bodyworkflowDescription = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyaccountable, nameof(bodyaccountable), required: false);
-            SourceExpression.Validate(bodyassignedOn, nameof(bodyassignedOn), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
-            SourceExpression.Validate(bodycompletedBy, nameof(bodycompletedBy), required: false);
-            SourceExpression.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
-            SourceExpression.Validate(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
-            SourceExpression.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
-            SourceExpression.Validate(bodydateExtended, nameof(bodydateExtended), required: false);
-            SourceExpression.Validate(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
-            SourceExpression.Validate(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
-            SourceExpression.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
-            SourceExpression.Validate(bodyengagementType, nameof(bodyengagementType), required: false);
-            SourceExpression.Validate(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
-            SourceExpression.Validate(bodyindexes, nameof(bodyindexes), required: false);
-            SourceExpression.Validate(bodyinformationFields, nameof(bodyinformationFields), required: false);
-            SourceExpression.Validate(bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
-            SourceExpression.Validate(bodypIC, nameof(bodypIC), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
-            SourceExpression.Validate(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
-            SourceExpression.Validate(bodyresponsible, nameof(bodyresponsible), required: false);
-            SourceExpression.Validate(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
-            SourceExpression.Validate(bodysentOn, nameof(bodysentOn), required: false);
-            SourceExpression.Validate(bodysentTo, nameof(bodysentTo), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
-            SourceExpression.Validate(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
-            SourceExpression.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
-            SourceExpression.Validate(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/firmflowreports/TrackingReportByDeliverable";
@@ -1756,9 +1556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<ValidateIndexesResponse> ValidateIndexes([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<bodyindexesInputItem[]> bodyindexes = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
-            SourceExpression.Validate(bodyindexes, nameof(bodyindexes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/indexes/validate";
@@ -1793,8 +1590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> GetDynamicRulesForIndex([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(indexId, nameof(indexId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/dynamicrules", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1));
@@ -1811,12 +1606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<bodyactionTypeInput> bodyactionType = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyindexValue = null, [WorkflowExpression] Func<bodysearchTypeInput> bodysearchType = null)
         {
-            SourceExpression.Validate(indexId, nameof(indexId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyactionType, nameof(bodyactionType), required: false);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
-            SourceExpression.Validate(bodyindexValue, nameof(bodyindexValue), required: false);
-            SourceExpression.Validate(bodysearchType, nameof(bodysearchType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/lookuplist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1));
@@ -1863,8 +1652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> GetListTypeIndexData([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(indexId, nameof(indexId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1));
@@ -1881,9 +1668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetChildIndexesResponseItem[]> GetChildIndexes([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(indexId, nameof(indexId), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values/childindexlist/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1900,8 +1684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<LoginResponse> Login([WorkflowExpression] Func<string> bodyloginName, [WorkflowExpression] Func<string> bodypassword)
         {
-            SourceExpression.Validate(bodyloginName, nameof(bodyloginName), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/user/login";
@@ -1926,7 +1708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<LogoutResponse> Logout([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/user/logout";
@@ -1943,7 +1724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<bool> ValidateToken([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/user/validate";
@@ -1960,33 +1740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateWorkflowResponse> CreateWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawer = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodyfolderId = null, [WorkflowExpression] Func<string> bodyheadersclientName = null, [WorkflowExpression] Func<string> bodyheadersclientNumber = null, [WorkflowExpression] Func<string> bodyheadersengagementType = null, [WorkflowExpression] Func<string> bodyheaderspIC = null, [WorkflowExpression] Func<string> bodyheadersyear = null, [WorkflowExpression] Func<string> bodyheadersperiodEnd = null, [WorkflowExpression] Func<string> bodyfilingworkflowName = null, [WorkflowExpression] Func<string> bodyfilingdescription = null, [WorkflowExpression] Func<string> bodyfilingstatusName = null, [WorkflowExpression] Func<string> bodydeliverableaction = null, [WorkflowExpression] Func<string> bodydeliverablecurrentduedate = null, [WorkflowExpression] Func<string> bodydeliverableoriginalduedate = null, [WorkflowExpression] Func<string> bodydeliverableform = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdelivery = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdestination = null, [WorkflowExpression] Func<string> bodydeliveryInstructionssourceDocument = null, [WorkflowExpression] Func<string> bodynotesaction = null, [WorkflowExpression] Func<string> bodynotesnoteType = null, [WorkflowExpression] Func<string> bodynotesnote = null, [WorkflowExpression] Func<string> bodyinformationFieldsname = null, [WorkflowExpression] Func<string> bodyinformationFieldsvalue = null, [WorkflowExpression] Func<string> bodyroutingSummaryresponsibleField = null, [WorkflowExpression] Func<string> bodyroutingSummaryvalue = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydrawer, nameof(bodydrawer), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: false);
-            SourceExpression.Validate(bodyheadersclientName, nameof(bodyheadersclientName), required: false);
-            SourceExpression.Validate(bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
-            SourceExpression.Validate(bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
-            SourceExpression.Validate(bodyheaderspIC, nameof(bodyheaderspIC), required: false);
-            SourceExpression.Validate(bodyheadersyear, nameof(bodyheadersyear), required: false);
-            SourceExpression.Validate(bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
-            SourceExpression.Validate(bodyfilingworkflowName, nameof(bodyfilingworkflowName), required: false);
-            SourceExpression.Validate(bodyfilingdescription, nameof(bodyfilingdescription), required: false);
-            SourceExpression.Validate(bodyfilingstatusName, nameof(bodyfilingstatusName), required: false);
-            SourceExpression.Validate(bodydeliverableaction, nameof(bodydeliverableaction), required: false);
-            SourceExpression.Validate(bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
-            SourceExpression.Validate(bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
-            SourceExpression.Validate(bodydeliverableform, nameof(bodydeliverableform), required: false);
-            SourceExpression.Validate(bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
-            SourceExpression.Validate(bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
-            SourceExpression.Validate(bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
-            SourceExpression.Validate(bodynotesaction, nameof(bodynotesaction), required: false);
-            SourceExpression.Validate(bodynotesnoteType, nameof(bodynotesnoteType), required: false);
-            SourceExpression.Validate(bodynotesnote, nameof(bodynotesnote), required: false);
-            SourceExpression.Validate(bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
-            SourceExpression.Validate(bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
-            SourceExpression.Validate(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
-            SourceExpression.Validate(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/CreateWorkflow";
@@ -2221,10 +1974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> DeleteMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string[]> bodydeliverableNames = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
-            SourceExpression.Validate(bodydeliverableNames, nameof(bodydeliverableNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/DeleteDeliverableList";
@@ -2265,8 +2014,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DeleteWorkflowsResponse> DeleteWorkflows([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int[]> bodyfilingId = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyfilingId, nameof(bodyfilingId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/DeleteWorkflows";
@@ -2295,17 +2042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<EditMasterDeliverableResponse> EditMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycurrentdeliverableName = null, [WorkflowExpression] Func<string> bodyupdatedeliverableName = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyfirstExtension = null, [WorkflowExpression] Func<string> bodysecondExtension = null, [WorkflowExpression] Func<string> bodythirdExtension = null, [WorkflowExpression] Func<string> bodycalenderOrFiscal = null, [WorkflowExpression] Func<int> bodyextension = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodycurrentdeliverableName, nameof(bodycurrentdeliverableName), required: false);
-            SourceExpression.Validate(bodyupdatedeliverableName, nameof(bodyupdatedeliverableName), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyfirstExtension, nameof(bodyfirstExtension), required: false);
-            SourceExpression.Validate(bodysecondExtension, nameof(bodysecondExtension), required: false);
-            SourceExpression.Validate(bodythirdExtension, nameof(bodythirdExtension), required: false);
-            SourceExpression.Validate(bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/UpdateDeliverableList";
@@ -2388,30 +2124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<EditWorkflowResponse> EditWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int> bodyfilingId = null, [WorkflowExpression] Func<string> bodyheadersclientName = null, [WorkflowExpression] Func<string> bodyheadersclientNumber = null, [WorkflowExpression] Func<string> bodyheadersengagementType = null, [WorkflowExpression] Func<string> bodyheaderspIC = null, [WorkflowExpression] Func<string> bodyheadersyear = null, [WorkflowExpression] Func<string> bodyheadersperiodEnd = null, [WorkflowExpression] Func<string> bodydeliverableaction = null, [WorkflowExpression] Func<string> bodydeliverablecurrentduedate = null, [WorkflowExpression] Func<string> bodydeliverableoriginalduedate = null, [WorkflowExpression] Func<string> bodydeliverableform = null, [WorkflowExpression] Func<string> bodynotesaction = null, [WorkflowExpression] Func<string> bodynotesnoteType = null, [WorkflowExpression] Func<string[]> bodynotesnoteid = null, [WorkflowExpression] Func<string> bodynotesnote = null, [WorkflowExpression] Func<string> bodyinformationFieldsname = null, [WorkflowExpression] Func<string> bodyinformationFieldsvalue = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdelivery = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdestination = null, [WorkflowExpression] Func<string> bodydeliveryInstructionssourceDocument = null, [WorkflowExpression] Func<string> bodyroutingSummaryresponsibleField = null, [WorkflowExpression] Func<string> bodyroutingSummaryvalue = null, [WorkflowExpression] Func<bool> bodyreindexDocs = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyfilingId, nameof(bodyfilingId), required: false);
-            SourceExpression.Validate(bodyheadersclientName, nameof(bodyheadersclientName), required: false);
-            SourceExpression.Validate(bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
-            SourceExpression.Validate(bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
-            SourceExpression.Validate(bodyheaderspIC, nameof(bodyheaderspIC), required: false);
-            SourceExpression.Validate(bodyheadersyear, nameof(bodyheadersyear), required: false);
-            SourceExpression.Validate(bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
-            SourceExpression.Validate(bodydeliverableaction, nameof(bodydeliverableaction), required: false);
-            SourceExpression.Validate(bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
-            SourceExpression.Validate(bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
-            SourceExpression.Validate(bodydeliverableform, nameof(bodydeliverableform), required: false);
-            SourceExpression.Validate(bodynotesaction, nameof(bodynotesaction), required: false);
-            SourceExpression.Validate(bodynotesnoteType, nameof(bodynotesnoteType), required: false);
-            SourceExpression.Validate(bodynotesnoteid, nameof(bodynotesnoteid), required: false);
-            SourceExpression.Validate(bodynotesnote, nameof(bodynotesnote), required: false);
-            SourceExpression.Validate(bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
-            SourceExpression.Validate(bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
-            SourceExpression.Validate(bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
-            SourceExpression.Validate(bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
-            SourceExpression.Validate(bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
-            SourceExpression.Validate(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
-            SourceExpression.Validate(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
-            SourceExpression.Validate(bodyreindexDocs, nameof(bodyreindexDocs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/EditWorkflow";
@@ -2620,11 +2332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetMasterDeliverableResponse> GetMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<int> bodypageSize = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/GetDeliverableList";
@@ -2671,38 +2378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodyengagementType = null, [WorkflowExpression] Func<string> bodyworkflow = null, [WorkflowExpression] Func<string> bodycurrentStep = null, [WorkflowExpression] Func<string> bodypIC = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignedOn = null, [WorkflowExpression] Func<string> bodyworkflowDescription = null, [WorkflowExpression] Func<string> bodyinProcessOnly = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyresponsible = null, [WorkflowExpression] Func<string> bodyassignmentHistory = null, [WorkflowExpression] Func<string> bodyreceivedFrom = null, [WorkflowExpression] Func<string> bodyreceivedOn = null, [WorkflowExpression] Func<string> bodysentTo = null, [WorkflowExpression] Func<string> bodysentOn = null, [WorkflowExpression] Func<string> bodycompletedBy = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodycurrentDueDate = null, [WorkflowExpression] Func<string> bodydaysAtStep = null, [WorkflowExpression] Func<string> bodytotalDaysAtStep = null, [WorkflowExpression] Func<string> bodydaysBetweenRoutings = null, [WorkflowExpression] Func<string> bodytotalDaysInProcess = null, [WorkflowExpression] Func<string> bodyaccountable = null, [WorkflowExpression] Func<string> bodyroutingDetails = null, [WorkflowExpression] Func<string> bodylastUpdated = null, [WorkflowExpression] Func<string[]> bodyinformationFields = null, [WorkflowExpression] Func<string[]> bodyindexes = null, [WorkflowExpression] Func<string> bodypageNumber = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodyengagementType, nameof(bodyengagementType), required: false);
-            SourceExpression.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
-            SourceExpression.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
-            SourceExpression.Validate(bodypIC, nameof(bodypIC), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodyassignedOn, nameof(bodyassignedOn), required: false);
-            SourceExpression.Validate(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
-            SourceExpression.Validate(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyresponsible, nameof(bodyresponsible), required: false);
-            SourceExpression.Validate(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
-            SourceExpression.Validate(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
-            SourceExpression.Validate(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
-            SourceExpression.Validate(bodysentTo, nameof(bodysentTo), required: false);
-            SourceExpression.Validate(bodysentOn, nameof(bodysentOn), required: false);
-            SourceExpression.Validate(bodycompletedBy, nameof(bodycompletedBy), required: false);
-            SourceExpression.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
-            SourceExpression.Validate(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
-            SourceExpression.Validate(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
-            SourceExpression.Validate(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
-            SourceExpression.Validate(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
-            SourceExpression.Validate(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
-            SourceExpression.Validate(bodyaccountable, nameof(bodyaccountable), required: false);
-            SourceExpression.Validate(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
-            SourceExpression.Validate(bodylastUpdated, nameof(bodylastUpdated), required: false);
-            SourceExpression.Validate(bodyinformationFields, nameof(bodyinformationFields), required: false);
-            SourceExpression.Validate(bodyindexes, nameof(bodyindexes), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/firmflowreports/TrackingReportByWorkflow";
@@ -2911,16 +2586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<AddMasterDeliverableResponse> AddMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydeliverableName = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyfirstExtension = null, [WorkflowExpression] Func<string> bodysecondExtension = null, [WorkflowExpression] Func<string> bodythirdExtension = null, [WorkflowExpression] Func<string> bodycalenderOrFiscal = null, [WorkflowExpression] Func<int> bodyextension = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydeliverableName, nameof(bodydeliverableName), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyfirstExtension, nameof(bodyfirstExtension), required: false);
-            SourceExpression.Validate(bodysecondExtension, nameof(bodysecondExtension), required: false);
-            SourceExpression.Validate(bodythirdExtension, nameof(bodythirdExtension), required: false);
-            SourceExpression.Validate(bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/SaveDeliverableList";
@@ -2997,9 +2662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserInfoV2Response> GetUserInfo([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyloginName = null, [WorkflowExpression] Func<string> bodyuserType = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyloginName, nameof(bodyloginName), required: false);
-            SourceExpression.Validate(bodyuserType, nameof(bodyuserType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/administration/user/getuser";
@@ -3034,18 +2696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int[]> bodyfilingId = null, [WorkflowExpression] Func<string[]> bodycurrentStep = null, [WorkflowExpression] Func<bool> bodycomplete = null, [WorkflowExpression] Func<string> bodycompletedDate = null, [WorkflowExpression] Func<string> bodynextStep = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignedDate = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyroutingNote = null, [WorkflowExpression] Func<bool> bodyemailNotify = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodyfilingId, nameof(bodyfilingId), required: false);
-            SourceExpression.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
-            SourceExpression.Validate(bodycomplete, nameof(bodycomplete), required: false);
-            SourceExpression.Validate(bodycompletedDate, nameof(bodycompletedDate), required: false);
-            SourceExpression.Validate(bodynextStep, nameof(bodynextStep), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodyassignedDate, nameof(bodyassignedDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyroutingNote, nameof(bodyroutingNote), required: false);
-            SourceExpression.Validate(bodyemailNotify, nameof(bodyemailNotify), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firmflow/api/V2/Route";
@@ -3134,40 +2784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodyengagementType = null, [WorkflowExpression] Func<string> bodyworkflow = null, [WorkflowExpression] Func<string> bodycurrentStep = null, [WorkflowExpression] Func<string> bodypIC = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignedOn = null, [WorkflowExpression] Func<string> bodyworkflowDescription = null, [WorkflowExpression] Func<string> bodyinProcessOnly = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyreceivedOn = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodysentOn = null, [WorkflowExpression] Func<string> bodyresponsible = null, [WorkflowExpression] Func<string> bodyassignmentHistory = null, [WorkflowExpression] Func<string> bodyreceivedFrom = null, [WorkflowExpression] Func<string> bodysentTo = null, [WorkflowExpression] Func<string> bodycompletedBy = null, [WorkflowExpression] Func<string> bodyaccountable = null, [WorkflowExpression] Func<string> bodycurrentDueDate = null, [WorkflowExpression] Func<string> bodyoriginalDueDate = null, [WorkflowExpression] Func<string> bodydateExtended = null, [WorkflowExpression] Func<string> bodydaysAtStep = null, [WorkflowExpression] Func<string> bodytotalDaysAtStep = null, [WorkflowExpression] Func<string> bodydaysBetweenRoutings = null, [WorkflowExpression] Func<string> bodytotalDaysInProcess = null, [WorkflowExpression] Func<string> bodyroutingDetails = null, [WorkflowExpression] Func<string> bodylastUpdated = null, [WorkflowExpression] Func<string[]> bodyinformationFields = null, [WorkflowExpression] Func<string[]> bodyindexes = null, [WorkflowExpression] Func<string> bodypageNumber = null)
         {
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            SourceExpression.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodyengagementType, nameof(bodyengagementType), required: false);
-            SourceExpression.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
-            SourceExpression.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
-            SourceExpression.Validate(bodypIC, nameof(bodypIC), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodyassignedOn, nameof(bodyassignedOn), required: false);
-            SourceExpression.Validate(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
-            SourceExpression.Validate(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
-            SourceExpression.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
-            SourceExpression.Validate(bodysentOn, nameof(bodysentOn), required: false);
-            SourceExpression.Validate(bodyresponsible, nameof(bodyresponsible), required: false);
-            SourceExpression.Validate(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
-            SourceExpression.Validate(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
-            SourceExpression.Validate(bodysentTo, nameof(bodysentTo), required: false);
-            SourceExpression.Validate(bodycompletedBy, nameof(bodycompletedBy), required: false);
-            SourceExpression.Validate(bodyaccountable, nameof(bodyaccountable), required: false);
-            SourceExpression.Validate(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
-            SourceExpression.Validate(bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
-            SourceExpression.Validate(bodydateExtended, nameof(bodydateExtended), required: false);
-            SourceExpression.Validate(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
-            SourceExpression.Validate(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
-            SourceExpression.Validate(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
-            SourceExpression.Validate(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
-            SourceExpression.Validate(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
-            SourceExpression.Validate(bodylastUpdated, nameof(bodylastUpdated), required: false);
-            SourceExpression.Validate(bodyinformationFields, nameof(bodyinformationFields), required: false);
-            SourceExpression.Validate(bodyindexes, nameof(bodyindexes), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";

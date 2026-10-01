@@ -14,21 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgCreatedUnplannedContactReport> CreateUnplannedContactReport([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodyactualDate, [WorkflowExpression] Func<string> bodystage, [WorkflowExpression] Func<string> bodycontactMethod, [WorkflowExpression] Func<string> bodycomment, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<PrsmgNewUnplannedContactReportFundraiser[]> bodyfundraisers = null, [WorkflowExpression] Func<PrsmgNewUnplannedContactReportParticipant[]> bodyparticipants = null)
         {
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: true);
-            SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: true);
-            SourceExpression.Validate(bodystage, nameof(bodystage), required: true);
-            SourceExpression.Validate(bodycontactMethod, nameof(bodycontactMethod), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
-            SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
-            SourceExpression.Validate(bodyactualEndhour, nameof(bodyactualEndhour), required: false);
-            SourceExpression.Validate(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
-            SourceExpression.Validate(bodyfundraisers, nameof(bodyfundraisers), required: false);
-            SourceExpression.Validate(bodyparticipants, nameof(bodyparticipants), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/prospectcontactreports";
@@ -131,19 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction EditProspectContactReport([WorkflowExpression] Func<string> contactReportId, [WorkflowExpression] Func<string> bodyobjective = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodystage = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(contactReportId, nameof(contactReportId), required: true);
-            SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: false);
-            SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
-            SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
-            SourceExpression.Validate(bodyactualEndhour, nameof(bodyactualEndhour), required: false);
-            SourceExpression.Validate(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
-            SourceExpression.Validate(bodystage, nameof(bodystage), required: false);
-            SourceExpression.Validate(bodycontactMethod, nameof(bodycontactMethod), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectcontactreports/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactReportId, 1));
@@ -252,18 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgCreatedProspectOpportunity> CreateProspectOpportunity([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<double> bodyexpectedAskAmount = null, [WorkflowExpression] Func<string> bodyexpectedAskDate = null, [WorkflowExpression] Func<string> bodylikelihood = null, [WorkflowExpression] Func<double> bodyaskAmount = null, [WorkflowExpression] Func<string> bodyaskDate = null, [WorkflowExpression] Func<double> bodyacceptedAmount = null, [WorkflowExpression] Func<string> bodyresponseDate = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodytransactionCurrency = null)
         {
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyexpectedAskAmount, nameof(bodyexpectedAskAmount), required: false);
-            SourceExpression.Validate(bodyexpectedAskDate, nameof(bodyexpectedAskDate), required: false);
-            SourceExpression.Validate(bodylikelihood, nameof(bodylikelihood), required: false);
-            SourceExpression.Validate(bodyaskAmount, nameof(bodyaskAmount), required: false);
-            SourceExpression.Validate(bodyaskDate, nameof(bodyaskDate), required: false);
-            SourceExpression.Validate(bodyacceptedAmount, nameof(bodyacceptedAmount), required: false);
-            SourceExpression.Validate(bodyresponseDate, nameof(bodyresponseDate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodytransactionCurrency, nameof(bodytransactionCurrency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/prospectopportunities";
@@ -348,25 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgProspectOpportunitySearchResultCollection> SearchProspectOpportunities([WorkflowExpression] Func<string> keyname = null, [WorkflowExpression] Func<string> firstname = null, [WorkflowExpression] Func<string> lookupId = null, [WorkflowExpression] Func<bool> exactmatchonly = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> askDate = null, [WorkflowExpression] Func<double> askAmount = null, [WorkflowExpression] Func<string> designationuserid = null, [WorkflowExpression] Func<bool> onlyProspects = null, [WorkflowExpression] Func<bool> onlyFundraisers = null, [WorkflowExpression] Func<bool> onlyStaff = null, [WorkflowExpression] Func<bool> onlyVolunteers = null, [WorkflowExpression] Func<bool> onlyPrimaryAddress = null, [WorkflowExpression] Func<bool> includedeceased = null, [WorkflowExpression] Func<bool> includeinactive = null, [WorkflowExpression] Func<bool> checknickname = null, [WorkflowExpression] Func<bool> checkaliases = null, [WorkflowExpression] Func<bool> checkalternatelookupids = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(keyname, nameof(keyname), required: false);
-            SourceExpression.Validate(firstname, nameof(firstname), required: false);
-            SourceExpression.Validate(lookupId, nameof(lookupId), required: false);
-            SourceExpression.Validate(exactmatchonly, nameof(exactmatchonly), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(askDate, nameof(askDate), required: false);
-            SourceExpression.Validate(askAmount, nameof(askAmount), required: false);
-            SourceExpression.Validate(designationuserid, nameof(designationuserid), required: false);
-            SourceExpression.Validate(onlyProspects, nameof(onlyProspects), required: false);
-            SourceExpression.Validate(onlyFundraisers, nameof(onlyFundraisers), required: false);
-            SourceExpression.Validate(onlyStaff, nameof(onlyStaff), required: false);
-            SourceExpression.Validate(onlyVolunteers, nameof(onlyVolunteers), required: false);
-            SourceExpression.Validate(onlyPrimaryAddress, nameof(onlyPrimaryAddress), required: false);
-            SourceExpression.Validate(includedeceased, nameof(includedeceased), required: false);
-            SourceExpression.Validate(includeinactive, nameof(includeinactive), required: false);
-            SourceExpression.Validate(checknickname, nameof(checknickname), required: false);
-            SourceExpression.Validate(checkaliases, nameof(checkaliases), required: false);
-            SourceExpression.Validate(checkalternatelookupids, nameof(checkalternatelookupids), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/prospectopportunities/search";
@@ -419,7 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgProspectOpportunity> GetProspectOpportunity([WorkflowExpression] Func<string> opportunityId)
         {
-            SourceExpression.Validate(opportunityId, nameof(opportunityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectopportunities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
@@ -434,18 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction EditProspectOpportunity([WorkflowExpression] Func<string> opportunityId, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<double> bodyexpectedAskAmount = null, [WorkflowExpression] Func<string> bodyexpectedAskDate = null, [WorkflowExpression] Func<string> bodylikelihood = null, [WorkflowExpression] Func<double> bodyaskAmount = null, [WorkflowExpression] Func<string> bodyaskDate = null, [WorkflowExpression] Func<double> bodyacceptedAmount = null, [WorkflowExpression] Func<string> bodyresponseDate = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodytransactionCurrency = null)
         {
-            SourceExpression.Validate(opportunityId, nameof(opportunityId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyexpectedAskAmount, nameof(bodyexpectedAskAmount), required: false);
-            SourceExpression.Validate(bodyexpectedAskDate, nameof(bodyexpectedAskDate), required: false);
-            SourceExpression.Validate(bodylikelihood, nameof(bodylikelihood), required: false);
-            SourceExpression.Validate(bodyaskAmount, nameof(bodyaskAmount), required: false);
-            SourceExpression.Validate(bodyaskDate, nameof(bodyaskDate), required: false);
-            SourceExpression.Validate(bodyacceptedAmount, nameof(bodyacceptedAmount), required: false);
-            SourceExpression.Validate(bodyresponseDate, nameof(bodyresponseDate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodytransactionCurrency, nameof(bodytransactionCurrency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectopportunities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
@@ -532,8 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgPlanOpportunityCollection> ListPlanOpportunities([WorkflowExpression] Func<string> planId, [WorkflowExpression] Func<statusInput> status = null)
         {
-            SourceExpression.Validate(planId, nameof(planId), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectopportunities/{0}/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planId, 1));
@@ -550,17 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlan> CreateMajorGivingPlan([WorkflowExpression] Func<string> bodyprospectId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodynarrative = null, [WorkflowExpression] Func<string> bodyprimaryManagerId = null, [WorkflowExpression] Func<string> bodyprimaryStartDate = null, [WorkflowExpression] Func<string> bodysecondaryManagerId = null, [WorkflowExpression] Func<string> bodysecondaryStartDate = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanParticipant[]> bodyparticipants = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanSecondaryFundraiser[]> bodyfundraisers = null)
         {
-            SourceExpression.Validate(bodyprospectId, nameof(bodyprospectId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodynarrative, nameof(bodynarrative), required: false);
-            SourceExpression.Validate(bodyprimaryManagerId, nameof(bodyprimaryManagerId), required: false);
-            SourceExpression.Validate(bodyprimaryStartDate, nameof(bodyprimaryStartDate), required: false);
-            SourceExpression.Validate(bodysecondaryManagerId, nameof(bodysecondaryManagerId), required: false);
-            SourceExpression.Validate(bodysecondaryStartDate, nameof(bodysecondaryStartDate), required: false);
-            SourceExpression.Validate(bodyparticipants, nameof(bodyparticipants), required: false);
-            SourceExpression.Validate(bodyfundraisers, nameof(bodyfundraisers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/prospectplans";
@@ -635,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgMajorGivingPlan> GetMajorGivingPlan([WorkflowExpression] Func<string> planId)
         {
-            SourceExpression.Validate(planId, nameof(planId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectplans/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planId, 1));
@@ -650,7 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction DeleteMajorGivingPlan([WorkflowExpression] Func<string> planId)
         {
-            SourceExpression.Validate(planId, nameof(planId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectplans/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planId, 1));
@@ -665,26 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgProspectSearchResultCollection> SearchProspects([WorkflowExpression] Func<string> keyName = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lookupId = null, [WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> addressBlock = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> postCode = null, [WorkflowExpression] Func<bool> exactMatchOnly = null, [WorkflowExpression] Func<string> constituency = null, [WorkflowExpression] Func<bool> onlyProspects = null, [WorkflowExpression] Func<bool> onlyFundraisers = null, [WorkflowExpression] Func<bool> onlyStaff = null, [WorkflowExpression] Func<bool> onlyVolunteers = null, [WorkflowExpression] Func<bool> onlyPrimaryAddress = null, [WorkflowExpression] Func<bool> includeDeceased = null, [WorkflowExpression] Func<bool> includeInactive = null, [WorkflowExpression] Func<bool> fuzzySearchOnName = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lookupId, nameof(lookupId), required: false);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(addressBlock, nameof(addressBlock), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(postCode, nameof(postCode), required: false);
-            SourceExpression.Validate(exactMatchOnly, nameof(exactMatchOnly), required: false);
-            SourceExpression.Validate(constituency, nameof(constituency), required: false);
-            SourceExpression.Validate(onlyProspects, nameof(onlyProspects), required: false);
-            SourceExpression.Validate(onlyFundraisers, nameof(onlyFundraisers), required: false);
-            SourceExpression.Validate(onlyStaff, nameof(onlyStaff), required: false);
-            SourceExpression.Validate(onlyVolunteers, nameof(onlyVolunteers), required: false);
-            SourceExpression.Validate(onlyPrimaryAddress, nameof(onlyPrimaryAddress), required: false);
-            SourceExpression.Validate(includeDeceased, nameof(includeDeceased), required: false);
-            SourceExpression.Validate(includeInactive, nameof(includeInactive), required: false);
-            SourceExpression.Validate(fuzzySearchOnName, nameof(fuzzySearchOnName), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/prospects/search";
@@ -739,9 +632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction EditProspect([WorkflowExpression] Func<string> constituentId, [WorkflowExpression] Func<string> bodymanagerId = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -774,7 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction DeleteProspectOpportunity([WorkflowExpression] Func<string> opportunityId)
         {
-            SourceExpression.Validate(opportunityId, nameof(opportunityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospects/{0}/prospectopportunities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
@@ -789,8 +678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgProspectPlanCollection> ListProspectPlans([WorkflowExpression] Func<string> constituentId, [WorkflowExpression] Func<bool> includeInactivePlans = null)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
-            SourceExpression.Validate(includeInactivePlans, nameof(includeInactivePlans), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospects/{0}/prospectplans", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -807,7 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgProspectSummary> GetProspectSummary([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospects/{0}/prospectstatus", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -822,9 +708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgCreatedProspectConstituency> CreateProspectConstituency([WorkflowExpression] Func<string> bodyconstituentId, [WorkflowExpression] Func<string> bodydateFrom = null, [WorkflowExpression] Func<string> bodydateTo = null)
         {
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: false);
-            SourceExpression.Validate(bodydateTo, nameof(bodydateTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/prospectsconstituency";
@@ -859,31 +742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlanStep> CreateMajorGivingPlanStep([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodyexpectedDate, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodyexpectedStarthour = null, [WorkflowExpression] Func<int> bodyexpectedStartminute = null, [WorkflowExpression] Func<int> bodyexpectedEndhour = null, [WorkflowExpression] Func<int> bodyexpectedEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodyotherLocation = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanStepFundraiser[]> bodyfundraisers = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanStepParticipant[]> bodyparticipants = null)
         {
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodyexpectedDate, nameof(bodyexpectedDate), required: true);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodycontactMethod, nameof(bodycontactMethod), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
-            SourceExpression.Validate(bodyallDayEvent, nameof(bodyallDayEvent), required: false);
-            SourceExpression.Validate(bodyexpectedStarthour, nameof(bodyexpectedStarthour), required: false);
-            SourceExpression.Validate(bodyexpectedStartminute, nameof(bodyexpectedStartminute), required: false);
-            SourceExpression.Validate(bodyexpectedEndhour, nameof(bodyexpectedEndhour), required: false);
-            SourceExpression.Validate(bodyexpectedEndminute, nameof(bodyexpectedEndminute), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: false);
-            SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
-            SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
-            SourceExpression.Validate(bodyactualEndhour, nameof(bodyactualEndhour), required: false);
-            SourceExpression.Validate(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodyotherLocation, nameof(bodyotherLocation), required: false);
-            SourceExpression.Validate(bodyfundraisers, nameof(bodyfundraisers), required: false);
-            SourceExpression.Validate(bodyparticipants, nameof(bodyparticipants), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/prospectsteps";
@@ -1066,7 +924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction DeleteMajorGivingPlanStep([WorkflowExpression] Func<string> stepId)
         {
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectsteps/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
@@ -1081,29 +938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction EditMajorGivingPlanStep([WorkflowExpression] Func<string> vProspectPlanId, [WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<string> bodyobjective = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyexpectedDate = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodyexpectedStarthour = null, [WorkflowExpression] Func<int> bodyexpectedStartminute = null, [WorkflowExpression] Func<int> bodyexpectedEndhour = null, [WorkflowExpression] Func<int> bodyexpectedEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodyotherLocation = null)
         {
-            SourceExpression.Validate(vProspectPlanId, nameof(vProspectPlanId), required: true);
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
-            SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyexpectedDate, nameof(bodyexpectedDate), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodycontactMethod, nameof(bodycontactMethod), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
-            SourceExpression.Validate(bodyallDayEvent, nameof(bodyallDayEvent), required: false);
-            SourceExpression.Validate(bodyexpectedStarthour, nameof(bodyexpectedStarthour), required: false);
-            SourceExpression.Validate(bodyexpectedStartminute, nameof(bodyexpectedStartminute), required: false);
-            SourceExpression.Validate(bodyexpectedEndhour, nameof(bodyexpectedEndhour), required: false);
-            SourceExpression.Validate(bodyexpectedEndminute, nameof(bodyexpectedEndminute), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: false);
-            SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
-            SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
-            SourceExpression.Validate(bodyactualEndhour, nameof(bodyactualEndhour), required: false);
-            SourceExpression.Validate(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
-            SourceExpression.Validate(bodyotherLocation, nameof(bodyotherLocation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/prospectsteps/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
@@ -1283,14 +1117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgCreatedStewardshipPlan> CreateStewardshipPlan([WorkflowExpression] Func<string> bodyprospectId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodysubtype = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodymanagerId = null, [WorkflowExpression] Func<string> bodymanagerStartDate = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanSteward[]> bodystewards = null)
         {
-            SourceExpression.Validate(bodyprospectId, nameof(bodyprospectId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodysubtype, nameof(bodysubtype), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodymanagerStartDate, nameof(bodymanagerStartDate), required: false);
-            SourceExpression.Validate(bodystewards, nameof(bodystewards), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/stewardshipplans";
@@ -1351,7 +1177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction DeleteStewardshipPlan([WorkflowExpression] Func<string> planId)
         {
-            SourceExpression.Validate(planId, nameof(planId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/stewardshipplans/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planId, 1));
@@ -1366,35 +1191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IBodyWorkflowAction<PrsmgCreatedStewardshipPlanStep> CreateStewardshipPlanStep([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodytargetDate, [WorkflowExpression] Func<bodyfrequencyInput> bodyfrequency, [WorkflowExpression] Func<bool> bodylocked = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodytargetStarthour = null, [WorkflowExpression] Func<int> bodytargetStartminute = null, [WorkflowExpression] Func<int> bodytargetEndhour = null, [WorkflowExpression] Func<int> bodytargetEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodynextTargetDate = null, [WorkflowExpression] Func<bodyconnectToInput> bodyconnectTo = null, [WorkflowExpression] Func<string> bodybenefitId = null, [WorkflowExpression] Func<string> bodyeventId = null, [WorkflowExpression] Func<string> bodymailingId = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanStepParticipant[]> bodyparticipants = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanStepAssociatedPlan[]> bodyassociatedPlans = null)
         {
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: true);
-            SourceExpression.Validate(bodytargetDate, nameof(bodytargetDate), required: true);
-            SourceExpression.Validate(bodyfrequency, nameof(bodyfrequency), required: true);
-            SourceExpression.Validate(bodylocked, nameof(bodylocked), required: false);
-            SourceExpression.Validate(bodyallDayEvent, nameof(bodyallDayEvent), required: false);
-            SourceExpression.Validate(bodytargetStarthour, nameof(bodytargetStarthour), required: false);
-            SourceExpression.Validate(bodytargetStartminute, nameof(bodytargetStartminute), required: false);
-            SourceExpression.Validate(bodytargetEndhour, nameof(bodytargetEndhour), required: false);
-            SourceExpression.Validate(bodytargetEndminute, nameof(bodytargetEndminute), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodycontactMethod, nameof(bodycontactMethod), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodynextTargetDate, nameof(bodynextTargetDate), required: false);
-            SourceExpression.Validate(bodyconnectTo, nameof(bodyconnectTo), required: false);
-            SourceExpression.Validate(bodybenefitId, nameof(bodybenefitId), required: false);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
-            SourceExpression.Validate(bodymailingId, nameof(bodymailingId), required: false);
-            SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: false);
-            SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
-            SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
-            SourceExpression.Validate(bodyactualEndhour, nameof(bodyactualEndhour), required: false);
-            SourceExpression.Validate(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
-            SourceExpression.Validate(bodyparticipants, nameof(bodyparticipants), required: false);
-            SourceExpression.Validate(bodyassociatedPlans, nameof(bodyassociatedPlans), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm-prsmg/stewardshipplansteps";
@@ -1605,7 +1401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction DeleteStewardshipPlanStep([WorkflowExpression] Func<string> stepId)
         {
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/stewardshipplansteps/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
@@ -1620,33 +1415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
         public IWorkflowAction EditStewardshipPlanStep([WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<string> bodyobjective = null, [WorkflowExpression] Func<string> bodytargetDate = null, [WorkflowExpression] Func<bool> bodylocked = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodytargetStarthour = null, [WorkflowExpression] Func<int> bodytargetStartminute = null, [WorkflowExpression] Func<int> bodytargetEndhour = null, [WorkflowExpression] Func<int> bodytargetEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<bodyfrequencyInput> bodyfrequency = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodynextTargetDate = null, [WorkflowExpression] Func<bodyconnectToInput> bodyconnectTo = null, [WorkflowExpression] Func<string> bodybenefitId = null, [WorkflowExpression] Func<string> bodyeventId = null, [WorkflowExpression] Func<string> bodymailingId = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null)
         {
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
-            SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: false);
-            SourceExpression.Validate(bodytargetDate, nameof(bodytargetDate), required: false);
-            SourceExpression.Validate(bodylocked, nameof(bodylocked), required: false);
-            SourceExpression.Validate(bodyallDayEvent, nameof(bodyallDayEvent), required: false);
-            SourceExpression.Validate(bodytargetStarthour, nameof(bodytargetStarthour), required: false);
-            SourceExpression.Validate(bodytargetStartminute, nameof(bodytargetStartminute), required: false);
-            SourceExpression.Validate(bodytargetEndhour, nameof(bodytargetEndhour), required: false);
-            SourceExpression.Validate(bodytargetEndminute, nameof(bodytargetEndminute), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodycontactMethod, nameof(bodycontactMethod), required: false);
-            SourceExpression.Validate(bodyfrequency, nameof(bodyfrequency), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodynextTargetDate, nameof(bodynextTargetDate), required: false);
-            SourceExpression.Validate(bodyconnectTo, nameof(bodyconnectTo), required: false);
-            SourceExpression.Validate(bodybenefitId, nameof(bodybenefitId), required: false);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
-            SourceExpression.Validate(bodymailingId, nameof(bodymailingId), required: false);
-            SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: false);
-            SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
-            SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
-            SourceExpression.Validate(bodyactualEndhour, nameof(bodyactualEndhour), required: false);
-            SourceExpression.Validate(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm-prsmg/stewardshipplansteps/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));

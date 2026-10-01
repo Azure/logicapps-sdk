@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
         public IBodyWorkflowAction<string> SendSurvey([WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> emailTemplateId, [WorkflowExpression] Func<string> regarding = null, [WorkflowExpression] Func<string> recipientInfo = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(to, nameof(to), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(emailTemplateId, nameof(emailTemplateId), required: true);
-            SourceExpression.Validate(regarding, nameof(regarding), required: false);
-            SourceExpression.Validate(recipientInfo, nameof(recipientInfo), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/sendmail/flow";
@@ -50,15 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
         public IBodyWorkflowAction<CreateSurveyInviteResponse> CreateSurveyInvite([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> regarding = null, [WorkflowExpression] Func<string> recipientInfo = null, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(subject, nameof(subject), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(regarding, nameof(regarding), required: false);
-            SourceExpression.Validate(recipientInfo, nameof(recipientInfo), required: false);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/createinvite";

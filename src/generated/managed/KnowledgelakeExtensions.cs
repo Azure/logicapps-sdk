@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
         public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs([WorkflowExpression] Func<string> batchimportData, [WorkflowExpression] Func<string> batchnameForImport, [WorkflowExpression] Func<string> batchsecurityToken, [WorkflowExpression] Func<batchrPAEnvironmentInput> batchrPAEnvironment)
         {
-            SourceExpression.Validate(batchimportData, nameof(batchimportData), required: true);
-            SourceExpression.Validate(batchnameForImport, nameof(batchnameForImport), required: true);
-            SourceExpression.Validate(batchsecurityToken, nameof(batchsecurityToken), required: true);
-            SourceExpression.Validate(batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ImportJobs";

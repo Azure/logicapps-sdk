@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CalculateAverageResponse> CalculateAverage([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/calculate-average";
@@ -42,8 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ChunkAnArrayResponse> ChunkAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<int> bodysize)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodysize, nameof(bodysize), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/chunk";
@@ -70,10 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CombineArrayResponse> CombineArray([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string[]> bodykeys, [WorkflowExpression] Func<string[]> bodyvalues)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodykeys, nameof(bodykeys), required: true);
-            SourceExpression.Validate(bodyvalues, nameof(bodyvalues), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/combine";
@@ -100,9 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CheckIfArrayContainAValueResponse> CheckIfArrayContainAValue([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodysearch)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/contains";
@@ -131,8 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse> FindDifferenceBetweenArrays([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string[]> bodycompare)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodycompare, nameof(bodycompare), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/difference";
@@ -159,8 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FindDuplicatesInArraysResponse> FindDuplicatesInArrays([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/duplicate";
@@ -191,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FilterAnArrayResponse> FilterAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<bool> bodypreserveKeys)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypreserveKeys, nameof(bodypreserveKeys), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/filter";
@@ -219,10 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> FirstWhereWithinAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodyOperatorInput> bodyOperator = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodyOperator, nameof(bodyOperator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/first-where";
@@ -257,8 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FlattenAnArrayResponse> FlattenAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<int> bodydepth = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodydepth, nameof(bodydepth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/flatten";
@@ -289,8 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<RemoveItemFromArrayResponse> RemoveItemFromArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/forget";
@@ -317,8 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<GroupByAnArrayKeyResponse> GroupByAnArrayKey([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/group-by";
@@ -345,8 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<StandardArrayResponse> SortAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<bodysortInput> bodysort)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodysort, nameof(bodysort), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/sort";
@@ -373,8 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse> GetUniqueItemsInAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/unique";
@@ -405,11 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> AddOrSubtractFromTimeOrDates([WorkflowExpression] Func<bodyactionInput> bodyaction, [WorkflowExpression] Func<string> bodydatetime, [WorkflowExpression] Func<bodyOperatorInput> bodyOperator, [WorkflowExpression] Func<int> bodyvalue, [WorkflowExpression] Func<string> bodyoutputFormat = null)
         {
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: true);
-            SourceExpression.Validate(bodydatetime, nameof(bodydatetime), required: true);
-            SourceExpression.Validate(bodyOperator, nameof(bodyOperator), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datetime/add-or-subtract";
@@ -446,12 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> ConvertAStringToADatetimeObject([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyinputFormat, [WorkflowExpression] Func<string> bodyoutputFormat, [WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodytimezone = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyinputFormat, nameof(bodyinputFormat), required: true);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: true);
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datetime/string-to-datetime";
@@ -486,12 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> PerformOcrOnAScannedPdfOrImageFile([WorkflowExpression] Func<string> bodyFile, [WorkflowExpression] Func<bodyoemInput> bodyoem, [WorkflowExpression] Func<bodypsmInput> bodypsm, [WorkflowExpression] Func<bool> bodytrim, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodylanguage = null)
         {
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
-            SourceExpression.Validate(bodyoem, nameof(bodyoem), required: true);
-            SourceExpression.Validate(bodypsm, nameof(bodypsm), required: true);
-            SourceExpression.Validate(bodytrim, nameof(bodytrim), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ocr/perform-ocr";
@@ -540,7 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CombineMultiplePdfFilesResponse> CombineMultiplePdfFiles([WorkflowExpression] Func<string[]> bodypdfs)
         {
-            SourceExpression.Validate(bodypdfs, nameof(bodypdfs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/combine-pdf";
@@ -565,7 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<GetPdfMetadataInformationResponse> GetPdfMetadataInformation([WorkflowExpression] Func<string> bodypdf)
         {
-            SourceExpression.Validate(bodypdf, nameof(bodypdf), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/pdf-metadata";
@@ -590,10 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<StandardArrayResponse> ConvertAPdfFileToText([WorkflowExpression] Func<bodylayoutInput> bodylayout, [WorkflowExpression] Func<string> bodypdf, [WorkflowExpression] Func<int> bodyendPage = null, [WorkflowExpression] Func<int> bodystartPage = null)
         {
-            SourceExpression.Validate(bodylayout, nameof(bodylayout), required: true);
-            SourceExpression.Validate(bodypdf, nameof(bodypdf), required: true);
-            SourceExpression.Validate(bodyendPage, nameof(bodyendPage), required: false);
-            SourceExpression.Validate(bodystartPage, nameof(bodystartPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/pdf-to-text";
@@ -632,10 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse> SetPasswordOnAPdfFile([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodypdf)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypdf, nameof(bodypdf), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/set-password";
@@ -662,9 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse> ReplaceTextInStringBasedOnARegularExpression([WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodyreplacement, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(bodypattern, nameof(bodypattern), required: true);
-            SourceExpression.Validate(bodyreplacement, nameof(bodyreplacement), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/regex/regex-replace";
@@ -693,9 +632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse> FindValuesFromAStringBasedOnARegularExpression([WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodygroup = null)
         {
-            SourceExpression.Validate(bodypattern, nameof(bodypattern), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/regex/regex-search";
@@ -728,11 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ReplaceTextInStringResponse> ReplaceTextInString([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyreplace, [WorkflowExpression] Func<string> bodysearch, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyreplace, nameof(bodyreplace), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/text-replace";

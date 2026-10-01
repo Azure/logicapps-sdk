@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<JToken> GetFtpFileContent([WorkflowExpression] Func<string> filePath)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -35,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<JToken> GetFtpFileContentV2([WorkflowExpression] Func<string> filePath)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -54,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata([WorkflowExpression] Func<string> filePath)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -73,9 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<CreateFileOutput> CreateFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> fileContent, [WorkflowExpression] Func<bool> getAllFileMetadata = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: true);
-            SourceExpression.Validate(getAllFileMetadata, nameof(getAllFileMetadata), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -100,9 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<UpdateFileOutput> UpdateFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> fileContent, [WorkflowExpression] Func<bool> getAllFileMetadata = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: true);
-            SourceExpression.Validate(getAllFileMetadata, nameof(getAllFileMetadata), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -127,8 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IOutputWorkflowAction<JToken> DeleteFtpFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> skipIfFileNotPresent = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -152,7 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<ListFilesInFolderOutputItem[]> ListFilesInFolder([WorkflowExpression] Func<string> folderPath)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -171,10 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> filePath = null, [WorkflowExpression] Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null, [WorkflowExpression] Func<object> fileContent = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(filePath, nameof(filePath), required: false);
-            SourceExpression.Validate(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -210,10 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
     {
         public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]> WhenFtpFilesAreAddedOrModified([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<int> maxFileCount = null, [WorkflowExpression] Func<string> oldFileCutOffTimestamp = null, [WorkflowExpression] Func<bool> ignoreSubFolders = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
-            SourceExpression.Validate(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
-            SourceExpression.Validate(ignoreSubFolders, nameof(ignoreSubFolders), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

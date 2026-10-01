@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
         public IBodyWorkflowAction<FindExpertsV3Response> FindExperts([WorkflowExpression] Func<string> bodytextQuery, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null)
         {
-            SourceExpression.Validate(bodytextQuery, nameof(bodytextQuery), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/experts";
@@ -44,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
         public IBodyWorkflowAction<FindQuestionsV3Response> FindQuestions([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<sortInput> sort = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/questions";
@@ -70,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
         public IBodyWorkflowAction<GraphQLUserResponse> GetUserById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -85,11 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
         public IBodyWorkflowAction<Question> PostQuestionDraft([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<int> bodycategory = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<int> bodyknowledgeSpace = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyknowledgeSpace, nameof(bodyknowledgeSpace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/questions";
@@ -136,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
         public IBodyWorkflowAction<PublishQuestionDraftV3Response> PublishQuestionDraft([WorkflowExpression] Func<int> questionId)
         {
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/questions/{0}/publish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(questionId, 1));

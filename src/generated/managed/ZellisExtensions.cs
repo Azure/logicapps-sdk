@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IWorkflowAction ValidateNotification([WorkflowExpression] Func<string> xZipSignature, [WorkflowExpression] Func<string> bodypayload)
         {
-            SourceExpression.Validate(xZipSignature, nameof(xZipSignature), required: true);
-            SourceExpression.Validate(bodypayload, nameof(bodypayload), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ValidateNotification";
@@ -39,8 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IBodyWorkflowAction<StaticResponseWriteSchema> AmendObject([WorkflowExpression] Func<entityInput> entity, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
@@ -56,13 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IBodyWorkflowAction<JToken> GetZellisObjects([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
@@ -89,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IBodyWorkflowAction<StaticResponseWriteSchema> UpdateObject([WorkflowExpression] Func<entityInput> entity, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
@@ -108,11 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     {
         public IBodyWorkflowTrigger<JToken> CRUDEntitiy([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<bool> bodyisEnabled, [WorkflowExpression] Func<bool> bodyeventTypecreate = null, [WorkflowExpression] Func<bool> bodyeventTypedelete = null, [WorkflowExpression] Func<bool> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
-            SourceExpression.Validate(bodyisEnabled, nameof(bodyisEnabled), required: true);
-            SourceExpression.Validate(bodyeventTypecreate, nameof(bodyeventTypecreate), required: false);
-            SourceExpression.Validate(bodyeventTypedelete, nameof(bodyeventTypedelete), required: false);
-            SourceExpression.Validate(bodyeventTypeupdate, nameof(bodyeventTypeupdate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/subscription";

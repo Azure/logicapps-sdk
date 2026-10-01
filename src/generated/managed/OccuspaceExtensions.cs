@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Occuspace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "occuspace")]
         public IBodyWorkflowAction<RealTimeDataResponse> RealTimeData([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/location/{0}:/now", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -43,9 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Occuspace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "occuspace")]
         public IBodyWorkflowAction<HistoricalDataResponse> HistoricalData([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> start, [WorkflowExpression] Func<string> end)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(start, nameof(start), required: true);
-            SourceExpression.Validate(end, nameof(end), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/location/{0}:/counts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

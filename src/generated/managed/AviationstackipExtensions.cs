@@ -14,26 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<FlightGetResponse> FlightGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<flightStatusInput> flightStatus = null, [WorkflowExpression] Func<string> flightDate = null, [WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineName = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<int> flightNumber = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<int> minDelayDep = null, [WorkflowExpression] Func<int> minDelayArr = null, [WorkflowExpression] Func<int> maxDelayDep = null, [WorkflowExpression] Func<int> maxDelayArr = null, [WorkflowExpression] Func<string> arrScheduledTimeArr = null, [WorkflowExpression] Func<string> arrScheduledTimeDep = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(flightStatus, nameof(flightStatus), required: false);
-            SourceExpression.Validate(flightDate, nameof(flightDate), required: false);
-            SourceExpression.Validate(depIata, nameof(depIata), required: false);
-            SourceExpression.Validate(arrIata, nameof(arrIata), required: false);
-            SourceExpression.Validate(depIcao, nameof(depIcao), required: false);
-            SourceExpression.Validate(arrIcao, nameof(arrIcao), required: false);
-            SourceExpression.Validate(airlineName, nameof(airlineName), required: false);
-            SourceExpression.Validate(airlineIata, nameof(airlineIata), required: false);
-            SourceExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
-            SourceExpression.Validate(flightNumber, nameof(flightNumber), required: false);
-            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
-            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
-            SourceExpression.Validate(minDelayDep, nameof(minDelayDep), required: false);
-            SourceExpression.Validate(minDelayArr, nameof(minDelayArr), required: false);
-            SourceExpression.Validate(maxDelayDep, nameof(maxDelayDep), required: false);
-            SourceExpression.Validate(maxDelayArr, nameof(maxDelayArr), required: false);
-            SourceExpression.Validate(arrScheduledTimeArr, nameof(arrScheduledTimeArr), required: false);
-            SourceExpression.Validate(arrScheduledTimeDep, nameof(arrScheduledTimeDep), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flights";
@@ -88,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirportGetResponse> AirportGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airports";
@@ -108,8 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirlineGetResponse> AirlineGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airlines";
@@ -128,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirplaneGetResponse> AirplaneGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airplanes";
@@ -148,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AircraftGetResponse> AircraftGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/aircraft_types";
@@ -168,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<TaxesGetResponse> TaxesGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxes";
@@ -188,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<CityGetResponse> CityGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cities";
@@ -208,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<CountryGetResponse> CountryGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/countries";

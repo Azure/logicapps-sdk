@@ -56,17 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<UserResponse> User([WorkflowExpression] Func<string> requestemail, [WorkflowExpression] Func<string> requestfirstName, [WorkflowExpression] Func<string> requestlastName, [WorkflowExpression] Func<bool> requestisAdmin, [WorkflowExpression] Func<bool> requestisReadOnly, [WorkflowExpression] Func<bool> requestisDocumentController, [WorkflowExpression] Func<bool> requestisFolderController, [WorkflowExpression] Func<bool> requestisManagerial, [WorkflowExpression] Func<string> requestcompany = null, [WorkflowExpression] Func<string> requestposition = null, [WorkflowExpression] Func<string> requestphone = null)
         {
-            SourceExpression.Validate(requestemail, nameof(requestemail), required: true);
-            SourceExpression.Validate(requestfirstName, nameof(requestfirstName), required: true);
-            SourceExpression.Validate(requestlastName, nameof(requestlastName), required: true);
-            SourceExpression.Validate(requestisAdmin, nameof(requestisAdmin), required: true);
-            SourceExpression.Validate(requestisReadOnly, nameof(requestisReadOnly), required: true);
-            SourceExpression.Validate(requestisDocumentController, nameof(requestisDocumentController), required: true);
-            SourceExpression.Validate(requestisFolderController, nameof(requestisFolderController), required: true);
-            SourceExpression.Validate(requestisManagerial, nameof(requestisManagerial), required: true);
-            SourceExpression.Validate(requestcompany, nameof(requestcompany), required: false);
-            SourceExpression.Validate(requestposition, nameof(requestposition), required: false);
-            SourceExpression.Validate(requestphone, nameof(requestphone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/u";
@@ -121,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<UserResponse> UserGet([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/u/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -136,8 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<UserResponse> UserPost2([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<bool> requestactive)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(requestactive, nameof(requestactive), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/u/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -174,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<MetadataResponse> MetadataGet([WorkflowExpression] Func<string> metadataId)
         {
-            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
@@ -189,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<MetadataSwitchResponse[]> MetadataGetSwitches([WorkflowExpression] Func<string> metadataId)
         {
-            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
@@ -204,8 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<MetadataSwitchResponse> MetadataPostSwitch([WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> requestlabel)
         {
-            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
-            SourceExpression.Validate(requestlabel, nameof(requestlabel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
@@ -228,8 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<MetadataSwitchResponse[]> MetadataPutSwitches([WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<switchesInputItem[]> switches = null)
         {
-            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
-            SourceExpression.Validate(switches, nameof(switches), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
@@ -245,9 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<MetadataSwitchResponse> MetadataPutSwitch([WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> switchId, [WorkflowExpression] Func<string> requestlabel)
         {
-            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
-            SourceExpression.Validate(switchId, nameof(switchId), required: true);
-            SourceExpression.Validate(requestlabel, nameof(requestlabel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(switchId, 1));
@@ -270,9 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<SearchResponse[]> SearchGet([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<int> take = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(take, nameof(take), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/q";
@@ -292,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseResponse> CaseGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/c/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -307,7 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseFieldsResponse> CaseFieldGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/c/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -322,10 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<object> CasePrint([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodyuseCustom = null, [WorkflowExpression] Func<bodydisplayGalleryInput> bodydisplayGallery = null, [WorkflowExpression] Func<bodydisplayTextInput> bodydisplayText = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyuseCustom, nameof(bodyuseCustom), required: false);
-            SourceExpression.Validate(bodydisplayGallery, nameof(bodydisplayGallery), required: false);
-            SourceExpression.Validate(bodydisplayText, nameof(bodydisplayText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -364,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -379,9 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReply([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodywithoutNotification)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodywithoutNotification, nameof(bodywithoutNotification), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -408,8 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
     {
         public IWorkflowTrigger CaseCreatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/t/casecreated";
@@ -443,8 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
         public IWorkflowTrigger CaseUpdatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/t/caseupdated";
@@ -478,8 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
         public IWorkflowTrigger CaseClosedTrigger([WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/t/caseclosed";
@@ -513,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
         public IWorkflowTrigger MetadataCreatedTrigger([WorkflowExpression] Func<string> requestmetadataId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestmetadataId, nameof(requestmetadataId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/mt/metadatacreated";
@@ -541,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
         public IWorkflowTrigger MetadataUpdatedTrigger([WorkflowExpression] Func<string> requestmetadataId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestmetadataId, nameof(requestmetadataId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/mt/metadataupdated";

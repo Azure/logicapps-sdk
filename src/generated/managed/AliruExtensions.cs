@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
         public IWorkflowAction SendNews([WorkflowExpression] Func<string> bodyheadline, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodypictureURL = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<int> bodytimeToLiveInDays = null, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodyheadline, nameof(bodyheadline), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodypictureURL, nameof(bodypictureURL), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodytimeToLiveInDays, nameof(bodytimeToLiveInDays), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/SendNews";
@@ -75,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
         public IWorkflowAction SendNotification([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/SendNotification";

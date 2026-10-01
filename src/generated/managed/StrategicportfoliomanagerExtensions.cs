@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<bool> FinancialEntitiesExecuteStageValidation([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> stageId = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(stageId, nameof(stageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/ExecuteStageValidation";
@@ -35,9 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesExecuteStageTransition([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> stageId = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(stageId, nameof(stageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/ExecuteStageTransition";
@@ -56,8 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<EntityHistoryEntry[]> FinancialEntitiesGetEntityHistoryEntries([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/GetEntityHistoryEntries";
@@ -74,12 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesLogEntityHistoryEntry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> activityType, [WorkflowExpression] Func<string> activityTypeIcon, [WorkflowExpression] Func<string> activityDetails, [WorkflowExpression] Func<string> initiator)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(activityType, nameof(activityType), required: true);
-            SourceExpression.Validate(activityTypeIcon, nameof(activityTypeIcon), required: true);
-            SourceExpression.Validate(activityDetails, nameof(activityDetails), required: true);
-            SourceExpression.Validate(initiator, nameof(initiator), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/LogEntityHistoryEntry";
@@ -100,9 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<LifecycleApprovalRequest[]> EntityLifecycleGetLifecycleApprovalRequestsByUser([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> approver, [WorkflowExpression] Func<int> status = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(approver, nameof(approver), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestsByUser";
@@ -121,9 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<LifecycleApprovalRequest[]> EntityLifecycleGetLifecycleApprovalRequestsByEntity([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<int> status = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestsByEntity";
@@ -142,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<LifecycleApprovalRequest> EntityLifecycleGetLifecycleApprovalRequestDetails([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> requestInstanceId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(requestInstanceId, nameof(requestInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestDetails";
@@ -160,10 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction EntityLifecycleSetLifecycleApprovalResponse([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> requestUid, [WorkflowExpression] Func<int> response, [WorkflowExpression] Func<string> comment = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(requestUid, nameof(requestUid), required: true);
-            SourceExpression.Validate(response, nameof(response), required: true);
-            SourceExpression.Validate(comment, nameof(comment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLifecycle/SetLifecycleApprovalResponse";
@@ -183,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> EntityTypesGetEntityTypes([WorkflowExpression] Func<string> siteUrl)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityTypes/GetEntityTypes";
@@ -199,9 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesCreateEntityNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityTypeUid, [WorkflowExpression] Func<string> entityName)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityTypeUid, nameof(entityTypeUid), required: true);
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/CreateEntityNoRetry";
@@ -219,8 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesDeleteEntity([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/DeleteEntity";
@@ -237,9 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Entity[]> FinancialEntitiesGetAllEntities([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(selectColumns, nameof(selectColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetAllEntities";
@@ -259,9 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetAllEntitiesNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(selectColumns, nameof(selectColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetAllEntitiesNoRetry";
@@ -281,9 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Entity> FinancialEntitiesGetEntity([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(selectColumns, nameof(selectColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetEntity";
@@ -302,9 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(selectColumns, nameof(selectColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetEntityNoRetry";
@@ -323,8 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> FinancialEntitiesGetEntityFields([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFields";
@@ -341,9 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityFieldValuesODataNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFieldValuesODataNoRetry";
@@ -362,8 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<FieldValue[]> FinancialEntitiesGetEntityFieldValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFieldValues";
@@ -380,9 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<FieldValue> FinancialEntitiesGetEntityFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFieldValue";
@@ -400,10 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesSetEntityFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldValue";
@@ -422,10 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldValueNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldValueNoRetry";
@@ -444,9 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesSetEntityFieldsValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<EntityFieldValuePair[]> fieldValues = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(fieldValues, nameof(fieldValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldsValues";
@@ -464,9 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldsValuesNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<EntityFieldValuePair[]> fieldValues = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(fieldValues, nameof(fieldValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
@@ -484,13 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CustomFieldValueCreationInformation> FinancialEntitiesGetFinancialCustomFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<string> fieldIdentifier)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(eftId, nameof(eftId), required: true);
-            SourceExpression.Validate(fdId, nameof(fdId), required: true);
-            SourceExpression.Validate(fnId, nameof(fnId), required: true);
-            SourceExpression.Validate(centerId, nameof(centerId), required: true);
-            SourceExpression.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetFinancialCustomFieldValue";
@@ -512,14 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(eftId, nameof(eftId), required: true);
-            SourceExpression.Validate(fdId, nameof(fdId), required: true);
-            SourceExpression.Validate(fnId, nameof(fnId), required: true);
-            SourceExpression.Validate(centerId, nameof(centerId), required: true);
-            SourceExpression.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldValue";
@@ -542,13 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldsValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<FinancialFieldValuePair[]> fieldValues = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(eftId, nameof(eftId), required: true);
-            SourceExpression.Validate(fdId, nameof(fdId), required: true);
-            SourceExpression.Validate(fnId, nameof(fnId), required: true);
-            SourceExpression.Validate(centerId, nameof(centerId), required: true);
-            SourceExpression.Validate(fieldValues, nameof(fieldValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
@@ -570,8 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Resource[]> FinancialEntitiesGetEntityResources([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityUid)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityUid, nameof(entityUid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/GetEntityResources";
@@ -588,9 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<string> FinancialEntitiesAddEntityResource([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityUid, [WorkflowExpression] Func<string> resourceUid)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityUid, nameof(entityUid), required: true);
-            SourceExpression.Validate(resourceUid, nameof(resourceUid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/AddEntityResource";
@@ -608,9 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResult> FinancialEntitiesCreateEntityRelationship([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> relatedEntityId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(relatedEntityId, nameof(relatedEntityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialEntities/CreateEntityRelationship";
@@ -628,7 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> LookupTableGetLookupTables([WorkflowExpression] Func<string> siteUrl)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/LookupTable/GetLookupTables";
@@ -644,8 +545,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> LookupTableGetLookupTableValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> optionSetUid)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(optionSetUid, nameof(optionSetUid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/LookupTable/GetLookupTableValues";
@@ -662,8 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> MilestonesGetMilestones([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/GetMilestones";
@@ -680,12 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<string> MilestonesCreateMilestone([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> plannedDate, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<bool> showInRoadmaps = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(plannedDate, nameof(plannedDate), required: true);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(showInRoadmaps, nameof(showInRoadmaps), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/CreateMilestone";
@@ -708,9 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<EntityMilestone> MilestonesGetMilestone([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(milestoneId, nameof(milestoneId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/GetMilestone";
@@ -728,16 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction MilestonesUpdateMilestone([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> plannedDate = null, [WorkflowExpression] Func<string> actualDate = null, [WorkflowExpression] Func<string> transitionalActualDate = null, [WorkflowExpression] Func<bool> showInRoadmaps = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(milestoneId, nameof(milestoneId), required: true);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(plannedDate, nameof(plannedDate), required: false);
-            SourceExpression.Validate(actualDate, nameof(actualDate), required: false);
-            SourceExpression.Validate(transitionalActualDate, nameof(transitionalActualDate), required: false);
-            SourceExpression.Validate(showInRoadmaps, nameof(showInRoadmaps), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/UpdateMilestone";
@@ -769,9 +647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<FieldValue[]> MilestonesGetMilestoneFieldValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(milestoneId, nameof(milestoneId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/GetMilestoneFieldValues";
@@ -789,10 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<FieldValue> MilestonesGetMilestoneFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<string> fieldName)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(milestoneId, nameof(milestoneId), required: true);
-            SourceExpression.Validate(fieldName, nameof(fieldName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/GetMilestoneFieldValue";
@@ -811,11 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction MilestonesSetMilestoneFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<string> fieldName, [WorkflowExpression] Func<string> value)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(milestoneId, nameof(milestoneId), required: true);
-            SourceExpression.Validate(fieldName, nameof(fieldName), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/SetMilestoneFieldValue";
@@ -835,10 +701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction MilestonesSetMilestoneFieldsValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<MilestoneFieldValuePair[]> fieldValues = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(milestoneId, nameof(milestoneId), required: true);
-            SourceExpression.Validate(fieldValues, nameof(fieldValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Milestones/SetMilestoneFieldsValues";
@@ -859,7 +721,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
     {
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddFinancialValuesChangedHook";
@@ -883,7 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddEntityCreatedHook";
@@ -907,7 +767,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddEntityUpdatedHook";
@@ -931,7 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddEntityDeletedHook";
@@ -955,7 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddStageTransitionHook";
@@ -979,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
@@ -1003,7 +859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
@@ -1027,7 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddChangeRequestCreatedHook";
@@ -1051,7 +905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
@@ -1075,7 +928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddChangeRequestDeletedHook";
@@ -1099,7 +951,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
@@ -1123,7 +974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
@@ -1147,7 +997,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
@@ -1171,7 +1020,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
@@ -1195,7 +1043,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddMilestoneCreatedHook";
@@ -1219,7 +1066,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddMilestoneUpdatedHook";
@@ -1243,7 +1089,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddMilestoneDeletedHook";
@@ -1267,7 +1112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddRelationshipCreatedHook";
@@ -1291,7 +1135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddRelationshipUpdatedHook";
@@ -1315,7 +1158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddRelationshipDeletedHook";
@@ -1339,7 +1181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddApprovalRequestCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddApprovalRequestCreatedHook";
@@ -1363,7 +1204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddApprovalRequestChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Events/AddApprovalRequestChangedHook";

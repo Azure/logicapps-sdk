@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
         public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases([WorkflowExpression] Func<string> country = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/browse/new-releases";

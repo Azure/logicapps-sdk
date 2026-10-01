@@ -14,25 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<CreateTicketResponse> CreateTicket([WorkflowExpression] Func<int> bodyticketType, [WorkflowExpression] Func<string> bodyticketHeader, [WorkflowExpression] Func<string> bodyticketText, [WorkflowExpression] Func<int> bodyenterpriseId, [WorkflowExpression] Func<int> bodyentranceType, [WorkflowExpression] Func<int> bodyareaId, [WorkflowExpression] Func<bool> bodyreleasedOption, [WorkflowExpression] Func<bool> bodyprivateOption, [WorkflowExpression] Func<bool> bodyinternalOption, [WorkflowExpression] Func<bodyurgencyTypeInput> bodyurgencyType, [WorkflowExpression] Func<bodyeffectsTypeInput> bodyeffectsType, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<int[]> bodyrelatedAssetIds = null, [WorkflowExpression] Func<bodyfieldGroupsInputItem[]> bodyfieldGroups = null, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<int> bodyserviceContractId = null, [WorkflowExpression] Func<int> bodydelegatedTicketEditor = null)
         {
-            SourceExpression.Validate(bodyticketType, nameof(bodyticketType), required: true);
-            SourceExpression.Validate(bodyticketHeader, nameof(bodyticketHeader), required: true);
-            SourceExpression.Validate(bodyticketText, nameof(bodyticketText), required: true);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: true);
-            SourceExpression.Validate(bodyentranceType, nameof(bodyentranceType), required: true);
-            SourceExpression.Validate(bodyareaId, nameof(bodyareaId), required: true);
-            SourceExpression.Validate(bodyreleasedOption, nameof(bodyreleasedOption), required: true);
-            SourceExpression.Validate(bodyprivateOption, nameof(bodyprivateOption), required: true);
-            SourceExpression.Validate(bodyinternalOption, nameof(bodyinternalOption), required: true);
-            SourceExpression.Validate(bodyurgencyType, nameof(bodyurgencyType), required: true);
-            SourceExpression.Validate(bodyeffectsType, nameof(bodyeffectsType), required: true);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodyrelatedAssetIds, nameof(bodyrelatedAssetIds), required: false);
-            SourceExpression.Validate(bodyfieldGroups, nameof(bodyfieldGroups), required: false);
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodyserviceContractId, nameof(bodyserviceContractId), required: false);
-            SourceExpression.Validate(bodydelegatedTicketEditor, nameof(bodydelegatedTicketEditor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CreateTicket";
@@ -123,15 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<CreateTicketPositionResponse> CreateTicketPosition([WorkflowExpression] Func<string> bodyreferenceNumber, [WorkflowExpression] Func<string> bodyticketPositionText, [WorkflowExpression] Func<bodyticketPositionTypeInput> bodyticketPositionType, [WorkflowExpression] Func<bodyticketPositionVisibilityInput> bodyticketPositionVisibility, [WorkflowExpression] Func<bodyfieldGroupsInputItem2[]> bodyfieldGroups = null, [WorkflowExpression] Func<string> bodyparkTicketparkUntil = null, [WorkflowExpression] Func<bodyparkTicketparkingReasonInput> bodyparkTicketparkingReason = null, [WorkflowExpression] Func<string> bodyparkTicketparkingPositionText = null, [WorkflowExpression] Func<bodyparkTicketafterParkingActionInput> bodyparkTicketafterParkingAction = null)
         {
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: true);
-            SourceExpression.Validate(bodyticketPositionText, nameof(bodyticketPositionText), required: true);
-            SourceExpression.Validate(bodyticketPositionType, nameof(bodyticketPositionType), required: true);
-            SourceExpression.Validate(bodyticketPositionVisibility, nameof(bodyticketPositionVisibility), required: true);
-            SourceExpression.Validate(bodyfieldGroups, nameof(bodyfieldGroups), required: false);
-            SourceExpression.Validate(bodyparkTicketparkUntil, nameof(bodyparkTicketparkUntil), required: false);
-            SourceExpression.Validate(bodyparkTicketparkingReason, nameof(bodyparkTicketparkingReason), required: false);
-            SourceExpression.Validate(bodyparkTicketparkingPositionText, nameof(bodyparkTicketparkingPositionText), required: false);
-            SourceExpression.Validate(bodyparkTicketafterParkingAction, nameof(bodyparkTicketafterParkingAction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CreateTicketPosition";
@@ -198,8 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<AddAssetRelationResponse> AddAssetRelation([WorkflowExpression] Func<string> bodyreferenceNumber, [WorkflowExpression] Func<int[]> bodyrelatedAssetIds)
         {
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: true);
-            SourceExpression.Validate(bodyrelatedAssetIds, nameof(bodyrelatedAssetIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddAssetRelation";
@@ -224,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<GetTicketResponse> GetTicket([WorkflowExpression] Func<string> bodyreferenceNumber)
         {
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetTicket";
@@ -247,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<SearchTicketResponse> SearchTicket([WorkflowExpression] Func<string> bodyreferencenumber)
         {
-            SourceExpression.Validate(bodyreferencenumber, nameof(bodyreferencenumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SearchTicket";
@@ -270,9 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<SearchTicketbyParameterResponse> SearchTicketbyParameter([WorkflowExpression] Func<string> bodysearchParam, [WorkflowExpression] Func<int> bodytake, [WorkflowExpression] Func<int> bodyskip)
         {
-            SourceExpression.Validate(bodysearchParam, nameof(bodysearchParam), required: true);
-            SourceExpression.Validate(bodytake, nameof(bodytake), required: true);
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SearchTicketByParameter";
@@ -299,9 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse> GetTicketFieldGroupConfig([WorkflowExpression] Func<int> bodyticketTypeId, [WorkflowExpression] Func<string> bodyticketId = null, [WorkflowExpression] Func<string> bodyfieldGroupSettingsId = null)
         {
-            SourceExpression.Validate(bodyticketTypeId, nameof(bodyticketTypeId), required: true);
-            SourceExpression.Validate(bodyticketId, nameof(bodyticketId), required: false);
-            SourceExpression.Validate(bodyfieldGroupSettingsId, nameof(bodyfieldGroupSettingsId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetTicketFieldGroupConfig";
@@ -336,11 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<GetAllTicketTypesResponse> GetAllTicketTypes([WorkflowExpression] Func<int> bodyresponseType, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null)
         {
-            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: true);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: false);
-            SourceExpression.Validate(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetAllTicketTypes";
@@ -379,11 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<GetAllAreasResponse> GetAllAreas([WorkflowExpression] Func<int> bodyresponseType, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null)
         {
-            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: true);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: false);
-            SourceExpression.Validate(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetAllAreas";
@@ -422,11 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
         public IBodyWorkflowAction<GetAllStartingAreasResponse> GetAllStartingAreas([WorkflowExpression] Func<int> bodyresponseType, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null)
         {
-            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: true);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: false);
-            SourceExpression.Validate(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetAllStartAreas";

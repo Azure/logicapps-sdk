@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
     {
         public IBodyWorkflowTrigger<JToken> FormAnswer([WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hooks_flow/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));

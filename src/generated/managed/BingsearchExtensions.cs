@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingsearch")]
         public IBodyWorkflowAction<NewsArticle[]> GetNews([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<mktInput> mkt = null, [WorkflowExpression] Func<safeSearchInput> safeSearch = null, [WorkflowExpression] Func<string> count = null, [WorkflowExpression] Func<string> offset = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(mkt, nameof(mkt), required: false);
-            SourceExpression.Validate(safeSearch, nameof(safeSearch), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/news/search";
@@ -47,11 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
     {
         public IBodyWorkflowTrigger<NewsArticle[]> TrigNewNews([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<mktInput> mkt = null, [WorkflowExpression] Func<safeSearchInput> safeSearch = null, [WorkflowExpression] Func<string> count = null, [WorkflowExpression] Func<string> offset = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(mkt, nameof(mkt), required: false);
-            SourceExpression.Validate(safeSearch, nameof(safeSearch), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/news/search";

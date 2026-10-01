@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<CreateSmartLinkResponse> CreateSmartLink([WorkflowExpression] Func<string> organizationDomain, [WorkflowExpression] Func<string> slateId, [WorkflowExpression] Func<object> fields = null)
         {
-            SourceExpression.Validate(organizationDomain, nameof(organizationDomain), required: true);
-            SourceExpression.Validate(slateId, nameof(slateId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/flows/{0}/smartLink/create", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slateId, 1));
@@ -34,9 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<StartFlowResponse> StartFlow([WorkflowExpression] Func<string> organizationDomain, [WorkflowExpression] Func<string> slateId, [WorkflowExpression] Func<object> fields = null)
         {
-            SourceExpression.Validate(organizationDomain, nameof(organizationDomain), required: true);
-            SourceExpression.Validate(slateId, nameof(slateId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/addon-proxy/flow/v1/flows/{0}/packets/blank", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slateId, 1));
@@ -56,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
     {
         public IBodyWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger([WorkflowExpression] Func<string> bodybotAuthorizationToken, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodybotAuthorizationToken, nameof(bodybotAuthorizationToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event";

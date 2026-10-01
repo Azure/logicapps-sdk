@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maintenancerequestox")]
         public IWorkflowAction MaintenanceRequestOxmaint([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodypriority, [WorkflowExpression] Func<string> bodyrequestedBy, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodymasterEmail, [WorkflowExpression] Func<string> bodyapiKey)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: true);
-            SourceExpression.Validate(bodyrequestedBy, nameof(bodyrequestedBy), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodymasterEmail, nameof(bodymasterEmail), required: true);
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflows/81fb7bc062f3419a8c0ba8ac0132d631/triggers/manual/paths/invoke";

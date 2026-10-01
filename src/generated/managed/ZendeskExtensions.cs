@@ -28,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zendesk")]
         public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -58,8 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zendesk")]
         public IBodyWorkflowAction<Item> PostItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<itemInput> item = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -75,8 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zendesk")]
         public IBodyWorkflowAction<Item> GetItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -91,8 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zendesk")]
         public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -107,9 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zendesk")]
         public IBodyWorkflowAction<Item> PatchItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<itemInput> item = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -125,13 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zendesk")]
         public IBodyWorkflowAction<SearchResult> SearchArticles([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<int> brandId = null, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<int> section = null, [WorkflowExpression] Func<string> labelNames = null, [WorkflowExpression] Func<bool> multibrand = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(brandId, nameof(brandId), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(section, nameof(section), required: false);
-            SourceExpression.Validate(labelNames, nameof(labelNames), required: false);
-            SourceExpression.Validate(multibrand, nameof(multibrand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/help_center/articles/search";
@@ -161,11 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
     {
         public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onnewitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -187,11 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/onupdateditems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));

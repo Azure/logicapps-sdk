@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
         public IBodyWorkflowAction<JToken> GetFormResponseById([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<int> responseId)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')/responses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -31,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
         public IBodyWorkflowAction<GetFormDetailsByIdResult> GetFormDetailsById([WorkflowExpression] Func<string> formId)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -49,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
     {
         public IWorkflowTrigger CreateFormWebhook([WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/formapi/api/forms/{0}/webhooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));

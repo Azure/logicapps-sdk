@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetStationsResponse> GetStations([WorkflowExpression] Func<bool> facilitiesInclude = null, [WorkflowExpression] Func<bool> onlyApproved = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(facilitiesInclude, nameof(facilitiesInclude), required: false);
-            SourceExpression.Validate(onlyApproved, nameof(onlyApproved), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/station/";
@@ -57,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetStationByIdResponse> GetStationById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -72,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetSingleStationbyCodeResponse> GetSingleStationbyCode([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> stationCode)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/station/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "au"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -102,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetFacilitybyCodeResponse> GetFacilitybyCode([WorkflowExpression] Func<string> facilityCode)
         {
-            SourceExpression.Validate(facilityCode, nameof(facilityCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/facility/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(facilityCode, 1));
@@ -131,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetWeatherStationbyCodeResponse> GetWeatherStationbyCode([WorkflowExpression] Func<string> stationCode)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/weather/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -146,13 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetWeatherStationObservationsResponse> GetWeatherStationObservations([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> intervalHuman = null, [WorkflowExpression] Func<string> periodHuman = null, [WorkflowExpression] Func<string> networkCode = null, [WorkflowExpression] Func<string> timezone = null, [WorkflowExpression] Func<string> offset = null, [WorkflowExpression] Func<int> year = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(intervalHuman, nameof(intervalHuman), required: false);
-            SourceExpression.Validate(periodHuman, nameof(periodHuman), required: false);
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: false);
-            SourceExpression.Validate(timezone, nameof(timezone), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/weather/station/observation/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -179,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetNetworkRegionsResponseItem[]> GetNetworkRegions([WorkflowExpression] Func<string> networkCode)
         {
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/networks/regions";
@@ -251,11 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetPowerbyStationResponse> GetPowerbyStation([WorkflowExpression] Func<string> networkCode, [WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<string> intervalHuman = null, [WorkflowExpression] Func<string> periodHuman = null)
         {
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(intervalHuman, nameof(intervalHuman), required: false);
-            SourceExpression.Validate(periodHuman, nameof(periodHuman), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/power/station/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -276,10 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetEnergybyStationResponse> GetEnergybyStation([WorkflowExpression] Func<string> networkCode, [WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> interval = null, [WorkflowExpression] Func<string> period = null)
         {
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(interval, nameof(interval), required: false);
-            SourceExpression.Validate(period, nameof(period), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/energy/station/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -298,8 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetInterconnectorFlowNetworkResponse> GetInterconnectorFlowNetwork([WorkflowExpression] Func<string> networkCode, [WorkflowExpression] Func<string> month = null)
         {
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: true);
-            SourceExpression.Validate(month, nameof(month), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/flow/network/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkCode, 1));
@@ -316,9 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetPowerNetworkRegionByFueltechResponse> GetPowerNetworkRegionByFueltech([WorkflowExpression] Func<string> networkCode, [WorkflowExpression] Func<string> networkRegionCode, [WorkflowExpression] Func<string> month = null)
         {
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: true);
-            SourceExpression.Validate(networkRegionCode, nameof(networkRegionCode), required: true);
-            SourceExpression.Validate(month, nameof(month), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/power/network/fueltech/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkRegionCode, 1));
@@ -335,8 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetEmissionFactorPerNetworkRegionResponse> GetEmissionFactorPerNetworkRegion([WorkflowExpression] Func<string> networkCode, [WorkflowExpression] Func<string> interval = null)
         {
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: true);
-            SourceExpression.Validate(interval, nameof(interval), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/emissionfactor/network/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkCode, 1));
@@ -353,7 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetFueltechMixByNetworkResponse> GetFueltechMixByNetwork([WorkflowExpression] Func<string> networkId)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/fueltech_mix/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1));
@@ -368,8 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opennemip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opennemip")]
         public IBodyWorkflowAction<GetPriceHistoryByNetworkandNetworkRegionResponse> GetPriceHistoryByNetworkandNetworkRegion([WorkflowExpression] Func<string> networkCode, [WorkflowExpression] Func<string> networkRegion = null)
         {
-            SourceExpression.Validate(networkCode, nameof(networkCode), required: true);
-            SourceExpression.Validate(networkRegion, nameof(networkRegion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/price/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkCode, 1));

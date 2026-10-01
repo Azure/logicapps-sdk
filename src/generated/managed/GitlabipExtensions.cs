@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<ProjectResponse> CreateProject([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<int> namespaceId = null, [WorkflowExpression] Func<bool> initializeWithReadme = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(namespaceId, nameof(namespaceId), required: false);
-            SourceExpression.Validate(initializeWithReadme, nameof(initializeWithReadme), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/projects";
@@ -51,9 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<ProjectResponse> ForkProject([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> path = null, [WorkflowExpression] Func<string> name = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(path, nameof(path), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/fork", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -72,10 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<CompareResponse> CompareRepo([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> from, [WorkflowExpression] Func<string> to, [WorkflowExpression] Func<int> fromProjectId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(from, nameof(from), required: true);
-            SourceExpression.Validate(to, nameof(to), required: true);
-            SourceExpression.Validate(fromProjectId, nameof(fromProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/repository/compare", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -94,9 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<BranchResponse> CreateBranch([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> branch, [WorkflowExpression] Func<string> @ref)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(branch, nameof(branch), required: true);
-            SourceExpression.Validate(@ref, nameof(@ref), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/repository/branches", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -113,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<CommitResponse> CreateCommit([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> branch, [WorkflowExpression] Func<string> commitMessage)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(branch, nameof(branch), required: true);
-            SourceExpression.Validate(commitMessage, nameof(commitMessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/repository/commits", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -138,10 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<MergeResponse> MergeRequest([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> sourceBranch, [WorkflowExpression] Func<string> targetBranch, [WorkflowExpression] Func<string> title)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(sourceBranch, nameof(sourceBranch), required: true);
-            SourceExpression.Validate(targetBranch, nameof(targetBranch), required: true);
-            SourceExpression.Validate(title, nameof(title), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/merge_requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -159,11 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<MergeResponse> MergeMergeRequest([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> mergeRequestIid, [WorkflowExpression] Func<string> mergeCommitMessage = null, [WorkflowExpression] Func<bool> squash = null, [WorkflowExpression] Func<bool> shouldRemoveSourceBranch = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(mergeRequestIid, nameof(mergeRequestIid), required: true);
-            SourceExpression.Validate(mergeCommitMessage, nameof(mergeCommitMessage), required: false);
-            SourceExpression.Validate(squash, nameof(squash), required: false);
-            SourceExpression.Validate(shouldRemoveSourceBranch, nameof(shouldRemoveSourceBranch), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/merge_requests/{1}/merge", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(mergeRequestIid, 1));
@@ -186,9 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<MergeResponse> UpdateMergeRequest([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> mergeRequestIid, [WorkflowExpression] Func<string> stateEvent = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(mergeRequestIid, nameof(mergeRequestIid), required: true);
-            SourceExpression.Validate(stateEvent, nameof(stateEvent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/merge_requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(mergeRequestIid, 1));
@@ -205,9 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<GetFileResponse> GetFile([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<string> @ref)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(@ref, nameof(@ref), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/repository/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filePath, 1));
@@ -223,8 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<CreateTriggerResponse> CreateTrigger([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> description)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(description, nameof(description), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/triggers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -240,9 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<TriggerPipelineResponse> TriggerPipeline([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> @ref)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(@ref, nameof(@ref), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/trigger/pipeline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -259,8 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
         public IBodyWorkflowAction<EnableRunnerResponse> EnableRunner([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> runnerId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(runnerId, nameof(runnerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/runners", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

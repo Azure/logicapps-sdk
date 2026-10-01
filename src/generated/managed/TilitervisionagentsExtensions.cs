@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
         public IBodyWorkflowAction<AgentResponse> RunVisionAgent([WorkflowExpression] Func<agentNameInput> agentName, [WorkflowExpression] Func<string> payloadinputFileB64, [WorkflowExpression] Func<string> payloadexpectedText = null, [WorkflowExpression] Func<string> payloadobjectType = null, [WorkflowExpression] Func<string[]> payloadexpectedObjects = null)
         {
-            SourceExpression.Validate(agentName, nameof(agentName), required: true);
-            SourceExpression.Validate(payloadinputFileB64, nameof(payloadinputFileB64), required: true);
-            SourceExpression.Validate(payloadexpectedText, nameof(payloadexpectedText), required: false);
-            SourceExpression.Validate(payloadobjectType, nameof(payloadobjectType), required: false);
-            SourceExpression.Validate(payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/agents/{0}/v1/inference", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentName, 1));

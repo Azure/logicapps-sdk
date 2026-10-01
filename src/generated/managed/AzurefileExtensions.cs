@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadata([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> UpdateFile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -47,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IWorkflowAction DeleteFile([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -63,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadataByPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/GetFileByPath";
@@ -80,8 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<string> GetFileContentByPath([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/GetFileContentByPath";
@@ -101,8 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -120,9 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> CreateFile([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/files";
@@ -142,9 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> CopyFile([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/copyFile";
@@ -166,9 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/extractFolderV2";
@@ -189,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadataPage> ListFolder([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/foldersV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));

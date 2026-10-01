@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
         public IBodyWorkflowAction<DealResponse> GetDeal([WorkflowExpression] Func<int> dealId)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dealId, 1));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
         public IBodyWorkflowAction<DealResponse> UpdateDealStatus([WorkflowExpression] Func<int> dealId, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodylostReason = null)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodylostReason, nameof(bodylostReason), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update_status_deal/v1/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dealId, 1));
@@ -60,16 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
         public IBodyWorkflowAction<ActivityResponse> AddActivity([WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodydueTime = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodyassignedTo = null, [WorkflowExpression] Func<int> bodydealId = null, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<int> bodyorganizationId = null)
         {
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodydueTime, nameof(bodydueTime), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodydealId, nameof(bodydealId), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/activities";
@@ -142,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
         public IBodyWorkflowAction<StageResponse> GetStage([WorkflowExpression] Func<int> stageId)
         {
-            SourceExpression.Validate(stageId, nameof(stageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/stages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(stageId, 1));
@@ -157,16 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
         public IBodyWorkflowAction<DealResponseV2> AddDeal([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodypipelineId = null, [WorkflowExpression] Func<string> bodystageId = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<int> bodyvalue = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodyorganizationId = null, [WorkflowExpression] Func<string> bodyexpectedCloseDate = null, [WorkflowExpression] Func<bodyvisiblityInput> bodyvisiblity = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodypipelineId, nameof(bodypipelineId), required: false);
-            SourceExpression.Validate(bodystageId, nameof(bodystageId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: false);
-            SourceExpression.Validate(bodyexpectedCloseDate, nameof(bodyexpectedCloseDate), required: false);
-            SourceExpression.Validate(bodyvisiblity, nameof(bodyvisiblity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector-v2/v1/deals";
@@ -243,10 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
         public IBodyWorkflowAction<DealResponseV2> UpdateDealStage([WorkflowExpression] Func<int> dealId, [WorkflowExpression] Func<string> bodypipelineId, [WorkflowExpression] Func<string> bodystageId, [WorkflowExpression] Func<string> bodyexpectedCloseDate = null)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
-            SourceExpression.Validate(bodypipelineId, nameof(bodypipelineId), required: true);
-            SourceExpression.Validate(bodystageId, nameof(bodystageId), required: true);
-            SourceExpression.Validate(bodyexpectedCloseDate, nameof(bodyexpectedCloseDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/connector-v2/update_stage_deal/v1/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dealId, 1));

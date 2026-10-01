@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractipgeolocatio")]
         public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<string> ipAddress, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(ipAddress, nameof(ipAddress), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/";

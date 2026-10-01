@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremaps")]
         public IBodyWorkflowAction<GetRouteResponse> GetRoute([WorkflowExpression] Func<string> wp0, [WorkflowExpression] Func<string> wp1, [WorkflowExpression] Func<travelModeInput> travelMode = null, [WorkflowExpression] Func<bool> avoidHighways = null, [WorkflowExpression] Func<bool> avoidTolls = null, [WorkflowExpression] Func<bool> avoidFerry = null, [WorkflowExpression] Func<bool> avoidBorderCrossing = null, [WorkflowExpression] Func<optimizeInput> optimize = null)
         {
-            SourceExpression.Validate(wp0, nameof(wp0), required: true);
-            SourceExpression.Validate(wp1, nameof(wp1), required: true);
-            SourceExpression.Validate(travelMode, nameof(travelMode), required: false);
-            SourceExpression.Validate(avoidHighways, nameof(avoidHighways), required: false);
-            SourceExpression.Validate(avoidTolls, nameof(avoidTolls), required: false);
-            SourceExpression.Validate(avoidFerry, nameof(avoidFerry), required: false);
-            SourceExpression.Validate(avoidBorderCrossing, nameof(avoidBorderCrossing), required: false);
-            SourceExpression.Validate(optimize, nameof(optimize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/route/directions";
@@ -54,12 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremaps")]
         public IBodyWorkflowAction<GetLocationByAddressResponse> GetLocationByAddress([WorkflowExpression] Func<string> addressLine = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> adminDistrict = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> countryRegion = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(addressLine, nameof(addressLine), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(adminDistrict, nameof(adminDistrict), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(countryRegion, nameof(countryRegion), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/geocode";
@@ -86,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremaps")]
         public IBodyWorkflowAction<GetLocationByAddressResponse> GetLocationByPoint([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reverseGeocode";
@@ -104,16 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremaps")]
         public IBodyWorkflowAction<string> GetMap([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<imagerySetInput> imagerySet, [WorkflowExpression] Func<string> zoomLevel, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<double> pushpinLatitude = null, [WorkflowExpression] Func<double> pushpinLongitude = null, [WorkflowExpression] Func<string> pushpinLabel = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(imagerySet, nameof(imagerySet), required: true);
-            SourceExpression.Validate(zoomLevel, nameof(zoomLevel), required: true);
-            SourceExpression.Validate(width, nameof(width), required: false);
-            SourceExpression.Validate(height, nameof(height), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(pushpinLatitude, nameof(pushpinLatitude), required: false);
-            SourceExpression.Validate(pushpinLongitude, nameof(pushpinLongitude), required: false);
-            SourceExpression.Validate(pushpinLabel, nameof(pushpinLabel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/map/static";

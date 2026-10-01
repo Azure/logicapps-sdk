@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
         public IBodyWorkflowAction<FeedItem[]> ListFeedItems([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null)
         {
-            SourceExpression.Validate(feedUrl, nameof(feedUrl), required: true);
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(sinceProperty, nameof(sinceProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ListFeedItems";
@@ -39,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     {
         public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(feedUrl, nameof(feedUrl), required: true);
-            SourceExpression.Validate(sinceProperty, nameof(sinceProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/OnNewFeed";

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         public IWorkflowAction WebAppStart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(webAppName, nameof(webAppName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
@@ -32,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         public IWorkflowAction WebAppStop([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(webAppName, nameof(webAppName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/stop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
@@ -50,9 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         public IWorkflowAction WebAppRestart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(webAppName, nameof(webAppName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));

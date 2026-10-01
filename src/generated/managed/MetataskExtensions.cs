@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
     {
         public IWorkflowTrigger CreateSubscriptionProcessCompleted([WorkflowExpression] Func<string> webhookRequestBodyconditionstemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(webhookRequestBodyconditionstemplate, nameof(webhookRequestBodyconditionstemplate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/oauth/subscription/process_completed";

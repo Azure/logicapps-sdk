@@ -14,34 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serpapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serpapi")]
         public IBodyWorkflowAction<GoogleSearchResponse> GoogleSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<string> uule = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<string> googleDomain = null, [WorkflowExpression] Func<string> gl = null, [WorkflowExpression] Func<string> hl = null, [WorkflowExpression] Func<string> cr = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> tbs = null, [WorkflowExpression] Func<safeInput> safe = null, [WorkflowExpression] Func<nfprInput> nfpr = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<tbmInput> tbm = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<deviceInput> device = null, [WorkflowExpression] Func<bool> noCache = null, [WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<outputInput> output = null, [WorkflowExpression] Func<string> ludocid = null, [WorkflowExpression] Func<string> kgmid = null, [WorkflowExpression] Func<string> lsig = null, [WorkflowExpression] Func<string> si = null, [WorkflowExpression] Func<string> ibp = null, [WorkflowExpression] Func<string> uds = null, [WorkflowExpression] Func<bool> zeroTrace = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(location, nameof(location), required: false);
-            SourceExpression.Validate(uule, nameof(uule), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(googleDomain, nameof(googleDomain), required: false);
-            SourceExpression.Validate(gl, nameof(gl), required: false);
-            SourceExpression.Validate(hl, nameof(hl), required: false);
-            SourceExpression.Validate(cr, nameof(cr), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(tbs, nameof(tbs), required: false);
-            SourceExpression.Validate(safe, nameof(safe), required: false);
-            SourceExpression.Validate(nfpr, nameof(nfpr), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(tbm, nameof(tbm), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(device, nameof(device), required: false);
-            SourceExpression.Validate(noCache, nameof(noCache), required: false);
-            SourceExpression.Validate(async, nameof(async), required: false);
-            SourceExpression.Validate(output, nameof(output), required: false);
-            SourceExpression.Validate(ludocid, nameof(ludocid), required: false);
-            SourceExpression.Validate(kgmid, nameof(kgmid), required: false);
-            SourceExpression.Validate(lsig, nameof(lsig), required: false);
-            SourceExpression.Validate(si, nameof(si), required: false);
-            SourceExpression.Validate(ibp, nameof(ibp), required: false);
-            SourceExpression.Validate(uds, nameof(uds), required: false);
-            SourceExpression.Validate(zeroTrace, nameof(zeroTrace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search.json";
@@ -111,8 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serpapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serpapi")]
         public IBodyWorkflowAction<Location[]> GetLocations([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations.json";

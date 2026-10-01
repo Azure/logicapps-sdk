@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction AddNewContact([WorkflowExpression] Func<int> bodycontactclientId = null, [WorkflowExpression] Func<string> bodycontactfirstName = null, [WorkflowExpression] Func<string> bodycontactlastName = null, [WorkflowExpression] Func<string> bodycontactemail = null, [WorkflowExpression] Func<string> bodycontactofficePhone = null, [WorkflowExpression] Func<string> bodycontactmobilePhone = null, [WorkflowExpression] Func<string> bodycontactfax = null, [WorkflowExpression] Func<string> bodycontacttitle = null)
         {
-            SourceExpression.Validate(bodycontactclientId, nameof(bodycontactclientId), required: false);
-            SourceExpression.Validate(bodycontactfirstName, nameof(bodycontactfirstName), required: false);
-            SourceExpression.Validate(bodycontactlastName, nameof(bodycontactlastName), required: false);
-            SourceExpression.Validate(bodycontactemail, nameof(bodycontactemail), required: false);
-            SourceExpression.Validate(bodycontactofficePhone, nameof(bodycontactofficePhone), required: false);
-            SourceExpression.Validate(bodycontactmobilePhone, nameof(bodycontactmobilePhone), required: false);
-            SourceExpression.Validate(bodycontactfax, nameof(bodycontactfax), required: false);
-            SourceExpression.Validate(bodycontacttitle, nameof(bodycontacttitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";
@@ -126,10 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction AddNewClient([WorkflowExpression] Func<string> bodyclientname = null, [WorkflowExpression] Func<string> bodyclientcurrency = null, [WorkflowExpression] Func<string> bodyclientcurrencySymbol = null, [WorkflowExpression] Func<string> bodyclientdetails = null)
         {
-            SourceExpression.Validate(bodyclientname, nameof(bodyclientname), required: false);
-            SourceExpression.Validate(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
-            SourceExpression.Validate(bodyclientcurrencySymbol, nameof(bodyclientcurrencySymbol), required: false);
-            SourceExpression.Validate(bodyclientdetails, nameof(bodyclientdetails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/clients";
@@ -182,15 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction CreateUser([WorkflowExpression] Func<string> bodyuseremail = null, [WorkflowExpression] Func<bool> bodyuserisAdmin = null, [WorkflowExpression] Func<string> bodyuserfirstName = null, [WorkflowExpression] Func<string> bodyuserlastName = null, [WorkflowExpression] Func<bool> bodyuserisContractor = null, [WorkflowExpression] Func<string> bodyuserphone = null, [WorkflowExpression] Func<double> bodyuserhourlyRate = null, [WorkflowExpression] Func<string> bodyuserdepartment = null, [WorkflowExpression] Func<double> bodyusercostRate = null)
         {
-            SourceExpression.Validate(bodyuseremail, nameof(bodyuseremail), required: false);
-            SourceExpression.Validate(bodyuserisAdmin, nameof(bodyuserisAdmin), required: false);
-            SourceExpression.Validate(bodyuserfirstName, nameof(bodyuserfirstName), required: false);
-            SourceExpression.Validate(bodyuserlastName, nameof(bodyuserlastName), required: false);
-            SourceExpression.Validate(bodyuserisContractor, nameof(bodyuserisContractor), required: false);
-            SourceExpression.Validate(bodyuserphone, nameof(bodyuserphone), required: false);
-            SourceExpression.Validate(bodyuserhourlyRate, nameof(bodyuserhourlyRate), required: false);
-            SourceExpression.Validate(bodyuserdepartment, nameof(bodyuserdepartment), required: false);
-            SourceExpression.Validate(bodyusercostRate, nameof(bodyusercostRate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/people";
@@ -275,13 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> UpdateTimeEntry([WorkflowExpression] Func<string> dAYENTRYId, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodystartedDateTime = null, [WorkflowExpression] Func<string> bodyendedDateTime = null, [WorkflowExpression] Func<string> bodydate = null)
         {
-            SourceExpression.Validate(dAYENTRYId, nameof(dAYENTRYId), required: true);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodystartedDateTime, nameof(bodystartedDateTime), required: false);
-            SourceExpression.Validate(bodyendedDateTime, nameof(bodyendedDateTime), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/daily/update/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dAYENTRYId, 1));
@@ -330,11 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> CreateTimeEntry([WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodyhours = null, [WorkflowExpression] Func<string> bodydate = null)
         {
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyhours, nameof(bodyhours), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/daily/add";
@@ -391,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction DeleteTimeEntry([WorkflowExpression] Func<string> dAYENTRYId)
         {
-            SourceExpression.Validate(dAYENTRYId, nameof(dAYENTRYId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/daily/delete/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dAYENTRYId, 1));
@@ -406,8 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction AddUserToProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<int> bodyuseruserId = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyuseruserId, nameof(bodyuseruserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/user_assignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -442,7 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> GetTimeEntry([WorkflowExpression] Func<string> dAYENTRYId)
         {
-            SourceExpression.Validate(dAYENTRYId, nameof(dAYENTRYId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/daily/show/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dAYENTRYId, 1));
@@ -471,7 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<GetUserByIdResponse> GetUser([WorkflowExpression] Func<string> uSERId)
         {
-            SourceExpression.Validate(uSERId, nameof(uSERId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/people/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uSERId, 1));
@@ -540,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
         public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday([WorkflowExpression] Func<string> ofUser = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(ofUser, nameof(ofUser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/daily";
@@ -556,8 +517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
         public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> ofUser = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(ofUser, nameof(ofUser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/daily/day/year";

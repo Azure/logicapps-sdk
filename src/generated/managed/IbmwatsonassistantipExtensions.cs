@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IBodyWorkflowAction<CreateSessionResponse> CreateSession([WorkflowExpression] Func<string> version)
         {
-            SourceExpression.Validate(version, nameof(version), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sessions";
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IWorkflowAction DeleteSession([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null)
         {
-            SourceExpression.Validate(session, nameof(session), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sessions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(session, 1));
@@ -49,9 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
-            SourceExpression.Validate(session, nameof(session), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
-            SourceExpression.Validate(bodyinputtext, nameof(bodyinputtext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(session, 1));
@@ -89,8 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage([WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
-            SourceExpression.Validate(version, nameof(version), required: false);
-            SourceExpression.Validate(bodyinputtext, nameof(bodyinputtext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/message";

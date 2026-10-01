@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
         public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> schema, [WorkflowExpression] Func<JToken[]> rows)
         {
-            SourceExpression.Validate(hidx, nameof(hidx), required: true);
-            SourceExpression.Validate(schema, nameof(schema), required: true);
-            SourceExpression.Validate(rows, nameof(rows), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -39,9 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
         public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> schema, [WorkflowExpression] Func<string> contents)
         {
-            SourceExpression.Validate(hidx, nameof(hidx), required: true);
-            SourceExpression.Validate(schema, nameof(schema), required: true);
-            SourceExpression.Validate(contents, nameof(contents), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

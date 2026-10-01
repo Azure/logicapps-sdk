@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarksResponse> ListBookmarksLiked([WorkflowExpression] Func<string> readFilterreadFilter = null)
         {
-            SourceExpression.Validate(readFilterreadFilter, nameof(readFilterreadFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/list/starred";
@@ -41,8 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarksResponse> ListBookmarksArchived([WorkflowExpression] Func<filterslikedFilterDefaultAllInput> filterslikedFilterDefaultAll = null, [WorkflowExpression] Func<filtersreadFilterDefaultAllInput> filtersreadFilterDefaultAll = null)
         {
-            SourceExpression.Validate(filterslikedFilterDefaultAll, nameof(filterslikedFilterDefaultAll), required: false);
-            SourceExpression.Validate(filtersreadFilterDefaultAll, nameof(filtersreadFilterDefaultAll), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/list/archive";
@@ -75,9 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarksResponse> ListBookmarksInFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<likedFilterInput> likedFilter = null, [WorkflowExpression] Func<readFilterInput> readFilter = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(likedFilter, nameof(likedFilter), required: false);
-            SourceExpression.Validate(readFilter, nameof(readFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/list/folder_id";
@@ -111,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<HighlighstResponse> ListHighlights([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
@@ -126,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> UnlikeBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/unstar";
@@ -142,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> LikeBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/star";
@@ -158,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> ArchiveBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/archive";
@@ -174,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> UnarchiveBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/unarchive";
@@ -190,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<JToken> DeleteBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/delete";
@@ -206,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<JToken> MarkReadBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/update_read_progress/read";
@@ -222,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<JToken> MarkUnreadBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/bookmarks/update_read_progress/unread";
@@ -238,8 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<HighlightResponse> AddHighlight([WorkflowExpression] Func<string> bookmarkId, [WorkflowExpression] Func<string> text)
         {
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
-            SourceExpression.Validate(text, nameof(text), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
@@ -255,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<FolderResponse> CreateFolder([WorkflowExpression] Func<string> title)
         {
-            SourceExpression.Validate(title, nameof(title), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/folders/add";
@@ -273,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     {
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bookmark_folder_trigger/1/bookmarks/list/folder_id";
@@ -288,7 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bookmark_removed_folder_trigger/1/bookmarks/list/folder_id";
@@ -342,7 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bookmark_progress_trigger/1/bookmarks/list/folder_id";
@@ -357,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bookmark_progressread_trigger/1/bookmarks/list/folder_id";
@@ -372,8 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bookmarkId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));

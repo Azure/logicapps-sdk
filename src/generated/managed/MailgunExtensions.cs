@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailgun
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailgun")]
         public IBodyWorkflowAction<GetDomainsResponse> GetDomains([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> authority = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<bool> includeSubaccounts = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(authority, nameof(authority), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(includeSubaccounts, nameof(includeSubaccounts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/econexus/mailgun/v4/domains";
@@ -49,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailgun
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailgun")]
         public IBodyWorkflowAction<GetDomainResponse> GetDomain([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/econexus/mailgun/v4/domains/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));

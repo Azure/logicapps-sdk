@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
     {
         public IWorkflowTrigger WaitForSignature([WorkflowExpression] Func<string> signatureRequestId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(signatureRequestId, nameof(signatureRequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signatureRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureRequestId, 1));

@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordcloudbytextvisip")]
         public IBodyWorkflowAction<CloudCreateResponse> CloudCreate([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<double> bodyscale, [WorkflowExpression] Func<int> bodywidth, [WorkflowExpression] Func<int> bodyheight, [WorkflowExpression] Func<string[]> bodycolors = null, [WorkflowExpression] Func<string> bodyfont = null, [WorkflowExpression] Func<bool> bodyuseStopwords = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyuppercase = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyscale, nameof(bodyscale), required: true);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: true);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: true);
-            SourceExpression.Validate(bodycolors, nameof(bodycolors), required: false);
-            SourceExpression.Validate(bodyfont, nameof(bodyfont), required: false);
-            SourceExpression.Validate(bodyuseStopwords, nameof(bodyuseStopwords), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyuppercase, nameof(bodyuppercase), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

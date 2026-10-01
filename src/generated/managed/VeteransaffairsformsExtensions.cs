@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
         public IBodyWorkflowAction<ListFormsResponse> ListForms([WorkflowExpression] Func<string> query = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/forms";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
         public IBodyWorkflowAction<FormShow> GetFormByName([WorkflowExpression] Func<string> formName)
         {
-            SourceExpression.Validate(formName, nameof(formName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formName, 1));

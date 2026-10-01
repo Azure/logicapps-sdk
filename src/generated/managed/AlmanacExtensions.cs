@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<User[]> GetGroupsGroupIdUsers([WorkflowExpression] Func<int> groupId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));
@@ -37,8 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Group[]> GetGroups([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/groups";
@@ -59,8 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<User[]> GetUsers([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -81,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IWorkflowAction DeletePropertiesId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/properties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -96,8 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Property[]> GetProperties([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/properties";
@@ -118,8 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IWorkflowAction DeleteHandbooksHandbookIdItemsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> handbookId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(handbookId, nameof(handbookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/handbooks/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(handbookId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -134,9 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<HandbookItem[]> GetHandbooksHandbookIdItems([WorkflowExpression] Func<int> handbookId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(handbookId, nameof(handbookId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/handbooks/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(handbookId, 1));
@@ -157,8 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Handbook[]> GetHandbooks([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/handbooks";
@@ -179,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Folder> GetFoldersId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -194,9 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Folder[]> GetFolders([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null, [WorkflowExpression] Func<string> parentFolderId = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
-            SourceExpression.Validate(parentFolderId, nameof(parentFolderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/folders";
@@ -219,8 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IWorkflowAction DeleteDocsDocIdAccessesId([WorkflowExpression] Func<int> docId, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/docs/{0}/accesses/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(docId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -235,9 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<DocAccess[]> GetDocsDocIdAccesses([WorkflowExpression] Func<int> docId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/docs/{0}/accesses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(docId, 1));
@@ -258,8 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IWorkflowAction DeleteDocsDocIdPropertiesId([WorkflowExpression] Func<int> docId, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/docs/{0}/properties/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(docId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -274,9 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<DocProperty[]> GetDocsDocIdProperties([WorkflowExpression] Func<int> docId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/docs/{0}/properties", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(docId, 1));
@@ -297,7 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Doc> GetDocsId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/docs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -312,9 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Doc[]> GetDocs([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> items = null, [WorkflowExpression] Func<string> folderId = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(items, nameof(items), required: false);
-            SourceExpression.Validate(folderId, nameof(folderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/docs";
@@ -337,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almanac")]
         public IBodyWorkflowAction<Import> GetImportsId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/imports/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

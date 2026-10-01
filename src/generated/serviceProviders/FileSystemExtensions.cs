@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IWorkflowAction AppendFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> body, [WorkflowExpression] Func<bool> createFileIfNotPresent = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(body, nameof(body), required: true);
-            SourceExpression.Validate(createFileIfNotPresent, nameof(createFileIfNotPresent), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -43,9 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IWorkflowAction CopyFile([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -70,8 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<CreateFileOutput> CreateFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -95,8 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IOutputWorkflowAction<JToken> DeleteFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> skipIfFileNotPresent = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -120,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<JToken> GetFileContent([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -149,8 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<JToken> GetFileContentV2([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -178,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata([WorkflowExpression] Func<string> filePath)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -197,8 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> enableRecursiveListing = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(enableRecursiveListing, nameof(enableRecursiveListing), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -222,8 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IWorkflowAction RenameFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<string> newName)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(newName, nameof(newName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -243,8 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<UpdateFileOutput> UpdateFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> body)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(body, nameof(body), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -264,10 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> filePath = null, [WorkflowExpression] Func<ExtractArchiveInputOverwriteType> overwrite = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(filePath, nameof(filePath), required: false);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -303,9 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
     {
         public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<int> maxFileCount = null, [WorkflowExpression] Func<string> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
-            SourceExpression.Validate(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -333,9 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
 
         public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<int> maxFileCount = null, [WorkflowExpression] Func<string> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
-            SourceExpression.Validate(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

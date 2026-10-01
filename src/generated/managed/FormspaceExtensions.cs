@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "formspace")]
         public IBodyWorkflowAction<object> GetResponsePdf([WorkflowExpression] Func<string> responseId)
         {
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/responses/{0}/pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
@@ -31,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
     {
         public IBodyWorkflowTrigger<Subscription> WhenResponseSubmitted([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/forms/{1}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -54,8 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
 
         public IBodyWorkflowTrigger<Subscription> WhenInvokedByWorkflow([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> subscriptionnameInFormspace, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(subscriptionnameInFormspace, nameof(subscriptionnameInFormspace), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/workflow-subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));

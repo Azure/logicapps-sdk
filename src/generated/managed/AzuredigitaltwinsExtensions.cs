@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<AddModelsResponseItem[]> AddModels([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/models";
@@ -31,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<ListModelsResponse> ListModels([WorkflowExpression] Func<string> dependenciesFor = null, [WorkflowExpression] Func<string> includeModelDefinition = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(dependenciesFor, nameof(dependenciesFor), required: false);
-            SourceExpression.Validate(includeModelDefinition, nameof(includeModelDefinition), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/models";
@@ -55,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction DeleteModel([WorkflowExpression] Func<string> modelid)
         {
-            SourceExpression.Validate(modelid, nameof(modelid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelid, 1));
@@ -71,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<GetModelByIdResponse> GetModelById([WorkflowExpression] Func<string> modelid, [WorkflowExpression] Func<string> includeModelDefinition = null)
         {
-            SourceExpression.Validate(modelid, nameof(modelid), required: true);
-            SourceExpression.Validate(includeModelDefinition, nameof(includeModelDefinition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelid, 1));
@@ -90,8 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction UpdateModel([WorkflowExpression] Func<string> modelid, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(modelid, nameof(modelid), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelid, 1));
@@ -119,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<TwinResult> GetTwinById([WorkflowExpression] Func<string> twinid)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1));
@@ -135,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction DeleteTwin([WorkflowExpression] Func<string> twinid)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1));
@@ -151,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<TwinResult> AddTwin([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1));
@@ -180,8 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction UpdateTwin([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1));
@@ -209,8 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<GetComponentResult> GetComponent([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> componentPath)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(componentPath, nameof(componentPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentPath, 1));
@@ -226,9 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction UpdateComponent([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> componentPath, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(componentPath, nameof(componentPath), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentPath, 1));
@@ -256,8 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<TwinRelationship> GetRelationshipById([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(relationshipId, nameof(relationshipId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relationshipId, 1));
@@ -273,8 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction DeleteRelationship([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(relationshipId, nameof(relationshipId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relationshipId, 1));
@@ -290,9 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<TwinRelationship> AddRelationship([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(relationshipId, nameof(relationshipId), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relationshipId, 1));
@@ -320,9 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction UpdateRelationship([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(relationshipId, nameof(relationshipId), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relationshipId, 1));
@@ -350,8 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<ListIncomingRelationshipsResponse> ListIncomingRelationships([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/incomingrelationships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1));
@@ -369,10 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction SendTelemetry([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> telemetrySourceTime = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(telemetrySourceTime, nameof(telemetrySourceTime), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/telemetry", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1));
@@ -403,11 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IWorkflowAction SendComponentTelemetry([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> componentPath, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> telemetrySourceTime = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(componentPath, nameof(componentPath), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(telemetrySourceTime, nameof(telemetrySourceTime), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}/telemetry", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentPath, 1));
@@ -438,8 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<ListRelationshipsResponse> ListRelationships([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(twinid, nameof(twinid), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(twinid, 1));
@@ -457,8 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
         public IBodyWorkflowAction<QueryResult> QueryTwins([WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            SourceExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query";

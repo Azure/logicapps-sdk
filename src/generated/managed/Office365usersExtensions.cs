@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IWorkflowAction UpdateMyProfile([WorkflowExpression] Func<string> bodyaboutMe = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string[]> bodyinterests = null, [WorkflowExpression] Func<string> bodymySite = null, [WorkflowExpression] Func<string[]> bodypastProjects = null, [WorkflowExpression] Func<string[]> bodyschools = null, [WorkflowExpression] Func<string[]> bodyskills = null)
         {
-            SourceExpression.Validate(bodyaboutMe, nameof(bodyaboutMe), required: false);
-            SourceExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
-            SourceExpression.Validate(bodyinterests, nameof(bodyinterests), required: false);
-            SourceExpression.Validate(bodymySite, nameof(bodymySite), required: false);
-            SourceExpression.Validate(bodypastProjects, nameof(bodypastProjects), required: false);
-            SourceExpression.Validate(bodyschools, nameof(bodyschools), required: false);
-            SourceExpression.Validate(bodyskills, nameof(bodyskills), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/v1.0/me";
@@ -83,8 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IWorkflowAction UpdateMyPhoto([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/v1.0/me/photo/$value";
@@ -101,9 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<MyTrendingDocumentsResponse> MyTrendingDocuments([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/beta/me/insights/trending";
@@ -124,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<LinklessEntityListResponseListPerson> RelevantPeople([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/relevantpeople", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -139,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<ClientPhotoMetadata> UserPhotoMetadata([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users/photo";
@@ -155,10 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<TrendingDocumentsResponse> TrendingDocuments([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/beta/users/{0}/insights/trending", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -179,15 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(customHeader1, nameof(customHeader1), required: false);
-            SourceExpression.Validate(customHeader2, nameof(customHeader2), required: false);
-            SourceExpression.Validate(customHeader3, nameof(customHeader3), required: false);
-            SourceExpression.Validate(customHeader4, nameof(customHeader4), required: false);
-            SourceExpression.Validate(customHeader5, nameof(customHeader5), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/httprequest";
@@ -218,9 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<DirectReportsV2Response> DirectReports([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/users/{0}/directReports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -239,8 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<GraphUserV1> Manager([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/users/{0}/manager", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -257,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<GraphUserV1> MyProfile([WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/v1.0/me";
@@ -274,9 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<EntityListResponseIReadOnlyListUser> SearchUser([WorkflowExpression] Func<string> searchTerm = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<bool> isSearchTermRequired = null)
         {
-            SourceExpression.Validate(searchTerm, nameof(searchTerm), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(isSearchTermRequired, nameof(isSearchTermRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/users";
@@ -298,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<string> UserPhoto([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/users/{0}/photo/$value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -313,8 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<GraphUserV1> UserProfile([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

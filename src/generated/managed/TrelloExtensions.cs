@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Card[]> ListCards([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> attachments = null, [WorkflowExpression] Func<string> attachmentFields = null, [WorkflowExpression] Func<bool> stickers = null, [WorkflowExpression] Func<bool> members = null, [WorkflowExpression] Func<string> memeberFields = null, [WorkflowExpression] Func<bool> checkItemStates = null, [WorkflowExpression] Func<checklistsInput> checklists = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(actions, nameof(actions), required: false);
-            SourceExpression.Validate(attachments, nameof(attachments), required: false);
-            SourceExpression.Validate(attachmentFields, nameof(attachmentFields), required: false);
-            SourceExpression.Validate(stickers, nameof(stickers), required: false);
-            SourceExpression.Validate(members, nameof(members), required: false);
-            SourceExpression.Validate(memeberFields, nameof(memeberFields), required: false);
-            SourceExpression.Validate(checkItemStates, nameof(checkItemStates), required: false);
-            SourceExpression.Validate(checklists, nameof(checklists), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/cards", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -68,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Card[]> ListCardsSimple([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/simple/boards/{0}/cards", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -83,31 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<CardWithChecklists> GetCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> actionsEntities = null, [WorkflowExpression] Func<bool> actionsDisplay = null, [WorkflowExpression] Func<int> actionsLimit = null, [WorkflowExpression] Func<string> actionFields = null, [WorkflowExpression] Func<string> actionMemberCreatorFields = null, [WorkflowExpression] Func<bool> attachments = null, [WorkflowExpression] Func<string> attachmentFields = null, [WorkflowExpression] Func<bool> members = null, [WorkflowExpression] Func<string> memberFields = null, [WorkflowExpression] Func<bool> membersVoted = null, [WorkflowExpression] Func<string> memberVotedFields = null, [WorkflowExpression] Func<bool> checkItemStates = null, [WorkflowExpression] Func<string> checkItemStateFields = null, [WorkflowExpression] Func<checklistsInput> checklists = null, [WorkflowExpression] Func<string> checklistFields = null, [WorkflowExpression] Func<bool> board = null, [WorkflowExpression] Func<string> boardFields = null, [WorkflowExpression] Func<bool> list = null, [WorkflowExpression] Func<string> listFields = null, [WorkflowExpression] Func<bool> stickers = null, [WorkflowExpression] Func<string> stickerFields = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(actions, nameof(actions), required: false);
-            SourceExpression.Validate(actionsEntities, nameof(actionsEntities), required: false);
-            SourceExpression.Validate(actionsDisplay, nameof(actionsDisplay), required: false);
-            SourceExpression.Validate(actionsLimit, nameof(actionsLimit), required: false);
-            SourceExpression.Validate(actionFields, nameof(actionFields), required: false);
-            SourceExpression.Validate(actionMemberCreatorFields, nameof(actionMemberCreatorFields), required: false);
-            SourceExpression.Validate(attachments, nameof(attachments), required: false);
-            SourceExpression.Validate(attachmentFields, nameof(attachmentFields), required: false);
-            SourceExpression.Validate(members, nameof(members), required: false);
-            SourceExpression.Validate(memberFields, nameof(memberFields), required: false);
-            SourceExpression.Validate(membersVoted, nameof(membersVoted), required: false);
-            SourceExpression.Validate(memberVotedFields, nameof(memberVotedFields), required: false);
-            SourceExpression.Validate(checkItemStates, nameof(checkItemStates), required: false);
-            SourceExpression.Validate(checkItemStateFields, nameof(checkItemStateFields), required: false);
-            SourceExpression.Validate(checklists, nameof(checklists), required: false);
-            SourceExpression.Validate(checklistFields, nameof(checklistFields), required: false);
-            SourceExpression.Validate(board, nameof(board), required: false);
-            SourceExpression.Validate(boardFields, nameof(boardFields), required: false);
-            SourceExpression.Validate(list, nameof(list), required: false);
-            SourceExpression.Validate(listFields, nameof(listFields), required: false);
-            SourceExpression.Validate(stickers, nameof(stickers), required: false);
-            SourceExpression.Validate(stickerFields, nameof(stickerFields), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -169,8 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<JToken> DeleteCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -186,18 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Board[]> ListBoards([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> actionsEntities = null, [WorkflowExpression] Func<int> actionsLimit = null, [WorkflowExpression] Func<actionsFormatInput> actionsFormat = null, [WorkflowExpression] Func<string> actionsSince = null, [WorkflowExpression] Func<string> actionFields = null, [WorkflowExpression] Func<string> memberships = null, [WorkflowExpression] Func<bool> organization = null, [WorkflowExpression] Func<string> organizationFields = null, [WorkflowExpression] Func<string> lists = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(actions, nameof(actions), required: false);
-            SourceExpression.Validate(actionsEntities, nameof(actionsEntities), required: false);
-            SourceExpression.Validate(actionsLimit, nameof(actionsLimit), required: false);
-            SourceExpression.Validate(actionsFormat, nameof(actionsFormat), required: false);
-            SourceExpression.Validate(actionsSince, nameof(actionsSince), required: false);
-            SourceExpression.Validate(actionFields, nameof(actionFields), required: false);
-            SourceExpression.Validate(memberships, nameof(memberships), required: false);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(organizationFields, nameof(organizationFields), required: false);
-            SourceExpression.Validate(lists, nameof(lists), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/member/me/boards";
@@ -250,44 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<BoardWithChecklists> GetBoard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> actions = null, [WorkflowExpression] Func<bool> actionEntities = null, [WorkflowExpression] Func<bool> actionsDisplay = null, [WorkflowExpression] Func<actionsFormatInput> actionsFormat = null, [WorkflowExpression] Func<string> actionsSince = null, [WorkflowExpression] Func<int> actionsLimit = null, [WorkflowExpression] Func<string> actionFields = null, [WorkflowExpression] Func<bool> actionMember = null, [WorkflowExpression] Func<string> actionMemberFields = null, [WorkflowExpression] Func<bool> actionMemberCreator = null, [WorkflowExpression] Func<string> actionMemberCreatorFields = null, [WorkflowExpression] Func<cardsInput> cards = null, [WorkflowExpression] Func<string> cardFields = null, [WorkflowExpression] Func<bool> cardAttachments = null, [WorkflowExpression] Func<string> cardAttachmentFields = null, [WorkflowExpression] Func<cardChecklistsInput> cardChecklists = null, [WorkflowExpression] Func<bool> cardStickers = null, [WorkflowExpression] Func<boardStarsInput> boardStars = null, [WorkflowExpression] Func<labelsInput> labels = null, [WorkflowExpression] Func<string> labelFields = null, [WorkflowExpression] Func<int> labelsLimit = null, [WorkflowExpression] Func<listsInput> lists = null, [WorkflowExpression] Func<string> listFields = null, [WorkflowExpression] Func<string> memberships = null, [WorkflowExpression] Func<bool> membershipsMember = null, [WorkflowExpression] Func<string> membershipsMemberFields = null, [WorkflowExpression] Func<membersInput> members = null, [WorkflowExpression] Func<string> memberFields = null, [WorkflowExpression] Func<membersInvitedInput> membersInvited = null, [WorkflowExpression] Func<string> membersInvitedFields = null, [WorkflowExpression] Func<checklistsInput> checklists = null, [WorkflowExpression] Func<string> checklistFields = null, [WorkflowExpression] Func<bool> organization = null, [WorkflowExpression] Func<string> organizationFields = null, [WorkflowExpression] Func<string> organizationMemberships = null, [WorkflowExpression] Func<bool> myPerfs = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(actions, nameof(actions), required: false);
-            SourceExpression.Validate(actionEntities, nameof(actionEntities), required: false);
-            SourceExpression.Validate(actionsDisplay, nameof(actionsDisplay), required: false);
-            SourceExpression.Validate(actionsFormat, nameof(actionsFormat), required: false);
-            SourceExpression.Validate(actionsSince, nameof(actionsSince), required: false);
-            SourceExpression.Validate(actionsLimit, nameof(actionsLimit), required: false);
-            SourceExpression.Validate(actionFields, nameof(actionFields), required: false);
-            SourceExpression.Validate(actionMember, nameof(actionMember), required: false);
-            SourceExpression.Validate(actionMemberFields, nameof(actionMemberFields), required: false);
-            SourceExpression.Validate(actionMemberCreator, nameof(actionMemberCreator), required: false);
-            SourceExpression.Validate(actionMemberCreatorFields, nameof(actionMemberCreatorFields), required: false);
-            SourceExpression.Validate(cards, nameof(cards), required: false);
-            SourceExpression.Validate(cardFields, nameof(cardFields), required: false);
-            SourceExpression.Validate(cardAttachments, nameof(cardAttachments), required: false);
-            SourceExpression.Validate(cardAttachmentFields, nameof(cardAttachmentFields), required: false);
-            SourceExpression.Validate(cardChecklists, nameof(cardChecklists), required: false);
-            SourceExpression.Validate(cardStickers, nameof(cardStickers), required: false);
-            SourceExpression.Validate(boardStars, nameof(boardStars), required: false);
-            SourceExpression.Validate(labels, nameof(labels), required: false);
-            SourceExpression.Validate(labelFields, nameof(labelFields), required: false);
-            SourceExpression.Validate(labelsLimit, nameof(labelsLimit), required: false);
-            SourceExpression.Validate(lists, nameof(lists), required: false);
-            SourceExpression.Validate(listFields, nameof(listFields), required: false);
-            SourceExpression.Validate(memberships, nameof(memberships), required: false);
-            SourceExpression.Validate(membershipsMember, nameof(membershipsMember), required: false);
-            SourceExpression.Validate(membershipsMemberFields, nameof(membershipsMemberFields), required: false);
-            SourceExpression.Validate(members, nameof(members), required: false);
-            SourceExpression.Validate(memberFields, nameof(memberFields), required: false);
-            SourceExpression.Validate(membersInvited, nameof(membersInvited), required: false);
-            SourceExpression.Validate(membersInvitedFields, nameof(membersInvitedFields), required: false);
-            SourceExpression.Validate(checklists, nameof(checklists), required: false);
-            SourceExpression.Validate(checklistFields, nameof(checklistFields), required: false);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(organizationFields, nameof(organizationFields), required: false);
-            SourceExpression.Validate(organizationMemberships, nameof(organizationMemberships), required: false);
-            SourceExpression.Validate(myPerfs, nameof(myPerfs), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -376,19 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Board> UpdateBoard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> boardboardName = null, [WorkflowExpression] Func<boardcreateDefaultListsInput> boardcreateDefaultLists = null, [WorkflowExpression] Func<string> boardboardDescription = null, [WorkflowExpression] Func<string> boardteamId = null, [WorkflowExpression] Func<boardpermissionLevelInput> boardpermissionLevel = null, [WorkflowExpression] Func<boardcommentPreferencesInput> boardcommentPreferences = null, [WorkflowExpression] Func<boardinvitationPreferencesInput> boardinvitationPreferences = null, [WorkflowExpression] Func<boarduseCardCoversInput> boarduseCardCovers = null, [WorkflowExpression] Func<boardbackgroundColorInput> boardbackgroundColor = null, [WorkflowExpression] Func<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, [WorkflowExpression] Func<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, [WorkflowExpression] Func<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(boardboardName, nameof(boardboardName), required: false);
-            SourceExpression.Validate(boardcreateDefaultLists, nameof(boardcreateDefaultLists), required: false);
-            SourceExpression.Validate(boardboardDescription, nameof(boardboardDescription), required: false);
-            SourceExpression.Validate(boardteamId, nameof(boardteamId), required: false);
-            SourceExpression.Validate(boardpermissionLevel, nameof(boardpermissionLevel), required: false);
-            SourceExpression.Validate(boardcommentPreferences, nameof(boardcommentPreferences), required: false);
-            SourceExpression.Validate(boardinvitationPreferences, nameof(boardinvitationPreferences), required: false);
-            SourceExpression.Validate(boarduseCardCovers, nameof(boarduseCardCovers), required: false);
-            SourceExpression.Validate(boardbackgroundColor, nameof(boardbackgroundColor), required: false);
-            SourceExpression.Validate(boardvotingPowerUpPreferences, nameof(boardvotingPowerUpPreferences), required: false);
-            SourceExpression.Validate(boardcardAgingPowerUpPreferences, nameof(boardcardAgingPowerUpPreferences), required: false);
-            SourceExpression.Validate(boardenableCalendarPowerUp, nameof(boardenableCalendarPowerUp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -481,11 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<List[]> ListLists([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<cardsInput> cards = null, [WorkflowExpression] Func<string> cardFields = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cards, nameof(cards), required: false);
-            SourceExpression.Validate(cardFields, nameof(cardFields), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/lists", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -508,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<List[]> ListListsSimple([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/simple/boards/{0}/lists", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -523,13 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<List> GetList([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<cardsInput> cards = null, [WorkflowExpression] Func<string> cardFields = null, [WorkflowExpression] Func<bool> board = null, [WorkflowExpression] Func<string> boardFields = null, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(cards, nameof(cards), required: false);
-            SourceExpression.Validate(cardFields, nameof(cardFields), required: false);
-            SourceExpression.Validate(board, nameof(board), required: false);
-            SourceExpression.Validate(boardFields, nameof(boardFields), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -555,13 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<CreateListResponse> UpdateList([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<closedInput> closed = null, [WorkflowExpression] Func<string> idBoard = null, [WorkflowExpression] Func<posInput> pos = null, [WorkflowExpression] Func<subscribedInput> subscribed = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(closed, nameof(closed), required: false);
-            SourceExpression.Validate(idBoard, nameof(idBoard), required: false);
-            SourceExpression.Validate(pos, nameof(pos), required: false);
-            SourceExpression.Validate(subscribed, nameof(subscribed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -587,7 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<JToken> GetUserProfile([WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/members/me";
@@ -618,7 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Member[]> ListTeamMembers([WorkflowExpression] Func<string> teamId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -633,7 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Member[]> ListBoardMembers([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -648,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<BoardLabel[]> ListBoardLabels([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/labels", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -664,7 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Team> GetTeamForBoard([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/organization", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -679,8 +549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Member[]> ListCardMembers([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -696,8 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Comment[]> ListCardComments([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -713,9 +579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Comment> AddCommentToCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> commentcommentText = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(commentcommentText, nameof(commentcommentText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}/actions/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -743,9 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Member[]> AddMemberToCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}/idMembers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -762,18 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Board> CreateBoard([WorkflowExpression] Func<string> boardboardName, [WorkflowExpression] Func<boardcreateDefaultListsInput> boardcreateDefaultLists = null, [WorkflowExpression] Func<string> boardboardDescription = null, [WorkflowExpression] Func<string> boardteamId = null, [WorkflowExpression] Func<boardpermissionLevelInput> boardpermissionLevel = null, [WorkflowExpression] Func<boardcommentPreferencesInput> boardcommentPreferences = null, [WorkflowExpression] Func<boardinvitationPreferencesInput> boardinvitationPreferences = null, [WorkflowExpression] Func<boarduseCardCoversInput> boarduseCardCovers = null, [WorkflowExpression] Func<boardbackgroundColorInput> boardbackgroundColor = null, [WorkflowExpression] Func<boardvotingPowerUpPreferencesInput> boardvotingPowerUpPreferences = null, [WorkflowExpression] Func<boardcardAgingPowerUpPreferencesInput> boardcardAgingPowerUpPreferences = null, [WorkflowExpression] Func<boardenableCalendarPowerUpInput> boardenableCalendarPowerUp = null)
         {
-            SourceExpression.Validate(boardboardName, nameof(boardboardName), required: true);
-            SourceExpression.Validate(boardcreateDefaultLists, nameof(boardcreateDefaultLists), required: false);
-            SourceExpression.Validate(boardboardDescription, nameof(boardboardDescription), required: false);
-            SourceExpression.Validate(boardteamId, nameof(boardteamId), required: false);
-            SourceExpression.Validate(boardpermissionLevel, nameof(boardpermissionLevel), required: false);
-            SourceExpression.Validate(boardcommentPreferences, nameof(boardcommentPreferences), required: false);
-            SourceExpression.Validate(boardinvitationPreferences, nameof(boardinvitationPreferences), required: false);
-            SourceExpression.Validate(boarduseCardCovers, nameof(boarduseCardCovers), required: false);
-            SourceExpression.Validate(boardbackgroundColor, nameof(boardbackgroundColor), required: false);
-            SourceExpression.Validate(boardvotingPowerUpPreferences, nameof(boardvotingPowerUpPreferences), required: false);
-            SourceExpression.Validate(boardcardAgingPowerUpPreferences, nameof(boardcardAgingPowerUpPreferences), required: false);
-            SourceExpression.Validate(boardenableCalendarPowerUp, nameof(boardenableCalendarPowerUp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/boards";
@@ -862,10 +710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<CreateListResponse> CreateList([WorkflowExpression] Func<string> listlistName, [WorkflowExpression] Func<string> listboardId, [WorkflowExpression] Func<listlistPositionInput> listlistPosition = null, [WorkflowExpression] Func<string> listlistSource = null)
         {
-            SourceExpression.Validate(listlistName, nameof(listlistName), required: true);
-            SourceExpression.Validate(listboardId, nameof(listboardId), required: true);
-            SourceExpression.Validate(listlistPosition, nameof(listlistPosition), required: false);
-            SourceExpression.Validate(listlistSource, nameof(listlistSource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lists";
@@ -902,7 +746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Board> CloseBoard([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/closed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -917,18 +760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Card> CreateCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> newCardparentListId, [WorkflowExpression] Func<string> newCardcardName, [WorkflowExpression] Func<string> newCardcardDescription = null, [WorkflowExpression] Func<newCardcardPositionInput> newCardcardPosition = null, [WorkflowExpression] Func<string[]> newCardmemberIds = null, [WorkflowExpression] Func<string[]> newCardlabelIds = null, [WorkflowExpression] Func<string> newCardsourceUrl = null, [WorkflowExpression] Func<string> newCardsourceFile = null, [WorkflowExpression] Func<string> newCardsourceCardId = null, [WorkflowExpression] Func<string> newCardpropertiesFromSourceCard = null, [WorkflowExpression] Func<string> newCarddueDate = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(newCardparentListId, nameof(newCardparentListId), required: true);
-            SourceExpression.Validate(newCardcardName, nameof(newCardcardName), required: true);
-            SourceExpression.Validate(newCardcardDescription, nameof(newCardcardDescription), required: false);
-            SourceExpression.Validate(newCardcardPosition, nameof(newCardcardPosition), required: false);
-            SourceExpression.Validate(newCardmemberIds, nameof(newCardmemberIds), required: false);
-            SourceExpression.Validate(newCardlabelIds, nameof(newCardlabelIds), required: false);
-            SourceExpression.Validate(newCardsourceUrl, nameof(newCardsourceUrl), required: false);
-            SourceExpression.Validate(newCardsourceFile, nameof(newCardsourceFile), required: false);
-            SourceExpression.Validate(newCardsourceCardId, nameof(newCardsourceCardId), required: false);
-            SourceExpression.Validate(newCardpropertiesFromSourceCard, nameof(newCardpropertiesFromSourceCard), required: false);
-            SourceExpression.Validate(newCarddueDate, nameof(newCarddueDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/cards";
@@ -1018,18 +849,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Card> UpdateCard([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> updateCardname, [WorkflowExpression] Func<string> updateCarddescription = null, [WorkflowExpression] Func<bool> updateCardisClosed = null, [WorkflowExpression] Func<string[]> updateCardmemberIds = null, [WorkflowExpression] Func<string> updateCardcoverAttachmentIds = null, [WorkflowExpression] Func<string> updateCardboardId = null, [WorkflowExpression] Func<string> updateCardlistId = null, [WorkflowExpression] Func<string> updateCardposition = null, [WorkflowExpression] Func<string> updateCarddueDate = null, [WorkflowExpression] Func<bool> updateCardsubscribedToCard = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(updateCardname, nameof(updateCardname), required: true);
-            SourceExpression.Validate(updateCarddescription, nameof(updateCarddescription), required: false);
-            SourceExpression.Validate(updateCardisClosed, nameof(updateCardisClosed), required: false);
-            SourceExpression.Validate(updateCardmemberIds, nameof(updateCardmemberIds), required: false);
-            SourceExpression.Validate(updateCardcoverAttachmentIds, nameof(updateCardcoverAttachmentIds), required: false);
-            SourceExpression.Validate(updateCardboardId, nameof(updateCardboardId), required: false);
-            SourceExpression.Validate(updateCardlistId, nameof(updateCardlistId), required: false);
-            SourceExpression.Validate(updateCardposition, nameof(updateCardposition), required: false);
-            SourceExpression.Validate(updateCarddueDate, nameof(updateCarddueDate), required: false);
-            SourceExpression.Validate(updateCardsubscribedToCard, nameof(updateCardsubscribedToCard), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -1109,7 +928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     {
         public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoard([WorkflowExpression] Func<string> boardId, string triggerName = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionNotificationActionInput BuildSourceInput()
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -1149,8 +967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
         public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInList([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> listId, string triggerName = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionNotificationActionInput BuildSourceInput()
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);

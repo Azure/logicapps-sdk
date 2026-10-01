@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entraidpasswordreset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entraidpasswordreset")]
         public IBodyWorkflowAction<PasswordListGetResponse> PasswordListGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/authentication/passwordMethods", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entraidpasswordreset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entraidpasswordreset")]
         public IBodyWorkflowAction<PasswordResetPostResponse> PasswordReset([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> passwordId, [WorkflowExpression] Func<string> bodynewPassword = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(passwordId, nameof(passwordId), required: true);
-            SourceExpression.Validate(bodynewPassword, nameof(bodynewPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/authentication/methods/{1}/resetPassword", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(passwordId, 1));

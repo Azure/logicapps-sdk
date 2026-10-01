@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<GetTrackersForWorkspaceResponseBody> GetTrackersForWorkspace([WorkflowExpression] Func<string> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getTrackersForWorkspace";
@@ -31,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<GetStatusesForATrackerResponse> GetStatusesForATracker([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> trackerId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(trackerId, nameof(trackerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getStatusesForATracker";
@@ -49,18 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<AddTaskResponse> AddTask([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodycontextId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodyassigneetyInput> bodyassigneety, [WorkflowExpression] Func<string> bodyassigneeworkId, [WorkflowExpression] Func<string> bodyworkObjectwWstype, [WorkflowExpression] Func<string> bodyworkObjectwId, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodydueTimeZone = null, [WorkflowExpression] Func<string> bodytaskStatus = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            SourceExpression.Validate(bodycontextId, nameof(bodycontextId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyassigneety, nameof(bodyassigneety), required: true);
-            SourceExpression.Validate(bodyassigneeworkId, nameof(bodyassigneeworkId), required: true);
-            SourceExpression.Validate(bodyworkObjectwWstype, nameof(bodyworkObjectwWstype), required: true);
-            SourceExpression.Validate(bodyworkObjectwId, nameof(bodyworkObjectwId), required: true);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodydueTimeZone, nameof(bodydueTimeZone), required: false);
-            SourceExpression.Validate(bodytaskStatus, nameof(bodytaskStatus), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addTask";
@@ -141,11 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<UpdateSingleTaskFieldResponse> UpdateSingleTaskField([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<string> bodyfieldId, [WorkflowExpression] Func<object> bodyfieldData)
         {
-            SourceExpression.Validate(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: true);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: true);
-            SourceExpression.Validate(bodyfieldData, nameof(bodyfieldData), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateSingleTaskField";
@@ -176,9 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<CreateTrackerResponse> CreateTracker([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytrackerOwner = null)
         {
-            SourceExpression.Validate(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytrackerOwner, nameof(bodytrackerOwner), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createTracker";
@@ -209,12 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<AddCustomFieldResponse> AddCustomField([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodycontextId, [WorkflowExpression] Func<bodyviewOptionInput> bodyviewOption, [WorkflowExpression] Func<string> bodyfieldTitle, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<object> bodyfieldData = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodycontextId, nameof(bodycontextId), required: true);
-            SourceExpression.Validate(bodyviewOption, nameof(bodyviewOption), required: true);
-            SourceExpression.Validate(bodyfieldTitle, nameof(bodyfieldTitle), required: true);
-            SourceExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: true);
-            SourceExpression.Validate(bodyfieldData, nameof(bodyfieldData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addCustomField";
@@ -251,9 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<ClearSingleTaskFieldResponse> ClearSingleTaskField([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodyfieldId)
         {
-            SourceExpression.Validate(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/clearSingleTaskField";
@@ -280,11 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
         public IBodyWorkflowAction<ImportTrackerResponse> ImportTracker([WorkflowExpression] Func<string> bodysourceWorkspaceId, [WorkflowExpression] Func<string> bodysourceTrackerId, [WorkflowExpression] Func<string> bodydestinationWorkspaceId, [WorkflowExpression] Func<string> bodyimportType, [WorkflowExpression] Func<object> bodyoptions = null)
         {
-            SourceExpression.Validate(bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
-            SourceExpression.Validate(bodysourceTrackerId, nameof(bodysourceTrackerId), required: true);
-            SourceExpression.Validate(bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: true);
-            SourceExpression.Validate(bodyimportType, nameof(bodyimportType), required: true);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/importTracker";

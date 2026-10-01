@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
         public IWorkflowAction SendEvent([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> eventDatacontent = null, [WorkflowExpression] Func<string> partitionKey = null)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(eventDatacontent, nameof(eventDatacontent), required: false);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventHubName, 1));
@@ -53,9 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
         public IWorkflowAction SendEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<SendEvent[]> events = null)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(events, nameof(events), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/batch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventHubName, 1));
@@ -74,13 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
     {
         public IBodyWorkflowTrigger<Event[]> OnNewEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> contentSchema = null, [WorkflowExpression] Func<string> consumerGroupName = null, [WorkflowExpression] Func<string> minimumPartitionKey = null, [WorkflowExpression] Func<string> maximumPartitionKey = null, [WorkflowExpression] Func<int> maximumEventsCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(contentSchema, nameof(contentSchema), required: false);
-            SourceExpression.Validate(consumerGroupName, nameof(consumerGroupName), required: false);
-            SourceExpression.Validate(minimumPartitionKey, nameof(minimumPartitionKey), required: false);
-            SourceExpression.Validate(maximumPartitionKey, nameof(maximumPartitionKey), required: false);
-            SourceExpression.Validate(maximumEventsCount, nameof(maximumEventsCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/batch/head", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventHubName, 1));

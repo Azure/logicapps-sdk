@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
         public IBodyWorkflowAction<PartnerLinqGetResponse> PartnerLinqGet([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> environment, [WorkflowExpression] Func<string> tennatId, [WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> process, [WorkflowExpression] Func<string> partnerId)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(tennatId, nameof(tennatId), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(process, nameof(process), required: true);
-            SourceExpression.Validate(partnerId, nameof(partnerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/FUNC_HTTP_DATA_SEND";
@@ -40,13 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
         public IBodyWorkflowAction<PartnerLinqPostResponse> PartnerLinq([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> environment, [WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> process, [WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> bodydata = null)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(process, nameof(process), required: true);
-            SourceExpression.Validate(partnerId, nameof(partnerId), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/FUNC_HTTP_DATA_RECEIVE";

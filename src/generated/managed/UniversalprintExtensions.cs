@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "universalprint")]
         public IBodyWorkflowAction<PrintFileResponse> PrintFile([WorkflowExpression] Func<string> printer, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<int> configurationCopies = null, [WorkflowExpression] Func<configurationOrientationInput> configurationOrientation = null, [WorkflowExpression] Func<configurationColorModeInput> configurationColorMode = null, [WorkflowExpression] Func<string> configurationMediaSize = null, [WorkflowExpression] Func<configurationDuplexModeInput> configurationDuplexMode = null, [WorkflowExpression] Func<int> configurationPagesPerSheet = null, [WorkflowExpression] Func<int> configurationDpi = null, [WorkflowExpression] Func<configurationQualityInput> configurationQuality = null, [WorkflowExpression] Func<string> configurationMediaType = null, [WorkflowExpression] Func<configurationFinishingsInputItem[]> configurationFinishings = null)
         {
-            SourceExpression.Validate(printer, nameof(printer), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(configurationCopies, nameof(configurationCopies), required: false);
-            SourceExpression.Validate(configurationOrientation, nameof(configurationOrientation), required: false);
-            SourceExpression.Validate(configurationColorMode, nameof(configurationColorMode), required: false);
-            SourceExpression.Validate(configurationMediaSize, nameof(configurationMediaSize), required: false);
-            SourceExpression.Validate(configurationDuplexMode, nameof(configurationDuplexMode), required: false);
-            SourceExpression.Validate(configurationPagesPerSheet, nameof(configurationPagesPerSheet), required: false);
-            SourceExpression.Validate(configurationDpi, nameof(configurationDpi), required: false);
-            SourceExpression.Validate(configurationQuality, nameof(configurationQuality), required: false);
-            SourceExpression.Validate(configurationMediaType, nameof(configurationMediaType), required: false);
-            SourceExpression.Validate(configurationFinishings, nameof(configurationFinishings), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/print/shares";

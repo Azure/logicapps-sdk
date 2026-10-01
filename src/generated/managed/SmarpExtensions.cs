@@ -29,13 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
         public IWorkflowAction SmarpCreate([WorkflowExpression] Func<string[]> bodychannelList, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<bool> bodyproposed = null, [WorkflowExpression] Func<bool> bodyshareable = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyurl = null)
         {
-            SourceExpression.Validate(bodychannelList, nameof(bodychannelList), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            SourceExpression.Validate(bodyproposed, nameof(bodyproposed), required: false);
-            SourceExpression.Validate(bodyshareable, nameof(bodyshareable), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/publicapi/post";

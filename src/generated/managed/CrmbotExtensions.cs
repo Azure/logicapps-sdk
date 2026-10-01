@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         public IBodyWorkflowAction<BuildCustomMessageResponse> BuildCustomMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/message/custom";
@@ -40,8 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         public IBodyWorkflowAction<BuildTextMessageResponse> BuildTextMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/message/text";
@@ -66,17 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         public IBodyWorkflowAction<BuildCardMessageResponse> BuildCardMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bool> bodyisCarousel, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodybuttontitle1 = null, [WorkflowExpression] Func<string> bodybuttonpostback1 = null, [WorkflowExpression] Func<string> bodybuttontitle2 = null, [WorkflowExpression] Func<string> bodybuttonpostback2 = null, [WorkflowExpression] Func<string> bodybuttontitle3 = null, [WorkflowExpression] Func<string> bodybuttonpostback3 = null)
         {
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyisCarousel, nameof(bodyisCarousel), required: true);
-            SourceExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodybuttontitle1, nameof(bodybuttontitle1), required: false);
-            SourceExpression.Validate(bodybuttonpostback1, nameof(bodybuttonpostback1), required: false);
-            SourceExpression.Validate(bodybuttontitle2, nameof(bodybuttontitle2), required: false);
-            SourceExpression.Validate(bodybuttonpostback2, nameof(bodybuttonpostback2), required: false);
-            SourceExpression.Validate(bodybuttontitle3, nameof(bodybuttontitle3), required: false);
-            SourceExpression.Validate(bodybuttonpostback3, nameof(bodybuttonpostback3), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/message/card";
@@ -151,9 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         public IBodyWorkflowAction<BuildQuickrepliesMessageResponse> BuildQuickrepliesMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/message/quickreplies";
@@ -180,9 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         public IBodyWorkflowAction<BuildMediaMessageResponse> BuildMediaMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bodymediaTypeInput> bodymediaType)
         {
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodymediaType, nameof(bodymediaType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/message/media";
@@ -209,13 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         public IWorkflowAction SendResponse([WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodyuseGlossary, [WorkflowExpression] Func<string> bodytargetLanguage, [WorkflowExpression] Func<JToken[]> bodywebhookResponsefulfillmentMessages = null, [WorkflowExpression] Func<string> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, [WorkflowExpression] Func<string> bodywebhookResponseapplySpecificContextToResponse = null, [WorkflowExpression] Func<int> bodywebhookResponsedurationOfContext = null)
         {
-            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            SourceExpression.Validate(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
-            SourceExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: true);
-            SourceExpression.Validate(bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
-            SourceExpression.Validate(bodywebhookResponseselectTheEventYouWouldLikeToInvoke, nameof(bodywebhookResponseselectTheEventYouWouldLikeToInvoke), required: false);
-            SourceExpression.Validate(bodywebhookResponseapplySpecificContextToResponse, nameof(bodywebhookResponseapplySpecificContextToResponse), required: false);
-            SourceExpression.Validate(bodywebhookResponsedurationOfContext, nameof(bodywebhookResponsedurationOfContext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/flowconnector/response";
@@ -274,10 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
         public IWorkflowAction SendProactiveMessage([WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodyuseGlossary, [WorkflowExpression] Func<string> bodytargetLanguage, [WorkflowExpression] Func<JToken[]> bodywebhookResponsefulfillmentMessages = null)
         {
-            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            SourceExpression.Validate(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
-            SourceExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: true);
-            SourceExpression.Validate(bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/flowconnector/proactive";
@@ -320,8 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
     {
         public IBodyWorkflowTrigger<JToken> IntentDetected([WorkflowExpression] Func<string> bodyselectIntentYouWouldLikeToTriggerOn, [WorkflowExpression] Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyselectIntentYouWouldLikeToTriggerOn, nameof(bodyselectIntentYouWouldLikeToTriggerOn), required: true);
-            SourceExpression.Validate(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, nameof(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/api/flowconnector";

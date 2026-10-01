@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<CampaignGetResponse> CampaignGet([WorkflowExpression] Func<string> scope = null)
         {
-            SourceExpression.Validate(scope, nameof(scope), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/campaigns";
@@ -31,13 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<CampaignPostResponse> Campaign([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendAt = null, [WorkflowExpression] Func<int> bodygoal = null, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyendAt, nameof(bodyendAt), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/campaigns";
@@ -100,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<CampaignGetAResponse> CampaignGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -115,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> CampaignDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -130,14 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<CampaignPatchResponse> CampaignPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendAt = null, [WorkflowExpression] Func<string> bodygoal = null, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyendAt, nameof(bodyendAt), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -200,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<MemberGetResponse> MemberGet([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -215,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<MemberGetAResponse> MemberGetA([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -231,8 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> MemberDelete([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -247,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TeamGetResponse> TeamGet([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -262,8 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TeamGetAResponse> TeamGetA([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> teamId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -278,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactGetResponse> ContactGet([WorkflowExpression] Func<string> scope = null)
         {
-            SourceExpression.Validate(scope, nameof(scope), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";
@@ -295,19 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactPostResponse> Contact([WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null, [WorkflowExpression] Func<bodyphonesInputItem[]> bodyphones = null, [WorkflowExpression] Func<bodyaddressesInputItem[]> bodyaddresses = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodydob = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytwitterUrl = null, [WorkflowExpression] Func<string> bodylinkedinUrl = null, [WorkflowExpression] Func<string> bodyfacebookUrl = null)
         {
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
-            SourceExpression.Validate(bodyphones, nameof(bodyphones), required: false);
-            SourceExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodydob, nameof(bodydob), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
-            SourceExpression.Validate(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
-            SourceExpression.Validate(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";
@@ -406,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactGetAResponse> ContactGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -421,16 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactPatchResponse> ContactPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodydob = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytwitterUrl = null, [WorkflowExpression] Func<string> bodylinkedinUrl = null, [WorkflowExpression] Func<string> bodyfacebookUrl = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodydob, nameof(bodydob), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
-            SourceExpression.Validate(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
-            SourceExpression.Validate(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -505,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> ContactDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -520,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<ContactRestoreResponse> ContactRestore([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -549,7 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TicketGetAResponse> TicketGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -578,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TransactionGetAResponse> TransactionGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/transactions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -607,7 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PayoutGetAResponse> PayoutGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/payouts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -636,7 +580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PlanGetAResponse> PlanGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/plans/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -665,8 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<FundPostResponse> Fund([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/funds";
@@ -699,7 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<FundGetAResponse> FundGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -714,9 +654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<FundPatchResponse> FundPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -749,7 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<string> FundDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

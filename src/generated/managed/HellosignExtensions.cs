@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         public IBodyWorkflowAction<RequestResponse> CreateRequest([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<testModeInput> testMode = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> signingRedirectUrl = null, [WorkflowExpression] Func<bool> allowDecline = null, [WorkflowExpression] Func<object> signers = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(testMode, nameof(testMode), required: false);
-            SourceExpression.Validate(subject, nameof(subject), required: false);
-            SourceExpression.Validate(message, nameof(message), required: false);
-            SourceExpression.Validate(signingRedirectUrl, nameof(signingRedirectUrl), required: false);
-            SourceExpression.Validate(allowDecline, nameof(allowDecline), required: false);
-            SourceExpression.Validate(signers, nameof(signers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/signature_request/send_with_template";
@@ -47,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         public IBodyWorkflowAction<RequestResponse> GetRequest([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/signature_request/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -62,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
         public IWorkflowAction CancelRequest([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/signature_request/cancel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));

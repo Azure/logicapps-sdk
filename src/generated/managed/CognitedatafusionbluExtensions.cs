@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<ListTimeSeriesResponse> ListTimeSeries([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeMetadata = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> assetIds = null, [WorkflowExpression] Func<string> rootAssetIds = null, [WorkflowExpression] Func<string> externalIdPrefix = null, [WorkflowExpression] Func<string> accept = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(includeMetadata, nameof(includeMetadata), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(partition, nameof(partition), required: false);
-            SourceExpression.Validate(assetIds, nameof(assetIds), required: false);
-            SourceExpression.Validate(rootAssetIds, nameof(rootAssetIds), required: false);
-            SourceExpression.Validate(externalIdPrefix, nameof(externalIdPrefix), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -56,27 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<FilterTimeSeriesResponse> FilterTimeSeries([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyfiltername = null, [WorkflowExpression] Func<string> bodyfilterunit = null, [WorkflowExpression] Func<bool> bodyfilterisString = null, [WorkflowExpression] Func<bool> bodyfilterisStep = null, [WorkflowExpression] Func<int[]> bodyfilterassetIds = null, [WorkflowExpression] Func<string[]> bodyfilterassetExternalIds = null, [WorkflowExpression] Func<int[]> bodyfilterrootAssetIds = null, [WorkflowExpression] Func<bodyfilterassetSubtreeIdsInputItem[]> bodyfilterassetSubtreeIds = null, [WorkflowExpression] Func<bodyfilterdataSetIdsInputItem[]> bodyfilterdataSetIds = null, [WorkflowExpression] Func<string> bodyfilterexternalIdPrefix = null, [WorkflowExpression] Func<int> bodyfiltercreatedTimemax = null, [WorkflowExpression] Func<int> bodyfiltercreatedTimemin = null, [WorkflowExpression] Func<int> bodyfilterlastUpdatedTimemax = null, [WorkflowExpression] Func<int> bodyfilterlastUpdatedTimemin = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodycursor = null, [WorkflowExpression] Func<string> bodypartition = null, [WorkflowExpression] Func<bodysortInputItem[]> bodysort = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyfiltername, nameof(bodyfiltername), required: false);
-            SourceExpression.Validate(bodyfilterunit, nameof(bodyfilterunit), required: false);
-            SourceExpression.Validate(bodyfilterisString, nameof(bodyfilterisString), required: false);
-            SourceExpression.Validate(bodyfilterisStep, nameof(bodyfilterisStep), required: false);
-            SourceExpression.Validate(bodyfilterassetIds, nameof(bodyfilterassetIds), required: false);
-            SourceExpression.Validate(bodyfilterassetExternalIds, nameof(bodyfilterassetExternalIds), required: false);
-            SourceExpression.Validate(bodyfilterrootAssetIds, nameof(bodyfilterrootAssetIds), required: false);
-            SourceExpression.Validate(bodyfilterassetSubtreeIds, nameof(bodyfilterassetSubtreeIds), required: false);
-            SourceExpression.Validate(bodyfilterdataSetIds, nameof(bodyfilterdataSetIds), required: false);
-            SourceExpression.Validate(bodyfilterexternalIdPrefix, nameof(bodyfilterexternalIdPrefix), required: false);
-            SourceExpression.Validate(bodyfiltercreatedTimemax, nameof(bodyfiltercreatedTimemax), required: false);
-            SourceExpression.Validate(bodyfiltercreatedTimemin, nameof(bodyfiltercreatedTimemin), required: false);
-            SourceExpression.Validate(bodyfilterlastUpdatedTimemax, nameof(bodyfilterlastUpdatedTimemax), required: false);
-            SourceExpression.Validate(bodyfilterlastUpdatedTimemin, nameof(bodyfilterlastUpdatedTimemin), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodycursor, nameof(bodycursor), required: false);
-            SourceExpression.Validate(bodypartition, nameof(bodypartition), required: false);
-            SourceExpression.Validate(bodysort, nameof(bodysort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -261,27 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<SearchTimeSeriesResponse> SearchTimeSeries([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyfiltername = null, [WorkflowExpression] Func<string> bodyfilterunit = null, [WorkflowExpression] Func<bool> bodyfilterisString = null, [WorkflowExpression] Func<bool> bodyfilterisStep = null, [WorkflowExpression] Func<int[]> bodyfilterassetIds = null, [WorkflowExpression] Func<string[]> bodyfilterassetExternalIds = null, [WorkflowExpression] Func<int[]> bodyfilterrootAssetIds = null, [WorkflowExpression] Func<bodyfilterassetSubtreeIdsInputItem[]> bodyfilterassetSubtreeIds = null, [WorkflowExpression] Func<bodyfilterdataSetIdsInputItem[]> bodyfilterdataSetIds = null, [WorkflowExpression] Func<string> bodyfilterexternalIdPrefix = null, [WorkflowExpression] Func<int> bodyfiltercreatedTimemax = null, [WorkflowExpression] Func<int> bodyfiltercreatedTimemin = null, [WorkflowExpression] Func<int> bodyfilterlastUpdatedTimemax = null, [WorkflowExpression] Func<int> bodyfilterlastUpdatedTimemin = null, [WorkflowExpression] Func<string> bodysearchname = null, [WorkflowExpression] Func<string> bodysearchdescription = null, [WorkflowExpression] Func<string> bodysearchquery = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyfiltername, nameof(bodyfiltername), required: false);
-            SourceExpression.Validate(bodyfilterunit, nameof(bodyfilterunit), required: false);
-            SourceExpression.Validate(bodyfilterisString, nameof(bodyfilterisString), required: false);
-            SourceExpression.Validate(bodyfilterisStep, nameof(bodyfilterisStep), required: false);
-            SourceExpression.Validate(bodyfilterassetIds, nameof(bodyfilterassetIds), required: false);
-            SourceExpression.Validate(bodyfilterassetExternalIds, nameof(bodyfilterassetExternalIds), required: false);
-            SourceExpression.Validate(bodyfilterrootAssetIds, nameof(bodyfilterrootAssetIds), required: false);
-            SourceExpression.Validate(bodyfilterassetSubtreeIds, nameof(bodyfilterassetSubtreeIds), required: false);
-            SourceExpression.Validate(bodyfilterdataSetIds, nameof(bodyfilterdataSetIds), required: false);
-            SourceExpression.Validate(bodyfilterexternalIdPrefix, nameof(bodyfilterexternalIdPrefix), required: false);
-            SourceExpression.Validate(bodyfiltercreatedTimemax, nameof(bodyfiltercreatedTimemax), required: false);
-            SourceExpression.Validate(bodyfiltercreatedTimemin, nameof(bodyfiltercreatedTimemin), required: false);
-            SourceExpression.Validate(bodyfilterlastUpdatedTimemax, nameof(bodyfilterlastUpdatedTimemax), required: false);
-            SourceExpression.Validate(bodyfilterlastUpdatedTimemin, nameof(bodyfilterlastUpdatedTimemin), required: false);
-            SourceExpression.Validate(bodysearchname, nameof(bodysearchname), required: false);
-            SourceExpression.Validate(bodysearchdescription, nameof(bodysearchdescription), required: false);
-            SourceExpression.Validate(bodysearchquery, nameof(bodysearchquery), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -466,13 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IWorkflowAction QueryGraphQL([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> space, [WorkflowExpression] Func<string> datamodel, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(space, nameof(space), required: true);
-            SourceExpression.Validate(datamodel, nameof(datamodel), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/userapis/spaces/{1}/datamodels/{2}/versions/{3}/graphql", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(space, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datamodel, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));

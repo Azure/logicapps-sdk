@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
     {
         public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/export";
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
         public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/notifications";

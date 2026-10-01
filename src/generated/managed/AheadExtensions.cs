@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ahead
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ahead")]
         public IWorkflowAction AheadReceiveExternalActivity([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodymediaUrl = null, [WorkflowExpression] Func<bodysourceInput> bodysource = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodymediaUrl, nameof(bodymediaUrl), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ReceiveExternalActivity";

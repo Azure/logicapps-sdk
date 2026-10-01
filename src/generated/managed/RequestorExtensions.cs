@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
         public IWorkflowAction CreateTicket([WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyserviceId, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodysubmitterEmail, [WorkflowExpression] Func<string> bodysolverUserProviderKey = null)
         {
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyserviceId, nameof(bodyserviceId), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodysubmitterEmail, nameof(bodysubmitterEmail), required: true);
-            SourceExpression.Validate(bodysolverUserProviderKey, nameof(bodysolverUserProviderKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Tickets/NewTicket";
@@ -56,23 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
         public IWorkflowAction CreateUser([WorkflowExpression] Func<string> bodyuserName, [WorkflowExpression] Func<bool> bodychangePasswordAfterLogging, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bool> bodyroleEndUser = null, [WorkflowExpression] Func<bool> bodyroleSmartUser = null, [WorkflowExpression] Func<bool> bodyroleOperator = null, [WorkflowExpression] Func<bool> bodyroleSuperOperator = null, [WorkflowExpression] Func<bool> bodyroleAdministrator = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyadminNote = null, [WorkflowExpression] Func<string> bodyadditionalInformation = null, [WorkflowExpression] Func<string[]> bodycustomerNames = null)
         {
-            SourceExpression.Validate(bodyuserName, nameof(bodyuserName), required: true);
-            SourceExpression.Validate(bodychangePasswordAfterLogging, nameof(bodychangePasswordAfterLogging), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyroleEndUser, nameof(bodyroleEndUser), required: false);
-            SourceExpression.Validate(bodyroleSmartUser, nameof(bodyroleSmartUser), required: false);
-            SourceExpression.Validate(bodyroleOperator, nameof(bodyroleOperator), required: false);
-            SourceExpression.Validate(bodyroleSuperOperator, nameof(bodyroleSuperOperator), required: false);
-            SourceExpression.Validate(bodyroleAdministrator, nameof(bodyroleAdministrator), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyadminNote, nameof(bodyadminNote), required: false);
-            SourceExpression.Validate(bodyadditionalInformation, nameof(bodyadditionalInformation), required: false);
-            SourceExpression.Validate(bodycustomerNames, nameof(bodycustomerNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Account/CreateRequestorUser";

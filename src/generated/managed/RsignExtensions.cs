@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<GetAuthTokenResponse> GetAuthToken([WorkflowExpression] Func<string> bodyreferenceKey, [WorkflowExpression] Func<string> bodyemailAddress, [WorkflowExpression] Func<string> bodypassword)
         {
-            SourceExpression.Validate(bodyreferenceKey, nameof(bodyreferenceKey), required: true);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/V1/Authentication/AuthenticateUserV2";
@@ -43,10 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse> SendEnvelopeFromTemplate([WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> bodytemplateCode, [WorkflowExpression] Func<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping, [WorkflowExpression] Func<string> bodyappKey = null)
         {
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
-            SourceExpression.Validate(bodytemplateCode, nameof(bodytemplateCode), required: true);
-            SourceExpression.Validate(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
-            SourceExpression.Validate(bodyappKey, nameof(bodyappKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromTemplate";
@@ -78,10 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<SendEnvelopeFromRuleResponse> SendEnvelopeFromRule([WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> bodyruleCode, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments, [WorkflowExpression] Func<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping)
         {
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
-            SourceExpression.Validate(bodyruleCode, nameof(bodyruleCode), required: true);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: true);
-            SourceExpression.Validate(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromRule";
@@ -109,9 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse> GetEnvelopeStatusInfo([WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> bodyenvelopeCode, [WorkflowExpression] Func<bodydetailOrSummaryInput> bodydetailOrSummary)
         {
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
-            SourceExpression.Validate(bodyenvelopeCode, nameof(bodyenvelopeCode), required: true);
-            SourceExpression.Validate(bodydetailOrSummary, nameof(bodydetailOrSummary), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/V1/Envelope/GetEnvelopeStatusInfo";
@@ -137,8 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<GetTemplateInfoResponse> GetTemplateInfo([WorkflowExpression] Func<string> templateCode, [WorkflowExpression] Func<string> authToken)
         {
-            SourceExpression.Validate(templateCode, nameof(templateCode), required: true);
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/V1/Template/GetTemplateInfo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateCode, 1));
@@ -154,8 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> DownloadEnvelopeDocuments([WorkflowExpression] Func<string> envelopeCode, [WorkflowExpression] Func<string> authToken)
         {
-            SourceExpression.Validate(envelopeCode, nameof(envelopeCode), required: true);
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeCode, 1));

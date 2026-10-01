@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<ListCloudPCsResponse> ListCloudPCs([WorkflowExpression] Func<selectInput> select = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/cloudPCs";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetACloudPCObjectResponse> GetACloudPCObject([WorkflowExpression] Func<string> cloudPcId, [WorkflowExpression] Func<selectInput> select = null)
         {
-            SourceExpression.Validate(cloudPcId, nameof(cloudPcId), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudPcId, 1));
@@ -52,10 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction RemoteActions([WorkflowExpression] Func<string> cloudPcId, [WorkflowExpression] Func<remoteActionInput> remoteAction, [WorkflowExpression] Func<string> bodycloudPcSnapshotId = null, [WorkflowExpression] Func<string> bodydisplayName = null)
         {
-            SourceExpression.Validate(cloudPcId, nameof(cloudPcId), required: true);
-            SourceExpression.Validate(remoteAction, nameof(remoteAction), required: true);
-            SourceExpression.Validate(bodycloudPcSnapshotId, nameof(bodycloudPcSnapshotId), required: false);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudPcId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(remoteAction, 1));
@@ -88,15 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(customHeader1, nameof(customHeader1), required: false);
-            SourceExpression.Validate(customHeader2, nameof(customHeader2), required: false);
-            SourceExpression.Validate(customHeader3, nameof(customHeader3), required: false);
-            SourceExpression.Validate(customHeader4, nameof(customHeader4), required: false);
-            SourceExpression.Validate(customHeader5, nameof(customHeader5), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/httprequest";
@@ -127,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction AssignAProvisioningPolicyToAGroup([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyassignmentsInputItem[]> bodyassignments)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyassignments, nameof(bodyassignments), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}/assign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -152,17 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<CreateAProvisioningPolicyV1Response> CreateAProvisioningPolicy([WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodydomainJoinConfigurationsInputItem[]> bodydomainJoinConfigurations, [WorkflowExpression] Func<string> bodyimageId, [WorkflowExpression] Func<string> bodyimageDisplayName, [WorkflowExpression] Func<bodyimageTypeInput> bodyimageType, [WorkflowExpression] Func<bodyprovisioningTypeInput> bodyprovisioningType, [WorkflowExpression] Func<bool> bodyenableSingleSignOn = null, [WorkflowExpression] Func<string> bodywindowsSettinglocale = null, [WorkflowExpression] Func<string> bodymicrosoftManagedDesktopmanagedType = null, [WorkflowExpression] Func<string> bodymicrosoftManagedDesktopprofile = null)
         {
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: true);
-            SourceExpression.Validate(bodyimageId, nameof(bodyimageId), required: true);
-            SourceExpression.Validate(bodyimageDisplayName, nameof(bodyimageDisplayName), required: true);
-            SourceExpression.Validate(bodyimageType, nameof(bodyimageType), required: true);
-            SourceExpression.Validate(bodyprovisioningType, nameof(bodyprovisioningType), required: true);
-            SourceExpression.Validate(bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
-            SourceExpression.Validate(bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
-            SourceExpression.Validate(bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
-            SourceExpression.Validate(bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/provisioningPolicies";
@@ -246,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction DeleteAProvisioningPolicy([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -261,9 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetAProvisioningPolicyV1Response> GetAProvisioningPolicy([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<selectInput> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -283,9 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetProvisioningPoliciesV1Response> GetProvisioningPolicies([WorkflowExpression] Func<selectInput> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/provisioningPolicies";
@@ -307,21 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction UpdateAProvisioningPolicy([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyautopatchautopatchGroupId = null, [WorkflowExpression] Func<string> bodyautopilotConfigurationdevicePreparationProfileId = null, [WorkflowExpression] Func<int> bodyautopilotConfigurationapplicationTimeoutInMinutes = null, [WorkflowExpression] Func<bool> bodyautopilotConfigurationonFailureDeviceAccessDenied = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodydomainJoinConfigurationsInputItem[]> bodydomainJoinConfigurations = null, [WorkflowExpression] Func<bool> bodyenableSingleSignOn = null, [WorkflowExpression] Func<string> bodyimageDisplayName = null, [WorkflowExpression] Func<string> bodyimageId = null, [WorkflowExpression] Func<string> bodyimageType = null, [WorkflowExpression] Func<string> bodymicrosoftManagedDesktopmanagedType = null, [WorkflowExpression] Func<string> bodymicrosoftManagedDesktopprofile = null, [WorkflowExpression] Func<string> bodywindowsSettinglocale = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyautopatchautopatchGroupId, nameof(bodyautopatchautopatchGroupId), required: false);
-            SourceExpression.Validate(bodyautopilotConfigurationdevicePreparationProfileId, nameof(bodyautopilotConfigurationdevicePreparationProfileId), required: false);
-            SourceExpression.Validate(bodyautopilotConfigurationapplicationTimeoutInMinutes, nameof(bodyautopilotConfigurationapplicationTimeoutInMinutes), required: false);
-            SourceExpression.Validate(bodyautopilotConfigurationonFailureDeviceAccessDenied, nameof(bodyautopilotConfigurationonFailureDeviceAccessDenied), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: false);
-            SourceExpression.Validate(bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
-            SourceExpression.Validate(bodyimageDisplayName, nameof(bodyimageDisplayName), required: false);
-            SourceExpression.Validate(bodyimageId, nameof(bodyimageId), required: false);
-            SourceExpression.Validate(bodyimageType, nameof(bodyimageType), required: false);
-            SourceExpression.Validate(bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
-            SourceExpression.Validate(bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
-            SourceExpression.Validate(bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -469,7 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
     {
         public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyscenarioInput> bodyscenario, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyscenario, nameof(bodyscenario), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks";

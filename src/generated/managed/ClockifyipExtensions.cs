@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
@@ -32,14 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> task = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(project, nameof(project), required: false);
-            SourceExpression.Validate(task, nameof(task), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));

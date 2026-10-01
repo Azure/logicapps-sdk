@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAbandonedCheckoutsResponse> GetAbandonedCheckouts([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> abandonedFrom, [WorkflowExpression] Func<string> productCode = null, [WorkflowExpression] Func<string> customerRecordNumber = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(abandonedFrom, nameof(abandonedFrom), required: true);
-            SourceExpression.Validate(productCode, nameof(productCode), required: false);
-            SourceExpression.Validate(customerRecordNumber, nameof(customerRecordNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Shopping/AbandonedCheckOuts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -38,8 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListAllExhibitorsResponse> ListAllExhibitors([WorkflowExpression] Func<string> exhibitCode, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(exhibitCode, nameof(exhibitCode), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Exhibits/{0}/Exhibitors/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exhibitCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -55,13 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListOfExamsResponse> ListOfExams([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> categoryName = null, [WorkflowExpression] Func<bool> isPublic = null, [WorkflowExpression] Func<string> changedSince = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<bool> includePrices = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(categoryName, nameof(categoryName), required: false);
-            SourceExpression.Validate(isPublic, nameof(isPublic), required: false);
-            SourceExpression.Validate(changedSince, nameof(changedSince), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(includePrices, nameof(includePrices), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Products/Exams/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -89,11 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListRegistrantsResponse> ListRegistrants([WorkflowExpression] Func<string> eventCode, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> sessionCode = null, [WorkflowExpression] Func<bool> includeDetails = null, [WorkflowExpression] Func<string> registeredSince = null)
         {
-            SourceExpression.Validate(eventCode, nameof(eventCode), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(sessionCode, nameof(sessionCode), required: false);
-            SourceExpression.Validate(includeDetails, nameof(includeDetails), required: false);
-            SourceExpression.Validate(registeredSince, nameof(registeredSince), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Events/{0}/Registrations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -115,8 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetCourseAttendeesResponse> GetCourseAttendees([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Courses/{0}/Attendees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -132,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ExamScoreResultData[]> AddExamScores([WorkflowExpression] Func<string> examCode, [WorkflowExpression] Func<ExamScoreData[]> scores = null)
         {
-            SourceExpression.Validate(examCode, nameof(examCode), required: true);
-            SourceExpression.Validate(scores, nameof(scores), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Exams/{0}/Scores", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(examCode, 1));
@@ -150,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<FindMembersByNameResponse> FindMembersByName([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Customers/Members/FindByName/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -167,11 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetPurchasesForAnIndividualResponse> GetPurchasesForAnIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> productCode = null, [WorkflowExpression] Func<string> purchasedSince = null, [WorkflowExpression] Func<string> productCategoryCode = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(productCode, nameof(productCode), required: false);
-            SourceExpression.Validate(purchasedSince, nameof(purchasedSince), required: false);
-            SourceExpression.Validate(productCategoryCode, nameof(productCategoryCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Purchases/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -193,8 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<CustomFieldResultData[]> AddOrUpdateAListOfCustomFieldsPerOrganization([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<CustomFieldValueData[]> body = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/CustomFieldsList", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -211,16 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddNominee([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> bodynomineeRecordNumber = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyrepresentingOrganizationRecordNumber = null, [WorkflowExpression] Func<string> bodyrepresentingOrganizationRelationshipName = null, [WorkflowExpression] Func<string> bodynominatedByCustomerRecordNumber = null, [WorkflowExpression] Func<int> bodycommitteeTerm = null, [WorkflowExpression] Func<int> bodyrank = null)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(bodynomineeRecordNumber, nameof(bodynomineeRecordNumber), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyrepresentingOrganizationRecordNumber, nameof(bodyrepresentingOrganizationRecordNumber), required: false);
-            SourceExpression.Validate(bodyrepresentingOrganizationRelationshipName, nameof(bodyrepresentingOrganizationRelationshipName), required: false);
-            SourceExpression.Validate(bodynominatedByCustomerRecordNumber, nameof(bodynominatedByCustomerRecordNumber), required: false);
-            SourceExpression.Validate(bodycommitteeTerm, nameof(bodycommitteeTerm), required: false);
-            SourceExpression.Validate(bodyrank, nameof(bodyrank), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}/Nominations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1));
@@ -296,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<CustomFieldData[]> GetIndividualCustomFieldValues([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/CustomFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -312,10 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction UpdateCustomFieldValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycaption = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycaption, nameof(bodycaption), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/CustomFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -355,10 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListAllEventCancellationsByEventResponse> ListAllEventCancellationsByEvent([WorkflowExpression] Func<string> eventCode, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<bool> includeDetails = null, [WorkflowExpression] Func<string> cancelledSince = null)
         {
-            SourceExpression.Validate(eventCode, nameof(eventCode), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(includeDetails, nameof(includeDetails), required: false);
-            SourceExpression.Validate(cancelledSince, nameof(cancelledSince), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Events/{0}/Cancellations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -378,11 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAllOpenOrdersForAnIndividualResponse> GetAllOpenOrdersForAnIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<bool> includeLineItems = null, [WorkflowExpression] Func<string> fromDate = null, [WorkflowExpression] Func<string> toDate = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(includeLineItems, nameof(includeLineItems), required: false);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: false);
-            SourceExpression.Validate(toDate, nameof(toDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Orders/Open/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -404,8 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListCompletedUserTasksByUserIdOrEmailResponse> ListCompletedUserTasksByUserIdOrEmail([WorkflowExpression] Func<string> userIdOrEmail, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(userIdOrEmail, nameof(userIdOrEmail), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/tasks/Users/{0}/Completed/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userIdOrEmail, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -421,8 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListPendingUserTasksByUserIdOrEmailResponse> ListPendingUserTasksByUserIdOrEmail([WorkflowExpression] Func<string> userIdOrEmail, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(userIdOrEmail, nameof(userIdOrEmail), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/tasks/Users/{0}/Pending/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userIdOrEmail, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -438,10 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddNoteToSalesOpportunity([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<bool> bodyisInternal = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyisInternal, nameof(bodyisInternal), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Sales/Opportunities/{0}/Notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -481,11 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddActivityToSalesOpportunity([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyactivityDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodyactivityDate, nameof(bodyactivityDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Sales/Opportunities/{0}/Activities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -531,12 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<TaskData> UpdateTaskByTaskNumber([WorkflowExpression] Func<string> taskNumber, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null)
         {
-            SourceExpression.Validate(taskNumber, nameof(taskNumber), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskNumber, 1));
@@ -588,7 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListAllCountriesResponse> ListAllCountries([WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Countries/All/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -604,8 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAllStatesByCountryResponse> GetAllStatesByCountry([WorkflowExpression] Func<string> countryId, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(countryId, nameof(countryId), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Countries/{0}/States/All/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -621,7 +544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListAllExhibitsResponse> ListAllExhibits([WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Exhibits/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -637,8 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction DeleteACategoryForAnOrganization([WorkflowExpression] Func<string> recordNumber, [WorkflowExpression] Func<string> categoryCode)
         {
-            SourceExpression.Validate(recordNumber, nameof(recordNumber), required: true);
-            SourceExpression.Validate(categoryCode, nameof(categoryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Categories/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryCode, 1));
@@ -654,10 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddCustomerRequest([WorkflowExpression] Func<string> bodyrequestedByCustomerRecordNumber = null, [WorkflowExpression] Func<string> bodyrequestType = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodysourceInput> bodysource = null)
         {
-            SourceExpression.Validate(bodyrequestedByCustomerRecordNumber, nameof(bodyrequestedByCustomerRecordNumber), required: false);
-            SourceExpression.Validate(bodyrequestType, nameof(bodyrequestType), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Requests";
@@ -703,8 +619,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<RequestUpdateData> UpdateCustomerRequest([WorkflowExpression] Func<string> bodyrequestNumber = null, [WorkflowExpression] Func<string> bodyclosedDate = null)
         {
-            SourceExpression.Validate(bodyrequestNumber, nameof(bodyrequestNumber), required: false);
-            SourceExpression.Validate(bodyclosedDate, nameof(bodyclosedDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Requests";
@@ -738,8 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddCategoriesForAnOrganization([WorkflowExpression] Func<string> recordNumber, [WorkflowExpression] Func<SaveCategoryBasicData[]> body = null)
         {
-            SourceExpression.Validate(recordNumber, nameof(recordNumber), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Categories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordNumber, 1));
@@ -756,7 +668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListOfCustomerRelationshipsResponse> ListOfCustomerRelationships([WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Customers/RelationshipTypes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -772,7 +683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListAllOpenCustomerRequestResponse> ListAllOpenCustomerRequest([WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Requests/Open/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -788,7 +698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<MembershipData> GetOrganizationInactiveMemberships([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Memberships/Inactive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -804,8 +713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction DeleteRecordFromCustomDataTable([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/CustomData/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -821,16 +728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<UserTaskData> UpdateUserTaskProgressOrMarkAsCompleted([WorkflowExpression] Func<string> userIdOrEmail, [WorkflowExpression] Func<string> bodytaskNumber = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyassignedBy = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyprogress = null, [WorkflowExpression] Func<string> bodycompletedDate = null)
         {
-            SourceExpression.Validate(userIdOrEmail, nameof(userIdOrEmail), required: true);
-            SourceExpression.Validate(bodytaskNumber, nameof(bodytaskNumber), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyassignedBy, nameof(bodyassignedBy), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyprogress, nameof(bodyprogress), required: false);
-            SourceExpression.Validate(bodycompletedDate, nameof(bodycompletedDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/tasks/Users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userIdOrEmail, 1));
@@ -906,9 +803,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<IndividualData> FindMembersOrIndividualsByFirstName([WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<bool> includeEmail = null)
         {
-            SourceExpression.Validate(firstName, nameof(firstName), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(includeEmail, nameof(includeEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/Members/FindByFirstName/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(firstName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -926,9 +820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<IndividualData> FindMembersOrIndividualsByLastName([WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<bool> includeEmail = null)
         {
-            SourceExpression.Validate(lastName, nameof(lastName), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(includeEmail, nameof(includeEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/Members/FindByLastName/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lastName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -946,16 +837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AssignTaskToAUser([WorkflowExpression] Func<string> userIdOrEmail, [WorkflowExpression] Func<string> bodytaskNumber = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyassignedBy = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyprogress = null, [WorkflowExpression] Func<string> bodycompletedDate = null)
         {
-            SourceExpression.Validate(userIdOrEmail, nameof(userIdOrEmail), required: true);
-            SourceExpression.Validate(bodytaskNumber, nameof(bodytaskNumber), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyassignedBy, nameof(bodyassignedBy), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyprogress, nameof(bodyprogress), required: false);
-            SourceExpression.Validate(bodycompletedDate, nameof(bodycompletedDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/tasks/Users/{0}/Task", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userIdOrEmail, 1));
@@ -1031,8 +912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction DeleteACategoryForAnIndividual([WorkflowExpression] Func<string> recordNumber, [WorkflowExpression] Func<string> categoryCode)
         {
-            SourceExpression.Validate(recordNumber, nameof(recordNumber), required: true);
-            SourceExpression.Validate(categoryCode, nameof(categoryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Categories/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryCode, 1));
@@ -1048,12 +927,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddNotificationToIndividual([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bool> bodyisRead = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyisRead, nameof(bodyisRead), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Notifications", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1105,8 +978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddCategoriesForAnIndividual([WorkflowExpression] Func<string> recordNumber, [WorkflowExpression] Func<SaveCategoryBasicData[]> body = null)
         {
-            SourceExpression.Validate(recordNumber, nameof(recordNumber), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Categories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordNumber, 1));
@@ -1123,11 +994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<TaskData> AddANewTask([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/tasks";
@@ -1179,26 +1045,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListOfAllOrganizationMembersResponse> ListOfAllOrganizationMembers([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> zipCode = null, [WorkflowExpression] Func<double> radius = null, [WorkflowExpression] Func<string> stateAbbreviation = null, [WorkflowExpression] Func<double> congressionalDistrict = null, [WorkflowExpression] Func<string> membershipTypeCode = null, [WorkflowExpression] Func<string> membershipTypeCategory = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<double> latitude = null, [WorkflowExpression] Func<double> longitude = null, [WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<bool> includeMembership = null, [WorkflowExpression] Func<bool> includeAddress = null, [WorkflowExpression] Func<bool> includePhone = null, [WorkflowExpression] Func<bool> includeEmail = null, [WorkflowExpression] Func<bool> includeCustomFields = null, [WorkflowExpression] Func<string> expiringFrom = null, [WorkflowExpression] Func<string> expiringTo = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(zipCode, nameof(zipCode), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(stateAbbreviation, nameof(stateAbbreviation), required: false);
-            SourceExpression.Validate(congressionalDistrict, nameof(congressionalDistrict), required: false);
-            SourceExpression.Validate(membershipTypeCode, nameof(membershipTypeCode), required: false);
-            SourceExpression.Validate(membershipTypeCategory, nameof(membershipTypeCategory), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
-            SourceExpression.Validate(includeMembership, nameof(includeMembership), required: false);
-            SourceExpression.Validate(includeAddress, nameof(includeAddress), required: false);
-            SourceExpression.Validate(includePhone, nameof(includePhone), required: false);
-            SourceExpression.Validate(includeEmail, nameof(includeEmail), required: false);
-            SourceExpression.Validate(includeCustomFields, nameof(includeCustomFields), required: false);
-            SourceExpression.Validate(expiringFrom, nameof(expiringFrom), required: false);
-            SourceExpression.Validate(expiringTo, nameof(expiringTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/Members/All/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1254,22 +1100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListOfAllIndividualMembersResponse> ListOfAllIndividualMembers([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> zipCode = null, [WorkflowExpression] Func<double> radius = null, [WorkflowExpression] Func<string> membershipTypeCode = null, [WorkflowExpression] Func<string> membershipTypeCategory = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<bool> includeMembership = null, [WorkflowExpression] Func<bool> includeAddress = null, [WorkflowExpression] Func<bool> includePhone = null, [WorkflowExpression] Func<bool> includeEmail = null, [WorkflowExpression] Func<bool> includeLink = null, [WorkflowExpression] Func<bool> includeCustomFields = null, [WorkflowExpression] Func<bool> includeCategories = null, [WorkflowExpression] Func<bool> includeMembershipRenewalUrl = null, [WorkflowExpression] Func<string> expiringFrom = null, [WorkflowExpression] Func<string> expiringTo = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(zipCode, nameof(zipCode), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(membershipTypeCode, nameof(membershipTypeCode), required: false);
-            SourceExpression.Validate(membershipTypeCategory, nameof(membershipTypeCategory), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(includeMembership, nameof(includeMembership), required: false);
-            SourceExpression.Validate(includeAddress, nameof(includeAddress), required: false);
-            SourceExpression.Validate(includePhone, nameof(includePhone), required: false);
-            SourceExpression.Validate(includeEmail, nameof(includeEmail), required: false);
-            SourceExpression.Validate(includeLink, nameof(includeLink), required: false);
-            SourceExpression.Validate(includeCustomFields, nameof(includeCustomFields), required: false);
-            SourceExpression.Validate(includeCategories, nameof(includeCategories), required: false);
-            SourceExpression.Validate(includeMembershipRenewalUrl, nameof(includeMembershipRenewalUrl), required: false);
-            SourceExpression.Validate(expiringFrom, nameof(expiringFrom), required: false);
-            SourceExpression.Validate(expiringTo, nameof(expiringTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/Members/All/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1316,8 +1146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetListOfActiveCertificationsForAnOrganizationResponse> GetListOfActiveCertificationsForAnOrganization([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Certifications/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1333,8 +1161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetListOfActiveCertificationsForAnIndividualResponse> GetListOfActiveCertificationsForAnIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Certifications/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1350,7 +1176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<MembershipData> GetIndividualInactiveMemberships([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Memberships/Inactive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1366,11 +1191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddActivityToOrganization([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyactivityDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodyactivityDate, nameof(bodyactivityDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Activities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1416,10 +1236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction RegisterAnIndividualForAFreeSession([WorkflowExpression] Func<string> eventCode, [WorkflowExpression] Func<string> customerIdOrRecordNumber, [WorkflowExpression] Func<string> registrationNumber = null, [WorkflowExpression] Func<SessionRegistrationData[]> body = null)
         {
-            SourceExpression.Validate(eventCode, nameof(eventCode), required: true);
-            SourceExpression.Validate(customerIdOrRecordNumber, nameof(customerIdOrRecordNumber), required: true);
-            SourceExpression.Validate(registrationNumber, nameof(registrationNumber), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Events/{0}/Sessions/Register/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerIdOrRecordNumber, 1));
@@ -1438,8 +1254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAListOfLicensesResponse> GetAListOfLicenses([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Licenses/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1455,8 +1269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListAllAwardsResponse> ListAllAwards([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<int> year = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(year, nameof(year), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Awards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1474,9 +1286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<FindMembersOrIndividualsByNameResponse> FindMembersOrIndividualsByName([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<bool> includeEmail = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(includeEmail, nameof(includeEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/Members/FindByName/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1494,7 +1303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAListOfAllServicesOfAnOrganizationResponse> GetAListOfAllServicesOfAnOrganization([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Services", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1510,9 +1318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ServiceData> AddAServiceToAnOrganization([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Services", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1546,14 +1351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<PhoneDataSet> UpdatePhoneForAnIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycountryName, [WorkflowExpression] Func<string> bodynumber, [WorkflowExpression] Func<bodytypeNameInput> bodytypeName, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null, [WorkflowExpression] Func<string> bodyextension = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: true);
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
-            SourceExpression.Validate(bodytypeName, nameof(bodytypeName), required: true);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Phones/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1599,14 +1396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<PhoneDataSet> UpdatePhoneForAnOrganization([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycountryName, [WorkflowExpression] Func<string> bodynumber, [WorkflowExpression] Func<bodytypeNameInput> bodytypeName, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null, [WorkflowExpression] Func<string> bodyextension = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: true);
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
-            SourceExpression.Validate(bodytypeName, nameof(bodytypeName), required: true);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Phones/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1652,9 +1441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction DeleteAnIndividualWebLink([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodyurl = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -1688,9 +1474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddWebLinkForIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodyurl = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -1724,13 +1507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<PhoneDataSet> AddPhoneToOrganization([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> bodycountryName, [WorkflowExpression] Func<string> bodynumber, [WorkflowExpression] Func<bodytypeNameInput> bodytypeName, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null, [WorkflowExpression] Func<string> bodyextension = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: true);
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
-            SourceExpression.Validate(bodytypeName, nameof(bodytypeName), required: true);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Phones", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -1776,9 +1552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetNomineesByCommitteeResponse> GetNomineesByCommittee([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> term = null)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(term, nameof(term), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}/Nominations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1796,8 +1569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetOrganizationsActiveSubscriptionsResponse> GetOrganizationsActiveSubscriptions([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Subscriptions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1813,9 +1584,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction DeleteAnOrganizationWebLink([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyurl)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -1841,9 +1609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddWebLinkForOrganization([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyurl)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -1869,11 +1634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddEmailToOrganization([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Emails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1919,10 +1679,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetOrganizationsRelationshipsResponse> GetOrganizationsRelationships([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> relationshipName = null, [WorkflowExpression] Func<bool> includesDetails = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(relationshipName, nameof(relationshipName), required: false);
-            SourceExpression.Validate(includesDetails, nameof(includesDetails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Relationships/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -1942,21 +1698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<AddressSaveData> AddOrUpdateAddressToOrganization([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<string> bodyline1 = null, [WorkflowExpression] Func<string> bodyline2 = null, [WorkflowExpression] Func<string> bodyline3 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipcode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null, [WorkflowExpression] Func<bool> bodyisPreferredShipping = null, [WorkflowExpression] Func<bool> bodyisPreferredBilling = null, [WorkflowExpression] Func<bool> bodyisBadAddress = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyline1, nameof(bodyline1), required: false);
-            SourceExpression.Validate(bodyline2, nameof(bodyline2), required: false);
-            SourceExpression.Validate(bodyline3, nameof(bodyline3), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyzipcode, nameof(bodyzipcode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
-            SourceExpression.Validate(bodyisPreferredShipping, nameof(bodyisPreferredShipping), required: false);
-            SourceExpression.Validate(bodyisPreferredBilling, nameof(bodyisPreferredBilling), required: false);
-            SourceExpression.Validate(bodyisBadAddress, nameof(bodyisBadAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Addresses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -2062,8 +1803,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<CustomFieldResultData[]> AddOrUpdateAListOfCustomFieldsPerIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/CustomFieldsList", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -2080,7 +1819,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetUpcomingEventsResponse> GetUpcomingEvents([WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Events/Upcoming/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -2096,13 +1834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<PhoneDataSet> AddPhoneToIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> bodycountryName, [WorkflowExpression] Func<string> bodynumber, [WorkflowExpression] Func<bodytypeNameInput> bodytypeName, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null, [WorkflowExpression] Func<string> bodyextension = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: true);
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
-            SourceExpression.Validate(bodytypeName, nameof(bodytypeName), required: true);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Phones", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -2148,9 +1879,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetCommitteeInformationForAnIndividualResponse> GetCommitteeInformationForAnIndividual([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<bool> includeInactive = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(includeInactive, nameof(includeInactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Committees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -2168,7 +1896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<CustomFieldData[]> GetOrganizationCustomFieldValues([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/CustomFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2184,7 +1911,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<MembershipData[]> GetOrganizationActiveMemberships([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Memberships/Active", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2200,10 +1926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAllEventsResponse> GetAllEvents([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> tag = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Events/All/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -2225,7 +1947,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<MembershipData[]> GetIndividualActiveMemberships([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Memberships/Active", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2241,9 +1962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAllEventRegistrationsInformationForAnIndividualResponse> GetAllEventRegistrationsInformationForAnIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> eventCode = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(eventCode, nameof(eventCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Registrations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -2261,10 +1979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetIndividualsRelationshipsResponse> GetIndividualsRelationships([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> relationshipName = null, [WorkflowExpression] Func<bool> includeDetails = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(relationshipName, nameof(relationshipName), required: false);
-            SourceExpression.Validate(includeDetails, nameof(includeDetails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Relationships/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -2284,12 +1998,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction UpdateAnIndividualEmail([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> currentEmailAddress, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(currentEmailAddress, nameof(currentEmailAddress), required: true);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Emails/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(currentEmailAddress, 1));
@@ -2335,15 +2043,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction SaveRelationshipForOrganization([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyrelationshipName, [WorkflowExpression] Func<string> bodyrelatedToCustomerRecordNumber, [WorkflowExpression] Func<string> bodyreciprocalRelationshipName, [WorkflowExpression] Func<bool> bodyisPrimary = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyisReciprocalPrimary = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyrelationshipName, nameof(bodyrelationshipName), required: true);
-            SourceExpression.Validate(bodyrelatedToCustomerRecordNumber, nameof(bodyrelatedToCustomerRecordNumber), required: true);
-            SourceExpression.Validate(bodyreciprocalRelationshipName, nameof(bodyreciprocalRelationshipName), required: true);
-            SourceExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyisReciprocalPrimary, nameof(bodyisReciprocalPrimary), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Relationships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2401,11 +2100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<IndividualData> AddIndividual([WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<bool> createUser = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyrecordNumber = null)
         {
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            SourceExpression.Validate(createUser, nameof(createUser), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyrecordNumber, nameof(bodyrecordNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Individuals";
@@ -2445,11 +2139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<EmailData> AddEmailToIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Emails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -2495,21 +2184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<AddressSaveData> AddOrUpdateAddressToIndividual([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyprimary = null, [WorkflowExpression] Func<string> bodyline1 = null, [WorkflowExpression] Func<string> bodyline2 = null, [WorkflowExpression] Func<string> bodyline3 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipcode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null, [WorkflowExpression] Func<bool> bodyisPreferredShipping = null, [WorkflowExpression] Func<bool> bodyisPreferredBilling = null, [WorkflowExpression] Func<bool> bodyisBadAddress = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyprimary, nameof(bodyprimary), required: false);
-            SourceExpression.Validate(bodyline1, nameof(bodyline1), required: false);
-            SourceExpression.Validate(bodyline2, nameof(bodyline2), required: false);
-            SourceExpression.Validate(bodyline3, nameof(bodyline3), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyzipcode, nameof(bodyzipcode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
-            SourceExpression.Validate(bodyisPreferredShipping, nameof(bodyisPreferredShipping), required: false);
-            SourceExpression.Validate(bodyisPreferredBilling, nameof(bodyisPreferredBilling), required: false);
-            SourceExpression.Validate(bodyisBadAddress, nameof(bodyisBadAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Addresses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -2615,10 +2289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<FindMembersOrIndividualsByFirstAndLastNameResponse> FindMembersOrIndividualsByFirstAndLastName([WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<bool> includeEmail = null)
         {
-            SourceExpression.Validate(firstName, nameof(firstName), required: true);
-            SourceExpression.Validate(lastName, nameof(lastName), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(includeEmail, nameof(includeEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/Members/FindByName/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(firstName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lastName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -2636,10 +2306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction GetCommitteeMembersByCommitteeIdOrCode([WorkflowExpression] Func<string> idOrCode, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<int> term = null, [WorkflowExpression] Func<string> positionCodes = null)
         {
-            SourceExpression.Validate(idOrCode, nameof(idOrCode), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(term, nameof(term), required: false);
-            SourceExpression.Validate(positionCodes, nameof(positionCodes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}/Members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -2659,10 +2325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddActivity([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyactivityDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodyactivityDate, nameof(bodyactivityDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Activities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2700,7 +2362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<FindIndividualIdOrEmailResponse> FindIndividualIdOrEmail([WorkflowExpression] Func<string> idOrRecordNumberOrEmail)
         {
-            SourceExpression.Validate(idOrRecordNumberOrEmail, nameof(idOrRecordNumberOrEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/Profile/{0}/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumberOrEmail, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(SourceExpression.Literal(1, 1), 1));
@@ -2717,14 +2378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AddRelationshipToIndividual([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyrelationshipName, [WorkflowExpression] Func<string> bodyrelatedToCustomerRecordNumber, [WorkflowExpression] Func<string> bodyreciprocalRelationshipName, [WorkflowExpression] Func<bool> bodyisPrimary = null, [WorkflowExpression] Func<bool> bodyisReciprocalPrimary = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyrelationshipName, nameof(bodyrelationshipName), required: true);
-            SourceExpression.Validate(bodyrelatedToCustomerRecordNumber, nameof(bodyrelatedToCustomerRecordNumber), required: true);
-            SourceExpression.Validate(bodyreciprocalRelationshipName, nameof(bodyreciprocalRelationshipName), required: true);
-            SourceExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: false);
-            SourceExpression.Validate(bodyisReciprocalPrimary, nameof(bodyisReciprocalPrimary), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Relationships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2776,15 +2429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction IndividualAddEducationCredit([WorkflowExpression] Func<string> idOrRecordNumber, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<double> bodynumberOfCredits, [WorkflowExpression] Func<string> bodydateEarned, [WorkflowExpression] Func<string> bodyproviderName = null, [WorkflowExpression] Func<string> bodystateName = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodyisSelfReported = null)
         {
-            SourceExpression.Validate(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodynumberOfCredits, nameof(bodynumberOfCredits), required: true);
-            SourceExpression.Validate(bodydateEarned, nameof(bodydateEarned), required: true);
-            SourceExpression.Validate(bodyproviderName, nameof(bodyproviderName), required: false);
-            SourceExpression.Validate(bodystateName, nameof(bodystateName), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodyisSelfReported, nameof(bodyisSelfReported), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/EducationCredits", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordNumber, 1));
@@ -2838,13 +2482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction IndividualAddNote([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> notecontent, [WorkflowExpression] Func<bool> noteisAlert = null, [WorkflowExpression] Func<string> notetitle = null, [WorkflowExpression] Func<string> notefollowUpDate = null, [WorkflowExpression] Func<string> notecategory = null, [WorkflowExpression] Func<bool> noteisInternal = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(notecontent, nameof(notecontent), required: true);
-            SourceExpression.Validate(noteisAlert, nameof(noteisAlert), required: false);
-            SourceExpression.Validate(notetitle, nameof(notetitle), required: false);
-            SourceExpression.Validate(notefollowUpDate, nameof(notefollowUpDate), required: false);
-            SourceExpression.Validate(notecategory, nameof(notecategory), required: false);
-            SourceExpression.Validate(noteisInternal, nameof(noteisInternal), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2898,7 +2535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<IndividualsLookupByNameResponse> IndividualsLookupByName([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/Lookup/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(SourceExpression.Literal(1, 1), 1));
@@ -2916,17 +2552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<AddToCommitteeResponse> AddToCommittee([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> bodyrecordNumber, [WorkflowExpression] Func<string> bodypositionCode, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrepresentingOrganizationRecordNumber = null, [WorkflowExpression] Func<string> bodyrepresentingOrganizationRelationshipName = null, [WorkflowExpression] Func<string> bodynominatedByCustomerRecordNumber = null, [WorkflowExpression] Func<int> bodycommitteeTerm = null, [WorkflowExpression] Func<int> bodyrank = null)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(bodyrecordNumber, nameof(bodyrecordNumber), required: true);
-            SourceExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyrepresentingOrganizationRecordNumber, nameof(bodyrepresentingOrganizationRecordNumber), required: false);
-            SourceExpression.Validate(bodyrepresentingOrganizationRelationshipName, nameof(bodyrepresentingOrganizationRelationshipName), required: false);
-            SourceExpression.Validate(bodynominatedByCustomerRecordNumber, nameof(bodynominatedByCustomerRecordNumber), required: false);
-            SourceExpression.Validate(bodycommitteeTerm, nameof(bodycommitteeTerm), required: false);
-            SourceExpression.Validate(bodyrank, nameof(bodyrank), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}/Members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1));
@@ -2996,18 +2621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction UpdateCommitteeMember([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> memberRecordNumber, [WorkflowExpression] Func<string> currentPositionCode, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrepresentingOrganizationRecordNumber = null, [WorkflowExpression] Func<string> bodyrepresentingOrganizationRelationshipName = null, [WorkflowExpression] Func<string> bodynominatedByCustomerRecordNumber = null, [WorkflowExpression] Func<int> bodycommitteeTerm = null, [WorkflowExpression] Func<int> bodyrank = null)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(memberRecordNumber, nameof(memberRecordNumber), required: true);
-            SourceExpression.Validate(currentPositionCode, nameof(currentPositionCode), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyrepresentingOrganizationRecordNumber, nameof(bodyrepresentingOrganizationRecordNumber), required: false);
-            SourceExpression.Validate(bodyrepresentingOrganizationRelationshipName, nameof(bodyrepresentingOrganizationRelationshipName), required: false);
-            SourceExpression.Validate(bodynominatedByCustomerRecordNumber, nameof(bodynominatedByCustomerRecordNumber), required: false);
-            SourceExpression.Validate(bodycommitteeTerm, nameof(bodycommitteeTerm), required: false);
-            SourceExpression.Validate(bodyrank, nameof(bodyrank), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}/Members/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberRecordNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(currentPositionCode, 1));
@@ -3083,9 +2696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<OrganizationData> AddOrganization([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodybranchName = null, [WorkflowExpression] Func<string> bodywebsite = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodybranchName, nameof(bodybranchName), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Organizations";
@@ -3123,12 +2733,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<OrganizationData> UpdateOrganization([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyshowInDirectory = null, [WorkflowExpression] Func<string> bodybranchName = null, [WorkflowExpression] Func<string> bodywebsite = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyshowInDirectory, nameof(bodyshowInDirectory), required: false);
-            SourceExpression.Validate(bodybranchName, nameof(bodybranchName), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3180,7 +2784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<OrganizationData> OrganizationGetProfile([WorkflowExpression] Func<string> idOrRecordnumber)
         {
-            SourceExpression.Validate(idOrRecordnumber, nameof(idOrRecordnumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/Profile/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrRecordnumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(SourceExpression.Literal(1, 1), 1));
@@ -3197,13 +2800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction OrganizationAddNote([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> notecontent, [WorkflowExpression] Func<bool> noteisAlert = null, [WorkflowExpression] Func<string> notetitle = null, [WorkflowExpression] Func<string> notefollowUpDate = null, [WorkflowExpression] Func<string> notecategory = null, [WorkflowExpression] Func<bool> noteisInternal = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(notecontent, nameof(notecontent), required: true);
-            SourceExpression.Validate(noteisAlert, nameof(noteisAlert), required: false);
-            SourceExpression.Validate(notetitle, nameof(notetitle), required: false);
-            SourceExpression.Validate(notefollowUpDate, nameof(notefollowUpDate), required: false);
-            SourceExpression.Validate(notecategory, nameof(notecategory), required: false);
-            SourceExpression.Validate(noteisInternal, nameof(noteisInternal), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/{0}/Notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3257,7 +2853,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<OrganizationLookupByNameResponse> OrganizationLookupByName([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Organizations/Lookup/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(SourceExpression.Literal(1, 1), 1));
@@ -3275,11 +2870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetAllCommitteesResponse> GetAllCommittees([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> term = null, [WorkflowExpression] Func<bool> activeOnly = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(term, nameof(term), required: false);
-            SourceExpression.Validate(activeOnly, nameof(activeOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -3303,7 +2893,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetPositionsByCommitteeResponse> GetPositionsByCommittee([WorkflowExpression] Func<string> code)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}/Positions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1));
@@ -3319,8 +2908,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetSubCommitteesResponse> GetSubCommittees([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Committees/{0}/subcommittees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -3336,8 +2923,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<GetIndividualsActiveSubscriptionsResponse> GetIndividualsActiveSubscriptions([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> pageNumber)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}/Subscriptions/All/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -3353,10 +2938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<ListAllIndividualsResponse> ListAllIndividuals([WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> includeDetails = null, [WorkflowExpression] Func<string> oldId = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(includeDetails, nameof(includeDetails), required: false);
-            SourceExpression.Validate(oldId, nameof(oldId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Individuals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageNumber, 1));
@@ -3379,7 +2960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<FindCustomerPhoneResponse> FindCustomerPhone([WorkflowExpression] Func<string> phoneNumber)
         {
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Customers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "1"), 1));
@@ -3399,8 +2979,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction MarkRegistrantAttended([WorkflowExpression] Func<string> recordNumber, [WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
-            SourceExpression.Validate(recordNumber, nameof(recordNumber), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Events/Registrants/{0}/Attended", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordNumber, 1));
@@ -3417,13 +2995,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AwardsAddAwardNomination([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> awardNominationDatanomineeRecordNumber, [WorkflowExpression] Func<string> awardNominationDatanominatedByCustomerRecordNumber, [WorkflowExpression] Func<string> awardNominationDatanominationDate, [WorkflowExpression] Func<string> awardNominationDataawardedDate = null, [WorkflowExpression] Func<awardNominationDatastatusInput> awardNominationDatastatus = null, [WorkflowExpression] Func<string> awardNominationDatadescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(awardNominationDatanomineeRecordNumber, nameof(awardNominationDatanomineeRecordNumber), required: true);
-            SourceExpression.Validate(awardNominationDatanominatedByCustomerRecordNumber, nameof(awardNominationDatanominatedByCustomerRecordNumber), required: true);
-            SourceExpression.Validate(awardNominationDatanominationDate, nameof(awardNominationDatanominationDate), required: true);
-            SourceExpression.Validate(awardNominationDataawardedDate, nameof(awardNominationDataawardedDate), required: false);
-            SourceExpression.Validate(awardNominationDatastatus, nameof(awardNominationDatastatus), required: false);
-            SourceExpression.Validate(awardNominationDatadescription, nameof(awardNominationDatadescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Awards/{0}/Nominations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3469,13 +3040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IWorkflowAction AwardsUpdateAwardNomination([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> nomineeRecordNumber, [WorkflowExpression] Func<string> awardNominationDatanominatedByCustomerRecordNumber, [WorkflowExpression] Func<string> awardNominationDatanominationDate, [WorkflowExpression] Func<string> awardNominationDataawardedDate = null, [WorkflowExpression] Func<awardNominationDatastatusInput> awardNominationDatastatus = null, [WorkflowExpression] Func<string> awardNominationDatadescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(nomineeRecordNumber, nameof(nomineeRecordNumber), required: true);
-            SourceExpression.Validate(awardNominationDatanominatedByCustomerRecordNumber, nameof(awardNominationDatanominatedByCustomerRecordNumber), required: true);
-            SourceExpression.Validate(awardNominationDatanominationDate, nameof(awardNominationDatanominationDate), required: true);
-            SourceExpression.Validate(awardNominationDataawardedDate, nameof(awardNominationDataawardedDate), required: false);
-            SourceExpression.Validate(awardNominationDatastatus, nameof(awardNominationDatastatus), required: false);
-            SourceExpression.Validate(awardNominationDatadescription, nameof(awardNominationDatadescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Awards/{0}/Nominations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nomineeRecordNumber, 1));
@@ -3519,7 +3083,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<AwardsGetIndividualAwardRecipientsResponse> AwardsGetIndividualAwardRecipients([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Awards/{0}/Recipients/Individuals/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(SourceExpression.Literal(1, 1), 1));
@@ -3536,7 +3099,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
         public IBodyWorkflowAction<AwardsGetOrganizationAwardRecipientsResponse> AwardsGetOrganizationAwardRecipients([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/Awards/{0}/Recipients/Organizations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(SourceExpression.Literal(1, 1), 1));
@@ -3639,7 +3201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
         public IWorkflowTrigger WhenProductPurchased([WorkflowExpression] Func<string[]> bodyfilters, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilters, nameof(bodyfilters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Webhooks/ProductPurchased";
@@ -3698,7 +3259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
         public IWorkflowTrigger WhenPurchaseCancelled([WorkflowExpression] Func<string[]> bodyfilters, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilters, nameof(bodyfilters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Webhooks/PurchaseCancelled";
@@ -3785,7 +3345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
         public IWorkflowTrigger WhenCustomerCustomFieldValueUpdated([WorkflowExpression] Func<string[]> bodyfilters, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilters, nameof(bodyfilters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Webhooks/Customer.CustomFieldValueUpdated";
@@ -3928,7 +3487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
         public IWorkflowTrigger WhenEventRegistrationSubstituted([WorkflowExpression] Func<string[]> bodyfilters, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilters, nameof(bodyfilters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Webhooks/Event.Registration.Substituted";
@@ -3959,7 +3517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
         public IWorkflowTrigger WhenPurchasePaid([WorkflowExpression] Func<string[]> bodyfilters, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilters, nameof(bodyfilters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/Webhooks/Purchase.Paid";

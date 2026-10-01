@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
     {
         public IWorkflowTrigger ShowcaseShareSendEmail([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workshopUid, nameof(workshopUid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 
         public IWorkflowTrigger ShowcaseSharedPageView([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workshopUid, nameof(workshopUid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 
         public IWorkflowTrigger ShowcaseSharedPageDownload([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workshopUid, nameof(workshopUid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";

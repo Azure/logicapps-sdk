@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<ExternalRelatedRecordListResponseEnvelope> ScpGetRelatedRecords([WorkflowExpression] Func<recordTypeInput> recordType, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<crmTypeInput> crmType = null, [WorkflowExpression] Func<string> crmOrgUrl = null)
         {
-            SourceExpression.Validate(recordType, nameof(recordType), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(crmType, nameof(crmType), required: false);
-            SourceExpression.Validate(crmOrgUrl, nameof(crmOrgUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/relatedRecords";
@@ -45,14 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<ActivityListResponseEnvelope> ScpGetRelatedActivities([WorkflowExpression] Func<recordTypeInput> recordType, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> startDateTime = null, [WorkflowExpression] Func<string> endDateTime = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<crmTypeInput> crmType = null, [WorkflowExpression] Func<string> crmOrgUrl = null)
         {
-            SourceExpression.Validate(recordType, nameof(recordType), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: false);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(crmType, nameof(crmType), required: false);
-            SourceExpression.Validate(crmOrgUrl, nameof(crmOrgUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/relatedActivities";
@@ -81,12 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<SalesHighlightListResponseEnvelope> ScpGetSalesHighlights([WorkflowExpression] Func<recordTypeInput> recordType, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> crmType = null, [WorkflowExpression] Func<string> crmOrgUrl = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null)
         {
-            SourceExpression.Validate(recordType, nameof(recordType), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(crmType, nameof(crmType), required: false);
-            SourceExpression.Validate(crmOrgUrl, nameof(crmOrgUrl), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/salesHighlights";
@@ -111,13 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<EmailSummeryResponseEnvelope> ScpGetEmailInsights([WorkflowExpression] Func<string> emailContacts, [WorkflowExpression] Func<string> recordType = null, [WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> crmType = null, [WorkflowExpression] Func<string> crmOrgUrl = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null)
         {
-            SourceExpression.Validate(emailContacts, nameof(emailContacts), required: true);
-            SourceExpression.Validate(recordType, nameof(recordType), required: false);
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(crmType, nameof(crmType), required: false);
-            SourceExpression.Validate(crmOrgUrl, nameof(crmOrgUrl), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/emailInsights";
@@ -145,26 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<EmailDraftResponseEnvelope> ScpGetContentSuggestions([WorkflowExpression] Func<string> requestBodyresourceType, [WorkflowExpression] Func<string> xMsMessageId = null, [WorkflowExpression] Func<string> xMsConversationId = null, [WorkflowExpression] Func<string> requestBodyresourceDataplainTextBody = null, [WorkflowExpression] Func<string> requestBodyresourceDatafullHTMLBody = null, [WorkflowExpression] Func<string> requestBodyresourceDatasubject = null, [WorkflowExpression] Func<string> requestBodyresourceDatafrom = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatato = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatacC = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatabCC = null, [WorkflowExpression] Func<string> requestBodyresourceDatasentDateTime = null, [WorkflowExpression] Func<string> requestBodyresourceDatatheGraphMessageId = null, [WorkflowExpression] Func<string> requestBodyresourceDatatheGraphConversationId = null, [WorkflowExpression] Func<string> requestBodyrecordType = null, [WorkflowExpression] Func<string> requestBodyrecordId = null, [WorkflowExpression] Func<string> requestBodycRMType = null, [WorkflowExpression] Func<string> requestBodycRMOrgURL = null, [WorkflowExpression] Func<string> requestBodyinputPrompt = null, [WorkflowExpression] Func<int> requestBodytop = null, [WorkflowExpression] Func<int> requestBodyskip = null)
         {
-            SourceExpression.Validate(requestBodyresourceType, nameof(requestBodyresourceType), required: true);
-            SourceExpression.Validate(xMsMessageId, nameof(xMsMessageId), required: false);
-            SourceExpression.Validate(xMsConversationId, nameof(xMsConversationId), required: false);
-            SourceExpression.Validate(requestBodyresourceDataplainTextBody, nameof(requestBodyresourceDataplainTextBody), required: false);
-            SourceExpression.Validate(requestBodyresourceDatafullHTMLBody, nameof(requestBodyresourceDatafullHTMLBody), required: false);
-            SourceExpression.Validate(requestBodyresourceDatasubject, nameof(requestBodyresourceDatasubject), required: false);
-            SourceExpression.Validate(requestBodyresourceDatafrom, nameof(requestBodyresourceDatafrom), required: false);
-            SourceExpression.Validate(requestBodyresourceDatato, nameof(requestBodyresourceDatato), required: false);
-            SourceExpression.Validate(requestBodyresourceDatacC, nameof(requestBodyresourceDatacC), required: false);
-            SourceExpression.Validate(requestBodyresourceDatabCC, nameof(requestBodyresourceDatabCC), required: false);
-            SourceExpression.Validate(requestBodyresourceDatasentDateTime, nameof(requestBodyresourceDatasentDateTime), required: false);
-            SourceExpression.Validate(requestBodyresourceDatatheGraphMessageId, nameof(requestBodyresourceDatatheGraphMessageId), required: false);
-            SourceExpression.Validate(requestBodyresourceDatatheGraphConversationId, nameof(requestBodyresourceDatatheGraphConversationId), required: false);
-            SourceExpression.Validate(requestBodyrecordType, nameof(requestBodyrecordType), required: false);
-            SourceExpression.Validate(requestBodyrecordId, nameof(requestBodyrecordId), required: false);
-            SourceExpression.Validate(requestBodycRMType, nameof(requestBodycRMType), required: false);
-            SourceExpression.Validate(requestBodycRMOrgURL, nameof(requestBodycRMOrgURL), required: false);
-            SourceExpression.Validate(requestBodyinputPrompt, nameof(requestBodyinputPrompt), required: false);
-            SourceExpression.Validate(requestBodytop, nameof(requestBodytop), required: false);
-            SourceExpression.Validate(requestBodyskip, nameof(requestBodyskip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/contentSuggestions";

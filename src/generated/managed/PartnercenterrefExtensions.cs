@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<GetAllReferralsResponse> GetAllReferrals([WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null, [WorkflowExpression] Func<string> mSCorrelationId = null)
         {
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/referrals";
@@ -54,76 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> CreateReferral([WorkflowExpression] Func<string> referralcontext = null, [WorkflowExpression] Func<string> referralcampaignId = null, [WorkflowExpression] Func<bool> referralconsentconsentToContact = null, [WorkflowExpression] Func<bool> referralconsentconsentToToShareInfoWithOthers = null, [WorkflowExpression] Func<bool> referralconsentconsentToShareReferralWithMicrosoftSellers = null, [WorkflowExpression] Func<string> referralcreatedDateTime = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressaddressLine1 = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressaddressLine2 = null, [WorkflowExpression] Func<string> referralcustomerProfileaddresscity = null, [WorkflowExpression] Func<string> referralcustomerProfileaddresscountry = null, [WorkflowExpression] Func<string> referralcustomerProfileaddresspostalCode = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressregion = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressstate = null, [WorkflowExpression] Func<JToken[]> referralcustomerProfileids = null, [WorkflowExpression] Func<string> referralcustomerProfilename = null, [WorkflowExpression] Func<string> referralcustomerProfilesize = null, [WorkflowExpression] Func<referralcustomerProfileteamInputItem[]> referralcustomerProfileteam = null, [WorkflowExpression] Func<string> referraldetailsclosingDateTime = null, [WorkflowExpression] Func<string> referraldetailscurrency = null, [WorkflowExpression] Func<string> referraldetailscustomerAction = null, [WorkflowExpression] Func<bool> referraldetailscustomerRequestedContact = null, [WorkflowExpression] Func<double> referraldetailsdealValue = null, [WorkflowExpression] Func<string> referraldetailsnotes = null, [WorkflowExpression] Func<referraldetailsrequirementsindustriesInputItem[]> referraldetailsrequirementsindustries = null, [WorkflowExpression] Func<referraldetailsrequirementsproductsInputItem[]> referraldetailsrequirementsproducts = null, [WorkflowExpression] Func<referraldetailsrequirementsservicesInputItem[]> referraldetailsrequirementsservices = null, [WorkflowExpression] Func<JToken[]> referraldetailsrequirementssolutions = null, [WorkflowExpression] Func<JToken[]> referraldetailsrequirementsoffers = null, [WorkflowExpression] Func<string> referraleTag = null, [WorkflowExpression] Func<string> referralengagementId = null, [WorkflowExpression] Func<string> referralexpirationDateTime = null, [WorkflowExpression] Func<string> referralexternalReferenceId = null, [WorkflowExpression] Func<bool> referralfavorite = null, [WorkflowExpression] Func<string> referralid = null, [WorkflowExpression] Func<referralinviteContextassistanceRequestCodeInput> referralinviteContextassistanceRequestCode = null, [WorkflowExpression] Func<string> referralinviteContextinvitedByorganizationId = null, [WorkflowExpression] Func<string> referralinviteContextinvitedByorganizationName = null, [WorkflowExpression] Func<string> referralinviteContextnotes = null, [WorkflowExpression] Func<string> referrallastModifiedVia = null, [WorkflowExpression] Func<string> referrallastRunId = null, [WorkflowExpression] Func<string> referrallinksrelatedReferralsmethod = null, [WorkflowExpression] Func<string> referrallinksrelatedReferralsuri = null, [WorkflowExpression] Func<string> referrallinksselfmethod = null, [WorkflowExpression] Func<string> referrallinksselfuri = null, [WorkflowExpression] Func<string> referralname = null, [WorkflowExpression] Func<string> referralorganizationId = null, [WorkflowExpression] Func<string> referralorganizationName = null, [WorkflowExpression] Func<string> referralqualification = null, [WorkflowExpression] Func<string> referralreferralProgram = null, [WorkflowExpression] Func<referralsalesStageInput> referralsalesStage = null, [WorkflowExpression] Func<string> referralstatus = null, [WorkflowExpression] Func<string> referralstatusReason = null, [WorkflowExpression] Func<string> referralsubstatus = null, [WorkflowExpression] Func<referraltargetInputItem[]> referraltarget = null, [WorkflowExpression] Func<referralteamInputItem[]> referralteam = null, [WorkflowExpression] Func<string> referraltrackingInfomicrosoftMsxId = null, [WorkflowExpression] Func<string> referraltype = null, [WorkflowExpression] Func<string> referralupdatedDateTime = null, [WorkflowExpression] Func<string> referralmpnId = null, [WorkflowExpression] Func<referralregistrationsInputItem[]> referralregistrations = null, [WorkflowExpression] Func<string> referralregistrationStatus = null, [WorkflowExpression] Func<string> referralcallToAction = null, [WorkflowExpression] Func<string> referralreferralSource = null, [WorkflowExpression] Func<string> referralquality = null, [WorkflowExpression] Func<bool> referralisSpam = null, [WorkflowExpression] Func<string> referraldirection = null, [WorkflowExpression] Func<string[]> referraltags = null, [WorkflowExpression] Func<string> referralacceptedDateTime = null, [WorkflowExpression] Func<string> referralclosedDateTime = null, [WorkflowExpression] Func<string> mSCorrelationId = null)
         {
-            SourceExpression.Validate(referralcontext, nameof(referralcontext), required: false);
-            SourceExpression.Validate(referralcampaignId, nameof(referralcampaignId), required: false);
-            SourceExpression.Validate(referralconsentconsentToContact, nameof(referralconsentconsentToContact), required: false);
-            SourceExpression.Validate(referralconsentconsentToToShareInfoWithOthers, nameof(referralconsentconsentToToShareInfoWithOthers), required: false);
-            SourceExpression.Validate(referralconsentconsentToShareReferralWithMicrosoftSellers, nameof(referralconsentconsentToShareReferralWithMicrosoftSellers), required: false);
-            SourceExpression.Validate(referralcreatedDateTime, nameof(referralcreatedDateTime), required: false);
-            SourceExpression.Validate(referralcustomerProfileaddressaddressLine1, nameof(referralcustomerProfileaddressaddressLine1), required: false);
-            SourceExpression.Validate(referralcustomerProfileaddressaddressLine2, nameof(referralcustomerProfileaddressaddressLine2), required: false);
-            SourceExpression.Validate(referralcustomerProfileaddresscity, nameof(referralcustomerProfileaddresscity), required: false);
-            SourceExpression.Validate(referralcustomerProfileaddresscountry, nameof(referralcustomerProfileaddresscountry), required: false);
-            SourceExpression.Validate(referralcustomerProfileaddresspostalCode, nameof(referralcustomerProfileaddresspostalCode), required: false);
-            SourceExpression.Validate(referralcustomerProfileaddressregion, nameof(referralcustomerProfileaddressregion), required: false);
-            SourceExpression.Validate(referralcustomerProfileaddressstate, nameof(referralcustomerProfileaddressstate), required: false);
-            SourceExpression.Validate(referralcustomerProfileids, nameof(referralcustomerProfileids), required: false);
-            SourceExpression.Validate(referralcustomerProfilename, nameof(referralcustomerProfilename), required: false);
-            SourceExpression.Validate(referralcustomerProfilesize, nameof(referralcustomerProfilesize), required: false);
-            SourceExpression.Validate(referralcustomerProfileteam, nameof(referralcustomerProfileteam), required: false);
-            SourceExpression.Validate(referraldetailsclosingDateTime, nameof(referraldetailsclosingDateTime), required: false);
-            SourceExpression.Validate(referraldetailscurrency, nameof(referraldetailscurrency), required: false);
-            SourceExpression.Validate(referraldetailscustomerAction, nameof(referraldetailscustomerAction), required: false);
-            SourceExpression.Validate(referraldetailscustomerRequestedContact, nameof(referraldetailscustomerRequestedContact), required: false);
-            SourceExpression.Validate(referraldetailsdealValue, nameof(referraldetailsdealValue), required: false);
-            SourceExpression.Validate(referraldetailsnotes, nameof(referraldetailsnotes), required: false);
-            SourceExpression.Validate(referraldetailsrequirementsindustries, nameof(referraldetailsrequirementsindustries), required: false);
-            SourceExpression.Validate(referraldetailsrequirementsproducts, nameof(referraldetailsrequirementsproducts), required: false);
-            SourceExpression.Validate(referraldetailsrequirementsservices, nameof(referraldetailsrequirementsservices), required: false);
-            SourceExpression.Validate(referraldetailsrequirementssolutions, nameof(referraldetailsrequirementssolutions), required: false);
-            SourceExpression.Validate(referraldetailsrequirementsoffers, nameof(referraldetailsrequirementsoffers), required: false);
-            SourceExpression.Validate(referraleTag, nameof(referraleTag), required: false);
-            SourceExpression.Validate(referralengagementId, nameof(referralengagementId), required: false);
-            SourceExpression.Validate(referralexpirationDateTime, nameof(referralexpirationDateTime), required: false);
-            SourceExpression.Validate(referralexternalReferenceId, nameof(referralexternalReferenceId), required: false);
-            SourceExpression.Validate(referralfavorite, nameof(referralfavorite), required: false);
-            SourceExpression.Validate(referralid, nameof(referralid), required: false);
-            SourceExpression.Validate(referralinviteContextassistanceRequestCode, nameof(referralinviteContextassistanceRequestCode), required: false);
-            SourceExpression.Validate(referralinviteContextinvitedByorganizationId, nameof(referralinviteContextinvitedByorganizationId), required: false);
-            SourceExpression.Validate(referralinviteContextinvitedByorganizationName, nameof(referralinviteContextinvitedByorganizationName), required: false);
-            SourceExpression.Validate(referralinviteContextnotes, nameof(referralinviteContextnotes), required: false);
-            SourceExpression.Validate(referrallastModifiedVia, nameof(referrallastModifiedVia), required: false);
-            SourceExpression.Validate(referrallastRunId, nameof(referrallastRunId), required: false);
-            SourceExpression.Validate(referrallinksrelatedReferralsmethod, nameof(referrallinksrelatedReferralsmethod), required: false);
-            SourceExpression.Validate(referrallinksrelatedReferralsuri, nameof(referrallinksrelatedReferralsuri), required: false);
-            SourceExpression.Validate(referrallinksselfmethod, nameof(referrallinksselfmethod), required: false);
-            SourceExpression.Validate(referrallinksselfuri, nameof(referrallinksselfuri), required: false);
-            SourceExpression.Validate(referralname, nameof(referralname), required: false);
-            SourceExpression.Validate(referralorganizationId, nameof(referralorganizationId), required: false);
-            SourceExpression.Validate(referralorganizationName, nameof(referralorganizationName), required: false);
-            SourceExpression.Validate(referralqualification, nameof(referralqualification), required: false);
-            SourceExpression.Validate(referralreferralProgram, nameof(referralreferralProgram), required: false);
-            SourceExpression.Validate(referralsalesStage, nameof(referralsalesStage), required: false);
-            SourceExpression.Validate(referralstatus, nameof(referralstatus), required: false);
-            SourceExpression.Validate(referralstatusReason, nameof(referralstatusReason), required: false);
-            SourceExpression.Validate(referralsubstatus, nameof(referralsubstatus), required: false);
-            SourceExpression.Validate(referraltarget, nameof(referraltarget), required: false);
-            SourceExpression.Validate(referralteam, nameof(referralteam), required: false);
-            SourceExpression.Validate(referraltrackingInfomicrosoftMsxId, nameof(referraltrackingInfomicrosoftMsxId), required: false);
-            SourceExpression.Validate(referraltype, nameof(referraltype), required: false);
-            SourceExpression.Validate(referralupdatedDateTime, nameof(referralupdatedDateTime), required: false);
-            SourceExpression.Validate(referralmpnId, nameof(referralmpnId), required: false);
-            SourceExpression.Validate(referralregistrations, nameof(referralregistrations), required: false);
-            SourceExpression.Validate(referralregistrationStatus, nameof(referralregistrationStatus), required: false);
-            SourceExpression.Validate(referralcallToAction, nameof(referralcallToAction), required: false);
-            SourceExpression.Validate(referralreferralSource, nameof(referralreferralSource), required: false);
-            SourceExpression.Validate(referralquality, nameof(referralquality), required: false);
-            SourceExpression.Validate(referralisSpam, nameof(referralisSpam), required: false);
-            SourceExpression.Validate(referraldirection, nameof(referraldirection), required: false);
-            SourceExpression.Validate(referraltags, nameof(referraltags), required: false);
-            SourceExpression.Validate(referralacceptedDateTime, nameof(referralacceptedDateTime), required: false);
-            SourceExpression.Validate(referralclosedDateTime, nameof(referralclosedDateTime), required: false);
-            SourceExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/referrals";
@@ -657,8 +579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> GetReferralById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/referrals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -677,78 +597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> UpdateReferralById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> odataReferralcontext = null, [WorkflowExpression] Func<string> odataReferralcampaignId = null, [WorkflowExpression] Func<bool> odataReferralconsentconsentToContact = null, [WorkflowExpression] Func<bool> odataReferralconsentconsentToToShareInfoWithOthers = null, [WorkflowExpression] Func<bool> odataReferralconsentconsentToShareReferralWithMicrosoftSellers = null, [WorkflowExpression] Func<string> odataReferralcreatedDateTime = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressaddressLine1 = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressaddressLine2 = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddresscity = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddresscountry = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddresspostalCode = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressregion = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressstate = null, [WorkflowExpression] Func<JToken[]> odataReferralcustomerProfileids = null, [WorkflowExpression] Func<string> odataReferralcustomerProfilename = null, [WorkflowExpression] Func<string> odataReferralcustomerProfilesize = null, [WorkflowExpression] Func<odataReferralcustomerProfileteamInputItem[]> odataReferralcustomerProfileteam = null, [WorkflowExpression] Func<string> odataReferraldetailsclosingDateTime = null, [WorkflowExpression] Func<string> odataReferraldetailscurrency = null, [WorkflowExpression] Func<string> odataReferraldetailscustomerAction = null, [WorkflowExpression] Func<bool> odataReferraldetailscustomerRequestedContact = null, [WorkflowExpression] Func<double> odataReferraldetailsdealValue = null, [WorkflowExpression] Func<string> odataReferraldetailsnotes = null, [WorkflowExpression] Func<odataReferraldetailsrequirementsindustriesInputItem[]> odataReferraldetailsrequirementsindustries = null, [WorkflowExpression] Func<odataReferraldetailsrequirementsproductsInputItem[]> odataReferraldetailsrequirementsproducts = null, [WorkflowExpression] Func<odataReferraldetailsrequirementsservicesInputItem[]> odataReferraldetailsrequirementsservices = null, [WorkflowExpression] Func<JToken[]> odataReferraldetailsrequirementssolutions = null, [WorkflowExpression] Func<JToken[]> odataReferraldetailsrequirementsoffers = null, [WorkflowExpression] Func<string> odataReferraleTag = null, [WorkflowExpression] Func<string> odataReferralengagementId = null, [WorkflowExpression] Func<string> odataReferralexpirationDateTime = null, [WorkflowExpression] Func<string> odataReferralexternalReferenceId = null, [WorkflowExpression] Func<bool> odataReferralfavorite = null, [WorkflowExpression] Func<string> odataReferralid = null, [WorkflowExpression] Func<odataReferralinviteContextassistanceRequestCodeInput> odataReferralinviteContextassistanceRequestCode = null, [WorkflowExpression] Func<string> odataReferralinviteContextinvitedByorganizationId = null, [WorkflowExpression] Func<string> odataReferralinviteContextinvitedByorganizationName = null, [WorkflowExpression] Func<string> odataReferralinviteContextnotes = null, [WorkflowExpression] Func<string> odataReferrallastModifiedVia = null, [WorkflowExpression] Func<string> odataReferrallastRunId = null, [WorkflowExpression] Func<string> odataReferrallinksrelatedReferralsmethod = null, [WorkflowExpression] Func<string> odataReferrallinksrelatedReferralsuri = null, [WorkflowExpression] Func<string> odataReferrallinksselfmethod = null, [WorkflowExpression] Func<string> odataReferrallinksselfuri = null, [WorkflowExpression] Func<string> odataReferralname = null, [WorkflowExpression] Func<string> odataReferralorganizationId = null, [WorkflowExpression] Func<string> odataReferralorganizationName = null, [WorkflowExpression] Func<string> odataReferralqualification = null, [WorkflowExpression] Func<string> odataReferralreferralProgram = null, [WorkflowExpression] Func<odataReferralsalesStageInput> odataReferralsalesStage = null, [WorkflowExpression] Func<string> odataReferralstatus = null, [WorkflowExpression] Func<string> odataReferralstatusReason = null, [WorkflowExpression] Func<string> odataReferralsubstatus = null, [WorkflowExpression] Func<odataReferraltargetInputItem[]> odataReferraltarget = null, [WorkflowExpression] Func<odataReferralteamInputItem[]> odataReferralteam = null, [WorkflowExpression] Func<string> odataReferraltrackingInfomicrosoftMsxId = null, [WorkflowExpression] Func<string> odataReferraltype = null, [WorkflowExpression] Func<string> odataReferralupdatedDateTime = null, [WorkflowExpression] Func<string> odataReferralmpnId = null, [WorkflowExpression] Func<odataReferralregistrationsInputItem[]> odataReferralregistrations = null, [WorkflowExpression] Func<string> odataReferralregistrationStatus = null, [WorkflowExpression] Func<string> odataReferralcallToAction = null, [WorkflowExpression] Func<string> odataReferralreferralSource = null, [WorkflowExpression] Func<string> odataReferralquality = null, [WorkflowExpression] Func<bool> odataReferralisSpam = null, [WorkflowExpression] Func<string> odataReferraldirection = null, [WorkflowExpression] Func<string[]> odataReferraltags = null, [WorkflowExpression] Func<string> odataReferralacceptedDateTime = null, [WorkflowExpression] Func<string> odataReferralclosedDateTime = null, [WorkflowExpression] Func<string> mSCorrelationId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
-            SourceExpression.Validate(odataReferralcontext, nameof(odataReferralcontext), required: false);
-            SourceExpression.Validate(odataReferralcampaignId, nameof(odataReferralcampaignId), required: false);
-            SourceExpression.Validate(odataReferralconsentconsentToContact, nameof(odataReferralconsentconsentToContact), required: false);
-            SourceExpression.Validate(odataReferralconsentconsentToToShareInfoWithOthers, nameof(odataReferralconsentconsentToToShareInfoWithOthers), required: false);
-            SourceExpression.Validate(odataReferralconsentconsentToShareReferralWithMicrosoftSellers, nameof(odataReferralconsentconsentToShareReferralWithMicrosoftSellers), required: false);
-            SourceExpression.Validate(odataReferralcreatedDateTime, nameof(odataReferralcreatedDateTime), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileaddressaddressLine1, nameof(odataReferralcustomerProfileaddressaddressLine1), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileaddressaddressLine2, nameof(odataReferralcustomerProfileaddressaddressLine2), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileaddresscity, nameof(odataReferralcustomerProfileaddresscity), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileaddresscountry, nameof(odataReferralcustomerProfileaddresscountry), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileaddresspostalCode, nameof(odataReferralcustomerProfileaddresspostalCode), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileaddressregion, nameof(odataReferralcustomerProfileaddressregion), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileaddressstate, nameof(odataReferralcustomerProfileaddressstate), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileids, nameof(odataReferralcustomerProfileids), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfilename, nameof(odataReferralcustomerProfilename), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfilesize, nameof(odataReferralcustomerProfilesize), required: false);
-            SourceExpression.Validate(odataReferralcustomerProfileteam, nameof(odataReferralcustomerProfileteam), required: false);
-            SourceExpression.Validate(odataReferraldetailsclosingDateTime, nameof(odataReferraldetailsclosingDateTime), required: false);
-            SourceExpression.Validate(odataReferraldetailscurrency, nameof(odataReferraldetailscurrency), required: false);
-            SourceExpression.Validate(odataReferraldetailscustomerAction, nameof(odataReferraldetailscustomerAction), required: false);
-            SourceExpression.Validate(odataReferraldetailscustomerRequestedContact, nameof(odataReferraldetailscustomerRequestedContact), required: false);
-            SourceExpression.Validate(odataReferraldetailsdealValue, nameof(odataReferraldetailsdealValue), required: false);
-            SourceExpression.Validate(odataReferraldetailsnotes, nameof(odataReferraldetailsnotes), required: false);
-            SourceExpression.Validate(odataReferraldetailsrequirementsindustries, nameof(odataReferraldetailsrequirementsindustries), required: false);
-            SourceExpression.Validate(odataReferraldetailsrequirementsproducts, nameof(odataReferraldetailsrequirementsproducts), required: false);
-            SourceExpression.Validate(odataReferraldetailsrequirementsservices, nameof(odataReferraldetailsrequirementsservices), required: false);
-            SourceExpression.Validate(odataReferraldetailsrequirementssolutions, nameof(odataReferraldetailsrequirementssolutions), required: false);
-            SourceExpression.Validate(odataReferraldetailsrequirementsoffers, nameof(odataReferraldetailsrequirementsoffers), required: false);
-            SourceExpression.Validate(odataReferraleTag, nameof(odataReferraleTag), required: false);
-            SourceExpression.Validate(odataReferralengagementId, nameof(odataReferralengagementId), required: false);
-            SourceExpression.Validate(odataReferralexpirationDateTime, nameof(odataReferralexpirationDateTime), required: false);
-            SourceExpression.Validate(odataReferralexternalReferenceId, nameof(odataReferralexternalReferenceId), required: false);
-            SourceExpression.Validate(odataReferralfavorite, nameof(odataReferralfavorite), required: false);
-            SourceExpression.Validate(odataReferralid, nameof(odataReferralid), required: false);
-            SourceExpression.Validate(odataReferralinviteContextassistanceRequestCode, nameof(odataReferralinviteContextassistanceRequestCode), required: false);
-            SourceExpression.Validate(odataReferralinviteContextinvitedByorganizationId, nameof(odataReferralinviteContextinvitedByorganizationId), required: false);
-            SourceExpression.Validate(odataReferralinviteContextinvitedByorganizationName, nameof(odataReferralinviteContextinvitedByorganizationName), required: false);
-            SourceExpression.Validate(odataReferralinviteContextnotes, nameof(odataReferralinviteContextnotes), required: false);
-            SourceExpression.Validate(odataReferrallastModifiedVia, nameof(odataReferrallastModifiedVia), required: false);
-            SourceExpression.Validate(odataReferrallastRunId, nameof(odataReferrallastRunId), required: false);
-            SourceExpression.Validate(odataReferrallinksrelatedReferralsmethod, nameof(odataReferrallinksrelatedReferralsmethod), required: false);
-            SourceExpression.Validate(odataReferrallinksrelatedReferralsuri, nameof(odataReferrallinksrelatedReferralsuri), required: false);
-            SourceExpression.Validate(odataReferrallinksselfmethod, nameof(odataReferrallinksselfmethod), required: false);
-            SourceExpression.Validate(odataReferrallinksselfuri, nameof(odataReferrallinksselfuri), required: false);
-            SourceExpression.Validate(odataReferralname, nameof(odataReferralname), required: false);
-            SourceExpression.Validate(odataReferralorganizationId, nameof(odataReferralorganizationId), required: false);
-            SourceExpression.Validate(odataReferralorganizationName, nameof(odataReferralorganizationName), required: false);
-            SourceExpression.Validate(odataReferralqualification, nameof(odataReferralqualification), required: false);
-            SourceExpression.Validate(odataReferralreferralProgram, nameof(odataReferralreferralProgram), required: false);
-            SourceExpression.Validate(odataReferralsalesStage, nameof(odataReferralsalesStage), required: false);
-            SourceExpression.Validate(odataReferralstatus, nameof(odataReferralstatus), required: false);
-            SourceExpression.Validate(odataReferralstatusReason, nameof(odataReferralstatusReason), required: false);
-            SourceExpression.Validate(odataReferralsubstatus, nameof(odataReferralsubstatus), required: false);
-            SourceExpression.Validate(odataReferraltarget, nameof(odataReferraltarget), required: false);
-            SourceExpression.Validate(odataReferralteam, nameof(odataReferralteam), required: false);
-            SourceExpression.Validate(odataReferraltrackingInfomicrosoftMsxId, nameof(odataReferraltrackingInfomicrosoftMsxId), required: false);
-            SourceExpression.Validate(odataReferraltype, nameof(odataReferraltype), required: false);
-            SourceExpression.Validate(odataReferralupdatedDateTime, nameof(odataReferralupdatedDateTime), required: false);
-            SourceExpression.Validate(odataReferralmpnId, nameof(odataReferralmpnId), required: false);
-            SourceExpression.Validate(odataReferralregistrations, nameof(odataReferralregistrations), required: false);
-            SourceExpression.Validate(odataReferralregistrationStatus, nameof(odataReferralregistrationStatus), required: false);
-            SourceExpression.Validate(odataReferralcallToAction, nameof(odataReferralcallToAction), required: false);
-            SourceExpression.Validate(odataReferralreferralSource, nameof(odataReferralreferralSource), required: false);
-            SourceExpression.Validate(odataReferralquality, nameof(odataReferralquality), required: false);
-            SourceExpression.Validate(odataReferralisSpam, nameof(odataReferralisSpam), required: false);
-            SourceExpression.Validate(odataReferraldirection, nameof(odataReferraldirection), required: false);
-            SourceExpression.Validate(odataReferraltags, nameof(odataReferraltags), required: false);
-            SourceExpression.Validate(odataReferralacceptedDateTime, nameof(odataReferralacceptedDateTime), required: false);
-            SourceExpression.Validate(odataReferralclosedDateTime, nameof(odataReferralclosedDateTime), required: false);
-            SourceExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/referrals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1284,9 +1132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchReferralById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null, [WorkflowExpression] Func<referralInputItem[]> referral = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
-            SourceExpression.Validate(referral, nameof(referral), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/referrals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1306,9 +1151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> CreateDealRegistrationByReferralId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null, [WorkflowExpression] Func<referralInputItem2[]> referral = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
-            SourceExpression.Validate(referral, nameof(referral), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/referrals/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1328,9 +1170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
         public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchDealRegistrationByReferralId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null, [WorkflowExpression] Func<referralInputItem22[]> referral = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
-            SourceExpression.Validate(referral, nameof(referral), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/referrals/{0}//", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

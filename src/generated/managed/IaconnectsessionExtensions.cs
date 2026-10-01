@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMachineNameResponse> GetMachineName([WorkflowExpression] Func<string> getMachineNameworkflow)
         {
-            SourceExpression.Validate(getMachineNameworkflow, nameof(getMachineNameworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetMachineName";
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMachineDomainResponse> GetMachineDomain([WorkflowExpression] Func<string> getMachineDomainworkflow)
         {
-            SourceExpression.Validate(getMachineDomainworkflow, nameof(getMachineDomainworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetMachineDomain";
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteSessionClientHostnameResponse> GetRemoteSessionClientHostname([WorkflowExpression] Func<string> getRemoteSessionClientHostnameworkflow)
         {
-            SourceExpression.Validate(getRemoteSessionClientHostnameworkflow, nameof(getRemoteSessionClientHostnameworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetRemoteSessionClientHostname";
@@ -83,8 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ExpandEnvironmentVariableResponse> ExpandEnvironmentVariable([WorkflowExpression] Func<string> expandEnvironmentVariableinputString, [WorkflowExpression] Func<string> expandEnvironmentVariableworkflow)
         {
-            SourceExpression.Validate(expandEnvironmentVariableinputString, nameof(expandEnvironmentVariableinputString), required: true);
-            SourceExpression.Validate(expandEnvironmentVariableworkflow, nameof(expandEnvironmentVariableworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/ExpandEnvironmentVariable";
@@ -109,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillProcessResponse> KillProcess([WorkflowExpression] Func<string> killProcessprocessName, [WorkflowExpression] Func<string> killProcessworkflow)
         {
-            SourceExpression.Validate(killProcessprocessName, nameof(killProcessprocessName), required: true);
-            SourceExpression.Validate(killProcessworkflow, nameof(killProcessworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/KillProcess";
@@ -135,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillProcessIdResponse> KillProcessId([WorkflowExpression] Func<int> killProcessIDprocessId, [WorkflowExpression] Func<string> killProcessIDworkflow)
         {
-            SourceExpression.Validate(killProcessIDprocessId, nameof(killProcessIDprocessId), required: true);
-            SourceExpression.Validate(killProcessIDworkflow, nameof(killProcessIDworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/KillProcessID";
@@ -161,8 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessCountByNameResponse> GetProcessCountByName([WorkflowExpression] Func<string> getProcessCountByNameprocessName, [WorkflowExpression] Func<string> getProcessCountByNameworkflow)
         {
-            SourceExpression.Validate(getProcessCountByNameprocessName, nameof(getProcessCountByNameprocessName), required: true);
-            SourceExpression.Validate(getProcessCountByNameworkflow, nameof(getProcessCountByNameworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetProcessCountByName";
@@ -187,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentProcessCountResponse> GetAgentProcessCount([WorkflowExpression] Func<string> getAgentProcessCountworkflow)
         {
-            SourceExpression.Validate(getAgentProcessCountworkflow, nameof(getAgentProcessCountworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetAgentProcessCount";
@@ -210,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillAllOtherAgentsResponse> KillAllOtherAgents([WorkflowExpression] Func<string> killAllOtherAgentsworkflow)
         {
-            SourceExpression.Validate(killAllOtherAgentsworkflow, nameof(killAllOtherAgentsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/KillAllOtherAgents";
@@ -233,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessByPIdResponse> GetProcessByPId([WorkflowExpression] Func<int> getProcessByPIDprocessId, [WorkflowExpression] Func<string> getProcessByPIDworkflow)
         {
-            SourceExpression.Validate(getProcessByPIDprocessId, nameof(getProcessByPIDprocessId), required: true);
-            SourceExpression.Validate(getProcessByPIDworkflow, nameof(getProcessByPIDworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetProcessByPID";
@@ -259,9 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessesResponse> GetProcesses([WorkflowExpression] Func<string> getProcessesworkflow, [WorkflowExpression] Func<string> getProcessesprocessName = null, [WorkflowExpression] Func<bool> getProcessesgetProcessCommandLine = null)
         {
-            SourceExpression.Validate(getProcessesworkflow, nameof(getProcessesworkflow), required: true);
-            SourceExpression.Validate(getProcessesprocessName, nameof(getProcessesprocessName), required: false);
-            SourceExpression.Validate(getProcessesgetProcessCommandLine, nameof(getProcessesgetProcessCommandLine), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetProcesses";
@@ -306,25 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunProcessResponse> RunProcess([WorkflowExpression] Func<string> runProcessprocessName, [WorkflowExpression] Func<string> runProcessworkflow, [WorkflowExpression] Func<string> runProcessarguments = null, [WorkflowExpression] Func<string> runProcessworkingDirectory = null, [WorkflowExpression] Func<bool> runProcessuseShellExecute = null, [WorkflowExpression] Func<bool> runProcesscreateNoWindow = null, [WorkflowExpression] Func<runProcesswindowStyleInput> runProcesswindowStyle = null, [WorkflowExpression] Func<bool> runProcesswaitForProcess = null, [WorkflowExpression] Func<bool> runProcessredirectStandardOutput = null, [WorkflowExpression] Func<bool> runProcessredirectStandardError = null, [WorkflowExpression] Func<bool> runProcessredirectStandardErrorToOutput = null, [WorkflowExpression] Func<runProcessstandardOutputEncodingInput> runProcessstandardOutputEncoding = null, [WorkflowExpression] Func<runProcessstandardErrorEncodingInput> runProcessstandardErrorEncoding = null, [WorkflowExpression] Func<string> runProcessrunAsDomain = null, [WorkflowExpression] Func<string> runProcessrunAsUsername = null, [WorkflowExpression] Func<string> runProcessrunAsPassword = null, [WorkflowExpression] Func<bool> runProcessrunAsLoadUserProfile = null, [WorkflowExpression] Func<bool> runProcessrunAsElevate = null, [WorkflowExpression] Func<int> runProcesstimeoutInSeconds = null)
         {
-            SourceExpression.Validate(runProcessprocessName, nameof(runProcessprocessName), required: true);
-            SourceExpression.Validate(runProcessworkflow, nameof(runProcessworkflow), required: true);
-            SourceExpression.Validate(runProcessarguments, nameof(runProcessarguments), required: false);
-            SourceExpression.Validate(runProcessworkingDirectory, nameof(runProcessworkingDirectory), required: false);
-            SourceExpression.Validate(runProcessuseShellExecute, nameof(runProcessuseShellExecute), required: false);
-            SourceExpression.Validate(runProcesscreateNoWindow, nameof(runProcesscreateNoWindow), required: false);
-            SourceExpression.Validate(runProcesswindowStyle, nameof(runProcesswindowStyle), required: false);
-            SourceExpression.Validate(runProcesswaitForProcess, nameof(runProcesswaitForProcess), required: false);
-            SourceExpression.Validate(runProcessredirectStandardOutput, nameof(runProcessredirectStandardOutput), required: false);
-            SourceExpression.Validate(runProcessredirectStandardError, nameof(runProcessredirectStandardError), required: false);
-            SourceExpression.Validate(runProcessredirectStandardErrorToOutput, nameof(runProcessredirectStandardErrorToOutput), required: false);
-            SourceExpression.Validate(runProcessstandardOutputEncoding, nameof(runProcessstandardOutputEncoding), required: false);
-            SourceExpression.Validate(runProcessstandardErrorEncoding, nameof(runProcessstandardErrorEncoding), required: false);
-            SourceExpression.Validate(runProcessrunAsDomain, nameof(runProcessrunAsDomain), required: false);
-            SourceExpression.Validate(runProcessrunAsUsername, nameof(runProcessrunAsUsername), required: false);
-            SourceExpression.Validate(runProcessrunAsPassword, nameof(runProcessrunAsPassword), required: false);
-            SourceExpression.Validate(runProcessrunAsLoadUserProfile, nameof(runProcessrunAsLoadUserProfile), required: false);
-            SourceExpression.Validate(runProcessrunAsElevate, nameof(runProcessrunAsElevate), required: false);
-            SourceExpression.Validate(runProcesstimeoutInSeconds, nameof(runProcesstimeoutInSeconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RunProcess";
@@ -551,26 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunPowerShellProcessResponse> RunPowerShellProcess([WorkflowExpression] Func<string> runPowerShellProcessworkflow, [WorkflowExpression] Func<string> runPowerShellProcesspowerShellExecutable = null, [WorkflowExpression] Func<string> runPowerShellProcesspowerShellScriptFilePath = null, [WorkflowExpression] Func<string> runPowerShellProcesspowerShellScriptContents = null, [WorkflowExpression] Func<string> runPowerShellProcessworkingDirectory = null, [WorkflowExpression] Func<bool> runPowerShellProcesscreateNoWindow = null, [WorkflowExpression] Func<runPowerShellProcesswindowStyleInput> runPowerShellProcesswindowStyle = null, [WorkflowExpression] Func<bool> runPowerShellProcesswaitForProcess = null, [WorkflowExpression] Func<bool> runPowerShellProcessredirectStandardOutput = null, [WorkflowExpression] Func<bool> runPowerShellProcessredirectStandardError = null, [WorkflowExpression] Func<bool> runPowerShellProcessredirectStandardErrorToOutput = null, [WorkflowExpression] Func<runPowerShellProcessstandardOutputEncodingInput> runPowerShellProcessstandardOutputEncoding = null, [WorkflowExpression] Func<runPowerShellProcessstandardErrorEncodingInput> runPowerShellProcessstandardErrorEncoding = null, [WorkflowExpression] Func<string> runPowerShellProcessrunAsDomain = null, [WorkflowExpression] Func<string> runPowerShellProcessrunAsUsername = null, [WorkflowExpression] Func<string> runPowerShellProcessrunAsPassword = null, [WorkflowExpression] Func<bool> runPowerShellProcessrunAsLoadUserProfile = null, [WorkflowExpression] Func<bool> runPowerShellProcessrunAsElevate = null, [WorkflowExpression] Func<int> runPowerShellProcesstimeoutInSeconds = null, [WorkflowExpression] Func<string> runPowerShellProcesspowerShellScriptTempFolder = null)
         {
-            SourceExpression.Validate(runPowerShellProcessworkflow, nameof(runPowerShellProcessworkflow), required: true);
-            SourceExpression.Validate(runPowerShellProcesspowerShellExecutable, nameof(runPowerShellProcesspowerShellExecutable), required: false);
-            SourceExpression.Validate(runPowerShellProcesspowerShellScriptFilePath, nameof(runPowerShellProcesspowerShellScriptFilePath), required: false);
-            SourceExpression.Validate(runPowerShellProcesspowerShellScriptContents, nameof(runPowerShellProcesspowerShellScriptContents), required: false);
-            SourceExpression.Validate(runPowerShellProcessworkingDirectory, nameof(runPowerShellProcessworkingDirectory), required: false);
-            SourceExpression.Validate(runPowerShellProcesscreateNoWindow, nameof(runPowerShellProcesscreateNoWindow), required: false);
-            SourceExpression.Validate(runPowerShellProcesswindowStyle, nameof(runPowerShellProcesswindowStyle), required: false);
-            SourceExpression.Validate(runPowerShellProcesswaitForProcess, nameof(runPowerShellProcesswaitForProcess), required: false);
-            SourceExpression.Validate(runPowerShellProcessredirectStandardOutput, nameof(runPowerShellProcessredirectStandardOutput), required: false);
-            SourceExpression.Validate(runPowerShellProcessredirectStandardError, nameof(runPowerShellProcessredirectStandardError), required: false);
-            SourceExpression.Validate(runPowerShellProcessredirectStandardErrorToOutput, nameof(runPowerShellProcessredirectStandardErrorToOutput), required: false);
-            SourceExpression.Validate(runPowerShellProcessstandardOutputEncoding, nameof(runPowerShellProcessstandardOutputEncoding), required: false);
-            SourceExpression.Validate(runPowerShellProcessstandardErrorEncoding, nameof(runPowerShellProcessstandardErrorEncoding), required: false);
-            SourceExpression.Validate(runPowerShellProcessrunAsDomain, nameof(runPowerShellProcessrunAsDomain), required: false);
-            SourceExpression.Validate(runPowerShellProcessrunAsUsername, nameof(runPowerShellProcessrunAsUsername), required: false);
-            SourceExpression.Validate(runPowerShellProcessrunAsPassword, nameof(runPowerShellProcessrunAsPassword), required: false);
-            SourceExpression.Validate(runPowerShellProcessrunAsLoadUserProfile, nameof(runPowerShellProcessrunAsLoadUserProfile), required: false);
-            SourceExpression.Validate(runPowerShellProcessrunAsElevate, nameof(runPowerShellProcessrunAsElevate), required: false);
-            SourceExpression.Validate(runPowerShellProcesstimeoutInSeconds, nameof(runPowerShellProcesstimeoutInSeconds), required: false);
-            SourceExpression.Validate(runPowerShellProcesspowerShellScriptTempFolder, nameof(runPowerShellProcesspowerShellScriptTempFolder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RunPowerShellProcess";
@@ -807,7 +750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetScreenResolutionResponse> GetScreenResolution([WorkflowExpression] Func<string> getScreenResolutionworkflow)
         {
-            SourceExpression.Validate(getScreenResolutionworkflow, nameof(getScreenResolutionworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetScreenResolution";
@@ -830,8 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetDefaultPrinter([WorkflowExpression] Func<string> setDefaultPrinterdefaultPrinterName, [WorkflowExpression] Func<string> setDefaultPrinterworkflow)
         {
-            SourceExpression.Validate(setDefaultPrinterdefaultPrinterName, nameof(setDefaultPrinterdefaultPrinterName), required: true);
-            SourceExpression.Validate(setDefaultPrinterworkflow, nameof(setDefaultPrinterworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SetDefaultPrinter";
@@ -856,7 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetDefaultPrinterResponse> GetDefaultPrinter([WorkflowExpression] Func<string> getDefaultPrinterworkflow)
         {
-            SourceExpression.Validate(getDefaultPrinterworkflow, nameof(getDefaultPrinterworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetDefaultPrinter";
@@ -879,10 +818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetListOfPrintersResponse> GetListOfPrinters([WorkflowExpression] Func<string> getListOfPrintersworkflow, [WorkflowExpression] Func<bool> getListOfPrinterslistLocalPrinters = null, [WorkflowExpression] Func<bool> getListOfPrinterslistNetworkPrinters = null, [WorkflowExpression] Func<bool> getListOfPrintersreturnDetailedInformation = null)
         {
-            SourceExpression.Validate(getListOfPrintersworkflow, nameof(getListOfPrintersworkflow), required: true);
-            SourceExpression.Validate(getListOfPrinterslistLocalPrinters, nameof(getListOfPrinterslistLocalPrinters), required: false);
-            SourceExpression.Validate(getListOfPrinterslistNetworkPrinters, nameof(getListOfPrinterslistNetworkPrinters), required: false);
-            SourceExpression.Validate(getListOfPrintersreturnDetailedInformation, nameof(getListOfPrintersreturnDetailedInformation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetListOfPrinters";
@@ -953,12 +888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetMouseMultiplier([WorkflowExpression] Func<string> setMouseMultiplierworkflow, [WorkflowExpression] Func<double> setMouseMultipliermouseXMultiplier = null, [WorkflowExpression] Func<double> setMouseMultipliermouseYMultiplier = null, [WorkflowExpression] Func<bool> setMouseMultiplierapplyToMouseEvent = null, [WorkflowExpression] Func<bool> setMouseMultiplierapplyToSetCursorPos = null, [WorkflowExpression] Func<bool> setMouseMultiplierapplyToCurrentMouseMoveMethod = null)
         {
-            SourceExpression.Validate(setMouseMultiplierworkflow, nameof(setMouseMultiplierworkflow), required: true);
-            SourceExpression.Validate(setMouseMultipliermouseXMultiplier, nameof(setMouseMultipliermouseXMultiplier), required: false);
-            SourceExpression.Validate(setMouseMultipliermouseYMultiplier, nameof(setMouseMultipliermouseYMultiplier), required: false);
-            SourceExpression.Validate(setMouseMultiplierapplyToMouseEvent, nameof(setMouseMultiplierapplyToMouseEvent), required: false);
-            SourceExpression.Validate(setMouseMultiplierapplyToSetCursorPos, nameof(setMouseMultiplierapplyToSetCursorPos), required: false);
-            SourceExpression.Validate(setMouseMultiplierapplyToCurrentMouseMoveMethod, nameof(setMouseMultiplierapplyToCurrentMouseMoveMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SetMouseMultiplier";
@@ -1061,7 +990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMouseMultiplierResponse> GetMouseMultiplier([WorkflowExpression] Func<string> getMouseMultiplierworkflow)
         {
-            SourceExpression.Validate(getMouseMultiplierworkflow, nameof(getMouseMultiplierworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetMouseMultiplier";
@@ -1084,9 +1012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveMouseToCoordinate([WorkflowExpression] Func<int> moveMouseToCoordinatexCoord, [WorkflowExpression] Func<int> moveMouseToCoordinateyCoord, [WorkflowExpression] Func<string> moveMouseToCoordinateworkflow)
         {
-            SourceExpression.Validate(moveMouseToCoordinatexCoord, nameof(moveMouseToCoordinatexCoord), required: true);
-            SourceExpression.Validate(moveMouseToCoordinateyCoord, nameof(moveMouseToCoordinateyCoord), required: true);
-            SourceExpression.Validate(moveMouseToCoordinateworkflow, nameof(moveMouseToCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MoveMouseToCoordinate";
@@ -1113,9 +1038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveMouseRelative([WorkflowExpression] Func<int> moveMouseRelativexCoord, [WorkflowExpression] Func<int> moveMouseRelativeyCoord, [WorkflowExpression] Func<string> moveMouseRelativeworkflow)
         {
-            SourceExpression.Validate(moveMouseRelativexCoord, nameof(moveMouseRelativexCoord), required: true);
-            SourceExpression.Validate(moveMouseRelativeyCoord, nameof(moveMouseRelativeyCoord), required: true);
-            SourceExpression.Validate(moveMouseRelativeworkflow, nameof(moveMouseRelativeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MoveMouseRelative";
@@ -1142,7 +1064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftMouseButtonDown([WorkflowExpression] Func<string> leftMouseButtonDownworkflow)
         {
-            SourceExpression.Validate(leftMouseButtonDownworkflow, nameof(leftMouseButtonDownworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LeftMouseButtonDown";
@@ -1165,7 +1086,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftMouseButtonUp([WorkflowExpression] Func<string> leftMouseButtonUpworkflow)
         {
-            SourceExpression.Validate(leftMouseButtonUpworkflow, nameof(leftMouseButtonUpworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LeftMouseButtonUp";
@@ -1188,7 +1108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftClickMouse([WorkflowExpression] Func<string> leftClickMouseworkflow)
         {
-            SourceExpression.Validate(leftClickMouseworkflow, nameof(leftClickMouseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LeftClickMouse";
@@ -1211,9 +1130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftClickMouseAtCoordinate([WorkflowExpression] Func<int> leftClickMouseAtCoordinatexCoord, [WorkflowExpression] Func<int> leftClickMouseAtCoordinateyCoord, [WorkflowExpression] Func<string> leftClickMouseAtCoordinateworkflow)
         {
-            SourceExpression.Validate(leftClickMouseAtCoordinatexCoord, nameof(leftClickMouseAtCoordinatexCoord), required: true);
-            SourceExpression.Validate(leftClickMouseAtCoordinateyCoord, nameof(leftClickMouseAtCoordinateyCoord), required: true);
-            SourceExpression.Validate(leftClickMouseAtCoordinateworkflow, nameof(leftClickMouseAtCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LeftClickMouseAtCoordinate";
@@ -1240,8 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftHoldMouse([WorkflowExpression] Func<double> leftHoldMousesecondsToHold, [WorkflowExpression] Func<string> leftHoldMouseworkflow)
         {
-            SourceExpression.Validate(leftHoldMousesecondsToHold, nameof(leftHoldMousesecondsToHold), required: true);
-            SourceExpression.Validate(leftHoldMouseworkflow, nameof(leftHoldMouseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LeftHoldMouse";
@@ -1266,10 +1180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftHoldMouseAtCoordinate([WorkflowExpression] Func<int> leftHoldMouseAtCoordinatexCoord, [WorkflowExpression] Func<int> leftHoldMouseAtCoordinateyCoord, [WorkflowExpression] Func<double> leftHoldMouseAtCoordinatesecondsToHold, [WorkflowExpression] Func<string> leftHoldMouseAtCoordinateworkflow)
         {
-            SourceExpression.Validate(leftHoldMouseAtCoordinatexCoord, nameof(leftHoldMouseAtCoordinatexCoord), required: true);
-            SourceExpression.Validate(leftHoldMouseAtCoordinateyCoord, nameof(leftHoldMouseAtCoordinateyCoord), required: true);
-            SourceExpression.Validate(leftHoldMouseAtCoordinatesecondsToHold, nameof(leftHoldMouseAtCoordinatesecondsToHold), required: true);
-            SourceExpression.Validate(leftHoldMouseAtCoordinateworkflow, nameof(leftHoldMouseAtCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LeftHoldMouseAtCoordinate";
@@ -1298,7 +1208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightMouseButtonDown([WorkflowExpression] Func<string> rightMouseButtonDownworkflow)
         {
-            SourceExpression.Validate(rightMouseButtonDownworkflow, nameof(rightMouseButtonDownworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RightMouseButtonDown";
@@ -1321,7 +1230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightMouseButtonUp([WorkflowExpression] Func<string> rightMouseButtonUpworkflow)
         {
-            SourceExpression.Validate(rightMouseButtonUpworkflow, nameof(rightMouseButtonUpworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RightMouseButtonUp";
@@ -1344,7 +1252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightClickMouse([WorkflowExpression] Func<string> rightClickMouseworkflow)
         {
-            SourceExpression.Validate(rightClickMouseworkflow, nameof(rightClickMouseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RightClickMouse";
@@ -1367,9 +1274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightClickMouseAtCoordinate([WorkflowExpression] Func<int> rightClickMouseAtCoordinatexCoord, [WorkflowExpression] Func<int> rightClickMouseAtCoordinateyCoord, [WorkflowExpression] Func<string> rightClickMouseAtCoordinateworkflow)
         {
-            SourceExpression.Validate(rightClickMouseAtCoordinatexCoord, nameof(rightClickMouseAtCoordinatexCoord), required: true);
-            SourceExpression.Validate(rightClickMouseAtCoordinateyCoord, nameof(rightClickMouseAtCoordinateyCoord), required: true);
-            SourceExpression.Validate(rightClickMouseAtCoordinateworkflow, nameof(rightClickMouseAtCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RightClickMouseAtCoordinate";
@@ -1396,8 +1300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightHoldMouse([WorkflowExpression] Func<double> rightHoldMousesecondsToHold, [WorkflowExpression] Func<string> rightHoldMouseworkflow)
         {
-            SourceExpression.Validate(rightHoldMousesecondsToHold, nameof(rightHoldMousesecondsToHold), required: true);
-            SourceExpression.Validate(rightHoldMouseworkflow, nameof(rightHoldMouseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RightHoldMouse";
@@ -1422,10 +1324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightHoldMouseAtCoordinate([WorkflowExpression] Func<int> rightHoldMouseAtCoordinatexCoord, [WorkflowExpression] Func<int> rightHoldMouseAtCoordinateyCoord, [WorkflowExpression] Func<double> rightHoldMouseAtCoordinatesecondsToHold, [WorkflowExpression] Func<string> rightHoldMouseAtCoordinateworkflow)
         {
-            SourceExpression.Validate(rightHoldMouseAtCoordinatexCoord, nameof(rightHoldMouseAtCoordinatexCoord), required: true);
-            SourceExpression.Validate(rightHoldMouseAtCoordinateyCoord, nameof(rightHoldMouseAtCoordinateyCoord), required: true);
-            SourceExpression.Validate(rightHoldMouseAtCoordinatesecondsToHold, nameof(rightHoldMouseAtCoordinatesecondsToHold), required: true);
-            SourceExpression.Validate(rightHoldMouseAtCoordinateworkflow, nameof(rightHoldMouseAtCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RightHoldMouseAtCoordinate";
@@ -1454,7 +1352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleMouseButtonDown([WorkflowExpression] Func<string> middleMouseButtonDownworkflow)
         {
-            SourceExpression.Validate(middleMouseButtonDownworkflow, nameof(middleMouseButtonDownworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MiddleMouseButtonDown";
@@ -1477,7 +1374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleMouseButtonUp([WorkflowExpression] Func<string> middleMouseButtonUpworkflow)
         {
-            SourceExpression.Validate(middleMouseButtonUpworkflow, nameof(middleMouseButtonUpworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MiddleMouseButtonUp";
@@ -1500,7 +1396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleClickMouse([WorkflowExpression] Func<string> middleClickMouseworkflow)
         {
-            SourceExpression.Validate(middleClickMouseworkflow, nameof(middleClickMouseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MiddleClickMouse";
@@ -1523,9 +1418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleClickMouseAtCoordinate([WorkflowExpression] Func<int> middleClickMouseAtCoordinatexCoord, [WorkflowExpression] Func<int> middleClickMouseAtCoordinateyCoord, [WorkflowExpression] Func<string> middleClickMouseAtCoordinateworkflow)
         {
-            SourceExpression.Validate(middleClickMouseAtCoordinatexCoord, nameof(middleClickMouseAtCoordinatexCoord), required: true);
-            SourceExpression.Validate(middleClickMouseAtCoordinateyCoord, nameof(middleClickMouseAtCoordinateyCoord), required: true);
-            SourceExpression.Validate(middleClickMouseAtCoordinateworkflow, nameof(middleClickMouseAtCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MiddleClickMouseAtCoordinate";
@@ -1552,8 +1444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleHoldMouse([WorkflowExpression] Func<double> middleHoldMousesecondsToHold, [WorkflowExpression] Func<string> middleHoldMouseworkflow)
         {
-            SourceExpression.Validate(middleHoldMousesecondsToHold, nameof(middleHoldMousesecondsToHold), required: true);
-            SourceExpression.Validate(middleHoldMouseworkflow, nameof(middleHoldMouseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MiddleHoldMouse";
@@ -1578,10 +1468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleHoldMouseAtCoordinate([WorkflowExpression] Func<int> middleHoldMouseAtCoordinatexCoord, [WorkflowExpression] Func<int> middleHoldMouseAtCoordinateyCoord, [WorkflowExpression] Func<double> middleHoldMouseAtCoordinatesecondsToHold, [WorkflowExpression] Func<string> middleHoldMouseAtCoordinateworkflow)
         {
-            SourceExpression.Validate(middleHoldMouseAtCoordinatexCoord, nameof(middleHoldMouseAtCoordinatexCoord), required: true);
-            SourceExpression.Validate(middleHoldMouseAtCoordinateyCoord, nameof(middleHoldMouseAtCoordinateyCoord), required: true);
-            SourceExpression.Validate(middleHoldMouseAtCoordinatesecondsToHold, nameof(middleHoldMouseAtCoordinatesecondsToHold), required: true);
-            SourceExpression.Validate(middleHoldMouseAtCoordinateworkflow, nameof(middleHoldMouseAtCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MiddleHoldMouseAtCoordinate";
@@ -1610,8 +1496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DoubleLeftClickMouse([WorkflowExpression] Func<string> doubleLeftClickMouseworkflow, [WorkflowExpression] Func<int> doubleLeftClickMousedelayInMilliseconds = null)
         {
-            SourceExpression.Validate(doubleLeftClickMouseworkflow, nameof(doubleLeftClickMouseworkflow), required: true);
-            SourceExpression.Validate(doubleLeftClickMousedelayInMilliseconds, nameof(doubleLeftClickMousedelayInMilliseconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/DoubleLeftClickMouse";
@@ -1650,10 +1534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DoubleLeftClickMouseAtCoordinate([WorkflowExpression] Func<int> doubleLeftClickMouseAtCoordinatexCoord, [WorkflowExpression] Func<int> doubleLeftClickMouseAtCoordinateyCoord, [WorkflowExpression] Func<string> doubleLeftClickMouseAtCoordinateworkflow, [WorkflowExpression] Func<int> doubleLeftClickMouseAtCoordinatedelayInMilliseconds = null)
         {
-            SourceExpression.Validate(doubleLeftClickMouseAtCoordinatexCoord, nameof(doubleLeftClickMouseAtCoordinatexCoord), required: true);
-            SourceExpression.Validate(doubleLeftClickMouseAtCoordinateyCoord, nameof(doubleLeftClickMouseAtCoordinateyCoord), required: true);
-            SourceExpression.Validate(doubleLeftClickMouseAtCoordinateworkflow, nameof(doubleLeftClickMouseAtCoordinateworkflow), required: true);
-            SourceExpression.Validate(doubleLeftClickMouseAtCoordinatedelayInMilliseconds, nameof(doubleLeftClickMouseAtCoordinatedelayInMilliseconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/DoubleLeftClickMouseAtCoordinate";
@@ -1696,16 +1576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftMouseDragBetweenCoordinates([WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesstartXCoord, [WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesstartYCoord, [WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesendXCoord, [WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesendYCoord, [WorkflowExpression] Func<string> leftMouseDragBetweenCoordinatesworkflow, [WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesnumberOfSteps = null, [WorkflowExpression] Func<double> leftMouseDragBetweenCoordinatestotalTimeInSeconds = null, [WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, [WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, [WorkflowExpression] Func<int> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesstartXCoord, nameof(leftMouseDragBetweenCoordinatesstartXCoord), required: true);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesstartYCoord, nameof(leftMouseDragBetweenCoordinatesstartYCoord), required: true);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesendXCoord, nameof(leftMouseDragBetweenCoordinatesendXCoord), required: true);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesendYCoord, nameof(leftMouseDragBetweenCoordinatesendYCoord), required: true);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesworkflow, nameof(leftMouseDragBetweenCoordinatesworkflow), required: true);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesnumberOfSteps, nameof(leftMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(leftMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            SourceExpression.Validate(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LeftMouseDragBetweenCoordinates";
@@ -1796,16 +1666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightMouseDragBetweenCoordinates([WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesstartXCoord, [WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesstartYCoord, [WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesendXCoord, [WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesendYCoord, [WorkflowExpression] Func<string> rightMouseDragBetweenCoordinatesworkflow, [WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesnumberOfSteps = null, [WorkflowExpression] Func<double> rightMouseDragBetweenCoordinatestotalTimeInSeconds = null, [WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, [WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, [WorkflowExpression] Func<int> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesstartXCoord, nameof(rightMouseDragBetweenCoordinatesstartXCoord), required: true);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesstartYCoord, nameof(rightMouseDragBetweenCoordinatesstartYCoord), required: true);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesendXCoord, nameof(rightMouseDragBetweenCoordinatesendXCoord), required: true);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesendYCoord, nameof(rightMouseDragBetweenCoordinatesendYCoord), required: true);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesworkflow, nameof(rightMouseDragBetweenCoordinatesworkflow), required: true);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesnumberOfSteps, nameof(rightMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(rightMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            SourceExpression.Validate(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/RightMouseDragBetweenCoordinates";
@@ -1896,16 +1756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleMouseDragBetweenCoordinates([WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesstartXCoord, [WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesstartYCoord, [WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesendXCoord, [WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesendYCoord, [WorkflowExpression] Func<string> middleMouseDragBetweenCoordinatesworkflow, [WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesnumberOfSteps = null, [WorkflowExpression] Func<double> middleMouseDragBetweenCoordinatestotalTimeInSeconds = null, [WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, [WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, [WorkflowExpression] Func<int> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesstartXCoord, nameof(middleMouseDragBetweenCoordinatesstartXCoord), required: true);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesstartYCoord, nameof(middleMouseDragBetweenCoordinatesstartYCoord), required: true);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesendXCoord, nameof(middleMouseDragBetweenCoordinatesendXCoord), required: true);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesendYCoord, nameof(middleMouseDragBetweenCoordinatesendYCoord), required: true);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesworkflow, nameof(middleMouseDragBetweenCoordinatesworkflow), required: true);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesnumberOfSteps, nameof(middleMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(middleMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            SourceExpression.Validate(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MiddleMouseDragBetweenCoordinates";
@@ -1996,16 +1846,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveMouseBetweenCoordinates([WorkflowExpression] Func<int> moveMouseBetweenCoordinatesstartXCoord, [WorkflowExpression] Func<int> moveMouseBetweenCoordinatesstartYCoord, [WorkflowExpression] Func<int> moveMouseBetweenCoordinatesendXCoord, [WorkflowExpression] Func<int> moveMouseBetweenCoordinatesendYCoord, [WorkflowExpression] Func<string> moveMouseBetweenCoordinatesworkflow, [WorkflowExpression] Func<int> moveMouseBetweenCoordinatesnumberOfSteps = null, [WorkflowExpression] Func<double> moveMouseBetweenCoordinatestotalTimeInSeconds = null, [WorkflowExpression] Func<int> moveMouseBetweenCoordinatesmaximumMovementPixelJitter = null, [WorkflowExpression] Func<int> moveMouseBetweenCoordinatesmaximumEndPixelJitter = null, [WorkflowExpression] Func<int> moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            SourceExpression.Validate(moveMouseBetweenCoordinatesstartXCoord, nameof(moveMouseBetweenCoordinatesstartXCoord), required: true);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesstartYCoord, nameof(moveMouseBetweenCoordinatesstartYCoord), required: true);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesendXCoord, nameof(moveMouseBetweenCoordinatesendXCoord), required: true);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesendYCoord, nameof(moveMouseBetweenCoordinatesendYCoord), required: true);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesworkflow, nameof(moveMouseBetweenCoordinatesworkflow), required: true);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesnumberOfSteps, nameof(moveMouseBetweenCoordinatesnumberOfSteps), required: false);
-            SourceExpression.Validate(moveMouseBetweenCoordinatestotalTimeInSeconds, nameof(moveMouseBetweenCoordinatestotalTimeInSeconds), required: false);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesmaximumMovementPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesmaximumEndPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            SourceExpression.Validate(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/MoveMouseBetweenCoordinates";
@@ -2096,8 +1936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction TurnMouseWheel([WorkflowExpression] Func<int> turnMouseWheelwheelTurns, [WorkflowExpression] Func<string> turnMouseWheelworkflow)
         {
-            SourceExpression.Validate(turnMouseWheelwheelTurns, nameof(turnMouseWheelwheelTurns), required: true);
-            SourceExpression.Validate(turnMouseWheelworkflow, nameof(turnMouseWheelworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TurnMouseWheel";
@@ -2122,9 +1960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetCursorPos([WorkflowExpression] Func<int> setCursorPosx, [WorkflowExpression] Func<int> setCursorPosy, [WorkflowExpression] Func<string> setCursorPosworkflow)
         {
-            SourceExpression.Validate(setCursorPosx, nameof(setCursorPosx), required: true);
-            SourceExpression.Validate(setCursorPosy, nameof(setCursorPosy), required: true);
-            SourceExpression.Validate(setCursorPosworkflow, nameof(setCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SetCursorPos";
@@ -2151,7 +1986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetCursorPosResponse> GetCursorPos([WorkflowExpression] Func<string> getCursorPosworkflow)
         {
-            SourceExpression.Validate(getCursorPosworkflow, nameof(getCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetCursorPos";
@@ -2174,8 +2008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CalibrateMouseEventResponse> CalibrateMouseEvent([WorkflowExpression] Func<string> calibrateMouseEventworkflow, [WorkflowExpression] Func<int> calibrateMouseEventcalibrationSizeInPixels = null)
         {
-            SourceExpression.Validate(calibrateMouseEventworkflow, nameof(calibrateMouseEventworkflow), required: true);
-            SourceExpression.Validate(calibrateMouseEventcalibrationSizeInPixels, nameof(calibrateMouseEventcalibrationSizeInPixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/CalibrateMouseEvent";
@@ -2214,7 +2046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMouseMoveMethodResponse> GetMouseMoveMethod([WorkflowExpression] Func<string> getMouseMoveMethodworkflow)
         {
-            SourceExpression.Validate(getMouseMoveMethodworkflow, nameof(getMouseMoveMethodworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetMouseMoveMethod";
@@ -2237,8 +2068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetMouseMoveMethod([WorkflowExpression] Func<setMouseMoveMethodmouseMoveMethodInput> setMouseMoveMethodmouseMoveMethod, [WorkflowExpression] Func<string> setMouseMoveMethodworkflow)
         {
-            SourceExpression.Validate(setMouseMoveMethodmouseMoveMethod, nameof(setMouseMoveMethodmouseMoveMethod), required: true);
-            SourceExpression.Validate(setMouseMoveMethodworkflow, nameof(setMouseMoveMethodworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SetMouseMoveMethod";
@@ -2263,10 +2092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction WiggleMouse([WorkflowExpression] Func<string> wiggleMouseworkflow, [WorkflowExpression] Func<int> wiggleMousexWiggle = null, [WorkflowExpression] Func<int> wiggleMouseyWiggle = null, [WorkflowExpression] Func<double> wiggleMousewiggleDelayInSeconds = null)
         {
-            SourceExpression.Validate(wiggleMouseworkflow, nameof(wiggleMouseworkflow), required: true);
-            SourceExpression.Validate(wiggleMousexWiggle, nameof(wiggleMousexWiggle), required: false);
-            SourceExpression.Validate(wiggleMouseyWiggle, nameof(wiggleMouseyWiggle), required: false);
-            SourceExpression.Validate(wiggleMousewiggleDelayInSeconds, nameof(wiggleMousewiggleDelayInSeconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/WiggleMouse";
@@ -2327,11 +2152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendKeyEvents([WorkflowExpression] Func<string> sendKeyEventstext, [WorkflowExpression] Func<string> sendKeyEventsworkflow, [WorkflowExpression] Func<int> sendKeyEventsinterval = null, [WorkflowExpression] Func<bool> sendKeyEventsisPassword = null, [WorkflowExpression] Func<bool> sendKeyEventsdontInterpretSymbols = null)
         {
-            SourceExpression.Validate(sendKeyEventstext, nameof(sendKeyEventstext), required: true);
-            SourceExpression.Validate(sendKeyEventsworkflow, nameof(sendKeyEventsworkflow), required: true);
-            SourceExpression.Validate(sendKeyEventsinterval, nameof(sendKeyEventsinterval), required: false);
-            SourceExpression.Validate(sendKeyEventsisPassword, nameof(sendKeyEventsisPassword), required: false);
-            SourceExpression.Validate(sendKeyEventsdontInterpretSymbols, nameof(sendKeyEventsdontInterpretSymbols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SendKeyEvents";
@@ -2404,11 +2224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendPasswordKeyEvents([WorkflowExpression] Func<string> sendPasswordKeyEventspassword, [WorkflowExpression] Func<string> sendPasswordKeyEventsworkflow, [WorkflowExpression] Func<int> sendPasswordKeyEventsinterval = null, [WorkflowExpression] Func<bool> sendPasswordKeyEventsdontInterpretSymbols = null, [WorkflowExpression] Func<bool> sendPasswordKeyEventspasswordContainsStoredPassword = null)
         {
-            SourceExpression.Validate(sendPasswordKeyEventspassword, nameof(sendPasswordKeyEventspassword), required: true);
-            SourceExpression.Validate(sendPasswordKeyEventsworkflow, nameof(sendPasswordKeyEventsworkflow), required: true);
-            SourceExpression.Validate(sendPasswordKeyEventsinterval, nameof(sendPasswordKeyEventsinterval), required: false);
-            SourceExpression.Validate(sendPasswordKeyEventsdontInterpretSymbols, nameof(sendPasswordKeyEventsdontInterpretSymbols), required: false);
-            SourceExpression.Validate(sendPasswordKeyEventspasswordContainsStoredPassword, nameof(sendPasswordKeyEventspasswordContainsStoredPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SendPasswordKeyEvents";
@@ -2481,11 +2296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendKeys([WorkflowExpression] Func<string> sendKeystext, [WorkflowExpression] Func<string> sendKeysworkflow, [WorkflowExpression] Func<int> sendKeysinterval = null, [WorkflowExpression] Func<bool> sendKeysisPassword = null, [WorkflowExpression] Func<bool> sendKeysdontInterpretSymbols = null)
         {
-            SourceExpression.Validate(sendKeystext, nameof(sendKeystext), required: true);
-            SourceExpression.Validate(sendKeysworkflow, nameof(sendKeysworkflow), required: true);
-            SourceExpression.Validate(sendKeysinterval, nameof(sendKeysinterval), required: false);
-            SourceExpression.Validate(sendKeysisPassword, nameof(sendKeysisPassword), required: false);
-            SourceExpression.Validate(sendKeysdontInterpretSymbols, nameof(sendKeysdontInterpretSymbols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SendKeys";
@@ -2558,11 +2368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendPasswordKeys([WorkflowExpression] Func<string> sendPasswordKeyspassword, [WorkflowExpression] Func<string> sendPasswordKeysworkflow, [WorkflowExpression] Func<int> sendPasswordKeysinterval = null, [WorkflowExpression] Func<bool> sendPasswordKeysdontInterpretSymbols = null, [WorkflowExpression] Func<bool> sendPasswordKeyspasswordContainsStoredPassword = null)
         {
-            SourceExpression.Validate(sendPasswordKeyspassword, nameof(sendPasswordKeyspassword), required: true);
-            SourceExpression.Validate(sendPasswordKeysworkflow, nameof(sendPasswordKeysworkflow), required: true);
-            SourceExpression.Validate(sendPasswordKeysinterval, nameof(sendPasswordKeysinterval), required: false);
-            SourceExpression.Validate(sendPasswordKeysdontInterpretSymbols, nameof(sendPasswordKeysdontInterpretSymbols), required: false);
-            SourceExpression.Validate(sendPasswordKeyspasswordContainsStoredPassword, nameof(sendPasswordKeyspasswordContainsStoredPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SendPasswordKeys";
@@ -2635,7 +2440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ClearClipboard([WorkflowExpression] Func<string> clearClipboardworkflow)
         {
-            SourceExpression.Validate(clearClipboardworkflow, nameof(clearClipboardworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/ClearClipboard";
@@ -2658,8 +2462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetClipboardData([WorkflowExpression] Func<string> setClipboardDataworkflow, [WorkflowExpression] Func<string> setClipboardDatanewClipboardData = null)
         {
-            SourceExpression.Validate(setClipboardDataworkflow, nameof(setClipboardDataworkflow), required: true);
-            SourceExpression.Validate(setClipboardDatanewClipboardData, nameof(setClipboardDatanewClipboardData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SetClipboardData";
@@ -2688,7 +2490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetClipboardDataResponse> GetClipboardData([WorkflowExpression] Func<string> getClipboardDataworkflow)
         {
-            SourceExpression.Validate(getClipboardDataworkflow, nameof(getClipboardDataworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetClipboardData";
@@ -2711,18 +2512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TakeScreenshotResponse> TakeScreenshot([WorkflowExpression] Func<string> takeScreenshotworkflow, [WorkflowExpression] Func<bool> takeScreenshotfullscreen = null, [WorkflowExpression] Func<int> takeScreenshotleftXPixels = null, [WorkflowExpression] Func<int> takeScreenshottopYPixels = null, [WorkflowExpression] Func<int> takeScreenshotwidthPixels = null, [WorkflowExpression] Func<int> takeScreenshotheightPixels = null, [WorkflowExpression] Func<takeScreenshotimageFormatInput> takeScreenshotimageFormat = null, [WorkflowExpression] Func<bool> takeScreenshotuseDisplayDevice = null, [WorkflowExpression] Func<bool> takeScreenshotraiseExceptionOnError = null, [WorkflowExpression] Func<bool> takeScreenshothideAgent = null, [WorkflowExpression] Func<bool> takeScreenshotusePhysicalCoordinates = null, [WorkflowExpression] Func<int> takeScreenshotdisplayDeviceId = null)
         {
-            SourceExpression.Validate(takeScreenshotworkflow, nameof(takeScreenshotworkflow), required: true);
-            SourceExpression.Validate(takeScreenshotfullscreen, nameof(takeScreenshotfullscreen), required: false);
-            SourceExpression.Validate(takeScreenshotleftXPixels, nameof(takeScreenshotleftXPixels), required: false);
-            SourceExpression.Validate(takeScreenshottopYPixels, nameof(takeScreenshottopYPixels), required: false);
-            SourceExpression.Validate(takeScreenshotwidthPixels, nameof(takeScreenshotwidthPixels), required: false);
-            SourceExpression.Validate(takeScreenshotheightPixels, nameof(takeScreenshotheightPixels), required: false);
-            SourceExpression.Validate(takeScreenshotimageFormat, nameof(takeScreenshotimageFormat), required: false);
-            SourceExpression.Validate(takeScreenshotuseDisplayDevice, nameof(takeScreenshotuseDisplayDevice), required: false);
-            SourceExpression.Validate(takeScreenshotraiseExceptionOnError, nameof(takeScreenshotraiseExceptionOnError), required: false);
-            SourceExpression.Validate(takeScreenshothideAgent, nameof(takeScreenshothideAgent), required: false);
-            SourceExpression.Validate(takeScreenshotusePhysicalCoordinates, nameof(takeScreenshotusePhysicalCoordinates), required: false);
-            SourceExpression.Validate(takeScreenshotdisplayDeviceId, nameof(takeScreenshotdisplayDeviceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TakeScreenshot";
@@ -2861,7 +2650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetEnvironmentInfoResponse> GetEnvironmentInfo([WorkflowExpression] Func<string> getEnvironmentInfoworkflow)
         {
-            SourceExpression.Validate(getEnvironmentInfoworkflow, nameof(getEnvironmentInfoworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetEnvironmentInfo";
@@ -2884,7 +2672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<IsScreenReaderEnabledResponse> IsScreenReaderEnabled([WorkflowExpression] Func<string> isScreenReaderEnabledworkflow)
         {
-            SourceExpression.Validate(isScreenReaderEnabledworkflow, nameof(isScreenReaderEnabledworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/IsScreenReaderEnabled";
@@ -2907,8 +2694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetScreenReader([WorkflowExpression] Func<string> setScreenReaderworkflow, [WorkflowExpression] Func<bool> setScreenReaderenableScreenReader = null)
         {
-            SourceExpression.Validate(setScreenReaderworkflow, nameof(setScreenReaderworkflow), required: true);
-            SourceExpression.Validate(setScreenReaderenableScreenReader, nameof(setScreenReaderenableScreenReader), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SetScreenReader";
@@ -2947,8 +2732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetParentProcessIdResponse> GetParentProcessId([WorkflowExpression] Func<int> getParentProcessIdprocessId, [WorkflowExpression] Func<string> getParentProcessIdworkflow)
         {
-            SourceExpression.Validate(getParentProcessIdprocessId, nameof(getParentProcessIdprocessId), required: true);
-            SourceExpression.Validate(getParentProcessIdworkflow, nameof(getParentProcessIdworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetParentProcessId";
@@ -2973,8 +2756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessIdCommandLineResponse> GetProcessIdCommandLine([WorkflowExpression] Func<int> getProcessIdCommandLineprocessId, [WorkflowExpression] Func<string> getProcessIdCommandLineworkflow)
         {
-            SourceExpression.Validate(getProcessIdCommandLineprocessId, nameof(getProcessIdCommandLineprocessId), required: true);
-            SourceExpression.Validate(getProcessIdCommandLineworkflow, nameof(getProcessIdCommandLineworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetProcessIdCommandLine";
@@ -2999,7 +2780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLastInputInfoResponse> GetLastInputInfo([WorkflowExpression] Func<string> getLastInputInfoworkflow)
         {
-            SourceExpression.Validate(getLastInputInfoworkflow, nameof(getLastInputInfoworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetLastInputInfo";
@@ -3022,13 +2802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KeepSessionAliveResponse> KeepSessionAlive([WorkflowExpression] Func<string> keepSessionAliveworkflow, [WorkflowExpression] Func<int> keepSessionAlivexWiggle = null, [WorkflowExpression] Func<int> keepSessionAliveyWiggle = null, [WorkflowExpression] Func<double> keepSessionAlivewiggleDelayInSeconds = null, [WorkflowExpression] Func<int> keepSessionAliveidleThresholdInSeconds = null, [WorkflowExpression] Func<int> keepSessionAliveidleCheckPeriodInSeconds = null, [WorkflowExpression] Func<int> keepSessionAlivetotalKeepaliveRuntimeInSeconds = null)
         {
-            SourceExpression.Validate(keepSessionAliveworkflow, nameof(keepSessionAliveworkflow), required: true);
-            SourceExpression.Validate(keepSessionAlivexWiggle, nameof(keepSessionAlivexWiggle), required: false);
-            SourceExpression.Validate(keepSessionAliveyWiggle, nameof(keepSessionAliveyWiggle), required: false);
-            SourceExpression.Validate(keepSessionAlivewiggleDelayInSeconds, nameof(keepSessionAlivewiggleDelayInSeconds), required: false);
-            SourceExpression.Validate(keepSessionAliveidleThresholdInSeconds, nameof(keepSessionAliveidleThresholdInSeconds), required: false);
-            SourceExpression.Validate(keepSessionAliveidleCheckPeriodInSeconds, nameof(keepSessionAliveidleCheckPeriodInSeconds), required: false);
-            SourceExpression.Validate(keepSessionAlivetotalKeepaliveRuntimeInSeconds, nameof(keepSessionAlivetotalKeepaliveRuntimeInSeconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/KeepSessionAlive";
@@ -3137,7 +2910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<StopKeepSessionAliveResponse> StopKeepSessionAlive([WorkflowExpression] Func<string> stopKeepSessionAliveworkflow)
         {
-            SourceExpression.Validate(stopKeepSessionAliveworkflow, nameof(stopKeepSessionAliveworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/StopKeepSessionAlive";
@@ -3160,9 +2932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CopyFileToClipboardResponse> CopyFileToClipboard([WorkflowExpression] Func<string> copyFileToClipboardfilepath, [WorkflowExpression] Func<string> copyFileToClipboardworkflow, [WorkflowExpression] Func<bool> copyFileToClipboardcut = null)
         {
-            SourceExpression.Validate(copyFileToClipboardfilepath, nameof(copyFileToClipboardfilepath), required: true);
-            SourceExpression.Validate(copyFileToClipboardworkflow, nameof(copyFileToClipboardworkflow), required: true);
-            SourceExpression.Validate(copyFileToClipboardcut, nameof(copyFileToClipboardcut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/CopyFileToClipboard";
@@ -3203,7 +2972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteSessionInfoResponse> GetRemoteSessionInfo([WorkflowExpression] Func<string> getRemoteSessionInfoworkflow)
         {
-            SourceExpression.Validate(getRemoteSessionInfoworkflow, nameof(getRemoteSessionInfoworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetRemoteSessionInfo";
@@ -3226,18 +2994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GeneratePasswordResponse> GeneratePassword([WorkflowExpression] Func<string> generatePasswordpasswordFormat, [WorkflowExpression] Func<string> generatePasswordworkflow, [WorkflowExpression] Func<int> generatePasswordminimumLength = null, [WorkflowExpression] Func<bool> generatePasswordreturnAsPlainText = null, [WorkflowExpression] Func<string> generatePasswordstorePasswordAsIdentifier = null, [WorkflowExpression] Func<string> generatePasswordsupportedSymbols = null, [WorkflowExpression] Func<bool> generatePasswordattemptUniquePasswords = null, [WorkflowExpression] Func<generatePasswordgenerateAtInput> generatePasswordgenerateAt = null, [WorkflowExpression] Func<int> generatePasswordminimumLowercase = null, [WorkflowExpression] Func<int> generatePasswordminimumUppercase = null, [WorkflowExpression] Func<int> generatePasswordminimumNumbers = null, [WorkflowExpression] Func<int> generatePasswordminimumSymbols = null)
         {
-            SourceExpression.Validate(generatePasswordpasswordFormat, nameof(generatePasswordpasswordFormat), required: true);
-            SourceExpression.Validate(generatePasswordworkflow, nameof(generatePasswordworkflow), required: true);
-            SourceExpression.Validate(generatePasswordminimumLength, nameof(generatePasswordminimumLength), required: false);
-            SourceExpression.Validate(generatePasswordreturnAsPlainText, nameof(generatePasswordreturnAsPlainText), required: false);
-            SourceExpression.Validate(generatePasswordstorePasswordAsIdentifier, nameof(generatePasswordstorePasswordAsIdentifier), required: false);
-            SourceExpression.Validate(generatePasswordsupportedSymbols, nameof(generatePasswordsupportedSymbols), required: false);
-            SourceExpression.Validate(generatePasswordattemptUniquePasswords, nameof(generatePasswordattemptUniquePasswords), required: false);
-            SourceExpression.Validate(generatePasswordgenerateAt, nameof(generatePasswordgenerateAt), required: false);
-            SourceExpression.Validate(generatePasswordminimumLowercase, nameof(generatePasswordminimumLowercase), required: false);
-            SourceExpression.Validate(generatePasswordminimumUppercase, nameof(generatePasswordminimumUppercase), required: false);
-            SourceExpression.Validate(generatePasswordminimumNumbers, nameof(generatePasswordminimumNumbers), required: false);
-            SourceExpression.Validate(generatePasswordminimumSymbols, nameof(generatePasswordminimumSymbols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GeneratePassword";
@@ -3392,8 +3148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetStoredPasswordResponse> GetStoredPassword([WorkflowExpression] Func<string> getStoredPasswordworkflow, [WorkflowExpression] Func<string> getStoredPasswordpasswordIdentifier = null)
         {
-            SourceExpression.Validate(getStoredPasswordworkflow, nameof(getStoredPasswordworkflow), required: true);
-            SourceExpression.Validate(getStoredPasswordpasswordIdentifier, nameof(getStoredPasswordpasswordIdentifier), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetStoredPassword";
@@ -3422,8 +3176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ExpandPasswordStringResponse> ExpandPasswordString([WorkflowExpression] Func<string> expandPasswordStringworkflow, [WorkflowExpression] Func<string> expandPasswordStringinputString = null)
         {
-            SourceExpression.Validate(expandPasswordStringworkflow, nameof(expandPasswordStringworkflow), required: true);
-            SourceExpression.Validate(expandPasswordStringinputString, nameof(expandPasswordStringinputString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/ExpandPasswordString";
@@ -3452,9 +3204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<StorePasswordInAgentMemoryResponse> StorePasswordInAgentMemory([WorkflowExpression] Func<string> storePasswordInAgentMemoryidentifier, [WorkflowExpression] Func<string> storePasswordInAgentMemorypassword, [WorkflowExpression] Func<string> storePasswordInAgentMemoryworkflow)
         {
-            SourceExpression.Validate(storePasswordInAgentMemoryidentifier, nameof(storePasswordInAgentMemoryidentifier), required: true);
-            SourceExpression.Validate(storePasswordInAgentMemorypassword, nameof(storePasswordInAgentMemorypassword), required: true);
-            SourceExpression.Validate(storePasswordInAgentMemoryworkflow, nameof(storePasswordInAgentMemoryworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/StorePasswordInAgentMemory";
@@ -3481,9 +3230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DeletePasswordInAgentMemoryResponse> DeletePasswordInAgentMemory([WorkflowExpression] Func<string> deletePasswordInAgentMemoryworkflow, [WorkflowExpression] Func<bool> deletePasswordInAgentMemorydeleteAllPasswords = null, [WorkflowExpression] Func<string> deletePasswordInAgentMemoryidentifier = null)
         {
-            SourceExpression.Validate(deletePasswordInAgentMemoryworkflow, nameof(deletePasswordInAgentMemoryworkflow), required: true);
-            SourceExpression.Validate(deletePasswordInAgentMemorydeleteAllPasswords, nameof(deletePasswordInAgentMemorydeleteAllPasswords), required: false);
-            SourceExpression.Validate(deletePasswordInAgentMemoryidentifier, nameof(deletePasswordInAgentMemoryidentifier), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/DeletePasswordInAgentMemory";
@@ -3528,14 +3274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CredentialWriteResponse> CredentialWrite([WorkflowExpression] Func<string> credentialWritecredentialAddress, [WorkflowExpression] Func<string> credentialWriteuserName, [WorkflowExpression] Func<string> credentialWritepassword, [WorkflowExpression] Func<credentialWritecredentialTypeInput> credentialWritecredentialType, [WorkflowExpression] Func<string> credentialWriteworkflow, [WorkflowExpression] Func<credentialWritecredentialPersistenceInput> credentialWritecredentialPersistence = null, [WorkflowExpression] Func<string> credentialWritesymmetricKey = null, [WorkflowExpression] Func<string> credentialWritestorePasswordAsIdentifier = null)
         {
-            SourceExpression.Validate(credentialWritecredentialAddress, nameof(credentialWritecredentialAddress), required: true);
-            SourceExpression.Validate(credentialWriteuserName, nameof(credentialWriteuserName), required: true);
-            SourceExpression.Validate(credentialWritepassword, nameof(credentialWritepassword), required: true);
-            SourceExpression.Validate(credentialWritecredentialType, nameof(credentialWritecredentialType), required: true);
-            SourceExpression.Validate(credentialWriteworkflow, nameof(credentialWriteworkflow), required: true);
-            SourceExpression.Validate(credentialWritecredentialPersistence, nameof(credentialWritecredentialPersistence), required: false);
-            SourceExpression.Validate(credentialWritesymmetricKey, nameof(credentialWritesymmetricKey), required: false);
-            SourceExpression.Validate(credentialWritestorePasswordAsIdentifier, nameof(credentialWritestorePasswordAsIdentifier), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/CredentialWrite";
@@ -3594,12 +3332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CredentialReadResponse> CredentialRead([WorkflowExpression] Func<string> credentialReadcredentialAddress, [WorkflowExpression] Func<credentialReadcredentialTypeInput> credentialReadcredentialType, [WorkflowExpression] Func<string> credentialReadworkflow, [WorkflowExpression] Func<string> credentialReadsymmetricKey = null, [WorkflowExpression] Func<string> credentialReadstorePasswordAsIdentifier = null, [WorkflowExpression] Func<bool> credentialReaddontReturnPassword = null)
         {
-            SourceExpression.Validate(credentialReadcredentialAddress, nameof(credentialReadcredentialAddress), required: true);
-            SourceExpression.Validate(credentialReadcredentialType, nameof(credentialReadcredentialType), required: true);
-            SourceExpression.Validate(credentialReadworkflow, nameof(credentialReadworkflow), required: true);
-            SourceExpression.Validate(credentialReadsymmetricKey, nameof(credentialReadsymmetricKey), required: false);
-            SourceExpression.Validate(credentialReadstorePasswordAsIdentifier, nameof(credentialReadstorePasswordAsIdentifier), required: false);
-            SourceExpression.Validate(credentialReaddontReturnPassword, nameof(credentialReaddontReturnPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/CredentialRead";
@@ -3654,9 +3386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CredentialDeleteResponse> CredentialDelete([WorkflowExpression] Func<string> credentialDeletecredentialAddress, [WorkflowExpression] Func<credentialDeletecredentialTypeInput> credentialDeletecredentialType, [WorkflowExpression] Func<string> credentialDeleteworkflow)
         {
-            SourceExpression.Validate(credentialDeletecredentialAddress, nameof(credentialDeletecredentialAddress), required: true);
-            SourceExpression.Validate(credentialDeletecredentialType, nameof(credentialDeletecredentialType), required: true);
-            SourceExpression.Validate(credentialDeleteworkflow, nameof(credentialDeleteworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/CredentialDelete";
@@ -3683,26 +3412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GenerateRDPFileResponse> GenerateRDPFile([WorkflowExpression] Func<string> generateRDPFileremoteAddress, [WorkflowExpression] Func<string> generateRDPFileoutputFolderPath, [WorkflowExpression] Func<string> generateRDPFilerDPFileName, [WorkflowExpression] Func<string> generateRDPFileworkflow, [WorkflowExpression] Func<bool> generateRDPFileoverwriteRDPFileIfAlreadyExists = null, [WorkflowExpression] Func<bool> generateRDPFiletrustRemoteComputer = null, [WorkflowExpression] Func<bool> generateRDPFilestoreCredentials = null, [WorkflowExpression] Func<string> generateRDPFileuserName = null, [WorkflowExpression] Func<string> generateRDPFilepassword = null, [WorkflowExpression] Func<generateRDPFilecredentialTypeInput> generateRDPFilecredentialType = null, [WorkflowExpression] Func<generateRDPFilecredentialPersistenceInput> generateRDPFilecredentialPersistence = null, [WorkflowExpression] Func<bool> generateRDPFileredirectPrinters = null, [WorkflowExpression] Func<bool> generateRDPFileredirectAllDrives = null, [WorkflowExpression] Func<bool> generateRDPFileredirectClipboard = null, [WorkflowExpression] Func<bool> generateRDPFilefullscreen = null, [WorkflowExpression] Func<int> generateRDPFiledesktopWidth = null, [WorkflowExpression] Func<int> generateRDPFiledesktopHeight = null, [WorkflowExpression] Func<bool> generateRDPFileuseMultiMonitor = null, [WorkflowExpression] Func<int> generateRDPFilesessionBPP = null, [WorkflowExpression] Func<bool> generateRDPFilesmartSizing = null)
         {
-            SourceExpression.Validate(generateRDPFileremoteAddress, nameof(generateRDPFileremoteAddress), required: true);
-            SourceExpression.Validate(generateRDPFileoutputFolderPath, nameof(generateRDPFileoutputFolderPath), required: true);
-            SourceExpression.Validate(generateRDPFilerDPFileName, nameof(generateRDPFilerDPFileName), required: true);
-            SourceExpression.Validate(generateRDPFileworkflow, nameof(generateRDPFileworkflow), required: true);
-            SourceExpression.Validate(generateRDPFileoverwriteRDPFileIfAlreadyExists, nameof(generateRDPFileoverwriteRDPFileIfAlreadyExists), required: false);
-            SourceExpression.Validate(generateRDPFiletrustRemoteComputer, nameof(generateRDPFiletrustRemoteComputer), required: false);
-            SourceExpression.Validate(generateRDPFilestoreCredentials, nameof(generateRDPFilestoreCredentials), required: false);
-            SourceExpression.Validate(generateRDPFileuserName, nameof(generateRDPFileuserName), required: false);
-            SourceExpression.Validate(generateRDPFilepassword, nameof(generateRDPFilepassword), required: false);
-            SourceExpression.Validate(generateRDPFilecredentialType, nameof(generateRDPFilecredentialType), required: false);
-            SourceExpression.Validate(generateRDPFilecredentialPersistence, nameof(generateRDPFilecredentialPersistence), required: false);
-            SourceExpression.Validate(generateRDPFileredirectPrinters, nameof(generateRDPFileredirectPrinters), required: false);
-            SourceExpression.Validate(generateRDPFileredirectAllDrives, nameof(generateRDPFileredirectAllDrives), required: false);
-            SourceExpression.Validate(generateRDPFileredirectClipboard, nameof(generateRDPFileredirectClipboard), required: false);
-            SourceExpression.Validate(generateRDPFilefullscreen, nameof(generateRDPFilefullscreen), required: false);
-            SourceExpression.Validate(generateRDPFiledesktopWidth, nameof(generateRDPFiledesktopWidth), required: false);
-            SourceExpression.Validate(generateRDPFiledesktopHeight, nameof(generateRDPFiledesktopHeight), required: false);
-            SourceExpression.Validate(generateRDPFileuseMultiMonitor, nameof(generateRDPFileuseMultiMonitor), required: false);
-            SourceExpression.Validate(generateRDPFilesessionBPP, nameof(generateRDPFilesessionBPP), required: false);
-            SourceExpression.Validate(generateRDPFilesmartSizing, nameof(generateRDPFilesmartSizing), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GenerateRDPFile";
@@ -3967,9 +3676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<LaunchRemoteDesktopSessionResponse> LaunchRemoteDesktopSession([WorkflowExpression] Func<string> launchRemoteDesktopSessionrDPFilePath, [WorkflowExpression] Func<string> launchRemoteDesktopSessionworkflow, [WorkflowExpression] Func<bool> launchRemoteDesktopSessiontrustRemoteComputer = null)
         {
-            SourceExpression.Validate(launchRemoteDesktopSessionrDPFilePath, nameof(launchRemoteDesktopSessionrDPFilePath), required: true);
-            SourceExpression.Validate(launchRemoteDesktopSessionworkflow, nameof(launchRemoteDesktopSessionworkflow), required: true);
-            SourceExpression.Validate(launchRemoteDesktopSessiontrustRemoteComputer, nameof(launchRemoteDesktopSessiontrustRemoteComputer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LaunchRemoteDesktopSession";
@@ -4010,10 +3716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<IsTCPPortRespondingResponse> IsTCPPortResponding([WorkflowExpression] Func<string> isTCPPortRespondingremoteHost, [WorkflowExpression] Func<int> isTCPPortRespondingtCPPort, [WorkflowExpression] Func<string> isTCPPortRespondingworkflow, [WorkflowExpression] Func<int> isTCPPortRespondingtimeoutInSeconds = null)
         {
-            SourceExpression.Validate(isTCPPortRespondingremoteHost, nameof(isTCPPortRespondingremoteHost), required: true);
-            SourceExpression.Validate(isTCPPortRespondingtCPPort, nameof(isTCPPortRespondingtCPPort), required: true);
-            SourceExpression.Validate(isTCPPortRespondingworkflow, nameof(isTCPPortRespondingworkflow), required: true);
-            SourceExpression.Validate(isTCPPortRespondingtimeoutInSeconds, nameof(isTCPPortRespondingtimeoutInSeconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/IsTCPPortResponding";
@@ -4056,12 +3758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<UnlockSessionResponse> UnlockSession([WorkflowExpression] Func<string> unlockSessionunlockPassword, [WorkflowExpression] Func<bool> unlockSessiondetectIfLocked, [WorkflowExpression] Func<bool> unlockSessiondetectCredentialProvider, [WorkflowExpression] Func<string> unlockSessionworkflow, [WorkflowExpression] Func<bool> unlockSessionpasswordContainsStoredPassword = null, [WorkflowExpression] Func<int> unlockSessionsecondsToWaitForUnlock = null)
         {
-            SourceExpression.Validate(unlockSessionunlockPassword, nameof(unlockSessionunlockPassword), required: true);
-            SourceExpression.Validate(unlockSessiondetectIfLocked, nameof(unlockSessiondetectIfLocked), required: true);
-            SourceExpression.Validate(unlockSessiondetectCredentialProvider, nameof(unlockSessiondetectCredentialProvider), required: true);
-            SourceExpression.Validate(unlockSessionworkflow, nameof(unlockSessionworkflow), required: true);
-            SourceExpression.Validate(unlockSessionpasswordContainsStoredPassword, nameof(unlockSessionpasswordContainsStoredPassword), required: false);
-            SourceExpression.Validate(unlockSessionsecondsToWaitForUnlock, nameof(unlockSessionsecondsToWaitForUnlock), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/UnlockSession";
@@ -4122,9 +3818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<LockSessionResponse> LockSession([WorkflowExpression] Func<string> lockSessionworkflow, [WorkflowExpression] Func<int> lockSessionlockAfterMinutesOfActionInactivity = null, [WorkflowExpression] Func<int> lockSessionsecondsToWaitAfterLock = null)
         {
-            SourceExpression.Validate(lockSessionworkflow, nameof(lockSessionworkflow), required: true);
-            SourceExpression.Validate(lockSessionlockAfterMinutesOfActionInactivity, nameof(lockSessionlockAfterMinutesOfActionInactivity), required: false);
-            SourceExpression.Validate(lockSessionsecondsToWaitAfterLock, nameof(lockSessionsecondsToWaitAfterLock), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/LockSession";
@@ -4179,7 +3872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<IsSessionLockedResponse> IsSessionLocked([WorkflowExpression] Func<string> isSessionLockedworkflow)
         {
-            SourceExpression.Validate(isSessionLockedworkflow, nameof(isSessionLockedworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/IsSessionLocked";
@@ -4202,8 +3894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetGenericCredentialFromOrchestratorResponse> GetGenericCredentialFromOrchestrator([WorkflowExpression] Func<string> getGenericCredentialFromOrchestratorfriendlyName = null, [WorkflowExpression] Func<bool> getGenericCredentialFromOrchestratorretrievePlainTextPassword = null)
         {
-            SourceExpression.Validate(getGenericCredentialFromOrchestratorfriendlyName, nameof(getGenericCredentialFromOrchestratorfriendlyName), required: false);
-            SourceExpression.Validate(getGenericCredentialFromOrchestratorretrievePlainTextPassword, nameof(getGenericCredentialFromOrchestratorretrievePlainTextPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetGenericCredentialFromOrchestrator";
@@ -4246,15 +3936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DrawRectangleOnScreenResponse> DrawRectangleOnScreen([WorkflowExpression] Func<int> drawRectangleOnScreenrectangleLeftPixelXCoord, [WorkflowExpression] Func<int> drawRectangleOnScreenrectangleRightPixelXCoord, [WorkflowExpression] Func<int> drawRectangleOnScreenrectangleTopPixelYCoord, [WorkflowExpression] Func<int> drawRectangleOnScreenrectangleBottomPixelYCoord, [WorkflowExpression] Func<string> drawRectangleOnScreenworkflow, [WorkflowExpression] Func<string> drawRectangleOnScreenpenColour = null, [WorkflowExpression] Func<int> drawRectangleOnScreenpenThicknessPixels = null, [WorkflowExpression] Func<int> drawRectangleOnScreensecondsToDisplay = null, [WorkflowExpression] Func<bool> drawRectangleOnScreencoordinatesArePhysical = null)
         {
-            SourceExpression.Validate(drawRectangleOnScreenrectangleLeftPixelXCoord, nameof(drawRectangleOnScreenrectangleLeftPixelXCoord), required: true);
-            SourceExpression.Validate(drawRectangleOnScreenrectangleRightPixelXCoord, nameof(drawRectangleOnScreenrectangleRightPixelXCoord), required: true);
-            SourceExpression.Validate(drawRectangleOnScreenrectangleTopPixelYCoord, nameof(drawRectangleOnScreenrectangleTopPixelYCoord), required: true);
-            SourceExpression.Validate(drawRectangleOnScreenrectangleBottomPixelYCoord, nameof(drawRectangleOnScreenrectangleBottomPixelYCoord), required: true);
-            SourceExpression.Validate(drawRectangleOnScreenworkflow, nameof(drawRectangleOnScreenworkflow), required: true);
-            SourceExpression.Validate(drawRectangleOnScreenpenColour, nameof(drawRectangleOnScreenpenColour), required: false);
-            SourceExpression.Validate(drawRectangleOnScreenpenThicknessPixels, nameof(drawRectangleOnScreenpenThicknessPixels), required: false);
-            SourceExpression.Validate(drawRectangleOnScreensecondsToDisplay, nameof(drawRectangleOnScreensecondsToDisplay), required: false);
-            SourceExpression.Validate(drawRectangleOnScreencoordinatesArePhysical, nameof(drawRectangleOnScreencoordinatesArePhysical), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/DrawRectangleOnScreen";
@@ -4349,8 +4030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse> GetFailedActionErrorMessageFromPowerAutomateResultJSON([WorkflowExpression] Func<string[]> getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, [WorkflowExpression] Func<string> getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus = null)
         {
-            SourceExpression.Validate(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON), required: true);
-            SourceExpression.Validate(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetFailedActionErrorMessageFromPowerAutomateResultJSON";
@@ -4389,11 +4068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetPixelColourAtCoordinateResponse> GetPixelColourAtCoordinate([WorkflowExpression] Func<int> getPixelColourAtCoordinateleftXPixels, [WorkflowExpression] Func<int> getPixelColourAtCoordinatetopYPixels, [WorkflowExpression] Func<string> getPixelColourAtCoordinateworkflow, [WorkflowExpression] Func<bool> getPixelColourAtCoordinatehideAgent = null, [WorkflowExpression] Func<bool> getPixelColourAtCoordinateusePhysicalCoordinates = null)
         {
-            SourceExpression.Validate(getPixelColourAtCoordinateleftXPixels, nameof(getPixelColourAtCoordinateleftXPixels), required: true);
-            SourceExpression.Validate(getPixelColourAtCoordinatetopYPixels, nameof(getPixelColourAtCoordinatetopYPixels), required: true);
-            SourceExpression.Validate(getPixelColourAtCoordinateworkflow, nameof(getPixelColourAtCoordinateworkflow), required: true);
-            SourceExpression.Validate(getPixelColourAtCoordinatehideAgent, nameof(getPixelColourAtCoordinatehideAgent), required: false);
-            SourceExpression.Validate(getPixelColourAtCoordinateusePhysicalCoordinates, nameof(getPixelColourAtCoordinateusePhysicalCoordinates), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/GetPixelColourAtCoordinate";
@@ -4452,12 +4126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ConvertRectangleCoordinatesResponse> ConvertRectangleCoordinates([WorkflowExpression] Func<int> convertRectangleCoordinatesrectangleLeftPixelXCoord, [WorkflowExpression] Func<int> convertRectangleCoordinatesrectangleTopPixelYCoord, [WorkflowExpression] Func<int> convertRectangleCoordinatesrectangleRightPixelXCoord, [WorkflowExpression] Func<int> convertRectangleCoordinatesrectangleBottomPixelYCoord, [WorkflowExpression] Func<convertRectangleCoordinatesconversionTypeInput> convertRectangleCoordinatesconversionType, [WorkflowExpression] Func<string> convertRectangleCoordinatesworkflow)
         {
-            SourceExpression.Validate(convertRectangleCoordinatesrectangleLeftPixelXCoord, nameof(convertRectangleCoordinatesrectangleLeftPixelXCoord), required: true);
-            SourceExpression.Validate(convertRectangleCoordinatesrectangleTopPixelYCoord, nameof(convertRectangleCoordinatesrectangleTopPixelYCoord), required: true);
-            SourceExpression.Validate(convertRectangleCoordinatesrectangleRightPixelXCoord, nameof(convertRectangleCoordinatesrectangleRightPixelXCoord), required: true);
-            SourceExpression.Validate(convertRectangleCoordinatesrectangleBottomPixelYCoord, nameof(convertRectangleCoordinatesrectangleBottomPixelYCoord), required: true);
-            SourceExpression.Validate(convertRectangleCoordinatesconversionType, nameof(convertRectangleCoordinatesconversionType), required: true);
-            SourceExpression.Validate(convertRectangleCoordinatesworkflow, nameof(convertRectangleCoordinatesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/ConvertRectangleCoordinates";
@@ -4490,27 +4158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SendMessageToWebAPIResponse> SendMessageToWebAPI([WorkflowExpression] Func<string> sendMessageToWebAPIworkflow, [WorkflowExpression] Func<string> sendMessageToWebAPIuRL = null, [WorkflowExpression] Func<sendMessageToWebAPImethodInput> sendMessageToWebAPImethod = null, [WorkflowExpression] Func<int> sendMessageToWebAPItimeoutInSeconds = null, [WorkflowExpression] Func<string> sendMessageToWebAPIcontentType = null, [WorkflowExpression] Func<string> sendMessageToWebAPIaccept = null, [WorkflowExpression] Func<string> sendMessageToWebAPImessageBody = null, [WorkflowExpression] Func<sendMessageToWebAPItransmitEncodingInput> sendMessageToWebAPItransmitEncoding = null, [WorkflowExpression] Func<sendMessageToWebAPIresponseEncodingInput> sendMessageToWebAPIresponseEncoding = null, [WorkflowExpression] Func<int> sendMessageToWebAPIbufferSize = null, [WorkflowExpression] Func<sendMessageToWebAPIhTTPRequestHeadersListInputItem[]> sendMessageToWebAPIhTTPRequestHeadersList = null, [WorkflowExpression] Func<bool> sendMessageToWebAPInegotiateTLS10 = null, [WorkflowExpression] Func<bool> sendMessageToWebAPInegotiateTLS11 = null, [WorkflowExpression] Func<bool> sendMessageToWebAPInegotiateTLS12 = null, [WorkflowExpression] Func<bool> sendMessageToWebAPInegotiateTLS13 = null, [WorkflowExpression] Func<bool> sendMessageToWebAPIkeepAlive = null, [WorkflowExpression] Func<bool> sendMessageToWebAPIexpect100Continue = null, [WorkflowExpression] Func<bool> sendMessageToWebAPIreturnResponseHeaders = null, [WorkflowExpression] Func<bool> sendMessageToWebAPIrunAsThread = null, [WorkflowExpression] Func<bool> sendMessageToWebAPIwaitForThread = null, [WorkflowExpression] Func<int> sendMessageToWebAPIretrieveOutputDataFromThreadId = null)
         {
-            SourceExpression.Validate(sendMessageToWebAPIworkflow, nameof(sendMessageToWebAPIworkflow), required: true);
-            SourceExpression.Validate(sendMessageToWebAPIuRL, nameof(sendMessageToWebAPIuRL), required: false);
-            SourceExpression.Validate(sendMessageToWebAPImethod, nameof(sendMessageToWebAPImethod), required: false);
-            SourceExpression.Validate(sendMessageToWebAPItimeoutInSeconds, nameof(sendMessageToWebAPItimeoutInSeconds), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIcontentType, nameof(sendMessageToWebAPIcontentType), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIaccept, nameof(sendMessageToWebAPIaccept), required: false);
-            SourceExpression.Validate(sendMessageToWebAPImessageBody, nameof(sendMessageToWebAPImessageBody), required: false);
-            SourceExpression.Validate(sendMessageToWebAPItransmitEncoding, nameof(sendMessageToWebAPItransmitEncoding), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIresponseEncoding, nameof(sendMessageToWebAPIresponseEncoding), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIbufferSize, nameof(sendMessageToWebAPIbufferSize), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIhTTPRequestHeadersList, nameof(sendMessageToWebAPIhTTPRequestHeadersList), required: false);
-            SourceExpression.Validate(sendMessageToWebAPInegotiateTLS10, nameof(sendMessageToWebAPInegotiateTLS10), required: false);
-            SourceExpression.Validate(sendMessageToWebAPInegotiateTLS11, nameof(sendMessageToWebAPInegotiateTLS11), required: false);
-            SourceExpression.Validate(sendMessageToWebAPInegotiateTLS12, nameof(sendMessageToWebAPInegotiateTLS12), required: false);
-            SourceExpression.Validate(sendMessageToWebAPInegotiateTLS13, nameof(sendMessageToWebAPInegotiateTLS13), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIkeepAlive, nameof(sendMessageToWebAPIkeepAlive), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIexpect100Continue, nameof(sendMessageToWebAPIexpect100Continue), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIreturnResponseHeaders, nameof(sendMessageToWebAPIreturnResponseHeaders), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIrunAsThread, nameof(sendMessageToWebAPIrunAsThread), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIwaitForThread, nameof(sendMessageToWebAPIwaitForThread), required: false);
-            SourceExpression.Validate(sendMessageToWebAPIretrieveOutputDataFromThreadId, nameof(sendMessageToWebAPIretrieveOutputDataFromThreadId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/SendMessageToWebAPI";
@@ -4813,18 +4460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewTaskResponse> TasksAddNewTask([WorkflowExpression] Func<string> tasksAddNewTaskworkflow, [WorkflowExpression] Func<tasksAddNewTasksetAutomationNameInput> tasksAddNewTasksetAutomationName = null, [WorkflowExpression] Func<string> tasksAddNewTaskautomationName = null, [WorkflowExpression] Func<string> tasksAddNewTasktaskInputData = null, [WorkflowExpression] Func<string> tasksAddNewTaskprocessStage = null, [WorkflowExpression] Func<int> tasksAddNewTaskpriority = null, [WorkflowExpression] Func<int> tasksAddNewTasksLA = null, [WorkflowExpression] Func<bool> tasksAddNewTasktaskOnHold = null, [WorkflowExpression] Func<string> tasksAddNewTaskorganisation = null, [WorkflowExpression] Func<string> tasksAddNewTaskdepartment = null, [WorkflowExpression] Func<string> tasksAddNewTaskdescription = null, [WorkflowExpression] Func<string> tasksAddNewTasktags = null)
         {
-            SourceExpression.Validate(tasksAddNewTaskworkflow, nameof(tasksAddNewTaskworkflow), required: true);
-            SourceExpression.Validate(tasksAddNewTasksetAutomationName, nameof(tasksAddNewTasksetAutomationName), required: false);
-            SourceExpression.Validate(tasksAddNewTaskautomationName, nameof(tasksAddNewTaskautomationName), required: false);
-            SourceExpression.Validate(tasksAddNewTasktaskInputData, nameof(tasksAddNewTasktaskInputData), required: false);
-            SourceExpression.Validate(tasksAddNewTaskprocessStage, nameof(tasksAddNewTaskprocessStage), required: false);
-            SourceExpression.Validate(tasksAddNewTaskpriority, nameof(tasksAddNewTaskpriority), required: false);
-            SourceExpression.Validate(tasksAddNewTasksLA, nameof(tasksAddNewTasksLA), required: false);
-            SourceExpression.Validate(tasksAddNewTasktaskOnHold, nameof(tasksAddNewTasktaskOnHold), required: false);
-            SourceExpression.Validate(tasksAddNewTaskorganisation, nameof(tasksAddNewTaskorganisation), required: false);
-            SourceExpression.Validate(tasksAddNewTaskdepartment, nameof(tasksAddNewTaskdepartment), required: false);
-            SourceExpression.Validate(tasksAddNewTaskdescription, nameof(tasksAddNewTaskdescription), required: false);
-            SourceExpression.Validate(tasksAddNewTasktags, nameof(tasksAddNewTasktags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksAddNewTask";
@@ -4943,19 +4578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewDeferralResponse> TasksAddNewDeferral([WorkflowExpression] Func<string> tasksAddNewDeferralworkflow, [WorkflowExpression] Func<tasksAddNewDeferralsetAutomationNameInput> tasksAddNewDeferralsetAutomationName = null, [WorkflowExpression] Func<string> tasksAddNewDeferralautomationName = null, [WorkflowExpression] Func<int> tasksAddNewDeferraldeferralTimeInMinutes = null, [WorkflowExpression] Func<string> tasksAddNewDeferraltaskInputData = null, [WorkflowExpression] Func<string> tasksAddNewDeferraldeferralStoredData = null, [WorkflowExpression] Func<string> tasksAddNewDeferralprocessStage = null, [WorkflowExpression] Func<int> tasksAddNewDeferralpriority = null, [WorkflowExpression] Func<bool> tasksAddNewDeferraltaskOnHold = null, [WorkflowExpression] Func<string> tasksAddNewDeferralorganisation = null, [WorkflowExpression] Func<string> tasksAddNewDeferraldepartment = null, [WorkflowExpression] Func<string> tasksAddNewDeferraldescription = null, [WorkflowExpression] Func<string> tasksAddNewDeferraltags = null)
         {
-            SourceExpression.Validate(tasksAddNewDeferralworkflow, nameof(tasksAddNewDeferralworkflow), required: true);
-            SourceExpression.Validate(tasksAddNewDeferralsetAutomationName, nameof(tasksAddNewDeferralsetAutomationName), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralautomationName, nameof(tasksAddNewDeferralautomationName), required: false);
-            SourceExpression.Validate(tasksAddNewDeferraldeferralTimeInMinutes, nameof(tasksAddNewDeferraldeferralTimeInMinutes), required: false);
-            SourceExpression.Validate(tasksAddNewDeferraltaskInputData, nameof(tasksAddNewDeferraltaskInputData), required: false);
-            SourceExpression.Validate(tasksAddNewDeferraldeferralStoredData, nameof(tasksAddNewDeferraldeferralStoredData), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralprocessStage, nameof(tasksAddNewDeferralprocessStage), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralpriority, nameof(tasksAddNewDeferralpriority), required: false);
-            SourceExpression.Validate(tasksAddNewDeferraltaskOnHold, nameof(tasksAddNewDeferraltaskOnHold), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralorganisation, nameof(tasksAddNewDeferralorganisation), required: false);
-            SourceExpression.Validate(tasksAddNewDeferraldepartment, nameof(tasksAddNewDeferraldepartment), required: false);
-            SourceExpression.Validate(tasksAddNewDeferraldescription, nameof(tasksAddNewDeferraldescription), required: false);
-            SourceExpression.Validate(tasksAddNewDeferraltags, nameof(tasksAddNewDeferraltags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksAddNewDeferral";
@@ -5080,12 +4702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeferExistingTaskResponse> TasksDeferExistingTask([WorkflowExpression] Func<int> tasksDeferExistingTasktaskId, [WorkflowExpression] Func<int> tasksDeferExistingTaskdeferralTimeInMinutes = null, [WorkflowExpression] Func<string> tasksDeferExistingTaskdeferralStoredData = null, [WorkflowExpression] Func<string> tasksDeferExistingTaskprocessStage = null, [WorkflowExpression] Func<int> tasksDeferExistingTaskpriority = null, [WorkflowExpression] Func<bool> tasksDeferExistingTasktaskOnHold = null)
         {
-            SourceExpression.Validate(tasksDeferExistingTasktaskId, nameof(tasksDeferExistingTasktaskId), required: true);
-            SourceExpression.Validate(tasksDeferExistingTaskdeferralTimeInMinutes, nameof(tasksDeferExistingTaskdeferralTimeInMinutes), required: false);
-            SourceExpression.Validate(tasksDeferExistingTaskdeferralStoredData, nameof(tasksDeferExistingTaskdeferralStoredData), required: false);
-            SourceExpression.Validate(tasksDeferExistingTaskprocessStage, nameof(tasksDeferExistingTaskprocessStage), required: false);
-            SourceExpression.Validate(tasksDeferExistingTaskpriority, nameof(tasksDeferExistingTaskpriority), required: false);
-            SourceExpression.Validate(tasksDeferExistingTasktaskOnHold, nameof(tasksDeferExistingTasktaskOnHold), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksDeferExistingTask";
@@ -5158,11 +4774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeferExistingTaskOperationResponse> TasksDeferExistingTaskOperation([WorkflowExpression] Func<string> tasksDeferExistingTaskOperationoperationId, [WorkflowExpression] Func<int> tasksDeferExistingTaskOperationdeferralTimeInMinutes = null, [WorkflowExpression] Func<string> tasksDeferExistingTaskOperationdeferralStoredData = null, [WorkflowExpression] Func<string> tasksDeferExistingTaskOperationprocessStage = null, [WorkflowExpression] Func<int> tasksDeferExistingTaskOperationpriority = null)
         {
-            SourceExpression.Validate(tasksDeferExistingTaskOperationoperationId, nameof(tasksDeferExistingTaskOperationoperationId), required: true);
-            SourceExpression.Validate(tasksDeferExistingTaskOperationdeferralTimeInMinutes, nameof(tasksDeferExistingTaskOperationdeferralTimeInMinutes), required: false);
-            SourceExpression.Validate(tasksDeferExistingTaskOperationdeferralStoredData, nameof(tasksDeferExistingTaskOperationdeferralStoredData), required: false);
-            SourceExpression.Validate(tasksDeferExistingTaskOperationprocessStage, nameof(tasksDeferExistingTaskOperationprocessStage), required: false);
-            SourceExpression.Validate(tasksDeferExistingTaskOperationpriority, nameof(tasksDeferExistingTaskOperationpriority), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksDeferExistingTaskOperation";
@@ -5219,8 +4830,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeleteTaskResponse> TasksDeleteTask([WorkflowExpression] Func<int> tasksDeleteTasktaskId, [WorkflowExpression] Func<bool> tasksDeleteTaskupdateSourceSystem = null)
         {
-            SourceExpression.Validate(tasksDeleteTasktaskId, nameof(tasksDeleteTasktaskId), required: true);
-            SourceExpression.Validate(tasksDeleteTaskupdateSourceSystem, nameof(tasksDeleteTaskupdateSourceSystem), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksDeleteTask";
@@ -5259,8 +4868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeleteTaskOperationResponse> TasksDeleteTaskOperation([WorkflowExpression] Func<string> tasksDeleteTaskOperationoperationId, [WorkflowExpression] Func<bool> tasksDeleteTaskOperationupdateSourceSystem = null)
         {
-            SourceExpression.Validate(tasksDeleteTaskOperationoperationId, nameof(tasksDeleteTaskOperationoperationId), required: true);
-            SourceExpression.Validate(tasksDeleteTaskOperationupdateSourceSystem, nameof(tasksDeleteTaskOperationupdateSourceSystem), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksDeleteTaskOperation";
@@ -5299,16 +4906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetAllTasksResponse> TasksGetAllTasks([WorkflowExpression] Func<string> tasksGetAllTasksautomationName = null, [WorkflowExpression] Func<tasksGetAllTasksautomationTaskStatusInput> tasksGetAllTasksautomationTaskStatus = null, [WorkflowExpression] Func<string> tasksGetAllTasksfilterByPropertyQuery = null, [WorkflowExpression] Func<int> tasksGetAllTasksminutesUntilDeferralDate = null, [WorkflowExpression] Func<int> tasksGetAllTasksminimumPriorityLevel = null, [WorkflowExpression] Func<bool> tasksGetAllTaskssortByDeferralDate = null, [WorkflowExpression] Func<bool> tasksGetAllTasksretrieveOnHoldTasks = null, [WorkflowExpression] Func<int> tasksGetAllTasksskip = null, [WorkflowExpression] Func<int> tasksGetAllTasksmaxResults = null, [WorkflowExpression] Func<bool> tasksGetAllTasksexcludeTaskData = null)
         {
-            SourceExpression.Validate(tasksGetAllTasksautomationName, nameof(tasksGetAllTasksautomationName), required: false);
-            SourceExpression.Validate(tasksGetAllTasksautomationTaskStatus, nameof(tasksGetAllTasksautomationTaskStatus), required: false);
-            SourceExpression.Validate(tasksGetAllTasksfilterByPropertyQuery, nameof(tasksGetAllTasksfilterByPropertyQuery), required: false);
-            SourceExpression.Validate(tasksGetAllTasksminutesUntilDeferralDate, nameof(tasksGetAllTasksminutesUntilDeferralDate), required: false);
-            SourceExpression.Validate(tasksGetAllTasksminimumPriorityLevel, nameof(tasksGetAllTasksminimumPriorityLevel), required: false);
-            SourceExpression.Validate(tasksGetAllTaskssortByDeferralDate, nameof(tasksGetAllTaskssortByDeferralDate), required: false);
-            SourceExpression.Validate(tasksGetAllTasksretrieveOnHoldTasks, nameof(tasksGetAllTasksretrieveOnHoldTasks), required: false);
-            SourceExpression.Validate(tasksGetAllTasksskip, nameof(tasksGetAllTasksskip), required: false);
-            SourceExpression.Validate(tasksGetAllTasksmaxResults, nameof(tasksGetAllTasksmaxResults), required: false);
-            SourceExpression.Validate(tasksGetAllTasksexcludeTaskData, nameof(tasksGetAllTasksexcludeTaskData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksGetAllTasks";
@@ -5439,8 +5036,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetTaskResponse> TasksGetTask([WorkflowExpression] Func<int> tasksGetTasktaskId, [WorkflowExpression] Func<tasksGetTaskstatusChangeInput> tasksGetTaskstatusChange = null)
         {
-            SourceExpression.Validate(tasksGetTasktaskId, nameof(tasksGetTasktaskId), required: true);
-            SourceExpression.Validate(tasksGetTaskstatusChange, nameof(tasksGetTaskstatusChange), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksGetTask";
@@ -5479,13 +5074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetNextTaskResponse> TasksGetNextTask([WorkflowExpression] Func<string> tasksGetNextTaskautomationName = null, [WorkflowExpression] Func<string[]> tasksGetNextTaskautomationNames = null, [WorkflowExpression] Func<int> tasksGetNextTaskminimumPriorityLevel = null, [WorkflowExpression] Func<tasksGetNextTaskstatusChangeInput> tasksGetNextTaskstatusChange = null, [WorkflowExpression] Func<int> tasksGetNextTaskminutesUntilDeferralDate = null, [WorkflowExpression] Func<bool> tasksGetNextTaskignoreSLA = null, [WorkflowExpression] Func<int[]> tasksGetNextTaskexcludeTaskIds = null)
         {
-            SourceExpression.Validate(tasksGetNextTaskautomationName, nameof(tasksGetNextTaskautomationName), required: false);
-            SourceExpression.Validate(tasksGetNextTaskautomationNames, nameof(tasksGetNextTaskautomationNames), required: false);
-            SourceExpression.Validate(tasksGetNextTaskminimumPriorityLevel, nameof(tasksGetNextTaskminimumPriorityLevel), required: false);
-            SourceExpression.Validate(tasksGetNextTaskstatusChange, nameof(tasksGetNextTaskstatusChange), required: false);
-            SourceExpression.Validate(tasksGetNextTaskminutesUntilDeferralDate, nameof(tasksGetNextTaskminutesUntilDeferralDate), required: false);
-            SourceExpression.Validate(tasksGetNextTaskignoreSLA, nameof(tasksGetNextTaskignoreSLA), required: false);
-            SourceExpression.Validate(tasksGetNextTaskexcludeTaskIds, nameof(tasksGetNextTaskexcludeTaskIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksGetNextTask";
@@ -5578,13 +5166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksChangeTaskStatusResponse> TasksChangeTaskStatus([WorkflowExpression] Func<int> tasksChangeTaskStatustaskId, [WorkflowExpression] Func<tasksChangeTaskStatusautomationTaskStatusInput> tasksChangeTaskStatusautomationTaskStatus = null, [WorkflowExpression] Func<bool> tasksChangeTaskStatustaskOnHold = null, [WorkflowExpression] Func<bool> tasksChangeTaskStatuseraseTaskInputData = null, [WorkflowExpression] Func<bool> tasksChangeTaskStatuseraseDeferralStoredData = null, [WorkflowExpression] Func<bool> tasksChangeTaskStatusupdateSourceSystem = null, [WorkflowExpression] Func<string> tasksChangeTaskStatustaskClosureReason = null)
         {
-            SourceExpression.Validate(tasksChangeTaskStatustaskId, nameof(tasksChangeTaskStatustaskId), required: true);
-            SourceExpression.Validate(tasksChangeTaskStatusautomationTaskStatus, nameof(tasksChangeTaskStatusautomationTaskStatus), required: false);
-            SourceExpression.Validate(tasksChangeTaskStatustaskOnHold, nameof(tasksChangeTaskStatustaskOnHold), required: false);
-            SourceExpression.Validate(tasksChangeTaskStatuseraseTaskInputData, nameof(tasksChangeTaskStatuseraseTaskInputData), required: false);
-            SourceExpression.Validate(tasksChangeTaskStatuseraseDeferralStoredData, nameof(tasksChangeTaskStatuseraseDeferralStoredData), required: false);
-            SourceExpression.Validate(tasksChangeTaskStatusupdateSourceSystem, nameof(tasksChangeTaskStatusupdateSourceSystem), required: false);
-            SourceExpression.Validate(tasksChangeTaskStatustaskClosureReason, nameof(tasksChangeTaskStatustaskClosureReason), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksChangeTaskStatus";
@@ -5683,10 +5264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNoteResponse> TasksAddNote([WorkflowExpression] Func<int> tasksAddNotetaskId, [WorkflowExpression] Func<string> tasksAddNotenoteText, [WorkflowExpression] Func<tasksAddNotenoteTypeInput> tasksAddNotenoteType = null, [WorkflowExpression] Func<string> tasksAddNotenoteTypeOther = null)
         {
-            SourceExpression.Validate(tasksAddNotetaskId, nameof(tasksAddNotetaskId), required: true);
-            SourceExpression.Validate(tasksAddNotenoteText, nameof(tasksAddNotenoteText), required: true);
-            SourceExpression.Validate(tasksAddNotenoteType, nameof(tasksAddNotenoteType), required: false);
-            SourceExpression.Validate(tasksAddNotenoteTypeOther, nameof(tasksAddNotenoteTypeOther), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksAddNote";
@@ -5733,13 +5310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAssignTaskResponse> TasksAssignTask([WorkflowExpression] Func<int> tasksAssignTasktaskId, [WorkflowExpression] Func<string> tasksAssignTaskassignToUserId = null, [WorkflowExpression] Func<string> tasksAssignTaskassignToUserName = null, [WorkflowExpression] Func<string> tasksAssignTaskassignToGroupId = null, [WorkflowExpression] Func<string> tasksAssignTaskassignToGroupName = null, [WorkflowExpression] Func<bool> tasksAssignTaskremoveUserAssignmentIfBlank = null, [WorkflowExpression] Func<bool> tasksAssignTaskremoveGroupAssignmentIfBlank = null)
         {
-            SourceExpression.Validate(tasksAssignTasktaskId, nameof(tasksAssignTasktaskId), required: true);
-            SourceExpression.Validate(tasksAssignTaskassignToUserId, nameof(tasksAssignTaskassignToUserId), required: false);
-            SourceExpression.Validate(tasksAssignTaskassignToUserName, nameof(tasksAssignTaskassignToUserName), required: false);
-            SourceExpression.Validate(tasksAssignTaskassignToGroupId, nameof(tasksAssignTaskassignToGroupId), required: false);
-            SourceExpression.Validate(tasksAssignTaskassignToGroupName, nameof(tasksAssignTaskassignToGroupName), required: false);
-            SourceExpression.Validate(tasksAssignTaskremoveUserAssignmentIfBlank, nameof(tasksAssignTaskremoveUserAssignmentIfBlank), required: false);
-            SourceExpression.Validate(tasksAssignTaskremoveGroupAssignmentIfBlank, nameof(tasksAssignTaskremoveGroupAssignmentIfBlank), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksAssignTask";
@@ -5818,8 +5388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksSetOutputDataResponse> TasksSetOutputData([WorkflowExpression] Func<int> tasksSetOutputDatataskId, [WorkflowExpression] Func<string> tasksSetOutputDatataskOutputData = null)
         {
-            SourceExpression.Validate(tasksSetOutputDatataskId, nameof(tasksSetOutputDatataskId), required: true);
-            SourceExpression.Validate(tasksSetOutputDatataskOutputData, nameof(tasksSetOutputDatataskOutputData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksSetOutputData";
@@ -5848,15 +5416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewTaskOperationResponse> TasksAddNewTaskOperation([WorkflowExpression] Func<string> tasksAddNewTaskOperationautomationName = null, [WorkflowExpression] Func<string> tasksAddNewTaskOperationtaskInputData = null, [WorkflowExpression] Func<string> tasksAddNewTaskOperationprocessStage = null, [WorkflowExpression] Func<int> tasksAddNewTaskOperationpriority = null, [WorkflowExpression] Func<int> tasksAddNewTaskOperationsLA = null, [WorkflowExpression] Func<string> tasksAddNewTaskOperationorganisation = null, [WorkflowExpression] Func<string> tasksAddNewTaskOperationdepartment = null, [WorkflowExpression] Func<string> tasksAddNewTaskOperationdescription = null, [WorkflowExpression] Func<string> tasksAddNewTaskOperationtags = null)
         {
-            SourceExpression.Validate(tasksAddNewTaskOperationautomationName, nameof(tasksAddNewTaskOperationautomationName), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationtaskInputData, nameof(tasksAddNewTaskOperationtaskInputData), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationprocessStage, nameof(tasksAddNewTaskOperationprocessStage), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationpriority, nameof(tasksAddNewTaskOperationpriority), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationsLA, nameof(tasksAddNewTaskOperationsLA), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationorganisation, nameof(tasksAddNewTaskOperationorganisation), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationdepartment, nameof(tasksAddNewTaskOperationdepartment), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationdescription, nameof(tasksAddNewTaskOperationdescription), required: false);
-            SourceExpression.Validate(tasksAddNewTaskOperationtags, nameof(tasksAddNewTaskOperationtags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksAddNewTaskOperation";
@@ -5941,16 +5500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewDeferralOperationResponse> TasksAddNewDeferralOperation([WorkflowExpression] Func<string> tasksAddNewDeferralOperationautomationName = null, [WorkflowExpression] Func<int> tasksAddNewDeferralOperationdeferralTimeInMinutes = null, [WorkflowExpression] Func<string> tasksAddNewDeferralOperationtaskInputData = null, [WorkflowExpression] Func<string> tasksAddNewDeferralOperationdeferralStoredData = null, [WorkflowExpression] Func<string> tasksAddNewDeferralOperationprocessStage = null, [WorkflowExpression] Func<int> tasksAddNewDeferralOperationpriority = null, [WorkflowExpression] Func<string> tasksAddNewDeferralOperationorganisation = null, [WorkflowExpression] Func<string> tasksAddNewDeferralOperationdepartment = null, [WorkflowExpression] Func<string> tasksAddNewDeferralOperationdescription = null, [WorkflowExpression] Func<string> tasksAddNewDeferralOperationtags = null)
         {
-            SourceExpression.Validate(tasksAddNewDeferralOperationautomationName, nameof(tasksAddNewDeferralOperationautomationName), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationdeferralTimeInMinutes, nameof(tasksAddNewDeferralOperationdeferralTimeInMinutes), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationtaskInputData, nameof(tasksAddNewDeferralOperationtaskInputData), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationdeferralStoredData, nameof(tasksAddNewDeferralOperationdeferralStoredData), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationprocessStage, nameof(tasksAddNewDeferralOperationprocessStage), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationpriority, nameof(tasksAddNewDeferralOperationpriority), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationorganisation, nameof(tasksAddNewDeferralOperationorganisation), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationdepartment, nameof(tasksAddNewDeferralOperationdepartment), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationdescription, nameof(tasksAddNewDeferralOperationdescription), required: false);
-            SourceExpression.Validate(tasksAddNewDeferralOperationtags, nameof(tasksAddNewDeferralOperationtags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksAddNewDeferralOperation";
@@ -6041,7 +5590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetTaskOperationResponse> TasksGetTaskOperation([WorkflowExpression] Func<string> tasksGetTaskOperationoperationId)
         {
-            SourceExpression.Validate(tasksGetTaskOperationoperationId, nameof(tasksGetTaskOperationoperationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/TasksGetTaskOperation";
@@ -6064,8 +5612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRemoteLoggingLevel([WorkflowExpression] Func<int> setRemoteLoggingLevelloggingLevel, [WorkflowExpression] Func<string> setRemoteLoggingLevelworkflow)
         {
-            SourceExpression.Validate(setRemoteLoggingLevelloggingLevel, nameof(setRemoteLoggingLevelloggingLevel), required: true);
-            SourceExpression.Validate(setRemoteLoggingLevelworkflow, nameof(setRemoteLoggingLevelworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetRemoteLoggingLevel";
@@ -6090,7 +5636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteLoggingLevelResponse> GetRemoteLoggingLevel([WorkflowExpression] Func<string> getRemoteLoggingLevelworkflow)
         {
-            SourceExpression.Validate(getRemoteLoggingLevelworkflow, nameof(getRemoteLoggingLevelworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetRemoteLoggingLevel";
@@ -6113,13 +5658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetLicenseCode([WorkflowExpression] Func<string> setLicenseCodecustomerNETBIOSDomainName, [WorkflowExpression] Func<string> setLicenseCodecustomerDisplayName, [WorkflowExpression] Func<string> setLicenseCodevendorName, [WorkflowExpression] Func<string> setLicenseCodelicenseExpiryDate, [WorkflowExpression] Func<string> setLicenseCodeactivationCode, [WorkflowExpression] Func<string> setLicenseCodeworkflow, [WorkflowExpression] Func<bool> setLicenseCodestoreInRegistry = null)
         {
-            SourceExpression.Validate(setLicenseCodecustomerNETBIOSDomainName, nameof(setLicenseCodecustomerNETBIOSDomainName), required: true);
-            SourceExpression.Validate(setLicenseCodecustomerDisplayName, nameof(setLicenseCodecustomerDisplayName), required: true);
-            SourceExpression.Validate(setLicenseCodevendorName, nameof(setLicenseCodevendorName), required: true);
-            SourceExpression.Validate(setLicenseCodelicenseExpiryDate, nameof(setLicenseCodelicenseExpiryDate), required: true);
-            SourceExpression.Validate(setLicenseCodeactivationCode, nameof(setLicenseCodeactivationCode), required: true);
-            SourceExpression.Validate(setLicenseCodeworkflow, nameof(setLicenseCodeworkflow), required: true);
-            SourceExpression.Validate(setLicenseCodestoreInRegistry, nameof(setLicenseCodestoreInRegistry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetLicenseCode";
@@ -6168,9 +5706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SetLicenseStringResponse> SetLicenseString([WorkflowExpression] Func<string> setLicenseStringlicenseString, [WorkflowExpression] Func<string> setLicenseStringworkflow, [WorkflowExpression] Func<bool> setLicenseStringstoreInRegistry = null)
         {
-            SourceExpression.Validate(setLicenseStringlicenseString, nameof(setLicenseStringlicenseString), required: true);
-            SourceExpression.Validate(setLicenseStringworkflow, nameof(setLicenseStringworkflow), required: true);
-            SourceExpression.Validate(setLicenseStringstoreInRegistry, nameof(setLicenseStringstoreInRegistry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetLicenseString";
@@ -6211,7 +5746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLicenseStateResponse> GetLicenseState([WorkflowExpression] Func<string> getLicenseStateworkflow)
         {
-            SourceExpression.Validate(getLicenseStateworkflow, nameof(getLicenseStateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetLicenseState";
@@ -6234,8 +5768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRSAGUITopmost([WorkflowExpression] Func<string> setRSAGUITopmostworkflow, [WorkflowExpression] Func<bool> setRSAGUITopmosttopMost = null)
         {
-            SourceExpression.Validate(setRSAGUITopmostworkflow, nameof(setRSAGUITopmostworkflow), required: true);
-            SourceExpression.Validate(setRSAGUITopmosttopMost, nameof(setRSAGUITopmosttopMost), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetRSAGUITopmost";
@@ -6274,8 +5806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRSAGUIOpacity([WorkflowExpression] Func<double> setRSAGUIOpacityopacity, [WorkflowExpression] Func<string> setRSAGUIOpacityworkflow)
         {
-            SourceExpression.Validate(setRSAGUIOpacityopacity, nameof(setRSAGUIOpacityopacity), required: true);
-            SourceExpression.Validate(setRSAGUIOpacityworkflow, nameof(setRSAGUIOpacityworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIOpacity";
@@ -6300,9 +5830,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRSAGUIPosition([WorkflowExpression] Func<int> setRSAGUIPositionx, [WorkflowExpression] Func<int> setRSAGUIPositiony, [WorkflowExpression] Func<string> setRSAGUIPositionworkflow)
         {
-            SourceExpression.Validate(setRSAGUIPositionx, nameof(setRSAGUIPositionx), required: true);
-            SourceExpression.Validate(setRSAGUIPositiony, nameof(setRSAGUIPositiony), required: true);
-            SourceExpression.Validate(setRSAGUIPositionworkflow, nameof(setRSAGUIPositionworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIPosition";
@@ -6329,9 +5856,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction BringRSAGUIToFront([WorkflowExpression] Func<string> bringRSAGUIToFrontworkflow, [WorkflowExpression] Func<bool> bringRSAGUIToFrontfocus = null, [WorkflowExpression] Func<bool> bringRSAGUIToFrontglobalLeftMouseClick = null)
         {
-            SourceExpression.Validate(bringRSAGUIToFrontworkflow, nameof(bringRSAGUIToFrontworkflow), required: true);
-            SourceExpression.Validate(bringRSAGUIToFrontfocus, nameof(bringRSAGUIToFrontfocus), required: false);
-            SourceExpression.Validate(bringRSAGUIToFrontglobalLeftMouseClick, nameof(bringRSAGUIToFrontglobalLeftMouseClick), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/BringRSAGUIToFront";
@@ -6386,9 +5910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DisconnectSession([WorkflowExpression] Func<string> disconnectSessionworkflow, [WorkflowExpression] Func<int> disconnectSessionsecondsToWait = null, [WorkflowExpression] Func<bool> disconnectSessiondoNotDisconnectIfLocalAgent = null)
         {
-            SourceExpression.Validate(disconnectSessionworkflow, nameof(disconnectSessionworkflow), required: true);
-            SourceExpression.Validate(disconnectSessionsecondsToWait, nameof(disconnectSessionsecondsToWait), required: false);
-            SourceExpression.Validate(disconnectSessiondoNotDisconnectIfLocalAgent, nameof(disconnectSessiondoNotDisconnectIfLocalAgent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/DisconnectSession";
@@ -6443,8 +5964,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LogoffSession([WorkflowExpression] Func<string> logoffSessionworkflow, [WorkflowExpression] Func<int> logoffSessionsecondsToWait = null)
         {
-            SourceExpression.Validate(logoffSessionworkflow, nameof(logoffSessionworkflow), required: true);
-            SourceExpression.Validate(logoffSessionsecondsToWait, nameof(logoffSessionsecondsToWait), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/LogoffSession";
@@ -6483,8 +6002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CloseRSAServer([WorkflowExpression] Func<string> closeRSAServerworkflow, [WorkflowExpression] Func<int> closeRSAServersecondsToWait = null)
         {
-            SourceExpression.Validate(closeRSAServerworkflow, nameof(closeRSAServerworkflow), required: true);
-            SourceExpression.Validate(closeRSAServersecondsToWait, nameof(closeRSAServersecondsToWait), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/CloseRSAServer";
@@ -6523,9 +6040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRPACommandTimeout([WorkflowExpression] Func<int> setRPACommandTimeoutcommandTimeoutInSeconds, [WorkflowExpression] Func<string> setRPACommandTimeoutworkflow, [WorkflowExpression] Func<bool> setRPACommandTimeoutterminateTimedoutRPACommandThreads = null)
         {
-            SourceExpression.Validate(setRPACommandTimeoutcommandTimeoutInSeconds, nameof(setRPACommandTimeoutcommandTimeoutInSeconds), required: true);
-            SourceExpression.Validate(setRPACommandTimeoutworkflow, nameof(setRPACommandTimeoutworkflow), required: true);
-            SourceExpression.Validate(setRPACommandTimeoutterminateTimedoutRPACommandThreads, nameof(setRPACommandTimeoutterminateTimedoutRPACommandThreads), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetRPACommandTimeout";
@@ -6566,10 +6080,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RunAlternativeIAConnect([WorkflowExpression] Func<string> runAlternativeIAConnectfilename, [WorkflowExpression] Func<string> runAlternativeIAConnectworkflow, [WorkflowExpression] Func<string> runAlternativeIAConnectarguments = null, [WorkflowExpression] Func<bool> runAlternativeIAConnectloadIntoMemory = null)
         {
-            SourceExpression.Validate(runAlternativeIAConnectfilename, nameof(runAlternativeIAConnectfilename), required: true);
-            SourceExpression.Validate(runAlternativeIAConnectworkflow, nameof(runAlternativeIAConnectworkflow), required: true);
-            SourceExpression.Validate(runAlternativeIAConnectarguments, nameof(runAlternativeIAConnectarguments), required: false);
-            SourceExpression.Validate(runAlternativeIAConnectloadIntoMemory, nameof(runAlternativeIAConnectloadIntoMemory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/RunAlternativeIAConnect";
@@ -6616,15 +6126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunAlternativeIAConnectSentFromDirectorResponse> RunAlternativeIAConnectSentFromDirector([WorkflowExpression] Func<string> runAlternativeIAConnectSentFromDirectorlocalFilename, [WorkflowExpression] Func<string> runAlternativeIAConnectSentFromDirectorworkflow, [WorkflowExpression] Func<string> runAlternativeIAConnectSentFromDirectorremoteFilename = null, [WorkflowExpression] Func<bool> runAlternativeIAConnectSentFromDirectorcompress = null, [WorkflowExpression] Func<string> runAlternativeIAConnectSentFromDirectorarguments = null, [WorkflowExpression] Func<bool> runAlternativeIAConnectSentFromDirectorpermitDowngrade = null, [WorkflowExpression] Func<bool> runAlternativeIAConnectSentFromDirectorskipVersionCheck = null, [WorkflowExpression] Func<bool> runAlternativeIAConnectSentFromDirectorloadIntoMemory = null, [WorkflowExpression] Func<bool> runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory = null)
         {
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorlocalFilename, nameof(runAlternativeIAConnectSentFromDirectorlocalFilename), required: true);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorworkflow, nameof(runAlternativeIAConnectSentFromDirectorworkflow), required: true);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorremoteFilename, nameof(runAlternativeIAConnectSentFromDirectorremoteFilename), required: false);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorcompress, nameof(runAlternativeIAConnectSentFromDirectorcompress), required: false);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorarguments, nameof(runAlternativeIAConnectSentFromDirectorarguments), required: false);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorpermitDowngrade, nameof(runAlternativeIAConnectSentFromDirectorpermitDowngrade), required: false);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorskipVersionCheck, nameof(runAlternativeIAConnectSentFromDirectorskipVersionCheck), required: false);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorloadIntoMemory, nameof(runAlternativeIAConnectSentFromDirectorloadIntoMemory), required: false);
-            SourceExpression.Validate(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory, nameof(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/RunAlternativeIAConnectSentFromDirector";
@@ -6741,7 +6242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetIAConnectAgentInfoResponse> GetIAConnectAgentInfo([WorkflowExpression] Func<string> getIAConnectAgentInfoworkflow)
         {
-            SourceExpression.Validate(getIAConnectAgentInfoworkflow, nameof(getIAConnectAgentInfoworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetIAConnectAgentInfo";
@@ -6764,15 +6264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetIAConnectAgentLogResponse> GetIAConnectAgentLog([WorkflowExpression] Func<string> getIAConnectAgentLogworkflow, [WorkflowExpression] Func<bool> getIAConnectAgentLogcompress = null, [WorkflowExpression] Func<bool> getIAConnectAgentLogreturnLastCommandOnly = null, [WorkflowExpression] Func<bool> getIAConnectAgentLogsaveLogToFile = null, [WorkflowExpression] Func<bool> getIAConnectAgentLogplaceLogContentInDataItem = null, [WorkflowExpression] Func<string> getIAConnectAgentLoglocalSaveFolder = null, [WorkflowExpression] Func<bool> getIAConnectAgentLoguseAgentLogFilename = null, [WorkflowExpression] Func<string> getIAConnectAgentLoglocalSaveFilename = null, [WorkflowExpression] Func<int> getIAConnectAgentLogmaxBytesToRead = null)
         {
-            SourceExpression.Validate(getIAConnectAgentLogworkflow, nameof(getIAConnectAgentLogworkflow), required: true);
-            SourceExpression.Validate(getIAConnectAgentLogcompress, nameof(getIAConnectAgentLogcompress), required: false);
-            SourceExpression.Validate(getIAConnectAgentLogreturnLastCommandOnly, nameof(getIAConnectAgentLogreturnLastCommandOnly), required: false);
-            SourceExpression.Validate(getIAConnectAgentLogsaveLogToFile, nameof(getIAConnectAgentLogsaveLogToFile), required: false);
-            SourceExpression.Validate(getIAConnectAgentLogplaceLogContentInDataItem, nameof(getIAConnectAgentLogplaceLogContentInDataItem), required: false);
-            SourceExpression.Validate(getIAConnectAgentLoglocalSaveFolder, nameof(getIAConnectAgentLoglocalSaveFolder), required: false);
-            SourceExpression.Validate(getIAConnectAgentLoguseAgentLogFilename, nameof(getIAConnectAgentLoguseAgentLogFilename), required: false);
-            SourceExpression.Validate(getIAConnectAgentLoglocalSaveFilename, nameof(getIAConnectAgentLoglocalSaveFilename), required: false);
-            SourceExpression.Validate(getIAConnectAgentLogmaxBytesToRead, nameof(getIAConnectAgentLogmaxBytesToRead), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetIAConnectAgentLog";
@@ -6903,7 +6394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ResetCommandStats([WorkflowExpression] Func<string> resetCommandStatsworkflow)
         {
-            SourceExpression.Validate(resetCommandStatsworkflow, nameof(resetCommandStatsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/ResetCommandStats";
@@ -6926,7 +6416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAllCommandStatsResponse> GetAllCommandStats([WorkflowExpression] Func<string> getAllCommandStatsworkflow)
         {
-            SourceExpression.Validate(getAllCommandStatsworkflow, nameof(getAllCommandStatsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetAllCommandStats";
@@ -6949,18 +6438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<EnableNextHopResponse> EnableNextHop([WorkflowExpression] Func<string> enableNextHopworkflow, [WorkflowExpression] Func<string> enableNextHopnextHopDirectorAddress = null, [WorkflowExpression] Func<int> enableNextHopnextHopDirectorTCPPort = null, [WorkflowExpression] Func<bool> enableNextHopnextHopDirectorUsesHTTPS = null, [WorkflowExpression] Func<bool> enableNextHopnextHopDirectorAddressIsLocalhostname = null, [WorkflowExpression] Func<bool> enableNextHopnextHopDirectorAddressIsHostname = null, [WorkflowExpression] Func<bool> enableNextHopnextHopDirectorAddressIsFQDN = null, [WorkflowExpression] Func<bool> enableNextHopincrementNextHopDirectorTCPPortBySessionId = null, [WorkflowExpression] Func<bool> enableNextHopdisableBeforeEnable = null, [WorkflowExpression] Func<bool> enableNextHopcheckNextHopDirectorIsRunning = null, [WorkflowExpression] Func<bool> enableNextHopcheckNextHopAgentIsRunning = null, [WorkflowExpression] Func<bool> enableNextHopnextHopDirectorAddressIsNamedPipe = null)
         {
-            SourceExpression.Validate(enableNextHopworkflow, nameof(enableNextHopworkflow), required: true);
-            SourceExpression.Validate(enableNextHopnextHopDirectorAddress, nameof(enableNextHopnextHopDirectorAddress), required: false);
-            SourceExpression.Validate(enableNextHopnextHopDirectorTCPPort, nameof(enableNextHopnextHopDirectorTCPPort), required: false);
-            SourceExpression.Validate(enableNextHopnextHopDirectorUsesHTTPS, nameof(enableNextHopnextHopDirectorUsesHTTPS), required: false);
-            SourceExpression.Validate(enableNextHopnextHopDirectorAddressIsLocalhostname, nameof(enableNextHopnextHopDirectorAddressIsLocalhostname), required: false);
-            SourceExpression.Validate(enableNextHopnextHopDirectorAddressIsHostname, nameof(enableNextHopnextHopDirectorAddressIsHostname), required: false);
-            SourceExpression.Validate(enableNextHopnextHopDirectorAddressIsFQDN, nameof(enableNextHopnextHopDirectorAddressIsFQDN), required: false);
-            SourceExpression.Validate(enableNextHopincrementNextHopDirectorTCPPortBySessionId, nameof(enableNextHopincrementNextHopDirectorTCPPortBySessionId), required: false);
-            SourceExpression.Validate(enableNextHopdisableBeforeEnable, nameof(enableNextHopdisableBeforeEnable), required: false);
-            SourceExpression.Validate(enableNextHopcheckNextHopDirectorIsRunning, nameof(enableNextHopcheckNextHopDirectorIsRunning), required: false);
-            SourceExpression.Validate(enableNextHopcheckNextHopAgentIsRunning, nameof(enableNextHopcheckNextHopAgentIsRunning), required: false);
-            SourceExpression.Validate(enableNextHopnextHopDirectorAddressIsNamedPipe, nameof(enableNextHopnextHopDirectorAddressIsNamedPipe), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/EnableNextHop";
@@ -7149,7 +6626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DisableNextHop([WorkflowExpression] Func<string> disableNextHopworkflow)
         {
-            SourceExpression.Validate(disableNextHopworkflow, nameof(disableNextHopworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/DisableNextHop";
@@ -7172,9 +6648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetNextHopStatusResponse> GetNextHopStatus([WorkflowExpression] Func<string> getNextHopStatusworkflow, [WorkflowExpression] Func<bool> getNextHopStatuscheckNextHopDirectorIsRunning = null, [WorkflowExpression] Func<bool> getNextHopStatuscheckNextHopAgentIsRunning = null)
         {
-            SourceExpression.Validate(getNextHopStatusworkflow, nameof(getNextHopStatusworkflow), required: true);
-            SourceExpression.Validate(getNextHopStatuscheckNextHopDirectorIsRunning, nameof(getNextHopStatuscheckNextHopDirectorIsRunning), required: false);
-            SourceExpression.Validate(getNextHopStatuscheckNextHopAgentIsRunning, nameof(getNextHopStatuscheckNextHopAgentIsRunning), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetNextHopStatus";
@@ -7229,17 +6702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WaitForNextHopSessionToConnectResponse> WaitForNextHopSessionToConnect([WorkflowExpression] Func<string> waitForNextHopSessionToConnectworkflow, [WorkflowExpression] Func<string> waitForNextHopSessionToConnectnextHopDirectorAddress = null, [WorkflowExpression] Func<int> waitForNextHopSessionToConnectnextHopDirectorTCPPort = null, [WorkflowExpression] Func<bool> waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS = null, [WorkflowExpression] Func<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname = null, [WorkflowExpression] Func<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname = null, [WorkflowExpression] Func<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN = null, [WorkflowExpression] Func<bool> waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId = null, [WorkflowExpression] Func<double> waitForNextHopSessionToConnectsecondsToWait = null, [WorkflowExpression] Func<bool> waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe = null, [WorkflowExpression] Func<bool> waitForNextHopSessionToConnectdisableExistingNextHop = null)
         {
-            SourceExpression.Validate(waitForNextHopSessionToConnectworkflow, nameof(waitForNextHopSessionToConnectworkflow), required: true);
-            SourceExpression.Validate(waitForNextHopSessionToConnectnextHopDirectorAddress, nameof(waitForNextHopSessionToConnectnextHopDirectorAddress), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectnextHopDirectorTCPPort, nameof(waitForNextHopSessionToConnectnextHopDirectorTCPPort), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS, nameof(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId, nameof(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectsecondsToWait, nameof(waitForNextHopSessionToConnectsecondsToWait), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe), required: false);
-            SourceExpression.Validate(waitForNextHopSessionToConnectdisableExistingNextHop, nameof(waitForNextHopSessionToConnectdisableExistingNextHop), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/WaitForNextHopSessionToConnect";
@@ -7412,19 +6874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ConfigureNextHopDirector([WorkflowExpression] Func<string> configureNextHopDirectorworkflow, [WorkflowExpression] Func<bool> configureNextHopDirectorsOAPEnabled = null, [WorkflowExpression] Func<bool> configureNextHopDirectorrESTEnabled = null, [WorkflowExpression] Func<bool> configureNextHopDirectorwebServerEnabled = null, [WorkflowExpression] Func<bool> configureNextHopDirectordirectorIsLocalhostOnly = null, [WorkflowExpression] Func<int> configureNextHopDirectorsOAPTCPPort = null, [WorkflowExpression] Func<int> configureNextHopDirectorrESTTCPPort = null, [WorkflowExpression] Func<bool> configureNextHopDirectorsOAPUsesHTTPS = null, [WorkflowExpression] Func<bool> configureNextHopDirectorrESTUsesHTTPS = null, [WorkflowExpression] Func<bool> configureNextHopDirectorincrementDirectorTCPPortBySessionId = null, [WorkflowExpression] Func<bool> configureNextHopDirectorsOAPUsesUserAuthentication = null, [WorkflowExpression] Func<bool> configureNextHopDirectorrESTUsesUserAuthentication = null, [WorkflowExpression] Func<bool> configureNextHopDirectorcommandNamedPipeEnabled = null)
         {
-            SourceExpression.Validate(configureNextHopDirectorworkflow, nameof(configureNextHopDirectorworkflow), required: true);
-            SourceExpression.Validate(configureNextHopDirectorsOAPEnabled, nameof(configureNextHopDirectorsOAPEnabled), required: false);
-            SourceExpression.Validate(configureNextHopDirectorrESTEnabled, nameof(configureNextHopDirectorrESTEnabled), required: false);
-            SourceExpression.Validate(configureNextHopDirectorwebServerEnabled, nameof(configureNextHopDirectorwebServerEnabled), required: false);
-            SourceExpression.Validate(configureNextHopDirectordirectorIsLocalhostOnly, nameof(configureNextHopDirectordirectorIsLocalhostOnly), required: false);
-            SourceExpression.Validate(configureNextHopDirectorsOAPTCPPort, nameof(configureNextHopDirectorsOAPTCPPort), required: false);
-            SourceExpression.Validate(configureNextHopDirectorrESTTCPPort, nameof(configureNextHopDirectorrESTTCPPort), required: false);
-            SourceExpression.Validate(configureNextHopDirectorsOAPUsesHTTPS, nameof(configureNextHopDirectorsOAPUsesHTTPS), required: false);
-            SourceExpression.Validate(configureNextHopDirectorrESTUsesHTTPS, nameof(configureNextHopDirectorrESTUsesHTTPS), required: false);
-            SourceExpression.Validate(configureNextHopDirectorincrementDirectorTCPPortBySessionId, nameof(configureNextHopDirectorincrementDirectorTCPPortBySessionId), required: false);
-            SourceExpression.Validate(configureNextHopDirectorsOAPUsesUserAuthentication, nameof(configureNextHopDirectorsOAPUsesUserAuthentication), required: false);
-            SourceExpression.Validate(configureNextHopDirectorrESTUsesUserAuthentication, nameof(configureNextHopDirectorrESTUsesUserAuthentication), required: false);
-            SourceExpression.Validate(configureNextHopDirectorcommandNamedPipeEnabled, nameof(configureNextHopDirectorcommandNamedPipeEnabled), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/ConfigureNextHopDirector";
@@ -7639,7 +7088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ResetNextHopDirectorSettings([WorkflowExpression] Func<string> resetNextHopDirectorSettingsworkflow)
         {
-            SourceExpression.Validate(resetNextHopDirectorSettingsworkflow, nameof(resetNextHopDirectorSettingsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/ResetNextHopDirectorSettings";
@@ -7662,7 +7110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction WorkflowCompleted([WorkflowExpression] Func<string> workflowCompletedworkflow)
         {
-            SourceExpression.Validate(workflowCompletedworkflow, nameof(workflowCompletedworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/WorkflowCompleted";
@@ -7685,8 +7132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RaiseExceptionResponse> RaiseException([WorkflowExpression] Func<string> raiseExceptioninputException = null, [WorkflowExpression] Func<string> raiseExceptionexceptionMessage = null)
         {
-            SourceExpression.Validate(raiseExceptioninputException, nameof(raiseExceptioninputException), required: false);
-            SourceExpression.Validate(raiseExceptionexceptionMessage, nameof(raiseExceptionexceptionMessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/RaiseException";
@@ -7719,10 +7164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<UpdateOrchestratorFlowStatsResultResponse> UpdateOrchestratorFlowStatsResult([WorkflowExpression] Func<string> updateOrchestratorFlowStatsResultworkflow, [WorkflowExpression] Func<bool> updateOrchestratorFlowStatsResultflowLastActionSuccess = null, [WorkflowExpression] Func<string> updateOrchestratorFlowStatsResultflowLastActionErrorMessage = null, [WorkflowExpression] Func<int> updateOrchestratorFlowStatsResultflowLastActionCode = null)
         {
-            SourceExpression.Validate(updateOrchestratorFlowStatsResultworkflow, nameof(updateOrchestratorFlowStatsResultworkflow), required: true);
-            SourceExpression.Validate(updateOrchestratorFlowStatsResultflowLastActionSuccess, nameof(updateOrchestratorFlowStatsResultflowLastActionSuccess), required: false);
-            SourceExpression.Validate(updateOrchestratorFlowStatsResultflowLastActionErrorMessage, nameof(updateOrchestratorFlowStatsResultflowLastActionErrorMessage), required: false);
-            SourceExpression.Validate(updateOrchestratorFlowStatsResultflowLastActionCode, nameof(updateOrchestratorFlowStatsResultflowLastActionCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/UpdateOrchestratorFlowStatsResult";
@@ -7763,7 +7204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLastFailedActionFromOrchestratorFlowStatsResponse> GetLastFailedActionFromOrchestratorFlowStats([WorkflowExpression] Func<string> getLastFailedActionFromOrchestratorFlowStatsworkflow)
         {
-            SourceExpression.Validate(getLastFailedActionFromOrchestratorFlowStatsworkflow, nameof(getLastFailedActionFromOrchestratorFlowStatsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetLastFailedActionFromOrchestratorFlowStats";
@@ -7786,11 +7226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorFlowStatsResponse> GetOrchestratorFlowStats([WorkflowExpression] Func<int> getOrchestratorFlowStatswithinLastNumberOfDays = null, [WorkflowExpression] Func<string> getOrchestratorFlowStatssearchFlowName = null, [WorkflowExpression] Func<bool> getOrchestratorFlowStatssearchFlowLastActionResult = null, [WorkflowExpression] Func<string> getOrchestratorFlowStatssearchFlowStartTimeStartWindow = null, [WorkflowExpression] Func<string> getOrchestratorFlowStatssearchFlowStartTimeEndWindow = null)
         {
-            SourceExpression.Validate(getOrchestratorFlowStatswithinLastNumberOfDays, nameof(getOrchestratorFlowStatswithinLastNumberOfDays), required: false);
-            SourceExpression.Validate(getOrchestratorFlowStatssearchFlowName, nameof(getOrchestratorFlowStatssearchFlowName), required: false);
-            SourceExpression.Validate(getOrchestratorFlowStatssearchFlowLastActionResult, nameof(getOrchestratorFlowStatssearchFlowLastActionResult), required: false);
-            SourceExpression.Validate(getOrchestratorFlowStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeStartWindow), required: false);
-            SourceExpression.Validate(getOrchestratorFlowStatssearchFlowStartTimeEndWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeEndWindow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorFlowStats";
@@ -7841,9 +7276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorWorkerAvailabilityStatsResponse> GetOrchestratorWorkerAvailabilityStats([WorkflowExpression] Func<int> getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays = null, [WorkflowExpression] Func<string> getOrchestratorWorkerAvailabilityStatssearchFlowName = null, [WorkflowExpression] Func<string> getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow = null)
         {
-            SourceExpression.Validate(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays, nameof(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays), required: false);
-            SourceExpression.Validate(getOrchestratorWorkerAvailabilityStatssearchFlowName, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowName), required: false);
-            SourceExpression.Validate(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorkerAvailabilityStats";
@@ -7882,10 +7314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorWorkerFlowUsageHeatmapResponse> GetOrchestratorWorkerFlowUsageHeatmap([WorkflowExpression] Func<string> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, [WorkflowExpression] Func<string> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, [WorkflowExpression] Func<int> getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC = null, [WorkflowExpression] Func<string> getOrchestratorWorkerFlowUsageHeatmapworkerNames = null)
         {
-            SourceExpression.Validate(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow), required: true);
-            SourceExpression.Validate(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow), required: true);
-            SourceExpression.Validate(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC, nameof(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC), required: false);
-            SourceExpression.Validate(getOrchestratorWorkerFlowUsageHeatmapworkerNames, nameof(getOrchestratorWorkerFlowUsageHeatmapworkerNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorkerFlowUsageHeatmap";
@@ -7932,10 +7360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorLoginHistoryResponse> GetOrchestratorLoginHistory([WorkflowExpression] Func<int> getOrchestratorLoginHistorywithinLastNumberOfDays = null, [WorkflowExpression] Func<string> getOrchestratorLoginHistorysearchByEmail = null, [WorkflowExpression] Func<string> getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow = null, [WorkflowExpression] Func<string> getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow = null)
         {
-            SourceExpression.Validate(getOrchestratorLoginHistorywithinLastNumberOfDays, nameof(getOrchestratorLoginHistorywithinLastNumberOfDays), required: false);
-            SourceExpression.Validate(getOrchestratorLoginHistorysearchByEmail, nameof(getOrchestratorLoginHistorysearchByEmail), required: false);
-            SourceExpression.Validate(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow), required: false);
-            SourceExpression.Validate(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorLoginHistory";
@@ -7980,8 +7404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetLocalLoggingLevel([WorkflowExpression] Func<int> setLocalLoggingLevelloggingLevel, [WorkflowExpression] Func<string> setLocalLoggingLevelworkflow)
         {
-            SourceExpression.Validate(setLocalLoggingLevelloggingLevel, nameof(setLocalLoggingLevelloggingLevel), required: true);
-            SourceExpression.Validate(setLocalLoggingLevelworkflow, nameof(setLocalLoggingLevelworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetLocalLoggingLevel";
@@ -8006,9 +7428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunCommandResponse> RunCommand([WorkflowExpression] Func<string> runCommandcommandName, [WorkflowExpression] Func<string> runCommandworkflow, [WorkflowExpression] Func<string> runCommandinputJSON = null)
         {
-            SourceExpression.Validate(runCommandcommandName, nameof(runCommandcommandName), required: true);
-            SourceExpression.Validate(runCommandworkflow, nameof(runCommandworkflow), required: true);
-            SourceExpression.Validate(runCommandinputJSON, nameof(runCommandinputJSON), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/RunCommand";
@@ -8039,7 +7458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLocalLoggingLevelResponse> GetLocalLoggingLevel([WorkflowExpression] Func<string> getLocalLoggingLevelworkflow)
         {
-            SourceExpression.Validate(getLocalLoggingLevelworkflow, nameof(getLocalLoggingLevelworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetLocalLoggingLevel";
@@ -8062,7 +7480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteClientTypeResponse> GetRemoteClientType([WorkflowExpression] Func<string> getRemoteClientTypeworkflow)
         {
-            SourceExpression.Validate(getRemoteClientTypeworkflow, nameof(getRemoteClientTypeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetRemoteClientType";
@@ -8085,7 +7502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetIAConnectDirectorInfoResponse> GetIAConnectDirectorInfo([WorkflowExpression] Func<string> getIAConnectDirectorInfoworkflow)
         {
-            SourceExpression.Validate(getIAConnectDirectorInfoworkflow, nameof(getIAConnectDirectorInfoworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetIAConnectDirectorInfo";
@@ -8108,7 +7524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAvailableIAConnectSessionsResponse> GetAvailableIAConnectSessions([WorkflowExpression] Func<string> getAvailableIAConnectSessionsworkflow)
         {
-            SourceExpression.Validate(getAvailableIAConnectSessionsworkflow, nameof(getAvailableIAConnectSessionsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetAvailableIAConnectSessions";
@@ -8131,9 +7546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AttachToIAConnectSessionByName([WorkflowExpression] Func<string> attachToIAConnectSessionByNameiAConnectSessionName, [WorkflowExpression] Func<string> attachToIAConnectSessionByNameworkflow, [WorkflowExpression] Func<bool> attachToIAConnectSessionByNamevirtualChannelMustBeConnected = null)
         {
-            SourceExpression.Validate(attachToIAConnectSessionByNameiAConnectSessionName, nameof(attachToIAConnectSessionByNameiAConnectSessionName), required: true);
-            SourceExpression.Validate(attachToIAConnectSessionByNameworkflow, nameof(attachToIAConnectSessionByNameworkflow), required: true);
-            SourceExpression.Validate(attachToIAConnectSessionByNamevirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByNamevirtualChannelMustBeConnected), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/AttachToIAConnectSessionByName";
@@ -8174,8 +7586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AttachToTier1IAConnectSessionResponse> AttachToTier1IAConnectSession([WorkflowExpression] Func<string> attachToTier1IAConnectSessionworkflow, [WorkflowExpression] Func<bool> attachToTier1IAConnectSessionvirtualChannelMustBeConnected = null)
         {
-            SourceExpression.Validate(attachToTier1IAConnectSessionworkflow, nameof(attachToTier1IAConnectSessionworkflow), required: true);
-            SourceExpression.Validate(attachToTier1IAConnectSessionvirtualChannelMustBeConnected, nameof(attachToTier1IAConnectSessionvirtualChannelMustBeConnected), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/AttachToTier1IAConnectSession";
@@ -8214,13 +7624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AttachToIAConnectSessionByIndexResponse> AttachToIAConnectSessionByIndex([WorkflowExpression] Func<string> attachToIAConnectSessionByIndexworkflow, [WorkflowExpression] Func<attachToIAConnectSessionByIndexsearchIAConnectSessionTypeInput> attachToIAConnectSessionByIndexsearchIAConnectSessionType = null, [WorkflowExpression] Func<int> attachToIAConnectSessionByIndexsearchIAConnectSessionIndex = null, [WorkflowExpression] Func<int> attachToIAConnectSessionByIndextimeToWaitInSeconds = null, [WorkflowExpression] Func<bool> attachToIAConnectSessionByIndexraiseExceptionIfTimedout = null, [WorkflowExpression] Func<bool> attachToIAConnectSessionByIndexvirtualChannelMustBeConnected = null, [WorkflowExpression] Func<bool> attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore = null)
         {
-            SourceExpression.Validate(attachToIAConnectSessionByIndexworkflow, nameof(attachToIAConnectSessionByIndexworkflow), required: true);
-            SourceExpression.Validate(attachToIAConnectSessionByIndexsearchIAConnectSessionType, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionType), required: false);
-            SourceExpression.Validate(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex), required: false);
-            SourceExpression.Validate(attachToIAConnectSessionByIndextimeToWaitInSeconds, nameof(attachToIAConnectSessionByIndextimeToWaitInSeconds), required: false);
-            SourceExpression.Validate(attachToIAConnectSessionByIndexraiseExceptionIfTimedout, nameof(attachToIAConnectSessionByIndexraiseExceptionIfTimedout), required: false);
-            SourceExpression.Validate(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected), required: false);
-            SourceExpression.Validate(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore, nameof(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/AttachToIAConnectSessionByIndex";
@@ -8309,12 +7712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AttachToMostRecentIAConnectSessionResponse> AttachToMostRecentIAConnectSession([WorkflowExpression] Func<string> attachToMostRecentIAConnectSessionworkflow, [WorkflowExpression] Func<attachToMostRecentIAConnectSessionsearchIAConnectSessionTypeInput> attachToMostRecentIAConnectSessionsearchIAConnectSessionType = null, [WorkflowExpression] Func<int> attachToMostRecentIAConnectSessiontimeToWaitInSeconds = null, [WorkflowExpression] Func<bool> attachToMostRecentIAConnectSessionraiseExceptionIfTimedout = null, [WorkflowExpression] Func<bool> attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected = null, [WorkflowExpression] Func<bool> attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore = null)
         {
-            SourceExpression.Validate(attachToMostRecentIAConnectSessionworkflow, nameof(attachToMostRecentIAConnectSessionworkflow), required: true);
-            SourceExpression.Validate(attachToMostRecentIAConnectSessionsearchIAConnectSessionType, nameof(attachToMostRecentIAConnectSessionsearchIAConnectSessionType), required: false);
-            SourceExpression.Validate(attachToMostRecentIAConnectSessiontimeToWaitInSeconds, nameof(attachToMostRecentIAConnectSessiontimeToWaitInSeconds), required: false);
-            SourceExpression.Validate(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout, nameof(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout), required: false);
-            SourceExpression.Validate(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected, nameof(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected), required: false);
-            SourceExpression.Validate(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore, nameof(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/AttachToMostRecentIAConnectSession";
@@ -8397,7 +7794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetDirectorUpTimeResponse> GetDirectorUpTime([WorkflowExpression] Func<string> getDirectorUpTimeworkflow)
         {
-            SourceExpression.Validate(getDirectorUpTimeworkflow, nameof(getDirectorUpTimeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetDirectorUpTime";
@@ -8420,8 +7816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DoesIAConnectSessionExistByNameResponse> DoesIAConnectSessionExistByName([WorkflowExpression] Func<string> doesIAConnectSessionExistByNameiAConnectSessionName, [WorkflowExpression] Func<string> doesIAConnectSessionExistByNameworkflow)
         {
-            SourceExpression.Validate(doesIAConnectSessionExistByNameiAConnectSessionName, nameof(doesIAConnectSessionExistByNameiAConnectSessionName), required: true);
-            SourceExpression.Validate(doesIAConnectSessionExistByNameworkflow, nameof(doesIAConnectSessionExistByNameworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/DoesIAConnectSessionExistByName";
@@ -8446,11 +7840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WaitForIAConnectSessionToCloseByNameResponse> WaitForIAConnectSessionToCloseByName([WorkflowExpression] Func<string> waitForIAConnectSessionToCloseByNameiAConnectSessionName, [WorkflowExpression] Func<string> waitForIAConnectSessionToCloseByNameworkflow, [WorkflowExpression] Func<int> waitForIAConnectSessionToCloseByNametimeToWaitInSeconds = null, [WorkflowExpression] Func<bool> waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout = null, [WorkflowExpression] Func<bool> waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess = null)
         {
-            SourceExpression.Validate(waitForIAConnectSessionToCloseByNameiAConnectSessionName, nameof(waitForIAConnectSessionToCloseByNameiAConnectSessionName), required: true);
-            SourceExpression.Validate(waitForIAConnectSessionToCloseByNameworkflow, nameof(waitForIAConnectSessionToCloseByNameworkflow), required: true);
-            SourceExpression.Validate(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds, nameof(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds), required: false);
-            SourceExpression.Validate(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout, nameof(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout), required: false);
-            SourceExpression.Validate(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess, nameof(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/WaitForIAConnectSessionToCloseByName";
@@ -8513,9 +7902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillIAConnectSessionByNameResponse> KillIAConnectSessionByName([WorkflowExpression] Func<string> killIAConnectSessionByNameiAConnectSessionName, [WorkflowExpression] Func<string> killIAConnectSessionByNameworkflow, [WorkflowExpression] Func<bool> killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess = null)
         {
-            SourceExpression.Validate(killIAConnectSessionByNameiAConnectSessionName, nameof(killIAConnectSessionByNameiAConnectSessionName), required: true);
-            SourceExpression.Validate(killIAConnectSessionByNameworkflow, nameof(killIAConnectSessionByNameworkflow), required: true);
-            SourceExpression.Validate(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess, nameof(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/KillIAConnectSessionByName";
@@ -8556,19 +7942,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SetAgentGlobalCoordinateConfigurationResponse> SetAgentGlobalCoordinateConfiguration([WorkflowExpression] Func<string> setAgentGlobalCoordinateConfigurationworkflow, [WorkflowExpression] Func<setAgentGlobalCoordinateConfigurationmultiMonitorFunctionalityInput> setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality = null, [WorkflowExpression] Func<setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplierInput> setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier = null, [WorkflowExpression] Func<setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplierInput> setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier = null, [WorkflowExpression] Func<double> setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier = null, [WorkflowExpression] Func<double> setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier = null, [WorkflowExpression] Func<double> setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier = null, [WorkflowExpression] Func<double> setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier = null, [WorkflowExpression] Func<bool> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent = null, [WorkflowExpression] Func<bool> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos = null, [WorkflowExpression] Func<bool> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod = null, [WorkflowExpression] Func<setAgentGlobalCoordinateConfigurationjavaCoordinateSystemInput> setAgentGlobalCoordinateConfigurationjavaCoordinateSystem = null, [WorkflowExpression] Func<setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystemInput> setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem = null)
         {
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationworkflow, nameof(setAgentGlobalCoordinateConfigurationworkflow), required: true);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality, nameof(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem), required: false);
-            SourceExpression.Validate(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetAgentGlobalCoordinateConfiguration";
@@ -8783,7 +8156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentGlobalCoordinateConfigurationResponse> GetAgentGlobalCoordinateConfiguration([WorkflowExpression] Func<string> getAgentGlobalCoordinateConfigurationworkflow)
         {
-            SourceExpression.Validate(getAgentGlobalCoordinateConfigurationworkflow, nameof(getAgentGlobalCoordinateConfigurationworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetAgentGlobalCoordinateConfiguration";
@@ -8806,10 +8178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentThreadStatusResponse> GetAgentThreadStatus([WorkflowExpression] Func<int> getAgentThreadStatusthreadId, [WorkflowExpression] Func<string> getAgentThreadStatusworkflow, [WorkflowExpression] Func<bool> getAgentThreadStatusretrieveThreadOutputData = null, [WorkflowExpression] Func<bool> getAgentThreadStatusclearOutputDataFromMemoryOnceRead = null)
         {
-            SourceExpression.Validate(getAgentThreadStatusthreadId, nameof(getAgentThreadStatusthreadId), required: true);
-            SourceExpression.Validate(getAgentThreadStatusworkflow, nameof(getAgentThreadStatusworkflow), required: true);
-            SourceExpression.Validate(getAgentThreadStatusretrieveThreadOutputData, nameof(getAgentThreadStatusretrieveThreadOutputData), required: false);
-            SourceExpression.Validate(getAgentThreadStatusclearOutputDataFromMemoryOnceRead, nameof(getAgentThreadStatusclearOutputDataFromMemoryOnceRead), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetAgentThreadStatus";
@@ -8866,14 +8234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WaitForAgentThreadToCompleteSuccessfullyResponse> WaitForAgentThreadToCompleteSuccessfully([WorkflowExpression] Func<int> waitForAgentThreadToCompleteSuccessfullythreadId, [WorkflowExpression] Func<int> waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, [WorkflowExpression] Func<string> waitForAgentThreadToCompleteSuccessfullyworkflow, [WorkflowExpression] Func<bool> waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData = null, [WorkflowExpression] Func<bool> waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead = null, [WorkflowExpression] Func<bool> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted = null, [WorkflowExpression] Func<bool> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError = null, [WorkflowExpression] Func<int> waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall = null)
         {
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullythreadId, nameof(waitForAgentThreadToCompleteSuccessfullythreadId), required: true);
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread), required: true);
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullyworkflow, nameof(waitForAgentThreadToCompleteSuccessfullyworkflow), required: true);
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData, nameof(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData), required: false);
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead, nameof(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead), required: false);
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted), required: false);
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError), required: false);
-            SourceExpression.Validate(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/WaitForAgentThreadToCompleteSuccessfully";
@@ -8980,8 +8340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentThreadsResponse> GetAgentThreads([WorkflowExpression] Func<string> getAgentThreadsworkflow, [WorkflowExpression] Func<getAgentThreadssortOrderInput> getAgentThreadssortOrder = null)
         {
-            SourceExpression.Validate(getAgentThreadsworkflow, nameof(getAgentThreadsworkflow), required: true);
-            SourceExpression.Validate(getAgentThreadssortOrder, nameof(getAgentThreadssortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetAgentThreads";
@@ -9010,8 +8368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillAgentThreadResponse> KillAgentThread([WorkflowExpression] Func<int> killAgentThreadthreadId, [WorkflowExpression] Func<string> killAgentThreadworkflow)
         {
-            SourceExpression.Validate(killAgentThreadthreadId, nameof(killAgentThreadthreadId), required: true);
-            SourceExpression.Validate(killAgentThreadworkflow, nameof(killAgentThreadworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/KillAgentThread";
@@ -9036,10 +8392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DeleteAgentThreadResponse> DeleteAgentThread([WorkflowExpression] Func<string> deleteAgentThreadworkflow, [WorkflowExpression] Func<int> deleteAgentThreadthreadId = null, [WorkflowExpression] Func<bool> deleteAgentThreaddeleteAllAgentThreads = null, [WorkflowExpression] Func<bool> deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete = null)
         {
-            SourceExpression.Validate(deleteAgentThreadworkflow, nameof(deleteAgentThreadworkflow), required: true);
-            SourceExpression.Validate(deleteAgentThreadthreadId, nameof(deleteAgentThreadthreadId), required: false);
-            SourceExpression.Validate(deleteAgentThreaddeleteAllAgentThreads, nameof(deleteAgentThreaddeleteAllAgentThreads), required: false);
-            SourceExpression.Validate(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete, nameof(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/DeleteAgentThread";
@@ -9100,10 +8452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AllocateWorkerFromOrchestratorResponse> AllocateWorkerFromOrchestrator([WorkflowExpression] Func<string> allocateWorkerFromOrchestratorworkflow, [WorkflowExpression] Func<string> allocateWorkerFromOrchestratorworkerTag = null, [WorkflowExpression] Func<string> allocateWorkerFromOrchestratorworkerName = null, [WorkflowExpression] Func<bool> allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable = null)
         {
-            SourceExpression.Validate(allocateWorkerFromOrchestratorworkflow, nameof(allocateWorkerFromOrchestratorworkflow), required: true);
-            SourceExpression.Validate(allocateWorkerFromOrchestratorworkerTag, nameof(allocateWorkerFromOrchestratorworkerTag), required: false);
-            SourceExpression.Validate(allocateWorkerFromOrchestratorworkerName, nameof(allocateWorkerFromOrchestratorworkerName), required: false);
-            SourceExpression.Validate(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable, nameof(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/AllocateWorkerFromOrchestrator";
@@ -9154,9 +8502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SetOrchestratorWorkerMaintenanceModeResponse> SetOrchestratorWorkerMaintenanceMode([WorkflowExpression] Func<int> setOrchestratorWorkerMaintenanceModeworkerId = null, [WorkflowExpression] Func<string> setOrchestratorWorkerMaintenanceModeworkerName = null, [WorkflowExpression] Func<bool> setOrchestratorWorkerMaintenanceModemaintenanceMode = null)
         {
-            SourceExpression.Validate(setOrchestratorWorkerMaintenanceModeworkerId, nameof(setOrchestratorWorkerMaintenanceModeworkerId), required: false);
-            SourceExpression.Validate(setOrchestratorWorkerMaintenanceModeworkerName, nameof(setOrchestratorWorkerMaintenanceModeworkerName), required: false);
-            SourceExpression.Validate(setOrchestratorWorkerMaintenanceModemaintenanceMode, nameof(setOrchestratorWorkerMaintenanceModemaintenanceMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/SetOrchestratorWorkerMaintenanceMode";
@@ -9215,17 +8560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CreateOrchestratorOneTimeSecretResponse> CreateOrchestratorOneTimeSecret([WorkflowExpression] Func<string> createOrchestratorOneTimeSecretfriendlyName, [WorkflowExpression] Func<string> createOrchestratorOneTimeSecretsecretValue = null, [WorkflowExpression] Func<string> createOrchestratorOneTimeSecretretrievalPhrase1 = null, [WorkflowExpression] Func<string> createOrchestratorOneTimeSecretretrievalPhrase2 = null, [WorkflowExpression] Func<int> createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion = null, [WorkflowExpression] Func<bool> createOrchestratorOneTimeSecretsecretHasAStartDate = null, [WorkflowExpression] Func<string> createOrchestratorOneTimeSecretsecretStartDateTime = null, [WorkflowExpression] Func<int> createOrchestratorOneTimeSecrethoursUntilSecretStartTime = null, [WorkflowExpression] Func<bool> createOrchestratorOneTimeSecretsecretHasAnExpiryDate = null, [WorkflowExpression] Func<string> createOrchestratorOneTimeSecretsecretExpiryDateTime = null, [WorkflowExpression] Func<int> createOrchestratorOneTimeSecrethoursUntilSecretExpiry = null)
         {
-            SourceExpression.Validate(createOrchestratorOneTimeSecretfriendlyName, nameof(createOrchestratorOneTimeSecretfriendlyName), required: true);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretsecretValue, nameof(createOrchestratorOneTimeSecretsecretValue), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretretrievalPhrase1, nameof(createOrchestratorOneTimeSecretretrievalPhrase1), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretretrievalPhrase2, nameof(createOrchestratorOneTimeSecretretrievalPhrase2), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion, nameof(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretsecretHasAStartDate, nameof(createOrchestratorOneTimeSecretsecretHasAStartDate), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretsecretStartDateTime, nameof(createOrchestratorOneTimeSecretsecretStartDateTime), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecrethoursUntilSecretStartTime, nameof(createOrchestratorOneTimeSecrethoursUntilSecretStartTime), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretsecretHasAnExpiryDate, nameof(createOrchestratorOneTimeSecretsecretHasAnExpiryDate), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecretsecretExpiryDateTime, nameof(createOrchestratorOneTimeSecretsecretExpiryDateTime), required: false);
-            SourceExpression.Validate(createOrchestratorOneTimeSecrethoursUntilSecretExpiry, nameof(createOrchestratorOneTimeSecrethoursUntilSecretExpiry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/CreateOrchestratorOneTimeSecret";
@@ -9338,7 +8672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetListOfOrchestratorWorkersResponse> GetListOfOrchestratorWorkers([WorkflowExpression] Func<bool> getListOfOrchestratorWorkersonlyReturnLiveWorkers = null)
         {
-            SourceExpression.Validate(getListOfOrchestratorWorkersonlyReturnLiveWorkers, nameof(getListOfOrchestratorWorkersonlyReturnLiveWorkers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetListOfOrchestratorWorkers";
@@ -9375,8 +8708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorWorkerResponse> GetOrchestratorWorker([WorkflowExpression] Func<int> getOrchestratorWorkersearchWorkerId = null, [WorkflowExpression] Func<string> getOrchestratorWorkersearchWorkerName = null)
         {
-            SourceExpression.Validate(getOrchestratorWorkersearchWorkerId, nameof(getOrchestratorWorkersearchWorkerId), required: false);
-            SourceExpression.Validate(getOrchestratorWorkersearchWorkerName, nameof(getOrchestratorWorkersearchWorkerName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorker";
@@ -9437,8 +8768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<FileExistsResponse> FileExists([WorkflowExpression] Func<string> fileExistsfilename, [WorkflowExpression] Func<string> fileExistsworkflow)
         {
-            SourceExpression.Validate(fileExistsfilename, nameof(fileExistsfilename), required: true);
-            SourceExpression.Validate(fileExistsworkflow, nameof(fileExistsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/FileExists";
@@ -9463,8 +8792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DirectoryExistsResponse> DirectoryExists([WorkflowExpression] Func<string> directoryExistsdirectoryPath, [WorkflowExpression] Func<string> directoryExistsworkflow)
         {
-            SourceExpression.Validate(directoryExistsdirectoryPath, nameof(directoryExistsdirectoryPath), required: true);
-            SourceExpression.Validate(directoryExistsworkflow, nameof(directoryExistsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/DirectoryExists";
@@ -9489,8 +8816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DeleteFile([WorkflowExpression] Func<string> deleteFilefilename, [WorkflowExpression] Func<string> deleteFileworkflow)
         {
-            SourceExpression.Validate(deleteFilefilename, nameof(deleteFilefilename), required: true);
-            SourceExpression.Validate(deleteFileworkflow, nameof(deleteFileworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/DeleteFile";
@@ -9515,9 +8840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DeleteDirectory([WorkflowExpression] Func<string> deleteDirectorydirectoryPath, [WorkflowExpression] Func<string> deleteDirectoryworkflow, [WorkflowExpression] Func<bool> deleteDirectoryrecursive = null)
         {
-            SourceExpression.Validate(deleteDirectorydirectoryPath, nameof(deleteDirectorydirectoryPath), required: true);
-            SourceExpression.Validate(deleteDirectoryworkflow, nameof(deleteDirectoryworkflow), required: true);
-            SourceExpression.Validate(deleteDirectoryrecursive, nameof(deleteDirectoryrecursive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/DeleteDirectory";
@@ -9558,10 +8880,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction PurgeDirectory([WorkflowExpression] Func<string> purgeDirectorydirectoryPath, [WorkflowExpression] Func<string> purgeDirectoryworkflow, [WorkflowExpression] Func<bool> purgeDirectoryrecursive = null, [WorkflowExpression] Func<bool> purgeDirectorydeleteTopLevel = null)
         {
-            SourceExpression.Validate(purgeDirectorydirectoryPath, nameof(purgeDirectorydirectoryPath), required: true);
-            SourceExpression.Validate(purgeDirectoryworkflow, nameof(purgeDirectoryworkflow), required: true);
-            SourceExpression.Validate(purgeDirectoryrecursive, nameof(purgeDirectoryrecursive), required: false);
-            SourceExpression.Validate(purgeDirectorydeleteTopLevel, nameof(purgeDirectorydeleteTopLevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/PurgeDirectory";
@@ -9618,9 +8936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CopyFile([WorkflowExpression] Func<string> copyFilesourceFilePath, [WorkflowExpression] Func<string> copyFiledestFilePath, [WorkflowExpression] Func<string> copyFileworkflow)
         {
-            SourceExpression.Validate(copyFilesourceFilePath, nameof(copyFilesourceFilePath), required: true);
-            SourceExpression.Validate(copyFiledestFilePath, nameof(copyFiledestFilePath), required: true);
-            SourceExpression.Validate(copyFileworkflow, nameof(copyFileworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/CopyFile";
@@ -9647,9 +8962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveFile([WorkflowExpression] Func<string> moveFilesourceFilePath, [WorkflowExpression] Func<string> moveFiledestFilePath, [WorkflowExpression] Func<string> moveFileworkflow)
         {
-            SourceExpression.Validate(moveFilesourceFilePath, nameof(moveFilesourceFilePath), required: true);
-            SourceExpression.Validate(moveFiledestFilePath, nameof(moveFiledestFilePath), required: true);
-            SourceExpression.Validate(moveFileworkflow, nameof(moveFileworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/MoveFile";
@@ -9676,9 +8988,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CreateDirectory([WorkflowExpression] Func<string> createDirectorydirectoryPath, [WorkflowExpression] Func<string> createDirectoryworkflow, [WorkflowExpression] Func<bool> createDirectoryerrorIfAlreadyExists = null)
         {
-            SourceExpression.Validate(createDirectorydirectoryPath, nameof(createDirectorydirectoryPath), required: true);
-            SourceExpression.Validate(createDirectoryworkflow, nameof(createDirectoryworkflow), required: true);
-            SourceExpression.Validate(createDirectoryerrorIfAlreadyExists, nameof(createDirectoryerrorIfAlreadyExists), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/CreateDirectory";
@@ -9719,8 +9028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFileSizeResponse> GetFileSize([WorkflowExpression] Func<string> getFileSizefilename, [WorkflowExpression] Func<string> getFileSizeworkflow)
         {
-            SourceExpression.Validate(getFileSizefilename, nameof(getFileSizefilename), required: true);
-            SourceExpression.Validate(getFileSizeworkflow, nameof(getFileSizeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetFileSize";
@@ -9745,12 +9052,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction WriteTextFile([WorkflowExpression] Func<string> writeTextFilefilename, [WorkflowExpression] Func<string> writeTextFileworkflow, [WorkflowExpression] Func<string> writeTextFiletextToWrite = null, [WorkflowExpression] Func<bool> writeTextFileappendExistingFile = null, [WorkflowExpression] Func<writeTextFileencodingInput> writeTextFileencoding = null, [WorkflowExpression] Func<bool> writeTextFilecreateFolderIfRequired = null)
         {
-            SourceExpression.Validate(writeTextFilefilename, nameof(writeTextFilefilename), required: true);
-            SourceExpression.Validate(writeTextFileworkflow, nameof(writeTextFileworkflow), required: true);
-            SourceExpression.Validate(writeTextFiletextToWrite, nameof(writeTextFiletextToWrite), required: false);
-            SourceExpression.Validate(writeTextFileappendExistingFile, nameof(writeTextFileappendExistingFile), required: false);
-            SourceExpression.Validate(writeTextFileencoding, nameof(writeTextFileencoding), required: false);
-            SourceExpression.Validate(writeTextFilecreateFolderIfRequired, nameof(writeTextFilecreateFolderIfRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/WriteTextFile";
@@ -9819,8 +9120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ReadAllTextFromFileResponse> ReadAllTextFromFile([WorkflowExpression] Func<string> readAllTextFromFilefilename, [WorkflowExpression] Func<string> readAllTextFromFileworkflow)
         {
-            SourceExpression.Validate(readAllTextFromFilefilename, nameof(readAllTextFromFilefilename), required: true);
-            SourceExpression.Validate(readAllTextFromFileworkflow, nameof(readAllTextFromFileworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/ReadAllTextFromFile";
@@ -9845,9 +9144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFilesResponse> GetFiles([WorkflowExpression] Func<string> getFilesdirectoryPath, [WorkflowExpression] Func<string> getFilespatternsCSV, [WorkflowExpression] Func<string> getFilesworkflow)
         {
-            SourceExpression.Validate(getFilesdirectoryPath, nameof(getFilesdirectoryPath), required: true);
-            SourceExpression.Validate(getFilespatternsCSV, nameof(getFilespatternsCSV), required: true);
-            SourceExpression.Validate(getFilesworkflow, nameof(getFilesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetFiles";
@@ -9874,8 +9170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFoldersResponse> GetFolders([WorkflowExpression] Func<string> getFoldersdirectoryPath, [WorkflowExpression] Func<string> getFoldersworkflow)
         {
-            SourceExpression.Validate(getFoldersdirectoryPath, nameof(getFoldersdirectoryPath), required: true);
-            SourceExpression.Validate(getFoldersworkflow, nameof(getFoldersworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetFolders";
@@ -9900,9 +9194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DeleteFilesResponse> DeleteFiles([WorkflowExpression] Func<string> deleteFilesdirectoryPath, [WorkflowExpression] Func<string> deleteFilesworkflow, [WorkflowExpression] Func<string> deleteFilespattern = null)
         {
-            SourceExpression.Validate(deleteFilesdirectoryPath, nameof(deleteFilesdirectoryPath), required: true);
-            SourceExpression.Validate(deleteFilesworkflow, nameof(deleteFilesworkflow), required: true);
-            SourceExpression.Validate(deleteFilespattern, nameof(deleteFilespattern), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/DeleteFiles";
@@ -9933,8 +9224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetDiskFreeSpaceResponse> GetDiskFreeSpace([WorkflowExpression] Func<string> getDiskFreeSpacedriveLetter, [WorkflowExpression] Func<string> getDiskFreeSpaceworkflow)
         {
-            SourceExpression.Validate(getDiskFreeSpacedriveLetter, nameof(getDiskFreeSpacedriveLetter), required: true);
-            SourceExpression.Validate(getDiskFreeSpaceworkflow, nameof(getDiskFreeSpaceworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetDiskFreeSpace";
@@ -9959,7 +9248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetListOfDrivesResponse> GetListOfDrives([WorkflowExpression] Func<string> getListOfDrivesworkflow)
         {
-            SourceExpression.Validate(getListOfDrivesworkflow, nameof(getListOfDrivesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetListOfDrives";
@@ -9982,8 +9270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DirectoryIsAccessibleResponse> DirectoryIsAccessible([WorkflowExpression] Func<string> directoryIsAccessibledirectoryPath, [WorkflowExpression] Func<string> directoryIsAccessibleworkflow)
         {
-            SourceExpression.Validate(directoryIsAccessibledirectoryPath, nameof(directoryIsAccessibledirectoryPath), required: true);
-            SourceExpression.Validate(directoryIsAccessibleworkflow, nameof(directoryIsAccessibleworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/DirectoryIsAccessible";
@@ -10008,12 +9294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetCSVTextAsCollectionResponse> GetCSVTextAsCollection([WorkflowExpression] Func<string> getCSVTextAsCollectioncSVFilePath, [WorkflowExpression] Func<string> getCSVTextAsCollectionworkflow, [WorkflowExpression] Func<bool> getCSVTextAsCollectionfirstLineIsHeader = null, [WorkflowExpression] Func<bool> getCSVTextAsCollectiontrimHeaders = null, [WorkflowExpression] Func<bool> getCSVTextAsCollectionallowBlankRows = null, [WorkflowExpression] Func<bool> getCSVTextAsCollectionextendColumnsIfRequired = null)
         {
-            SourceExpression.Validate(getCSVTextAsCollectioncSVFilePath, nameof(getCSVTextAsCollectioncSVFilePath), required: true);
-            SourceExpression.Validate(getCSVTextAsCollectionworkflow, nameof(getCSVTextAsCollectionworkflow), required: true);
-            SourceExpression.Validate(getCSVTextAsCollectionfirstLineIsHeader, nameof(getCSVTextAsCollectionfirstLineIsHeader), required: false);
-            SourceExpression.Validate(getCSVTextAsCollectiontrimHeaders, nameof(getCSVTextAsCollectiontrimHeaders), required: false);
-            SourceExpression.Validate(getCSVTextAsCollectionallowBlankRows, nameof(getCSVTextAsCollectionallowBlankRows), required: false);
-            SourceExpression.Validate(getCSVTextAsCollectionextendColumnsIfRequired, nameof(getCSVTextAsCollectionextendColumnsIfRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetCSVTextAsCollection";
@@ -10102,11 +9382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WriteCollectionToCSVFileResponse> WriteCollectionToCSVFile([WorkflowExpression] Func<string> writeCollectionToCSVFilecSVFilePath, [WorkflowExpression] Func<string> writeCollectionToCSVFileworkflow, [WorkflowExpression] Func<JToken[]> writeCollectionToCSVFileinputTable = null, [WorkflowExpression] Func<string> writeCollectionToCSVFileinputTableJSON = null, [WorkflowExpression] Func<writeCollectionToCSVFileoutputEncodingInput> writeCollectionToCSVFileoutputEncoding = null)
         {
-            SourceExpression.Validate(writeCollectionToCSVFilecSVFilePath, nameof(writeCollectionToCSVFilecSVFilePath), required: true);
-            SourceExpression.Validate(writeCollectionToCSVFileworkflow, nameof(writeCollectionToCSVFileworkflow), required: true);
-            SourceExpression.Validate(writeCollectionToCSVFileinputTable, nameof(writeCollectionToCSVFileinputTable), required: false);
-            SourceExpression.Validate(writeCollectionToCSVFileinputTableJSON, nameof(writeCollectionToCSVFileinputTableJSON), required: false);
-            SourceExpression.Validate(writeCollectionToCSVFileoutputEncoding, nameof(writeCollectionToCSVFileoutputEncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/WriteCollectionToCSVFile";
@@ -10159,9 +9434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetOwnerOnFolder([WorkflowExpression] Func<string> setOwnerOnFolderfolderPath, [WorkflowExpression] Func<string> setOwnerOnFolderuserIdentity, [WorkflowExpression] Func<string> setOwnerOnFolderworkflow)
         {
-            SourceExpression.Validate(setOwnerOnFolderfolderPath, nameof(setOwnerOnFolderfolderPath), required: true);
-            SourceExpression.Validate(setOwnerOnFolderuserIdentity, nameof(setOwnerOnFolderuserIdentity), required: true);
-            SourceExpression.Validate(setOwnerOnFolderworkflow, nameof(setOwnerOnFolderworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/SetOwnerOnFolder";
@@ -10188,9 +9460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetOwnerOnFile([WorkflowExpression] Func<string> setOwnerOnFilefilePath, [WorkflowExpression] Func<string> setOwnerOnFileuserIdentity, [WorkflowExpression] Func<string> setOwnerOnFileworkflow)
         {
-            SourceExpression.Validate(setOwnerOnFilefilePath, nameof(setOwnerOnFilefilePath), required: true);
-            SourceExpression.Validate(setOwnerOnFileuserIdentity, nameof(setOwnerOnFileuserIdentity), required: true);
-            SourceExpression.Validate(setOwnerOnFileworkflow, nameof(setOwnerOnFileworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/SetOwnerOnFile";
@@ -10217,14 +9486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AddPermissionToFolder([WorkflowExpression] Func<string> addPermissionToFolderfolderPath, [WorkflowExpression] Func<string> addPermissionToFolderidentity, [WorkflowExpression] Func<addPermissionToFolderpermissionInput> addPermissionToFolderpermission, [WorkflowExpression] Func<string> addPermissionToFolderworkflow, [WorkflowExpression] Func<bool> addPermissionToFolderapplyToFolder = null, [WorkflowExpression] Func<bool> addPermissionToFolderapplyToSubFolders = null, [WorkflowExpression] Func<bool> addPermissionToFolderapplyToFiles = null, [WorkflowExpression] Func<bool> addPermissionToFolderdeny = null)
         {
-            SourceExpression.Validate(addPermissionToFolderfolderPath, nameof(addPermissionToFolderfolderPath), required: true);
-            SourceExpression.Validate(addPermissionToFolderidentity, nameof(addPermissionToFolderidentity), required: true);
-            SourceExpression.Validate(addPermissionToFolderpermission, nameof(addPermissionToFolderpermission), required: true);
-            SourceExpression.Validate(addPermissionToFolderworkflow, nameof(addPermissionToFolderworkflow), required: true);
-            SourceExpression.Validate(addPermissionToFolderapplyToFolder, nameof(addPermissionToFolderapplyToFolder), required: false);
-            SourceExpression.Validate(addPermissionToFolderapplyToSubFolders, nameof(addPermissionToFolderapplyToSubFolders), required: false);
-            SourceExpression.Validate(addPermissionToFolderapplyToFiles, nameof(addPermissionToFolderapplyToFiles), required: false);
-            SourceExpression.Validate(addPermissionToFolderdeny, nameof(addPermissionToFolderdeny), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/AddPermissionToFolder";
@@ -10317,11 +9578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AddPermissionToFile([WorkflowExpression] Func<string> addPermissionToFilefilePath, [WorkflowExpression] Func<string> addPermissionToFileidentity, [WorkflowExpression] Func<addPermissionToFilepermissionInput> addPermissionToFilepermission, [WorkflowExpression] Func<string> addPermissionToFileworkflow, [WorkflowExpression] Func<bool> addPermissionToFiledeny = null)
         {
-            SourceExpression.Validate(addPermissionToFilefilePath, nameof(addPermissionToFilefilePath), required: true);
-            SourceExpression.Validate(addPermissionToFileidentity, nameof(addPermissionToFileidentity), required: true);
-            SourceExpression.Validate(addPermissionToFilepermission, nameof(addPermissionToFilepermission), required: true);
-            SourceExpression.Validate(addPermissionToFileworkflow, nameof(addPermissionToFileworkflow), required: true);
-            SourceExpression.Validate(addPermissionToFiledeny, nameof(addPermissionToFiledeny), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/AddPermissionToFile";
@@ -10366,9 +9622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction BreakFolderSecurityInheritance([WorkflowExpression] Func<string> breakFolderSecurityInheritancefolderPath, [WorkflowExpression] Func<string> breakFolderSecurityInheritanceworkflow, [WorkflowExpression] Func<bool> breakFolderSecurityInheritanceconvertInheritedToExplicit = null)
         {
-            SourceExpression.Validate(breakFolderSecurityInheritancefolderPath, nameof(breakFolderSecurityInheritancefolderPath), required: true);
-            SourceExpression.Validate(breakFolderSecurityInheritanceworkflow, nameof(breakFolderSecurityInheritanceworkflow), required: true);
-            SourceExpression.Validate(breakFolderSecurityInheritanceconvertInheritedToExplicit, nameof(breakFolderSecurityInheritanceconvertInheritedToExplicit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/BreakFolderSecurityInheritance";
@@ -10409,8 +9662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction EnableFolderSecurityInheritance([WorkflowExpression] Func<string> enableFolderSecurityInheritancefolderPath, [WorkflowExpression] Func<string> enableFolderSecurityInheritanceworkflow)
         {
-            SourceExpression.Validate(enableFolderSecurityInheritancefolderPath, nameof(enableFolderSecurityInheritancefolderPath), required: true);
-            SourceExpression.Validate(enableFolderSecurityInheritanceworkflow, nameof(enableFolderSecurityInheritanceworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/EnableFolderSecurityInheritance";
@@ -10435,8 +9686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFolderSecurityPermissionsResponse> GetFolderSecurityPermissions([WorkflowExpression] Func<string> getFolderSecurityPermissionsfolderPath, [WorkflowExpression] Func<string> getFolderSecurityPermissionsworkflow)
         {
-            SourceExpression.Validate(getFolderSecurityPermissionsfolderPath, nameof(getFolderSecurityPermissionsfolderPath), required: true);
-            SourceExpression.Validate(getFolderSecurityPermissionsworkflow, nameof(getFolderSecurityPermissionsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetFolderSecurityPermissions";
@@ -10461,8 +9710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFileSecurityPermissionsResponse> GetFileSecurityPermissions([WorkflowExpression] Func<string> getFileSecurityPermissionsfilePath, [WorkflowExpression] Func<string> getFileSecurityPermissionsworkflow)
         {
-            SourceExpression.Validate(getFileSecurityPermissionsfilePath, nameof(getFileSecurityPermissionsfilePath), required: true);
-            SourceExpression.Validate(getFileSecurityPermissionsworkflow, nameof(getFileSecurityPermissionsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetFileSecurityPermissions";
@@ -10487,9 +9734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RemoveIdentityFromFolderSecurityResponse> RemoveIdentityFromFolderSecurity([WorkflowExpression] Func<string> removeIdentityFromFolderSecurityfolderPath, [WorkflowExpression] Func<string> removeIdentityFromFolderSecurityidentityToRemove, [WorkflowExpression] Func<string> removeIdentityFromFolderSecurityworkflow)
         {
-            SourceExpression.Validate(removeIdentityFromFolderSecurityfolderPath, nameof(removeIdentityFromFolderSecurityfolderPath), required: true);
-            SourceExpression.Validate(removeIdentityFromFolderSecurityidentityToRemove, nameof(removeIdentityFromFolderSecurityidentityToRemove), required: true);
-            SourceExpression.Validate(removeIdentityFromFolderSecurityworkflow, nameof(removeIdentityFromFolderSecurityworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/RemoveIdentityFromFolderSecurity";
@@ -10516,9 +9760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RemoveIdentityFromFileSecurityResponse> RemoveIdentityFromFileSecurity([WorkflowExpression] Func<string> removeIdentityFromFileSecurityfilePath, [WorkflowExpression] Func<string> removeIdentityFromFileSecurityidentityToRemove, [WorkflowExpression] Func<string> removeIdentityFromFileSecurityworkflow)
         {
-            SourceExpression.Validate(removeIdentityFromFileSecurityfilePath, nameof(removeIdentityFromFileSecurityfilePath), required: true);
-            SourceExpression.Validate(removeIdentityFromFileSecurityidentityToRemove, nameof(removeIdentityFromFileSecurityidentityToRemove), required: true);
-            SourceExpression.Validate(removeIdentityFromFileSecurityworkflow, nameof(removeIdentityFromFileSecurityworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/RemoveIdentityFromFileSecurity";
@@ -10545,10 +9786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CopyFileFromClientToServer([WorkflowExpression] Func<string> copyFileFromClientToServerclientFilePath, [WorkflowExpression] Func<string> copyFileFromClientToServerserverFilePath, [WorkflowExpression] Func<string> copyFileFromClientToServerworkflow, [WorkflowExpression] Func<bool> copyFileFromClientToServercompress = null)
         {
-            SourceExpression.Validate(copyFileFromClientToServerclientFilePath, nameof(copyFileFromClientToServerclientFilePath), required: true);
-            SourceExpression.Validate(copyFileFromClientToServerserverFilePath, nameof(copyFileFromClientToServerserverFilePath), required: true);
-            SourceExpression.Validate(copyFileFromClientToServerworkflow, nameof(copyFileFromClientToServerworkflow), required: true);
-            SourceExpression.Validate(copyFileFromClientToServercompress, nameof(copyFileFromClientToServercompress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/CopyFileFromClientToServer";
@@ -10591,16 +9828,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ReplaceVariableDataInINIFile([WorkflowExpression] Func<string> replaceVariableDataInINIFileinputFilename, [WorkflowExpression] Func<string> replaceVariableDataInINIFileworkflow, [WorkflowExpression] Func<string> replaceVariableDataInINIFileoutputFilename = null, [WorkflowExpression] Func<string> replaceVariableDataInINIFilesearchSection = null, [WorkflowExpression] Func<string> replaceVariableDataInINIFilesearchVariable = null, [WorkflowExpression] Func<string> replaceVariableDataInINIFilereplaceData = null, [WorkflowExpression] Func<string> replaceVariableDataInINIFileinputFilenameEncoding = null, [WorkflowExpression] Func<bool> replaceVariableDataInINIFilecreateNewFileIfNotExists = null, [WorkflowExpression] Func<bool> replaceVariableDataInINIFilewriteSpaceBeforeEquals = null, [WorkflowExpression] Func<bool> replaceVariableDataInINIFilewriteSpaceAfterEquals = null)
         {
-            SourceExpression.Validate(replaceVariableDataInINIFileinputFilename, nameof(replaceVariableDataInINIFileinputFilename), required: true);
-            SourceExpression.Validate(replaceVariableDataInINIFileworkflow, nameof(replaceVariableDataInINIFileworkflow), required: true);
-            SourceExpression.Validate(replaceVariableDataInINIFileoutputFilename, nameof(replaceVariableDataInINIFileoutputFilename), required: false);
-            SourceExpression.Validate(replaceVariableDataInINIFilesearchSection, nameof(replaceVariableDataInINIFilesearchSection), required: false);
-            SourceExpression.Validate(replaceVariableDataInINIFilesearchVariable, nameof(replaceVariableDataInINIFilesearchVariable), required: false);
-            SourceExpression.Validate(replaceVariableDataInINIFilereplaceData, nameof(replaceVariableDataInINIFilereplaceData), required: false);
-            SourceExpression.Validate(replaceVariableDataInINIFileinputFilenameEncoding, nameof(replaceVariableDataInINIFileinputFilenameEncoding), required: false);
-            SourceExpression.Validate(replaceVariableDataInINIFilecreateNewFileIfNotExists, nameof(replaceVariableDataInINIFilecreateNewFileIfNotExists), required: false);
-            SourceExpression.Validate(replaceVariableDataInINIFilewriteSpaceBeforeEquals, nameof(replaceVariableDataInINIFilewriteSpaceBeforeEquals), required: false);
-            SourceExpression.Validate(replaceVariableDataInINIFilewriteSpaceAfterEquals, nameof(replaceVariableDataInINIFilewriteSpaceAfterEquals), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/ReplaceVariableDataInINIFile";
@@ -10703,20 +9930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DownloadHTTPFileResponse> DownloadHTTPFile([WorkflowExpression] Func<string> downloadHTTPFiledownloadURL, [WorkflowExpression] Func<string> downloadHTTPFileworkflow, [WorkflowExpression] Func<string> downloadHTTPFilesaveFilename = null, [WorkflowExpression] Func<bool> downloadHTTPFileoverwriteExistingFile = null, [WorkflowExpression] Func<bool> downloadHTTPFilepassthroughAuthentication = null, [WorkflowExpression] Func<string> downloadHTTPFileuserAgent = null, [WorkflowExpression] Func<string> downloadHTTPFileaccept = null, [WorkflowExpression] Func<bool> downloadHTTPFilesupportTLS10 = null, [WorkflowExpression] Func<bool> downloadHTTPFilesupportTLS11 = null, [WorkflowExpression] Func<bool> downloadHTTPFilesupportTLS12 = null, [WorkflowExpression] Func<bool> downloadHTTPFileautoDecompressDeflate = null, [WorkflowExpression] Func<bool> downloadHTTPFileautoDecompressGZIP = null, [WorkflowExpression] Func<bool> downloadHTTPFilereturnContentsAsString = null, [WorkflowExpression] Func<downloadHTTPFilereturnContentEncodingInput> downloadHTTPFilereturnContentEncoding = null)
         {
-            SourceExpression.Validate(downloadHTTPFiledownloadURL, nameof(downloadHTTPFiledownloadURL), required: true);
-            SourceExpression.Validate(downloadHTTPFileworkflow, nameof(downloadHTTPFileworkflow), required: true);
-            SourceExpression.Validate(downloadHTTPFilesaveFilename, nameof(downloadHTTPFilesaveFilename), required: false);
-            SourceExpression.Validate(downloadHTTPFileoverwriteExistingFile, nameof(downloadHTTPFileoverwriteExistingFile), required: false);
-            SourceExpression.Validate(downloadHTTPFilepassthroughAuthentication, nameof(downloadHTTPFilepassthroughAuthentication), required: false);
-            SourceExpression.Validate(downloadHTTPFileuserAgent, nameof(downloadHTTPFileuserAgent), required: false);
-            SourceExpression.Validate(downloadHTTPFileaccept, nameof(downloadHTTPFileaccept), required: false);
-            SourceExpression.Validate(downloadHTTPFilesupportTLS10, nameof(downloadHTTPFilesupportTLS10), required: false);
-            SourceExpression.Validate(downloadHTTPFilesupportTLS11, nameof(downloadHTTPFilesupportTLS11), required: false);
-            SourceExpression.Validate(downloadHTTPFilesupportTLS12, nameof(downloadHTTPFilesupportTLS12), required: false);
-            SourceExpression.Validate(downloadHTTPFileautoDecompressDeflate, nameof(downloadHTTPFileautoDecompressDeflate), required: false);
-            SourceExpression.Validate(downloadHTTPFileautoDecompressGZIP, nameof(downloadHTTPFileautoDecompressGZIP), required: false);
-            SourceExpression.Validate(downloadHTTPFilereturnContentsAsString, nameof(downloadHTTPFilereturnContentsAsString), required: false);
-            SourceExpression.Validate(downloadHTTPFilereturnContentEncoding, nameof(downloadHTTPFilereturnContentEncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/DownloadHTTPFile";
@@ -10923,12 +10136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<UnZIPFileResponse> UnZIPFile([WorkflowExpression] Func<string> unZIPFilezIPFilename, [WorkflowExpression] Func<string> unZIPFileworkflow, [WorkflowExpression] Func<string> unZIPFileextractFolder = null, [WorkflowExpression] Func<bool> unZIPFileextractAllFilesToSingleFolder = null, [WorkflowExpression] Func<string> unZIPFileincludeFilesRegEx = null, [WorkflowExpression] Func<string> unZIPFileexcludeFilesRegEx = null)
         {
-            SourceExpression.Validate(unZIPFilezIPFilename, nameof(unZIPFilezIPFilename), required: true);
-            SourceExpression.Validate(unZIPFileworkflow, nameof(unZIPFileworkflow), required: true);
-            SourceExpression.Validate(unZIPFileextractFolder, nameof(unZIPFileextractFolder), required: false);
-            SourceExpression.Validate(unZIPFileextractAllFilesToSingleFolder, nameof(unZIPFileextractAllFilesToSingleFolder), required: false);
-            SourceExpression.Validate(unZIPFileincludeFilesRegEx, nameof(unZIPFileincludeFilesRegEx), required: false);
-            SourceExpression.Validate(unZIPFileexcludeFilesRegEx, nameof(unZIPFileexcludeFilesRegEx), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/UnZIPFile";
@@ -10987,13 +10194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AddFileToZIP([WorkflowExpression] Func<string> addFileToZIPsourceFilenameToAddToZIP, [WorkflowExpression] Func<string> addFileToZIPoutputZIPFilename, [WorkflowExpression] Func<string> addFileToZIPworkflow, [WorkflowExpression] Func<string> addFileToZIPaddFilenameToFolderInZIP = null, [WorkflowExpression] Func<string> addFileToZIPsourceFilenameToAddToZIPComment = null, [WorkflowExpression] Func<bool> addFileToZIPcompress = null, [WorkflowExpression] Func<bool> addFileToZIPaddToExistingZIPFile = null)
         {
-            SourceExpression.Validate(addFileToZIPsourceFilenameToAddToZIP, nameof(addFileToZIPsourceFilenameToAddToZIP), required: true);
-            SourceExpression.Validate(addFileToZIPoutputZIPFilename, nameof(addFileToZIPoutputZIPFilename), required: true);
-            SourceExpression.Validate(addFileToZIPworkflow, nameof(addFileToZIPworkflow), required: true);
-            SourceExpression.Validate(addFileToZIPaddFilenameToFolderInZIP, nameof(addFileToZIPaddFilenameToFolderInZIP), required: false);
-            SourceExpression.Validate(addFileToZIPsourceFilenameToAddToZIPComment, nameof(addFileToZIPsourceFilenameToAddToZIPComment), required: false);
-            SourceExpression.Validate(addFileToZIPcompress, nameof(addFileToZIPcompress), required: false);
-            SourceExpression.Validate(addFileToZIPaddToExistingZIPFile, nameof(addFileToZIPaddToExistingZIPFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/AddFileToZIP";
@@ -11064,15 +10264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AddFolderToZIPResponse> AddFolderToZIP([WorkflowExpression] Func<string> addFolderToZIPsourceFolderToAddToZIP, [WorkflowExpression] Func<string> addFolderToZIPoutputZIPFilename, [WorkflowExpression] Func<string> addFolderToZIPworkflow, [WorkflowExpression] Func<string> addFolderToZIPaddFilesToFolderInZIP = null, [WorkflowExpression] Func<bool> addFolderToZIPcompress = null, [WorkflowExpression] Func<bool> addFolderToZIPaddToExistingZIPFile = null, [WorkflowExpression] Func<bool> addFolderToZIPincludeSubfolders = null, [WorkflowExpression] Func<string> addFolderToZIPincludeFilesRegEx = null, [WorkflowExpression] Func<string> addFolderToZIPexcludeFilesRegEx = null)
         {
-            SourceExpression.Validate(addFolderToZIPsourceFolderToAddToZIP, nameof(addFolderToZIPsourceFolderToAddToZIP), required: true);
-            SourceExpression.Validate(addFolderToZIPoutputZIPFilename, nameof(addFolderToZIPoutputZIPFilename), required: true);
-            SourceExpression.Validate(addFolderToZIPworkflow, nameof(addFolderToZIPworkflow), required: true);
-            SourceExpression.Validate(addFolderToZIPaddFilesToFolderInZIP, nameof(addFolderToZIPaddFilesToFolderInZIP), required: false);
-            SourceExpression.Validate(addFolderToZIPcompress, nameof(addFolderToZIPcompress), required: false);
-            SourceExpression.Validate(addFolderToZIPaddToExistingZIPFile, nameof(addFolderToZIPaddToExistingZIPFile), required: false);
-            SourceExpression.Validate(addFolderToZIPincludeSubfolders, nameof(addFolderToZIPincludeSubfolders), required: false);
-            SourceExpression.Validate(addFolderToZIPincludeFilesRegEx, nameof(addFolderToZIPincludeFilesRegEx), required: false);
-            SourceExpression.Validate(addFolderToZIPexcludeFilesRegEx, nameof(addFolderToZIPexcludeFilesRegEx), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/AddFolderToZIP";
@@ -11165,10 +10356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFileContentsAsBase64Response> GetFileContentsAsBase64([WorkflowExpression] Func<string> getFileContentsAsBase64filePath, [WorkflowExpression] Func<string> getFileContentsAsBase64workflow, [WorkflowExpression] Func<bool> getFileContentsAsBase64compress = null, [WorkflowExpression] Func<int> getFileContentsAsBase64maxFileSize = null)
         {
-            SourceExpression.Validate(getFileContentsAsBase64filePath, nameof(getFileContentsAsBase64filePath), required: true);
-            SourceExpression.Validate(getFileContentsAsBase64workflow, nameof(getFileContentsAsBase64workflow), required: true);
-            SourceExpression.Validate(getFileContentsAsBase64compress, nameof(getFileContentsAsBase64compress), required: false);
-            SourceExpression.Validate(getFileContentsAsBase64maxFileSize, nameof(getFileContentsAsBase64maxFileSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileManagement/GetFileContentsAsBase64";

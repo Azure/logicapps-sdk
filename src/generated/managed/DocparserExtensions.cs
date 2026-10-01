@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument([WorkflowExpression] Func<string> parserId, [WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> remoteId = null)
         {
-            SourceExpression.Validate(parserId, nameof(parserId), required: true);
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(remoteId, nameof(remoteId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/fetch/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parserId, 1));
@@ -36,7 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
     {
         public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate([WorkflowExpression] Func<string> parserId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(parserId, nameof(parserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/subscribe/{0}/flow", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parserId, 1));

@@ -14,18 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentmerge")]
         public IBodyWorkflowAction<ValuesDocumentMergeResponse> ValuesDocumentMerge([WorkflowExpression] Func<string> linkToItem, [WorkflowExpression] Func<string> preConfigTemplate = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> destination = null, [WorkflowExpression] Func<bool> saveAsPDF = null, [WorkflowExpression] Func<bool> saveAsPDFOnly = null, [WorkflowExpression] Func<bool> saveAsPDFA = null, [WorkflowExpression] Func<bool> displayImage = null, [WorkflowExpression] Func<string> outputFileName = null, [WorkflowExpression] Func<bool> overWrite = null, [WorkflowExpression] Func<bool> sendMail = null, [WorkflowExpression] Func<string> mailTemplate = null)
         {
-            SourceExpression.Validate(linkToItem, nameof(linkToItem), required: true);
-            SourceExpression.Validate(preConfigTemplate, nameof(preConfigTemplate), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(destination, nameof(destination), required: false);
-            SourceExpression.Validate(saveAsPDF, nameof(saveAsPDF), required: false);
-            SourceExpression.Validate(saveAsPDFOnly, nameof(saveAsPDFOnly), required: false);
-            SourceExpression.Validate(saveAsPDFA, nameof(saveAsPDFA), required: false);
-            SourceExpression.Validate(displayImage, nameof(displayImage), required: false);
-            SourceExpression.Validate(outputFileName, nameof(outputFileName), required: false);
-            SourceExpression.Validate(overWrite, nameof(overWrite), required: false);
-            SourceExpression.Validate(sendMail, nameof(sendMail), required: false);
-            SourceExpression.Validate(mailTemplate, nameof(mailTemplate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Values";

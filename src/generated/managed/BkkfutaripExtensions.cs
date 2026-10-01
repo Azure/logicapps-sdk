@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
         public IBodyWorkflowAction<SearchAlertsResponse> SearchAlerts([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null, [WorkflowExpression] Func<int> minResult = null, [WorkflowExpression] Func<includeReferencesInput> includeReferences = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(minResult, nameof(minResult), required: false);
-            SourceExpression.Validate(includeReferences, nameof(includeReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/api/where/alert-search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "otp"), 1));
@@ -47,19 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
         public IBodyWorkflowAction<GetArrivalsAndDeparturesForStopResponse> GetArrivalsAndDeparturesForStop([WorkflowExpression] Func<string> stopId, [WorkflowExpression] Func<int> minutesBefore = null, [WorkflowExpression] Func<string> minutesAfter = null, [WorkflowExpression] Func<string> includeRouteId = null, [WorkflowExpression] Func<int> time = null, [WorkflowExpression] Func<bool> onlyDepartures = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<int> minResult = null, [WorkflowExpression] Func<includeReferencesInput> includeReferences = null)
         {
-            SourceExpression.Validate(stopId, nameof(stopId), required: true);
-            SourceExpression.Validate(minutesBefore, nameof(minutesBefore), required: false);
-            SourceExpression.Validate(minutesAfter, nameof(minutesAfter), required: false);
-            SourceExpression.Validate(includeRouteId, nameof(includeRouteId), required: false);
-            SourceExpression.Validate(time, nameof(time), required: false);
-            SourceExpression.Validate(onlyDepartures, nameof(onlyDepartures), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(minResult, nameof(minResult), required: false);
-            SourceExpression.Validate(includeReferences, nameof(includeReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/api/where/arrivals-and-departures-for-stop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "otp"), 1));
@@ -104,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
         public IBodyWorkflowAction<GetBicycleRentalStationsResponse> GetBicycleRentalStations([WorkflowExpression] Func<includeReferencesInput> includeReferences = null)
         {
-            SourceExpression.Validate(includeReferences, nameof(includeReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/api/where/bicycle-rental", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "otp"), 1));
@@ -124,10 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
         public IBodyWorkflowAction<GetScheduleForStopResponse> GetScheduleForStop([WorkflowExpression] Func<string> stopId, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<bool> onlyDepartures = null, [WorkflowExpression] Func<includeReferencesInput> includeReferences = null)
         {
-            SourceExpression.Validate(stopId, nameof(stopId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(onlyDepartures, nameof(onlyDepartures), required: false);
-            SourceExpression.Validate(includeReferences, nameof(includeReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/api/where/schedule-for-stop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "otp"), 1));
@@ -152,13 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
         public IBodyWorkflowAction<GetStopsForLocationResponse> GetStopsForLocation([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> latSpan = null, [WorkflowExpression] Func<double> lonSpan = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<int> minResult = null, [WorkflowExpression] Func<includeReferencesInput> includeReferences = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(latSpan, nameof(latSpan), required: false);
-            SourceExpression.Validate(lonSpan, nameof(lonSpan), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(minResult, nameof(minResult), required: false);
-            SourceExpression.Validate(includeReferences, nameof(includeReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/api/where/stops-for-location", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "otp"), 1));
@@ -191,9 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
         public IBodyWorkflowAction<GetVehiclesForStopResponse> GetVehiclesForStop([WorkflowExpression] Func<string> stopId, [WorkflowExpression] Func<int> ifModifiedSince = null, [WorkflowExpression] Func<includeReferencesInput> includeReferences = null)
         {
-            SourceExpression.Validate(stopId, nameof(stopId), required: true);
-            SourceExpression.Validate(ifModifiedSince, nameof(ifModifiedSince), required: false);
-            SourceExpression.Validate(includeReferences, nameof(includeReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/api/where/vehicles-for-stop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "otp"), 1));
@@ -216,11 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
         public IBodyWorkflowAction<GetReferencesResponse> GetReferences([WorkflowExpression] Func<string> agencyId = null, [WorkflowExpression] Func<string> alertId = null, [WorkflowExpression] Func<string> routeId = null, [WorkflowExpression] Func<string> stopId = null, [WorkflowExpression] Func<includeReferencesInput> includeReferences = null)
         {
-            SourceExpression.Validate(agencyId, nameof(agencyId), required: false);
-            SourceExpression.Validate(alertId, nameof(alertId), required: false);
-            SourceExpression.Validate(routeId, nameof(routeId), required: false);
-            SourceExpression.Validate(stopId, nameof(stopId), required: false);
-            SourceExpression.Validate(includeReferences, nameof(includeReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/api/where/references", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "otp"), 1));

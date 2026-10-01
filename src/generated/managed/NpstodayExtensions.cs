@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
         public IWorkflowAction SendSurvey([WorkflowExpression] Func<string> campaign, [WorkflowExpression] Func<string> bodyrespondentemailAddress = null, [WorkflowExpression] Func<string> bodyrespondentfirstName = null, [WorkflowExpression] Func<string> bodyrespondentlastName = null, [WorkflowExpression] Func<string> bodyrespondentphoneNumber = null)
         {
-            SourceExpression.Validate(campaign, nameof(campaign), required: true);
-            SourceExpression.Validate(bodyrespondentemailAddress, nameof(bodyrespondentemailAddress), required: false);
-            SourceExpression.Validate(bodyrespondentfirstName, nameof(bodyrespondentfirstName), required: false);
-            SourceExpression.Validate(bodyrespondentlastName, nameof(bodyrespondentlastName), required: false);
-            SourceExpression.Validate(bodyrespondentphoneNumber, nameof(bodyrespondentphoneNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/respondent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaign, 1));
@@ -72,15 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
         public IWorkflowAction AddEmployee([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyteam = null, [WorkflowExpression] Func<string> bodydivision = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<bool> bodyactive = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyteam, nameof(bodyteam), required: false);
-            SourceExpression.Validate(bodydivision, nameof(bodydivision), required: false);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/profile/employees";
@@ -158,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
     {
         public IBodyWorkflowTrigger<JToken> NewResponse([WorkflowExpression] Func<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/subscriptions/responses";
@@ -189,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 
         public IBodyWorkflowTrigger<JToken> NewCampaignMember([WorkflowExpression] Func<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/subscriptions/campaignmembers";

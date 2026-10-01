@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<JobReport[]> ListJobs([WorkflowExpression] Func<bool> jobIdsOnly, [WorkflowExpression] Func<string> fromTs = null, [WorkflowExpression] Func<string> toTs = null, [WorkflowExpression] Func<bool> open = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(jobIdsOnly, nameof(jobIdsOnly), required: true);
-            SourceExpression.Validate(fromTs, nameof(fromTs), required: false);
-            SourceExpression.Validate(toTs, nameof(toTs), required: false);
-            SourceExpression.Validate(open, nameof(open), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/jobs";
@@ -48,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<JobReport> GetJob([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -63,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<RecipientReport[]> ListRecipients([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms";

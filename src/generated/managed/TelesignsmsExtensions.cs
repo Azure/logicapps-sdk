@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodymessageType = null, [WorkflowExpression] Func<string> bodysenderId = null)
         {
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            SourceExpression.Validate(bodymessageText, nameof(bodymessageText), required: true);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodymessageType, nameof(bodymessageType), required: false);
-            SourceExpression.Validate(bodysenderId, nameof(bodysenderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/SMS";

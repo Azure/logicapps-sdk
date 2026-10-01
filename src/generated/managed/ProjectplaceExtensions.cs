@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
         public IBodyWorkflowAction<CreateCardResponse> CreateCard([WorkflowExpression] Func<int> boardId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<int> bodycolumnId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyassigneeEmail = null, [WorkflowExpression] Func<int> bodyplanletId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<int> bodylabelId = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodycolumnId, nameof(bodycolumnId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyassigneeEmail, nameof(bodyassigneeEmail), required: false);
-            SourceExpression.Validate(bodyplanletId, nameof(bodyplanletId), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodylabelId, nameof(bodylabelId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/external_notifications/{0}/create_card", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(boardId, 1));
@@ -80,10 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
         public IBodyWorkflowAction<MoveCardResponse> MoveCard([WorkflowExpression] Func<int> boardId, [WorkflowExpression] Func<int> bodycardId, [WorkflowExpression] Func<string> bodycardTitle = null, [WorkflowExpression] Func<int> bodycolumnId = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(bodycardId, nameof(bodycardId), required: true);
-            SourceExpression.Validate(bodycardTitle, nameof(bodycardTitle), required: false);
-            SourceExpression.Validate(bodycolumnId, nameof(bodycolumnId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/external_notifications/{0}/move_card", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(boardId, 1));
@@ -120,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
     {
         public IWorkflowTrigger SetWebhookCardCreate([WorkflowExpression] Func<int> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/external_notifications/0/hooks/set_power_hook";
@@ -146,13 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
         public IWorkflowTrigger SetWebhookPropertiesChange([WorkflowExpression] Func<bool> bodycardBlocked, [WorkflowExpression] Func<bool> bodycardUnblock, [WorkflowExpression] Func<bool> bodystatusChange, [WorkflowExpression] Func<bool> bodycardDone, [WorkflowExpression] Func<bool> bodydescriptionChanged, [WorkflowExpression] Func<bool> bodydueDateChanged, [WorkflowExpression] Func<int> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycardBlocked, nameof(bodycardBlocked), required: true);
-            SourceExpression.Validate(bodycardUnblock, nameof(bodycardUnblock), required: true);
-            SourceExpression.Validate(bodystatusChange, nameof(bodystatusChange), required: true);
-            SourceExpression.Validate(bodycardDone, nameof(bodycardDone), required: true);
-            SourceExpression.Validate(bodydescriptionChanged, nameof(bodydescriptionChanged), required: true);
-            SourceExpression.Validate(bodydueDateChanged, nameof(bodydueDateChanged), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/external_notifications/1/hooks/set_power_hook";
@@ -188,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
         public IWorkflowTrigger SetWebhookCardDueDate([WorkflowExpression] Func<int> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/external_notifications/2/hooks/set_power_hook";

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesCustomerUsingCustomeridResponse> RetrievesCustomerUsingCustomerid([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
@@ -31,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<string> DeletesCustomerUsingCustomerid([WorkflowExpression] Func<string> ids)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
@@ -46,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesOpportunityUsingOpportunityidResponse> RetrievesOpportunityUsingOpportunityid([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
@@ -63,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<string> DeletesOpportunityUsingOpportunityid([WorkflowExpression] Func<string> ids)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
@@ -78,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesCaseUsingCaseidResponse> RetrievesCaseUsingCaseid([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
@@ -95,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<string> DeletesCaseUsingCaseid([WorkflowExpression] Func<string> ids)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
@@ -110,10 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfCustomersThatSatisfyTheSpecifiedConditions([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> skip, [WorkflowExpression] Func<string> top, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(top, nameof(top), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/entity/Default/17.200.001/Customer";
@@ -132,15 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse> CreatesOrUpdatesAnExistingCustomer([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycustomerIdvalue = null, [WorkflowExpression] Func<string> bodycustomerNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyaccountRefvalue = null, [WorkflowExpression] Func<string> bodycurrencyIdvalue = null, [WorkflowExpression] Func<string> bodycustomerClassvalue = null, [WorkflowExpression] Func<string> bodytermsvalue = null)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodycustomerIdvalue, nameof(bodycustomerIdvalue), required: false);
-            SourceExpression.Validate(bodycustomerNamevalue, nameof(bodycustomerNamevalue), required: false);
-            SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
-            SourceExpression.Validate(bodyaccountRefvalue, nameof(bodyaccountRefvalue), required: false);
-            SourceExpression.Validate(bodycurrencyIdvalue, nameof(bodycurrencyIdvalue), required: false);
-            SourceExpression.Validate(bodycustomerClassvalue, nameof(bodycustomerClassvalue), required: false);
-            SourceExpression.Validate(bodytermsvalue, nameof(bodytermsvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/entity/Default/17.200.001/Customer";
@@ -261,10 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditions([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> top = null)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/entity/Default/17.200.001/Opportunity";
@@ -289,21 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse> CreatesOrUpdatesAnExistingOpportunity([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyopportunityIdvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodystagevalue = null, [WorkflowExpression] Func<string> bodycurrencyIdvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<double> bodyamountvalue = null, [WorkflowExpression] Func<double> bodydiscountvalue = null, [WorkflowExpression] Func<double> bodytotalvalue = null, [WorkflowExpression] Func<string> bodysourcevalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyprojectvalue = null)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodyopportunityIdvalue, nameof(bodyopportunityIdvalue), required: false);
-            SourceExpression.Validate(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
-            SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
-            SourceExpression.Validate(bodystagevalue, nameof(bodystagevalue), required: false);
-            SourceExpression.Validate(bodycurrencyIdvalue, nameof(bodycurrencyIdvalue), required: false);
-            SourceExpression.Validate(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
-            SourceExpression.Validate(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
-            SourceExpression.Validate(bodyamountvalue, nameof(bodyamountvalue), required: false);
-            SourceExpression.Validate(bodydiscountvalue, nameof(bodydiscountvalue), required: false);
-            SourceExpression.Validate(bodytotalvalue, nameof(bodytotalvalue), required: false);
-            SourceExpression.Validate(bodysourcevalue, nameof(bodysourcevalue), required: false);
-            SourceExpression.Validate(bodyreasonvalue, nameof(bodyreasonvalue), required: false);
-            SourceExpression.Validate(bodyprojectvalue, nameof(bodyprojectvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/entity/Default/17.200.001/Opportunity";
@@ -508,10 +467,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfCasesThatSatisfyTheSpecifiedConditions([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> top = null)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/entity/Default/17.200.001/Case";
@@ -536,18 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
         public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse> CreatesOrUpdatesAnExistingCase([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycaseIdvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodyclassIdvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodydescriptionvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyseverityvalue = null, [WorkflowExpression] Func<string> bodypriorityvalue = null)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodycaseIdvalue, nameof(bodycaseIdvalue), required: false);
-            SourceExpression.Validate(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
-            SourceExpression.Validate(bodyclassIdvalue, nameof(bodyclassIdvalue), required: false);
-            SourceExpression.Validate(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
-            SourceExpression.Validate(bodydescriptionvalue, nameof(bodydescriptionvalue), required: false);
-            SourceExpression.Validate(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
-            SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
-            SourceExpression.Validate(bodyreasonvalue, nameof(bodyreasonvalue), required: false);
-            SourceExpression.Validate(bodyseverityvalue, nameof(bodyseverityvalue), required: false);
-            SourceExpression.Validate(bodypriorityvalue, nameof(bodypriorityvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/entity/Default/17.200.001/Case";

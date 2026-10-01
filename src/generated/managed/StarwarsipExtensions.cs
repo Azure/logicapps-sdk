@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<GetSpeciesResponse> GetSpecies([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/species";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Starship[]> GetStarships([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/starships";
@@ -54,8 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<GetFilmsResponse> GetFilms([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/films";
@@ -74,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Film> GetFilmById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/films/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -89,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<GetPlanetsResponse> GetPlanets([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/planets";
@@ -109,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Person> GetPeople([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/people";
@@ -129,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Person> GetPersonById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/people/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -144,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Planet> GetPlanetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -159,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Species> GetSpeciesById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/species/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -174,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Starship> GetStarShipById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/starships/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

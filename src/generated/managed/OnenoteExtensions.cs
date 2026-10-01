@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IBodyWorkflowAction<CreateSectionInNotebookResponse> CreateSectionInNotebook([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> bodynameOfTheNewSection)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(bodynameOfTheNewSection, nameof(bodynameOfTheNewSection), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notebooks/Dynamic/sections";
@@ -39,9 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IBodyWorkflowAction<Page> CreatePageInSection([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageContent = null)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(pageContent, nameof(pageContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sections/Dynamic/pages";
@@ -59,8 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IBodyWorkflowAction<GetPagesInSectionResponse> GetPagesInSection([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sections/Dynamic/pages";
@@ -77,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IBodyWorkflowAction<Page> CreatePageInQuickNotes([WorkflowExpression] Func<string> pageContent = null)
         {
-            SourceExpression.Validate(pageContent, nameof(pageContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages";
@@ -93,9 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IWorkflowAction DeletePage([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageId)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages";
@@ -113,9 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IBodyWorkflowAction<string> GetPageContent([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageId)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/Dynamic/content";
@@ -134,10 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IBodyWorkflowAction<string> UpdatePageContent([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<updatesInputItem[]> updates = null)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(updates, nameof(updates), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/Dynamic/content";
@@ -170,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
         public IBodyWorkflowAction<GetSectionsInNotebookResponse> GetSectionsInNotebook([WorkflowExpression] Func<string> notebookKey)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notebooks/notebookKey/sections";
@@ -188,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
     {
         public IBodyWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook([WorkflowExpression] Func<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger1/notebooks/notebookKey/sections";
@@ -203,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
 
         public IBodyWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook([WorkflowExpression] Func<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger2/notebooks/notebookKey/sectiongroups";
@@ -218,8 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
 
         public IBodyWorkflowTrigger<NewPageResponse> OnNewPageInSection([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger3/sections/Dynamic/pages";

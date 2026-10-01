@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
         public IBodyWorkflowAction<GetGIFResponse> GetGIF([WorkflowExpression] Func<string> aPIKEY, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> rating = null, [WorkflowExpression] Func<string> lang = null)
         {
-            SourceExpression.Validate(aPIKEY, nameof(aPIKEY), required: true);
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(rating, nameof(rating), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

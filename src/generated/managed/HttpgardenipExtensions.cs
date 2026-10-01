@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpgardenip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "httpgardenip")]
         public IBodyWorkflowAction<StatusGetResponse> StatusGet([WorkflowExpression] Func<int> code, [WorkflowExpression] Func<@fileInput> @file)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(@file, nameof(@file), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}.{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(code, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1));

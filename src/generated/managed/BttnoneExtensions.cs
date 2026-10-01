@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
     {
         public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook([WorkflowExpression] Func<string> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyactionConfigId, nameof(bodyactionConfigId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/action/1/powerAutomate/addWebhook";

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse> SendTextMessageToMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/send";
@@ -47,12 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse> ScheduleReviewTextMessageForContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/schedulereviewcontacts";
@@ -89,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse> SendTextMessageToMultipleGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendgroup";
@@ -122,10 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendReviewTextGroupsResponse> SendReviewTextGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendreview";
@@ -158,11 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleMessageForAContactResponse> ScheduleMessageForAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduletext";
@@ -197,11 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleMessageForGroupsResponse> ScheduleMessageForGroups([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduletextbulk";
@@ -236,12 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse> ScheduleReviewMessageForAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/schedulereviewtext";
@@ -278,12 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleReviewGroupsResponse> ScheduleReviewGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduledbulkreview";
@@ -320,9 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextToAContactResponse> SendTextToAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendmessagesinglecontact";
@@ -353,11 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse> ScheduleTextToMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduletextmulticontacts";
@@ -392,10 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendReviewSingleContactResponse> SendReviewSingleContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendereviewsinglecontact";
@@ -428,10 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse> SendReviewTextMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendereviewmulticontact";
@@ -464,12 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse> SendTextMessageEventReminderToAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
-            SourceExpression.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
-            SourceExpression.Validate(bodyday, nameof(bodyday), required: true);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendreminderssinglecontact";
@@ -506,12 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse> SendTextMessageEventReminderToMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
-            SourceExpression.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
-            SourceExpression.Validate(bodyday, nameof(bodyday), required: true);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendremindersmulticontact";
@@ -548,12 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse> SendTextMessageEventReminderToGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
-            SourceExpression.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
-            SourceExpression.Validate(bodyday, nameof(bodyday), required: true);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendremindertogroups";
@@ -590,9 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageToANumberResponse> SendTextMessageToANumber([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendsimple";
@@ -623,12 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse> ScheduleReviewTextMessageForAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduledsingleGroupreview";
@@ -665,11 +584,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse> ScheduleTextMessagesForAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduletextsingleGroup";
@@ -704,12 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse> SendTextEventReminderToAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
-            SourceExpression.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
-            SourceExpression.Validate(bodyday, nameof(bodyday), required: true);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendremindertosinglegroup";
@@ -746,10 +654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse> SendReviewTextMessageToAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendreviewtosinglegroup";
@@ -782,9 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageToAGroupResponse> SendTextMessageToAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendsinglegroup";
@@ -815,10 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextToANewGroupResponse> SendTextToANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/creategroupsend";
@@ -851,12 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleTextForANewGroupResponse> ScheduleTextForANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduledcreategroupsend";
@@ -893,13 +784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse> SendTextEventReminderToNewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
-            SourceExpression.Validate(bodyday, nameof(bodyday), required: true);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/creategroupremindersend";
@@ -938,11 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendMessageToANewContactResponse> SendMessageToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendsimplewithName";
@@ -985,14 +864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse> ScheduleReviewTextMessageToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
-            SourceExpression.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
-            SourceExpression.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/schedulereviewtextwithcontact";
@@ -1041,12 +912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse> SendReviewTextMessageToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
-            SourceExpression.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
-            SourceExpression.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/createcontactreviewsend";
@@ -1091,13 +956,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse> ScheduleReviewToANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/creategroupschedulereview";
@@ -1136,11 +994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendReviewToANewGroupResponse> SendReviewToANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/creategroupreviewsend";
@@ -1175,13 +1028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<ScheduleTextForANewContactResponse> ScheduleTextForANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
-            SourceExpression.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/scheduletextwithname";
@@ -1228,9 +1074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<CreateAContactResponse> CreateAContact([WorkflowExpression] Func<string> bodyphone, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/contacts/contactnew";
@@ -1265,14 +1108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse> SendMessageEventReminderToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
-            SourceExpression.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
-            SourceExpression.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
-            SourceExpression.Validate(bodyday, nameof(bodyday), required: true);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: true);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendreminderwithcontact";
@@ -1321,10 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<UpdateAPowerTextorContactResponse> UpdateAPowerTextorContact([WorkflowExpression] Func<string> bodycontact, [WorkflowExpression] Func<string> bodyupdatedContactName = null, [WorkflowExpression] Func<string> bodyupdatedContactLastName = null, [WorkflowExpression] Func<string> bodyupdatedContactNumber = null)
         {
-            SourceExpression.Validate(bodycontact, nameof(bodycontact), required: true);
-            SourceExpression.Validate(bodyupdatedContactName, nameof(bodyupdatedContactName), required: false);
-            SourceExpression.Validate(bodyupdatedContactLastName, nameof(bodyupdatedContactLastName), required: false);
-            SourceExpression.Validate(bodyupdatedContactNumber, nameof(bodyupdatedContactNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/contacts/contactupdate";
@@ -1365,9 +1196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse> SendMessageToMultipleNumbers([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendtomulticontact";
@@ -1398,9 +1226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
         public IBodyWorkflowAction<SendTextMessageResponse> SendTextMessage([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages/sendsimpletext";

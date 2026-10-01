@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<RandomResponse> Random([WorkflowExpression] Func<int> count = null)
         {
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/random/joke";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeIdResponse> JokeId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/joke/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -46,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeTypeResponse> JokeType([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/joke/type/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
@@ -64,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeSearchResponse> JokeSearch([WorkflowExpression] Func<string> term = null)
         {
-            SourceExpression.Validate(term, nameof(term), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/joke/search";

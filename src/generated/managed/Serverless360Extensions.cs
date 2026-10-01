@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         public IWorkflowAction ArchiveActivity([WorkflowExpression] Func<string> sL360BusinessProcess, [WorkflowExpression] Func<string> sL360BusinessTransaction, [WorkflowExpression] Func<string> sL360CurrentStage, [WorkflowExpression] Func<string> sL360StageActivityId)
         {
-            SourceExpression.Validate(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
-            SourceExpression.Validate(sL360BusinessTransaction, nameof(sL360BusinessTransaction), required: true);
-            SourceExpression.Validate(sL360CurrentStage, nameof(sL360CurrentStage), required: true);
-            SourceExpression.Validate(sL360StageActivityId, nameof(sL360StageActivityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ArchiveActivity";
@@ -58,10 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         public IWorkflowAction LogExceptionActivity([WorkflowExpression] Func<string> sL360StageActivityId, [WorkflowExpression] Func<string> sL360ExceptionMessage, [WorkflowExpression] Func<string> sL360ExceptionCode, [WorkflowExpression] Func<string> sL360BusinessProcess)
         {
-            SourceExpression.Validate(sL360StageActivityId, nameof(sL360StageActivityId), required: true);
-            SourceExpression.Validate(sL360ExceptionMessage, nameof(sL360ExceptionMessage), required: true);
-            SourceExpression.Validate(sL360ExceptionCode, nameof(sL360ExceptionCode), required: true);
-            SourceExpression.Validate(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/LogExceptionActivity";
@@ -80,13 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         public IBodyWorkflowAction<StartActivityResponse> StartActivity([WorkflowExpression] Func<string> sL360BusinessProcess, [WorkflowExpression] Func<string> sL360BusinessTransaction, [WorkflowExpression] Func<string> sL360CurrentStage, [WorkflowExpression] Func<string> sL360MainActivityId = null, [WorkflowExpression] Func<string> sL360PreviousStage = null, [WorkflowExpression] Func<sL360ArchiveMessageInput> sL360ArchiveMessage = null, [WorkflowExpression] Func<string> sL360BatchId = null)
         {
-            SourceExpression.Validate(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
-            SourceExpression.Validate(sL360BusinessTransaction, nameof(sL360BusinessTransaction), required: true);
-            SourceExpression.Validate(sL360CurrentStage, nameof(sL360CurrentStage), required: true);
-            SourceExpression.Validate(sL360MainActivityId, nameof(sL360MainActivityId), required: false);
-            SourceExpression.Validate(sL360PreviousStage, nameof(sL360PreviousStage), required: false);
-            SourceExpression.Validate(sL360ArchiveMessage, nameof(sL360ArchiveMessage), required: false);
-            SourceExpression.Validate(sL360BatchId, nameof(sL360BatchId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/StartActivity";
@@ -134,13 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
         public IWorkflowAction UpdateActivity([WorkflowExpression] Func<string> sL360MainActivityId, [WorkflowExpression] Func<string> sL360StageActivityId, [WorkflowExpression] Func<string> sL360BusinessProcess, [WorkflowExpression] Func<string> sL360BusinessTransaction, [WorkflowExpression] Func<string> sL360CurrentStage, [WorkflowExpression] Func<sL360StatusInput> sL360Status = null, [WorkflowExpression] Func<sL360ArchiveMessageInput> sL360ArchiveMessage = null)
         {
-            SourceExpression.Validate(sL360MainActivityId, nameof(sL360MainActivityId), required: true);
-            SourceExpression.Validate(sL360StageActivityId, nameof(sL360StageActivityId), required: true);
-            SourceExpression.Validate(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
-            SourceExpression.Validate(sL360BusinessTransaction, nameof(sL360BusinessTransaction), required: true);
-            SourceExpression.Validate(sL360CurrentStage, nameof(sL360CurrentStage), required: true);
-            SourceExpression.Validate(sL360Status, nameof(sL360Status), required: false);
-            SourceExpression.Validate(sL360ArchiveMessage, nameof(sL360ArchiveMessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UpdateActivity";

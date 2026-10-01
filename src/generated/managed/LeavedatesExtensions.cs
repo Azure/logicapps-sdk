@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetDepartmentsResponseItem[]> GetDepartments([WorkflowExpression] Func<string> company)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/departments";
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetLeaveTypesResponseItem[]> GetLeaveTypes([WorkflowExpression] Func<string> company)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/leave-types";
@@ -60,12 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetAllowanceSummaryResponse> GetAllowanceSummary([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<int> page, [WorkflowExpression] Func<string> employee = null, [WorkflowExpression] Func<string> department = null, [WorkflowExpression] Func<string> allowanceType = null)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(employee, nameof(employee), required: false);
-            SourceExpression.Validate(department, nameof(department), required: false);
-            SourceExpression.Validate(allowanceType, nameof(allowanceType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports/summary-allowances";
@@ -89,8 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetEmployeesResponseItem[]> GetEmployees([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> departmentId = null)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(departmentId, nameof(departmentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/employments";
@@ -108,20 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<AddEmploymentResponse> AddEmployment([WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyapproverId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodyemployeeCode = null, [WorkflowExpression] Func<bool> bodyisAdmin = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyholidayLocation = null, [WorkflowExpression] Func<string> bodyallowanceUnitIsDays = null, [WorkflowExpression] Func<string> bodyminutesPerWorkingDay = null)
         {
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: true);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodyapproverId, nameof(bodyapproverId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyemployeeCode, nameof(bodyemployeeCode), required: false);
-            SourceExpression.Validate(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
-            SourceExpression.Validate(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
-            SourceExpression.Validate(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/employments";
@@ -225,8 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetDetailsEmployeeResponse> GetDetailsEmployee([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/employments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -242,8 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<JToken> DeleteEmployment([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycompanyId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/employments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -267,21 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<UpdateEmploymentResponse> UpdateEmployment([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyapproverId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodyemployeeCode = null, [WorkflowExpression] Func<bool> bodyisAdmin = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyholidayLocation = null, [WorkflowExpression] Func<string> bodyallowanceUnitIsDays = null, [WorkflowExpression] Func<string> bodyminutesPerWorkingDay = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: true);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodyapproverId, nameof(bodyapproverId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyemployeeCode, nameof(bodyemployeeCode), required: false);
-            SourceExpression.Validate(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
-            SourceExpression.Validate(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
-            SourceExpression.Validate(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/employments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -385,8 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetLeaveDetailsResponse> GetLeaveDetails([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -402,13 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<string[]> UpdateLeave([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodytypeId, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<bodyleaveBreakdownsInputItem[]> bodyleaveBreakdowns = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: true);
-            SourceExpression.Validate(bodytypeId, nameof(bodytypeId), required: true);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            SourceExpression.Validate(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -458,13 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<string[]> RequestLeave([WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodytypeId, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<bodyleaveBreakdownsInputItem2[]> bodyleaveBreakdowns = null)
         {
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: true);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodytypeId, nameof(bodytypeId), required: true);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            SourceExpression.Validate(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/leaves";
@@ -522,8 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IWorkflowAction ApproveLeave([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -539,8 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IWorkflowAction CancelLeave([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ScheduleResponse> GetSchedule([WorkflowExpression] Func<string> teamId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -29,10 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListTimesOffResponse> ListTimesOff([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -53,12 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<TimeOffResponse> CreateTimeOff([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestuserId, [WorkflowExpression] Func<string> requestvaluetimeOffReason = null, [WorkflowExpression] Func<string> requestvaluestartTime = null, [WorkflowExpression] Func<string> requestvalueendTime = null, [WorkflowExpression] Func<requestvaluethemeInput> requestvaluetheme = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(requestuserId, nameof(requestuserId), required: true);
-            SourceExpression.Validate(requestvaluetimeOffReason, nameof(requestvaluetimeOffReason), required: false);
-            SourceExpression.Validate(requestvaluestartTime, nameof(requestvaluestartTime), required: false);
-            SourceExpression.Validate(requestvalueendTime, nameof(requestvalueendTime), required: false);
-            SourceExpression.Validate(requestvaluetheme, nameof(requestvaluetheme), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -123,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<TimeOffResponse> GetTimeOff([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> timeOffId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(timeOffId, nameof(timeOffId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffId, 1));
@@ -139,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction DeleteTimeOff([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> timeOffId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(timeOffId, nameof(timeOffId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timesoff/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffId, 1));
@@ -155,10 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListShiftsResponse> ListShifts([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -179,15 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ShiftResponse> CreateShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestuserId, [WorkflowExpression] Func<string> requestschedulingGroupId = null, [WorkflowExpression] Func<string> requestvaluedisplayName = null, [WorkflowExpression] Func<string> requestvaluenotes = null, [WorkflowExpression] Func<string> requestvaluestartTime = null, [WorkflowExpression] Func<string> requestvalueendTime = null, [WorkflowExpression] Func<requestvaluethemeInput> requestvaluetheme = null, [WorkflowExpression] Func<requestvalueactivitiesInputItem[]> requestvalueactivities = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(requestuserId, nameof(requestuserId), required: true);
-            SourceExpression.Validate(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
-            SourceExpression.Validate(requestvaluedisplayName, nameof(requestvaluedisplayName), required: false);
-            SourceExpression.Validate(requestvaluenotes, nameof(requestvaluenotes), required: false);
-            SourceExpression.Validate(requestvaluestartTime, nameof(requestvaluestartTime), required: false);
-            SourceExpression.Validate(requestvalueendTime, nameof(requestvalueendTime), required: false);
-            SourceExpression.Validate(requestvaluetheme, nameof(requestvaluetheme), required: false);
-            SourceExpression.Validate(requestvalueactivities, nameof(requestvalueactivities), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -270,8 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ShiftResponse> GetShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> shiftId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(shiftId, nameof(shiftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(shiftId, 1));
@@ -286,8 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction DeleteShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> shiftId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(shiftId, nameof(shiftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/shifts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(shiftId, 1));
@@ -302,10 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListOpenShiftsResponse> ListOpenShifts([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -326,15 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftResponse> CreateOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestsharedOpenShiftstartTime, [WorkflowExpression] Func<string> requestsharedOpenShiftendTime, [WorkflowExpression] Func<int> requestsharedOpenShiftopenSlotCount, [WorkflowExpression] Func<string> requestschedulingGroupId = null, [WorkflowExpression] Func<string> requestsharedOpenShiftdisplayName = null, [WorkflowExpression] Func<string> requestsharedOpenShiftnotes = null, [WorkflowExpression] Func<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, [WorkflowExpression] Func<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(requestsharedOpenShiftstartTime, nameof(requestsharedOpenShiftstartTime), required: true);
-            SourceExpression.Validate(requestsharedOpenShiftendTime, nameof(requestsharedOpenShiftendTime), required: true);
-            SourceExpression.Validate(requestsharedOpenShiftopenSlotCount, nameof(requestsharedOpenShiftopenSlotCount), required: true);
-            SourceExpression.Validate(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
-            SourceExpression.Validate(requestsharedOpenShiftdisplayName, nameof(requestsharedOpenShiftdisplayName), required: false);
-            SourceExpression.Validate(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
-            SourceExpression.Validate(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
-            SourceExpression.Validate(requestsharedOpenShiftactivities, nameof(requestsharedOpenShiftactivities), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -409,8 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftResponse> GetOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(openShiftId, nameof(openShiftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftId, 1));
@@ -425,16 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftResponse> UpdateOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftId, [WorkflowExpression] Func<string> requestsharedOpenShiftstartTime, [WorkflowExpression] Func<string> requestsharedOpenShiftendTime, [WorkflowExpression] Func<int> requestsharedOpenShiftopenSlotCount, [WorkflowExpression] Func<string> requestschedulingGroupId = null, [WorkflowExpression] Func<string> requestsharedOpenShiftdisplayName = null, [WorkflowExpression] Func<string> requestsharedOpenShiftnotes = null, [WorkflowExpression] Func<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, [WorkflowExpression] Func<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(openShiftId, nameof(openShiftId), required: true);
-            SourceExpression.Validate(requestsharedOpenShiftstartTime, nameof(requestsharedOpenShiftstartTime), required: true);
-            SourceExpression.Validate(requestsharedOpenShiftendTime, nameof(requestsharedOpenShiftendTime), required: true);
-            SourceExpression.Validate(requestsharedOpenShiftopenSlotCount, nameof(requestsharedOpenShiftopenSlotCount), required: true);
-            SourceExpression.Validate(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
-            SourceExpression.Validate(requestsharedOpenShiftdisplayName, nameof(requestsharedOpenShiftdisplayName), required: false);
-            SourceExpression.Validate(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
-            SourceExpression.Validate(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
-            SourceExpression.Validate(requestsharedOpenShiftactivities, nameof(requestsharedOpenShiftactivities), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftId, 1));
@@ -509,8 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction DeleteOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(openShiftId, nameof(openShiftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftId, 1));
@@ -525,8 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<GetTimeOffReasonsResponse> ListTimeOffReasons([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffReasons", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -543,8 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListSchedulingGroupsResponse> ListSchedulingGroups([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/schedulinggroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -561,8 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<SchedulingGroupResponse> GetSchedulingGroup([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> schedulingGroupId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(schedulingGroupId, nameof(schedulingGroupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/schedulinggroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(schedulingGroupId, 1));
@@ -577,9 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListTimeOffRequestsResponse> ListTimeOffRequests([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -598,8 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<TimeOffRequestResponse> GetTimeOffShiftRequest([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> timeOffRequestId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(timeOffRequestId, nameof(timeOffRequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffRequestId, 1));
@@ -614,9 +544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction TimeOffRequestApprove([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> timeOffRequestId, [WorkflowExpression] Func<string> requestmessageFromManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(timeOffRequestId, nameof(timeOffRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffRequestId, 1));
@@ -643,9 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction TimeOffRequestDecline([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> timeOffRequestId, [WorkflowExpression] Func<string> requestmessageFromManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(timeOffRequestId, nameof(timeOffRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/decline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeOffRequestId, 1));
@@ -672,9 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListOfferShiftRequestsResponse> ListOfferShiftRequests([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -693,8 +614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OfferShiftRequestResponse> GetOfferShiftRequest([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> offerShiftRequestId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(offerShiftRequestId, nameof(offerShiftRequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerShiftRequestId, 1));
@@ -709,9 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OfferShiftRequestApprove([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> offerShiftRequestId, [WorkflowExpression] Func<string> requestmessageFromRecipientManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(offerShiftRequestId, nameof(offerShiftRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerShiftRequestId, 1));
@@ -738,9 +654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OfferShiftRequestDecline([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> offerShiftRequestId, [WorkflowExpression] Func<string> requestmessageFromRecipientManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(offerShiftRequestId, nameof(offerShiftRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/decline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerShiftRequestId, 1));
@@ -767,9 +680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListSwapShiftsChangeRequestsResponse> ListSwapShiftsChangeRequests([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -788,8 +698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<SwapShiftsChangeRequestResponse> GetSwapShiftsChangeRequest([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> swapShiftsChangeRequestId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(swapShiftsChangeRequestId, nameof(swapShiftsChangeRequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(swapShiftsChangeRequestId, 1));
@@ -804,9 +712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction SwapShiftsChangeRequestApprove([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> swapShiftsChangeRequestId, [WorkflowExpression] Func<string> requestmessageFromRecipientManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(swapShiftsChangeRequestId, nameof(swapShiftsChangeRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(swapShiftsChangeRequestId, 1));
@@ -833,9 +738,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction SwapShiftsChangeRequestDecline([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> swapShiftsChangeRequestId, [WorkflowExpression] Func<string> requestmessageFromRecipientManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(swapShiftsChangeRequestId, nameof(swapShiftsChangeRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/decline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(swapShiftsChangeRequestId, 1));
@@ -862,9 +764,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListOpenShiftChangeRequestsResponse> ListOpenShiftChangeRequests([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -883,8 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<OpenShiftChangeRequestResponse> GetOpenShiftChangeRequest([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftChangeRequestId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(openShiftChangeRequestId, nameof(openShiftChangeRequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftChangeRequestId, 1));
@@ -899,9 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OpenShiftChangeRequestApprove([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftChangeRequestId, [WorkflowExpression] Func<string> requestmessageFromManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(openShiftChangeRequestId, nameof(openShiftChangeRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftChangeRequestId, 1));
@@ -928,9 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IWorkflowAction OpenShiftChangeRequestDecline([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftChangeRequestId, [WorkflowExpression] Func<string> requestmessageFromManager = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(openShiftChangeRequestId, nameof(openShiftChangeRequestId), required: true);
-            SourceExpression.Validate(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/decline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(openShiftChangeRequestId, 1));
@@ -957,9 +848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListOpenShiftsCrossTeamResponse> ListOpenShiftsCrossTeam([WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/me/joinedTeams/getOpenShifts";
@@ -980,10 +868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListShiftsCrossTeamResponse> ListShiftsCrossTeam([WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<string> assignedToUserName = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(assignedToUserName, nameof(assignedToUserName), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/me/joinedTeams/getShifts";
@@ -1006,10 +890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<ListTimesOffCrossTeamResponse> ListTimesOffCrossTeam([WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<string> assignedToUserName = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(assignedToUserName, nameof(assignedToUserName), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/me/joinedTeams/getTimesOff";
@@ -1034,7 +914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     {
         public IWorkflowTrigger TriggerForOpenShiftChangeRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/openshiftchangerequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -1056,7 +935,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForSwapShiftsChangeRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/swapshiftschangerequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -1078,7 +956,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForOfferShiftRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/offershiftrequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -1100,7 +977,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForTimeOffRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/timeoffrequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -1122,7 +998,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         public IWorkflowTrigger TriggerForShifts([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/teams/{0}/shifts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));

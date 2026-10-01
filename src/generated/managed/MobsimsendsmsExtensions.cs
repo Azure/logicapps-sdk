@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
         public IBodyWorkflowAction<string> SMS([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodygroupMsg = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodygroupMsg, nameof(bodygroupMsg), required: false);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms";

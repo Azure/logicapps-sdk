@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction CorptaxEntityViews([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyqualifiedviewName = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodyqualifiedviewName, nameof(bodyqualifiedviewName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/entityView";
@@ -45,11 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction DataExchangeLookup([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<lookupTypeInput> lookupType, [WorkflowExpression] Func<bool> bodydetails, [WorkflowExpression] Func<string> bodylookupName = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(lookupType, nameof(lookupType), required: true);
-            SourceExpression.Validate(bodydetails, nameof(bodydetails), required: true);
-            SourceExpression.Validate(bodylookupName, nameof(bodylookupName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DataExchangeLookup";
@@ -81,11 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction EntityList([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodyperiodName = null, [WorkflowExpression] Func<string> bodyviewName = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyperiodName, nameof(bodyperiodName), required: false);
-            SourceExpression.Validate(bodyviewName, nameof(bodyviewName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityLists";
@@ -126,16 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction ExportData([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodypackageName, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyinternationalTaxName = null, [WorkflowExpression] Func<string> bodyprovisionName = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodypackageName, nameof(bodypackageName), required: true);
-            SourceExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
-            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
-            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
-            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
-            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            SourceExpression.Validate(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
-            SourceExpression.Validate(bodyprovisionName, nameof(bodyprovisionName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dataExport";
@@ -202,16 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction ExportDataWithDataSource([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyinternationalTaxName = null, [WorkflowExpression] Func<string> bodyprovisionName = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
-            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
-            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
-            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
-            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            SourceExpression.Validate(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
-            SourceExpression.Validate(bodyprovisionName, nameof(bodyprovisionName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dataExportWithDataSource";
@@ -278,17 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<TriggerCartResponse> TriggerCart([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodycartName, [WorkflowExpression] Func<bodytypeOfActionInput> bodytypeOfAction, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyledgerName = null, [WorkflowExpression] Func<string> bodyisoCurrencyCode = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodycartName, nameof(bodycartName), required: true);
-            SourceExpression.Validate(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
-            SourceExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
-            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
-            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
-            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
-            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            SourceExpression.Validate(bodyledgerName, nameof(bodyledgerName), required: false);
-            SourceExpression.Validate(bodyisoCurrencyCode, nameof(bodyisoCurrencyCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/triggerCart";
@@ -357,10 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<TriggerReturnResponse> TriggerReturn([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName, [WorkflowExpression] Func<string> bodytypeOfAction)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodyreturnName, nameof(bodyreturnName), required: true);
-            SourceExpression.Validate(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/triggerReturn";
@@ -387,10 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<DownloadContentsResponseItem[]> DownloadContents([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<typeOfActionInput> typeOfAction, [WorkflowExpression] Func<string> bodyreturnOrCartName)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(typeOfAction, nameof(typeOfAction), required: true);
-            SourceExpression.Validate(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/downloadContents";
@@ -416,10 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<CheckTriggerStatusResponse> CheckTriggerStatus([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<typeOfActionInput> typeOfAction, [WorkflowExpression] Func<string> bodyreturnOrCartName)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(typeOfAction, nameof(typeOfAction), required: true);
-            SourceExpression.Validate(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/checkTriggerStatus";
@@ -445,21 +389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<ImportDataResponse> ImportData([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodypackageName, [WorkflowExpression] Func<string> bodyfileContents, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<bodyimportTransactionTypeInput> bodyimportTransactionType, [WorkflowExpression] Func<string> bodychartOfAccountsName, [WorkflowExpression] Func<bool> bodyrecognizeFunctionalCurrency, [WorkflowExpression] Func<bool> bodystopOnLookupErrors, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<bodyledgerAmountTypeInput> bodyledgerAmountType = null, [WorkflowExpression] Func<string> bodyfunctionalCurrencyValue = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodypackageName, nameof(bodypackageName), required: true);
-            SourceExpression.Validate(bodyfileContents, nameof(bodyfileContents), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyimportTransactionType, nameof(bodyimportTransactionType), required: true);
-            SourceExpression.Validate(bodychartOfAccountsName, nameof(bodychartOfAccountsName), required: true);
-            SourceExpression.Validate(bodyrecognizeFunctionalCurrency, nameof(bodyrecognizeFunctionalCurrency), required: true);
-            SourceExpression.Validate(bodystopOnLookupErrors, nameof(bodystopOnLookupErrors), required: true);
-            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
-            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
-            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
-            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            SourceExpression.Validate(bodyledgerAmountType, nameof(bodyledgerAmountType), required: false);
-            SourceExpression.Validate(bodyfunctionalCurrencyValue, nameof(bodyfunctionalCurrencyValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/importData";
@@ -532,9 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction CorptaxEfileGroups([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> filingGroup = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(filingGroup, nameof(filingGroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/efileGroups";
@@ -553,12 +479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction CorptaxEfilePackage([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> filingGroup, [WorkflowExpression] Func<bool> bodyefilePackageDetails, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodyform = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(filingGroup, nameof(filingGroup), required: true);
-            SourceExpression.Validate(bodyefilePackageDetails, nameof(bodyefilePackageDetails), required: true);
-            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
-            SourceExpression.Validate(bodyform, nameof(bodyform), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/efilePackage";
@@ -596,10 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<GetJobHistoryResponse> GetJobHistory([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> bodyjobToken, [WorkflowExpression] Func<bodyreportInput> bodyreport = null, [WorkflowExpression] Func<bodyreportFormatInput> bodyreportFormat = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(bodyjobToken, nameof(bodyjobToken), required: true);
-            SourceExpression.Validate(bodyreport, nameof(bodyreport), required: false);
-            SourceExpression.Validate(bodyreportFormat, nameof(bodyreportFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JobHistoryReports";
@@ -655,10 +571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction GetGmtDiagnostics([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodygmtSetting, [WorkflowExpression] Func<string> bodygmtDiagnosticName)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodygmtSetting, nameof(bodygmtSetting), required: true);
-            SourceExpression.Validate(bodygmtDiagnosticName, nameof(bodygmtDiagnosticName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gmtDiagnosticsData";
@@ -685,10 +597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction ReturnCalculationDetails([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName, [WorkflowExpression] Func<bodyformatInput> bodyformat = null)
         {
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
-            SourceExpression.Validate(bodyreturnName, nameof(bodyreturnName), required: true);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ReturnCalculationDetails";

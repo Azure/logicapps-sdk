@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IBodyWorkflowAction<ImportApiImportJobSummaryCollection> ListImportJobs([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/import/jobs";
@@ -37,8 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IBodyWorkflowAction<ImportApiCreateImportJobResponse> CreateImportJob([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyheaderRow = null)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyheaderRow, nameof(bodyheaderRow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/import/jobs";
@@ -67,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IBodyWorkflowAction<ImportApiImportJob> GetImportJob([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -82,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IWorkflowAction DeleteImportJob([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -97,8 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IWorkflowAction EditImportJob([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<string> bodyfileName = null)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -125,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IBodyWorkflowAction<ImportApiImportJobExceptionFileDownloadInfo> GetImportJobExceptionFileDownloadUri([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/jobs/{0}/exceptionfiledownloadinfo", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -140,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IBodyWorkflowAction<ImportApiImportJobFileUploadInfo> GetImportJobFileUploadUri([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/jobs/{0}/uploaduri", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -155,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
         public IBodyWorkflowAction<ImportApiStartImportJobResponse> StartImportJob([WorkflowExpression] Func<string> bodyjobId)
         {
-            SourceExpression.Validate(bodyjobId, nameof(bodyjobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/import/jobs/start";

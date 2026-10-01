@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<AddCommentResponseV2> AddComment([WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> bodydatacomment = null)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(bodydatacomment, nameof(bodydatacomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}/stories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> CompleteTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -65,15 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> CreateProject([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> projectdataprojectName = null, [WorkflowExpression] Func<string> projectdatadueDate = null, [WorkflowExpression] Func<bool> projectdataPublic = null, [WorkflowExpression] Func<projectdataprojectColorInput> projectdataprojectColor = null, [WorkflowExpression] Func<string> projectdataprojectNotes = null, [WorkflowExpression] Func<string> projectdataowner = null, [WorkflowExpression] Func<bool> projectdataarchive = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: true);
-            SourceExpression.Validate(team, nameof(team), required: false);
-            SourceExpression.Validate(projectdataprojectName, nameof(projectdataprojectName), required: false);
-            SourceExpression.Validate(projectdatadueDate, nameof(projectdatadueDate), required: false);
-            SourceExpression.Validate(projectdataPublic, nameof(projectdataPublic), required: false);
-            SourceExpression.Validate(projectdataprojectColor, nameof(projectdataprojectColor), required: false);
-            SourceExpression.Validate(projectdataprojectNotes, nameof(projectdataprojectNotes), required: false);
-            SourceExpression.Validate(projectdataowner, nameof(projectdataowner), required: false);
-            SourceExpression.Validate(projectdataarchive, nameof(projectdataarchive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/projects";
@@ -167,14 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> CreateTask([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> projects, [WorkflowExpression] Func<string> taskdatataskName = null, [WorkflowExpression] Func<string> taskdataassignee = null, [WorkflowExpression] Func<string> taskdatadescription = null, [WorkflowExpression] Func<taskdataassigneeStatusInput> taskdataassigneeStatus = null, [WorkflowExpression] Func<bool> taskdatacompleted = null, [WorkflowExpression] Func<string> taskdatadueDate = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: true);
-            SourceExpression.Validate(projects, nameof(projects), required: true);
-            SourceExpression.Validate(taskdatataskName, nameof(taskdatataskName), required: false);
-            SourceExpression.Validate(taskdataassignee, nameof(taskdataassignee), required: false);
-            SourceExpression.Validate(taskdatadescription, nameof(taskdatadescription), required: false);
-            SourceExpression.Validate(taskdataassigneeStatus, nameof(taskdataassigneeStatus), required: false);
-            SourceExpression.Validate(taskdatacompleted, nameof(taskdatacompleted), required: false);
-            SourceExpression.Validate(taskdatadueDate, nameof(taskdatadueDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tasks";
@@ -251,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> GetProject([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -266,7 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> GetTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -281,7 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<UserResponseV2> GetUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -296,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListUsersResponseV2> ListUsers([WorkflowExpression] Func<string> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/workspaces/{0}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
@@ -311,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListTeamsResponseV2> ListWorkspaceTeams([WorkflowExpression] Func<string> workspace)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/organizations/{0}/teams", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspace, 1));
@@ -328,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     {
         public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated([WorkflowExpression] Func<string> workspace, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/new_project_trigger/projects";
@@ -343,8 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> project, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/complete_task_trigger/tasks";
@@ -360,8 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> project, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/new_task_trigger/tasks";

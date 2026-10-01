@@ -14,22 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfutureidenti")]
         public IBodyWorkflowAction<LookupResponse> CredentialLookup([WorkflowExpression] Func<string[]> bodyfilterauthorizationProtocols = null, [WorkflowExpression] Func<string[]> bodyfilterauthorizationTechnologies = null, [WorkflowExpression] Func<string> bodyfilterbreachPropertiesdate = null, [WorkflowExpression] Func<string> bodyfilterbreachPropertiesname = null, [WorkflowExpression] Func<string> bodyfilterdumpPropertiesdate = null, [WorkflowExpression] Func<string> bodyfilterdumpPropertiesname = null, [WorkflowExpression] Func<string> bodyfilterexfiltrationDateGte = null, [WorkflowExpression] Func<string> bodyfilterfirstDownloadedGte = null, [WorkflowExpression] Func<string> bodyfilterlatestDownloadedGte = null, [WorkflowExpression] Func<string[]> bodyfiltermalwareFamilies = null, [WorkflowExpression] Func<bodyfilterpropertiesInputItem[]> bodyfilterproperties = null, [WorkflowExpression] Func<bodyfilterusernamePropertiesInputItem[]> bodyfilterusernameProperties = null, [WorkflowExpression] Func<string> bodyorganizationId = null, [WorkflowExpression] Func<string[]> bodysubjects = null, [WorkflowExpression] Func<DomainLogin[]> bodysubjectsLogin = null, [WorkflowExpression] Func<string[]> bodysubjectsSha1 = null)
         {
-            SourceExpression.Validate(bodyfilterauthorizationProtocols, nameof(bodyfilterauthorizationProtocols), required: false);
-            SourceExpression.Validate(bodyfilterauthorizationTechnologies, nameof(bodyfilterauthorizationTechnologies), required: false);
-            SourceExpression.Validate(bodyfilterbreachPropertiesdate, nameof(bodyfilterbreachPropertiesdate), required: false);
-            SourceExpression.Validate(bodyfilterbreachPropertiesname, nameof(bodyfilterbreachPropertiesname), required: false);
-            SourceExpression.Validate(bodyfilterdumpPropertiesdate, nameof(bodyfilterdumpPropertiesdate), required: false);
-            SourceExpression.Validate(bodyfilterdumpPropertiesname, nameof(bodyfilterdumpPropertiesname), required: false);
-            SourceExpression.Validate(bodyfilterexfiltrationDateGte, nameof(bodyfilterexfiltrationDateGte), required: false);
-            SourceExpression.Validate(bodyfilterfirstDownloadedGte, nameof(bodyfilterfirstDownloadedGte), required: false);
-            SourceExpression.Validate(bodyfilterlatestDownloadedGte, nameof(bodyfilterlatestDownloadedGte), required: false);
-            SourceExpression.Validate(bodyfiltermalwareFamilies, nameof(bodyfiltermalwareFamilies), required: false);
-            SourceExpression.Validate(bodyfilterproperties, nameof(bodyfilterproperties), required: false);
-            SourceExpression.Validate(bodyfilterusernameProperties, nameof(bodyfilterusernameProperties), required: false);
-            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: false);
-            SourceExpression.Validate(bodysubjects, nameof(bodysubjects), required: false);
-            SourceExpression.Validate(bodysubjectsLogin, nameof(bodysubjectsLogin), required: false);
-            SourceExpression.Validate(bodysubjectsSha1, nameof(bodysubjectsSha1), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/credentials/lookup";

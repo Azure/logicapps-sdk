@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiApplicantCreateResponse> ApiApplicantCreate([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodynameFirst = null, [WorkflowExpression] Func<string> bodynameLast = null, [WorkflowExpression] Func<string> bodyflowName = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodynameFirst, nameof(bodynameFirst), required: false);
-            SourceExpression.Validate(bodynameLast, nameof(bodynameLast), required: false);
-            SourceExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-applicant-create";
@@ -69,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiVerificationlinkCreateResponse> ApiVerificationlinkCreate([WorkflowExpression] Func<string> bodyapplicant = null)
         {
-            SourceExpression.Validate(bodyapplicant, nameof(bodyapplicant), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-verificationlink-create";
@@ -96,12 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IWorkflowAction ApiDocumentUpload([WorkflowExpression] Func<string> bodyapplicantId = null, [WorkflowExpression] Func<string> bodydocType = null, [WorkflowExpression] Func<string> bodydocSubType = null, [WorkflowExpression] Func<string> bodydocCountryISO = null, [WorkflowExpression] Func<string> bodydocFilefilename = null, [WorkflowExpression] Func<string> bodydocFilecontents = null)
         {
-            SourceExpression.Validate(bodyapplicantId, nameof(bodyapplicantId), required: false);
-            SourceExpression.Validate(bodydocType, nameof(bodydocType), required: false);
-            SourceExpression.Validate(bodydocSubType, nameof(bodydocSubType), required: false);
-            SourceExpression.Validate(bodydocCountryISO, nameof(bodydocCountryISO), required: false);
-            SourceExpression.Validate(bodydocFilefilename, nameof(bodydocFilefilename), required: false);
-            SourceExpression.Validate(bodydocFilecontents, nameof(bodydocFilecontents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-document-upload";
@@ -166,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiApplicantStatusResponse> ApiApplicantStatus([WorkflowExpression] Func<string> bodyapplicantId = null)
         {
-            SourceExpression.Validate(bodyapplicantId, nameof(bodyapplicantId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-applicant-status";
@@ -193,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiApplicantDetailsResponse> ApiApplicantDetails([WorkflowExpression] Func<string> bodyapplicantId = null)
         {
-            SourceExpression.Validate(bodyapplicantId, nameof(bodyapplicantId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-applicant-details";
@@ -220,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IWorkflowAction ApiRequestApplicantCheck([WorkflowExpression] Func<string> bodyapplicantId = null)
         {
-            SourceExpression.Validate(bodyapplicantId, nameof(bodyapplicantId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-request-applicant-check";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "conversionservice")]
         public IBodyWorkflowAction<string> HtmlToText([WorkflowExpression] Func<string> content = null)
         {
-            SourceExpression.Validate(content, nameof(content), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/html2text";

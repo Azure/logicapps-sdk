@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IBodyWorkflowAction<Scan[]> GetScans([WorkflowExpression] Func<statusInput> status = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/scans";
@@ -32,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IBodyWorkflowAction<Scan> GetScanById([WorkflowExpression] Func<string> scanId)
         {
-            SourceExpression.Validate(scanId, nameof(scanId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scanId, 1));
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IWorkflowAction GetScreenshotByScanId([WorkflowExpression] Func<string> scanId)
         {
-            SourceExpression.Validate(scanId, nameof(scanId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}/screenshot", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scanId, 1));

@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsResponse> GetStations([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations";
@@ -49,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsAvailabilityResponse> GetStationsAvailability([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/availability";
@@ -75,15 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IWorkflowAction GetNearbyWeatherStations([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/nearby";
@@ -114,8 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationResponse> GetStation([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -132,10 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> GetWeatherStationAvailability([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/availability", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -156,15 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsBulletinsResponse> GetStationsBulletins([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/bulletins";
@@ -195,15 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetWeatherStationsRainfallResponse> GetWeatherStationsRainfall([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/rainfall";
@@ -234,15 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetWeatherStationRainfallResponse> GetWeatherStationRainfall([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations1/rainfall";
@@ -273,13 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsExtremeConditionsResponse> GetStationsExtremeConditions([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/extreme-conditions";
@@ -308,14 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsExtremeEventsResponse> GetStationsExtremeEvents([WorkflowExpression] Func<@operatorInput> @operator, [WorkflowExpression] Func<int> threshold, [WorkflowExpression] Func<propertyInput> property, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<intervalInput> interval = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(@operator, nameof(@operator), required: true);
-            SourceExpression.Validate(threshold, nameof(threshold), required: true);
-            SourceExpression.Validate(property, nameof(property), required: true);
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(interval, nameof(interval), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/events";
@@ -341,11 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsLatestDataResponse> GetStationsLatestData([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/latest";
@@ -370,13 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationBulletinsResponse> GetStationBulletins([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/bulletin", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -401,8 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationLatestDataResponse> GetStationLatestData([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/latest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -419,13 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationMinuteDataResponse> GetStationMinuteData([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -450,15 +361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations15minSummary([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/15min";
@@ -489,15 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations30minSummary([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/30min";
@@ -528,15 +421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsHourlySummary([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/hourly";
@@ -567,15 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsDailySummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/daily";
@@ -606,15 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsMonthlySummary([WorkflowExpression] Func<string> startMonth, [WorkflowExpression] Func<string> endMonth, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startMonth, nameof(startMonth), required: true);
-            SourceExpression.Validate(endMonth, nameof(endMonth), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/monthly";
@@ -645,15 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsYearlySummary([WorkflowExpression] Func<string> startYear, [WorkflowExpression] Func<string> endYear, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startYear, nameof(startYear), required: true);
-            SourceExpression.Validate(endYear, nameof(endYear), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/yearly";
@@ -684,15 +541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations15minSummaryTimeSeries([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/15min/timeseries";
@@ -723,15 +571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations30minSummaryTimeSeries([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/30min/timeseries";
@@ -762,15 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsHourlySummaryTimeSeries([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/hourly/timeseries";
@@ -801,15 +631,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsDailySummaryTimeSeries([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/daily/timeseries";
@@ -840,15 +661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsMonthlySummaryTimeSeries([WorkflowExpression] Func<string> startMonth, [WorkflowExpression] Func<string> endMonth, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startMonth, nameof(startMonth), required: true);
-            SourceExpression.Validate(endMonth, nameof(endMonth), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/monthly/timeseries";
@@ -879,15 +691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsYearlySummaryTimeSeries([WorkflowExpression] Func<string> startYear, [WorkflowExpression] Func<string> endYear, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(startYear, nameof(startYear), required: true);
-            SourceExpression.Validate(endYear, nameof(endYear), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(includeClosed, nameof(includeClosed), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/summaries/yearly/timeseries";
@@ -918,13 +721,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation15minSummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/15min", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -949,13 +745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation30minSummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/30min", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -980,13 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationHourlySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: true);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/hourly", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -1011,13 +793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationDailySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/daily", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -1042,13 +817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationMonthlySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/monthly", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -1073,13 +841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationYearlySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/yearly", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));

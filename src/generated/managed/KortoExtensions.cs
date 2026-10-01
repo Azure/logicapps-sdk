@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<QueryTagsResponse> GetTag([WorkflowExpression] Func<int> tagId = null, [WorkflowExpression] Func<string> tagName = null)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: false);
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Tag/v2";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IWorkflowAction DeleteTag([WorkflowExpression] Func<int> tagId = null, [WorkflowExpression] Func<string> tagName = null)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: false);
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Tag/v2";
@@ -54,9 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<QueryTagResponseItem> CreateTag([WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<int> tagType = null, [WorkflowExpression] Func<int> tagValueType = null)
         {
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
-            SourceExpression.Validate(tagType, nameof(tagType), required: false);
-            SourceExpression.Validate(tagValueType, nameof(tagValueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Tag/v2";
@@ -78,8 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<RecordQueryResponseItem> GetRecord([WorkflowExpression] Func<int> recordId = null, [WorkflowExpression] Func<string> externalRecordId = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(externalRecordId, nameof(externalRecordId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Record/v2";
@@ -98,8 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IWorkflowAction DeleteRecord([WorkflowExpression] Func<int> recordId = null, [WorkflowExpression] Func<string> externalRecordId = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(externalRecordId, nameof(externalRecordId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Record/v2";
@@ -118,8 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<DownloadUrlMessage> DownloadRecord([WorkflowExpression] Func<int> recordId = null, [WorkflowExpression] Func<string> externalRecordId = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(externalRecordId, nameof(externalRecordId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Record/v2/download";
@@ -138,9 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IWorkflowAction DeleteTagFromRecord([WorkflowExpression] Func<int> recordId = null, [WorkflowExpression] Func<string> externalRecordId = null, [WorkflowExpression] Func<string> tagName = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(externalRecordId, nameof(externalRecordId), required: false);
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordTagValue/v2";
@@ -161,10 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<RecordQueryResponseItem> AddTagToRecord([WorkflowExpression] Func<int> recordId = null, [WorkflowExpression] Func<string> externalRecordId = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<string> tagValue = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(externalRecordId, nameof(externalRecordId), required: false);
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
-            SourceExpression.Validate(tagValue, nameof(tagValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordTagValue/v2";
@@ -187,10 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<RecordQueryResponseItem> UpdateTagOnRecord([WorkflowExpression] Func<int> recordId = null, [WorkflowExpression] Func<string> externalRecordId = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<string> tagValue = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(externalRecordId, nameof(externalRecordId), required: false);
-            SourceExpression.Validate(tagName, nameof(tagName), required: false);
-            SourceExpression.Validate(tagValue, nameof(tagValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RecordTagValue/v2";

@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
         public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<bool> includeDocumentData, [WorkflowExpression] Func<string> bodytransactionData, [WorkflowExpression] Func<int> bodybatchConfigResId, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodytransactionRange = null, [WorkflowExpression] Func<bodytransactionDataTypeInput> bodytransactionDataType = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null)
         {
-            SourceExpression.Validate(includeDocumentData, nameof(includeDocumentData), required: true);
-            SourceExpression.Validate(bodytransactionData, nameof(bodytransactionData), required: true);
-            SourceExpression.Validate(bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodytransactionRange, nameof(bodytransactionRange), required: false);
-            SourceExpression.Validate(bodytransactionDataType, nameof(bodytransactionDataType), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";

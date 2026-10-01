@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions([WorkflowExpression] Func<string> keyName)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata([WorkflowExpression] Func<string> keyName)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
@@ -58,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(keyVersion, nameof(keyVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
@@ -74,9 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyEncryptOutput> EncryptData([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            SourceExpression.Validate(operationInputrawData, nameof(operationInputrawData), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/encrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
@@ -101,10 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(keyVersion, nameof(keyVersion), required: true);
-            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            SourceExpression.Validate(operationInputrawData, nameof(operationInputrawData), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/encrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
@@ -129,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyDecryptOutput> DecryptData([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            SourceExpression.Validate(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/decrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
@@ -156,10 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(keyVersion, nameof(keyVersion), required: true);
-            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            SourceExpression.Validate(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/decrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
@@ -198,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions([WorkflowExpression] Func<string> secretName)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
@@ -213,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata([WorkflowExpression] Func<string> secretName)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
@@ -228,8 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> secretVersion)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
-            SourceExpression.Validate(secretVersion, nameof(secretVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretVersion, 1));
@@ -244,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<Secret> GetSecret([WorkflowExpression] Func<string> secretName)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
@@ -259,8 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<Secret> GetSecretVersion([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> secretVersion)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
-            SourceExpression.Validate(secretVersion, nameof(secretVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretVersion, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Templionix
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "templionix")]
         public IBodyWorkflowAction<BulkGenerationJobStatusDto[]> GetBulkGenerationJobsByTemplateId([WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/bulkGenerationJobs/byTemplate/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));

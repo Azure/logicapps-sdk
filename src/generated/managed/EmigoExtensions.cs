@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<TablesList> GetTables([WorkflowExpression] Func<string> type)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<FeedList> GetFeeds([WorkflowExpression] Func<string> endpoint)
         {
-            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> table)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -60,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<FeedList> GetODataItems([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<string> feed)
         {
-            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
-            SourceExpression.Validate(feed, nameof(feed), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));
@@ -76,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetProductList> GetProductList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(idList, nameof(idList), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Product/GetList";
@@ -96,8 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetProduct> GetProductItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Product/GetItem";
@@ -115,8 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(idList, nameof(idList), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/OperationalUnit/GetList";
@@ -135,8 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/OperationalUnit/GetItem";
@@ -154,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<JToken> SendMessageOperationalUnit([WorkflowExpression] Func<int> sendMessageidOperationalUnit, [WorkflowExpression] Func<string> sendMessagemessage)
         {
-            SourceExpression.Validate(sendMessageidOperationalUnit, nameof(sendMessageidOperationalUnit), required: true);
-            SourceExpression.Validate(sendMessagemessage, nameof(sendMessagemessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/OperationalUnit/SendMessage";
@@ -182,8 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<string> feed, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
-            SourceExpression.Validate(feed, nameof(feed), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/{0}/feeds/{1}/newItem", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));

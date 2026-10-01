@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linemessageip")]
         public IWorkflowAction SendMessage([WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/bot/message/push";

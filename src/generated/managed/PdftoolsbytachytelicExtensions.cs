@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
         public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf([WorkflowExpression] Func<string> bodypDFFileContent, [WorkflowExpression] Func<bodymodeInput> bodymode = null, [WorkflowExpression] Func<int> bodygarbageLevel = null, [WorkflowExpression] Func<bool> bodydeflate = null, [WorkflowExpression] Func<bool> bodyclean = null)
         {
-            SourceExpression.Validate(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
-            SourceExpression.Validate(bodydeflate, nameof(bodydeflate), required: false);
-            SourceExpression.Validate(bodyclean, nameof(bodyclean), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/optimize";

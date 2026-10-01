@@ -28,10 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         public IBodyWorkflowAction<SwitchResponseItem[]> Switch([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<bool> bodyon = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
-            SourceExpression.Validate(bodyon, nameof(bodyon), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ms-flow/switch";
@@ -76,10 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         public IBodyWorkflowAction<ColorResponseItem[]> Color([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodyspectrumRGB = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
-            SourceExpression.Validate(bodyspectrumRGB, nameof(bodyspectrumRGB), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ms-flow/color";
@@ -124,10 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
-            SourceExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ms-flow/brightness";
@@ -172,10 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodytemperature = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ms-flow/temperature";
@@ -220,9 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         public IBodyWorkflowAction<QueryResponse> Query([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ms-flow/query";

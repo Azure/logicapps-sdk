@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A000AV01CV01ConvertAllFormats> T01A000AV01CV01ConvertAllFormats([WorkflowExpression] Func<string> dtoRequestT01A000AV01CV01ConvertAllFormatsinputData, [WorkflowExpression] Func<string> dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat = null, [WorkflowExpression] Func<string> dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats = null)
         {
-            SourceExpression.Validate(dtoRequestT01A000AV01CV01ConvertAllFormatsinputData, nameof(dtoRequestT01A000AV01CV01ConvertAllFormatsinputData), required: true);
-            SourceExpression.Validate(dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat, nameof(dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat), required: false);
-            SourceExpression.Validate(dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats, nameof(dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A000_AV01_CV01_ConvertAllFormats";
@@ -51,23 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A001AV01CV01ConvertCsvToJson> T01A001AV01CV01ConvertCsvToJson([WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator = null, [WorkflowExpression] Func<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectHeader = null, [WorkflowExpression] Func<int> dtoRequestT01A001AV01CV01ConvertCsvToJsonheaderRowIndex = null, [WorkflowExpression] Func<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes = null, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsondetectionAccuracy = null, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonnullValue = null, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonrowsToSkip = null, [WorkflowExpression] Func<int> dtoRequestT01A001AV01CV01ConvertCsvToJsonstopAtRow = null, [WorkflowExpression] Func<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows = null, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonquoteCharacter = null, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonescapeCharacter = null, [WorkflowExpression] Func<bool> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines = null, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns = null, [WorkflowExpression] Func<string> dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns = null)
         {
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV), required: true);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectHeader, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectHeader), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonheaderRowIndex, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonheaderRowIndex), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsondetectionAccuracy, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsondetectionAccuracy), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonnullValue, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonnullValue), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonrowsToSkip, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonrowsToSkip), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonstopAtRow, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonstopAtRow), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonquoteCharacter, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonquoteCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonescapeCharacter, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonescapeCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns), required: false);
-            SourceExpression.Validate(dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A001_AV01_CV01_ConvertCsvToJson";
@@ -226,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv> T01A002AV01CV01ConvertJsonToCsv([WorkflowExpression] Func<string> dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON)
         {
-            SourceExpression.Validate(dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON, nameof(dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A002_AV01_CV01_ConvertJsonToCsv";
@@ -249,26 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel> T01A003AV01CV01ConvertCsvToExcel([WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectHeader = null, [WorkflowExpression] Func<int> dtoRequestT01A003AV01CV01ConvertCsvToExcelheaderRowIndex = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes = null, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExceldetectionAccuracy = null, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelnullValue = null, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelrowsToSkip = null, [WorkflowExpression] Func<int> dtoRequestT01A003AV01CV01ConvertCsvToExcelstopAtRow = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows = null, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelquoteCharacter = null, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelescapeCharacter = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectWrappedLines = null, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelrenameColumns = null, [WorkflowExpression] Func<string> dtoRequestT01A003AV01CV01ConvertCsvToExcelincludeColumns = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth = null)
         {
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV), required: true);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectHeader, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectHeader), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelheaderRowIndex, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelheaderRowIndex), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExceldetectionAccuracy, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExceldetectionAccuracy), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelnullValue, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelnullValue), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelrowsToSkip, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelrowsToSkip), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelstopAtRow, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelstopAtRow), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelquoteCharacter, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelquoteCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelescapeCharacter, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelescapeCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectWrappedLines, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectWrappedLines), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelrenameColumns, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelrenameColumns), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelincludeColumns, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelincludeColumns), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText), required: false);
-            SourceExpression.Validate(dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A003_AV01_CV01_ConvertCsvToExcel";
@@ -465,7 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv> T01A004AV01CV01ConvertExcelToCsv([WorkflowExpression] Func<string> dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile)
         {
-            SourceExpression.Validate(dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile, nameof(dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A004_AV01_CV01_ConvertExcelToCsv";
@@ -488,23 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml> T01A005AV01CV01ConvertCsvToHtml([WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator = null, [WorkflowExpression] Func<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectHeader = null, [WorkflowExpression] Func<int> dtoRequestT01A005AV01CV01ConvertCsvToHtmlheaderRowIndex = null, [WorkflowExpression] Func<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes = null, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmldetectionAccuracy = null, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlnullValue = null, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrowsToSkip = null, [WorkflowExpression] Func<int> dtoRequestT01A005AV01CV01ConvertCsvToHtmlstopAtRow = null, [WorkflowExpression] Func<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows = null, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlquoteCharacter = null, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlescapeCharacter = null, [WorkflowExpression] Func<bool> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines = null, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns = null, [WorkflowExpression] Func<string> dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns = null)
         {
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV), required: true);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectHeader, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectHeader), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlheaderRowIndex, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlheaderRowIndex), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmldetectionAccuracy, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmldetectionAccuracy), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlnullValue, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlnullValue), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlrowsToSkip, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlrowsToSkip), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlstopAtRow, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlstopAtRow), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlquoteCharacter, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlquoteCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlescapeCharacter, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlescapeCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns), required: false);
-            SourceExpression.Validate(dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A005_AV01_CV01_ConvertCsvToHtml";
@@ -663,7 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv> T01A006AV01CV01ConvertHtmlToCsv([WorkflowExpression] Func<string> dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable)
         {
-            SourceExpression.Validate(dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable, nameof(dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A006_AV01_CV01_ConvertHtmlToCsv";
@@ -686,23 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A007AV01CV01ConvertCsvToXml> T01A007AV01CV01ConvertCsvToXml([WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator = null, [WorkflowExpression] Func<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectHeader = null, [WorkflowExpression] Func<int> dtoRequestT01A007AV01CV01ConvertCsvToXmlheaderRowIndex = null, [WorkflowExpression] Func<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes = null, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmldetectionAccuracy = null, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlnullValue = null, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlrowsToSkip = null, [WorkflowExpression] Func<int> dtoRequestT01A007AV01CV01ConvertCsvToXmlstopAtRow = null, [WorkflowExpression] Func<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows = null, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlquoteCharacter = null, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlescapeCharacter = null, [WorkflowExpression] Func<bool> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines = null, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns = null, [WorkflowExpression] Func<string> dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns = null)
         {
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV), required: true);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectHeader, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectHeader), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlheaderRowIndex, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlheaderRowIndex), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmldetectionAccuracy, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmldetectionAccuracy), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlnullValue, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlnullValue), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlrowsToSkip, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlrowsToSkip), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlstopAtRow, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlstopAtRow), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlquoteCharacter, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlquoteCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlescapeCharacter, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlescapeCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns), required: false);
-            SourceExpression.Validate(dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A007_AV01_CV01_ConvertCsvToXml";
@@ -861,7 +784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv> T01A008AV01CV01ConvertXmlToCsv([WorkflowExpression] Func<string> dtoRequestT01A008AV01CV01ConvertXmlToCsvxML)
         {
-            SourceExpression.Validate(dtoRequestT01A008AV01CV01ConvertXmlToCsvxML, nameof(dtoRequestT01A008AV01CV01ConvertXmlToCsvxML), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A008_AV01_CV01_ConvertXmlToCsv";
@@ -884,23 +806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml> T01A009AV01CV01ConvertCsvToYaml([WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator = null, [WorkflowExpression] Func<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectHeader = null, [WorkflowExpression] Func<int> dtoRequestT01A009AV01CV01ConvertCsvToYamlheaderRowIndex = null, [WorkflowExpression] Func<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes = null, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamldetectionAccuracy = null, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlnullValue = null, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlrowsToSkip = null, [WorkflowExpression] Func<int> dtoRequestT01A009AV01CV01ConvertCsvToYamlstopAtRow = null, [WorkflowExpression] Func<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows = null, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlquoteCharacter = null, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlescapeCharacter = null, [WorkflowExpression] Func<bool> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines = null, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns = null, [WorkflowExpression] Func<string> dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns = null)
         {
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV), required: true);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectHeader, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectHeader), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlheaderRowIndex, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlheaderRowIndex), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamldetectionAccuracy, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamldetectionAccuracy), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlnullValue, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlnullValue), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlrowsToSkip, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlrowsToSkip), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlstopAtRow, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlstopAtRow), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlquoteCharacter, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlquoteCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlescapeCharacter, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlescapeCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns), required: false);
-            SourceExpression.Validate(dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A009_AV01_CV01_ConvertCsvToYaml";
@@ -1059,7 +964,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv> T01A010AV01CV01ConvertYamlToCsv([WorkflowExpression] Func<string> dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML)
         {
-            SourceExpression.Validate(dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML, nameof(dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A010_AV01_CV01_ConvertYamlToCsv";
@@ -1082,23 +986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
         public IBodyWorkflowAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable> T01A011AV01CV01ConvertCsvToTextTable([WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator = null, [WorkflowExpression] Func<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectHeader = null, [WorkflowExpression] Func<int> dtoRequestT01A011AV01CV01ConvertCsvToTextTableheaderRowIndex = null, [WorkflowExpression] Func<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes = null, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTabledetectionAccuracy = null, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablenullValue = null, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerowsToSkip = null, [WorkflowExpression] Func<int> dtoRequestT01A011AV01CV01ConvertCsvToTextTablestopAtRow = null, [WorkflowExpression] Func<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows = null, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablequoteCharacter = null, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTableescapeCharacter = null, [WorkflowExpression] Func<bool> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines = null, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns = null, [WorkflowExpression] Func<string> dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns = null)
         {
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV), required: true);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectHeader, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectHeader), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableheaderRowIndex, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableheaderRowIndex), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTabledetectionAccuracy, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTabledetectionAccuracy), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTablenullValue, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablenullValue), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTablerowsToSkip, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablerowsToSkip), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTablestopAtRow, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablestopAtRow), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTablequoteCharacter, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablequoteCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableescapeCharacter, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableescapeCharacter), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns), required: false);
-            SourceExpression.Validate(dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A011_AV01_CV01_ConvertCsvToTextTable";

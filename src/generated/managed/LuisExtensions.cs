@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
         public IBodyWorkflowAction<PredictResponse> GetPredictions([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> desiredIntent = null, [WorkflowExpression] Func<string> versionId = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(desiredIntent, nameof(desiredIntent), required: false);
-            SourceExpression.Validate(versionId, nameof(versionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
@@ -39,10 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
         public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> GetTopScoringMatchingEntity([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> desiredEntity, [WorkflowExpression] Func<string> versionId = null, [WorkflowExpression] Func<string> luisPredictionObject = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(desiredEntity, nameof(desiredEntity), required: true);
-            SourceExpression.Validate(versionId, nameof(versionId), required: false);
-            SourceExpression.Validate(luisPredictionObject, nameof(luisPredictionObject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";

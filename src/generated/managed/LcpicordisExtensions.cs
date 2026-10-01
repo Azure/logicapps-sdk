@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lcpicordis")]
         public IBodyWorkflowAction<EloketExport> EloketExport([WorkflowExpression] Func<int> formid, [WorkflowExpression] Func<int> entryid = null, [WorkflowExpression] Func<string> lastsynch = null, [WorkflowExpression] Func<bool> includeFiles = null, [WorkflowExpression] Func<bool> includePDF = null, [WorkflowExpression] Func<bool> includeHTML = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(formid, nameof(formid), required: true);
-            SourceExpression.Validate(entryid, nameof(entryid), required: false);
-            SourceExpression.Validate(lastsynch, nameof(lastsynch), required: false);
-            SourceExpression.Validate(includeFiles, nameof(includeFiles), required: false);
-            SourceExpression.Validate(includePDF, nameof(includePDF), required: false);
-            SourceExpression.Validate(includeHTML, nameof(includeHTML), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Export/eloketjson";
@@ -48,8 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lcpicordis")]
         public IBodyWorkflowAction<bool> TriggerUnsubscribe([WorkflowExpression] Func<int> formid, [WorkflowExpression] Func<string> bodywebhookurl = null)
         {
-            SourceExpression.Validate(formid, nameof(formid), required: true);
-            SourceExpression.Validate(bodywebhookurl, nameof(bodywebhookurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/export/eloket/{0}/unsubscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(formid, 1));
@@ -78,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
     {
         public IBodyWorkflowTrigger<bool> NewEntry([WorkflowExpression] Func<int> formid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formid, nameof(formid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/export/eloket/{0}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(formid, 1));

@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
         public IWorkflowAction NewLeadSubmission([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodymobileNo = null, [WorkflowExpression] Func<string> bodysecondaryEmail = null, [WorkflowExpression] Func<int> bodylifecycleStageName = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodymobileNo, nameof(bodymobileNo), required: false);
-            SourceExpression.Validate(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
-            SourceExpression.Validate(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";

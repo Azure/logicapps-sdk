@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IWorkflowAction GetAttachmentMetdata([WorkflowExpression] Func<string> sysparmLimit = null, [WorkflowExpression] Func<string> sysparmOffset = null, [WorkflowExpression] Func<string> sysparmQuery = null)
         {
-            SourceExpression.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
-            SourceExpression.Validate(sysparmOffset, nameof(sysparmOffset), required: false);
-            SourceExpression.Validate(sysparmQuery, nameof(sysparmQuery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/now/v1/attachment";
@@ -39,10 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> tableSysId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> @file = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(tableSysId, nameof(tableSysId), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/now/v1/attachment/file";
@@ -61,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IWorkflowAction RetrieveAttachmentMetadata([WorkflowExpression] Func<string> sysId)
         {
-            SourceExpression.Validate(sysId, nameof(sysId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
@@ -76,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> sysId)
         {
-            SourceExpression.Validate(sysId, nameof(sysId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
@@ -91,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IWorkflowAction RetrieveAttachmentContent([WorkflowExpression] Func<string> sysId)
         {
-            SourceExpression.Validate(sysId, nameof(sysId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}/file", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
@@ -106,13 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetRecordsResponse> GetRecords([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmQuery = null, [WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<int> sysparmOffset = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            SourceExpression.Validate(tableType, nameof(tableType), required: true);
-            SourceExpression.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
-            SourceExpression.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
-            SourceExpression.Validate(sysparmQuery, nameof(sysparmQuery), required: false);
-            SourceExpression.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
-            SourceExpression.Validate(sysparmOffset, nameof(sysparmOffset), required: false);
-            SourceExpression.Validate(sysparmFields, nameof(sysparmFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1));
@@ -141,12 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<SingleRecordResponse> CreateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmInputDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            SourceExpression.Validate(tableType, nameof(tableType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
-            SourceExpression.Validate(sysparmInputDisplayValue, nameof(sysparmInputDisplayValue), required: false);
-            SourceExpression.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
-            SourceExpression.Validate(sysparmFields, nameof(sysparmFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1));
@@ -173,11 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<SingleRecordResponse> GetRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            SourceExpression.Validate(tableType, nameof(tableType), required: true);
-            SourceExpression.Validate(sysid, nameof(sysid), required: true);
-            SourceExpression.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
-            SourceExpression.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
-            SourceExpression.Validate(sysparmFields, nameof(sysparmFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysid, 1));
@@ -200,13 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmInputDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            SourceExpression.Validate(tableType, nameof(tableType), required: true);
-            SourceExpression.Validate(sysid, nameof(sysid), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
-            SourceExpression.Validate(sysparmInputDisplayValue, nameof(sysparmInputDisplayValue), required: false);
-            SourceExpression.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
-            SourceExpression.Validate(sysparmFields, nameof(sysparmFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysid, 1));
@@ -233,8 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IWorkflowAction DeleteRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid)
         {
-            SourceExpression.Validate(tableType, nameof(tableType), required: true);
-            SourceExpression.Validate(sysid, nameof(sysid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysid, 1));
@@ -263,8 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetCatalogsResponse> GetCatalogs([WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<string> sysparmText = null)
         {
-            SourceExpression.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
-            SourceExpression.Validate(sysparmText, nameof(sysparmText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/sn_sc/servicecatalog/catalogs";
@@ -283,9 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetCatalogCategoriesResponse> GetCatalogCategories([WorkflowExpression] Func<string> catalogId, [WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<int> sysparmOffset = null)
         {
-            SourceExpression.Validate(catalogId, nameof(catalogId), required: true);
-            SourceExpression.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
-            SourceExpression.Validate(sysparmOffset, nameof(sysparmOffset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/catalogs/{0}/categories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
@@ -304,10 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetCatalogItemsResponse> GetCatalogItems([WorkflowExpression] Func<int> sysparmLimit, [WorkflowExpression] Func<string> sysparmCategory = null, [WorkflowExpression] Func<string> sysparmText = null, [WorkflowExpression] Func<string> sysparmCatalog = null)
         {
-            SourceExpression.Validate(sysparmLimit, nameof(sysparmLimit), required: true);
-            SourceExpression.Validate(sysparmCategory, nameof(sysparmCategory), required: false);
-            SourceExpression.Validate(sysparmText, nameof(sysparmText), required: false);
-            SourceExpression.Validate(sysparmCatalog, nameof(sysparmCatalog), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/sn_sc/servicecatalog/items";
@@ -329,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetCatalogItemResponse> GetCatalogItem([WorkflowExpression] Func<string> sysId)
         {
-            SourceExpression.Validate(sysId, nameof(sysId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
@@ -344,10 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<OrderItemResponse> OrderItem([WorkflowExpression] Func<string> sysId, [WorkflowExpression] Func<int> bodysysparmQuantity, [WorkflowExpression] Func<string> bodysysparmRequestedFor = null, [WorkflowExpression] Func<object> bodyvariables = null)
         {
-            SourceExpression.Validate(sysId, nameof(sysId), required: true);
-            SourceExpression.Validate(bodysysparmQuantity, nameof(bodysysparmQuantity), required: true);
-            SourceExpression.Validate(bodysysparmRequestedFor, nameof(bodysysparmRequestedFor), required: false);
-            SourceExpression.Validate(bodyvariables, nameof(bodyvariables), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/items/{0}/order_now", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
@@ -382,11 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetArticlesResponse> GetKnowledgeArticles([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> kb = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(kb, nameof(kb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/sn_km_api/knowledge/articles";
@@ -410,9 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetArticleResponse> GetKnowledgeArticle([WorkflowExpression] Func<string> articleSysId, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(articleSysId, nameof(articleSysId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_km_api/knowledge/articles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(articleSysId, 1));

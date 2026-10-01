@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> GetPredictiveContentResultSet([WorkflowExpression] Func<string> predictiveContentId, [WorkflowExpression] Func<string> contextId)
         {
-            SourceExpression.Validate(predictiveContentId, nameof(predictiveContentId), required: true);
-            SourceExpression.Validate(contextId, nameof(contextId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/predictiveContent/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(predictiveContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contextId, 1));
@@ -30,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[]> GetPredictiveSettings([WorkflowExpression] Func<string> systemType = null, [WorkflowExpression] Func<string> contextType = null)
         {
-            SourceExpression.Validate(systemType, nameof(systemType), required: false);
-            SourceExpression.Validate(contextType, nameof(contextType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/v2/predictiveContent";
@@ -78,15 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicSearchSearchResponse> QueryContent([WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> searchRequestBodyterm = null, [WorkflowExpression] Func<int> searchRequestBodyoptionspageSize = null, [WorkflowExpression] Func<searchRequestBodyoptionssearchFieldsInputItem[]> searchRequestBodyoptionssearchFields = null, [WorkflowExpression] Func<searchRequestBodyoptionsreturnFieldsInputItem[]> searchRequestBodyoptionsreturnFields = null, [WorkflowExpression] Func<SeismicSearchSortConstraint[]> searchRequestBodysort = null, [WorkflowExpression] Func<SeismicSearchConditionExpressionInfo[]> searchRequestBodyfiltercondition = null, [WorkflowExpression] Func<SeismicSearchFilterExpressionInfo[]> searchRequestBodyfilterfilter = null, [WorkflowExpression] Func<string> searchRequestBodyfilterOperator = null)
         {
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            SourceExpression.Validate(searchRequestBodyterm, nameof(searchRequestBodyterm), required: false);
-            SourceExpression.Validate(searchRequestBodyoptionspageSize, nameof(searchRequestBodyoptionspageSize), required: false);
-            SourceExpression.Validate(searchRequestBodyoptionssearchFields, nameof(searchRequestBodyoptionssearchFields), required: false);
-            SourceExpression.Validate(searchRequestBodyoptionsreturnFields, nameof(searchRequestBodyoptionsreturnFields), required: false);
-            SourceExpression.Validate(searchRequestBodysort, nameof(searchRequestBodysort), required: false);
-            SourceExpression.Validate(searchRequestBodyfiltercondition, nameof(searchRequestBodyfiltercondition), required: false);
-            SourceExpression.Validate(searchRequestBodyfilterfilter, nameof(searchRequestBodyfilterfilter), required: false);
-            SourceExpression.Validate(searchRequestBodyfilterOperator, nameof(searchRequestBodyfilterOperator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search/v1/content/query";

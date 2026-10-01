@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accessToken = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<double> bodylatitude = null, [WorkflowExpression] Func<double> bodylongitude = null, [WorkflowExpression] Func<string> bodydivisionId = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<bool> bodyanonymouslyReported = null, [WorkflowExpression] Func<bodycheckListDataInputItem[]> bodycheckListData = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accessToken, nameof(accessToken), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodylatitude, nameof(bodylatitude), required: false);
-            SourceExpression.Validate(bodylongitude, nameof(bodylongitude), required: false);
-            SourceExpression.Validate(bodydivisionId, nameof(bodydivisionId), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
-            SourceExpression.Validate(bodycheckListData, nameof(bodycheckListData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Organisations/3/Incidents";
@@ -97,11 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         public IBodyWorkflowAction<LoginResponse> Login([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodyuserUid = null, [WorkflowExpression] Func<string> bodyappPassword = null, [WorkflowExpression] Func<bool> bodyacceptConditions = null, [WorkflowExpression] Func<bool> bodyisOqsha = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodyuserUid, nameof(bodyuserUid), required: false);
-            SourceExpression.Validate(bodyappPassword, nameof(bodyappPassword), required: false);
-            SourceExpression.Validate(bodyacceptConditions, nameof(bodyacceptConditions), required: false);
-            SourceExpression.Validate(bodyisOqsha, nameof(bodyisOqsha), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/App/Login";

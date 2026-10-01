@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactsGetResponse> ContactsGet([WorkflowExpression] Func<string> contactName = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<filterByInput> filterBy = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<sortColumnInput> sortColumn = null, [WorkflowExpression] Func<int> zcrmContactId = null, [WorkflowExpression] Func<int> zcrmAccountId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(contactName, nameof(contactName), required: false);
-            SourceExpression.Validate(companyName, nameof(companyName), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(filterBy, nameof(filterBy), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
-            SourceExpression.Validate(sortColumn, nameof(sortColumn), required: false);
-            SourceExpression.Validate(zcrmContactId, nameof(zcrmContactId), required: false);
-            SourceExpression.Validate(zcrmAccountId, nameof(zcrmAccountId), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoice/v3/contacts";
@@ -70,69 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactPostResponse> Contact([WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<int> bodypaymentTerms = null, [WorkflowExpression] Func<string> bodycurrencyId = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields = null, [WorkflowExpression] Func<string> bodybillingAddressattention = null, [WorkflowExpression] Func<string> bodybillingAddressaddress = null, [WorkflowExpression] Func<string> bodybillingAddressstreet2 = null, [WorkflowExpression] Func<string> bodybillingAddressstateCode = null, [WorkflowExpression] Func<string> bodybillingAddresscity = null, [WorkflowExpression] Func<string> bodybillingAddressstate = null, [WorkflowExpression] Func<string> bodybillingAddresszip = null, [WorkflowExpression] Func<string> bodybillingAddresscountry = null, [WorkflowExpression] Func<string> bodybillingAddressfax = null, [WorkflowExpression] Func<string> bodybillingAddressphone = null, [WorkflowExpression] Func<string> bodyshippingAddressattention = null, [WorkflowExpression] Func<string> bodyshippingAddressaddress = null, [WorkflowExpression] Func<string> bodyshippingAddressstreet2 = null, [WorkflowExpression] Func<string> bodyshippingAddressstateCode = null, [WorkflowExpression] Func<string> bodyshippingAddresscity = null, [WorkflowExpression] Func<string> bodyshippingAddressstate = null, [WorkflowExpression] Func<string> bodyshippingAddresszip = null, [WorkflowExpression] Func<string> bodyshippingAddresscountry = null, [WorkflowExpression] Func<string> bodyshippingAddressfax = null, [WorkflowExpression] Func<string> bodyshippingAddressphone = null, [WorkflowExpression] Func<bodycontactPersonsInputItem[]> bodycontactPersons = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceEmailTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceEmailTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateEmailTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateEmailTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteEmailTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteEmailTemplateName = null, [WorkflowExpression] Func<bodylanguageCodeInput> bodylanguageCode = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyvatRegNo = null, [WorkflowExpression] Func<string> bodytaxRegNo = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<string> bodyvatTreatment = null, [WorkflowExpression] Func<string> bodytaxTreatment = null, [WorkflowExpression] Func<bodytaxRegimeInput> bodytaxRegime = null, [WorkflowExpression] Func<string> bodylegalName = null, [WorkflowExpression] Func<bool> bodyisTdsRegistered = null, [WorkflowExpression] Func<string> bodyplaceOfContact = null, [WorkflowExpression] Func<string> bodygstNo = null, [WorkflowExpression] Func<bodygstTreatmentInput> bodygstTreatment = null, [WorkflowExpression] Func<string> bodytaxAuthorityName = null, [WorkflowExpression] Func<string> bodytaxExemptionCode = null, [WorkflowExpression] Func<string> bodyavataxExemptNo = null, [WorkflowExpression] Func<string> bodyavataxUseCode = null, [WorkflowExpression] Func<string> bodytaxExemptionId = null, [WorkflowExpression] Func<string> bodytaxAuthorityId = null, [WorkflowExpression] Func<string> bodytaxId = null, [WorkflowExpression] Func<string> bodytdsTaxId = null, [WorkflowExpression] Func<bool> bodyisTaxable = null, [WorkflowExpression] Func<string> bodyfacebook = null, [WorkflowExpression] Func<string> bodytwitter = null)
         {
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodypaymentTerms, nameof(bodypaymentTerms), required: false);
-            SourceExpression.Validate(bodycurrencyId, nameof(bodycurrencyId), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
-            SourceExpression.Validate(bodybillingAddressattention, nameof(bodybillingAddressattention), required: false);
-            SourceExpression.Validate(bodybillingAddressaddress, nameof(bodybillingAddressaddress), required: false);
-            SourceExpression.Validate(bodybillingAddressstreet2, nameof(bodybillingAddressstreet2), required: false);
-            SourceExpression.Validate(bodybillingAddressstateCode, nameof(bodybillingAddressstateCode), required: false);
-            SourceExpression.Validate(bodybillingAddresscity, nameof(bodybillingAddresscity), required: false);
-            SourceExpression.Validate(bodybillingAddressstate, nameof(bodybillingAddressstate), required: false);
-            SourceExpression.Validate(bodybillingAddresszip, nameof(bodybillingAddresszip), required: false);
-            SourceExpression.Validate(bodybillingAddresscountry, nameof(bodybillingAddresscountry), required: false);
-            SourceExpression.Validate(bodybillingAddressfax, nameof(bodybillingAddressfax), required: false);
-            SourceExpression.Validate(bodybillingAddressphone, nameof(bodybillingAddressphone), required: false);
-            SourceExpression.Validate(bodyshippingAddressattention, nameof(bodyshippingAddressattention), required: false);
-            SourceExpression.Validate(bodyshippingAddressaddress, nameof(bodyshippingAddressaddress), required: false);
-            SourceExpression.Validate(bodyshippingAddressstreet2, nameof(bodyshippingAddressstreet2), required: false);
-            SourceExpression.Validate(bodyshippingAddressstateCode, nameof(bodyshippingAddressstateCode), required: false);
-            SourceExpression.Validate(bodyshippingAddresscity, nameof(bodyshippingAddresscity), required: false);
-            SourceExpression.Validate(bodyshippingAddressstate, nameof(bodyshippingAddressstate), required: false);
-            SourceExpression.Validate(bodyshippingAddresszip, nameof(bodyshippingAddresszip), required: false);
-            SourceExpression.Validate(bodyshippingAddresscountry, nameof(bodyshippingAddresscountry), required: false);
-            SourceExpression.Validate(bodyshippingAddressfax, nameof(bodyshippingAddressfax), required: false);
-            SourceExpression.Validate(bodyshippingAddressphone, nameof(bodyshippingAddressphone), required: false);
-            SourceExpression.Validate(bodycontactPersons, nameof(bodycontactPersons), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceTemplateId, nameof(bodydefaultTemplatesinvoiceTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceTemplateName, nameof(bodydefaultTemplatesinvoiceTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateTemplateId, nameof(bodydefaultTemplatesestimateTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateTemplateName, nameof(bodydefaultTemplatesestimateTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteTemplateId, nameof(bodydefaultTemplatescreditnoteTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteTemplateName, nameof(bodydefaultTemplatescreditnoteTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceEmailTemplateId, nameof(bodydefaultTemplatesinvoiceEmailTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceEmailTemplateName, nameof(bodydefaultTemplatesinvoiceEmailTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateEmailTemplateId, nameof(bodydefaultTemplatesestimateEmailTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateEmailTemplateName, nameof(bodydefaultTemplatesestimateEmailTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteEmailTemplateId, nameof(bodydefaultTemplatescreditnoteEmailTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteEmailTemplateName, nameof(bodydefaultTemplatescreditnoteEmailTemplateName), required: false);
-            SourceExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyvatRegNo, nameof(bodyvatRegNo), required: false);
-            SourceExpression.Validate(bodytaxRegNo, nameof(bodytaxRegNo), required: false);
-            SourceExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: false);
-            SourceExpression.Validate(bodyvatTreatment, nameof(bodyvatTreatment), required: false);
-            SourceExpression.Validate(bodytaxTreatment, nameof(bodytaxTreatment), required: false);
-            SourceExpression.Validate(bodytaxRegime, nameof(bodytaxRegime), required: false);
-            SourceExpression.Validate(bodylegalName, nameof(bodylegalName), required: false);
-            SourceExpression.Validate(bodyisTdsRegistered, nameof(bodyisTdsRegistered), required: false);
-            SourceExpression.Validate(bodyplaceOfContact, nameof(bodyplaceOfContact), required: false);
-            SourceExpression.Validate(bodygstNo, nameof(bodygstNo), required: false);
-            SourceExpression.Validate(bodygstTreatment, nameof(bodygstTreatment), required: false);
-            SourceExpression.Validate(bodytaxAuthorityName, nameof(bodytaxAuthorityName), required: false);
-            SourceExpression.Validate(bodytaxExemptionCode, nameof(bodytaxExemptionCode), required: false);
-            SourceExpression.Validate(bodyavataxExemptNo, nameof(bodyavataxExemptNo), required: false);
-            SourceExpression.Validate(bodyavataxUseCode, nameof(bodyavataxUseCode), required: false);
-            SourceExpression.Validate(bodytaxExemptionId, nameof(bodytaxExemptionId), required: false);
-            SourceExpression.Validate(bodytaxAuthorityId, nameof(bodytaxAuthorityId), required: false);
-            SourceExpression.Validate(bodytaxId, nameof(bodytaxId), required: false);
-            SourceExpression.Validate(bodytdsTaxId, nameof(bodytdsTaxId), required: false);
-            SourceExpression.Validate(bodyisTaxable, nameof(bodyisTaxable), required: false);
-            SourceExpression.Validate(bodyfacebook, nameof(bodyfacebook), required: false);
-            SourceExpression.Validate(bodytwitter, nameof(bodytwitter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoice/v3/contacts";
@@ -551,7 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactGetResponse> ContactGet([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -566,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactDeleteResponse> ContactDelete([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -581,70 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<ContactPutResponse> ContactPut([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<int> bodypaymentTerms = null, [WorkflowExpression] Func<string> bodycurrencyId = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bodycustomFieldsInputItem2[]> bodycustomFields = null, [WorkflowExpression] Func<string> bodybillingAddressattention = null, [WorkflowExpression] Func<string> bodybillingAddressaddress = null, [WorkflowExpression] Func<string> bodybillingAddressstreet2 = null, [WorkflowExpression] Func<string> bodybillingAddressstateCode = null, [WorkflowExpression] Func<string> bodybillingAddresscity = null, [WorkflowExpression] Func<string> bodybillingAddressstate = null, [WorkflowExpression] Func<string> bodybillingAddresszip = null, [WorkflowExpression] Func<string> bodybillingAddresscountry = null, [WorkflowExpression] Func<string> bodybillingAddressfax = null, [WorkflowExpression] Func<string> bodybillingAddressphone = null, [WorkflowExpression] Func<string> bodyshippingAddressattention = null, [WorkflowExpression] Func<string> bodyshippingAddressaddress = null, [WorkflowExpression] Func<string> bodyshippingAddressstreet2 = null, [WorkflowExpression] Func<string> bodyshippingAddressstateCode = null, [WorkflowExpression] Func<string> bodyshippingAddresscity = null, [WorkflowExpression] Func<string> bodyshippingAddressstate = null, [WorkflowExpression] Func<string> bodyshippingAddresszip = null, [WorkflowExpression] Func<string> bodyshippingAddresscountry = null, [WorkflowExpression] Func<string> bodyshippingAddressfax = null, [WorkflowExpression] Func<string> bodyshippingAddressphone = null, [WorkflowExpression] Func<bodycontactPersonsInputItem[]> bodycontactPersons = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceEmailTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesinvoiceEmailTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateEmailTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatesestimateEmailTemplateName = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteEmailTemplateId = null, [WorkflowExpression] Func<string> bodydefaultTemplatescreditnoteEmailTemplateName = null, [WorkflowExpression] Func<bodylanguageCodeInput> bodylanguageCode = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyvatRegNo = null, [WorkflowExpression] Func<string> bodytaxRegNo = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<bodyvatTreatmentInput> bodyvatTreatment = null, [WorkflowExpression] Func<string> bodytaxTreatment = null, [WorkflowExpression] Func<bodytaxRegimeInput> bodytaxRegime = null, [WorkflowExpression] Func<string> bodylegalName = null, [WorkflowExpression] Func<bool> bodyisTdsRegistered = null, [WorkflowExpression] Func<string> bodyplaceOfContact = null, [WorkflowExpression] Func<string> bodygstNo = null, [WorkflowExpression] Func<bodygstTreatmentInput> bodygstTreatment = null, [WorkflowExpression] Func<string> bodytaxAuthorityName = null, [WorkflowExpression] Func<string> bodytaxExemptionCode = null, [WorkflowExpression] Func<string> bodyavataxExemptNo = null, [WorkflowExpression] Func<string> bodyavataxUseCode = null, [WorkflowExpression] Func<string> bodytaxExemptionId = null, [WorkflowExpression] Func<string> bodytaxAuthorityId = null, [WorkflowExpression] Func<string> bodytaxId = null, [WorkflowExpression] Func<string> bodytdsTaxId = null, [WorkflowExpression] Func<bool> bodyisTaxable = null, [WorkflowExpression] Func<string> bodyfacebook = null, [WorkflowExpression] Func<string> bodytwitter = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodypaymentTerms, nameof(bodypaymentTerms), required: false);
-            SourceExpression.Validate(bodycurrencyId, nameof(bodycurrencyId), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
-            SourceExpression.Validate(bodybillingAddressattention, nameof(bodybillingAddressattention), required: false);
-            SourceExpression.Validate(bodybillingAddressaddress, nameof(bodybillingAddressaddress), required: false);
-            SourceExpression.Validate(bodybillingAddressstreet2, nameof(bodybillingAddressstreet2), required: false);
-            SourceExpression.Validate(bodybillingAddressstateCode, nameof(bodybillingAddressstateCode), required: false);
-            SourceExpression.Validate(bodybillingAddresscity, nameof(bodybillingAddresscity), required: false);
-            SourceExpression.Validate(bodybillingAddressstate, nameof(bodybillingAddressstate), required: false);
-            SourceExpression.Validate(bodybillingAddresszip, nameof(bodybillingAddresszip), required: false);
-            SourceExpression.Validate(bodybillingAddresscountry, nameof(bodybillingAddresscountry), required: false);
-            SourceExpression.Validate(bodybillingAddressfax, nameof(bodybillingAddressfax), required: false);
-            SourceExpression.Validate(bodybillingAddressphone, nameof(bodybillingAddressphone), required: false);
-            SourceExpression.Validate(bodyshippingAddressattention, nameof(bodyshippingAddressattention), required: false);
-            SourceExpression.Validate(bodyshippingAddressaddress, nameof(bodyshippingAddressaddress), required: false);
-            SourceExpression.Validate(bodyshippingAddressstreet2, nameof(bodyshippingAddressstreet2), required: false);
-            SourceExpression.Validate(bodyshippingAddressstateCode, nameof(bodyshippingAddressstateCode), required: false);
-            SourceExpression.Validate(bodyshippingAddresscity, nameof(bodyshippingAddresscity), required: false);
-            SourceExpression.Validate(bodyshippingAddressstate, nameof(bodyshippingAddressstate), required: false);
-            SourceExpression.Validate(bodyshippingAddresszip, nameof(bodyshippingAddresszip), required: false);
-            SourceExpression.Validate(bodyshippingAddresscountry, nameof(bodyshippingAddresscountry), required: false);
-            SourceExpression.Validate(bodyshippingAddressfax, nameof(bodyshippingAddressfax), required: false);
-            SourceExpression.Validate(bodyshippingAddressphone, nameof(bodyshippingAddressphone), required: false);
-            SourceExpression.Validate(bodycontactPersons, nameof(bodycontactPersons), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceTemplateId, nameof(bodydefaultTemplatesinvoiceTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceTemplateName, nameof(bodydefaultTemplatesinvoiceTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateTemplateId, nameof(bodydefaultTemplatesestimateTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateTemplateName, nameof(bodydefaultTemplatesestimateTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteTemplateId, nameof(bodydefaultTemplatescreditnoteTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteTemplateName, nameof(bodydefaultTemplatescreditnoteTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceEmailTemplateId, nameof(bodydefaultTemplatesinvoiceEmailTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesinvoiceEmailTemplateName, nameof(bodydefaultTemplatesinvoiceEmailTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateEmailTemplateId, nameof(bodydefaultTemplatesestimateEmailTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatesestimateEmailTemplateName, nameof(bodydefaultTemplatesestimateEmailTemplateName), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteEmailTemplateId, nameof(bodydefaultTemplatescreditnoteEmailTemplateId), required: false);
-            SourceExpression.Validate(bodydefaultTemplatescreditnoteEmailTemplateName, nameof(bodydefaultTemplatescreditnoteEmailTemplateName), required: false);
-            SourceExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyvatRegNo, nameof(bodyvatRegNo), required: false);
-            SourceExpression.Validate(bodytaxRegNo, nameof(bodytaxRegNo), required: false);
-            SourceExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: false);
-            SourceExpression.Validate(bodyvatTreatment, nameof(bodyvatTreatment), required: false);
-            SourceExpression.Validate(bodytaxTreatment, nameof(bodytaxTreatment), required: false);
-            SourceExpression.Validate(bodytaxRegime, nameof(bodytaxRegime), required: false);
-            SourceExpression.Validate(bodylegalName, nameof(bodylegalName), required: false);
-            SourceExpression.Validate(bodyisTdsRegistered, nameof(bodyisTdsRegistered), required: false);
-            SourceExpression.Validate(bodyplaceOfContact, nameof(bodyplaceOfContact), required: false);
-            SourceExpression.Validate(bodygstNo, nameof(bodygstNo), required: false);
-            SourceExpression.Validate(bodygstTreatment, nameof(bodygstTreatment), required: false);
-            SourceExpression.Validate(bodytaxAuthorityName, nameof(bodytaxAuthorityName), required: false);
-            SourceExpression.Validate(bodytaxExemptionCode, nameof(bodytaxExemptionCode), required: false);
-            SourceExpression.Validate(bodyavataxExemptNo, nameof(bodyavataxExemptNo), required: false);
-            SourceExpression.Validate(bodyavataxUseCode, nameof(bodyavataxUseCode), required: false);
-            SourceExpression.Validate(bodytaxExemptionId, nameof(bodytaxExemptionId), required: false);
-            SourceExpression.Validate(bodytaxAuthorityId, nameof(bodytaxAuthorityId), required: false);
-            SourceExpression.Validate(bodytaxId, nameof(bodytaxId), required: false);
-            SourceExpression.Validate(bodytdsTaxId, nameof(bodytdsTaxId), required: false);
-            SourceExpression.Validate(bodyisTaxable, nameof(bodyisTaxable), required: false);
-            SourceExpression.Validate(bodyfacebook, nameof(bodyfacebook), required: false);
-            SourceExpression.Validate(bodytwitter, nameof(bodytwitter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -1063,27 +920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoicesGetResponse> InvoicesGet([WorkflowExpression] Func<string> invoiceNumber = null, [WorkflowExpression] Func<string> itemName = null, [WorkflowExpression] Func<string> itemId = null, [WorkflowExpression] Func<string> itemDescription = null, [WorkflowExpression] Func<string> referenceNumber = null, [WorkflowExpression] Func<string> customerName = null, [WorkflowExpression] Func<string> recurringInvoiceId = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> total = null, [WorkflowExpression] Func<string> balance = null, [WorkflowExpression] Func<string> customField = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> dueDate = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> customerId = null, [WorkflowExpression] Func<filterByInput> filterBy = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<sortColumnInput> sortColumn = null, [WorkflowExpression] Func<string> zcrmPotentialId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(invoiceNumber, nameof(invoiceNumber), required: false);
-            SourceExpression.Validate(itemName, nameof(itemName), required: false);
-            SourceExpression.Validate(itemId, nameof(itemId), required: false);
-            SourceExpression.Validate(itemDescription, nameof(itemDescription), required: false);
-            SourceExpression.Validate(referenceNumber, nameof(referenceNumber), required: false);
-            SourceExpression.Validate(customerName, nameof(customerName), required: false);
-            SourceExpression.Validate(recurringInvoiceId, nameof(recurringInvoiceId), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(total, nameof(total), required: false);
-            SourceExpression.Validate(balance, nameof(balance), required: false);
-            SourceExpression.Validate(customField, nameof(customField), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(dueDate, nameof(dueDate), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(customerId, nameof(customerId), required: false);
-            SourceExpression.Validate(filterBy, nameof(filterBy), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
-            SourceExpression.Validate(sortColumn, nameof(sortColumn), required: false);
-            SourceExpression.Validate(zcrmPotentialId, nameof(zcrmPotentialId), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoice/v3/invoices";
@@ -1140,49 +976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoicePostResponse> Invoice([WorkflowExpression] Func<bool> send = null, [WorkflowExpression] Func<bool> ignoreAutoNumberGeneration = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<int[]> bodycontactPersons = null, [WorkflowExpression] Func<string> bodyinvoiceNumber = null, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<string> bodyplaceOfSupply = null, [WorkflowExpression] Func<string> bodyvatTreatment = null, [WorkflowExpression] Func<string> bodygstTreatment = null, [WorkflowExpression] Func<string> bodytaxTreatment = null, [WorkflowExpression] Func<string> bodycfdiUsage = null, [WorkflowExpression] Func<string> bodygstNo = null, [WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<int> bodypaymentTerms = null, [WorkflowExpression] Func<string> bodypaymentTermsLabel = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<double> bodydiscount = null, [WorkflowExpression] Func<bool> bodyisDiscountBeforeTax = null, [WorkflowExpression] Func<string> bodydiscountType = null, [WorkflowExpression] Func<bool> bodyisInclusiveTax = null, [WorkflowExpression] Func<double> bodyexchangeRate = null, [WorkflowExpression] Func<string> bodyrecurringInvoiceId = null, [WorkflowExpression] Func<string> bodyinvoicedEstimateId = null, [WorkflowExpression] Func<string> bodysalespersonName = null, [WorkflowExpression] Func<bodycustomFieldsInputItem22[]> bodycustomFields = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<bodylineItemsInputItem[]> bodylineItems = null, [WorkflowExpression] Func<bodypaymentOptionspaymentGatewaysInputItem[]> bodypaymentOptionspaymentGateways = null, [WorkflowExpression] Func<bool> bodyallowPartialPayments = null, [WorkflowExpression] Func<string> bodycustomBody = null, [WorkflowExpression] Func<string> bodycustomSubject = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyterms = null, [WorkflowExpression] Func<double> bodyshippingCharge = null, [WorkflowExpression] Func<double> bodyadjustment = null, [WorkflowExpression] Func<string> bodyadjustmentDescription = null, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<string> bodytaxAuthorityId = null, [WorkflowExpression] Func<string> bodytaxExemptionId = null, [WorkflowExpression] Func<string> bodyavataxUseCode = null, [WorkflowExpression] Func<string> bodyavataxTaxCode = null, [WorkflowExpression] Func<string> bodyavataxExemptNo = null)
         {
-            SourceExpression.Validate(send, nameof(send), required: false);
-            SourceExpression.Validate(ignoreAutoNumberGeneration, nameof(ignoreAutoNumberGeneration), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodycontactPersons, nameof(bodycontactPersons), required: false);
-            SourceExpression.Validate(bodyinvoiceNumber, nameof(bodyinvoiceNumber), required: false);
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            SourceExpression.Validate(bodyplaceOfSupply, nameof(bodyplaceOfSupply), required: false);
-            SourceExpression.Validate(bodyvatTreatment, nameof(bodyvatTreatment), required: false);
-            SourceExpression.Validate(bodygstTreatment, nameof(bodygstTreatment), required: false);
-            SourceExpression.Validate(bodytaxTreatment, nameof(bodytaxTreatment), required: false);
-            SourceExpression.Validate(bodycfdiUsage, nameof(bodycfdiUsage), required: false);
-            SourceExpression.Validate(bodygstNo, nameof(bodygstNo), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodypaymentTerms, nameof(bodypaymentTerms), required: false);
-            SourceExpression.Validate(bodypaymentTermsLabel, nameof(bodypaymentTermsLabel), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodydiscount, nameof(bodydiscount), required: false);
-            SourceExpression.Validate(bodyisDiscountBeforeTax, nameof(bodyisDiscountBeforeTax), required: false);
-            SourceExpression.Validate(bodydiscountType, nameof(bodydiscountType), required: false);
-            SourceExpression.Validate(bodyisInclusiveTax, nameof(bodyisInclusiveTax), required: false);
-            SourceExpression.Validate(bodyexchangeRate, nameof(bodyexchangeRate), required: false);
-            SourceExpression.Validate(bodyrecurringInvoiceId, nameof(bodyrecurringInvoiceId), required: false);
-            SourceExpression.Validate(bodyinvoicedEstimateId, nameof(bodyinvoicedEstimateId), required: false);
-            SourceExpression.Validate(bodysalespersonName, nameof(bodysalespersonName), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodylineItems, nameof(bodylineItems), required: false);
-            SourceExpression.Validate(bodypaymentOptionspaymentGateways, nameof(bodypaymentOptionspaymentGateways), required: false);
-            SourceExpression.Validate(bodyallowPartialPayments, nameof(bodyallowPartialPayments), required: false);
-            SourceExpression.Validate(bodycustomBody, nameof(bodycustomBody), required: false);
-            SourceExpression.Validate(bodycustomSubject, nameof(bodycustomSubject), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyterms, nameof(bodyterms), required: false);
-            SourceExpression.Validate(bodyshippingCharge, nameof(bodyshippingCharge), required: false);
-            SourceExpression.Validate(bodyadjustment, nameof(bodyadjustment), required: false);
-            SourceExpression.Validate(bodyadjustmentDescription, nameof(bodyadjustmentDescription), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            SourceExpression.Validate(bodytaxAuthorityId, nameof(bodytaxAuthorityId), required: false);
-            SourceExpression.Validate(bodytaxExemptionId, nameof(bodytaxExemptionId), required: false);
-            SourceExpression.Validate(bodyavataxUseCode, nameof(bodyavataxUseCode), required: false);
-            SourceExpression.Validate(bodyavataxTaxCode, nameof(bodyavataxTaxCode), required: false);
-            SourceExpression.Validate(bodyavataxExemptNo, nameof(bodyavataxExemptNo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoice/v3/invoices";
@@ -1461,7 +1254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoiceGetResponse> InvoiceGet([WorkflowExpression] Func<string> invoiceId)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
@@ -1476,7 +1268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoiceDeleteResponse> InvoiceDelete([WorkflowExpression] Func<string> invoiceId)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
@@ -1491,48 +1282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
         public IBodyWorkflowAction<InvoicePutResponse> InvoicePut([WorkflowExpression] Func<string> invoiceId, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<int[]> bodycontactPersons = null, [WorkflowExpression] Func<string> bodyinvoiceNumber = null, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<string> bodyplaceOfSupply = null, [WorkflowExpression] Func<string> bodyvatTreatment = null, [WorkflowExpression] Func<string> bodygstTreatment = null, [WorkflowExpression] Func<string> bodytaxTreatment = null, [WorkflowExpression] Func<string> bodycfdiUsage = null, [WorkflowExpression] Func<string> bodygstNo = null, [WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<int> bodypaymentTerms = null, [WorkflowExpression] Func<string> bodypaymentTermsLabel = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<double> bodydiscount = null, [WorkflowExpression] Func<bool> bodyisDiscountBeforeTax = null, [WorkflowExpression] Func<string> bodydiscountType = null, [WorkflowExpression] Func<bool> bodyisInclusiveTax = null, [WorkflowExpression] Func<double> bodyexchangeRate = null, [WorkflowExpression] Func<string> bodyrecurringInvoiceId = null, [WorkflowExpression] Func<string> bodyinvoicedEstimateId = null, [WorkflowExpression] Func<string> bodysalespersonName = null, [WorkflowExpression] Func<bodycustomFieldsInputItem22[]> bodycustomFields = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<bodylineItemsInputItem[]> bodylineItems = null, [WorkflowExpression] Func<bodypaymentOptionspaymentGatewaysInputItem[]> bodypaymentOptionspaymentGateways = null, [WorkflowExpression] Func<bool> bodyallowPartialPayments = null, [WorkflowExpression] Func<string> bodycustomBody = null, [WorkflowExpression] Func<string> bodycustomSubject = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyterms = null, [WorkflowExpression] Func<double> bodyshippingCharge = null, [WorkflowExpression] Func<double> bodyadjustment = null, [WorkflowExpression] Func<string> bodyadjustmentDescription = null, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<string> bodytaxAuthorityId = null, [WorkflowExpression] Func<string> bodytaxExemptionId = null, [WorkflowExpression] Func<string> bodyavataxUseCode = null, [WorkflowExpression] Func<string> bodyavataxTaxCode = null, [WorkflowExpression] Func<string> bodyavataxExemptNo = null)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodycontactPersons, nameof(bodycontactPersons), required: false);
-            SourceExpression.Validate(bodyinvoiceNumber, nameof(bodyinvoiceNumber), required: false);
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            SourceExpression.Validate(bodyplaceOfSupply, nameof(bodyplaceOfSupply), required: false);
-            SourceExpression.Validate(bodyvatTreatment, nameof(bodyvatTreatment), required: false);
-            SourceExpression.Validate(bodygstTreatment, nameof(bodygstTreatment), required: false);
-            SourceExpression.Validate(bodytaxTreatment, nameof(bodytaxTreatment), required: false);
-            SourceExpression.Validate(bodycfdiUsage, nameof(bodycfdiUsage), required: false);
-            SourceExpression.Validate(bodygstNo, nameof(bodygstNo), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodypaymentTerms, nameof(bodypaymentTerms), required: false);
-            SourceExpression.Validate(bodypaymentTermsLabel, nameof(bodypaymentTermsLabel), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodydiscount, nameof(bodydiscount), required: false);
-            SourceExpression.Validate(bodyisDiscountBeforeTax, nameof(bodyisDiscountBeforeTax), required: false);
-            SourceExpression.Validate(bodydiscountType, nameof(bodydiscountType), required: false);
-            SourceExpression.Validate(bodyisInclusiveTax, nameof(bodyisInclusiveTax), required: false);
-            SourceExpression.Validate(bodyexchangeRate, nameof(bodyexchangeRate), required: false);
-            SourceExpression.Validate(bodyrecurringInvoiceId, nameof(bodyrecurringInvoiceId), required: false);
-            SourceExpression.Validate(bodyinvoicedEstimateId, nameof(bodyinvoicedEstimateId), required: false);
-            SourceExpression.Validate(bodysalespersonName, nameof(bodysalespersonName), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodylineItems, nameof(bodylineItems), required: false);
-            SourceExpression.Validate(bodypaymentOptionspaymentGateways, nameof(bodypaymentOptionspaymentGateways), required: false);
-            SourceExpression.Validate(bodyallowPartialPayments, nameof(bodyallowPartialPayments), required: false);
-            SourceExpression.Validate(bodycustomBody, nameof(bodycustomBody), required: false);
-            SourceExpression.Validate(bodycustomSubject, nameof(bodycustomSubject), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyterms, nameof(bodyterms), required: false);
-            SourceExpression.Validate(bodyshippingCharge, nameof(bodyshippingCharge), required: false);
-            SourceExpression.Validate(bodyadjustment, nameof(bodyadjustment), required: false);
-            SourceExpression.Validate(bodyadjustmentDescription, nameof(bodyadjustmentDescription), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            SourceExpression.Validate(bodytaxAuthorityId, nameof(bodytaxAuthorityId), required: false);
-            SourceExpression.Validate(bodytaxExemptionId, nameof(bodytaxExemptionId), required: false);
-            SourceExpression.Validate(bodyavataxUseCode, nameof(bodyavataxUseCode), required: false);
-            SourceExpression.Validate(bodyavataxTaxCode, nameof(bodyavataxTaxCode), required: false);
-            SourceExpression.Validate(bodyavataxExemptNo, nameof(bodyavataxExemptNo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));

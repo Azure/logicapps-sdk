@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
         public IBodyWorkflowAction<string> CreateFileItem([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<object> dynamicFileSchema = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(drive, nameof(drive), required: true);
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(dynamicFileSchema, nameof(dynamicFileSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/templates/getFile";
@@ -36,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
         public IBodyWorkflowAction<string> CreateWordFileWithContent([WorkflowExpression] Func<string> contentcontent, [WorkflowExpression] Func<string> fileName = null)
         {
-            SourceExpression.Validate(contentcontent, nameof(contentcontent), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/templates/createWordFileWithContent";
@@ -63,11 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
         public IBodyWorkflowAction<string> GetFilePDF([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(drive, nameof(drive), required: true);
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/templates/convertFile";

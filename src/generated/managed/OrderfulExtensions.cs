@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orderful")]
         public IWorkflowAction GetTransactionById([WorkflowExpression] Func<int> transactionId)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/transactions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(transactionId, 1));
@@ -65,11 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
     {
         public IBodyWorkflowTrigger<CommunicationChannelCreationResponse> CommunicationChannel([WorkflowExpression] Func<bool> communicationChannelRequestBodyisActive, [WorkflowExpression] Func<string> communicationChannelRequestBodyname, [WorkflowExpression] Func<int> communicationChannelRequestBodyownerId, [WorkflowExpression] Func<string> communicationChannelRequestBodyconfigdestinationTypeName = null, [WorkflowExpression] Func<bool> communicationChannelRequestBodyconfigguidelineFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(communicationChannelRequestBodyisActive, nameof(communicationChannelRequestBodyisActive), required: true);
-            SourceExpression.Validate(communicationChannelRequestBodyname, nameof(communicationChannelRequestBodyname), required: true);
-            SourceExpression.Validate(communicationChannelRequestBodyownerId, nameof(communicationChannelRequestBodyownerId), required: true);
-            SourceExpression.Validate(communicationChannelRequestBodyconfigdestinationTypeName, nameof(communicationChannelRequestBodyconfigdestinationTypeName), required: false);
-            SourceExpression.Validate(communicationChannelRequestBodyconfigguidelineFilter, nameof(communicationChannelRequestBodyconfigguidelineFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/destinations";

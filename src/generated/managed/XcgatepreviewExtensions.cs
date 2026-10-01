@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         public IBodyWorkflowAction<LoginAuthResponse> LoginAuth([WorkflowExpression] Func<string> host = null, [WorkflowExpression] Func<string> bodycompanyCd = null, [WorkflowExpression] Func<string> bodyuserCd = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: false);
-            SourceExpression.Validate(bodycompanyCd, nameof(bodycompanyCd), required: false);
-            SourceExpression.Validate(bodyuserCd, nameof(bodyuserCd), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webapi/login/auth";
@@ -58,18 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         public IBodyWorkflowAction<ActionFindResponse> ActionFind([WorkflowExpression] Func<string> host = null, [WorkflowExpression] Func<string> bodycompanyCd = null, [WorkflowExpression] Func<string> bodyuserUCd = null, [WorkflowExpression] Func<string> bodyauthKey = null, [WorkflowExpression] Func<string[]> bodyreportCdList = null, [WorkflowExpression] Func<string> bodyfindstatement = null, [WorkflowExpression] Func<bodyfindstatementListInputItem[]> bodyfindstatementList = null, [WorkflowExpression] Func<bodysortListInputItem[]> bodysortList = null, [WorkflowExpression] Func<string> bodypageSize = null, [WorkflowExpression] Func<string> bodypageNo = null, [WorkflowExpression] Func<bodyrequestListInputItem[]> bodyrequestList = null, [WorkflowExpression] Func<string> bodyenableEpoch = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: false);
-            SourceExpression.Validate(bodycompanyCd, nameof(bodycompanyCd), required: false);
-            SourceExpression.Validate(bodyuserUCd, nameof(bodyuserUCd), required: false);
-            SourceExpression.Validate(bodyauthKey, nameof(bodyauthKey), required: false);
-            SourceExpression.Validate(bodyreportCdList, nameof(bodyreportCdList), required: false);
-            SourceExpression.Validate(bodyfindstatement, nameof(bodyfindstatement), required: false);
-            SourceExpression.Validate(bodyfindstatementList, nameof(bodyfindstatementList), required: false);
-            SourceExpression.Validate(bodysortList, nameof(bodysortList), required: false);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: false);
-            SourceExpression.Validate(bodypageNo, nameof(bodypageNo), required: false);
-            SourceExpression.Validate(bodyrequestList, nameof(bodyrequestList), required: false);
-            SourceExpression.Validate(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webapi/action/find";
@@ -166,14 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         public IBodyWorkflowAction<ActionGetResponse> ActionGet([WorkflowExpression] Func<string> host = null, [WorkflowExpression] Func<string> bodycompanyCd = null, [WorkflowExpression] Func<string> bodyuserUCd = null, [WorkflowExpression] Func<string> bodyauthKey = null, [WorkflowExpression] Func<string> bodyreportCd = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytrxCdx = null, [WorkflowExpression] Func<string> bodyenableEpoch = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: false);
-            SourceExpression.Validate(bodycompanyCd, nameof(bodycompanyCd), required: false);
-            SourceExpression.Validate(bodyuserUCd, nameof(bodyuserUCd), required: false);
-            SourceExpression.Validate(bodyauthKey, nameof(bodyauthKey), required: false);
-            SourceExpression.Validate(bodyreportCd, nameof(bodyreportCd), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytrxCdx, nameof(bodytrxCdx), required: false);
-            SourceExpression.Validate(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webapi/action/get";

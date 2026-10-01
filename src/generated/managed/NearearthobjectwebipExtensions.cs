@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<FeedResponse> Feed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<bool> detailed = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(detailed, nameof(detailed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/feed";
@@ -37,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<FeedTodayResponse> FeedToday([WorkflowExpression] Func<bool> detailed = null)
         {
-            SourceExpression.Validate(detailed, nameof(detailed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/feed/today";
@@ -54,8 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<NeoResponse> Neo([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/neo/browse";
@@ -74,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<NeoIdResponse> NeoId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -89,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<SentryResponse> Sentry([WorkflowExpression] Func<bool> isActive = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(isActive, nameof(isActive), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/neo/sentry";
@@ -112,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<SentryIdResponse> SentryId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

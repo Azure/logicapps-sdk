@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
         public IBodyWorkflowAction<GetInstallationByIdResponseItem[]> GetInstallationById([WorkflowExpression] Func<int> installationId)
         {
-            SourceExpression.Validate(installationId, nameof(installationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/installations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(installationId, 1));
@@ -31,10 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
         public IBodyWorkflowAction<GetNearestInstallationsResponseItem[]> GetNearestInstallations([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<double> maxDistanceKM = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(maxDistanceKM, nameof(maxDistanceKM), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/installations/nearest";
@@ -57,9 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
         public IBodyWorkflowAction<GetMeasurementsForInstallationResponse> GetMeasurementsForInstallation([WorkflowExpression] Func<int> installationId, [WorkflowExpression] Func<acceptLanguageInput> acceptLanguage = null, [WorkflowExpression] Func<indexTypeInput> indexType = null)
         {
-            SourceExpression.Validate(installationId, nameof(installationId), required: true);
-            SourceExpression.Validate(acceptLanguage, nameof(acceptLanguage), required: false);
-            SourceExpression.Validate(indexType, nameof(indexType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/measurements/installation";
@@ -83,11 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
         public IBodyWorkflowAction<GetNearestMeasurementsResponse> GetNearestMeasurements([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<double> maxDistanceKM = null, [WorkflowExpression] Func<indexTypeInput> indexType = null, [WorkflowExpression] Func<acceptLanguageInput> acceptLanguage = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(maxDistanceKM, nameof(maxDistanceKM), required: false);
-            SourceExpression.Validate(indexType, nameof(indexType), required: false);
-            SourceExpression.Validate(acceptLanguage, nameof(acceptLanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/measurements/nearest";
@@ -115,10 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
         public IBodyWorkflowAction<GetMeasurementsForPointResponse> GetMeasurementsForPoint([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<indexTypeInput> indexType = null, [WorkflowExpression] Func<acceptLanguageInput> acceptLanguage = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(indexType, nameof(indexType), required: false);
-            SourceExpression.Validate(acceptLanguage, nameof(acceptLanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/measurements/point";
@@ -159,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
         public IBodyWorkflowAction<GetAvailableMeasurementsResponseItem[]> GetAvailableMeasurements([WorkflowExpression] Func<acceptLanguageInput> acceptLanguage = null)
         {
-            SourceExpression.Validate(acceptLanguage, nameof(acceptLanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/meta/measurements";

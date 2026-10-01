@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
         public IWorkflowAction ConvertHTMLToPDF([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodyhtmlBody = null, [WorkflowExpression] Func<string> bodycipher = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodyhtmlBody, nameof(bodyhtmlBody), required: false);
-            SourceExpression.Validate(bodycipher, nameof(bodycipher), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

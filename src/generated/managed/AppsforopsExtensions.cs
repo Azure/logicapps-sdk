@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
         public IBodyWorkflowAction<NPSCreateResponse> ApiExtNPS([WorkflowExpression] Func<string> modelemail, [WorkflowExpression] Func<int> modelscore, [WorkflowExpression] Func<string> modelratingDate, [WorkflowExpression] Func<string> modelname = null, [WorkflowExpression] Func<string> modelcomments = null, [WorkflowExpression] Func<string> modeladditionalData = null)
         {
-            SourceExpression.Validate(modelemail, nameof(modelemail), required: true);
-            SourceExpression.Validate(modelscore, nameof(modelscore), required: true);
-            SourceExpression.Validate(modelratingDate, nameof(modelratingDate), required: true);
-            SourceExpression.Validate(modelname, nameof(modelname), required: false);
-            SourceExpression.Validate(modelcomments, nameof(modelcomments), required: false);
-            SourceExpression.Validate(modeladditionalData, nameof(modeladditionalData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ext/NPS";
@@ -64,15 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
         public IBodyWorkflowAction<TimelineCreateResponse> ApiExtTimeline([WorkflowExpression] Func<string> modelsource, [WorkflowExpression] Func<string> modeltitle, [WorkflowExpression] Func<string> modeldescription, [WorkflowExpression] Func<string> modeltoDisplayName, [WorkflowExpression] Func<string> modeltoEmail, [WorkflowExpression] Func<string> modelfromDisplayName, [WorkflowExpression] Func<string> modelfromEmail, [WorkflowExpression] Func<string> modelcreatedByDateTime, [WorkflowExpression] Func<string> modelculture = null)
         {
-            SourceExpression.Validate(modelsource, nameof(modelsource), required: true);
-            SourceExpression.Validate(modeltitle, nameof(modeltitle), required: true);
-            SourceExpression.Validate(modeldescription, nameof(modeldescription), required: true);
-            SourceExpression.Validate(modeltoDisplayName, nameof(modeltoDisplayName), required: true);
-            SourceExpression.Validate(modeltoEmail, nameof(modeltoEmail), required: true);
-            SourceExpression.Validate(modelfromDisplayName, nameof(modelfromDisplayName), required: true);
-            SourceExpression.Validate(modelfromEmail, nameof(modelfromEmail), required: true);
-            SourceExpression.Validate(modelcreatedByDateTime, nameof(modelcreatedByDateTime), required: true);
-            SourceExpression.Validate(modelculture, nameof(modelculture), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ext/Timeline";

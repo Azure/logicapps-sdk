@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<TableMetadata> CreateTable([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> tabletableRange, [WorkflowExpression] Func<string> tabletableName = null, [WorkflowExpression] Func<string> tablecolumnsNames = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(tabletableRange, nameof(tabletableRange), required: true);
-            SourceExpression.Validate(tabletableName, nameof(tabletableName), required: false);
-            SourceExpression.Validate(tablecolumnsNames, nameof(tablecolumnsNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1));
@@ -53,9 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IWorkflowAction CreateIdColumn([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> idColumn = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(idColumn, nameof(idColumn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/createIdColumn", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
@@ -75,14 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<dateTimeFormatInput> dateTimeFormat = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(dateTimeFormat, nameof(dateTimeFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
@@ -110,11 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<Item> GetItem([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> idColumn, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<dateTimeFormatInput> dateTimeFormat = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(idColumn, nameof(idColumn), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(dateTimeFormat, nameof(dateTimeFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -133,10 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> idColumn, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(idColumn, nameof(idColumn), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -153,12 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<Item> PatchItem([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> idColumn, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<itemInput> item = null, [WorkflowExpression] Func<dateTimeFormatInput> dateTimeFormat = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(idColumn, nameof(idColumn), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
-            SourceExpression.Validate(dateTimeFormat, nameof(dateTimeFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -178,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<GetAllWorksheetsResponse> GetAllWorksheets([WorkflowExpression] Func<string> @file)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1));
@@ -194,8 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<WorksheetMetadata> CreateWorksheet([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1));
@@ -223,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<GetTablesResponse> GetTables([WorkflowExpression] Func<string> @file)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1));
@@ -239,10 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
         public IBodyWorkflowAction<Item> AddRow([WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<itemInput> item = null, [WorkflowExpression] Func<dateTimeFormatInput> dateTimeFormat = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
-            SourceExpression.Validate(dateTimeFormat, nameof(dateTimeFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/v1.2/drives/{0}/items/{1}/workbook/tables/{2}/rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "me"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@file, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));

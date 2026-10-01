@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<ApiResponse> SendInvitation([WorkflowExpression] Func<string> bodycardTemplateId, [WorkflowExpression] Func<string> bodyjobtitle, [WorkflowExpression] Func<string> bodyworkEmail, [WorkflowExpression] Func<string> bodynameOnCard = null, [WorkflowExpression] Func<string> bodyextension = null)
         {
-            SourceExpression.Validate(bodycardTemplateId, nameof(bodycardTemplateId), required: true);
-            SourceExpression.Validate(bodyjobtitle, nameof(bodyjobtitle), required: true);
-            SourceExpression.Validate(bodyworkEmail, nameof(bodyworkEmail), required: true);
-            SourceExpression.Validate(bodynameOnCard, nameof(bodynameOnCard), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Invitation/";
@@ -71,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<ApiResponse> DisassociateMember([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Invitation/Disassociate";

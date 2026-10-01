@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<Output> GetEntityData([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> relativePath = null, [WorkflowExpression] Func<double> top = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<inlinecountInput> inlinecount = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(inlinecount, nameof(inlinecount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getentitydata";
@@ -58,17 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> GetEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null, [WorkflowExpression] Func<double> top = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<inlinecountInput> inlinecount = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(inlinecount, nameof(inlinecount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getentry";
@@ -104,9 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> CreateEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createentry";
@@ -126,9 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> UpdateEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateentry";
@@ -148,9 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<AdHocRequestResponse> AdHocRequest([WorkflowExpression] Func<string> relativePath, [WorkflowExpression] Func<entryInputhttpMethodInput> entryInputhttpMethod, [WorkflowExpression] Func<bool> bypassMetadata = null)
         {
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: true);
-            SourceExpression.Validate(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
-            SourceExpression.Validate(bypassMetadata, nameof(bypassMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/adhoc";
@@ -193,10 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<AdHocBulkRequestResponse> AdHocBulkRequest([WorkflowExpression] Func<string> relativePath, [WorkflowExpression] Func<entryInputhttpMethodInput> entryInputhttpMethod, [WorkflowExpression] Func<JToken[]> entryInputpayload = null, [WorkflowExpression] Func<bool> bypassMetadata = null)
         {
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: true);
-            SourceExpression.Validate(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
-            SourceExpression.Validate(entryInputpayload, nameof(entryInputpayload), required: false);
-            SourceExpression.Validate(bypassMetadata, nameof(bypassMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/adhocBulk";
@@ -237,9 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> DeleteEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteentry";

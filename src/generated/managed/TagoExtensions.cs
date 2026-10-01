@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
         public IBodyWorkflowAction<JToken> GetData([WorkflowExpression] Func<string> device, [WorkflowExpression] Func<string> variable, [WorkflowExpression] Func<queryInput> query = null, [WorkflowExpression] Func<int> qty = null, [WorkflowExpression] Func<timezoneInput> timezone = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> serie = null)
         {
-            SourceExpression.Validate(device, nameof(device), required: true);
-            SourceExpression.Validate(variable, nameof(variable), required: true);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(qty, nameof(qty), required: false);
-            SourceExpression.Validate(timezone, nameof(timezone), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(serie, nameof(serie), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/prod/data";
@@ -52,13 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
         public IBodyWorkflowAction<PostDataResponse> PostData([WorkflowExpression] Func<string> bodydeviceId, [WorkflowExpression] Func<string> bodyvariable, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodytimezoneInput> bodytimezone = null, [WorkflowExpression] Func<string> bodytimestamp = null, [WorkflowExpression] Func<string> bodyserie = null, [WorkflowExpression] Func<string> bodyunit = null)
         {
-            SourceExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: true);
-            SourceExpression.Validate(bodyvariable, nameof(bodyvariable), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodytimestamp, nameof(bodytimestamp), required: false);
-            SourceExpression.Validate(bodyserie, nameof(bodyserie), required: false);
-            SourceExpression.Validate(bodyunit, nameof(bodyunit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/prod/data";
@@ -121,10 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     {
         public IBodyWorkflowTrigger<PostDataResponse> DataTrigger([WorkflowExpression] Func<string> device, [WorkflowExpression] Func<string> variable, [WorkflowExpression] Func<conditionInput> condition, [WorkflowExpression] Func<string> value = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(device, nameof(device), required: true);
-            SourceExpression.Validate(variable, nameof(variable), required: true);
-            SourceExpression.Validate(condition, nameof(condition), required: true);
-            SourceExpression.Validate(value, nameof(value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/prod/flow";

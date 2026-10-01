@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<CandidatesIdResponse> CandidatesId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<JobShortCodeResponse> JobShortCode([WorkflowExpression] Func<string> shortcode)
         {
-            SourceExpression.Validate(shortcode, nameof(shortcode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(shortcode, 1));
@@ -114,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<JobActivitiesResponse> JobActivities([WorkflowExpression] Func<string> shortcode)
         {
-            SourceExpression.Validate(shortcode, nameof(shortcode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}/activities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(shortcode, 1));
@@ -143,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<EventsIdResponse> EventsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spi/v3/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -172,10 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<PostSubscriptionResponse> PostSubscription([WorkflowExpression] Func<string> bodytarget = null, [WorkflowExpression] Func<string> bodyEvent = null, [WorkflowExpression] Func<string> bodyargsaccountId = null, [WorkflowExpression] Func<string> bodyargsstageSlug = null)
         {
-            SourceExpression.Validate(bodytarget, nameof(bodytarget), required: false);
-            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: false);
-            SourceExpression.Validate(bodyargsaccountId, nameof(bodyargsaccountId), required: false);
-            SourceExpression.Validate(bodyargsstageSlug, nameof(bodyargsstageSlug), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/spi/v3/subscriptions";
@@ -252,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<OfferResponse> Offer([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}/offer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

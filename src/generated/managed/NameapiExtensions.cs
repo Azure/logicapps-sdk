@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
         public IBodyWorkflowAction<ParseNameResponse> ParseName([WorkflowExpression] Func<JToken[]> bodyinputPersonpersonNamepersonNames, [WorkflowExpression] Func<bodyinputPersongenderInput> bodyinputPersongender = null)
         {
-            SourceExpression.Validate(bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
-            SourceExpression.Validate(bodyinputPersongender, nameof(bodyinputPersongender), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v5.3/parser/personnameparser";
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
         public IBodyWorkflowAction<DetectDeaResponse> DetectDea([WorkflowExpression] Func<string> emailAddress)
         {
-            SourceExpression.Validate(emailAddress, nameof(emailAddress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v5.3/email/disposableemailaddressdetector";

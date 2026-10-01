@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> LockPdf([WorkflowExpression] Func<string> lockPdfInputfileContent, [WorkflowExpression] Func<string> lockPdfInputpermissionsPassword, [WorkflowExpression] Func<bool> lockPdfInputallowAccessibility = null, [WorkflowExpression] Func<bool> lockPdfInputallowCopy = null, [WorkflowExpression] Func<bool> lockPdfInputallowDocumentAssembly = null, [WorkflowExpression] Func<bool> lockPdfInputallowEdit = null, [WorkflowExpression] Func<bool> lockPdfInputallowFormFilling = null, [WorkflowExpression] Func<bool> lockPdfInputallowPrint = null, [WorkflowExpression] Func<bool> lockPdfInputallowUpdateAnnotationsAndFields = null, [WorkflowExpression] Func<string> lockPdfInputdocumentOpenPassword = null)
         {
-            SourceExpression.Validate(lockPdfInputfileContent, nameof(lockPdfInputfileContent), required: true);
-            SourceExpression.Validate(lockPdfInputpermissionsPassword, nameof(lockPdfInputpermissionsPassword), required: true);
-            SourceExpression.Validate(lockPdfInputallowAccessibility, nameof(lockPdfInputallowAccessibility), required: false);
-            SourceExpression.Validate(lockPdfInputallowCopy, nameof(lockPdfInputallowCopy), required: false);
-            SourceExpression.Validate(lockPdfInputallowDocumentAssembly, nameof(lockPdfInputallowDocumentAssembly), required: false);
-            SourceExpression.Validate(lockPdfInputallowEdit, nameof(lockPdfInputallowEdit), required: false);
-            SourceExpression.Validate(lockPdfInputallowFormFilling, nameof(lockPdfInputallowFormFilling), required: false);
-            SourceExpression.Validate(lockPdfInputallowPrint, nameof(lockPdfInputallowPrint), required: false);
-            SourceExpression.Validate(lockPdfInputallowUpdateAnnotationsAndFields, nameof(lockPdfInputallowUpdateAnnotationsAndFields), required: false);
-            SourceExpression.Validate(lockPdfInputdocumentOpenPassword, nameof(lockPdfInputdocumentOpenPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/lock";
@@ -97,10 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> MergePdf([WorkflowExpression] Func<string> mergePdfInput1stFileContent, [WorkflowExpression] Func<string> mergePdfInput2ndFileContent, [WorkflowExpression] Func<string> mergePdfInput3rdFileContent = null, [WorkflowExpression] Func<string> mergePdfInput4thFileContent = null)
         {
-            SourceExpression.Validate(mergePdfInput1stFileContent, nameof(mergePdfInput1stFileContent), required: true);
-            SourceExpression.Validate(mergePdfInput2ndFileContent, nameof(mergePdfInput2ndFileContent), required: true);
-            SourceExpression.Validate(mergePdfInput3rdFileContent, nameof(mergePdfInput3rdFileContent), required: false);
-            SourceExpression.Validate(mergePdfInput4thFileContent, nameof(mergePdfInput4thFileContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/merge";
@@ -138,8 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> PasswordProtectPdf([WorkflowExpression] Func<string> passwordProtectPdfInputfileContent, [WorkflowExpression] Func<string> passwordProtectPdfInputpassword)
         {
-            SourceExpression.Validate(passwordProtectPdfInputfileContent, nameof(passwordProtectPdfInputfileContent), required: true);
-            SourceExpression.Validate(passwordProtectPdfInputpassword, nameof(passwordProtectPdfInputpassword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/password_protect";
@@ -165,9 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> SplitPdf([WorkflowExpression] Func<string> splitPdfInputfileContent, [WorkflowExpression] Func<int> splitPdfInputfirstPage = null, [WorkflowExpression] Func<int> splitPdfInputlastPage = null)
         {
-            SourceExpression.Validate(splitPdfInputfileContent, nameof(splitPdfInputfileContent), required: true);
-            SourceExpression.Validate(splitPdfInputfirstPage, nameof(splitPdfInputfirstPage), required: false);
-            SourceExpression.Validate(splitPdfInputlastPage, nameof(splitPdfInputlastPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/split";
@@ -203,8 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> UnlockPdf([WorkflowExpression] Func<string> unlockPdfInputfileContent, [WorkflowExpression] Func<string> unlockPdfInputpassword)
         {
-            SourceExpression.Validate(unlockPdfInputfileContent, nameof(unlockPdfInputfileContent), required: true);
-            SourceExpression.Validate(unlockPdfInputpassword, nameof(unlockPdfInputpassword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/unlock";
@@ -230,15 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> WatermarkPdfBackground([WorkflowExpression] Func<string> watermarkPdfBackgroundInputfileContent, [WorkflowExpression] Func<string> watermarkPdfBackgroundInput1stLine, [WorkflowExpression] Func<watermarkPdfBackgroundInputcolorInput> watermarkPdfBackgroundInputcolor = null, [WorkflowExpression] Func<string> watermarkPdfBackgroundInput2ndLine = null, [WorkflowExpression] Func<string> watermarkPdfBackgroundInput3rdLine = null, [WorkflowExpression] Func<double> watermarkPdfBackgroundInputmargin = null, [WorkflowExpression] Func<watermarkPdfBackgroundInputorientationInput> watermarkPdfBackgroundInputorientation = null, [WorkflowExpression] Func<watermarkPdfBackgroundInputstyleInput> watermarkPdfBackgroundInputstyle = null, [WorkflowExpression] Func<double> watermarkPdfBackgroundInputtransparency = null)
         {
-            SourceExpression.Validate(watermarkPdfBackgroundInputfileContent, nameof(watermarkPdfBackgroundInputfileContent), required: true);
-            SourceExpression.Validate(watermarkPdfBackgroundInput1stLine, nameof(watermarkPdfBackgroundInput1stLine), required: true);
-            SourceExpression.Validate(watermarkPdfBackgroundInputcolor, nameof(watermarkPdfBackgroundInputcolor), required: false);
-            SourceExpression.Validate(watermarkPdfBackgroundInput2ndLine, nameof(watermarkPdfBackgroundInput2ndLine), required: false);
-            SourceExpression.Validate(watermarkPdfBackgroundInput3rdLine, nameof(watermarkPdfBackgroundInput3rdLine), required: false);
-            SourceExpression.Validate(watermarkPdfBackgroundInputmargin, nameof(watermarkPdfBackgroundInputmargin), required: false);
-            SourceExpression.Validate(watermarkPdfBackgroundInputorientation, nameof(watermarkPdfBackgroundInputorientation), required: false);
-            SourceExpression.Validate(watermarkPdfBackgroundInputstyle, nameof(watermarkPdfBackgroundInputstyle), required: false);
-            SourceExpression.Validate(watermarkPdfBackgroundInputtransparency, nameof(watermarkPdfBackgroundInputtransparency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/watermark/background";
@@ -306,13 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> WatermarkPdfCustom([WorkflowExpression] Func<string> watermarkPdfCustomInputfileContent, [WorkflowExpression] Func<string> watermarkPdfCustomInputtemplateId, [WorkflowExpression] Func<string> watermarkPdfCustomInput1stLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput2ndLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput3rdLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput4thLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput5thLine = null)
         {
-            SourceExpression.Validate(watermarkPdfCustomInputfileContent, nameof(watermarkPdfCustomInputfileContent), required: true);
-            SourceExpression.Validate(watermarkPdfCustomInputtemplateId, nameof(watermarkPdfCustomInputtemplateId), required: true);
-            SourceExpression.Validate(watermarkPdfCustomInput1stLine, nameof(watermarkPdfCustomInput1stLine), required: false);
-            SourceExpression.Validate(watermarkPdfCustomInput2ndLine, nameof(watermarkPdfCustomInput2ndLine), required: false);
-            SourceExpression.Validate(watermarkPdfCustomInput3rdLine, nameof(watermarkPdfCustomInput3rdLine), required: false);
-            SourceExpression.Validate(watermarkPdfCustomInput4thLine, nameof(watermarkPdfCustomInput4thLine), required: false);
-            SourceExpression.Validate(watermarkPdfCustomInput5thLine, nameof(watermarkPdfCustomInput5thLine), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/watermark/custom";
@@ -368,15 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> WatermarkPdfOverlay([WorkflowExpression] Func<string> watermarkPdfOverlayInputfileContent, [WorkflowExpression] Func<string> watermarkPdfOverlayInput1stLine, [WorkflowExpression] Func<watermarkPdfOverlayInputcolorInput> watermarkPdfOverlayInputcolor = null, [WorkflowExpression] Func<string> watermarkPdfOverlayInput2ndLine = null, [WorkflowExpression] Func<string> watermarkPdfOverlayInput3rdLine = null, [WorkflowExpression] Func<double> watermarkPdfOverlayInputmargin = null, [WorkflowExpression] Func<watermarkPdfOverlayInputorientationInput> watermarkPdfOverlayInputorientation = null, [WorkflowExpression] Func<watermarkPdfOverlayInputstyleInput> watermarkPdfOverlayInputstyle = null, [WorkflowExpression] Func<double> watermarkPdfOverlayInputtransparency = null)
         {
-            SourceExpression.Validate(watermarkPdfOverlayInputfileContent, nameof(watermarkPdfOverlayInputfileContent), required: true);
-            SourceExpression.Validate(watermarkPdfOverlayInput1stLine, nameof(watermarkPdfOverlayInput1stLine), required: true);
-            SourceExpression.Validate(watermarkPdfOverlayInputcolor, nameof(watermarkPdfOverlayInputcolor), required: false);
-            SourceExpression.Validate(watermarkPdfOverlayInput2ndLine, nameof(watermarkPdfOverlayInput2ndLine), required: false);
-            SourceExpression.Validate(watermarkPdfOverlayInput3rdLine, nameof(watermarkPdfOverlayInput3rdLine), required: false);
-            SourceExpression.Validate(watermarkPdfOverlayInputmargin, nameof(watermarkPdfOverlayInputmargin), required: false);
-            SourceExpression.Validate(watermarkPdfOverlayInputorientation, nameof(watermarkPdfOverlayInputorientation), required: false);
-            SourceExpression.Validate(watermarkPdfOverlayInputstyle, nameof(watermarkPdfOverlayInputstyle), required: false);
-            SourceExpression.Validate(watermarkPdfOverlayInputtransparency, nameof(watermarkPdfOverlayInputtransparency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/watermark/overlay";

@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
         public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2([WorkflowExpression] Func<string> bodyfromPhoneNumber, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodysmsSendOptionsdeliveryReport = null, [WorkflowExpression] Func<string> bodysmsSendOptionstag = null)
         {
-            SourceExpression.Validate(bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
-            SourceExpression.Validate(bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/sms";

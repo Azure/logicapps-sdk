@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<AccountsDeleteResponse> AccountsDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -32,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<AccountsGetResponse> AccountsGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -50,23 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<AccountsUpdateResponse> AccountsUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyaccountTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<bodyaccountClassInput> bodyaccountClass = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyhomePage = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyaccountTypeId, nameof(bodyaccountTypeId), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodyaccountClass, nameof(bodyaccountClass), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyhomePage, nameof(bodyhomePage), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodystateProvince, nameof(bodystateProvince), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -172,22 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<AccountsCreateResponse> AccountsCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodyaccountTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<bodyaccountClassInput> bodyaccountClass = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyhomePage = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: true);
-            SourceExpression.Validate(bodyaccountTypeId, nameof(bodyaccountTypeId), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodyaccountClass, nameof(bodyaccountClass), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyhomePage, nameof(bodyhomePage), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodystateProvince, nameof(bodystateProvince), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -285,25 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<ContactsCreateResponse> ContactsCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<bodygenderInput> bodygender = null, [WorkflowExpression] Func<string> bodycontactTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<bodyaccountRelationsInputItem[]> bodyaccountRelations = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodycontactTypeId, nameof(bodycontactTypeId), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystateProvince, nameof(bodystateProvince), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodyaccountRelations, nameof(bodyaccountRelations), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -419,9 +361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<ContactsDeleteResponse> ContactsDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -437,9 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<ContactsGetResponse> ContactsGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -455,25 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<ContactsUpdateResponse> ContactsUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bodygenderInput> bodygender = null, [WorkflowExpression] Func<string> bodycontactTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodycontactTypeId, nameof(bodycontactTypeId), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystateProvince, nameof(bodystateProvince), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -591,18 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<LeadsCreateResponse> LeadsCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodyunitId, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyleadTypeId = null, [WorkflowExpression] Func<string> bodystepId = null, [WorkflowExpression] Func<bodycontactRelationsInputItem[]> bodycontactRelations = null, [WorkflowExpression] Func<bodyaccountRelationsInputItem[]> bodyaccountRelations = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: true);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyranking, nameof(bodyranking), required: false);
-            SourceExpression.Validate(bodyleadTypeId, nameof(bodyleadTypeId), required: false);
-            SourceExpression.Validate(bodystepId, nameof(bodystepId), required: false);
-            SourceExpression.Validate(bodycontactRelations, nameof(bodycontactRelations), required: false);
-            SourceExpression.Validate(bodyaccountRelations, nameof(bodyaccountRelations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -672,9 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<LeadsDeleteResponse> LeadsDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -690,9 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<LeadsGetResponse> LeadsGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -708,17 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<LeadsUpdateResponse> LeadsUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyleadTypeId = null, [WorkflowExpression] Func<string> bodystepId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyranking, nameof(bodyranking), required: false);
-            SourceExpression.Validate(bodyleadTypeId, nameof(bodyleadTypeId), required: false);
-            SourceExpression.Validate(bodystepId, nameof(bodystepId), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -788,20 +676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<TasksCreateResponse> TasksCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyunitId, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodyactivityTypeId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<bodyaccountRelationsInputItem2[]> bodyaccountRelations = null, [WorkflowExpression] Func<bodycontactRelationsInputItem2[]> bodycontactRelations = null, [WorkflowExpression] Func<bodyleadRelationsInputItem[]> bodyleadRelations = null, [WorkflowExpression] Func<bodyopportunityRelationsInputItem[]> bodyopportunityRelations = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: true);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: true);
-            SourceExpression.Validate(bodyactivityTypeId, nameof(bodyactivityTypeId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyaccountRelations, nameof(bodyaccountRelations), required: false);
-            SourceExpression.Validate(bodycontactRelations, nameof(bodycontactRelations), required: false);
-            SourceExpression.Validate(bodyleadRelations, nameof(bodyleadRelations), required: false);
-            SourceExpression.Validate(bodyopportunityRelations, nameof(bodyopportunityRelations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -883,9 +757,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<TasksDeleteResponse> TasksDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -901,9 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<TasksGetResponse> TasksGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -919,17 +787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<TasksUpdateResponse> TasksUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyactivityTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodyactivityTypeId, nameof(bodyactivityTypeId), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -999,22 +856,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<OpportunitiesCreateResponse> OpportunitiesCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyclosingDate, [WorkflowExpression] Func<string> bodyopptyTypeId, [WorkflowExpression] Func<string> bodystepId, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<bodyaccountRelationsInputItem[]> bodyaccountRelations, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<double> bodyvaluebaseValue = null, [WorkflowExpression] Func<string> bodyvaluecurrencyId = null, [WorkflowExpression] Func<double> bodyvaluevalueForeign = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<bodycontactRelationsInputItem[]> bodycontactRelations = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyclosingDate, nameof(bodyclosingDate), required: true);
-            SourceExpression.Validate(bodyopptyTypeId, nameof(bodyopptyTypeId), required: true);
-            SourceExpression.Validate(bodystepId, nameof(bodystepId), required: true);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: true);
-            SourceExpression.Validate(bodyaccountRelations, nameof(bodyaccountRelations), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
-            SourceExpression.Validate(bodyvaluebaseValue, nameof(bodyvaluebaseValue), required: false);
-            SourceExpression.Validate(bodyvaluecurrencyId, nameof(bodyvaluecurrencyId), required: false);
-            SourceExpression.Validate(bodyvaluevalueForeign, nameof(bodyvaluevalueForeign), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyranking, nameof(bodyranking), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodycontactRelations, nameof(bodycontactRelations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -1104,9 +945,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<OpportunitiesDeleteResponse> OpportunitiesDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1122,9 +960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<OpportunitiesGetResponse> OpportunitiesGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1140,21 +975,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<OpportunitiesUpdateResponse> OpportunitiesUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<double> bodyvaluebaseValue = null, [WorkflowExpression] Func<string> bodyvaluecurrencyId = null, [WorkflowExpression] Func<double> bodyvaluevalueForeign = null, [WorkflowExpression] Func<string> bodyclosingDate = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyopptyTypeId = null, [WorkflowExpression] Func<string> bodystepId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null)
         {
-            SourceExpression.Validate(serviceUrl, nameof(serviceUrl), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyvaluebaseValue, nameof(bodyvaluebaseValue), required: false);
-            SourceExpression.Validate(bodyvaluecurrencyId, nameof(bodyvaluecurrencyId), required: false);
-            SourceExpression.Validate(bodyvaluevalueForeign, nameof(bodyvaluevalueForeign), required: false);
-            SourceExpression.Validate(bodyclosingDate, nameof(bodyclosingDate), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyranking, nameof(bodyranking), required: false);
-            SourceExpression.Validate(bodyopptyTypeId, nameof(bodyopptyTypeId), required: false);
-            SourceExpression.Validate(bodystepId, nameof(bodystepId), required: false);
-            SourceExpression.Validate(bodyunitId, nameof(bodyunitId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

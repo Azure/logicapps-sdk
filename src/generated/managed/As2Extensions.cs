@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
         public IBodyWorkflowAction<MicUpdateResponse[]> AddOrUpdateMicValues([WorkflowExpression] Func<As2ReplicableMicContent[]> micContent = null)
         {
-            SourceExpression.Validate(micContent, nameof(micContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createOrUpdateMicValues";
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
         public IBodyWorkflowAction<As2AgreementProperties> ResolveAgreement([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To)
         {
-            SourceExpression.Validate(as2From, nameof(as2From), required: true);
-            SourceExpression.Validate(as2To, nameof(as2To), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resolveAgreement";
@@ -48,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
         public IBodyWorkflowAction<As2DecodeResponse> Decode([WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/decode";
@@ -64,11 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
         public IBodyWorkflowAction<As2EncodeResponse> Encode([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To, [WorkflowExpression] Func<string> fileName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(as2From, nameof(as2From), required: true);
-            SourceExpression.Validate(as2To, nameof(as2To), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/encode";
@@ -92,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
     {
         public IBodyWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues([WorkflowExpression] Func<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(startSyncTime, nameof(startSyncTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/triggers/onCreatedMicValues";

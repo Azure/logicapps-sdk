@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution([WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<bool> output, [WorkflowExpression] Func<bool> html, [WorkflowExpression] Func<bool> report = null)
         {
-            SourceExpression.Validate(executionId, nameof(executionId), required: true);
-            SourceExpression.Validate(output, nameof(output), required: true);
-            SourceExpression.Validate(html, nameof(html), required: true);
-            SourceExpression.Validate(report, nameof(report), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/NotebookExecutions";
@@ -39,9 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         public IBodyWorkflowAction<NotebookResponse> NotebookExecution([WorkflowExpression] Func<bool> report = null, [WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
         {
-            SourceExpression.Validate(report, nameof(report), required: false);
-            SourceExpression.Validate(parametersnotebook, nameof(parametersnotebook), required: false);
-            SourceExpression.Validate(parametersparameters, nameof(parametersparameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/NotebookExecutions";
@@ -80,8 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         public IBodyWorkflowAction<SynapseResponse> UploadToSynapse([WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
         {
-            SourceExpression.Validate(parametersnotebook, nameof(parametersnotebook), required: false);
-            SourceExpression.Validate(parametersparameters, nameof(parametersparameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Synapse";

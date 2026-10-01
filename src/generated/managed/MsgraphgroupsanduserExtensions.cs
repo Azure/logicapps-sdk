@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse> ListGroupsByDisplayNameSearch([WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/groups";
@@ -62,9 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<ListDirectGroupMembersResponse> ListDirectGroupMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -87,8 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> GetMemberLicenseDetails([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/licenseDetails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -106,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetGroupPropertiesResponse> GetGroupProperties([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -121,8 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetMemberGroupsResponse> GetMemberGroups([WorkflowExpression] Func<string> memberId, [WorkflowExpression] Func<bool> bodysecurityEnabledOnly)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
-            SourceExpression.Validate(bodysecurityEnabledOnly, nameof(bodysecurityEnabledOnly), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/getMemberGroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));

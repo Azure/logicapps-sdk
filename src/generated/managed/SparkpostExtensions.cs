@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         public IBodyWorkflowAction<JToken> CreateRecipientList([WorkflowExpression] Func<string> recipientListidOfTheRecipientList = null, [WorkflowExpression] Func<string> recipientListnameOfTheRecipientList = null, [WorkflowExpression] Func<string> recipientListdescription = null, [WorkflowExpression] Func<string> recipientListemailAddressOfFirstRecipient = null)
         {
-            SourceExpression.Validate(recipientListidOfTheRecipientList, nameof(recipientListidOfTheRecipientList), required: false);
-            SourceExpression.Validate(recipientListnameOfTheRecipientList, nameof(recipientListnameOfTheRecipientList), required: false);
-            SourceExpression.Validate(recipientListdescription, nameof(recipientListdescription), required: false);
-            SourceExpression.Validate(recipientListemailAddressOfFirstRecipient, nameof(recipientListemailAddressOfFirstRecipient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/recipient-lists";
@@ -62,9 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         public IBodyWorkflowAction<JToken> AddUserToRecipientList([WorkflowExpression] Func<string> recipientListId, [WorkflowExpression] Func<string> addUserToRecipientListRequestrecipientaddressemailAddress, [WorkflowExpression] Func<string> addUserToRecipientListRequestrecipientaddressname = null)
         {
-            SourceExpression.Validate(recipientListId, nameof(recipientListId), required: true);
-            SourceExpression.Validate(addUserToRecipientListRequestrecipientaddressemailAddress, nameof(addUserToRecipientListRequestrecipientaddressemailAddress), required: true);
-            SourceExpression.Validate(addUserToRecipientListRequestrecipientaddressname, nameof(addUserToRecipientListRequestrecipientaddressname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/add-user/recipient-lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
@@ -109,8 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         public IBodyWorkflowAction<JToken> DeleteUserFromRecipientList([WorkflowExpression] Func<string> recipientListId, [WorkflowExpression] Func<string> deleteUserRequestemailAddress = null)
         {
-            SourceExpression.Validate(recipientListId, nameof(recipientListId), required: true);
-            SourceExpression.Validate(deleteUserRequestemailAddress, nameof(deleteUserRequestemailAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/delete-user/recipient-lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
@@ -137,9 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         public IBodyWorkflowAction<JToken> SendEmailToRecipientList([WorkflowExpression] Func<string> requestrecipientsrecipient, [WorkflowExpression] Func<string> requestcontenttemplate, [WorkflowExpression] Func<string> requestcampaignId = null)
         {
-            SourceExpression.Validate(requestrecipientsrecipient, nameof(requestrecipientsrecipient), required: true);
-            SourceExpression.Validate(requestcontenttemplate, nameof(requestcontenttemplate), required: true);
-            SourceExpression.Validate(requestcampaignId, nameof(requestcampaignId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/transmissions";
@@ -186,8 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
         public IBodyWorkflowAction<JToken> SendEmailToRecipient([WorkflowExpression] Func<string> requestcontenttemplate, [WorkflowExpression] Func<EmailRecipient[]> requestrecipients)
         {
-            SourceExpression.Validate(requestcontenttemplate, nameof(requestcontenttemplate), required: true);
-            SourceExpression.Validate(requestrecipients, nameof(requestrecipients), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/transmissions/singleRecipient";

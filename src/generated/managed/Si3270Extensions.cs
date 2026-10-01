@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Si3270
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "si3270")]
         public IBodyWorkflowAction<JToken> ExecuteMethod([WorkflowExpression] Func<string> hidxName, [WorkflowExpression] Func<string> methodName, [WorkflowExpression] Func<object> parameters = null)
         {
-            SourceExpression.Validate(hidxName, nameof(hidxName), required: true);
-            SourceExpression.Validate(methodName, nameof(methodName), required: true);
-            SourceExpression.Validate(parameters, nameof(parameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hidx/{0}/methods/{1}/call", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hidxName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(methodName, 1));

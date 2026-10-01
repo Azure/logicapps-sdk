@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
         public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights([WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";

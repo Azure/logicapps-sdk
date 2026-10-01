@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<Training> GetTraining([WorkflowExpression] Func<string> trainingid)
         {
-            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<Registrant[]> ListRegistrations([WorkflowExpression] Func<string> trainingid)
         {
-            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
@@ -44,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<AddRegistrantResponse> AddRegistrant([WorkflowExpression] Func<string> trainingid, [WorkflowExpression] Func<string> bodyregistrantEmail, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName)
         {
-            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
-            SourceExpression.Validate(bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
@@ -74,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<Registrant> GetRegistrant([WorkflowExpression] Func<string> trainingid, [WorkflowExpression] Func<string> registrantKey)
         {
-            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
-            SourceExpression.Validate(registrantKey, nameof(registrantKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(registrantKey, 1));

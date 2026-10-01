@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<DocGenFormFieldsResponse> GetDocgenFormFields([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/docGenFormFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -30,10 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IWorkflowAction UpdateDocgenFormFields([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentGuid, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(documentGuid, nameof(documentGuid), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/docGenFormFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -50,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<JToken> GetDocGenTemplateTabs([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/templates/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -66,9 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<JToken> VoidEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> voidedReason)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(voidedReason, nameof(voidedReason), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/voidEnvelope", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -84,7 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<JToken> ResendEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/copilotAccount/envelopes/{0}/resendEnvelope", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -99,12 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<AddRemindersResponse> AddReminders([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<bool> reminderEnabled, [WorkflowExpression] Func<string> reminderDelay, [WorkflowExpression] Func<string> reminderFrequency, [WorkflowExpression] Func<string> expireAfter = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(reminderEnabled, nameof(reminderEnabled), required: true);
-            SourceExpression.Validate(reminderDelay, nameof(reminderDelay), required: true);
-            SourceExpression.Validate(reminderFrequency, nameof(reminderFrequency), required: true);
-            SourceExpression.Validate(expireAfter, nameof(expireAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/notification", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -124,9 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListTabsResponse> GetEnvelopeDocumentTabs([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/documents/{2}/tabs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -141,10 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IWorkflowAction UpdateEnvelopePrefillTabs([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/documents/{2}/tabs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -160,9 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListTabsResponse> GetTemplateDocumentTabs([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/templates/{1}/documents/{2}/tabs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -177,9 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListEnvelopeDocumentFieldsResponse> GetEnvelopeDocumentFields([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/documents/{2}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -194,12 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<CompositeTemplatesResponse> CompositeTemplates([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> emailSubject, [WorkflowExpression] Func<statusInput> status, [WorkflowExpression] Func<string> emailBody = null, [WorkflowExpression] Func<mergeRolesOnDraftInput> mergeRolesOnDraft = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(emailSubject, nameof(emailSubject), required: true);
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(emailBody, nameof(emailBody), required: false);
-            SourceExpression.Validate(mergeRolesOnDraft, nameof(mergeRolesOnDraft), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/compositeTemplates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -222,20 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<FilteredEnvelopeListResponse> SearchListEnvelopes([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> recipientName = null, [WorkflowExpression] Func<string> recipientEmailId = null, [WorkflowExpression] Func<string> envelopeTitle = null, [WorkflowExpression] Func<string> customFieldName = null, [WorkflowExpression] Func<string> customFieldValue = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<envelopeStatusInput> envelopeStatus = null, [WorkflowExpression] Func<folderIdsInput> folderIds = null, [WorkflowExpression] Func<orderByInput> orderBy = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> fromDate = null, [WorkflowExpression] Func<string> toDate = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(recipientName, nameof(recipientName), required: false);
-            SourceExpression.Validate(recipientEmailId, nameof(recipientEmailId), required: false);
-            SourceExpression.Validate(envelopeTitle, nameof(envelopeTitle), required: false);
-            SourceExpression.Validate(customFieldName, nameof(customFieldName), required: false);
-            SourceExpression.Validate(customFieldValue, nameof(customFieldValue), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
-            SourceExpression.Validate(envelopeStatus, nameof(envelopeStatus), required: false);
-            SourceExpression.Validate(folderIds, nameof(folderIds), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: false);
-            SourceExpression.Validate(toDate, nameof(toDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/SearchListEnvelopes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -279,9 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelopeFromTemplateNoRecipients([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<statusInput> status)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(status, nameof(status), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/createFromTemplateNoRecipients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -298,12 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<CreateEnvelopeResponse> SendEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<statusInput> status, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<object> signers = null, [WorkflowExpression] Func<string> emailSubject = null, [WorkflowExpression] Func<string> emailBody = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(signers, nameof(signers), required: false);
-            SourceExpression.Validate(emailSubject, nameof(emailSubject), required: false);
-            SourceExpression.Validate(emailBody, nameof(emailBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -325,11 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<CreateEnvelopeResponse> SendEnvelopeWithRecipientFields([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<object> recipients = null, [WorkflowExpression] Func<mergeRolesOnDraftInput> mergeRolesOnDraft = null, [WorkflowExpression] Func<string> emailSubject = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(recipients, nameof(recipients), required: false);
-            SourceExpression.Validate(mergeRolesOnDraft, nameof(mergeRolesOnDraft), required: false);
-            SourceExpression.Validate(emailSubject, nameof(emailSubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/createWithRecipientFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -351,8 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<JToken> SendDraftEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -367,9 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<EnvelopeCustomFieldResponse> GetEnvelopeCustomField([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> fieldName)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(fieldName, nameof(fieldName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -385,12 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<UpdateEnvelopeCustomFieldResponse> UpdateEnvelopeCustomField([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> fieldType, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> value)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(fieldType, nameof(fieldType), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -409,11 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<EmbeddedSenderResponse> GenerateEmbeddedSenderURL([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<openInInput> openIn, [WorkflowExpression] Func<returnUrlInput> returnUrl, [WorkflowExpression] Func<object> additionalURL = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(openIn, nameof(openIn), required: true);
-            SourceExpression.Validate(returnUrl, nameof(returnUrl), required: true);
-            SourceExpression.Validate(additionalURL, nameof(additionalURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/views/sender", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -431,8 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListRecipientsResponse> GetRecipientStatus([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -447,10 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListRecipientsResponse> RemoveRecipientFromEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> removeRecipientFromEnvelopeRecipientId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(removeRecipientFromEnvelopeRecipientId, nameof(removeRecipientFromEnvelopeRecipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -467,12 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<Signer> GetRecipientFields([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientEmail = null, [WorkflowExpression] Func<string> areaCode = null, [WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> recipientId = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientEmail, nameof(recipientEmail), required: false);
-            SourceExpression.Validate(areaCode, nameof(areaCode), required: false);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipientFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -495,8 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<JToken> GetAuditEvents([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/audit_events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -511,12 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IWorkflowAction AddVerificationToRecipient([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> recipientType, [WorkflowExpression] Func<verificationTypeInput> verificationType, [WorkflowExpression] Func<object> additionalRecipientData = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(recipientType, nameof(recipientType), required: true);
-            SourceExpression.Validate(verificationType, nameof(verificationType), required: true);
-            SourceExpression.Validate(additionalRecipientData, nameof(additionalRecipientData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients/addRecipientV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -535,23 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<Signer> UpdateEnvelopeRecipient([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> recipientType, [WorkflowExpression] Func<string> signatureType = null, [WorkflowExpression] Func<string> clientUserId = null, [WorkflowExpression] Func<string> embeddedRecipientStartURL = null, [WorkflowExpression] Func<string> routingOrder = null, [WorkflowExpression] Func<emailNotificationLanguageInput> emailNotificationLanguage = null, [WorkflowExpression] Func<string> emailNotificationSubject = null, [WorkflowExpression] Func<string> emailNotificationBody = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<string> roleName = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> signingGroupId = null, [WorkflowExpression] Func<object> additionalRecipientParams = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(recipientType, nameof(recipientType), required: true);
-            SourceExpression.Validate(signatureType, nameof(signatureType), required: false);
-            SourceExpression.Validate(clientUserId, nameof(clientUserId), required: false);
-            SourceExpression.Validate(embeddedRecipientStartURL, nameof(embeddedRecipientStartURL), required: false);
-            SourceExpression.Validate(routingOrder, nameof(routingOrder), required: false);
-            SourceExpression.Validate(emailNotificationLanguage, nameof(emailNotificationLanguage), required: false);
-            SourceExpression.Validate(emailNotificationSubject, nameof(emailNotificationSubject), required: false);
-            SourceExpression.Validate(emailNotificationBody, nameof(emailNotificationBody), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(roleName, nameof(roleName), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
-            SourceExpression.Validate(signingGroupId, nameof(signingGroupId), required: false);
-            SourceExpression.Validate(additionalRecipientParams, nameof(additionalRecipientParams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients/updateRecipient", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -593,11 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IWorkflowAction ApplyTemplatesToDocuments([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<preserveTemplateRecipientInput> preserveTemplateRecipient = null, [WorkflowExpression] Func<bodydocumentTemplatesInputItem[]> bodydocumentTemplates = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(preserveTemplateRecipient, nameof(preserveTemplateRecipient), required: false);
-            SourceExpression.Validate(bodydocumentTemplates, nameof(bodydocumentTemplates), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -628,9 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<BulkSendListGuidInfo> CreateBulkSendList([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> csvcSVFile = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(csvcSVFile, nameof(csvcSVFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/bulk_send_lists", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -666,9 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<BulkSendListGuidInfo> BulkSend([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bulkSendListId, [WorkflowExpression] Func<string> envelopeOrTemplateId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bulkSendListId, nameof(bulkSendListId), required: true);
-            SourceExpression.Validate(envelopeOrTemplateId, nameof(envelopeOrTemplateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/bulk_send_lists/{1}/send", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bulkSendListId, 1));
@@ -698,7 +569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListTemplatesResponse> GetEnvelopeTemplates([WorkflowExpression] Func<string> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -713,9 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<AddDocumentsResponse> AddDocumentsToEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<bodyunnamedInputItem[]> bodyunnamed = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(bodyunnamed, nameof(bodyunnamed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -742,8 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListTemplateDocumentsResponse> ListTemplateDocuments([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/templates/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -758,8 +623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<ListDocumentsResponse> ListEnvelopeDocuments([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/envelopeDocuments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -774,9 +637,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<EnvelopeDocument> GetEnvelopeDocumentInfo([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentName)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(documentName, nameof(documentName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/get_document_info", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -792,10 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<Tab> GetTabInfo([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> tabLabel)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(tabLabel, nameof(tabLabel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients/{2}/tabs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -811,11 +667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<AddRecipientTabsResponse> AddRecipientTabs([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> tabType, [WorkflowExpression] Func<object> tabDetails = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(tabType, nameof(tabType), required: true);
-            SourceExpression.Validate(tabDetails, nameof(tabDetails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients/{2}/tabs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -832,10 +683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IWorkflowAction UpdateRecipientTabsValues([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<bodyInputItem22[]> body = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients/{2}/tabs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -851,9 +698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<RecipientTabsResponse> GetEnvelopeRecipientTabs([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients/{2}/recipientTabs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -868,10 +712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<JToken> TriggerMaestroFlow([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> instanceName, [WorkflowExpression] Func<object> variable = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(instanceName, nameof(instanceName), required: true);
-            SourceExpression.Validate(variable, nameof(variable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/maestro-workflows/trigger/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
@@ -888,7 +728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<JToken> BuildNumber([WorkflowExpression] Func<object> buildNumber = null)
         {
-            SourceExpression.Validate(buildNumber, nameof(buildNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/build_number";
@@ -904,24 +743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<Signer> AddRecipientToEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientType, [WorkflowExpression] Func<string> clientUserId = null, [WorkflowExpression] Func<string> recipientId = null, [WorkflowExpression] Func<string> embeddedRecipientStartURL = null, [WorkflowExpression] Func<string> routingOrder = null, [WorkflowExpression] Func<emailNotificationLanguageInput> emailNotificationLanguage = null, [WorkflowExpression] Func<string> emailNotificationSubject = null, [WorkflowExpression] Func<string> emailNotificationBody = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<string> roleName = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> signingGroupId = null, [WorkflowExpression] Func<string> signatureType = null, [WorkflowExpression] Func<string> workflowId = null, [WorkflowExpression] Func<object> additionalRecipientParams = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(recipientType, nameof(recipientType), required: true);
-            SourceExpression.Validate(clientUserId, nameof(clientUserId), required: false);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: false);
-            SourceExpression.Validate(embeddedRecipientStartURL, nameof(embeddedRecipientStartURL), required: false);
-            SourceExpression.Validate(routingOrder, nameof(routingOrder), required: false);
-            SourceExpression.Validate(emailNotificationLanguage, nameof(emailNotificationLanguage), required: false);
-            SourceExpression.Validate(emailNotificationSubject, nameof(emailNotificationSubject), required: false);
-            SourceExpression.Validate(emailNotificationBody, nameof(emailNotificationBody), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(roleName, nameof(roleName), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
-            SourceExpression.Validate(signingGroupId, nameof(signingGroupId), required: false);
-            SourceExpression.Validate(signatureType, nameof(signatureType), required: false);
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: false);
-            SourceExpression.Validate(additionalRecipientParams, nameof(additionalRecipientParams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/recipients/addRecipientV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -966,10 +787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<CreateEnvelopeResponse> CreateBlankEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> emailSubject, [WorkflowExpression] Func<string> bodyemailBody = null, [WorkflowExpression] Func<object> bodyaccountCustomFields = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(emailSubject, nameof(emailSubject), required: true);
-            SourceExpression.Validate(bodyemailBody, nameof(bodyemailBody), required: false);
-            SourceExpression.Validate(bodyaccountCustomFields, nameof(bodyaccountCustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/createBlankEnvelopeV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -1003,12 +820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<EmbeddedSigningResponse> GenerateEmbeddedSigningURL([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<isInPersonSignerInput> isInPersonSigner, [WorkflowExpression] Func<authenticationMethodInput> authenticationMethod, [WorkflowExpression] Func<returnUrlInput> returnUrl, [WorkflowExpression] Func<object> additionalURL = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(isInPersonSigner, nameof(isInPersonSigner), required: true);
-            SourceExpression.Validate(authenticationMethod, nameof(authenticationMethod), required: true);
-            SourceExpression.Validate(returnUrl, nameof(returnUrl), required: true);
-            SourceExpression.Validate(additionalURL, nameof(additionalURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/views/recipientV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -1027,10 +838,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
         public IBodyWorkflowAction<string> GetDocuments([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<documentIdInput> documentId, [WorkflowExpression] Func<languageInput> language = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/envelopes/{1}/documents/{2}/documentsDownload", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -1050,9 +857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     {
         public IBodyWorkflowTrigger<JToken> CreateOrgHookEnvelope([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> bodyconnectConfigurationName, [WorkflowExpression] Func<bodytriggerEventsInputItem[]> bodytriggerEvents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(bodyconnectConfigurationName, nameof(bodyconnectConfigurationName), required: true);
-            SourceExpression.Validate(bodytriggerEvents, nameof(bodytriggerEvents), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Management/v2/organizations/{0}/connect", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -1086,9 +890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
 
         public IBodyWorkflowTrigger<JToken> CreateHookEnvelope([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyconnectConfigurationName, [WorkflowExpression] Func<bodytriggerEventsInputItem[]> bodytriggerEvents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyconnectConfigurationName, nameof(bodyconnectConfigurationName), required: true);
-            SourceExpression.Validate(bodytriggerEvents, nameof(bodytriggerEvents), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts/{0}/connectV4", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));

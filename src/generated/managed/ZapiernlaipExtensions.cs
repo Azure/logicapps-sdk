@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
         public IBodyWorkflowAction<ActionPostResponse> Action([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> bodyinstructions, [WorkflowExpression] Func<bool> bodypreviewOnly = null)
         {
-            SourceExpression.Validate(actionId, nameof(actionId), required: true);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: true);
-            SourceExpression.Validate(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));

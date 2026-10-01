@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfEmployeesResponse> GetACollectionOfEmployees([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> count = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/Employee", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -51,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<CreateASingleEmployeeRecordResponse> CreateASingleEmployeeRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/Employee", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -72,15 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfEmployeesAsOfAnEffectiveDateResponse> GetACollectionOfEmployeesAsOfAnEffectiveDate([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> effectivedate, [WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<string> count, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(effectivedate, nameof(effectivedate), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/Employee/effective/:{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(effectivedate, 1));
@@ -105,10 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetASingleEmployeeRecordResponse> GetASingleEmployeeRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> employeeId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/Employee({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(employeeId, 1));
@@ -125,11 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<UpdateASingleEmployeeRecordResponse> UpdateASingleEmployeeRecord([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/Employee({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(employeeId, 1));
@@ -147,10 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<DownloadEmployeePhotoResponse> DownloadEmployeePhoto([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> employeeId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/Employee/{1}/image/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(employeeId, 1));
@@ -167,10 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<UploadEmployeePhotoResponse> UploadEmployeePhoto([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> employeeId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/Employee/{1}/image/upload", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(employeeId, 1));
@@ -187,14 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfEmploymentStatusesResponse> GetACollectionOfEmploymentStatuses([WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<string> count, [WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeEmploymentStatus", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -219,10 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<CreateASingleEmploymentStatusRecordResponse> CreateASingleEmploymentStatusRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeEmploymentStatus", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -240,14 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfAllEmploymentStatusesResponse> GetACollectionOfAllEmploymentStatuses([WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<string> count, [WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeEmploymentStatus/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -272,14 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfPositionsResponse> GetACollectionOfPositions([WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<string> count, [WorkflowExpression] Func<string> expand, [WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeePosition", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -303,10 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<CreateASinglePositionRecordResponse> CreateASinglePositionRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeePosition", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -324,10 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetASinglePositionRecordResponse> GetASinglePositionRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> employeePositionId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(employeePositionId, nameof(employeePositionId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeePosition({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(employeePositionId, 1));
@@ -344,11 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<JToken> UpdateASinglePositionRecord([WorkflowExpression] Func<int> employeePositionId, [WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(employeePositionId, nameof(employeePositionId), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeePosition({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(employeePositionId, 1));
@@ -366,15 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfPositionsAsOfAnEffectiveDateResponse> GetACollectionOfPositionsAsOfAnEffectiveDate([WorkflowExpression] Func<string> orderby, [WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<string> count, [WorkflowExpression] Func<string> expand, [WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> effectivedate, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(orderby, nameof(orderby), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(effectivedate, nameof(effectivedate), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeePosition/effective/:{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(effectivedate, 1));
@@ -397,14 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfEmployeeAttachmentRecordsResponse> GetACollectionOfEmployeeAttachmentRecords([WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<string> count, [WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeAttachment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -430,10 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<CreateASingleEmployeeAttachmentRecordResponse> CreateASingleEmployeeAttachmentRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeAttachment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -451,10 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetASingleEmployeeAttachmentRecordResponse> GetASingleEmployeeAttachmentRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> attachmentId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeAttachment({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(attachmentId, 1));
@@ -471,10 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<JToken> DeleteASingleEmployeeAttachmentRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> attachmentId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeAttachment({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(attachmentId, 1));
@@ -491,11 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<JToken> UpdateASingleEmployeeAttachmentRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> attachmentId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeAttachment({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(attachmentId, 1));
@@ -513,14 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetACollectionOfBankDetailRecordsResponse> GetACollectionOfBankDetailRecords([WorkflowExpression] Func<string> orderby, [WorkflowExpression] Func<string> skip, [WorkflowExpression] Func<string> count, [WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(orderby, nameof(orderby), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeBankDetail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -544,10 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<CreateASingleBankDetailRecordResponse> CreateASingleBankDetailRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeBankDetail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1));
@@ -565,10 +439,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<GetASingleBankDetailRecordResponse> GetASingleBankDetailRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> bankDetailId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(bankDetailId, nameof(bankDetailId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeBankDetail({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(bankDetailId, 1));
@@ -585,10 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<JToken> DeleteASingleBankDetailRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> bankDetailId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(bankDetailId, nameof(bankDetailId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeBankDetail({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(bankDetailId, 1));
@@ -605,11 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
         public IBodyWorkflowAction<JToken> UpdateASingleBankDetailRecord([WorkflowExpression] Func<int> companyId, [WorkflowExpression] Func<int> bankDetailId, [WorkflowExpression] Func<string> customAuthHeader, [WorkflowExpression] Func<string> customEnvironmentHeader, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(bankDetailId, nameof(bankDetailId), required: true);
-            SourceExpression.Validate(customAuthHeader, nameof(customAuthHeader), required: true);
-            SourceExpression.Validate(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v1.1/{0}/EmployeeBankDetail({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(bankDetailId, 1));

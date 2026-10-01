@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<bool> bodystream = null, [WorkflowExpression] Func<bool> bodysafePrompt = null, [WorkflowExpression] Func<int> bodyrandomSeed = null)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            SourceExpression.Validate(bodystream, nameof(bodystream), required: false);
-            SourceExpression.Validate(bodysafePrompt, nameof(bodysafePrompt), required: false);
-            SourceExpression.Validate(bodyrandomSeed, nameof(bodyrandomSeed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/chat/completions";
@@ -122,9 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding([WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string[]> bodyinput = null, [WorkflowExpression] Func<bodyencodingFormatInput> bodyencodingFormat = null)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: false);
-            SourceExpression.Validate(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/embeddings";

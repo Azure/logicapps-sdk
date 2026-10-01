@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
         public IWorkflowAction Get([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<aPINameInput> aPIName, [WorkflowExpression] Func<string> aPIVersion2, [WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<pluralAPINameInput> pluralAPIName, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
-            SourceExpression.Validate(aPIName, nameof(aPIName), required: true);
-            SourceExpression.Validate(aPIVersion2, nameof(aPIVersion2), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(pluralAPIName, nameof(pluralAPIName), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion2, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pluralAPIName, 1));

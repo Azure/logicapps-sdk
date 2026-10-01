@@ -14,58 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appstoreconnect")]
         public IBodyWorkflowAction<AppsAndAppMetadataListAppsResponse> AppsAndAppMetadataListApps([WorkflowExpression] Func<string> serviceToken, [WorkflowExpression] Func<fieldsAppsInput> fieldsApps = null, [WorkflowExpression] Func<fieldsBetaLicenseAgreementsInput> fieldsBetaLicenseAgreements = null, [WorkflowExpression] Func<fieldsPreReleaseVersionsInput> fieldsPreReleaseVersions = null, [WorkflowExpression] Func<fieldsBetaAppReviewDetailsInput> fieldsBetaAppReviewDetails = null, [WorkflowExpression] Func<fieldsBetaAppLocalizationsInput> fieldsBetaAppLocalizations = null, [WorkflowExpression] Func<fieldsBuildsInput> fieldsBuilds = null, [WorkflowExpression] Func<fieldsBetaGroupsInput> fieldsBetaGroups = null, [WorkflowExpression] Func<fieldsEndUserLicenseAgreementsInput> fieldsEndUserLicenseAgreements = null, [WorkflowExpression] Func<fieldsAppStoreVersionsInput> fieldsAppStoreVersions = null, [WorkflowExpression] Func<fieldsAppInfosInput> fieldsAppInfos = null, [WorkflowExpression] Func<fieldsPerfPowerMetricsInput> fieldsPerfPowerMetrics = null, [WorkflowExpression] Func<fieldsInAppPurchasesInput> fieldsInAppPurchases = null, [WorkflowExpression] Func<fieldsCiProductsInput> fieldsCiProducts = null, [WorkflowExpression] Func<fieldsAppClipsInput> fieldsAppClips = null, [WorkflowExpression] Func<fieldsReviewSubmissionsInput> fieldsReviewSubmissions = null, [WorkflowExpression] Func<fieldsAppCustomProductPagesInput> fieldsAppCustomProductPages = null, [WorkflowExpression] Func<fieldsAppEventsInput> fieldsAppEvents = null, [WorkflowExpression] Func<fieldsAppPricePointsInput> fieldsAppPricePoints = null, [WorkflowExpression] Func<fieldsCustomerReviewsInput> fieldsCustomerReviews = null, [WorkflowExpression] Func<fieldsSubscriptionGracePeriodsInput> fieldsSubscriptionGracePeriods = null, [WorkflowExpression] Func<fieldsPromotedPurchasesInput> fieldsPromotedPurchases = null, [WorkflowExpression] Func<fieldsSubscriptionGroupsInput> fieldsSubscriptionGroups = null, [WorkflowExpression] Func<fieldsAppPriceSchedulesInput> fieldsAppPriceSchedules = null, [WorkflowExpression] Func<fieldsAppStoreVersionExperimentsInput> fieldsAppStoreVersionExperiments = null, [WorkflowExpression] Func<fieldsAppEncryptionDeclarationsInput> fieldsAppEncryptionDeclarations = null, [WorkflowExpression] Func<fieldsGameCenterDetailsInput> fieldsGameCenterDetails = null, [WorkflowExpression] Func<includeInput> include = null, [WorkflowExpression] Func<string> filterBundleId = null, [WorkflowExpression] Func<string> filterId = null, [WorkflowExpression] Func<string> filterName = null, [WorkflowExpression] Func<string> filterSku = null, [WorkflowExpression] Func<string> filterAppStoreVersions = null, [WorkflowExpression] Func<filterAppStoreVersionsPlatformInput> filterAppStoreVersionsPlatform = null, [WorkflowExpression] Func<filterAppStoreVersionsAppStoreStateInput> filterAppStoreVersionsAppStoreState = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limitPreReleaseVersions = null, [WorkflowExpression] Func<int> limitBuilds = null, [WorkflowExpression] Func<int> limitBetaGroups = null, [WorkflowExpression] Func<int> limitBetaAppLocalizations = null, [WorkflowExpression] Func<int> limitAvailableTerritories = null, [WorkflowExpression] Func<int> limitAppStoreVersions = null, [WorkflowExpression] Func<int> limitAppInfos = null, [WorkflowExpression] Func<int> limitAppClips = null, [WorkflowExpression] Func<int> limitAppCustomProductPages = null, [WorkflowExpression] Func<int> limitAppEvents = null, [WorkflowExpression] Func<int> limitReviewSubmissions = null, [WorkflowExpression] Func<int> limitInAppPurchasesV2 = null, [WorkflowExpression] Func<int> limitPromotedPurchases = null, [WorkflowExpression] Func<int> limitSubscriptionGroups = null, [WorkflowExpression] Func<int> limitAppStoreVersionExperimentsV2 = null, [WorkflowExpression] Func<int> limitAppEncryptionDeclarations = null)
         {
-            SourceExpression.Validate(serviceToken, nameof(serviceToken), required: true);
-            SourceExpression.Validate(fieldsApps, nameof(fieldsApps), required: false);
-            SourceExpression.Validate(fieldsBetaLicenseAgreements, nameof(fieldsBetaLicenseAgreements), required: false);
-            SourceExpression.Validate(fieldsPreReleaseVersions, nameof(fieldsPreReleaseVersions), required: false);
-            SourceExpression.Validate(fieldsBetaAppReviewDetails, nameof(fieldsBetaAppReviewDetails), required: false);
-            SourceExpression.Validate(fieldsBetaAppLocalizations, nameof(fieldsBetaAppLocalizations), required: false);
-            SourceExpression.Validate(fieldsBuilds, nameof(fieldsBuilds), required: false);
-            SourceExpression.Validate(fieldsBetaGroups, nameof(fieldsBetaGroups), required: false);
-            SourceExpression.Validate(fieldsEndUserLicenseAgreements, nameof(fieldsEndUserLicenseAgreements), required: false);
-            SourceExpression.Validate(fieldsAppStoreVersions, nameof(fieldsAppStoreVersions), required: false);
-            SourceExpression.Validate(fieldsAppInfos, nameof(fieldsAppInfos), required: false);
-            SourceExpression.Validate(fieldsPerfPowerMetrics, nameof(fieldsPerfPowerMetrics), required: false);
-            SourceExpression.Validate(fieldsInAppPurchases, nameof(fieldsInAppPurchases), required: false);
-            SourceExpression.Validate(fieldsCiProducts, nameof(fieldsCiProducts), required: false);
-            SourceExpression.Validate(fieldsAppClips, nameof(fieldsAppClips), required: false);
-            SourceExpression.Validate(fieldsReviewSubmissions, nameof(fieldsReviewSubmissions), required: false);
-            SourceExpression.Validate(fieldsAppCustomProductPages, nameof(fieldsAppCustomProductPages), required: false);
-            SourceExpression.Validate(fieldsAppEvents, nameof(fieldsAppEvents), required: false);
-            SourceExpression.Validate(fieldsAppPricePoints, nameof(fieldsAppPricePoints), required: false);
-            SourceExpression.Validate(fieldsCustomerReviews, nameof(fieldsCustomerReviews), required: false);
-            SourceExpression.Validate(fieldsSubscriptionGracePeriods, nameof(fieldsSubscriptionGracePeriods), required: false);
-            SourceExpression.Validate(fieldsPromotedPurchases, nameof(fieldsPromotedPurchases), required: false);
-            SourceExpression.Validate(fieldsSubscriptionGroups, nameof(fieldsSubscriptionGroups), required: false);
-            SourceExpression.Validate(fieldsAppPriceSchedules, nameof(fieldsAppPriceSchedules), required: false);
-            SourceExpression.Validate(fieldsAppStoreVersionExperiments, nameof(fieldsAppStoreVersionExperiments), required: false);
-            SourceExpression.Validate(fieldsAppEncryptionDeclarations, nameof(fieldsAppEncryptionDeclarations), required: false);
-            SourceExpression.Validate(fieldsGameCenterDetails, nameof(fieldsGameCenterDetails), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
-            SourceExpression.Validate(filterBundleId, nameof(filterBundleId), required: false);
-            SourceExpression.Validate(filterId, nameof(filterId), required: false);
-            SourceExpression.Validate(filterName, nameof(filterName), required: false);
-            SourceExpression.Validate(filterSku, nameof(filterSku), required: false);
-            SourceExpression.Validate(filterAppStoreVersions, nameof(filterAppStoreVersions), required: false);
-            SourceExpression.Validate(filterAppStoreVersionsPlatform, nameof(filterAppStoreVersionsPlatform), required: false);
-            SourceExpression.Validate(filterAppStoreVersionsAppStoreState, nameof(filterAppStoreVersionsAppStoreState), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(limitPreReleaseVersions, nameof(limitPreReleaseVersions), required: false);
-            SourceExpression.Validate(limitBuilds, nameof(limitBuilds), required: false);
-            SourceExpression.Validate(limitBetaGroups, nameof(limitBetaGroups), required: false);
-            SourceExpression.Validate(limitBetaAppLocalizations, nameof(limitBetaAppLocalizations), required: false);
-            SourceExpression.Validate(limitAvailableTerritories, nameof(limitAvailableTerritories), required: false);
-            SourceExpression.Validate(limitAppStoreVersions, nameof(limitAppStoreVersions), required: false);
-            SourceExpression.Validate(limitAppInfos, nameof(limitAppInfos), required: false);
-            SourceExpression.Validate(limitAppClips, nameof(limitAppClips), required: false);
-            SourceExpression.Validate(limitAppCustomProductPages, nameof(limitAppCustomProductPages), required: false);
-            SourceExpression.Validate(limitAppEvents, nameof(limitAppEvents), required: false);
-            SourceExpression.Validate(limitReviewSubmissions, nameof(limitReviewSubmissions), required: false);
-            SourceExpression.Validate(limitInAppPurchasesV2, nameof(limitInAppPurchasesV2), required: false);
-            SourceExpression.Validate(limitPromotedPurchases, nameof(limitPromotedPurchases), required: false);
-            SourceExpression.Validate(limitSubscriptionGroups, nameof(limitSubscriptionGroups), required: false);
-            SourceExpression.Validate(limitAppStoreVersionExperimentsV2, nameof(limitAppStoreVersionExperimentsV2), required: false);
-            SourceExpression.Validate(limitAppEncryptionDeclarations, nameof(limitAppEncryptionDeclarations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/apps";
@@ -183,51 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appstoreconnect")]
         public IBodyWorkflowAction<AppsAndAppMetadataReadAppInformationResponse> AppsAndAppMetadataReadAppInformation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> serviceToken, [WorkflowExpression] Func<fieldsAppsInput> fieldsApps = null, [WorkflowExpression] Func<fieldsBetaLicenseAgreementsInput> fieldsBetaLicenseAgreements = null, [WorkflowExpression] Func<fieldsPreReleaseVersionsInput> fieldsPreReleaseVersions = null, [WorkflowExpression] Func<fieldsBetaAppReviewDetailsInput> fieldsBetaAppReviewDetails = null, [WorkflowExpression] Func<fieldsBetaAppLocalizationsInput> fieldsBetaAppLocalizations = null, [WorkflowExpression] Func<fieldsBuildsInput> fieldsBuilds = null, [WorkflowExpression] Func<fieldsBetaGroupsInput> fieldsBetaGroups = null, [WorkflowExpression] Func<fieldsEndUserLicenseAgreementsInput> fieldsEndUserLicenseAgreements = null, [WorkflowExpression] Func<fieldsAppStoreVersionsInput> fieldsAppStoreVersions = null, [WorkflowExpression] Func<fieldsAppInfosInput> fieldsAppInfos = null, [WorkflowExpression] Func<fieldsPerfPowerMetricsInput> fieldsPerfPowerMetrics = null, [WorkflowExpression] Func<fieldsInAppPurchasesInput> fieldsInAppPurchases = null, [WorkflowExpression] Func<fieldsCiProductsInput> fieldsCiProducts = null, [WorkflowExpression] Func<fieldsAppClipsInput> fieldsAppClips = null, [WorkflowExpression] Func<fieldsReviewSubmissionsInput> fieldsReviewSubmissions = null, [WorkflowExpression] Func<fieldsAppCustomProductPagesInput> fieldsAppCustomProductPages = null, [WorkflowExpression] Func<fieldsAppEventsInput> fieldsAppEvents = null, [WorkflowExpression] Func<fieldsAppPricePointsInput> fieldsAppPricePoints = null, [WorkflowExpression] Func<fieldsCustomerReviewsInput> fieldsCustomerReviews = null, [WorkflowExpression] Func<fieldsSubscriptionGracePeriodsInput> fieldsSubscriptionGracePeriods = null, [WorkflowExpression] Func<fieldsPromotedPurchasesInput> fieldsPromotedPurchases = null, [WorkflowExpression] Func<fieldsSubscriptionGroupsInput> fieldsSubscriptionGroups = null, [WorkflowExpression] Func<fieldsAppPriceSchedulesInput> fieldsAppPriceSchedules = null, [WorkflowExpression] Func<fieldsAppStoreVersionExperimentsInput> fieldsAppStoreVersionExperiments = null, [WorkflowExpression] Func<fieldsAppEncryptionDeclarationsInput> fieldsAppEncryptionDeclarations = null, [WorkflowExpression] Func<fieldsGameCenterDetailsInput> fieldsGameCenterDetails = null, [WorkflowExpression] Func<includeInput> include = null, [WorkflowExpression] Func<int> limitPreReleaseVersions = null, [WorkflowExpression] Func<int> limitBuilds = null, [WorkflowExpression] Func<int> limitBetaGroups = null, [WorkflowExpression] Func<int> limitBetaAppLocalizations = null, [WorkflowExpression] Func<int> limitAvailableTerritories = null, [WorkflowExpression] Func<int> limitAppStoreVersions = null, [WorkflowExpression] Func<int> limitAppInfos = null, [WorkflowExpression] Func<int> limitAppClips = null, [WorkflowExpression] Func<int> limitAppCustomProductPages = null, [WorkflowExpression] Func<int> limitAppEvents = null, [WorkflowExpression] Func<int> limitReviewSubmissions = null, [WorkflowExpression] Func<int> limitInAppPurchasesV2 = null, [WorkflowExpression] Func<int> limitPromotedPurchases = null, [WorkflowExpression] Func<int> limitSubscriptionGroups = null, [WorkflowExpression] Func<int> limitAppStoreVersionExperimentsV2 = null, [WorkflowExpression] Func<int> limitAppEncryptionDeclarations = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(serviceToken, nameof(serviceToken), required: true);
-            SourceExpression.Validate(fieldsApps, nameof(fieldsApps), required: false);
-            SourceExpression.Validate(fieldsBetaLicenseAgreements, nameof(fieldsBetaLicenseAgreements), required: false);
-            SourceExpression.Validate(fieldsPreReleaseVersions, nameof(fieldsPreReleaseVersions), required: false);
-            SourceExpression.Validate(fieldsBetaAppReviewDetails, nameof(fieldsBetaAppReviewDetails), required: false);
-            SourceExpression.Validate(fieldsBetaAppLocalizations, nameof(fieldsBetaAppLocalizations), required: false);
-            SourceExpression.Validate(fieldsBuilds, nameof(fieldsBuilds), required: false);
-            SourceExpression.Validate(fieldsBetaGroups, nameof(fieldsBetaGroups), required: false);
-            SourceExpression.Validate(fieldsEndUserLicenseAgreements, nameof(fieldsEndUserLicenseAgreements), required: false);
-            SourceExpression.Validate(fieldsAppStoreVersions, nameof(fieldsAppStoreVersions), required: false);
-            SourceExpression.Validate(fieldsAppInfos, nameof(fieldsAppInfos), required: false);
-            SourceExpression.Validate(fieldsPerfPowerMetrics, nameof(fieldsPerfPowerMetrics), required: false);
-            SourceExpression.Validate(fieldsInAppPurchases, nameof(fieldsInAppPurchases), required: false);
-            SourceExpression.Validate(fieldsCiProducts, nameof(fieldsCiProducts), required: false);
-            SourceExpression.Validate(fieldsAppClips, nameof(fieldsAppClips), required: false);
-            SourceExpression.Validate(fieldsReviewSubmissions, nameof(fieldsReviewSubmissions), required: false);
-            SourceExpression.Validate(fieldsAppCustomProductPages, nameof(fieldsAppCustomProductPages), required: false);
-            SourceExpression.Validate(fieldsAppEvents, nameof(fieldsAppEvents), required: false);
-            SourceExpression.Validate(fieldsAppPricePoints, nameof(fieldsAppPricePoints), required: false);
-            SourceExpression.Validate(fieldsCustomerReviews, nameof(fieldsCustomerReviews), required: false);
-            SourceExpression.Validate(fieldsSubscriptionGracePeriods, nameof(fieldsSubscriptionGracePeriods), required: false);
-            SourceExpression.Validate(fieldsPromotedPurchases, nameof(fieldsPromotedPurchases), required: false);
-            SourceExpression.Validate(fieldsSubscriptionGroups, nameof(fieldsSubscriptionGroups), required: false);
-            SourceExpression.Validate(fieldsAppPriceSchedules, nameof(fieldsAppPriceSchedules), required: false);
-            SourceExpression.Validate(fieldsAppStoreVersionExperiments, nameof(fieldsAppStoreVersionExperiments), required: false);
-            SourceExpression.Validate(fieldsAppEncryptionDeclarations, nameof(fieldsAppEncryptionDeclarations), required: false);
-            SourceExpression.Validate(fieldsGameCenterDetails, nameof(fieldsGameCenterDetails), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
-            SourceExpression.Validate(limitPreReleaseVersions, nameof(limitPreReleaseVersions), required: false);
-            SourceExpression.Validate(limitBuilds, nameof(limitBuilds), required: false);
-            SourceExpression.Validate(limitBetaGroups, nameof(limitBetaGroups), required: false);
-            SourceExpression.Validate(limitBetaAppLocalizations, nameof(limitBetaAppLocalizations), required: false);
-            SourceExpression.Validate(limitAvailableTerritories, nameof(limitAvailableTerritories), required: false);
-            SourceExpression.Validate(limitAppStoreVersions, nameof(limitAppStoreVersions), required: false);
-            SourceExpression.Validate(limitAppInfos, nameof(limitAppInfos), required: false);
-            SourceExpression.Validate(limitAppClips, nameof(limitAppClips), required: false);
-            SourceExpression.Validate(limitAppCustomProductPages, nameof(limitAppCustomProductPages), required: false);
-            SourceExpression.Validate(limitAppEvents, nameof(limitAppEvents), required: false);
-            SourceExpression.Validate(limitReviewSubmissions, nameof(limitReviewSubmissions), required: false);
-            SourceExpression.Validate(limitInAppPurchasesV2, nameof(limitInAppPurchasesV2), required: false);
-            SourceExpression.Validate(limitPromotedPurchases, nameof(limitPromotedPurchases), required: false);
-            SourceExpression.Validate(limitSubscriptionGroups, nameof(limitSubscriptionGroups), required: false);
-            SourceExpression.Validate(limitAppStoreVersionExperimentsV2, nameof(limitAppStoreVersionExperimentsV2), required: false);
-            SourceExpression.Validate(limitAppEncryptionDeclarations, nameof(limitAppEncryptionDeclarations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/apps/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

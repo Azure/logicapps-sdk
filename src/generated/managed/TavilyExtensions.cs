@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<SearchPostResponse> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bodytopicInput> bodytopic = null, [WorkflowExpression] Func<bodysearchDepthInput> bodysearchDepth = null, [WorkflowExpression] Func<int> bodychunksPerSource = null, [WorkflowExpression] Func<int> bodymaxResults = null, [WorkflowExpression] Func<bodytimeRangeInput> bodytimeRange = null, [WorkflowExpression] Func<int> bodydays = null, [WorkflowExpression] Func<bool> bodyincludeAnswer = null, [WorkflowExpression] Func<bool> bodyincludeRawContent = null, [WorkflowExpression] Func<bool> bodyincludeImages = null, [WorkflowExpression] Func<bool> bodyincludeImageDescriptions = null, [WorkflowExpression] Func<string[]> bodyincludeDomains = null, [WorkflowExpression] Func<string[]> bodyexcludeDomains = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodytopic, nameof(bodytopic), required: false);
-            SourceExpression.Validate(bodysearchDepth, nameof(bodysearchDepth), required: false);
-            SourceExpression.Validate(bodychunksPerSource, nameof(bodychunksPerSource), required: false);
-            SourceExpression.Validate(bodymaxResults, nameof(bodymaxResults), required: false);
-            SourceExpression.Validate(bodytimeRange, nameof(bodytimeRange), required: false);
-            SourceExpression.Validate(bodydays, nameof(bodydays), required: false);
-            SourceExpression.Validate(bodyincludeAnswer, nameof(bodyincludeAnswer), required: false);
-            SourceExpression.Validate(bodyincludeRawContent, nameof(bodyincludeRawContent), required: false);
-            SourceExpression.Validate(bodyincludeImages, nameof(bodyincludeImages), required: false);
-            SourceExpression.Validate(bodyincludeImageDescriptions, nameof(bodyincludeImageDescriptions), required: false);
-            SourceExpression.Validate(bodyincludeDomains, nameof(bodyincludeDomains), required: false);
-            SourceExpression.Validate(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -191,9 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<ExtractPostResponse> Extract([WorkflowExpression] Func<string> bodyurls, [WorkflowExpression] Func<bool> bodyincludeImages = null, [WorkflowExpression] Func<bodyextractDepthInput> bodyextractDepth = null)
         {
-            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
-            SourceExpression.Validate(bodyincludeImages, nameof(bodyincludeImages), required: false);
-            SourceExpression.Validate(bodyextractDepth, nameof(bodyextractDepth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/extract";
@@ -248,19 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<CrawlPostResponse> Crawl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodymaxDepth = null, [WorkflowExpression] Func<int> bodymaxBreadth = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string[]> bodyselectPaths = null, [WorkflowExpression] Func<string[]> bodyselectDomains = null, [WorkflowExpression] Func<string[]> bodyexcludePaths = null, [WorkflowExpression] Func<string[]> bodyexcludeDomains = null, [WorkflowExpression] Func<bool> bodyallowExternal = null, [WorkflowExpression] Func<bool> bodyincludeImages = null, [WorkflowExpression] Func<string[]> bodycategories = null, [WorkflowExpression] Func<bodyextractDepthInput> bodyextractDepth = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodymaxDepth, nameof(bodymaxDepth), required: false);
-            SourceExpression.Validate(bodymaxBreadth, nameof(bodymaxBreadth), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            SourceExpression.Validate(bodyselectPaths, nameof(bodyselectPaths), required: false);
-            SourceExpression.Validate(bodyselectDomains, nameof(bodyselectDomains), required: false);
-            SourceExpression.Validate(bodyexcludePaths, nameof(bodyexcludePaths), required: false);
-            SourceExpression.Validate(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
-            SourceExpression.Validate(bodyallowExternal, nameof(bodyallowExternal), required: false);
-            SourceExpression.Validate(bodyincludeImages, nameof(bodyincludeImages), required: false);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            SourceExpression.Validate(bodyextractDepth, nameof(bodyextractDepth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crawl";
@@ -405,17 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<MapPostResponse> Map([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodymaxDepth = null, [WorkflowExpression] Func<int> bodymaxBreadth = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string[]> bodyselectPaths = null, [WorkflowExpression] Func<string[]> bodyselectDomains = null, [WorkflowExpression] Func<string[]> bodyexcludePaths = null, [WorkflowExpression] Func<string[]> bodyexcludeDomains = null, [WorkflowExpression] Func<bool> bodyallowExternal = null, [WorkflowExpression] Func<bodycategoriesInputItem[]> bodycategories = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodymaxDepth, nameof(bodymaxDepth), required: false);
-            SourceExpression.Validate(bodymaxBreadth, nameof(bodymaxBreadth), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            SourceExpression.Validate(bodyselectPaths, nameof(bodyselectPaths), required: false);
-            SourceExpression.Validate(bodyselectDomains, nameof(bodyselectDomains), required: false);
-            SourceExpression.Validate(bodyexcludePaths, nameof(bodyexcludePaths), required: false);
-            SourceExpression.Validate(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
-            SourceExpression.Validate(bodyallowExternal, nameof(bodyallowExternal), required: false);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/map";

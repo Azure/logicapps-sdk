@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
         public IBodyWorkflowAction<CreateSealResponse> CreateSeal([WorkflowExpression] Func<string> bodyFile)
         {
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/CreateSeal";
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
         public IBodyWorkflowAction<ListSealsResponse> ListSeals([WorkflowExpression] Func<string> bodyFile = null)
         {
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/ListSeals";
@@ -64,8 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
         public IWorkflowAction VerifySeal([WorkflowExpression] Func<string> bodyFile, [WorkflowExpression] Func<string> bodysealId)
         {
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
-            SourceExpression.Validate(bodysealId, nameof(bodysealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/VerfiySeal";

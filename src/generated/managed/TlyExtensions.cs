@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelPostResponse> Pixel([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypixelId, [WorkflowExpression] Func<string> bodypixelType)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypixelId, nameof(bodypixelId), required: true);
-            SourceExpression.Validate(bodypixelType, nameof(bodypixelType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link/pixel";
@@ -57,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelGetResponse> PixelGet([WorkflowExpression] Func<string> pixelId)
         {
-            SourceExpression.Validate(pixelId, nameof(pixelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
@@ -72,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> PixelDelete([WorkflowExpression] Func<string> pixelId)
         {
-            SourceExpression.Validate(pixelId, nameof(pixelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
@@ -87,11 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelPutResponse> PixelPut([WorkflowExpression] Func<string> pixelId, [WorkflowExpression] Func<int> bodyid = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypixelId = null, [WorkflowExpression] Func<string> bodypixelType = null)
         {
-            SourceExpression.Validate(pixelId, nameof(pixelId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodypixelId, nameof(bodypixelId), required: false);
-            SourceExpression.Validate(bodypixelType, nameof(bodypixelType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
@@ -136,12 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkPostResponse> Link([WorkflowExpression] Func<string> bodylongUrl, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyexpireAtDatetime = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodypublicStats = null, [WorkflowExpression] Func<bodymetasmartUrlsInputItem[]> bodymetasmartUrls = null)
         {
-            SourceExpression.Validate(bodylongUrl, nameof(bodylongUrl), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodypublicStats, nameof(bodypublicStats), required: false);
-            SourceExpression.Validate(bodymetasmartUrls, nameof(bodymetasmartUrls), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link/shorten";
@@ -202,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkGetResponse> LinkGet([WorkflowExpression] Func<string> shortUrl = null)
         {
-            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link";
@@ -219,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> LinkDelete([WorkflowExpression] Func<string> bodyshortUrl = null)
         {
-            SourceExpression.Validate(bodyshortUrl, nameof(bodyshortUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link";
@@ -246,17 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkPutResponse> LinkPut([WorkflowExpression] Func<string> bodyshortUrl = null, [WorkflowExpression] Func<string> bodylongUrl = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyshortId = null, [WorkflowExpression] Func<string> bodyexpireAtViews = null, [WorkflowExpression] Func<string> bodyexpireAtDatetime = null, [WorkflowExpression] Func<bool> bodypublicStats = null, [WorkflowExpression] Func<string> bodyqrCodeUrl = null, [WorkflowExpression] Func<string> bodyqrCodeBase64 = null, [WorkflowExpression] Func<int[]> bodytags = null, [WorkflowExpression] Func<int[]> bodypixels = null)
         {
-            SourceExpression.Validate(bodyshortUrl, nameof(bodyshortUrl), required: false);
-            SourceExpression.Validate(bodylongUrl, nameof(bodylongUrl), required: false);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodyshortId, nameof(bodyshortId), required: false);
-            SourceExpression.Validate(bodyexpireAtViews, nameof(bodyexpireAtViews), required: false);
-            SourceExpression.Validate(bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
-            SourceExpression.Validate(bodypublicStats, nameof(bodypublicStats), required: false);
-            SourceExpression.Validate(bodyqrCodeUrl, nameof(bodyqrCodeUrl), required: false);
-            SourceExpression.Validate(bodyqrCodeBase64, nameof(bodyqrCodeBase64), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodypixels, nameof(bodypixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link";
@@ -343,8 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkExpandPostResponse> LinkExpand([WorkflowExpression] Func<string> bodyshortUrl = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            SourceExpression.Validate(bodyshortUrl, nameof(bodyshortUrl), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link/expand";
@@ -377,12 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinksGetResponse> LinksGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> tagIds = null, [WorkflowExpression] Func<string> pixelIds = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> domains = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(tagIds, nameof(tagIds), required: false);
-            SourceExpression.Validate(pixelIds, nameof(pixelIds), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(domains, nameof(domains), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link/list";
@@ -409,10 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> LinkBulk([WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<bodylinksInputItem[]> bodylinks = null, [WorkflowExpression] Func<int[]> bodytags = null, [WorkflowExpression] Func<int[]> bodypixels = null)
         {
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodylinks, nameof(bodylinks), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodypixels, nameof(bodypixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link/bulk";
@@ -457,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<StatGetResponse> StatGet([WorkflowExpression] Func<string> shortLink)
         {
-            SourceExpression.Validate(shortLink, nameof(shortLink), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link/stats";
@@ -487,7 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagPostResponse> Tag([WorkflowExpression] Func<string> bodytag)
         {
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/link/tag";
@@ -510,7 +467,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagGetResponse> TagGet([WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -525,7 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> TagDelete([WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -540,8 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagPutResponse> TagPut([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodytag)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));

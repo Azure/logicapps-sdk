@@ -14,28 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theeventscalendar")]
         public IBodyWorkflowAction<CreateEventsResponse> CreateEvents([WorkflowExpression] Func<int> bodyauthor = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyexcerpt = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<bool> bodyallDay = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodycost = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodyshowMap = null, [WorkflowExpression] Func<bool> bodyshowMapLink = null, [WorkflowExpression] Func<bool> bodyhideFromListings = null, [WorkflowExpression] Func<bool> bodysticky = null, [WorkflowExpression] Func<bool> bodyfeatured = null, [WorkflowExpression] Func<string> bodycategories = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyvenue = null, [WorkflowExpression] Func<string> bodyorganizer = null)
         {
-            SourceExpression.Validate(bodyauthor, nameof(bodyauthor), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodyexcerpt, nameof(bodyexcerpt), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodyallDay, nameof(bodyallDay), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodycost, nameof(bodycost), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodyshowMap, nameof(bodyshowMap), required: false);
-            SourceExpression.Validate(bodyshowMapLink, nameof(bodyshowMapLink), required: false);
-            SourceExpression.Validate(bodyhideFromListings, nameof(bodyhideFromListings), required: false);
-            SourceExpression.Validate(bodysticky, nameof(bodysticky), required: false);
-            SourceExpression.Validate(bodyfeatured, nameof(bodyfeatured), required: false);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodyvenue, nameof(bodyvenue), required: false);
-            SourceExpression.Validate(bodyorganizer, nameof(bodyorganizer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/wp-json/tribe/power-automate/v1/create-events/";

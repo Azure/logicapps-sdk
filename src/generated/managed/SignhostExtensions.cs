@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<Transaction> Getdetails([WorkflowExpression] Func<string> transactionId)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<ErrorModel> Delete([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<bool> bodysendNotifications = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
-            SourceExpression.Validate(bodysendNotifications, nameof(bodysendNotifications), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
@@ -74,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<string> Downloadpdf([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -90,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<string> Downloadreceipt([WorkflowExpression] Func<string> transactionId)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
@@ -105,14 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<Transaction> Create([WorkflowExpression] Func<transactionlanguageInput> transactionlanguage = null, [WorkflowExpression] Func<bool> transactionseal = null, [WorkflowExpression] Func<transactionsignersInputItem[]> transactionsigners = null, [WorkflowExpression] Func<transactionreceiversInputItem[]> transactionreceivers = null, [WorkflowExpression] Func<string> transactionreference = null, [WorkflowExpression] Func<string> transactionpostbackUrl = null, [WorkflowExpression] Func<int> transactionsignRequestMode = null, [WorkflowExpression] Func<int> transactiondaysToExpire = null)
         {
-            SourceExpression.Validate(transactionlanguage, nameof(transactionlanguage), required: false);
-            SourceExpression.Validate(transactionseal, nameof(transactionseal), required: false);
-            SourceExpression.Validate(transactionsigners, nameof(transactionsigners), required: false);
-            SourceExpression.Validate(transactionreceivers, nameof(transactionreceivers), required: false);
-            SourceExpression.Validate(transactionreference, nameof(transactionreference), required: false);
-            SourceExpression.Validate(transactionpostbackUrl, nameof(transactionpostbackUrl), required: false);
-            SourceExpression.Validate(transactionsignRequestMode, nameof(transactionsignRequestMode), required: false);
-            SourceExpression.Validate(transactiondaysToExpire, nameof(transactiondaysToExpire), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/transaction";
@@ -219,9 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IWorkflowAction Addfile([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -237,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<ErrorModel> Start([WorkflowExpression] Func<string> transactionId)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));

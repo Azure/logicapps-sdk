@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         public IWorkflowAction GetMatterList([WorkflowExpression] Func<string> request)
         {
-            SourceExpression.Validate(request, nameof(request), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetMatterList";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         public IWorkflowAction GetMatterNarrative([WorkflowExpression] Func<string> matterId)
         {
-            SourceExpression.Validate(matterId, nameof(matterId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetMatterNarrative";
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         public IWorkflowAction GetMatterDetail([WorkflowExpression] Func<string> matterId)
         {
-            SourceExpression.Validate(matterId, nameof(matterId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetMatterDetail";

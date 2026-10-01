@@ -28,16 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<CreateOpportunityResponse> CreateOpportunity([WorkflowExpression] Func<int> bodyopportunitypartypartyId, [WorkflowExpression] Func<int> bodyopportunitymilestoneid, [WorkflowExpression] Func<string> bodyopportunityname = null, [WorkflowExpression] Func<string> bodyopportunitydescription = null, [WorkflowExpression] Func<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, [WorkflowExpression] Func<string> bodyopportunityduration = null, [WorkflowExpression] Func<string> bodyopportunityexpectedCloseDate = null, [WorkflowExpression] Func<int> bodyopportunitywinningProbability = null, [WorkflowExpression] Func<int> bodyopportunityexpectedamount = null, [WorkflowExpression] Func<string> bodyopportunityexpectedcurrency = null)
         {
-            SourceExpression.Validate(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
-            SourceExpression.Validate(bodyopportunitymilestoneid, nameof(bodyopportunitymilestoneid), required: true);
-            SourceExpression.Validate(bodyopportunityname, nameof(bodyopportunityname), required: false);
-            SourceExpression.Validate(bodyopportunitydescription, nameof(bodyopportunitydescription), required: false);
-            SourceExpression.Validate(bodyopportunitydurationBasis, nameof(bodyopportunitydurationBasis), required: false);
-            SourceExpression.Validate(bodyopportunityduration, nameof(bodyopportunityduration), required: false);
-            SourceExpression.Validate(bodyopportunityexpectedCloseDate, nameof(bodyopportunityexpectedCloseDate), required: false);
-            SourceExpression.Validate(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
-            SourceExpression.Validate(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
-            SourceExpression.Validate(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/opportunities";
@@ -142,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<GetOpportunityResponse> GetOpportunity([WorkflowExpression] Func<string> opportunityId)
         {
-            SourceExpression.Validate(opportunityId, nameof(opportunityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
@@ -157,17 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<UpdateOpportunityResponse> UpdateOpportunity([WorkflowExpression] Func<string> opportunityId, [WorkflowExpression] Func<int> bodyopportunitypartypartyId, [WorkflowExpression] Func<int> bodyopportunitymilestonemilestoneId, [WorkflowExpression] Func<string> bodyopportunityname = null, [WorkflowExpression] Func<string> bodyopportunitydescription = null, [WorkflowExpression] Func<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, [WorkflowExpression] Func<string> bodyopportunityduration = null, [WorkflowExpression] Func<string> bodyopportunityexpectedCloseDate = null, [WorkflowExpression] Func<int> bodyopportunitywinningProbability = null, [WorkflowExpression] Func<int> bodyopportunityexpectedamount = null, [WorkflowExpression] Func<string> bodyopportunityexpectedcurrency = null)
         {
-            SourceExpression.Validate(opportunityId, nameof(opportunityId), required: true);
-            SourceExpression.Validate(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
-            SourceExpression.Validate(bodyopportunitymilestonemilestoneId, nameof(bodyopportunitymilestonemilestoneId), required: true);
-            SourceExpression.Validate(bodyopportunityname, nameof(bodyopportunityname), required: false);
-            SourceExpression.Validate(bodyopportunitydescription, nameof(bodyopportunitydescription), required: false);
-            SourceExpression.Validate(bodyopportunitydurationBasis, nameof(bodyopportunitydurationBasis), required: false);
-            SourceExpression.Validate(bodyopportunityduration, nameof(bodyopportunityduration), required: false);
-            SourceExpression.Validate(bodyopportunityexpectedCloseDate, nameof(bodyopportunityexpectedCloseDate), required: false);
-            SourceExpression.Validate(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
-            SourceExpression.Validate(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
-            SourceExpression.Validate(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
@@ -272,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<string> DeleteOpportunity([WorkflowExpression] Func<string> opportunityId)
         {
-            SourceExpression.Validate(opportunityId, nameof(opportunityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(opportunityId, 1));
@@ -287,22 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<CreateOrganisationResponse> CreateOrganisation([WorkflowExpression] Func<string> bodypartyname = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
         {
-            SourceExpression.Validate(bodypartyname, nameof(bodypartyname), required: false);
-            SourceExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            SourceExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/organisation/parties";
@@ -461,23 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<UpdateOrganisationResponse> UpdateOrganisation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodypartyname = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodypartyname, nameof(bodypartyname), required: false);
-            SourceExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            SourceExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organisation/parties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -650,7 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<string> DeleteParty([WorkflowExpression] Func<string> personId)
         {
-            SourceExpression.Validate(personId, nameof(personId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
@@ -679,11 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodytaskdescription = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<string> bodytaskdueTime = null, [WorkflowExpression] Func<string> bodytaskdetails = null, [WorkflowExpression] Func<int> bodytaskpartyid = null)
         {
-            SourceExpression.Validate(bodytaskdescription, nameof(bodytaskdescription), required: false);
-            SourceExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            SourceExpression.Validate(bodytaskdueTime, nameof(bodytaskdueTime), required: false);
-            SourceExpression.Validate(bodytaskdetails, nameof(bodytaskdetails), required: false);
-            SourceExpression.Validate(bodytaskpartyid, nameof(bodytaskpartyid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks";
@@ -750,7 +688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<CompleteTaskResponse> CompleteTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -781,26 +718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<CreatePersonV2Response> CreatePerson([WorkflowExpression] Func<int> bodypartyorganisationid, [WorkflowExpression] Func<string> bodypartylastName = null, [WorkflowExpression] Func<string> bodypartyfirstName = null, [WorkflowExpression] Func<bodypartytitleInput> bodypartytitle = null, [WorkflowExpression] Func<string> bodypartyjobTitle = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
         {
-            SourceExpression.Validate(bodypartyorganisationid, nameof(bodypartyorganisationid), required: true);
-            SourceExpression.Validate(bodypartylastName, nameof(bodypartylastName), required: false);
-            SourceExpression.Validate(bodypartyfirstName, nameof(bodypartyfirstName), required: false);
-            SourceExpression.Validate(bodypartytitle, nameof(bodypartytitle), required: false);
-            SourceExpression.Validate(bodypartyjobTitle, nameof(bodypartyjobTitle), required: false);
-            SourceExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            SourceExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/person/parties";
@@ -987,7 +904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<GetPartyV2Response> GetParty([WorkflowExpression] Func<string> personId)
         {
-            SourceExpression.Validate(personId, nameof(personId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/parties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
@@ -1030,27 +946,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
         public IBodyWorkflowAction<UpdatePersonV2Response> UpdatePerson([WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<int> bodypartyorganisationid, [WorkflowExpression] Func<string> bodypartylastName = null, [WorkflowExpression] Func<string> bodypartyfirstName = null, [WorkflowExpression] Func<bodypartytitleInput> bodypartytitle = null, [WorkflowExpression] Func<string> bodypartyjobTitle = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
         {
-            SourceExpression.Validate(personId, nameof(personId), required: true);
-            SourceExpression.Validate(bodypartyorganisationid, nameof(bodypartyorganisationid), required: true);
-            SourceExpression.Validate(bodypartylastName, nameof(bodypartylastName), required: false);
-            SourceExpression.Validate(bodypartyfirstName, nameof(bodypartyfirstName), required: false);
-            SourceExpression.Validate(bodypartytitle, nameof(bodypartytitle), required: false);
-            SourceExpression.Validate(bodypartyjobTitle, nameof(bodypartyjobTitle), required: false);
-            SourceExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            SourceExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            SourceExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            SourceExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            SourceExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            SourceExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/person/parties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));

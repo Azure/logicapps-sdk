@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseArticlesGet> FilteringArticles([WorkflowExpression] Func<string> articleNumber = null, [WorkflowExpression] Func<string> gtin = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(articleNumber, nameof(articleNumber), required: false);
-            SourceExpression.Validate(gtin, nameof(gtin), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/articles";
@@ -47,14 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseArticlesPost> CreateArticle([WorkflowExpression] Func<string> bodyarticleNumber = null, [WorkflowExpression] Func<double> bodypricegrossPrice = null, [WorkflowExpression] Func<string> bodypriceleadingPrice = null, [WorkflowExpression] Func<double> bodypricenetPrice = null, [WorkflowExpression] Func<double> bodypricetaxRate = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodyunitName = null)
         {
-            SourceExpression.Validate(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
-            SourceExpression.Validate(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
-            SourceExpression.Validate(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
-            SourceExpression.Validate(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
-            SourceExpression.Validate(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyunitName, nameof(bodyunitName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/articles";
@@ -133,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveAnArticleResponse> RetrieveAnArticle([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/articles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -149,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction DeleteAnArticle([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/articles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -165,18 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyunitName, [WorkflowExpression] Func<int> bodyversion, [WorkflowExpression] Func<string> bodyarticleNumber = null, [WorkflowExpression] Func<string> bodygtin = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<double> bodypricegrossPrice = null, [WorkflowExpression] Func<bodypriceleadingPriceInput> bodypriceleadingPrice = null, [WorkflowExpression] Func<double> bodypricenetPrice = null, [WorkflowExpression] Func<double> bodypricetaxRate = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyunitName, nameof(bodyunitName), required: true);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: true);
-            SourceExpression.Validate(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
-            SourceExpression.Validate(bodygtin, nameof(bodygtin), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
-            SourceExpression.Validate(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
-            SourceExpression.Validate(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
-            SourceExpression.Validate(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/articles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -271,14 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseContactsGet> RetrieveAllContacts([WorkflowExpression] Func<int> number = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> vendor = null, [WorkflowExpression] Func<bool> customer = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(number, nameof(number), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(vendor, nameof(vendor), required: false);
-            SourceExpression.Validate(customer, nameof(customer), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";
@@ -334,7 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveContactResponse> RetrieveContact([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -350,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseContactsIdPut> UpdateContact([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -388,8 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseCreditNotesPost> CreateCreditNote([WorkflowExpression] Func<bool> finalize, [WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
-            SourceExpression.Validate(finalize, nameof(finalize), required: true);
-            SourceExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/credit-notes";
@@ -415,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveCreditNoteResponse> RetrieveCreditNote([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -431,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> RenderCreditNoteDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -447,7 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseDeliveryNotesPost> CreateDeliveryNote([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
-            SourceExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/delivery-notes";
@@ -472,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> RenderDeliveryNoteDocument([WorkflowExpression] Func<string> deliveryNoteid)
         {
-            SourceExpression.Validate(deliveryNoteid, nameof(deliveryNoteid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliveryNoteid, 1));
@@ -488,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> RetrieveDeliveryNote([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -504,7 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> RetrieveDownPaymentInvoice([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/down-payment-invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -521,7 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseDunningsPost> CreateDunning([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
-            SourceExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dunnings";
@@ -546,7 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDunningResponse> RetrieveDunning([WorkflowExpression] Func<string> dunningsid)
         {
-            SourceExpression.Validate(dunningsid, nameof(dunningsid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dunnings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dunningsid, 1));
@@ -562,7 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderDunningDocumentResponse> RenderDunningDocument([WorkflowExpression] Func<string> dunningsid)
         {
-            SourceExpression.Validate(dunningsid, nameof(dunningsid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dunnings/{0}/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dunningsid, 1));
@@ -593,7 +544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<EventSubscriptionResponse> RetrieveAEventSubscription([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -609,7 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction DeleteEventSubscription([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -625,8 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<object> DownloadFileLexoffice([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<acceptInput> accept = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -644,8 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseInvoicesPost> CreateInvoice([WorkflowExpression] Func<bool> finalize, [WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
-            SourceExpression.Validate(finalize, nameof(finalize), required: true);
-            SourceExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoices";
@@ -671,7 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveInvoiceResponse> RetrieveInvoice([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -688,7 +632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderInvoiceDocumentResponse> RenderInvoiceDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -704,7 +647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseOrderConfirmationsPost> CreateOrderConfirmation([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
-            SourceExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/order-confirmations";
@@ -729,7 +671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> RetrieveOrderConfirmation([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -745,7 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> RenderOrderConfirmationDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -776,7 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrievePaymentInformationResponse> RetrievePaymentInformation([WorkflowExpression] Func<string> voucherId)
         {
-            SourceExpression.Validate(voucherId, nameof(voucherId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/payments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(voucherId, 1));
@@ -822,7 +761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseQuotationsPost> CreateQuotation([WorkflowExpression] Func<bool> finalize)
         {
-            SourceExpression.Validate(finalize, nameof(finalize), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/quotations";
@@ -846,7 +784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveQuotationResponse> RetrieveQuotation([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/quotations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -863,7 +800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderQuotationDocumentResponse> RenderQuotationDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/quotations/{0}/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -879,9 +815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseRecurringTemplatesGet> RetrieveAllRecurringTemplates([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/recurring-templates";
@@ -903,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> RetrieveRecurringTemplate([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recurring-templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -920,20 +852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseVoucherlistGet> RetrieveAndFilterVoucherlist([WorkflowExpression] Func<voucherTypeInput> voucherType, [WorkflowExpression] Func<voucherStatusInput> voucherStatus, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> contactId = null, [WorkflowExpression] Func<string> voucherDateFrom = null, [WorkflowExpression] Func<string> voucherDateTo = null, [WorkflowExpression] Func<string> createdDateFrom = null, [WorkflowExpression] Func<string> createdDateTo = null, [WorkflowExpression] Func<string> updatedDateFrom = null, [WorkflowExpression] Func<string> updatedDateTo = null, [WorkflowExpression] Func<string> voucherNumber = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(voucherType, nameof(voucherType), required: true);
-            SourceExpression.Validate(voucherStatus, nameof(voucherStatus), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(contactId, nameof(contactId), required: false);
-            SourceExpression.Validate(voucherDateFrom, nameof(voucherDateFrom), required: false);
-            SourceExpression.Validate(voucherDateTo, nameof(voucherDateTo), required: false);
-            SourceExpression.Validate(createdDateFrom, nameof(createdDateFrom), required: false);
-            SourceExpression.Validate(createdDateTo, nameof(createdDateTo), required: false);
-            SourceExpression.Validate(updatedDateFrom, nameof(updatedDateFrom), required: false);
-            SourceExpression.Validate(updatedDateTo, nameof(updatedDateTo), required: false);
-            SourceExpression.Validate(voucherNumber, nameof(voucherNumber), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/voucherlist";
@@ -978,19 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseVouchersPost> CreateVoucher([WorkflowExpression] Func<bodytaxTypeInput> bodytaxType, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodyvoucherItemsInputItem[]> bodyvoucherItems, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyshippingDate = null, [WorkflowExpression] Func<double> bodytotalGrossAmount = null, [WorkflowExpression] Func<double> bodytotalTaxAmount = null, [WorkflowExpression] Func<bool> bodyuseCollectiveContact = null, [WorkflowExpression] Func<string> bodyvoucherDate = null, [WorkflowExpression] Func<string> bodyvoucherNumber = null, [WorkflowExpression] Func<bodyvoucherStatusInput> bodyvoucherStatus = null)
         {
-            SourceExpression.Validate(bodytaxType, nameof(bodytaxType), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodyshippingDate, nameof(bodyshippingDate), required: false);
-            SourceExpression.Validate(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
-            SourceExpression.Validate(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
-            SourceExpression.Validate(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
-            SourceExpression.Validate(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
-            SourceExpression.Validate(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
-            SourceExpression.Validate(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vouchers";
@@ -1079,7 +984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveVoucherResponse> RetrieveVoucher([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1095,22 +999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseVouchersIdPut> UpdateVoucher([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytaxTypeInput> bodytaxType, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodyvoucherItemsInputItem[]> bodyvoucherItems, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string[]> bodyfiles = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyshippingDate = null, [WorkflowExpression] Func<double> bodytotalGrossAmount = null, [WorkflowExpression] Func<double> bodytotalTaxAmount = null, [WorkflowExpression] Func<bool> bodyuseCollectiveContact = null, [WorkflowExpression] Func<int> bodyversion = null, [WorkflowExpression] Func<string> bodyvoucherDate = null, [WorkflowExpression] Func<string> bodyvoucherNumber = null, [WorkflowExpression] Func<bodyvoucherStatusInput> bodyvoucherStatus = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytaxType, nameof(bodytaxType), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyfiles, nameof(bodyfiles), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodyshippingDate, nameof(bodyshippingDate), required: false);
-            SourceExpression.Validate(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
-            SourceExpression.Validate(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
-            SourceExpression.Validate(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
-            SourceExpression.Validate(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
-            SourceExpression.Validate(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
-            SourceExpression.Validate(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1213,7 +1101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     {
         public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event-subscriptions";

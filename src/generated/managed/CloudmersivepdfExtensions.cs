@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfAddAnnotations([WorkflowExpression] Func<PdfAnnotation[]> requestannotationsToAdd = null, [WorkflowExpression] Func<string> requestinputFileBytes = null)
         {
-            SourceExpression.Validate(requestannotationsToAdd, nameof(requestannotationsToAdd), required: false);
-            SourceExpression.Validate(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/pdf/annotations/add-item";
@@ -48,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfSetFormFields([WorkflowExpression] Func<SetFormFieldValue[]> fieldValuesfieldValues = null, [WorkflowExpression] Func<string> fieldValuesinputFileBytes = null)
         {
-            SourceExpression.Validate(fieldValuesfieldValues, nameof(fieldValuesfieldValues), required: false);
-            SourceExpression.Validate(fieldValuesinputFileBytes, nameof(fieldValuesinputFileBytes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/pdf/form/set-fields";
@@ -82,16 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfSetMetadata([WorkflowExpression] Func<string> requestinputFileBytes = null, [WorkflowExpression] Func<string> requestmetadataToSetauthor = null, [WorkflowExpression] Func<string> requestmetadataToSetcreator = null, [WorkflowExpression] Func<string> requestmetadataToSetdateCreated = null, [WorkflowExpression] Func<string> requestmetadataToSetdateModified = null, [WorkflowExpression] Func<string> requestmetadataToSetkeywords = null, [WorkflowExpression] Func<int> requestmetadataToSetpageCount = null, [WorkflowExpression] Func<string> requestmetadataToSetsubject = null, [WorkflowExpression] Func<bool> requestmetadataToSetsuccessful = null, [WorkflowExpression] Func<string> requestmetadataToSettitle = null)
         {
-            SourceExpression.Validate(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
-            SourceExpression.Validate(requestmetadataToSetauthor, nameof(requestmetadataToSetauthor), required: false);
-            SourceExpression.Validate(requestmetadataToSetcreator, nameof(requestmetadataToSetcreator), required: false);
-            SourceExpression.Validate(requestmetadataToSetdateCreated, nameof(requestmetadataToSetdateCreated), required: false);
-            SourceExpression.Validate(requestmetadataToSetdateModified, nameof(requestmetadataToSetdateModified), required: false);
-            SourceExpression.Validate(requestmetadataToSetkeywords, nameof(requestmetadataToSetkeywords), required: false);
-            SourceExpression.Validate(requestmetadataToSetpageCount, nameof(requestmetadataToSetpageCount), required: false);
-            SourceExpression.Validate(requestmetadataToSetsubject, nameof(requestmetadataToSetsubject), required: false);
-            SourceExpression.Validate(requestmetadataToSetsuccessful, nameof(requestmetadataToSetsuccessful), required: false);
-            SourceExpression.Validate(requestmetadataToSettitle, nameof(requestmetadataToSettitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/pdf/set-metadata";

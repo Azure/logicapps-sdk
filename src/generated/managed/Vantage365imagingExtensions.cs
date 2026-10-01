@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vantage365imaging")]
         public IBodyWorkflowAction<GenerateBarCodeResponse> GenerateBarCode([WorkflowExpression] Func<typeofcodeInput> typeofcode, [WorkflowExpression] Func<string> texttoencode, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<int> width = null)
         {
-            SourceExpression.Validate(typeofcode, nameof(typeofcode), required: true);
-            SourceExpression.Validate(texttoencode, nameof(texttoencode), required: true);
-            SourceExpression.Validate(height, nameof(height), required: false);
-            SourceExpression.Validate(width, nameof(width), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/5884ce85663b4aba83128a0098112024/triggers/manual/paths/invoke";

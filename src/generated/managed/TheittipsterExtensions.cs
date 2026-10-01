@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
         public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode([WorkflowExpression] Func<string> bodybarcodeNumber = null)
         {
-            SourceExpression.Validate(bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/generateBarcode";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
         public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode([WorkflowExpression] Func<string> bodyqrcodeText = null)
         {
-            SourceExpression.Validate(bodyqrcodeText, nameof(bodyqrcodeText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/generateQRCode";

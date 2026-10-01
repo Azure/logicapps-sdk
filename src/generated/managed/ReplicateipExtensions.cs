@@ -28,18 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionPostResponse> Prediction([WorkflowExpression] Func<string> bodyversion, [WorkflowExpression] Func<string> bodyinputtext = null, [WorkflowExpression] Func<string> bodyinputprompt = null, [WorkflowExpression] Func<string> bodyinputpromptStrength = null, [WorkflowExpression] Func<int> bodyinputwidth = null, [WorkflowExpression] Func<int> bodyinputheight = null, [WorkflowExpression] Func<string> bodyinputscale = null, [WorkflowExpression] Func<int> bodyinputnumOutputs = null, [WorkflowExpression] Func<int> bodyinputnumInferenceSteps = null, [WorkflowExpression] Func<string> bodyinputguidanceScale = null, [WorkflowExpression] Func<int> bodyinputseed = null, [WorkflowExpression] Func<string> bodywebhookCompleted = null)
         {
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: true);
-            SourceExpression.Validate(bodyinputtext, nameof(bodyinputtext), required: false);
-            SourceExpression.Validate(bodyinputprompt, nameof(bodyinputprompt), required: false);
-            SourceExpression.Validate(bodyinputpromptStrength, nameof(bodyinputpromptStrength), required: false);
-            SourceExpression.Validate(bodyinputwidth, nameof(bodyinputwidth), required: false);
-            SourceExpression.Validate(bodyinputheight, nameof(bodyinputheight), required: false);
-            SourceExpression.Validate(bodyinputscale, nameof(bodyinputscale), required: false);
-            SourceExpression.Validate(bodyinputnumOutputs, nameof(bodyinputnumOutputs), required: false);
-            SourceExpression.Validate(bodyinputnumInferenceSteps, nameof(bodyinputnumInferenceSteps), required: false);
-            SourceExpression.Validate(bodyinputguidanceScale, nameof(bodyinputguidanceScale), required: false);
-            SourceExpression.Validate(bodyinputseed, nameof(bodyinputseed), required: false);
-            SourceExpression.Validate(bodywebhookCompleted, nameof(bodywebhookCompleted), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/predictions";
@@ -136,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionGetResponse> PredictionGet([WorkflowExpression] Func<string> predictionId)
         {
-            SourceExpression.Validate(predictionId, nameof(predictionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/predictions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(predictionId, 1));
@@ -151,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionCancelResponse> PredictionCancel([WorkflowExpression] Func<string> predictionId)
         {
-            SourceExpression.Validate(predictionId, nameof(predictionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/predictions/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(predictionId, 1));
@@ -166,8 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet([WorkflowExpression] Func<string> modelOwner, [WorkflowExpression] Func<string> modelName)
         {
-            SourceExpression.Validate(modelOwner, nameof(modelOwner), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelOwner, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -182,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelListResponse> ModelList([WorkflowExpression] Func<string> collectionSlug)
         {
-            SourceExpression.Validate(collectionSlug, nameof(collectionSlug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionSlug, 1));

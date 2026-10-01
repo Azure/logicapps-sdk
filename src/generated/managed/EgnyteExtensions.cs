@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<bodymembersInputItem[]> bodymembers = null)
         {
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CreateGroup";
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<GroupInfoByIdResponse> GroupInfoById([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GroupInfoById";
@@ -67,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ListGroupsResponse> ListGroups([WorkflowExpression] Func<int> bodystartIndex = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfilter = null)
         {
-            SourceExpression.Validate(bodystartIndex, nameof(bodystartIndex), required: false);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
-            SourceExpression.Validate(bodyfilter, nameof(bodyfilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ListGroups";
@@ -108,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UserInfoResponse> GetUser([WorkflowExpression] Func<int> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetUser";
@@ -131,9 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UserListResponse> GetUserList([WorkflowExpression] Func<int> bodystartIndex = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfilter = null)
         {
-            SourceExpression.Validate(bodystartIndex, nameof(bodystartIndex), required: false);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
-            SourceExpression.Validate(bodyfilter, nameof(bodyfilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetUserList";
@@ -172,18 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UpdateUserResponse> UpdateUser([WorkflowExpression] Func<int> bodyid, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodynamegivenName = null, [WorkflowExpression] Func<string> bodynamefamilyName = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bool> bodysendInvite = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodyauthTypeInput> bodyauthType = null, [WorkflowExpression] Func<bodyuserTypeInput> bodyuserType = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodyidpUserId = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodynamegivenName, nameof(bodynamegivenName), required: false);
-            SourceExpression.Validate(bodynamefamilyName, nameof(bodynamefamilyName), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodysendInvite, nameof(bodysendInvite), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyauthType, nameof(bodyauthType), required: false);
-            SourceExpression.Validate(bodyuserType, nameof(bodyuserType), required: false);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodyidpUserId, nameof(bodyidpUserId), required: false);
-            SourceExpression.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UpdateUser";
@@ -280,20 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyuserName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodyactive, [WorkflowExpression] Func<bodyuserTypeInput> bodyuserType, [WorkflowExpression] Func<bodyauthTypeInput> bodyauthType, [WorkflowExpression] Func<string> bodynamegivenName = null, [WorkflowExpression] Func<string> bodynamefamilyName = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<bool> bodysendInvite = null, [WorkflowExpression] Func<bool> bodyisServiceAccount = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodyidpUserId = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null)
         {
-            SourceExpression.Validate(bodyuserName, nameof(bodyuserName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: true);
-            SourceExpression.Validate(bodyuserType, nameof(bodyuserType), required: true);
-            SourceExpression.Validate(bodyauthType, nameof(bodyauthType), required: true);
-            SourceExpression.Validate(bodynamegivenName, nameof(bodynamegivenName), required: false);
-            SourceExpression.Validate(bodynamefamilyName, nameof(bodynamefamilyName), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodysendInvite, nameof(bodysendInvite), required: false);
-            SourceExpression.Validate(bodyisServiceAccount, nameof(bodyisServiceAccount), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodyidpUserId, nameof(bodyidpUserId), required: false);
-            SourceExpression.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CreateUser";
@@ -386,7 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteUser([WorkflowExpression] Func<int> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteUser";
@@ -409,7 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateFolderResponse> CreateFolder([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CreateFolder";
@@ -432,7 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFileByPathResponse> DeleteFileByPath([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteFileByPath";
@@ -455,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFolderByPathResponse> DeleteFolderByPath([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteFolderByPath";
@@ -478,7 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFolderByIdResponse> DeleteFolderById([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteFolderById";
@@ -501,7 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFileByIdResponse> DeleteFileById([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteFileById";
@@ -524,8 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFileByPathResponse> CopyFileByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CopyFileByPath";
@@ -550,8 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFolderByPathResponse> CopyFolderByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CopyFolderByPath";
@@ -576,9 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FullGroupUpdateResponse> FullGroupUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<bodymembersInputItem2[]> bodymembers = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/FullGroupUpdate";
@@ -609,9 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<PartialGroupUpdateResponse> PartialGroupUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodymembersInputItem22[]> bodymembers = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/PartialGroupUpdate";
@@ -646,7 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteGroup([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteGroup";
@@ -669,8 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFileByIdResponse> CopyFileById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CopyFileById";
@@ -695,8 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFolderByIdResponse> CopyFolderById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CopyFolderById";
@@ -721,8 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFileByPathResponse> MoveFileByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/MoveFileByPath";
@@ -747,8 +688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFolderByPathResponse> MoveFolderByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/MoveFolderByPath";
@@ -773,8 +712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFileByIdResponse> MoveFileById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/MoveFileById";
@@ -799,8 +736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFolderByIdResponse> MoveFolderById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/MoveFolderById";
@@ -825,7 +760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ShareFileResponse> ShareFile([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ShareFile";
@@ -848,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ShareFolderResponse> ShareFolder([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ShareFolder";
@@ -871,7 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FileInfoResponse> FileInfoByPath([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/FileInfoByPath";
@@ -894,7 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FolderInfoResponse> FolderInfoByPath([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/FolderInfoByPath";
@@ -917,13 +848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ModifyFolderOptionsResponse> ModifyFolderOptions([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyfolderDescription = null, [WorkflowExpression] Func<bool> bodyallowLinks = null, [WorkflowExpression] Func<bodypublicLinksInput> bodypublicLinks = null, [WorkflowExpression] Func<bool> bodyrestrictMoveDelete = null, [WorkflowExpression] Func<bool> bodyemailPreferencescontentUpdates = null, [WorkflowExpression] Func<bool> bodyemailPreferencescontentAccessed = null)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyfolderDescription, nameof(bodyfolderDescription), required: false);
-            SourceExpression.Validate(bodyallowLinks, nameof(bodyallowLinks), required: false);
-            SourceExpression.Validate(bodypublicLinks, nameof(bodypublicLinks), required: false);
-            SourceExpression.Validate(bodyrestrictMoveDelete, nameof(bodyrestrictMoveDelete), required: false);
-            SourceExpression.Validate(bodyemailPreferencescontentUpdates, nameof(bodyemailPreferencescontentUpdates), required: false);
-            SourceExpression.Validate(bodyemailPreferencescontentAccessed, nameof(bodyemailPreferencescontentAccessed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ModifyFolderOptions";
@@ -990,7 +914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FileInfoResponse> FileInfoById([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/FileInfoById";
@@ -1013,7 +936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FolderInfoResponse> FolderInfoById([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/FolderInfoById";
@@ -1036,7 +958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<LockFileByPathResponse> LockFileByPath([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/LockFileByPath";
@@ -1059,8 +980,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction UnlockFileByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodylockToken)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodylockToken, nameof(bodylockToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UnlockFileByPath";
@@ -1085,7 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<LockFileByIdResponse> LockFileById([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/LockFileById";
@@ -1108,8 +1026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction UnlockFileById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylockToken)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylockToken, nameof(bodylockToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UnlockFileById";
@@ -1134,8 +1050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetFileContentByPath([WorkflowExpression] Func<string> bodyfilePath, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null)
         {
-            SourceExpression.Validate(bodyfilePath, nameof(bodyfilePath), required: true);
-            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DownloadFileByPath";
@@ -1174,8 +1088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetFileContentById([WorkflowExpression] Func<string> bodyfileId, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null)
         {
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: true);
-            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DownloadFileById";
@@ -1214,9 +1126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateFileResponse> CreateFile([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UploadFile";
@@ -1234,10 +1143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SetMetadataByFileId([WorkflowExpression] Func<string> bodyfileId, [WorkflowExpression] Func<string> bodynamespaceName, [WorkflowExpression] Func<string> bodymetadataName, [WorkflowExpression] Func<string> bodymetadataValue = null)
         {
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: true);
-            SourceExpression.Validate(bodynamespaceName, nameof(bodynamespaceName), required: true);
-            SourceExpression.Validate(bodymetadataName, nameof(bodymetadataName), required: true);
-            SourceExpression.Validate(bodymetadataValue, nameof(bodymetadataValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/SetMetadataByFileId";
@@ -1270,10 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SetMetadataByFolderId([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodynamespaceName, [WorkflowExpression] Func<string> bodymetadataName, [WorkflowExpression] Func<string> bodymetadataValue)
         {
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodynamespaceName, nameof(bodynamespaceName), required: true);
-            SourceExpression.Validate(bodymetadataName, nameof(bodymetadataName), required: true);
-            SourceExpression.Validate(bodymetadataValue, nameof(bodymetadataValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/SetMetadataByFolderId";
@@ -1316,10 +1217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction CreateNamespace([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyscopeInput> bodyscope, [WorkflowExpression] Func<bodykeysInputItem[]> bodykeys, [WorkflowExpression] Func<string> bodydisplayName = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: true);
-            SourceExpression.Validate(bodykeys, nameof(bodykeys), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CreateNamespace";
@@ -1352,8 +1249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<NamespaceItem> UpdateNamespaceAttributes([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodydisplayName = null)
         {
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UpdateNamespaceAttributes";
@@ -1390,13 +1285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UpdateNamespaceKeysResponse> UpdateNamespaceKeys([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodyhelpText, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string> bodydata = null)
         {
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
-            SourceExpression.Validate(bodyhelpText, nameof(bodyhelpText), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UpdateNamespaceKeys";
@@ -1447,7 +1335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<NamespaceItem> GetNamespace([WorkflowExpression] Func<string> bodyNamespace)
         {
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetNamespace";
@@ -1470,8 +1357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteNamespace([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<bool> bodyforce = null)
         {
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
-            SourceExpression.Validate(bodyforce, nameof(bodyforce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteNamespace";
@@ -1514,12 +1399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MarkFolderAsProjectResponse> MarkFolderAsProject([WorkflowExpression] Func<string> bodyrootFolderId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodycompletionDate = null)
         {
-            SourceExpression.Validate(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodycompletionDate, nameof(bodycompletionDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/MarkFolderAsProject";
@@ -1564,22 +1443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateProjectFromTemplateResponse> CreateProjectFromTemplate([WorkflowExpression] Func<string> bodyparentFolderId, [WorkflowExpression] Func<string> bodytemplateFolderId, [WorkflowExpression] Func<string> bodyfolderName, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodycompletionDate = null, [WorkflowExpression] Func<string> bodylocationstreetAddress1 = null, [WorkflowExpression] Func<string> bodylocationstreetAddress2 = null, [WorkflowExpression] Func<string> bodylocationcity = null, [WorkflowExpression] Func<string> bodylocationstate = null, [WorkflowExpression] Func<string> bodylocationcountry = null, [WorkflowExpression] Func<string> bodylocationpostalCode = null)
         {
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
-            SourceExpression.Validate(bodytemplateFolderId, nameof(bodytemplateFolderId), required: true);
-            SourceExpression.Validate(bodyfolderName, nameof(bodyfolderName), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodycustomerName, nameof(bodycustomerName), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodycompletionDate, nameof(bodycompletionDate), required: false);
-            SourceExpression.Validate(bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
-            SourceExpression.Validate(bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
-            SourceExpression.Validate(bodylocationcity, nameof(bodylocationcity), required: false);
-            SourceExpression.Validate(bodylocationstate, nameof(bodylocationstate), required: false);
-            SourceExpression.Validate(bodylocationcountry, nameof(bodylocationcountry), required: false);
-            SourceExpression.Validate(bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CreateProjectFromTemplate";
@@ -1684,7 +1547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ProjectItem> GetProjectById([WorkflowExpression] Func<string> bodyprojectId)
         {
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetProjectById";
@@ -1707,20 +1569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction UpdateProjectById([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycustomProjectId = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodylocationstreetAddress1 = null, [WorkflowExpression] Func<string> bodylocationstreetAddress2 = null, [WorkflowExpression] Func<string> bodylocationcity = null, [WorkflowExpression] Func<string> bodylocationstate = null, [WorkflowExpression] Func<string> bodylocationpostalCode = null, [WorkflowExpression] Func<string> bodylocationcountry = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodycompletionDate = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodycustomProjectId, nameof(bodycustomProjectId), required: false);
-            SourceExpression.Validate(bodycustomerName, nameof(bodycustomerName), required: false);
-            SourceExpression.Validate(bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
-            SourceExpression.Validate(bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
-            SourceExpression.Validate(bodylocationcity, nameof(bodylocationcity), required: false);
-            SourceExpression.Validate(bodylocationstate, nameof(bodylocationstate), required: false);
-            SourceExpression.Validate(bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
-            SourceExpression.Validate(bodylocationcountry, nameof(bodylocationcountry), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodycompletionDate, nameof(bodycompletionDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UpdateProjectById";
@@ -1821,7 +1669,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteProjectById([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api-proxy/DeleteProjectById/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -1836,7 +1683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ProjectItem[]> GetProjectByRootFolderId([WorkflowExpression] Func<string> bodyrootFolderId)
         {
-            SourceExpression.Validate(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetProjectByRootFolderId";
@@ -1859,10 +1705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CleanupProjectResponse> CleanupProject([WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<bool> bodydeleteLinks, [WorkflowExpression] Func<int[]> bodyusersToDelete = null, [WorkflowExpression] Func<int[]> bodyusersToDisable = null)
         {
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodydeleteLinks, nameof(bodydeleteLinks), required: true);
-            SourceExpression.Validate(bodyusersToDelete, nameof(bodyusersToDelete), required: false);
-            SourceExpression.Validate(bodyusersToDisable, nameof(bodyusersToDisable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CleanupProject";
@@ -1899,13 +1741,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction CreateMetadataKey([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyhelpText, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string[]> bodydata = null)
         {
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyhelpText, nameof(bodyhelpText), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CreateMetadataKey";
@@ -1952,9 +1787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteMetadataKey([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<bool> bodyforce = null)
         {
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
-            SourceExpression.Validate(bodyforce, nameof(bodyforce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteMetadataKey";
@@ -1985,8 +1817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetMetadataByFileId([WorkflowExpression] Func<string> bodyfileId, [WorkflowExpression] Func<string> bodyNamespace)
         {
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: true);
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetMetadataByFileId";
@@ -2011,8 +1841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetMetadataByFolderId([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyNamespace)
         {
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetMetadataByFolderId";
@@ -2037,9 +1865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SearchMetadata([WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bodyhasKeyInputItem[]> bodyhasKey = null, [WorkflowExpression] Func<bodykeyWithValueInputItem[]> bodykeyWithValue = null)
         {
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyhasKey, nameof(bodyhasKey), required: false);
-            SourceExpression.Validate(bodykeyWithValue, nameof(bodykeyWithValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/SearchMetadata";
@@ -2078,8 +1903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<GetEffectivePermissionsResponse> GetEffectivePermissions([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyusername)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetEffectivePermissions";
@@ -2104,9 +1927,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SetFolderPermissions([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<bool> bodyinheritsPermissions = null, [WorkflowExpression] Func<bool> bodykeepParentPermissions = null)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyinheritsPermissions, nameof(bodyinheritsPermissions), required: false);
-            SourceExpression.Validate(bodykeepParentPermissions, nameof(bodykeepParentPermissions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/SetFolderPermissions";
@@ -2157,7 +1977,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<GetFolderPermissionsResponse> GetFolderPermissions([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetFolderPermissions";
@@ -2180,8 +1999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeepLinksByIdResponse> DeepLinksById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bodytypeInput> bodytype)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeepLinksById";
@@ -2206,7 +2023,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeepLinksByPathResponse> DeepLinksByPath([WorkflowExpression] Func<string> bodypath)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeepLinksByPath";
@@ -2229,7 +2045,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ShowLinkDetailsResponse> ShowLinkDetails([WorkflowExpression] Func<string> bodylinkId)
         {
-            SourceExpression.Validate(bodylinkId, nameof(bodylinkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ShowLinkDetails";
@@ -2252,22 +2067,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateLinkResponse> CreateLink([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bool> bodyuseDefaultSettings, [WorkflowExpression] Func<bodyaccessibilityInput> bodyaccessibility = null, [WorkflowExpression] Func<bool> bodysendEmail = null, [WorkflowExpression] Func<string[]> bodyrecipients = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<bool> bodycopyMe = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bool> bodylinkToCurrent = null, [WorkflowExpression] Func<string> bodyexpiryDate = null, [WorkflowExpression] Func<double> bodyexpiryClicks = null, [WorkflowExpression] Func<bool> bodyaddFileName = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bodyprotectionInput> bodyprotection = null, [WorkflowExpression] Func<bool> bodyfolderPerRecipient = null)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyuseDefaultSettings, nameof(bodyuseDefaultSettings), required: true);
-            SourceExpression.Validate(bodyaccessibility, nameof(bodyaccessibility), required: false);
-            SourceExpression.Validate(bodysendEmail, nameof(bodysendEmail), required: false);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycopyMe, nameof(bodycopyMe), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodylinkToCurrent, nameof(bodylinkToCurrent), required: false);
-            SourceExpression.Validate(bodyexpiryDate, nameof(bodyexpiryDate), required: false);
-            SourceExpression.Validate(bodyexpiryClicks, nameof(bodyexpiryClicks), required: false);
-            SourceExpression.Validate(bodyaddFileName, nameof(bodyaddFileName), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprotection, nameof(bodyprotection), required: false);
-            SourceExpression.Validate(bodyfolderPerRecipient, nameof(bodyfolderPerRecipient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CreateLink";
@@ -2372,7 +2171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteLink([WorkflowExpression] Func<string> bodylinkId)
         {
-            SourceExpression.Validate(bodylinkId, nameof(bodylinkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DeleteLink";
@@ -2395,10 +2193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AIQuestionResponse> AskDocumentQuestion([WorkflowExpression] Func<string> bodyentryId = null, [WorkflowExpression] Func<string> bodyquestion = null, [WorkflowExpression] Func<bool> bodyincludeCitations = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
         {
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: false);
-            SourceExpression.Validate(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
-            SourceExpression.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/AskDocumentQuestion";
@@ -2461,8 +2255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AISummaryResponse> SummarizeDocument([WorkflowExpression] Func<string> bodyentryId = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
         {
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/SummarizeDocument";
@@ -2503,11 +2295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AICopilotResponse> CopilotAsk([WorkflowExpression] Func<string> bodyquestion = null, [WorkflowExpression] Func<bodyselectedItemsfoldersInputItem[]> bodyselectedItemsfolders = null, [WorkflowExpression] Func<bodyselectedItemsfilesInputItem[]> bodyselectedItemsfiles = null, [WorkflowExpression] Func<bool> bodyincludeCitations = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
         {
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: false);
-            SourceExpression.Validate(bodyselectedItemsfolders, nameof(bodyselectedItemsfolders), required: false);
-            SourceExpression.Validate(bodyselectedItemsfiles, nameof(bodyselectedItemsfiles), required: false);
-            SourceExpression.Validate(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
-            SourceExpression.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/CopilotAsk";
@@ -2584,10 +2371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AICopilotResponse> AskKnowledgeBase([WorkflowExpression] Func<string> bodykbId, [WorkflowExpression] Func<string> bodyquestion = null, [WorkflowExpression] Func<bool> bodyincludeCitations = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
         {
-            SourceExpression.Validate(bodykbId, nameof(bodykbId), required: true);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: false);
-            SourceExpression.Validate(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
-            SourceExpression.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/AskKnowledgeBase";
@@ -2646,17 +2429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<KnowledgeBaseListResponse> ListKnowledgeBases([WorkflowExpression] Func<bodysortByInput> bodysortBy, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<int> bodypage = null, [WorkflowExpression] Func<int> bodysize = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<int> bodycreatedAfter = null, [WorkflowExpression] Func<int> bodycreatedBefore = null, [WorkflowExpression] Func<bool> bodyincludePlaceholderData = null, [WorkflowExpression] Func<bool> bodyincludeProcessingStatistics = null, [WorkflowExpression] Func<bool> bodyincludePrompts = null)
         {
-            SourceExpression.Validate(bodysortBy, nameof(bodysortBy), required: true);
-            SourceExpression.Validate(bodysortDirection, nameof(bodysortDirection), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodypage, nameof(bodypage), required: false);
-            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
-            SourceExpression.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
-            SourceExpression.Validate(bodyincludePlaceholderData, nameof(bodyincludePlaceholderData), required: false);
-            SourceExpression.Validate(bodyincludeProcessingStatistics, nameof(bodyincludeProcessingStatistics), required: false);
-            SourceExpression.Validate(bodyincludePrompts, nameof(bodyincludePrompts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ListKnowledgeBases";
@@ -2761,19 +2533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<HybridSearchResponse> HybridSearch([WorkflowExpression] Func<double> bodysemanticWeight, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodyfolderPath = null, [WorkflowExpression] Func<string> bodycollectionId = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<int> bodycreatedAfter = null, [WorkflowExpression] Func<int> bodycreatedBefore = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodypreferredFolderPath = null, [WorkflowExpression] Func<string[]> bodyexcludeFolderPaths = null, [WorkflowExpression] Func<string[]> bodyfolderPaths = null, [WorkflowExpression] Func<string[]> bodyentryIds = null, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null)
         {
-            SourceExpression.Validate(bodysemanticWeight, nameof(bodysemanticWeight), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodyfolderPath, nameof(bodyfolderPath), required: false);
-            SourceExpression.Validate(bodycollectionId, nameof(bodycollectionId), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
-            SourceExpression.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodypreferredFolderPath, nameof(bodypreferredFolderPath), required: false);
-            SourceExpression.Validate(bodyexcludeFolderPaths, nameof(bodyexcludeFolderPaths), required: false);
-            SourceExpression.Validate(bodyfolderPaths, nameof(bodyfolderPaths), required: false);
-            SourceExpression.Validate(bodyentryIds, nameof(bodyentryIds), required: false);
-            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/HybridSearch";
@@ -2884,8 +2643,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AgentListResponseItem[]> ListAgents([WorkflowExpression] Func<bodysortByInput> bodysortBy = null, [WorkflowExpression] Func<bodysortOrderInput> bodysortOrder = null)
         {
-            SourceExpression.Validate(bodysortBy, nameof(bodysortBy), required: false);
-            SourceExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ListAgents";
@@ -2938,14 +2695,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AskAgentResponse> AskAgent([WorkflowExpression] Func<string> bodyagentId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string> bodyconversationId = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null, [WorkflowExpression] Func<string[]> bodyentryIds = null, [WorkflowExpression] Func<bodyselectedItemsfoldersInputItem[]> bodyselectedItemsfolders = null, [WorkflowExpression] Func<bodyselectedItemsfilesInputItem[]> bodyselectedItemsfiles = null)
         {
-            SourceExpression.Validate(bodyagentId, nameof(bodyagentId), required: true);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            SourceExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
-            SourceExpression.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
-            SourceExpression.Validate(bodyentryIds, nameof(bodyentryIds), required: false);
-            SourceExpression.Validate(bodyselectedItemsfolders, nameof(bodyselectedItemsfolders), required: false);
-            SourceExpression.Validate(bodyselectedItemsfiles, nameof(bodyselectedItemsfiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/AskAgent";
@@ -3022,8 +2771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AgentExecutionStatusResponse> GetAgentExecutionStatus([WorkflowExpression] Func<string> bodyagentId, [WorkflowExpression] Func<string> bodyrequestId)
         {
-            SourceExpression.Validate(bodyagentId, nameof(bodyagentId), required: true);
-            SourceExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/GetAgentExecutionStatus";
@@ -3048,14 +2795,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ListLinksV2Response> ListLinks([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodycreatedBefore = null, [WorkflowExpression] Func<string> bodycreatedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bodyaccessibilityInput> bodyaccessibility = null, [WorkflowExpression] Func<string> bodyoffset = null, [WorkflowExpression] Func<string> bodycount = null)
         {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
-            SourceExpression.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyaccessibility, nameof(bodyaccessibility), required: false);
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/ListLinksV2";
@@ -3124,24 +2863,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<SearchV2Response> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfolder = null, [WorkflowExpression] Func<int> bodymodifiedBefore = null, [WorkflowExpression] Func<int> bodymodifiedAfter = null, [WorkflowExpression] Func<int> bodyuploadedBefore = null, [WorkflowExpression] Func<int> bodyuploadedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bool> bodysnippetRequested = null, [WorkflowExpression] Func<bodysortByInput> bodysortBy = null, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection = null, [WorkflowExpression] Func<bodyfileQueryFieldsInputItem[]> bodyfileQueryFields = null, [WorkflowExpression] Func<bodyfolderQueryFieldsInputItem[]> bodyfolderQueryFields = null, [WorkflowExpression] Func<bodyqueryOperatorInput> bodyqueryOperator = null, [WorkflowExpression] Func<string[]> bodymlt = null, [WorkflowExpression] Func<string[]> bodymltt = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
-            SourceExpression.Validate(bodyfolder, nameof(bodyfolder), required: false);
-            SourceExpression.Validate(bodymodifiedBefore, nameof(bodymodifiedBefore), required: false);
-            SourceExpression.Validate(bodymodifiedAfter, nameof(bodymodifiedAfter), required: false);
-            SourceExpression.Validate(bodyuploadedBefore, nameof(bodyuploadedBefore), required: false);
-            SourceExpression.Validate(bodyuploadedAfter, nameof(bodyuploadedAfter), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodysnippetRequested, nameof(bodysnippetRequested), required: false);
-            SourceExpression.Validate(bodysortBy, nameof(bodysortBy), required: false);
-            SourceExpression.Validate(bodysortDirection, nameof(bodysortDirection), required: false);
-            SourceExpression.Validate(bodyfileQueryFields, nameof(bodyfileQueryFields), required: false);
-            SourceExpression.Validate(bodyfolderQueryFields, nameof(bodyfolderQueryFields), required: false);
-            SourceExpression.Validate(bodyqueryOperator, nameof(bodyqueryOperator), required: false);
-            SourceExpression.Validate(bodymlt, nameof(bodymlt), required: false);
-            SourceExpression.Validate(bodymltt, nameof(bodymltt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/SearchV2";
@@ -3288,7 +3009,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     {
         public IWorkflowTrigger FileLocked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FileLocked";
@@ -3311,7 +3031,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileUnlocked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FileUnlocked";
@@ -3334,7 +3053,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileUpdated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FileUpdated";
@@ -3357,7 +3075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FileCreated";
@@ -3380,7 +3097,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger ShareLinkCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/ShareLinkCreated";
@@ -3403,7 +3119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger ShareLinkDeleted([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/ShareLinkDeleted";
@@ -3426,7 +3141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileOrFolderPermissionChange([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FileOrFolderPermissionChange";
@@ -3449,7 +3163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileOrFolderMetadataChange([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FileOrFolderMetadataChange";
@@ -3472,7 +3185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FolderProjectAdded([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FolderProjectAdded";
@@ -3495,7 +3207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FolderProjectUnmarked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FolderProjectUnmarked";
@@ -3518,7 +3229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FolderProjectUpdated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/FolderProjectUpdated";
@@ -3541,7 +3251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/WorkflowCreated";
@@ -3564,7 +3273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowCompleted([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/WorkflowCompleted";
@@ -3587,7 +3295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowApprovalTaskApproved([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/WorkflowApprovalTaskApproved";
@@ -3610,7 +3317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowApprovalTaskRejected([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/WorkflowApprovalTaskRejected";
@@ -3696,7 +3402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/created-files";
@@ -3711,7 +3416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/created-folders";
@@ -3726,7 +3430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/deleted-files";
@@ -3741,7 +3444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/deleted-folders";
@@ -3756,7 +3458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/renamed-files";
@@ -3771,7 +3472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/renamed-folders";
@@ -3786,7 +3486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/moved-files";
@@ -3801,7 +3500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/moved-folders";
@@ -3816,7 +3514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/copied-files";
@@ -3831,7 +3528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/polling/copied-folders";

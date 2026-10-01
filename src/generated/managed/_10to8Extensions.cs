@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "10to8")]
         public IBodyWorkflowAction<string> BookAppointment([WorkflowExpression] Func<string> organisationId, [WorkflowExpression] Func<string> bodystartDateTime, [WorkflowExpression] Func<string> bodyendDateTime, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
-            SourceExpression.Validate(bodystartDateTime, nameof(bodystartDateTime), required: true);
-            SourceExpression.Validate(bodyendDateTime, nameof(bodyendDateTime), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/appointments/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -49,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
     {
         public IBodyWorkflowTrigger<GetAppointmentsResponseItem[]> GetAppointments([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/appointments/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -63,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<GetCustomersResponseItem[]> GetCustomers([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/customers/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -77,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesAppeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/appeared/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -91,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesDisappeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/disappeared/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -105,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestAppeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/appeared/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -119,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestDisappeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/disappeared/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -133,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestAppeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/appeared/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -147,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestDisappeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/disappeared/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));

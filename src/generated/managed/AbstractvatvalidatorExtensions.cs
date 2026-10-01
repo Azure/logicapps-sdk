@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> vatNumber)
         {
-            SourceExpression.Validate(vatNumber, nameof(vatNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/validate/";
@@ -30,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<CalculateResponse> Calculate([WorkflowExpression] Func<string> amount, [WorkflowExpression] Func<string> countryCode, [WorkflowExpression] Func<bool> isVatIncl = null, [WorkflowExpression] Func<string> vatCategory = null)
         {
-            SourceExpression.Validate(amount, nameof(amount), required: true);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(isVatIncl, nameof(isVatIncl), required: false);
-            SourceExpression.Validate(vatCategory, nameof(vatCategory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/calculate/";
@@ -54,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<ListCategoriesResponseItem[]> ListCategories([WorkflowExpression] Func<string> countryCode)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/categories/";

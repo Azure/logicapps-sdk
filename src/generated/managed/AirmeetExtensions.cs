@@ -30,17 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<CreateAirmeetResponse> CreateAirmeet([WorkflowExpression] Func<string> bodyhostEmail, [WorkflowExpression] Func<string> bodyeventName, [WorkflowExpression] Func<string> bodyshortDesc, [WorkflowExpression] Func<string> bodyeventImage = null, [WorkflowExpression] Func<string> bodylongDesc = null, [WorkflowExpression] Func<bodyaccessInput> bodyaccess = null, [WorkflowExpression] Func<int> bodytimingstartTime = null, [WorkflowExpression] Func<int> bodytimingendTime = null, [WorkflowExpression] Func<string> bodytimingtimezone = null, [WorkflowExpression] Func<bool> bodyconfignetworking = null, [WorkflowExpression] Func<int> bodyconfigtableCount = null)
         {
-            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: true);
-            SourceExpression.Validate(bodyeventName, nameof(bodyeventName), required: true);
-            SourceExpression.Validate(bodyshortDesc, nameof(bodyshortDesc), required: true);
-            SourceExpression.Validate(bodyeventImage, nameof(bodyeventImage), required: false);
-            SourceExpression.Validate(bodylongDesc, nameof(bodylongDesc), required: false);
-            SourceExpression.Validate(bodyaccess, nameof(bodyaccess), required: false);
-            SourceExpression.Validate(bodytimingstartTime, nameof(bodytimingstartTime), required: false);
-            SourceExpression.Validate(bodytimingendTime, nameof(bodytimingendTime), required: false);
-            SourceExpression.Validate(bodytimingtimezone, nameof(bodytimingtimezone), required: false);
-            SourceExpression.Validate(bodyconfignetworking, nameof(bodyconfignetworking), required: false);
-            SourceExpression.Validate(bodyconfigtableCount, nameof(bodyconfigtableCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airmeet";
@@ -173,15 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<CreateSpeakerResponse> CreateSpeaker([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyorganisation = null, [WorkflowExpression] Func<string> bodydesignation = null, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> bodybio = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycountry = null)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyorganisation, nameof(bodyorganisation), required: false);
-            SourceExpression.Validate(bodydesignation, nameof(bodydesignation), required: false);
-            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            SourceExpression.Validate(bodybio, nameof(bodybio), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/speaker", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -242,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<AirmeetSessionsResponse> AirmeetSessions([WorkflowExpression] Func<string> airmeetId)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/info", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -257,8 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<StartAndEndAirmeetResponse> StartAndEndAirmeet([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<bodystatusInput> bodystatus)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -281,10 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<AirmeetRegistrationsResponse> AirmeetRegistrations([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<int> size, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> before = null)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(size, nameof(size), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/registrations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -304,11 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<AirmeetParticipantsResponse> AirmeetParticipants([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<int> resultSize = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<sortingKeyInput> sortingKey = null, [WorkflowExpression] Func<sortingDirectionInput> sortingDirection = null)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(resultSize, nameof(resultSize), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(sortingKey, nameof(sortingKey), required: false);
-            SourceExpression.Validate(sortingDirection, nameof(sortingDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/participants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -332,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<CustomRegistrationFieldsResponse> CustomRegistrationFields([WorkflowExpression] Func<string> airmeetId)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/custom-fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -347,8 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<RemoveAttendeeResponse> RemoveAttendee([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<string> urlEncodedAttendeeEmail)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(urlEncodedAttendeeEmail, nameof(urlEncodedAttendeeEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/attendee/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(urlEncodedAttendeeEmail, 2));
@@ -363,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<FetchEventTracksResponse> FetchEventTracks([WorkflowExpression] Func<string> airmeetId)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/tracks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -378,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<FetchAirmeetBoothsResponse> FetchAirmeetBooths([WorkflowExpression] Func<string> airmeetId)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/booths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -393,14 +356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<CreateBoothResponse> CreateBooth([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyexhibitorInfoInputItem[]> bodyexhibitorInfo, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<bool> bodymetaDatachatEnabled = null, [WorkflowExpression] Func<bool> bodymetaDataloungeEnabled = null, [WorkflowExpression] Func<bool> bodymetaDatabroadcastEnabled = null, [WorkflowExpression] Func<int> bodymetaDatatableCount = null)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyexhibitorInfo, nameof(bodyexhibitorInfo), required: true);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodymetaDatachatEnabled, nameof(bodymetaDatachatEnabled), required: false);
-            SourceExpression.Validate(bodymetaDataloungeEnabled, nameof(bodymetaDataloungeEnabled), required: false);
-            SourceExpression.Validate(bodymetaDatabroadcastEnabled, nameof(bodymetaDatabroadcastEnabled), required: false);
-            SourceExpression.Validate(bodymetaDatatableCount, nameof(bodymetaDatatableCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/booths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -503,18 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<AddAuthorizedAttendeeResponse> AddAuthorizedAttendee([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<bool> bodyregisterAttendee, [WorkflowExpression] Func<bool> bodysendEmailInvite, [WorkflowExpression] Func<bodyattendanceTypeInput> bodyattendanceType = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodydesignation = null, [WorkflowExpression] Func<string> bodyorganisation = null, [WorkflowExpression] Func<bodycustomFieldMappingInputItem[]> bodycustomFieldMapping = null)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            SourceExpression.Validate(bodyregisterAttendee, nameof(bodyregisterAttendee), required: true);
-            SourceExpression.Validate(bodysendEmailInvite, nameof(bodysendEmailInvite), required: true);
-            SourceExpression.Validate(bodyattendanceType, nameof(bodyattendanceType), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodydesignation, nameof(bodydesignation), required: false);
-            SourceExpression.Validate(bodyorganisation, nameof(bodyorganisation), required: false);
-            SourceExpression.Validate(bodycustomFieldMapping, nameof(bodycustomFieldMapping), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/attendee", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -591,21 +534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
         public IBodyWorkflowAction<CreateSessionResponse> CreateSession([WorkflowExpression] Func<string> airmeetId, [WorkflowExpression] Func<int> bodysessionStartTime, [WorkflowExpression] Func<string> bodyhostEmail, [WorkflowExpression] Func<string> bodysessionTitle = null, [WorkflowExpression] Func<int> bodysessionDuration = null, [WorkflowExpression] Func<string> bodysessionSummary = null, [WorkflowExpression] Func<string[]> bodyspeakerEmails = null, [WorkflowExpression] Func<string[]> bodycohostEmails = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string[]> bodytracks = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodyboothId = null, [WorkflowExpression] Func<int> bodyspeedNetworkingDataconversationTime = null, [WorkflowExpression] Func<int> bodyspeedNetworkingDataextendNetworkingTime = null, [WorkflowExpression] Func<bool> bodysessionMetahideHost = null)
         {
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: true);
-            SourceExpression.Validate(bodysessionStartTime, nameof(bodysessionStartTime), required: true);
-            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: true);
-            SourceExpression.Validate(bodysessionTitle, nameof(bodysessionTitle), required: false);
-            SourceExpression.Validate(bodysessionDuration, nameof(bodysessionDuration), required: false);
-            SourceExpression.Validate(bodysessionSummary, nameof(bodysessionSummary), required: false);
-            SourceExpression.Validate(bodyspeakerEmails, nameof(bodyspeakerEmails), required: false);
-            SourceExpression.Validate(bodycohostEmails, nameof(bodycohostEmails), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodytracks, nameof(bodytracks), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodyboothId, nameof(bodyboothId), required: false);
-            SourceExpression.Validate(bodyspeedNetworkingDataconversationTime, nameof(bodyspeedNetworkingDataconversationTime), required: false);
-            SourceExpression.Validate(bodyspeedNetworkingDataextendNetworkingTime, nameof(bodyspeedNetworkingDataextendNetworkingTime), required: false);
-            SourceExpression.Validate(bodysessionMetahideHost, nameof(bodysessionMetahideHost), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airmeet/{0}/session", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airmeetId, 1));
@@ -740,9 +668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     {
         public IBodyWorkflowTrigger<AirmeetTriggersResponse> AirmeetTriggers2([WorkflowExpression] Func<bodytriggerMetaInfoIdInput> bodytriggerMetaInfoId, [WorkflowExpression] Func<string> airmeetId = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytriggerMetaInfoId, nameof(bodytriggerMetaInfoId), required: true);
-            SourceExpression.Validate(airmeetId, nameof(airmeetId), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/platform-integration/v1/webhook-register";

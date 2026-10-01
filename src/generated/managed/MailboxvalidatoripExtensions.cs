@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
         public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/validation/single";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
         public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/email/disposable";
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
         public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/email/free";

@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<FormGetResponse> FormGet([WorkflowExpression] Func<string> formId)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/form/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -43,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IWorkflowAction Form([WorkflowExpression] Func<string> bodyformId = null, [WorkflowExpression] Func<string> bodytemplateFormId = null, [WorkflowExpression] Func<bodystepsInputItem[]> bodysteps = null, [WorkflowExpression] Func<bodynavigationRulesInputItem[]> bodynavigationRules = null)
         {
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: false);
-            SourceExpression.Validate(bodytemplateFormId, nameof(bodytemplateFormId), required: false);
-            SourceExpression.Validate(bodysteps, nameof(bodysteps), required: false);
-            SourceExpression.Validate(bodynavigationRules, nameof(bodynavigationRules), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/form/";
@@ -105,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<UserSessionGetResponse> UserSessionGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> formKey)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(formKey, nameof(formKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}/session/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formKey, 1));
@@ -121,8 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user/";
@@ -151,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<string> UserDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -166,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<UserFieldsGetResponseItem[]> UserFieldsGet([WorkflowExpression] Func<string> id = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/field/";
@@ -183,9 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<UserFieldPostResponse> UserField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/field/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

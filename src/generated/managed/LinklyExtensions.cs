@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<ListConversionsResponse> ListConversions([WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversions";
@@ -31,16 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<CreateConversionResponse> CreateConversion([WorkflowExpression] Func<string> bodyeventName, [WorkflowExpression] Func<int> bodyamountCents = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodyeventId = null, [WorkflowExpression] Func<bodyeventTypeInput> bodyeventType = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<string> bodyattributionToken = null, [WorkflowExpression] Func<string> bodyoccurredAt = null, [WorkflowExpression] Func<string> bodyvisitorIP = null)
         {
-            SourceExpression.Validate(bodyeventName, nameof(bodyeventName), required: true);
-            SourceExpression.Validate(bodyamountCents, nameof(bodyamountCents), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodyattributionToken, nameof(bodyattributionToken), required: false);
-            SourceExpression.Validate(bodyoccurredAt, nameof(bodyoccurredAt), required: false);
-            SourceExpression.Validate(bodyvisitorIP, nameof(bodyvisitorIP), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversions";
@@ -125,31 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<CreateOrUpdateLinkResponse> CreateOrUpdateLink([WorkflowExpression] Func<string> bodydestinationURL = null, [WorkflowExpression] Func<int> bodylinkId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<bool> bodyenabled = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<string> bodyuTMSource = null, [WorkflowExpression] Func<string> bodyuTMMedium = null, [WorkflowExpression] Func<string> bodyuTMCampaign = null, [WorkflowExpression] Func<string> bodyuTMContent = null, [WorkflowExpression] Func<string> bodyuTMTerm = null, [WorkflowExpression] Func<string> bodymetaPixelId = null, [WorkflowExpression] Func<string> bodygoogleAnalytics4TagId = null, [WorkflowExpression] Func<string> bodygoogleTagManagerId = null, [WorkflowExpression] Func<bool> bodyblockBots = null, [WorkflowExpression] Func<string> bodybodyTags = null, [WorkflowExpression] Func<bool> bodycloaking = null, [WorkflowExpression] Func<bool> bodyforwardParameters = null, [WorkflowExpression] Func<string> bodyheadTags = null, [WorkflowExpression] Func<bool> bodyhideReferrer = null, [WorkflowExpression] Func<string> bodyopenGraphDescription = null, [WorkflowExpression] Func<string> bodyopenGraphImage = null, [WorkflowExpression] Func<string> bodyopenGraphTitle = null, [WorkflowExpression] Func<string> bodytikTokPixelId = null)
         {
-            SourceExpression.Validate(bodydestinationURL, nameof(bodydestinationURL), required: false);
-            SourceExpression.Validate(bodylinkId, nameof(bodylinkId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodyuTMSource, nameof(bodyuTMSource), required: false);
-            SourceExpression.Validate(bodyuTMMedium, nameof(bodyuTMMedium), required: false);
-            SourceExpression.Validate(bodyuTMCampaign, nameof(bodyuTMCampaign), required: false);
-            SourceExpression.Validate(bodyuTMContent, nameof(bodyuTMContent), required: false);
-            SourceExpression.Validate(bodyuTMTerm, nameof(bodyuTMTerm), required: false);
-            SourceExpression.Validate(bodymetaPixelId, nameof(bodymetaPixelId), required: false);
-            SourceExpression.Validate(bodygoogleAnalytics4TagId, nameof(bodygoogleAnalytics4TagId), required: false);
-            SourceExpression.Validate(bodygoogleTagManagerId, nameof(bodygoogleTagManagerId), required: false);
-            SourceExpression.Validate(bodyblockBots, nameof(bodyblockBots), required: false);
-            SourceExpression.Validate(bodybodyTags, nameof(bodybodyTags), required: false);
-            SourceExpression.Validate(bodycloaking, nameof(bodycloaking), required: false);
-            SourceExpression.Validate(bodyforwardParameters, nameof(bodyforwardParameters), required: false);
-            SourceExpression.Validate(bodyheadTags, nameof(bodyheadTags), required: false);
-            SourceExpression.Validate(bodyhideReferrer, nameof(bodyhideReferrer), required: false);
-            SourceExpression.Validate(bodyopenGraphDescription, nameof(bodyopenGraphDescription), required: false);
-            SourceExpression.Validate(bodyopenGraphImage, nameof(bodyopenGraphImage), required: false);
-            SourceExpression.Validate(bodyopenGraphTitle, nameof(bodyopenGraphTitle), required: false);
-            SourceExpression.Validate(bodytikTokPixelId, nameof(bodytikTokPixelId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/link";
@@ -320,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<GetLinkResponse> GetLink([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/link/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -335,20 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<GetClicksResponse> GetClicks([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> linkId = null, [WorkflowExpression] Func<string> linkIds = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> browser = null, [WorkflowExpression] Func<string> platform = null, [WorkflowExpression] Func<string> referer = null, [WorkflowExpression] Func<string> isp = null, [WorkflowExpression] Func<bool> bots = null, [WorkflowExpression] Func<bool> unique = null, [WorkflowExpression] Func<string> timezone = null, [WorkflowExpression] Func<frequencyInput> frequency = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(linkId, nameof(linkId), required: false);
-            SourceExpression.Validate(linkIds, nameof(linkIds), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(browser, nameof(browser), required: false);
-            SourceExpression.Validate(platform, nameof(platform), required: false);
-            SourceExpression.Validate(referer, nameof(referer), required: false);
-            SourceExpression.Validate(isp, nameof(isp), required: false);
-            SourceExpression.Validate(bots, nameof(bots), required: false);
-            SourceExpression.Validate(unique, nameof(unique), required: false);
-            SourceExpression.Validate(timezone, nameof(timezone), required: false);
-            SourceExpression.Validate(frequency, nameof(frequency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspace/{0}/clicks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
@@ -390,15 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<GetClickCountersResponse> GetClickCounters([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<counterInput> counter, [WorkflowExpression] Func<string> linkId = null, [WorkflowExpression] Func<string> linkIds = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> bots = null, [WorkflowExpression] Func<bool> unique = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(counter, nameof(counter), required: true);
-            SourceExpression.Validate(linkId, nameof(linkId), required: false);
-            SourceExpression.Validate(linkIds, nameof(linkIds), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(bots, nameof(bots), required: false);
-            SourceExpression.Validate(unique, nameof(unique), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspace/{0}/clicks/counters/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(counter, 1));
@@ -427,7 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<ListDomainsResponse> ListDomains([WorkflowExpression] Func<string> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspace/{0}/domains", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
@@ -442,8 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<string> DeleteLink([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspace/{0}/links/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -458,13 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
         public IBodyWorkflowAction<ListLinksResponse> ListLinks([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortDir = null, [WorkflowExpression] Func<bool> deleted = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortDir, nameof(sortDir), required: false);
-            SourceExpression.Validate(deleted, nameof(deleted), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspace/{0}/list_links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));

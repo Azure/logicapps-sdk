@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
         public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity([WorkflowExpression] Func<bodycountryCodeInput> bodycountryCode, [WorkflowExpression] Func<string> bodyvatNumber)
         {
-            SourceExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: true);
-            SourceExpression.Validate(bodyvatNumber, nameof(bodyvatNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxation_customs/vies/services/checkVatService";

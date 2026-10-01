@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
         public IBodyWorkflowAction<AddCommentToItemResponse> AddCommentToItem([WorkflowExpression] Func<int> project, [WorkflowExpression] Func<string> bodyitem, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(bodyitem, nameof(bodyitem), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/comment/";
@@ -42,9 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
         public IBodyWorkflowAction<GetProjectsResponse> GetProjects([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> state, [WorkflowExpression] Func<string> skipTag = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: true);
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(skipTag, nameof(skipTag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/project/";
@@ -64,14 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
         public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodytextFirstQuadrant = null, [WorkflowExpression] Func<string> bodytextFourthQuadrant = null, [WorkflowExpression] Func<string> bodytextSecondQuadrant = null, [WorkflowExpression] Func<string> bodytextThirdQuadrant = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodytextFirstQuadrant, nameof(bodytextFirstQuadrant), required: false);
-            SourceExpression.Validate(bodytextFourthQuadrant, nameof(bodytextFourthQuadrant), required: false);
-            SourceExpression.Validate(bodytextSecondQuadrant, nameof(bodytextSecondQuadrant), required: false);
-            SourceExpression.Validate(bodytextThirdQuadrant, nameof(bodytextThirdQuadrant), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/project/";
@@ -136,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<int> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/project/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(projectId, 1));
@@ -151,15 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
         public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject([WorkflowExpression] Func<int> projectId, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodytextFirstQuadrant = null, [WorkflowExpression] Func<string> bodytextFourthQuadrant = null, [WorkflowExpression] Func<string> bodytextSecondQuadrant = null, [WorkflowExpression] Func<string> bodytextThirdQuadrant = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodytextFirstQuadrant, nameof(bodytextFirstQuadrant), required: false);
-            SourceExpression.Validate(bodytextFourthQuadrant, nameof(bodytextFourthQuadrant), required: false);
-            SourceExpression.Validate(bodytextSecondQuadrant, nameof(bodytextSecondQuadrant), required: false);
-            SourceExpression.Validate(bodytextThirdQuadrant, nameof(bodytextThirdQuadrant), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/project/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(projectId, 1));
@@ -230,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
     {
         public IBodyWorkflowTrigger<ItemCompletedHookResponse> ItemCompletedHook([WorkflowExpression] Func<string> bodyproject = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/hook/item.completed/";
@@ -258,7 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
         public IBodyWorkflowTrigger<ItemCreatedHookResponse> ItemCreatedHook([WorkflowExpression] Func<string> bodyproject = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/hook/item.created/";
@@ -286,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
         public IBodyWorkflowTrigger<ItemDelegatedHookResponse> ItemDelegatedHook([WorkflowExpression] Func<string> bodyproject = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/hook/item.delegated/";
@@ -314,7 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
         public IBodyWorkflowTrigger<ItemDeletedHookResponse> ItemDeletedHook([WorkflowExpression] Func<string> bodyproject = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/hook/item.deleted/";
@@ -342,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
         public IBodyWorkflowTrigger<ItemDueHookResponse> ItemDueHook([WorkflowExpression] Func<string> bodyproject = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/hook/item.due/";
@@ -370,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
         public IBodyWorkflowTrigger<ItemStartHookResponse> ItemStartHook([WorkflowExpression] Func<string> bodyproject = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/hook/item.start/";

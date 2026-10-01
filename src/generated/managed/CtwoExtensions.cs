@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> SetSessionFailed([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> bodydetails)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(bodydetails, nameof(bodydetails), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/powerautomate/v1/actions/setsessionfailed";
@@ -39,9 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> AddLogToSession([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bodylevelInput> bodylevel, [WorkflowExpression] Func<string> bodymessage)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(bodylevel, nameof(bodylevel), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/powerautomate/v1/actions/log";
@@ -67,8 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> AssignForm([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<int> bodyuserId = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/v2/robotToHumanHelpRequests/{0}/assign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -95,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> UnassignForm([WorkflowExpression] Func<string> formId)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/v2/robotToHumanHelpRequests/{0}/unassign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -110,8 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> CompleteForm([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodycompletedAt = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(bodycompletedAt, nameof(bodycompletedAt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/v2/robotToHumanHelpRequests/{0}/complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -138,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> SetItemData([WorkflowExpression] Func<string> queueItemId, [WorkflowExpression] Func<string> bodycreated = null)
         {
-            SourceExpression.Validate(queueItemId, nameof(queueItemId), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/universalqueues/v2/items/{0}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueItemId, 1));
@@ -174,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> UnlockItem([WorkflowExpression] Func<string> queueItemId)
         {
-            SourceExpression.Validate(queueItemId, nameof(queueItemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/universalqueues/v2/items/{0}/unlock", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueItemId, 1));
@@ -189,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> SetItemState([WorkflowExpression] Func<string> queueItemId, [WorkflowExpression] Func<string> bodystate = null)
         {
-            SourceExpression.Validate(queueItemId, nameof(queueItemId), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/universalqueues/v2/items/{0}/setstate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueItemId, 1));
@@ -217,11 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> RetryItem([WorkflowExpression] Func<int> queueItemId, [WorkflowExpression] Func<int> stateId = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<int> workflowTaskId = null, [WorkflowExpression] Func<int> appId = null)
         {
-            SourceExpression.Validate(queueItemId, nameof(queueItemId), required: true);
-            SourceExpression.Validate(stateId, nameof(stateId), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(workflowTaskId, nameof(workflowTaskId), required: false);
-            SourceExpression.Validate(appId, nameof(appId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/universalqueues/v2/items/{0}/retry", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(queueItemId, 1));
@@ -244,9 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> AddItemLog([WorkflowExpression] Func<string> queueItemId, [WorkflowExpression] Func<bodylevelInput> bodylevel = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(queueItemId, nameof(queueItemId), required: true);
-            SourceExpression.Validate(bodylevel, nameof(bodylevel), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/universalqueues/v2/items/{0}/log", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueItemId, 1));
@@ -279,8 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> RemoveItemTag([WorkflowExpression] Func<string> queueItemId, [WorkflowExpression] Func<string> tags = null)
         {
-            SourceExpression.Validate(queueItemId, nameof(queueItemId), required: true);
-            SourceExpression.Validate(tags, nameof(tags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/universalqueues/v2/items/{0}/tag", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueItemId, 1));
@@ -297,8 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> AddItemTag([WorkflowExpression] Func<string> queueItemId, [WorkflowExpression] Func<string> bodytags = null)
         {
-            SourceExpression.Validate(queueItemId, nameof(queueItemId), required: true);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/universalqueues/v2/items/{0}/tag", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueItemId, 1));
@@ -325,14 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
         public IBodyWorkflowAction<string> CreateItemState([WorkflowExpression] Func<bodyresponseTimeCalculationBasisInput> bodyresponseTimeCalculationBasis, [WorkflowExpression] Func<bodystateInput> bodystate, [WorkflowExpression] Func<int> bodyqueueId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodytimeSavedPerItem = null, [WorkflowExpression] Func<int> bodyvalueGeneratedPerItem = null, [WorkflowExpression] Func<bool> bodyincludeInReports = null)
         {
-            SourceExpression.Validate(bodyresponseTimeCalculationBasis, nameof(bodyresponseTimeCalculationBasis), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodyqueueId, nameof(bodyqueueId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytimeSavedPerItem, nameof(bodytimeSavedPerItem), required: false);
-            SourceExpression.Validate(bodyvalueGeneratedPerItem, nameof(bodyvalueGeneratedPerItem), required: false);
-            SourceExpression.Validate(bodyincludeInReports, nameof(bodyincludeInReports), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/universalqueues/v2/states";
@@ -401,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
     {
         public IBodyWorkflowTrigger<StartFlowWithoutTimeoutResponse> StartFlowWithoutTimeout([WorkflowExpression] Func<int> taskId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/powerautomate/v1/trigger/ConsumePendingSessions";
@@ -416,8 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
 
         public IBodyWorkflowTrigger<StartFlowWithTimeoutResponse> StartFlowWithTimeout([WorkflowExpression] Func<int> taskId, [WorkflowExpression] Func<int> timeout, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(timeout, nameof(timeout), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/powerautomate/v1/trigger/ConsumePendingSessionsWithRequiredTimeout";

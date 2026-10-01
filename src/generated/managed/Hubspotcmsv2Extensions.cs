@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction ScheduleaBlogPosttobePublished([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypublishDate)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/schedule";
@@ -40,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction UpdatelanguagesofmultiLanguagegroup([WorkflowExpression] Func<string> bodyprimaryId)
         {
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/multi-language/update-languages";
@@ -71,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation1> Retrievesapreviousversionofablogpost([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/revisions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -87,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> RetrievethefulldraftversionoftheBlog([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -102,63 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> UpdateaBlogPostdraft([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodyblogAuthorId, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableGoogleAmpOutputOverride, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodypostBody, [WorkflowExpression] Func<string> bodypostSummary, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyrssBody, [WorkflowExpression] Func<string> bodyrssSummary, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string[]> bodytagIds, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodyblogAuthorId, nameof(bodyblogAuthorId), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableGoogleAmpOutputOverride, nameof(bodyenableGoogleAmpOutputOverride), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypostBody, nameof(bodypostBody), required: true);
-            SourceExpression.Validate(bodypostSummary, nameof(bodypostSummary), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyrssBody, nameof(bodyrssBody), required: true);
-            SourceExpression.Validate(bodyrssSummary, nameof(bodyrssSummary), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodytagIds, nameof(bodytagIds), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -331,8 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> Restoreapreviousversionofablogposttothedraftversionoftheblogpost([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/revisions/{1}/restore-to-draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -347,8 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> Createanewlanguagevariation([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/multi-language/create-language-variation";
@@ -373,8 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> CloneaBlog([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycloneName)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodycloneName, nameof(bodycloneName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/clone";
@@ -399,17 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation9> GetallBlogPosts([WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts";
@@ -446,62 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> CreateanewBlog([WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodyblogAuthorId, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableGoogleAmpOutputOverride, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodypostBody, [WorkflowExpression] Func<string> bodypostSummary, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyrssBody, [WorkflowExpression] Func<string> bodyrssSummary, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string[]> bodytagIds, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage)
         {
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodyblogAuthorId, nameof(bodyblogAuthorId), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableGoogleAmpOutputOverride, nameof(bodyenableGoogleAmpOutputOverride), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypostBody, nameof(bodypostBody), required: true);
-            SourceExpression.Validate(bodypostSummary, nameof(bodypostSummary), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyrssBody, nameof(bodyrssBody), required: true);
-            SourceExpression.Validate(bodyrssSummary, nameof(bodyrssSummary), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodytagIds, nameof(bodytagIds), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts";
@@ -674,8 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> Restoreapreviousversionofablogpost([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/revisions/{1}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -690,7 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DetachaBlogPostfromamultiLanguagegroup([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/multi-language/detach-from-lang-group";
@@ -713,7 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PushBlogPostdrafteditslive([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/draft/push-live", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -728,7 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteabatchofBlogPosts([WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/batch/archive";
@@ -751,7 +610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction ResettheBlogPostdrafttotheliveversion([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/draft/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -766,10 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction AttachaBlogPosttoamultiLanguagegroup([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryId, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/multi-language/attach-to-lang-group";
@@ -798,10 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation12> Retrievesallthepreviousversionsofablogpost([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}/revisions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -822,7 +672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction Setanewprimarylanguage([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/posts/multi-language/set-new-lang-primary";
@@ -845,8 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteaBlog([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -863,64 +710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation3> UpdateaBlog([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodyblogAuthorId, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableGoogleAmpOutputOverride, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodypostBody, [WorkflowExpression] Func<string> bodypostSummary, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyrssBody, [WorkflowExpression] Func<string> bodyrssSummary, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string[]> bodytagIds, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodyblogAuthorId, nameof(bodyblogAuthorId), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableGoogleAmpOutputOverride, nameof(bodyenableGoogleAmpOutputOverride), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypostBody, nameof(bodypostBody), required: true);
-            SourceExpression.Validate(bodypostSummary, nameof(bodypostSummary), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyrssBody, nameof(bodyrssBody), required: true);
-            SourceExpression.Validate(bodyrssSummary, nameof(bodyrssSummary), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodytagIds, nameof(bodytagIds), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/posts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -1095,9 +884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation15> RetrieveaBlogAuthor([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/authors/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -1116,8 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteaBlogAuthor([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/authors/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -1134,25 +918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation15> UpdateaBlogAuthor([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodyavatar, [WorkflowExpression] Func<string> bodybio, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodydeletedAt, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfacebook, [WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkedin, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodytwitter, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodywebsite, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodyavatar, nameof(bodyavatar), required: true);
-            SourceExpression.Validate(bodybio, nameof(bodybio), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyfacebook, nameof(bodyfacebook), required: true);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkedin, nameof(bodylinkedin), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodytwitter, nameof(bodytwitter), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/authors/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -1209,7 +974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DetachaBlogAuthorfromamultiLanguagegroup([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors/multi-language/detach-from-lang-group";
@@ -1232,7 +996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PutSetanewprimarylanguage([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors/multi-language/set-new-lang-primary";
@@ -1255,7 +1018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteabatchofBlogAuthors([WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors/batch/archive";
@@ -1278,17 +1040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation20> GetallBlogAuthors([WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors";
@@ -1325,23 +1076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation15> CreateanewBlogAuthor([WorkflowExpression] Func<string> bodyavatar, [WorkflowExpression] Func<string> bodybio, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodydeletedAt, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfacebook, [WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkedin, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodytwitter, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodywebsite)
         {
-            SourceExpression.Validate(bodyavatar, nameof(bodyavatar), required: true);
-            SourceExpression.Validate(bodybio, nameof(bodybio), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyfacebook, nameof(bodyfacebook), required: true);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkedin, nameof(bodylinkedin), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodytwitter, nameof(bodytwitter), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors";
@@ -1396,26 +1130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation15> PostCreateanewlanguagevariation([WorkflowExpression] Func<string> bodyblogAuthoravatar, [WorkflowExpression] Func<string> bodyblogAuthorbio, [WorkflowExpression] Func<string> bodyblogAuthorcreated, [WorkflowExpression] Func<string> bodyblogAuthordeletedAt, [WorkflowExpression] Func<string> bodyblogAuthordisplayName, [WorkflowExpression] Func<string> bodyblogAuthoremail, [WorkflowExpression] Func<string> bodyblogAuthorfacebook, [WorkflowExpression] Func<string> bodyblogAuthorfullName, [WorkflowExpression] Func<string> bodyblogAuthorid, [WorkflowExpression] Func<string> bodyblogAuthorlanguage, [WorkflowExpression] Func<string> bodyblogAuthorlinkedin, [WorkflowExpression] Func<string> bodyblogAuthorname, [WorkflowExpression] Func<string> bodyblogAuthorslug, [WorkflowExpression] Func<string> bodyblogAuthortranslatedFromId, [WorkflowExpression] Func<string> bodyblogAuthortwitter, [WorkflowExpression] Func<string> bodyblogAuthorupdated, [WorkflowExpression] Func<string> bodyblogAuthorwebsite, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyblogAuthoravatar, nameof(bodyblogAuthoravatar), required: true);
-            SourceExpression.Validate(bodyblogAuthorbio, nameof(bodyblogAuthorbio), required: true);
-            SourceExpression.Validate(bodyblogAuthorcreated, nameof(bodyblogAuthorcreated), required: true);
-            SourceExpression.Validate(bodyblogAuthordeletedAt, nameof(bodyblogAuthordeletedAt), required: true);
-            SourceExpression.Validate(bodyblogAuthordisplayName, nameof(bodyblogAuthordisplayName), required: true);
-            SourceExpression.Validate(bodyblogAuthoremail, nameof(bodyblogAuthoremail), required: true);
-            SourceExpression.Validate(bodyblogAuthorfacebook, nameof(bodyblogAuthorfacebook), required: true);
-            SourceExpression.Validate(bodyblogAuthorfullName, nameof(bodyblogAuthorfullName), required: true);
-            SourceExpression.Validate(bodyblogAuthorid, nameof(bodyblogAuthorid), required: true);
-            SourceExpression.Validate(bodyblogAuthorlanguage, nameof(bodyblogAuthorlanguage), required: true);
-            SourceExpression.Validate(bodyblogAuthorlinkedin, nameof(bodyblogAuthorlinkedin), required: true);
-            SourceExpression.Validate(bodyblogAuthorname, nameof(bodyblogAuthorname), required: true);
-            SourceExpression.Validate(bodyblogAuthorslug, nameof(bodyblogAuthorslug), required: true);
-            SourceExpression.Validate(bodyblogAuthortranslatedFromId, nameof(bodyblogAuthortranslatedFromId), required: true);
-            SourceExpression.Validate(bodyblogAuthortwitter, nameof(bodyblogAuthortwitter), required: true);
-            SourceExpression.Validate(bodyblogAuthorupdated, nameof(bodyblogAuthorupdated), required: true);
-            SourceExpression.Validate(bodyblogAuthorwebsite, nameof(bodyblogAuthorwebsite), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors/multi-language/create-language-variation";
@@ -1484,10 +1198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction AttachaBlogAuthortoamultiLanguagegroup([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryId, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors/multi-language/attach-to-lang-group";
@@ -1516,7 +1226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PostUpdatelanguagesofmultiLanguagegroup([WorkflowExpression] Func<string> bodyprimaryId)
         {
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/authors/multi-language/update-languages";
@@ -1547,7 +1256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PostUpdatelanguagesofmultiLanguagegroup1([WorkflowExpression] Func<string> bodyprimaryId)
         {
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/update-languages";
@@ -1578,10 +1286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation23> RetrievesallthepreviousversionsofaBlog([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blog-settings/settings/{0}/revisions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));
@@ -1602,8 +1306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation24> RetrievesapreviousversionofaBlog([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blog-settings/settings/{0}/revisions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -1618,7 +1320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation25> RetrieveaBlog([WorkflowExpression] Func<string> blogId)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blog-settings/settings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));
@@ -1633,10 +1334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation25> PostCreateanewlanguagevariation1([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryLanguage, [WorkflowExpression] Func<string> bodyslug)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/create-language-variation";
@@ -1665,16 +1362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation27> GetallBlogs([WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blog-settings/settings";
@@ -1709,7 +1396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PutSetanewprimarylanguage1([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/set-new-lang-primary";
@@ -1732,7 +1418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DetachablogfromamultiLanguagegroup([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/detach-from-lang-group";
@@ -1755,10 +1440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction AttachablogtoamultiLanguagegroup([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryId, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/attach-to-lang-group";
@@ -1787,7 +1468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PostUpdatelanguagesofmultiLanguagegroup2([WorkflowExpression] Func<string> bodyprimaryId)
         {
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags/multi-language/update-languages";
@@ -1818,7 +1498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DetachaBlogTagfromamultiLanguagegroup([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags/multi-language/detach-from-lang-group";
@@ -1841,7 +1520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteabatchofBlogTags([WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags/batch/archive";
@@ -1864,7 +1542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PutSetanewprimarylanguage2([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags/multi-language/set-new-lang-primary";
@@ -1887,17 +1564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation31> GetallBlogTags([WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags";
@@ -1934,13 +1600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation32> CreateanewBlogTag([WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodydeletedAt, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated)
         {
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags";
@@ -1975,10 +1634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction AttachaBlogTagtoamultiLanguagegroup([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryId, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags/multi-language/attach-to-lang-group";
@@ -2007,9 +1662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation32> RetrieveaBlogTag([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2028,8 +1680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteaBlogTag([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2046,15 +1696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation32> UpdateaBlogTag([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodydeletedAt, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2091,10 +1732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation32> PostCreateanewlanguagevariation2([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/blogs/tags/multi-language/create-language-variation";
@@ -2123,7 +1760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<string> Exportadrafttable([WorkflowExpression] Func<string> tableIdOrName)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/draft/export", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2139,16 +1775,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation36> Returnalldrafttables([WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hubdb/tables/draft";
@@ -2183,8 +1809,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Resetadrafttable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<bool> includeForeignIds = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(includeForeignIds, nameof(includeForeignIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/draft/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2201,7 +1825,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<string> Exportapublishedversionofatable([WorkflowExpression] Func<string> tableIdOrName)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/export", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2217,10 +1840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Cloneatable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<string> bodycopyRows, [WorkflowExpression] Func<string> bodynewName, [WorkflowExpression] Func<string> bodynewLabel)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(bodycopyRows, nameof(bodycopyRows), required: true);
-            SourceExpression.Validate(bodynewName, nameof(bodynewName), required: true);
-            SourceExpression.Validate(bodynewLabel, nameof(bodynewLabel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/draft/clone", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2247,9 +1866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Getdetailsforapublishedtable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<bool> includeForeignIds = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(includeForeignIds, nameof(includeForeignIds), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2268,7 +1884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction Archiveatable([WorkflowExpression] Func<string> tableIdOrName)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2283,16 +1898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation36> Getallpublishedtables([WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hubdb/tables";
@@ -2327,13 +1932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Createanewtable([WorkflowExpression] Func<string> bodylabel, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyuseForPages, [WorkflowExpression] Func<bool> bodyallowPublicApiAccess, [WorkflowExpression] Func<bool> bodyallowChildTables, [WorkflowExpression] Func<bool> bodyenableChildTablePages, [WorkflowExpression] Func<Column5[]> bodycolumns)
         {
-            SourceExpression.Validate(bodylabel, nameof(bodylabel), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyuseForPages, nameof(bodyuseForPages), required: true);
-            SourceExpression.Validate(bodyallowPublicApiAccess, nameof(bodyallowPublicApiAccess), required: true);
-            SourceExpression.Validate(bodyallowChildTables, nameof(bodyallowChildTables), required: true);
-            SourceExpression.Validate(bodyenableChildTablePages, nameof(bodyenableChildTablePages), required: true);
-            SourceExpression.Validate(bodycolumns, nameof(bodycolumns), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hubdb/tables";
@@ -2376,8 +1974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Unpublishatable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<bool> includeForeignIds = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(includeForeignIds, nameof(includeForeignIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/unpublish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2394,9 +1990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Getdetailsforadrafttable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<bool> includeForeignIds = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(includeForeignIds, nameof(includeForeignIds), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2415,16 +2008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Updateanexistingtable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<string> bodylabel, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyuseForPages, [WorkflowExpression] Func<bool> bodyallowPublicApiAccess, [WorkflowExpression] Func<bool> bodyallowChildTables, [WorkflowExpression] Func<bool> bodyenableChildTablePages, [WorkflowExpression] Func<Column5[]> bodycolumns, [WorkflowExpression] Func<bool> includeForeignIds = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(bodylabel, nameof(bodylabel), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyuseForPages, nameof(bodyuseForPages), required: true);
-            SourceExpression.Validate(bodyallowPublicApiAccess, nameof(bodyallowPublicApiAccess), required: true);
-            SourceExpression.Validate(bodyallowChildTables, nameof(bodyallowChildTables), required: true);
-            SourceExpression.Validate(bodyenableChildTablePages, nameof(bodyenableChildTablePages), required: true);
-            SourceExpression.Validate(bodycolumns, nameof(bodycolumns), required: true);
-            SourceExpression.Validate(includeForeignIds, nameof(includeForeignIds), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2471,8 +2054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation37> Publishatablefromdraft([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<bool> includeForeignIds = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(includeForeignIds, nameof(includeForeignIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/draft/publish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2489,11 +2070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation47> Getrowsfromdrafttable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> properties = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2516,8 +2092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation48> Getatablerow([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<int> rowId)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rowId, 1));
@@ -2532,8 +2106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation48> Clonearow([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<int> rowId)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/{1}/draft/clone", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rowId, 1));
@@ -2548,8 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation48> Getarowfromthedrafttable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<int> rowId)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/{1}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rowId, 1));
@@ -2564,8 +2134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction Permanentlydeletesarow([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<int> rowId)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/{1}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rowId, 1));
@@ -2580,12 +2148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation48> Replacesanexistingrow([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<int> rowId, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodychildTableId, [WorkflowExpression] Func<string> bodydisplayIndex)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodychildTableId, nameof(bodychildTableId), required: true);
-            SourceExpression.Validate(bodydisplayIndex, nameof(bodydisplayIndex), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/{1}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rowId, 1));
@@ -2622,12 +2184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation48> Updatesanexistingrow([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<int> rowId, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodychildTableId, [WorkflowExpression] Func<int> bodydisplayIndex)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodychildTableId, nameof(bodychildTableId), required: true);
-            SourceExpression.Validate(bodydisplayIndex, nameof(bodydisplayIndex), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/{1}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rowId, 1));
@@ -2664,11 +2220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation47> Getrowsforatable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> properties = null)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2691,11 +2242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation48> Addanewrowtoatable([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodychildTableId, [WorkflowExpression] Func<int> bodydisplayIndex)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodychildTableId, nameof(bodychildTableId), required: true);
-            SourceExpression.Validate(bodydisplayIndex, nameof(bodydisplayIndex), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2732,8 +2278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction Permanentlydeletesrows([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/draft/batch/purge", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2756,8 +2300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation55> Clonerowsinbatch([WorkflowExpression] Func<string> tableIdOrName, [WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(tableIdOrName, nameof(tableIdOrName), required: true);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hubdb/tables/{0}/rows/draft/batch/clone", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableIdOrName, 1));
@@ -2780,8 +2322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation61> RetrievesapreviousversionofaSitePage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/revisions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -2796,8 +2336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RestoreapreviousversionofaSitePage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/revisions/{1}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -2812,8 +2350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction ScheduleaSitePagetobePublished([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypublishDate)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/schedule";
@@ -2838,10 +2374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction AttachasitepagetoamultiLanguagegroup([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryId, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/multi-language/attach-to-lang-group";
@@ -2870,7 +2402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DetachasitepagefromamultiLanguagegroup([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/multi-language/detach-from-lang-group";
@@ -2893,10 +2424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation64> RetrievesallthepreviousversionsofaSitePage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/revisions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2917,8 +2444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RestoreapreviousversionofaSitePagetothedraftversionoftheSitePage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/revisions/{1}/restore-to-draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -2933,8 +2458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction EndanactiveABtest([WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodywinnerId)
         {
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodywinnerId, nameof(bodywinnerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/ab-test/end";
@@ -2959,7 +2482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RetrievethefulldraftversionoftheSitePage([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2974,59 +2496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> UpdateaSitePagedraft([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<bool> bodypageRedirected, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string> bodysubCategory, [WorkflowExpression] Func<string> bodytemplatePath, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodysubCategory, nameof(bodysubCategory), required: true);
-            SourceExpression.Validate(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3191,17 +2660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation69> GetallSitePages([WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages";
@@ -3238,58 +2696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> CreateanewSitePage([WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<bool> bodypageRedirected, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string> bodysubCategory, [WorkflowExpression] Func<string> bodytemplatePath, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage)
         {
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodysubCategory, nameof(bodysubCategory), required: true);
-            SourceExpression.Validate(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages";
@@ -3454,9 +2860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> PostCreateanewlanguagevariation3([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/multi-language/create-language-variation";
@@ -3483,8 +2886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> CreateanewABtestvariation([WorkflowExpression] Func<string> bodycontentId, [WorkflowExpression] Func<string> bodyvariationName)
         {
-            SourceExpression.Validate(bodycontentId, nameof(bodycontentId), required: true);
-            SourceExpression.Validate(bodyvariationName, nameof(bodyvariationName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/ab-test/create-variation";
@@ -3509,7 +2910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PostUpdatelanguagesofmultiLanguagegroup3([WorkflowExpression] Func<string> bodyprimaryId)
         {
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/multi-language/update-languages";
@@ -3540,7 +2940,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteabatchofSitePages([WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/batch/archive";
@@ -3563,8 +2962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> CloneaSitePage([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycloneName)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodycloneName, nameof(bodycloneName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/clone";
@@ -3589,7 +2986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PutSetanewprimarylanguage3([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/multi-language/set-new-lang-primary";
@@ -3612,7 +3008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PushSitePagedrafteditslive([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/draft/push-live", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3627,8 +3022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction RerunapreviousABtest([WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyvariationId)
         {
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyvariationId, nameof(bodyvariationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/site-pages/ab-test/rerun";
@@ -3653,7 +3046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction ResettheSitePagedrafttotheliveversion([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}/draft/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3668,9 +3060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RetrieveaSitePage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3689,8 +3078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteaSitePage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3707,60 +3094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> UpdateaSitePage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<bool> bodypageRedirected, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string> bodysubCategory, [WorkflowExpression] Func<string> bodytemplatePath, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodysubCategory, nameof(bodysubCategory), required: true);
-            SourceExpression.Validate(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/site-pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3927,10 +3260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation64> RetrievesallthepreviousversionsofaLandingPage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/revisions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3951,10 +3280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation78> RetrievesallthepreviousversionsofaFolder([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/folders/{0}/revisions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -3975,17 +3300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation79> GetallLandingPageFolders([WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/folders";
@@ -4022,13 +3336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation80> CreateanewFolder([WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodydeletedAt, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId, [WorkflowExpression] Func<string> bodyupdated)
         {
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/folders";
@@ -4063,7 +3370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RetrievethefulldraftversionoftheLandingPage([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -4078,59 +3384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> UpdateaLandingPagedraft([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<bool> bodypageRedirected, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string> bodysubCategory, [WorkflowExpression] Func<string> bodytemplatePath, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodysubCategory, nameof(bodysubCategory), required: true);
-            SourceExpression.Validate(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -4295,17 +3548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation69> GetallLandingPages([WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdAfter = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> updatedAt = null, [WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
-            SourceExpression.Validate(createdAfter, nameof(createdAfter), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(updatedAt, nameof(updatedAt), required: false);
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages";
@@ -4342,58 +3584,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> CreateanewLandingPage([WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<bool> bodypageRedirected, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string> bodysubCategory, [WorkflowExpression] Func<string> bodytemplatePath, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage)
         {
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodysubCategory, nameof(bodysubCategory), required: true);
-            SourceExpression.Validate(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages";
@@ -4558,8 +3748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> CloneaLandingPage([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycloneName)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodycloneName, nameof(bodycloneName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/clone";
@@ -4584,8 +3772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation80> RestoreapreviousversionofaFolder([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/folders/{0}/revisions/{1}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -4600,7 +3786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PutSetanewprimarylanguage4([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/set-new-lang-primary";
@@ -4623,8 +3808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RestoreapreviousversionofaLandingPage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/revisions/{1}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -4639,9 +3822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation80> RetrieveaFolder([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -4660,8 +3840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteaFolder([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -4678,15 +3856,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation80> UpdateaFolder([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodydeletedAt, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -4723,8 +3892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> PostCreateanewABtestvariation([WorkflowExpression] Func<string> bodycontentId, [WorkflowExpression] Func<string> bodyvariationName)
         {
-            SourceExpression.Validate(bodycontentId, nameof(bodycontentId), required: true);
-            SourceExpression.Validate(bodyvariationName, nameof(bodyvariationName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/ab-test/create-variation";
@@ -4749,10 +3916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction AttachalandingpagetoamultiLanguagegroup([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryId, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/attach-to-lang-group";
@@ -4781,8 +3944,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation61> RetrievesapreviousversionofaLandingPage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/revisions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -4797,8 +3958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PostEndanactiveABtest([WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodywinnerId)
         {
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodywinnerId, nameof(bodywinnerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/ab-test/end";
@@ -4823,7 +3982,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PushLandingPagedrafteditslive([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/draft/push-live", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -4838,7 +3996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DetachalandingpagefromamultiLanguagegroup([WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/detach-from-lang-group";
@@ -4861,8 +4018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction ScheduleaLandingPagetobePublished([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypublishDate)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/schedule";
@@ -4887,7 +4042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PostUpdatelanguagesofmultiLanguagegroup4([WorkflowExpression] Func<string> bodyprimaryId)
         {
-            SourceExpression.Validate(bodyprimaryId, nameof(bodyprimaryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/update-languages";
@@ -4918,8 +4072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction PostRerunapreviousABtest([WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyvariationId)
         {
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyvariationId, nameof(bodyvariationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/ab-test/rerun";
@@ -4944,7 +4096,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteabatchofFolders([WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/folders/batch/archive";
@@ -4967,8 +4118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation97> RetrievesapreviousversionofaFolder([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/folders/{0}/revisions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));
@@ -4983,7 +4132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction ResettheLandingPagedrafttotheliveversion([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/draft/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -4998,9 +4146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RetrieveaLandingPage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -5019,8 +4164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteaLandingPage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -5037,60 +4180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> UpdateaLandingPage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> bodyabStatus, [WorkflowExpression] Func<string> bodyabTestId, [WorkflowExpression] Func<string> bodyarchivedAt, [WorkflowExpression] Func<bool> bodyarchivedInDashboard, [WorkflowExpression] Func<JToken[]> bodyattachedStylesheets, [WorkflowExpression] Func<string> bodyauthorName, [WorkflowExpression] Func<string> bodycampaign, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<string> bodycontentGroupId, [WorkflowExpression] Func<string> bodycontentTypeCategory, [WorkflowExpression] Func<string> bodycreated, [WorkflowExpression] Func<string> bodycreatedById, [WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bool> bodycurrentlyPublished, [WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodydynamicPageDataSourceId, [WorkflowExpression] Func<string> bodydynamicPageDataSourceType, [WorkflowExpression] Func<string> bodydynamicPageHubDbTableId, [WorkflowExpression] Func<bool> bodyenableDomainStylesheets, [WorkflowExpression] Func<bool> bodyenableLayoutStylesheets, [WorkflowExpression] Func<string> bodyfeaturedImage, [WorkflowExpression] Func<string> bodyfeaturedImageAltText, [WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyfooterHtml, [WorkflowExpression] Func<string> bodyheadHtml, [WorkflowExpression] Func<string> bodyhtmlTitle, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyincludeDefaultCustomCss, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodylinkRelCanonicalUrl, [WorkflowExpression] Func<string> bodymabExperimentId, [WorkflowExpression] Func<string> bodymetaDescription, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypageExpiryDate, [WorkflowExpression] Func<bool> bodypageExpiryEnabled, [WorkflowExpression] Func<string> bodypageExpiryRedirectId, [WorkflowExpression] Func<string> bodypageExpiryRedirectUrl, [WorkflowExpression] Func<bool> bodypageRedirected, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string[]> bodypublicAccessRules, [WorkflowExpression] Func<bool> bodypublicAccessRulesEnabled, [WorkflowExpression] Func<string> bodypublishDate, [WorkflowExpression] Func<string> bodypublishImmediately, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string> bodysubCategory, [WorkflowExpression] Func<string> bodytemplatePath, [WorkflowExpression] Func<string> bodytranslatedFromId, [WorkflowExpression] Func<string> bodyupdated, [WorkflowExpression] Func<string> bodyupdatedById, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyuseFeaturedImage, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodyabStatus, nameof(bodyabStatus), required: true);
-            SourceExpression.Validate(bodyabTestId, nameof(bodyabTestId), required: true);
-            SourceExpression.Validate(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            SourceExpression.Validate(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            SourceExpression.Validate(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            SourceExpression.Validate(bodyauthorName, nameof(bodyauthorName), required: true);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            SourceExpression.Validate(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: true);
-            SourceExpression.Validate(bodycreatedById, nameof(bodycreatedById), required: true);
-            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            SourceExpression.Validate(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            SourceExpression.Validate(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            SourceExpression.Validate(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            SourceExpression.Validate(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            SourceExpression.Validate(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            SourceExpression.Validate(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            SourceExpression.Validate(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            SourceExpression.Validate(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            SourceExpression.Validate(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            SourceExpression.Validate(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            SourceExpression.Validate(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            SourceExpression.Validate(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            SourceExpression.Validate(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: true);
-            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodysubCategory, nameof(bodysubCategory), required: true);
-            SourceExpression.Validate(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            SourceExpression.Validate(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: true);
-            SourceExpression.Validate(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -5257,9 +4346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> PostCreateanewlanguagevariation4([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyprimaryLanguage)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/create-language-variation";
@@ -5286,7 +4372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IWorkflowAction DeleteabatchofLandingPages([WorkflowExpression] Func<string[]> bodyinputs)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages/landing-pages/batch/archive";
@@ -5309,8 +4394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
         public IBodyWorkflowAction<Successfuloperation63> RestoreapreviousversionofaLandingPagetothedraftversionoftheLandingPage([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> revisionId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(revisionId, nameof(revisionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/landing-pages/{0}/revisions/{1}/restore-to-draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(revisionId, 1));

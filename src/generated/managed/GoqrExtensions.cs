@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goqr")]
         public IBodyWorkflowAction<string> Create([WorkflowExpression] Func<string> data, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<charsetSourceInput> charsetSource = null, [WorkflowExpression] Func<charsetTargetInput> charsetTarget = null, [WorkflowExpression] Func<string> ecc = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<string> bgcolor = null, [WorkflowExpression] Func<int> margin = null, [WorkflowExpression] Func<int> qzone = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(data, nameof(data), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(charsetSource, nameof(charsetSource), required: false);
-            SourceExpression.Validate(charsetTarget, nameof(charsetTarget), required: false);
-            SourceExpression.Validate(ecc, nameof(ecc), required: false);
-            SourceExpression.Validate(color, nameof(color), required: false);
-            SourceExpression.Validate(bgcolor, nameof(bgcolor), required: false);
-            SourceExpression.Validate(margin, nameof(margin), required: false);
-            SourceExpression.Validate(qzone, nameof(qzone), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create-qr-code/";

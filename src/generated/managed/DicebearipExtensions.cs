@@ -14,35 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dicebearip")]
         public IBodyWorkflowAction<AvatarGetResponse> AvatarGet([WorkflowExpression] Func<versionInput> version, [WorkflowExpression] Func<styleNameInput> styleName, [WorkflowExpression] Func<fileFormatInput> fileFormat, [WorkflowExpression] Func<string> seed = null, [WorkflowExpression] Func<string> hair = null, [WorkflowExpression] Func<bool> flip = null, [WorkflowExpression] Func<int> rotate = null, [WorkflowExpression] Func<int> scale = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> backgroundColor = null, [WorkflowExpression] Func<backgroundTypeInput> backgroundType = null, [WorkflowExpression] Func<int> backgroundRotations = null, [WorkflowExpression] Func<int> translateX = null, [WorkflowExpression] Func<int> translateY = null, [WorkflowExpression] Func<bool> clip = null, [WorkflowExpression] Func<string> @base = null, [WorkflowExpression] Func<string> earrings = null, [WorkflowExpression] Func<int> earringsProbabilty = null, [WorkflowExpression] Func<string> eyebrows = null, [WorkflowExpression] Func<string> eyes = null, [WorkflowExpression] Func<string> features = null, [WorkflowExpression] Func<int> featuresProbability = null, [WorkflowExpression] Func<string> glasses = null, [WorkflowExpression] Func<int> glassesProbability = null, [WorkflowExpression] Func<string> hairColor = null, [WorkflowExpression] Func<int> hairProbability = null, [WorkflowExpression] Func<string> mouth = null, [WorkflowExpression] Func<string> skinColor = null)
         {
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(styleName, nameof(styleName), required: true);
-            SourceExpression.Validate(fileFormat, nameof(fileFormat), required: true);
-            SourceExpression.Validate(seed, nameof(seed), required: false);
-            SourceExpression.Validate(hair, nameof(hair), required: false);
-            SourceExpression.Validate(flip, nameof(flip), required: false);
-            SourceExpression.Validate(rotate, nameof(rotate), required: false);
-            SourceExpression.Validate(scale, nameof(scale), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(backgroundColor, nameof(backgroundColor), required: false);
-            SourceExpression.Validate(backgroundType, nameof(backgroundType), required: false);
-            SourceExpression.Validate(backgroundRotations, nameof(backgroundRotations), required: false);
-            SourceExpression.Validate(translateX, nameof(translateX), required: false);
-            SourceExpression.Validate(translateY, nameof(translateY), required: false);
-            SourceExpression.Validate(clip, nameof(clip), required: false);
-            SourceExpression.Validate(@base, nameof(@base), required: false);
-            SourceExpression.Validate(earrings, nameof(earrings), required: false);
-            SourceExpression.Validate(earringsProbabilty, nameof(earringsProbabilty), required: false);
-            SourceExpression.Validate(eyebrows, nameof(eyebrows), required: false);
-            SourceExpression.Validate(eyes, nameof(eyes), required: false);
-            SourceExpression.Validate(features, nameof(features), required: false);
-            SourceExpression.Validate(featuresProbability, nameof(featuresProbability), required: false);
-            SourceExpression.Validate(glasses, nameof(glasses), required: false);
-            SourceExpression.Validate(glassesProbability, nameof(glassesProbability), required: false);
-            SourceExpression.Validate(hairColor, nameof(hairColor), required: false);
-            SourceExpression.Validate(hairProbability, nameof(hairProbability), required: false);
-            SourceExpression.Validate(mouth, nameof(mouth), required: false);
-            SourceExpression.Validate(skinColor, nameof(skinColor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(styleName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileFormat, 1));

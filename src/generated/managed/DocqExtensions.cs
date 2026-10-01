@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
         public IBodyWorkflowAction<ExtractInformationResponse> ExtractInformation([WorkflowExpression] Func<string> bodyimageFileContent = null)
         {
-            SourceExpression.Validate(bodyimageFileContent, nameof(bodyimageFileContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Flow/ExtractInformation";
@@ -44,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
         public IBodyWorkflowAction<string> GenerateDocument([WorkflowExpression] Func<string> bodydocumentInformation, [WorkflowExpression] Func<string> bodydocumentTemplateContent)
         {
-            SourceExpression.Validate(bodydocumentInformation, nameof(bodydocumentInformation), required: true);
-            SourceExpression.Validate(bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Flow/GenerateDocument";

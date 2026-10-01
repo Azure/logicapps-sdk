@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<CommandPostResponse> Command([WorkflowExpression] Func<string> bodyinputscommand = null, [WorkflowExpression] Func<string> bodyinputscontext = null, [WorkflowExpression] Func<int> bodyoptionsoutputCount = null, [WorkflowExpression] Func<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, [WorkflowExpression] Func<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, [WorkflowExpression] Func<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null, [WorkflowExpression] Func<bodyoptionscompletionTypeInput> bodyoptionscompletionType = null)
         {
-            SourceExpression.Validate(bodyinputscommand, nameof(bodyinputscommand), required: false);
-            SourceExpression.Validate(bodyinputscontext, nameof(bodyinputscontext), required: false);
-            SourceExpression.Validate(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
-            SourceExpression.Validate(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
-            SourceExpression.Validate(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
-            SourceExpression.Validate(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
-            SourceExpression.Validate(bodyoptionscompletionType, nameof(bodyoptionscompletionType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/command";
@@ -149,11 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KeepWritingPostResponse> KeepWriting([WorkflowExpression] Func<bodyinputstypeInput> bodyinputstype = null, [WorkflowExpression] Func<string> bodyinputsvalue = null, [WorkflowExpression] Func<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, [WorkflowExpression] Func<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, [WorkflowExpression] Func<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null)
         {
-            SourceExpression.Validate(bodyinputstype, nameof(bodyinputstype), required: false);
-            SourceExpression.Validate(bodyinputsvalue, nameof(bodyinputsvalue), required: false);
-            SourceExpression.Validate(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
-            SourceExpression.Validate(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
-            SourceExpression.Validate(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/keep-writing";
@@ -274,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -289,11 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<int> bodyoptionsoutputCount = null, [WorkflowExpression] Func<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, [WorkflowExpression] Func<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, [WorkflowExpression] Func<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
-            SourceExpression.Validate(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
-            SourceExpression.Validate(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
-            SourceExpression.Validate(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -384,8 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgesGetResponse> KnowledgesGet([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/knowledge";
@@ -404,9 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgePostResponse> Knowledge([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyFile, [WorkflowExpression] Func<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
-            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/knowledge";
@@ -463,7 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeGetResponse> KnowledgeGet([WorkflowExpression] Func<string> knowledgeId)
         {
-            SourceExpression.Validate(knowledgeId, nameof(knowledgeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
@@ -478,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeDeleteResponse> KnowledgeDelete([WorkflowExpression] Func<string> knowledgeId)
         {
-            SourceExpression.Validate(knowledgeId, nameof(knowledgeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
@@ -493,10 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch([WorkflowExpression] Func<string> knowledgeId, [WorkflowExpression] Func<string> bodysettingsappVisibility = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyFile = null)
         {
-            SourceExpression.Validate(knowledgeId, nameof(knowledgeId), required: true);
-            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
@@ -565,9 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonePostResponse> Tone([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/tones";
@@ -624,7 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneGetResponse> ToneGet([WorkflowExpression] Func<string> toneId)
         {
-            SourceExpression.Validate(toneId, nameof(toneId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
@@ -639,10 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonePatchResponse> TonePatch([WorkflowExpression] Func<string> toneId, [WorkflowExpression] Func<string> bodysettingsappVisibility = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(toneId, nameof(toneId), required: true);
-            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
@@ -697,7 +660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneDeleteResponse> ToneDelete([WorkflowExpression] Func<string> toneId)
         {
-            SourceExpression.Validate(toneId, nameof(toneId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));

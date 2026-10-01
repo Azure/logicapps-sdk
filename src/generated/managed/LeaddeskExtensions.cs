@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<AgentCampaignAccessResponse> AgentCampaignAccess([WorkflowExpression] Func<int> agentId, [WorkflowExpression] Func<int> campaignId, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(agentId, nameof(agentId), required: true);
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/agent_campaign_access";
@@ -36,30 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<CreateAgentResponse> CreateAgent([WorkflowExpression] Func<string> bodyaccountexternalId = null, [WorkflowExpression] Func<string> bodyaccountinboundNumber = null, [WorkflowExpression] Func<string> bodyaccountlang = null, [WorkflowExpression] Func<string> bodyaccountpassword = null, [WorkflowExpression] Func<string> bodyaccounttimeZone = null, [WorkflowExpression] Func<string> bodyaccountusername = null, [WorkflowExpression] Func<string> bodyaccountvoipUsername = null, [WorkflowExpression] Func<string> bodycontactInformationaddress = null, [WorkflowExpression] Func<string> bodycontactInformationcity = null, [WorkflowExpression] Func<string> bodycontactInformationcountry = null, [WorkflowExpression] Func<string> bodycontactInformationeContacts = null, [WorkflowExpression] Func<string> bodycontactInformationemail = null, [WorkflowExpression] Func<string> bodycontactInformationname = null, [WorkflowExpression] Func<string> bodycontactInformationphone = null, [WorkflowExpression] Func<string> bodycontactInformationpostal = null, [WorkflowExpression] Func<string> bodycontactInformationworkphone = null, [WorkflowExpression] Func<int> bodyemploymentagentGroupId = null, [WorkflowExpression] Func<string> bodyemploymentbankAcc = null, [WorkflowExpression] Func<string> bodyemploymentdescription = null, [WorkflowExpression] Func<bodyemploymentemploymentInput> bodyemploymentemployment = null, [WorkflowExpression] Func<string> bodyemploymentemploymentStart = null, [WorkflowExpression] Func<string> bodyemploymentoffice = null, [WorkflowExpression] Func<string> bodyemploymentssn = null, [WorkflowExpression] Func<string> bodyemploymentworkshift = null)
         {
-            SourceExpression.Validate(bodyaccountexternalId, nameof(bodyaccountexternalId), required: false);
-            SourceExpression.Validate(bodyaccountinboundNumber, nameof(bodyaccountinboundNumber), required: false);
-            SourceExpression.Validate(bodyaccountlang, nameof(bodyaccountlang), required: false);
-            SourceExpression.Validate(bodyaccountpassword, nameof(bodyaccountpassword), required: false);
-            SourceExpression.Validate(bodyaccounttimeZone, nameof(bodyaccounttimeZone), required: false);
-            SourceExpression.Validate(bodyaccountusername, nameof(bodyaccountusername), required: false);
-            SourceExpression.Validate(bodyaccountvoipUsername, nameof(bodyaccountvoipUsername), required: false);
-            SourceExpression.Validate(bodycontactInformationaddress, nameof(bodycontactInformationaddress), required: false);
-            SourceExpression.Validate(bodycontactInformationcity, nameof(bodycontactInformationcity), required: false);
-            SourceExpression.Validate(bodycontactInformationcountry, nameof(bodycontactInformationcountry), required: false);
-            SourceExpression.Validate(bodycontactInformationeContacts, nameof(bodycontactInformationeContacts), required: false);
-            SourceExpression.Validate(bodycontactInformationemail, nameof(bodycontactInformationemail), required: false);
-            SourceExpression.Validate(bodycontactInformationname, nameof(bodycontactInformationname), required: false);
-            SourceExpression.Validate(bodycontactInformationphone, nameof(bodycontactInformationphone), required: false);
-            SourceExpression.Validate(bodycontactInformationpostal, nameof(bodycontactInformationpostal), required: false);
-            SourceExpression.Validate(bodycontactInformationworkphone, nameof(bodycontactInformationworkphone), required: false);
-            SourceExpression.Validate(bodyemploymentagentGroupId, nameof(bodyemploymentagentGroupId), required: false);
-            SourceExpression.Validate(bodyemploymentbankAcc, nameof(bodyemploymentbankAcc), required: false);
-            SourceExpression.Validate(bodyemploymentdescription, nameof(bodyemploymentdescription), required: false);
-            SourceExpression.Validate(bodyemploymentemployment, nameof(bodyemploymentemployment), required: false);
-            SourceExpression.Validate(bodyemploymentemploymentStart, nameof(bodyemploymentemploymentStart), required: false);
-            SourceExpression.Validate(bodyemploymentoffice, nameof(bodyemploymentoffice), required: false);
-            SourceExpression.Validate(bodyemploymentssn, nameof(bodyemploymentssn), required: false);
-            SourceExpression.Validate(bodyemploymentworkshift, nameof(bodyemploymentworkshift), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create_agent";
@@ -272,57 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<CreateCallbackResponse> CreateCallback([WorkflowExpression] Func<string> bodycontactaddress = null, [WorkflowExpression] Func<string> bodycontactcity = null, [WorkflowExpression] Func<int> bodycontactcompanyid = null, [WorkflowExpression] Func<string> bodycontactcontactList = null, [WorkflowExpression] Func<string> bodycontactcontactid = null, [WorkflowExpression] Func<string> bodycontactcountry = null, [WorkflowExpression] Func<string> bodycontactfname = null, [WorkflowExpression] Func<string> bodycontactlname = null, [WorkflowExpression] Func<string> bodycontactother1 = null, [WorkflowExpression] Func<string> bodycontactother2 = null, [WorkflowExpression] Func<string> bodycontactother3 = null, [WorkflowExpression] Func<string> bodycontactother4 = null, [WorkflowExpression] Func<string> bodycontactother5 = null, [WorkflowExpression] Func<string> bodycontactother6 = null, [WorkflowExpression] Func<string> bodycontactother7 = null, [WorkflowExpression] Func<string> bodycontactother8 = null, [WorkflowExpression] Func<string> bodycontactother9 = null, [WorkflowExpression] Func<string> bodycontactother10 = null, [WorkflowExpression] Func<string> bodycontactother11 = null, [WorkflowExpression] Func<string> bodycontactother12 = null, [WorkflowExpression] Func<string> bodycontactother13 = null, [WorkflowExpression] Func<string> bodycontactother14 = null, [WorkflowExpression] Func<string> bodycontactother15 = null, [WorkflowExpression] Func<string> bodycontactother16 = null, [WorkflowExpression] Func<string> bodycontactother17 = null, [WorkflowExpression] Func<string> bodycontactother18 = null, [WorkflowExpression] Func<string> bodycontactother19 = null, [WorkflowExpression] Func<string> bodycontactother20 = null, [WorkflowExpression] Func<string> bodycontactother21 = null, [WorkflowExpression] Func<string> bodycontactother22 = null, [WorkflowExpression] Func<string> bodycontactother23 = null, [WorkflowExpression] Func<string> bodycontactother24 = null, [WorkflowExpression] Func<string> bodycontactother25 = null, [WorkflowExpression] Func<string> bodycontactother26 = null, [WorkflowExpression] Func<string> bodycontactother27 = null, [WorkflowExpression] Func<string> bodycontactother28 = null, [WorkflowExpression] Func<string> bodycontactother29 = null, [WorkflowExpression] Func<string> bodycontactother30 = null, [WorkflowExpression] Func<string> bodycontactother31 = null, [WorkflowExpression] Func<string> bodycontactother32 = null, [WorkflowExpression] Func<string> bodycontactother33 = null, [WorkflowExpression] Func<string> bodycontactother34 = null, [WorkflowExpression] Func<string> bodycontactother35 = null, [WorkflowExpression] Func<string> bodycontactpostcode = null, [WorkflowExpression] Func<string> bodypropertiesagent = null, [WorkflowExpression] Func<string> bodypropertiesagentGroup = null, [WorkflowExpression] Func<string> bodypropertiescampaign = null, [WorkflowExpression] Func<string> bodypropertiescomment = null, [WorkflowExpression] Func<string> bodypropertiesphone = null, [WorkflowExpression] Func<string> bodypropertiestimestamp = null, [WorkflowExpression] Func<bodypropertiestypeInput> bodypropertiestype = null)
         {
-            SourceExpression.Validate(bodycontactaddress, nameof(bodycontactaddress), required: false);
-            SourceExpression.Validate(bodycontactcity, nameof(bodycontactcity), required: false);
-            SourceExpression.Validate(bodycontactcompanyid, nameof(bodycontactcompanyid), required: false);
-            SourceExpression.Validate(bodycontactcontactList, nameof(bodycontactcontactList), required: false);
-            SourceExpression.Validate(bodycontactcontactid, nameof(bodycontactcontactid), required: false);
-            SourceExpression.Validate(bodycontactcountry, nameof(bodycontactcountry), required: false);
-            SourceExpression.Validate(bodycontactfname, nameof(bodycontactfname), required: false);
-            SourceExpression.Validate(bodycontactlname, nameof(bodycontactlname), required: false);
-            SourceExpression.Validate(bodycontactother1, nameof(bodycontactother1), required: false);
-            SourceExpression.Validate(bodycontactother2, nameof(bodycontactother2), required: false);
-            SourceExpression.Validate(bodycontactother3, nameof(bodycontactother3), required: false);
-            SourceExpression.Validate(bodycontactother4, nameof(bodycontactother4), required: false);
-            SourceExpression.Validate(bodycontactother5, nameof(bodycontactother5), required: false);
-            SourceExpression.Validate(bodycontactother6, nameof(bodycontactother6), required: false);
-            SourceExpression.Validate(bodycontactother7, nameof(bodycontactother7), required: false);
-            SourceExpression.Validate(bodycontactother8, nameof(bodycontactother8), required: false);
-            SourceExpression.Validate(bodycontactother9, nameof(bodycontactother9), required: false);
-            SourceExpression.Validate(bodycontactother10, nameof(bodycontactother10), required: false);
-            SourceExpression.Validate(bodycontactother11, nameof(bodycontactother11), required: false);
-            SourceExpression.Validate(bodycontactother12, nameof(bodycontactother12), required: false);
-            SourceExpression.Validate(bodycontactother13, nameof(bodycontactother13), required: false);
-            SourceExpression.Validate(bodycontactother14, nameof(bodycontactother14), required: false);
-            SourceExpression.Validate(bodycontactother15, nameof(bodycontactother15), required: false);
-            SourceExpression.Validate(bodycontactother16, nameof(bodycontactother16), required: false);
-            SourceExpression.Validate(bodycontactother17, nameof(bodycontactother17), required: false);
-            SourceExpression.Validate(bodycontactother18, nameof(bodycontactother18), required: false);
-            SourceExpression.Validate(bodycontactother19, nameof(bodycontactother19), required: false);
-            SourceExpression.Validate(bodycontactother20, nameof(bodycontactother20), required: false);
-            SourceExpression.Validate(bodycontactother21, nameof(bodycontactother21), required: false);
-            SourceExpression.Validate(bodycontactother22, nameof(bodycontactother22), required: false);
-            SourceExpression.Validate(bodycontactother23, nameof(bodycontactother23), required: false);
-            SourceExpression.Validate(bodycontactother24, nameof(bodycontactother24), required: false);
-            SourceExpression.Validate(bodycontactother25, nameof(bodycontactother25), required: false);
-            SourceExpression.Validate(bodycontactother26, nameof(bodycontactother26), required: false);
-            SourceExpression.Validate(bodycontactother27, nameof(bodycontactother27), required: false);
-            SourceExpression.Validate(bodycontactother28, nameof(bodycontactother28), required: false);
-            SourceExpression.Validate(bodycontactother29, nameof(bodycontactother29), required: false);
-            SourceExpression.Validate(bodycontactother30, nameof(bodycontactother30), required: false);
-            SourceExpression.Validate(bodycontactother31, nameof(bodycontactother31), required: false);
-            SourceExpression.Validate(bodycontactother32, nameof(bodycontactother32), required: false);
-            SourceExpression.Validate(bodycontactother33, nameof(bodycontactother33), required: false);
-            SourceExpression.Validate(bodycontactother34, nameof(bodycontactother34), required: false);
-            SourceExpression.Validate(bodycontactother35, nameof(bodycontactother35), required: false);
-            SourceExpression.Validate(bodycontactpostcode, nameof(bodycontactpostcode), required: false);
-            SourceExpression.Validate(bodypropertiesagent, nameof(bodypropertiesagent), required: false);
-            SourceExpression.Validate(bodypropertiesagentGroup, nameof(bodypropertiesagentGroup), required: false);
-            SourceExpression.Validate(bodypropertiescampaign, nameof(bodypropertiescampaign), required: false);
-            SourceExpression.Validate(bodypropertiescomment, nameof(bodypropertiescomment), required: false);
-            SourceExpression.Validate(bodypropertiesphone, nameof(bodypropertiesphone), required: false);
-            SourceExpression.Validate(bodypropertiestimestamp, nameof(bodypropertiestimestamp), required: false);
-            SourceExpression.Validate(bodypropertiestype, nameof(bodypropertiestype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create_callback";
@@ -679,60 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> list, [WorkflowExpression] Func<string> fname = null, [WorkflowExpression] Func<string> lname = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> www = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> postcode = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> ssc = null, [WorkflowExpression] Func<string> birthyear = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> companyid = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<string> vatin = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> comment = null, [WorkflowExpression] Func<string> other1 = null, [WorkflowExpression] Func<string> other2 = null, [WorkflowExpression] Func<string> other3 = null, [WorkflowExpression] Func<string> other4 = null, [WorkflowExpression] Func<string> other5 = null, [WorkflowExpression] Func<string> other6 = null, [WorkflowExpression] Func<string> other7 = null, [WorkflowExpression] Func<string> other8 = null, [WorkflowExpression] Func<string> other9 = null, [WorkflowExpression] Func<string> other10 = null, [WorkflowExpression] Func<string> other11 = null, [WorkflowExpression] Func<string> other12 = null, [WorkflowExpression] Func<string> other13 = null, [WorkflowExpression] Func<string> other14 = null, [WorkflowExpression] Func<string> other15 = null, [WorkflowExpression] Func<string> other16 = null, [WorkflowExpression] Func<string> other17 = null, [WorkflowExpression] Func<string> other18 = null, [WorkflowExpression] Func<string> other19 = null, [WorkflowExpression] Func<string> other20 = null, [WorkflowExpression] Func<string> other21 = null, [WorkflowExpression] Func<string> other22 = null, [WorkflowExpression] Func<string> other23 = null, [WorkflowExpression] Func<string> other24 = null, [WorkflowExpression] Func<string> other25 = null, [WorkflowExpression] Func<string> other26 = null, [WorkflowExpression] Func<string> other27 = null, [WorkflowExpression] Func<string> other28 = null, [WorkflowExpression] Func<string> other29 = null, [WorkflowExpression] Func<string> other30 = null, [WorkflowExpression] Func<string> other31 = null, [WorkflowExpression] Func<string> other32 = null, [WorkflowExpression] Func<string> other33 = null, [WorkflowExpression] Func<string> other34 = null, [WorkflowExpression] Func<string> other35 = null, [WorkflowExpression] Func<string> assignToAgent = null)
         {
-            SourceExpression.Validate(phone, nameof(phone), required: true);
-            SourceExpression.Validate(list, nameof(list), required: true);
-            SourceExpression.Validate(fname, nameof(fname), required: false);
-            SourceExpression.Validate(lname, nameof(lname), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(www, nameof(www), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(postcode, nameof(postcode), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(ssc, nameof(ssc), required: false);
-            SourceExpression.Validate(birthyear, nameof(birthyear), required: false);
-            SourceExpression.Validate(gender, nameof(gender), required: false);
-            SourceExpression.Validate(companyid, nameof(companyid), required: false);
-            SourceExpression.Validate(company, nameof(company), required: false);
-            SourceExpression.Validate(vatin, nameof(vatin), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(comment, nameof(comment), required: false);
-            SourceExpression.Validate(other1, nameof(other1), required: false);
-            SourceExpression.Validate(other2, nameof(other2), required: false);
-            SourceExpression.Validate(other3, nameof(other3), required: false);
-            SourceExpression.Validate(other4, nameof(other4), required: false);
-            SourceExpression.Validate(other5, nameof(other5), required: false);
-            SourceExpression.Validate(other6, nameof(other6), required: false);
-            SourceExpression.Validate(other7, nameof(other7), required: false);
-            SourceExpression.Validate(other8, nameof(other8), required: false);
-            SourceExpression.Validate(other9, nameof(other9), required: false);
-            SourceExpression.Validate(other10, nameof(other10), required: false);
-            SourceExpression.Validate(other11, nameof(other11), required: false);
-            SourceExpression.Validate(other12, nameof(other12), required: false);
-            SourceExpression.Validate(other13, nameof(other13), required: false);
-            SourceExpression.Validate(other14, nameof(other14), required: false);
-            SourceExpression.Validate(other15, nameof(other15), required: false);
-            SourceExpression.Validate(other16, nameof(other16), required: false);
-            SourceExpression.Validate(other17, nameof(other17), required: false);
-            SourceExpression.Validate(other18, nameof(other18), required: false);
-            SourceExpression.Validate(other19, nameof(other19), required: false);
-            SourceExpression.Validate(other20, nameof(other20), required: false);
-            SourceExpression.Validate(other21, nameof(other21), required: false);
-            SourceExpression.Validate(other22, nameof(other22), required: false);
-            SourceExpression.Validate(other23, nameof(other23), required: false);
-            SourceExpression.Validate(other24, nameof(other24), required: false);
-            SourceExpression.Validate(other25, nameof(other25), required: false);
-            SourceExpression.Validate(other26, nameof(other26), required: false);
-            SourceExpression.Validate(other27, nameof(other27), required: false);
-            SourceExpression.Validate(other28, nameof(other28), required: false);
-            SourceExpression.Validate(other29, nameof(other29), required: false);
-            SourceExpression.Validate(other30, nameof(other30), required: false);
-            SourceExpression.Validate(other31, nameof(other31), required: false);
-            SourceExpression.Validate(other32, nameof(other32), required: false);
-            SourceExpression.Validate(other33, nameof(other33), required: false);
-            SourceExpression.Validate(other34, nameof(other34), required: false);
-            SourceExpression.Validate(other35, nameof(other35), required: false);
-            SourceExpression.Validate(assignToAgent, nameof(assignToAgent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create_contact";
@@ -856,7 +724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<FindAgentResponse> FindAgent([WorkflowExpression] Func<string> username)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/find_agent";
@@ -874,10 +741,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<FindContactResponse> FindContact([WorkflowExpression] Func<string> fname = null, [WorkflowExpression] Func<string> lname = null, [WorkflowExpression] Func<int> phone = null, [WorkflowExpression] Func<int> contactListId = null)
         {
-            SourceExpression.Validate(fname, nameof(fname), required: false);
-            SourceExpression.Validate(lname, nameof(lname), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(contactListId, nameof(contactListId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/find_contact";
@@ -902,32 +765,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<ModifyAgentResponse> ModifyAgent([WorkflowExpression] Func<int> bodyid, [WorkflowExpression] Func<string> bodyaccountexternalId = null, [WorkflowExpression] Func<string> bodyaccountinboundNumber = null, [WorkflowExpression] Func<int> bodyaccountlang = null, [WorkflowExpression] Func<string> bodyaccountpassword = null, [WorkflowExpression] Func<string> bodyaccounttimeZone = null, [WorkflowExpression] Func<string> bodyaccountusername = null, [WorkflowExpression] Func<string> bodyaccountvoipUsername = null, [WorkflowExpression] Func<string> bodycontactInformationaddress = null, [WorkflowExpression] Func<string> bodycontactInformationcity = null, [WorkflowExpression] Func<string> bodycontactInformationcountry = null, [WorkflowExpression] Func<string> bodycontactInformationeContacts = null, [WorkflowExpression] Func<string> bodycontactInformationemail = null, [WorkflowExpression] Func<string> bodycontactInformationname = null, [WorkflowExpression] Func<string> bodycontactInformationphone = null, [WorkflowExpression] Func<string> bodycontactInformationpostal = null, [WorkflowExpression] Func<string> bodycontactInformationworkphone = null, [WorkflowExpression] Func<bool> bodydisable = null, [WorkflowExpression] Func<int> bodyemploymentagentGroupId = null, [WorkflowExpression] Func<string> bodyemploymentbankAcc = null, [WorkflowExpression] Func<string> bodyemploymentdescription = null, [WorkflowExpression] Func<bodyemploymentemploymentInput> bodyemploymentemployment = null, [WorkflowExpression] Func<string> bodyemploymentemploymentStart = null, [WorkflowExpression] Func<string> bodyemploymentoffice = null, [WorkflowExpression] Func<string> bodyemploymentssn = null, [WorkflowExpression] Func<string> bodyemploymentworkshift = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyaccountexternalId, nameof(bodyaccountexternalId), required: false);
-            SourceExpression.Validate(bodyaccountinboundNumber, nameof(bodyaccountinboundNumber), required: false);
-            SourceExpression.Validate(bodyaccountlang, nameof(bodyaccountlang), required: false);
-            SourceExpression.Validate(bodyaccountpassword, nameof(bodyaccountpassword), required: false);
-            SourceExpression.Validate(bodyaccounttimeZone, nameof(bodyaccounttimeZone), required: false);
-            SourceExpression.Validate(bodyaccountusername, nameof(bodyaccountusername), required: false);
-            SourceExpression.Validate(bodyaccountvoipUsername, nameof(bodyaccountvoipUsername), required: false);
-            SourceExpression.Validate(bodycontactInformationaddress, nameof(bodycontactInformationaddress), required: false);
-            SourceExpression.Validate(bodycontactInformationcity, nameof(bodycontactInformationcity), required: false);
-            SourceExpression.Validate(bodycontactInformationcountry, nameof(bodycontactInformationcountry), required: false);
-            SourceExpression.Validate(bodycontactInformationeContacts, nameof(bodycontactInformationeContacts), required: false);
-            SourceExpression.Validate(bodycontactInformationemail, nameof(bodycontactInformationemail), required: false);
-            SourceExpression.Validate(bodycontactInformationname, nameof(bodycontactInformationname), required: false);
-            SourceExpression.Validate(bodycontactInformationphone, nameof(bodycontactInformationphone), required: false);
-            SourceExpression.Validate(bodycontactInformationpostal, nameof(bodycontactInformationpostal), required: false);
-            SourceExpression.Validate(bodycontactInformationworkphone, nameof(bodycontactInformationworkphone), required: false);
-            SourceExpression.Validate(bodydisable, nameof(bodydisable), required: false);
-            SourceExpression.Validate(bodyemploymentagentGroupId, nameof(bodyemploymentagentGroupId), required: false);
-            SourceExpression.Validate(bodyemploymentbankAcc, nameof(bodyemploymentbankAcc), required: false);
-            SourceExpression.Validate(bodyemploymentdescription, nameof(bodyemploymentdescription), required: false);
-            SourceExpression.Validate(bodyemploymentemployment, nameof(bodyemploymentemployment), required: false);
-            SourceExpression.Validate(bodyemploymentemploymentStart, nameof(bodyemploymentemploymentStart), required: false);
-            SourceExpression.Validate(bodyemploymentoffice, nameof(bodyemploymentoffice), required: false);
-            SourceExpression.Validate(bodyemploymentssn, nameof(bodyemploymentssn), required: false);
-            SourceExpression.Validate(bodyemploymentworkshift, nameof(bodyemploymentworkshift), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/modify_agent";
@@ -1136,62 +973,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<ModifyContactResponse> ModifyContact([WorkflowExpression] Func<int> contactId, [WorkflowExpression] Func<string> fname = null, [WorkflowExpression] Func<string> lname = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> birthyear = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> www = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> postcode = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> ssc = null, [WorkflowExpression] Func<int> companyid = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<string> vatin = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> comment = null, [WorkflowExpression] Func<string> other1 = null, [WorkflowExpression] Func<string> other2 = null, [WorkflowExpression] Func<string> other3 = null, [WorkflowExpression] Func<string> other4 = null, [WorkflowExpression] Func<string> other5 = null, [WorkflowExpression] Func<string> other6 = null, [WorkflowExpression] Func<string> other7 = null, [WorkflowExpression] Func<string> other8 = null, [WorkflowExpression] Func<string> other9 = null, [WorkflowExpression] Func<string> other10 = null, [WorkflowExpression] Func<string> other11 = null, [WorkflowExpression] Func<string> other12 = null, [WorkflowExpression] Func<string> other13 = null, [WorkflowExpression] Func<string> other14 = null, [WorkflowExpression] Func<string> other15 = null, [WorkflowExpression] Func<string> other16 = null, [WorkflowExpression] Func<string> other17 = null, [WorkflowExpression] Func<string> other18 = null, [WorkflowExpression] Func<string> other19 = null, [WorkflowExpression] Func<string> other20 = null, [WorkflowExpression] Func<string> other21 = null, [WorkflowExpression] Func<string> other22 = null, [WorkflowExpression] Func<string> other23 = null, [WorkflowExpression] Func<string> other24 = null, [WorkflowExpression] Func<string> other25 = null, [WorkflowExpression] Func<string> other26 = null, [WorkflowExpression] Func<string> other27 = null, [WorkflowExpression] Func<string> other28 = null, [WorkflowExpression] Func<string> other29 = null, [WorkflowExpression] Func<string> other30 = null, [WorkflowExpression] Func<string> other31 = null, [WorkflowExpression] Func<string> other32 = null, [WorkflowExpression] Func<string> other33 = null, [WorkflowExpression] Func<string> other34 = null, [WorkflowExpression] Func<string> other35 = null, [WorkflowExpression] Func<string> list = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> assignToAgent = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(fname, nameof(fname), required: false);
-            SourceExpression.Validate(lname, nameof(lname), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(birthyear, nameof(birthyear), required: false);
-            SourceExpression.Validate(gender, nameof(gender), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(www, nameof(www), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(postcode, nameof(postcode), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(ssc, nameof(ssc), required: false);
-            SourceExpression.Validate(companyid, nameof(companyid), required: false);
-            SourceExpression.Validate(company, nameof(company), required: false);
-            SourceExpression.Validate(vatin, nameof(vatin), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(comment, nameof(comment), required: false);
-            SourceExpression.Validate(other1, nameof(other1), required: false);
-            SourceExpression.Validate(other2, nameof(other2), required: false);
-            SourceExpression.Validate(other3, nameof(other3), required: false);
-            SourceExpression.Validate(other4, nameof(other4), required: false);
-            SourceExpression.Validate(other5, nameof(other5), required: false);
-            SourceExpression.Validate(other6, nameof(other6), required: false);
-            SourceExpression.Validate(other7, nameof(other7), required: false);
-            SourceExpression.Validate(other8, nameof(other8), required: false);
-            SourceExpression.Validate(other9, nameof(other9), required: false);
-            SourceExpression.Validate(other10, nameof(other10), required: false);
-            SourceExpression.Validate(other11, nameof(other11), required: false);
-            SourceExpression.Validate(other12, nameof(other12), required: false);
-            SourceExpression.Validate(other13, nameof(other13), required: false);
-            SourceExpression.Validate(other14, nameof(other14), required: false);
-            SourceExpression.Validate(other15, nameof(other15), required: false);
-            SourceExpression.Validate(other16, nameof(other16), required: false);
-            SourceExpression.Validate(other17, nameof(other17), required: false);
-            SourceExpression.Validate(other18, nameof(other18), required: false);
-            SourceExpression.Validate(other19, nameof(other19), required: false);
-            SourceExpression.Validate(other20, nameof(other20), required: false);
-            SourceExpression.Validate(other21, nameof(other21), required: false);
-            SourceExpression.Validate(other22, nameof(other22), required: false);
-            SourceExpression.Validate(other23, nameof(other23), required: false);
-            SourceExpression.Validate(other24, nameof(other24), required: false);
-            SourceExpression.Validate(other25, nameof(other25), required: false);
-            SourceExpression.Validate(other26, nameof(other26), required: false);
-            SourceExpression.Validate(other27, nameof(other27), required: false);
-            SourceExpression.Validate(other28, nameof(other28), required: false);
-            SourceExpression.Validate(other29, nameof(other29), required: false);
-            SourceExpression.Validate(other30, nameof(other30), required: false);
-            SourceExpression.Validate(other31, nameof(other31), required: false);
-            SourceExpression.Validate(other32, nameof(other32), required: false);
-            SourceExpression.Validate(other33, nameof(other33), required: false);
-            SourceExpression.Validate(other34, nameof(other34), required: false);
-            SourceExpression.Validate(other35, nameof(other35), required: false);
-            SourceExpression.Validate(list, nameof(list), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(assignToAgent, nameof(assignToAgent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/modify_contact";

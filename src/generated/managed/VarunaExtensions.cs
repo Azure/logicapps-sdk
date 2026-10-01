@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         public IBodyWorkflowAction<JToken> GetADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentType, nameof(documentType), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getdocument";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         public IBodyWorkflowAction<CreateADocumentResponse> CreateADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<object> createSchema = null)
         {
-            SourceExpression.Validate(documentType, nameof(documentType), required: true);
-            SourceExpression.Validate(createSchema, nameof(createSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createdocument";
@@ -50,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         public IBodyWorkflowAction<DeleteADocumentResponse> DeleteADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentType, nameof(documentType), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deletedocument";
@@ -68,9 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         public IBodyWorkflowAction<UpdateADocumentResponse> UpdateADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<object> updateSchema = null)
         {
-            SourceExpression.Validate(documentType, nameof(documentType), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(updateSchema, nameof(updateSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updatedocument";
@@ -88,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
         public IBodyWorkflowAction<JToken[]> GetAllDocumentsByType([WorkflowExpression] Func<string> documentType)
         {
-            SourceExpression.Validate(documentType, nameof(documentType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getalldocumentsbytype";
@@ -106,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
     {
         public IBodyWorkflowTrigger<JToken> SubscribeTrigger([WorkflowExpression] Func<string> bodytriggerName, [WorkflowExpression] Func<int> bodywhen = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
-            SourceExpression.Validate(bodywhen, nameof(bodywhen), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscribewebhook";

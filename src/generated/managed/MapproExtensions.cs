@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> GetPlaceById([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> placeId)
         {
-            SourceExpression.Validate(mapId, nameof(mapId), required: true);
-            SourceExpression.Validate(placeId, nameof(placeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(placeId, 1));
@@ -30,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IWorkflowAction DeletePlace([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> placeId)
         {
-            SourceExpression.Validate(mapId, nameof(mapId), required: true);
-            SourceExpression.Validate(placeId, nameof(placeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(placeId, 1));
@@ -46,13 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> UpdatePlace([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> placeId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<double> bodylatitude, [WorkflowExpression] Func<double> bodylongitude, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(mapId, nameof(mapId), required: true);
-            SourceExpression.Validate(placeId, nameof(placeId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            SourceExpression.Validate(bodylatitude, nameof(bodylatitude), required: true);
-            SourceExpression.Validate(bodylongitude, nameof(bodylongitude), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(placeId, 1));
@@ -87,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place[]> GetMapPlacesById([WorkflowExpression] Func<string> mapId)
         {
-            SourceExpression.Validate(mapId, nameof(mapId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/places", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mapId, 1));
@@ -102,12 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> CreateNewPlace([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<double> bodylatitude, [WorkflowExpression] Func<double> bodylongitude, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(mapId, nameof(mapId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            SourceExpression.Validate(bodylatitude, nameof(bodylatitude), required: true);
-            SourceExpression.Validate(bodylongitude, nameof(bodylongitude), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/places", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mapId, 1));

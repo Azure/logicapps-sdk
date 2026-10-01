@@ -14,27 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<NewMeetingRespone> CreateTeamsMeeting([WorkflowExpression] Func<calendaridInput> calendarid, [WorkflowExpression] Func<string> itemsubject, [WorkflowExpression] Func<string> itemtimeZone, [WorkflowExpression] Func<string> itembodyeventMessageContent = null, [WorkflowExpression] Func<string> itemstartstartTime = null, [WorkflowExpression] Func<string> itemendendTime = null, [WorkflowExpression] Func<string> itemrequiredAttendees = null, [WorkflowExpression] Func<string> itemoptionalAttendees = null, [WorkflowExpression] Func<string> itemlocationdisplayName = null, [WorkflowExpression] Func<itemimportanceInput> itemimportance = null, [WorkflowExpression] Func<itemrecurrencepatternrecurrencePatternInput> itemrecurrencepatternrecurrencePattern = null, [WorkflowExpression] Func<int> itemrecurrencepatternrecurrenceInterval = null, [WorkflowExpression] Func<string[]> itemrecurrencepatterndaysOfWeek = null, [WorkflowExpression] Func<itemrecurrencepatternweekIndexInput> itemrecurrencepatternweekIndex = null, [WorkflowExpression] Func<string> itemrecurrencerangerecurrenceStartDate = null, [WorkflowExpression] Func<string> itemrecurrencerangerecurrenceEndDate = null, [WorkflowExpression] Func<bool> itemallDayEvent = null, [WorkflowExpression] Func<int> itempreEventReminderTime = null, [WorkflowExpression] Func<bool> itemenableReminders = null, [WorkflowExpression] Func<itemstatusShowAsInput> itemstatusShowAs = null, [WorkflowExpression] Func<bool> itemrequestResponse = null)
         {
-            SourceExpression.Validate(calendarid, nameof(calendarid), required: true);
-            SourceExpression.Validate(itemsubject, nameof(itemsubject), required: true);
-            SourceExpression.Validate(itemtimeZone, nameof(itemtimeZone), required: true);
-            SourceExpression.Validate(itembodyeventMessageContent, nameof(itembodyeventMessageContent), required: false);
-            SourceExpression.Validate(itemstartstartTime, nameof(itemstartstartTime), required: false);
-            SourceExpression.Validate(itemendendTime, nameof(itemendendTime), required: false);
-            SourceExpression.Validate(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
-            SourceExpression.Validate(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
-            SourceExpression.Validate(itemlocationdisplayName, nameof(itemlocationdisplayName), required: false);
-            SourceExpression.Validate(itemimportance, nameof(itemimportance), required: false);
-            SourceExpression.Validate(itemrecurrencepatternrecurrencePattern, nameof(itemrecurrencepatternrecurrencePattern), required: false);
-            SourceExpression.Validate(itemrecurrencepatternrecurrenceInterval, nameof(itemrecurrencepatternrecurrenceInterval), required: false);
-            SourceExpression.Validate(itemrecurrencepatterndaysOfWeek, nameof(itemrecurrencepatterndaysOfWeek), required: false);
-            SourceExpression.Validate(itemrecurrencepatternweekIndex, nameof(itemrecurrencepatternweekIndex), required: false);
-            SourceExpression.Validate(itemrecurrencerangerecurrenceStartDate, nameof(itemrecurrencerangerecurrenceStartDate), required: false);
-            SourceExpression.Validate(itemrecurrencerangerecurrenceEndDate, nameof(itemrecurrencerangerecurrenceEndDate), required: false);
-            SourceExpression.Validate(itemallDayEvent, nameof(itemallDayEvent), required: false);
-            SourceExpression.Validate(itempreEventReminderTime, nameof(itempreEventReminderTime), required: false);
-            SourceExpression.Validate(itemenableReminders, nameof(itemenableReminders), required: false);
-            SourceExpression.Validate(itemstatusShowAs, nameof(itemstatusShowAs), required: false);
-            SourceExpression.Validate(itemrequestResponse, nameof(itemrequestResponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarid, 1));
@@ -257,9 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetChannelsForGroupResponse> GetChannelsForGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/channels", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -278,10 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateChannelResponse> CreateChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodymembershipTypeInput> bodymembershipType = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodymembershipType, nameof(bodymembershipType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/channels", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -326,8 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetChannelResponse> GetChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -342,10 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction UpdateChannelProperties([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -378,9 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AsyncOperationResponse> ArchiveChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<bool> bodysetSharePointSiteToReadOnlyForMembers = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
-            SourceExpression.Validate(bodysetSharePointSiteToReadOnlyForMembers, nameof(bodysetSharePointSiteToReadOnlyForMembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -407,9 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetAllChannelsForTeamResponse> GetAllChannelsForTeam([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/allChannels", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -428,8 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetChatsResponse> GetChats([WorkflowExpression] Func<chatTypeInput> chatType, [WorkflowExpression] Func<topicInput> topic)
         {
-            SourceExpression.Validate(chatType, nameof(chatType), required: true);
-            SourceExpression.Validate(topic, nameof(topic), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/flowbot/actions/listchats/chattypes/{0}/topic/{1}/expandmembers/false", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topic, 1));
@@ -444,9 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction PostFeedNotification([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<notificationTypeInput> notificationType, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(poster, nameof(poster), required: true);
-            SourceExpression.Validate(notificationType, nameof(notificationType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/flowbot/feednotification/poster/{0}/notificationType/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(poster, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(notificationType, 1));
@@ -462,8 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AtMentionTagResponse> AtMentionTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -478,8 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetMessagesFromConversationResponse> GetMessagesFromChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -494,9 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<JToken> GetMessageDetails([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(threadType, nameof(threadType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/messages/{0}/messageType/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadType, 1));
@@ -512,10 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<ListRepliesResponseSchema> ListRepliesToMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/messages/{2}/replies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -533,9 +477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<ListMembersResponseSchema> ListMembers([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(threadType, nameof(threadType), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/listmembers/threadType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadType, 1));
@@ -553,7 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction SubscribeUserMessageWithOptions([WorkflowExpression] Func<object> userMessageWithOptionsSubscriptionRequest = null)
         {
-            SourceExpression.Validate(userMessageWithOptionsSubscriptionRequest, nameof(userMessageWithOptionsSubscriptionRequest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowbot/actions/messagewithoptions/recipienttypes/user/$subscriptions";
@@ -569,7 +509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetTeamResponse> GetTeam([WorkflowExpression] Func<string> teamId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -584,7 +523,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AtMentionUserV1> AtMentionUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -599,8 +537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<NewChatResponse> CreateChat([WorkflowExpression] Func<string> itemmembersToAdd, [WorkflowExpression] Func<string> itemtitle = null)
         {
-            SourceExpression.Validate(itemmembersToAdd, nameof(itemmembersToAdd), required: true);
-            SourceExpression.Validate(itemtitle, nameof(itemtitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/chats";
@@ -629,10 +565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetMessagesFromConversationResponse> GetMessagesFromChat([WorkflowExpression] Func<string> chatId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> top = null)
         {
-            SourceExpression.Validate(chatId, nameof(chatId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/chats/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatId, 1));
@@ -653,8 +585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<ChatMessage> PostMessageToSelf([WorkflowExpression] Func<bodybodycontentTypeInput> bodybodycontentType = null, [WorkflowExpression] Func<string> bodybodycontent = null)
         {
-            SourceExpression.Validate(bodybodycontentType, nameof(bodybodycontentType), required: false);
-            SourceExpression.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/chats/48:notes/messages";
@@ -705,9 +635,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateATeamResponse> CreateATeam([WorkflowExpression] Func<string> bodyteamName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility = null)
         {
-            SourceExpression.Validate(bodyteamName, nameof(bodyteamName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/teams";
@@ -748,9 +675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<ListMembersResponseSchema> ListTeamMembers([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> top = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -769,9 +693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction AddMemberToTeam([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodysetUserAsTeamOwner = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            SourceExpression.Validate(bodysetUserAsTeamOwner, nameof(bodysetUserAsTeamOwner), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -800,8 +721,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction RemoveMemberFromTeam([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> membershipId)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(membershipId, nameof(membershipId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(membershipId, 1));
@@ -816,10 +735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction AddMemberToChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodysetUserAsChannelOwner = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            SourceExpression.Validate(bodysetUserAsChannelOwner, nameof(bodysetUserAsChannelOwner), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -848,9 +763,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction RemoveMemberFromChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> membershipId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
-            SourceExpression.Validate(membershipId, nameof(membershipId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(membershipId, 1));
@@ -865,9 +777,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> PostMessageToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(poster, nameof(poster), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/conversation/message/poster/{0}/location/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(poster, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -883,9 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> ReplyWithMessageToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(poster, nameof(poster), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/replyWithMessage/poster/{0}/location/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(poster, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -901,9 +807,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> PostCardToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(poster, nameof(poster), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/adaptivecard/poster/{0}/location/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(poster, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -919,11 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<JToken> PostCardAndWaitForResponse([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> bodybodyrecipient = null, [WorkflowExpression] Func<string> bodybodymessage = null, [WorkflowExpression] Func<string> bodybodyupdateMessage = null)
         {
-            SourceExpression.Validate(poster, nameof(poster), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(bodybodyrecipient, nameof(bodybodyrecipient), required: false);
-            SourceExpression.Validate(bodybodymessage, nameof(bodybodymessage), required: false);
-            SourceExpression.Validate(bodybodyupdateMessage, nameof(bodybodyupdateMessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(poster, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -982,9 +880,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> ReplyWithCardToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(poster, nameof(poster), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(poster, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -1000,9 +895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> UpdateCardInConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(poster, nameof(poster), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/updateAdaptivecard/poster/{0}/location/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(poster, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -1018,15 +910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(customHeader1, nameof(customHeader1), required: false);
-            SourceExpression.Validate(customHeader2, nameof(customHeader2), required: false);
-            SourceExpression.Validate(customHeader3, nameof(customHeader3), required: false);
-            SourceExpression.Validate(customHeader4, nameof(customHeader4), required: false);
-            SourceExpression.Validate(customHeader5, nameof(customHeader5), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/httprequest";
@@ -1057,10 +940,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction AddMemberToChat([WorkflowExpression] Func<string> chatId, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodysetUserAsChatOwner = null, [WorkflowExpression] Func<string> bodyvisibleHistoryStartDateTime = null)
         {
-            SourceExpression.Validate(chatId, nameof(chatId), required: true);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            SourceExpression.Validate(bodysetUserAsChatOwner, nameof(bodysetUserAsChatOwner), required: false);
-            SourceExpression.Validate(bodyvisibleHistoryStartDateTime, nameof(bodyvisibleHistoryStartDateTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/chats/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatId, 1));
@@ -1095,8 +974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction RemoveMemberFromChat([WorkflowExpression] Func<string> chatId, [WorkflowExpression] Func<string> membershipId)
         {
-            SourceExpression.Validate(chatId, nameof(chatId), required: true);
-            SourceExpression.Validate(membershipId, nameof(membershipId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/chats/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(membershipId, 1));
@@ -1111,8 +988,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetOnlineMeetingResponse> GetOnlineMeeting([WorkflowExpression] Func<lookupTypeInput> lookupType, [WorkflowExpression] Func<string> lookupValue)
         {
-            SourceExpression.Validate(lookupType, nameof(lookupType), required: true);
-            SourceExpression.Validate(lookupValue, nameof(lookupValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/me/onlineMeetings/lookup";
@@ -1129,7 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallTranscriptCollectionResponse> ListMeetingTranscripts([WorkflowExpression] Func<string> meetingId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/transcripts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
@@ -1144,8 +1018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallTranscriptResponse> GetMeetingTranscript([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> transcriptId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
-            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/transcripts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
@@ -1160,8 +1032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<string> GetMeetingTranscriptContent([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> transcriptId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
-            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/transcripts/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
@@ -1176,7 +1046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallRecordingCollectionResponse> ListMeetingRecordings([WorkflowExpression] Func<string> meetingId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/recordings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
@@ -1191,8 +1060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallRecordingResponse> GetMeetingRecording([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> recordingId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
-            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/recordings/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
@@ -1207,8 +1074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<object> GetMeetingRecordingContent([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> recordingId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
-            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/recordings/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
@@ -1237,11 +1102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<SectionResponse> CreateSection([WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodydisplayIconiconType = null, [WorkflowExpression] Func<bool> bodyisExpanded = null, [WorkflowExpression] Func<bodysortTypeInput> bodysortType = null)
         {
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodydisplayIconiconType, nameof(bodydisplayIconiconType), required: false);
-            SourceExpression.Validate(bodyisExpanded, nameof(bodyisExpanded), required: false);
-            SourceExpression.Validate(bodysortType, nameof(bodysortType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/me/teamwork/sections";
@@ -1291,7 +1151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<SectionResponse> GetSection([WorkflowExpression] Func<string> sectionId)
         {
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
@@ -1306,12 +1165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<SectionResponse> UpdateSection([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodydisplayIconiconType = null, [WorkflowExpression] Func<bool> bodyisExpanded = null, [WorkflowExpression] Func<bodysortTypeInput> bodysortType = null)
         {
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodydisplayIconiconType, nameof(bodydisplayIconiconType), required: false);
-            SourceExpression.Validate(bodyisExpanded, nameof(bodyisExpanded), required: false);
-            SourceExpression.Validate(bodysortType, nameof(bodysortType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
@@ -1365,8 +1218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction DeleteSection([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> ifMatch)
         {
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
@@ -1382,7 +1233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<ListSectionItemsResponse> ListSectionItems([WorkflowExpression] Func<string> sectionId)
         {
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
@@ -1397,9 +1247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction RemoveSectionItem([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> sectionItemId, [WorkflowExpression] Func<string> ifMatch)
         {
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(sectionItemId, nameof(sectionItemId), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionItemId, 1));
@@ -1415,10 +1262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<SectionItemResponse> MoveSectionItem([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> sectionItemId, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> bodytargetSectionId)
         {
-            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
-            SourceExpression.Validate(sectionItemId, nameof(sectionItemId), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
-            SourceExpression.Validate(bodytargetSectionId, nameof(bodytargetSectionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}/items/{1}/move", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionItemId, 1));
@@ -1442,7 +1285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetTagsResponseSchema> GetTags([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -1457,9 +1299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateTagResponseSchema> CreateTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodymembersIDs)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodymembersIDs, nameof(bodymembersIDs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -1484,8 +1323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateTagResponseSchema> GetTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -1500,9 +1337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateTagResponseSchema> UpdateTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodydisplayName)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -1525,8 +1359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction DeleteTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -1541,9 +1373,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AddMemberToTagResponseSchema> AddMemberToTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyuserSId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodyuserSId, nameof(bodyuserSId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -1566,8 +1395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetTagMembersResponseSchema> GetTagMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -1582,9 +1409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction DeleteTagMember([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> tagMemberId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(tagMemberId, nameof(tagMemberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagMemberId, 1));
@@ -1599,7 +1423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallRecordingCollectionResponse> ListCallRecordings([WorkflowExpression] Func<string> callId)
         {
-            SourceExpression.Validate(callId, nameof(callId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/recordings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1));
@@ -1614,8 +1437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallRecordingResponse> GetCallRecording([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> recordingId)
         {
-            SourceExpression.Validate(callId, nameof(callId), required: true);
-            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/recordings/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
@@ -1630,8 +1451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<object> GetCallRecordingContent([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> recordingId)
         {
-            SourceExpression.Validate(callId, nameof(callId), required: true);
-            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/recordings/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
@@ -1646,7 +1465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallTranscriptCollectionResponse> ListCallTranscripts([WorkflowExpression] Func<string> callId)
         {
-            SourceExpression.Validate(callId, nameof(callId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/transcripts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1));
@@ -1661,8 +1479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallTranscriptResponse> GetCallTranscript([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> transcriptId)
         {
-            SourceExpression.Validate(callId, nameof(callId), required: true);
-            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/transcripts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
@@ -1677,8 +1493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<string> GetCallTranscriptContent([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> transcriptId)
         {
-            SourceExpression.Validate(callId, nameof(callId), required: true);
-            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/transcripts/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
@@ -1693,11 +1507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallRecordingCollectionResponse> GetAllAdhocCallRecordings([WorkflowExpression] Func<string> startDateTime = null, [WorkflowExpression] Func<string> endDateTime = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> deltatoken = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: false);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
-            SourceExpression.Validate(deltatoken, nameof(deltatoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/me/adhocCalls/getAllRecordings";
@@ -1722,11 +1531,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CallTranscriptCollectionResponse> GetAllAdhocCallTranscripts([WorkflowExpression] Func<string> startDateTime = null, [WorkflowExpression] Func<string> endDateTime = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> deltatoken = null)
         {
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: false);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
-            SourceExpression.Validate(deltatoken, nameof(deltatoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/me/adhocCalls/getAllTranscripts";
@@ -1751,7 +1555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AiInsightCollectionResponse> ListAiInsights([WorkflowExpression] Func<string> meetingId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/copilot/me/onlineMeetings/{0}/aiInsights", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
@@ -1766,8 +1569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AiInsightDetailResponse> GetAiInsight([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> aiInsightId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
-            SourceExpression.Validate(aiInsightId, nameof(aiInsightId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/copilot/me/onlineMeetings/{0}/aiInsights/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aiInsightId, 1));
@@ -1784,8 +1585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     {
         public IBodyWorkflowTrigger<ChatMessage[]> OnNewChannelMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -1800,8 +1599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IBodyWorkflowTrigger<ChatMessage[]> OnNewChannelMessageMentioningMe([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -1816,8 +1613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IWorkflowTrigger WebhookAtMentionTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(threadType, nameof(threadType), required: true);
-            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/atmentiontrigger/threadType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadType, 1));
@@ -1832,11 +1627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IWorkflowTrigger WebhookMessageReactionTrigger([WorkflowExpression] Func<string> reactionKey, [WorkflowExpression] Func<frequencyInput> frequency, [WorkflowExpression] Func<runningPolicyInput> runningPolicy, [WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(reactionKey, nameof(reactionKey), required: true);
-            SourceExpression.Validate(frequency, nameof(frequency), required: true);
-            SourceExpression.Validate(runningPolicy, nameof(runningPolicy), required: true);
-            SourceExpression.Validate(threadType, nameof(threadType), required: true);
-            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/messagereactiontrigger/threadType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadType, 1));
@@ -1854,8 +1644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IWorkflowTrigger TranscriptTrigger([WorkflowExpression] Func<scopeTypeInput> scopeType, [WorkflowExpression] Func<object> bodyscope, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(scopeType, nameof(scopeType), required: true);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/subscriptions/transcripttrigger";
@@ -1880,8 +1668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IWorkflowTrigger RecordingTrigger([WorkflowExpression] Func<scopeTypeInput> scopeType, [WorkflowExpression] Func<object> bodyscope, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(scopeType, nameof(scopeType), required: true);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/subscriptions/recordingtrigger";
@@ -1927,9 +1713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IWorkflowTrigger WebhookKeywordTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<string> search, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(threadType, nameof(threadType), required: true);
-            SourceExpression.Validate(search, nameof(search), required: true);
-            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/keywordtrigger/threadType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadType, 1));
@@ -1945,8 +1728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IWorkflowTrigger WebhookNewMessageTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(threadType, nameof(threadType), required: true);
-            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/newmessagetrigger/threadType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadType, 1));
@@ -1961,7 +1742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/v1.0/groups/removal";
@@ -1977,7 +1757,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/v1.0/groups/delta";

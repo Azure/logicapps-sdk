@@ -14,29 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<CreateInstantPackageResponse> CreateInstantPackage([WorkflowExpression] Func<string> bodydocument = null, [WorkflowExpression] Func<bodydocumentLanguageInput> bodydocumentLanguage = null, [WorkflowExpression] Func<string> bodydocumentName = null, [WorkflowExpression] Func<string> bodyexternalPackageData = null, [WorkflowExpression] Func<string> bodyinitiator = null, [WorkflowExpression] Func<Stakeholder[]> bodystakeholders = null, [WorkflowExpression] Func<string> bodycallBackUrl = null, [WorkflowExpression] Func<string> bodycorrelationId = null, [WorkflowExpression] Func<string> bodydocumentGroupCode = null, [WorkflowExpression] Func<string> bodythemeCode = null, [WorkflowExpression] Func<bool> bodydownloadUnsignedFiles = null, [WorkflowExpression] Func<bool> bodyreassignEnabled = null, [WorkflowExpression] Func<int> bodyactionUrlExpirationPeriodInDays = null, [WorkflowExpression] Func<string> bodyexpiryTimestamp = null, [WorkflowExpression] Func<string> bodyexternalDocumentReference = null, [WorkflowExpression] Func<string> bodyexternalPackageReference = null, [WorkflowExpression] Func<string> bodyf2FRedirectUrl = null, [WorkflowExpression] Func<string> bodynotificationCallBackUrl = null, [WorkflowExpression] Func<string> bodypdfErrorHandling = null, [WorkflowExpression] Func<string> bodyrepresentation = null, [WorkflowExpression] Func<string> bodyrepresentationType = null, [WorkflowExpression] Func<string> bodysigningTemplateCode = null, [WorkflowExpression] Func<string> bodytargetType = null)
         {
-            SourceExpression.Validate(bodydocument, nameof(bodydocument), required: false);
-            SourceExpression.Validate(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
-            SourceExpression.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
-            SourceExpression.Validate(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
-            SourceExpression.Validate(bodyinitiator, nameof(bodyinitiator), required: false);
-            SourceExpression.Validate(bodystakeholders, nameof(bodystakeholders), required: false);
-            SourceExpression.Validate(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: false);
-            SourceExpression.Validate(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
-            SourceExpression.Validate(bodythemeCode, nameof(bodythemeCode), required: false);
-            SourceExpression.Validate(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
-            SourceExpression.Validate(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
-            SourceExpression.Validate(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
-            SourceExpression.Validate(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
-            SourceExpression.Validate(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
-            SourceExpression.Validate(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
-            SourceExpression.Validate(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
-            SourceExpression.Validate(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
-            SourceExpression.Validate(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
-            SourceExpression.Validate(bodyrepresentation, nameof(bodyrepresentation), required: false);
-            SourceExpression.Validate(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
-            SourceExpression.Validate(bodysigningTemplateCode, nameof(bodysigningTemplateCode), required: false);
-            SourceExpression.Validate(bodytargetType, nameof(bodytargetType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/packages/instant";
@@ -215,13 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<PackageListResponse> PackageList([WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<int> maxQuantity = null, [WorkflowExpression] Func<string> sortField = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<string> createdBeforeDate = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> createdAfterDate = null)
         {
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            SourceExpression.Validate(maxQuantity, nameof(maxQuantity), required: false);
-            SourceExpression.Validate(sortField, nameof(sortField), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(createdBeforeDate, nameof(createdBeforeDate), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(createdAfterDate, nameof(createdAfterDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/packages";
@@ -253,21 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<CreatePackageResponse> CreatePackage([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyinitiator = null, [WorkflowExpression] Func<string> bodypackageName = null, [WorkflowExpression] Func<string> bodycallBackUrl = null, [WorkflowExpression] Func<string> bodycorrelationId = null, [WorkflowExpression] Func<string> bodydocumentGroupCode = null, [WorkflowExpression] Func<string> bodythemeCode = null, [WorkflowExpression] Func<bool> bodydownloadUnsignedFiles = null, [WorkflowExpression] Func<bool> bodyreassignEnabled = null, [WorkflowExpression] Func<int> bodyactionUrlExpirationPeriodInDays = null, [WorkflowExpression] Func<string> bodyexpiryTimestamp = null, [WorkflowExpression] Func<string> bodyexternalPackageReference = null, [WorkflowExpression] Func<string> bodyexternalPackageData = null, [WorkflowExpression] Func<string> bodyf2FRedirectUrl = null, [WorkflowExpression] Func<string> bodynotificationCallBackUrl = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodyinitiator, nameof(bodyinitiator), required: false);
-            SourceExpression.Validate(bodypackageName, nameof(bodypackageName), required: false);
-            SourceExpression.Validate(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: false);
-            SourceExpression.Validate(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
-            SourceExpression.Validate(bodythemeCode, nameof(bodythemeCode), required: false);
-            SourceExpression.Validate(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
-            SourceExpression.Validate(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
-            SourceExpression.Validate(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
-            SourceExpression.Validate(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
-            SourceExpression.Validate(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
-            SourceExpression.Validate(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
-            SourceExpression.Validate(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
-            SourceExpression.Validate(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/packages";
@@ -373,18 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<AddDocumentToPackageResponse> AddDocumentToPackage([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<string> bodydocument = null, [WorkflowExpression] Func<string> bodydocumentLanguage = null, [WorkflowExpression] Func<string> bodydocumentName = null, [WorkflowExpression] Func<SigningField[]> bodysigningFields = null, [WorkflowExpression] Func<string> bodycorrelationId = null, [WorkflowExpression] Func<string> bodydocumentType = null, [WorkflowExpression] Func<string> bodyexternalDocumentReference = null, [WorkflowExpression] Func<ErrorHandlingResponse[]> bodypdfErrorHandling = null, [WorkflowExpression] Func<string> bodyrepresentation = null, [WorkflowExpression] Func<string> bodyrepresentationType = null, [WorkflowExpression] Func<string> bodytargetType = null)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
-            SourceExpression.Validate(bodydocument, nameof(bodydocument), required: false);
-            SourceExpression.Validate(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
-            SourceExpression.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
-            SourceExpression.Validate(bodysigningFields, nameof(bodysigningFields), required: false);
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: false);
-            SourceExpression.Validate(bodydocumentType, nameof(bodydocumentType), required: false);
-            SourceExpression.Validate(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
-            SourceExpression.Validate(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
-            SourceExpression.Validate(bodyrepresentation, nameof(bodyrepresentation), required: false);
-            SourceExpression.Validate(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
-            SourceExpression.Validate(bodytargetType, nameof(bodytargetType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -471,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<GetSigningLocationsResponse> GetSigningLocations([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/locations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -486,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<PackageStatusInfo> GetPackageStatus([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -501,8 +442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<PackageStatusInfo> SetPackageStatus([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -529,7 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction SkipSigners([WorkflowExpression] Func<string> packageId)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/skipsigners", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -544,7 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<string> DownloadPackage([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -559,8 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<string> DownloadDocumentFromPackage([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/download/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -575,8 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction ExpiryTimeStamp([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyexpiryTimestamp = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/expirytimestamp", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -603,7 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction SendPackageReminders([WorkflowExpression] Func<string> packageId)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/reminders", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -618,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction DeletePackage([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -633,8 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction SetProcessInformation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodystakeholdersInputItem[]> bodystakeholders = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodystakeholders, nameof(bodystakeholders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/process", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -661,7 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> PackageAuditProof([WorkflowExpression] Func<string> packageId)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -676,8 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> PackageAuditProofDoc([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -692,7 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> PackageCorrelationAuditProof([WorkflowExpression] Func<string> correlationId)
         {
-            SourceExpression.Validate(correlationId, nameof(correlationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packagecorrelations/{0}/auditproof/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(correlationId, 1));
@@ -707,7 +632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> DocumentCorrelationAuditProof([WorkflowExpression] Func<string> correlationId)
         {
-            SourceExpression.Validate(correlationId, nameof(correlationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentcorrelations/{0}/auditproof/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(correlationId, 1));
@@ -722,13 +646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction ProofExternalSource([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyipAddress = null)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyipAddress, nameof(bodyipAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/proofs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));

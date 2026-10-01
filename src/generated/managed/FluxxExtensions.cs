@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<object> DownloadDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/model_document_download/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<JToken> CustomAction([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/custom_action/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
@@ -48,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> CreateRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null)
         {
-            SourceExpression.Validate(typeId, nameof(typeId), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
@@ -78,10 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelArrayResponse> FindRecords([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null, [WorkflowExpression] Func<int> currentPage = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(typeId, nameof(typeId), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
-            SourceExpression.Validate(currentPage, nameof(currentPage), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
@@ -116,10 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null, [WorkflowExpression] Func<int> currentPage = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(typeId, nameof(typeId), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
-            SourceExpression.Validate(currentPage, nameof(currentPage), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
@@ -154,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> FindRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(typeId, nameof(typeId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -172,9 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> UpdateRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> bodydata = null)
         {
-            SourceExpression.Validate(typeId, nameof(typeId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<AuditSearchResponse> SearchAudits([WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> modifiedAfter = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> template = null, [WorkflowExpression] Func<archivedInput> archived = null, [WorkflowExpression] Func<completedInput> completed = null, [WorkflowExpression] Func<ownerInput> owner = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(modifiedAfter, nameof(modifiedAfter), required: false);
-            SourceExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            SourceExpression.Validate(template, nameof(template), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(completed, nameof(completed), required: false);
-            SourceExpression.Validate(owner, nameof(owner), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/audits/search";
@@ -57,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById([WorkflowExpression] Func<string> auditId)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
@@ -72,8 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<bool> bodyarchived = null)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
-            SourceExpression.Validate(bodyarchived, nameof(bodyarchived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
@@ -100,10 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<timezoneInput> timezone = null, [WorkflowExpression] Func<string> exportProfile = null)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(timezone, nameof(timezone), required: false);
-            SourceExpression.Validate(exportProfile, nameof(exportProfile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/export", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
@@ -124,8 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
-            SourceExpression.Validate(exportId, nameof(exportId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));
@@ -140,9 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<string> GetAuditExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId, [WorkflowExpression] Func<string> filename)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
-            SourceExpression.Validate(exportId, nameof(exportId), required: true);
-            SourceExpression.Validate(filename, nameof(filename), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filename, 1));
@@ -157,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink([WorkflowExpression] Func<string> auditId)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
@@ -172,7 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IWorkflowAction DeleteWebReportLink([WorkflowExpression] Func<string> auditId)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
@@ -187,14 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<ActionsSearchResponse> SearchActions([WorkflowExpression] Func<string[]> searchActionsBodyauditIdS = null, [WorkflowExpression] Func<searchActionsBodyassigneesInputItem[]> searchActionsBodyassignees = null, [WorkflowExpression] Func<string> searchActionsBodycreatedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodycreatedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodydueafterDate = null, [WorkflowExpression] Func<string> searchActionsBodyduebeforeDate = null)
         {
-            SourceExpression.Validate(searchActionsBodyauditIdS, nameof(searchActionsBodyauditIdS), required: false);
-            SourceExpression.Validate(searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
-            SourceExpression.Validate(searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
-            SourceExpression.Validate(searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
-            SourceExpression.Validate(searchActionsBodymodifiedafterDate, nameof(searchActionsBodymodifiedafterDate), required: false);
-            SourceExpression.Validate(searchActionsBodymodifiedbeforeDate, nameof(searchActionsBodymodifiedbeforeDate), required: false);
-            SourceExpression.Validate(searchActionsBodydueafterDate, nameof(searchActionsBodydueafterDate), required: false);
-            SourceExpression.Validate(searchActionsBodyduebeforeDate, nameof(searchActionsBodyduebeforeDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/search";
@@ -287,14 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<Action> CreateAction([WorkflowExpression] Func<string> createActionBodyauditId = null, [WorkflowExpression] Func<string> createActionBodyitemId = null, [WorkflowExpression] Func<string> createActionBodytitle = null, [WorkflowExpression] Func<string> createActionBodydescription = null, [WorkflowExpression] Func<createActionBodypriorityInput> createActionBodypriority = null, [WorkflowExpression] Func<createActionBodystatusInput> createActionBodystatus = null, [WorkflowExpression] Func<string> createActionBodydueAt = null, [WorkflowExpression] Func<createActionBodyassigneesInputItem[]> createActionBodyassignees = null)
         {
-            SourceExpression.Validate(createActionBodyauditId, nameof(createActionBodyauditId), required: false);
-            SourceExpression.Validate(createActionBodyitemId, nameof(createActionBodyitemId), required: false);
-            SourceExpression.Validate(createActionBodytitle, nameof(createActionBodytitle), required: false);
-            SourceExpression.Validate(createActionBodydescription, nameof(createActionBodydescription), required: false);
-            SourceExpression.Validate(createActionBodypriority, nameof(createActionBodypriority), required: false);
-            SourceExpression.Validate(createActionBodystatus, nameof(createActionBodystatus), required: false);
-            SourceExpression.Validate(createActionBodydueAt, nameof(createActionBodydueAt), required: false);
-            SourceExpression.Validate(createActionBodyassignees, nameof(createActionBodyassignees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions";
@@ -363,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<DeleteActionResponse> DeleteAction([WorkflowExpression] Func<string> actionId)
         {
-            SourceExpression.Validate(actionId, nameof(actionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
@@ -378,13 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<Action> UpdateAction([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> updateActionBodytitle = null, [WorkflowExpression] Func<string> updateActionBodydescription = null, [WorkflowExpression] Func<updateActionBodypriorityInput> updateActionBodypriority = null, [WorkflowExpression] Func<updateActionBodystatusInput> updateActionBodystatus = null, [WorkflowExpression] Func<string> updateActionBodydueAt = null, [WorkflowExpression] Func<updateActionBodyassigneesInputItem[]> updateActionBodyassignees = null)
         {
-            SourceExpression.Validate(actionId, nameof(actionId), required: true);
-            SourceExpression.Validate(updateActionBodytitle, nameof(updateActionBodytitle), required: false);
-            SourceExpression.Validate(updateActionBodydescription, nameof(updateActionBodydescription), required: false);
-            SourceExpression.Validate(updateActionBodypriority, nameof(updateActionBodypriority), required: false);
-            SourceExpression.Validate(updateActionBodystatus, nameof(updateActionBodystatus), required: false);
-            SourceExpression.Validate(updateActionBodydueAt, nameof(updateActionBodydueAt), required: false);
-            SourceExpression.Validate(updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
@@ -441,8 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<string> GetMedia([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> mediaId)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
-            SourceExpression.Validate(mediaId, nameof(mediaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/media/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
@@ -457,9 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatexportFormatInput> formatexportFormat = null, [WorkflowExpression] Func<string> formatpreferenceId = null)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
-            SourceExpression.Validate(formatexportFormat, nameof(formatexportFormat), required: false);
-            SourceExpression.Validate(formatpreferenceId, nameof(formatpreferenceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
@@ -502,8 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId)
         {
-            SourceExpression.Validate(auditId, nameof(auditId), required: true);
-            SourceExpression.Validate(exportId, nameof(exportId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/report/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));

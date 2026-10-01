@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ListWantedResponse> ListWanted([WorkflowExpression] Func<posterClassificationInput> posterClassification = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<fieldOfficesInput> fieldOffices = null, [WorkflowExpression] Func<personClassificationInput> personClassification = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortOnInput> sortOn = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
-            SourceExpression.Validate(posterClassification, nameof(posterClassification), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(fieldOffices, nameof(fieldOffices), required: false);
-            SourceExpression.Validate(personClassification, nameof(personClassification), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sortOn, nameof(sortOn), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/@wanted";
@@ -55,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<WantedPerson> GetWantedPerson([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/@wanted-person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -70,14 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> crimeCategory = null, [WorkflowExpression] Func<string> maker = null, [WorkflowExpression] Func<string> referenceNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortOnInput> sortOn = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(crimeCategory, nameof(crimeCategory), required: false);
-            SourceExpression.Validate(maker, nameof(maker), required: false);
-            SourceExpression.Validate(referenceNumber, nameof(referenceNumber), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sortOn, nameof(sortOn), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/@artcrimes";
@@ -108,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ArtCrime> GetArtCrime([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/@artcrimes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

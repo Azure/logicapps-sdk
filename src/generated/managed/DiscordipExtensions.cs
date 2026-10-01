@@ -56,12 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Webhook> ExecuteWebhook([WorkflowExpression] Func<string> webhookId, [WorkflowExpression] Func<string> webhookToken, [WorkflowExpression] Func<contentTypeInput> contentType = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodyavatarURL = null)
         {
-            SourceExpression.Validate(webhookId, nameof(webhookId), required: true);
-            SourceExpression.Validate(webhookToken, nameof(webhookToken), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodyavatarURL, nameof(bodyavatarURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookToken, 1));

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<IPEResponse> IPE([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: true);
-            SourceExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            SourceExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/ip/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));
@@ -38,10 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<DEResponse> DE([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: true);
-            SourceExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            SourceExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/domain/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
@@ -62,10 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<UEResponse> UE([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: true);
-            SourceExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            SourceExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/url/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(url, 1));
@@ -86,10 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<HEResponse> HE([WorkflowExpression] Func<string> hash, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
         {
-            SourceExpression.Validate(hash, nameof(hash), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: true);
-            SourceExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            SourceExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/hash/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hash, 1));
@@ -110,10 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<VulnEResponse> VulnE([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: true);
-            SourceExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            SourceExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/vulnerability/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -134,8 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertRulesSearchResponse> AlertRulesSearch([WorkflowExpression] Func<string> freetext = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(freetext, nameof(freetext), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/alert/rules";
@@ -155,10 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertSearch> AlertNotSearch([WorkflowExpression] Func<string> alertRule, [WorkflowExpression] Func<string> triggered = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> from = null)
         {
-            SourceExpression.Validate(alertRule, nameof(alertRule), required: true);
-            SourceExpression.Validate(triggered, nameof(triggered), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/alert/search";
@@ -181,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertLookup> AlertNotLookup([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -196,15 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<PlaybookAlertSearchItem[]> PlaybookAlertSearch([WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<bodyentitiesInputItem[]> bodyentities = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null, [WorkflowExpression] Func<bodyprioritiesInputItem[]> bodypriorities = null, [WorkflowExpression] Func<bodycategoriesInputItem[]> bodycategories = null, [WorkflowExpression] Func<bodycreatedFromRelativeInput> bodycreatedFromRelative = null, [WorkflowExpression] Func<bodycreatedUntilRelativeInput> bodycreatedUntilRelative = null, [WorkflowExpression] Func<bodyupdatedFromRelativeInput> bodyupdatedFromRelative = null, [WorkflowExpression] Func<bodyupdatedUntilRelativeInput> bodyupdatedUntilRelative = null)
         {
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyentities, nameof(bodyentities), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
-            SourceExpression.Validate(bodypriorities, nameof(bodypriorities), required: false);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            SourceExpression.Validate(bodycreatedFromRelative, nameof(bodycreatedFromRelative), required: false);
-            SourceExpression.Validate(bodycreatedUntilRelative, nameof(bodycreatedUntilRelative), required: false);
-            SourceExpression.Validate(bodyupdatedFromRelative, nameof(bodyupdatedFromRelative), required: false);
-            SourceExpression.Validate(bodyupdatedUntilRelative, nameof(bodyupdatedUntilRelative), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/playbook-alert/search";
@@ -279,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<PlaybookAlertLookup> PlaybookAlertLookup([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/playbook-alert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -294,11 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<DetectionRuleSearchResponse> DetectionRuleSearch([WorkflowExpression] Func<bodytypesInputItem[]> bodytypes = null, [WorkflowExpression] Func<bodyentitiesInputItem[]> bodyentities = null, [WorkflowExpression] Func<string> bodycreatedbefore = null, [WorkflowExpression] Func<string> bodycreatedafter = null, [WorkflowExpression] Func<bodylimitInput> bodylimit = null)
         {
-            SourceExpression.Validate(bodytypes, nameof(bodytypes), required: false);
-            SourceExpression.Validate(bodyentities, nameof(bodyentities), required: false);
-            SourceExpression.Validate(bodycreatedbefore, nameof(bodycreatedbefore), required: false);
-            SourceExpression.Validate(bodycreatedafter, nameof(bodycreatedafter), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/detection-rules/search";
@@ -357,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<RListDResponseItem[]> RListD([WorkflowExpression] Func<pathInput> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fusion/files";
@@ -373,11 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<SoarBulkLookupResponse> SoarBulkLookup([WorkflowExpression] Func<string[]> bodyip = null, [WorkflowExpression] Func<string[]> bodyurl = null, [WorkflowExpression] Func<string[]> bodydomain = null, [WorkflowExpression] Func<string[]> bodyhash = null, [WorkflowExpression] Func<string[]> bodyvulnerability = null)
         {
-            SourceExpression.Validate(bodyip, nameof(bodyip), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodyhash, nameof(bodyhash), required: false);
-            SourceExpression.Validate(bodyvulnerability, nameof(bodyvulnerability), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/soar/lookup";
@@ -428,9 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<ThreatMapActorsResponse> ThreatMapActors([WorkflowExpression] Func<string[]> bodyactors, [WorkflowExpression] Func<string[]> bodycategories, [WorkflowExpression] Func<string[]> bodywatchlists)
         {
-            SourceExpression.Validate(bodyactors, nameof(bodyactors), required: true);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: true);
-            SourceExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threat/map/actors";
@@ -457,9 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<ThreatMapMalwareResponse> ThreatMapMalware([WorkflowExpression] Func<string[]> bodymalware, [WorkflowExpression] Func<string[]> bodycategories, [WorkflowExpression] Func<string[]> bodywatchlists)
         {
-            SourceExpression.Validate(bodymalware, nameof(bodymalware), required: true);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: true);
-            SourceExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threat/map/malware";
@@ -486,15 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<STIXIndicatorsResponse> STIXIndicators([WorkflowExpression] Func<string[]> bodyactors = null, [WorkflowExpression] Func<string[]> bodycategories = null, [WorkflowExpression] Func<string[]> bodywatchlists = null, [WorkflowExpression] Func<int> bodytriggerScoreIp = null, [WorkflowExpression] Func<int> bodytriggerScoreUrl = null, [WorkflowExpression] Func<int> bodytriggerScoreDomain = null, [WorkflowExpression] Func<int> bodytriggerScoreHash = null, [WorkflowExpression] Func<int> bodyvalidUntilDeltaHours = null, [WorkflowExpression] Func<string> bodythreatHuntDescription = null)
         {
-            SourceExpression.Validate(bodyactors, nameof(bodyactors), required: false);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            SourceExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: false);
-            SourceExpression.Validate(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            SourceExpression.Validate(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            SourceExpression.Validate(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            SourceExpression.Validate(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            SourceExpression.Validate(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            SourceExpression.Validate(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threat/indicators/actors";
@@ -569,15 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<STIXMalwareIndicatorsResponse> STIXMalwareIndicators([WorkflowExpression] Func<string[]> bodymalware = null, [WorkflowExpression] Func<string[]> bodycategories = null, [WorkflowExpression] Func<string[]> bodywatchlists = null, [WorkflowExpression] Func<int> bodytriggerScoreIp = null, [WorkflowExpression] Func<int> bodytriggerScoreUrl = null, [WorkflowExpression] Func<int> bodytriggerScoreDomain = null, [WorkflowExpression] Func<int> bodytriggerScoreHash = null, [WorkflowExpression] Func<int> bodyvalidUntilDeltaHours = null, [WorkflowExpression] Func<string> bodythreatHuntDescription = null)
         {
-            SourceExpression.Validate(bodymalware, nameof(bodymalware), required: false);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            SourceExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: false);
-            SourceExpression.Validate(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            SourceExpression.Validate(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            SourceExpression.Validate(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            SourceExpression.Validate(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            SourceExpression.Validate(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            SourceExpression.Validate(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threat/indicators/malware";
@@ -652,11 +580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertSearchV2Response> AlertSearch([WorkflowExpression] Func<string> triggered = null, [WorkflowExpression] Func<string> alertRule = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> from = null, [WorkflowExpression] Func<fieldsInput> fields = null)
         {
-            SourceExpression.Validate(triggered, nameof(triggered), required: false);
-            SourceExpression.Validate(alertRule, nameof(alertRule), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/alerts";
@@ -681,8 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertSearchIdV2Response> AlertSearchId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<fieldsInput> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/alerts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

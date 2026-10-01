@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
         public IBodyWorkflowAction<CheckTextResponse> CheckText([WorkflowExpression] Func<string> bodyleft, [WorkflowExpression] Func<string> bodyright, [WorkflowExpression] Func<diffLevelInput> diffLevel = null)
         {
-            SourceExpression.Validate(bodyleft, nameof(bodyleft), required: true);
-            SourceExpression.Validate(bodyright, nameof(bodyright), required: true);
-            SourceExpression.Validate(diffLevel, nameof(diffLevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/text";
@@ -46,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
         public IBodyWorkflowAction<CheckImageResponse> CheckImage([WorkflowExpression] Func<string> bodyleftImage, [WorkflowExpression] Func<string> bodyrightImage)
         {
-            SourceExpression.Validate(bodyleftImage, nameof(bodyleftImage), required: true);
-            SourceExpression.Validate(bodyrightImage, nameof(bodyrightImage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/image";

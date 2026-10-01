@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> BoardSearch([WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/board";
@@ -31,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction BoardCreate([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytemplateId = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/board";
@@ -72,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Board> Board([WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/board/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -87,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<NodeSummary[]> Cards([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/board/{0}/cards", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -108,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Member[]> BoardMembers([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<bool> expand = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/board/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -129,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Board[]> BoardMy([WorkflowExpression] Func<bool> template = null)
         {
-            SourceExpression.Validate(template, nameof(template), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/board/my";
@@ -146,11 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction NodeCreate([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyboard = null, [WorkflowExpression] Func<string> bodyparent = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyboard, nameof(bodyboard), required: false);
-            SourceExpression.Validate(bodyparent, nameof(bodyparent), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/node";
@@ -201,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node> Node([WorkflowExpression] Func<string> nodeId)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -216,8 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction Assign([WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}/assign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -244,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> Children([WorkflowExpression] Func<string> nodeId)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -259,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> Comments([WorkflowExpression] Func<string> nodeId)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -274,8 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction CreateAComment([WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -302,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction IncompleteTask([WorkflowExpression] Func<string> nodeId)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -317,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction CompleteTask([WorkflowExpression] Func<string> nodeId)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -332,10 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction NodeDate([WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodydue = null, [WorkflowExpression] Func<string> bodyend = null)
         {
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
-            SourceExpression.Validate(bodydue, nameof(bodydue), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/node/{0}/dates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -374,8 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> FindTask([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<bool> completed = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(completed, nameof(completed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/todo/assigned";
@@ -394,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<User[]> User([WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user";
@@ -468,7 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         public IBodyWorkflowTrigger<NodeSummary> BoardTaskCompleted([WorkflowExpression] Func<string> boardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/board-task-completed/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
@@ -490,7 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         public IBodyWorkflowTrigger<NodeSummary> CreatedNode([WorkflowExpression] Func<string> boardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/created-node/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));

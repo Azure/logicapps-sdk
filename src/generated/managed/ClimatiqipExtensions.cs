@@ -14,30 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<EmissionEstimateResponse> EmissionEstimate([WorkflowExpression] Func<string> bodyemissionFactoruuid = null, [WorkflowExpression] Func<string> bodyemissionFactoractivityId = null, [WorkflowExpression] Func<string> bodyemissionFactorsource = null, [WorkflowExpression] Func<string> bodyemissionFactorregion = null, [WorkflowExpression] Func<bool> bodyemissionFactorregionFallback = null, [WorkflowExpression] Func<string> bodyemissionFactoryear = null, [WorkflowExpression] Func<string> bodyemissionFactorlcaActivity = null, [WorkflowExpression] Func<string> bodyemissionFactorcalculationMethod = null, [WorkflowExpression] Func<int> bodyparametersenergy = null, [WorkflowExpression] Func<string> bodyparametersenergyUnit = null, [WorkflowExpression] Func<int> bodyparametersdata = null, [WorkflowExpression] Func<string> bodyparametersdataUnit = null, [WorkflowExpression] Func<int> bodyparametersdistance = null, [WorkflowExpression] Func<string> bodyparametersdistanceUnit = null, [WorkflowExpression] Func<int> bodyparametersmoney = null, [WorkflowExpression] Func<string> bodyparametersmoneyUnit = null, [WorkflowExpression] Func<int> bodyparametersnumber = null, [WorkflowExpression] Func<int> bodyparameterstime = null, [WorkflowExpression] Func<string> bodyparameterstimeUnit = null, [WorkflowExpression] Func<int> bodyparameterspassengers = null, [WorkflowExpression] Func<int> bodyparametersvolume = null, [WorkflowExpression] Func<string> bodyparametersvolumeUnit = null, [WorkflowExpression] Func<int> bodyparametersweight = null, [WorkflowExpression] Func<string> bodyparametersweightUnit = null)
         {
-            SourceExpression.Validate(bodyemissionFactoruuid, nameof(bodyemissionFactoruuid), required: false);
-            SourceExpression.Validate(bodyemissionFactoractivityId, nameof(bodyemissionFactoractivityId), required: false);
-            SourceExpression.Validate(bodyemissionFactorsource, nameof(bodyemissionFactorsource), required: false);
-            SourceExpression.Validate(bodyemissionFactorregion, nameof(bodyemissionFactorregion), required: false);
-            SourceExpression.Validate(bodyemissionFactorregionFallback, nameof(bodyemissionFactorregionFallback), required: false);
-            SourceExpression.Validate(bodyemissionFactoryear, nameof(bodyemissionFactoryear), required: false);
-            SourceExpression.Validate(bodyemissionFactorlcaActivity, nameof(bodyemissionFactorlcaActivity), required: false);
-            SourceExpression.Validate(bodyemissionFactorcalculationMethod, nameof(bodyemissionFactorcalculationMethod), required: false);
-            SourceExpression.Validate(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            SourceExpression.Validate(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            SourceExpression.Validate(bodyparametersdata, nameof(bodyparametersdata), required: false);
-            SourceExpression.Validate(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            SourceExpression.Validate(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            SourceExpression.Validate(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            SourceExpression.Validate(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            SourceExpression.Validate(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            SourceExpression.Validate(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            SourceExpression.Validate(bodyparameterstime, nameof(bodyparameterstime), required: false);
-            SourceExpression.Validate(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            SourceExpression.Validate(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            SourceExpression.Validate(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            SourceExpression.Validate(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            SourceExpression.Validate(bodyparametersweight, nameof(bodyparametersweight), required: false);
-            SourceExpression.Validate(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/estimate";
@@ -218,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<EmissionEstimateBulkResponse> EmissionEstimateBulk([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/batch";
@@ -234,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<TravelFlightResponse> TravelFlight([WorkflowExpression] Func<bodylegsInputItem[]> bodylegs)
         {
-            SourceExpression.Validate(bodylegs, nameof(bodylegs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/travel/flights";
@@ -257,7 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<FreightFlightResponse> FreightFlight([WorkflowExpression] Func<bodylegsInputItem[]> bodylegs)
         {
-            SourceExpression.Validate(bodylegs, nameof(bodylegs), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/freight/flights";
@@ -294,12 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeCPUResponse> ComputeCPU([WorkflowExpression] Func<string> provider, [WorkflowExpression] Func<int> bodycpuCount, [WorkflowExpression] Func<string> bodyregion, [WorkflowExpression] Func<int> bodycpuLoad, [WorkflowExpression] Func<int> bodyduration, [WorkflowExpression] Func<string> bodydurationUnit = null)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(bodycpuCount, nameof(bodycpuCount), required: true);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: true);
-            SourceExpression.Validate(bodycpuLoad, nameof(bodycpuLoad), required: true);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: true);
-            SourceExpression.Validate(bodydurationUnit, nameof(bodydurationUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/compute/{0}/cpu", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -334,13 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeStorageResponse> ComputeStorage([WorkflowExpression] Func<string> provider, [WorkflowExpression] Func<string> bodyregion, [WorkflowExpression] Func<bodystorageTypeInput> bodystorageType, [WorkflowExpression] Func<int> bodydata, [WorkflowExpression] Func<int> bodyduration, [WorkflowExpression] Func<string> bodydataUnit = null, [WorkflowExpression] Func<string> bodydurationUnit = null)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: true);
-            SourceExpression.Validate(bodystorageType, nameof(bodystorageType), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: true);
-            SourceExpression.Validate(bodydataUnit, nameof(bodydataUnit), required: false);
-            SourceExpression.Validate(bodydurationUnit, nameof(bodydurationUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/compute/{0}/storage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -381,12 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeMemoryResponse> ComputeMemory([WorkflowExpression] Func<string> provider, [WorkflowExpression] Func<string> bodyregion, [WorkflowExpression] Func<int> bodydata, [WorkflowExpression] Func<int> bodyduration, [WorkflowExpression] Func<string> bodydataUnit = null, [WorkflowExpression] Func<string> bodydurationUnit = null)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: true);
-            SourceExpression.Validate(bodydataUnit, nameof(bodydataUnit), required: false);
-            SourceExpression.Validate(bodydurationUnit, nameof(bodydurationUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/compute/{0}/memory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -425,30 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ClassificationResponse> Classification([WorkflowExpression] Func<string> bodyclassificationclassificationType = null, [WorkflowExpression] Func<string> bodyclassificationclassificationCode = null, [WorkflowExpression] Func<string> bodyclassificationsource = null, [WorkflowExpression] Func<string> bodyclassificationregion = null, [WorkflowExpression] Func<bool> bodyclassificationregionFallback = null, [WorkflowExpression] Func<string> bodyclassificationyear = null, [WorkflowExpression] Func<string> bodyclassificationlcaActivity = null, [WorkflowExpression] Func<string> bodyclassificationcalculationMethod = null, [WorkflowExpression] Func<int> bodyparametersenergy = null, [WorkflowExpression] Func<string> bodyparametersenergyUnit = null, [WorkflowExpression] Func<int> bodyparametersdata = null, [WorkflowExpression] Func<string> bodyparametersdataUnit = null, [WorkflowExpression] Func<int> bodyparametersdistance = null, [WorkflowExpression] Func<string> bodyparametersdistanceUnit = null, [WorkflowExpression] Func<int> bodyparametersmoney = null, [WorkflowExpression] Func<string> bodyparametersmoneyUnit = null, [WorkflowExpression] Func<int> bodyparametersnumber = null, [WorkflowExpression] Func<int> bodyparameterstime = null, [WorkflowExpression] Func<string> bodyparameterstimeUnit = null, [WorkflowExpression] Func<int> bodyparameterspassengers = null, [WorkflowExpression] Func<int> bodyparametersvolume = null, [WorkflowExpression] Func<string> bodyparametersvolumeUnit = null, [WorkflowExpression] Func<int> bodyparametersweight = null, [WorkflowExpression] Func<string> bodyparametersweightUnit = null)
         {
-            SourceExpression.Validate(bodyclassificationclassificationType, nameof(bodyclassificationclassificationType), required: false);
-            SourceExpression.Validate(bodyclassificationclassificationCode, nameof(bodyclassificationclassificationCode), required: false);
-            SourceExpression.Validate(bodyclassificationsource, nameof(bodyclassificationsource), required: false);
-            SourceExpression.Validate(bodyclassificationregion, nameof(bodyclassificationregion), required: false);
-            SourceExpression.Validate(bodyclassificationregionFallback, nameof(bodyclassificationregionFallback), required: false);
-            SourceExpression.Validate(bodyclassificationyear, nameof(bodyclassificationyear), required: false);
-            SourceExpression.Validate(bodyclassificationlcaActivity, nameof(bodyclassificationlcaActivity), required: false);
-            SourceExpression.Validate(bodyclassificationcalculationMethod, nameof(bodyclassificationcalculationMethod), required: false);
-            SourceExpression.Validate(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            SourceExpression.Validate(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            SourceExpression.Validate(bodyparametersdata, nameof(bodyparametersdata), required: false);
-            SourceExpression.Validate(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            SourceExpression.Validate(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            SourceExpression.Validate(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            SourceExpression.Validate(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            SourceExpression.Validate(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            SourceExpression.Validate(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            SourceExpression.Validate(bodyparameterstime, nameof(bodyparameterstime), required: false);
-            SourceExpression.Validate(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            SourceExpression.Validate(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            SourceExpression.Validate(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            SourceExpression.Validate(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            SourceExpression.Validate(bodyparametersweight, nameof(bodyparametersweight), required: false);
-            SourceExpression.Validate(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/classifications/estimate";
@@ -629,29 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<CustomResponse> Custom([WorkflowExpression] Func<string> bodycustomActivitylabel = null, [WorkflowExpression] Func<string> bodycustomActivitysource = null, [WorkflowExpression] Func<string> bodycustomActivityregion = null, [WorkflowExpression] Func<bool> bodycustomActivityregionFallback = null, [WorkflowExpression] Func<string> bodycustomActivityyear = null, [WorkflowExpression] Func<string> bodycustomActivitylcaActivity = null, [WorkflowExpression] Func<string> bodycustomActivitycalculationMethod = null, [WorkflowExpression] Func<int> bodyparametersenergy = null, [WorkflowExpression] Func<string> bodyparametersenergyUnit = null, [WorkflowExpression] Func<int> bodyparametersdata = null, [WorkflowExpression] Func<string> bodyparametersdataUnit = null, [WorkflowExpression] Func<int> bodyparametersdistance = null, [WorkflowExpression] Func<string> bodyparametersdistanceUnit = null, [WorkflowExpression] Func<int> bodyparametersmoney = null, [WorkflowExpression] Func<string> bodyparametersmoneyUnit = null, [WorkflowExpression] Func<int> bodyparametersnumber = null, [WorkflowExpression] Func<int> bodyparameterstime = null, [WorkflowExpression] Func<string> bodyparameterstimeUnit = null, [WorkflowExpression] Func<int> bodyparameterspassengers = null, [WorkflowExpression] Func<int> bodyparametersvolume = null, [WorkflowExpression] Func<string> bodyparametersvolumeUnit = null, [WorkflowExpression] Func<int> bodyparametersweight = null, [WorkflowExpression] Func<string> bodyparametersweightUnit = null)
         {
-            SourceExpression.Validate(bodycustomActivitylabel, nameof(bodycustomActivitylabel), required: false);
-            SourceExpression.Validate(bodycustomActivitysource, nameof(bodycustomActivitysource), required: false);
-            SourceExpression.Validate(bodycustomActivityregion, nameof(bodycustomActivityregion), required: false);
-            SourceExpression.Validate(bodycustomActivityregionFallback, nameof(bodycustomActivityregionFallback), required: false);
-            SourceExpression.Validate(bodycustomActivityyear, nameof(bodycustomActivityyear), required: false);
-            SourceExpression.Validate(bodycustomActivitylcaActivity, nameof(bodycustomActivitylcaActivity), required: false);
-            SourceExpression.Validate(bodycustomActivitycalculationMethod, nameof(bodycustomActivitycalculationMethod), required: false);
-            SourceExpression.Validate(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            SourceExpression.Validate(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            SourceExpression.Validate(bodyparametersdata, nameof(bodyparametersdata), required: false);
-            SourceExpression.Validate(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            SourceExpression.Validate(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            SourceExpression.Validate(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            SourceExpression.Validate(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            SourceExpression.Validate(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            SourceExpression.Validate(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            SourceExpression.Validate(bodyparameterstime, nameof(bodyparameterstime), required: false);
-            SourceExpression.Validate(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            SourceExpression.Validate(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            SourceExpression.Validate(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            SourceExpression.Validate(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            SourceExpression.Validate(bodyparametersweight, nameof(bodyparametersweight), required: false);
-            SourceExpression.Validate(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/custom-activities/estimate";
@@ -826,7 +733,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<CustomBatchResponse> CustomBatch([WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/custom-activities/batch";
@@ -842,20 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<FactorsSearchResponse> FactorsSearch([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> uuid = null, [WorkflowExpression] Func<string> activityId = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null, [WorkflowExpression] Func<string> unitType = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> resultsPerPage = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(uuid, nameof(uuid), required: false);
-            SourceExpression.Validate(activityId, nameof(activityId), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
-            SourceExpression.Validate(unitType, nameof(unitType), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -898,14 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<SourcesResponse> Sources([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emission-factors/sources";
@@ -936,14 +820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<YearsResponse> Years([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emission-factors/years";
@@ -974,14 +850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<RegionsResponse> Regions([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emission-factors/regions";
@@ -1012,14 +880,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<CategoriesResponse> Categories([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emission-factors/categories";
@@ -1050,14 +910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<SectorsResponse> Sectors([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emission-factors/sectors";
@@ -1088,14 +940,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<LifeCycleActivitiesResponse> LifeCycleActivities([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emission-factors/lca-activities";
@@ -1126,14 +970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<UnitTypesResponse> UnitTypes([WorkflowExpression] Func<string> sector = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> lcaActivity = null, [WorkflowExpression] Func<string> calculationMethod = null)
         {
-            SourceExpression.Validate(sector, nameof(sector), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(lcaActivity, nameof(lcaActivity), required: false);
-            SourceExpression.Validate(calculationMethod, nameof(calculationMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emission-factors/unit-types";

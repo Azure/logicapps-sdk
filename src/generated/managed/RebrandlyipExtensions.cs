@@ -42,12 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<ListLinksResponseItem[]> ListLinks([WorkflowExpression] Func<string> domainId = null, [WorkflowExpression] Func<string> slashtag = null, [WorkflowExpression] Func<orderByInput> orderBy = null, [WorkflowExpression] Func<orderDirInput> orderDir = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> workspace = null)
         {
-            SourceExpression.Validate(domainId, nameof(domainId), required: false);
-            SourceExpression.Validate(slashtag, nameof(slashtag), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(orderDir, nameof(orderDir), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(workspace, nameof(workspace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/links";
@@ -74,10 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<CreateLinkResponse> CreateLink([WorkflowExpression] Func<string> bodydestination = null, [WorkflowExpression] Func<string> bodyslashtag = null, [WorkflowExpression] Func<string> bodydomainid = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(bodydestination, nameof(bodydestination), required: false);
-            SourceExpression.Validate(bodyslashtag, nameof(bodyslashtag), required: false);
-            SourceExpression.Validate(bodydomainid, nameof(bodydomainid), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/links";
@@ -130,9 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<ListWorkspacesResponseItem[]> ListWorkspaces([WorkflowExpression] Func<orderByInput> orderBy = null, [WorkflowExpression] Func<orderDirInput> orderDir = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(orderDir, nameof(orderDir), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workspaces";
@@ -153,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<GetLinkResponse> GetLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workspace = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(workspace, nameof(workspace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/links/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -171,8 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<DeleteLinkResponse> DeleteLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workspace = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(workspace, nameof(workspace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/links/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -189,10 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<UpdateLinkResponse> UpdateLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workspace = null, [WorkflowExpression] Func<string> bodydestinationURL = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(workspace, nameof(workspace), required: false);
-            SourceExpression.Validate(bodydestinationURL, nameof(bodydestinationURL), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/links/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
         public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch([WorkflowExpression] Func<string> itemType)
         {
-            SourceExpression.Validate(itemType, nameof(itemType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));
@@ -35,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
         public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch([WorkflowExpression] Func<string> itemType)
         {
-            SourceExpression.Validate(itemType, nameof(itemType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));

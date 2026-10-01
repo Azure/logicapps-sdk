@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> stateId = null, [WorkflowExpression] Func<int> nteeId = null, [WorkflowExpression] Func<int> cCodeId = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(stateId, nameof(stateId), required: false);
-            SourceExpression.Validate(nteeId, nameof(nteeId), required: false);
-            SourceExpression.Validate(cCodeId, nameof(cCodeId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search.json";
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
         public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet([WorkflowExpression] Func<string> ein)
         {
-            SourceExpression.Validate(ein, nameof(ein), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));

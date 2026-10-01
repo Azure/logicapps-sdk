@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         public IBodyWorkflowAction<SearchResultsResponse> SearchCfrResults([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> lastModifiedOnOrAfter = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<paginateByInput> paginateBy = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(paginateBy, nameof(paginateBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search/v1/results";
@@ -45,13 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         public IBodyWorkflowAction<HierarchyCountResponse> GetHierarchyCounts([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> agencySlugs = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> lastModifiedAfter = null, [WorkflowExpression] Func<string> lastModifiedOnOrAfter = null, [WorkflowExpression] Func<string> lastModifiedBefore = null, [WorkflowExpression] Func<string> lastModifiedOnOrBefore = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(agencySlugs, nameof(agencySlugs), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(lastModifiedAfter, nameof(lastModifiedAfter), required: false);
-            SourceExpression.Validate(lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
-            SourceExpression.Validate(lastModifiedBefore, nameof(lastModifiedBefore), required: false);
-            SourceExpression.Validate(lastModifiedOnOrBefore, nameof(lastModifiedOnOrBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search/v1/counts/hierarchy";
@@ -79,15 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         public IBodyWorkflowAction<object> GetFullRegulationXML([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> title, [WorkflowExpression] Func<string> subtitle = null, [WorkflowExpression] Func<string> chapter = null, [WorkflowExpression] Func<string> subchapter = null, [WorkflowExpression] Func<string> part = null, [WorkflowExpression] Func<string> subpart = null, [WorkflowExpression] Func<string> section = null, [WorkflowExpression] Func<string> appendix = null)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(title, nameof(title), required: true);
-            SourceExpression.Validate(subtitle, nameof(subtitle), required: false);
-            SourceExpression.Validate(chapter, nameof(chapter), required: false);
-            SourceExpression.Validate(subchapter, nameof(subchapter), required: false);
-            SourceExpression.Validate(part, nameof(part), required: false);
-            SourceExpression.Validate(subpart, nameof(subpart), required: false);
-            SourceExpression.Validate(section, nameof(section), required: false);
-            SourceExpression.Validate(appendix, nameof(appendix), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/versioner/v1/full/{0}/title-{1}.xml", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));

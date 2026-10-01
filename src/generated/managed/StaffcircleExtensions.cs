@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<GetPersonResponse> GetPerson([WorkflowExpression] Func<string> searchEmail)
         {
-            SourceExpression.Validate(searchEmail, nameof(searchEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/directory/v1/persons";
@@ -30,62 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreatePersonResponse> CreatePerson([WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodysecondName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodymobile, [WorkflowExpression] Func<string> bodydateOfBirth, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodytown = null, [WorkflowExpression] Func<string> bodypostCode = null, [WorkflowExpression] Func<string> bodycountyName = null, [WorkflowExpression] Func<string> bodycountryName = null, [WorkflowExpression] Func<string> bodytitleName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodyhomeEmail = null, [WorkflowExpression] Func<string> bodyhomeTelephone = null, [WorkflowExpression] Func<string> bodytag = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<string> bodydepartmentName = null, [WorkflowExpression] Func<string> bodyroleName = null, [WorkflowExpression] Func<string> bodyknownAs = null, [WorkflowExpression] Func<string> bodyavatarURL = null, [WorkflowExpression] Func<int> bodytitleId = null, [WorkflowExpression] Func<int> bodycountyId = null, [WorkflowExpression] Func<int> bodycountryId = null, [WorkflowExpression] Func<int> bodygenderId = null, [WorkflowExpression] Func<int> bodynationalityId = null, [WorkflowExpression] Func<int> bodyethnicityId = null, [WorkflowExpression] Func<int> bodymaritalStatusId = null, [WorkflowExpression] Func<int> bodymanagerId = null, [WorkflowExpression] Func<int> bodydepartmentId = null, [WorkflowExpression] Func<int> bodyroleId = null, [WorkflowExpression] Func<int> bodymainSiteId = null, [WorkflowExpression] Func<bool> bodyemergencyContactConsent = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<int> bodyemergencyRelationshipId = null, [WorkflowExpression] Func<string> bodyemergencyContactTelephone = null, [WorkflowExpression] Func<string> bodyemergencyAddress = null, [WorkflowExpression] Func<string> bodynextOfKinName = null, [WorkflowExpression] Func<int> bodynextOfKinRelationshipId = null, [WorkflowExpression] Func<string> bodynextOfKinTelephone = null, [WorkflowExpression] Func<string> bodydialingCode = null, [WorkflowExpression] Func<string> bodyworkExtension = null, [WorkflowExpression] Func<string> bodytelephone = null, [WorkflowExpression] Func<string> bodypersonalMobile = null, [WorkflowExpression] Func<int> bodystatusId = null, [WorkflowExpression] Func<int> bodyemploymentTypeId = null, [WorkflowExpression] Func<int> bodycontractTypeId = null, [WorkflowExpression] Func<string> bodycontractExpiry = null, [WorkflowExpression] Func<int> bodyemploymentStatusId = null, [WorkflowExpression] Func<int> bodysecondaryEmploymentStatusId = null, [WorkflowExpression] Func<string> bodyemploymentNotes = null, [WorkflowExpression] Func<string> bodymedicalNotes = null, [WorkflowExpression] Func<bool> bodyisPersonalDataEnabled = null, [WorkflowExpression] Func<bool> bodyisContactDataEnabled = null, [WorkflowExpression] Func<bodytimeZoneInput> bodytimeZone = null)
         {
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodysecondName, nameof(bodysecondName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodymobile, nameof(bodymobile), required: true);
-            SourceExpression.Validate(bodydateOfBirth, nameof(bodydateOfBirth), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            SourceExpression.Validate(bodytown, nameof(bodytown), required: false);
-            SourceExpression.Validate(bodypostCode, nameof(bodypostCode), required: false);
-            SourceExpression.Validate(bodycountyName, nameof(bodycountyName), required: false);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: false);
-            SourceExpression.Validate(bodytitleName, nameof(bodytitleName), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodyhomeEmail, nameof(bodyhomeEmail), required: false);
-            SourceExpression.Validate(bodyhomeTelephone, nameof(bodyhomeTelephone), required: false);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: false);
-            SourceExpression.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            SourceExpression.Validate(bodydepartmentName, nameof(bodydepartmentName), required: false);
-            SourceExpression.Validate(bodyroleName, nameof(bodyroleName), required: false);
-            SourceExpression.Validate(bodyknownAs, nameof(bodyknownAs), required: false);
-            SourceExpression.Validate(bodyavatarURL, nameof(bodyavatarURL), required: false);
-            SourceExpression.Validate(bodytitleId, nameof(bodytitleId), required: false);
-            SourceExpression.Validate(bodycountyId, nameof(bodycountyId), required: false);
-            SourceExpression.Validate(bodycountryId, nameof(bodycountryId), required: false);
-            SourceExpression.Validate(bodygenderId, nameof(bodygenderId), required: false);
-            SourceExpression.Validate(bodynationalityId, nameof(bodynationalityId), required: false);
-            SourceExpression.Validate(bodyethnicityId, nameof(bodyethnicityId), required: false);
-            SourceExpression.Validate(bodymaritalStatusId, nameof(bodymaritalStatusId), required: false);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyroleId, nameof(bodyroleId), required: false);
-            SourceExpression.Validate(bodymainSiteId, nameof(bodymainSiteId), required: false);
-            SourceExpression.Validate(bodyemergencyContactConsent, nameof(bodyemergencyContactConsent), required: false);
-            SourceExpression.Validate(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
-            SourceExpression.Validate(bodyemergencyRelationshipId, nameof(bodyemergencyRelationshipId), required: false);
-            SourceExpression.Validate(bodyemergencyContactTelephone, nameof(bodyemergencyContactTelephone), required: false);
-            SourceExpression.Validate(bodyemergencyAddress, nameof(bodyemergencyAddress), required: false);
-            SourceExpression.Validate(bodynextOfKinName, nameof(bodynextOfKinName), required: false);
-            SourceExpression.Validate(bodynextOfKinRelationshipId, nameof(bodynextOfKinRelationshipId), required: false);
-            SourceExpression.Validate(bodynextOfKinTelephone, nameof(bodynextOfKinTelephone), required: false);
-            SourceExpression.Validate(bodydialingCode, nameof(bodydialingCode), required: false);
-            SourceExpression.Validate(bodyworkExtension, nameof(bodyworkExtension), required: false);
-            SourceExpression.Validate(bodytelephone, nameof(bodytelephone), required: false);
-            SourceExpression.Validate(bodypersonalMobile, nameof(bodypersonalMobile), required: false);
-            SourceExpression.Validate(bodystatusId, nameof(bodystatusId), required: false);
-            SourceExpression.Validate(bodyemploymentTypeId, nameof(bodyemploymentTypeId), required: false);
-            SourceExpression.Validate(bodycontractTypeId, nameof(bodycontractTypeId), required: false);
-            SourceExpression.Validate(bodycontractExpiry, nameof(bodycontractExpiry), required: false);
-            SourceExpression.Validate(bodyemploymentStatusId, nameof(bodyemploymentStatusId), required: false);
-            SourceExpression.Validate(bodysecondaryEmploymentStatusId, nameof(bodysecondaryEmploymentStatusId), required: false);
-            SourceExpression.Validate(bodyemploymentNotes, nameof(bodyemploymentNotes), required: false);
-            SourceExpression.Validate(bodymedicalNotes, nameof(bodymedicalNotes), required: false);
-            SourceExpression.Validate(bodyisPersonalDataEnabled, nameof(bodyisPersonalDataEnabled), required: false);
-            SourceExpression.Validate(bodyisContactDataEnabled, nameof(bodyisContactDataEnabled), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/directory/v1/persons";
@@ -438,14 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<GetObjectivesResponse> GetObjectives([WorkflowExpression] Func<string> searchTitle = null, [WorkflowExpression] Func<string> personEmail = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> closed = null, [WorkflowExpression] Func<objectiveTypeInput> objectiveType = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> activeAt = null)
         {
-            SourceExpression.Validate(searchTitle, nameof(searchTitle), required: false);
-            SourceExpression.Validate(personEmail, nameof(personEmail), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(closed, nameof(closed), required: false);
-            SourceExpression.Validate(objectiveType, nameof(objectiveType), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(activeAt, nameof(activeAt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/Performance/v1/Objectives";
@@ -476,19 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateObjectiveByTemplateResponse> CreateObjectiveByTemplate([WorkflowExpression] Func<int> bodyobjectiveTemplateId, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string> bodypersonEmail = null, [WorkflowExpression] Func<int> bodypersonId = null, [WorkflowExpression] Func<string> bodydepartmentName = null, [WorkflowExpression] Func<int> bodydepartmentId = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodymanagerId = null, [WorkflowExpression] Func<int> bodycompanyObjectiveId = null, [WorkflowExpression] Func<int> bodydepartmentObjectiveId = null)
         {
-            SourceExpression.Validate(bodyobjectiveTemplateId, nameof(bodyobjectiveTemplateId), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            SourceExpression.Validate(bodypersonEmail, nameof(bodypersonEmail), required: false);
-            SourceExpression.Validate(bodypersonId, nameof(bodypersonId), required: false);
-            SourceExpression.Validate(bodydepartmentName, nameof(bodydepartmentName), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodycompanyObjectiveId, nameof(bodycompanyObjectiveId), required: false);
-            SourceExpression.Validate(bodydepartmentObjectiveId, nameof(bodydepartmentObjectiveId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/Performance/v1/Objectives";
@@ -575,36 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateObjectiveResponse> CreateObjective([WorkflowExpression] Func<int> bodycategoryId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType, [WorkflowExpression] Func<string> bodytag = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<int> bodymanagerId = null, [WorkflowExpression] Func<string> bodypersonEmail = null, [WorkflowExpression] Func<int> bodypersonId = null, [WorkflowExpression] Func<string> bodydepartmentName = null, [WorkflowExpression] Func<int> bodydepartmentId = null, [WorkflowExpression] Func<int> bodycompanyObjectiveId = null, [WorkflowExpression] Func<int> bodydepartmentObjectiveId = null, [WorkflowExpression] Func<double> bodystartValue = null, [WorkflowExpression] Func<double> bodytarget = null, [WorkflowExpression] Func<bool> bodyallowAddProgress = null, [WorkflowExpression] Func<bodyrecurTypeInput> bodyrecurType = null, [WorkflowExpression] Func<int> bodyrecurInterval = null, [WorkflowExpression] Func<bool> bodycumulativeProgress = null, [WorkflowExpression] Func<bool> bodycontentSettingspush = null, [WorkflowExpression] Func<bool> bodycontentSettingssms = null, [WorkflowExpression] Func<bool> bodycontentSettingsemail = null, [WorkflowExpression] Func<bool> bodycontentSettingsteams = null, [WorkflowExpression] Func<bool> bodycontentSettingsinApp = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowLikes = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowComments = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowImagesInComments = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowDocuments = null)
         {
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            SourceExpression.Validate(bodyvalueType, nameof(bodyvalueType), required: true);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: false);
-            SourceExpression.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodypersonEmail, nameof(bodypersonEmail), required: false);
-            SourceExpression.Validate(bodypersonId, nameof(bodypersonId), required: false);
-            SourceExpression.Validate(bodydepartmentName, nameof(bodydepartmentName), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodycompanyObjectiveId, nameof(bodycompanyObjectiveId), required: false);
-            SourceExpression.Validate(bodydepartmentObjectiveId, nameof(bodydepartmentObjectiveId), required: false);
-            SourceExpression.Validate(bodystartValue, nameof(bodystartValue), required: false);
-            SourceExpression.Validate(bodytarget, nameof(bodytarget), required: false);
-            SourceExpression.Validate(bodyallowAddProgress, nameof(bodyallowAddProgress), required: false);
-            SourceExpression.Validate(bodyrecurType, nameof(bodyrecurType), required: false);
-            SourceExpression.Validate(bodyrecurInterval, nameof(bodyrecurInterval), required: false);
-            SourceExpression.Validate(bodycumulativeProgress, nameof(bodycumulativeProgress), required: false);
-            SourceExpression.Validate(bodycontentSettingspush, nameof(bodycontentSettingspush), required: false);
-            SourceExpression.Validate(bodycontentSettingssms, nameof(bodycontentSettingssms), required: false);
-            SourceExpression.Validate(bodycontentSettingsemail, nameof(bodycontentSettingsemail), required: false);
-            SourceExpression.Validate(bodycontentSettingsteams, nameof(bodycontentSettingsteams), required: false);
-            SourceExpression.Validate(bodycontentSettingsinApp, nameof(bodycontentSettingsinApp), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowLikes, nameof(bodycontentSettingsallowLikes), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowDocuments, nameof(bodycontentSettingsallowDocuments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/Performance/v1/Objectives/";
@@ -899,10 +791,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<UpdateObjectiveScoreResponse> UpdateObjectiveScore([WorkflowExpression] Func<string> objectiveId, [WorkflowExpression] Func<double> bodyvalue, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bool> bodyisIncrement = null)
         {
-            SourceExpression.Validate(objectiveId, nameof(objectiveId), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyisIncrement, nameof(bodyisIncrement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/Performance/v1/Objectives/{0}/progress", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectiveId, 1));
@@ -943,27 +831,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateArticleResponse> CreateArticle([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodypriorityInput> bodypriority, [WorkflowExpression] Func<bodyarticleTypeInput> bodyarticleType, [WorkflowExpression] Func<string> bodyhtmlContent, [WorkflowExpression] Func<string> bodytag, [WorkflowExpression] Func<string> bodymainImageUrl = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<int> bodychannelId = null, [WorkflowExpression] Func<bool> bodycontentSettingspush = null, [WorkflowExpression] Func<bool> bodycontentSettingssms = null, [WorkflowExpression] Func<bool> bodycontentSettingsemail = null, [WorkflowExpression] Func<bool> bodycontentSettingsinApp = null, [WorkflowExpression] Func<bool> bodycontentSettingsteams = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowLikes = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowComments = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowImagesInComments = null, [WorkflowExpression] Func<string> bodypublicationDetailspinFromDate = null, [WorkflowExpression] Func<int> bodypublicationDetailspinDurationHours = null, [WorkflowExpression] Func<string> bodypublicationDetailsscheduledDateTime = null, [WorkflowExpression] Func<bool> bodypublicationDetailspublishImmediately = null, [WorkflowExpression] Func<int> bodypublicationDetailspublishAsUserId = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: true);
-            SourceExpression.Validate(bodyarticleType, nameof(bodyarticleType), required: true);
-            SourceExpression.Validate(bodyhtmlContent, nameof(bodyhtmlContent), required: true);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: true);
-            SourceExpression.Validate(bodymainImageUrl, nameof(bodymainImageUrl), required: false);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
-            SourceExpression.Validate(bodychannelId, nameof(bodychannelId), required: false);
-            SourceExpression.Validate(bodycontentSettingspush, nameof(bodycontentSettingspush), required: false);
-            SourceExpression.Validate(bodycontentSettingssms, nameof(bodycontentSettingssms), required: false);
-            SourceExpression.Validate(bodycontentSettingsemail, nameof(bodycontentSettingsemail), required: false);
-            SourceExpression.Validate(bodycontentSettingsinApp, nameof(bodycontentSettingsinApp), required: false);
-            SourceExpression.Validate(bodycontentSettingsteams, nameof(bodycontentSettingsteams), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowLikes, nameof(bodycontentSettingsallowLikes), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
-            SourceExpression.Validate(bodypublicationDetailspinFromDate, nameof(bodypublicationDetailspinFromDate), required: false);
-            SourceExpression.Validate(bodypublicationDetailspinDurationHours, nameof(bodypublicationDetailspinDurationHours), required: false);
-            SourceExpression.Validate(bodypublicationDetailsscheduledDateTime, nameof(bodypublicationDetailsscheduledDateTime), required: false);
-            SourceExpression.Validate(bodypublicationDetailspublishImmediately, nameof(bodypublicationDetailspublishImmediately), required: false);
-            SourceExpression.Validate(bodypublicationDetailspublishAsUserId, nameof(bodypublicationDetailspublishAsUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/comms/v1/Articles";
@@ -1196,19 +1063,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateAlertResponse> CreateAlert([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodypriorityInput> bodypriority, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<bool> bodyeveryone = null, [WorkflowExpression] Func<string> bodyaudiencedepartmentTags = null, [WorkflowExpression] Func<string> bodyaudiencepeopleTags = null, [WorkflowExpression] Func<string> bodyaudiencegroupTags = null, [WorkflowExpression] Func<string> bodyaudiencesiteTags = null, [WorkflowExpression] Func<bool> bodycommunicationMethodspush = null, [WorkflowExpression] Func<bool> bodycommunicationMethodssms = null, [WorkflowExpression] Func<bool> bodycommunicationMethodsemail = null, [WorkflowExpression] Func<bool> bodycommunicationMethodsinApp = null, [WorkflowExpression] Func<bool> bodycommunicationMethodsteams = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: true);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
-            SourceExpression.Validate(bodyeveryone, nameof(bodyeveryone), required: false);
-            SourceExpression.Validate(bodyaudiencedepartmentTags, nameof(bodyaudiencedepartmentTags), required: false);
-            SourceExpression.Validate(bodyaudiencepeopleTags, nameof(bodyaudiencepeopleTags), required: false);
-            SourceExpression.Validate(bodyaudiencegroupTags, nameof(bodyaudiencegroupTags), required: false);
-            SourceExpression.Validate(bodyaudiencesiteTags, nameof(bodyaudiencesiteTags), required: false);
-            SourceExpression.Validate(bodycommunicationMethodspush, nameof(bodycommunicationMethodspush), required: false);
-            SourceExpression.Validate(bodycommunicationMethodssms, nameof(bodycommunicationMethodssms), required: false);
-            SourceExpression.Validate(bodycommunicationMethodsemail, nameof(bodycommunicationMethodsemail), required: false);
-            SourceExpression.Validate(bodycommunicationMethodsinApp, nameof(bodycommunicationMethodsinApp), required: false);
-            SourceExpression.Validate(bodycommunicationMethodsteams, nameof(bodycommunicationMethodsteams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/comms/v1/Alerts";
@@ -1375,26 +1229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<int> bodyformId, [WorkflowExpression] Func<int> bodytaskGroupId, [WorkflowExpression] Func<int> bodypriorityId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<int> bodyassignedToId = null, [WorkflowExpression] Func<int> bodymanagerId = null, [WorkflowExpression] Func<string> bodyassignedToEmail = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<int> bodytaskIntervalId = null, [WorkflowExpression] Func<bool> bodycontentSettingspush = null, [WorkflowExpression] Func<bool> bodycontentSettingssms = null, [WorkflowExpression] Func<bool> bodycontentSettingsemail = null, [WorkflowExpression] Func<bool> bodycontentSettingsteams = null, [WorkflowExpression] Func<bool> bodycontentSettingsinApp = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowLikes = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowComments = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowImagesInComments = null, [WorkflowExpression] Func<bool> bodycontentSettingsallowDocuments = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodytaskGroupId, nameof(bodytaskGroupId), required: true);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyassignedToId, nameof(bodyassignedToId), required: false);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodyassignedToEmail, nameof(bodyassignedToEmail), required: false);
-            SourceExpression.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            SourceExpression.Validate(bodytaskIntervalId, nameof(bodytaskIntervalId), required: false);
-            SourceExpression.Validate(bodycontentSettingspush, nameof(bodycontentSettingspush), required: false);
-            SourceExpression.Validate(bodycontentSettingssms, nameof(bodycontentSettingssms), required: false);
-            SourceExpression.Validate(bodycontentSettingsemail, nameof(bodycontentSettingsemail), required: false);
-            SourceExpression.Validate(bodycontentSettingsteams, nameof(bodycontentSettingsteams), required: false);
-            SourceExpression.Validate(bodycontentSettingsinApp, nameof(bodycontentSettingsinApp), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowLikes, nameof(bodycontentSettingsallowLikes), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
-            SourceExpression.Validate(bodycontentSettingsallowDocuments, nameof(bodycontentSettingsallowDocuments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/tasks/v1/tasks";
@@ -1583,7 +1417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
     {
         public IBodyWorkflowTrigger<JToken> NewPerson([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewPerson";
@@ -1621,7 +1454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
         public IBodyWorkflowTrigger<JToken> NewObjective([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewObjective";
@@ -1659,7 +1491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
         public IBodyWorkflowTrigger<JToken> UpdateObjective([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/security/v1/webhooks/UpdateObjective";
@@ -1697,7 +1528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
         public IBodyWorkflowTrigger<JToken> PublishedArticle([WorkflowExpression] Func<string> bodyname = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Public/Security/v1/Webhooks/NewArticle";
@@ -1741,7 +1571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
         public IBodyWorkflowTrigger<JToken> NewTask([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewTask";
@@ -1779,7 +1608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
         public IBodyWorkflowTrigger<JToken> NewReview([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewReview";
@@ -1817,7 +1645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
         public IBodyWorkflowTrigger<JToken> NewAbsence([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/security/v1/webhooks/newabsence";

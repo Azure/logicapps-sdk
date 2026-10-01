@@ -14,25 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<CreateRequestResponse> CreateRequest([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> bodyinputDatarequestsubject, [WorkflowExpression] Func<string> bodyinputDatarequesttemplatename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestTypename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestername = null, [WorkflowExpression] Func<string> bodyinputDatarequeststatusname = null, [WorkflowExpression] Func<string> bodyinputDatarequesttechnicianemailId = null, [WorkflowExpression] Func<string> bodyinputDatarequestsitename = null, [WorkflowExpression] Func<string> bodyinputDatarequestgroupname = null, [WorkflowExpression] Func<string> bodyinputDatarequestdescription = null, [WorkflowExpression] Func<string> bodyinputDatarequestpriorityname = null, [WorkflowExpression] Func<string> bodyinputDatarequesturgencyname = null, [WorkflowExpression] Func<string> bodyinputDatarequestimpactname = null, [WorkflowExpression] Func<string> bodyinputDatarequestmodename = null, [WorkflowExpression] Func<string> bodyinputDatarequestcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestsubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestitemname = null, [WorkflowExpression] Func<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, [WorkflowExpression] Func<string> bodyinputDatarequestudfFields = null)
         {
-            SourceExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            SourceExpression.Validate(bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: true);
-            SourceExpression.Validate(bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
-            SourceExpression.Validate(bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
-            SourceExpression.Validate(bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
-            SourceExpression.Validate(bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
-            SourceExpression.Validate(bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
-            SourceExpression.Validate(bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
-            SourceExpression.Validate(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1));
@@ -285,26 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinputDatarequestsubject = null, [WorkflowExpression] Func<string> bodyinputDatarequesttemplatename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestTypename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestername = null, [WorkflowExpression] Func<string> bodyinputDatarequeststatusname = null, [WorkflowExpression] Func<string> bodyinputDatarequesttechnicianemailId = null, [WorkflowExpression] Func<string> bodyinputDatarequestsitename = null, [WorkflowExpression] Func<string> bodyinputDatarequestgroupname = null, [WorkflowExpression] Func<string> bodyinputDatarequestdescription = null, [WorkflowExpression] Func<string> bodyinputDatarequestpriorityname = null, [WorkflowExpression] Func<string> bodyinputDatarequesturgencyname = null, [WorkflowExpression] Func<string> bodyinputDatarequestimpactname = null, [WorkflowExpression] Func<string> bodyinputDatarequestmodename = null, [WorkflowExpression] Func<string> bodyinputDatarequestcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestsubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestitemname = null, [WorkflowExpression] Func<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, [WorkflowExpression] Func<string> bodyinputDatarequestudfFields = null)
         {
-            SourceExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: false);
-            SourceExpression.Validate(bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
-            SourceExpression.Validate(bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
-            SourceExpression.Validate(bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
-            SourceExpression.Validate(bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
-            SourceExpression.Validate(bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
-            SourceExpression.Validate(bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
-            SourceExpression.Validate(bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
-            SourceExpression.Validate(bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
-            SourceExpression.Validate(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -561,26 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<CreateChangeResponse> CreateChange([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> bodyinputDatachangetitle, [WorkflowExpression] Func<string> bodyinputDatachangecomment = null, [WorkflowExpression] Func<string> bodyinputDatachangetemplatename = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeRequestername = null, [WorkflowExpression] Func<string> bodyinputDatachangesitename = null, [WorkflowExpression] Func<string> bodyinputDatachangegroupname = null, [WorkflowExpression] Func<string> bodyinputDatachangedescription = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeOwneremailId = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeTypename = null, [WorkflowExpression] Func<string> bodyinputDatachangepriorityname = null, [WorkflowExpression] Func<string> bodyinputDatachangeurgencyname = null, [WorkflowExpression] Func<string> bodyinputDatachangeimpactname = null, [WorkflowExpression] Func<string> bodyinputDatachangeriskname = null, [WorkflowExpression] Func<string> bodyinputDatachangereasonForChangename = null, [WorkflowExpression] Func<string> bodyinputDatachangecategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangesubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangeitemname = null, [WorkflowExpression] Func<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, [WorkflowExpression] Func<string> bodyinputDatachangeudfFields = null)
         {
-            SourceExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            SourceExpression.Validate(bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: true);
-            SourceExpression.Validate(bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
-            SourceExpression.Validate(bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
-            SourceExpression.Validate(bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
-            SourceExpression.Validate(bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
-            SourceExpression.Validate(bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
-            SourceExpression.Validate(bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
-            SourceExpression.Validate(bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
-            SourceExpression.Validate(bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
-            SourceExpression.Validate(bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
-            SourceExpression.Validate(bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
-            SourceExpression.Validate(bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
-            SourceExpression.Validate(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1));
@@ -839,27 +780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
         public IBodyWorkflowAction<UpdateChangeResponse> UpdateChange([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinputDatachangetitle = null, [WorkflowExpression] Func<string> bodyinputDatachangecomment = null, [WorkflowExpression] Func<string> bodyinputDatachangetemplatename = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeRequestername = null, [WorkflowExpression] Func<string> bodyinputDatachangesitename = null, [WorkflowExpression] Func<string> bodyinputDatachangegroupname = null, [WorkflowExpression] Func<string> bodyinputDatachangedescription = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeOwneremailId = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeTypename = null, [WorkflowExpression] Func<string> bodyinputDatachangepriorityname = null, [WorkflowExpression] Func<string> bodyinputDatachangeurgencyname = null, [WorkflowExpression] Func<string> bodyinputDatachangeimpactname = null, [WorkflowExpression] Func<string> bodyinputDatachangeriskname = null, [WorkflowExpression] Func<string> bodyinputDatachangereasonForChangename = null, [WorkflowExpression] Func<string> bodyinputDatachangecategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangesubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangeitemname = null, [WorkflowExpression] Func<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, [WorkflowExpression] Func<string> bodyinputDatachangeudfFields = null)
         {
-            SourceExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: false);
-            SourceExpression.Validate(bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
-            SourceExpression.Validate(bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
-            SourceExpression.Validate(bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
-            SourceExpression.Validate(bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
-            SourceExpression.Validate(bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
-            SourceExpression.Validate(bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
-            SourceExpression.Validate(bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
-            SourceExpression.Validate(bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
-            SourceExpression.Validate(bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
-            SourceExpression.Validate(bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
-            SourceExpression.Validate(bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
-            SourceExpression.Validate(bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
-            SourceExpression.Validate(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<TextTranslateResponse> TextTranslate([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> target, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> model = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(target, nameof(target), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(model, nameof(model), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/language/translate/v2";
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<LanguageDetectResponse> LanguageDetect([WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/language/translate/v2/detect";
@@ -59,8 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<LanguageGetResponse> LanguageGet([WorkflowExpression] Func<string> target = null, [WorkflowExpression] Func<string> model = null)
         {
-            SourceExpression.Validate(target, nameof(target), required: false);
-            SourceExpression.Validate(model, nameof(model), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/language/translate/v2/languages";

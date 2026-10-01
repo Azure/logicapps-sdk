@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> MergePDF([WorkflowExpression] Func<string[]> filesfileContent)
         {
-            SourceExpression.Validate(filesfileContent, nameof(filesfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/merge";
@@ -37,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> AddWatermarkText([WorkflowExpression] Func<string> filefileContent, [WorkflowExpression] Func<string> filewatermarkText)
         {
-            SourceExpression.Validate(filefileContent, nameof(filefileContent), required: true);
-            SourceExpression.Validate(filewatermarkText, nameof(filewatermarkText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/watermark_text";
@@ -63,8 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> AddPassword([WorkflowExpression] Func<string> filefileContent, [WorkflowExpression] Func<string> filepassword)
         {
-            SourceExpression.Validate(filefileContent, nameof(filefileContent), required: true);
-            SourceExpression.Validate(filepassword, nameof(filepassword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/password";
@@ -89,13 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> AddImage([WorkflowExpression] Func<string> filefileContent, [WorkflowExpression] Func<string> fileimageContent, [WorkflowExpression] Func<double> filepositionX, [WorkflowExpression] Func<double> filepositionY, [WorkflowExpression] Func<string> fileaddType, [WorkflowExpression] Func<double> filefromPage = null, [WorkflowExpression] Func<double> filetoPage = null)
         {
-            SourceExpression.Validate(filefileContent, nameof(filefileContent), required: true);
-            SourceExpression.Validate(fileimageContent, nameof(fileimageContent), required: true);
-            SourceExpression.Validate(filepositionX, nameof(filepositionX), required: true);
-            SourceExpression.Validate(filepositionY, nameof(filepositionY), required: true);
-            SourceExpression.Validate(fileaddType, nameof(fileaddType), required: true);
-            SourceExpression.Validate(filefromPage, nameof(filefromPage), required: false);
-            SourceExpression.Validate(filetoPage, nameof(filetoPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image";

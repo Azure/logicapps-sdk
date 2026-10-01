@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
         public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> commandtemplateId, [WorkflowExpression] Func<string> commandpayload, [WorkflowExpression] Func<string> commandreferenceId = null)
         {
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(commandtemplateId, nameof(commandtemplateId), required: true);
-            SourceExpression.Validate(commandpayload, nameof(commandpayload), required: true);
-            SourceExpression.Validate(commandreferenceId, nameof(commandreferenceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));

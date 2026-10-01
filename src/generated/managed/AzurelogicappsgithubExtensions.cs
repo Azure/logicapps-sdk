@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurelogicappsgithub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurelogicappsgithub")]
         public IWorkflowAction PassthroughDELETE([WorkflowExpression] Func<string> Path)
         {
-            SourceExpression.Validate(Path, nameof(Path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(Path, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurelogicappsgithub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurelogicappsgithub")]
         public IWorkflowAction PassthroughPOST([WorkflowExpression] Func<string> Path)
         {
-            SourceExpression.Validate(Path, nameof(Path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(Path, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurelogicappsgithub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurelogicappsgithub")]
         public IWorkflowAction PassthroughPUT([WorkflowExpression] Func<string> Path)
         {
-            SourceExpression.Validate(Path, nameof(Path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(Path, 1));
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurelogicappsgithub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurelogicappsgithub")]
         public IWorkflowAction PassthroughGET([WorkflowExpression] Func<string> Path)
         {
-            SourceExpression.Validate(Path, nameof(Path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(Path, 1));

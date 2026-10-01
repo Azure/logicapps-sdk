@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
     {
         public IBodyWorkflowTrigger<VideoList> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/activities";
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 
         public IBodyWorkflowTrigger<VideoList> OnNewVideoMatchingSearch([WorkflowExpression] Func<string> q, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/search";

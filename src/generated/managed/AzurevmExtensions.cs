@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IBodyWorkflowAction<VirtualMachineInScaleSet> VirtualMachineInScaleSetGet([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
@@ -33,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetDeallocate([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/deallocate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
@@ -52,10 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetPowerOff([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/poweroff", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
@@ -71,10 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetRedeploy([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/redeploy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
@@ -90,10 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetReimage([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/reimage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
@@ -109,10 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetRestart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
@@ -128,10 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetStart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
@@ -147,9 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IBodyWorkflowAction<VirtualMachine> VirtualMachineGet([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
@@ -165,9 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineStart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
@@ -183,9 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineDeallocate([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/deallocate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
@@ -201,9 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachinePoweroff([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/powerOff", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
@@ -219,9 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineReapply([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/reapply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
@@ -237,9 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineRedeploy([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/redeploy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
@@ -255,9 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineRestart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));

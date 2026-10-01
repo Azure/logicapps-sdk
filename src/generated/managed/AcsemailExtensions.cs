@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
         public IBodyWorkflowAction<EmailSendResult> SendEmailGAVersion([WorkflowExpression] Func<string> emailMessagesenderAddress, [WorkflowExpression] Func<string> emailMessagecontentsubject, [WorkflowExpression] Func<emailMessageimportanceInput> emailMessageimportance = null, [WorkflowExpression] Func<emailMessagerecipientstoInputItem[]> emailMessagerecipientsto = null, [WorkflowExpression] Func<emailMessagerecipientscCInputItem[]> emailMessagerecipientscC = null, [WorkflowExpression] Func<emailMessagerecipientsbCCInputItem[]> emailMessagerecipientsbCC = null, [WorkflowExpression] Func<string> emailMessagecontenthtml = null, [WorkflowExpression] Func<emailMessagereplyToInputItem[]> emailMessagereplyTo = null, [WorkflowExpression] Func<emailMessageattachmentsInputItem[]> emailMessageattachments = null, [WorkflowExpression] Func<EmailCustomHeader[]> emailMessageheaders = null, [WorkflowExpression] Func<bool> emailMessageuserEngagementTrackingDisabled = null)
         {
-            SourceExpression.Validate(emailMessagesenderAddress, nameof(emailMessagesenderAddress), required: true);
-            SourceExpression.Validate(emailMessagecontentsubject, nameof(emailMessagecontentsubject), required: true);
-            SourceExpression.Validate(emailMessageimportance, nameof(emailMessageimportance), required: false);
-            SourceExpression.Validate(emailMessagerecipientsto, nameof(emailMessagerecipientsto), required: false);
-            SourceExpression.Validate(emailMessagerecipientscC, nameof(emailMessagerecipientscC), required: false);
-            SourceExpression.Validate(emailMessagerecipientsbCC, nameof(emailMessagerecipientsbCC), required: false);
-            SourceExpression.Validate(emailMessagecontenthtml, nameof(emailMessagecontenthtml), required: false);
-            SourceExpression.Validate(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
-            SourceExpression.Validate(emailMessageattachments, nameof(emailMessageattachments), required: false);
-            SourceExpression.Validate(emailMessageheaders, nameof(emailMessageheaders), required: false);
-            SourceExpression.Validate(emailMessageuserEngagementTrackingDisabled, nameof(emailMessageuserEngagementTrackingDisabled), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emails:sendGAVersion";
@@ -130,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
         public IBodyWorkflowAction<EmailSendResult> GetMessageStatusGAVersion([WorkflowExpression] Func<string> operationId)
         {
-            SourceExpression.Validate(operationId, nameof(operationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/emails/operations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationId, 1));

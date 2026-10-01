@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openexperience")]
         public IBodyWorkflowAction<CreateNewProjectResponse> CreateNewProject([WorkflowExpression] Func<string> projectSettingscustomerId, [WorkflowExpression] Func<string> projectSettingsid, [WorkflowExpression] Func<string> projectSettingsname, [WorkflowExpression] Func<int> projectSettingscontactPhone, [WorkflowExpression] Func<string> projectSettingscontactEmail, [WorkflowExpression] Func<string> projectSettingsresponsible, [WorkflowExpression] Func<string[]> projectSettingsservices, [WorkflowExpression] Func<string> projectSettingsaddress = null, [WorkflowExpression] Func<bool> projectSettingssettingsprojectAdminMembersAccess = null)
         {
-            SourceExpression.Validate(projectSettingscustomerId, nameof(projectSettingscustomerId), required: true);
-            SourceExpression.Validate(projectSettingsid, nameof(projectSettingsid), required: true);
-            SourceExpression.Validate(projectSettingsname, nameof(projectSettingsname), required: true);
-            SourceExpression.Validate(projectSettingscontactPhone, nameof(projectSettingscontactPhone), required: true);
-            SourceExpression.Validate(projectSettingscontactEmail, nameof(projectSettingscontactEmail), required: true);
-            SourceExpression.Validate(projectSettingsresponsible, nameof(projectSettingsresponsible), required: true);
-            SourceExpression.Validate(projectSettingsservices, nameof(projectSettingsservices), required: true);
-            SourceExpression.Validate(projectSettingsaddress, nameof(projectSettingsaddress), required: false);
-            SourceExpression.Validate(projectSettingssettingsprojectAdminMembersAccess, nameof(projectSettingssettingsprojectAdminMembersAccess), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/createProject";

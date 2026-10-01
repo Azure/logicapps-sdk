@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodydevice = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodyhtmlInput> bodyhtml = null, [WorkflowExpression] Func<string> bodysound = null, [WorkflowExpression] Func<string> bodytimestamp = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyurlTitle = null)
         {
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodydevice, nameof(bodydevice), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: false);
-            SourceExpression.Validate(bodysound, nameof(bodysound), required: false);
-            SourceExpression.Validate(bodytimestamp, nameof(bodytimestamp), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodyurlTitle, nameof(bodyurlTitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/messages.json";
@@ -110,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodydevice = null)
         {
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            SourceExpression.Validate(bodydevice, nameof(bodydevice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/users/validate.json";

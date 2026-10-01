@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<TextImageAddPostResponse> TextImageAdd([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasamples = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<string> bodydataaspectRatio = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<int> bodydataseed = null)
         {
-            SourceExpression.Validate(bodydataprompt, nameof(bodydataprompt), required: false);
-            SourceExpression.Validate(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            SourceExpression.Validate(bodydatasamples, nameof(bodydatasamples), required: false);
-            SourceExpression.Validate(bodydatasteps, nameof(bodydatasteps), required: false);
-            SourceExpression.Validate(bodydataaspectRatio, nameof(bodydataaspectRatio), required: false);
-            SourceExpression.Validate(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            SourceExpression.Validate(bodydataseed, nameof(bodydataseed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-text-task";
@@ -93,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<TextImageStatusPostResponse> TextImageStatus([WorkflowExpression] Func<string> bodyprocessId)
         {
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/task-text-status";
@@ -116,13 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageImageAddPostResponse> ImageImageAdd([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<string> bodydatainitImageUrl = null, [WorkflowExpression] Func<double> bodydatastrength = null, [WorkflowExpression] Func<int> bodydataseed = null)
         {
-            SourceExpression.Validate(bodydataprompt, nameof(bodydataprompt), required: false);
-            SourceExpression.Validate(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            SourceExpression.Validate(bodydatasteps, nameof(bodydatasteps), required: false);
-            SourceExpression.Validate(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            SourceExpression.Validate(bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
-            SourceExpression.Validate(bodydatastrength, nameof(bodydatastrength), required: false);
-            SourceExpression.Validate(bodydataseed, nameof(bodydataseed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-image-task";
@@ -195,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageImageStatusPostResponse> ImageImageStatus([WorkflowExpression] Func<string> bodyprocessId)
         {
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/task-image-status";
@@ -218,13 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<string> bodydatainitImageUrl = null, [WorkflowExpression] Func<double> bodydataimageGuidanceScale = null, [WorkflowExpression] Func<int> bodydataseed = null)
         {
-            SourceExpression.Validate(bodydataprompt, nameof(bodydataprompt), required: false);
-            SourceExpression.Validate(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            SourceExpression.Validate(bodydatasteps, nameof(bodydatasteps), required: false);
-            SourceExpression.Validate(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            SourceExpression.Validate(bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
-            SourceExpression.Validate(bodydataimageGuidanceScale, nameof(bodydataimageGuidanceScale), required: false);
-            SourceExpression.Validate(bodydataseed, nameof(bodydataseed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-edit-task";
@@ -297,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageEditStatusPostResponse> ImageEditStatus([WorkflowExpression] Func<string> bodyprocessId)
         {
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/task-edit-status";
@@ -320,8 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<AudioPostResponse> Audio([WorkflowExpression] Func<string> bodydataFile = null, [WorkflowExpression] Func<bodydatatranscriptionFormatInput> bodydatatranscriptionFormat = null)
         {
-            SourceExpression.Validate(bodydataFile, nameof(bodydataFile), required: false);
-            SourceExpression.Validate(bodydatatranscriptionFormat, nameof(bodydatatranscriptionFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-audio-task";
@@ -374,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<AudioStatusPostResponse> AudioStatus([WorkflowExpression] Func<string> bodyprocessId)
         {
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/task-audio-status";

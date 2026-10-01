@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<JToken> ModelId([WorkflowExpression] Func<string> modelId, [WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(modelId, nameof(modelId), required: true);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
@@ -83,9 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<FillMaskPostResponseItem[]> FillMask([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bert-base-uncased";
@@ -128,17 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<SummarizationPostResponseItem[]> Summarization([WorkflowExpression] Func<string> bodyinputs = null, [WorkflowExpression] Func<bool> bodyparametersdoSample = null, [WorkflowExpression] Func<int> bodyparametersminLength = null, [WorkflowExpression] Func<int> bodyparametersmaxLength = null, [WorkflowExpression] Func<int> bodyparameterstopK = null, [WorkflowExpression] Func<int> bodyparameterstopP = null, [WorkflowExpression] Func<double> bodyparameterstemperature = null, [WorkflowExpression] Func<double> bodyparametersrepetitionPenalty = null, [WorkflowExpression] Func<double> bodyparametersmaxTime = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            SourceExpression.Validate(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            SourceExpression.Validate(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            SourceExpression.Validate(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            SourceExpression.Validate(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            SourceExpression.Validate(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            SourceExpression.Validate(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            SourceExpression.Validate(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            SourceExpression.Validate(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/facebook/bart-large-cnn";
@@ -241,8 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<AnswerPostResponse> Answer([WorkflowExpression] Func<string> bodyinputsquestion = null, [WorkflowExpression] Func<string> bodyinputscontext = null)
         {
-            SourceExpression.Validate(bodyinputsquestion, nameof(bodyinputsquestion), required: false);
-            SourceExpression.Validate(bodyinputscontext, nameof(bodyinputscontext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deepset/roberta-base-squad2";
@@ -283,10 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<double[]> SentenceSimilarity([WorkflowExpression] Func<string> bodyinputssourceSentence = null, [WorkflowExpression] Func<string[]> bodyinputssentences = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputssourceSentence, nameof(bodyinputssourceSentence), required: false);
-            SourceExpression.Validate(bodyinputssentences, nameof(bodyinputssentences), required: false);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sentence-transformers/all-MiniLM-L6-v2";
@@ -347,9 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> TextClassification([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
@@ -392,17 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TextGenerationPostResponseItem[]> TextGeneration([WorkflowExpression] Func<string> bodyinputs = null, [WorkflowExpression] Func<bool> bodyparametersdoSample = null, [WorkflowExpression] Func<int> bodyparametersminLength = null, [WorkflowExpression] Func<int> bodyparametersmaxLength = null, [WorkflowExpression] Func<int> bodyparameterstopK = null, [WorkflowExpression] Func<int> bodyparameterstopP = null, [WorkflowExpression] Func<double> bodyparameterstemperature = null, [WorkflowExpression] Func<double> bodyparametersrepetitionPenalty = null, [WorkflowExpression] Func<double> bodyparametersmaxTime = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            SourceExpression.Validate(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            SourceExpression.Validate(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            SourceExpression.Validate(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            SourceExpression.Validate(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            SourceExpression.Validate(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            SourceExpression.Validate(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            SourceExpression.Validate(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            SourceExpression.Validate(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gpt2";
@@ -505,10 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> TokenClassification([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<string> bodyparametersaggregationStrategy = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            SourceExpression.Validate(bodyparametersaggregationStrategy, nameof(bodyparametersaggregationStrategy), required: false);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
@@ -565,9 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TranslationPostResponseItem[]> Translation([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/t5-base";
@@ -610,11 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<ZeroShotPostResponse> ZeroShot([WorkflowExpression] Func<string> bodyinputs = null, [WorkflowExpression] Func<string[]> bodyparameterscandidateLabels = null, [WorkflowExpression] Func<bool> bodyparametersmultiLabel = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            SourceExpression.Validate(bodyparameterscandidateLabels, nameof(bodyparameterscandidateLabels), required: false);
-            SourceExpression.Validate(bodyparametersmultiLabel, nameof(bodyparametersmultiLabel), required: false);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/facebook/bart-large-mnli";
@@ -681,18 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<ConversationalPostResponse> Conversational([WorkflowExpression] Func<string[]> bodyinputspastUserInputs = null, [WorkflowExpression] Func<string[]> bodyinputsgeneratedResponses = null, [WorkflowExpression] Func<string> bodyinputstext = null, [WorkflowExpression] Func<int> bodyparametersminLength = null, [WorkflowExpression] Func<int> bodyparametersmaxLength = null, [WorkflowExpression] Func<int> bodyparameterstopK = null, [WorkflowExpression] Func<int> bodyparameterstopP = null, [WorkflowExpression] Func<double> bodyparameterstemperature = null, [WorkflowExpression] Func<double> bodyparametersrepetitionPenalty = null, [WorkflowExpression] Func<double> bodyparametersmaxTime = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
         {
-            SourceExpression.Validate(bodyinputspastUserInputs, nameof(bodyinputspastUserInputs), required: false);
-            SourceExpression.Validate(bodyinputsgeneratedResponses, nameof(bodyinputsgeneratedResponses), required: false);
-            SourceExpression.Validate(bodyinputstext, nameof(bodyinputstext), required: false);
-            SourceExpression.Validate(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            SourceExpression.Validate(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            SourceExpression.Validate(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            SourceExpression.Validate(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            SourceExpression.Validate(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            SourceExpression.Validate(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            SourceExpression.Validate(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            SourceExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            SourceExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/microsoft/DialoGPT-large";

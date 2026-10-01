@@ -14,24 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetHeadlinesResponse> GetHeadlines([WorkflowExpression] Func<string> createdGt = null, [WorkflowExpression] Func<string> createdLt = null, [WorkflowExpression] Func<string> signalIds = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<double> userRelevanceScoreGt = null, [WorkflowExpression] Func<double> userRelevanceScoreLt = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<double> userRelevanceScoreGte = null, [WorkflowExpression] Func<double> userRelevanceScoreLte = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> createdGte = null, [WorkflowExpression] Func<string> updatedGte = null, [WorkflowExpression] Func<string> createdLte = null, [WorkflowExpression] Func<string> updatedLte = null, [WorkflowExpression] Func<string> portfolios = null, [WorkflowExpression] Func<string> themes = null, [WorkflowExpression] Func<string> categories = null)
         {
-            SourceExpression.Validate(createdGt, nameof(createdGt), required: false);
-            SourceExpression.Validate(createdLt, nameof(createdLt), required: false);
-            SourceExpression.Validate(signalIds, nameof(signalIds), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
-            SourceExpression.Validate(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
-            SourceExpression.Validate(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
-            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
-            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
-            SourceExpression.Validate(createdGte, nameof(createdGte), required: false);
-            SourceExpression.Validate(updatedGte, nameof(updatedGte), required: false);
-            SourceExpression.Validate(createdLte, nameof(createdLte), required: false);
-            SourceExpression.Validate(updatedLte, nameof(updatedLte), required: false);
-            SourceExpression.Validate(portfolios, nameof(portfolios), required: false);
-            SourceExpression.Validate(themes, nameof(themes), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/signals/v2/events/headlines";
@@ -83,22 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetDetailsResponse> GetDetails([WorkflowExpression] Func<string> signalIds = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<double> userRelevanceScoreGt = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<double> userRelevanceScoreLt = null, [WorkflowExpression] Func<double> userRelevanceScoreLte = null, [WorkflowExpression] Func<double> userRelevanceScoreGte = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> createdGte = null, [WorkflowExpression] Func<string> updatedGte = null, [WorkflowExpression] Func<string> createdLte = null, [WorkflowExpression] Func<string> updatedLte = null, [WorkflowExpression] Func<string> portfolios = null, [WorkflowExpression] Func<string> themes = null, [WorkflowExpression] Func<string> categories = null)
         {
-            SourceExpression.Validate(signalIds, nameof(signalIds), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
-            SourceExpression.Validate(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
-            SourceExpression.Validate(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
-            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
-            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
-            SourceExpression.Validate(createdGte, nameof(createdGte), required: false);
-            SourceExpression.Validate(updatedGte, nameof(updatedGte), required: false);
-            SourceExpression.Validate(createdLte, nameof(createdLte), required: false);
-            SourceExpression.Validate(updatedLte, nameof(updatedLte), required: false);
-            SourceExpression.Validate(portfolios, nameof(portfolios), required: false);
-            SourceExpression.Validate(themes, nameof(themes), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/signals/v2/events/details";
@@ -146,22 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetAdaptiveCardResponse> GetAdaptiveCard([WorkflowExpression] Func<string> signalIds = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<double> userRelevanceScoreGt = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<double> userRelevanceScoreLt = null, [WorkflowExpression] Func<double> userRelevanceScoreLte = null, [WorkflowExpression] Func<double> userRelevanceScoreGte = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> createdGte = null, [WorkflowExpression] Func<string> updatedGte = null, [WorkflowExpression] Func<string> createdLte = null, [WorkflowExpression] Func<string> updatedLte = null, [WorkflowExpression] Func<string> portfolios = null, [WorkflowExpression] Func<string> themes = null, [WorkflowExpression] Func<string> categories = null)
         {
-            SourceExpression.Validate(signalIds, nameof(signalIds), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
-            SourceExpression.Validate(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
-            SourceExpression.Validate(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
-            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
-            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
-            SourceExpression.Validate(createdGte, nameof(createdGte), required: false);
-            SourceExpression.Validate(updatedGte, nameof(updatedGte), required: false);
-            SourceExpression.Validate(createdLte, nameof(createdLte), required: false);
-            SourceExpression.Validate(updatedLte, nameof(updatedLte), required: false);
-            SourceExpression.Validate(portfolios, nameof(portfolios), required: false);
-            SourceExpression.Validate(themes, nameof(themes), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/signals/v2/events/adaptive-cards";
@@ -209,9 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<NEREntitiesResponse> NEREntities([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodyfilterEntities = null, [WorkflowExpression] Func<bool> bodyenableIdLookup = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyfilterEntities, nameof(bodyfilterEntities), required: false);
-            SourceExpression.Validate(bodyenableIdLookup, nameof(bodyenableIdLookup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cognitive/ner/v2/entities";
@@ -294,8 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<CreateBookFromTemplateResponse> CreateBookFromTemplate([WorkflowExpression] Func<string> bodyticker = null, [WorkflowExpression] Func<string> bodytemplateId = null)
         {
-            SourceExpression.Validate(bodyticker, nameof(bodyticker), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/book-builder-api/v1/create-book-from-template";
@@ -328,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<JToken> GetPDF([WorkflowExpression] Func<string> bookId)
         {
-            SourceExpression.Validate(bookId, nameof(bookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/book-builder-api/v1/download-api-book/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));

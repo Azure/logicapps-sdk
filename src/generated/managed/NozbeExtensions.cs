@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<GetTaskResponse> GetTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -30,12 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<int> bodydueAt = null, [WorkflowExpression] Func<bool> bodyisAllDay = null, [WorkflowExpression] Func<bool> bodyisFollowed = null, [WorkflowExpression] Func<string> bodyresponsibleId = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodydueAt, nameof(bodydueAt), required: false);
-            SourceExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: false);
-            SourceExpression.Validate(bodyisFollowed, nameof(bodyisFollowed), required: false);
-            SourceExpression.Validate(bodyresponsibleId, nameof(bodyresponsibleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks";
@@ -96,9 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<CreateCommentResponse> CreateComment([WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<bool> bodyisPinned = null)
         {
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyisPinned, nameof(bodyisPinned), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/comments";
@@ -148,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<GetProjectsResponseItem[]> GetProjects([WorkflowExpression] Func<string> sortBy = null)
         {
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/projects";
@@ -167,10 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<CreateReminderResponse> CreateReminder([WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<int> bodyremindAt, [WorkflowExpression] Func<bool> bodyisRelative, [WorkflowExpression] Func<bool> bodyisAllDay)
         {
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodyremindAt, nameof(bodyremindAt), required: true);
-            SourceExpression.Validate(bodyisRelative, nameof(bodyisRelative), required: true);
-            SourceExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reminders";
@@ -201,8 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
     {
         public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks([WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(responsibleId, nameof(responsibleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/poll/tasks/new";
@@ -221,8 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
         public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks([WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(responsibleId, nameof(responsibleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/poll/tasks/updated";

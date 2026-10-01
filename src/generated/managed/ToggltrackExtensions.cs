@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<UserResponse> GetMe([WorkflowExpression] Func<bool> withRelatedData = null)
         {
-            SourceExpression.Validate(withRelatedData, nameof(withRelatedData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me";
@@ -32,14 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<UserBasicResponse> UpdateMe([WorkflowExpression] Func<int> bodybeginningOfWeek = null, [WorkflowExpression] Func<int> bodycountryId = null, [WorkflowExpression] Func<string> bodycurrentPassword = null, [WorkflowExpression] Func<int> bodydefaultWorkspaceId = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfullName = null, [WorkflowExpression] Func<string> bodynewPassword = null, [WorkflowExpression] Func<string> bodytimezone = null)
         {
-            SourceExpression.Validate(bodybeginningOfWeek, nameof(bodybeginningOfWeek), required: false);
-            SourceExpression.Validate(bodycountryId, nameof(bodycountryId), required: false);
-            SourceExpression.Validate(bodycurrentPassword, nameof(bodycurrentPassword), required: false);
-            SourceExpression.Validate(bodydefaultWorkspaceId, nameof(bodydefaultWorkspaceId), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: false);
-            SourceExpression.Validate(bodynewPassword, nameof(bodynewPassword), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me";
@@ -108,7 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Client[]> GetMeClients([WorkflowExpression] Func<int> since = null)
         {
-            SourceExpression.Validate(since, nameof(since), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/clients";
@@ -181,8 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Project[]> GetMeProjects([WorkflowExpression] Func<string> includeArchived = null, [WorkflowExpression] Func<int> since = null)
         {
-            SourceExpression.Validate(includeArchived, nameof(includeArchived), required: false);
-            SourceExpression.Validate(since, nameof(since), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/projects";
@@ -201,9 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Project[]> GetMeProjectsPaginated([WorkflowExpression] Func<int> startProjectId = null, [WorkflowExpression] Func<int> since = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(startProjectId, nameof(startProjectId), required: false);
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/projects/paginated";
@@ -225,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Tag[]> GetMeTags([WorkflowExpression] Func<int> since = null)
         {
-            SourceExpression.Validate(since, nameof(since), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/tags";
@@ -242,11 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TaskObject[]> GetMeTasks([WorkflowExpression] Func<bool> meta = null, [WorkflowExpression] Func<int> since = null, [WorkflowExpression] Func<string> includeNotActive = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(includeNotActive, nameof(includeNotActive), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/tasks";
@@ -301,7 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Workspace[]> GetMeWorkspaces([WorkflowExpression] Func<int> since = null)
         {
-            SourceExpression.Validate(since, nameof(since), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/workspaces";
@@ -318,12 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TimeEntry[]> GetMeTimeEntries([WorkflowExpression] Func<bool> meta = null, [WorkflowExpression] Func<bool> includeSharing = null, [WorkflowExpression] Func<int> since = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(includeSharing, nameof(includeSharing), required: false);
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/time_entries";
@@ -366,9 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TimeEntry> GetTimeEntryById([WorkflowExpression] Func<int> timeEntryId, [WorkflowExpression] Func<bool> meta = null, [WorkflowExpression] Func<bool> includeSharing = null)
         {
-            SourceExpression.Validate(timeEntryId, nameof(timeEntryId), required: true);
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(includeSharing, nameof(includeSharing), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/me/time_entries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(timeEntryId, 1));
@@ -389,31 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TimeEntry> CreateTimeEntry([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<bool> meta = null, [WorkflowExpression] Func<bool> bodybillable = null, [WorkflowExpression] Func<string> bodycreatedWith = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<bool> bodydurationOnly = null, [WorkflowExpression] Func<string> bodyeventMetadataoriginFeature = null, [WorkflowExpression] Func<int> bodyeventMetadatavisibleGoalsCount = null, [WorkflowExpression] Func<int[]> bodyexpenseIDs = null, [WorkflowExpression] Func<int> bodyprojectIdLegacy = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int[]> bodysharedWithUserIDs = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystopTime = null, [WorkflowExpression] Func<bodytagActionInput> bodytagAction = null, [WorkflowExpression] Func<int[]> bodytagIDs = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<int> bodytaskId = null, [WorkflowExpression] Func<int> bodytaskIdLegacy = null, [WorkflowExpression] Func<int> bodyuserIdLegacy = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<int> bodyworkspaceIdLegacy = null, [WorkflowExpression] Func<int> bodyworkspaceId = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(bodybillable, nameof(bodybillable), required: false);
-            SourceExpression.Validate(bodycreatedWith, nameof(bodycreatedWith), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodydurationOnly, nameof(bodydurationOnly), required: false);
-            SourceExpression.Validate(bodyeventMetadataoriginFeature, nameof(bodyeventMetadataoriginFeature), required: false);
-            SourceExpression.Validate(bodyeventMetadatavisibleGoalsCount, nameof(bodyeventMetadatavisibleGoalsCount), required: false);
-            SourceExpression.Validate(bodyexpenseIDs, nameof(bodyexpenseIDs), required: false);
-            SourceExpression.Validate(bodyprojectIdLegacy, nameof(bodyprojectIdLegacy), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodysharedWithUserIDs, nameof(bodysharedWithUserIDs), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystopTime, nameof(bodystopTime), required: false);
-            SourceExpression.Validate(bodytagAction, nameof(bodytagAction), required: false);
-            SourceExpression.Validate(bodytagIDs, nameof(bodytagIDs), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
-            SourceExpression.Validate(bodytaskIdLegacy, nameof(bodytaskIdLegacy), required: false);
-            SourceExpression.Validate(bodyuserIdLegacy, nameof(bodyuserIdLegacy), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyworkspaceIdLegacy, nameof(bodyworkspaceIdLegacy), required: false);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/time_entries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -583,8 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IWorkflowAction DeleteTimeEntry([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<int> timeEntryId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(timeEntryId, nameof(timeEntryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/time_entries/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(timeEntryId, 1));
@@ -599,33 +541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TimeEntry> UpdateTimeEntry([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<int> timeEntryId, [WorkflowExpression] Func<bool> meta = null, [WorkflowExpression] Func<bool> includeSharing = null, [WorkflowExpression] Func<bool> bodybillable = null, [WorkflowExpression] Func<string> bodycreatedWith = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<bool> bodydurationOnly = null, [WorkflowExpression] Func<string> bodyeventMetadataoriginFeature = null, [WorkflowExpression] Func<int> bodyeventMetadatavisibleGoalsCount = null, [WorkflowExpression] Func<int[]> bodyexpenseIDs = null, [WorkflowExpression] Func<int> bodyprojectIdLegacy = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int[]> bodysharedWithUserIDs = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystopTime = null, [WorkflowExpression] Func<bodytagActionInput> bodytagAction = null, [WorkflowExpression] Func<int[]> bodytagIDs = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<int> bodytaskId = null, [WorkflowExpression] Func<int> bodytaskIdLegacy = null, [WorkflowExpression] Func<int> bodyuserIdLegacy = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<int> bodyworkspaceIdLegacy = null, [WorkflowExpression] Func<int> bodyworkspaceId = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(timeEntryId, nameof(timeEntryId), required: true);
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(includeSharing, nameof(includeSharing), required: false);
-            SourceExpression.Validate(bodybillable, nameof(bodybillable), required: false);
-            SourceExpression.Validate(bodycreatedWith, nameof(bodycreatedWith), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodydurationOnly, nameof(bodydurationOnly), required: false);
-            SourceExpression.Validate(bodyeventMetadataoriginFeature, nameof(bodyeventMetadataoriginFeature), required: false);
-            SourceExpression.Validate(bodyeventMetadatavisibleGoalsCount, nameof(bodyeventMetadatavisibleGoalsCount), required: false);
-            SourceExpression.Validate(bodyexpenseIDs, nameof(bodyexpenseIDs), required: false);
-            SourceExpression.Validate(bodyprojectIdLegacy, nameof(bodyprojectIdLegacy), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodysharedWithUserIDs, nameof(bodysharedWithUserIDs), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystopTime, nameof(bodystopTime), required: false);
-            SourceExpression.Validate(bodytagAction, nameof(bodytagAction), required: false);
-            SourceExpression.Validate(bodytagIDs, nameof(bodytagIDs), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
-            SourceExpression.Validate(bodytaskIdLegacy, nameof(bodytaskIdLegacy), required: false);
-            SourceExpression.Validate(bodyuserIdLegacy, nameof(bodyuserIdLegacy), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyworkspaceIdLegacy, nameof(bodyworkspaceIdLegacy), required: false);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/time_entries/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(timeEntryId, 1));
@@ -798,10 +713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<BulkEditResponse> BulkEditTimeEntries([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<string> timeEntryIds, [WorkflowExpression] Func<bool> meta = null, [WorkflowExpression] Func<PatchOperation[]> body = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(timeEntryIds, nameof(timeEntryIds), required: true);
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/time_entries/bulk/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeEntryIds, 1));
@@ -820,8 +731,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TimeEntry> StopTimeEntry([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<int> timeEntryId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(timeEntryId, nameof(timeEntryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/time_entries/{1}/stop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(timeEntryId, 1));
@@ -836,14 +745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<WorkspaceUser[]> GetOrganizationWorkspaceUsers([WorkflowExpression] Func<int> organizationId, [WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<bool> customRates = null, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(customRates, nameof(customRates), required: false);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/workspaces/{1}/workspace_users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -871,7 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Workspace> GetWorkspace([WorkflowExpression] Func<int> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -886,10 +786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Rate[]> GetWorkspaceRates([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<levelInput> level, [WorkflowExpression] Func<int> levelId, [WorkflowExpression] Func<typeInput> type = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(level, nameof(level), required: true);
-            SourceExpression.Validate(levelId, nameof(levelId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/rates/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(level, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(levelId, 1));
@@ -907,7 +803,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<WorkspaceStatistics> GetWorkspaceStatistics([WorkflowExpression] Func<int> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/statistics", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -922,7 +817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TimeEntryConstraints> GetWorkspaceTimeEntryConstraints([WorkflowExpression] Func<int> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/time_entry_constraints", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -937,7 +831,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<TrackRemindersResponse> GetWorkspaceTrackReminders([WorkflowExpression] Func<int> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/track_reminders", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -952,8 +845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<WorkspaceUserSimple[]> GetWorkspaceUsers([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<bool> excludeDeleted = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(excludeDeleted, nameof(excludeDeleted), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -971,10 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<ProjectUser[]> GetWorkspaceProjectUsers([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<string> projectIds = null, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<bool> withGroupMembers = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(projectIds, nameof(projectIds), required: false);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(withGroupMembers, nameof(withGroupMembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/project_users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -996,23 +883,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Project[]> GetWorkspaceProjects([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<bool> sortPinned, [WorkflowExpression] Func<string> sortField, [WorkflowExpression] Func<sortOrderInput> sortOrder, [WorkflowExpression] Func<bool> onlyTemplates, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<int> since = null, [WorkflowExpression] Func<bool> billable = null, [WorkflowExpression] Func<int[]> userIds = null, [WorkflowExpression] Func<int[]> clientIds = null, [WorkflowExpression] Func<int[]> groupIds = null, [WorkflowExpression] Func<string> projectIds = null, [WorkflowExpression] Func<string[]> statuses = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<bool> onlyMe = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(sortPinned, nameof(sortPinned), required: true);
-            SourceExpression.Validate(sortField, nameof(sortField), required: true);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: true);
-            SourceExpression.Validate(onlyTemplates, nameof(onlyTemplates), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(billable, nameof(billable), required: false);
-            SourceExpression.Validate(userIds, nameof(userIds), required: false);
-            SourceExpression.Validate(clientIds, nameof(clientIds), required: false);
-            SourceExpression.Validate(groupIds, nameof(groupIds), required: false);
-            SourceExpression.Validate(projectIds, nameof(projectIds), required: false);
-            SourceExpression.Validate(statuses, nameof(statuses), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(onlyMe, nameof(onlyMe), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -1057,8 +927,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
         public IBodyWorkflowAction<Project> GetWorkspaceProject([WorkflowExpression] Func<int> workspaceId, [WorkflowExpression] Func<int> projectId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}/projects/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(projectId, 1));
@@ -1075,7 +943,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
     {
         public IBodyWorkflowTrigger<WebhookSubscription> OnTimeEntryCreated([WorkflowExpression] Func<int> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_created", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -1101,7 +968,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
         public IBodyWorkflowTrigger<WebhookSubscription> OnTimeEntryUpdated([WorkflowExpression] Func<int> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_updated", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -1127,7 +993,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
         public IBodyWorkflowTrigger<WebhookSubscription> OnTimeEntryDeleted([WorkflowExpression] Func<int> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_deleted", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -1153,7 +1018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
         public IBodyWorkflowTrigger<WebhookSubscription> OnTimeEntryStarted([WorkflowExpression] Func<int> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_started", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));
@@ -1179,7 +1043,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
         public IBodyWorkflowTrigger<WebhookSubscription> OnTimeEntryStopped([WorkflowExpression] Func<int> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_stopped", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workspaceId, 1));

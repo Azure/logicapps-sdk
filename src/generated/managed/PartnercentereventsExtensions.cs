@@ -29,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
         public IWorkflowAction EventRegistration([WorkflowExpression] Func<string> bodysignatureTokenToMsSignatureHeader = null, [WorkflowExpression] Func<string[]> bodywebhookEvents = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
         {
-            SourceExpression.Validate(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
-            SourceExpression.Validate(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
-            SourceExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/v1/registration";
@@ -71,9 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
         public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration([WorkflowExpression] Func<string> bodysignatureTokenToMsSignatureHeader = null, [WorkflowExpression] Func<string[]> bodywebhookEvents = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
         {
-            SourceExpression.Validate(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
-            SourceExpression.Validate(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
-            SourceExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/v1/registration";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<SentimentAnalysisResponse> AnalyticsSentiment([WorkflowExpression] Func<string> inputtextToAnalyze = null)
         {
-            SourceExpression.Validate(inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/analytics/sentiment";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<ProfanityAnalysisResponse> AnalyticsProfanity([WorkflowExpression] Func<string> inputtextToAnalyze = null)
         {
-            SourceExpression.Validate(inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/analytics/profanity";
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<SubjectivityAnalysisResponse> AnalyticsSubjectivity([WorkflowExpression] Func<string> inputtextToAnalyze = null)
         {
-            SourceExpression.Validate(inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/analytics/subjectivity";
@@ -95,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<ExtractEntitiesResponse> ExtractEntities([WorkflowExpression] Func<string> valueinputString = null)
         {
-            SourceExpression.Validate(valueinputString, nameof(valueinputString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/extract-entities";
@@ -122,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetectionGetLanguage([WorkflowExpression] Func<string> inputtextToDetect = null)
         {
-            SourceExpression.Validate(inputtextToDetect, nameof(inputtextToDetect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/language/detect";
@@ -149,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateDeuToEng([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
-            SourceExpression.Validate(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/translate/language/deu/to/eng";
@@ -176,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToDeu([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
-            SourceExpression.Validate(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/translate/language/eng/to/deu";
@@ -203,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateRusToEng([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
-            SourceExpression.Validate(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/translate/language/rus/to/eng";
@@ -230,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToRus([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
-            SourceExpression.Validate(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/translate/language/eng/to/rus";
@@ -257,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<ParseResponse> ParseParseString([WorkflowExpression] Func<string> inputinputString = null)
         {
-            SourceExpression.Validate(inputinputString, nameof(inputinputString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/parse/tree";
@@ -284,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagSentence([WorkflowExpression] Func<string> requestinputText = null)
         {
-            SourceExpression.Validate(requestinputText, nameof(requestinputText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/pos/tag/sentence";
@@ -311,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagVerbs([WorkflowExpression] Func<string> requestinputText = null)
         {
-            SourceExpression.Validate(requestinputText, nameof(requestinputText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/pos/tag/verbs";
@@ -338,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagNouns([WorkflowExpression] Func<string> requestinputText = null)
         {
-            SourceExpression.Validate(requestinputText, nameof(requestinputText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/pos/tag/nouns";
@@ -365,7 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagAdjectives([WorkflowExpression] Func<string> requestinputText = null)
         {
-            SourceExpression.Validate(requestinputText, nameof(requestinputText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/pos/tag/adjectives";
@@ -392,7 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagAdverbs([WorkflowExpression] Func<string> requestinputText = null)
         {
-            SourceExpression.Validate(requestinputText, nameof(requestinputText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/pos/tag/adverbs";
@@ -419,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagPronouns([WorkflowExpression] Func<string> requestinputText = null)
         {
-            SourceExpression.Validate(requestinputText, nameof(requestinputText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/pos/tag/pronouns";
@@ -446,8 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<RephraseResponse> RephraseEnglishRephraseSentenceBySentence([WorkflowExpression] Func<string> inputtextToTranslate = null, [WorkflowExpression] Func<int> inputtargetRephrasingCount = null)
         {
-            SourceExpression.Validate(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
-            SourceExpression.Validate(inputtargetRephrasingCount, nameof(inputtargetRephrasingCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/rephrase/rephrase/eng/by-sentence";
@@ -480,7 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<SentenceSegmentationResponse> SegmentationGetSentences([WorkflowExpression] Func<string> inputinputString = null)
         {
-            SourceExpression.Validate(inputinputString, nameof(inputinputString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/segmentation/sentences";
@@ -507,7 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<GetWordsResponse> SegmentationGetWords([WorkflowExpression] Func<string> inputinputText = null)
         {
-            SourceExpression.Validate(inputinputText, nameof(inputinputText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/segmentation/words";
@@ -534,7 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<CheckWordResponse> SpellcheckCorrectJson([WorkflowExpression] Func<string> valueword = null)
         {
-            SourceExpression.Validate(valueword, nameof(valueword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/spellcheck/check/word";
@@ -561,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<CheckSentenceResponse> SpellcheckCheckSentence([WorkflowExpression] Func<string> valuesentence = null)
         {
-            SourceExpression.Validate(valuesentence, nameof(valuesentence), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nlp-v2/spellcheck/check/sentence";

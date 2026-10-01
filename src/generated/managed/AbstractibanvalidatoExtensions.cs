@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractibanvalidato")]
         public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> iban)
         {
-            SourceExpression.Validate(iban, nameof(iban), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/";

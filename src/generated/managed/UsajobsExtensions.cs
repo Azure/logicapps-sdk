@@ -14,37 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<SearchJobsResponse> SearchJobs([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> positionTitle = null, [WorkflowExpression] Func<int> remunerationMinimumAmount = null, [WorkflowExpression] Func<int> remunerationMaximumAmount = null, [WorkflowExpression] Func<string> payGradeHigh = null, [WorkflowExpression] Func<string> payGradeLow = null, [WorkflowExpression] Func<string> jobCategoryCode = null, [WorkflowExpression] Func<bool> remoteIndicator = null, [WorkflowExpression] Func<string> locationName = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<bool> relocationIndicator = null, [WorkflowExpression] Func<string> travelPercentage = null, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<string> positionOfferingTypeCode = null, [WorkflowExpression] Func<string> positionScheduleTypeCode = null, [WorkflowExpression] Func<string> securityClearanceRequired = null, [WorkflowExpression] Func<positionSensitivityInput> positionSensitivity = null, [WorkflowExpression] Func<bool> supervisoryStatus = null, [WorkflowExpression] Func<int> datePosted = null, [WorkflowExpression] Func<string> jobGradeCode = null, [WorkflowExpression] Func<string> whoMayApply = null, [WorkflowExpression] Func<string> salaryBucket = null, [WorkflowExpression] Func<string> gradeBucket = null, [WorkflowExpression] Func<string> hiringPath = null, [WorkflowExpression] Func<string> missionCriticalTags = null, [WorkflowExpression] Func<string> postingChannel = null, [WorkflowExpression] Func<fieldsInput> fields = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> resultsPerPage = null)
         {
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(positionTitle, nameof(positionTitle), required: false);
-            SourceExpression.Validate(remunerationMinimumAmount, nameof(remunerationMinimumAmount), required: false);
-            SourceExpression.Validate(remunerationMaximumAmount, nameof(remunerationMaximumAmount), required: false);
-            SourceExpression.Validate(payGradeHigh, nameof(payGradeHigh), required: false);
-            SourceExpression.Validate(payGradeLow, nameof(payGradeLow), required: false);
-            SourceExpression.Validate(jobCategoryCode, nameof(jobCategoryCode), required: false);
-            SourceExpression.Validate(remoteIndicator, nameof(remoteIndicator), required: false);
-            SourceExpression.Validate(locationName, nameof(locationName), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(relocationIndicator, nameof(relocationIndicator), required: false);
-            SourceExpression.Validate(travelPercentage, nameof(travelPercentage), required: false);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(positionOfferingTypeCode, nameof(positionOfferingTypeCode), required: false);
-            SourceExpression.Validate(positionScheduleTypeCode, nameof(positionScheduleTypeCode), required: false);
-            SourceExpression.Validate(securityClearanceRequired, nameof(securityClearanceRequired), required: false);
-            SourceExpression.Validate(positionSensitivity, nameof(positionSensitivity), required: false);
-            SourceExpression.Validate(supervisoryStatus, nameof(supervisoryStatus), required: false);
-            SourceExpression.Validate(datePosted, nameof(datePosted), required: false);
-            SourceExpression.Validate(jobGradeCode, nameof(jobGradeCode), required: false);
-            SourceExpression.Validate(whoMayApply, nameof(whoMayApply), required: false);
-            SourceExpression.Validate(salaryBucket, nameof(salaryBucket), required: false);
-            SourceExpression.Validate(gradeBucket, nameof(gradeBucket), required: false);
-            SourceExpression.Validate(hiringPath, nameof(hiringPath), required: false);
-            SourceExpression.Validate(missionCriticalTags, nameof(missionCriticalTags), required: false);
-            SourceExpression.Validate(postingChannel, nameof(postingChannel), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortField, nameof(sortField), required: false);
-            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -121,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/academichonors";
@@ -138,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/academiclevels";
@@ -155,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/actioncodes";
@@ -172,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/agencysubelements";
@@ -189,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/announcementclosingtypes";
@@ -206,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/applicantsuppliers";
@@ -223,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/applicationstatuses";
@@ -240,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCountriesResponse> ListCountries([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/countries";
@@ -257,8 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions([WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/countrysubdivisions";
@@ -277,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/cyberworkgroupings";
@@ -294,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/cyberworkroles";
@@ -311,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/degreetypecodes";
@@ -328,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/disabilities";
@@ -345,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/documentations";
@@ -362,7 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/documentformats";
@@ -379,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/ethnicities";
@@ -396,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/federalemploymentstatuses";
@@ -413,7 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/geoloccodes";
@@ -430,7 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/gsageoloccodes";
@@ -447,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/hiringpaths";
@@ -464,7 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/keystandardrequirements";
@@ -481,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/languagecodes";
@@ -498,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/languageproficiencies";
@@ -515,7 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/locationexpansions";
@@ -532,7 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/militarystatuscodes";
@@ -549,7 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/missioncriticalcodes";
@@ -566,7 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/occupationalseries";
@@ -583,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/payplans";
@@ -600,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/positionofferingtypes";
@@ -617,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/positionopeningstatuses";
@@ -634,7 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/positionscheduletypes";
@@ -651,7 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/postalcodes";
@@ -668,7 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/racecodes";
@@ -685,7 +620,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/refereetypecodes";
@@ -702,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/remunerationrateintervalcodes";
@@ -719,7 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/requiredstandarddocuments";
@@ -736,7 +668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/securityclearances";
@@ -753,7 +684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/servicetypes";
@@ -770,7 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/specialhirings";
@@ -787,7 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/travelpercentages";
@@ -804,7 +732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply([WorkflowExpression] Func<string> lastmodified = null)
         {
-            SourceExpression.Validate(lastmodified, nameof(lastmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codelist/whomayapply";

@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageAlertRo> GetAlerts([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> dateStart = null, [WorkflowExpression] Func<int> dateEnd = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(dateStart, nameof(dateStart), required: false);
-            SourceExpression.Validate(dateEnd, nameof(dateEnd), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/alerts";
@@ -57,8 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<AlertRo> UpdateAlertState([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> paramJson = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(paramJson, nameof(paramJson), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/alerts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -74,14 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageMeasureRo> GetMeasures([WorkflowExpression] Func<bool> detailed = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(detailed, nameof(detailed), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/measures";
@@ -113,13 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<CountRo> GetCount([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/measures/count";
@@ -148,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<MeasureRo> GetMeasure([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(detailed, nameof(detailed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/measures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -167,13 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageMessageRo> GetMessages([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages";
@@ -202,14 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageMessageRo> GetMessagesAndMeasurements([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(thingId, nameof(thingId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
@@ -238,62 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<MessageRo> AddMessage([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<string> messageRobody, [WorkflowExpression] Func<string> messageRocreationDate, [WorkflowExpression] Func<string> messageRoerrorMessage, [WorkflowExpression] Func<double> messageRolatitude, [WorkflowExpression] Func<double> messageRolongitude, [WorkflowExpression] Func<string> messageRometadata, [WorkflowExpression] Func<int> messageRonumber, [WorkflowExpression] Func<messageRoprocessedInput> messageRoprocessed, [WorkflowExpression] Func<string> messageRothingname, [WorkflowExpression] Func<string> messageRotimestamp, [WorkflowExpression] Func<string> messageRotopic, [WorkflowExpression] Func<string> messageRoid = null, [WorkflowExpression] Func<bool> messageRolinkabsolute = null, [WorkflowExpression] Func<string> messageRolinkauthority = null, [WorkflowExpression] Func<string> messageRolinkfragment = null, [WorkflowExpression] Func<string> messageRolinkhost = null, [WorkflowExpression] Func<bool> messageRolinkopaque = null, [WorkflowExpression] Func<string> messageRolinkpath = null, [WorkflowExpression] Func<int> messageRolinkport = null, [WorkflowExpression] Func<string> messageRolinkquery = null, [WorkflowExpression] Func<string> messageRolinkrawAuthority = null, [WorkflowExpression] Func<string> messageRolinkrawFragment = null, [WorkflowExpression] Func<string> messageRolinkrawPath = null, [WorkflowExpression] Func<string> messageRolinkrawQuery = null, [WorkflowExpression] Func<string> messageRolinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkrawUserInfo = null, [WorkflowExpression] Func<string> messageRolinkscheme = null, [WorkflowExpression] Func<string> messageRolinkschemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkuserInfo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsarray = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRorawMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsDouble = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsFloat = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsInt = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsLong = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsmissingNode = null, [WorkflowExpression] Func<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsNull = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsObject = null, [WorkflowExpression] Func<bool> messageRorawMeasurementspojo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsShort = null, [WorkflowExpression] Func<bool> messageRorawMeasurementstextual = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsvalueNode = null, [WorkflowExpression] Func<string> messageRothingdisplayName = null, [WorkflowExpression] Func<string> messageRothingfixedName = null, [WorkflowExpression] Func<string> messageRothingid = null, [WorkflowExpression] Func<int> messageRothingnbAlerts = null, [WorkflowExpression] Func<ThingTagRo[]> messageRothingtags = null)
         {
-            SourceExpression.Validate(thingId, nameof(thingId), required: true);
-            SourceExpression.Validate(messageRobody, nameof(messageRobody), required: true);
-            SourceExpression.Validate(messageRocreationDate, nameof(messageRocreationDate), required: true);
-            SourceExpression.Validate(messageRoerrorMessage, nameof(messageRoerrorMessage), required: true);
-            SourceExpression.Validate(messageRolatitude, nameof(messageRolatitude), required: true);
-            SourceExpression.Validate(messageRolongitude, nameof(messageRolongitude), required: true);
-            SourceExpression.Validate(messageRometadata, nameof(messageRometadata), required: true);
-            SourceExpression.Validate(messageRonumber, nameof(messageRonumber), required: true);
-            SourceExpression.Validate(messageRoprocessed, nameof(messageRoprocessed), required: true);
-            SourceExpression.Validate(messageRothingname, nameof(messageRothingname), required: true);
-            SourceExpression.Validate(messageRotimestamp, nameof(messageRotimestamp), required: true);
-            SourceExpression.Validate(messageRotopic, nameof(messageRotopic), required: true);
-            SourceExpression.Validate(messageRoid, nameof(messageRoid), required: false);
-            SourceExpression.Validate(messageRolinkabsolute, nameof(messageRolinkabsolute), required: false);
-            SourceExpression.Validate(messageRolinkauthority, nameof(messageRolinkauthority), required: false);
-            SourceExpression.Validate(messageRolinkfragment, nameof(messageRolinkfragment), required: false);
-            SourceExpression.Validate(messageRolinkhost, nameof(messageRolinkhost), required: false);
-            SourceExpression.Validate(messageRolinkopaque, nameof(messageRolinkopaque), required: false);
-            SourceExpression.Validate(messageRolinkpath, nameof(messageRolinkpath), required: false);
-            SourceExpression.Validate(messageRolinkport, nameof(messageRolinkport), required: false);
-            SourceExpression.Validate(messageRolinkquery, nameof(messageRolinkquery), required: false);
-            SourceExpression.Validate(messageRolinkrawAuthority, nameof(messageRolinkrawAuthority), required: false);
-            SourceExpression.Validate(messageRolinkrawFragment, nameof(messageRolinkrawFragment), required: false);
-            SourceExpression.Validate(messageRolinkrawPath, nameof(messageRolinkrawPath), required: false);
-            SourceExpression.Validate(messageRolinkrawQuery, nameof(messageRolinkrawQuery), required: false);
-            SourceExpression.Validate(messageRolinkrawSchemeSpecificPart, nameof(messageRolinkrawSchemeSpecificPart), required: false);
-            SourceExpression.Validate(messageRolinkrawUserInfo, nameof(messageRolinkrawUserInfo), required: false);
-            SourceExpression.Validate(messageRolinkscheme, nameof(messageRolinkscheme), required: false);
-            SourceExpression.Validate(messageRolinkschemeSpecificPart, nameof(messageRolinkschemeSpecificPart), required: false);
-            SourceExpression.Validate(messageRolinkuserInfo, nameof(messageRolinkuserInfo), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsarray, nameof(messageRorawMeasurementsarray), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsbigDecimal, nameof(messageRorawMeasurementsbigDecimal), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsbigInteger, nameof(messageRorawMeasurementsbigInteger), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
-            SourceExpression.Validate(messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsDouble, nameof(messageRorawMeasurementsDouble), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsFloat, nameof(messageRorawMeasurementsFloat), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsInt, nameof(messageRorawMeasurementsInt), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsNull, nameof(messageRorawMeasurementsNull), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
-            SourceExpression.Validate(messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsShort, nameof(messageRorawMeasurementsShort), required: false);
-            SourceExpression.Validate(messageRorawMeasurementstextual, nameof(messageRorawMeasurementstextual), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsvalueNode, nameof(messageRorawMeasurementsvalueNode), required: false);
-            SourceExpression.Validate(messageRothingdisplayName, nameof(messageRothingdisplayName), required: false);
-            SourceExpression.Validate(messageRothingfixedName, nameof(messageRothingfixedName), required: false);
-            SourceExpression.Validate(messageRothingid, nameof(messageRothingid), required: false);
-            SourceExpression.Validate(messageRothingnbAlerts, nameof(messageRothingnbAlerts), required: false);
-            SourceExpression.Validate(messageRothingtags, nameof(messageRothingtags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
@@ -632,7 +533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<MessageRo> GetMessage([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -647,7 +547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<MessageRo> GetPreviousMessage([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/{0}/previous", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -662,13 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageSiteRo> GetSites([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/sites";
@@ -697,27 +589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SiteRo[]> CreateSite([WorkflowExpression] Func<bool> nodearray = null, [WorkflowExpression] Func<bool> nodebigDecimal = null, [WorkflowExpression] Func<bool> nodebigInteger = null, [WorkflowExpression] Func<bool> nodebinary = null, [WorkflowExpression] Func<bool> nodeboolean = null, [WorkflowExpression] Func<bool> nodecontainerNode = null, [WorkflowExpression] Func<bool> nodeDouble = null, [WorkflowExpression] Func<bool> nodeFloat = null, [WorkflowExpression] Func<bool> nodefloatingPointNumber = null, [WorkflowExpression] Func<bool> nodeInt = null, [WorkflowExpression] Func<bool> nodeintegralNumber = null, [WorkflowExpression] Func<bool> nodeLong = null, [WorkflowExpression] Func<bool> nodemissingNode = null, [WorkflowExpression] Func<nodenodeTypeInput> nodenodeType = null, [WorkflowExpression] Func<bool> nodeNull = null, [WorkflowExpression] Func<bool> nodenumber = null, [WorkflowExpression] Func<bool> nodeObject = null, [WorkflowExpression] Func<bool> nodepojo = null, [WorkflowExpression] Func<bool> nodeShort = null, [WorkflowExpression] Func<bool> nodetextual = null, [WorkflowExpression] Func<bool> nodevalueNode = null)
         {
-            SourceExpression.Validate(nodearray, nameof(nodearray), required: false);
-            SourceExpression.Validate(nodebigDecimal, nameof(nodebigDecimal), required: false);
-            SourceExpression.Validate(nodebigInteger, nameof(nodebigInteger), required: false);
-            SourceExpression.Validate(nodebinary, nameof(nodebinary), required: false);
-            SourceExpression.Validate(nodeboolean, nameof(nodeboolean), required: false);
-            SourceExpression.Validate(nodecontainerNode, nameof(nodecontainerNode), required: false);
-            SourceExpression.Validate(nodeDouble, nameof(nodeDouble), required: false);
-            SourceExpression.Validate(nodeFloat, nameof(nodeFloat), required: false);
-            SourceExpression.Validate(nodefloatingPointNumber, nameof(nodefloatingPointNumber), required: false);
-            SourceExpression.Validate(nodeInt, nameof(nodeInt), required: false);
-            SourceExpression.Validate(nodeintegralNumber, nameof(nodeintegralNumber), required: false);
-            SourceExpression.Validate(nodeLong, nameof(nodeLong), required: false);
-            SourceExpression.Validate(nodemissingNode, nameof(nodemissingNode), required: false);
-            SourceExpression.Validate(nodenodeType, nameof(nodenodeType), required: false);
-            SourceExpression.Validate(nodeNull, nameof(nodeNull), required: false);
-            SourceExpression.Validate(nodenumber, nameof(nodenumber), required: false);
-            SourceExpression.Validate(nodeObject, nameof(nodeObject), required: false);
-            SourceExpression.Validate(nodepojo, nameof(nodepojo), required: false);
-            SourceExpression.Validate(nodeShort, nameof(nodeShort), required: false);
-            SourceExpression.Validate(nodetextual, nameof(nodetextual), required: false);
-            SourceExpression.Validate(nodevalueNode, nameof(nodevalueNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/sites";
@@ -864,7 +735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SiteRo> GetSite([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -879,7 +749,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IWorkflowAction DeleteSite([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -894,14 +763,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SiteRo> UpdateSite([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> siteRoaddress, [WorkflowExpression] Func<string> siteRocity, [WorkflowExpression] Func<string> siteRoname, [WorkflowExpression] Func<string> siteRopostalCode, [WorkflowExpression] Func<string> siteRoid = null, [WorkflowExpression] Func<double> siteRolatitude = null, [WorkflowExpression] Func<double> siteRolongitude = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(siteRoaddress, nameof(siteRoaddress), required: true);
-            SourceExpression.Validate(siteRocity, nameof(siteRocity), required: true);
-            SourceExpression.Validate(siteRoname, nameof(siteRoname), required: true);
-            SourceExpression.Validate(siteRopostalCode, nameof(siteRopostalCode), required: true);
-            SourceExpression.Validate(siteRoid, nameof(siteRoid), required: false);
-            SourceExpression.Validate(siteRolatitude, nameof(siteRolatitude), required: false);
-            SourceExpression.Validate(siteRolongitude, nameof(siteRolongitude), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -948,13 +809,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageThingTagRo> GetTags([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/tags";
@@ -983,8 +837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<TagRo> UpdateThingTag([WorkflowExpression] Func<string> thingTagRoid = null, [WorkflowExpression] Func<string> thingTagRotag = null)
         {
-            SourceExpression.Validate(thingTagRoid, nameof(thingTagRoid), required: false);
-            SourceExpression.Validate(thingTagRotag, nameof(thingTagRotag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/tags";
@@ -1017,9 +869,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<TagRo> AddThingTag([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<string> thingTagRoid = null, [WorkflowExpression] Func<string> thingTagRotag = null)
         {
-            SourceExpression.Validate(thingId, nameof(thingId), required: true);
-            SourceExpression.Validate(thingTagRoid, nameof(thingTagRoid), required: false);
-            SourceExpression.Validate(thingTagRotag, nameof(thingTagRotag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tags/thing/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
@@ -1052,7 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<TagRo> GetThingTag([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1067,14 +915,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageSingleThingRo> GetThings([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<bool> detailed = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(detailed, nameof(detailed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/things";
@@ -1106,27 +946,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SingleThingRo[]> AssociateThingsWithProduct([WorkflowExpression] Func<bool> jsonarray = null, [WorkflowExpression] Func<bool> jsonbigDecimal = null, [WorkflowExpression] Func<bool> jsonbigInteger = null, [WorkflowExpression] Func<bool> jsonbinary = null, [WorkflowExpression] Func<bool> jsonboolean = null, [WorkflowExpression] Func<bool> jsoncontainerNode = null, [WorkflowExpression] Func<bool> jsonDouble = null, [WorkflowExpression] Func<bool> jsonFloat = null, [WorkflowExpression] Func<bool> jsonfloatingPointNumber = null, [WorkflowExpression] Func<bool> jsonInt = null, [WorkflowExpression] Func<bool> jsonintegralNumber = null, [WorkflowExpression] Func<bool> jsonLong = null, [WorkflowExpression] Func<bool> jsonmissingNode = null, [WorkflowExpression] Func<jsonnodeTypeInput> jsonnodeType = null, [WorkflowExpression] Func<bool> jsonNull = null, [WorkflowExpression] Func<bool> jsonnumber = null, [WorkflowExpression] Func<bool> jsonObject = null, [WorkflowExpression] Func<bool> jsonpojo = null, [WorkflowExpression] Func<bool> jsonShort = null, [WorkflowExpression] Func<bool> jsontextual = null, [WorkflowExpression] Func<bool> jsonvalueNode = null)
         {
-            SourceExpression.Validate(jsonarray, nameof(jsonarray), required: false);
-            SourceExpression.Validate(jsonbigDecimal, nameof(jsonbigDecimal), required: false);
-            SourceExpression.Validate(jsonbigInteger, nameof(jsonbigInteger), required: false);
-            SourceExpression.Validate(jsonbinary, nameof(jsonbinary), required: false);
-            SourceExpression.Validate(jsonboolean, nameof(jsonboolean), required: false);
-            SourceExpression.Validate(jsoncontainerNode, nameof(jsoncontainerNode), required: false);
-            SourceExpression.Validate(jsonDouble, nameof(jsonDouble), required: false);
-            SourceExpression.Validate(jsonFloat, nameof(jsonFloat), required: false);
-            SourceExpression.Validate(jsonfloatingPointNumber, nameof(jsonfloatingPointNumber), required: false);
-            SourceExpression.Validate(jsonInt, nameof(jsonInt), required: false);
-            SourceExpression.Validate(jsonintegralNumber, nameof(jsonintegralNumber), required: false);
-            SourceExpression.Validate(jsonLong, nameof(jsonLong), required: false);
-            SourceExpression.Validate(jsonmissingNode, nameof(jsonmissingNode), required: false);
-            SourceExpression.Validate(jsonnodeType, nameof(jsonnodeType), required: false);
-            SourceExpression.Validate(jsonNull, nameof(jsonNull), required: false);
-            SourceExpression.Validate(jsonnumber, nameof(jsonnumber), required: false);
-            SourceExpression.Validate(jsonObject, nameof(jsonObject), required: false);
-            SourceExpression.Validate(jsonpojo, nameof(jsonpojo), required: false);
-            SourceExpression.Validate(jsonShort, nameof(jsonShort), required: false);
-            SourceExpression.Validate(jsontextual, nameof(jsontextual), required: false);
-            SourceExpression.Validate(jsonvalueNode, nameof(jsonvalueNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/things";
@@ -1273,7 +1092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SingleThingRo[]> GetThingList([WorkflowExpression] Func<string[]> thingIds = null)
         {
-            SourceExpression.Validate(thingIds, nameof(thingIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/things/list";
@@ -1289,8 +1107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SingleThingRo> GetThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(detailed, nameof(detailed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1308,8 +1124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IWorkflowAction IgnoreThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> force = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(force, nameof(force), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1326,131 +1140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ThingRo> PutThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> thingRoname, [WorkflowExpression] Func<string> thingRositeaddress, [WorkflowExpression] Func<string> thingRositecity, [WorkflowExpression] Func<string> thingRositename, [WorkflowExpression] Func<string> thingRositepostalCode, [WorkflowExpression] Func<string> thingRoapplicationid = null, [WorkflowExpression] Func<string> thingRoapplicationlink = null, [WorkflowExpression] Func<string> thingRoapplicationname = null, [WorkflowExpression] Func<string> thingRoconnectivityid = null, [WorkflowExpression] Func<string> thingRoconnectivityrawStatus = null, [WorkflowExpression] Func<thingRoconnectivitystatusInput> thingRoconnectivitystatus = null, [WorkflowExpression] Func<thingRoconnectivitytypeInput> thingRoconnectivitytype = null, [WorkflowExpression] Func<CustomFieldRo[]> thingRocustomFields = null, [WorkflowExpression] Func<string> thingRocustomModelcolor = null, [WorkflowExpression] Func<string> thingRocustomModelicon = null, [WorkflowExpression] Func<string> thingRocustomModelid = null, [WorkflowExpression] Func<string> thingRocustomModellink = null, [WorkflowExpression] Func<string> thingRocustomModelname = null, [WorkflowExpression] Func<string> thingRodescription = null, [WorkflowExpression] Func<int> thingRodevicebatteryLevel = null, [WorkflowExpression] Func<thingRodevicebatteryStatusInput> thingRodevicebatteryStatus = null, [WorkflowExpression] Func<string> thingRodevicedeviceType = null, [WorkflowExpression] Func<string> thingRodeviceid = null, [WorkflowExpression] Func<string> thingRodevicemanufacturer = null, [WorkflowExpression] Func<int> thingRodevicememoryFree = null, [WorkflowExpression] Func<int> thingRodevicememoryTotal = null, [WorkflowExpression] Func<string> thingRodevicemodel = null, [WorkflowExpression] Func<string> thingRodevicemodelNumber = null, [WorkflowExpression] Func<string> thingRodevicename = null, [WorkflowExpression] Func<string> thingRodeviceserialNumber = null, [WorkflowExpression] Func<thingRodevicestatusInput> thingRodevicestatus = null, [WorkflowExpression] Func<string> thingRodisplayName = null, [WorkflowExpression] Func<bool> thingRodynamicGps = null, [WorkflowExpression] Func<double> thingRofixedLatitude = null, [WorkflowExpression] Func<double> thingRofixedLongitude = null, [WorkflowExpression] Func<string> thingRofixedName = null, [WorkflowExpression] Func<string> thingRoid = null, [WorkflowExpression] Func<int> thingRolastActivityDate = null, [WorkflowExpression] Func<double> thingRolastLatitude = null, [WorkflowExpression] Func<double> thingRolastLongitude = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsvalueNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsvalueNode = null, [WorkflowExpression] Func<int> thingRolastMessageDate = null, [WorkflowExpression] Func<int> thingRomessageActivityTimeoutPeriod = null, [WorkflowExpression] Func<int> thingRonbAlerts = null, [WorkflowExpression] Func<thingRoproductconnectivityTypesInputItem[]> thingRoproductconnectivityTypes = null, [WorkflowExpression] Func<bool> thingRoproductgenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductid = null, [WorkflowExpression] Func<string> thingRoproductlink = null, [WorkflowExpression] Func<bool> thingRoproductmanufacturergenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductmanufacturerid = null, [WorkflowExpression] Func<string> thingRoproductmanufacturerlink = null, [WorkflowExpression] Func<string> thingRoproductmanufacturername = null, [WorkflowExpression] Func<string> thingRoproductmodelcolor = null, [WorkflowExpression] Func<bool> thingRoproductmodelgenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductmodelicon = null, [WorkflowExpression] Func<string> thingRoproductmodelid = null, [WorkflowExpression] Func<bool> thingRoproductmodelisCustomModel = null, [WorkflowExpression] Func<bool> thingRoproductmodellinkabsolute = null, [WorkflowExpression] Func<string> thingRoproductmodellinkauthority = null, [WorkflowExpression] Func<string> thingRoproductmodellinkfragment = null, [WorkflowExpression] Func<string> thingRoproductmodellinkhost = null, [WorkflowExpression] Func<bool> thingRoproductmodellinkopaque = null, [WorkflowExpression] Func<string> thingRoproductmodellinkpath = null, [WorkflowExpression] Func<int> thingRoproductmodellinkport = null, [WorkflowExpression] Func<string> thingRoproductmodellinkquery = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawAuthority = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawFragment = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawPath = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawQuery = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawUserInfo = null, [WorkflowExpression] Func<string> thingRoproductmodellinkscheme = null, [WorkflowExpression] Func<string> thingRoproductmodellinkschemeSpecificPart = null, [WorkflowExpression] Func<string> thingRoproductmodellinkuserInfo = null, [WorkflowExpression] Func<string> thingRoproductmodelname = null, [WorkflowExpression] Func<string> thingRoproductname = null, [WorkflowExpression] Func<string> thingRoproductreference = null, [WorkflowExpression] Func<string> thingRositeid = null, [WorkflowExpression] Func<double> thingRositelatitude = null, [WorkflowExpression] Func<double> thingRositelongitude = null, [WorkflowExpression] Func<string> thingRosourceId = null, [WorkflowExpression] Func<thingRostatusInput> thingRostatus = null, [WorkflowExpression] Func<ThingTagRo[]> thingRotags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(thingRoname, nameof(thingRoname), required: true);
-            SourceExpression.Validate(thingRositeaddress, nameof(thingRositeaddress), required: true);
-            SourceExpression.Validate(thingRositecity, nameof(thingRositecity), required: true);
-            SourceExpression.Validate(thingRositename, nameof(thingRositename), required: true);
-            SourceExpression.Validate(thingRositepostalCode, nameof(thingRositepostalCode), required: true);
-            SourceExpression.Validate(thingRoapplicationid, nameof(thingRoapplicationid), required: false);
-            SourceExpression.Validate(thingRoapplicationlink, nameof(thingRoapplicationlink), required: false);
-            SourceExpression.Validate(thingRoapplicationname, nameof(thingRoapplicationname), required: false);
-            SourceExpression.Validate(thingRoconnectivityid, nameof(thingRoconnectivityid), required: false);
-            SourceExpression.Validate(thingRoconnectivityrawStatus, nameof(thingRoconnectivityrawStatus), required: false);
-            SourceExpression.Validate(thingRoconnectivitystatus, nameof(thingRoconnectivitystatus), required: false);
-            SourceExpression.Validate(thingRoconnectivitytype, nameof(thingRoconnectivitytype), required: false);
-            SourceExpression.Validate(thingRocustomFields, nameof(thingRocustomFields), required: false);
-            SourceExpression.Validate(thingRocustomModelcolor, nameof(thingRocustomModelcolor), required: false);
-            SourceExpression.Validate(thingRocustomModelicon, nameof(thingRocustomModelicon), required: false);
-            SourceExpression.Validate(thingRocustomModelid, nameof(thingRocustomModelid), required: false);
-            SourceExpression.Validate(thingRocustomModellink, nameof(thingRocustomModellink), required: false);
-            SourceExpression.Validate(thingRocustomModelname, nameof(thingRocustomModelname), required: false);
-            SourceExpression.Validate(thingRodescription, nameof(thingRodescription), required: false);
-            SourceExpression.Validate(thingRodevicebatteryLevel, nameof(thingRodevicebatteryLevel), required: false);
-            SourceExpression.Validate(thingRodevicebatteryStatus, nameof(thingRodevicebatteryStatus), required: false);
-            SourceExpression.Validate(thingRodevicedeviceType, nameof(thingRodevicedeviceType), required: false);
-            SourceExpression.Validate(thingRodeviceid, nameof(thingRodeviceid), required: false);
-            SourceExpression.Validate(thingRodevicemanufacturer, nameof(thingRodevicemanufacturer), required: false);
-            SourceExpression.Validate(thingRodevicememoryFree, nameof(thingRodevicememoryFree), required: false);
-            SourceExpression.Validate(thingRodevicememoryTotal, nameof(thingRodevicememoryTotal), required: false);
-            SourceExpression.Validate(thingRodevicemodel, nameof(thingRodevicemodel), required: false);
-            SourceExpression.Validate(thingRodevicemodelNumber, nameof(thingRodevicemodelNumber), required: false);
-            SourceExpression.Validate(thingRodevicename, nameof(thingRodevicename), required: false);
-            SourceExpression.Validate(thingRodeviceserialNumber, nameof(thingRodeviceserialNumber), required: false);
-            SourceExpression.Validate(thingRodevicestatus, nameof(thingRodevicestatus), required: false);
-            SourceExpression.Validate(thingRodisplayName, nameof(thingRodisplayName), required: false);
-            SourceExpression.Validate(thingRodynamicGps, nameof(thingRodynamicGps), required: false);
-            SourceExpression.Validate(thingRofixedLatitude, nameof(thingRofixedLatitude), required: false);
-            SourceExpression.Validate(thingRofixedLongitude, nameof(thingRofixedLongitude), required: false);
-            SourceExpression.Validate(thingRofixedName, nameof(thingRofixedName), required: false);
-            SourceExpression.Validate(thingRoid, nameof(thingRoid), required: false);
-            SourceExpression.Validate(thingRolastActivityDate, nameof(thingRolastActivityDate), required: false);
-            SourceExpression.Validate(thingRolastLatitude, nameof(thingRolastLatitude), required: false);
-            SourceExpression.Validate(thingRolastLongitude, nameof(thingRolastLongitude), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsarray, nameof(thingRolastMeasurementsarray), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsbigDecimal, nameof(thingRolastMeasurementsbigDecimal), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsbigInteger, nameof(thingRolastMeasurementsbigInteger), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
-            SourceExpression.Validate(thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsDouble, nameof(thingRolastMeasurementsDouble), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsFloat, nameof(thingRolastMeasurementsFloat), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsInt, nameof(thingRolastMeasurementsInt), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsNull, nameof(thingRolastMeasurementsNull), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
-            SourceExpression.Validate(thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsShort, nameof(thingRolastMeasurementsShort), required: false);
-            SourceExpression.Validate(thingRolastMeasurementstextual, nameof(thingRolastMeasurementstextual), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsvalueNode, nameof(thingRolastMeasurementsvalueNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsarray, nameof(thingRolastMeasurementsTimestampsarray), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsbigDecimal, nameof(thingRolastMeasurementsTimestampsbigDecimal), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsbigInteger, nameof(thingRolastMeasurementsTimestampsbigInteger), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsDouble, nameof(thingRolastMeasurementsTimestampsDouble), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsFloat, nameof(thingRolastMeasurementsTimestampsFloat), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsInt, nameof(thingRolastMeasurementsTimestampsInt), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsNull, nameof(thingRolastMeasurementsTimestampsNull), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsShort, nameof(thingRolastMeasurementsTimestampsShort), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampstextual, nameof(thingRolastMeasurementsTimestampstextual), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsvalueNode, nameof(thingRolastMeasurementsTimestampsvalueNode), required: false);
-            SourceExpression.Validate(thingRolastMessageDate, nameof(thingRolastMessageDate), required: false);
-            SourceExpression.Validate(thingRomessageActivityTimeoutPeriod, nameof(thingRomessageActivityTimeoutPeriod), required: false);
-            SourceExpression.Validate(thingRonbAlerts, nameof(thingRonbAlerts), required: false);
-            SourceExpression.Validate(thingRoproductconnectivityTypes, nameof(thingRoproductconnectivityTypes), required: false);
-            SourceExpression.Validate(thingRoproductgenerateLinks, nameof(thingRoproductgenerateLinks), required: false);
-            SourceExpression.Validate(thingRoproductid, nameof(thingRoproductid), required: false);
-            SourceExpression.Validate(thingRoproductlink, nameof(thingRoproductlink), required: false);
-            SourceExpression.Validate(thingRoproductmanufacturergenerateLinks, nameof(thingRoproductmanufacturergenerateLinks), required: false);
-            SourceExpression.Validate(thingRoproductmanufacturerid, nameof(thingRoproductmanufacturerid), required: false);
-            SourceExpression.Validate(thingRoproductmanufacturerlink, nameof(thingRoproductmanufacturerlink), required: false);
-            SourceExpression.Validate(thingRoproductmanufacturername, nameof(thingRoproductmanufacturername), required: false);
-            SourceExpression.Validate(thingRoproductmodelcolor, nameof(thingRoproductmodelcolor), required: false);
-            SourceExpression.Validate(thingRoproductmodelgenerateLinks, nameof(thingRoproductmodelgenerateLinks), required: false);
-            SourceExpression.Validate(thingRoproductmodelicon, nameof(thingRoproductmodelicon), required: false);
-            SourceExpression.Validate(thingRoproductmodelid, nameof(thingRoproductmodelid), required: false);
-            SourceExpression.Validate(thingRoproductmodelisCustomModel, nameof(thingRoproductmodelisCustomModel), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkabsolute, nameof(thingRoproductmodellinkabsolute), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkauthority, nameof(thingRoproductmodellinkauthority), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkfragment, nameof(thingRoproductmodellinkfragment), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkhost, nameof(thingRoproductmodellinkhost), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkopaque, nameof(thingRoproductmodellinkopaque), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkpath, nameof(thingRoproductmodellinkpath), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkport, nameof(thingRoproductmodellinkport), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkquery, nameof(thingRoproductmodellinkquery), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkrawAuthority, nameof(thingRoproductmodellinkrawAuthority), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkrawFragment, nameof(thingRoproductmodellinkrawFragment), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkrawPath, nameof(thingRoproductmodellinkrawPath), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkrawQuery, nameof(thingRoproductmodellinkrawQuery), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkrawSchemeSpecificPart, nameof(thingRoproductmodellinkrawSchemeSpecificPart), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkrawUserInfo, nameof(thingRoproductmodellinkrawUserInfo), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkscheme, nameof(thingRoproductmodellinkscheme), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkschemeSpecificPart, nameof(thingRoproductmodellinkschemeSpecificPart), required: false);
-            SourceExpression.Validate(thingRoproductmodellinkuserInfo, nameof(thingRoproductmodellinkuserInfo), required: false);
-            SourceExpression.Validate(thingRoproductmodelname, nameof(thingRoproductmodelname), required: false);
-            SourceExpression.Validate(thingRoproductname, nameof(thingRoproductname), required: false);
-            SourceExpression.Validate(thingRoproductreference, nameof(thingRoproductreference), required: false);
-            SourceExpression.Validate(thingRositeid, nameof(thingRositeid), required: false);
-            SourceExpression.Validate(thingRositelatitude, nameof(thingRositelatitude), required: false);
-            SourceExpression.Validate(thingRositelongitude, nameof(thingRositelongitude), required: false);
-            SourceExpression.Validate(thingRosourceId, nameof(thingRosourceId), required: false);
-            SourceExpression.Validate(thingRostatus, nameof(thingRostatus), required: false);
-            SourceExpression.Validate(thingRotags, nameof(thingRotags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2291,7 +1980,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ModelRo> GetThingActiveModel([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/active_model", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2306,7 +1994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageCustomFieldRo> GetCustomField([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2321,13 +2008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<CustomFieldRo> CreateCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> customFieldRoid = null, [WorkflowExpression] Func<string> customFieldRoimageLink = null, [WorkflowExpression] Func<string> customFieldRolabel = null, [WorkflowExpression] Func<string> customFieldRoname = null, [WorkflowExpression] Func<customFieldRotypeInput> customFieldRotype = null, [WorkflowExpression] Func<string> customFieldRovalue = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(customFieldRoid, nameof(customFieldRoid), required: false);
-            SourceExpression.Validate(customFieldRoimageLink, nameof(customFieldRoimageLink), required: false);
-            SourceExpression.Validate(customFieldRolabel, nameof(customFieldRolabel), required: false);
-            SourceExpression.Validate(customFieldRoname, nameof(customFieldRoname), required: false);
-            SourceExpression.Validate(customFieldRotype, nameof(customFieldRotype), required: false);
-            SourceExpression.Validate(customFieldRovalue, nameof(customFieldRovalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2384,13 +2064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<CustomFieldRo> UpdateCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> customFieldRoid = null, [WorkflowExpression] Func<string> customFieldRoimageLink = null, [WorkflowExpression] Func<string> customFieldRolabel = null, [WorkflowExpression] Func<string> customFieldRoname = null, [WorkflowExpression] Func<customFieldRotypeInput> customFieldRotype = null, [WorkflowExpression] Func<string> customFieldRovalue = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(customFieldRoid, nameof(customFieldRoid), required: false);
-            SourceExpression.Validate(customFieldRoimageLink, nameof(customFieldRoimageLink), required: false);
-            SourceExpression.Validate(customFieldRolabel, nameof(customFieldRolabel), required: false);
-            SourceExpression.Validate(customFieldRoname, nameof(customFieldRoname), required: false);
-            SourceExpression.Validate(customFieldRotype, nameof(customFieldRotype), required: false);
-            SourceExpression.Validate(customFieldRovalue, nameof(customFieldRovalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2447,8 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ResponseEntity> DeleteCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -2463,8 +2134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ResponseEntity> GetCustomFieldImage([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -2479,7 +2148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ResponseEntity> GetThingImage([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2494,7 +2162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<MeasureTinyRo[]> GetLastMeasures([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_measurements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2509,7 +2176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<MessageTinyRo> GetLastMessage([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_message", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2524,15 +2190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageMeasureRo> GetThingMeasures([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(detailed, nameof(detailed), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/measures", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2564,14 +2221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageMessageRo> GetThingMessages([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2600,7 +2249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IWorkflowAction DeleteThingMessages([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2615,83 +2263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<MessageRo> CreateThingMessages([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> messageRobody, [WorkflowExpression] Func<string> messageRocreationDate, [WorkflowExpression] Func<string> messageRoerrorMessage, [WorkflowExpression] Func<double> messageRolatitude, [WorkflowExpression] Func<double> messageRolongitude, [WorkflowExpression] Func<string> messageRometadata, [WorkflowExpression] Func<int> messageRonumber, [WorkflowExpression] Func<messageRoprocessedInput> messageRoprocessed, [WorkflowExpression] Func<string> messageRothingname, [WorkflowExpression] Func<string> messageRotimestamp, [WorkflowExpression] Func<string> messageRotopic, [WorkflowExpression] Func<string> messageRoid = null, [WorkflowExpression] Func<bool> messageRolinkabsolute = null, [WorkflowExpression] Func<string> messageRolinkauthority = null, [WorkflowExpression] Func<string> messageRolinkfragment = null, [WorkflowExpression] Func<string> messageRolinkhost = null, [WorkflowExpression] Func<bool> messageRolinkopaque = null, [WorkflowExpression] Func<string> messageRolinkpath = null, [WorkflowExpression] Func<int> messageRolinkport = null, [WorkflowExpression] Func<string> messageRolinkquery = null, [WorkflowExpression] Func<string> messageRolinkrawAuthority = null, [WorkflowExpression] Func<string> messageRolinkrawFragment = null, [WorkflowExpression] Func<string> messageRolinkrawPath = null, [WorkflowExpression] Func<string> messageRolinkrawQuery = null, [WorkflowExpression] Func<string> messageRolinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkrawUserInfo = null, [WorkflowExpression] Func<string> messageRolinkscheme = null, [WorkflowExpression] Func<string> messageRolinkschemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkuserInfo = null, [WorkflowExpression] Func<bool> messageRomeasurementsarray = null, [WorkflowExpression] Func<bool> messageRomeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRomeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRomeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRomeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRomeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRomeasurementsDouble = null, [WorkflowExpression] Func<bool> messageRomeasurementsFloat = null, [WorkflowExpression] Func<bool> messageRomeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsInt = null, [WorkflowExpression] Func<bool> messageRomeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsLong = null, [WorkflowExpression] Func<bool> messageRomeasurementsmissingNode = null, [WorkflowExpression] Func<messageRomeasurementsnodeTypeInput> messageRomeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRomeasurementsNull = null, [WorkflowExpression] Func<bool> messageRomeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsObject = null, [WorkflowExpression] Func<bool> messageRomeasurementspojo = null, [WorkflowExpression] Func<bool> messageRomeasurementsShort = null, [WorkflowExpression] Func<bool> messageRomeasurementstextual = null, [WorkflowExpression] Func<bool> messageRomeasurementsvalueNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsarray = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRorawMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsDouble = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsFloat = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsInt = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsLong = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsmissingNode = null, [WorkflowExpression] Func<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsNull = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsObject = null, [WorkflowExpression] Func<bool> messageRorawMeasurementspojo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsShort = null, [WorkflowExpression] Func<bool> messageRorawMeasurementstextual = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsvalueNode = null, [WorkflowExpression] Func<string> messageRothingdisplayName = null, [WorkflowExpression] Func<string> messageRothingfixedName = null, [WorkflowExpression] Func<string> messageRothingid = null, [WorkflowExpression] Func<int> messageRothingnbAlerts = null, [WorkflowExpression] Func<ThingTagRo[]> messageRothingtags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(messageRobody, nameof(messageRobody), required: true);
-            SourceExpression.Validate(messageRocreationDate, nameof(messageRocreationDate), required: true);
-            SourceExpression.Validate(messageRoerrorMessage, nameof(messageRoerrorMessage), required: true);
-            SourceExpression.Validate(messageRolatitude, nameof(messageRolatitude), required: true);
-            SourceExpression.Validate(messageRolongitude, nameof(messageRolongitude), required: true);
-            SourceExpression.Validate(messageRometadata, nameof(messageRometadata), required: true);
-            SourceExpression.Validate(messageRonumber, nameof(messageRonumber), required: true);
-            SourceExpression.Validate(messageRoprocessed, nameof(messageRoprocessed), required: true);
-            SourceExpression.Validate(messageRothingname, nameof(messageRothingname), required: true);
-            SourceExpression.Validate(messageRotimestamp, nameof(messageRotimestamp), required: true);
-            SourceExpression.Validate(messageRotopic, nameof(messageRotopic), required: true);
-            SourceExpression.Validate(messageRoid, nameof(messageRoid), required: false);
-            SourceExpression.Validate(messageRolinkabsolute, nameof(messageRolinkabsolute), required: false);
-            SourceExpression.Validate(messageRolinkauthority, nameof(messageRolinkauthority), required: false);
-            SourceExpression.Validate(messageRolinkfragment, nameof(messageRolinkfragment), required: false);
-            SourceExpression.Validate(messageRolinkhost, nameof(messageRolinkhost), required: false);
-            SourceExpression.Validate(messageRolinkopaque, nameof(messageRolinkopaque), required: false);
-            SourceExpression.Validate(messageRolinkpath, nameof(messageRolinkpath), required: false);
-            SourceExpression.Validate(messageRolinkport, nameof(messageRolinkport), required: false);
-            SourceExpression.Validate(messageRolinkquery, nameof(messageRolinkquery), required: false);
-            SourceExpression.Validate(messageRolinkrawAuthority, nameof(messageRolinkrawAuthority), required: false);
-            SourceExpression.Validate(messageRolinkrawFragment, nameof(messageRolinkrawFragment), required: false);
-            SourceExpression.Validate(messageRolinkrawPath, nameof(messageRolinkrawPath), required: false);
-            SourceExpression.Validate(messageRolinkrawQuery, nameof(messageRolinkrawQuery), required: false);
-            SourceExpression.Validate(messageRolinkrawSchemeSpecificPart, nameof(messageRolinkrawSchemeSpecificPart), required: false);
-            SourceExpression.Validate(messageRolinkrawUserInfo, nameof(messageRolinkrawUserInfo), required: false);
-            SourceExpression.Validate(messageRolinkscheme, nameof(messageRolinkscheme), required: false);
-            SourceExpression.Validate(messageRolinkschemeSpecificPart, nameof(messageRolinkschemeSpecificPart), required: false);
-            SourceExpression.Validate(messageRolinkuserInfo, nameof(messageRolinkuserInfo), required: false);
-            SourceExpression.Validate(messageRomeasurementsarray, nameof(messageRomeasurementsarray), required: false);
-            SourceExpression.Validate(messageRomeasurementsbigDecimal, nameof(messageRomeasurementsbigDecimal), required: false);
-            SourceExpression.Validate(messageRomeasurementsbigInteger, nameof(messageRomeasurementsbigInteger), required: false);
-            SourceExpression.Validate(messageRomeasurementsbinary, nameof(messageRomeasurementsbinary), required: false);
-            SourceExpression.Validate(messageRomeasurementsboolean, nameof(messageRomeasurementsboolean), required: false);
-            SourceExpression.Validate(messageRomeasurementscontainerNode, nameof(messageRomeasurementscontainerNode), required: false);
-            SourceExpression.Validate(messageRomeasurementsDouble, nameof(messageRomeasurementsDouble), required: false);
-            SourceExpression.Validate(messageRomeasurementsFloat, nameof(messageRomeasurementsFloat), required: false);
-            SourceExpression.Validate(messageRomeasurementsfloatingPointNumber, nameof(messageRomeasurementsfloatingPointNumber), required: false);
-            SourceExpression.Validate(messageRomeasurementsInt, nameof(messageRomeasurementsInt), required: false);
-            SourceExpression.Validate(messageRomeasurementsintegralNumber, nameof(messageRomeasurementsintegralNumber), required: false);
-            SourceExpression.Validate(messageRomeasurementsLong, nameof(messageRomeasurementsLong), required: false);
-            SourceExpression.Validate(messageRomeasurementsmissingNode, nameof(messageRomeasurementsmissingNode), required: false);
-            SourceExpression.Validate(messageRomeasurementsnodeType, nameof(messageRomeasurementsnodeType), required: false);
-            SourceExpression.Validate(messageRomeasurementsNull, nameof(messageRomeasurementsNull), required: false);
-            SourceExpression.Validate(messageRomeasurementsnumber, nameof(messageRomeasurementsnumber), required: false);
-            SourceExpression.Validate(messageRomeasurementsObject, nameof(messageRomeasurementsObject), required: false);
-            SourceExpression.Validate(messageRomeasurementspojo, nameof(messageRomeasurementspojo), required: false);
-            SourceExpression.Validate(messageRomeasurementsShort, nameof(messageRomeasurementsShort), required: false);
-            SourceExpression.Validate(messageRomeasurementstextual, nameof(messageRomeasurementstextual), required: false);
-            SourceExpression.Validate(messageRomeasurementsvalueNode, nameof(messageRomeasurementsvalueNode), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsarray, nameof(messageRorawMeasurementsarray), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsbigDecimal, nameof(messageRorawMeasurementsbigDecimal), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsbigInteger, nameof(messageRorawMeasurementsbigInteger), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
-            SourceExpression.Validate(messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsDouble, nameof(messageRorawMeasurementsDouble), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsFloat, nameof(messageRorawMeasurementsFloat), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsInt, nameof(messageRorawMeasurementsInt), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsNull, nameof(messageRorawMeasurementsNull), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
-            SourceExpression.Validate(messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsShort, nameof(messageRorawMeasurementsShort), required: false);
-            SourceExpression.Validate(messageRorawMeasurementstextual, nameof(messageRorawMeasurementstextual), required: false);
-            SourceExpression.Validate(messageRorawMeasurementsvalueNode, nameof(messageRorawMeasurementsvalueNode), required: false);
-            SourceExpression.Validate(messageRothingdisplayName, nameof(messageRothingdisplayName), required: false);
-            SourceExpression.Validate(messageRothingfixedName, nameof(messageRothingfixedName), required: false);
-            SourceExpression.Validate(messageRothingid, nameof(messageRothingid), required: false);
-            SourceExpression.Validate(messageRothingnbAlerts, nameof(messageRothingnbAlerts), required: false);
-            SourceExpression.Validate(messageRothingtags, nameof(messageRothingtags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3156,7 +2727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ModelRo> GetThingModel([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/model", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3171,7 +2741,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageOperationRo> GetThingOperations([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3186,29 +2755,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ResponseEntity> ExecuteThingOperation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operationId, [WorkflowExpression] Func<bool> placeholdersValuesarray = null, [WorkflowExpression] Func<bool> placeholdersValuesbigDecimal = null, [WorkflowExpression] Func<bool> placeholdersValuesbigInteger = null, [WorkflowExpression] Func<bool> placeholdersValuesbinary = null, [WorkflowExpression] Func<bool> placeholdersValuesboolean = null, [WorkflowExpression] Func<bool> placeholdersValuescontainerNode = null, [WorkflowExpression] Func<bool> placeholdersValuesDouble = null, [WorkflowExpression] Func<bool> placeholdersValuesFloat = null, [WorkflowExpression] Func<bool> placeholdersValuesfloatingPointNumber = null, [WorkflowExpression] Func<bool> placeholdersValuesInt = null, [WorkflowExpression] Func<bool> placeholdersValuesintegralNumber = null, [WorkflowExpression] Func<bool> placeholdersValuesLong = null, [WorkflowExpression] Func<bool> placeholdersValuesmissingNode = null, [WorkflowExpression] Func<placeholdersValuesnodeTypeInput> placeholdersValuesnodeType = null, [WorkflowExpression] Func<bool> placeholdersValuesNull = null, [WorkflowExpression] Func<bool> placeholdersValuesnumber = null, [WorkflowExpression] Func<bool> placeholdersValuesObject = null, [WorkflowExpression] Func<bool> placeholdersValuespojo = null, [WorkflowExpression] Func<bool> placeholdersValuesShort = null, [WorkflowExpression] Func<bool> placeholdersValuestextual = null, [WorkflowExpression] Func<bool> placeholdersValuesvalueNode = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(operationId, nameof(operationId), required: true);
-            SourceExpression.Validate(placeholdersValuesarray, nameof(placeholdersValuesarray), required: false);
-            SourceExpression.Validate(placeholdersValuesbigDecimal, nameof(placeholdersValuesbigDecimal), required: false);
-            SourceExpression.Validate(placeholdersValuesbigInteger, nameof(placeholdersValuesbigInteger), required: false);
-            SourceExpression.Validate(placeholdersValuesbinary, nameof(placeholdersValuesbinary), required: false);
-            SourceExpression.Validate(placeholdersValuesboolean, nameof(placeholdersValuesboolean), required: false);
-            SourceExpression.Validate(placeholdersValuescontainerNode, nameof(placeholdersValuescontainerNode), required: false);
-            SourceExpression.Validate(placeholdersValuesDouble, nameof(placeholdersValuesDouble), required: false);
-            SourceExpression.Validate(placeholdersValuesFloat, nameof(placeholdersValuesFloat), required: false);
-            SourceExpression.Validate(placeholdersValuesfloatingPointNumber, nameof(placeholdersValuesfloatingPointNumber), required: false);
-            SourceExpression.Validate(placeholdersValuesInt, nameof(placeholdersValuesInt), required: false);
-            SourceExpression.Validate(placeholdersValuesintegralNumber, nameof(placeholdersValuesintegralNumber), required: false);
-            SourceExpression.Validate(placeholdersValuesLong, nameof(placeholdersValuesLong), required: false);
-            SourceExpression.Validate(placeholdersValuesmissingNode, nameof(placeholdersValuesmissingNode), required: false);
-            SourceExpression.Validate(placeholdersValuesnodeType, nameof(placeholdersValuesnodeType), required: false);
-            SourceExpression.Validate(placeholdersValuesNull, nameof(placeholdersValuesNull), required: false);
-            SourceExpression.Validate(placeholdersValuesnumber, nameof(placeholdersValuesnumber), required: false);
-            SourceExpression.Validate(placeholdersValuesObject, nameof(placeholdersValuesObject), required: false);
-            SourceExpression.Validate(placeholdersValuespojo, nameof(placeholdersValuespojo), required: false);
-            SourceExpression.Validate(placeholdersValuesShort, nameof(placeholdersValuesShort), required: false);
-            SourceExpression.Validate(placeholdersValuestextual, nameof(placeholdersValuestextual), required: false);
-            SourceExpression.Validate(placeholdersValuesvalueNode, nameof(placeholdersValuesvalueNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationId, 1));
@@ -3355,73 +2901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SingleThingRo> UpdateThingFixedPosition([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> thingRoname, [WorkflowExpression] Func<string> thingRositeaddress, [WorkflowExpression] Func<string> thingRositecity, [WorkflowExpression] Func<string> thingRositename, [WorkflowExpression] Func<string> thingRositepostalCode, [WorkflowExpression] Func<CustomFieldRo[]> thingRocustomFields = null, [WorkflowExpression] Func<string> thingRodescription = null, [WorkflowExpression] Func<string> thingRodisplayName = null, [WorkflowExpression] Func<bool> thingRodynamicGps = null, [WorkflowExpression] Func<double> thingRofixedLatitude = null, [WorkflowExpression] Func<double> thingRofixedLongitude = null, [WorkflowExpression] Func<string> thingRofixedName = null, [WorkflowExpression] Func<string> thingRoid = null, [WorkflowExpression] Func<int> thingRolastActivityDate = null, [WorkflowExpression] Func<double> thingRolastLatitude = null, [WorkflowExpression] Func<double> thingRolastLongitude = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsvalueNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsvalueNode = null, [WorkflowExpression] Func<int> thingRolastMessageDate = null, [WorkflowExpression] Func<int> thingRomessageActivityTimeoutPeriod = null, [WorkflowExpression] Func<int> thingRonbAlerts = null, [WorkflowExpression] Func<string> thingRositeid = null, [WorkflowExpression] Func<double> thingRositelatitude = null, [WorkflowExpression] Func<double> thingRositelongitude = null, [WorkflowExpression] Func<thingRostatusInput> thingRostatus = null, [WorkflowExpression] Func<ThingTagRo[]> thingRotags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(thingRoname, nameof(thingRoname), required: true);
-            SourceExpression.Validate(thingRositeaddress, nameof(thingRositeaddress), required: true);
-            SourceExpression.Validate(thingRositecity, nameof(thingRositecity), required: true);
-            SourceExpression.Validate(thingRositename, nameof(thingRositename), required: true);
-            SourceExpression.Validate(thingRositepostalCode, nameof(thingRositepostalCode), required: true);
-            SourceExpression.Validate(thingRocustomFields, nameof(thingRocustomFields), required: false);
-            SourceExpression.Validate(thingRodescription, nameof(thingRodescription), required: false);
-            SourceExpression.Validate(thingRodisplayName, nameof(thingRodisplayName), required: false);
-            SourceExpression.Validate(thingRodynamicGps, nameof(thingRodynamicGps), required: false);
-            SourceExpression.Validate(thingRofixedLatitude, nameof(thingRofixedLatitude), required: false);
-            SourceExpression.Validate(thingRofixedLongitude, nameof(thingRofixedLongitude), required: false);
-            SourceExpression.Validate(thingRofixedName, nameof(thingRofixedName), required: false);
-            SourceExpression.Validate(thingRoid, nameof(thingRoid), required: false);
-            SourceExpression.Validate(thingRolastActivityDate, nameof(thingRolastActivityDate), required: false);
-            SourceExpression.Validate(thingRolastLatitude, nameof(thingRolastLatitude), required: false);
-            SourceExpression.Validate(thingRolastLongitude, nameof(thingRolastLongitude), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsarray, nameof(thingRolastMeasurementsarray), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsbigDecimal, nameof(thingRolastMeasurementsbigDecimal), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsbigInteger, nameof(thingRolastMeasurementsbigInteger), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
-            SourceExpression.Validate(thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsDouble, nameof(thingRolastMeasurementsDouble), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsFloat, nameof(thingRolastMeasurementsFloat), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsInt, nameof(thingRolastMeasurementsInt), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsNull, nameof(thingRolastMeasurementsNull), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
-            SourceExpression.Validate(thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsShort, nameof(thingRolastMeasurementsShort), required: false);
-            SourceExpression.Validate(thingRolastMeasurementstextual, nameof(thingRolastMeasurementstextual), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsvalueNode, nameof(thingRolastMeasurementsvalueNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsarray, nameof(thingRolastMeasurementsTimestampsarray), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsbigDecimal, nameof(thingRolastMeasurementsTimestampsbigDecimal), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsbigInteger, nameof(thingRolastMeasurementsTimestampsbigInteger), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsDouble, nameof(thingRolastMeasurementsTimestampsDouble), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsFloat, nameof(thingRolastMeasurementsTimestampsFloat), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsInt, nameof(thingRolastMeasurementsTimestampsInt), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsNull, nameof(thingRolastMeasurementsTimestampsNull), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsShort, nameof(thingRolastMeasurementsTimestampsShort), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampstextual, nameof(thingRolastMeasurementsTimestampstextual), required: false);
-            SourceExpression.Validate(thingRolastMeasurementsTimestampsvalueNode, nameof(thingRolastMeasurementsTimestampsvalueNode), required: false);
-            SourceExpression.Validate(thingRolastMessageDate, nameof(thingRolastMessageDate), required: false);
-            SourceExpression.Validate(thingRomessageActivityTimeoutPeriod, nameof(thingRomessageActivityTimeoutPeriod), required: false);
-            SourceExpression.Validate(thingRonbAlerts, nameof(thingRonbAlerts), required: false);
-            SourceExpression.Validate(thingRositeid, nameof(thingRositeid), required: false);
-            SourceExpression.Validate(thingRositelatitude, nameof(thingRositelatitude), required: false);
-            SourceExpression.Validate(thingRositelongitude, nameof(thingRositelongitude), required: false);
-            SourceExpression.Validate(thingRostatus, nameof(thingRostatus), required: false);
-            SourceExpression.Validate(thingRotags, nameof(thingRotags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/positions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3842,7 +3321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ProductRo> GetThingProduct([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3857,7 +3335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SingleThingRo> DissociateThingProduct([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3872,58 +3349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<SingleThingRo> AssociateThingProduct([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> productcertification = null, [WorkflowExpression] Func<productconnectivityTypesInputItem[]> productconnectivityTypes = null, [WorkflowExpression] Func<string> productdecoderid = null, [WorkflowExpression] Func<string> productdecoderlink = null, [WorkflowExpression] Func<bool> productdecodervisible = null, [WorkflowExpression] Func<string> productdescription = null, [WorkflowExpression] Func<string> productencoderid = null, [WorkflowExpression] Func<string> productencoderlink = null, [WorkflowExpression] Func<bool> productgenerateLinks = null, [WorkflowExpression] Func<bool> producthasImage = null, [WorkflowExpression] Func<string> productid = null, [WorkflowExpression] Func<string> productimageLink = null, [WorkflowExpression] Func<string> productinfoLink = null, [WorkflowExpression] Func<string> productlink = null, [WorkflowExpression] Func<bool> productmanufacturergenerateLinks = null, [WorkflowExpression] Func<string> productmanufacturerid = null, [WorkflowExpression] Func<string> productmanufacturerlink = null, [WorkflowExpression] Func<string> productmanufacturername = null, [WorkflowExpression] Func<string> productmanufacturerCategory = null, [WorkflowExpression] Func<string> productmodelcolor = null, [WorkflowExpression] Func<bool> productmodelgenerateLinks = null, [WorkflowExpression] Func<string> productmodelicon = null, [WorkflowExpression] Func<string> productmodelid = null, [WorkflowExpression] Func<bool> productmodelisCustomModel = null, [WorkflowExpression] Func<bool> productmodellinkabsolute = null, [WorkflowExpression] Func<string> productmodellinkauthority = null, [WorkflowExpression] Func<string> productmodellinkfragment = null, [WorkflowExpression] Func<string> productmodellinkhost = null, [WorkflowExpression] Func<bool> productmodellinkopaque = null, [WorkflowExpression] Func<string> productmodellinkpath = null, [WorkflowExpression] Func<int> productmodellinkport = null, [WorkflowExpression] Func<string> productmodellinkquery = null, [WorkflowExpression] Func<string> productmodellinkrawAuthority = null, [WorkflowExpression] Func<string> productmodellinkrawFragment = null, [WorkflowExpression] Func<string> productmodellinkrawPath = null, [WorkflowExpression] Func<string> productmodellinkrawQuery = null, [WorkflowExpression] Func<string> productmodellinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> productmodellinkrawUserInfo = null, [WorkflowExpression] Func<string> productmodellinkscheme = null, [WorkflowExpression] Func<string> productmodellinkschemeSpecificPart = null, [WorkflowExpression] Func<string> productmodellinkuserInfo = null, [WorkflowExpression] Func<string> productmodelname = null, [WorkflowExpression] Func<bool> productmodelManufacturergenerateLinks = null, [WorkflowExpression] Func<string> productmodelManufacturerid = null, [WorkflowExpression] Func<string> productmodelManufacturerlink = null, [WorkflowExpression] Func<string> productmodelManufacturername = null, [WorkflowExpression] Func<string> productname = null, [WorkflowExpression] Func<bool> productreadOnly = null, [WorkflowExpression] Func<string> productreference = null, [WorkflowExpression] Func<TagRo[]> producttags = null, [WorkflowExpression] Func<ThingTinyRo[]> productthings = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(productcertification, nameof(productcertification), required: false);
-            SourceExpression.Validate(productconnectivityTypes, nameof(productconnectivityTypes), required: false);
-            SourceExpression.Validate(productdecoderid, nameof(productdecoderid), required: false);
-            SourceExpression.Validate(productdecoderlink, nameof(productdecoderlink), required: false);
-            SourceExpression.Validate(productdecodervisible, nameof(productdecodervisible), required: false);
-            SourceExpression.Validate(productdescription, nameof(productdescription), required: false);
-            SourceExpression.Validate(productencoderid, nameof(productencoderid), required: false);
-            SourceExpression.Validate(productencoderlink, nameof(productencoderlink), required: false);
-            SourceExpression.Validate(productgenerateLinks, nameof(productgenerateLinks), required: false);
-            SourceExpression.Validate(producthasImage, nameof(producthasImage), required: false);
-            SourceExpression.Validate(productid, nameof(productid), required: false);
-            SourceExpression.Validate(productimageLink, nameof(productimageLink), required: false);
-            SourceExpression.Validate(productinfoLink, nameof(productinfoLink), required: false);
-            SourceExpression.Validate(productlink, nameof(productlink), required: false);
-            SourceExpression.Validate(productmanufacturergenerateLinks, nameof(productmanufacturergenerateLinks), required: false);
-            SourceExpression.Validate(productmanufacturerid, nameof(productmanufacturerid), required: false);
-            SourceExpression.Validate(productmanufacturerlink, nameof(productmanufacturerlink), required: false);
-            SourceExpression.Validate(productmanufacturername, nameof(productmanufacturername), required: false);
-            SourceExpression.Validate(productmanufacturerCategory, nameof(productmanufacturerCategory), required: false);
-            SourceExpression.Validate(productmodelcolor, nameof(productmodelcolor), required: false);
-            SourceExpression.Validate(productmodelgenerateLinks, nameof(productmodelgenerateLinks), required: false);
-            SourceExpression.Validate(productmodelicon, nameof(productmodelicon), required: false);
-            SourceExpression.Validate(productmodelid, nameof(productmodelid), required: false);
-            SourceExpression.Validate(productmodelisCustomModel, nameof(productmodelisCustomModel), required: false);
-            SourceExpression.Validate(productmodellinkabsolute, nameof(productmodellinkabsolute), required: false);
-            SourceExpression.Validate(productmodellinkauthority, nameof(productmodellinkauthority), required: false);
-            SourceExpression.Validate(productmodellinkfragment, nameof(productmodellinkfragment), required: false);
-            SourceExpression.Validate(productmodellinkhost, nameof(productmodellinkhost), required: false);
-            SourceExpression.Validate(productmodellinkopaque, nameof(productmodellinkopaque), required: false);
-            SourceExpression.Validate(productmodellinkpath, nameof(productmodellinkpath), required: false);
-            SourceExpression.Validate(productmodellinkport, nameof(productmodellinkport), required: false);
-            SourceExpression.Validate(productmodellinkquery, nameof(productmodellinkquery), required: false);
-            SourceExpression.Validate(productmodellinkrawAuthority, nameof(productmodellinkrawAuthority), required: false);
-            SourceExpression.Validate(productmodellinkrawFragment, nameof(productmodellinkrawFragment), required: false);
-            SourceExpression.Validate(productmodellinkrawPath, nameof(productmodellinkrawPath), required: false);
-            SourceExpression.Validate(productmodellinkrawQuery, nameof(productmodellinkrawQuery), required: false);
-            SourceExpression.Validate(productmodellinkrawSchemeSpecificPart, nameof(productmodellinkrawSchemeSpecificPart), required: false);
-            SourceExpression.Validate(productmodellinkrawUserInfo, nameof(productmodellinkrawUserInfo), required: false);
-            SourceExpression.Validate(productmodellinkscheme, nameof(productmodellinkscheme), required: false);
-            SourceExpression.Validate(productmodellinkschemeSpecificPart, nameof(productmodellinkschemeSpecificPart), required: false);
-            SourceExpression.Validate(productmodellinkuserInfo, nameof(productmodellinkuserInfo), required: false);
-            SourceExpression.Validate(productmodelname, nameof(productmodelname), required: false);
-            SourceExpression.Validate(productmodelManufacturergenerateLinks, nameof(productmodelManufacturergenerateLinks), required: false);
-            SourceExpression.Validate(productmodelManufacturerid, nameof(productmodelManufacturerid), required: false);
-            SourceExpression.Validate(productmodelManufacturerlink, nameof(productmodelManufacturerlink), required: false);
-            SourceExpression.Validate(productmodelManufacturername, nameof(productmodelManufacturername), required: false);
-            SourceExpression.Validate(productname, nameof(productname), required: false);
-            SourceExpression.Validate(productreadOnly, nameof(productreadOnly), required: false);
-            SourceExpression.Validate(productreference, nameof(productreference), required: false);
-            SourceExpression.Validate(producttags, nameof(producttags), required: false);
-            SourceExpression.Validate(productthings, nameof(productthings), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -4298,7 +3723,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageFlowRo> GetFlowsRelatedToThing([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/related_flows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -4313,7 +3737,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageThingTagRo> GetThingTags([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -4328,15 +3751,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsAvg([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/avg";
@@ -4369,15 +3783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<StatsCountRo> GetStatsCount([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/count";
@@ -4410,13 +3815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsLast([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/last";
@@ -4445,14 +3843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageStatsMeasureRo> GetThingStatsLast([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            SourceExpression.Validate(thingId, nameof(thingId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/last/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
@@ -4481,15 +3871,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMax([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/max";
@@ -4522,17 +3903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<StatsGraphRo[]> GetStatsMeasurements([WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> end, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> time = null, [WorkflowExpression] Func<string> interval = null)
         {
-            SourceExpression.Validate(start, nameof(start), required: true);
-            SourceExpression.Validate(end, nameof(end), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(time, nameof(time), required: false);
-            SourceExpression.Validate(interval, nameof(interval), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/measurements";
@@ -4567,15 +3937,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMin([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/min";
@@ -4608,16 +3969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<StatsCountRo[]> GetStatsRepartition([WorkflowExpression] Func<string> attribute, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            SourceExpression.Validate(attribute, nameof(attribute), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/repartition";
@@ -4651,17 +4002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<StatsGraphRo[]> GetStatsSum([WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> end, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> time = null, [WorkflowExpression] Func<string> interval = null)
         {
-            SourceExpression.Validate(start, nameof(start), required: true);
-            SourceExpression.Validate(end, nameof(end), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortValues, nameof(sortValues), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(orFilter, nameof(orFilter), required: false);
-            SourceExpression.Validate(time, nameof(time), required: false);
-            SourceExpression.Validate(interval, nameof(interval), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stats/sum";

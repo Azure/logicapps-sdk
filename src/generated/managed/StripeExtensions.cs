@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<ProductResponse> UpdateProduct([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodycaption = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyimages = null, [WorkflowExpression] Func<bool> bodyshippable = null, [WorkflowExpression] Func<string> bodyuRL = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodycaption, nameof(bodycaption), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyimages, nameof(bodyimages), required: false);
-            SourceExpression.Validate(bodyshippable, nameof(bodyshippable), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/products/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -80,14 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<ProductResponse> CreateProduct([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodycaption = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyimages = null, [WorkflowExpression] Func<bool> bodyshippable = null, [WorkflowExpression] Func<string> bodyuRL = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodycaption, nameof(bodycaption), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyimages, nameof(bodyimages), required: false);
-            SourceExpression.Validate(bodyshippable, nameof(bodyshippable), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/products";
@@ -152,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> GetCustomer([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -167,9 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> UpdateCustomer([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -202,8 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> CreateCustomer([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/customers";

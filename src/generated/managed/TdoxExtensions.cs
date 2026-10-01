@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
         public IWorkflowAction ProductImport([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Products/Import/";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
         public IWorkflowAction CustomerImport([WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Customers/Import/";
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
         public IWorkflowAction ListImport([WorkflowExpression] Func<bodyInputItem22[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ListItems/Import/";

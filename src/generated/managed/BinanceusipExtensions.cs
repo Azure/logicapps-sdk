@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice([WorkflowExpression] Func<string> symbol = null)
         {
-            SourceExpression.Validate(symbol, nameof(symbol), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ticker/price";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation([WorkflowExpression] Func<string> symbol = null)
         {
-            SourceExpression.Validate(symbol, nameof(symbol), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/exchangeInfo";
@@ -48,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(symbol, nameof(symbol), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trades";

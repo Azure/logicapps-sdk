@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
         public IBodyWorkflowAction<string> DownloadAttachment([WorkflowExpression] Func<string> fileUrl)
         {
-            SourceExpression.Validate(fileUrl, nameof(fileUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/attachments";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
         public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> fileUrl = null)
         {
-            SourceExpression.Validate(fileUrl, nameof(fileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/attachments";
@@ -46,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
         public IWorkflowAction DeleteSubmission([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> submissionId)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(submissionId, nameof(submissionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/submissions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(submissionId, 1));
@@ -64,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
     {
         public IWorkflowTrigger FormIsSubmitted([WorkflowExpression] Func<string> subscriberform, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(subscriberform, nameof(subscriberform), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/submissions";

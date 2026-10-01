@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<SubmitFileResponse> SubmitFile([WorkflowExpression] Func<string> @file = null)
         {
-            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/files";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<string> DeleteFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -45,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ocr";
@@ -72,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetOcrRequestStatusResponse> GetOcrRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ocr/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -87,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetOcrRequestTextResponse> GetOcrRequestText([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ocr/{0}/text", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -102,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<string> GetOcrRequestImages([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ocr/{0}/images", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -131,8 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest([WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string[]> bodyfieldIDs = null)
         {
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodyfieldIDs, nameof(bodyfieldIDs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/extraction";
@@ -165,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> GetFieldExtractionRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/extraction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -180,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> GetFieldExtractionRequestResults([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/extraction/{0}/results/text", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -195,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/classification";
@@ -222,7 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> GetDocumentClassificationRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/classification/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -237,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/language";
@@ -264,7 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> GetLanguageClassificationRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/language/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -279,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mlc";
@@ -306,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetMlcRequestStatusResponse> GetMlcRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/mlc/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -321,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<NormalizeDatesResponse> NormalizeDates([WorkflowExpression] Func<string> textBodytext = null)
         {
-            SourceExpression.Validate(textBodytext, nameof(textBodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/normalize/date";

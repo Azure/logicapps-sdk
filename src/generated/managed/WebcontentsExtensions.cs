@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
         public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetFileContent";
@@ -30,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
         public IBodyWorkflowAction<JToken> InvokeHttp([WorkflowExpression] Func<requestmethodInput> requestmethod, [WorkflowExpression] Func<string> requesturlOfTheRequest, [WorkflowExpression] Func<string> requestbodyOfTheRequest = null)
         {
-            SourceExpression.Validate(requestmethod, nameof(requestmethod), required: true);
-            SourceExpression.Validate(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
-            SourceExpression.Validate(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/InvokeHttp";

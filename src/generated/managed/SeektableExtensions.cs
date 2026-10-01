@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
         public IBodyWorkflowAction<string> CubeImportCsv([WorkflowExpression] Func<string> cubeId, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(cubeId, nameof(cubeId), required: true);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/cube/import/csv";
@@ -39,10 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
         public IBodyWorkflowAction<string> ReportExport([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> htmlInlineStyle = null, [WorkflowExpression] Func<bool> chartOnly = null)
         {
-            SourceExpression.Validate(reportId, nameof(reportId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(htmlInlineStyle, nameof(htmlInlineStyle), required: false);
-            SourceExpression.Validate(chartOnly, nameof(chartOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/report/{0}/export", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
@@ -62,10 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
         public IBodyWorkflowAction<string> ReportShareByEmail([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> subject, [WorkflowExpression] Func<string> message = null)
         {
-            SourceExpression.Validate(reportId, nameof(reportId), required: true);
-            SourceExpression.Validate(to, nameof(to), required: true);
-            SourceExpression.Validate(subject, nameof(subject), required: true);
-            SourceExpression.Validate(message, nameof(message), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/report/{0}/share/email", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));

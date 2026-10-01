@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentunderstanding")]
         public IBodyWorkflowAction<AnalyzeOperationResult> AnalyzeContent([WorkflowExpression] Func<string> analyzerId, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyinputFileURL = null, [WorkflowExpression] Func<string> bodyrange = null, [WorkflowExpression] Func<string> bodyfileMIMEType = null, [WorkflowExpression] Func<AnalysisInput[]> bodyinputs = null, [WorkflowExpression] Func<processingLocationInput> processingLocation = null, [WorkflowExpression] Func<string> stringEncoding = null)
         {
-            SourceExpression.Validate(analyzerId, nameof(analyzerId), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            SourceExpression.Validate(bodyinputFileURL, nameof(bodyinputFileURL), required: false);
-            SourceExpression.Validate(bodyrange, nameof(bodyrange), required: false);
-            SourceExpression.Validate(bodyfileMIMEType, nameof(bodyfileMIMEType), required: false);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            SourceExpression.Validate(processingLocation, nameof(processingLocation), required: false);
-            SourceExpression.Validate(stringEncoding, nameof(stringEncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contentunderstanding/analyzers/{0}:analyze", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(analyzerId, 1));

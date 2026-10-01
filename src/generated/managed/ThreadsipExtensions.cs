@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ThreadPostResponse> Thread([WorkflowExpression] Func<string> bodychannel = null, [WorkflowExpression] Func<string> bodychannelId = null, [WorkflowExpression] Func<string[]> bodyblocks = null)
         {
-            SourceExpression.Validate(bodychannel, nameof(bodychannel), required: false);
-            SourceExpression.Validate(bodychannelId, nameof(bodychannelId), required: false);
-            SourceExpression.Validate(bodyblocks, nameof(bodyblocks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/postThread";
@@ -55,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete([WorkflowExpression] Func<string> bodythreadId)
         {
-            SourceExpression.Validate(bodythreadId, nameof(bodythreadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteThread";
@@ -92,9 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodychat = null, [WorkflowExpression] Func<string> bodychatId = null, [WorkflowExpression] Func<string> bodybody = null)
         {
-            SourceExpression.Validate(bodychat, nameof(bodychat), required: false);
-            SourceExpression.Validate(bodychatId, nameof(bodychatId), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/postChatMessage";
@@ -133,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete([WorkflowExpression] Func<string> bodymessageId = null)
         {
-            SourceExpression.Validate(bodymessageId, nameof(bodymessageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteChatMessage";

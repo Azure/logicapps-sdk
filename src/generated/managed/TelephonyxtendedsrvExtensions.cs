@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction Raw([WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodypayload = null, [WorkflowExpression] Func<acceptInput> accept = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodypayload, nameof(bodypayload), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/XSI-Action";
@@ -51,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IBodyWorkflowAction<UserCallsResponseItem[]> UserCalls([WorkflowExpression] Func<string> bodyuserId)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/User-Calls";
@@ -76,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IBodyWorkflowAction<UserProfileResponse> UserProfile([WorkflowExpression] Func<string> bodyuserId)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/User-Profile";
@@ -99,9 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IBodyWorkflowAction<JToken> CallRecording([WorkflowExpression] Func<string> bodyaction, [WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId)
         {
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: true);
-            SourceExpression.Validate(bodycallId, nameof(bodycallId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Toogle-Call-Recording";
@@ -128,8 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction ToggleAgentACDState([WorkflowExpression] Func<string> bodyagentACDState, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodyagentACDState, nameof(bodyagentACDState), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ACD-Toggle";
@@ -159,8 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallNew([WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Call-New";
@@ -189,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallHold([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodycallId, nameof(bodycallId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Call-Hold";
@@ -219,8 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallEnd([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodycallId, nameof(bodycallId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Call-End";
@@ -249,8 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallTransfertoVoicemail([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodycallId, nameof(bodycallId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Call-Transfer-to-Voicemail";
@@ -279,9 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallTransfer([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(bodycallId, nameof(bodycallId), required: true);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Call-Transfer-to-Another-User";
@@ -312,8 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallAnswer([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodycallId = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodycallId, nameof(bodycallId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Call-Answer";
@@ -348,11 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     {
         public IWorkflowTrigger Events([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, [WorkflowExpression] Func<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Events-Subscribe";
@@ -401,9 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsDoNotDisturb([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Events-Subscribe-Do-Not-Disturb";
@@ -445,8 +413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCallCenterMonitoring([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Events-Subscribe-Call-Center-Monitoring";
@@ -482,8 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCallCenterQueue([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Events-Subscribe-Call-Center-Queue";
@@ -519,9 +483,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCallCenterAgent([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Events-Subscribe-Call-Center-Agent";
@@ -563,9 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsVoicemail([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Events-Subscribe-Voicemail";
@@ -607,10 +565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCall([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, [WorkflowExpression] Func<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Events-Subscribe-Calls";

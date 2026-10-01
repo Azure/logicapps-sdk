@@ -14,53 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<EventsGetResponse> EventsGet([WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> attractionId = null, [WorkflowExpression] Func<string> venueId = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> latlong = null, [WorkflowExpression] Func<string> radius = null, [WorkflowExpression] Func<unitInput> unit = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<marketIdInput> marketId = null, [WorkflowExpression] Func<string> startDateTime = null, [WorkflowExpression] Func<string> endDateTime = null, [WorkflowExpression] Func<includeTBAInput> includeTBA = null, [WorkflowExpression] Func<includeTBDInput> includeTBD = null, [WorkflowExpression] Func<includeTestInput> includeTest = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> onsaleStartDateTime = null, [WorkflowExpression] Func<string> onsaleEndDateTime = null, [WorkflowExpression] Func<string[]> city = null, [WorkflowExpression] Func<countryCodeInput> countryCode = null, [WorkflowExpression] Func<string> stateCode = null, [WorkflowExpression] Func<string[]> classificationName = null, [WorkflowExpression] Func<string[]> classificationId = null, [WorkflowExpression] Func<string> dmaId = null, [WorkflowExpression] Func<string[]> localStartDateTime = null, [WorkflowExpression] Func<string[]> localStartEndDateTime = null, [WorkflowExpression] Func<string[]> startEndDateTime = null, [WorkflowExpression] Func<string[]> publicVisibilityStartDateTime = null, [WorkflowExpression] Func<string[]> preSaleDateTime = null, [WorkflowExpression] Func<string> onsaleOnStartDate = null, [WorkflowExpression] Func<string> onsaleOnAfterStartDate = null, [WorkflowExpression] Func<string[]> collectionId = null, [WorkflowExpression] Func<string[]> segmentId = null, [WorkflowExpression] Func<string[]> segmentName = null, [WorkflowExpression] Func<includeFamilyInput> includeFamily = null, [WorkflowExpression] Func<string> promoterId = null, [WorkflowExpression] Func<string[]> genreId = null, [WorkflowExpression] Func<string[]> subGenreId = null, [WorkflowExpression] Func<string[]> typeId = null, [WorkflowExpression] Func<string[]> subTypeId = null, [WorkflowExpression] Func<string> geoPoint = null, [WorkflowExpression] Func<preferredCountryInput> preferredCountry = null, [WorkflowExpression] Func<includeSpellcheckInput> includeSpellcheck = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(attractionId, nameof(attractionId), required: false);
-            SourceExpression.Validate(venueId, nameof(venueId), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(latlong, nameof(latlong), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(unit, nameof(unit), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(marketId, nameof(marketId), required: false);
-            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: false);
-            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: false);
-            SourceExpression.Validate(includeTBA, nameof(includeTBA), required: false);
-            SourceExpression.Validate(includeTBD, nameof(includeTBD), required: false);
-            SourceExpression.Validate(includeTest, nameof(includeTest), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(onsaleStartDateTime, nameof(onsaleStartDateTime), required: false);
-            SourceExpression.Validate(onsaleEndDateTime, nameof(onsaleEndDateTime), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(classificationName, nameof(classificationName), required: false);
-            SourceExpression.Validate(classificationId, nameof(classificationId), required: false);
-            SourceExpression.Validate(dmaId, nameof(dmaId), required: false);
-            SourceExpression.Validate(localStartDateTime, nameof(localStartDateTime), required: false);
-            SourceExpression.Validate(localStartEndDateTime, nameof(localStartEndDateTime), required: false);
-            SourceExpression.Validate(startEndDateTime, nameof(startEndDateTime), required: false);
-            SourceExpression.Validate(publicVisibilityStartDateTime, nameof(publicVisibilityStartDateTime), required: false);
-            SourceExpression.Validate(preSaleDateTime, nameof(preSaleDateTime), required: false);
-            SourceExpression.Validate(onsaleOnStartDate, nameof(onsaleOnStartDate), required: false);
-            SourceExpression.Validate(onsaleOnAfterStartDate, nameof(onsaleOnAfterStartDate), required: false);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: false);
-            SourceExpression.Validate(segmentId, nameof(segmentId), required: false);
-            SourceExpression.Validate(segmentName, nameof(segmentName), required: false);
-            SourceExpression.Validate(includeFamily, nameof(includeFamily), required: false);
-            SourceExpression.Validate(promoterId, nameof(promoterId), required: false);
-            SourceExpression.Validate(genreId, nameof(genreId), required: false);
-            SourceExpression.Validate(subGenreId, nameof(subGenreId), required: false);
-            SourceExpression.Validate(typeId, nameof(typeId), required: false);
-            SourceExpression.Validate(subTypeId, nameof(subTypeId), required: false);
-            SourceExpression.Validate(geoPoint, nameof(geoPoint), required: false);
-            SourceExpression.Validate(preferredCountry, nameof(preferredCountry), required: false);
-            SourceExpression.Validate(includeSpellcheck, nameof(includeSpellcheck), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/discovery/v2/events.json";
@@ -177,9 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<EventGetResponse> EventGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -199,9 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<EventImagesGetResponse> EventImagesGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/events/{0}/images", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -221,26 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<AttractionsGetResponse> AttractionsGet([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<includeTestInput> includeTest = null, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string[]> classificationName = null, [WorkflowExpression] Func<string[]> classificationId = null, [WorkflowExpression] Func<includeFamilyInput> includeFamily = null, [WorkflowExpression] Func<string[]> segmentId = null, [WorkflowExpression] Func<string[]> genreId = null, [WorkflowExpression] Func<string[]> subGenreId = null, [WorkflowExpression] Func<string[]> typeId = null, [WorkflowExpression] Func<string[]> subTypeId = null, [WorkflowExpression] Func<countryCodeInput> countryCode = null, [WorkflowExpression] Func<preferredCountryInput> preferredCountry = null, [WorkflowExpression] Func<includeSpellcheckInput> includeSpellcheck = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(includeTest, nameof(includeTest), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(classificationName, nameof(classificationName), required: false);
-            SourceExpression.Validate(classificationId, nameof(classificationId), required: false);
-            SourceExpression.Validate(includeFamily, nameof(includeFamily), required: false);
-            SourceExpression.Validate(segmentId, nameof(segmentId), required: false);
-            SourceExpression.Validate(genreId, nameof(genreId), required: false);
-            SourceExpression.Validate(subGenreId, nameof(subGenreId), required: false);
-            SourceExpression.Validate(typeId, nameof(typeId), required: false);
-            SourceExpression.Validate(subTypeId, nameof(subTypeId), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(preferredCountry, nameof(preferredCountry), required: false);
-            SourceExpression.Validate(includeSpellcheck, nameof(includeSpellcheck), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/discovery/v2/attractions";
@@ -303,9 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<AttractionGetResponse> AttractionGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/attractions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -325,18 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<ClassificationsGetResponse> ClassificationsGet([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<includeTestInput> includeTest = null, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<countryCodeInput> countryCode = null, [WorkflowExpression] Func<preferredCountryInput> preferredCountry = null, [WorkflowExpression] Func<includeSpellcheckInput> includeSpellcheck = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(includeTest, nameof(includeTest), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(preferredCountry, nameof(preferredCountry), required: false);
-            SourceExpression.Validate(includeSpellcheck, nameof(includeSpellcheck), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/discovery/v2/classifications";
@@ -382,9 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<ClassificationGetResponse> ClassificationGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/classifications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -404,9 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<GenreGetResponse> GenreGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/classifications/genres/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -426,9 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<SegmentGetResponse> SegmentGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/classifications/segments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -448,9 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<SubGenreGetResponse> SubGenreGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/classifications/subgenres/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -470,23 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<VenuesGetResponse> VenuesGet([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> latlong = null, [WorkflowExpression] Func<string> radius = null, [WorkflowExpression] Func<unitInput> unit = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<includeTestInput> includeTest = null, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<countryCodeInput> countryCode = null, [WorkflowExpression] Func<string> stateCode = null, [WorkflowExpression] Func<string> geoPoint = null, [WorkflowExpression] Func<preferredCountryInput> preferredCountry = null, [WorkflowExpression] Func<includeSpellcheckInput> includeSpellcheck = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(latlong, nameof(latlong), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(unit, nameof(unit), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(includeTest, nameof(includeTest), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(geoPoint, nameof(geoPoint), required: false);
-            SourceExpression.Validate(preferredCountry, nameof(preferredCountry), required: false);
-            SourceExpression.Validate(includeSpellcheck, nameof(includeSpellcheck), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/discovery/v2/venues";
@@ -543,9 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<VenueGetResponse> VenueGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discovery/v2/venues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -565,25 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
         public IBodyWorkflowAction<SuggestionsGetResponse> SuggestionsGet([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> latlong = null, [WorkflowExpression] Func<string> radius = null, [WorkflowExpression] Func<unitInput> unit = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<includeTBAInput> includeTBA = null, [WorkflowExpression] Func<includeTBDInput> includeTBD = null, [WorkflowExpression] Func<includeTestInput> includeTest = null, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<countryCodeInput> countryCode = null, [WorkflowExpression] Func<string[]> segmentId = null, [WorkflowExpression] Func<string> geoPoint = null, [WorkflowExpression] Func<string[]> resource = null, [WorkflowExpression] Func<preferredCountryInput> preferredCountry = null, [WorkflowExpression] Func<string[]> startEndDateTime = null, [WorkflowExpression] Func<string[]> localStartEndDateTime = null, [WorkflowExpression] Func<includeSpellcheckInput> includeSpellcheck = null, [WorkflowExpression] Func<string[]> domain = null)
         {
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(latlong, nameof(latlong), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(unit, nameof(unit), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(includeTBA, nameof(includeTBA), required: false);
-            SourceExpression.Validate(includeTBD, nameof(includeTBD), required: false);
-            SourceExpression.Validate(includeTest, nameof(includeTest), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(segmentId, nameof(segmentId), required: false);
-            SourceExpression.Validate(geoPoint, nameof(geoPoint), required: false);
-            SourceExpression.Validate(resource, nameof(resource), required: false);
-            SourceExpression.Validate(preferredCountry, nameof(preferredCountry), required: false);
-            SourceExpression.Validate(startEndDateTime, nameof(startEndDateTime), required: false);
-            SourceExpression.Validate(localStartEndDateTime, nameof(localStartEndDateTime), required: false);
-            SourceExpression.Validate(includeSpellcheck, nameof(includeSpellcheck), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/discovery/v2/suggest";

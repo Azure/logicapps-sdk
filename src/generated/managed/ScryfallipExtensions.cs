@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsSearchGetResponse> CardsSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<uniqueInput> unique = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<bool> includeExtras = null, [WorkflowExpression] Func<bool> includeMultilingual = null, [WorkflowExpression] Func<bool> includeVariations = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(unique, nameof(unique), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
-            SourceExpression.Validate(includeExtras, nameof(includeExtras), required: false);
-            SourceExpression.Validate(includeMultilingual, nameof(includeMultilingual), required: false);
-            SourceExpression.Validate(includeVariations, nameof(includeVariations), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards/search";
@@ -57,10 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsNamedGetResponse> CardsNamedGet([WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> fuzzy = null, [WorkflowExpression] Func<string> set = null, [WorkflowExpression] Func<versionInput> version = null)
         {
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(fuzzy, nameof(fuzzy), required: false);
-            SourceExpression.Validate(set, nameof(set), required: false);
-            SourceExpression.Validate(version, nameof(version), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards/named";
@@ -84,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsAutocompleteGetResponse> CardsAutocompleteGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<bool> includeExtras = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(includeExtras, nameof(includeExtras), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards/autocomplete";
@@ -103,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsCollectionPostResponse> CardsCollection([WorkflowExpression] Func<bodyidentifiersInputItem[]> bodyidentifiers = null)
         {
-            SourceExpression.Validate(bodyidentifiers, nameof(bodyidentifiers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards/collection";
@@ -130,8 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsSetNumberGetResponse> CardsSetNumberGet([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> number)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
-            SourceExpression.Validate(number, nameof(number), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(number, 1));
@@ -146,7 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsMultiverseGetResponse> CardsMultiverseGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -161,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsMTGOGetResponse> CardsMTGOGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -176,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsArenaGetResponse> CardsArenaGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -191,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsTCGplayerGetResponse> CardsTCGplayerGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/tcgplayer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -206,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsCardmarketGetResponse> CardsCardmarketGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/cardmarket/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -221,7 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsScryfallGetResponse> CardsScryfallGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -250,7 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SetGetResponse> SetGet([WorkflowExpression] Func<string> code)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(code, 1));
@@ -265,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SetsTCGplayerGetResponse> SetsTCGplayerGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sets/tcgplayer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -280,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsMultiverseGetResponse> RulingsMultiverseGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}/rulings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -295,7 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsMTGOGetResponse> RulingsMTGOGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}/rulings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -310,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsArenaGetResponse> RulingsArenaGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}/rulings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

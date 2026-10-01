@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
         public IWorkflowAction CreateHMAC([WorkflowExpression] Func<string> bodyrequestString, [WorkflowExpression] Func<string> bodysecretKey, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyencodeTypeInput> bodyencodeType = null, [WorkflowExpression] Func<bodyhashAlgorithmInput> bodyhashAlgorithm = null)
         {
-            SourceExpression.Validate(bodyrequestString, nameof(bodyrequestString), required: true);
-            SourceExpression.Validate(bodysecretKey, nameof(bodysecretKey), required: true);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            SourceExpression.Validate(bodyencodeType, nameof(bodyencodeType), required: false);
-            SourceExpression.Validate(bodyhashAlgorithm, nameof(bodyhashAlgorithm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/generate-hmac";

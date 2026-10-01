@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<DomainResponse> Domain([WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> seniority = null, [WorkflowExpression] Func<string> department = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: false);
-            SourceExpression.Validate(company, nameof(company), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(seniority, nameof(seniority), required: false);
-            SourceExpression.Validate(department, nameof(department), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/domain-search";
@@ -49,12 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<EmailResponse> Email([WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> fullName = null, [WorkflowExpression] Func<int> maxDuration = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: false);
-            SourceExpression.Validate(company, nameof(company), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(fullName, nameof(fullName), required: false);
-            SourceExpression.Validate(maxDuration, nameof(maxDuration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/email-finder";
@@ -81,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<AuthorResponse> Author([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<int> maxDuration = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(maxDuration, nameof(maxDuration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/author-finder";
@@ -100,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<EmailVerifyResponse> EmailVerify([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/email-verifier";
@@ -116,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<EmailCountResponse> EmailCount([WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<typeInput> type = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: false);
-            SourceExpression.Validate(company, nameof(company), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/email-count";

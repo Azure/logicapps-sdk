@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         public IBodyWorkflowAction<RedirectPostResponse> Redirect([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string[]> bodypixelsIds = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodycampaignId = null, [WorkflowExpression] Func<string> bodysubCampaignId = null, [WorkflowExpression] Func<bodydynamicUrlsInputItem[]> bodydynamicUrls = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypixelsIds, nameof(bodypixelsIds), required: false);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
-            SourceExpression.Validate(bodysubCampaignId, nameof(bodysubCampaignId), required: false);
-            SourceExpression.Validate(bodydynamicUrls, nameof(bodydynamicUrls), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/redirects";
@@ -114,9 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         public IBodyWorkflowAction<RedirectPatchResponse> RedirectPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/redirects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -145,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         public IBodyWorkflowAction<string> RedirectDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/redirects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

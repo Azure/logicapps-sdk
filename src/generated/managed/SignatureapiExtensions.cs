@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<CreateEnvelopeOutput> CreateEnvelope([WorkflowExpression] Func<string> bodyenvelopeTitle = null, [WorkflowExpression] Func<string> bodyenvelopeLabel = null, [WorkflowExpression] Func<string> bodyenvelopeMessage = null, [WorkflowExpression] Func<bodyenvelopeModeInput> bodyenvelopeMode = null, [WorkflowExpression] Func<bodyenvelopeRoutingInput> bodyenvelopeRouting = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodytimestampFormat = null, [WorkflowExpression] Func<bodyenvelopeAttestationInput> bodyenvelopeAttestation = null, [WorkflowExpression] Func<string> bodysendername = null, [WorkflowExpression] Func<string> bodysenderemail = null, [WorkflowExpression] Func<string[]> bodyenvelopeTopics = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(bodyenvelopeTitle, nameof(bodyenvelopeTitle), required: false);
-            SourceExpression.Validate(bodyenvelopeLabel, nameof(bodyenvelopeLabel), required: false);
-            SourceExpression.Validate(bodyenvelopeMessage, nameof(bodyenvelopeMessage), required: false);
-            SourceExpression.Validate(bodyenvelopeMode, nameof(bodyenvelopeMode), required: false);
-            SourceExpression.Validate(bodyenvelopeRouting, nameof(bodyenvelopeRouting), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            SourceExpression.Validate(bodytimestampFormat, nameof(bodytimestampFormat), required: false);
-            SourceExpression.Validate(bodyenvelopeAttestation, nameof(bodyenvelopeAttestation), required: false);
-            SourceExpression.Validate(bodysendername, nameof(bodysendername), required: false);
-            SourceExpression.Validate(bodysenderemail, nameof(bodysenderemail), required: false);
-            SourceExpression.Validate(bodyenvelopeTopics, nameof(bodyenvelopeTopics), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/envelopes";
@@ -135,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction DeleteEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -150,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Envelope> GetEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -165,8 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Capture> GetCapture([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> captureKey)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(captureKey, nameof(captureKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}+alias1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -182,7 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<StartEnvelopeOutput> StartEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -197,10 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddDocument([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -241,10 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddDocumentDocx([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -285,11 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddTemplate([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string[]> bodytemplateData = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            SourceExpression.Validate(bodytemplateData, nameof(bodytemplateData), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -336,9 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddTemplateData([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -371,14 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceSignature([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<double> bodyplaceHeight = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            SourceExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            SourceExpression.Validate(bodyplaceHeight, nameof(bodyplaceHeight), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            SourceExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-signature-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -443,14 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceInitials([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<double> bodyplaceHeight = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            SourceExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            SourceExpression.Validate(bodyplaceHeight, nameof(bodyplaceHeight), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            SourceExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-initials-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -515,19 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceTextInput([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<string> bodycaptureAs = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<bodyrequirementInput> bodyrequirement = null, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodyformatMessage = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            SourceExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            SourceExpression.Validate(bodycaptureAs, nameof(bodycaptureAs), required: false);
-            SourceExpression.Validate(bodyhint, nameof(bodyhint), required: false);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            SourceExpression.Validate(bodyrequirement, nameof(bodyrequirement), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodyformatMessage, nameof(bodyformatMessage), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            SourceExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-input-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -632,15 +569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceText([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyvalue = null, [WorkflowExpression] Func<double> bodyfontSize = null, [WorkflowExpression] Func<string> bodyfontColor = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            SourceExpression.Validate(bodyfontColor, nameof(bodyfontColor), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            SourceExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -711,14 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceRecipientCompletedDate([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            SourceExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            SourceExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            SourceExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -783,13 +703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceEnvelopeCompletedDate([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            SourceExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            SourceExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -848,13 +761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddRecipientSignerOutput> AddRecipient([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodyrecipientName = null, [WorkflowExpression] Func<string> bodyrecipientEmail = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<bodyrecipientCeremonyCreationInput> bodyrecipientCeremonyCreation = null, [WorkflowExpression] Func<bodyrecipientDeliveryTypeInput> bodyrecipientDeliveryType = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            SourceExpression.Validate(bodyrecipientName, nameof(bodyrecipientName), required: false);
-            SourceExpression.Validate(bodyrecipientEmail, nameof(bodyrecipientEmail), required: false);
-            SourceExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            SourceExpression.Validate(bodyrecipientCeremonyCreation, nameof(bodyrecipientCeremonyCreation), required: false);
-            SourceExpression.Validate(bodyrecipientDeliveryType, nameof(bodyrecipientDeliveryType), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -913,7 +819,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Recipient> GetRecipient([WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recipients/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -928,9 +833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodyredirectURL = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(bodyredirectURL, nameof(bodyredirectURL), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -973,11 +875,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodyauthenticationauthenticationProvider = null, [WorkflowExpression] Func<string[]> bodyauthenticationauthenticationData = null, [WorkflowExpression] Func<string> bodyredirectURL = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(bodyauthenticationauthenticationProvider, nameof(bodyauthenticationauthenticationProvider), required: false);
-            SourceExpression.Validate(bodyauthenticationauthenticationData, nameof(bodyauthenticationauthenticationData), required: false);
-            SourceExpression.Validate(bodyredirectURL, nameof(bodyredirectURL), required: false);
-            SourceExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony+alias1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -1032,7 +929,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Envelope> WaitEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            SourceExpression.Validate(envelopeId, nameof(envelopeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/envelopes/{0}/wait", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
@@ -1047,7 +943,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Deliverable> GetDeliverable([WorkflowExpression] Func<string> deliverableId)
         {
-            SourceExpression.Validate(deliverableId, nameof(deliverableId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/deliverables/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliverableId, 1));
@@ -1064,7 +959,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     {
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.created";
@@ -1092,7 +986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.started";
@@ -1120,7 +1013,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.completed";
@@ -1148,7 +1040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.failed";
@@ -1176,7 +1067,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.canceled";
@@ -1204,7 +1094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.released";
@@ -1232,7 +1121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.sent";
@@ -1260,7 +1148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.completed";
@@ -1288,7 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.rejected";
@@ -1316,7 +1202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.bounced";
@@ -1344,7 +1229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.failed";
@@ -1372,7 +1256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.replaced";
@@ -1400,7 +1283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.resent";
@@ -1428,7 +1310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.generated";
@@ -1456,7 +1337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.failed";

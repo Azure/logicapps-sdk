@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enlyftforcopilot")]
         public IBodyWorkflowAction<ExportContactFromEnlyftResponse> ExportContactFromEnlyft([WorkflowExpression] Func<string> personId = null, [WorkflowExpression] Func<string> userEmail = null)
         {
-            SourceExpression.Validate(personId, nameof(personId), required: false);
-            SourceExpression.Validate(userEmail, nameof(userEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/export-contact";

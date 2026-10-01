@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IWorkflowAction RegisterWebhookV2New([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> contractId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(contractId, nameof(contractId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/registerwebhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contractId, 1));
@@ -39,15 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse> SignContractFromProvidedFileV2New([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent, [WorkflowExpression] Func<bodypeopleInputItem[]> bodypeople, [WorkflowExpression] Func<string> bodycontractNumber = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, [WorkflowExpression] Func<string> bodysettingsautosignByProposer = null, [WorkflowExpression] Func<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
-            SourceExpression.Validate(bodypeople, nameof(bodypeople), required: true);
-            SourceExpression.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodysettingsrulesForSendingEMailsAndSignatures, nameof(bodysettingsrulesForSendingEMailsAndSignatures), required: false);
-            SourceExpression.Validate(bodysettingsautosignByProposer, nameof(bodysettingsautosignByProposer), required: false);
-            SourceExpression.Validate(bodysettingsautomaticSignPlacement, nameof(bodysettingsautomaticSignPlacement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.1/contract/sign/provided";
@@ -115,15 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<SignContractFromProvidedFileV2NewWaitResponse> SignContractFromProvidedFileV2NewWait([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent, [WorkflowExpression] Func<bodypeopleInputItem22[]> bodypeople, [WorkflowExpression] Func<string> bodycontractNumber = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, [WorkflowExpression] Func<string> bodysettingsautosignByProposer = null, [WorkflowExpression] Func<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
-            SourceExpression.Validate(bodypeople, nameof(bodypeople), required: true);
-            SourceExpression.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodysettingsrulesForSendingEMailsAndSignatures, nameof(bodysettingsrulesForSendingEMailsAndSignatures), required: false);
-            SourceExpression.Validate(bodysettingsautosignByProposer, nameof(bodysettingsautosignByProposer), required: false);
-            SourceExpression.Validate(bodysettingsautomaticSignPlacement, nameof(bodysettingsautomaticSignPlacement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.1/contract/sign/provided/wait";
@@ -193,8 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<GetContractDetailV2Response> GetContractDetail([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> contractId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(contractId, nameof(contractId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contract/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contractId, 1));
@@ -210,8 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<string> GetContractPdf([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> contractId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(contractId, nameof(contractId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contract/{0}/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contractId, 1));
@@ -227,8 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<string> GetRevisionListPdf([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> bodycontractId = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(bodycontractId, nameof(bodycontractId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/contract/revisionList";
@@ -256,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<GetTemplatesV2Response> GetTemplates([WorkflowExpression] Func<string> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/contract/templates";
@@ -286,34 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<SignContractFromProvidedFileV2Response> SignContractFromProvidedFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<int> bodysignatureSignerPage, [WorkflowExpression] Func<string> bodysignerEMail, [WorkflowExpression] Func<bodysignerTypeInput> bodysignerType, [WorkflowExpression] Func<string> bodycontractSignDate, [WorkflowExpression] Func<string> bodyauthorEMail, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodycontractName, [WorkflowExpression] Func<string> bodysignerPhone, [WorkflowExpression] Func<string> bodyFile, [WorkflowExpression] Func<string> bodysignerSurname, [WorkflowExpression] Func<string> bodysignerFirstName, [WorkflowExpression] Func<int> bodysignatureSignerX, [WorkflowExpression] Func<bool> bodysignerShouldSign, [WorkflowExpression] Func<int> bodysignatureSignerY, [WorkflowExpression] Func<bool> bodyauthorShouldSign, [WorkflowExpression] Func<int> bodysignatureAuthorPage = null, [WorkflowExpression] Func<string> bodysignerDateOfBirth = null, [WorkflowExpression] Func<string> bodysignerStreet = null, [WorkflowExpression] Func<string> bodysignerVATId = null, [WorkflowExpression] Func<string> bodysignerCity = null, [WorkflowExpression] Func<string> bodysignerCompanyName = null, [WorkflowExpression] Func<int> bodysignatureAuthorX = null, [WorkflowExpression] Func<string> bodysignerCompanyId = null, [WorkflowExpression] Func<string> bodysignerZIP = null, [WorkflowExpression] Func<int> bodysignatureAuthorY = null, [WorkflowExpression] Func<string> bodycontractNumber = null, [WorkflowExpression] Func<string> bodycontractSignLocation = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(bodysignatureSignerPage, nameof(bodysignatureSignerPage), required: true);
-            SourceExpression.Validate(bodysignerEMail, nameof(bodysignerEMail), required: true);
-            SourceExpression.Validate(bodysignerType, nameof(bodysignerType), required: true);
-            SourceExpression.Validate(bodycontractSignDate, nameof(bodycontractSignDate), required: true);
-            SourceExpression.Validate(bodyauthorEMail, nameof(bodyauthorEMail), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodycontractName, nameof(bodycontractName), required: true);
-            SourceExpression.Validate(bodysignerPhone, nameof(bodysignerPhone), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
-            SourceExpression.Validate(bodysignerSurname, nameof(bodysignerSurname), required: true);
-            SourceExpression.Validate(bodysignerFirstName, nameof(bodysignerFirstName), required: true);
-            SourceExpression.Validate(bodysignatureSignerX, nameof(bodysignatureSignerX), required: true);
-            SourceExpression.Validate(bodysignerShouldSign, nameof(bodysignerShouldSign), required: true);
-            SourceExpression.Validate(bodysignatureSignerY, nameof(bodysignatureSignerY), required: true);
-            SourceExpression.Validate(bodyauthorShouldSign, nameof(bodyauthorShouldSign), required: true);
-            SourceExpression.Validate(bodysignatureAuthorPage, nameof(bodysignatureAuthorPage), required: false);
-            SourceExpression.Validate(bodysignerDateOfBirth, nameof(bodysignerDateOfBirth), required: false);
-            SourceExpression.Validate(bodysignerStreet, nameof(bodysignerStreet), required: false);
-            SourceExpression.Validate(bodysignerVATId, nameof(bodysignerVATId), required: false);
-            SourceExpression.Validate(bodysignerCity, nameof(bodysignerCity), required: false);
-            SourceExpression.Validate(bodysignerCompanyName, nameof(bodysignerCompanyName), required: false);
-            SourceExpression.Validate(bodysignatureAuthorX, nameof(bodysignatureAuthorX), required: false);
-            SourceExpression.Validate(bodysignerCompanyId, nameof(bodysignerCompanyId), required: false);
-            SourceExpression.Validate(bodysignerZIP, nameof(bodysignerZIP), required: false);
-            SourceExpression.Validate(bodysignatureAuthorY, nameof(bodysignatureAuthorY), required: false);
-            SourceExpression.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
-            SourceExpression.Validate(bodycontractSignLocation, nameof(bodycontractSignLocation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/contract/sign/provided";
@@ -451,28 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<SignContractFromTemplateV2Response> SignContractFromTemplate([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<bodypersonTypeInput> bodypersonType, [WorkflowExpression] Func<string> bodyemailSigner, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodycontractName, [WorkflowExpression] Func<bool> bodynegotiatorSign, [WorkflowExpression] Func<bool> bodyproposerSign, [WorkflowExpression] Func<string> bodyemailAuthor, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodylastnameSigner = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodydic = null, [WorkflowExpression] Func<object> bodyparameters = null, [WorkflowExpression] Func<string> bodyic = null, [WorkflowExpression] Func<string> bodysignDate = null, [WorkflowExpression] Func<string> bodysignPlace = null, [WorkflowExpression] Func<string> bodyfirstnameSigner = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodyphoneSigner = null, [WorkflowExpression] Func<string> bodydateOfBirth = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycontractNumber = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(bodypersonType, nameof(bodypersonType), required: true);
-            SourceExpression.Validate(bodyemailSigner, nameof(bodyemailSigner), required: true);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodycontractName, nameof(bodycontractName), required: true);
-            SourceExpression.Validate(bodynegotiatorSign, nameof(bodynegotiatorSign), required: true);
-            SourceExpression.Validate(bodyproposerSign, nameof(bodyproposerSign), required: true);
-            SourceExpression.Validate(bodyemailAuthor, nameof(bodyemailAuthor), required: true);
-            SourceExpression.Validate(bodystreet, nameof(bodystreet), required: false);
-            SourceExpression.Validate(bodylastnameSigner, nameof(bodylastnameSigner), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodydic, nameof(bodydic), required: false);
-            SourceExpression.Validate(bodyparameters, nameof(bodyparameters), required: false);
-            SourceExpression.Validate(bodyic, nameof(bodyic), required: false);
-            SourceExpression.Validate(bodysignDate, nameof(bodysignDate), required: false);
-            SourceExpression.Validate(bodysignPlace, nameof(bodysignPlace), required: false);
-            SourceExpression.Validate(bodyfirstnameSigner, nameof(bodyfirstnameSigner), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodyphoneSigner, nameof(bodyphoneSigner), required: false);
-            SourceExpression.Validate(bodydateOfBirth, nameof(bodydateOfBirth), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/contract/sign/template";

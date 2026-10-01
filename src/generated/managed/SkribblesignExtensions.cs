@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
         public IBodyWorkflowAction<ErrorResponse> CreateSeal([WorkflowExpression] Func<string> requestcontent, [WorkflowExpression] Func<string> requesttitle = null, [WorkflowExpression] Func<string> requestsealForSealing = null, [WorkflowExpression] Func<string> requestvisualSignatureformField = null, [WorkflowExpression] Func<string> requestvisualSignatureimagecontent = null, [WorkflowExpression] Func<string> requestvisualSignatureimagecontentType = null, [WorkflowExpression] Func<Position[]> requestvisualSignaturepositions = null)
         {
-            SourceExpression.Validate(requestcontent, nameof(requestcontent), required: true);
-            SourceExpression.Validate(requesttitle, nameof(requesttitle), required: false);
-            SourceExpression.Validate(requestsealForSealing, nameof(requestsealForSealing), required: false);
-            SourceExpression.Validate(requestvisualSignatureformField, nameof(requestvisualSignatureformField), required: false);
-            SourceExpression.Validate(requestvisualSignatureimagecontent, nameof(requestvisualSignatureimagecontent), required: false);
-            SourceExpression.Validate(requestvisualSignatureimagecontentType, nameof(requestvisualSignatureimagecontentType), required: false);
-            SourceExpression.Validate(requestvisualSignaturepositions, nameof(requestvisualSignaturepositions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/seal";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.K2workflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "k2workflow")]
         public IBodyWorkflowAction<JToken> TasksPostReleaseAction([WorkflowExpression] Func<string> serialNumber)
         {
-            SourceExpression.Validate(serialNumber, nameof(serialNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tasks/{0}/actions/release", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serialNumber, 1));

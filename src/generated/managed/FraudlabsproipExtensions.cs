@@ -14,39 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         public IBodyWorkflowAction<ScreenPostResponse> Screen([WorkflowExpression] Func<string> bodyip = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodybillAddr = null, [WorkflowExpression] Func<string> bodybillCity = null, [WorkflowExpression] Func<string> bodybillState = null, [WorkflowExpression] Func<string> bodybillCountry = null, [WorkflowExpression] Func<string> bodybillZipCode = null, [WorkflowExpression] Func<string> bodyshipLastName = null, [WorkflowExpression] Func<string> bodyshipFirstName = null, [WorkflowExpression] Func<string> bodyshipAddr = null, [WorkflowExpression] Func<string> bodyshipCity = null, [WorkflowExpression] Func<string> bodyshipState = null, [WorkflowExpression] Func<string> bodyshipCountry = null, [WorkflowExpression] Func<string> bodyshipZipCode = null, [WorkflowExpression] Func<string> bodyuserPhone = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyemailHash = null, [WorkflowExpression] Func<string> bodyemailDomain = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodybinNo = null, [WorkflowExpression] Func<string> bodycardHash = null, [WorkflowExpression] Func<string> bodyavsResult = null, [WorkflowExpression] Func<string> bodycvvResult = null, [WorkflowExpression] Func<string> bodyuserOrderId = null, [WorkflowExpression] Func<string> bodyuserOrderMemo = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<int> bodyquantity = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodypaymentGateway = null, [WorkflowExpression] Func<bodypaymentModeInput> bodypaymentMode = null, [WorkflowExpression] Func<string> bodyflpChecksum = null)
         {
-            SourceExpression.Validate(bodyip, nameof(bodyip), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodybillAddr, nameof(bodybillAddr), required: false);
-            SourceExpression.Validate(bodybillCity, nameof(bodybillCity), required: false);
-            SourceExpression.Validate(bodybillState, nameof(bodybillState), required: false);
-            SourceExpression.Validate(bodybillCountry, nameof(bodybillCountry), required: false);
-            SourceExpression.Validate(bodybillZipCode, nameof(bodybillZipCode), required: false);
-            SourceExpression.Validate(bodyshipLastName, nameof(bodyshipLastName), required: false);
-            SourceExpression.Validate(bodyshipFirstName, nameof(bodyshipFirstName), required: false);
-            SourceExpression.Validate(bodyshipAddr, nameof(bodyshipAddr), required: false);
-            SourceExpression.Validate(bodyshipCity, nameof(bodyshipCity), required: false);
-            SourceExpression.Validate(bodyshipState, nameof(bodyshipState), required: false);
-            SourceExpression.Validate(bodyshipCountry, nameof(bodyshipCountry), required: false);
-            SourceExpression.Validate(bodyshipZipCode, nameof(bodyshipZipCode), required: false);
-            SourceExpression.Validate(bodyuserPhone, nameof(bodyuserPhone), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyemailHash, nameof(bodyemailHash), required: false);
-            SourceExpression.Validate(bodyemailDomain, nameof(bodyemailDomain), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodybinNo, nameof(bodybinNo), required: false);
-            SourceExpression.Validate(bodycardHash, nameof(bodycardHash), required: false);
-            SourceExpression.Validate(bodyavsResult, nameof(bodyavsResult), required: false);
-            SourceExpression.Validate(bodycvvResult, nameof(bodycvvResult), required: false);
-            SourceExpression.Validate(bodyuserOrderId, nameof(bodyuserOrderId), required: false);
-            SourceExpression.Validate(bodyuserOrderMemo, nameof(bodyuserOrderMemo), required: false);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodypaymentGateway, nameof(bodypaymentGateway), required: false);
-            SourceExpression.Validate(bodypaymentMode, nameof(bodypaymentMode), required: false);
-            SourceExpression.Validate(bodyflpChecksum, nameof(bodyflpChecksum), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/screen";
@@ -265,9 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         public IBodyWorkflowAction<FeedbackPostResponse> Feedback([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodyactionInput> bodyaction = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/feedback";
@@ -316,8 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         public IBodyWorkflowAction<ResultGetResponse> ResultGet([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<idTypeInput> idType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(idType, nameof(idType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/result";

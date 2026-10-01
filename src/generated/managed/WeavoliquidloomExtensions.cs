@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> CsvToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CsvToJson";
@@ -51,9 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<string> CsvToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CsvToText";
@@ -88,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> CsvToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CsvToXml";
@@ -125,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> ExcelToJson([WorkflowExpression] Func<string> liquidTemplate = null, [WorkflowExpression] Func<string> excelFile = null)
         {
-            SourceExpression.Validate(liquidTemplate, nameof(liquidTemplate), required: false);
-            SourceExpression.Validate(excelFile, nameof(excelFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ExcelToJsonV2";
@@ -144,8 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<string> ExcelToText([WorkflowExpression] Func<string> liquidTemplate = null, [WorkflowExpression] Func<string> excelFile = null)
         {
-            SourceExpression.Validate(liquidTemplate, nameof(liquidTemplate), required: false);
-            SourceExpression.Validate(excelFile, nameof(excelFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ExcelToText";
@@ -163,8 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> ExcelToXml([WorkflowExpression] Func<string> liquidTemplate = null, [WorkflowExpression] Func<string> excelFile = null)
         {
-            SourceExpression.Validate(liquidTemplate, nameof(liquidTemplate), required: false);
-            SourceExpression.Validate(excelFile, nameof(excelFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ExcelToXml";
@@ -182,9 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> JsonToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/JsonToJson";
@@ -219,9 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<string> JsonToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/JsonToText";
@@ -256,9 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> JsonToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/JsonToXml";
@@ -293,9 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> XmlToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/XmlToJson";
@@ -330,9 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<string> XmlToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/XmlToText";
@@ -367,9 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> XmlToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/XmlToXml";
@@ -404,9 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/EdiToJson";
@@ -441,9 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<string> EdiToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/EdiToText";
@@ -478,9 +439,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
         public IBodyWorkflowAction<JToken> XmlToXml11([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/EdiToXml";

@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientpdfocr")]
         public IBodyWorkflowAction<OperationResponse> OcrPdf([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatalanguageInput> inputDatalanguage = null, [WorkflowExpression] Func<inputDataperformanceInput> inputDataperformance = null, [WorkflowExpression] Func<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, [WorkflowExpression] Func<string> inputDatacharacters = null, [WorkflowExpression] Func<bool> inputDatausePagination = null, [WorkflowExpression] Func<string> inputDataregions = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatalanguage, nameof(inputDatalanguage), required: false);
-            SourceExpression.Validate(inputDataperformance, nameof(inputDataperformance), required: false);
-            SourceExpression.Validate(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
-            SourceExpression.Validate(inputDatacharacters, nameof(inputDatacharacters), required: false);
-            SourceExpression.Validate(inputDatausePagination, nameof(inputDatausePagination), required: false);
-            SourceExpression.Validate(inputDataregions, nameof(inputDataregions), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/ocr_pdf";
@@ -151,19 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientpdfocr")]
         public IBodyWorkflowAction<OcrOperationResponse> OcrText([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatalanguageInput> inputDatalanguage = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<string> inputDatawidth = null, [WorkflowExpression] Func<string> inputDataheight = null, [WorkflowExpression] Func<string> inputDatapageNumber = null, [WorkflowExpression] Func<inputDataperformanceInput> inputDataperformance = null, [WorkflowExpression] Func<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, [WorkflowExpression] Func<string> inputDatacharacters = null, [WorkflowExpression] Func<bool> inputDatausePagination = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatalanguage, nameof(inputDatalanguage), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: false);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: false);
-            SourceExpression.Validate(inputDatapageNumber, nameof(inputDatapageNumber), required: false);
-            SourceExpression.Validate(inputDataperformance, nameof(inputDataperformance), required: false);
-            SourceExpression.Validate(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
-            SourceExpression.Validate(inputDatacharacters, nameof(inputDatacharacters), required: false);
-            SourceExpression.Validate(inputDatausePagination, nameof(inputDatausePagination), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/ocr_text";

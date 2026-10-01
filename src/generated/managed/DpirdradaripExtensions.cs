@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarsResponse> GetRadars([WorkflowExpression] Func<string> radarCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(radarCode, nameof(radarCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/radars";
@@ -44,8 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarResponse> GetRadar([WorkflowExpression] Func<string> radarCode, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(radarCode, nameof(radarCode), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/radars/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(radarCode, 1));
@@ -63,9 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetNearbyRadarResponse> GetNearbyRadar([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<dataSetInput> dataSet = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(dataSet, nameof(dataSet), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nearby";
@@ -85,14 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarRainfallResponse> GetRadarRainfall([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<string> radarCode = null, [WorkflowExpression] Func<dataSetInput> dataSet = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(radarCode, nameof(radarCode), required: false);
-            SourceExpression.Validate(dataSet, nameof(dataSet), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rainfall";
@@ -123,15 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarDailySummariesResponse> GetRadarDailySummaries([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<dataSetInput> dataSet = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(dataSet, nameof(dataSet), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/summaries/daily";
@@ -162,15 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarMonthlySummariesResponse> GetRadarMonthlySummaries([WorkflowExpression] Func<string> startMonth, [WorkflowExpression] Func<string> endMonth, [WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<dataSetInput> dataSet = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(startMonth, nameof(startMonth), required: true);
-            SourceExpression.Validate(endMonth, nameof(endMonth), required: true);
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(dataSet, nameof(dataSet), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/summaries/monthly";

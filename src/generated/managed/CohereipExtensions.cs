@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<EmbedPostResponse> Embed([WorkflowExpression] Func<string[]> bodytexts = null, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<bodytruncateInput> bodytruncate = null)
         {
-            SourceExpression.Validate(bodytexts, nameof(bodytexts), required: false);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodytruncate, nameof(bodytruncate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/embed";
@@ -65,11 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<ClassifyPostResponse> Classify([WorkflowExpression] Func<string[]> bodyinputs = null, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<bodyexamplesInputItem[]> bodyexamples = null, [WorkflowExpression] Func<string> bodypreset = null, [WorkflowExpression] Func<bodytruncateInput> bodytruncate = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodyexamples, nameof(bodyexamples), required: false);
-            SourceExpression.Validate(bodypreset, nameof(bodypreset), required: false);
-            SourceExpression.Validate(bodytruncate, nameof(bodytruncate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/classify";
@@ -130,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<TokenPostResponse> Token([WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tokenize";
@@ -157,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<DetokenPostResponse> Detoken([WorkflowExpression] Func<int[]> bodytokens = null)
         {
-            SourceExpression.Validate(bodytokens, nameof(bodytokens), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/detokenize";
@@ -184,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<LanguagePostResponse> Language([WorkflowExpression] Func<string[]> bodytexts = null)
         {
-            SourceExpression.Validate(bodytexts, nameof(bodytexts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/detect-language";
@@ -211,26 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string> bodypreamble = null, [WorkflowExpression] Func<bodychatHistoryInputItem[]> bodychatHistory = null, [WorkflowExpression] Func<string> bodyconversationId = null, [WorkflowExpression] Func<bodypromptTruncationInput> bodypromptTruncation = null, [WorkflowExpression] Func<bodyconnectorsInputItem[]> bodyconnectors = null, [WorkflowExpression] Func<bool> bodysearchQueriesOnly = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null, [WorkflowExpression] Func<bodycitationQualityInput> bodycitationQuality = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<int> bodymaxInputTokens = null, [WorkflowExpression] Func<int> bodyk = null, [WorkflowExpression] Func<double> bodyp = null, [WorkflowExpression] Func<double> bodyseed = null, [WorkflowExpression] Func<string[]> bodystopSequences = null, [WorkflowExpression] Func<double> bodyfrequencyPenalty = null, [WorkflowExpression] Func<double> bodypresencePenalty = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null)
         {
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodypreamble, nameof(bodypreamble), required: false);
-            SourceExpression.Validate(bodychatHistory, nameof(bodychatHistory), required: false);
-            SourceExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
-            SourceExpression.Validate(bodypromptTruncation, nameof(bodypromptTruncation), required: false);
-            SourceExpression.Validate(bodyconnectors, nameof(bodyconnectors), required: false);
-            SourceExpression.Validate(bodysearchQueriesOnly, nameof(bodysearchQueriesOnly), required: false);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
-            SourceExpression.Validate(bodycitationQuality, nameof(bodycitationQuality), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            SourceExpression.Validate(bodymaxInputTokens, nameof(bodymaxInputTokens), required: false);
-            SourceExpression.Validate(bodyk, nameof(bodyk), required: false);
-            SourceExpression.Validate(bodyp, nameof(bodyp), required: false);
-            SourceExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            SourceExpression.Validate(bodystopSequences, nameof(bodystopSequences), required: false);
-            SourceExpression.Validate(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            SourceExpression.Validate(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            SourceExpression.Validate(bodytools, nameof(bodytools), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/chat";

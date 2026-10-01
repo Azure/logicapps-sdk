@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokes")]
         public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet([WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/dadjokes";

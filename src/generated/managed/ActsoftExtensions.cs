@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[]> EventControllerDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/events/v1/definitions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[]> EventControllerRemoveEventDataFeedSubscription([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/events/v1/subscribe";
@@ -77,18 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IBodyWorkflowAction<JToken> EventControllerSubscribeCallback([WorkflowExpression] Func<string> eventid = null, [WorkflowExpression] Func<int> eventeventType = null, [WorkflowExpression] Func<string> eventeventCode = null, [WorkflowExpression] Func<string> eventeventTime = null, [WorkflowExpression] Func<string> eventdeviceId = null, [WorkflowExpression] Func<int> eventdeviceType = null, [WorkflowExpression] Func<int> eventuserId = null, [WorkflowExpression] Func<int> eventvehicleId = null, [WorkflowExpression] Func<bool> eventuserLinkedToVehicle = null, [WorkflowExpression] Func<double> eventlat = null, [WorkflowExpression] Func<double> eventlon = null, [WorkflowExpression] Func<string> eventcustomEventDefinitionId = null)
         {
-            SourceExpression.Validate(eventid, nameof(eventid), required: false);
-            SourceExpression.Validate(eventeventType, nameof(eventeventType), required: false);
-            SourceExpression.Validate(eventeventCode, nameof(eventeventCode), required: false);
-            SourceExpression.Validate(eventeventTime, nameof(eventeventTime), required: false);
-            SourceExpression.Validate(eventdeviceId, nameof(eventdeviceId), required: false);
-            SourceExpression.Validate(eventdeviceType, nameof(eventdeviceType), required: false);
-            SourceExpression.Validate(eventuserId, nameof(eventuserId), required: false);
-            SourceExpression.Validate(eventvehicleId, nameof(eventvehicleId), required: false);
-            SourceExpression.Validate(eventuserLinkedToVehicle, nameof(eventuserLinkedToVehicle), required: false);
-            SourceExpression.Validate(eventlat, nameof(eventlat), required: false);
-            SourceExpression.Validate(eventlon, nameof(eventlon), required: false);
-            SourceExpression.Validate(eventcustomEventDefinitionId, nameof(eventcustomEventDefinitionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/events/v1/subscriptions";
@@ -190,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IWorkflowAction EventControllerResetSubscriptionHealthStatus([WorkflowExpression] Func<int> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/events/v1/subscription/{0}/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(subscriptionId, 1));
@@ -206,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[]> GeofenceControllerDeleteGeofence([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/geofences/v1/geofences/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -222,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[]> TrackingControllerRemoveGpsDataFeedSubscription([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tracking/v1/tracking/gpsdata/subscribe";
@@ -254,28 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IBodyWorkflowAction<JToken> TrackingControllerSubscribeCallback([WorkflowExpression] Func<string> positionid = null, [WorkflowExpression] Func<string> positiondeviceId = null, [WorkflowExpression] Func<int> positiondeviceType = null, [WorkflowExpression] Func<string> positiontimestamp = null, [WorkflowExpression] Func<int> positioncompanyId = null, [WorkflowExpression] Func<int> positionuserId = null, [WorkflowExpression] Func<int> positionvehicleId = null, [WorkflowExpression] Func<bool> positionuserLinkedToVehicle = null, [WorkflowExpression] Func<string> positionlocationProvider = null, [WorkflowExpression] Func<double> positionlat = null, [WorkflowExpression] Func<double> positionlon = null, [WorkflowExpression] Func<double> positionaccuracyFt = null, [WorkflowExpression] Func<double> positionaltitudeFt = null, [WorkflowExpression] Func<int> positionheading = null, [WorkflowExpression] Func<double> positionspeedMph = null, [WorkflowExpression] Func<int> positionbatteryStatus = null, [WorkflowExpression] Func<int> positionbatteryLevel = null, [WorkflowExpression] Func<int> positionactivityState = null, [WorkflowExpression] Func<bool> positionisNetworkConnected = null, [WorkflowExpression] Func<int> positionrssi = null, [WorkflowExpression] Func<double> positiondOdoMl = null, [WorkflowExpression] Func<double> positionvOdoMl = null)
         {
-            SourceExpression.Validate(positionid, nameof(positionid), required: false);
-            SourceExpression.Validate(positiondeviceId, nameof(positiondeviceId), required: false);
-            SourceExpression.Validate(positiondeviceType, nameof(positiondeviceType), required: false);
-            SourceExpression.Validate(positiontimestamp, nameof(positiontimestamp), required: false);
-            SourceExpression.Validate(positioncompanyId, nameof(positioncompanyId), required: false);
-            SourceExpression.Validate(positionuserId, nameof(positionuserId), required: false);
-            SourceExpression.Validate(positionvehicleId, nameof(positionvehicleId), required: false);
-            SourceExpression.Validate(positionuserLinkedToVehicle, nameof(positionuserLinkedToVehicle), required: false);
-            SourceExpression.Validate(positionlocationProvider, nameof(positionlocationProvider), required: false);
-            SourceExpression.Validate(positionlat, nameof(positionlat), required: false);
-            SourceExpression.Validate(positionlon, nameof(positionlon), required: false);
-            SourceExpression.Validate(positionaccuracyFt, nameof(positionaccuracyFt), required: false);
-            SourceExpression.Validate(positionaltitudeFt, nameof(positionaltitudeFt), required: false);
-            SourceExpression.Validate(positionheading, nameof(positionheading), required: false);
-            SourceExpression.Validate(positionspeedMph, nameof(positionspeedMph), required: false);
-            SourceExpression.Validate(positionbatteryStatus, nameof(positionbatteryStatus), required: false);
-            SourceExpression.Validate(positionbatteryLevel, nameof(positionbatteryLevel), required: false);
-            SourceExpression.Validate(positionactivityState, nameof(positionactivityState), required: false);
-            SourceExpression.Validate(positionisNetworkConnected, nameof(positionisNetworkConnected), required: false);
-            SourceExpression.Validate(positionrssi, nameof(positionrssi), required: false);
-            SourceExpression.Validate(positiondOdoMl, nameof(positiondOdoMl), required: false);
-            SourceExpression.Validate(positionvOdoMl, nameof(positionvOdoMl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tracking/v1/tracking/gpsdata/subscriptions";
@@ -429,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
         public IWorkflowAction TrackingControllerResetSubscriptionHealthStatus([WorkflowExpression] Func<int> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tracking/v1/tracking/gpsdata/subscription/{0}/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(subscriptionId, 1));

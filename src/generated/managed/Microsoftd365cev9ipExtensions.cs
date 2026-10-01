@@ -14,28 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         public IBodyWorkflowAction<UpsertContactResponse> UpsertContact([WorkflowExpression] Func<string> contactGUID, [WorkflowExpression] Func<string> oDataMaxVersion, [WorkflowExpression] Func<string> oDataVersion, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodybirthdate = null, [WorkflowExpression] Func<string> bodycustomertypecode = null, [WorkflowExpression] Func<string> bodyemailaddress1 = null, [WorkflowExpression] Func<string> bodyemailaddress2 = null, [WorkflowExpression] Func<string> bodytelephone1 = null, [WorkflowExpression] Func<string> bodytelephone2 = null, [WorkflowExpression] Func<string> bodytelephone3 = null, [WorkflowExpression] Func<string> bodymobilephone = null, [WorkflowExpression] Func<string> bodyaddress1Line1 = null, [WorkflowExpression] Func<string> bodyaddress1Line2 = null, [WorkflowExpression] Func<string> bodyaddress1City = null, [WorkflowExpression] Func<string> bodyaddress1Stateorprovince = null, [WorkflowExpression] Func<string> bodyaddress1Postalcode = null, [WorkflowExpression] Func<string> bodyaddress1County = null)
         {
-            SourceExpression.Validate(contactGUID, nameof(contactGUID), required: true);
-            SourceExpression.Validate(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
-            SourceExpression.Validate(oDataVersion, nameof(oDataVersion), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            SourceExpression.Validate(bodybirthdate, nameof(bodybirthdate), required: false);
-            SourceExpression.Validate(bodycustomertypecode, nameof(bodycustomertypecode), required: false);
-            SourceExpression.Validate(bodyemailaddress1, nameof(bodyemailaddress1), required: false);
-            SourceExpression.Validate(bodyemailaddress2, nameof(bodyemailaddress2), required: false);
-            SourceExpression.Validate(bodytelephone1, nameof(bodytelephone1), required: false);
-            SourceExpression.Validate(bodytelephone2, nameof(bodytelephone2), required: false);
-            SourceExpression.Validate(bodytelephone3, nameof(bodytelephone3), required: false);
-            SourceExpression.Validate(bodymobilephone, nameof(bodymobilephone), required: false);
-            SourceExpression.Validate(bodyaddress1Line1, nameof(bodyaddress1Line1), required: false);
-            SourceExpression.Validate(bodyaddress1Line2, nameof(bodyaddress1Line2), required: false);
-            SourceExpression.Validate(bodyaddress1City, nameof(bodyaddress1City), required: false);
-            SourceExpression.Validate(bodyaddress1Stateorprovince, nameof(bodyaddress1Stateorprovince), required: false);
-            SourceExpression.Validate(bodyaddress1Postalcode, nameof(bodyaddress1Postalcode), required: false);
-            SourceExpression.Validate(bodyaddress1County, nameof(bodyaddress1County), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactGUID, 1));
@@ -162,18 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         public IBodyWorkflowAction<UpsertAccountResponse> UpsertAccount([WorkflowExpression] Func<string> accountGUID, [WorkflowExpression] Func<string> oDataMaxVersion, [WorkflowExpression] Func<string> oDataVersion, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyaddress1Line1 = null, [WorkflowExpression] Func<string> bodyaddress1Line2 = null, [WorkflowExpression] Func<string> bodyaddress1City = null, [WorkflowExpression] Func<string> bodyaddress1Stateorprovince = null, [WorkflowExpression] Func<string> bodyaddress1Postalcode = null, [WorkflowExpression] Func<string> bodyaddress1County = null)
         {
-            SourceExpression.Validate(accountGUID, nameof(accountGUID), required: true);
-            SourceExpression.Validate(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
-            SourceExpression.Validate(oDataVersion, nameof(oDataVersion), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyaddress1Line1, nameof(bodyaddress1Line1), required: false);
-            SourceExpression.Validate(bodyaddress1Line2, nameof(bodyaddress1Line2), required: false);
-            SourceExpression.Validate(bodyaddress1City, nameof(bodyaddress1City), required: false);
-            SourceExpression.Validate(bodyaddress1Stateorprovince, nameof(bodyaddress1Stateorprovince), required: false);
-            SourceExpression.Validate(bodyaddress1Postalcode, nameof(bodyaddress1Postalcode), required: false);
-            SourceExpression.Validate(bodyaddress1County, nameof(bodyaddress1County), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounts({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountGUID, 1));
@@ -240,14 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
         public IBodyWorkflowAction<UpsertLeadResponse> UpsertLead([WorkflowExpression] Func<string> leadGUID, [WorkflowExpression] Func<string> oDataMaxVersion, [WorkflowExpression] Func<string> oDataVersion, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyfullname = null, [WorkflowExpression] Func<string> bodyemailaddress1 = null, [WorkflowExpression] Func<string> bodytelephone1 = null)
         {
-            SourceExpression.Validate(leadGUID, nameof(leadGUID), required: true);
-            SourceExpression.Validate(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
-            SourceExpression.Validate(oDataVersion, nameof(oDataVersion), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodyfullname, nameof(bodyfullname), required: false);
-            SourceExpression.Validate(bodyemailaddress1, nameof(bodyemailaddress1), required: false);
-            SourceExpression.Validate(bodytelephone1, nameof(bodytelephone1), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leads({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(leadGUID, 1));

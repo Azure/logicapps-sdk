@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
         public IBodyWorkflowAction<string> MergeDocumentsArray([WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments)
         {
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/merge_documents/array";

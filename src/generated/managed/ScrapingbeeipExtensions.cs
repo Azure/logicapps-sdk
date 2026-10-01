@@ -14,29 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
         public IBodyWorkflowAction<HTMLResponse> HTML([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<bool> renderJs, [WorkflowExpression] Func<string> jsScenario = null, [WorkflowExpression] Func<int> wait = null, [WorkflowExpression] Func<string> waitFor = null, [WorkflowExpression] Func<bool> blockAds = null, [WorkflowExpression] Func<bool> blockResources = null, [WorkflowExpression] Func<int> windowWidth = null, [WorkflowExpression] Func<int> windowHeight = null, [WorkflowExpression] Func<bool> premiumProxy = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<bool> stealthProxy = null, [WorkflowExpression] Func<string> ownProxy = null, [WorkflowExpression] Func<string> extractRules = null, [WorkflowExpression] Func<bool> screenshot = null, [WorkflowExpression] Func<string> screenshotSelector = null, [WorkflowExpression] Func<bool> screenshotFullPage = null, [WorkflowExpression] Func<bool> returnPageSource = null, [WorkflowExpression] Func<int> sessionId = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string> cookies = null, [WorkflowExpression] Func<deviceInput> device = null, [WorkflowExpression] Func<bool> customGoogle = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(renderJs, nameof(renderJs), required: true);
-            SourceExpression.Validate(jsScenario, nameof(jsScenario), required: false);
-            SourceExpression.Validate(wait, nameof(wait), required: false);
-            SourceExpression.Validate(waitFor, nameof(waitFor), required: false);
-            SourceExpression.Validate(blockAds, nameof(blockAds), required: false);
-            SourceExpression.Validate(blockResources, nameof(blockResources), required: false);
-            SourceExpression.Validate(windowWidth, nameof(windowWidth), required: false);
-            SourceExpression.Validate(windowHeight, nameof(windowHeight), required: false);
-            SourceExpression.Validate(premiumProxy, nameof(premiumProxy), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(stealthProxy, nameof(stealthProxy), required: false);
-            SourceExpression.Validate(ownProxy, nameof(ownProxy), required: false);
-            SourceExpression.Validate(extractRules, nameof(extractRules), required: false);
-            SourceExpression.Validate(screenshot, nameof(screenshot), required: false);
-            SourceExpression.Validate(screenshotSelector, nameof(screenshotSelector), required: false);
-            SourceExpression.Validate(screenshotFullPage, nameof(screenshotFullPage), required: false);
-            SourceExpression.Validate(returnPageSource, nameof(returnPageSource), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(timeout, nameof(timeout), required: false);
-            SourceExpression.Validate(cookies, nameof(cookies), required: false);
-            SourceExpression.Validate(device, nameof(device), required: false);
-            SourceExpression.Validate(customGoogle, nameof(customGoogle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1";
@@ -111,12 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
         public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch([WorkflowExpression] Func<string> search, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<int> nbResults = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> extraParams = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: true);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(nbResults, nameof(nbResults), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(extraParams, nameof(extraParams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/store/google";

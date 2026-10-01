@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
         public IBodyWorkflowAction<NumberGetResponse> NumberGet([WorkflowExpression] Func<string> phoneNumber, [WorkflowExpression] Func<string> countryCode = null)
         {
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/validate/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));

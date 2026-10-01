@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
         public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<int> fiscalYear, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(scenario, nameof(scenario), required: true);
-            SourceExpression.Validate(fiscalYear, nameof(fiscalYear), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/financemodel/data/extract/gldata";

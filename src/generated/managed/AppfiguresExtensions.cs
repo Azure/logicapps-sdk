@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
         public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview([WorkflowExpression] Func<string> products = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(products, nameof(products), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reviews_trigger/reviews";
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
         public IBodyWorkflowTrigger<Rating[]> OnNewRating([WorkflowExpression] Func<string> products = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(products, nameof(products), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ratings_trigger/ratings";

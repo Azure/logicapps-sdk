@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<MobileB2BResponse> MobileB2B([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<bodyproviderInput> bodyprovider, [WorkflowExpression] Func<bodytransferTypeInput> bodytransferType, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<string> bodydestinationChannel, [WorkflowExpression] Func<string> bodydestinationAccount)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyproductName, nameof(bodyproductName), required: true);
-            SourceExpression.Validate(bodyprovider, nameof(bodyprovider), required: true);
-            SourceExpression.Validate(bodytransferType, nameof(bodytransferType), required: true);
-            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: true);
-            SourceExpression.Validate(bodydestinationChannel, nameof(bodydestinationChannel), required: true);
-            SourceExpression.Validate(bodydestinationAccount, nameof(bodydestinationAccount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mobile/b2b/request";
@@ -66,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<FetchWalletBalanceResponse> FetchWalletBalance([WorkflowExpression] Func<string> username)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/wallet/balance";
@@ -82,11 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<WalletTransferResponse> WalletTransfer([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<int> bodytargetProductCode, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyproductName, nameof(bodyproductName), required: true);
-            SourceExpression.Validate(bodytargetProductCode, nameof(bodytargetProductCode), required: true);
-            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/transfer/wallet";
@@ -125,11 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<FetchWalletTransactionsResponse> FetchWalletTransactions([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<int> count, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/wallet/fetch";
@@ -151,10 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<TopUpStashResponse> TopUpStash([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyproductName, nameof(bodyproductName), required: true);
-            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/topup/stash";
@@ -191,18 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<FetchProductTransactionsResponse> FetchProductTransactions([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> productName, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<int> count, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<categoryInput> category = null, [WorkflowExpression] Func<providerInput> provider = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<destinationInput> destination = null, [WorkflowExpression] Func<string> providerChannel = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(productName, nameof(productName), required: true);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: true);
-            SourceExpression.Validate(count, nameof(count), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(provider, nameof(provider), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(destination, nameof(destination), required: false);
-            SourceExpression.Validate(providerChannel, nameof(providerChannel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/transaction/fetch";
@@ -237,12 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<MobileCheckoutResponse> MobileCheckout([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<string> bodyproviderChannel = null)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyproductName, nameof(bodyproductName), required: true);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: true);
-            SourceExpression.Validate(bodyproviderChannel, nameof(bodyproviderChannel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mobile/checkout/request";
@@ -287,9 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<MobileB2CResponse> MobileB2C([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyproductName, nameof(bodyproductName), required: true);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mobile/b2c/request";

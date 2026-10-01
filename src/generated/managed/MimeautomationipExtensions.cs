@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
         public IBodyWorkflowAction<Attachment[]> ExtractFiles([WorkflowExpression] Func<string> bodycontent)
         {
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MimeAutomation/ExtractFiles";
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
         public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml([WorkflowExpression] Func<string> bodycontent)
         {
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";

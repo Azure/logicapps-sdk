@@ -28,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<CourseSummaryResponse> ListCourses([WorkflowExpression] Func<string> publishedFrom = null, [WorkflowExpression] Func<string> publishedTo = null, [WorkflowExpression] Func<double> priceFrom = null, [WorkflowExpression] Func<double> priceTo = null, [WorkflowExpression] Func<bool> isNew = null, [WorkflowExpression] Func<string> moreToken = null)
         {
-            SourceExpression.Validate(publishedFrom, nameof(publishedFrom), required: false);
-            SourceExpression.Validate(publishedTo, nameof(publishedTo), required: false);
-            SourceExpression.Validate(priceFrom, nameof(priceFrom), required: false);
-            SourceExpression.Validate(priceTo, nameof(priceTo), required: false);
-            SourceExpression.Validate(isNew, nameof(isNew), required: false);
-            SourceExpression.Validate(moreToken, nameof(moreToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ListCourses";
@@ -60,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<InstructorSummaryResponse> ListInstructors([WorkflowExpression] Func<string> moreToken = null)
         {
-            SourceExpression.Validate(moreToken, nameof(moreToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ListInstructors";
@@ -77,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<MyCoursesResponse> ListMyCourses([WorkflowExpression] Func<string> moreToken = null)
         {
-            SourceExpression.Validate(moreToken, nameof(moreToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ListMyCourses";
@@ -94,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<IdeaSummaryResponse> ListIdeas([WorkflowExpression] Func<string> moreToken = null)
         {
-            SourceExpression.Validate(moreToken, nameof(moreToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ListIdeas";
@@ -111,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<CourseDetail> GetCourse([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetCourse";
@@ -127,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IWorkflowAction AddIdeaVote([WorkflowExpression] Func<string> ideaId)
         {
-            SourceExpression.Validate(ideaId, nameof(ideaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddIdeaVote";
@@ -143,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<InstructorDetail> GetInstructor([WorkflowExpression] Func<string> id = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetInstructor";
@@ -160,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Search";

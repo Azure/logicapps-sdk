@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
     {
         public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted([WorkflowExpression] Func<string> formlinkname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formlinkname, nameof(formlinkname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/resthooks";

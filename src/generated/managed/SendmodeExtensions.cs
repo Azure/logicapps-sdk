@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> messagemessagetext, [WorkflowExpression] Func<string[]> messagerecipients, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> messagesenderid = null, [WorkflowExpression] Func<string> messagecustomerid = null)
         {
-            SourceExpression.Validate(messagemessagetext, nameof(messagemessagetext), required: true);
-            SourceExpression.Validate(messagerecipients, nameof(messagerecipients), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(messagesenderid, nameof(messagesenderid), required: false);
-            SourceExpression.Validate(messagecustomerid, nameof(messagecustomerid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/send";
@@ -58,10 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<OptoutCustomerResponse> OptoutCustomer([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> messagemobilenumber, [WorkflowExpression] Func<string> messageoptoutresponse = null, [WorkflowExpression] Func<string> messagereturnedresponse = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(messagemobilenumber, nameof(messagemobilenumber), required: true);
-            SourceExpression.Validate(messageoptoutresponse, nameof(messageoptoutresponse), required: false);
-            SourceExpression.Validate(messagereturnedresponse, nameof(messagereturnedresponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/optout";
@@ -97,19 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<ImportCustomerResponse> ImportCustomer([WorkflowExpression] Func<string> importdatagroup, [WorkflowExpression] Func<string> importdatamobilenumber, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> importdatafirstname = null, [WorkflowExpression] Func<string> importdatasurname = null, [WorkflowExpression] Func<string> importdataaddress = null, [WorkflowExpression] Func<string> importdatatown = null, [WorkflowExpression] Func<string> importdatacounty = null, [WorkflowExpression] Func<string> importdataemail = null, [WorkflowExpression] Func<string> importdatacustom1 = null, [WorkflowExpression] Func<string> importdatacustom2 = null, [WorkflowExpression] Func<string> importdatabusinessname = null, [WorkflowExpression] Func<string> importdatadateofbirth = null)
         {
-            SourceExpression.Validate(importdatagroup, nameof(importdatagroup), required: true);
-            SourceExpression.Validate(importdatamobilenumber, nameof(importdatamobilenumber), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(importdatafirstname, nameof(importdatafirstname), required: false);
-            SourceExpression.Validate(importdatasurname, nameof(importdatasurname), required: false);
-            SourceExpression.Validate(importdataaddress, nameof(importdataaddress), required: false);
-            SourceExpression.Validate(importdatatown, nameof(importdatatown), required: false);
-            SourceExpression.Validate(importdatacounty, nameof(importdatacounty), required: false);
-            SourceExpression.Validate(importdataemail, nameof(importdataemail), required: false);
-            SourceExpression.Validate(importdatacustom1, nameof(importdatacustom1), required: false);
-            SourceExpression.Validate(importdatacustom2, nameof(importdatacustom2), required: false);
-            SourceExpression.Validate(importdatabusinessname, nameof(importdatabusinessname), required: false);
-            SourceExpression.Validate(importdatadateofbirth, nameof(importdatadateofbirth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/import";
@@ -197,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<CheckCreditsResponse> CheckCredits([WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/credits";

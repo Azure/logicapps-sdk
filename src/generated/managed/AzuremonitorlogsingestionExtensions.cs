@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogsingestion
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogsingestion")]
         public IWorkflowAction SendData([WorkflowExpression] Func<string> dcrImmutableId, [WorkflowExpression] Func<string> streamName, [WorkflowExpression] Func<JToken[]> body = null)
         {
-            SourceExpression.Validate(dcrImmutableId, nameof(dcrImmutableId), required: true);
-            SourceExpression.Validate(streamName, nameof(streamName), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dataCollectionRules/{0}/streams/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dcrImmutableId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(streamName, 1));

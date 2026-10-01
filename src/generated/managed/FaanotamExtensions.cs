@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faanotam")]
         public IBodyWorkflowAction<GetNotamResponse> GetNotam([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<string> clientSecret)
         {
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
-            SourceExpression.Validate(clientSecret, nameof(clientSecret), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notamapi/v1/notams";

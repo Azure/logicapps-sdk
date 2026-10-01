@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<AddWorkingDaysResponse> AddWorkingDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(increment, nameof(increment), required: true);
-            SourceExpression.Validate(includeStart, nameof(includeStart), required: true);
-            SourceExpression.Validate(configuration, nameof(configuration), required: false);
-            SourceExpression.Validate(weekend, nameof(weekend), required: false);
-            SourceExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            SourceExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            SourceExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            SourceExpression.Validate(profileId, nameof(profileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/add_working_days";
@@ -60,17 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(configuration, nameof(configuration), required: false);
-            SourceExpression.Validate(weekend, nameof(weekend), required: false);
-            SourceExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            SourceExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            SourceExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            SourceExpression.Validate(profileId, nameof(profileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/analyse";
@@ -110,12 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<GetInfoDayResponse> GetInfoDay([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(configuration, nameof(configuration), required: false);
-            SourceExpression.Validate(weekend, nameof(weekend), required: false);
-            SourceExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            SourceExpression.Validate(profileId, nameof(profileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/get_info_day";
@@ -145,13 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<ListNonWorkingDaysResponse> ListNonWorkingDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(configuration, nameof(configuration), required: false);
-            SourceExpression.Validate(weekend, nameof(weekend), required: false);
-            SourceExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            SourceExpression.Validate(profileId, nameof(profileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/list_non_working_days";
@@ -182,16 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<AddWorkingHoursResponse> AddWorkingHours([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> startTime, [WorkflowExpression] Func<string> incrementTime, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(startTime, nameof(startTime), required: true);
-            SourceExpression.Validate(incrementTime, nameof(incrementTime), required: true);
-            SourceExpression.Validate(configuration, nameof(configuration), required: false);
-            SourceExpression.Validate(weekend, nameof(weekend), required: false);
-            SourceExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            SourceExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            SourceExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            SourceExpression.Validate(profileId, nameof(profileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/add_working_hours";
@@ -228,16 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<AddPublicHolidaysResponse> AddPublicHolidays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(increment, nameof(increment), required: true);
-            SourceExpression.Validate(includeStart, nameof(includeStart), required: true);
-            SourceExpression.Validate(configuration, nameof(configuration), required: false);
-            SourceExpression.Validate(weekend, nameof(weekend), required: false);
-            SourceExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            SourceExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            SourceExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            SourceExpression.Validate(profileId, nameof(profileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/add_public_holidays";
@@ -274,16 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<AddWeekendDaysResponse> AddWeekendDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(increment, nameof(increment), required: true);
-            SourceExpression.Validate(includeStart, nameof(includeStart), required: true);
-            SourceExpression.Validate(configuration, nameof(configuration), required: false);
-            SourceExpression.Validate(weekend, nameof(weekend), required: false);
-            SourceExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            SourceExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            SourceExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            SourceExpression.Validate(profileId, nameof(profileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/add_weekend_days";
@@ -320,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<AddressToConfigurationResponse> AddressToConfiguration([WorkflowExpression] Func<string> address)
         {
-            SourceExpression.Validate(address, nameof(address), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.2/address_to_configuration";

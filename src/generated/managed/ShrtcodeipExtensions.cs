@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
         public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink([WorkflowExpression] Func<string> url)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/shorten";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
         public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink([WorkflowExpression] Func<string> code)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/info";

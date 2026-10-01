@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         public IBodyWorkflowAction<DocGenResponse> DocGen([WorkflowExpression] Func<bodylanguageInput> bodylanguage, [WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<bool> bodycommented = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<string> bodycontext = null)
         {
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: true);
-            SourceExpression.Validate(bodycommented, nameof(bodycommented), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodycontext, nameof(bodycontext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/document";

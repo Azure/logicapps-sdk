@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IBodyWorkflowAction<SendSecureMessageResponse> SendSecureMessageAsync([WorkflowExpression] Func<string> requestfrom, [WorkflowExpression] Func<string> v, [WorkflowExpression] Func<string> xAPIKey, [WorkflowExpression] Func<string> xAPISecret, [WorkflowExpression] Func<string[]> requestto = null, [WorkflowExpression] Func<string[]> requestcc = null, [WorkflowExpression] Func<string[]> requestbcc = null, [WorkflowExpression] Func<string> requestsubject = null, [WorkflowExpression] Func<Attachment[]> requestattachments = null, [WorkflowExpression] Func<string> requesthtmlBody = null, [WorkflowExpression] Func<string> requesttextBody = null)
         {
-            SourceExpression.Validate(requestfrom, nameof(requestfrom), required: true);
-            SourceExpression.Validate(v, nameof(v), required: true);
-            SourceExpression.Validate(xAPIKey, nameof(xAPIKey), required: true);
-            SourceExpression.Validate(xAPISecret, nameof(xAPISecret), required: true);
-            SourceExpression.Validate(requestto, nameof(requestto), required: false);
-            SourceExpression.Validate(requestcc, nameof(requestcc), required: false);
-            SourceExpression.Validate(requestbcc, nameof(requestbcc), required: false);
-            SourceExpression.Validate(requestsubject, nameof(requestsubject), required: false);
-            SourceExpression.Validate(requestattachments, nameof(requestattachments), required: false);
-            SourceExpression.Validate(requesthtmlBody, nameof(requesthtmlBody), required: false);
-            SourceExpression.Validate(requesttextBody, nameof(requesttextBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/Email", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1));
@@ -91,10 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IBodyWorkflowAction<TrackMessageResponse> TrackMessageAsync([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> v, [WorkflowExpression] Func<string> xAPIKey, [WorkflowExpression] Func<string> xAPISecret)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
-            SourceExpression.Validate(v, nameof(v), required: true);
-            SourceExpression.Validate(xAPIKey, nameof(xAPIKey), required: true);
-            SourceExpression.Validate(xAPISecret, nameof(xAPISecret), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Track", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
@@ -111,10 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IWorkflowAction RetractMessageAsync([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> v, [WorkflowExpression] Func<string> xAPIKey, [WorkflowExpression] Func<string> xAPISecret)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
-            SourceExpression.Validate(v, nameof(v), required: true);
-            SourceExpression.Validate(xAPIKey, nameof(xAPIKey), required: true);
-            SourceExpression.Validate(xAPISecret, nameof(xAPISecret), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Retract", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<PackagesResponse> PackagesGET([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/packages";
@@ -34,20 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<Package> PackagesPOST([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymachineName = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyversion = null, [WorkflowExpression] Func<string> bodycreatedAt = null, [WorkflowExpression] Func<string> bodyupdatedAt = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodylogoUrl = null, [WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodymachineDescription = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyopenapi = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymachineName, nameof(bodymachineName), required: false);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
-            SourceExpression.Validate(bodycreatedAt, nameof(bodycreatedAt), required: false);
-            SourceExpression.Validate(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
-            SourceExpression.Validate(bodypublishedAt, nameof(bodypublishedAt), required: false);
-            SourceExpression.Validate(bodylogoUrl, nameof(bodylogoUrl), required: false);
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodymachineDescription, nameof(bodymachineDescription), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyopenapi, nameof(bodyopenapi), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/packages";
@@ -148,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<Package[]> PackagesLookupGET([WorkflowExpression] Func<string> ids = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/packages/lookup";
@@ -165,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<Package> PackagesByPackageIdGET([WorkflowExpression] Func<string> packageId)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -180,21 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<Package> PackagesByPackageIdPOST([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymachineName = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyversion = null, [WorkflowExpression] Func<string> bodycreatedAt = null, [WorkflowExpression] Func<string> bodyupdatedAt = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodylogoUrl = null, [WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodymachineDescription = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyopenapi = null)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymachineName, nameof(bodymachineName), required: false);
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
-            SourceExpression.Validate(bodycreatedAt, nameof(bodycreatedAt), required: false);
-            SourceExpression.Validate(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
-            SourceExpression.Validate(bodypublishedAt, nameof(bodypublishedAt), required: false);
-            SourceExpression.Validate(bodylogoUrl, nameof(bodylogoUrl), required: false);
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodymachineDescription, nameof(bodymachineDescription), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyopenapi, nameof(bodyopenapi), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -295,8 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<PackagesOpenapiResponse> PackagesOpenapiByPackageIdGET([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/openapi", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -313,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<AiPlugin> PackagesAiPluginByPackageIdGET([WorkflowExpression] Func<string> packageId)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/packages/{0}/ai-plugin", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -328,8 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<AiPlugin[]> AiPluginsSearchGET([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ai-plugins/search";
@@ -347,7 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
         public IBodyWorkflowAction<AiPlugin[]> AiPluginsLookupGET([WorkflowExpression] Func<string> ids = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ai-plugins/lookup";

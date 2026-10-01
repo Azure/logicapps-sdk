@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         public IBodyWorkflowAction<DrugAdverseEventResponse> DrugAdverseEvent([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event.json";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         public IBodyWorkflowAction<DrugLabelingResponse> DrugLabeling([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/label.json";
@@ -54,8 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         public IBodyWorkflowAction<DrugNDCResponse> DrugNDC([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ndc.json";
@@ -74,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         public IBodyWorkflowAction<DrugEnforcementResponse> DrugEnforcement([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enforcement.json";
@@ -94,8 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
         public IBodyWorkflowAction<DrugsFDAResponse> DrugsFDA([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/drugsfda.json";

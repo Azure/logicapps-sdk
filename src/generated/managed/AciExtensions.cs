@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsList([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsListByResourceGroup([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1));
@@ -47,9 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsGet([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
@@ -65,14 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsUpdate([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName, [WorkflowExpression] Func<string> resourceid = null, [WorkflowExpression] Func<string> resourcename = null, [WorkflowExpression] Func<string> resourcetype = null, [WorkflowExpression] Func<string> resourcelocation = null, [WorkflowExpression] Func<string[]> resourcezones = null)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
-            SourceExpression.Validate(resourceid, nameof(resourceid), required: false);
-            SourceExpression.Validate(resourcename, nameof(resourcename), required: false);
-            SourceExpression.Validate(resourcetype, nameof(resourcetype), required: false);
-            SourceExpression.Validate(resourcelocation, nameof(resourcelocation), required: false);
-            SourceExpression.Validate(resourcezones, nameof(resourcezones), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
@@ -132,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsDelete([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
@@ -150,9 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsRestart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
@@ -168,9 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStop([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
@@ -186,9 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
@@ -204,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<UsageListResult> LocationListUsage([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> location)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -221,11 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<Logs> ContainerLogsList([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName, [WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<int> tail = null)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(tail, nameof(tail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerName, 1));
@@ -243,13 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerExecResponse> ContainersExecuteCommand([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName, [WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> containerExecRequestcommand = null, [WorkflowExpression] Func<int> containerExecRequestterminalSizerows = null, [WorkflowExpression] Func<int> containerExecRequestterminalSizecols = null)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(containerExecRequestcommand, nameof(containerExecRequestcommand), required: false);
-            SourceExpression.Validate(containerExecRequestterminalSizerows, nameof(containerExecRequestterminalSizerows), required: false);
-            SourceExpression.Validate(containerExecRequestterminalSizecols, nameof(containerExecRequestterminalSizecols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerName, 1));
@@ -297,10 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerAttachResponse> ContainersAttach([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName, [WorkflowExpression] Func<string> containerName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerName, 1));
@@ -316,8 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CachedImagesListResult> LocationListCachedImages([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> location)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -333,8 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CapabilitiesListResult> LocationListCapabilities([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> location)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -350,9 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<string[]> ContainerGroupsGetOutboundNetworkDependenciesEndpoints([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(containerGroupName, nameof(containerGroupName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerGroupName, 1));
@@ -368,10 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction SubnetServiceAssociationLinkDelete([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualNetworkName, [WorkflowExpression] Func<string> subnetName)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            SourceExpression.Validate(virtualNetworkName, nameof(virtualNetworkName), required: true);
-            SourceExpression.Validate(subnetName, nameof(subnetName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualNetworkName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subnetName, 1));

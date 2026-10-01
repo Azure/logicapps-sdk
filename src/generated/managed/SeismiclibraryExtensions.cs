@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> GetLibraryFileDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -30,18 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> UpdateLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> includeResponse = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(includeResponse, nameof(includeResponse), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
-            SourceExpression.Validate(bodyexperts, nameof(bodyexperts), required: false);
-            SourceExpression.Validate(bodycontentProperties, nameof(bodycontentProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -119,9 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> redirect = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(redirect, nameof(redirect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -139,10 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFileVersion([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> libraryVersionId, [WorkflowExpression] Func<bool> redirect = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(libraryVersionId, nameof(libraryVersionId), required: true);
-            SourceExpression.Validate(redirect, nameof(redirect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/versions/{2}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryVersionId, 1));
@@ -160,9 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CopyLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -185,11 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CreateLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
@@ -230,8 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> GetLibraryFolderDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -246,12 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> UpdateLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -292,8 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse> CreateNestedLibraryFolders([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> folderPath = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/createPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
@@ -310,9 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CopyLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -335,12 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryFolderItems([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeExpiration = null, [WorkflowExpression] Func<bool> includeProperties = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(includeExpiration, nameof(includeExpiration), required: false);
-            SourceExpression.Validate(includeProperties, nameof(includeProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -365,8 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -381,8 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IWorkflowAction DeleteLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -397,9 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> CopyLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -422,8 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementSimpleItemVersion[]> GetLibraryItemVersion([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -438,9 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemsByQuery([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> externalConnectionId = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(externalId, nameof(externalId), required: false);
-            SourceExpression.Validate(externalConnectionId, nameof(externalConnectionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
@@ -459,9 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<string> UpdateThumbnailItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/thumbnail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -477,10 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicPagingLibraryInstructionsInstructionInfoResponse> GetLibraryInstructions([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -499,11 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse> AddLibraryInstruction([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -542,9 +470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IWorkflowAction DeleteLibraryInstruction([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> instructionId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(instructionId, nameof(instructionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instructionId, 1));
@@ -559,9 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<string[]> SubmitLibraryItemToWorkflow([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/submit", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -588,9 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IWorkflowAction RecallItemFromWorkflow([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/recall", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -617,10 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse> PublishLibraryItems([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodypublishAt = null, [WorkflowExpression] Func<SeismicContentManagerPublishContentItem[]> bodycontent = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodypublishAt, nameof(bodypublishAt), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/publish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
@@ -659,8 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IWorkflowAction UnpublishLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/unpublish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -675,12 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> UpdateLibraryWorkflowStep([WorkflowExpression] Func<string> approvalWorkflowId, [WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<bodyactionInput> bodyaction = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodynextApprovernextApproverUsedId = null, [WorkflowExpression] Func<string> bodynextApprovernextApproverUserType = null)
         {
-            SourceExpression.Validate(approvalWorkflowId, nameof(approvalWorkflowId), required: true);
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodynextApprovernextApproverUsedId, nameof(bodynextApprovernextApproverUsedId), required: false);
-            SourceExpression.Validate(bodynextApprovernextApproverUserType, nameof(bodynextApprovernextApproverUserType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}/steps/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalWorkflowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
@@ -733,7 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> GetLibraryWorkflow([WorkflowExpression] Func<string> approvalWorkflowId)
         {
-            SourceExpression.Validate(approvalWorkflowId, nameof(approvalWorkflowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalWorkflowId, 1));
@@ -748,11 +654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicPagingLibraryWorkflowWorkflowResponse> GetWorkflows([WorkflowExpression] Func<string> teamsiteId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> currentStepAssignedTo = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(currentStepAssignedTo, nameof(currentStepAssignedTo), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/approvalWorkflows";
@@ -777,19 +678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CreateLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<bool> bodyurlopenInNewWindow = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
-            SourceExpression.Validate(bodyurlopenInNewWindow, nameof(bodyurlopenInNewWindow), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
-            SourceExpression.Validate(bodyexperts, nameof(bodyexperts), required: false);
-            SourceExpression.Validate(bodycontentProperties, nameof(bodycontentProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
@@ -890,8 +778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> GetLibraryUrlDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -906,20 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> UpdateLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> includeResponse = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<bool> bodyurlopenInNewWindow = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(includeResponse, nameof(includeResponse), required: false);
-            SourceExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
-            SourceExpression.Validate(bodyurlopenInNewWindow, nameof(bodyurlopenInNewWindow), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyexperts, nameof(bodyexperts), required: false);
-            SourceExpression.Validate(bodycontentProperties, nameof(bodycontentProperties), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
@@ -1017,9 +889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CopyLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));

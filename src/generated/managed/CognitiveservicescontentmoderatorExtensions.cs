@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<EvaluateImageResponse> EvaluateImage([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
@@ -32,12 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> teamName, [WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> contentId, [WorkflowExpression] Func<string> workflowName, [WorkflowExpression] Func<string> contentcontentValue, [WorkflowExpression] Func<string> callBackEndpoint = null)
         {
-            SourceExpression.Validate(teamName, nameof(teamName), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(contentId, nameof(contentId), required: true);
-            SourceExpression.Validate(workflowName, nameof(workflowName), required: true);
-            SourceExpression.Validate(contentcontentValue, nameof(contentcontentValue), required: true);
-            SourceExpression.Validate(callBackEndpoint, nameof(callBackEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamName, 1));
@@ -65,9 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<OCRResponse> OCR([WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(language, nameof(language), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/OCR";
@@ -85,13 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<ScreenTextResponse> ScreenText([WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> autocorrect = null, [WorkflowExpression] Func<bool> pII = null, [WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<bool> classify = null, [WorkflowExpression] Func<string> textContent = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(autocorrect, nameof(autocorrect), required: false);
-            SourceExpression.Validate(pII, nameof(pII), required: false);
-            SourceExpression.Validate(listId, nameof(listId), required: false);
-            SourceExpression.Validate(classify, nameof(classify), required: false);
-            SourceExpression.Validate(textContent, nameof(textContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/Screen/";
@@ -118,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<FindFacesResponse> FindFaces([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces";
@@ -136,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<DetectLanguageResponse> DetectLanguage([WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> textContent = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(textContent, nameof(textContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage";
@@ -154,9 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<MatchImageResponse> MatchImage([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: false);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Match";
@@ -175,9 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
         public IBodyWorkflowAction<string[]> CreateReviews([WorkflowExpression] Func<string> teamName, [WorkflowExpression] Func<string> subTeam = null, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(teamName, nameof(teamName), required: true);
-            SourceExpression.Validate(subTeam, nameof(subTeam), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamName, 1));

@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportAttributes([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> lidsBodyshowHeader = null, [WorkflowExpression] Func<string> lidsBodymQLQueryString = null, [WorkflowExpression] Func<lidsBodyfileFormatInput> lidsBodyfileFormat = null, [WorkflowExpression] Func<lidsBodyfileEncodingInput> lidsBodyfileEncoding = null)
         {
-            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
-            SourceExpression.Validate(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
-            SourceExpression.Validate(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
-            SourceExpression.Validate(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
-            SourceExpression.Validate(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/attributes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
@@ -95,12 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportHierarchies([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> hierarchiesBodyshowHeader = null, [WorkflowExpression] Func<string> hierarchiesBodymQLQueryString = null, [WorkflowExpression] Func<hierarchiesBodyfileFormatInput> hierarchiesBodyfileFormat = null, [WorkflowExpression] Func<hierarchiesBodyfileEncodingInput> hierarchiesBodyfileEncoding = null, [WorkflowExpression] Func<bool> hierarchiesBodyexportMemberIDs = null)
         {
-            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
-            SourceExpression.Validate(hierarchiesBodyshowHeader, nameof(hierarchiesBodyshowHeader), required: false);
-            SourceExpression.Validate(hierarchiesBodymQLQueryString, nameof(hierarchiesBodymQLQueryString), required: false);
-            SourceExpression.Validate(hierarchiesBodyfileFormat, nameof(hierarchiesBodyfileFormat), required: false);
-            SourceExpression.Validate(hierarchiesBodyfileEncoding, nameof(hierarchiesBodyfileEncoding), required: false);
-            SourceExpression.Validate(hierarchiesBodyexportMemberIDs, nameof(hierarchiesBodyexportMemberIDs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/hierarchies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
@@ -193,13 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportValues([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> valuesBodyshowHeader = null, [WorkflowExpression] Func<string> valuesBodymQLQueryString = null, [WorkflowExpression] Func<valuesBodyfileFormatInput> valuesBodyfileFormat = null, [WorkflowExpression] Func<valuesBodyfileEncodingInput> valuesBodyfileEncoding = null, [WorkflowExpression] Func<bool> valuesBodyincludeExternalIDs = null, [WorkflowExpression] Func<bool> valuesBodynamedDimensions = null)
         {
-            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
-            SourceExpression.Validate(valuesBodyshowHeader, nameof(valuesBodyshowHeader), required: false);
-            SourceExpression.Validate(valuesBodymQLQueryString, nameof(valuesBodymQLQueryString), required: false);
-            SourceExpression.Validate(valuesBodyfileFormat, nameof(valuesBodyfileFormat), required: false);
-            SourceExpression.Validate(valuesBodyfileEncoding, nameof(valuesBodyfileEncoding), required: false);
-            SourceExpression.Validate(valuesBodyincludeExternalIDs, nameof(valuesBodyincludeExternalIDs), required: false);
-            SourceExpression.Validate(valuesBodynamedDimensions, nameof(valuesBodynamedDimensions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/intersections2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
@@ -308,11 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportLIDs([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> lidsBodyshowHeader = null, [WorkflowExpression] Func<string> lidsBodymQLQueryString = null, [WorkflowExpression] Func<lidsBodyfileFormatInput> lidsBodyfileFormat = null, [WorkflowExpression] Func<lidsBodyfileEncodingInput> lidsBodyfileEncoding = null)
         {
-            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
-            SourceExpression.Validate(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
-            SourceExpression.Validate(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
-            SourceExpression.Validate(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
-            SourceExpression.Validate(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/lids2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));

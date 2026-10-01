@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbauddocuments")]
         public IBodyWorkflowAction<ConstituentApiFileDefinition> CreateDocument([WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<bool> bodyincludeThumbnail = null)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/constituent/v1/documents";

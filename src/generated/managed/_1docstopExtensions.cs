@@ -14,24 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Library> PalibrariesAdd([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
         {
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            SourceExpression.Validate(librarylibraryId, nameof(librarylibraryId), required: false);
-            SourceExpression.Validate(libraryrepositoryId, nameof(libraryrepositoryId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
-            SourceExpression.Validate(libraryrepositoryname, nameof(libraryrepositoryname), required: false);
-            SourceExpression.Validate(libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
-            SourceExpression.Validate(librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
-            SourceExpression.Validate(librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
-            SourceExpression.Validate(librarydocumentTypename, nameof(librarydocumentTypename), required: false);
-            SourceExpression.Validate(librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
-            SourceExpression.Validate(libraryname, nameof(libraryname), required: false);
-            SourceExpression.Validate(librarydescription, nameof(librarydescription), required: false);
-            SourceExpression.Validate(libraryocr, nameof(libraryocr), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/palibraries/add";
@@ -118,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Solution> PasolutionsGet([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null)
         {
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pasolutions/get";
@@ -137,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Solution[]> PasolutionsList([WorkflowExpression] Func<int> solutionid = null)
         {
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pasolutions/list";
@@ -154,8 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Solution[]> PasolutionsDepartmentList([WorkflowExpression] Func<string> departmentkey, [WorkflowExpression] Func<int> solutionid = null)
         {
-            SourceExpression.Validate(departmentkey, nameof(departmentkey), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pasolutions/department/list";
@@ -173,17 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Solution> PasolutionsAdd([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> solutionsolutionId = null, [WorkflowExpression] Func<string> solutionsolutionKey = null, [WorkflowExpression] Func<int> solutiondepartmentdepartmentId = null, [WorkflowExpression] Func<string> solutiondepartmentdepartmentKey = null, [WorkflowExpression] Func<int> solutiondepartmentcustomerId = null, [WorkflowExpression] Func<int> solutiondepartmentcustomercustomerId = null, [WorkflowExpression] Func<string> solutiondepartmentcustomercustomerKey = null, [WorkflowExpression] Func<string> solutiondepartmentcustomername = null, [WorkflowExpression] Func<string> solutiondepartmentname = null, [WorkflowExpression] Func<string> solutionname = null)
         {
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionsolutionId, nameof(solutionsolutionId), required: false);
-            SourceExpression.Validate(solutionsolutionKey, nameof(solutionsolutionKey), required: false);
-            SourceExpression.Validate(solutiondepartmentdepartmentId, nameof(solutiondepartmentdepartmentId), required: false);
-            SourceExpression.Validate(solutiondepartmentdepartmentKey, nameof(solutiondepartmentdepartmentKey), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomerId, nameof(solutiondepartmentcustomerId), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomercustomerId, nameof(solutiondepartmentcustomercustomerId), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomercustomerKey, nameof(solutiondepartmentcustomercustomerKey), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
-            SourceExpression.Validate(solutiondepartmentname, nameof(solutiondepartmentname), required: false);
-            SourceExpression.Validate(solutionname, nameof(solutionname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pasolutions/add";
@@ -224,18 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Solution> PasolutionsUpdate([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> functionsolutionid = null, [WorkflowExpression] Func<int> solutionsolutionId = null, [WorkflowExpression] Func<string> solutionsolutionKey = null, [WorkflowExpression] Func<int> solutiondepartmentdepartmentId = null, [WorkflowExpression] Func<string> solutiondepartmentdepartmentKey = null, [WorkflowExpression] Func<int> solutiondepartmentcustomerId = null, [WorkflowExpression] Func<int> solutiondepartmentcustomercustomerId = null, [WorkflowExpression] Func<string> solutiondepartmentcustomercustomerKey = null, [WorkflowExpression] Func<string> solutiondepartmentcustomername = null, [WorkflowExpression] Func<string> solutiondepartmentname = null, [WorkflowExpression] Func<string> solutionname = null)
         {
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(functionsolutionid, nameof(functionsolutionid), required: false);
-            SourceExpression.Validate(solutionsolutionId, nameof(solutionsolutionId), required: false);
-            SourceExpression.Validate(solutionsolutionKey, nameof(solutionsolutionKey), required: false);
-            SourceExpression.Validate(solutiondepartmentdepartmentId, nameof(solutiondepartmentdepartmentId), required: false);
-            SourceExpression.Validate(solutiondepartmentdepartmentKey, nameof(solutiondepartmentdepartmentKey), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomerId, nameof(solutiondepartmentcustomerId), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomercustomerId, nameof(solutiondepartmentcustomercustomerId), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomercustomerKey, nameof(solutiondepartmentcustomercustomerKey), required: false);
-            SourceExpression.Validate(solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
-            SourceExpression.Validate(solutiondepartmentname, nameof(solutiondepartmentname), required: false);
-            SourceExpression.Validate(solutionname, nameof(solutionname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pasolutions/update";
@@ -278,15 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Document> PadocumentsAdd([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<string> documentdocumentKey = null, [WorkflowExpression] Func<string> documentname = null, [WorkflowExpression] Func<int> documentfileSizeBytes = null, [WorkflowExpression] Func<int> documentstatus = null, [WorkflowExpression] Func<PropertyValue[]> documentpropertyValues = null, [WorkflowExpression] Func<string> documenturl = null)
         {
-            SourceExpression.Validate(libraryid, nameof(libraryid), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            SourceExpression.Validate(documentdocumentKey, nameof(documentdocumentKey), required: false);
-            SourceExpression.Validate(documentname, nameof(documentname), required: false);
-            SourceExpression.Validate(documentfileSizeBytes, nameof(documentfileSizeBytes), required: false);
-            SourceExpression.Validate(documentstatus, nameof(documentstatus), required: false);
-            SourceExpression.Validate(documentpropertyValues, nameof(documentpropertyValues), required: false);
-            SourceExpression.Validate(documenturl, nameof(documenturl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padocuments/add";
@@ -348,9 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<DocumentType> PadocumenttypesGet([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padocumenttypes/get";
@@ -370,8 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<DocumentType[]> PadocumenttypesList([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null)
         {
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padocumenttypes/list";
@@ -389,24 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Library> PadocumenttypesAdd([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
         {
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(librarylibraryId, nameof(librarylibraryId), required: false);
-            SourceExpression.Validate(libraryrepositoryId, nameof(libraryrepositoryId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
-            SourceExpression.Validate(libraryrepositoryname, nameof(libraryrepositoryname), required: false);
-            SourceExpression.Validate(libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
-            SourceExpression.Validate(librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
-            SourceExpression.Validate(librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
-            SourceExpression.Validate(librarydocumentTypename, nameof(librarydocumentTypename), required: false);
-            SourceExpression.Validate(librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
-            SourceExpression.Validate(libraryname, nameof(libraryname), required: false);
-            SourceExpression.Validate(librarydescription, nameof(librarydescription), required: false);
-            SourceExpression.Validate(libraryocr, nameof(libraryocr), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padocumenttypes/add";
@@ -492,12 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<DocumentType> PadocumenttypesUpdate([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> documentTypedocumentTypeId = null, [WorkflowExpression] Func<string> documentTypename = null, [WorkflowExpression] Func<string> documentTypedescription = null)
         {
-            SourceExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            SourceExpression.Validate(documentTypedocumentTypeId, nameof(documentTypedocumentTypeId), required: false);
-            SourceExpression.Validate(documentTypename, nameof(documentTypename), required: false);
-            SourceExpression.Validate(documentTypedescription, nameof(documentTypedescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padocumenttypes/update";
@@ -541,9 +457,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Library> PalibrariesGet([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(libraryid, nameof(libraryid), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/palibraries/get";
@@ -563,8 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Library[]> PalibrariesList([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/palibraries/list";
@@ -583,9 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Library[]> PalibrariesDocumenttypeList([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/palibraries/documenttype/list";
@@ -605,25 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<Library> PalibrariesUpdate([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
         {
-            SourceExpression.Validate(libraryid, nameof(libraryid), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            SourceExpression.Validate(librarylibraryId, nameof(librarylibraryId), required: false);
-            SourceExpression.Validate(libraryrepositoryId, nameof(libraryrepositoryId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
-            SourceExpression.Validate(libraryrepositoryname, nameof(libraryrepositoryname), required: false);
-            SourceExpression.Validate(libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
-            SourceExpression.Validate(libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
-            SourceExpression.Validate(librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
-            SourceExpression.Validate(librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
-            SourceExpression.Validate(librarydocumentTypename, nameof(librarydocumentTypename), required: false);
-            SourceExpression.Validate(librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
-            SourceExpression.Validate(libraryname, nameof(libraryname), required: false);
-            SourceExpression.Validate(librarydescription, nameof(librarydescription), required: false);
-            SourceExpression.Validate(libraryocr, nameof(libraryocr), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/palibraries/update";
@@ -711,8 +600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<DataType[]> PadatatypesList([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padatatypes/list";
@@ -731,9 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<string> PadocumentsLoadfile([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(documentkey, nameof(documentkey), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padocuments/loadfile";
@@ -753,9 +637,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesGet([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(documentkey, nameof(documentkey), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/papropertyvalues/get";
@@ -775,10 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesUpdate([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<PropertyValue[]> propertyValueArray = null)
         {
-            SourceExpression.Validate(documentkey, nameof(documentkey), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            SourceExpression.Validate(propertyValueArray, nameof(propertyValueArray), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/papropertyvalues/update";
@@ -799,9 +676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
         public IBodyWorkflowAction<DocumentProperty[]> PadocumentpropertiesList([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            SourceExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            SourceExpression.Validate(solutionid, nameof(solutionid), required: false);
-            SourceExpression.Validate(solutionkey, nameof(solutionkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/padocumentproperties-list";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<CurrentTime> GetCurrentTime([WorkflowExpression] Func<string> timeZone)
         {
-            SourceExpression.Validate(timeZone, nameof(timeZone), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Time/current/zone";
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByTimezone([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Time/current/coordinate";
@@ -48,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByIp([WorkflowExpression] Func<string> ipAddress)
         {
-            SourceExpression.Validate(ipAddress, nameof(ipAddress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Time/current/ip";
@@ -78,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<TimeZoneData> GetTimezone([WorkflowExpression] Func<string> timeZone)
         {
-            SourceExpression.Validate(timeZone, nameof(timeZone), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/TimeZone/zone";
@@ -94,8 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<TimeZoneData> GetTimezoneByCoordinate([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/TimeZone/coordinate";
@@ -112,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<TimeZoneData> GetTimezoneByIp([WorkflowExpression] Func<string> ipAddress)
         {
-            SourceExpression.Validate(ipAddress, nameof(ipAddress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/TimeZone/ip";
@@ -128,10 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Conversion> ConvertTime([WorkflowExpression] Func<string> bodyfromTimeZone, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodytoTimeZone, [WorkflowExpression] Func<bodydstAmbiguityInput> bodydstAmbiguity)
         {
-            SourceExpression.Validate(bodyfromTimeZone, nameof(bodyfromTimeZone), required: true);
-            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            SourceExpression.Validate(bodytoTimeZone, nameof(bodytoTimeZone), required: true);
-            SourceExpression.Validate(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Conversion/ConvertTimeZone";
@@ -160,8 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Translation> LocalizeTime([WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodylanguageCode)
         {
-            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            SourceExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Conversion/Translate";
@@ -186,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<DayOfTheWeekResult> ConvertTimeToDay([WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Conversion/DayOfTheWeek/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -201,10 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Calculation> IncrementByTimespan([WorkflowExpression] Func<string> bodytimeZone, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodytimeSpan, [WorkflowExpression] Func<bodydstAmbiguityInput> bodydstAmbiguity)
         {
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
-            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            SourceExpression.Validate(bodytimeSpan, nameof(bodytimeSpan), required: true);
-            SourceExpression.Validate(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Calculation/custom/increment";
@@ -233,10 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Calculation> DecrementByTimespan([WorkflowExpression] Func<string> bodytimeZone, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodytimeSpan, [WorkflowExpression] Func<bodydstAmbiguityInput> bodydstAmbiguity)
         {
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
-            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            SourceExpression.Validate(bodytimeSpan, nameof(bodytimeSpan), required: true);
-            SourceExpression.Validate(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Calculation/custom/decrement";

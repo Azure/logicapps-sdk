@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cioplenu")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> taskDatatitle, [WorkflowExpression] Func<string> taskDatadescription, [WorkflowExpression] Func<int> taskDatapriority)
         {
-            SourceExpression.Validate(taskDatatitle, nameof(taskDatatitle), required: true);
-            SourceExpression.Validate(taskDatadescription, nameof(taskDatadescription), required: true);
-            SourceExpression.Validate(taskDatapriority, nameof(taskDatapriority), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/task";

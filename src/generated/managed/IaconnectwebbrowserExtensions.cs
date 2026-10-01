@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetChromeBrowserVersionFromFileResponse> BrowserGetChromeBrowserVersionFromFile([WorkflowExpression] Func<string> browserGetChromeBrowserVersionFromFileworkflow, [WorkflowExpression] Func<string> browserGetChromeBrowserVersionFromFilechromeBrowserEXE = null)
         {
-            SourceExpression.Validate(browserGetChromeBrowserVersionFromFileworkflow, nameof(browserGetChromeBrowserVersionFromFileworkflow), required: true);
-            SourceExpression.Validate(browserGetChromeBrowserVersionFromFilechromeBrowserEXE, nameof(browserGetChromeBrowserVersionFromFilechromeBrowserEXE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetChromeBrowserVersionFromFile";
@@ -44,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetChromeDriverFolderResponse> BrowserGetChromeDriverFolder([WorkflowExpression] Func<string> browserGetChromeDriverFolderdirectoryPath, [WorkflowExpression] Func<string> browserGetChromeDriverFolderworkflow, [WorkflowExpression] Func<int> browserGetChromeDriverFolderchromeMajorVersion = null, [WorkflowExpression] Func<string> browserGetChromeDriverFolderchromeBrowserEXE = null)
         {
-            SourceExpression.Validate(browserGetChromeDriverFolderdirectoryPath, nameof(browserGetChromeDriverFolderdirectoryPath), required: true);
-            SourceExpression.Validate(browserGetChromeDriverFolderworkflow, nameof(browserGetChromeDriverFolderworkflow), required: true);
-            SourceExpression.Validate(browserGetChromeDriverFolderchromeMajorVersion, nameof(browserGetChromeDriverFolderchromeMajorVersion), required: false);
-            SourceExpression.Validate(browserGetChromeDriverFolderchromeBrowserEXE, nameof(browserGetChromeDriverFolderchromeBrowserEXE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetChromeDriverFolder";
@@ -84,14 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserDownloadSuitableChromeDriverFromInternetResponse> BrowserDownloadSuitableChromeDriverFromInternet([WorkflowExpression] Func<string> browserDownloadSuitableChromeDriverFromInternetchromeDriverDownloadParentFolder, [WorkflowExpression] Func<string> browserDownloadSuitableChromeDriverFromInternetworkflow, [WorkflowExpression] Func<string> browserDownloadSuitableChromeDriverFromInternetchromeBrowserEXE = null, [WorkflowExpression] Func<bool> browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex = null, [WorkflowExpression] Func<string> browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL = null, [WorkflowExpression] Func<bool> browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex = null, [WorkflowExpression] Func<string> browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL = null, [WorkflowExpression] Func<bool> browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver = null)
         {
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetchromeDriverDownloadParentFolder, nameof(browserDownloadSuitableChromeDriverFromInternetchromeDriverDownloadParentFolder), required: true);
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetworkflow, nameof(browserDownloadSuitableChromeDriverFromInternetworkflow), required: true);
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetchromeBrowserEXE, nameof(browserDownloadSuitableChromeDriverFromInternetchromeBrowserEXE), required: false);
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex, nameof(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex), required: false);
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL, nameof(browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL), required: false);
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex, nameof(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex), required: false);
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL, nameof(browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL), required: false);
-            SourceExpression.Validate(browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver, nameof(browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/BrowserDownloadSuitableChromeDriverFromInternet";
@@ -202,9 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserIsSuitableChromeDriverAvailableResponse> BrowserIsSuitableChromeDriverAvailable([WorkflowExpression] Func<string> browserIsSuitableChromeDriverAvailableworkflow, [WorkflowExpression] Func<string> browserIsSuitableChromeDriverAvailablechromeDriverFolder = null, [WorkflowExpression] Func<string> browserIsSuitableChromeDriverAvailablechromeBrowserEXE = null)
         {
-            SourceExpression.Validate(browserIsSuitableChromeDriverAvailableworkflow, nameof(browserIsSuitableChromeDriverAvailableworkflow), required: true);
-            SourceExpression.Validate(browserIsSuitableChromeDriverAvailablechromeDriverFolder, nameof(browserIsSuitableChromeDriverAvailablechromeDriverFolder), required: false);
-            SourceExpression.Validate(browserIsSuitableChromeDriverAvailablechromeBrowserEXE, nameof(browserIsSuitableChromeDriverAvailablechromeBrowserEXE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/IsSuitableChromeDriverAvailable";
@@ -239,11 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserUploadNewChromeDriver([WorkflowExpression] Func<string> browserUploadNewChromeDriverlocalChromeDriverFilePath, [WorkflowExpression] Func<string> browserUploadNewChromeDriverworkflow, [WorkflowExpression] Func<bool> browserUploadNewChromeDrivercompress = null, [WorkflowExpression] Func<int> browserUploadNewChromeDriverchromeBrowserMajorVersion = null, [WorkflowExpression] Func<string> browserUploadNewChromeDriverchromeDriverRootSaveFolder = null)
         {
-            SourceExpression.Validate(browserUploadNewChromeDriverlocalChromeDriverFilePath, nameof(browserUploadNewChromeDriverlocalChromeDriverFilePath), required: true);
-            SourceExpression.Validate(browserUploadNewChromeDriverworkflow, nameof(browserUploadNewChromeDriverworkflow), required: true);
-            SourceExpression.Validate(browserUploadNewChromeDrivercompress, nameof(browserUploadNewChromeDrivercompress), required: false);
-            SourceExpression.Validate(browserUploadNewChromeDriverchromeBrowserMajorVersion, nameof(browserUploadNewChromeDriverchromeBrowserMajorVersion), required: false);
-            SourceExpression.Validate(browserUploadNewChromeDriverchromeDriverRootSaveFolder, nameof(browserUploadNewChromeDriverchromeDriverRootSaveFolder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/UploadNewChromeDriver";
@@ -296,19 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserOpenChromeResponse> BrowserOpenChrome([WorkflowExpression] Func<string> browserOpenChromeworkflow, [WorkflowExpression] Func<string> browserOpenChromechromeDriverFolder = null, [WorkflowExpression] Func<bool> browserOpenChromekillExistingChromeDriver = null, [WorkflowExpression] Func<string> browserOpenChromeuserDataDir = null, [WorkflowExpression] Func<bool> browserOpenChromeprintToDefaultPrinter = null, [WorkflowExpression] Func<string> browserOpenChromedefaultDownloadDirectory = null, [WorkflowExpression] Func<bool> browserOpenChromedownloadPDFInsteadOfOpening = null, [WorkflowExpression] Func<string> browserOpenChromechromeDriverLogFilename = null, [WorkflowExpression] Func<string> browserOpenChromelocalChromeDriverFolder = null, [WorkflowExpression] Func<string> browserOpenChromechromeBrowserEXE = null, [WorkflowExpression] Func<bool> browserOpenChromeignoreCertificateErrors = null, [WorkflowExpression] Func<string> browserOpenChromeadditionalArguments = null, [WorkflowExpression] Func<bool> browserOpenChromedoNothingIfChromeInstanceAlreadyOpen = null)
         {
-            SourceExpression.Validate(browserOpenChromeworkflow, nameof(browserOpenChromeworkflow), required: true);
-            SourceExpression.Validate(browserOpenChromechromeDriverFolder, nameof(browserOpenChromechromeDriverFolder), required: false);
-            SourceExpression.Validate(browserOpenChromekillExistingChromeDriver, nameof(browserOpenChromekillExistingChromeDriver), required: false);
-            SourceExpression.Validate(browserOpenChromeuserDataDir, nameof(browserOpenChromeuserDataDir), required: false);
-            SourceExpression.Validate(browserOpenChromeprintToDefaultPrinter, nameof(browserOpenChromeprintToDefaultPrinter), required: false);
-            SourceExpression.Validate(browserOpenChromedefaultDownloadDirectory, nameof(browserOpenChromedefaultDownloadDirectory), required: false);
-            SourceExpression.Validate(browserOpenChromedownloadPDFInsteadOfOpening, nameof(browserOpenChromedownloadPDFInsteadOfOpening), required: false);
-            SourceExpression.Validate(browserOpenChromechromeDriverLogFilename, nameof(browserOpenChromechromeDriverLogFilename), required: false);
-            SourceExpression.Validate(browserOpenChromelocalChromeDriverFolder, nameof(browserOpenChromelocalChromeDriverFolder), required: false);
-            SourceExpression.Validate(browserOpenChromechromeBrowserEXE, nameof(browserOpenChromechromeBrowserEXE), required: false);
-            SourceExpression.Validate(browserOpenChromeignoreCertificateErrors, nameof(browserOpenChromeignoreCertificateErrors), required: false);
-            SourceExpression.Validate(browserOpenChromeadditionalArguments, nameof(browserOpenChromeadditionalArguments), required: false);
-            SourceExpression.Validate(browserOpenChromedoNothingIfChromeInstanceAlreadyOpen, nameof(browserOpenChromedoNothingIfChromeInstanceAlreadyOpen), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/OpenChrome";
@@ -453,9 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserCloseChrome([WorkflowExpression] Func<string> browserCloseChromeworkflow, [WorkflowExpression] Func<bool> browserCloseChromepurgeDynamicUserDataDir = null, [WorkflowExpression] Func<bool> browserCloseChromepurgeStaticUserDataDir = null)
         {
-            SourceExpression.Validate(browserCloseChromeworkflow, nameof(browserCloseChromeworkflow), required: true);
-            SourceExpression.Validate(browserCloseChromepurgeDynamicUserDataDir, nameof(browserCloseChromepurgeDynamicUserDataDir), required: false);
-            SourceExpression.Validate(browserCloseChromepurgeStaticUserDataDir, nameof(browserCloseChromepurgeStaticUserDataDir), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CloseChrome";
@@ -510,16 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserOpenInternetExplorer([WorkflowExpression] Func<string> browserOpenInternetExplorerworkflow, [WorkflowExpression] Func<string> browserOpenInternetExploreriEDriverFolder = null, [WorkflowExpression] Func<bool> browserOpenInternetExplorerkillExistingIEDriver = null, [WorkflowExpression] Func<bool> browserOpenInternetExplorerkillExistingIE = null, [WorkflowExpression] Func<bool> browserOpenInternetExplorercleanSession = null, [WorkflowExpression] Func<bool> browserOpenInternetExplorerenableNativeEvents = null, [WorkflowExpression] Func<string> browserOpenInternetExplorerwebDriverLogFile = null, [WorkflowExpression] Func<string> browserOpenInternetExplorerwebDriverLogLevel = null, [WorkflowExpression] Func<bool> browserOpenInternetExplorerdisableIEFirstRunCustomise = null, [WorkflowExpression] Func<string> browserOpenInternetExploreradditionalArguments = null)
         {
-            SourceExpression.Validate(browserOpenInternetExplorerworkflow, nameof(browserOpenInternetExplorerworkflow), required: true);
-            SourceExpression.Validate(browserOpenInternetExploreriEDriverFolder, nameof(browserOpenInternetExploreriEDriverFolder), required: false);
-            SourceExpression.Validate(browserOpenInternetExplorerkillExistingIEDriver, nameof(browserOpenInternetExplorerkillExistingIEDriver), required: false);
-            SourceExpression.Validate(browserOpenInternetExplorerkillExistingIE, nameof(browserOpenInternetExplorerkillExistingIE), required: false);
-            SourceExpression.Validate(browserOpenInternetExplorercleanSession, nameof(browserOpenInternetExplorercleanSession), required: false);
-            SourceExpression.Validate(browserOpenInternetExplorerenableNativeEvents, nameof(browserOpenInternetExplorerenableNativeEvents), required: false);
-            SourceExpression.Validate(browserOpenInternetExplorerwebDriverLogFile, nameof(browserOpenInternetExplorerwebDriverLogFile), required: false);
-            SourceExpression.Validate(browserOpenInternetExplorerwebDriverLogLevel, nameof(browserOpenInternetExplorerwebDriverLogLevel), required: false);
-            SourceExpression.Validate(browserOpenInternetExplorerdisableIEFirstRunCustomise, nameof(browserOpenInternetExplorerdisableIEFirstRunCustomise), required: false);
-            SourceExpression.Validate(browserOpenInternetExploreradditionalArguments, nameof(browserOpenInternetExploreradditionalArguments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/OpenInternetExplorer";
@@ -646,8 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserCloseInternetExplorer([WorkflowExpression] Func<string> browserCloseInternetExplorerworkflow, [WorkflowExpression] Func<bool> browserCloseInternetExplorerunloadIEDriver = null)
         {
-            SourceExpression.Validate(browserCloseInternetExplorerworkflow, nameof(browserCloseInternetExplorerworkflow), required: true);
-            SourceExpression.Validate(browserCloseInternetExplorerunloadIEDriver, nameof(browserCloseInternetExplorerunloadIEDriver), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CloseInternetExplorer";
@@ -686,10 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetChromiumEdgeDriverFolderResponse> BrowserGetChromiumEdgeDriverFolder([WorkflowExpression] Func<string> browserGetChromiumEdgeDriverFolderdirectoryPath, [WorkflowExpression] Func<string> browserGetChromiumEdgeDriverFolderworkflow, [WorkflowExpression] Func<int> browserGetChromiumEdgeDriverFolderchromiumEdgeMajorVersion = null, [WorkflowExpression] Func<string> browserGetChromiumEdgeDriverFolderchromiumEdgeBrowserEXE = null)
         {
-            SourceExpression.Validate(browserGetChromiumEdgeDriverFolderdirectoryPath, nameof(browserGetChromiumEdgeDriverFolderdirectoryPath), required: true);
-            SourceExpression.Validate(browserGetChromiumEdgeDriverFolderworkflow, nameof(browserGetChromiumEdgeDriverFolderworkflow), required: true);
-            SourceExpression.Validate(browserGetChromiumEdgeDriverFolderchromiumEdgeMajorVersion, nameof(browserGetChromiumEdgeDriverFolderchromiumEdgeMajorVersion), required: false);
-            SourceExpression.Validate(browserGetChromiumEdgeDriverFolderchromiumEdgeBrowserEXE, nameof(browserGetChromiumEdgeDriverFolderchromiumEdgeBrowserEXE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetChromiumEdgeDriverFolder";
@@ -726,8 +672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetChromiumEdgeBrowserVersionFromFileResponse> BrowserGetChromiumEdgeBrowserVersionFromFile([WorkflowExpression] Func<string> browserGetChromiumEdgeBrowserVersionFromFileworkflow, [WorkflowExpression] Func<string> browserGetChromiumEdgeBrowserVersionFromFilechromiumEdgeBrowserEXE = null)
         {
-            SourceExpression.Validate(browserGetChromiumEdgeBrowserVersionFromFileworkflow, nameof(browserGetChromiumEdgeBrowserVersionFromFileworkflow), required: true);
-            SourceExpression.Validate(browserGetChromiumEdgeBrowserVersionFromFilechromiumEdgeBrowserEXE, nameof(browserGetChromiumEdgeBrowserVersionFromFilechromiumEdgeBrowserEXE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetChromiumEdgeBrowserVersionFromFile";
@@ -756,10 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserDownloadSuitableChromiumEdgeDriverFromInternetResponse> BrowserDownloadSuitableChromiumEdgeDriverFromInternet([WorkflowExpression] Func<string> browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverDownloadParentFolder, [WorkflowExpression] Func<string> browserDownloadSuitableChromiumEdgeDriverFromInternetworkflow, [WorkflowExpression] Func<string> browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeBrowserEXE = null, [WorkflowExpression] Func<string> browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL = null)
         {
-            SourceExpression.Validate(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverDownloadParentFolder, nameof(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverDownloadParentFolder), required: true);
-            SourceExpression.Validate(browserDownloadSuitableChromiumEdgeDriverFromInternetworkflow, nameof(browserDownloadSuitableChromiumEdgeDriverFromInternetworkflow), required: true);
-            SourceExpression.Validate(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeBrowserEXE, nameof(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeBrowserEXE), required: false);
-            SourceExpression.Validate(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL, nameof(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/BrowserDownloadSuitableChromiumEdgeDriverFromInternet";
@@ -806,9 +746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserIsSuitableChromiumEdgeDriverAvailableResponse> BrowserIsSuitableChromiumEdgeDriverAvailable([WorkflowExpression] Func<string> browserIsSuitableChromiumEdgeDriverAvailableworkflow, [WorkflowExpression] Func<string> browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeDriverFolder = null, [WorkflowExpression] Func<string> browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeBrowserEXE = null)
         {
-            SourceExpression.Validate(browserIsSuitableChromiumEdgeDriverAvailableworkflow, nameof(browserIsSuitableChromiumEdgeDriverAvailableworkflow), required: true);
-            SourceExpression.Validate(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeDriverFolder, nameof(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeDriverFolder), required: false);
-            SourceExpression.Validate(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeBrowserEXE, nameof(browserIsSuitableChromiumEdgeDriverAvailablechromiumEdgeBrowserEXE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/IsSuitableChromiumEdgeDriverAvailable";
@@ -843,11 +780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserUploadNewChromiumEdgeDriver([WorkflowExpression] Func<string> browserUploadNewChromiumEdgeDriverlocalChromiumEdgeDriverFilePath, [WorkflowExpression] Func<string> browserUploadNewChromiumEdgeDriverworkflow, [WorkflowExpression] Func<bool> browserUploadNewChromiumEdgeDrivercompress = null, [WorkflowExpression] Func<int> browserUploadNewChromiumEdgeDriverchromiumEdgeBrowserMajorVersion = null, [WorkflowExpression] Func<string> browserUploadNewChromiumEdgeDriverchromiumEdgeDriverRootSaveFolder = null)
         {
-            SourceExpression.Validate(browserUploadNewChromiumEdgeDriverlocalChromiumEdgeDriverFilePath, nameof(browserUploadNewChromiumEdgeDriverlocalChromiumEdgeDriverFilePath), required: true);
-            SourceExpression.Validate(browserUploadNewChromiumEdgeDriverworkflow, nameof(browserUploadNewChromiumEdgeDriverworkflow), required: true);
-            SourceExpression.Validate(browserUploadNewChromiumEdgeDrivercompress, nameof(browserUploadNewChromiumEdgeDrivercompress), required: false);
-            SourceExpression.Validate(browserUploadNewChromiumEdgeDriverchromiumEdgeBrowserMajorVersion, nameof(browserUploadNewChromiumEdgeDriverchromiumEdgeBrowserMajorVersion), required: false);
-            SourceExpression.Validate(browserUploadNewChromiumEdgeDriverchromiumEdgeDriverRootSaveFolder, nameof(browserUploadNewChromiumEdgeDriverchromiumEdgeDriverRootSaveFolder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/UploadNewChromiumEdgeDriver";
@@ -900,20 +832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserOpenChromiumEdgeResponse> BrowserOpenChromiumEdge([WorkflowExpression] Func<string> browserOpenChromiumEdgeworkflow, [WorkflowExpression] Func<string> browserOpenChromiumEdgechromiumEdgeDriverFolder = null, [WorkflowExpression] Func<string> browserOpenChromiumEdgeuserDataDir = null, [WorkflowExpression] Func<bool> browserOpenChromiumEdgekillExistingChromiumEdgeDriver = null, [WorkflowExpression] Func<bool> browserOpenChromiumEdgeprintToDefaultPrinter = null, [WorkflowExpression] Func<string> browserOpenChromiumEdgedefaultDownloadDirectory = null, [WorkflowExpression] Func<bool> browserOpenChromiumEdgedownloadPDFInsteadOfOpening = null, [WorkflowExpression] Func<string> browserOpenChromiumEdgechromiumEdgeDriverLogFilename = null, [WorkflowExpression] Func<string> browserOpenChromiumEdgelocalChromiumEdgeDriverFolder = null, [WorkflowExpression] Func<bool> browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage = null, [WorkflowExpression] Func<string> browserOpenChromiumEdgechromiumEdgeBrowserEXE = null, [WorkflowExpression] Func<bool> browserOpenChromiumEdgeignoreCertificateErrors = null, [WorkflowExpression] Func<string> browserOpenChromiumEdgeadditionalArguments = null, [WorkflowExpression] Func<bool> browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen = null)
         {
-            SourceExpression.Validate(browserOpenChromiumEdgeworkflow, nameof(browserOpenChromiumEdgeworkflow), required: true);
-            SourceExpression.Validate(browserOpenChromiumEdgechromiumEdgeDriverFolder, nameof(browserOpenChromiumEdgechromiumEdgeDriverFolder), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgeuserDataDir, nameof(browserOpenChromiumEdgeuserDataDir), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgekillExistingChromiumEdgeDriver, nameof(browserOpenChromiumEdgekillExistingChromiumEdgeDriver), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgeprintToDefaultPrinter, nameof(browserOpenChromiumEdgeprintToDefaultPrinter), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgedefaultDownloadDirectory, nameof(browserOpenChromiumEdgedefaultDownloadDirectory), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgedownloadPDFInsteadOfOpening, nameof(browserOpenChromiumEdgedownloadPDFInsteadOfOpening), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgechromiumEdgeDriverLogFilename, nameof(browserOpenChromiumEdgechromiumEdgeDriverLogFilename), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgelocalChromiumEdgeDriverFolder, nameof(browserOpenChromiumEdgelocalChromiumEdgeDriverFolder), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage, nameof(browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgechromiumEdgeBrowserEXE, nameof(browserOpenChromiumEdgechromiumEdgeBrowserEXE), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgeignoreCertificateErrors, nameof(browserOpenChromiumEdgeignoreCertificateErrors), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgeadditionalArguments, nameof(browserOpenChromiumEdgeadditionalArguments), required: false);
-            SourceExpression.Validate(browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen, nameof(browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/OpenChromiumEdge";
@@ -1074,9 +992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserCloseChromiumEdge([WorkflowExpression] Func<string> browserCloseChromiumEdgeworkflow, [WorkflowExpression] Func<bool> browserCloseChromiumEdgepurgeDynamicUserDataDir = null, [WorkflowExpression] Func<bool> browserCloseChromiumEdgepurgeStaticUserDataDir = null)
         {
-            SourceExpression.Validate(browserCloseChromiumEdgeworkflow, nameof(browserCloseChromiumEdgeworkflow), required: true);
-            SourceExpression.Validate(browserCloseChromiumEdgepurgeDynamicUserDataDir, nameof(browserCloseChromiumEdgepurgeDynamicUserDataDir), required: false);
-            SourceExpression.Validate(browserCloseChromiumEdgepurgeStaticUserDataDir, nameof(browserCloseChromiumEdgepurgeStaticUserDataDir), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CloseChromiumEdge";
@@ -1131,7 +1046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserMaximise([WorkflowExpression] Func<string> browserMaximiseworkflow)
         {
-            SourceExpression.Validate(browserMaximiseworkflow, nameof(browserMaximiseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/MaximiseBrowser";
@@ -1154,7 +1068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserMinimise([WorkflowExpression] Func<string> browserMinimiseworkflow)
         {
-            SourceExpression.Validate(browserMinimiseworkflow, nameof(browserMinimiseworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/MinimiseBrowser";
@@ -1177,7 +1090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserFullscreen([WorkflowExpression] Func<string> browserFullscreenworkflow)
         {
-            SourceExpression.Validate(browserFullscreenworkflow, nameof(browserFullscreenworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/FullscreenBrowser";
@@ -1200,11 +1112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserNormaliseBrowser([WorkflowExpression] Func<string> browserNormaliseBrowserworkflow, [WorkflowExpression] Func<int> browserNormaliseBrowserx = null, [WorkflowExpression] Func<int> browserNormaliseBrowsery = null, [WorkflowExpression] Func<int> browserNormaliseBrowserwidth = null, [WorkflowExpression] Func<int> browserNormaliseBrowserheight = null)
         {
-            SourceExpression.Validate(browserNormaliseBrowserworkflow, nameof(browserNormaliseBrowserworkflow), required: true);
-            SourceExpression.Validate(browserNormaliseBrowserx, nameof(browserNormaliseBrowserx), required: false);
-            SourceExpression.Validate(browserNormaliseBrowsery, nameof(browserNormaliseBrowsery), required: false);
-            SourceExpression.Validate(browserNormaliseBrowserwidth, nameof(browserNormaliseBrowserwidth), required: false);
-            SourceExpression.Validate(browserNormaliseBrowserheight, nameof(browserNormaliseBrowserheight), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/NormaliseBrowser";
@@ -1291,9 +1198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSetWindowSize([WorkflowExpression] Func<int> browserSetWindowSizewidth, [WorkflowExpression] Func<int> browserSetWindowSizeheight, [WorkflowExpression] Func<string> browserSetWindowSizeworkflow)
         {
-            SourceExpression.Validate(browserSetWindowSizewidth, nameof(browserSetWindowSizewidth), required: true);
-            SourceExpression.Validate(browserSetWindowSizeheight, nameof(browserSetWindowSizeheight), required: true);
-            SourceExpression.Validate(browserSetWindowSizeworkflow, nameof(browserSetWindowSizeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SetBrowserWindowSize";
@@ -1320,9 +1224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSetWindowPosition([WorkflowExpression] Func<int> browserSetWindowPositionx, [WorkflowExpression] Func<int> browserSetWindowPositiony, [WorkflowExpression] Func<string> browserSetWindowPositionworkflow)
         {
-            SourceExpression.Validate(browserSetWindowPositionx, nameof(browserSetWindowPositionx), required: true);
-            SourceExpression.Validate(browserSetWindowPositiony, nameof(browserSetWindowPositiony), required: true);
-            SourceExpression.Validate(browserSetWindowPositionworkflow, nameof(browserSetWindowPositionworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SetBrowserWindowPosition";
@@ -1349,9 +1250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSetTimeouts([WorkflowExpression] Func<string> browserSetTimeoutsworkflow, [WorkflowExpression] Func<double> browserSetTimeoutselementWaitTimeoutSeconds = null, [WorkflowExpression] Func<double> browserSetTimeoutspageLoadTimeoutSeconds = null)
         {
-            SourceExpression.Validate(browserSetTimeoutsworkflow, nameof(browserSetTimeoutsworkflow), required: true);
-            SourceExpression.Validate(browserSetTimeoutselementWaitTimeoutSeconds, nameof(browserSetTimeoutselementWaitTimeoutSeconds), required: false);
-            SourceExpression.Validate(browserSetTimeoutspageLoadTimeoutSeconds, nameof(browserSetTimeoutspageLoadTimeoutSeconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SetTimeouts";
@@ -1386,8 +1284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserNavigateToURLResponse> BrowserNavigateToURL([WorkflowExpression] Func<string> browserNavigateToURLuRL, [WorkflowExpression] Func<string> browserNavigateToURLworkflow)
         {
-            SourceExpression.Validate(browserNavigateToURLuRL, nameof(browserNavigateToURLuRL), required: true);
-            SourceExpression.Validate(browserNavigateToURLworkflow, nameof(browserNavigateToURLworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/NavigateToURL";
@@ -1412,7 +1308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserRefreshPage([WorkflowExpression] Func<string> browserRefreshPageworkflow)
         {
-            SourceExpression.Validate(browserRefreshPageworkflow, nameof(browserRefreshPageworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/RefreshPage";
@@ -1435,7 +1330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserResetAllElementHandles([WorkflowExpression] Func<string> browserResetAllElementHandlesworkflow)
         {
-            SourceExpression.Validate(browserResetAllElementHandlesworkflow, nameof(browserResetAllElementHandlesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ResetAllElementHandles";
@@ -1458,26 +1352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserDoesElementExistResponse> BrowserDoesElementExist([WorkflowExpression] Func<string> browserDoesElementExistworkflow, [WorkflowExpression] Func<double> browserDoesElementExistparentElementHandle = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementHandle = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementName = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementId = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementTagName = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementXPath = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementClassName = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementIndex = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementMatchText = null, [WorkflowExpression] Func<string> browserDoesElementExistsearchElementType = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserDoesElementExistsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserDoesElementExistworkflow, nameof(browserDoesElementExistworkflow), required: true);
-            SourceExpression.Validate(browserDoesElementExistparentElementHandle, nameof(browserDoesElementExistparentElementHandle), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementHandle, nameof(browserDoesElementExistsearchElementHandle), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementName, nameof(browserDoesElementExistsearchElementName), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementId, nameof(browserDoesElementExistsearchElementId), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementTagName, nameof(browserDoesElementExistsearchElementTagName), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementXPath, nameof(browserDoesElementExistsearchElementXPath), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementClassName, nameof(browserDoesElementExistsearchElementClassName), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementCSSSelector, nameof(browserDoesElementExistsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementIndex, nameof(browserDoesElementExistsearchElementIndex), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementMatchValue, nameof(browserDoesElementExistsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementMatchText, nameof(browserDoesElementExistsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementType, nameof(browserDoesElementExistsearchElementType), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementMinimumWidth, nameof(browserDoesElementExistsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementMinimumHeight, nameof(browserDoesElementExistsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementBoundingBoxLeft, nameof(browserDoesElementExistsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementBoundingBoxRight, nameof(browserDoesElementExistsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementBoundingBoxTop, nameof(browserDoesElementExistsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserDoesElementExistsearchElementBoundingBoxBottom, nameof(browserDoesElementExistsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/DoesElementExist";
@@ -1694,26 +1568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserCreateHandleToElementResponse> BrowserCreateHandleToElement([WorkflowExpression] Func<string> browserCreateHandleToElementworkflow, [WorkflowExpression] Func<double> browserCreateHandleToElementparentElementHandle = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementName = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementId = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserCreateHandleToElementsearchElementType = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserCreateHandleToElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserCreateHandleToElementworkflow, nameof(browserCreateHandleToElementworkflow), required: true);
-            SourceExpression.Validate(browserCreateHandleToElementparentElementHandle, nameof(browserCreateHandleToElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementHandle, nameof(browserCreateHandleToElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementName, nameof(browserCreateHandleToElementsearchElementName), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementId, nameof(browserCreateHandleToElementsearchElementId), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementTagName, nameof(browserCreateHandleToElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementXPath, nameof(browserCreateHandleToElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementClassName, nameof(browserCreateHandleToElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementCSSSelector, nameof(browserCreateHandleToElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementIndex, nameof(browserCreateHandleToElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementMatchValue, nameof(browserCreateHandleToElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementMatchText, nameof(browserCreateHandleToElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementType, nameof(browserCreateHandleToElementsearchElementType), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementMinimumWidth, nameof(browserCreateHandleToElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementMinimumHeight, nameof(browserCreateHandleToElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementBoundingBoxLeft, nameof(browserCreateHandleToElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementBoundingBoxRight, nameof(browserCreateHandleToElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementBoundingBoxTop, nameof(browserCreateHandleToElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementsearchElementBoundingBoxBottom, nameof(browserCreateHandleToElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CreateHandleToElement";
@@ -1930,26 +1784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserCreateHandleToParentElementResponse> BrowserCreateHandleToParentElement([WorkflowExpression] Func<string> browserCreateHandleToParentElementworkflow, [WorkflowExpression] Func<double> browserCreateHandleToParentElementparentElementHandle = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementName = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementId = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserCreateHandleToParentElementsearchElementType = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserCreateHandleToParentElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserCreateHandleToParentElementworkflow, nameof(browserCreateHandleToParentElementworkflow), required: true);
-            SourceExpression.Validate(browserCreateHandleToParentElementparentElementHandle, nameof(browserCreateHandleToParentElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementHandle, nameof(browserCreateHandleToParentElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementName, nameof(browserCreateHandleToParentElementsearchElementName), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementId, nameof(browserCreateHandleToParentElementsearchElementId), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementTagName, nameof(browserCreateHandleToParentElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementXPath, nameof(browserCreateHandleToParentElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementClassName, nameof(browserCreateHandleToParentElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementCSSSelector, nameof(browserCreateHandleToParentElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementIndex, nameof(browserCreateHandleToParentElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementMatchValue, nameof(browserCreateHandleToParentElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementMatchText, nameof(browserCreateHandleToParentElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementType, nameof(browserCreateHandleToParentElementsearchElementType), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementMinimumWidth, nameof(browserCreateHandleToParentElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementMinimumHeight, nameof(browserCreateHandleToParentElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementBoundingBoxLeft, nameof(browserCreateHandleToParentElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementBoundingBoxRight, nameof(browserCreateHandleToParentElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementBoundingBoxTop, nameof(browserCreateHandleToParentElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementsearchElementBoundingBoxBottom, nameof(browserCreateHandleToParentElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CreateHandleToParentElement";
@@ -2166,28 +2000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetElementPropertiesResponse> BrowserGetElementProperties([WorkflowExpression] Func<string> browserGetElementPropertiesworkflow, [WorkflowExpression] Func<double> browserGetElementPropertiesparentElementHandle = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementHandle = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementName = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementId = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementTagName = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementXPath = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementIndex = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetElementPropertiessearchElementType = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetElementPropertiessearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserGetElementPropertiesgetHTMLCode = null, [WorkflowExpression] Func<bool> browserGetElementPropertiesreturnElementHandle = null)
         {
-            SourceExpression.Validate(browserGetElementPropertiesworkflow, nameof(browserGetElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(browserGetElementPropertiesparentElementHandle, nameof(browserGetElementPropertiesparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementHandle, nameof(browserGetElementPropertiessearchElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementName, nameof(browserGetElementPropertiessearchElementName), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementId, nameof(browserGetElementPropertiessearchElementId), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementTagName, nameof(browserGetElementPropertiessearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementXPath, nameof(browserGetElementPropertiessearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementClassName, nameof(browserGetElementPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementCSSSelector, nameof(browserGetElementPropertiessearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementIndex, nameof(browserGetElementPropertiessearchElementIndex), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementMatchValue, nameof(browserGetElementPropertiessearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementMatchText, nameof(browserGetElementPropertiessearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementType, nameof(browserGetElementPropertiessearchElementType), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementMinimumWidth, nameof(browserGetElementPropertiessearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementMinimumHeight, nameof(browserGetElementPropertiessearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementBoundingBoxLeft, nameof(browserGetElementPropertiessearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementBoundingBoxRight, nameof(browserGetElementPropertiessearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementBoundingBoxTop, nameof(browserGetElementPropertiessearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetElementPropertiessearchElementBoundingBoxBottom, nameof(browserGetElementPropertiessearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserGetElementPropertiesgetHTMLCode, nameof(browserGetElementPropertiesgetHTMLCode), required: false);
-            SourceExpression.Validate(browserGetElementPropertiesreturnElementHandle, nameof(browserGetElementPropertiesreturnElementHandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetElementProperties";
@@ -2436,37 +2248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetMultipleElementPropertiesResponse> BrowserGetMultipleElementProperties([WorkflowExpression] Func<string> browserGetMultipleElementPropertiesworkflow, [WorkflowExpression] Func<double> browserGetMultipleElementPropertiesparentElementHandle = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementName = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementId = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementTagName = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementXPath = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementCSSSelector = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetMultipleElementPropertiessearchElementType = null, [WorkflowExpression] Func<double> browserGetMultipleElementPropertiessearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetMultipleElementPropertiessearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetMultipleElementPropertiessearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetMultipleElementPropertiessearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetMultipleElementPropertiessearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetMultipleElementPropertiessearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesgetHTMLCode = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiescreateHandle = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesreturnValue = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesreturnText = null, [WorkflowExpression] Func<int> browserGetMultipleElementPropertiesmaxValueLength = null, [WorkflowExpression] Func<int> browserGetMultipleElementPropertiesmaxTextLength = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesreturnIsDisplayed = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesreturnCoordinates = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesreturnDimensions = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesreturnChildElementCount = null, [WorkflowExpression] Func<bool> browserGetMultipleElementPropertiesreturnParentTag = null, [WorkflowExpression] Func<int> browserGetMultipleElementPropertiesfirstItemToReturn = null, [WorkflowExpression] Func<int> browserGetMultipleElementPropertiesmaxItemsToReturn = null)
         {
-            SourceExpression.Validate(browserGetMultipleElementPropertiesworkflow, nameof(browserGetMultipleElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesparentElementHandle, nameof(browserGetMultipleElementPropertiesparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementName, nameof(browserGetMultipleElementPropertiessearchElementName), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementId, nameof(browserGetMultipleElementPropertiessearchElementId), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementTagName, nameof(browserGetMultipleElementPropertiessearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementXPath, nameof(browserGetMultipleElementPropertiessearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementClassName, nameof(browserGetMultipleElementPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementCSSSelector, nameof(browserGetMultipleElementPropertiessearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementMatchValue, nameof(browserGetMultipleElementPropertiessearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementMatchText, nameof(browserGetMultipleElementPropertiessearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementType, nameof(browserGetMultipleElementPropertiessearchElementType), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementMinimumWidth, nameof(browserGetMultipleElementPropertiessearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementMinimumHeight, nameof(browserGetMultipleElementPropertiessearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementBoundingBoxLeft, nameof(browserGetMultipleElementPropertiessearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementBoundingBoxRight, nameof(browserGetMultipleElementPropertiessearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementBoundingBoxTop, nameof(browserGetMultipleElementPropertiessearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiessearchElementBoundingBoxBottom, nameof(browserGetMultipleElementPropertiessearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesgetHTMLCode, nameof(browserGetMultipleElementPropertiesgetHTMLCode), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiescreateHandle, nameof(browserGetMultipleElementPropertiescreateHandle), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesreturnValue, nameof(browserGetMultipleElementPropertiesreturnValue), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesreturnText, nameof(browserGetMultipleElementPropertiesreturnText), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesmaxValueLength, nameof(browserGetMultipleElementPropertiesmaxValueLength), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesmaxTextLength, nameof(browserGetMultipleElementPropertiesmaxTextLength), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesreturnIsDisplayed, nameof(browserGetMultipleElementPropertiesreturnIsDisplayed), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesreturnCoordinates, nameof(browserGetMultipleElementPropertiesreturnCoordinates), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesreturnDimensions, nameof(browserGetMultipleElementPropertiesreturnDimensions), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesreturnChildElementCount, nameof(browserGetMultipleElementPropertiesreturnChildElementCount), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesreturnParentTag, nameof(browserGetMultipleElementPropertiesreturnParentTag), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesfirstItemToReturn, nameof(browserGetMultipleElementPropertiesfirstItemToReturn), required: false);
-            SourceExpression.Validate(browserGetMultipleElementPropertiesmaxItemsToReturn, nameof(browserGetMultipleElementPropertiesmaxItemsToReturn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetMultipleElementProperties";
@@ -2869,28 +2650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetElementParentPropertiesResponse> BrowserGetElementParentProperties([WorkflowExpression] Func<string> browserGetElementParentPropertiesworkflow, [WorkflowExpression] Func<double> browserGetElementParentPropertiesparentElementHandle = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementHandle = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementName = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementId = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementTagName = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementXPath = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementIndex = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetElementParentPropertiessearchElementType = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetElementParentPropertiessearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserGetElementParentPropertiesgetHTMLCode = null, [WorkflowExpression] Func<bool> browserGetElementParentPropertiescreateHandle = null)
         {
-            SourceExpression.Validate(browserGetElementParentPropertiesworkflow, nameof(browserGetElementParentPropertiesworkflow), required: true);
-            SourceExpression.Validate(browserGetElementParentPropertiesparentElementHandle, nameof(browserGetElementParentPropertiesparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementHandle, nameof(browserGetElementParentPropertiessearchElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementName, nameof(browserGetElementParentPropertiessearchElementName), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementId, nameof(browserGetElementParentPropertiessearchElementId), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementTagName, nameof(browserGetElementParentPropertiessearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementXPath, nameof(browserGetElementParentPropertiessearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementClassName, nameof(browserGetElementParentPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementCSSSelector, nameof(browserGetElementParentPropertiessearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementIndex, nameof(browserGetElementParentPropertiessearchElementIndex), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementMatchValue, nameof(browserGetElementParentPropertiessearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementMatchText, nameof(browserGetElementParentPropertiessearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementType, nameof(browserGetElementParentPropertiessearchElementType), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementMinimumWidth, nameof(browserGetElementParentPropertiessearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementMinimumHeight, nameof(browserGetElementParentPropertiessearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementBoundingBoxLeft, nameof(browserGetElementParentPropertiessearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementBoundingBoxRight, nameof(browserGetElementParentPropertiessearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementBoundingBoxTop, nameof(browserGetElementParentPropertiessearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiessearchElementBoundingBoxBottom, nameof(browserGetElementParentPropertiessearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiesgetHTMLCode, nameof(browserGetElementParentPropertiesgetHTMLCode), required: false);
-            SourceExpression.Validate(browserGetElementParentPropertiescreateHandle, nameof(browserGetElementParentPropertiescreateHandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetElementParentProperties";
@@ -3139,38 +2898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetElementChildrenPropertiesResponse> BrowserGetElementChildrenProperties([WorkflowExpression] Func<string> browserGetElementChildrenPropertiesworkflow, [WorkflowExpression] Func<double> browserGetElementChildrenPropertiesparentElementHandle = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementName = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementId = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementTagName = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementXPath = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementCSSSelector = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetElementChildrenPropertiessearchElementType = null, [WorkflowExpression] Func<double> browserGetElementChildrenPropertiessearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetElementChildrenPropertiessearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetElementChildrenPropertiessearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetElementChildrenPropertiessearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetElementChildrenPropertiessearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetElementChildrenPropertiessearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesgetHTMLCode = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiescreateHandle = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiessearchSubTree = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesreturnValue = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesreturnText = null, [WorkflowExpression] Func<int> browserGetElementChildrenPropertiesmaxValueLength = null, [WorkflowExpression] Func<int> browserGetElementChildrenPropertiesmaxTextLength = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesreturnIsDisplayed = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesreturnCoordinates = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesreturnDimensions = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesreturnChildElementCount = null, [WorkflowExpression] Func<bool> browserGetElementChildrenPropertiesreturnParentTag = null, [WorkflowExpression] Func<int> browserGetElementChildrenPropertiesfirstItemToReturn = null, [WorkflowExpression] Func<int> browserGetElementChildrenPropertiesmaxItemsToReturn = null)
         {
-            SourceExpression.Validate(browserGetElementChildrenPropertiesworkflow, nameof(browserGetElementChildrenPropertiesworkflow), required: true);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesparentElementHandle, nameof(browserGetElementChildrenPropertiesparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementName, nameof(browserGetElementChildrenPropertiessearchElementName), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementId, nameof(browserGetElementChildrenPropertiessearchElementId), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementTagName, nameof(browserGetElementChildrenPropertiessearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementXPath, nameof(browserGetElementChildrenPropertiessearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementClassName, nameof(browserGetElementChildrenPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementCSSSelector, nameof(browserGetElementChildrenPropertiessearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementMatchValue, nameof(browserGetElementChildrenPropertiessearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementMatchText, nameof(browserGetElementChildrenPropertiessearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementType, nameof(browserGetElementChildrenPropertiessearchElementType), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementMinimumWidth, nameof(browserGetElementChildrenPropertiessearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementMinimumHeight, nameof(browserGetElementChildrenPropertiessearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementBoundingBoxLeft, nameof(browserGetElementChildrenPropertiessearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementBoundingBoxRight, nameof(browserGetElementChildrenPropertiessearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementBoundingBoxTop, nameof(browserGetElementChildrenPropertiessearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchElementBoundingBoxBottom, nameof(browserGetElementChildrenPropertiessearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesgetHTMLCode, nameof(browserGetElementChildrenPropertiesgetHTMLCode), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiescreateHandle, nameof(browserGetElementChildrenPropertiescreateHandle), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiessearchSubTree, nameof(browserGetElementChildrenPropertiessearchSubTree), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesreturnValue, nameof(browserGetElementChildrenPropertiesreturnValue), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesreturnText, nameof(browserGetElementChildrenPropertiesreturnText), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesmaxValueLength, nameof(browserGetElementChildrenPropertiesmaxValueLength), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesmaxTextLength, nameof(browserGetElementChildrenPropertiesmaxTextLength), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesreturnIsDisplayed, nameof(browserGetElementChildrenPropertiesreturnIsDisplayed), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesreturnCoordinates, nameof(browserGetElementChildrenPropertiesreturnCoordinates), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesreturnDimensions, nameof(browserGetElementChildrenPropertiesreturnDimensions), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesreturnChildElementCount, nameof(browserGetElementChildrenPropertiesreturnChildElementCount), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesreturnParentTag, nameof(browserGetElementChildrenPropertiesreturnParentTag), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesfirstItemToReturn, nameof(browserGetElementChildrenPropertiesfirstItemToReturn), required: false);
-            SourceExpression.Validate(browserGetElementChildrenPropertiesmaxItemsToReturn, nameof(browserGetElementChildrenPropertiesmaxItemsToReturn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetElementChildrenProperties";
@@ -3589,29 +3316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserInputTextIntoElementResponse> BrowserInputTextIntoElement([WorkflowExpression] Func<string> browserInputTextIntoElementworkflow, [WorkflowExpression] Func<double> browserInputTextIntoElementparentElementHandle = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementName = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementId = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserInputTextIntoElementsearchElementType = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserInputTextIntoElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<string> browserInputTextIntoElementtextToInput = null, [WorkflowExpression] Func<bool> browserInputTextIntoElementresetExistingValue = null, [WorkflowExpression] Func<int> browserInputTextIntoElementinsertPosition = null)
         {
-            SourceExpression.Validate(browserInputTextIntoElementworkflow, nameof(browserInputTextIntoElementworkflow), required: true);
-            SourceExpression.Validate(browserInputTextIntoElementparentElementHandle, nameof(browserInputTextIntoElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementHandle, nameof(browserInputTextIntoElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementName, nameof(browserInputTextIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementId, nameof(browserInputTextIntoElementsearchElementId), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementTagName, nameof(browserInputTextIntoElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementXPath, nameof(browserInputTextIntoElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementClassName, nameof(browserInputTextIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementCSSSelector, nameof(browserInputTextIntoElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementIndex, nameof(browserInputTextIntoElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementMatchValue, nameof(browserInputTextIntoElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementMatchText, nameof(browserInputTextIntoElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementType, nameof(browserInputTextIntoElementsearchElementType), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementMinimumWidth, nameof(browserInputTextIntoElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementMinimumHeight, nameof(browserInputTextIntoElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementBoundingBoxLeft, nameof(browserInputTextIntoElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementBoundingBoxRight, nameof(browserInputTextIntoElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementBoundingBoxTop, nameof(browserInputTextIntoElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementsearchElementBoundingBoxBottom, nameof(browserInputTextIntoElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementtextToInput, nameof(browserInputTextIntoElementtextToInput), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementresetExistingValue, nameof(browserInputTextIntoElementresetExistingValue), required: false);
-            SourceExpression.Validate(browserInputTextIntoElementinsertPosition, nameof(browserInputTextIntoElementinsertPosition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/InputTextIntoElement";
@@ -3866,8 +3570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserInputTextIntoMultipleElements([WorkflowExpression] Func<string> browserInputTextIntoMultipleElementsinputElementsJSON, [WorkflowExpression] Func<string> browserInputTextIntoMultipleElementsworkflow)
         {
-            SourceExpression.Validate(browserInputTextIntoMultipleElementsinputElementsJSON, nameof(browserInputTextIntoMultipleElementsinputElementsJSON), required: true);
-            SourceExpression.Validate(browserInputTextIntoMultipleElementsworkflow, nameof(browserInputTextIntoMultipleElementsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/BrowserInputTextIntoMultipleElements";
@@ -3892,27 +3594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserPressCtrlKeyOnElement([WorkflowExpression] Func<string> browserPressCtrlKeyOnElementcontrolKey, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementworkflow, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserPressCtrlKeyOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserPressCtrlKeyOnElementcontrolKey, nameof(browserPressCtrlKeyOnElementcontrolKey), required: true);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementworkflow, nameof(browserPressCtrlKeyOnElementworkflow), required: true);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementparentElementHandle, nameof(browserPressCtrlKeyOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementHandle, nameof(browserPressCtrlKeyOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementName, nameof(browserPressCtrlKeyOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementId, nameof(browserPressCtrlKeyOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementTagName, nameof(browserPressCtrlKeyOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementXPath, nameof(browserPressCtrlKeyOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementClassName, nameof(browserPressCtrlKeyOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementCSSSelector, nameof(browserPressCtrlKeyOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementIndex, nameof(browserPressCtrlKeyOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementMatchValue, nameof(browserPressCtrlKeyOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementMatchText, nameof(browserPressCtrlKeyOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementType, nameof(browserPressCtrlKeyOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementMinimumWidth, nameof(browserPressCtrlKeyOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementMinimumHeight, nameof(browserPressCtrlKeyOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft, nameof(browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementBoundingBoxRight, nameof(browserPressCtrlKeyOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementBoundingBoxTop, nameof(browserPressCtrlKeyOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom, nameof(browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/PressCtrlKeyOnElement";
@@ -4131,26 +3812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserClickElement([WorkflowExpression] Func<string> browserClickElementworkflow, [WorkflowExpression] Func<double> browserClickElementparentElementHandle = null, [WorkflowExpression] Func<double> browserClickElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserClickElementsearchElementName = null, [WorkflowExpression] Func<string> browserClickElementsearchElementId = null, [WorkflowExpression] Func<string> browserClickElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserClickElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserClickElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserClickElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserClickElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserClickElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserClickElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserClickElementsearchElementType = null, [WorkflowExpression] Func<double> browserClickElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserClickElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserClickElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserClickElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserClickElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserClickElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserClickElementworkflow, nameof(browserClickElementworkflow), required: true);
-            SourceExpression.Validate(browserClickElementparentElementHandle, nameof(browserClickElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementHandle, nameof(browserClickElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementName, nameof(browserClickElementsearchElementName), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementId, nameof(browserClickElementsearchElementId), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementTagName, nameof(browserClickElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementXPath, nameof(browserClickElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementClassName, nameof(browserClickElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementCSSSelector, nameof(browserClickElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementIndex, nameof(browserClickElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementMatchValue, nameof(browserClickElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementMatchText, nameof(browserClickElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementType, nameof(browserClickElementsearchElementType), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementMinimumWidth, nameof(browserClickElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementMinimumHeight, nameof(browserClickElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementBoundingBoxLeft, nameof(browserClickElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementBoundingBoxRight, nameof(browserClickElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementBoundingBoxTop, nameof(browserClickElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserClickElementsearchElementBoundingBoxBottom, nameof(browserClickElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ClickElement";
@@ -4367,26 +4028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSubmitElement([WorkflowExpression] Func<string> browserSubmitElementworkflow, [WorkflowExpression] Func<double> browserSubmitElementparentElementHandle = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementName = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementId = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserSubmitElementsearchElementType = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserSubmitElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserSubmitElementworkflow, nameof(browserSubmitElementworkflow), required: true);
-            SourceExpression.Validate(browserSubmitElementparentElementHandle, nameof(browserSubmitElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementHandle, nameof(browserSubmitElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementName, nameof(browserSubmitElementsearchElementName), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementId, nameof(browserSubmitElementsearchElementId), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementTagName, nameof(browserSubmitElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementXPath, nameof(browserSubmitElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementClassName, nameof(browserSubmitElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementCSSSelector, nameof(browserSubmitElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementIndex, nameof(browserSubmitElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementMatchValue, nameof(browserSubmitElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementMatchText, nameof(browserSubmitElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementType, nameof(browserSubmitElementsearchElementType), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementMinimumWidth, nameof(browserSubmitElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementMinimumHeight, nameof(browserSubmitElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementBoundingBoxLeft, nameof(browserSubmitElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementBoundingBoxRight, nameof(browserSubmitElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementBoundingBoxTop, nameof(browserSubmitElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserSubmitElementsearchElementBoundingBoxBottom, nameof(browserSubmitElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SubmitElement";
@@ -4603,27 +4244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserCheckElement([WorkflowExpression] Func<string> browserCheckElementworkflow, [WorkflowExpression] Func<double> browserCheckElementparentElementHandle = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementName = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementId = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserCheckElementsearchElementType = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserCheckElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserCheckElementcheckElement = null)
         {
-            SourceExpression.Validate(browserCheckElementworkflow, nameof(browserCheckElementworkflow), required: true);
-            SourceExpression.Validate(browserCheckElementparentElementHandle, nameof(browserCheckElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementHandle, nameof(browserCheckElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementName, nameof(browserCheckElementsearchElementName), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementId, nameof(browserCheckElementsearchElementId), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementTagName, nameof(browserCheckElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementXPath, nameof(browserCheckElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementClassName, nameof(browserCheckElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementCSSSelector, nameof(browserCheckElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementIndex, nameof(browserCheckElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementMatchValue, nameof(browserCheckElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementMatchText, nameof(browserCheckElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementType, nameof(browserCheckElementsearchElementType), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementMinimumWidth, nameof(browserCheckElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementMinimumHeight, nameof(browserCheckElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementBoundingBoxLeft, nameof(browserCheckElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementBoundingBoxRight, nameof(browserCheckElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementBoundingBoxTop, nameof(browserCheckElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserCheckElementsearchElementBoundingBoxBottom, nameof(browserCheckElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserCheckElementcheckElement, nameof(browserCheckElementcheckElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CheckElement";
@@ -4856,8 +4476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserCheckMultipleElements([WorkflowExpression] Func<string> browserCheckMultipleElementsinputElementsJSON, [WorkflowExpression] Func<string> browserCheckMultipleElementsworkflow)
         {
-            SourceExpression.Validate(browserCheckMultipleElementsinputElementsJSON, nameof(browserCheckMultipleElementsinputElementsJSON), required: true);
-            SourceExpression.Validate(browserCheckMultipleElementsworkflow, nameof(browserCheckMultipleElementsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/BrowserCheckMultipleElements";
@@ -4882,26 +4500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetSelectionPropertiesResponse> BrowserGetSelectionProperties([WorkflowExpression] Func<string> browserGetSelectionPropertiesworkflow, [WorkflowExpression] Func<double> browserGetSelectionPropertiesparentElementHandle = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementHandle = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementName = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementId = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementTagName = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementXPath = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementIndex = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetSelectionPropertiessearchElementType = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetSelectionPropertiessearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserGetSelectionPropertiesworkflow, nameof(browserGetSelectionPropertiesworkflow), required: true);
-            SourceExpression.Validate(browserGetSelectionPropertiesparentElementHandle, nameof(browserGetSelectionPropertiesparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementHandle, nameof(browserGetSelectionPropertiessearchElementHandle), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementName, nameof(browserGetSelectionPropertiessearchElementName), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementId, nameof(browserGetSelectionPropertiessearchElementId), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementTagName, nameof(browserGetSelectionPropertiessearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementXPath, nameof(browserGetSelectionPropertiessearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementClassName, nameof(browserGetSelectionPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementCSSSelector, nameof(browserGetSelectionPropertiessearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementIndex, nameof(browserGetSelectionPropertiessearchElementIndex), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementMatchValue, nameof(browserGetSelectionPropertiessearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementMatchText, nameof(browserGetSelectionPropertiessearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementType, nameof(browserGetSelectionPropertiessearchElementType), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementMinimumWidth, nameof(browserGetSelectionPropertiessearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementMinimumHeight, nameof(browserGetSelectionPropertiessearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementBoundingBoxLeft, nameof(browserGetSelectionPropertiessearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementBoundingBoxRight, nameof(browserGetSelectionPropertiessearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementBoundingBoxTop, nameof(browserGetSelectionPropertiessearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiessearchElementBoundingBoxBottom, nameof(browserGetSelectionPropertiessearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetSelectionProperties";
@@ -5118,29 +4716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSelectSelection([WorkflowExpression] Func<string> browserSelectSelectionworkflow, [WorkflowExpression] Func<double> browserSelectSelectionparentElementHandle = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementHandle = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementName = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementId = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementTagName = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementXPath = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementClassName = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementIndex = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementMatchText = null, [WorkflowExpression] Func<string> browserSelectSelectionsearchElementType = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserSelectSelectionsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<string> browserSelectSelectionvalueToSelect = null, [WorkflowExpression] Func<string> browserSelectSelectiontextToSelect = null, [WorkflowExpression] Func<double> browserSelectSelectionindexToSelect = null)
         {
-            SourceExpression.Validate(browserSelectSelectionworkflow, nameof(browserSelectSelectionworkflow), required: true);
-            SourceExpression.Validate(browserSelectSelectionparentElementHandle, nameof(browserSelectSelectionparentElementHandle), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementHandle, nameof(browserSelectSelectionsearchElementHandle), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementName, nameof(browserSelectSelectionsearchElementName), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementId, nameof(browserSelectSelectionsearchElementId), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementTagName, nameof(browserSelectSelectionsearchElementTagName), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementXPath, nameof(browserSelectSelectionsearchElementXPath), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementClassName, nameof(browserSelectSelectionsearchElementClassName), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementCSSSelector, nameof(browserSelectSelectionsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementIndex, nameof(browserSelectSelectionsearchElementIndex), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementMatchValue, nameof(browserSelectSelectionsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementMatchText, nameof(browserSelectSelectionsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementType, nameof(browserSelectSelectionsearchElementType), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementMinimumWidth, nameof(browserSelectSelectionsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementMinimumHeight, nameof(browserSelectSelectionsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementBoundingBoxLeft, nameof(browserSelectSelectionsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementBoundingBoxRight, nameof(browserSelectSelectionsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementBoundingBoxTop, nameof(browserSelectSelectionsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserSelectSelectionsearchElementBoundingBoxBottom, nameof(browserSelectSelectionsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserSelectSelectionvalueToSelect, nameof(browserSelectSelectionvalueToSelect), required: false);
-            SourceExpression.Validate(browserSelectSelectiontextToSelect, nameof(browserSelectSelectiontextToSelect), required: false);
-            SourceExpression.Validate(browserSelectSelectionindexToSelect, nameof(browserSelectSelectionindexToSelect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SelectSelection";
@@ -5385,29 +4960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserDeselectSelection([WorkflowExpression] Func<string> browserDeselectSelectionworkflow, [WorkflowExpression] Func<double> browserDeselectSelectionparentElementHandle = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementHandle = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementName = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementId = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementTagName = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementXPath = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementClassName = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementIndex = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementMatchText = null, [WorkflowExpression] Func<string> browserDeselectSelectionsearchElementType = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserDeselectSelectionsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<string> browserDeselectSelectionvalueToDeselect = null, [WorkflowExpression] Func<string> browserDeselectSelectiontextToDeselect = null, [WorkflowExpression] Func<double> browserDeselectSelectionindexToDeselect = null)
         {
-            SourceExpression.Validate(browserDeselectSelectionworkflow, nameof(browserDeselectSelectionworkflow), required: true);
-            SourceExpression.Validate(browserDeselectSelectionparentElementHandle, nameof(browserDeselectSelectionparentElementHandle), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementHandle, nameof(browserDeselectSelectionsearchElementHandle), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementName, nameof(browserDeselectSelectionsearchElementName), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementId, nameof(browserDeselectSelectionsearchElementId), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementTagName, nameof(browserDeselectSelectionsearchElementTagName), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementXPath, nameof(browserDeselectSelectionsearchElementXPath), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementClassName, nameof(browserDeselectSelectionsearchElementClassName), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementCSSSelector, nameof(browserDeselectSelectionsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementIndex, nameof(browserDeselectSelectionsearchElementIndex), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementMatchValue, nameof(browserDeselectSelectionsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementMatchText, nameof(browserDeselectSelectionsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementType, nameof(browserDeselectSelectionsearchElementType), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementMinimumWidth, nameof(browserDeselectSelectionsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementMinimumHeight, nameof(browserDeselectSelectionsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementBoundingBoxLeft, nameof(browserDeselectSelectionsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementBoundingBoxRight, nameof(browserDeselectSelectionsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementBoundingBoxTop, nameof(browserDeselectSelectionsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserDeselectSelectionsearchElementBoundingBoxBottom, nameof(browserDeselectSelectionsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserDeselectSelectionvalueToDeselect, nameof(browserDeselectSelectionvalueToDeselect), required: false);
-            SourceExpression.Validate(browserDeselectSelectiontextToDeselect, nameof(browserDeselectSelectiontextToDeselect), required: false);
-            SourceExpression.Validate(browserDeselectSelectionindexToDeselect, nameof(browserDeselectSelectionindexToDeselect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/DeselectSelection";
@@ -5652,26 +5204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserDeselectAllSelection([WorkflowExpression] Func<string> browserDeselectAllSelectionworkflow, [WorkflowExpression] Func<double> browserDeselectAllSelectionparentElementHandle = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementHandle = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementName = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementId = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementTagName = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementXPath = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementClassName = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementIndex = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementMatchText = null, [WorkflowExpression] Func<string> browserDeselectAllSelectionsearchElementType = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserDeselectAllSelectionsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserDeselectAllSelectionworkflow, nameof(browserDeselectAllSelectionworkflow), required: true);
-            SourceExpression.Validate(browserDeselectAllSelectionparentElementHandle, nameof(browserDeselectAllSelectionparentElementHandle), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementHandle, nameof(browserDeselectAllSelectionsearchElementHandle), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementName, nameof(browserDeselectAllSelectionsearchElementName), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementId, nameof(browserDeselectAllSelectionsearchElementId), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementTagName, nameof(browserDeselectAllSelectionsearchElementTagName), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementXPath, nameof(browserDeselectAllSelectionsearchElementXPath), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementClassName, nameof(browserDeselectAllSelectionsearchElementClassName), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementCSSSelector, nameof(browserDeselectAllSelectionsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementIndex, nameof(browserDeselectAllSelectionsearchElementIndex), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementMatchValue, nameof(browserDeselectAllSelectionsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementMatchText, nameof(browserDeselectAllSelectionsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementType, nameof(browserDeselectAllSelectionsearchElementType), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementMinimumWidth, nameof(browserDeselectAllSelectionsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementMinimumHeight, nameof(browserDeselectAllSelectionsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementBoundingBoxLeft, nameof(browserDeselectAllSelectionsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementBoundingBoxRight, nameof(browserDeselectAllSelectionsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementBoundingBoxTop, nameof(browserDeselectAllSelectionsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectionsearchElementBoundingBoxBottom, nameof(browserDeselectAllSelectionsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/DeselectAllSelection";
@@ -5888,28 +5420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetTableContentsResponse> BrowserGetTableContents([WorkflowExpression] Func<string> browserGetTableContentsworkflow, [WorkflowExpression] Func<double> browserGetTableContentsparentElementHandle = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementHandle = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementName = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementId = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementTagName = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementXPath = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementClassName = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementIndex = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetTableContentssearchElementType = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetTableContentssearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<double> browserGetTableContentscreateColumnNamesFromRow = null, [WorkflowExpression] Func<bool> browserGetTableContentsmergeChildTables = null)
         {
-            SourceExpression.Validate(browserGetTableContentsworkflow, nameof(browserGetTableContentsworkflow), required: true);
-            SourceExpression.Validate(browserGetTableContentsparentElementHandle, nameof(browserGetTableContentsparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementHandle, nameof(browserGetTableContentssearchElementHandle), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementName, nameof(browserGetTableContentssearchElementName), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementId, nameof(browserGetTableContentssearchElementId), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementTagName, nameof(browserGetTableContentssearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementXPath, nameof(browserGetTableContentssearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementClassName, nameof(browserGetTableContentssearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementCSSSelector, nameof(browserGetTableContentssearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementIndex, nameof(browserGetTableContentssearchElementIndex), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementMatchValue, nameof(browserGetTableContentssearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementMatchText, nameof(browserGetTableContentssearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementType, nameof(browserGetTableContentssearchElementType), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementMinimumWidth, nameof(browserGetTableContentssearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementMinimumHeight, nameof(browserGetTableContentssearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementBoundingBoxLeft, nameof(browserGetTableContentssearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementBoundingBoxRight, nameof(browserGetTableContentssearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementBoundingBoxTop, nameof(browserGetTableContentssearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetTableContentssearchElementBoundingBoxBottom, nameof(browserGetTableContentssearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserGetTableContentscreateColumnNamesFromRow, nameof(browserGetTableContentscreateColumnNamesFromRow), required: false);
-            SourceExpression.Validate(browserGetTableContentsmergeChildTables, nameof(browserGetTableContentsmergeChildTables), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetTableContents";
@@ -6160,26 +5670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserScrollElementIntoView([WorkflowExpression] Func<string> browserScrollElementIntoViewworkflow, [WorkflowExpression] Func<double> browserScrollElementIntoViewparentElementHandle = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementHandle = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementName = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementId = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementTagName = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementXPath = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementClassName = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementIndex = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementMatchText = null, [WorkflowExpression] Func<string> browserScrollElementIntoViewsearchElementType = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserScrollElementIntoViewsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserScrollElementIntoViewworkflow, nameof(browserScrollElementIntoViewworkflow), required: true);
-            SourceExpression.Validate(browserScrollElementIntoViewparentElementHandle, nameof(browserScrollElementIntoViewparentElementHandle), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementHandle, nameof(browserScrollElementIntoViewsearchElementHandle), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementName, nameof(browserScrollElementIntoViewsearchElementName), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementId, nameof(browserScrollElementIntoViewsearchElementId), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementTagName, nameof(browserScrollElementIntoViewsearchElementTagName), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementXPath, nameof(browserScrollElementIntoViewsearchElementXPath), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementClassName, nameof(browserScrollElementIntoViewsearchElementClassName), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementCSSSelector, nameof(browserScrollElementIntoViewsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementIndex, nameof(browserScrollElementIntoViewsearchElementIndex), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementMatchValue, nameof(browserScrollElementIntoViewsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementMatchText, nameof(browserScrollElementIntoViewsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementType, nameof(browserScrollElementIntoViewsearchElementType), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementMinimumWidth, nameof(browserScrollElementIntoViewsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementMinimumHeight, nameof(browserScrollElementIntoViewsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementBoundingBoxLeft, nameof(browserScrollElementIntoViewsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementBoundingBoxRight, nameof(browserScrollElementIntoViewsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementBoundingBoxTop, nameof(browserScrollElementIntoViewsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewsearchElementBoundingBoxBottom, nameof(browserScrollElementIntoViewsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ScrollElementIntoView";
@@ -6396,8 +5886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserExecuteJavaScriptResponse> BrowserExecuteJavaScript([WorkflowExpression] Func<string> browserExecuteJavaScriptjavaScriptCode, [WorkflowExpression] Func<string> browserExecuteJavaScriptworkflow)
         {
-            SourceExpression.Validate(browserExecuteJavaScriptjavaScriptCode, nameof(browserExecuteJavaScriptjavaScriptCode), required: true);
-            SourceExpression.Validate(browserExecuteJavaScriptworkflow, nameof(browserExecuteJavaScriptworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ExecuteJavaScript";
@@ -6422,26 +5910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetElementBoundingRectResponse> BrowserGetElementBoundingRect([WorkflowExpression] Func<string> browserGetElementBoundingRectworkflow, [WorkflowExpression] Func<double> browserGetElementBoundingRectparentElementHandle = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementHandle = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementName = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementId = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementTagName = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementXPath = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementClassName = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementIndex = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetElementBoundingRectsearchElementType = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetElementBoundingRectsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserGetElementBoundingRectworkflow, nameof(browserGetElementBoundingRectworkflow), required: true);
-            SourceExpression.Validate(browserGetElementBoundingRectparentElementHandle, nameof(browserGetElementBoundingRectparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementHandle, nameof(browserGetElementBoundingRectsearchElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementName, nameof(browserGetElementBoundingRectsearchElementName), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementId, nameof(browserGetElementBoundingRectsearchElementId), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementTagName, nameof(browserGetElementBoundingRectsearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementXPath, nameof(browserGetElementBoundingRectsearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementClassName, nameof(browserGetElementBoundingRectsearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementCSSSelector, nameof(browserGetElementBoundingRectsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementIndex, nameof(browserGetElementBoundingRectsearchElementIndex), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementMatchValue, nameof(browserGetElementBoundingRectsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementMatchText, nameof(browserGetElementBoundingRectsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementType, nameof(browserGetElementBoundingRectsearchElementType), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementMinimumWidth, nameof(browserGetElementBoundingRectsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementMinimumHeight, nameof(browserGetElementBoundingRectsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementBoundingBoxLeft, nameof(browserGetElementBoundingRectsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementBoundingBoxRight, nameof(browserGetElementBoundingRectsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementBoundingBoxTop, nameof(browserGetElementBoundingRectsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectsearchElementBoundingBoxBottom, nameof(browserGetElementBoundingRectsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetElementBoundingRect";
@@ -6658,28 +6126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserDrawRectangleAroundElement([WorkflowExpression] Func<string> browserDrawRectangleAroundElementworkflow, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementparentElementHandle = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementName = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementId = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementsearchElementType = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserDrawRectangleAroundElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<string> browserDrawRectangleAroundElementpenColour = null, [WorkflowExpression] Func<int> browserDrawRectangleAroundElementpenThicknessPixels = null)
         {
-            SourceExpression.Validate(browserDrawRectangleAroundElementworkflow, nameof(browserDrawRectangleAroundElementworkflow), required: true);
-            SourceExpression.Validate(browserDrawRectangleAroundElementparentElementHandle, nameof(browserDrawRectangleAroundElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementHandle, nameof(browserDrawRectangleAroundElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementName, nameof(browserDrawRectangleAroundElementsearchElementName), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementId, nameof(browserDrawRectangleAroundElementsearchElementId), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementTagName, nameof(browserDrawRectangleAroundElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementXPath, nameof(browserDrawRectangleAroundElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementClassName, nameof(browserDrawRectangleAroundElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementCSSSelector, nameof(browserDrawRectangleAroundElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementIndex, nameof(browserDrawRectangleAroundElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementMatchValue, nameof(browserDrawRectangleAroundElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementMatchText, nameof(browserDrawRectangleAroundElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementType, nameof(browserDrawRectangleAroundElementsearchElementType), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementMinimumWidth, nameof(browserDrawRectangleAroundElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementMinimumHeight, nameof(browserDrawRectangleAroundElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementBoundingBoxLeft, nameof(browserDrawRectangleAroundElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementBoundingBoxRight, nameof(browserDrawRectangleAroundElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementBoundingBoxTop, nameof(browserDrawRectangleAroundElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementsearchElementBoundingBoxBottom, nameof(browserDrawRectangleAroundElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementpenColour, nameof(browserDrawRectangleAroundElementpenColour), required: false);
-            SourceExpression.Validate(browserDrawRectangleAroundElementpenThicknessPixels, nameof(browserDrawRectangleAroundElementpenThicknessPixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/DrawRectangleAroundElement";
@@ -6928,9 +6374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetBrowserParentWindowDetailsResponse> BrowserGetBrowserParentWindowDetails([WorkflowExpression] Func<string> browserGetBrowserParentWindowDetailsworkflow, [WorkflowExpression] Func<int> browserGetBrowserParentWindowDetailsbrowserPId = null, [WorkflowExpression] Func<string> browserGetBrowserParentWindowDetailssearchDocumentElementClassName = null)
         {
-            SourceExpression.Validate(browserGetBrowserParentWindowDetailsworkflow, nameof(browserGetBrowserParentWindowDetailsworkflow), required: true);
-            SourceExpression.Validate(browserGetBrowserParentWindowDetailsbrowserPId, nameof(browserGetBrowserParentWindowDetailsbrowserPId), required: false);
-            SourceExpression.Validate(browserGetBrowserParentWindowDetailssearchDocumentElementClassName, nameof(browserGetBrowserParentWindowDetailssearchDocumentElementClassName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetBrowserParentWindowDetails";
@@ -6965,26 +6408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetElementScreenBoundingRectResponse> BrowserGetElementScreenBoundingRect([WorkflowExpression] Func<string> browserGetElementScreenBoundingRectworkflow, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectparentElementHandle = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementHandle = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementName = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementId = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementTagName = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementXPath = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementClassName = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementIndex = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementMatchText = null, [WorkflowExpression] Func<string> browserGetElementScreenBoundingRectsearchElementType = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserGetElementScreenBoundingRectworkflow, nameof(browserGetElementScreenBoundingRectworkflow), required: true);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectparentElementHandle, nameof(browserGetElementScreenBoundingRectparentElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementHandle, nameof(browserGetElementScreenBoundingRectsearchElementHandle), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementName, nameof(browserGetElementScreenBoundingRectsearchElementName), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementId, nameof(browserGetElementScreenBoundingRectsearchElementId), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementTagName, nameof(browserGetElementScreenBoundingRectsearchElementTagName), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementXPath, nameof(browserGetElementScreenBoundingRectsearchElementXPath), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementClassName, nameof(browserGetElementScreenBoundingRectsearchElementClassName), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementCSSSelector, nameof(browserGetElementScreenBoundingRectsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementIndex, nameof(browserGetElementScreenBoundingRectsearchElementIndex), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementMatchValue, nameof(browserGetElementScreenBoundingRectsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementMatchText, nameof(browserGetElementScreenBoundingRectsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementType, nameof(browserGetElementScreenBoundingRectsearchElementType), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementMinimumWidth, nameof(browserGetElementScreenBoundingRectsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementMinimumHeight, nameof(browserGetElementScreenBoundingRectsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft, nameof(browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementBoundingBoxRight, nameof(browserGetElementScreenBoundingRectsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementBoundingBoxTop, nameof(browserGetElementScreenBoundingRectsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom, nameof(browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetElementScreenBoundingRect";
@@ -7201,26 +6624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserFocusElement([WorkflowExpression] Func<string> browserFocusElementworkflow, [WorkflowExpression] Func<double> browserFocusElementparentElementHandle = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementName = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementId = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserFocusElementsearchElementType = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserFocusElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserFocusElementworkflow, nameof(browserFocusElementworkflow), required: true);
-            SourceExpression.Validate(browserFocusElementparentElementHandle, nameof(browserFocusElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementHandle, nameof(browserFocusElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementName, nameof(browserFocusElementsearchElementName), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementId, nameof(browserFocusElementsearchElementId), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementTagName, nameof(browserFocusElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementXPath, nameof(browserFocusElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementClassName, nameof(browserFocusElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementCSSSelector, nameof(browserFocusElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementIndex, nameof(browserFocusElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementMatchValue, nameof(browserFocusElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementMatchText, nameof(browserFocusElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementType, nameof(browserFocusElementsearchElementType), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementMinimumWidth, nameof(browserFocusElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementMinimumHeight, nameof(browserFocusElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementBoundingBoxLeft, nameof(browserFocusElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementBoundingBoxRight, nameof(browserFocusElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementBoundingBoxTop, nameof(browserFocusElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserFocusElementsearchElementBoundingBoxBottom, nameof(browserFocusElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/FocusElement";
@@ -7437,26 +6840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserPressEnterOnElement([WorkflowExpression] Func<string> browserPressEnterOnElementworkflow, [WorkflowExpression] Func<double> browserPressEnterOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserPressEnterOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserPressEnterOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserPressEnterOnElementworkflow, nameof(browserPressEnterOnElementworkflow), required: true);
-            SourceExpression.Validate(browserPressEnterOnElementparentElementHandle, nameof(browserPressEnterOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementHandle, nameof(browserPressEnterOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementName, nameof(browserPressEnterOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementId, nameof(browserPressEnterOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementTagName, nameof(browserPressEnterOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementXPath, nameof(browserPressEnterOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementClassName, nameof(browserPressEnterOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementCSSSelector, nameof(browserPressEnterOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementIndex, nameof(browserPressEnterOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementMatchValue, nameof(browserPressEnterOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementMatchText, nameof(browserPressEnterOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementType, nameof(browserPressEnterOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementMinimumWidth, nameof(browserPressEnterOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementMinimumHeight, nameof(browserPressEnterOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementBoundingBoxLeft, nameof(browserPressEnterOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementBoundingBoxRight, nameof(browserPressEnterOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementBoundingBoxTop, nameof(browserPressEnterOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementsearchElementBoundingBoxBottom, nameof(browserPressEnterOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/PressEnterOnElement";
@@ -7673,27 +7056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserMouseLeftClickOnElement([WorkflowExpression] Func<string> browserMouseLeftClickOnElementworkflow, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserMouseLeftClickOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserMouseLeftClickOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserMouseLeftClickOnElementfocusFirst = null)
         {
-            SourceExpression.Validate(browserMouseLeftClickOnElementworkflow, nameof(browserMouseLeftClickOnElementworkflow), required: true);
-            SourceExpression.Validate(browserMouseLeftClickOnElementparentElementHandle, nameof(browserMouseLeftClickOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementHandle, nameof(browserMouseLeftClickOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementName, nameof(browserMouseLeftClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementId, nameof(browserMouseLeftClickOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementTagName, nameof(browserMouseLeftClickOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementXPath, nameof(browserMouseLeftClickOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementClassName, nameof(browserMouseLeftClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementCSSSelector, nameof(browserMouseLeftClickOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementIndex, nameof(browserMouseLeftClickOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementMatchValue, nameof(browserMouseLeftClickOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementMatchText, nameof(browserMouseLeftClickOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementType, nameof(browserMouseLeftClickOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementMinimumWidth, nameof(browserMouseLeftClickOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementMinimumHeight, nameof(browserMouseLeftClickOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementBoundingBoxLeft, nameof(browserMouseLeftClickOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementBoundingBoxRight, nameof(browserMouseLeftClickOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementBoundingBoxTop, nameof(browserMouseLeftClickOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementsearchElementBoundingBoxBottom, nameof(browserMouseLeftClickOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserMouseLeftClickOnElementfocusFirst, nameof(browserMouseLeftClickOnElementfocusFirst), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/MouseLeftClickOnElement";
@@ -7926,27 +7288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserMouseRightClickOnElement([WorkflowExpression] Func<string> browserMouseRightClickOnElementworkflow, [WorkflowExpression] Func<double> browserMouseRightClickOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserMouseRightClickOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserMouseRightClickOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserMouseRightClickOnElementfocusFirst = null)
         {
-            SourceExpression.Validate(browserMouseRightClickOnElementworkflow, nameof(browserMouseRightClickOnElementworkflow), required: true);
-            SourceExpression.Validate(browserMouseRightClickOnElementparentElementHandle, nameof(browserMouseRightClickOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementHandle, nameof(browserMouseRightClickOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementName, nameof(browserMouseRightClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementId, nameof(browserMouseRightClickOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementTagName, nameof(browserMouseRightClickOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementXPath, nameof(browserMouseRightClickOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementClassName, nameof(browserMouseRightClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementCSSSelector, nameof(browserMouseRightClickOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementIndex, nameof(browserMouseRightClickOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementMatchValue, nameof(browserMouseRightClickOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementMatchText, nameof(browserMouseRightClickOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementType, nameof(browserMouseRightClickOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementMinimumWidth, nameof(browserMouseRightClickOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementMinimumHeight, nameof(browserMouseRightClickOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementBoundingBoxLeft, nameof(browserMouseRightClickOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementBoundingBoxRight, nameof(browserMouseRightClickOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementBoundingBoxTop, nameof(browserMouseRightClickOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementsearchElementBoundingBoxBottom, nameof(browserMouseRightClickOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserMouseRightClickOnElementfocusFirst, nameof(browserMouseRightClickOnElementfocusFirst), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/MouseRightClickOnElement";
@@ -8179,26 +7520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserJavaScriptClickOnElement([WorkflowExpression] Func<string> browserJavaScriptClickOnElementworkflow, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserJavaScriptClickOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserJavaScriptClickOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserJavaScriptClickOnElementworkflow, nameof(browserJavaScriptClickOnElementworkflow), required: true);
-            SourceExpression.Validate(browserJavaScriptClickOnElementparentElementHandle, nameof(browserJavaScriptClickOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementHandle, nameof(browserJavaScriptClickOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementName, nameof(browserJavaScriptClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementId, nameof(browserJavaScriptClickOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementTagName, nameof(browserJavaScriptClickOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementXPath, nameof(browserJavaScriptClickOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementClassName, nameof(browserJavaScriptClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementCSSSelector, nameof(browserJavaScriptClickOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementIndex, nameof(browserJavaScriptClickOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementMatchValue, nameof(browserJavaScriptClickOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementMatchText, nameof(browserJavaScriptClickOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementType, nameof(browserJavaScriptClickOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementMinimumWidth, nameof(browserJavaScriptClickOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementMinimumHeight, nameof(browserJavaScriptClickOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementBoundingBoxLeft, nameof(browserJavaScriptClickOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementBoundingBoxRight, nameof(browserJavaScriptClickOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementBoundingBoxTop, nameof(browserJavaScriptClickOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementsearchElementBoundingBoxBottom, nameof(browserJavaScriptClickOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/JavaScriptClickOnElement";
@@ -8415,27 +7736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserExecuteJavaScriptOnElementResponse> BrowserExecuteJavaScriptOnElement([WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementjavaScriptToExecute, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementworkflow, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserExecuteJavaScriptOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementjavaScriptToExecute, nameof(browserExecuteJavaScriptOnElementjavaScriptToExecute), required: true);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementworkflow, nameof(browserExecuteJavaScriptOnElementworkflow), required: true);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementparentElementHandle, nameof(browserExecuteJavaScriptOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementHandle, nameof(browserExecuteJavaScriptOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementName, nameof(browserExecuteJavaScriptOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementId, nameof(browserExecuteJavaScriptOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementTagName, nameof(browserExecuteJavaScriptOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementXPath, nameof(browserExecuteJavaScriptOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementClassName, nameof(browserExecuteJavaScriptOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementCSSSelector, nameof(browserExecuteJavaScriptOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementIndex, nameof(browserExecuteJavaScriptOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementMatchValue, nameof(browserExecuteJavaScriptOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementMatchText, nameof(browserExecuteJavaScriptOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementType, nameof(browserExecuteJavaScriptOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementMinimumWidth, nameof(browserExecuteJavaScriptOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementMinimumHeight, nameof(browserExecuteJavaScriptOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft, nameof(browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight, nameof(browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop, nameof(browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom, nameof(browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ExecuteJavaScriptOnElement";
@@ -8654,29 +7954,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserGlobalMouseLeftClickOnElement([WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementworkflow, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserGlobalMouseLeftClickOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<int> browserGlobalMouseLeftClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> browserGlobalMouseLeftClickOnElementclickOffsetY = null, [WorkflowExpression] Func<bool> browserGlobalMouseLeftClickOnElementfocusFirst = null)
         {
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementworkflow, nameof(browserGlobalMouseLeftClickOnElementworkflow), required: true);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementparentElementHandle, nameof(browserGlobalMouseLeftClickOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementHandle, nameof(browserGlobalMouseLeftClickOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementName, nameof(browserGlobalMouseLeftClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementId, nameof(browserGlobalMouseLeftClickOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementTagName, nameof(browserGlobalMouseLeftClickOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementXPath, nameof(browserGlobalMouseLeftClickOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementClassName, nameof(browserGlobalMouseLeftClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementCSSSelector, nameof(browserGlobalMouseLeftClickOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementIndex, nameof(browserGlobalMouseLeftClickOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementMatchValue, nameof(browserGlobalMouseLeftClickOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementMatchText, nameof(browserGlobalMouseLeftClickOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementType, nameof(browserGlobalMouseLeftClickOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth, nameof(browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight, nameof(browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft, nameof(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight, nameof(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop, nameof(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom, nameof(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementclickOffsetX, nameof(browserGlobalMouseLeftClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementclickOffsetY, nameof(browserGlobalMouseLeftClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(browserGlobalMouseLeftClickOnElementfocusFirst, nameof(browserGlobalMouseLeftClickOnElementfocusFirst), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GlobalMouseLeftClickOnElement";
@@ -8921,29 +8198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserGlobalMouseRightClickOnElement([WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementworkflow, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserGlobalMouseRightClickOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<int> browserGlobalMouseRightClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> browserGlobalMouseRightClickOnElementclickOffsetY = null, [WorkflowExpression] Func<bool> browserGlobalMouseRightClickOnElementfocusFirst = null)
         {
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementworkflow, nameof(browserGlobalMouseRightClickOnElementworkflow), required: true);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementparentElementHandle, nameof(browserGlobalMouseRightClickOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementHandle, nameof(browserGlobalMouseRightClickOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementName, nameof(browserGlobalMouseRightClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementId, nameof(browserGlobalMouseRightClickOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementTagName, nameof(browserGlobalMouseRightClickOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementXPath, nameof(browserGlobalMouseRightClickOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementClassName, nameof(browserGlobalMouseRightClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementCSSSelector, nameof(browserGlobalMouseRightClickOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementIndex, nameof(browserGlobalMouseRightClickOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementMatchValue, nameof(browserGlobalMouseRightClickOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementMatchText, nameof(browserGlobalMouseRightClickOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementType, nameof(browserGlobalMouseRightClickOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementMinimumWidth, nameof(browserGlobalMouseRightClickOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementMinimumHeight, nameof(browserGlobalMouseRightClickOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft, nameof(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight, nameof(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop, nameof(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom, nameof(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementclickOffsetX, nameof(browserGlobalMouseRightClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementclickOffsetY, nameof(browserGlobalMouseRightClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(browserGlobalMouseRightClickOnElementfocusFirst, nameof(browserGlobalMouseRightClickOnElementfocusFirst), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GlobalMouseRightClickOnElement";
@@ -9188,9 +8442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserOpenNewTabResponse> BrowserOpenNewTab([WorkflowExpression] Func<string> browserOpenNewTabworkflow, [WorkflowExpression] Func<string> browserOpenNewTabuRL = null, [WorkflowExpression] Func<bool> browserOpenNewTabswitchControlToNewTab = null)
         {
-            SourceExpression.Validate(browserOpenNewTabworkflow, nameof(browserOpenNewTabworkflow), required: true);
-            SourceExpression.Validate(browserOpenNewTabuRL, nameof(browserOpenNewTabuRL), required: false);
-            SourceExpression.Validate(browserOpenNewTabswitchControlToNewTab, nameof(browserOpenNewTabswitchControlToNewTab), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/OpenNewTab";
@@ -9235,7 +8486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetTabsResponse> BrowserGetTabs([WorkflowExpression] Func<string> browserGetTabsworkflow)
         {
-            SourceExpression.Validate(browserGetTabsworkflow, nameof(browserGetTabsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetTabs";
@@ -9258,9 +8508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSetTab([WorkflowExpression] Func<string> browserSetTabworkflow, [WorkflowExpression] Func<string> browserSetTabtabName = null, [WorkflowExpression] Func<int> browserSetTabtabIndex = null)
         {
-            SourceExpression.Validate(browserSetTabworkflow, nameof(browserSetTabworkflow), required: true);
-            SourceExpression.Validate(browserSetTabtabName, nameof(browserSetTabtabName), required: false);
-            SourceExpression.Validate(browserSetTabtabIndex, nameof(browserSetTabtabIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SetTab";
@@ -9295,7 +8542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserCloseActiveTab([WorkflowExpression] Func<string> browserCloseActiveTabworkflow)
         {
-            SourceExpression.Validate(browserCloseActiveTabworkflow, nameof(browserCloseActiveTabworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CloseActiveTab";
@@ -9318,8 +8564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSavePageToFile([WorkflowExpression] Func<string> browserSavePageToFilesaveFilename, [WorkflowExpression] Func<string> browserSavePageToFileworkflow)
         {
-            SourceExpression.Validate(browserSavePageToFilesaveFilename, nameof(browserSavePageToFilesaveFilename), required: true);
-            SourceExpression.Validate(browserSavePageToFileworkflow, nameof(browserSavePageToFileworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SavePageToFile";
@@ -9344,7 +8588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetPageTextResponse> BrowserGetPageText([WorkflowExpression] Func<string> browserGetPageTextworkflow)
         {
-            SourceExpression.Validate(browserGetPageTextworkflow, nameof(browserGetPageTextworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetPageText";
@@ -9367,26 +8610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSwitchToFrameElement([WorkflowExpression] Func<string> browserSwitchToFrameElementworkflow, [WorkflowExpression] Func<double> browserSwitchToFrameElementparentElementHandle = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementName = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementId = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserSwitchToFrameElementsearchElementType = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserSwitchToFrameElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserSwitchToFrameElementworkflow, nameof(browserSwitchToFrameElementworkflow), required: true);
-            SourceExpression.Validate(browserSwitchToFrameElementparentElementHandle, nameof(browserSwitchToFrameElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementHandle, nameof(browserSwitchToFrameElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementName, nameof(browserSwitchToFrameElementsearchElementName), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementId, nameof(browserSwitchToFrameElementsearchElementId), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementTagName, nameof(browserSwitchToFrameElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementXPath, nameof(browserSwitchToFrameElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementClassName, nameof(browserSwitchToFrameElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementCSSSelector, nameof(browserSwitchToFrameElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementIndex, nameof(browserSwitchToFrameElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementMatchValue, nameof(browserSwitchToFrameElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementMatchText, nameof(browserSwitchToFrameElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementType, nameof(browserSwitchToFrameElementsearchElementType), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementMinimumWidth, nameof(browserSwitchToFrameElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementMinimumHeight, nameof(browserSwitchToFrameElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementBoundingBoxLeft, nameof(browserSwitchToFrameElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementBoundingBoxRight, nameof(browserSwitchToFrameElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementBoundingBoxTop, nameof(browserSwitchToFrameElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementsearchElementBoundingBoxBottom, nameof(browserSwitchToFrameElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SwitchToFrameElement";
@@ -9603,7 +8826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetCurrentFrameWindowPixelCoordinateResponse> BrowserGetCurrentFrameWindowPixelCoordinate([WorkflowExpression] Func<string> browserGetCurrentFrameWindowPixelCoordinateworkflow)
         {
-            SourceExpression.Validate(browserGetCurrentFrameWindowPixelCoordinateworkflow, nameof(browserGetCurrentFrameWindowPixelCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetCurrentFrameWindowPixelCoordinate";
@@ -9626,7 +8848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSwitchToParentFrameElement([WorkflowExpression] Func<string> browserSwitchToParentFrameElementworkflow)
         {
-            SourceExpression.Validate(browserSwitchToParentFrameElementworkflow, nameof(browserSwitchToParentFrameElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SwitchToParentFrameElement";
@@ -9649,7 +8870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSwitchToRootFrameElement([WorkflowExpression] Func<string> browserSwitchToRootFrameElementworkflow)
         {
-            SourceExpression.Validate(browserSwitchToRootFrameElementworkflow, nameof(browserSwitchToRootFrameElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SwitchToRootFrameElement";
@@ -9672,7 +8892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserResetFrameStack([WorkflowExpression] Func<string> browserResetFrameStackworkflow)
         {
-            SourceExpression.Validate(browserResetFrameStackworkflow, nameof(browserResetFrameStackworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ResetFrameStack";
@@ -9695,26 +8914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserClearElementTextResponse> BrowserClearElementText([WorkflowExpression] Func<string> browserClearElementTextworkflow, [WorkflowExpression] Func<double> browserClearElementTextparentElementHandle = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementHandle = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementName = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementId = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementTagName = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementXPath = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementClassName = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementIndex = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementMatchText = null, [WorkflowExpression] Func<string> browserClearElementTextsearchElementType = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserClearElementTextsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserClearElementTextworkflow, nameof(browserClearElementTextworkflow), required: true);
-            SourceExpression.Validate(browserClearElementTextparentElementHandle, nameof(browserClearElementTextparentElementHandle), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementHandle, nameof(browserClearElementTextsearchElementHandle), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementName, nameof(browserClearElementTextsearchElementName), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementId, nameof(browserClearElementTextsearchElementId), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementTagName, nameof(browserClearElementTextsearchElementTagName), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementXPath, nameof(browserClearElementTextsearchElementXPath), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementClassName, nameof(browserClearElementTextsearchElementClassName), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementCSSSelector, nameof(browserClearElementTextsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementIndex, nameof(browserClearElementTextsearchElementIndex), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementMatchValue, nameof(browserClearElementTextsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementMatchText, nameof(browserClearElementTextsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementType, nameof(browserClearElementTextsearchElementType), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementMinimumWidth, nameof(browserClearElementTextsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementMinimumHeight, nameof(browserClearElementTextsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementBoundingBoxLeft, nameof(browserClearElementTextsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementBoundingBoxRight, nameof(browserClearElementTextsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementBoundingBoxTop, nameof(browserClearElementTextsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserClearElementTextsearchElementBoundingBoxBottom, nameof(browserClearElementTextsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ClearElementText";
@@ -9931,26 +9130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserCopySelectedTextOnElement([WorkflowExpression] Func<string> browserCopySelectedTextOnElementworkflow, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserCopySelectedTextOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserCopySelectedTextOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserCopySelectedTextOnElementworkflow, nameof(browserCopySelectedTextOnElementworkflow), required: true);
-            SourceExpression.Validate(browserCopySelectedTextOnElementparentElementHandle, nameof(browserCopySelectedTextOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementHandle, nameof(browserCopySelectedTextOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementName, nameof(browserCopySelectedTextOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementId, nameof(browserCopySelectedTextOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementTagName, nameof(browserCopySelectedTextOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementXPath, nameof(browserCopySelectedTextOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementClassName, nameof(browserCopySelectedTextOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementCSSSelector, nameof(browserCopySelectedTextOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementIndex, nameof(browserCopySelectedTextOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementMatchValue, nameof(browserCopySelectedTextOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementMatchText, nameof(browserCopySelectedTextOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementType, nameof(browserCopySelectedTextOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementMinimumWidth, nameof(browserCopySelectedTextOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementMinimumHeight, nameof(browserCopySelectedTextOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementBoundingBoxLeft, nameof(browserCopySelectedTextOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementBoundingBoxRight, nameof(browserCopySelectedTextOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementBoundingBoxTop, nameof(browserCopySelectedTextOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementsearchElementBoundingBoxBottom, nameof(browserCopySelectedTextOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/CopySelectedTextOnElement";
@@ -10167,29 +9346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserInputPasswordIntoElement([WorkflowExpression] Func<string> browserInputPasswordIntoElementpasswordToInput, [WorkflowExpression] Func<string> browserInputPasswordIntoElementworkflow, [WorkflowExpression] Func<double> browserInputPasswordIntoElementparentElementHandle = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementName = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementId = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserInputPasswordIntoElementsearchElementType = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserInputPasswordIntoElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserInputPasswordIntoElementresetExistingValue = null, [WorkflowExpression] Func<bool> browserInputPasswordIntoElementpasswordContainsStoredPassword = null)
         {
-            SourceExpression.Validate(browserInputPasswordIntoElementpasswordToInput, nameof(browserInputPasswordIntoElementpasswordToInput), required: true);
-            SourceExpression.Validate(browserInputPasswordIntoElementworkflow, nameof(browserInputPasswordIntoElementworkflow), required: true);
-            SourceExpression.Validate(browserInputPasswordIntoElementparentElementHandle, nameof(browserInputPasswordIntoElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementHandle, nameof(browserInputPasswordIntoElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementName, nameof(browserInputPasswordIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementId, nameof(browserInputPasswordIntoElementsearchElementId), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementTagName, nameof(browserInputPasswordIntoElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementXPath, nameof(browserInputPasswordIntoElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementClassName, nameof(browserInputPasswordIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementCSSSelector, nameof(browserInputPasswordIntoElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementIndex, nameof(browserInputPasswordIntoElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementMatchValue, nameof(browserInputPasswordIntoElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementMatchText, nameof(browserInputPasswordIntoElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementType, nameof(browserInputPasswordIntoElementsearchElementType), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementMinimumWidth, nameof(browserInputPasswordIntoElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementMinimumHeight, nameof(browserInputPasswordIntoElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementBoundingBoxLeft, nameof(browserInputPasswordIntoElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementBoundingBoxRight, nameof(browserInputPasswordIntoElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementBoundingBoxTop, nameof(browserInputPasswordIntoElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementsearchElementBoundingBoxBottom, nameof(browserInputPasswordIntoElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementresetExistingValue, nameof(browserInputPasswordIntoElementresetExistingValue), required: false);
-            SourceExpression.Validate(browserInputPasswordIntoElementpasswordContainsStoredPassword, nameof(browserInputPasswordIntoElementpasswordContainsStoredPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/InputPasswordIntoElement";
@@ -10440,26 +9596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserPasteIntoElement([WorkflowExpression] Func<string> browserPasteIntoElementworkflow, [WorkflowExpression] Func<double> browserPasteIntoElementparentElementHandle = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementName = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementId = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserPasteIntoElementsearchElementType = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserPasteIntoElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserPasteIntoElementworkflow, nameof(browserPasteIntoElementworkflow), required: true);
-            SourceExpression.Validate(browserPasteIntoElementparentElementHandle, nameof(browserPasteIntoElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementHandle, nameof(browserPasteIntoElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementName, nameof(browserPasteIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementId, nameof(browserPasteIntoElementsearchElementId), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementTagName, nameof(browserPasteIntoElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementXPath, nameof(browserPasteIntoElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementClassName, nameof(browserPasteIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementCSSSelector, nameof(browserPasteIntoElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementIndex, nameof(browserPasteIntoElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementMatchValue, nameof(browserPasteIntoElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementMatchText, nameof(browserPasteIntoElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementType, nameof(browserPasteIntoElementsearchElementType), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementMinimumWidth, nameof(browserPasteIntoElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementMinimumHeight, nameof(browserPasteIntoElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementBoundingBoxLeft, nameof(browserPasteIntoElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementBoundingBoxRight, nameof(browserPasteIntoElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementBoundingBoxTop, nameof(browserPasteIntoElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserPasteIntoElementsearchElementBoundingBoxBottom, nameof(browserPasteIntoElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/PasteIntoElement";
@@ -10676,7 +9812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserPrintCurrentPage([WorkflowExpression] Func<string> browserPrintCurrentPageworkflow)
         {
-            SourceExpression.Validate(browserPrintCurrentPageworkflow, nameof(browserPrintCurrentPageworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/PrintCurrentPage";
@@ -10699,9 +9834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserScrollWindowByPixels([WorkflowExpression] Func<string> browserScrollWindowByPixelsworkflow, [WorkflowExpression] Func<double> browserScrollWindowByPixelsx = null, [WorkflowExpression] Func<double> browserScrollWindowByPixelsy = null)
         {
-            SourceExpression.Validate(browserScrollWindowByPixelsworkflow, nameof(browserScrollWindowByPixelsworkflow), required: true);
-            SourceExpression.Validate(browserScrollWindowByPixelsx, nameof(browserScrollWindowByPixelsx), required: false);
-            SourceExpression.Validate(browserScrollWindowByPixelsy, nameof(browserScrollWindowByPixelsy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ScrollWindowByPixels";
@@ -10736,9 +9868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserScrollWindowToPixels([WorkflowExpression] Func<string> browserScrollWindowToPixelsworkflow, [WorkflowExpression] Func<double> browserScrollWindowToPixelsx = null, [WorkflowExpression] Func<double> browserScrollWindowToPixelsy = null)
         {
-            SourceExpression.Validate(browserScrollWindowToPixelsworkflow, nameof(browserScrollWindowToPixelsworkflow), required: true);
-            SourceExpression.Validate(browserScrollWindowToPixelsx, nameof(browserScrollWindowToPixelsx), required: false);
-            SourceExpression.Validate(browserScrollWindowToPixelsy, nameof(browserScrollWindowToPixelsy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/ScrollWindowToPixels";
@@ -10773,26 +9902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IWorkflowAction BrowserSelectAllOnElement([WorkflowExpression] Func<string> browserSelectAllOnElementworkflow, [WorkflowExpression] Func<double> browserSelectAllOnElementparentElementHandle = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementHandle = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementName = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementId = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementTagName = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementXPath = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementIndex = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementMatchText = null, [WorkflowExpression] Func<string> browserSelectAllOnElementsearchElementType = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserSelectAllOnElementsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox = null)
         {
-            SourceExpression.Validate(browserSelectAllOnElementworkflow, nameof(browserSelectAllOnElementworkflow), required: true);
-            SourceExpression.Validate(browserSelectAllOnElementparentElementHandle, nameof(browserSelectAllOnElementparentElementHandle), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementHandle, nameof(browserSelectAllOnElementsearchElementHandle), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementName, nameof(browserSelectAllOnElementsearchElementName), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementId, nameof(browserSelectAllOnElementsearchElementId), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementTagName, nameof(browserSelectAllOnElementsearchElementTagName), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementXPath, nameof(browserSelectAllOnElementsearchElementXPath), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementClassName, nameof(browserSelectAllOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementCSSSelector, nameof(browserSelectAllOnElementsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementIndex, nameof(browserSelectAllOnElementsearchElementIndex), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementMatchValue, nameof(browserSelectAllOnElementsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementMatchText, nameof(browserSelectAllOnElementsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementType, nameof(browserSelectAllOnElementsearchElementType), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementMinimumWidth, nameof(browserSelectAllOnElementsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementMinimumHeight, nameof(browserSelectAllOnElementsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementBoundingBoxLeft, nameof(browserSelectAllOnElementsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementBoundingBoxRight, nameof(browserSelectAllOnElementsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementBoundingBoxTop, nameof(browserSelectAllOnElementsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementsearchElementBoundingBoxBottom, nameof(browserSelectAllOnElementsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/SelectAllOnElement";
@@ -11009,29 +10118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserWaitForElementToExistResponse> BrowserWaitForElementToExist([WorkflowExpression] Func<int> browserWaitForElementToExistsecondsToWait, [WorkflowExpression] Func<string> browserWaitForElementToExistworkflow, [WorkflowExpression] Func<double> browserWaitForElementToExistparentElementHandle = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementName = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementId = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementTagName = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementXPath = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementClassName = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserWaitForElementToExistsearchElementIndex = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementMatchText = null, [WorkflowExpression] Func<string> browserWaitForElementToExistsearchElementType = null, [WorkflowExpression] Func<double> browserWaitForElementToExistsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserWaitForElementToExistsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserWaitForElementToExistsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserWaitForElementToExistsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserWaitForElementToExistsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserWaitForElementToExistsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserWaitForElementToExistraiseExceptionIfElementNotFound = null, [WorkflowExpression] Func<bool> browserWaitForElementToExistuseExplicitWaitConditionsIfPossible = null, [WorkflowExpression] Func<bool> browserWaitForElementToExistwaitForSearchElementToBeDisplayed = null)
         {
-            SourceExpression.Validate(browserWaitForElementToExistsecondsToWait, nameof(browserWaitForElementToExistsecondsToWait), required: true);
-            SourceExpression.Validate(browserWaitForElementToExistworkflow, nameof(browserWaitForElementToExistworkflow), required: true);
-            SourceExpression.Validate(browserWaitForElementToExistparentElementHandle, nameof(browserWaitForElementToExistparentElementHandle), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementName, nameof(browserWaitForElementToExistsearchElementName), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementId, nameof(browserWaitForElementToExistsearchElementId), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementTagName, nameof(browserWaitForElementToExistsearchElementTagName), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementXPath, nameof(browserWaitForElementToExistsearchElementXPath), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementClassName, nameof(browserWaitForElementToExistsearchElementClassName), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementCSSSelector, nameof(browserWaitForElementToExistsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementIndex, nameof(browserWaitForElementToExistsearchElementIndex), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementMatchValue, nameof(browserWaitForElementToExistsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementMatchText, nameof(browserWaitForElementToExistsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementType, nameof(browserWaitForElementToExistsearchElementType), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementMinimumWidth, nameof(browserWaitForElementToExistsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementMinimumHeight, nameof(browserWaitForElementToExistsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementBoundingBoxLeft, nameof(browserWaitForElementToExistsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementBoundingBoxRight, nameof(browserWaitForElementToExistsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementBoundingBoxTop, nameof(browserWaitForElementToExistsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistsearchElementBoundingBoxBottom, nameof(browserWaitForElementToExistsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistraiseExceptionIfElementNotFound, nameof(browserWaitForElementToExistraiseExceptionIfElementNotFound), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistuseExplicitWaitConditionsIfPossible, nameof(browserWaitForElementToExistuseExplicitWaitConditionsIfPossible), required: false);
-            SourceExpression.Validate(browserWaitForElementToExistwaitForSearchElementToBeDisplayed, nameof(browserWaitForElementToExistwaitForSearchElementToBeDisplayed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/WaitForElementToExist";
@@ -11292,29 +10378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserWaitForElementToNotExistResponse> BrowserWaitForElementToNotExist([WorkflowExpression] Func<int> browserWaitForElementToNotExistsecondsToWait, [WorkflowExpression] Func<string> browserWaitForElementToNotExistworkflow, [WorkflowExpression] Func<double> browserWaitForElementToNotExistparentElementHandle = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementHandle = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementName = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementId = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementTagName = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementXPath = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementClassName = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementCSSSelector = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementIndex = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementMatchValue = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementMatchText = null, [WorkflowExpression] Func<string> browserWaitForElementToNotExistsearchElementType = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementMinimumWidth = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementMinimumHeight = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementBoundingBoxLeft = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementBoundingBoxRight = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementBoundingBoxTop = null, [WorkflowExpression] Func<double> browserWaitForElementToNotExistsearchElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox = null, [WorkflowExpression] Func<bool> browserWaitForElementToNotExistraiseExceptionIfElementStillExists = null, [WorkflowExpression] Func<bool> browserWaitForElementToNotExistsearchElementMustBeDisplayed = null)
         {
-            SourceExpression.Validate(browserWaitForElementToNotExistsecondsToWait, nameof(browserWaitForElementToNotExistsecondsToWait), required: true);
-            SourceExpression.Validate(browserWaitForElementToNotExistworkflow, nameof(browserWaitForElementToNotExistworkflow), required: true);
-            SourceExpression.Validate(browserWaitForElementToNotExistparentElementHandle, nameof(browserWaitForElementToNotExistparentElementHandle), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementHandle, nameof(browserWaitForElementToNotExistsearchElementHandle), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementName, nameof(browserWaitForElementToNotExistsearchElementName), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementId, nameof(browserWaitForElementToNotExistsearchElementId), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementTagName, nameof(browserWaitForElementToNotExistsearchElementTagName), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementXPath, nameof(browserWaitForElementToNotExistsearchElementXPath), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementClassName, nameof(browserWaitForElementToNotExistsearchElementClassName), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementCSSSelector, nameof(browserWaitForElementToNotExistsearchElementCSSSelector), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementIndex, nameof(browserWaitForElementToNotExistsearchElementIndex), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementMatchValue, nameof(browserWaitForElementToNotExistsearchElementMatchValue), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementMatchText, nameof(browserWaitForElementToNotExistsearchElementMatchText), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementType, nameof(browserWaitForElementToNotExistsearchElementType), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementMinimumWidth, nameof(browserWaitForElementToNotExistsearchElementMinimumWidth), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementMinimumHeight, nameof(browserWaitForElementToNotExistsearchElementMinimumHeight), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementBoundingBoxLeft, nameof(browserWaitForElementToNotExistsearchElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementBoundingBoxRight, nameof(browserWaitForElementToNotExistsearchElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementBoundingBoxTop, nameof(browserWaitForElementToNotExistsearchElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementBoundingBoxBottom, nameof(browserWaitForElementToNotExistsearchElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox, nameof(browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistraiseExceptionIfElementStillExists, nameof(browserWaitForElementToNotExistraiseExceptionIfElementStillExists), required: false);
-            SourceExpression.Validate(browserWaitForElementToNotExistsearchElementMustBeDisplayed, nameof(browserWaitForElementToNotExistsearchElementMustBeDisplayed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/WaitForElementToNotExist";
@@ -11565,10 +10628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetWebElementAtScreenCoordinatesResponse> BrowserGetWebElementAtScreenCoordinates([WorkflowExpression] Func<string> browserGetWebElementAtScreenCoordinatesworkflow, [WorkflowExpression] Func<int> browserGetWebElementAtScreenCoordinatesxCoord = null, [WorkflowExpression] Func<int> browserGetWebElementAtScreenCoordinatesyCoord = null, [WorkflowExpression] Func<bool> browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound = null)
         {
-            SourceExpression.Validate(browserGetWebElementAtScreenCoordinatesworkflow, nameof(browserGetWebElementAtScreenCoordinatesworkflow), required: true);
-            SourceExpression.Validate(browserGetWebElementAtScreenCoordinatesxCoord, nameof(browserGetWebElementAtScreenCoordinatesxCoord), required: false);
-            SourceExpression.Validate(browserGetWebElementAtScreenCoordinatesyCoord, nameof(browserGetWebElementAtScreenCoordinatesyCoord), required: false);
-            SourceExpression.Validate(browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound, nameof(browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetWebElementAtScreenCoordinates";
@@ -11639,10 +10698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetWebElementAtBrowserDocumentWindowCoordinatesResponse> BrowserGetWebElementAtBrowserDocumentWindowCoordinates([WorkflowExpression] Func<string> browserGetWebElementAtBrowserDocumentWindowCoordinatesworkflow, [WorkflowExpression] Func<int> browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord = null, [WorkflowExpression] Func<int> browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord = null, [WorkflowExpression] Func<bool> browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound = null)
         {
-            SourceExpression.Validate(browserGetWebElementAtBrowserDocumentWindowCoordinatesworkflow, nameof(browserGetWebElementAtBrowserDocumentWindowCoordinatesworkflow), required: true);
-            SourceExpression.Validate(browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord, nameof(browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord), required: false);
-            SourceExpression.Validate(browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord, nameof(browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord), required: false);
-            SourceExpression.Validate(browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound, nameof(browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/GetWebElementAtBrowserDocumentWindowCoordinates";
@@ -11713,15 +10768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<BrowserGetWebElementPropertiesAsListResponse> BrowserGetWebElementPropertiesAsList([WorkflowExpression] Func<int> browserGetWebElementPropertiesAsListelementHandle, [WorkflowExpression] Func<string> browserGetWebElementPropertiesAsListworkflow, [WorkflowExpression] Func<bool> browserGetWebElementPropertiesAsListgetHTMLCode = null, [WorkflowExpression] Func<bool> browserGetWebElementPropertiesAsListreturnValue = null, [WorkflowExpression] Func<bool> browserGetWebElementPropertiesAsListreturnText = null, [WorkflowExpression] Func<int> browserGetWebElementPropertiesAsListmaxValueLength = null, [WorkflowExpression] Func<int> browserGetWebElementPropertiesAsListmaxTextLength = null, [WorkflowExpression] Func<bool> browserGetWebElementPropertiesAsListreturnCoordinates = null, [WorkflowExpression] Func<bool> browserGetWebElementPropertiesAsListreturnParentTag = null)
         {
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListelementHandle, nameof(browserGetWebElementPropertiesAsListelementHandle), required: true);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListworkflow, nameof(browserGetWebElementPropertiesAsListworkflow), required: true);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListgetHTMLCode, nameof(browserGetWebElementPropertiesAsListgetHTMLCode), required: false);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListreturnValue, nameof(browserGetWebElementPropertiesAsListreturnValue), required: false);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListreturnText, nameof(browserGetWebElementPropertiesAsListreturnText), required: false);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListmaxValueLength, nameof(browserGetWebElementPropertiesAsListmaxValueLength), required: false);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListmaxTextLength, nameof(browserGetWebElementPropertiesAsListmaxTextLength), required: false);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListreturnCoordinates, nameof(browserGetWebElementPropertiesAsListreturnCoordinates), required: false);
-            SourceExpression.Validate(browserGetWebElementPropertiesAsListreturnParentTag, nameof(browserGetWebElementPropertiesAsListreturnParentTag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/BrowserGetWebElementPropertiesAsList";
@@ -11858,7 +10904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
         public IBodyWorkflowAction<IsBrowserInstanceOpenResponse> IsBrowserInstanceOpen([WorkflowExpression] Func<string> isBrowserInstanceOpenworkflow)
         {
-            SourceExpression.Validate(isBrowserInstanceOpenworkflow, nameof(isBrowserInstanceOpenworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BrowserControl/IsBrowserInstanceOpen";

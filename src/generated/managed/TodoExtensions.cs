@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<TodoListV2> UpdateToDoList([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -38,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IWorkflowAction DeleteToDoList([WorkflowExpression] Func<string> folderId)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -53,14 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2> CreateToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydueDateTimedueDate = null, [WorkflowExpression] Func<string> bodyreminderDateTimereminderDateTime = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodybodycontent = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
-            SourceExpression.Validate(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
-            SourceExpression.Validate(bodyimportance, nameof(bodyimportance), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
-            SourceExpression.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -149,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<TodoListV2> CreateToDoList([WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lists";
@@ -172,8 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IWorkflowAction DeleteToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -202,8 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2> GetToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -218,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<TodoListV2> GetToDoList([WorkflowExpression] Func<string> folderId)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -233,8 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2[]> ListToDosByFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -251,15 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2> UpdateToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydueDateTimedueDate = null, [WorkflowExpression] Func<string> bodyreminderDateTimereminderDateTime = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodybodycontent = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
-            SourceExpression.Validate(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
-            SourceExpression.Validate(bodyimportance, nameof(bodyimportance), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
-            SourceExpression.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -354,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
     {
         public IBodyWorkflowTrigger<ToDoV2[]> OnNewToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/trigger/onNewToDoInFolder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -368,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
 
         public IBodyWorkflowTrigger<ToDoV2[]> OnUpdateToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/trigger/onUpdateToDoInFolder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));

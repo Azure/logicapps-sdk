@@ -14,33 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionCreateBusinessCardResponse> ActionCreateBusinessCard([WorkflowExpression] Func<int> clientId, [WorkflowExpression] Func<string> familyName, [WorkflowExpression] Func<int> status, [WorkflowExpression] Func<int> openStatus, [WorkflowExpression] Func<int> organizationId = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> familyNameKana = null, [WorkflowExpression] Func<string> firstNameKana = null, [WorkflowExpression] Func<string> tel = null, [WorkflowExpression] Func<int> extension = null, [WorkflowExpression] Func<string> fax = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> mobileTel = null, [WorkflowExpression] Func<string> mobileEmail = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<int> prefId = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<int> latitude = null, [WorkflowExpression] Func<int> longitude = null, [WorkflowExpression] Func<int> leadSourceKbnId = null, [WorkflowExpression] Func<string> leadSource = null, [WorkflowExpression] Func<int> ownerUserId = null, [WorkflowExpression] Func<string> ownerUser = null, [WorkflowExpression] Func<string> tradeOn = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<string> directNote = null)
         {
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
-            SourceExpression.Validate(familyName, nameof(familyName), required: true);
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(openStatus, nameof(openStatus), required: true);
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(familyNameKana, nameof(familyNameKana), required: false);
-            SourceExpression.Validate(firstNameKana, nameof(firstNameKana), required: false);
-            SourceExpression.Validate(tel, nameof(tel), required: false);
-            SourceExpression.Validate(extension, nameof(extension), required: false);
-            SourceExpression.Validate(fax, nameof(fax), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(mobileTel, nameof(mobileTel), required: false);
-            SourceExpression.Validate(mobileEmail, nameof(mobileEmail), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(prefId, nameof(prefId), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(leadSourceKbnId, nameof(leadSourceKbnId), required: false);
-            SourceExpression.Validate(leadSource, nameof(leadSource), required: false);
-            SourceExpression.Validate(ownerUserId, nameof(ownerUserId), required: false);
-            SourceExpression.Validate(ownerUser, nameof(ownerUser), required: false);
-            SourceExpression.Validate(tradeOn, nameof(tradeOn), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(directNote, nameof(directNote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/business_cards/create";
@@ -105,39 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionGetBusinessCardsResponse> ActionGetBusinessCards([WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageDisplayNumber = null, [WorkflowExpression] Func<bool> pageDateFormatOption = null, [WorkflowExpression] Func<string> orderKey = null, [WorkflowExpression] Func<string> orderType = null, [WorkflowExpression] Func<string> searchFamilyName = null, [WorkflowExpression] Func<string> searchFirstName = null, [WorkflowExpression] Func<string> searchFamilyNameKana = null, [WorkflowExpression] Func<string> searchFirstNameKana = null, [WorkflowExpression] Func<string> searchClientName = null, [WorkflowExpression] Func<string> searchFromTradeOn = null, [WorkflowExpression] Func<string> searchToTradeOn = null, [WorkflowExpression] Func<string> searchFromUpdatedOn = null, [WorkflowExpression] Func<string> searchToUpdatedOn = null, [WorkflowExpression] Func<string> searchFromCreatedOn = null, [WorkflowExpression] Func<string> searchToCreatedOn = null, [WorkflowExpression] Func<string> searchOrganizationAncestryAllName = null, [WorkflowExpression] Func<string> searchPost = null, [WorkflowExpression] Func<string> searchTel = null, [WorkflowExpression] Func<string> searchFax = null, [WorkflowExpression] Func<string> searchMobileTel = null, [WorkflowExpression] Func<string> searchEmail = null, [WorkflowExpression] Func<string> searchMobileEmail = null, [WorkflowExpression] Func<int> searchRoleId = null, [WorkflowExpression] Func<string> searchZip = null, [WorkflowExpression] Func<string> searchAddress = null, [WorkflowExpression] Func<string> searchUrl = null, [WorkflowExpression] Func<string> searchNote = null, [WorkflowExpression] Func<string> searchDirectNote = null, [WorkflowExpression] Func<string> searchLeadSource = null, [WorkflowExpression] Func<string> searchRequestKey = null, [WorkflowExpression] Func<int> searchLatitude = null, [WorkflowExpression] Func<int> searchLongitude = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageDisplayNumber, nameof(pageDisplayNumber), required: false);
-            SourceExpression.Validate(pageDateFormatOption, nameof(pageDateFormatOption), required: false);
-            SourceExpression.Validate(orderKey, nameof(orderKey), required: false);
-            SourceExpression.Validate(orderType, nameof(orderType), required: false);
-            SourceExpression.Validate(searchFamilyName, nameof(searchFamilyName), required: false);
-            SourceExpression.Validate(searchFirstName, nameof(searchFirstName), required: false);
-            SourceExpression.Validate(searchFamilyNameKana, nameof(searchFamilyNameKana), required: false);
-            SourceExpression.Validate(searchFirstNameKana, nameof(searchFirstNameKana), required: false);
-            SourceExpression.Validate(searchClientName, nameof(searchClientName), required: false);
-            SourceExpression.Validate(searchFromTradeOn, nameof(searchFromTradeOn), required: false);
-            SourceExpression.Validate(searchToTradeOn, nameof(searchToTradeOn), required: false);
-            SourceExpression.Validate(searchFromUpdatedOn, nameof(searchFromUpdatedOn), required: false);
-            SourceExpression.Validate(searchToUpdatedOn, nameof(searchToUpdatedOn), required: false);
-            SourceExpression.Validate(searchFromCreatedOn, nameof(searchFromCreatedOn), required: false);
-            SourceExpression.Validate(searchToCreatedOn, nameof(searchToCreatedOn), required: false);
-            SourceExpression.Validate(searchOrganizationAncestryAllName, nameof(searchOrganizationAncestryAllName), required: false);
-            SourceExpression.Validate(searchPost, nameof(searchPost), required: false);
-            SourceExpression.Validate(searchTel, nameof(searchTel), required: false);
-            SourceExpression.Validate(searchFax, nameof(searchFax), required: false);
-            SourceExpression.Validate(searchMobileTel, nameof(searchMobileTel), required: false);
-            SourceExpression.Validate(searchEmail, nameof(searchEmail), required: false);
-            SourceExpression.Validate(searchMobileEmail, nameof(searchMobileEmail), required: false);
-            SourceExpression.Validate(searchRoleId, nameof(searchRoleId), required: false);
-            SourceExpression.Validate(searchZip, nameof(searchZip), required: false);
-            SourceExpression.Validate(searchAddress, nameof(searchAddress), required: false);
-            SourceExpression.Validate(searchUrl, nameof(searchUrl), required: false);
-            SourceExpression.Validate(searchNote, nameof(searchNote), required: false);
-            SourceExpression.Validate(searchDirectNote, nameof(searchDirectNote), required: false);
-            SourceExpression.Validate(searchLeadSource, nameof(searchLeadSource), required: false);
-            SourceExpression.Validate(searchRequestKey, nameof(searchRequestKey), required: false);
-            SourceExpression.Validate(searchLatitude, nameof(searchLatitude), required: false);
-            SourceExpression.Validate(searchLongitude, nameof(searchLongitude), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/business_cards/get_entry_list";
@@ -218,34 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionUpdateBusinessCardResponse> ActionUpdateBusinessCard([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> clientId, [WorkflowExpression] Func<int> organizationId = null, [WorkflowExpression] Func<string> familyName = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> familyNameKana = null, [WorkflowExpression] Func<string> firstNameKana = null, [WorkflowExpression] Func<string> tel = null, [WorkflowExpression] Func<int> extension = null, [WorkflowExpression] Func<string> fax = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> mobileTel = null, [WorkflowExpression] Func<string> mobileEmail = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<int> prefId = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<int> latitude = null, [WorkflowExpression] Func<int> longitude = null, [WorkflowExpression] Func<int> leadSourceKbnId = null, [WorkflowExpression] Func<string> leadSource = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<int> openStatus = null, [WorkflowExpression] Func<int> ownerUserId = null, [WorkflowExpression] Func<string> ownerUser = null, [WorkflowExpression] Func<string> tradeOn = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<string> directNote = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: false);
-            SourceExpression.Validate(familyName, nameof(familyName), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(familyNameKana, nameof(familyNameKana), required: false);
-            SourceExpression.Validate(firstNameKana, nameof(firstNameKana), required: false);
-            SourceExpression.Validate(tel, nameof(tel), required: false);
-            SourceExpression.Validate(extension, nameof(extension), required: false);
-            SourceExpression.Validate(fax, nameof(fax), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(mobileTel, nameof(mobileTel), required: false);
-            SourceExpression.Validate(mobileEmail, nameof(mobileEmail), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(prefId, nameof(prefId), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(leadSourceKbnId, nameof(leadSourceKbnId), required: false);
-            SourceExpression.Validate(leadSource, nameof(leadSource), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(openStatus, nameof(openStatus), required: false);
-            SourceExpression.Validate(ownerUserId, nameof(ownerUserId), required: false);
-            SourceExpression.Validate(ownerUser, nameof(ownerUser), required: false);
-            SourceExpression.Validate(tradeOn, nameof(tradeOn), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(directNote, nameof(directNote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/business_cards/update";
@@ -314,29 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionCreateClientResponse> ActionCreateClient([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> nameDisp, [WorkflowExpression] Func<string> nameKana = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<int> prefId = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<int> latitude = null, [WorkflowExpression] Func<int> longitude = null, [WorkflowExpression] Func<int> businessCategoryKbn = null, [WorkflowExpression] Func<int> workerNumberKbn = null, [WorkflowExpression] Func<int> capitalKbn = null, [WorkflowExpression] Func<int> ipoKbn = null, [WorkflowExpression] Func<string> salesLastYear = null, [WorkflowExpression] Func<string> mainTel = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> mailDomain = null, [WorkflowExpression] Func<int> userId = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<string> nameSub = null, [WorkflowExpression] Func<string> nameKanaSub = null, [WorkflowExpression] Func<string> zipSub = null, [WorkflowExpression] Func<string> addressSub = null, [WorkflowExpression] Func<string> prefSub = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(nameDisp, nameof(nameDisp), required: true);
-            SourceExpression.Validate(nameKana, nameof(nameKana), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(prefId, nameof(prefId), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(businessCategoryKbn, nameof(businessCategoryKbn), required: false);
-            SourceExpression.Validate(workerNumberKbn, nameof(workerNumberKbn), required: false);
-            SourceExpression.Validate(capitalKbn, nameof(capitalKbn), required: false);
-            SourceExpression.Validate(ipoKbn, nameof(ipoKbn), required: false);
-            SourceExpression.Validate(salesLastYear, nameof(salesLastYear), required: false);
-            SourceExpression.Validate(mainTel, nameof(mainTel), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
-            SourceExpression.Validate(mailDomain, nameof(mailDomain), required: false);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(nameSub, nameof(nameSub), required: false);
-            SourceExpression.Validate(nameKanaSub, nameof(nameKanaSub), required: false);
-            SourceExpression.Validate(zipSub, nameof(zipSub), required: false);
-            SourceExpression.Validate(addressSub, nameof(addressSub), required: false);
-            SourceExpression.Validate(prefSub, nameof(prefSub), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/clients/create";
@@ -395,37 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionGetClientsResponse> ActionGetClients([WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageDisplayNumber = null, [WorkflowExpression] Func<int> pageDateFormatOption = null, [WorkflowExpression] Func<string> orderKey = null, [WorkflowExpression] Func<string> orderType = null, [WorkflowExpression] Func<int> searchFromId = null, [WorkflowExpression] Func<int> searchToId = null, [WorkflowExpression] Func<string> searchName = null, [WorkflowExpression] Func<string> searchNameKana = null, [WorkflowExpression] Func<string> searchNameDisp = null, [WorkflowExpression] Func<string> searchZip = null, [WorkflowExpression] Func<string> searchAddress = null, [WorkflowExpression] Func<string> searchLatitude = null, [WorkflowExpression] Func<string> searchLongitude = null, [WorkflowExpression] Func<string> searchCorporateNumber = null, [WorkflowExpression] Func<string> searchMainTel = null, [WorkflowExpression] Func<string> searchUrl = null, [WorkflowExpression] Func<string> searchMailDomain = null, [WorkflowExpression] Func<string> searchNote = null, [WorkflowExpression] Func<int> searchUserIds = null, [WorkflowExpression] Func<string> searchNameSub = null, [WorkflowExpression] Func<string> searchNameKanaSub = null, [WorkflowExpression] Func<string> searchZipSub = null, [WorkflowExpression] Func<string> searchAddressSub = null, [WorkflowExpression] Func<string> searchPrefSub = null, [WorkflowExpression] Func<string> searchFromCreatedOn = null, [WorkflowExpression] Func<string> searchToCreatedOn = null, [WorkflowExpression] Func<string> searchFromUpdatedOn = null, [WorkflowExpression] Func<string> searchToUpdatedOn = null, [WorkflowExpression] Func<string> searchFromDatetimeUpdatedOn = null, [WorkflowExpression] Func<string> searchToDatetimeUpdatedOn = null)
         {
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageDisplayNumber, nameof(pageDisplayNumber), required: false);
-            SourceExpression.Validate(pageDateFormatOption, nameof(pageDateFormatOption), required: false);
-            SourceExpression.Validate(orderKey, nameof(orderKey), required: false);
-            SourceExpression.Validate(orderType, nameof(orderType), required: false);
-            SourceExpression.Validate(searchFromId, nameof(searchFromId), required: false);
-            SourceExpression.Validate(searchToId, nameof(searchToId), required: false);
-            SourceExpression.Validate(searchName, nameof(searchName), required: false);
-            SourceExpression.Validate(searchNameKana, nameof(searchNameKana), required: false);
-            SourceExpression.Validate(searchNameDisp, nameof(searchNameDisp), required: false);
-            SourceExpression.Validate(searchZip, nameof(searchZip), required: false);
-            SourceExpression.Validate(searchAddress, nameof(searchAddress), required: false);
-            SourceExpression.Validate(searchLatitude, nameof(searchLatitude), required: false);
-            SourceExpression.Validate(searchLongitude, nameof(searchLongitude), required: false);
-            SourceExpression.Validate(searchCorporateNumber, nameof(searchCorporateNumber), required: false);
-            SourceExpression.Validate(searchMainTel, nameof(searchMainTel), required: false);
-            SourceExpression.Validate(searchUrl, nameof(searchUrl), required: false);
-            SourceExpression.Validate(searchMailDomain, nameof(searchMailDomain), required: false);
-            SourceExpression.Validate(searchNote, nameof(searchNote), required: false);
-            SourceExpression.Validate(searchUserIds, nameof(searchUserIds), required: false);
-            SourceExpression.Validate(searchNameSub, nameof(searchNameSub), required: false);
-            SourceExpression.Validate(searchNameKanaSub, nameof(searchNameKanaSub), required: false);
-            SourceExpression.Validate(searchZipSub, nameof(searchZipSub), required: false);
-            SourceExpression.Validate(searchAddressSub, nameof(searchAddressSub), required: false);
-            SourceExpression.Validate(searchPrefSub, nameof(searchPrefSub), required: false);
-            SourceExpression.Validate(searchFromCreatedOn, nameof(searchFromCreatedOn), required: false);
-            SourceExpression.Validate(searchToCreatedOn, nameof(searchToCreatedOn), required: false);
-            SourceExpression.Validate(searchFromUpdatedOn, nameof(searchFromUpdatedOn), required: false);
-            SourceExpression.Validate(searchToUpdatedOn, nameof(searchToUpdatedOn), required: false);
-            SourceExpression.Validate(searchFromDatetimeUpdatedOn, nameof(searchFromDatetimeUpdatedOn), required: false);
-            SourceExpression.Validate(searchToDatetimeUpdatedOn, nameof(searchToDatetimeUpdatedOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/clients/get_entry_list_flow";
@@ -502,30 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionUpdateClientResponse> ActionUpdateClient([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> nameKana = null, [WorkflowExpression] Func<string> nameDisp = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<int> prefId = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<int> latitude = null, [WorkflowExpression] Func<int> longitude = null, [WorkflowExpression] Func<int> businessCategoryKbn = null, [WorkflowExpression] Func<int> workerNumberKbn = null, [WorkflowExpression] Func<int> capitalKbn = null, [WorkflowExpression] Func<int> ipoKbn = null, [WorkflowExpression] Func<string> salesLastYear = null, [WorkflowExpression] Func<string> mainTel = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> mailDomain = null, [WorkflowExpression] Func<int> userId = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<string> nameSub = null, [WorkflowExpression] Func<string> nameKanaSub = null, [WorkflowExpression] Func<string> zipSub = null, [WorkflowExpression] Func<string> addressSub = null, [WorkflowExpression] Func<string> prefSub = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(nameKana, nameof(nameKana), required: false);
-            SourceExpression.Validate(nameDisp, nameof(nameDisp), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(prefId, nameof(prefId), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(businessCategoryKbn, nameof(businessCategoryKbn), required: false);
-            SourceExpression.Validate(workerNumberKbn, nameof(workerNumberKbn), required: false);
-            SourceExpression.Validate(capitalKbn, nameof(capitalKbn), required: false);
-            SourceExpression.Validate(ipoKbn, nameof(ipoKbn), required: false);
-            SourceExpression.Validate(salesLastYear, nameof(salesLastYear), required: false);
-            SourceExpression.Validate(mainTel, nameof(mainTel), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
-            SourceExpression.Validate(mailDomain, nameof(mailDomain), required: false);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(nameSub, nameof(nameSub), required: false);
-            SourceExpression.Validate(nameKanaSub, nameof(nameKanaSub), required: false);
-            SourceExpression.Validate(zipSub, nameof(zipSub), required: false);
-            SourceExpression.Validate(addressSub, nameof(addressSub), required: false);
-            SourceExpression.Validate(prefSub, nameof(prefSub), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/clients/update";
@@ -587,43 +421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionCreateLeadResponse> ActionCreateLead([WorkflowExpression] Func<int> clientId, [WorkflowExpression] Func<string> familyName, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> familyNameKana = null, [WorkflowExpression] Func<string> firstNameKana = null, [WorkflowExpression] Func<int> organizationId = null, [WorkflowExpression] Func<string> post = null, [WorkflowExpression] Func<string> tel = null, [WorkflowExpression] Func<int> extension = null, [WorkflowExpression] Func<string> fax = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> mobileTel = null, [WorkflowExpression] Func<string> mobileEmail = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<int> prefId = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<int> leadStatus = null, [WorkflowExpression] Func<int> latitude = null, [WorkflowExpression] Func<int> longitude = null, [WorkflowExpression] Func<int> leadSourceKbnId = null, [WorkflowExpression] Func<string> leadSource = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<bool> errorMailFlg = null, [WorkflowExpression] Func<bool> errorTelFlg = null, [WorkflowExpression] Func<bool> errorFaxFlg = null, [WorkflowExpression] Func<bool> errorAddressFlg = null, [WorkflowExpression] Func<bool> notMailFlg = null, [WorkflowExpression] Func<bool> notTelFlg = null, [WorkflowExpression] Func<bool> notFaxFlg = null, [WorkflowExpression] Func<bool> notDmFlg = null, [WorkflowExpression] Func<bool> competitorFlg = null, [WorkflowExpression] Func<bool> importantCustomerFlg = null, [WorkflowExpression] Func<bool> endUserFlg = null, [WorkflowExpression] Func<bool> storeFlg = null, [WorkflowExpression] Func<string> customerId = null, [WorkflowExpression] Func<string> ownerUserId = null)
         {
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
-            SourceExpression.Validate(familyName, nameof(familyName), required: true);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(familyNameKana, nameof(familyNameKana), required: false);
-            SourceExpression.Validate(firstNameKana, nameof(firstNameKana), required: false);
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: false);
-            SourceExpression.Validate(post, nameof(post), required: false);
-            SourceExpression.Validate(tel, nameof(tel), required: false);
-            SourceExpression.Validate(extension, nameof(extension), required: false);
-            SourceExpression.Validate(fax, nameof(fax), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(mobileTel, nameof(mobileTel), required: false);
-            SourceExpression.Validate(mobileEmail, nameof(mobileEmail), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(prefId, nameof(prefId), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
-            SourceExpression.Validate(leadStatus, nameof(leadStatus), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(leadSourceKbnId, nameof(leadSourceKbnId), required: false);
-            SourceExpression.Validate(leadSource, nameof(leadSource), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(errorMailFlg, nameof(errorMailFlg), required: false);
-            SourceExpression.Validate(errorTelFlg, nameof(errorTelFlg), required: false);
-            SourceExpression.Validate(errorFaxFlg, nameof(errorFaxFlg), required: false);
-            SourceExpression.Validate(errorAddressFlg, nameof(errorAddressFlg), required: false);
-            SourceExpression.Validate(notMailFlg, nameof(notMailFlg), required: false);
-            SourceExpression.Validate(notTelFlg, nameof(notTelFlg), required: false);
-            SourceExpression.Validate(notFaxFlg, nameof(notFaxFlg), required: false);
-            SourceExpression.Validate(notDmFlg, nameof(notDmFlg), required: false);
-            SourceExpression.Validate(competitorFlg, nameof(competitorFlg), required: false);
-            SourceExpression.Validate(importantCustomerFlg, nameof(importantCustomerFlg), required: false);
-            SourceExpression.Validate(endUserFlg, nameof(endUserFlg), required: false);
-            SourceExpression.Validate(storeFlg, nameof(storeFlg), required: false);
-            SourceExpression.Validate(customerId, nameof(customerId), required: false);
-            SourceExpression.Validate(ownerUserId, nameof(ownerUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/leads/create";
@@ -710,72 +507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionGetLeadsResponse> ActionGetLeads([WorkflowExpression] Func<string> searchFamilyName = null, [WorkflowExpression] Func<string> searchFirstName = null, [WorkflowExpression] Func<string> searchClientName = null, [WorkflowExpression] Func<int> searchFromId = null, [WorkflowExpression] Func<int> searchToId = null, [WorkflowExpression] Func<string> orderKey = null, [WorkflowExpression] Func<string> orderType = null, [WorkflowExpression] Func<int> pageDisplayNumber = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageDateFormatOption = null, [WorkflowExpression] Func<int> searchClientId = null, [WorkflowExpression] Func<string> searchClientNameKana = null, [WorkflowExpression] Func<string> searchClientNameDisp = null, [WorkflowExpression] Func<int> searchOwnerUserId = null, [WorkflowExpression] Func<int> searchRoleId = null, [WorkflowExpression] Func<int> searchOrganizationId = null, [WorkflowExpression] Func<string> searchOrganizationName = null, [WorkflowExpression] Func<string> searchOrganizationAncestryAllName = null, [WorkflowExpression] Func<string> searchPost = null, [WorkflowExpression] Func<string> searchFamilyNameKana = null, [WorkflowExpression] Func<string> searchFirstNameKana = null, [WorkflowExpression] Func<string> searchEmail = null, [WorkflowExpression] Func<string> searchMobileEmail = null, [WorkflowExpression] Func<string> searchTel = null, [WorkflowExpression] Func<string> searchExtension = null, [WorkflowExpression] Func<string> searchFax = null, [WorkflowExpression] Func<string> searchMobileTel = null, [WorkflowExpression] Func<string> searchZip = null, [WorkflowExpression] Func<string> searchPref = null, [WorkflowExpression] Func<string> searchAddress = null, [WorkflowExpression] Func<string> searchUrl = null, [WorkflowExpression] Func<string> searchFromCreatedOn = null, [WorkflowExpression] Func<string> searchToCreatedOn = null, [WorkflowExpression] Func<string> searchFromUpdatedOn = null, [WorkflowExpression] Func<string> searchToUpdatedOn = null, [WorkflowExpression] Func<string> searchFromDatetimeUpdatedOn = null, [WorkflowExpression] Func<string> searchToDatetimeUpdatedOn = null, [WorkflowExpression] Func<string> searchFromTradeOn = null, [WorkflowExpression] Func<string> searchToTradeOn = null, [WorkflowExpression] Func<int> searchFromLatitude = null, [WorkflowExpression] Func<int> searchToLatitude = null, [WorkflowExpression] Func<int> searchFromLongitude = null, [WorkflowExpression] Func<int> searchToLongitude = null, [WorkflowExpression] Func<string> searchLatitude = null, [WorkflowExpression] Func<string> searchLongitude = null, [WorkflowExpression] Func<int> searchLeadStatus = null, [WorkflowExpression] Func<int> searchLeadSourceKbnIds = null, [WorkflowExpression] Func<string> searchLeadSource = null, [WorkflowExpression] Func<int> searchImportantCustomerFlg = null, [WorkflowExpression] Func<int> searchEndUserFlg = null, [WorkflowExpression] Func<int> searchStoreFlg = null, [WorkflowExpression] Func<int> searchCompetitorFlg = null, [WorkflowExpression] Func<int> searchErrorMailFlg = null, [WorkflowExpression] Func<int> searchErrorTelFlg = null, [WorkflowExpression] Func<int> searchErrorFaxFlg = null, [WorkflowExpression] Func<int> searchErrorAddressFlg = null, [WorkflowExpression] Func<int> searchNotMailFlg = null, [WorkflowExpression] Func<int> searchNotTelFlg = null, [WorkflowExpression] Func<int> searchNotFaxFlg = null, [WorkflowExpression] Func<int> searchNotDmFlg = null, [WorkflowExpression] Func<string> searchNote = null, [WorkflowExpression] Func<string> searchCustomerId = null, [WorkflowExpression] Func<string> searchName = null, [WorkflowExpression] Func<string> searchIds = null, [WorkflowExpression] Func<string> searchUserIds = null, [WorkflowExpression] Func<string> searchMultiple = null)
         {
-            SourceExpression.Validate(searchFamilyName, nameof(searchFamilyName), required: false);
-            SourceExpression.Validate(searchFirstName, nameof(searchFirstName), required: false);
-            SourceExpression.Validate(searchClientName, nameof(searchClientName), required: false);
-            SourceExpression.Validate(searchFromId, nameof(searchFromId), required: false);
-            SourceExpression.Validate(searchToId, nameof(searchToId), required: false);
-            SourceExpression.Validate(orderKey, nameof(orderKey), required: false);
-            SourceExpression.Validate(orderType, nameof(orderType), required: false);
-            SourceExpression.Validate(pageDisplayNumber, nameof(pageDisplayNumber), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageDateFormatOption, nameof(pageDateFormatOption), required: false);
-            SourceExpression.Validate(searchClientId, nameof(searchClientId), required: false);
-            SourceExpression.Validate(searchClientNameKana, nameof(searchClientNameKana), required: false);
-            SourceExpression.Validate(searchClientNameDisp, nameof(searchClientNameDisp), required: false);
-            SourceExpression.Validate(searchOwnerUserId, nameof(searchOwnerUserId), required: false);
-            SourceExpression.Validate(searchRoleId, nameof(searchRoleId), required: false);
-            SourceExpression.Validate(searchOrganizationId, nameof(searchOrganizationId), required: false);
-            SourceExpression.Validate(searchOrganizationName, nameof(searchOrganizationName), required: false);
-            SourceExpression.Validate(searchOrganizationAncestryAllName, nameof(searchOrganizationAncestryAllName), required: false);
-            SourceExpression.Validate(searchPost, nameof(searchPost), required: false);
-            SourceExpression.Validate(searchFamilyNameKana, nameof(searchFamilyNameKana), required: false);
-            SourceExpression.Validate(searchFirstNameKana, nameof(searchFirstNameKana), required: false);
-            SourceExpression.Validate(searchEmail, nameof(searchEmail), required: false);
-            SourceExpression.Validate(searchMobileEmail, nameof(searchMobileEmail), required: false);
-            SourceExpression.Validate(searchTel, nameof(searchTel), required: false);
-            SourceExpression.Validate(searchExtension, nameof(searchExtension), required: false);
-            SourceExpression.Validate(searchFax, nameof(searchFax), required: false);
-            SourceExpression.Validate(searchMobileTel, nameof(searchMobileTel), required: false);
-            SourceExpression.Validate(searchZip, nameof(searchZip), required: false);
-            SourceExpression.Validate(searchPref, nameof(searchPref), required: false);
-            SourceExpression.Validate(searchAddress, nameof(searchAddress), required: false);
-            SourceExpression.Validate(searchUrl, nameof(searchUrl), required: false);
-            SourceExpression.Validate(searchFromCreatedOn, nameof(searchFromCreatedOn), required: false);
-            SourceExpression.Validate(searchToCreatedOn, nameof(searchToCreatedOn), required: false);
-            SourceExpression.Validate(searchFromUpdatedOn, nameof(searchFromUpdatedOn), required: false);
-            SourceExpression.Validate(searchToUpdatedOn, nameof(searchToUpdatedOn), required: false);
-            SourceExpression.Validate(searchFromDatetimeUpdatedOn, nameof(searchFromDatetimeUpdatedOn), required: false);
-            SourceExpression.Validate(searchToDatetimeUpdatedOn, nameof(searchToDatetimeUpdatedOn), required: false);
-            SourceExpression.Validate(searchFromTradeOn, nameof(searchFromTradeOn), required: false);
-            SourceExpression.Validate(searchToTradeOn, nameof(searchToTradeOn), required: false);
-            SourceExpression.Validate(searchFromLatitude, nameof(searchFromLatitude), required: false);
-            SourceExpression.Validate(searchToLatitude, nameof(searchToLatitude), required: false);
-            SourceExpression.Validate(searchFromLongitude, nameof(searchFromLongitude), required: false);
-            SourceExpression.Validate(searchToLongitude, nameof(searchToLongitude), required: false);
-            SourceExpression.Validate(searchLatitude, nameof(searchLatitude), required: false);
-            SourceExpression.Validate(searchLongitude, nameof(searchLongitude), required: false);
-            SourceExpression.Validate(searchLeadStatus, nameof(searchLeadStatus), required: false);
-            SourceExpression.Validate(searchLeadSourceKbnIds, nameof(searchLeadSourceKbnIds), required: false);
-            SourceExpression.Validate(searchLeadSource, nameof(searchLeadSource), required: false);
-            SourceExpression.Validate(searchImportantCustomerFlg, nameof(searchImportantCustomerFlg), required: false);
-            SourceExpression.Validate(searchEndUserFlg, nameof(searchEndUserFlg), required: false);
-            SourceExpression.Validate(searchStoreFlg, nameof(searchStoreFlg), required: false);
-            SourceExpression.Validate(searchCompetitorFlg, nameof(searchCompetitorFlg), required: false);
-            SourceExpression.Validate(searchErrorMailFlg, nameof(searchErrorMailFlg), required: false);
-            SourceExpression.Validate(searchErrorTelFlg, nameof(searchErrorTelFlg), required: false);
-            SourceExpression.Validate(searchErrorFaxFlg, nameof(searchErrorFaxFlg), required: false);
-            SourceExpression.Validate(searchErrorAddressFlg, nameof(searchErrorAddressFlg), required: false);
-            SourceExpression.Validate(searchNotMailFlg, nameof(searchNotMailFlg), required: false);
-            SourceExpression.Validate(searchNotTelFlg, nameof(searchNotTelFlg), required: false);
-            SourceExpression.Validate(searchNotFaxFlg, nameof(searchNotFaxFlg), required: false);
-            SourceExpression.Validate(searchNotDmFlg, nameof(searchNotDmFlg), required: false);
-            SourceExpression.Validate(searchNote, nameof(searchNote), required: false);
-            SourceExpression.Validate(searchCustomerId, nameof(searchCustomerId), required: false);
-            SourceExpression.Validate(searchName, nameof(searchName), required: false);
-            SourceExpression.Validate(searchIds, nameof(searchIds), required: false);
-            SourceExpression.Validate(searchUserIds, nameof(searchUserIds), required: false);
-            SourceExpression.Validate(searchMultiple, nameof(searchMultiple), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/leads/get_entry_list_flow";
@@ -922,44 +653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
         public IBodyWorkflowAction<ActionUpdateLeadResponse> ActionUpdateLead([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> clientId, [WorkflowExpression] Func<int> organizationId = null, [WorkflowExpression] Func<string> post = null, [WorkflowExpression] Func<string> familyName = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> familyNameKana = null, [WorkflowExpression] Func<string> firstNameKana = null, [WorkflowExpression] Func<string> tel = null, [WorkflowExpression] Func<int> extension = null, [WorkflowExpression] Func<string> fax = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> mobileTel = null, [WorkflowExpression] Func<string> mobileEmail = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<int> prefId = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<int> leadStatus = null, [WorkflowExpression] Func<int> latitude = null, [WorkflowExpression] Func<int> longitude = null, [WorkflowExpression] Func<int> leadSourceKbnId = null, [WorkflowExpression] Func<string> leadSource = null, [WorkflowExpression] Func<string> note = null, [WorkflowExpression] Func<bool> errorMailFlg = null, [WorkflowExpression] Func<bool> errorTelFlg = null, [WorkflowExpression] Func<bool> errorFaxFlg = null, [WorkflowExpression] Func<bool> errorAddressFlg = null, [WorkflowExpression] Func<bool> notMailFlg = null, [WorkflowExpression] Func<bool> notTelFlg = null, [WorkflowExpression] Func<bool> notFaxFlg = null, [WorkflowExpression] Func<bool> notDmFlg = null, [WorkflowExpression] Func<bool> competitorFlg = null, [WorkflowExpression] Func<bool> importantCustomerFlg = null, [WorkflowExpression] Func<bool> endUserFlg = null, [WorkflowExpression] Func<bool> storeFlg = null, [WorkflowExpression] Func<string> customerId = null, [WorkflowExpression] Func<string> ownerUserId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: false);
-            SourceExpression.Validate(post, nameof(post), required: false);
-            SourceExpression.Validate(familyName, nameof(familyName), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(familyNameKana, nameof(familyNameKana), required: false);
-            SourceExpression.Validate(firstNameKana, nameof(firstNameKana), required: false);
-            SourceExpression.Validate(tel, nameof(tel), required: false);
-            SourceExpression.Validate(extension, nameof(extension), required: false);
-            SourceExpression.Validate(fax, nameof(fax), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(mobileTel, nameof(mobileTel), required: false);
-            SourceExpression.Validate(mobileEmail, nameof(mobileEmail), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(prefId, nameof(prefId), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
-            SourceExpression.Validate(leadStatus, nameof(leadStatus), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(leadSourceKbnId, nameof(leadSourceKbnId), required: false);
-            SourceExpression.Validate(leadSource, nameof(leadSource), required: false);
-            SourceExpression.Validate(note, nameof(note), required: false);
-            SourceExpression.Validate(errorMailFlg, nameof(errorMailFlg), required: false);
-            SourceExpression.Validate(errorTelFlg, nameof(errorTelFlg), required: false);
-            SourceExpression.Validate(errorFaxFlg, nameof(errorFaxFlg), required: false);
-            SourceExpression.Validate(errorAddressFlg, nameof(errorAddressFlg), required: false);
-            SourceExpression.Validate(notMailFlg, nameof(notMailFlg), required: false);
-            SourceExpression.Validate(notTelFlg, nameof(notTelFlg), required: false);
-            SourceExpression.Validate(notFaxFlg, nameof(notFaxFlg), required: false);
-            SourceExpression.Validate(notDmFlg, nameof(notDmFlg), required: false);
-            SourceExpression.Validate(competitorFlg, nameof(competitorFlg), required: false);
-            SourceExpression.Validate(importantCustomerFlg, nameof(importantCustomerFlg), required: false);
-            SourceExpression.Validate(endUserFlg, nameof(endUserFlg), required: false);
-            SourceExpression.Validate(storeFlg, nameof(storeFlg), required: false);
-            SourceExpression.Validate(customerId, nameof(customerId), required: false);
-            SourceExpression.Validate(ownerUserId, nameof(ownerUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest_api/v1/leads/update";

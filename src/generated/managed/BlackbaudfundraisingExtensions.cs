@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<ConstituentApiApiCollectionOfConstituentAppealRead> ListConstituentAppeals([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/appeals", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -29,11 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfAppealRead> ListAppeals([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> includeInactive = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(includeInactive, nameof(includeInactive), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/appeals";
@@ -58,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiAppealRead> GetAppeal([WorkflowExpression] Func<string> appealId)
         {
-            SourceExpression.Validate(appealId, nameof(appealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/appeals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appealId, 1));
@@ -73,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfAppealAttachmentRead> ListAppealAttachments([WorkflowExpression] Func<string> appealId)
         {
-            SourceExpression.Validate(appealId, nameof(appealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/appeals/{0}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appealId, 1));
@@ -88,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfAppealCustomFieldRead> ListAppealCustomFields([WorkflowExpression] Func<string> appealId)
         {
-            SourceExpression.Validate(appealId, nameof(appealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/appeals/{0}/customfields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appealId, 1));
@@ -103,15 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiCreatedAppealAttachment> CreateAppealAttachment([WorkflowExpression] Func<string> bodyappealId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodythumbnailId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(bodyappealId, nameof(bodyappealId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodythumbnailId, nameof(bodythumbnailId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/appeals/attachments";
@@ -178,11 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditAppealAttachment([WorkflowExpression] Func<string> attachmentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/appeals/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -227,11 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiCreatedAppealCustomField> CreateAppealCustomField([WorkflowExpression] Func<string> bodyappealId, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(bodyappealId, nameof(bodyappealId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/appeals/customfields";
@@ -274,11 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditAppealCustomField([WorkflowExpression] Func<string> customFieldId, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(customFieldId, nameof(customFieldId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/appeals/customfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
@@ -323,11 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfCampaignRead> ListCampaigns([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> includeInactive = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(includeInactive, nameof(includeInactive), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/campaigns";
@@ -352,7 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiCampaignRead> GetCampaign([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -367,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfCampaignAttachmentRead> ListCampaignAttachments([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/campaigns/{0}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -382,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfCampaignCustomFieldRead> ListCampaignCustomFields([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/campaigns/{0}/customfields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -397,15 +356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiCreatedCampaignAttachment> CreateCampaignAttachment([WorkflowExpression] Func<string> bodycampaignId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodythumbnailId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodythumbnailId, nameof(bodythumbnailId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/campaigns/attachments";
@@ -472,11 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditCampaignAttachment([WorkflowExpression] Func<string> attachmentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/campaigns/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -521,11 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiCreatedCampaignCustomField> CreateCampaignCustomField([WorkflowExpression] Func<string> bodycampaignId, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/campaigns/customfields";
@@ -568,11 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditCampaignCustomField([WorkflowExpression] Func<string> customFieldId, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(customFieldId, nameof(customFieldId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/campaigns/customfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
@@ -617,11 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfFundRead> ListFunds([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> includeInactive = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(includeInactive, nameof(includeInactive), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/funds";
@@ -646,7 +576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiFundRead> GetFund([WorkflowExpression] Func<string> fundId)
         {
-            SourceExpression.Validate(fundId, nameof(fundId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fundId, 1));
@@ -661,7 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfFundAttachmentRead> ListFundAttachments([WorkflowExpression] Func<string> fundId)
         {
-            SourceExpression.Validate(fundId, nameof(fundId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/funds/{0}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fundId, 1));
@@ -676,7 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfFundCustomFieldRead> ListFundCustomFields([WorkflowExpression] Func<string> fundId)
         {
-            SourceExpression.Validate(fundId, nameof(fundId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/funds/{0}/customfields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fundId, 1));
@@ -691,15 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiCreatedFundAttachment> CreateFundAttachment([WorkflowExpression] Func<string> bodyfundId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodythumbnailId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(bodyfundId, nameof(bodyfundId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodythumbnailId, nameof(bodythumbnailId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/funds/attachments";
@@ -766,11 +684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditFundAttachment([WorkflowExpression] Func<string> attachmentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/funds/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -815,11 +728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiCreatedFundCustomField> CreateFundCustomField([WorkflowExpression] Func<string> bodyfundId, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(bodyfundId, nameof(bodyfundId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/funds/customfields";
@@ -862,11 +770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditFundCustomField([WorkflowExpression] Func<string> customFieldId, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(customFieldId, nameof(customFieldId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/funds/customfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
@@ -911,12 +814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiApiCollectionOfPackageRead> ListPackages([WorkflowExpression] Func<string> appealId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> includeInactive = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            SourceExpression.Validate(appealId, nameof(appealId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(includeInactive, nameof(includeInactive), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fundraising/v1/packages";
@@ -943,7 +840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<FundraisingApiPackageRead> GetPackage([WorkflowExpression] Func<string> packageId)
         {
-            SourceExpression.Validate(packageId, nameof(packageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/fundraising/v1/packages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(packageId, 1));
@@ -958,18 +854,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<NXTDataIntegrationApiCreatedAppeal> CreateAppeal([WorkflowExpression] Func<string> bodylookupId, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<int> bodycategory = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<double> bodydefaultGiftAmount = null, [WorkflowExpression] Func<int> bodynumberSolicited = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodydefaultCampaignId = null, [WorkflowExpression] Func<int> bodydefaultFundId = null, [WorkflowExpression] Func<bool> bodyinactive = null)
         {
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodydefaultGiftAmount, nameof(bodydefaultGiftAmount), required: false);
-            SourceExpression.Validate(bodynumberSolicited, nameof(bodynumberSolicited), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodydefaultCampaignId, nameof(bodydefaultCampaignId), required: false);
-            SourceExpression.Validate(bodydefaultFundId, nameof(bodydefaultFundId), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/appeals";
@@ -1054,19 +938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditAppeal([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<int> bodycategory = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<double> bodydefaultGiftAmount = null, [WorkflowExpression] Func<int> bodynumberSolicited = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodydefaultCampaignId = null, [WorkflowExpression] Func<int> bodydefaultFundId = null, [WorkflowExpression] Func<bool> bodyinactive = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodydefaultGiftAmount, nameof(bodydefaultGiftAmount), required: false);
-            SourceExpression.Validate(bodynumberSolicited, nameof(bodynumberSolicited), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodydefaultCampaignId, nameof(bodydefaultCampaignId), required: false);
-            SourceExpression.Validate(bodydefaultFundId, nameof(bodydefaultFundId), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/appeals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -1159,15 +1030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<NXTDataIntegrationApiCreatedCampaign> CreateCampaign([WorkflowExpression] Func<string> bodylookupId, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<int> bodycategory = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<bool> bodyinactive = null, [WorkflowExpression] Func<int> bodydefaultFundId = null)
         {
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
-            SourceExpression.Validate(bodydefaultFundId, nameof(bodydefaultFundId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/campaigns";
@@ -1234,16 +1096,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditCampaign([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<int> bodycategory = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<bool> bodyinactive = null, [WorkflowExpression] Func<int> bodydefaultFundId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
-            SourceExpression.Validate(bodydefaultFundId, nameof(bodydefaultFundId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -1318,17 +1170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<NXTDataIntegrationApiCreatedConstituentAppeal> CreateConstituentAppeal([WorkflowExpression] Func<int> bodyconstituentId, [WorkflowExpression] Func<string> bodyappealDescription, [WorkflowExpression] Func<string> bodypackageDescription = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyresponse = null, [WorkflowExpression] Func<string> bodymarketingSegment = null, [WorkflowExpression] Func<string> bodymarketingSourceCode = null, [WorkflowExpression] Func<int> bodymailingId = null, [WorkflowExpression] Func<string> bodyfinderNumber = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyimportId = null)
         {
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodyappealDescription, nameof(bodyappealDescription), required: true);
-            SourceExpression.Validate(bodypackageDescription, nameof(bodypackageDescription), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyresponse, nameof(bodyresponse), required: false);
-            SourceExpression.Validate(bodymarketingSegment, nameof(bodymarketingSegment), required: false);
-            SourceExpression.Validate(bodymarketingSourceCode, nameof(bodymarketingSourceCode), required: false);
-            SourceExpression.Validate(bodymailingId, nameof(bodymailingId), required: false);
-            SourceExpression.Validate(bodyfinderNumber, nameof(bodyfinderNumber), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyimportId, nameof(bodyimportId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/constitappeals";
@@ -1407,16 +1248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditConstituentAppeal([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodyappealDescription = null, [WorkflowExpression] Func<string> bodypackageDescription = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyresponse = null, [WorkflowExpression] Func<string> bodymarketingSegment = null, [WorkflowExpression] Func<string> bodymarketingSourceCode = null, [WorkflowExpression] Func<int> bodymailingId = null, [WorkflowExpression] Func<string> bodyfinderNumber = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyappealDescription, nameof(bodyappealDescription), required: false);
-            SourceExpression.Validate(bodypackageDescription, nameof(bodypackageDescription), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyresponse, nameof(bodyresponse), required: false);
-            SourceExpression.Validate(bodymarketingSegment, nameof(bodymarketingSegment), required: false);
-            SourceExpression.Validate(bodymarketingSourceCode, nameof(bodymarketingSourceCode), required: false);
-            SourceExpression.Validate(bodymailingId, nameof(bodymailingId), required: false);
-            SourceExpression.Validate(bodyfinderNumber, nameof(bodyfinderNumber), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/constitappeals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -1491,18 +1322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<NXTDataIntegrationApiCreatedFund> CreateFund([WorkflowExpression] Func<string> bodylookupId, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<int> bodycategory = null, [WorkflowExpression] Func<int> bodytype = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<bool> bodyrestricted = null, [WorkflowExpression] Func<bool> bodyinactive = null, [WorkflowExpression] Func<int> bodycampaignId = null, [WorkflowExpression] Func<int> bodydefaultAppealId = null)
         {
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyrestricted, nameof(bodyrestricted), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
-            SourceExpression.Validate(bodydefaultAppealId, nameof(bodydefaultAppealId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/funds";
@@ -1587,19 +1406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IWorkflowAction EditFund([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<int> bodycategory = null, [WorkflowExpression] Func<int> bodytype = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<bool> bodyrestricted = null, [WorkflowExpression] Func<bool> bodyinactive = null, [WorkflowExpression] Func<int> bodycampaignId = null, [WorkflowExpression] Func<int> bodydefaultAppealId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyrestricted, nameof(bodyrestricted), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
-            SourceExpression.Validate(bodydefaultAppealId, nameof(bodydefaultAppealId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -1692,9 +1498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<NXTDataIntegrationApiConstituentRelationshipCollection> ListFundConstituentRelationships([WorkflowExpression] Func<int> fundId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(fundId, nameof(fundId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/relationships/constituents/fund/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(fundId, 1));
@@ -1713,9 +1516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
         public IBodyWorkflowAction<NXTDataIntegrationApiFundRelationshipCollection> ListConstituentFundRelationships([WorkflowExpression] Func<int> constituentId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/relationships/funds/constituent/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(constituentId, 1));

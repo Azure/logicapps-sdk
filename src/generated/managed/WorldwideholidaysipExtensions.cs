@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldwideholidaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldwideholidaysip")]
         public IBodyWorkflowAction<CountryInfoDto> CountryCountryInfo([WorkflowExpression] Func<string> countryCode)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/CountryInfo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryCode, 1));
@@ -43,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldwideholidaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldwideholidaysip")]
         public IBodyWorkflowAction<LongWeekendV3Dto[]> LongWeekendLongWeekend([WorkflowExpression] Func<int> year, [WorkflowExpression] Func<string> countryCode)
         {
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/LongWeekend/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(year, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryCode, 1));
@@ -59,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldwideholidaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldwideholidaysip")]
         public IBodyWorkflowAction<PublicHolidayV3Dto[]> GetPublicHolidays([WorkflowExpression] Func<int> year, [WorkflowExpression] Func<string> countryCode)
         {
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/PublicHolidays/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(year, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryCode, 1));
@@ -75,9 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldwideholidaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldwideholidaysip")]
         public IWorkflowAction IsTodayPublicHoliday([WorkflowExpression] Func<string> countryCode, [WorkflowExpression] Func<string> countyCode = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(countyCode, nameof(countyCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/IsTodayPublicHoliday/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryCode, 1));
@@ -97,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldwideholidaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldwideholidaysip")]
         public IBodyWorkflowAction<PublicHolidayV3Dto[]> NextPublicHolidays([WorkflowExpression] Func<string> countryCode)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/NextPublicHolidays/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryCode, 1));

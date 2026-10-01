@@ -14,23 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
         public IBodyWorkflowAction<JToken> CreateProduct([WorkflowExpression] Func<string> bodytREEId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<double> bodycTYPE = null, [WorkflowExpression] Func<string> bodydESCR1 = null, [WorkflowExpression] Func<string> bodydESCR2 = null, [WorkflowExpression] Func<string> bodydESCR3 = null, [WorkflowExpression] Func<string> bodytYPE = null, [WorkflowExpression] Func<string> bodymEMO = null, [WorkflowExpression] Func<string> bodyuPC = null, [WorkflowExpression] Func<string> bodymFG = null, [WorkflowExpression] Func<string> bodymFGPART = null, [WorkflowExpression] Func<string> bodypRIVENDOR = null, [WorkflowExpression] Func<string> bodyeACHUNIT = null, [WorkflowExpression] Func<double> bodywEIGHT = null, [WorkflowExpression] Func<double> bodycOST = null, [WorkflowExpression] Func<double> bodybASE = null, [WorkflowExpression] Func<string> bodyeXTERNALId = null)
         {
-            SourceExpression.Validate(bodytREEId, nameof(bodytREEId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodycTYPE, nameof(bodycTYPE), required: false);
-            SourceExpression.Validate(bodydESCR1, nameof(bodydESCR1), required: false);
-            SourceExpression.Validate(bodydESCR2, nameof(bodydESCR2), required: false);
-            SourceExpression.Validate(bodydESCR3, nameof(bodydESCR3), required: false);
-            SourceExpression.Validate(bodytYPE, nameof(bodytYPE), required: false);
-            SourceExpression.Validate(bodymEMO, nameof(bodymEMO), required: false);
-            SourceExpression.Validate(bodyuPC, nameof(bodyuPC), required: false);
-            SourceExpression.Validate(bodymFG, nameof(bodymFG), required: false);
-            SourceExpression.Validate(bodymFGPART, nameof(bodymFGPART), required: false);
-            SourceExpression.Validate(bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
-            SourceExpression.Validate(bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
-            SourceExpression.Validate(bodywEIGHT, nameof(bodywEIGHT), required: false);
-            SourceExpression.Validate(bodycOST, nameof(bodycOST), required: false);
-            SourceExpression.Validate(bodybASE, nameof(bodybASE), required: false);
-            SourceExpression.Validate(bodyeXTERNALId, nameof(bodyeXTERNALId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/INVENTRY";
@@ -149,21 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
         public IBodyWorkflowAction<JToken> UpdateProduct([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> bodydESCR1 = null, [WorkflowExpression] Func<string> bodydESCR2 = null, [WorkflowExpression] Func<string> bodydESCR3 = null, [WorkflowExpression] Func<string> bodytYPE = null, [WorkflowExpression] Func<string> bodymEMO = null, [WorkflowExpression] Func<string> bodyuPC = null, [WorkflowExpression] Func<string> bodymFG = null, [WorkflowExpression] Func<string> bodymFGPART = null, [WorkflowExpression] Func<string> bodypRIVENDOR = null, [WorkflowExpression] Func<string> bodyeACHUNIT = null, [WorkflowExpression] Func<double> bodywEIGHT = null, [WorkflowExpression] Func<double> bodycOST = null, [WorkflowExpression] Func<double> bodybASE = null, [WorkflowExpression] Func<string> bodyeXTERNALId = null)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
-            SourceExpression.Validate(bodydESCR1, nameof(bodydESCR1), required: false);
-            SourceExpression.Validate(bodydESCR2, nameof(bodydESCR2), required: false);
-            SourceExpression.Validate(bodydESCR3, nameof(bodydESCR3), required: false);
-            SourceExpression.Validate(bodytYPE, nameof(bodytYPE), required: false);
-            SourceExpression.Validate(bodymEMO, nameof(bodymEMO), required: false);
-            SourceExpression.Validate(bodyuPC, nameof(bodyuPC), required: false);
-            SourceExpression.Validate(bodymFG, nameof(bodymFG), required: false);
-            SourceExpression.Validate(bodymFGPART, nameof(bodymFGPART), required: false);
-            SourceExpression.Validate(bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
-            SourceExpression.Validate(bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
-            SourceExpression.Validate(bodywEIGHT, nameof(bodywEIGHT), required: false);
-            SourceExpression.Validate(bodycOST, nameof(bodycOST), required: false);
-            SourceExpression.Validate(bodybASE, nameof(bodybASE), required: false);
-            SourceExpression.Validate(bodyeXTERNALId, nameof(bodyeXTERNALId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/INVENTRY(ID='{0}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));

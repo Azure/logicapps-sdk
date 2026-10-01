@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontentsv2")]
         public IBodyWorkflowAction<JToken> InvokeHttp([WorkflowExpression] Func<requestmethodInput> requestmethod, [WorkflowExpression] Func<string> requesturlOfTheRequest, [WorkflowExpression] Func<string> requestbodyOfTheRequest = null)
         {
-            SourceExpression.Validate(requestmethod, nameof(requestmethod), required: true);
-            SourceExpression.Validate(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
-            SourceExpression.Validate(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/InvokeHttp";

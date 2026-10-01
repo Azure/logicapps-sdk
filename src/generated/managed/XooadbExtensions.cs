@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
         public IBodyWorkflowAction<string> Query([WorkflowExpression] Func<string> fcn, [WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(fcn, nameof(fcn), required: true);
-            SourceExpression.Validate(async, nameof(async), required: false);
-            SourceExpression.Validate(timeout, nameof(timeout), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fcn, 1));
@@ -39,10 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
         public IBodyWorkflowAction<string> Invoke([WorkflowExpression] Func<string> fcn, [WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(fcn, nameof(fcn), required: true);
-            SourceExpression.Validate(async, nameof(async), required: false);
-            SourceExpression.Validate(timeout, nameof(timeout), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoke/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fcn, 1));

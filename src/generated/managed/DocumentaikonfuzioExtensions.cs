@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsDelete([WorkflowExpression] Func<string> doc)
         {
-            SourceExpression.Validate(doc, nameof(doc), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsPartialUpdate([WorkflowExpression] Func<string> doc)
         {
-            SourceExpression.Validate(doc, nameof(doc), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsRead([WorkflowExpression] Func<string> doc)
         {
-            SourceExpression.Validate(doc, nameof(doc), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));

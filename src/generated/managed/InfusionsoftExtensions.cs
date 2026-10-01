@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infusionsoft")]
         public IBodyWorkflowAction<TaskResponse> CreateTask([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodydueDateFormatYYYYMMDdThhMmSsFffZ = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodydueDateFormatYYYYMMDdThhMmSsFffZ, nameof(bodydueDateFormatYYYYMMDdThhMmSsFffZ), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/rest/v1/tasks/";
@@ -66,12 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infusionsoft")]
         public IBodyWorkflowAction<TaskResponse> UpdateTask([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodydueDateFormatYYYYMMDdThhMmSsFffZ = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodydueDateFormatYYYYMMDdThhMmSsFffZ, nameof(bodydueDateFormatYYYYMMDdThhMmSsFffZ), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/rest/v1/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

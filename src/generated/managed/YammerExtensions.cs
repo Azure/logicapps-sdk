@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IBodyWorkflowAction<YammmerEntity[]> GetGroups([WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<int> mine = null, [WorkflowExpression] Func<int> showAllCompanyGroup = null)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
-            SourceExpression.Validate(mine, nameof(mine), required: false);
-            SourceExpression.Validate(showAllCompanyGroup, nameof(showAllCompanyGroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/groups.json";
@@ -54,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IBodyWorkflowAction<User> GetUserDetailsById([WorkflowExpression] Func<int> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(userId, 1));
@@ -69,7 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IWorkflowAction LikeMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages/liked_by/current.json";
@@ -85,11 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IBodyWorkflowAction<PageableMessageListV2> GetAllMessages([WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<int> olderThan = null, [WorkflowExpression] Func<int> newerThan = null, [WorkflowExpression] Func<threadedInput> threaded = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
-            SourceExpression.Validate(olderThan, nameof(olderThan), required: false);
-            SourceExpression.Validate(newerThan, nameof(newerThan), required: false);
-            SourceExpression.Validate(threaded, nameof(threaded), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/messages.json";
@@ -115,11 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IBodyWorkflowAction<PageableMessageListV2> GetMessagesFollowing([WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<int> olderThan = null, [WorkflowExpression] Func<int> newerThan = null, [WorkflowExpression] Func<threadedInput> threaded = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
-            SourceExpression.Validate(olderThan, nameof(olderThan), required: false);
-            SourceExpression.Validate(newerThan, nameof(newerThan), required: false);
-            SourceExpression.Validate(threaded, nameof(threaded), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/messages/following.json";
@@ -145,12 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IBodyWorkflowAction<PageableMessageListV2> GetMessagesInGroup([WorkflowExpression] Func<int> groupId, [WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<int> olderThan = null, [WorkflowExpression] Func<int> newerThan = null, [WorkflowExpression] Func<threadedInput> threaded = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
-            SourceExpression.Validate(olderThan, nameof(olderThan), required: false);
-            SourceExpression.Validate(newerThan, nameof(newerThan), required: false);
-            SourceExpression.Validate(threaded, nameof(threaded), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/messages/in_group/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));
@@ -176,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IBodyWorkflowAction<PageableMessageListV2> GetMessagesInThread([WorkflowExpression] Func<int> threadId)
         {
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/messages/in_thread/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(threadId, 1));
@@ -191,13 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
         public IBodyWorkflowAction<MessageListV2> PostMessage([WorkflowExpression] Func<int> inputgroupId, [WorkflowExpression] Func<string> inputmessageText, [WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<int> inputrepliedToId = null, [WorkflowExpression] Func<int> inputdirectToId = null, [WorkflowExpression] Func<bool> inputbroadcast = null, [WorkflowExpression] Func<string> inputtitle = null)
         {
-            SourceExpression.Validate(inputgroupId, nameof(inputgroupId), required: true);
-            SourceExpression.Validate(inputmessageText, nameof(inputmessageText), required: true);
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
-            SourceExpression.Validate(inputrepliedToId, nameof(inputrepliedToId), required: false);
-            SourceExpression.Validate(inputdirectToId, nameof(inputdirectToId), required: false);
-            SourceExpression.Validate(inputbroadcast, nameof(inputbroadcast), required: false);
-            SourceExpression.Validate(inputtitle, nameof(inputtitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/messages.json";
@@ -251,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
     {
         public IBodyWorkflowTrigger<MessageListV2> OnNewMessagesFollowing([WorkflowExpression] Func<string> networkId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/trigger/messages/following.json";
@@ -268,8 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
 
         public IBodyWorkflowTrigger<MessageListV2> OnNewMessagesInGroup([WorkflowExpression] Func<int> groupId, [WorkflowExpression] Func<string> networkId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/trigger/in_group/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));

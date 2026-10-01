@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<BSPResponse> BusinessServiceProvidersSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> itaOffices = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(itaOffices, nameof(itaOffices), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/business_service_providers/v1/search";
@@ -57,18 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<ScreeningListSearchResponse> ConsolidatedScreeningListSearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<fuzzyNameInput> fuzzyName = null, [WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> types = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> fullAddress = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(fuzzyName, nameof(fuzzyName), required: false);
-            SourceExpression.Validate(sources, nameof(sources), required: false);
-            SourceExpression.Validate(types, nameof(types), required: false);
-            SourceExpression.Validate(countries, nameof(countries), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(fullAddress, nameof(fullAddress), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/consolidated_screening_list/v1/search";
@@ -121,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisList([WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/de_minimis/v1/list";
@@ -141,9 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisSearch([WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(countryCodes, nameof(countryCodes), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/de_minimis/v1/search";
@@ -164,12 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<ITAOfficeSearchResponse> ITAOfficeLocationsSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<string> states = null, [WorkflowExpression] Func<string> assignedZipCodes = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(countryCodes, nameof(countryCodes), required: false);
-            SourceExpression.Validate(states, nameof(states), required: false);
-            SourceExpression.Validate(assignedZipCodes, nameof(assignedZipCodes), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ita_office_locations/v1/search";
@@ -210,16 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<TradeEventSearchResponse> TradeEventsSearch([WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> eventTypes = null, [WorkflowExpression] Func<string> industries = null, [WorkflowExpression] Func<string> states = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> startDateRangeFrom = null, [WorkflowExpression] Func<string> startDateRangeTo = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(sources, nameof(sources), required: false);
-            SourceExpression.Validate(countries, nameof(countries), required: false);
-            SourceExpression.Validate(eventTypes, nameof(eventTypes), required: false);
-            SourceExpression.Validate(industries, nameof(industries), required: false);
-            SourceExpression.Validate(states, nameof(states), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(startDateRangeFrom, nameof(startDateRangeFrom), required: false);
-            SourceExpression.Validate(startDateRangeTo, nameof(startDateRangeTo), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trade_events/v1/search";
@@ -268,14 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<TradeLeadsSearchResponse> SearchTradeLeads([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<string> tenderStartDateRangeFrom = null, [WorkflowExpression] Func<string> tenderStartDateRangeTo = null, [WorkflowExpression] Func<string> contractStartDateRangeFrom = null, [WorkflowExpression] Func<string> contractStartDateRangeTo = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(countryCodes, nameof(countryCodes), required: false);
-            SourceExpression.Validate(tenderStartDateRangeFrom, nameof(tenderStartDateRangeFrom), required: false);
-            SourceExpression.Validate(tenderStartDateRangeTo, nameof(tenderStartDateRangeTo), required: false);
-            SourceExpression.Validate(contractStartDateRangeFrom, nameof(contractStartDateRangeFrom), required: false);
-            SourceExpression.Validate(contractStartDateRangeTo, nameof(contractStartDateRangeTo), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trade_leads/v1/search";

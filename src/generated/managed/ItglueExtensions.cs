@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itglue")]
         public IBodyWorkflowAction<PostOrganizationTypeResponse> PostOrganizationType([WorkflowExpression] Func<string> bodydatanamename = null)
         {
-            SourceExpression.Validate(bodydatanamename, nameof(bodydatanamename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/organization_types";
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itglue")]
         public IBodyWorkflowAction<GetOrganizationTypeResponse> GetOrganizationType([WorkflowExpression] Func<int> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organization_types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(objectId, 1));
@@ -75,8 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itglue")]
         public IBodyWorkflowAction<PatchOrganizationTypeResponse> PatchOrganizationType([WorkflowExpression] Func<int> objectId, [WorkflowExpression] Func<string> bodydatanamename = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(bodydatanamename, nameof(bodydatanamename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organization_types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(objectId, 1));

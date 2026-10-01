@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
         public IBodyWorkflowAction<LoginPostResponse> Login([WorkflowExpression] Func<string> bodyipAddress, [WorkflowExpression] Func<string> bodyuserAgent, [WorkflowExpression] Func<string> bodyidentityKey, [WorkflowExpression] Func<string> bodygeoCountry = null, [WorkflowExpression] Func<string> bodygeoCity = null, [WorkflowExpression] Func<string> bodyuserTimeOfDay = null)
         {
-            SourceExpression.Validate(bodyipAddress, nameof(bodyipAddress), required: true);
-            SourceExpression.Validate(bodyuserAgent, nameof(bodyuserAgent), required: true);
-            SourceExpression.Validate(bodyidentityKey, nameof(bodyidentityKey), required: true);
-            SourceExpression.Validate(bodygeoCountry, nameof(bodygeoCountry), required: false);
-            SourceExpression.Validate(bodygeoCity, nameof(bodygeoCity), required: false);
-            SourceExpression.Validate(bodyuserTimeOfDay, nameof(bodyuserTimeOfDay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/login/check";

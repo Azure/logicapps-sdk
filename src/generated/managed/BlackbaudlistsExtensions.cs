@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
         public IWorkflowAction AppendIDsToList([WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<string> bodylist, [WorkflowExpression] Func<string[]> bodyidS)
         {
-            SourceExpression.Validate(bodylistType, nameof(bodylistType), required: true);
-            SourceExpression.Validate(bodylist, nameof(bodylist), required: true);
-            SourceExpression.Validate(bodyidS, nameof(bodyidS), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/list/v1/appendidstolist";
@@ -43,11 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
         public IBodyWorkflowAction<ListApiCreatedList> CreateListFromIDs([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<bodypermissionsInput> bodypermissions, [WorkflowExpression] Func<string[]> bodyidS)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodylistType, nameof(bodylistType), required: true);
-            SourceExpression.Validate(bodypermissions, nameof(bodypermissions), required: true);
-            SourceExpression.Validate(bodyidS, nameof(bodyidS), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/list/v1/createlistfromids";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<AddBlacklistResponse> AddBlacklist([WorkflowExpression] Func<string> bodyphone)
         {
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/add_blacklist";
@@ -37,16 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<AddContactResponse> AddContact([WorkflowExpression] Func<string> bodyphone, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodytaxId = null)
         {
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: true);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodytaxId, nameof(bodytaxId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/add_contact";
@@ -123,11 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodysender = null, [WorkflowExpression] Func<bool> bodyutf = null)
         {
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodysender, nameof(bodysender), required: false);
-            SourceExpression.Validate(bodyutf, nameof(bodyutf), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/send_sms";
@@ -176,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
     {
         public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer([WorkflowExpression] Func<bodytypeInput> bodytype, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/get_answer";

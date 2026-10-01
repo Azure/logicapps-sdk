@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<BulkCreateOrUpdateDocumentOutputItem[]> BulkCreateOrUpdateDocument([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<object> items, [WorkflowExpression] Func<bool> isUpsert = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(items, nameof(items), required: true);
-            SourceExpression.Validate(isUpsert, nameof(isUpsert), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -49,13 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<CreateOrUpdateDocumentOutput> CreateOrUpdateDocument([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> item, [WorkflowExpression] Func<string> partitionKey = null, [WorkflowExpression] Func<bool> isUpsert = null, [WorkflowExpression] Func<string> sessionToken = null, [WorkflowExpression] Func<string> etag = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(item, nameof(item), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
-            SourceExpression.Validate(isUpsert, nameof(isUpsert), required: false);
-            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
-            SourceExpression.Validate(etag, nameof(etag), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -100,11 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<DeleteDocumentOutput> DeleteDocument([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> sessionToken = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -131,11 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<ReadDocumentOutput> ReadDocument([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> sessionToken = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -162,13 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<QueryDocumentsOutput> QueryDocuments([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> queryText, [WorkflowExpression] Func<string> partitionKey = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> maxItemCount = null, [WorkflowExpression] Func<string> sessionToken = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(queryText, nameof(queryText), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            SourceExpression.Validate(maxItemCount, nameof(maxItemCount), required: false);
-            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -209,12 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<PatchItemOutput> PatchItem([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<PatchItemInputPatchOperationsTypeItem[]> patchOperations, [WorkflowExpression] Func<string> sessionToken = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(patchOperations, nameof(patchOperations), required: true);
-            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -244,11 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
     {
         public IBodyWorkflowTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]> WhenADocumentIsCreatedOrModified([WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> collectionName, [WorkflowExpression] Func<string> leaseCollectionName = null, [WorkflowExpression] Func<bool> createLeaseCollectionIfNotExists = null, [WorkflowExpression] Func<int> leasesCollectionThroughput = null)
         {
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(collectionName, nameof(collectionName), required: true);
-            SourceExpression.Validate(leaseCollectionName, nameof(leaseCollectionName), required: false);
-            SourceExpression.Validate(createLeaseCollectionIfNotExists, nameof(createLeaseCollectionIfNotExists), required: false);
-            SourceExpression.Validate(leasesCollectionThroughput, nameof(leasesCollectionThroughput), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

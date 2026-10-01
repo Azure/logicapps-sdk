@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securitycopilot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securitycopilot")]
         public IBodyWorkflowAction<ExecutionDetail> ExecuteAgent([WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<string> triggerName, [WorkflowExpression] Func<object> agentInputsinputs = null)
         {
-            SourceExpression.Validate(agentId, nameof(agentId), required: true);
-            SourceExpression.Validate(triggerName, nameof(triggerName), required: true);
-            SourceExpression.Validate(agentInputsinputs, nameof(agentInputsinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agents/{0}/triggers/{1}/execute", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(triggerName, 1));

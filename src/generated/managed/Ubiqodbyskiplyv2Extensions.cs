@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
     {
         public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers([WorkflowExpression] Func<string> bodyhookName = null, [WorkflowExpression] Func<string> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyhookName, nameof(bodyhookName), required: false);
-            SourceExpression.Validate(bodydispatchId, nameof(bodydispatchId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks/zapier/subscribe";

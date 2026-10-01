@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         public IBodyWorkflowAction<Course[]> CourseGet([WorkflowExpression] Func<string> course = null)
         {
-            SourceExpression.Validate(course, nameof(course), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Course";
@@ -31,10 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         public IBodyWorkflowAction<bool> Course([WorkflowExpression] Func<string> courseaudience = null, [WorkflowExpression] Func<string> coursecourseName = null, [WorkflowExpression] Func<string> coursedos = null, [WorkflowExpression] Func<string> courseemail = null)
         {
-            SourceExpression.Validate(courseaudience, nameof(courseaudience), required: false);
-            SourceExpression.Validate(coursecourseName, nameof(coursecourseName), required: false);
-            SourceExpression.Validate(coursedos, nameof(coursedos), required: false);
-            SourceExpression.Validate(courseemail, nameof(courseemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Course";
@@ -79,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         public IWorkflowAction LogEnd([WorkflowExpression] Func<string> identifier = null)
         {
-            SourceExpression.Validate(identifier, nameof(identifier), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Log/End";
@@ -96,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         public IWorkflowAction LogStart([WorkflowExpression] Func<string> identifier = null)
         {
-            SourceExpression.Validate(identifier, nameof(identifier), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Log/Start";
@@ -113,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         public IBodyWorkflowAction<Student> StudentGet([WorkflowExpression] Func<string> studentId = null)
         {
-            SourceExpression.Validate(studentId, nameof(studentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Student";
@@ -130,66 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         public IWorkflowAction Student([WorkflowExpression] Func<string> studentacadCareer = null, [WorkflowExpression] Func<string> studentacadOrgDescr = null, [WorkflowExpression] Func<string> studentacadProgram = null, [WorkflowExpression] Func<string> studentaddress1 = null, [WorkflowExpression] Func<string> studentaddress2 = null, [WorkflowExpression] Func<string> studentaddress3 = null, [WorkflowExpression] Func<string> studentaddress4 = null, [WorkflowExpression] Func<string> studentbarcode = null, [WorkflowExpression] Func<string> studentbirthCountryCode = null, [WorkflowExpression] Func<string> studentcellTel = null, [WorkflowExpression] Func<string> studentcity = null, [WorkflowExpression] Func<double> studentcollegeAccountNo = null, [WorkflowExpression] Func<string> studentcountry = null, [WorkflowExpression] Func<string> studentcountryCitizen = null, [WorkflowExpression] Func<string> studentcountryCitizen2 = null, [WorkflowExpression] Func<string> studentcrsid = null, [WorkflowExpression] Func<string> studentdegree = null, [WorkflowExpression] Func<string> studentdob = null, [WorkflowExpression] Func<string> studentdos = null, [WorkflowExpression] Func<string> studentdosEmail = null, [WorkflowExpression] Func<string> studentdosEmployeeId = null, [WorkflowExpression] Func<string> studentemail = null, [WorkflowExpression] Func<string> studentemailAddr = null, [WorkflowExpression] Func<string> studentemailPersonal = null, [WorkflowExpression] Func<string> studentendDate = null, [WorkflowExpression] Func<string> studentenqGrp = null, [WorkflowExpression] Func<string> studentfirstNames = null, [WorkflowExpression] Func<string> studentgradTutor = null, [WorkflowExpression] Func<string> studentgradTutorEmail = null, [WorkflowExpression] Func<string> studentgradTutorEmployeeId = null, [WorkflowExpression] Func<string> studentgrp = null, [WorkflowExpression] Func<string> studentgrpId = null, [WorkflowExpression] Func<string> studenthomeAddress1 = null, [WorkflowExpression] Func<string> studenthomeAddress2 = null, [WorkflowExpression] Func<string> studenthomeAddress3 = null, [WorkflowExpression] Func<string> studenthomeAddress4 = null, [WorkflowExpression] Func<string> studenthomeAddress5 = null, [WorkflowExpression] Func<string> studenthomeCountry = null, [WorkflowExpression] Func<string> studenthomePostal = null, [WorkflowExpression] Func<string> studenthomeState = null, [WorkflowExpression] Func<string> studenthomeTel = null, [WorkflowExpression] Func<string> studentmatriculation = null, [WorkflowExpression] Func<string> studentmobileTel = null, [WorkflowExpression] Func<string> studentnationality = null, [WorkflowExpression] Func<string> studentpostal = null, [WorkflowExpression] Func<string> studentprinSuper = null, [WorkflowExpression] Func<string> studentprinSuperEmail = null, [WorkflowExpression] Func<string> studentprinSuperEmployeeId = null, [WorkflowExpression] Func<string> studentsex = null, [WorkflowExpression] Func<string> studentstartDate = null, [WorkflowExpression] Func<string> studentstudentFeesClass = null, [WorkflowExpression] Func<string> studentstudyYear = null, [WorkflowExpression] Func<string> studentsubject = null, [WorkflowExpression] Func<string> studentsubjectDescr = null, [WorkflowExpression] Func<string> studentsuperEmail = null, [WorkflowExpression] Func<string> studentsurname = null, [WorkflowExpression] Func<string> studenttitle = null, [WorkflowExpression] Func<string> studenttutor = null, [WorkflowExpression] Func<string> studenttutorEmail = null, [WorkflowExpression] Func<string> studenttutorEmployeeId = null)
         {
-            SourceExpression.Validate(studentacadCareer, nameof(studentacadCareer), required: false);
-            SourceExpression.Validate(studentacadOrgDescr, nameof(studentacadOrgDescr), required: false);
-            SourceExpression.Validate(studentacadProgram, nameof(studentacadProgram), required: false);
-            SourceExpression.Validate(studentaddress1, nameof(studentaddress1), required: false);
-            SourceExpression.Validate(studentaddress2, nameof(studentaddress2), required: false);
-            SourceExpression.Validate(studentaddress3, nameof(studentaddress3), required: false);
-            SourceExpression.Validate(studentaddress4, nameof(studentaddress4), required: false);
-            SourceExpression.Validate(studentbarcode, nameof(studentbarcode), required: false);
-            SourceExpression.Validate(studentbirthCountryCode, nameof(studentbirthCountryCode), required: false);
-            SourceExpression.Validate(studentcellTel, nameof(studentcellTel), required: false);
-            SourceExpression.Validate(studentcity, nameof(studentcity), required: false);
-            SourceExpression.Validate(studentcollegeAccountNo, nameof(studentcollegeAccountNo), required: false);
-            SourceExpression.Validate(studentcountry, nameof(studentcountry), required: false);
-            SourceExpression.Validate(studentcountryCitizen, nameof(studentcountryCitizen), required: false);
-            SourceExpression.Validate(studentcountryCitizen2, nameof(studentcountryCitizen2), required: false);
-            SourceExpression.Validate(studentcrsid, nameof(studentcrsid), required: false);
-            SourceExpression.Validate(studentdegree, nameof(studentdegree), required: false);
-            SourceExpression.Validate(studentdob, nameof(studentdob), required: false);
-            SourceExpression.Validate(studentdos, nameof(studentdos), required: false);
-            SourceExpression.Validate(studentdosEmail, nameof(studentdosEmail), required: false);
-            SourceExpression.Validate(studentdosEmployeeId, nameof(studentdosEmployeeId), required: false);
-            SourceExpression.Validate(studentemail, nameof(studentemail), required: false);
-            SourceExpression.Validate(studentemailAddr, nameof(studentemailAddr), required: false);
-            SourceExpression.Validate(studentemailPersonal, nameof(studentemailPersonal), required: false);
-            SourceExpression.Validate(studentendDate, nameof(studentendDate), required: false);
-            SourceExpression.Validate(studentenqGrp, nameof(studentenqGrp), required: false);
-            SourceExpression.Validate(studentfirstNames, nameof(studentfirstNames), required: false);
-            SourceExpression.Validate(studentgradTutor, nameof(studentgradTutor), required: false);
-            SourceExpression.Validate(studentgradTutorEmail, nameof(studentgradTutorEmail), required: false);
-            SourceExpression.Validate(studentgradTutorEmployeeId, nameof(studentgradTutorEmployeeId), required: false);
-            SourceExpression.Validate(studentgrp, nameof(studentgrp), required: false);
-            SourceExpression.Validate(studentgrpId, nameof(studentgrpId), required: false);
-            SourceExpression.Validate(studenthomeAddress1, nameof(studenthomeAddress1), required: false);
-            SourceExpression.Validate(studenthomeAddress2, nameof(studenthomeAddress2), required: false);
-            SourceExpression.Validate(studenthomeAddress3, nameof(studenthomeAddress3), required: false);
-            SourceExpression.Validate(studenthomeAddress4, nameof(studenthomeAddress4), required: false);
-            SourceExpression.Validate(studenthomeAddress5, nameof(studenthomeAddress5), required: false);
-            SourceExpression.Validate(studenthomeCountry, nameof(studenthomeCountry), required: false);
-            SourceExpression.Validate(studenthomePostal, nameof(studenthomePostal), required: false);
-            SourceExpression.Validate(studenthomeState, nameof(studenthomeState), required: false);
-            SourceExpression.Validate(studenthomeTel, nameof(studenthomeTel), required: false);
-            SourceExpression.Validate(studentmatriculation, nameof(studentmatriculation), required: false);
-            SourceExpression.Validate(studentmobileTel, nameof(studentmobileTel), required: false);
-            SourceExpression.Validate(studentnationality, nameof(studentnationality), required: false);
-            SourceExpression.Validate(studentpostal, nameof(studentpostal), required: false);
-            SourceExpression.Validate(studentprinSuper, nameof(studentprinSuper), required: false);
-            SourceExpression.Validate(studentprinSuperEmail, nameof(studentprinSuperEmail), required: false);
-            SourceExpression.Validate(studentprinSuperEmployeeId, nameof(studentprinSuperEmployeeId), required: false);
-            SourceExpression.Validate(studentsex, nameof(studentsex), required: false);
-            SourceExpression.Validate(studentstartDate, nameof(studentstartDate), required: false);
-            SourceExpression.Validate(studentstudentFeesClass, nameof(studentstudentFeesClass), required: false);
-            SourceExpression.Validate(studentstudyYear, nameof(studentstudyYear), required: false);
-            SourceExpression.Validate(studentsubject, nameof(studentsubject), required: false);
-            SourceExpression.Validate(studentsubjectDescr, nameof(studentsubjectDescr), required: false);
-            SourceExpression.Validate(studentsuperEmail, nameof(studentsuperEmail), required: false);
-            SourceExpression.Validate(studentsurname, nameof(studentsurname), required: false);
-            SourceExpression.Validate(studenttitle, nameof(studenttitle), required: false);
-            SourceExpression.Validate(studenttutor, nameof(studenttutor), required: false);
-            SourceExpression.Validate(studenttutorEmail, nameof(studenttutorEmail), required: false);
-            SourceExpression.Validate(studenttutorEmployeeId, nameof(studenttutorEmployeeId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Student";

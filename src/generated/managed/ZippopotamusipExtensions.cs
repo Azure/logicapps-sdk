@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> postalCode)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postalCode, 1));
@@ -30,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> city)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(city, nameof(city), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(city, 1));

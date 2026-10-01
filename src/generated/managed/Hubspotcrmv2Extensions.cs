@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfCompaniesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies/batch/archive";
@@ -41,12 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListResponse> List([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies";
@@ -73,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateResponse> Create([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies";
@@ -108,12 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadResponse> Read([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
@@ -138,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive([WorkflowExpression] Func<string> companyId)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
@@ -153,8 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateResponse> Update([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
@@ -185,8 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse> MergeTwoCompaniesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies/merge";
@@ -219,8 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies/gdpr-delete";
@@ -253,12 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse> PostCrmV3ObjectsCompaniesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies/search";
@@ -315,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfContactsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts/batch/archive";
@@ -342,12 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List16Response> List16([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts";
@@ -374,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create17Response> Create17([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts";
@@ -409,11 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read18Response> Read18([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -436,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive19([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -451,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update20Response> Update20([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -480,8 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse> MergeTwoContactsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts/merge";
@@ -514,8 +470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete22([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts/gdpr-delete";
@@ -548,12 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse> PostCrmV3ObjectsContactsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts/search";
@@ -610,7 +558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfDealsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals/batch/archive";
@@ -637,12 +584,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List28Response> List28([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals";
@@ -669,7 +610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create29Response> Create29([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals";
@@ -704,12 +644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read30Response> Read30([WorkflowExpression] Func<string> dealId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
@@ -734,7 +668,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive31([WorkflowExpression] Func<string> dealId)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
@@ -749,8 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update32Response> Update32([WorkflowExpression] Func<string> dealId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
@@ -781,8 +712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse> MergeTwoDealsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals/merge";
@@ -815,8 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete34([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals/gdpr-delete";
@@ -849,12 +776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse> PostCrmV3ObjectsDealsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals/search";
@@ -911,7 +832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfFeesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/fees/batch/archive";
@@ -938,12 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read40Response> Read40([WorkflowExpression] Func<string> feeId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(feeId, nameof(feeId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feeId, 1));
@@ -968,7 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive41([WorkflowExpression] Func<string> feeId)
         {
-            SourceExpression.Validate(feeId, nameof(feeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feeId, 1));
@@ -983,8 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update42Response> Update42([WorkflowExpression] Func<string> feeId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(feeId, nameof(feeId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feeId, 1));
@@ -1015,12 +926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List43Response> List43([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/fees";
@@ -1047,7 +952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create44Response> Create44([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/fees";
@@ -1082,8 +986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse> MergeTwoFeesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/fees/merge";
@@ -1116,8 +1018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete46([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/fees/gdpr-delete";
@@ -1150,12 +1050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse> PostCrmV3ObjectsFeesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/fees/search";
@@ -1212,7 +1106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfGoalTargetsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/batch/archive";
@@ -1239,12 +1132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read52Response> Read52([WorkflowExpression] Func<string> goalTargetId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(goalTargetId, nameof(goalTargetId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalTargetId, 1));
@@ -1269,7 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive53([WorkflowExpression] Func<string> goalTargetId)
         {
-            SourceExpression.Validate(goalTargetId, nameof(goalTargetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalTargetId, 1));
@@ -1284,8 +1170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update54Response> Update54([WorkflowExpression] Func<string> goalTargetId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(goalTargetId, nameof(goalTargetId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalTargetId, 1));
@@ -1316,12 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List55Response> List55([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets";
@@ -1348,7 +1226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create56Response> Create56([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets";
@@ -1383,8 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse> MergeTwoGoalTargetsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/merge";
@@ -1417,8 +1292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete58([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/gdpr-delete";
@@ -1451,12 +1324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse> PostCrmV3ObjectsGoalTargetsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/search";
@@ -1513,7 +1380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfLineItemsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items/batch/archive";
@@ -1540,12 +1406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List64Response> List64([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items";
@@ -1572,7 +1432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create65Response> Create65([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items";
@@ -1607,12 +1466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read66Response> Read66([WorkflowExpression] Func<string> lineItemId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(lineItemId, nameof(lineItemId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
@@ -1637,7 +1490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive67([WorkflowExpression] Func<string> lineItemId)
         {
-            SourceExpression.Validate(lineItemId, nameof(lineItemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
@@ -1652,8 +1504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update68Response> Update68([WorkflowExpression] Func<string> lineItemId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(lineItemId, nameof(lineItemId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
@@ -1684,8 +1534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse> MergeTwoLineItemsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items/merge";
@@ -1718,8 +1566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete70([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items/gdpr-delete";
@@ -1752,12 +1598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse> PostCrmV3ObjectsLineItemsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items/search";
@@ -1814,10 +1654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetAPageOfOwnersResponse> GetAPageOfOwners([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/owners/";
@@ -1839,9 +1675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> ReadAnOwnerByGivenidOruserid([WorkflowExpression] Func<string> ownerId, [WorkflowExpression] Func<string> idProperty = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(ownerId, nameof(ownerId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/owners/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ownerId, 1));
@@ -1860,7 +1693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfProductsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products/batch/archive";
@@ -1887,12 +1719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List78Response> List78([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products";
@@ -1919,7 +1745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create79Response> Create79([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products";
@@ -1954,12 +1779,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read80Response> Read80([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
@@ -1984,7 +1803,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive81([WorkflowExpression] Func<string> productId)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
@@ -1999,8 +1817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update82Response> Update82([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
@@ -2031,8 +1847,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse> MergeTwoProductsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products/merge";
@@ -2065,8 +1879,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete84([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products/gdpr-delete";
@@ -2099,12 +1911,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse> PostCrmV3ObjectsProductsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products/search";
@@ -2161,8 +1967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfObjectsById([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/batch/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
@@ -2189,13 +1993,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadObjectResponse> ReadObject([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2220,8 +2017,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveObjectId([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2236,9 +2031,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateObjectIdResponse> UpdateObjectId([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -2269,13 +2061,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListObjectResponse> ListObject([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
@@ -2302,8 +2087,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateObjectIdResponse> CreateObjectId([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
@@ -2338,9 +2121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> MergeTwoObjectsWithSameType([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/merge", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
@@ -2373,9 +2153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteObjectType([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/gdpr-delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
@@ -2408,13 +2185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> PostCrmV3ObjectsObjectTypeSearch([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1));
@@ -2471,7 +2241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfDiscountsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/discounts/batch/archive";
@@ -2498,12 +2267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read16Response> Read16([WorkflowExpression] Func<string> discountId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(discountId, nameof(discountId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(discountId, 1));
@@ -2528,7 +2291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive17([WorkflowExpression] Func<string> discountId)
         {
-            SourceExpression.Validate(discountId, nameof(discountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(discountId, 1));
@@ -2543,8 +2305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update18Response> Update18([WorkflowExpression] Func<string> discountId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(discountId, nameof(discountId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(discountId, 1));
@@ -2575,12 +2335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List19Response> List19([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/discounts";
@@ -2607,8 +2361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create20Response> Create20([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null, [WorkflowExpression] Func<string> bodypropertiesnostrudcf = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
-            SourceExpression.Validate(bodypropertiesnostrudcf, nameof(bodypropertiesnostrudcf), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/discounts";
@@ -2649,8 +2401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse> MergeTwoDiscountsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/discounts/merge";
@@ -2683,8 +2433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteDiscounts([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/discounts/gdpr-delete";
@@ -2717,12 +2465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse> PostCrmV3ObjectsDiscountsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/discounts/search";
@@ -2779,7 +2521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfFeedbackSubmissionsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/batch/archive";
@@ -2806,12 +2547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read28Response> Read28([WorkflowExpression] Func<string> feedbackSubmissionId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feedbackSubmissionId, 1));
@@ -2836,7 +2571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive29([WorkflowExpression] Func<string> feedbackSubmissionId)
         {
-            SourceExpression.Validate(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feedbackSubmissionId, 1));
@@ -2851,8 +2585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update30Response> Update30([WorkflowExpression] Func<string> feedbackSubmissionId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feedbackSubmissionId, 1));
@@ -2883,12 +2615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List31Response> List31([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions";
@@ -2915,7 +2641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create32Response> Create32([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions";
@@ -2950,8 +2675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse> MergeTwoFeedbackSubmissionsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/merge";
@@ -2984,8 +2707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteFeedback([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/gdpr-delete";
@@ -3018,12 +2739,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse> PostCrmV3ObjectsFeedbackSubmissionsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/search";
@@ -3080,7 +2795,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfQuotesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/quotes/batch/archive";
@@ -3107,12 +2821,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List40Response> List40([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/quotes";
@@ -3139,8 +2847,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create41Response> Create41([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null, [WorkflowExpression] Func<string> bodypropertieselit26 = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
-            SourceExpression.Validate(bodypropertieselit26, nameof(bodypropertieselit26), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/quotes";
@@ -3181,12 +2887,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read42Response> Read42([WorkflowExpression] Func<string> quoteId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(quoteId, nameof(quoteId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(quoteId, 1));
@@ -3211,7 +2911,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive43([WorkflowExpression] Func<string> quoteId)
         {
-            SourceExpression.Validate(quoteId, nameof(quoteId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(quoteId, 1));
@@ -3226,8 +2925,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update44Response> Update44([WorkflowExpression] Func<string> quoteId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(quoteId, nameof(quoteId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(quoteId, 1));
@@ -3258,8 +2955,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse> MergeTwoQuotesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/quotes/merge";
@@ -3292,8 +2987,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteQuotes([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/quotes/gdpr-delete";
@@ -3326,12 +3019,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse> PostCrmV3ObjectsQuotesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/quotes/search";
@@ -3388,7 +3075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfTaxesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/taxes/batch/archive";
@@ -3415,12 +3101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List52Response> List52([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/taxes";
@@ -3447,7 +3127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create53Response> Create53([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/taxes";
@@ -3482,12 +3161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read54Response> Read54([WorkflowExpression] Func<string> taxId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(taxId, nameof(taxId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taxId, 1));
@@ -3512,7 +3185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive55([WorkflowExpression] Func<string> taxId)
         {
-            SourceExpression.Validate(taxId, nameof(taxId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taxId, 1));
@@ -3527,8 +3199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update56Response> Update56([WorkflowExpression] Func<string> taxId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(taxId, nameof(taxId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taxId, 1));
@@ -3559,8 +3229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse> MergeTwoTaxesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/taxes/merge";
@@ -3593,8 +3261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteTaxes([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/taxes/gdpr-delete";
@@ -3627,12 +3293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse> PostCrmV3ObjectsTaxesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/taxes/search";
@@ -3689,7 +3349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfTicketsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets/batch/archive";
@@ -3716,12 +3375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read64Response> Read64([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
@@ -3746,7 +3399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive65([WorkflowExpression] Func<string> ticketId)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
@@ -3761,8 +3413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update66Response> Update66([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
@@ -3793,12 +3443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List67Response> List67([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets";
@@ -3825,7 +3469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create68Response> Create68([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets";
@@ -3860,8 +3503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse> MergeTwoTicketsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            SourceExpression.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            SourceExpression.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets/merge";
@@ -3894,8 +3535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteTickets([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
-            SourceExpression.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets/gdpr-delete";
@@ -3928,12 +3567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse> PostCrmV3ObjectsTicketsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyafter, nameof(bodyafter), required: false);
-            SourceExpression.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets/search";
@@ -3990,8 +3623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationTypesResponse> ListAssociationTypes([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType)
         {
-            SourceExpression.Validate(fromObjectType, nameof(fromObjectType), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/associations/{0}/{1}/types", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
@@ -4006,9 +3637,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteSpecificLabels([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<bodyinputsInputItem2[]> bodyinputs = null)
         {
-            SourceExpression.Validate(fromObjectType, nameof(fromObjectType), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/labels/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
@@ -4035,9 +3663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<bodyinputsInputItem22[]> bodyinputs = null)
         {
-            SourceExpression.Validate(fromObjectType, nameof(fromObjectType), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
@@ -4064,9 +3689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultAssociationsResponse> CreateDefaultAssociations([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<bodyinputsInputItem222[]> bodyinputs = null)
         {
-            SourceExpression.Validate(fromObjectType, nameof(fromObjectType), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
-            SourceExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/associate/default", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
@@ -4093,10 +3715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete6([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> toObjectId)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
-            SourceExpression.Validate(toObjectId, nameof(toObjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectId, 1));
@@ -4111,11 +3729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create7Response> Create7([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> toObjectId, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
-            SourceExpression.Validate(toObjectId, nameof(toObjectId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectId, 1));
@@ -4131,10 +3744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultResponse> CreateDefault([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> fromObjectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> toObjectId)
         {
-            SourceExpression.Validate(fromObjectType, nameof(fromObjectType), required: true);
-            SourceExpression.Validate(fromObjectId, nameof(fromObjectId), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
-            SourceExpression.Validate(toObjectId, nameof(toObjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fromObjectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectId, 1));
@@ -4149,11 +3758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationsResponse> ListAssociations([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(objectType, nameof(objectType), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(toObjectType, nameof(toObjectType), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toObjectType, 1));
@@ -4172,7 +3776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetAllCardsResponse> GetAllCards([WorkflowExpression] Func<string> appId)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
@@ -4187,14 +3790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateANewCardResponse> CreateANewCard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string[]> bodyactionsbaseUrls = null, [WorkflowExpression] Func<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, [WorkflowExpression] Func<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, [WorkflowExpression] Func<string> bodyfetchtargetUrl = null, [WorkflowExpression] Func<string> bodyfetchcardType = null, [WorkflowExpression] Func<string> bodyfetchserverlessFunction = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
-            SourceExpression.Validate(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
-            SourceExpression.Validate(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
-            SourceExpression.Validate(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
-            SourceExpression.Validate(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
-            SourceExpression.Validate(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
@@ -4281,8 +3876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetACardResponse> GetACard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -4297,8 +3890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteACard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -4313,15 +3904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateACardResponse> UpdateACard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, [WorkflowExpression] Func<string> bodyfetchcardType = null, [WorkflowExpression] Func<string> bodyfetchtargetUrl = null, [WorkflowExpression] Func<string> bodyfetchserverlessFunction = null, [WorkflowExpression] Func<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, [WorkflowExpression] Func<string[]> bodyactionsbaseUrls = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
-            SourceExpression.Validate(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
-            SourceExpression.Validate(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
-            SourceExpression.Validate(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
-            SourceExpression.Validate(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
-            SourceExpression.Validate(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -4422,7 +4004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> GetCrmV3ExportsExportAsyncTasksTaskIdStatus([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/exports/export/async/tasks/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -4437,16 +4018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<StartAnExportResponse> StartAnExport([WorkflowExpression] Func<string> bodyexportName = null, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string[]> bodyobjectProperties = null, [WorkflowExpression] Func<string> bodyobjectType = null, [WorkflowExpression] Func<string> bodyassociatedObjectType = null, [WorkflowExpression] Func<bodypublicCrmSearchRequestfiltersInputItem[]> bodypublicCrmSearchRequestfilters = null, [WorkflowExpression] Func<string> bodypublicCrmSearchRequestquery = null, [WorkflowExpression] Func<string[]> bodypublicCrmSearchRequestsorts = null)
         {
-            SourceExpression.Validate(bodyexportName, nameof(bodyexportName), required: false);
-            SourceExpression.Validate(bodyexportType, nameof(bodyexportType), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyobjectProperties, nameof(bodyobjectProperties), required: false);
-            SourceExpression.Validate(bodyobjectType, nameof(bodyobjectType), required: false);
-            SourceExpression.Validate(bodyassociatedObjectType, nameof(bodyassociatedObjectType), required: false);
-            SourceExpression.Validate(bodypublicCrmSearchRequestfilters, nameof(bodypublicCrmSearchRequestfilters), required: false);
-            SourceExpression.Validate(bodypublicCrmSearchRequestquery, nameof(bodypublicCrmSearchRequestquery), required: false);
-            SourceExpression.Validate(bodypublicCrmSearchRequestsorts, nameof(bodypublicCrmSearchRequestsorts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/exports/export/async";
@@ -4535,7 +4106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> GetTheInformationOnAnyImport([WorkflowExpression] Func<string> importId)
         {
-            SourceExpression.Validate(importId, nameof(importId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(importId, 1));
@@ -4550,7 +4120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CancelAnActiveImportResponse> CancelAnActiveImport([WorkflowExpression] Func<string> importId)
         {
-            SourceExpression.Validate(importId, nameof(importId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(importId, 1));
@@ -4565,9 +4134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetActiveImportsResponse> GetActiveImports([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/imports/";
@@ -4588,7 +4154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<StartANewImportResponse> StartANewImport([WorkflowExpression] Func<string> contentType)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/imports/";
@@ -4604,9 +4169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> GetCrmV3ImportsImportIdErrorsGetErrors([WorkflowExpression] Func<string> importId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(importId, nameof(importId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/errors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(importId, 1));
@@ -4625,9 +4187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> AddAndOrRemoveRecordsFromAList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string[]> bodyrecordIdsToAdd = null, [WorkflowExpression] Func<string[]> bodyrecordIdsToRemove = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyrecordIdsToAdd, nameof(bodyrecordIdsToAdd), required: false);
-            SourceExpression.Validate(bodyrecordIdsToRemove, nameof(bodyrecordIdsToRemove), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-and-remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -4660,8 +4219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddRecordsToAListResponse> AddRecordsToAList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -4677,8 +4234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> AddAllRecordsFromASourceListToADestinationList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> sourceListId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(sourceListId, nameof(sourceListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-from/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sourceListId, 1));
@@ -4693,10 +4248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> FetchListMembershipsOrderedById([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -4717,7 +4268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteAllRecordsFromAList([WorkflowExpression] Func<string> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -4732,8 +4282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<RemoveRecordsFromAListResponse> RemoveRecordsFromAList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -4749,10 +4297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<SearchListsResponse> SearchLists([WorkflowExpression] Func<string[]> bodyadditionalProperties = null, [WorkflowExpression] Func<string> bodyoffset = null, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<string> bodycount = null)
         {
-            SourceExpression.Validate(bodyadditionalProperties, nameof(bodyadditionalProperties), required: false);
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/lists/search";

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetConditions([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<unitsInput> units, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(geocode, nameof(geocode), required: true);
-            SourceExpression.Validate(units, nameof(units), required: true);
-            SourceExpression.Validate(language, nameof(language), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/wx/observations/current";
@@ -36,10 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetHeadlines([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<string> acceptHeader, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(geocode, nameof(geocode), required: true);
-            SourceExpression.Validate(acceptHeader, nameof(acceptHeader), required: true);
-            SourceExpression.Validate(language, nameof(language), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/alerts/headlines";
@@ -58,10 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetHistory([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<unitsInput> units, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(geocode, nameof(geocode), required: true);
-            SourceExpression.Validate(units, nameof(units), required: true);
-            SourceExpression.Validate(language, nameof(language), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/wx/conditions/historical/dailysummary/30day";

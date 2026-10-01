@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
     {
         public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formKey, nameof(formKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/power-automate/poll/form_completion/";
@@ -32,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
         public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formKey, nameof(formKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/power-automate/poll/data_received/";
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
         public IBodyWorkflowTrigger<NewFileResponse> NewFile([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formKey, nameof(formKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/power-automate/poll/file/";

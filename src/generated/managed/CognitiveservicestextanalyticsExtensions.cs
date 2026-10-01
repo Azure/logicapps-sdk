@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            SourceExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
-            SourceExpression.Validate(modelVersion, nameof(modelVersion), required: false);
-            SourceExpression.Validate(showStats, nameof(showStats), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/analytics/v3.0/entities/linking";
@@ -43,9 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            SourceExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
-            SourceExpression.Validate(modelVersion, nameof(modelVersion), required: false);
-            SourceExpression.Validate(showStats, nameof(showStats), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
@@ -72,9 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            SourceExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
-            SourceExpression.Validate(modelVersion, nameof(modelVersion), required: false);
-            SourceExpression.Validate(showStats, nameof(showStats), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/analytics/v3.0/keyPhrases";
@@ -101,9 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<LanguageResultV3> Languages([WorkflowExpression] Func<LanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            SourceExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
-            SourceExpression.Validate(modelVersion, nameof(modelVersion), required: false);
-            SourceExpression.Validate(showStats, nameof(showStats), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/analytics/v3.0/languages";
@@ -130,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<SentimentResponse> Sentiment([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            SourceExpression.Validate(inputdocuments, nameof(inputdocuments), required: true);
-            SourceExpression.Validate(modelVersion, nameof(modelVersion), required: false);
-            SourceExpression.Validate(showStats, nameof(showStats), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/analytics/v3.0/sentiment";

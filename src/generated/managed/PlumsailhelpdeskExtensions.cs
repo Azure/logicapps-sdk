@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<ContactRead[]> FlowV4ContactsGet([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_flow/v4/Contacts";
@@ -46,12 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<ContactRead> FlowV4Contacts([WorkflowExpression] Func<string> contactcontactEmail, [WorkflowExpression] Func<string> contactcontactName, [WorkflowExpression] Func<string> contactcontactAlternateEmail = null, [WorkflowExpression] Func<string> contactcontactRole = null, [WorkflowExpression] Func<int> contactcontactSPUserId = null, [WorkflowExpression] Func<bool> updateIfExists = null)
         {
-            SourceExpression.Validate(contactcontactEmail, nameof(contactcontactEmail), required: true);
-            SourceExpression.Validate(contactcontactName, nameof(contactcontactName), required: true);
-            SourceExpression.Validate(contactcontactAlternateEmail, nameof(contactcontactAlternateEmail), required: false);
-            SourceExpression.Validate(contactcontactRole, nameof(contactcontactRole), required: false);
-            SourceExpression.Validate(contactcontactSPUserId, nameof(contactcontactSPUserId), required: false);
-            SourceExpression.Validate(updateIfExists, nameof(updateIfExists), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_flow/v4/Contacts";
@@ -105,9 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<ContactRead> FlowV4ContactsByEmailByEmailGet([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Contacts/ByEmail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
@@ -126,12 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<ContactRead> FlowV4ContactsByEmailByEmailPut([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> contactcontactEmail, [WorkflowExpression] Func<string> contactcontactName, [WorkflowExpression] Func<string> contactcontactAlternateEmail = null, [WorkflowExpression] Func<string> contactcontactRole = null, [WorkflowExpression] Func<int> contactcontactSPUserId = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(contactcontactEmail, nameof(contactcontactEmail), required: true);
-            SourceExpression.Validate(contactcontactName, nameof(contactcontactName), required: true);
-            SourceExpression.Validate(contactcontactAlternateEmail, nameof(contactcontactAlternateEmail), required: false);
-            SourceExpression.Validate(contactcontactRole, nameof(contactcontactRole), required: false);
-            SourceExpression.Validate(contactcontactSPUserId, nameof(contactcontactSPUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Contacts/ByEmail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
@@ -182,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IWorkflowAction FlowV4ContactsByIdDelete([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -197,9 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<ContactRead> FlowV4ContactsByIdGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -218,12 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<ContactRead> FlowV4ContactsByIdPut([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> contactcontactEmail, [WorkflowExpression] Func<string> contactcontactName, [WorkflowExpression] Func<string> contactcontactAlternateEmail = null, [WorkflowExpression] Func<string> contactcontactRole = null, [WorkflowExpression] Func<int> contactcontactSPUserId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(contactcontactEmail, nameof(contactcontactEmail), required: true);
-            SourceExpression.Validate(contactcontactName, nameof(contactcontactName), required: true);
-            SourceExpression.Validate(contactcontactAlternateEmail, nameof(contactcontactAlternateEmail), required: false);
-            SourceExpression.Validate(contactcontactRole, nameof(contactcontactRole), required: false);
-            SourceExpression.Validate(contactcontactSPUserId, nameof(contactcontactSPUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -274,12 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<OrganizationRead[]> FlowV4OrganizationsGet([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_flow/v4/Organizations";
@@ -306,7 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<OrganizationRead> FlowV4Organizations([WorkflowExpression] Func<string> organizationorganizationTitle)
         {
-            SourceExpression.Validate(organizationorganizationTitle, nameof(organizationorganizationTitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_flow/v4/Organizations";
@@ -337,7 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IWorkflowAction FlowV4OrganizationsByTitleByTitleDelete([WorkflowExpression] Func<string> title)
         {
-            SourceExpression.Validate(title, nameof(title), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Organizations/ByTitle/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));
@@ -352,9 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<OrganizationRead> FlowV4OrganizationsByTitleByTitleGet([WorkflowExpression] Func<string> title, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(title, nameof(title), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Organizations/ByTitle/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));
@@ -373,8 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<OrganizationRead> FlowV4OrganizationsByTitleByTitlePut([WorkflowExpression] Func<string> title, [WorkflowExpression] Func<string> organizationorganizationTitle)
         {
-            SourceExpression.Validate(title, nameof(title), required: true);
-            SourceExpression.Validate(organizationorganizationTitle, nameof(organizationorganizationTitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Organizations/ByTitle/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));
@@ -405,7 +361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IWorkflowAction FlowV4OrganizationsByIdDelete([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Organizations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -420,9 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<OrganizationRead> FlowV4OrganizationsByIdGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Organizations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -441,8 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<OrganizationRead> FlowV4OrganizationsByIdPut([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> organizationorganizationTitle)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(organizationorganizationTitle, nameof(organizationorganizationTitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Organizations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -473,12 +423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<TicketRead[]> FlowV4TicketsGet([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_flow/v4/Tickets";
@@ -505,18 +449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<TicketRead> FlowV4Tickets([WorkflowExpression] Func<string> ticketticketBody, [WorkflowExpression] Func<string> ticketticketRequesterEmail, [WorkflowExpression] Func<string> ticketticketSubject, [WorkflowExpression] Func<string> ticketticketAssigneeEmailOrSharePointGroupName = null, [WorkflowExpression] Func<Attachment[]> ticketticketAttachments = null, [WorkflowExpression] Func<string> ticketticketCategory = null, [WorkflowExpression] Func<string[]> ticketticketCcEmails = null, [WorkflowExpression] Func<string> ticketticketDueDate = null, [WorkflowExpression] Func<string> ticketticketPriority = null, [WorkflowExpression] Func<string> ticketticketStatus = null, [WorkflowExpression] Func<string> ticketticketSupportChannel = null, [WorkflowExpression] Func<string[]> ticketticketTagsTitles = null)
         {
-            SourceExpression.Validate(ticketticketBody, nameof(ticketticketBody), required: true);
-            SourceExpression.Validate(ticketticketRequesterEmail, nameof(ticketticketRequesterEmail), required: true);
-            SourceExpression.Validate(ticketticketSubject, nameof(ticketticketSubject), required: true);
-            SourceExpression.Validate(ticketticketAssigneeEmailOrSharePointGroupName, nameof(ticketticketAssigneeEmailOrSharePointGroupName), required: false);
-            SourceExpression.Validate(ticketticketAttachments, nameof(ticketticketAttachments), required: false);
-            SourceExpression.Validate(ticketticketCategory, nameof(ticketticketCategory), required: false);
-            SourceExpression.Validate(ticketticketCcEmails, nameof(ticketticketCcEmails), required: false);
-            SourceExpression.Validate(ticketticketDueDate, nameof(ticketticketDueDate), required: false);
-            SourceExpression.Validate(ticketticketPriority, nameof(ticketticketPriority), required: false);
-            SourceExpression.Validate(ticketticketStatus, nameof(ticketticketStatus), required: false);
-            SourceExpression.Validate(ticketticketSupportChannel, nameof(ticketticketSupportChannel), required: false);
-            SourceExpression.Validate(ticketticketTagsTitles, nameof(ticketticketTagsTitles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_flow/v4/Tickets";
@@ -605,7 +537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IWorkflowAction FlowV4TicketsByIdDelete([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -620,9 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<TicketRead> FlowV4TicketsByIdGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -641,19 +569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<TicketRead> FlowV4TicketsByIdPut([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> ticketticketBody, [WorkflowExpression] Func<string> ticketticketRequesterEmail, [WorkflowExpression] Func<string> ticketticketSubject, [WorkflowExpression] Func<string> ticketticketAssigneeEmailOrSharePointGroupName = null, [WorkflowExpression] Func<Attachment[]> ticketticketAttachments = null, [WorkflowExpression] Func<string> ticketticketCategory = null, [WorkflowExpression] Func<string[]> ticketticketCcEmails = null, [WorkflowExpression] Func<string> ticketticketDueDate = null, [WorkflowExpression] Func<string> ticketticketPriority = null, [WorkflowExpression] Func<string> ticketticketStatus = null, [WorkflowExpression] Func<string> ticketticketSupportChannel = null, [WorkflowExpression] Func<string[]> ticketticketTagsTitles = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(ticketticketBody, nameof(ticketticketBody), required: true);
-            SourceExpression.Validate(ticketticketRequesterEmail, nameof(ticketticketRequesterEmail), required: true);
-            SourceExpression.Validate(ticketticketSubject, nameof(ticketticketSubject), required: true);
-            SourceExpression.Validate(ticketticketAssigneeEmailOrSharePointGroupName, nameof(ticketticketAssigneeEmailOrSharePointGroupName), required: false);
-            SourceExpression.Validate(ticketticketAttachments, nameof(ticketticketAttachments), required: false);
-            SourceExpression.Validate(ticketticketCategory, nameof(ticketticketCategory), required: false);
-            SourceExpression.Validate(ticketticketCcEmails, nameof(ticketticketCcEmails), required: false);
-            SourceExpression.Validate(ticketticketDueDate, nameof(ticketticketDueDate), required: false);
-            SourceExpression.Validate(ticketticketPriority, nameof(ticketticketPriority), required: false);
-            SourceExpression.Validate(ticketticketStatus, nameof(ticketticketStatus), required: false);
-            SourceExpression.Validate(ticketticketSupportChannel, nameof(ticketticketSupportChannel), required: false);
-            SourceExpression.Validate(ticketticketTagsTitles, nameof(ticketticketTagsTitles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -742,8 +657,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<string> FlowV4TicketsByIdAttachmentsByFilenameGet([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> filename)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(filename, nameof(filename), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Tickets/{0}/Attachments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filename, 1));
@@ -758,11 +671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<CommentRead[]> FlowV4TicketsByTicketIdCommentsGet([WorkflowExpression] Func<int> ticketId, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Tickets/{0}/Comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(ticketId, 1));
@@ -785,11 +693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<CommentRead> FlowV4TicketsByTicketIdComments([WorkflowExpression] Func<string> commentcommentBody, [WorkflowExpression] Func<string> commentcommentAuthorEmail, [WorkflowExpression] Func<int> ticketId, [WorkflowExpression] Func<Attachment[]> commentattachments = null, [WorkflowExpression] Func<string> commentcommentMessageId = null)
         {
-            SourceExpression.Validate(commentcommentBody, nameof(commentcommentBody), required: true);
-            SourceExpression.Validate(commentcommentAuthorEmail, nameof(commentcommentAuthorEmail), required: true);
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(commentattachments, nameof(commentattachments), required: false);
-            SourceExpression.Validate(commentcommentMessageId, nameof(commentcommentMessageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Tickets/{0}/Comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(ticketId, 1));
@@ -834,10 +737,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
         public IBodyWorkflowAction<CommentRead> FlowV4TicketsByTicketIdCommentsByIdGet([WorkflowExpression] Func<int> ticketId, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_flow/v4/Tickets/{0}/Comments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(ticketId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

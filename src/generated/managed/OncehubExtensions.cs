@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         public IBodyWorkflowAction<GetTimeSlotsResponseItem[]> GetTimeSlots([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/time-slots", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,13 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         public IWorkflowAction BookATimeSlot([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyguestTimeZone, [WorkflowExpression] Func<string> bodybookingFormname = null, [WorkflowExpression] Func<string> bodybookingFormemail = null, [WorkflowExpression] Func<bodylocationTypeInput> bodylocationType = null, [WorkflowExpression] Func<string> bodylocationValue = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            SourceExpression.Validate(bodyguestTimeZone, nameof(bodyguestTimeZone), required: true);
-            SourceExpression.Validate(bodybookingFormname, nameof(bodybookingFormname), required: false);
-            SourceExpression.Validate(bodybookingFormemail, nameof(bodybookingFormemail), required: false);
-            SourceExpression.Validate(bodylocationType, nameof(bodylocationType), required: false);
-            SourceExpression.Validate(bodylocationValue, nameof(bodylocationValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/schedule", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

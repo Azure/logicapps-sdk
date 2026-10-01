@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<SubscriberPostResponse> Subscriber([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodywelcomeEmail = null, [WorkflowExpression] Func<string> bodyadditionalDataname = null, [WorkflowExpression] Func<string> bodyadditionalDatalocation = null, [WorkflowExpression] Func<string> bodyadditionalDatatitle = null, [WorkflowExpression] Func<string> bodyadditionalDatacompany = null, [WorkflowExpression] Func<int> bodyadditionalDatacompanySize = null, [WorkflowExpression] Func<string> bodyadditionalDataindustry = null, [WorkflowExpression] Func<string> bodyadditionalDatatwitter = null, [WorkflowExpression] Func<int> bodyadditionalDatatwitterFollowers = null, [WorkflowExpression] Func<string> bodyadditionalDatalinkedin = null, [WorkflowExpression] Func<string> bodyadditionalDatagithub = null, [WorkflowExpression] Func<string> bodyadditionalDatafacebook = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodywelcomeEmail, nameof(bodywelcomeEmail), required: false);
-            SourceExpression.Validate(bodyadditionalDataname, nameof(bodyadditionalDataname), required: false);
-            SourceExpression.Validate(bodyadditionalDatalocation, nameof(bodyadditionalDatalocation), required: false);
-            SourceExpression.Validate(bodyadditionalDatatitle, nameof(bodyadditionalDatatitle), required: false);
-            SourceExpression.Validate(bodyadditionalDatacompany, nameof(bodyadditionalDatacompany), required: false);
-            SourceExpression.Validate(bodyadditionalDatacompanySize, nameof(bodyadditionalDatacompanySize), required: false);
-            SourceExpression.Validate(bodyadditionalDataindustry, nameof(bodyadditionalDataindustry), required: false);
-            SourceExpression.Validate(bodyadditionalDatatwitter, nameof(bodyadditionalDatatwitter), required: false);
-            SourceExpression.Validate(bodyadditionalDatatwitterFollowers, nameof(bodyadditionalDatatwitterFollowers), required: false);
-            SourceExpression.Validate(bodyadditionalDatalinkedin, nameof(bodyadditionalDatalinkedin), required: false);
-            SourceExpression.Validate(bodyadditionalDatagithub, nameof(bodyadditionalDatagithub), required: false);
-            SourceExpression.Validate(bodyadditionalDatafacebook, nameof(bodyadditionalDatafacebook), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscriber/add";
@@ -129,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<SubscriberRemovePostResponse> SubscriberRemove([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscriber/remove";
@@ -145,9 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<PostsGetPostResponse> PostsGet([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/posts";
@@ -192,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<PostGetPostResponse> PostGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/get/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -207,9 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<PostDraftPostResponse> PostDraft([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodysubtitle = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            SourceExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/post/draft";
@@ -240,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<ProjectGetPostResponse> ProjectGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/project/get/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -255,11 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<IdeaCreatePostResponse> IdeaCreate([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodysuggestedBy, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodykeyword = null, [WorkflowExpression] Func<string[]> bodylabels = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodysuggestedBy, nameof(bodysuggestedBy), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodykeyword, nameof(bodykeyword), required: false);
-            SourceExpression.Validate(bodylabels, nameof(bodylabels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/idea/new";
@@ -302,10 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
         public IBodyWorkflowAction<IdeaAssignPostResponse> IdeaAssign([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyassignTo, [WorkflowExpression] Func<string> bodypublishOn, [WorkflowExpression] Func<string[]> bodyapprovers = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyassignTo, nameof(bodyassignTo), required: true);
-            SourceExpression.Validate(bodypublishOn, nameof(bodypublishOn), required: true);
-            SourceExpression.Validate(bodyapprovers, nameof(bodyapprovers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/idea/assign";

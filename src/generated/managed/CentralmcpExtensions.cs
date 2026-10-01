@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centralmcp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centralmcp")]
         public IWorkflowAction InvokeServer([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            SourceExpression.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

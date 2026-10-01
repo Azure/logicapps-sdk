@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<MonsterResponse> GetMonsterJson([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -43,9 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<ListMonstersResponse> ListMonsters([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> startRange = null, [WorkflowExpression] Func<int> endRange = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(startRange, nameof(startRange), required: false);
-            SourceExpression.Validate(endRange, nameof(endRange), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/basic/monsters";
@@ -66,10 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster([WorkflowExpression] Func<string> primaryColor = null, [WorkflowExpression] Func<fillTypeInput> fillType = null, [WorkflowExpression] Func<string> backgroundColor = null, [WorkflowExpression] Func<string> secondaryColor = null)
         {
-            SourceExpression.Validate(primaryColor, nameof(primaryColor), required: false);
-            SourceExpression.Validate(fillType, nameof(fillType), required: false);
-            SourceExpression.Validate(backgroundColor, nameof(backgroundColor), required: false);
-            SourceExpression.Validate(secondaryColor, nameof(secondaryColor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/basic/svgmonsters/json";

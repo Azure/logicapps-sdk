@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<BooksGetResponseItem[]> BooksGet([WorkflowExpression] Func<string> graphId)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graphs/{0}/books", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<LinksGetResponseItem[]> LinksGet([WorkflowExpression] Func<string> graphId)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
@@ -58,13 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<LinkPostResponseItem[]> Link([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyupdatedAt = null, [WorkflowExpression] Func<string[]> bodyhighlights = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
-            SourceExpression.Validate(bodyhighlights, nameof(bodyhighlights), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
@@ -117,10 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<DailyNotePutResponse> DailyNotePut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodylistName = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodylistName, nameof(bodylistName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graphs/{0}/daily-notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));
@@ -161,10 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
         public IBodyWorkflowAction<NotePostResponse> Note([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodycontentMarkdown, [WorkflowExpression] Func<bool> bodypinned = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodycontentMarkdown, nameof(bodycontentMarkdown), required: true);
-            SourceExpression.Validate(bodypinned, nameof(bodypinned), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graphs/{0}/notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(graphId, 1));

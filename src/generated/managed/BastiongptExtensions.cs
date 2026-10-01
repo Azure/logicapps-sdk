@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bastiongpt")]
         public IBodyWorkflowAction<AskQuestionResponse> AskQuestion([WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<int> bodymaxTokens, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string> bodydocumentId = null, [WorkflowExpression] Func<double> bodytemperature = null)
         {
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: true);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/Ask";
@@ -71,10 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bastiongpt")]
         public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<Message[]> bodymessages, [WorkflowExpression] Func<int> bodymaxTokens, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<string> bodydocumentId = null)
         {
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: true);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ChatCompletion";
@@ -121,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bastiongpt")]
         public IBodyWorkflowAction<TranscriptResponse> GetTranscript([WorkflowExpression] Func<string> transcriptId)
         {
-            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get/TranscribeFile";

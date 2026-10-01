@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
         public IBodyWorkflowAction<ComplaintsAllResponse> ComplaintsAll([WorkflowExpression] Func<string> createdDate = null, [WorkflowExpression] Func<string> createdDateFrom = null, [WorkflowExpression] Func<string> createdDateTo = null, [WorkflowExpression] Func<string> violationDate = null, [WorkflowExpression] Func<string> violationDateFrom = null, [WorkflowExpression] Func<string> violationDateTo = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> areaCode = null, [WorkflowExpression] Func<bool> isRobocall = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<int> itemsPerPage = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(createdDate, nameof(createdDate), required: false);
-            SourceExpression.Validate(createdDateFrom, nameof(createdDateFrom), required: false);
-            SourceExpression.Validate(createdDateTo, nameof(createdDateTo), required: false);
-            SourceExpression.Validate(violationDate, nameof(violationDate), required: false);
-            SourceExpression.Validate(violationDateFrom, nameof(violationDateFrom), required: false);
-            SourceExpression.Validate(violationDateTo, nameof(violationDateTo), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(areaCode, nameof(areaCode), required: false);
-            SourceExpression.Validate(isRobocall, nameof(isRobocall), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(itemsPerPage, nameof(itemsPerPage), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dnc-complaints";
@@ -68,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
         public IBodyWorkflowAction<ComplaintIdResponse> ComplaintId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dnc-complaints/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

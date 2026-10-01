@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<EntityGetResponse> EntityGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<int> topEntities = null, [WorkflowExpression] Func<int> minConfidence = null, [WorkflowExpression] Func<int> minLength = null, [WorkflowExpression] Func<bool> socialHashtag = null, [WorkflowExpression] Func<bool> socialMention = null, [WorkflowExpression] Func<string> include = null, [WorkflowExpression] Func<string> extraTypes = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<double> epsilon = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: false);
-            SourceExpression.Validate(html, nameof(html), required: false);
-            SourceExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
-            SourceExpression.Validate(topEntities, nameof(topEntities), required: false);
-            SourceExpression.Validate(minConfidence, nameof(minConfidence), required: false);
-            SourceExpression.Validate(minLength, nameof(minLength), required: false);
-            SourceExpression.Validate(socialHashtag, nameof(socialHashtag), required: false);
-            SourceExpression.Validate(socialMention, nameof(socialMention), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
-            SourceExpression.Validate(extraTypes, nameof(extraTypes), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(epsilon, nameof(epsilon), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datatxt/nex/v1";
@@ -67,14 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<SimilarityGetResponse> SimilarityGet([WorkflowExpression] Func<string> text1 = null, [WorkflowExpression] Func<string> html1 = null, [WorkflowExpression] Func<string> htmlFragment1 = null, [WorkflowExpression] Func<string> text2 = null, [WorkflowExpression] Func<string> html2 = null, [WorkflowExpression] Func<string> htmlFragment2 = null, [WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<bowInput> bow = null)
         {
-            SourceExpression.Validate(text1, nameof(text1), required: false);
-            SourceExpression.Validate(html1, nameof(html1), required: false);
-            SourceExpression.Validate(htmlFragment1, nameof(htmlFragment1), required: false);
-            SourceExpression.Validate(text2, nameof(text2), required: false);
-            SourceExpression.Validate(html2, nameof(html2), required: false);
-            SourceExpression.Validate(htmlFragment2, nameof(htmlFragment2), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
-            SourceExpression.Validate(bow, nameof(bow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datatxt/sim/v1";
@@ -105,10 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<LanguageGetResponse> LanguageGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<bool> clean = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: false);
-            SourceExpression.Validate(html, nameof(html), required: false);
-            SourceExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
-            SourceExpression.Validate(clean, nameof(clean), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datatxt/li/v1";
@@ -131,10 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<SentimentGetResponse> SentimentGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<string> lang = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: false);
-            SourceExpression.Validate(html, nameof(html), required: false);
-            SourceExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datatxt/sent/v1";
@@ -157,12 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<WikipediaGetResponse> WikipediaGet([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<langInput> lang, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<queryInput> query = null, [WorkflowExpression] Func<string> include = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: true);
-            SourceExpression.Validate(lang, nameof(lang), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datagraph/wikisearch/v1";

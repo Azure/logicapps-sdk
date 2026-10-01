@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
         public IWorkflowAction ApiAnalyze([WorkflowExpression] Func<string> analysisRequestFile, [WorkflowExpression] Func<string> analysisRequestfileName, [WorkflowExpression] Func<string> analysisRequestlicense = null)
         {
-            SourceExpression.Validate(analysisRequestFile, nameof(analysisRequestFile), required: true);
-            SourceExpression.Validate(analysisRequestfileName, nameof(analysisRequestfileName), required: true);
-            SourceExpression.Validate(analysisRequestlicense, nameof(analysisRequestlicense), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/analyze";

@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         public IBodyWorkflowAction<SmsResponse> SmsRequest([WorkflowExpression] Func<string> requestsender, [WorkflowExpression] Func<string> requesttext, [WorkflowExpression] Func<string> requestreceiver, [WorkflowExpression] Func<bool> requestisFlashSMS = null, [WorkflowExpression] Func<int> requestprotocolIdentifier = null, [WorkflowExpression] Func<string> requestcustomerReference = null, [WorkflowExpression] Func<bool> requestisTestSMS = null, [WorkflowExpression] Func<requesttextTypeInput> requesttextType = null, [WorkflowExpression] Func<string> requestuserDataHeader = null, [WorkflowExpression] Func<int> requestvalidityInMinutes = null)
         {
-            SourceExpression.Validate(requestsender, nameof(requestsender), required: true);
-            SourceExpression.Validate(requesttext, nameof(requesttext), required: true);
-            SourceExpression.Validate(requestreceiver, nameof(requestreceiver), required: true);
-            SourceExpression.Validate(requestisFlashSMS, nameof(requestisFlashSMS), required: false);
-            SourceExpression.Validate(requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
-            SourceExpression.Validate(requestcustomerReference, nameof(requestcustomerReference), required: false);
-            SourceExpression.Validate(requestisTestSMS, nameof(requestisTestSMS), required: false);
-            SourceExpression.Validate(requesttextType, nameof(requesttextType), required: false);
-            SourceExpression.Validate(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
-            SourceExpression.Validate(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms.json";
@@ -102,16 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         public IBodyWorkflowAction<SmsBulkResponse> SmsBulkRequest([WorkflowExpression] Func<string> requestsender, [WorkflowExpression] Func<string> requesttext, [WorkflowExpression] Func<string[]> requestreceivers, [WorkflowExpression] Func<bool> requestisFlashSMS = null, [WorkflowExpression] Func<int> requestprotocolIdentifier = null, [WorkflowExpression] Func<string> requestcustomerReference = null, [WorkflowExpression] Func<bool> requestisTestSMS = null, [WorkflowExpression] Func<requesttextTypeInput> requesttextType = null, [WorkflowExpression] Func<string> requestuserDataHeader = null, [WorkflowExpression] Func<int> requestvalidityInMinutes = null)
         {
-            SourceExpression.Validate(requestsender, nameof(requestsender), required: true);
-            SourceExpression.Validate(requesttext, nameof(requesttext), required: true);
-            SourceExpression.Validate(requestreceivers, nameof(requestreceivers), required: true);
-            SourceExpression.Validate(requestisFlashSMS, nameof(requestisFlashSMS), required: false);
-            SourceExpression.Validate(requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
-            SourceExpression.Validate(requestcustomerReference, nameof(requestcustomerReference), required: false);
-            SourceExpression.Validate(requestisTestSMS, nameof(requestisTestSMS), required: false);
-            SourceExpression.Validate(requesttextType, nameof(requesttextType), required: false);
-            SourceExpression.Validate(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
-            SourceExpression.Validate(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/smsbulk.json";

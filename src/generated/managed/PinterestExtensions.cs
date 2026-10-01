@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponse> ListPinsFromBoard([WorkflowExpression] Func<string> board)
         {
-            SourceExpression.Validate(board, nameof(board), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<BoardResponseData> CreateBoard([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> description = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(description, nameof(description), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/boards";
@@ -48,10 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponseData> CreatePin([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> imageUrl, [WorkflowExpression] Func<string> sourceUrl = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(description, nameof(description), required: true);
-            SourceExpression.Validate(imageUrl, nameof(imageUrl), required: true);
-            SourceExpression.Validate(sourceUrl, nameof(sourceUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pins";
@@ -71,11 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponseData> EditPin([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> pin, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> link = null, [WorkflowExpression] Func<string> secondBoard = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(pin, nameof(pin), required: true);
-            SourceExpression.Validate(description, nameof(description), required: true);
-            SourceExpression.Validate(link, nameof(link), required: false);
-            SourceExpression.Validate(secondBoard, nameof(secondBoard), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pin, 1));
@@ -182,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
     {
         public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard([WorkflowExpression] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(board, nameof(board), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
@@ -196,7 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
         public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard([WorkflowExpression] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(board, nameof(board), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));

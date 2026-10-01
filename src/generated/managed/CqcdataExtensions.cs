@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction Providers([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> constituency = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> localAuthority = null, [WorkflowExpression] Func<string> inspectionDirectorate = null, [WorkflowExpression] Func<string> nonPrimaryInspectionCategoryCode = null, [WorkflowExpression] Func<string> nonPrimaryInspectionCategoryName = null, [WorkflowExpression] Func<string> primaryInspectionCategoryCode = null, [WorkflowExpression] Func<string> primaryInspectionCategoryName = null, [WorkflowExpression] Func<string> overallRating = null, [WorkflowExpression] Func<string> regulatedActivity = null, [WorkflowExpression] Func<string> reportType = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(constituency, nameof(constituency), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(localAuthority, nameof(localAuthority), required: false);
-            SourceExpression.Validate(inspectionDirectorate, nameof(inspectionDirectorate), required: false);
-            SourceExpression.Validate(nonPrimaryInspectionCategoryCode, nameof(nonPrimaryInspectionCategoryCode), required: false);
-            SourceExpression.Validate(nonPrimaryInspectionCategoryName, nameof(nonPrimaryInspectionCategoryName), required: false);
-            SourceExpression.Validate(primaryInspectionCategoryCode, nameof(primaryInspectionCategoryCode), required: false);
-            SourceExpression.Validate(primaryInspectionCategoryName, nameof(primaryInspectionCategoryName), required: false);
-            SourceExpression.Validate(overallRating, nameof(overallRating), required: false);
-            SourceExpression.Validate(regulatedActivity, nameof(regulatedActivity), required: false);
-            SourceExpression.Validate(reportType, nameof(reportType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/providers";
@@ -70,25 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction Locations([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string[]> reportType = null, [WorkflowExpression] Func<string[]> regulatedActivity = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> overallRating = null, [WorkflowExpression] Func<string> primaryInspectionCategoryName = null, [WorkflowExpression] Func<string> primaryInspectionCategoryCode = null, [WorkflowExpression] Func<string> nonPrimaryInspectionCategoryName = null, [WorkflowExpression] Func<string> nonPrimaryInspectionCategoryCode = null, [WorkflowExpression] Func<string> inspectionDirectorate = null, [WorkflowExpression] Func<string> localAuthority = null, [WorkflowExpression] Func<string> constituency = null, [WorkflowExpression] Func<string> gacServiceTypeDescription = null, [WorkflowExpression] Func<string> odsCcgName = null, [WorkflowExpression] Func<string[]> odsCcgCode = null, [WorkflowExpression] Func<string> onspdCcgName = null, [WorkflowExpression] Func<string> onspdCcgCode = null, [WorkflowExpression] Func<string> careHome = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(reportType, nameof(reportType), required: false);
-            SourceExpression.Validate(regulatedActivity, nameof(regulatedActivity), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(overallRating, nameof(overallRating), required: false);
-            SourceExpression.Validate(primaryInspectionCategoryName, nameof(primaryInspectionCategoryName), required: false);
-            SourceExpression.Validate(primaryInspectionCategoryCode, nameof(primaryInspectionCategoryCode), required: false);
-            SourceExpression.Validate(nonPrimaryInspectionCategoryName, nameof(nonPrimaryInspectionCategoryName), required: false);
-            SourceExpression.Validate(nonPrimaryInspectionCategoryCode, nameof(nonPrimaryInspectionCategoryCode), required: false);
-            SourceExpression.Validate(inspectionDirectorate, nameof(inspectionDirectorate), required: false);
-            SourceExpression.Validate(localAuthority, nameof(localAuthority), required: false);
-            SourceExpression.Validate(constituency, nameof(constituency), required: false);
-            SourceExpression.Validate(gacServiceTypeDescription, nameof(gacServiceTypeDescription), required: false);
-            SourceExpression.Validate(odsCcgName, nameof(odsCcgName), required: false);
-            SourceExpression.Validate(odsCcgCode, nameof(odsCcgCode), required: false);
-            SourceExpression.Validate(onspdCcgName, nameof(onspdCcgName), required: false);
-            SourceExpression.Validate(onspdCcgCode, nameof(onspdCcgCode), required: false);
-            SourceExpression.Validate(careHome, nameof(careHome), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations";
@@ -144,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction ProviderDetails([WorkflowExpression] Func<string> providerId)
         {
-            SourceExpression.Validate(providerId, nameof(providerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/providers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(providerId, 1));
@@ -160,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction LocationDetails([WorkflowExpression] Func<string> locationid)
         {
-            SourceExpression.Validate(locationid, nameof(locationid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationid, 1));
@@ -176,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction LocationInspectionAreas([WorkflowExpression] Func<string> locationId)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/{0}/inspection-areas", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -192,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction LocationProviderInspectionArea([WorkflowExpression] Func<string> locationId)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/{0}/provider-inspection-areas", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -208,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction ProviderLocations([WorkflowExpression] Func<string> providerId)
         {
-            SourceExpression.Validate(providerId, nameof(providerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/providers/{0}/locations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(providerId, 1));
@@ -224,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction ProviderInspectionAreas([WorkflowExpression] Func<string> providerId)
         {
-            SourceExpression.Validate(providerId, nameof(providerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/providers/{0}/inspection-areas", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(providerId, 1));
@@ -240,11 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction Changes([WorkflowExpression] Func<string> organisationType, [WorkflowExpression] Func<string> startTimestamp, [WorkflowExpression] Func<string> endTimeStamp, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(organisationType, nameof(organisationType), required: true);
-            SourceExpression.Validate(startTimestamp, nameof(startTimestamp), required: true);
-            SourceExpression.Validate(endTimeStamp, nameof(endTimeStamp), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/changes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationType, 1));
@@ -283,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction MainReport([WorkflowExpression] Func<string> inspectionReportLinkId)
         {
-            SourceExpression.Validate(inspectionReportLinkId, nameof(inspectionReportLinkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reports/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inspectionReportLinkId, 1));
@@ -299,8 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cqcdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cqcdata")]
         public IWorkflowAction ReportAndRelatedDoc([WorkflowExpression] Func<string> inspectionReportLinkId, [WorkflowExpression] Func<string> relatedDocumentType)
         {
-            SourceExpression.Validate(inspectionReportLinkId, nameof(inspectionReportLinkId), required: true);
-            SourceExpression.Validate(relatedDocumentType, nameof(relatedDocumentType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reports/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inspectionReportLinkId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relatedDocumentType, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippydoc")]
         public IWorkflowAction Execute([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/power-automate/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -29,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippydoc")]
         public IBodyWorkflowAction<int> UploadTable([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<JToken[]> bodycontent = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydocumentName = null, [WorkflowExpression] Func<bool> bodyreplace = null, [WorkflowExpression] Func<JToken[]> bodytags = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
-            SourceExpression.Validate(bodyreplace, nameof(bodyreplace), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/excel/table/power-automate/upload";
@@ -91,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippydoc")]
         public IBodyWorkflowAction<JToken[]> GetTableById([WorkflowExpression] Func<int> tableId)
         {
-            SourceExpression.Validate(tableId, nameof(tableId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/excel/table/power-automate/id/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(tableId, 1));
@@ -106,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippydoc")]
         public IBodyWorkflowAction<JToken[]> GetTableByName([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/excel/table/power-automate/name/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -123,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
     {
         public IWorkflowTrigger OnTableChange([WorkflowExpression] Func<bodytypeInput> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-automate";

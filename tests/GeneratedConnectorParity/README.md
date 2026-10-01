@@ -62,6 +62,23 @@ included files. Compilation does not certify runtime behavior or imply that the
 input schemas match the original SDK export.
 Source substitution runs before compile-dependency caching so changing the
 candidate inventory also invalidates the SDK's incremental compilation inputs.
+The SDK then injects method-entry validation into obj-only sources. Candidate
+wrappers must contain WorkflowExpression annotations but no explicit
+SourceExpression.Validate statements. The hook's GeneratedFamily metadata
+allows injection to include these external compiler inputs; it does not restrict
+injection to the repository's physical generated directories.
+
+Exercise the actual SDK injection targets in a small isolated build fixture:
+
+```powershell
+.\tests\GeneratedConnectorParity\Validate-ConnectorInjection.ps1 `
+  -OutputDirectory C:\artifacts\connector-injection
+```
+
+The output directory must not exist. The runner checks normal and repeated builds,
+source/signature changes, add/delete/rename, missing outputs, failed analysis,
+package receipts, Debug/Release isolation, design-time behavior, missing tools and
+clean/rebuild. It uses a copy of InjectionFixture and does not mutate its source.
 
 Run the comparison tool's regression tests:
 

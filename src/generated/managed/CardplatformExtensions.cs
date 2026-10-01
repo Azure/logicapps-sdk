@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IBodyWorkflowAction<string> SendMessage([WorkflowExpression] Func<string[]> cardbodyrecipients, [WorkflowExpression] Func<string> cardbodyheading, [WorkflowExpression] Func<string> cardbodyadaptiveCard)
         {
-            SourceExpression.Validate(cardbodyrecipients, nameof(cardbodyrecipients), required: true);
-            SourceExpression.Validate(cardbodyheading, nameof(cardbodyheading), required: true);
-            SourceExpression.Validate(cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sendmessage";
@@ -43,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IWorkflowAction PrivateTemplatesDelete([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PrivateTemplates";
@@ -59,7 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IWorkflowAction PrivateTemplatesUpdate([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PrivateTemplates";

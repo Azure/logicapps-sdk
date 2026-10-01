@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
         public IBodyWorkflowAction<GetLatestbyCodeResponse> GetLatestbyCode([WorkflowExpression] Func<string> countryCode)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest";
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
         public IBodyWorkflowAction<GetLatestbyLatLonResponse> GetLatestbyLatLon([WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> lat = null)
         {
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latestbyloc";

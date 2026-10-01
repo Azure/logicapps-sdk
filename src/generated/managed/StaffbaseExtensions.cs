@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<ChannelsGetPostsResponse> ChannelsGetPosts([WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/channels/{0}/posts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -49,10 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction ChannelsPost([WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<bodycontentsInputItem[]> bodycontents = null, [WorkflowExpression] Func<string> bodypublished = null)
         {
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
-            SourceExpression.Validate(bodypublished, nameof(bodypublished), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/channels/{0}/posts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -91,10 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<CommentsGetResponse> CommentsGet([WorkflowExpression] Func<bool> manage = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(manage, nameof(manage), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/comments";
@@ -117,8 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<MediaGetResponse> MediaGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/media";
@@ -139,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<MediaData> MediaGetById([WorkflowExpression] Func<string> mediumId)
         {
-            SourceExpression.Validate(mediumId, nameof(mediumId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/media/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediumId, 1));
@@ -154,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction MediaDelete([WorkflowExpression] Func<string> mediumId)
         {
-            SourceExpression.Validate(mediumId, nameof(mediumId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/media/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediumId, 1));
@@ -169,9 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<NotificationPostResponse> Notification([WorkflowExpression] Func<string[]> bodyrecipientsaccessorIds = null, [WorkflowExpression] Func<bodycontentInputItem[]> bodycontent = null, [WorkflowExpression] Func<string> bodylink = null)
         {
-            SourceExpression.Validate(bodyrecipientsaccessorIds, nameof(bodyrecipientsaccessorIds), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notifications";
@@ -218,11 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<PostsGetAllResponse> PostsGetAll([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> manageable = null, [WorkflowExpression] Func<contentTypeInput> contentType = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(manageable, nameof(manageable), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/posts";
@@ -248,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<PostData> PostsGetById([WorkflowExpression] Func<string> pageId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/posts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -263,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<PostsDeleteResponse> PostsDelete([WorkflowExpression] Func<string> pageId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/posts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -278,9 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction PostsPut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<bodycontentsInputItem2[]> bodycontents = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/posts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -313,8 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction UserGetAll([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> query = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -333,9 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction User([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -374,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<UserData> UserGetById([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -389,7 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction UserDelete([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -404,22 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<UserData> UserPut([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodypublicEmailAddress = null, [WorkflowExpression] Func<string> bodyconfiglocale = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null, [WorkflowExpression] Func<string[]> bodygroupIDs = null, [WorkflowExpression] Func<string> bodyposition = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodyupdated = null, [WorkflowExpression] Func<string> bodyactivated = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodypublicEmailAddress, nameof(bodypublicEmailAddress), required: false);
-            SourceExpression.Validate(bodyconfiglocale, nameof(bodyconfiglocale), required: false);
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
-            SourceExpression.Validate(bodygroupIDs, nameof(bodygroupIDs), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
-            SourceExpression.Validate(bodyupdated, nameof(bodyupdated), required: false);
-            SourceExpression.Validate(bodyactivated, nameof(bodyactivated), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -538,7 +487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction UserPostRecovery([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/recovery", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));

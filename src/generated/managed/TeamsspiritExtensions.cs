@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction Approve([WorkflowExpression] Func<string> approvalId)
         {
-            SourceExpression.Validate(approvalId, nameof(approvalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvals/{0}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalId, 1));
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction Reject([WorkflowExpression] Func<string> approvalId)
         {
-            SourceExpression.Validate(approvalId, nameof(approvalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalId, 1));
@@ -58,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ArchiveTeam([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<bool> bodysharePointReadOnly)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodysharePointReadOnly, nameof(bodysharePointReadOnly), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -82,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction DeleteTeam([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -97,9 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeTagValue([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> contentid = null, [WorkflowExpression] Func<string> contentvalue = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(contentid, nameof(contentid), required: false);
-            SourceExpression.Validate(contentvalue, nameof(contentvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-tag-value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -132,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveAllUsersExeptOwners([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-not-owner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -147,8 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveAllUsersExceptOneOwner([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyownerId = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-except-selected-owner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -175,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveGuests([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-guests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -190,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveUser([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-user", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -218,8 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeRoleToMember([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-member", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -246,8 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeRoleToOwner([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-owner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -274,8 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ExtendExpirationDate([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyweeks = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodyweeks, nameof(bodyweeks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/extend-expiration", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -312,8 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IBodyWorkflowAction<string> GetTagValue([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/attribute/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -330,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
     {
         public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks";

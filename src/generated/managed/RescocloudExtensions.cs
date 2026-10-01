@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescocloud")]
         public IBodyWorkflowAction<OdataError> RecordDelete([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> ifMatch = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -35,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
     {
         public IWorkflowTrigger TriggerCreate([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<actionInput> action, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(action, nameof(action), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/$hook";

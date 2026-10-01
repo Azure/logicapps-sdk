@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureloganalyticsdatacollecto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureloganalyticsdatacollector")]
         public IWorkflowAction SendData([WorkflowExpression] Func<string> logType, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> timeGeneratedField = null)
         {
-            SourceExpression.Validate(logType, nameof(logType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(timeGeneratedField, nameof(timeGeneratedField), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/logs";

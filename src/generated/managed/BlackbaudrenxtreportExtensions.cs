@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtreport")]
         public IBodyWorkflowAction<ReportApiReportInstanceCollection> ListReportIntances([WorkflowExpression] Func<int> reportType, [WorkflowExpression] Func<bool> onlyOwnedReports = null)
         {
-            SourceExpression.Validate(reportType, nameof(reportType), required: true);
-            SourceExpression.Validate(onlyOwnedReports, nameof(onlyOwnedReports), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/rxr-mngmt/reports/{0}/reportinstances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(reportType, 1));
@@ -32,11 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtreport")]
         public IBodyWorkflowAction<ReportApiExecuteReportResponse> StartReportExecutionJob([WorkflowExpression] Func<int> bodyreportType, [WorkflowExpression] Func<int> bodyexecutionParametersreportInstance = null, [WorkflowExpression] Func<bodyexecutionParametersoutputFormatInput> bodyexecutionParametersoutputFormat = null, [WorkflowExpression] Func<int> bodyexecutionParameterstimeZoneOffset = null, [WorkflowExpression] Func<bodyexecutionParametersanonymousOptionInput> bodyexecutionParametersanonymousOption = null)
         {
-            SourceExpression.Validate(bodyreportType, nameof(bodyreportType), required: true);
-            SourceExpression.Validate(bodyexecutionParametersreportInstance, nameof(bodyexecutionParametersreportInstance), required: false);
-            SourceExpression.Validate(bodyexecutionParametersoutputFormat, nameof(bodyexecutionParametersoutputFormat), required: false);
-            SourceExpression.Validate(bodyexecutionParameterstimeZoneOffset, nameof(bodyexecutionParameterstimeZoneOffset), required: false);
-            SourceExpression.Validate(bodyexecutionParametersanonymousOption, nameof(bodyexecutionParametersanonymousOption), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rxr-mngmt/reports/executereport";
@@ -115,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtreport")]
         public IBodyWorkflowAction<ReportApiReportExecutionJob> GetReportJobStatus([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/rxr-mngmt/reports/reportjobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<JToken> GetCase([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/getCase";
@@ -32,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<JToken[]> FindCases([WorkflowExpression] Func<object> findCasesModel = null)
         {
-            SourceExpression.Validate(findCasesModel, nameof(findCasesModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/findCases";
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<JToken[]> FindTemplates([WorkflowExpression] Func<object> findTemplatesModel = null)
         {
-            SourceExpression.Validate(findTemplatesModel, nameof(findTemplatesModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/findTemplates";
@@ -66,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction CreateCase([WorkflowExpression] Func<object> caseModel = null)
         {
-            SourceExpression.Validate(caseModel, nameof(caseModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/createCase";
@@ -82,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction CreateCaseFromTemplate([WorkflowExpression] Func<object> createCaseFromTemplateModel = null)
         {
-            SourceExpression.Validate(createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/createCaseFromTemplate";
@@ -118,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction UpdateCaseMetadata([WorkflowExpression] Func<object> updateCaseMetadataModel = null)
         {
-            SourceExpression.Validate(updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/updateCaseMetadata";
@@ -134,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction SendCase([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/sendCase";
@@ -150,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction RequestApproval([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/requestApproval";
@@ -166,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction RemindCase([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/remindCase";
@@ -182,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction DeleteCase([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/deleteCase";
@@ -198,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction RecallCase([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/recallCase";
@@ -214,7 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction GetCaseByTemporaryId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/getCaseByTemporaryId";
@@ -230,8 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<string> GetFileOfCase([WorkflowExpression] Func<string> caseid, [WorkflowExpression] Func<string> documentid)
         {
-            SourceExpression.Validate(caseid, nameof(caseid), required: true);
-            SourceExpression.Validate(documentid, nameof(documentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/getdocumentdata";
@@ -250,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
     {
         public IWorkflowTrigger CaseEventTrigger([WorkflowExpression] Func<string> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventPath, nameof(eventPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hook/v1/";

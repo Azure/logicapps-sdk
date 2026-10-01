@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<DeviceGeoItem[]> MobileGeolocation([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/device_geo";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SinkholeItem[]> Sinkhole([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sinkhole";
@@ -50,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<PassivednsItem[]> PassiveDNS([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/passivedns";
@@ -68,8 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<DynamicdnsItem[]> DynamicDNS([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dynamicdns";
@@ -86,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<PassivehashItem[]> PassiveHash([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/passivehash";
@@ -104,8 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<Sslcertificate> SSLCertificate([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ssl_certificate";
@@ -122,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<WhoisItem[]> Whois([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/whois";
@@ -140,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<C2attributionItem[]> C2Attribution([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/c2attribution";
@@ -158,8 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SampleInformation> SampleInformation([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sample/information";
@@ -176,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SampleItem[]> Sample([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sample";
@@ -194,8 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<OsIndicatorsItem[]> OpenSourceIndicators([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
-            SourceExpression.Validate(indicatorType, nameof(indicatorType), required: true);
-            SourceExpression.Validate(indicatorValue, nameof(indicatorValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/os_indicators";
@@ -212,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<WhoisCurrent> CurrentWhois([WorkflowExpression] Func<string> bodyappliedFiltersdomain = null)
         {
-            SourceExpression.Validate(bodyappliedFiltersdomain, nameof(bodyappliedFiltersdomain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/whois/v1";

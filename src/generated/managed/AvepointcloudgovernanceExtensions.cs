@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<JToken> FlowGetOffice365Setting([WorkflowExpression] Func<string> actionType, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(actionType, nameof(actionType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow/office365/settings";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IWorkflowAction FlowUpdateOffice365Setting([WorkflowExpression] Func<string> actionType, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(actionType, nameof(actionType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow/office365/settings";
@@ -50,9 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<JToken> FlowGetRequestById([WorkflowExpression] Func<string> serviceType, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(serviceType, nameof(serviceType), required: true);
-            SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/flow/requests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -69,10 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<string> FlowSubmitRequest([WorkflowExpression] Func<string> serviceType, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> delegateUserPrincipalName = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(serviceType, nameof(serviceType), required: true);
-            SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
-            SourceExpression.Validate(delegateUserPrincipalName, nameof(delegateUserPrincipalName), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow/requests";
@@ -92,10 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IWorkflowAction FlowEditRequest([WorkflowExpression] Func<string> serviceType, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(serviceType, nameof(serviceType), required: true);
-            SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow/requests";
@@ -114,13 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<JToken> FlowListWorkspace([WorkflowExpression] Func<string> workspaceType = null, [WorkflowExpression] Func<string> primaryContact = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> urlorIdorEmail = null, [WorkflowExpression] Func<string> secondaryContact = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> nextLink = null)
         {
-            SourceExpression.Validate(workspaceType, nameof(workspaceType), required: false);
-            SourceExpression.Validate(primaryContact, nameof(primaryContact), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(urlorIdorEmail, nameof(urlorIdorEmail), required: false);
-            SourceExpression.Validate(secondaryContact, nameof(secondaryContact), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(nextLink, nameof(nextLink), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow/workspace";
@@ -156,9 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<string> FlowWorkspaceActions([WorkflowExpression] Func<string> workspaceType, [WorkflowExpression] Func<string> workspaceAction, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(workspaceType, nameof(workspaceType), required: true);
-            SourceExpression.Validate(workspaceAction, nameof(workspaceAction), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow/workspace/actions";
@@ -178,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
     {
         public IBodyWorkflowTrigger<string> FlowCreateHookForCommon([WorkflowExpression] Func<string> flowTriggerType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(flowTriggerType, nameof(flowTriggerType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow/hooks/common";

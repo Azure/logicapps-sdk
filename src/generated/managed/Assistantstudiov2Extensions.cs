@@ -14,18 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
         public IWorkflowAction CreateActionCard([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> bodycardname, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<object> bodydynamicproperties, [WorkflowExpression] Func<string> actiontype, [WorkflowExpression] Func<string> secondaryactiontype = null, [WorkflowExpression] Func<string> regardingobjecttype = null, [WorkflowExpression] Func<string> regardingobjectid = null, [WorkflowExpression] Func<string> ownerid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> expirydate = null)
         {
-            SourceExpression.Validate(organization, nameof(organization), required: true);
-            SourceExpression.Validate(bodycardname, nameof(bodycardname), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodydynamicproperties, nameof(bodydynamicproperties), required: true);
-            SourceExpression.Validate(actiontype, nameof(actiontype), required: true);
-            SourceExpression.Validate(secondaryactiontype, nameof(secondaryactiontype), required: false);
-            SourceExpression.Validate(regardingobjecttype, nameof(regardingobjecttype), required: false);
-            SourceExpression.Validate(regardingobjectid, nameof(regardingobjectid), required: false);
-            SourceExpression.Validate(ownerid, nameof(ownerid), required: false);
-            SourceExpression.Validate(startdate, nameof(startdate), required: false);
-            SourceExpression.Validate(expirydate, nameof(expirydate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/data/v9.0/msdyn_ActionCardCreate";
@@ -68,10 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
         public IBodyWorkflowAction<string> CreateCustomActionDefinition([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> entityname, [WorkflowExpression] Func<string> customaction, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(organization, nameof(organization), required: true);
-            SourceExpression.Validate(entityname, nameof(entityname), required: true);
-            SourceExpression.Validate(customaction, nameof(customaction), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/data/v9.0/msdyn_CreateCustomActionDefinition";

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         public IBodyWorkflowAction<JToken> AddForm([WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyformDescription = null, [WorkflowExpression] Func<string> bodythankYouText = null)
         {
-            SourceExpression.Validate(bodyformName, nameof(bodyformName), required: true);
-            SourceExpression.Validate(bodyformDescription, nameof(bodyformDescription), required: false);
-            SourceExpression.Validate(bodythankYouText, nameof(bodythankYouText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddNewForm";
@@ -51,11 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         public IBodyWorkflowAction<JToken> AddFormField([WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyfieldName, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<object> bodyfieldConfiguration = null)
         {
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodyformName, nameof(bodyformName), required: true);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: true);
-            SourceExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: true);
-            SourceExpression.Validate(bodyfieldConfiguration, nameof(bodyfieldConfiguration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddFormField";
@@ -90,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         public IBodyWorkflowAction<JToken> AddAdaptiveCard([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycard, [WorkflowExpression] Func<string> bodycardAfterSubmit = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodycard, nameof(bodycard), required: true);
-            SourceExpression.Validate(bodycardAfterSubmit, nameof(bodycardAfterSubmit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddAdaptiveCard";
@@ -123,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         public IBodyWorkflowAction<JToken> GetCardResponse([WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/GetCardResponse/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -139,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
         public IBodyWorkflowAction<string> GetFormAdaptiveCardJson([WorkflowExpression] Func<string> instanceId)
         {
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/GetFormAdaptiveCardJson/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
@@ -156,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
     {
         public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse([WorkflowExpression] Func<string> name, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/TriggerGetCardResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));

@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<bool> isSandbox, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> onBehalfOf = null, [WorkflowExpression] Func<int> expiryDays = null, [WorkflowExpression] Func<string> labels = null, [WorkflowExpression] Func<bool> hideDocumentId = null, [WorkflowExpression] Func<bool> enablePrintAndSign = null, [WorkflowExpression] Func<bool> enableReassign = null, [WorkflowExpression] Func<bool> enableAutoReminder = null, [WorkflowExpression] Func<object> signers = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(isSandbox, nameof(isSandbox), required: true);
-            SourceExpression.Validate(message, nameof(message), required: false);
-            SourceExpression.Validate(cc, nameof(cc), required: false);
-            SourceExpression.Validate(brandId, nameof(brandId), required: false);
-            SourceExpression.Validate(onBehalfOf, nameof(onBehalfOf), required: false);
-            SourceExpression.Validate(expiryDays, nameof(expiryDays), required: false);
-            SourceExpression.Validate(labels, nameof(labels), required: false);
-            SourceExpression.Validate(hideDocumentId, nameof(hideDocumentId), required: false);
-            SourceExpression.Validate(enablePrintAndSign, nameof(enablePrintAndSign), required: false);
-            SourceExpression.Validate(enableReassign, nameof(enableReassign), required: false);
-            SourceExpression.Validate(enableAutoReminder, nameof(enableAutoReminder), required: false);
-            SourceExpression.Validate(signers, nameof(signers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/template/send";
@@ -68,8 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IWorkflowAction DownloadDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> onBehalfOf = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(onBehalfOf, nameof(onBehalfOf), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/document/download";
@@ -87,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IWorkflowAction DownloadAuditTrail([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> onBehalfOf = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(onBehalfOf, nameof(onBehalfOf), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/document/downloadAuditLog";
@@ -106,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IBodyWorkflowAction<DocumentPropertiesResponse> GetDocumentStatus([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/document/properties";
@@ -124,8 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     {
         public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks([WorkflowExpression] Func<eventsInput> events, [WorkflowExpression] Func<bool> bodyadminMode, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(events, nameof(events), required: true);
-            SourceExpression.Validate(bodyadminMode, nameof(bodyadminMode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";

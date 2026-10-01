@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
         public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo([WorkflowExpression] Func<string> tenantId = null, [WorkflowExpression] Func<string> domainName = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: false);
-            SourceExpression.Validate(domainName, nameof(domainName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tenantinfo";
@@ -34,7 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
         public IBodyWorkflowAction<TophhieCloudEntraIdIdConverterResponse> TophhieCloudEntraIdIdConverter([WorkflowExpression] Func<string> identifier)
         {
-            SourceExpression.Validate(identifier, nameof(identifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));

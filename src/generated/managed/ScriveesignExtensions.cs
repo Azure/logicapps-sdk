@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> GetDocJson([WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getdocumentjson";
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> GetDocStatus([WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getdocumentstatus";
@@ -62,8 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> GetPartyStatus([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodypartyId, nameof(bodypartyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getpartystatus";
@@ -89,9 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> UpdatePartyEmail([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyId, [WorkflowExpression] Func<string> bodypartyEmail)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodypartyId, nameof(bodypartyId), required: true);
-            SourceExpression.Validate(bodypartyEmail, nameof(bodypartyEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updatepartyemail";
@@ -119,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> SendReminder([WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sendreminder";
@@ -143,7 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> GetDocumentPdfContent([WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getdocumentpdfcontent";
@@ -167,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> NewDocumentFromTemplate([WorkflowExpression] Func<string> templateIdDynamic)
         {
-            SourceExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/newfromtemplate/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));
@@ -182,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> StartSigning([WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/startsigning";
@@ -206,8 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdateDocJson([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentJson)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodydocumentJson, nameof(bodydocumentJson), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updatedocumentjson";
@@ -233,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdatePartiesFields([WorkflowExpression] Func<string> templateIdDynamic, [WorkflowExpression] Func<object> dynamicTemplateSchema = null)
         {
-            SourceExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
-            SourceExpression.Validate(dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));
@@ -250,8 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdatePartiesProperties([WorkflowExpression] Func<string> templateIdDynamic, [WorkflowExpression] Func<object> dynamicTemplateMetaSchema = null)
         {
-            SourceExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
-            SourceExpression.Validate(dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));
@@ -267,8 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> SetFile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypdfContent)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setfile";
@@ -294,8 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> NewFromPdf([WorkflowExpression] Func<string> bodypdfContent, [WorkflowExpression] Func<bodyauthorRoleInput> bodyauthorRole)
         {
-            SourceExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
-            SourceExpression.Validate(bodyauthorRole, nameof(bodyauthorRole), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/newfrompdf";
@@ -321,8 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction AppendFile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypdfContent)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/appendfile";
@@ -348,7 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction Cancel([WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cancel";
@@ -372,20 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction AddParty([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyEmail, [WorkflowExpression] Func<bodypartyRoleInput> bodypartyRole, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodymobile = null, [WorkflowExpression] Func<string> bodypersonalNumber = null, [WorkflowExpression] Func<double> bodysignOrder = null, [WorkflowExpression] Func<bodydeliveryMethodInput> bodydeliveryMethod = null, [WorkflowExpression] Func<string> bodyauthenticationToView = null, [WorkflowExpression] Func<string> bodyauthenticationToViewArchived = null, [WorkflowExpression] Func<string> bodyauthenticationToSign = null, [WorkflowExpression] Func<bodyconfirmationInput> bodyconfirmation = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodypartyEmail, nameof(bodypartyEmail), required: true);
-            SourceExpression.Validate(bodypartyRole, nameof(bodypartyRole), required: true);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodymobile, nameof(bodymobile), required: false);
-            SourceExpression.Validate(bodypersonalNumber, nameof(bodypersonalNumber), required: false);
-            SourceExpression.Validate(bodysignOrder, nameof(bodysignOrder), required: false);
-            SourceExpression.Validate(bodydeliveryMethod, nameof(bodydeliveryMethod), required: false);
-            SourceExpression.Validate(bodyauthenticationToView, nameof(bodyauthenticationToView), required: false);
-            SourceExpression.Validate(bodyauthenticationToViewArchived, nameof(bodyauthenticationToViewArchived), required: false);
-            SourceExpression.Validate(bodyauthenticationToSign, nameof(bodyauthenticationToSign), required: false);
-            SourceExpression.Validate(bodyconfirmation, nameof(bodyconfirmation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addparty";
@@ -529,12 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction SetAuthorAttachment([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyattachmentName, [WorkflowExpression] Func<bodyRequiredInput> bodyRequired, [WorkflowExpression] Func<bodyaddToSealedFileInput> bodyaddToSealedFile, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodypdfContent = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyattachmentName, nameof(bodyattachmentName), required: true);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: true);
-            SourceExpression.Validate(bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setattachment";
@@ -577,7 +533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     {
         public IBodyWorkflowTrigger<string> StartAndOnDocumentSign([WorkflowExpression] Func<string> bodydocumentId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/signed/createandstart";
@@ -601,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
         public IBodyWorkflowTrigger<string> WebhookFromTemplateSign([WorkflowExpression] Func<string> templateIdDynamic, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/signedfromtemplate/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));

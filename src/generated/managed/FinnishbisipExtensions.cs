@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
         public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode([WorkflowExpression] Func<string> businessId)
         {
-            SourceExpression.Validate(businessId, nameof(businessId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bis/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessId, 1));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
         public IBodyWorkflowAction<CompanySearchResponse> CompanySearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> maxResults = null, [WorkflowExpression] Func<bool> totalResults = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
-            SourceExpression.Validate(totalResults, nameof(totalResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bis/v1";

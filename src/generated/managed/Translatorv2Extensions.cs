@@ -29,11 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<string> Translate([WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<textTypeInput> textType = null)
         {
-            SourceExpression.Validate(to, nameof(to), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(textType, nameof(textType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Translate";
@@ -63,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<Language> Detect([WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Detect";

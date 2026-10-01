@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveuserResponse> Retrieveuser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<ListOfAllUsersResponse> ListOfAllUsers([WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -49,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveablockResponse> Retrieveablock([WorkflowExpression] Func<string> blockId)
         {
-            SourceExpression.Validate(blockId, nameof(blockId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blocks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
@@ -65,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DeleteablockResponse> Deleteablock([WorkflowExpression] Func<string> blockId)
         {
-            SourceExpression.Validate(blockId, nameof(blockId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blocks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
@@ -81,22 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IWorkflowAction Updateablock([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<bodyparagraphrichTextInputItem[]> bodyparagraphrichText = null, [WorkflowExpression] Func<string> bodyparagraphcolor = null, [WorkflowExpression] Func<bodyheading1richTextInputItem[]> bodyheading1richText = null, [WorkflowExpression] Func<string> bodyheading1color = null, [WorkflowExpression] Func<bodyheading2richTextInputItem[]> bodyheading2richText = null, [WorkflowExpression] Func<string> bodyheading2color = null, [WorkflowExpression] Func<bodyheading3richTextInputItem[]> bodyheading3richText = null, [WorkflowExpression] Func<string> bodyheading3color = null, [WorkflowExpression] Func<bodybulletedListItemrichTextInputItem[]> bodybulletedListItemrichText = null, [WorkflowExpression] Func<string> bodybulletedListItemcolor = null, [WorkflowExpression] Func<bodynumberedListItemrichTextInputItem[]> bodynumberedListItemrichText = null, [WorkflowExpression] Func<string> bodynumberedListItemcolor = null, [WorkflowExpression] Func<bodytoDorichTextInputItem[]> bodytoDorichText = null, [WorkflowExpression] Func<bool> bodytoDoChecked = null, [WorkflowExpression] Func<string> bodytoDocolor = null)
         {
-            SourceExpression.Validate(blockId, nameof(blockId), required: true);
-            SourceExpression.Validate(bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
-            SourceExpression.Validate(bodyparagraphcolor, nameof(bodyparagraphcolor), required: false);
-            SourceExpression.Validate(bodyheading1richText, nameof(bodyheading1richText), required: false);
-            SourceExpression.Validate(bodyheading1color, nameof(bodyheading1color), required: false);
-            SourceExpression.Validate(bodyheading2richText, nameof(bodyheading2richText), required: false);
-            SourceExpression.Validate(bodyheading2color, nameof(bodyheading2color), required: false);
-            SourceExpression.Validate(bodyheading3richText, nameof(bodyheading3richText), required: false);
-            SourceExpression.Validate(bodyheading3color, nameof(bodyheading3color), required: false);
-            SourceExpression.Validate(bodybulletedListItemrichText, nameof(bodybulletedListItemrichText), required: false);
-            SourceExpression.Validate(bodybulletedListItemcolor, nameof(bodybulletedListItemcolor), required: false);
-            SourceExpression.Validate(bodynumberedListItemrichText, nameof(bodynumberedListItemrichText), required: false);
-            SourceExpression.Validate(bodynumberedListItemcolor, nameof(bodynumberedListItemcolor), required: false);
-            SourceExpression.Validate(bodytoDorichText, nameof(bodytoDorichText), required: false);
-            SourceExpression.Validate(bodytoDoChecked, nameof(bodytoDoChecked), required: false);
-            SourceExpression.Validate(bodytoDocolor, nameof(bodytoDocolor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blocks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
@@ -265,8 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveBlockChildrenResponse> RetrieveBlockChildren([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(blockId, nameof(blockId), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
@@ -285,8 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IWorkflowAction Appendblockchildren([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<bodychildrenInputItem[]> bodychildren = null)
         {
-            SourceExpression.Validate(blockId, nameof(blockId), required: true);
-            SourceExpression.Validate(bodychildren, nameof(bodychildren), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blockId, 1));
@@ -315,7 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DatabaseResponse> RetrieveADatabase([WorkflowExpression] Func<string> databaseId)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1));
@@ -331,9 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodysortdirection = null, [WorkflowExpression] Func<string> bodysorttimestamp = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodysortdirection, nameof(bodysortdirection), required: false);
-            SourceExpression.Validate(bodysorttimestamp, nameof(bodysorttimestamp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -378,7 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DatabaseResponse> QueryADatabase([WorkflowExpression] Func<string> databaseId)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}/query", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1));
@@ -410,8 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> Retrieveapagepropertyitem([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> propertyId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/{0}/properties/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(propertyId, 1));
@@ -427,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveapageResponse> Retrieveapage([WorkflowExpression] Func<string> pageId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -443,9 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<CreateaPageResponse> CreateaPage([WorkflowExpression] Func<string> bodyparentdatabaseId = null, [WorkflowExpression] Func<string> bodyiconemoji = null, [WorkflowExpression] Func<string> bodycoverexternalurl = null)
         {
-            SourceExpression.Validate(bodyparentdatabaseId, nameof(bodyparentdatabaseId), required: false);
-            SourceExpression.Validate(bodyiconemoji, nameof(bodyiconemoji), required: false);
-            SourceExpression.Validate(bodycoverexternalurl, nameof(bodycoverexternalurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pages";
@@ -526,7 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<CommentResponse> Retrievecomments([WorkflowExpression] Func<string> blockId)
         {
-            SourceExpression.Validate(blockId, nameof(blockId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/comments";
@@ -543,9 +507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<CommentResponse> Createcomment([WorkflowExpression] Func<string> bodyparentpageId = null, [WorkflowExpression] Func<string> bodydiscussionId = null, [WorkflowExpression] Func<bodyrichTextInputItem[]> bodyrichText = null)
         {
-            SourceExpression.Validate(bodyparentpageId, nameof(bodyparentpageId), required: false);
-            SourceExpression.Validate(bodydiscussionId, nameof(bodydiscussionId), required: false);
-            SourceExpression.Validate(bodyrichText, nameof(bodyrichText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/comments";

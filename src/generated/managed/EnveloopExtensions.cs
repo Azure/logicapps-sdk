@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
         public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> bodytemplate = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodytemplateVariablesInputItem[]> bodytemplateVariables = null)
         {
-            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: false);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodytemplateVariables, nameof(bodytemplateVariables), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages";
@@ -69,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> templateName)
         {
-            SourceExpression.Validate(templateName, nameof(templateName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateName, 1));

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
@@ -37,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowPostResponse> Workflow([WorkflowExpression] Func<string> workflowId)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
@@ -74,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> runId)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));

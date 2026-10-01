@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         public IBodyWorkflowAction<JToken[]> GetEntityData([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<double> top = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(odataUri, nameof(odataUri), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getentitydata";
@@ -47,8 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         public IBodyWorkflowAction<JToken> GetSchema([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity)
         {
-            SourceExpression.Validate(odataUri, nameof(odataUri), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getschema";
@@ -65,9 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         public IBodyWorkflowAction<JToken> GetSingleSchema([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<int> option = null)
         {
-            SourceExpression.Validate(odataUri, nameof(odataUri), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(option, nameof(option), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getsingleschema";
@@ -86,9 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         public IBodyWorkflowAction<JToken> GetEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            SourceExpression.Validate(odataUri, nameof(odataUri), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getentry";
@@ -106,9 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         public IBodyWorkflowAction<JToken> CreateEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            SourceExpression.Validate(odataUri, nameof(odataUri), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createentry";
@@ -126,9 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         public IBodyWorkflowAction<JToken> UpdateEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            SourceExpression.Validate(odataUri, nameof(odataUri), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateentry";
@@ -146,9 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
         public IBodyWorkflowAction<JToken> DeleteEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            SourceExpression.Validate(odataUri, nameof(odataUri), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(entryInput, nameof(entryInput), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteentry";

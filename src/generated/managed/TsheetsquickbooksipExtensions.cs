@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetJobcodesResponse> GetJobcodes([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> parentIds = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<bool> customfields = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<activeInput> active = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(parentIds, nameof(parentIds), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(customfields, nameof(customfields), required: false);
-            SourceExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            SourceExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
-            SourceExpression.Validate(supplementalData, nameof(supplementalData), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(active, nameof(active), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/jobcodes";
@@ -64,12 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetProjectsResponse> GetProjects([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> jobcodeIds = null, [WorkflowExpression] Func<int> parentJobcodeId = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<activeInput> active = null, [WorkflowExpression] Func<bool> byJobcodeAssignment = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(jobcodeIds, nameof(jobcodeIds), required: false);
-            SourceExpression.Validate(parentJobcodeId, nameof(parentJobcodeId), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(byJobcodeAssignment, nameof(byJobcodeAssignment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/projects";
@@ -97,21 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> notIds = null, [WorkflowExpression] Func<string> employeeNumbers = null, [WorkflowExpression] Func<string> usernames = null, [WorkflowExpression] Func<string> groupIds = null, [WorkflowExpression] Func<string> notGroupIds = null, [WorkflowExpression] Func<string> payrollIds = null, [WorkflowExpression] Func<activeInput> active = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(notIds, nameof(notIds), required: false);
-            SourceExpression.Validate(employeeNumbers, nameof(employeeNumbers), required: false);
-            SourceExpression.Validate(usernames, nameof(usernames), required: false);
-            SourceExpression.Validate(groupIds, nameof(groupIds), required: false);
-            SourceExpression.Validate(notGroupIds, nameof(notGroupIds), required: false);
-            SourceExpression.Validate(payrollIds, nameof(payrollIds), required: false);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            SourceExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
-            SourceExpression.Validate(supplementalData, nameof(supplementalData), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -158,20 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetTimesheetsResponse> GetTimesheets([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> jobcodeIds = null, [WorkflowExpression] Func<string> payrollIds = null, [WorkflowExpression] Func<string> userIds = null, [WorkflowExpression] Func<string> groupIds = null, [WorkflowExpression] Func<onTheClockInput> onTheClock = null, [WorkflowExpression] Func<jobcodeTypeInput> jobcodeType = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(jobcodeIds, nameof(jobcodeIds), required: false);
-            SourceExpression.Validate(payrollIds, nameof(payrollIds), required: false);
-            SourceExpression.Validate(userIds, nameof(userIds), required: false);
-            SourceExpression.Validate(groupIds, nameof(groupIds), required: false);
-            SourceExpression.Validate(onTheClock, nameof(onTheClock), required: false);
-            SourceExpression.Validate(jobcodeType, nameof(jobcodeType), required: false);
-            SourceExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            SourceExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
-            SourceExpression.Validate(supplementalData, nameof(supplementalData), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/timesheets";
@@ -217,13 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetNotificationsResponse> GetNotifications([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> deliveryBefore = null, [WorkflowExpression] Func<string> deliveryAfter = null, [WorkflowExpression] Func<int> userId = null, [WorkflowExpression] Func<string> msgTrackingId = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(deliveryBefore, nameof(deliveryBefore), required: false);
-            SourceExpression.Validate(deliveryAfter, nameof(deliveryAfter), required: false);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(msgTrackingId, nameof(msgTrackingId), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notifications";

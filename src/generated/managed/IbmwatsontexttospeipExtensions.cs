@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<SynthesizeResponse> Synthesize([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<voiceInput> voice = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(voice, nameof(voice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/synthesize";
@@ -55,8 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<PronunciationResponse> Pronunciation([WorkflowExpression] Func<voiceInput> voice = null, [WorkflowExpression] Func<string> text = null)
         {
-            SourceExpression.Validate(voice, nameof(voice), required: false);
-            SourceExpression.Validate(text, nameof(text), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pronunciation";
@@ -76,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<GetVoiceResponse> GetVoice([WorkflowExpression] Func<string> voice)
         {
-            SourceExpression.Validate(voice, nameof(voice), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(voice, 1));

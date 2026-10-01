@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7sms")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null)
         {
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/send";

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<UserGetAllResponse> UserGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public_api/users";
@@ -32,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public_api/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -51,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionGetAllResponse> PositionGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public_api/positions";
@@ -69,9 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionCreateResponse> PositionCreate([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public_api/positions";
@@ -89,9 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> positionId)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(positionId, nameof(positionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(positionId, 1));
@@ -108,11 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById([WorkflowExpression] Func<string> positionId, [WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> bodyimportId = null, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(positionId, nameof(positionId), required: true);
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(bodyimportId, nameof(bodyimportId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(positionId, 1));
@@ -147,8 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupGetAllResponse> GroupGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public_api/groups";
@@ -165,9 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupCreateResponse> GroupCreate([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public_api/groups";
@@ -185,9 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public_api/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -204,10 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<TokenGetResponse> TokenGet([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> password, [WorkflowExpression] Func<string> clientId)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(password, nameof(password), required: true);
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/oauth/token";
@@ -227,8 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<MeResponse> Me([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
-            SourceExpression.Validate(auth, nameof(auth), required: true);
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public_api/me";

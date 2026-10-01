@@ -14,32 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cpscrecallsretrievalip")]
         public IBodyWorkflowAction<RecallGetResponseItem[]> RecallGet([WorkflowExpression] Func<string> recallId = null, [WorkflowExpression] Func<string> recallNumber = null, [WorkflowExpression] Func<string> recallDateStart = null, [WorkflowExpression] Func<string> recallDateEnd = null, [WorkflowExpression] Func<string> lastPublishDateStart = null, [WorkflowExpression] Func<string> lastPublishDateEnd = null, [WorkflowExpression] Func<string> recallURL = null, [WorkflowExpression] Func<string> recallTitle = null, [WorkflowExpression] Func<string> consumerContact = null, [WorkflowExpression] Func<string> recallDescription = null, [WorkflowExpression] Func<string> productName = null, [WorkflowExpression] Func<string> productDescription = null, [WorkflowExpression] Func<string> productModel = null, [WorkflowExpression] Func<string> productType = null, [WorkflowExpression] Func<string> inconjunctionURL = null, [WorkflowExpression] Func<string> imageURL = null, [WorkflowExpression] Func<string> injury = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<string> retailer = null, [WorkflowExpression] Func<string> importer = null, [WorkflowExpression] Func<string> distributor = null, [WorkflowExpression] Func<string> manufacturerCountry = null, [WorkflowExpression] Func<string> uPC = null, [WorkflowExpression] Func<string> hazard = null, [WorkflowExpression] Func<string> remedy = null, [WorkflowExpression] Func<string> remedyOption = null)
         {
-            SourceExpression.Validate(recallId, nameof(recallId), required: false);
-            SourceExpression.Validate(recallNumber, nameof(recallNumber), required: false);
-            SourceExpression.Validate(recallDateStart, nameof(recallDateStart), required: false);
-            SourceExpression.Validate(recallDateEnd, nameof(recallDateEnd), required: false);
-            SourceExpression.Validate(lastPublishDateStart, nameof(lastPublishDateStart), required: false);
-            SourceExpression.Validate(lastPublishDateEnd, nameof(lastPublishDateEnd), required: false);
-            SourceExpression.Validate(recallURL, nameof(recallURL), required: false);
-            SourceExpression.Validate(recallTitle, nameof(recallTitle), required: false);
-            SourceExpression.Validate(consumerContact, nameof(consumerContact), required: false);
-            SourceExpression.Validate(recallDescription, nameof(recallDescription), required: false);
-            SourceExpression.Validate(productName, nameof(productName), required: false);
-            SourceExpression.Validate(productDescription, nameof(productDescription), required: false);
-            SourceExpression.Validate(productModel, nameof(productModel), required: false);
-            SourceExpression.Validate(productType, nameof(productType), required: false);
-            SourceExpression.Validate(inconjunctionURL, nameof(inconjunctionURL), required: false);
-            SourceExpression.Validate(imageURL, nameof(imageURL), required: false);
-            SourceExpression.Validate(injury, nameof(injury), required: false);
-            SourceExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            SourceExpression.Validate(retailer, nameof(retailer), required: false);
-            SourceExpression.Validate(importer, nameof(importer), required: false);
-            SourceExpression.Validate(distributor, nameof(distributor), required: false);
-            SourceExpression.Validate(manufacturerCountry, nameof(manufacturerCountry), required: false);
-            SourceExpression.Validate(uPC, nameof(uPC), required: false);
-            SourceExpression.Validate(hazard, nameof(hazard), required: false);
-            SourceExpression.Validate(remedy, nameof(remedy), required: false);
-            SourceExpression.Validate(remedyOption, nameof(remedyOption), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Recall";

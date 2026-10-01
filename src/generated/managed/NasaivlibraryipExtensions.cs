@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> center = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> description508 = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<string> mediaType = null, [WorkflowExpression] Func<string> nasaId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> photographer = null, [WorkflowExpression] Func<string> secondaryCreator = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<int> yearStart = null, [WorkflowExpression] Func<int> yearEnd = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(center, nameof(center), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(description508, nameof(description508), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
-            SourceExpression.Validate(location, nameof(location), required: false);
-            SourceExpression.Validate(mediaType, nameof(mediaType), required: false);
-            SourceExpression.Validate(nasaId, nameof(nasaId), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(photographer, nameof(photographer), required: false);
-            SourceExpression.Validate(secondaryCreator, nameof(secondaryCreator), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(yearStart, nameof(yearStart), required: false);
-            SourceExpression.Validate(yearEnd, nameof(yearEnd), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -70,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAssetManifestResponse> GetMediaAssetManifest([WorkflowExpression] Func<string> nasaId)
         {
-            SourceExpression.Validate(nasaId, nameof(nasaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/asset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nasaId, 1));
@@ -85,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAssetMetadataLocationResponse> GetMediaAssetMetadataLocation([WorkflowExpression] Func<string> nasaId)
         {
-            SourceExpression.Validate(nasaId, nameof(nasaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/metadata/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nasaId, 1));
@@ -100,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetVideoAssetCaptionsLocationResponse> GetVideoAssetCaptionsLocation([WorkflowExpression] Func<string> nasaId)
         {
-            SourceExpression.Validate(nasaId, nameof(nasaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/captions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nasaId, 1));
@@ -115,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAlbumContentsResponse> GetMediaAlbumContents([WorkflowExpression] Func<string> albumName, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(albumName, nameof(albumName), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/album/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(albumName, 1));

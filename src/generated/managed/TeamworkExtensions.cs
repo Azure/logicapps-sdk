@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyprojectdescription = null, [WorkflowExpression] Func<string> bodyprojectcategoryId = null, [WorkflowExpression] Func<string> bodyprojectcompanyId = null, [WorkflowExpression] Func<string> bodyprojectnewCompany = null, [WorkflowExpression] Func<string> bodyprojectstartDate = null, [WorkflowExpression] Func<string> bodyprojectendDate = null, [WorkflowExpression] Func<string> bodyprojecttags = null)
         {
-            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            SourceExpression.Validate(bodyprojectdescription, nameof(bodyprojectdescription), required: false);
-            SourceExpression.Validate(bodyprojectcategoryId, nameof(bodyprojectcategoryId), required: false);
-            SourceExpression.Validate(bodyprojectcompanyId, nameof(bodyprojectcompanyId), required: false);
-            SourceExpression.Validate(bodyprojectnewCompany, nameof(bodyprojectnewCompany), required: false);
-            SourceExpression.Validate(bodyprojectstartDate, nameof(bodyprojectstartDate), required: false);
-            SourceExpression.Validate(bodyprojectendDate, nameof(bodyprojectendDate), required: false);
-            SourceExpression.Validate(bodyprojecttags, nameof(bodyprojecttags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/projects.json";
@@ -112,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -127,8 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<ListTasksResponse> ListTasks([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> taskListId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
@@ -144,19 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<UpsertTaskResponse> CreateTask([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> taskListId, [WorkflowExpression] Func<string> bodytodoItemname = null, [WorkflowExpression] Func<string> bodytodoItemdescription = null, [WorkflowExpression] Func<string> bodytodoItemprogress = null, [WorkflowExpression] Func<string> bodytodoItemassignTo = null, [WorkflowExpression] Func<string> bodytodoItemstartDate = null, [WorkflowExpression] Func<string> bodytodoItemdueDate = null, [WorkflowExpression] Func<string> bodytodoItemestimatedMinutes = null, [WorkflowExpression] Func<bodytodoItempriorityInput> bodytodoItempriority = null, [WorkflowExpression] Func<bool> bodytodoItemnotifyPeople = null, [WorkflowExpression] Func<bool> bodytodoItemisPrivate = null, [WorkflowExpression] Func<string> bodytodoItemtags = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
-            SourceExpression.Validate(bodytodoItemname, nameof(bodytodoItemname), required: false);
-            SourceExpression.Validate(bodytodoItemdescription, nameof(bodytodoItemdescription), required: false);
-            SourceExpression.Validate(bodytodoItemprogress, nameof(bodytodoItemprogress), required: false);
-            SourceExpression.Validate(bodytodoItemassignTo, nameof(bodytodoItemassignTo), required: false);
-            SourceExpression.Validate(bodytodoItemstartDate, nameof(bodytodoItemstartDate), required: false);
-            SourceExpression.Validate(bodytodoItemdueDate, nameof(bodytodoItemdueDate), required: false);
-            SourceExpression.Validate(bodytodoItemestimatedMinutes, nameof(bodytodoItemestimatedMinutes), required: false);
-            SourceExpression.Validate(bodytodoItempriority, nameof(bodytodoItempriority), required: false);
-            SourceExpression.Validate(bodytodoItemnotifyPeople, nameof(bodytodoItemnotifyPeople), required: false);
-            SourceExpression.Validate(bodytodoItemisPrivate, nameof(bodytodoItemisPrivate), required: false);
-            SourceExpression.Validate(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
@@ -252,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<GetTaskResponse> GetTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -267,18 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<UpsertTaskResponse> UpdateTask([WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> bodytodoItemname = null, [WorkflowExpression] Func<string> bodytodoItemdescription = null, [WorkflowExpression] Func<string> bodytodoItemprogress = null, [WorkflowExpression] Func<string> bodytodoItemassignTo = null, [WorkflowExpression] Func<string> bodytodoItemstartDate = null, [WorkflowExpression] Func<string> bodytodoItemdueDate = null, [WorkflowExpression] Func<string> bodytodoItemestimatedTime = null, [WorkflowExpression] Func<bodytodoItempriorityInput> bodytodoItempriority = null, [WorkflowExpression] Func<bool> bodytodoItemnotifyPeople = null, [WorkflowExpression] Func<bool> bodytodoItemisPrivate = null, [WorkflowExpression] Func<string> bodytodoItemtags = null)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(bodytodoItemname, nameof(bodytodoItemname), required: false);
-            SourceExpression.Validate(bodytodoItemdescription, nameof(bodytodoItemdescription), required: false);
-            SourceExpression.Validate(bodytodoItemprogress, nameof(bodytodoItemprogress), required: false);
-            SourceExpression.Validate(bodytodoItemassignTo, nameof(bodytodoItemassignTo), required: false);
-            SourceExpression.Validate(bodytodoItemstartDate, nameof(bodytodoItemstartDate), required: false);
-            SourceExpression.Validate(bodytodoItemdueDate, nameof(bodytodoItemdueDate), required: false);
-            SourceExpression.Validate(bodytodoItemestimatedTime, nameof(bodytodoItemestimatedTime), required: false);
-            SourceExpression.Validate(bodytodoItempriority, nameof(bodytodoItempriority), required: false);
-            SourceExpression.Validate(bodytodoItemnotifyPeople, nameof(bodytodoItemnotifyPeople), required: false);
-            SourceExpression.Validate(bodytodoItemisPrivate, nameof(bodytodoItemisPrivate), required: false);
-            SourceExpression.Validate(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -373,7 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -388,7 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<ListUsersResponse> ListUsers([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/people.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -403,17 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodypersonemailAddress = null, [WorkflowExpression] Func<string> bodypersonfirstName = null, [WorkflowExpression] Func<string> bodypersonlastName = null, [WorkflowExpression] Func<string> bodypersoncompanyId = null, [WorkflowExpression] Func<string> bodypersonjobTitle = null, [WorkflowExpression] Func<string> bodypersonhome = null, [WorkflowExpression] Func<string> bodypersonmobile = null, [WorkflowExpression] Func<string> bodypersonoffice = null, [WorkflowExpression] Func<string> bodypersonofficeExtension = null, [WorkflowExpression] Func<string> bodypersonfax = null, [WorkflowExpression] Func<string> bodypersonusername = null)
         {
-            SourceExpression.Validate(bodypersonemailAddress, nameof(bodypersonemailAddress), required: false);
-            SourceExpression.Validate(bodypersonfirstName, nameof(bodypersonfirstName), required: false);
-            SourceExpression.Validate(bodypersonlastName, nameof(bodypersonlastName), required: false);
-            SourceExpression.Validate(bodypersoncompanyId, nameof(bodypersoncompanyId), required: false);
-            SourceExpression.Validate(bodypersonjobTitle, nameof(bodypersonjobTitle), required: false);
-            SourceExpression.Validate(bodypersonhome, nameof(bodypersonhome), required: false);
-            SourceExpression.Validate(bodypersonmobile, nameof(bodypersonmobile), required: false);
-            SourceExpression.Validate(bodypersonoffice, nameof(bodypersonoffice), required: false);
-            SourceExpression.Validate(bodypersonofficeExtension, nameof(bodypersonofficeExtension), required: false);
-            SourceExpression.Validate(bodypersonfax, nameof(bodypersonfax), required: false);
-            SourceExpression.Validate(bodypersonusername, nameof(bodypersonusername), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/people.json";
@@ -508,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> personId)
         {
-            SourceExpression.Validate(personId, nameof(personId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/people/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));

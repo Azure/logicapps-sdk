@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
         public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid([WorkflowExpression] Func<string> names)
         {
-            SourceExpression.Validate(names, nameof(names), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_api/v1/companies/search";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
         public IBodyWorkflowAction<CompanyInfoByFIdResponse> CompanyInfoByFId([WorkflowExpression] Func<string> fId)
         {
-            SourceExpression.Validate(fId, nameof(fId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/v1/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fId, 1));
@@ -46,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
         public IBodyWorkflowAction<FundsByFIdResponse> FundsByFId([WorkflowExpression] Func<string> companyIds, [WorkflowExpression] Func<includesInput> includes)
         {
-            SourceExpression.Validate(companyIds, nameof(companyIds), required: true);
-            SourceExpression.Validate(includes, nameof(includes), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_api/v1/transactions/company";

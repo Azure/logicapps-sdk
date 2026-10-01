@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
         public IWorkflowAction Transform([WorkflowExpression] Func<string> bodyconfigId, [WorkflowExpression] Func<string> bodybase64Content)
         {
-            SourceExpression.Validate(bodyconfigId, nameof(bodyconfigId), required: true);
-            SourceExpression.Validate(bodybase64Content, nameof(bodybase64Content), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/1.0/translate";

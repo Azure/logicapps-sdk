@@ -14,24 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement([WorkflowExpression] Func<string> bodydeviceId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyvoiceInput> bodyvoice = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodychimeInput> bodychime = null, [WorkflowExpression] Func<string> bodyaudio = null, [WorkflowExpression] Func<string> bodybackgroundAudio = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodynoBackground = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodymediaWidth = null, [WorkflowExpression] Func<int> bodymediaHeight = null, [WorkflowExpression] Func<bodymediaScalingInput> bodymediaScaling = null, [WorkflowExpression] Func<bodymediaAlignmentInput> bodymediaAlignment = null, [WorkflowExpression] Func<int> bodymediaRadius = null, [WorkflowExpression] Func<string> bodyvideo = null, [WorkflowExpression] Func<int> bodyvideoRepeat = null, [WorkflowExpression] Func<string> bodyechoDotWithClockDisplay = null)
         {
-            SourceExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyvoice, nameof(bodyvoice), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodychime, nameof(bodychime), required: false);
-            SourceExpression.Validate(bodyaudio, nameof(bodyaudio), required: false);
-            SourceExpression.Validate(bodybackgroundAudio, nameof(bodybackgroundAudio), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodynoBackground, nameof(bodynoBackground), required: false);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodymediaWidth, nameof(bodymediaWidth), required: false);
-            SourceExpression.Validate(bodymediaHeight, nameof(bodymediaHeight), required: false);
-            SourceExpression.Validate(bodymediaScaling, nameof(bodymediaScaling), required: false);
-            SourceExpression.Validate(bodymediaAlignment, nameof(bodymediaAlignment), required: false);
-            SourceExpression.Validate(bodymediaRadius, nameof(bodymediaRadius), required: false);
-            SourceExpression.Validate(bodyvideo, nameof(bodyvideo), required: false);
-            SourceExpression.Validate(bodyvideoRepeat, nameof(bodyvideoRepeat), required: false);
-            SourceExpression.Validate(bodyechoDotWithClockDisplay, nameof(bodyechoDotWithClockDisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/announcement";
@@ -156,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine([WorkflowExpression] Func<string> bodydeviceId)
         {
-            SourceExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger";
@@ -179,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow([WorkflowExpression] Func<int> bodyflowId)
         {
-            SourceExpression.Validate(bodyflowId, nameof(bodyflowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flows";

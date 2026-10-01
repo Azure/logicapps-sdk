@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prexviewip")]
         public IBodyWorkflowAction<TransformPostResponse> Transform([WorkflowExpression] Func<bodyoutputInput> bodyoutput, [WorkflowExpression] Func<string> bodytemplate, [WorkflowExpression] Func<string> bodyxml = null, [WorkflowExpression] Func<string> bodyjson = null, [WorkflowExpression] Func<string> bodytemplateBackup = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(bodyoutput, nameof(bodyoutput), required: true);
-            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
-            SourceExpression.Validate(bodyxml, nameof(bodyxml), required: false);
-            SourceExpression.Validate(bodyjson, nameof(bodyjson), required: false);
-            SourceExpression.Validate(bodytemplateBackup, nameof(bodytemplateBackup), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/transform";

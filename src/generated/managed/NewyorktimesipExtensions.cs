@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search/v2/articlesearch.json";
@@ -36,7 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<TopStoriesResponse> TopStories([WorkflowExpression] Func<sectionInput> section)
         {
-            SourceExpression.Validate(section, nameof(section), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(section, 1));
@@ -51,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<MostViewedResponse> MostViewed([WorkflowExpression] Func<periodInput> period)
         {
-            SourceExpression.Validate(period, nameof(period), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));

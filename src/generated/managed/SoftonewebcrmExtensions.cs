@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO[]> CallGetAll([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> priorityId = null, [WorkflowExpression] Func<string> createdBy = null, [WorkflowExpression] Func<string> lastModifiedBy = null, [WorkflowExpression] Func<string> dueDate = null, [WorkflowExpression] Func<string> sortDate = null, [WorkflowExpression] Func<string> assignedToId = null, [WorkflowExpression] Func<string> relatedToId = null, [WorkflowExpression] Func<string> callResultId = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(priorityId, nameof(priorityId), required: false);
-            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
-            SourceExpression.Validate(lastModifiedBy, nameof(lastModifiedBy), required: false);
-            SourceExpression.Validate(dueDate, nameof(dueDate), required: false);
-            SourceExpression.Validate(sortDate, nameof(sortDate), required: false);
-            SourceExpression.Validate(assignedToId, nameof(assignedToId), required: false);
-            SourceExpression.Validate(relatedToId, nameof(relatedToId), required: false);
-            SourceExpression.Validate(callResultId, nameof(callResultId), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/task/Call";
@@ -70,29 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> CallCreate([WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodyassignedToTypeInput> bodyassignedToType = null, [WorkflowExpression] Func<string> bodyassignedToId = null, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null, [WorkflowExpression] Func<string[]> bodycontactIds = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycallDuration = null, [WorkflowExpression] Func<string> bodycallResultId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<string> bodypriorityId = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<bool> bodyreminderSet = null, [WorkflowExpression] Func<string> bodysortDate = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceAssignedToId = null, [WorkflowExpression] Func<string> bodysourceRelatedToId = null, [WorkflowExpression] Func<string[]> bodysourceContactIds = null, [WorkflowExpression] Func<bodycallDirectionInput> bodycallDirection = null)
         {
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodyassignedToType, nameof(bodyassignedToType), required: false);
-            SourceExpression.Validate(bodyassignedToId, nameof(bodyassignedToId), required: false);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycallDuration, nameof(bodycallDuration), required: false);
-            SourceExpression.Validate(bodycallResultId, nameof(bodycallResultId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodyreminderSet, nameof(bodyreminderSet), required: false);
-            SourceExpression.Validate(bodysortDate, nameof(bodysortDate), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceAssignedToId, nameof(bodysourceAssignedToId), required: false);
-            SourceExpression.Validate(bodysourceRelatedToId, nameof(bodysourceRelatedToId), required: false);
-            SourceExpression.Validate(bodysourceContactIds, nameof(bodysourceContactIds), required: false);
-            SourceExpression.Validate(bodycallDirection, nameof(bodycallDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/task/Call";
@@ -251,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> CallGetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -266,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction CallDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -281,32 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO> CallUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodyassignedToTypeInput> bodyassignedToType = null, [WorkflowExpression] Func<string> bodyassignedToId = null, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null, [WorkflowExpression] Func<string[]> bodycontactIds = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycallDuration = null, [WorkflowExpression] Func<string> bodycallResultId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<string> bodypriorityId = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<bool> bodyreminderSet = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<string> bodysortDate = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceAssignedToId = null, [WorkflowExpression] Func<string> bodysourceRelatedToId = null, [WorkflowExpression] Func<string[]> bodysourceContactIds = null, [WorkflowExpression] Func<bodycallDirectionInput> bodycallDirection = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodyassignedToType, nameof(bodyassignedToType), required: false);
-            SourceExpression.Validate(bodyassignedToId, nameof(bodyassignedToId), required: false);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycallDuration, nameof(bodycallDuration), required: false);
-            SourceExpression.Validate(bodycallResultId, nameof(bodycallResultId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodyreminderSet, nameof(bodyreminderSet), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodysortDate, nameof(bodysortDate), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceAssignedToId, nameof(bodysourceAssignedToId), required: false);
-            SourceExpression.Validate(bodysourceRelatedToId, nameof(bodysourceRelatedToId), required: false);
-            SourceExpression.Validate(bodysourceContactIds, nameof(bodysourceContactIds), required: false);
-            SourceExpression.Validate(bodycallDirection, nameof(bodycallDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -477,22 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO[]> EventGetAll([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<eventStatusInput> eventStatus = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> assignedToId = null, [WorkflowExpression] Func<string> relatedToId = null, [WorkflowExpression] Func<string> sortDate = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> eventResultId = null, [WorkflowExpression] Func<string> priorityId = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> lastModifiedBy = null, [WorkflowExpression] Func<string> createdBy = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(eventStatus, nameof(eventStatus), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(assignedToId, nameof(assignedToId), required: false);
-            SourceExpression.Validate(relatedToId, nameof(relatedToId), required: false);
-            SourceExpression.Validate(sortDate, nameof(sortDate), required: false);
-            SourceExpression.Validate(parentId, nameof(parentId), required: false);
-            SourceExpression.Validate(eventResultId, nameof(eventResultId), required: false);
-            SourceExpression.Validate(priorityId, nameof(priorityId), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(lastModifiedBy, nameof(lastModifiedBy), required: false);
-            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/task/Event";
@@ -539,36 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> EventCreate([WorkflowExpression] Func<string> bodyupdateDate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<bodyassignedToTypeInput> bodyassignedToType = null, [WorkflowExpression] Func<string> bodyassignedToId = null, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null, [WorkflowExpression] Func<string[]> bodycontactIds = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<string> bodypriorityId = null, [WorkflowExpression] Func<string> bodylocationlongitude = null, [WorkflowExpression] Func<string> bodylocationlatitude = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyreminderSet = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodyrepeat = null, [WorkflowExpression] Func<bodyeventStatusInput> bodyeventStatus = null, [WorkflowExpression] Func<string> bodyeventResultId = null, [WorkflowExpression] Func<string> bodyrecurrenceInterval = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceAssignedToId = null, [WorkflowExpression] Func<string> bodysourceRelatedToId = null, [WorkflowExpression] Func<string[]> bodysourceContactIds = null, [WorkflowExpression] Func<string[]> bodyteamMembers = null)
         {
-            SourceExpression.Validate(bodyupdateDate, nameof(bodyupdateDate), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
-            SourceExpression.Validate(bodyassignedToType, nameof(bodyassignedToType), required: false);
-            SourceExpression.Validate(bodyassignedToId, nameof(bodyassignedToId), required: false);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodylocationlongitude, nameof(bodylocationlongitude), required: false);
-            SourceExpression.Validate(bodylocationlatitude, nameof(bodylocationlatitude), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyreminderSet, nameof(bodyreminderSet), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodyrepeat, nameof(bodyrepeat), required: false);
-            SourceExpression.Validate(bodyeventStatus, nameof(bodyeventStatus), required: false);
-            SourceExpression.Validate(bodyeventResultId, nameof(bodyeventResultId), required: false);
-            SourceExpression.Validate(bodyrecurrenceInterval, nameof(bodyrecurrenceInterval), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceAssignedToId, nameof(bodysourceAssignedToId), required: false);
-            SourceExpression.Validate(bodysourceRelatedToId, nameof(bodysourceRelatedToId), required: false);
-            SourceExpression.Validate(bodysourceContactIds, nameof(bodysourceContactIds), required: false);
-            SourceExpression.Validate(bodyteamMembers, nameof(bodyteamMembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/task/Event";
@@ -777,7 +666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> EventGetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -792,7 +680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction EventDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -807,37 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO> EventUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyupdateDate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<bodyassignedToTypeInput> bodyassignedToType = null, [WorkflowExpression] Func<string> bodyassignedToId = null, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null, [WorkflowExpression] Func<string[]> bodycontactIds = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<string> bodypriorityId = null, [WorkflowExpression] Func<string> bodylocationlongitude = null, [WorkflowExpression] Func<string> bodylocationlatitude = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyreminderSet = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodyrepeat = null, [WorkflowExpression] Func<bodyeventStatusInput> bodyeventStatus = null, [WorkflowExpression] Func<string> bodyeventResultId = null, [WorkflowExpression] Func<string> bodyrecurrenceInterval = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceAssignedToId = null, [WorkflowExpression] Func<string> bodysourceRelatedToId = null, [WorkflowExpression] Func<string[]> bodysourceContactIds = null, [WorkflowExpression] Func<string[]> bodyteamMembers = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyupdateDate, nameof(bodyupdateDate), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
-            SourceExpression.Validate(bodyassignedToType, nameof(bodyassignedToType), required: false);
-            SourceExpression.Validate(bodyassignedToId, nameof(bodyassignedToId), required: false);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodylocationlongitude, nameof(bodylocationlongitude), required: false);
-            SourceExpression.Validate(bodylocationlatitude, nameof(bodylocationlatitude), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyreminderSet, nameof(bodyreminderSet), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodyrepeat, nameof(bodyrepeat), required: false);
-            SourceExpression.Validate(bodyeventStatus, nameof(bodyeventStatus), required: false);
-            SourceExpression.Validate(bodyeventResultId, nameof(bodyeventResultId), required: false);
-            SourceExpression.Validate(bodyrecurrenceInterval, nameof(bodyrecurrenceInterval), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceAssignedToId, nameof(bodysourceAssignedToId), required: false);
-            SourceExpression.Validate(bodysourceRelatedToId, nameof(bodysourceRelatedToId), required: false);
-            SourceExpression.Validate(bodysourceContactIds, nameof(bodysourceContactIds), required: false);
-            SourceExpression.Validate(bodyteamMembers, nameof(bodyteamMembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1046,15 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO[]> NoteGetAll([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> relatedToId = null, [WorkflowExpression] Func<relatedToTypeInput> relatedToType = null, [WorkflowExpression] Func<string> createdBy = null, [WorkflowExpression] Func<string> lastModifiedBy = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(relatedToId, nameof(relatedToId), required: false);
-            SourceExpression.Validate(relatedToType, nameof(relatedToType), required: false);
-            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
-            SourceExpression.Validate(lastModifiedBy, nameof(lastModifiedBy), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/task/Note";
@@ -1087,14 +934,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> NoteCreate([WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<string[]> bodycontactIds = null)
         {
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/task/Note";
@@ -1159,7 +998,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> NoteGetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1174,7 +1012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction NoteDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1189,15 +1026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO> NoteUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<string[]> bodycontactIds = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1266,22 +1094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO[]> TaskGetAll([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> relatedTo = null, [WorkflowExpression] Func<string> relatedToId = null, [WorkflowExpression] Func<string> priorityId = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> dueDate = null, [WorkflowExpression] Func<string> sortDate = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> lastModifiedBy = null, [WorkflowExpression] Func<string> createdBy = null, [WorkflowExpression] Func<string> assignedToId = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(relatedTo, nameof(relatedTo), required: false);
-            SourceExpression.Validate(relatedToId, nameof(relatedToId), required: false);
-            SourceExpression.Validate(priorityId, nameof(priorityId), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(dueDate, nameof(dueDate), required: false);
-            SourceExpression.Validate(sortDate, nameof(sortDate), required: false);
-            SourceExpression.Validate(parentId, nameof(parentId), required: false);
-            SourceExpression.Validate(lastModifiedBy, nameof(lastModifiedBy), required: false);
-            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
-            SourceExpression.Validate(assignedToId, nameof(assignedToId), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Task";
@@ -1328,23 +1140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> TaskCreate([WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodypriorityId = null, [WorkflowExpression] Func<string> bodyassignedToId = null, [WorkflowExpression] Func<bodyassignedToTypeInput> bodyassignedToType = null, [WorkflowExpression] Func<string[]> bodycontactIds = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<string> bodytaskSubTypeId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<bool> bodyreminderSet = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodyassignedToId, nameof(bodyassignedToId), required: false);
-            SourceExpression.Validate(bodyassignedToType, nameof(bodyassignedToType), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodytaskSubTypeId, nameof(bodytaskSubTypeId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodyreminderSet, nameof(bodyreminderSet), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Task";
@@ -1467,7 +1262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> TaskGetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1482,7 +1276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction TaskDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1497,26 +1290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO> TaskUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodycompletedDate = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodypriorityId = null, [WorkflowExpression] Func<string> bodyassignedToId = null, [WorkflowExpression] Func<bodyassignedToTypeInput> bodyassignedToType = null, [WorkflowExpression] Func<string[]> bodycontactIds = null, [WorkflowExpression] Func<bodycontactTypeInput> bodycontactType = null, [WorkflowExpression] Func<string> bodyrelatedToId = null, [WorkflowExpression] Func<bodyrelatedToTypeInput> bodyrelatedToType = null, [WorkflowExpression] Func<string> bodytaskSubTypeId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyeditorBody = null, [WorkflowExpression] Func<bool> bodyreminderSet = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodycompletedDate, nameof(bodycompletedDate), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodyassignedToId, nameof(bodyassignedToId), required: false);
-            SourceExpression.Validate(bodyassignedToType, nameof(bodyassignedToType), required: false);
-            SourceExpression.Validate(bodycontactIds, nameof(bodycontactIds), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodyrelatedToId, nameof(bodyrelatedToId), required: false);
-            SourceExpression.Validate(bodyrelatedToType, nameof(bodyrelatedToType), required: false);
-            SourceExpression.Validate(bodytaskSubTypeId, nameof(bodytaskSubTypeId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyeditorBody, nameof(bodyeditorBody), required: false);
-            SourceExpression.Validate(bodyreminderSet, nameof(bodyreminderSet), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1651,24 +1424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto[]> LeadGetAll([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> mobilePhone = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> ownerId = null, [WorkflowExpression] Func<ownerTypeInput> ownerType = null, [WorkflowExpression] Func<string> accountSourceTypeId = null, [WorkflowExpression] Func<string> leadStatusId = null, [WorkflowExpression] Func<string> industryId = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(insertDate, nameof(insertDate), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(mobilePhone, nameof(mobilePhone), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(ownerId, nameof(ownerId), required: false);
-            SourceExpression.Validate(ownerType, nameof(ownerType), required: false);
-            SourceExpression.Validate(accountSourceTypeId, nameof(accountSourceTypeId), required: false);
-            SourceExpression.Validate(leadStatusId, nameof(leadStatusId), required: false);
-            SourceExpression.Validate(industryId, nameof(industryId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead";
@@ -1719,40 +1474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> LeadCreate([WorkflowExpression] Func<string> bodynamefirstName, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodyleadStatusId = null, [WorkflowExpression] Func<string> bodynamelastName = null, [WorkflowExpression] Func<string> bodynamemiddleName = null, [WorkflowExpression] Func<string> bodynamesalutationId = null, [WorkflowExpression] Func<string> bodynamesuffix = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodymobilePhone = null, [WorkflowExpression] Func<SalesPipelineApiDTOsEmailDTO[]> bodyotherEmail = null, [WorkflowExpression] Func<SalesPipelineApiDTOsPhoneDTO[]> bodyotherPhone = null, [WorkflowExpression] Func<bool> bodycallOptOut = null, [WorkflowExpression] Func<bool> bodyemailOptOut = null, [WorkflowExpression] Func<string> bodyratingId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<bodyownerTypeInput> bodyownerType = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyindustryId = null, [WorkflowExpression] Func<int> bodynoOfEmployees = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddressstate = null, [WorkflowExpression] Func<string> bodyaddresscountry = null, [WorkflowExpression] Func<string> bodyaddresspostalCode = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<double> bodyannualRevenue = null, [WorkflowExpression] Func<string> bodylastTransferDate = null, [WorkflowExpression] Func<string> bodygenderId = null, [WorkflowExpression] Func<string> bodypronounceId = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null)
         {
-            SourceExpression.Validate(bodynamefirstName, nameof(bodynamefirstName), required: true);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodyleadStatusId, nameof(bodyleadStatusId), required: false);
-            SourceExpression.Validate(bodynamelastName, nameof(bodynamelastName), required: false);
-            SourceExpression.Validate(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            SourceExpression.Validate(bodynamesalutationId, nameof(bodynamesalutationId), required: false);
-            SourceExpression.Validate(bodynamesuffix, nameof(bodynamesuffix), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodymobilePhone, nameof(bodymobilePhone), required: false);
-            SourceExpression.Validate(bodyotherEmail, nameof(bodyotherEmail), required: false);
-            SourceExpression.Validate(bodyotherPhone, nameof(bodyotherPhone), required: false);
-            SourceExpression.Validate(bodycallOptOut, nameof(bodycallOptOut), required: false);
-            SourceExpression.Validate(bodyemailOptOut, nameof(bodyemailOptOut), required: false);
-            SourceExpression.Validate(bodyratingId, nameof(bodyratingId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyownerType, nameof(bodyownerType), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyindustryId, nameof(bodyindustryId), required: false);
-            SourceExpression.Validate(bodynoOfEmployees, nameof(bodynoOfEmployees), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            SourceExpression.Validate(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            SourceExpression.Validate(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyannualRevenue, nameof(bodyannualRevenue), required: false);
-            SourceExpression.Validate(bodylastTransferDate, nameof(bodylastTransferDate), required: false);
-            SourceExpression.Validate(bodygenderId, nameof(bodygenderId), required: false);
-            SourceExpression.Validate(bodypronounceId, nameof(bodypronounceId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead";
@@ -1997,7 +1718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> LeadGetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2012,7 +1732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction LeadDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2027,42 +1746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesLeadLeadDto> LeadUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodynamefirstName, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodyleadStatusId = null, [WorkflowExpression] Func<string> bodynamelastName = null, [WorkflowExpression] Func<string> bodynamemiddleName = null, [WorkflowExpression] Func<string> bodynamesalutationId = null, [WorkflowExpression] Func<string> bodynamesuffix = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodymobilePhone = null, [WorkflowExpression] Func<SalesPipelineApiDTOsEmailDTO[]> bodyotherEmail = null, [WorkflowExpression] Func<SalesPipelineApiDTOsPhoneDTO[]> bodyotherPhone = null, [WorkflowExpression] Func<bool> bodycallOptOut = null, [WorkflowExpression] Func<bool> bodyemailOptOut = null, [WorkflowExpression] Func<string> bodyratingId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<bodyownerTypeInput> bodyownerType = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyindustryId = null, [WorkflowExpression] Func<int> bodynoOfEmployees = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddressstate = null, [WorkflowExpression] Func<string> bodyaddresscountry = null, [WorkflowExpression] Func<string> bodyaddresspostalCode = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<double> bodyannualRevenue = null, [WorkflowExpression] Func<string> bodylastTransferDate = null, [WorkflowExpression] Func<string> bodygenderId = null, [WorkflowExpression] Func<string> bodypronounceId = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodynamefirstName, nameof(bodynamefirstName), required: true);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodyleadStatusId, nameof(bodyleadStatusId), required: false);
-            SourceExpression.Validate(bodynamelastName, nameof(bodynamelastName), required: false);
-            SourceExpression.Validate(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            SourceExpression.Validate(bodynamesalutationId, nameof(bodynamesalutationId), required: false);
-            SourceExpression.Validate(bodynamesuffix, nameof(bodynamesuffix), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodymobilePhone, nameof(bodymobilePhone), required: false);
-            SourceExpression.Validate(bodyotherEmail, nameof(bodyotherEmail), required: false);
-            SourceExpression.Validate(bodyotherPhone, nameof(bodyotherPhone), required: false);
-            SourceExpression.Validate(bodycallOptOut, nameof(bodycallOptOut), required: false);
-            SourceExpression.Validate(bodyemailOptOut, nameof(bodyemailOptOut), required: false);
-            SourceExpression.Validate(bodyratingId, nameof(bodyratingId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyownerType, nameof(bodyownerType), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyindustryId, nameof(bodyindustryId), required: false);
-            SourceExpression.Validate(bodynoOfEmployees, nameof(bodynoOfEmployees), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            SourceExpression.Validate(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            SourceExpression.Validate(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyannualRevenue, nameof(bodyannualRevenue), required: false);
-            SourceExpression.Validate(bodylastTransferDate, nameof(bodylastTransferDate), required: false);
-            SourceExpression.Validate(bodygenderId, nameof(bodygenderId), required: false);
-            SourceExpression.Validate(bodypronounceId, nameof(bodypronounceId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2313,28 +1996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO[]> OpportunityGetAll([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> ownerId = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<double> amount = null, [WorkflowExpression] Func<string> closeDate = null, [WorkflowExpression] Func<string> updateDate = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<string> accountId = null, [WorkflowExpression] Func<string> forecastCategoryId = null, [WorkflowExpression] Func<string> accountSourceTypeId = null, [WorkflowExpression] Func<string> opportunityStatusId = null, [WorkflowExpression] Func<string> quoteId = null, [WorkflowExpression] Func<string> lossReasonId = null, [WorkflowExpression] Func<string> typeId = null, [WorkflowExpression] Func<string> lastModifiedBy = null, [WorkflowExpression] Func<string> createdBy = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> salesPipelineId = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(ownerId, nameof(ownerId), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(amount, nameof(amount), required: false);
-            SourceExpression.Validate(closeDate, nameof(closeDate), required: false);
-            SourceExpression.Validate(updateDate, nameof(updateDate), required: false);
-            SourceExpression.Validate(insertDate, nameof(insertDate), required: false);
-            SourceExpression.Validate(accountId, nameof(accountId), required: false);
-            SourceExpression.Validate(forecastCategoryId, nameof(forecastCategoryId), required: false);
-            SourceExpression.Validate(accountSourceTypeId, nameof(accountSourceTypeId), required: false);
-            SourceExpression.Validate(opportunityStatusId, nameof(opportunityStatusId), required: false);
-            SourceExpression.Validate(quoteId, nameof(quoteId), required: false);
-            SourceExpression.Validate(lossReasonId, nameof(lossReasonId), required: false);
-            SourceExpression.Validate(typeId, nameof(typeId), required: false);
-            SourceExpression.Validate(lastModifiedBy, nameof(lastModifiedBy), required: false);
-            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(salesPipelineId, nameof(salesPipelineId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity";
@@ -2393,27 +2054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> OpportunityCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycloseDate, [WorkflowExpression] Func<string> bodytypeId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyaccountId = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyforecastCategoryId = null, [WorkflowExpression] Func<string> bodysalesPipelineId = null, [WorkflowExpression] Func<int> bodyprobability = null, [WorkflowExpression] Func<int> bodyscore = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyquoteId = null, [WorkflowExpression] Func<string> bodyopportunityStatusId = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string> bodynextStep = null, [WorkflowExpression] Func<bool> bodybudgetConfirmed = null, [WorkflowExpression] Func<bool> bodydiscoveryCompleted = null, [WorkflowExpression] Func<double> bodyexpectedRevenue = null, [WorkflowExpression] Func<string> bodylossReasonId = null, [WorkflowExpression] Func<bool> bodyPrivate = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodycloseDate, nameof(bodycloseDate), required: true);
-            SourceExpression.Validate(bodytypeId, nameof(bodytypeId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyaccountId, nameof(bodyaccountId), required: false);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            SourceExpression.Validate(bodyforecastCategoryId, nameof(bodyforecastCategoryId), required: false);
-            SourceExpression.Validate(bodysalesPipelineId, nameof(bodysalesPipelineId), required: false);
-            SourceExpression.Validate(bodyprobability, nameof(bodyprobability), required: false);
-            SourceExpression.Validate(bodyscore, nameof(bodyscore), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyquoteId, nameof(bodyquoteId), required: false);
-            SourceExpression.Validate(bodyopportunityStatusId, nameof(bodyopportunityStatusId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodynextStep, nameof(bodynextStep), required: false);
-            SourceExpression.Validate(bodybudgetConfirmed, nameof(bodybudgetConfirmed), required: false);
-            SourceExpression.Validate(bodydiscoveryCompleted, nameof(bodydiscoveryCompleted), required: false);
-            SourceExpression.Validate(bodyexpectedRevenue, nameof(bodyexpectedRevenue), required: false);
-            SourceExpression.Validate(bodylossReasonId, nameof(bodylossReasonId), required: false);
-            SourceExpression.Validate(bodyPrivate, nameof(bodyPrivate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity";
@@ -2560,7 +2200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> OpportunityGetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2575,7 +2214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction OpportunityDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2590,29 +2228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO> OpportunityUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytypeId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyaccountId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyforecastCategoryId = null, [WorkflowExpression] Func<string> bodycloseDate = null, [WorkflowExpression] Func<int> bodyprobability = null, [WorkflowExpression] Func<int> bodyscore = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysalesPipelineId = null, [WorkflowExpression] Func<string> bodyquoteId = null, [WorkflowExpression] Func<string> bodyopportunityStatusId = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string> bodynextStep = null, [WorkflowExpression] Func<bool> bodybudgetConfirmed = null, [WorkflowExpression] Func<bool> bodydiscoveryCompleted = null, [WorkflowExpression] Func<double> bodyexpectedRevenue = null, [WorkflowExpression] Func<string> bodylossReasonId = null, [WorkflowExpression] Func<bool> bodyPrivate = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytypeId, nameof(bodytypeId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyaccountId, nameof(bodyaccountId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            SourceExpression.Validate(bodyforecastCategoryId, nameof(bodyforecastCategoryId), required: false);
-            SourceExpression.Validate(bodycloseDate, nameof(bodycloseDate), required: false);
-            SourceExpression.Validate(bodyprobability, nameof(bodyprobability), required: false);
-            SourceExpression.Validate(bodyscore, nameof(bodyscore), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodysalesPipelineId, nameof(bodysalesPipelineId), required: false);
-            SourceExpression.Validate(bodyquoteId, nameof(bodyquoteId), required: false);
-            SourceExpression.Validate(bodyopportunityStatusId, nameof(bodyopportunityStatusId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodynextStep, nameof(bodynextStep), required: false);
-            SourceExpression.Validate(bodybudgetConfirmed, nameof(bodybudgetConfirmed), required: false);
-            SourceExpression.Validate(bodydiscoveryCompleted, nameof(bodydiscoveryCompleted), required: false);
-            SourceExpression.Validate(bodyexpectedRevenue, nameof(bodyexpectedRevenue), required: false);
-            SourceExpression.Validate(bodylossReasonId, nameof(bodylossReasonId), required: false);
-            SourceExpression.Validate(bodyPrivate, nameof(bodyPrivate), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2773,7 +2388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<IdentityApiBackOfficeUsersGetUserGetUserResponse> UserGetById([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -2788,7 +2402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<IdentityApiTeamsDtosGetTeamResponse> TeamGetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/teams/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2803,7 +2416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> AccountGetById([WorkflowExpression] Func<string> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -2818,7 +2430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction AccountDelete([WorkflowExpression] Func<string> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -2833,45 +2444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> AccountUpdate([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodytin = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceParentId = null, [WorkflowExpression] Func<string> bodysourceOwnerId = null, [WorkflowExpression] Func<string[]> bodyprimaryContactIds = null, [WorkflowExpression] Func<string> bodyparentAccountId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddressstate = null, [WorkflowExpression] Func<string> bodyaddresslatitude = null, [WorkflowExpression] Func<string> bodyaddresslongtitude = null, [WorkflowExpression] Func<string> bodyaddresscountry = null, [WorkflowExpression] Func<string> bodyaddresscountryCode = null, [WorkflowExpression] Func<string> bodyaddresspostalCode = null, [WorkflowExpression] Func<string> bodyaddressfirstName = null, [WorkflowExpression] Func<string> bodyaddresslastName = null, [WorkflowExpression] Func<string> bodyaddressphoneNumber = null, [WorkflowExpression] Func<string> bodyaddressemail = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string> bodyindustryId = null, [WorkflowExpression] Func<string> bodytierId = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<string> bodyaccountDescription = null, [WorkflowExpression] Func<int> bodynoOfEmployees = null, [WorkflowExpression] Func<double> bodyannualRevenue = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyownershipId = null, [WorkflowExpression] Func<string> bodyratingId = null, [WorkflowExpression] Func<string> bodyclassificationId = null, [WorkflowExpression] Func<string[]> bodyassignedTeams = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodytin, nameof(bodytin), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceParentId, nameof(bodysourceParentId), required: false);
-            SourceExpression.Validate(bodysourceOwnerId, nameof(bodysourceOwnerId), required: false);
-            SourceExpression.Validate(bodyprimaryContactIds, nameof(bodyprimaryContactIds), required: false);
-            SourceExpression.Validate(bodyparentAccountId, nameof(bodyparentAccountId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            SourceExpression.Validate(bodyaddresslatitude, nameof(bodyaddresslatitude), required: false);
-            SourceExpression.Validate(bodyaddresslongtitude, nameof(bodyaddresslongtitude), required: false);
-            SourceExpression.Validate(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            SourceExpression.Validate(bodyaddresscountryCode, nameof(bodyaddresscountryCode), required: false);
-            SourceExpression.Validate(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            SourceExpression.Validate(bodyaddressfirstName, nameof(bodyaddressfirstName), required: false);
-            SourceExpression.Validate(bodyaddresslastName, nameof(bodyaddresslastName), required: false);
-            SourceExpression.Validate(bodyaddressphoneNumber, nameof(bodyaddressphoneNumber), required: false);
-            SourceExpression.Validate(bodyaddressemail, nameof(bodyaddressemail), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodyindustryId, nameof(bodyindustryId), required: false);
-            SourceExpression.Validate(bodytierId, nameof(bodytierId), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodyaccountDescription, nameof(bodyaccountDescription), required: false);
-            SourceExpression.Validate(bodynoOfEmployees, nameof(bodynoOfEmployees), required: false);
-            SourceExpression.Validate(bodyannualRevenue, nameof(bodyannualRevenue), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodyownershipId, nameof(bodyownershipId), required: false);
-            SourceExpression.Validate(bodyratingId, nameof(bodyratingId), required: false);
-            SourceExpression.Validate(bodyclassificationId, nameof(bodyclassificationId), required: false);
-            SourceExpression.Validate(bodyassignedTeams, nameof(bodyassignedTeams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -3136,23 +2708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO[]> AccountGetAll([WorkflowExpression] Func<string> parentAccount = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> suggestions = null, [WorkflowExpression] Func<string> ownerId = null, [WorkflowExpression] Func<string> ownershipId = null, [WorkflowExpression] Func<string> ratingId = null, [WorkflowExpression] Func<string> classificationId = null, [WorkflowExpression] Func<string> industryId = null, [WorkflowExpression] Func<string> accountSourceTypeId = null, [WorkflowExpression] Func<string> primaryContactId = null, [WorkflowExpression] Func<string> assignedTeams = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(parentAccount, nameof(parentAccount), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(suggestions, nameof(suggestions), required: false);
-            SourceExpression.Validate(ownerId, nameof(ownerId), required: false);
-            SourceExpression.Validate(ownershipId, nameof(ownershipId), required: false);
-            SourceExpression.Validate(ratingId, nameof(ratingId), required: false);
-            SourceExpression.Validate(classificationId, nameof(classificationId), required: false);
-            SourceExpression.Validate(industryId, nameof(industryId), required: false);
-            SourceExpression.Validate(accountSourceTypeId, nameof(accountSourceTypeId), required: false);
-            SourceExpression.Validate(primaryContactId, nameof(primaryContactId), required: false);
-            SourceExpression.Validate(assignedTeams, nameof(assignedTeams), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Account";
@@ -3201,53 +2756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO> AccountCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodycompanyId = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodytin = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceParentId = null, [WorkflowExpression] Func<string> bodysourceOwnerId = null, [WorkflowExpression] Func<string[]> bodyprimaryContactIds = null, [WorkflowExpression] Func<string> bodyparentAccountId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddressstate = null, [WorkflowExpression] Func<string> bodyaddresslatitude = null, [WorkflowExpression] Func<string> bodyaddresslongtitude = null, [WorkflowExpression] Func<string> bodyaddresscountry = null, [WorkflowExpression] Func<string> bodyaddresscountryCode = null, [WorkflowExpression] Func<string> bodyaddresspostalCode = null, [WorkflowExpression] Func<string> bodyaddressfirstName = null, [WorkflowExpression] Func<string> bodyaddresslastName = null, [WorkflowExpression] Func<string> bodyaddressphoneNumber = null, [WorkflowExpression] Func<string> bodyaddressemail = null, [WorkflowExpression] Func<string> bodyupdateDate = null, [WorkflowExpression] Func<string> bodyinsertDate = null, [WorkflowExpression] Func<string> bodytaxOffice = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string> bodyindustryId = null, [WorkflowExpression] Func<string> bodytierId = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<string> bodyaccountDescription = null, [WorkflowExpression] Func<int> bodynoOfEmployees = null, [WorkflowExpression] Func<double> bodyannualRevenue = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyownershipId = null, [WorkflowExpression] Func<string> bodyratingId = null, [WorkflowExpression] Func<string> bodyclassificationId = null, [WorkflowExpression] Func<string[]> bodyassignedTeams = null, [WorkflowExpression] Func<double> bodyaiScore = null, [WorkflowExpression] Func<string> bodyaiScoreReasoning = null, [WorkflowExpression] Func<bodyaiSentimentInput> bodyaiSentiment = null, [WorkflowExpression] Func<string> bodyaiGenerationDate = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodytin, nameof(bodytin), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceParentId, nameof(bodysourceParentId), required: false);
-            SourceExpression.Validate(bodysourceOwnerId, nameof(bodysourceOwnerId), required: false);
-            SourceExpression.Validate(bodyprimaryContactIds, nameof(bodyprimaryContactIds), required: false);
-            SourceExpression.Validate(bodyparentAccountId, nameof(bodyparentAccountId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            SourceExpression.Validate(bodyaddresslatitude, nameof(bodyaddresslatitude), required: false);
-            SourceExpression.Validate(bodyaddresslongtitude, nameof(bodyaddresslongtitude), required: false);
-            SourceExpression.Validate(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            SourceExpression.Validate(bodyaddresscountryCode, nameof(bodyaddresscountryCode), required: false);
-            SourceExpression.Validate(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            SourceExpression.Validate(bodyaddressfirstName, nameof(bodyaddressfirstName), required: false);
-            SourceExpression.Validate(bodyaddresslastName, nameof(bodyaddresslastName), required: false);
-            SourceExpression.Validate(bodyaddressphoneNumber, nameof(bodyaddressphoneNumber), required: false);
-            SourceExpression.Validate(bodyaddressemail, nameof(bodyaddressemail), required: false);
-            SourceExpression.Validate(bodyupdateDate, nameof(bodyupdateDate), required: false);
-            SourceExpression.Validate(bodyinsertDate, nameof(bodyinsertDate), required: false);
-            SourceExpression.Validate(bodytaxOffice, nameof(bodytaxOffice), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodyindustryId, nameof(bodyindustryId), required: false);
-            SourceExpression.Validate(bodytierId, nameof(bodytierId), required: false);
-            SourceExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            SourceExpression.Validate(bodyaccountDescription, nameof(bodyaccountDescription), required: false);
-            SourceExpression.Validate(bodynoOfEmployees, nameof(bodynoOfEmployees), required: false);
-            SourceExpression.Validate(bodyannualRevenue, nameof(bodyannualRevenue), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodyownershipId, nameof(bodyownershipId), required: false);
-            SourceExpression.Validate(bodyratingId, nameof(bodyratingId), required: false);
-            SourceExpression.Validate(bodyclassificationId, nameof(bodyclassificationId), required: false);
-            SourceExpression.Validate(bodyassignedTeams, nameof(bodyassignedTeams), required: false);
-            SourceExpression.Validate(bodyaiScore, nameof(bodyaiScore), required: false);
-            SourceExpression.Validate(bodyaiScoreReasoning, nameof(bodyaiScoreReasoning), required: false);
-            SourceExpression.Validate(bodyaiSentiment, nameof(bodyaiSentiment), required: false);
-            SourceExpression.Validate(bodyaiGenerationDate, nameof(bodyaiGenerationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Account";
@@ -3562,7 +3070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContact> ContactGetById([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -3577,7 +3084,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IWorkflowAction ContactDelete([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -3592,53 +3098,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO> ContactUpdate([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string[]> bodyaccountIds = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceOwnerId = null, [WorkflowExpression] Func<string[]> bodysourceAccountIds = null, [WorkflowExpression] Func<string> bodynamefirstName = null, [WorkflowExpression] Func<string> bodynamelastName = null, [WorkflowExpression] Func<string> bodynamemiddleName = null, [WorkflowExpression] Func<string> bodynamesalutationId = null, [WorkflowExpression] Func<string> bodynamesuffix = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodymobilePhone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<bool> bodycallOptOut = null, [WorkflowExpression] Func<bool> bodyemailOptOut = null, [WorkflowExpression] Func<CustomerApiFeaturesContactsEmailDTO[]> bodyotherEmail = null, [WorkflowExpression] Func<CustomerApiFeaturesContactsPhoneDTO[]> bodyotherPhone = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodygenderId = null, [WorkflowExpression] Func<string> bodypronounceId = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddressstate = null, [WorkflowExpression] Func<string> bodyaddresslatitude = null, [WorkflowExpression] Func<string> bodyaddresslongtitude = null, [WorkflowExpression] Func<string> bodyaddresscountry = null, [WorkflowExpression] Func<string> bodyaddresscountryCode = null, [WorkflowExpression] Func<string> bodyaddresspostalCode = null, [WorkflowExpression] Func<string> bodyaddressfirstName = null, [WorkflowExpression] Func<string> bodyaddresslastName = null, [WorkflowExpression] Func<string> bodyaddressphoneNumber = null, [WorkflowExpression] Func<string> bodyaddressemail = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyreportsTo = null, [WorkflowExpression] Func<string> bodyassistant = null, [WorkflowExpression] Func<string> bodyassistantPhone = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylastStayInTouchReportedDate = null, [WorkflowExpression] Func<string> bodylastStayInTouchSaveDate = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string[]> bodyassignedTeams = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyaccountIds, nameof(bodyaccountIds), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceOwnerId, nameof(bodysourceOwnerId), required: false);
-            SourceExpression.Validate(bodysourceAccountIds, nameof(bodysourceAccountIds), required: false);
-            SourceExpression.Validate(bodynamefirstName, nameof(bodynamefirstName), required: false);
-            SourceExpression.Validate(bodynamelastName, nameof(bodynamelastName), required: false);
-            SourceExpression.Validate(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            SourceExpression.Validate(bodynamesalutationId, nameof(bodynamesalutationId), required: false);
-            SourceExpression.Validate(bodynamesuffix, nameof(bodynamesuffix), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodymobilePhone, nameof(bodymobilePhone), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodycallOptOut, nameof(bodycallOptOut), required: false);
-            SourceExpression.Validate(bodyemailOptOut, nameof(bodyemailOptOut), required: false);
-            SourceExpression.Validate(bodyotherEmail, nameof(bodyotherEmail), required: false);
-            SourceExpression.Validate(bodyotherPhone, nameof(bodyotherPhone), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodygenderId, nameof(bodygenderId), required: false);
-            SourceExpression.Validate(bodypronounceId, nameof(bodypronounceId), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            SourceExpression.Validate(bodyaddresslatitude, nameof(bodyaddresslatitude), required: false);
-            SourceExpression.Validate(bodyaddresslongtitude, nameof(bodyaddresslongtitude), required: false);
-            SourceExpression.Validate(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            SourceExpression.Validate(bodyaddresscountryCode, nameof(bodyaddresscountryCode), required: false);
-            SourceExpression.Validate(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            SourceExpression.Validate(bodyaddressfirstName, nameof(bodyaddressfirstName), required: false);
-            SourceExpression.Validate(bodyaddresslastName, nameof(bodyaddresslastName), required: false);
-            SourceExpression.Validate(bodyaddressphoneNumber, nameof(bodyaddressphoneNumber), required: false);
-            SourceExpression.Validate(bodyaddressemail, nameof(bodyaddressemail), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyreportsTo, nameof(bodyreportsTo), required: false);
-            SourceExpression.Validate(bodyassistant, nameof(bodyassistant), required: false);
-            SourceExpression.Validate(bodyassistantPhone, nameof(bodyassistantPhone), required: false);
-            SourceExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodylastStayInTouchReportedDate, nameof(bodylastStayInTouchReportedDate), required: false);
-            SourceExpression.Validate(bodylastStayInTouchSaveDate, nameof(bodylastStayInTouchSaveDate), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodyassignedTeams, nameof(bodyassignedTeams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -3959,22 +3418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO[]> ContactGetAll([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> ownerId = null, [WorkflowExpression] Func<string> suggestions = null, [WorkflowExpression] Func<string> accountSourceTypeId = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> mobilePhone = null, [WorkflowExpression] Func<string> accountIds = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> assignedTeams = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(ownerId, nameof(ownerId), required: false);
-            SourceExpression.Validate(suggestions, nameof(suggestions), required: false);
-            SourceExpression.Validate(accountSourceTypeId, nameof(accountSourceTypeId), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(mobilePhone, nameof(mobilePhone), required: false);
-            SourceExpression.Validate(accountIds, nameof(accountIds), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(assignedTeams, nameof(assignedTeams), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Contact";
@@ -4021,57 +3464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
         public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO> ContactCreate([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodycompanyId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string[]> bodyaccountIds = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodysourceOwnerId = null, [WorkflowExpression] Func<string[]> bodysourceAccountIds = null, [WorkflowExpression] Func<string> bodynamefirstName = null, [WorkflowExpression] Func<string> bodynamelastName = null, [WorkflowExpression] Func<string> bodynamemiddleName = null, [WorkflowExpression] Func<string> bodynamesalutationId = null, [WorkflowExpression] Func<string> bodynamesuffix = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodymobilePhone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<bool> bodycallOptOut = null, [WorkflowExpression] Func<bool> bodyemailOptOut = null, [WorkflowExpression] Func<CustomerApiFeaturesContactsEmailDTO[]> bodyotherEmail = null, [WorkflowExpression] Func<CustomerApiFeaturesContactsPhoneDTO[]> bodyotherPhone = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodygenderId = null, [WorkflowExpression] Func<string> bodypronounceId = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddressstate = null, [WorkflowExpression] Func<string> bodyaddresslatitude = null, [WorkflowExpression] Func<string> bodyaddresslongtitude = null, [WorkflowExpression] Func<string> bodyaddresscountry = null, [WorkflowExpression] Func<string> bodyaddresscountryCode = null, [WorkflowExpression] Func<string> bodyaddresspostalCode = null, [WorkflowExpression] Func<string> bodyaddressfirstName = null, [WorkflowExpression] Func<string> bodyaddresslastName = null, [WorkflowExpression] Func<string> bodyaddressphoneNumber = null, [WorkflowExpression] Func<string> bodyaddressemail = null, [WorkflowExpression] Func<string> bodyinsertDate = null, [WorkflowExpression] Func<string> bodyupdateDate = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<string> bodylastModifiedBy = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyreportsTo = null, [WorkflowExpression] Func<string> bodyassistant = null, [WorkflowExpression] Func<string> bodyassistantPhone = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylastStayInTouchReportedDate = null, [WorkflowExpression] Func<string> bodylastStayInTouchSaveDate = null, [WorkflowExpression] Func<string> bodyaccountSourceTypeId = null, [WorkflowExpression] Func<string> bodyfullName = null, [WorkflowExpression] Func<string[]> bodyassignedTeams = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyaccountIds, nameof(bodyaccountIds), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodysourceOwnerId, nameof(bodysourceOwnerId), required: false);
-            SourceExpression.Validate(bodysourceAccountIds, nameof(bodysourceAccountIds), required: false);
-            SourceExpression.Validate(bodynamefirstName, nameof(bodynamefirstName), required: false);
-            SourceExpression.Validate(bodynamelastName, nameof(bodynamelastName), required: false);
-            SourceExpression.Validate(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            SourceExpression.Validate(bodynamesalutationId, nameof(bodynamesalutationId), required: false);
-            SourceExpression.Validate(bodynamesuffix, nameof(bodynamesuffix), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodymobilePhone, nameof(bodymobilePhone), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodycallOptOut, nameof(bodycallOptOut), required: false);
-            SourceExpression.Validate(bodyemailOptOut, nameof(bodyemailOptOut), required: false);
-            SourceExpression.Validate(bodyotherEmail, nameof(bodyotherEmail), required: false);
-            SourceExpression.Validate(bodyotherPhone, nameof(bodyotherPhone), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodygenderId, nameof(bodygenderId), required: false);
-            SourceExpression.Validate(bodypronounceId, nameof(bodypronounceId), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            SourceExpression.Validate(bodyaddresslatitude, nameof(bodyaddresslatitude), required: false);
-            SourceExpression.Validate(bodyaddresslongtitude, nameof(bodyaddresslongtitude), required: false);
-            SourceExpression.Validate(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            SourceExpression.Validate(bodyaddresscountryCode, nameof(bodyaddresscountryCode), required: false);
-            SourceExpression.Validate(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            SourceExpression.Validate(bodyaddressfirstName, nameof(bodyaddressfirstName), required: false);
-            SourceExpression.Validate(bodyaddresslastName, nameof(bodyaddresslastName), required: false);
-            SourceExpression.Validate(bodyaddressphoneNumber, nameof(bodyaddressphoneNumber), required: false);
-            SourceExpression.Validate(bodyaddressemail, nameof(bodyaddressemail), required: false);
-            SourceExpression.Validate(bodyinsertDate, nameof(bodyinsertDate), required: false);
-            SourceExpression.Validate(bodyupdateDate, nameof(bodyupdateDate), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            SourceExpression.Validate(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyreportsTo, nameof(bodyreportsTo), required: false);
-            SourceExpression.Validate(bodyassistant, nameof(bodyassistant), required: false);
-            SourceExpression.Validate(bodyassistantPhone, nameof(bodyassistantPhone), required: false);
-            SourceExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodylastStayInTouchReportedDate, nameof(bodylastStayInTouchReportedDate), required: false);
-            SourceExpression.Validate(bodylastStayInTouchSaveDate, nameof(bodylastStayInTouchSaveDate), required: false);
-            SourceExpression.Validate(bodyaccountSourceTypeId, nameof(bodyaccountSourceTypeId), required: false);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: false);
-            SourceExpression.Validate(bodyassignedTeams, nameof(bodyassignedTeams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Contact";
@@ -4424,7 +3816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
     {
         public IWorkflowTrigger CallCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/call/created";
@@ -4448,7 +3839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger OpportunityUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/opportunity/updated";
@@ -4472,7 +3862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger OpportunityDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/opportunity/deleted";
@@ -4496,7 +3885,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger OpportunityCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/opportunity/created";
@@ -4520,7 +3908,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger LeadUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/lead/updated";
@@ -4544,7 +3931,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger LeadDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/lead/deleted";
@@ -4568,7 +3954,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger LeadCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/lead/created";
@@ -4592,7 +3977,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger TaskUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/task/updated";
@@ -4616,7 +4000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger TaskDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/task/deleted";
@@ -4640,7 +4023,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger TaskCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/task/created";
@@ -4664,7 +4046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger EventUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/event/updated";
@@ -4688,7 +4069,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger EventDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/event/deleted";
@@ -4712,7 +4092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger EventCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/event/created";
@@ -4736,7 +4115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger CallDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/call/deleted";
@@ -4760,7 +4138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
         public IWorkflowTrigger CallUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WebHook/register/call/updated";

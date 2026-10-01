@@ -14,43 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction Shipments([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyfromname = null, [WorkflowExpression] Func<string> bodyfromaddress = null, [WorkflowExpression] Func<string> bodyfromcity = null, [WorkflowExpression] Func<string> bodyfromzipCode = null, [WorkflowExpression] Func<string> bodyfromcountryCode = null, [WorkflowExpression] Func<string> bodyfromidNumber = null, [WorkflowExpression] Func<string> bodyfromstateCode = null, [WorkflowExpression] Func<string> bodyfromphone = null, [WorkflowExpression] Func<string> bodyfromemail = null, [WorkflowExpression] Func<string> bodyfromdistributionCenterId = null, [WorkflowExpression] Func<string> bodytoname = null, [WorkflowExpression] Func<string> bodytoaddress = null, [WorkflowExpression] Func<string> bodytocity = null, [WorkflowExpression] Func<string> bodytozipCode = null, [WorkflowExpression] Func<string> bodytocountryCode = null, [WorkflowExpression] Func<string> bodytoidNumber = null, [WorkflowExpression] Func<string> bodytostateCode = null, [WorkflowExpression] Func<string> bodytoobservations = null, [WorkflowExpression] Func<string> bodytophone = null, [WorkflowExpression] Func<string> bodytoemail = null, [WorkflowExpression] Func<string> bodytodistributionCenterId = null, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodyclientAdditionalInfocategory = null, [WorkflowExpression] Func<string> bodyserviceAttributescashOnDelivery = null, [WorkflowExpression] Func<string> bodyserviceCode = null, [WorkflowExpression] Func<string> bodydistributionCenterId = null, [WorkflowExpression] Func<string> bodycarrierCode = null, [WorkflowExpression] Func<string> bodyclientReference = null, [WorkflowExpression] Func<string> bodyshippingDate = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytotalAmount = null, [WorkflowExpression] Func<string> bodycustomsinvoiceId = null, [WorkflowExpression] Func<string> bodybatchreference = null, [WorkflowExpression] Func<string> bodyestimatedDate = null, [WorkflowExpression] Func<bodyparcelsInputItem[]> bodyparcels = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyfromname, nameof(bodyfromname), required: false);
-            SourceExpression.Validate(bodyfromaddress, nameof(bodyfromaddress), required: false);
-            SourceExpression.Validate(bodyfromcity, nameof(bodyfromcity), required: false);
-            SourceExpression.Validate(bodyfromzipCode, nameof(bodyfromzipCode), required: false);
-            SourceExpression.Validate(bodyfromcountryCode, nameof(bodyfromcountryCode), required: false);
-            SourceExpression.Validate(bodyfromidNumber, nameof(bodyfromidNumber), required: false);
-            SourceExpression.Validate(bodyfromstateCode, nameof(bodyfromstateCode), required: false);
-            SourceExpression.Validate(bodyfromphone, nameof(bodyfromphone), required: false);
-            SourceExpression.Validate(bodyfromemail, nameof(bodyfromemail), required: false);
-            SourceExpression.Validate(bodyfromdistributionCenterId, nameof(bodyfromdistributionCenterId), required: false);
-            SourceExpression.Validate(bodytoname, nameof(bodytoname), required: false);
-            SourceExpression.Validate(bodytoaddress, nameof(bodytoaddress), required: false);
-            SourceExpression.Validate(bodytocity, nameof(bodytocity), required: false);
-            SourceExpression.Validate(bodytozipCode, nameof(bodytozipCode), required: false);
-            SourceExpression.Validate(bodytocountryCode, nameof(bodytocountryCode), required: false);
-            SourceExpression.Validate(bodytoidNumber, nameof(bodytoidNumber), required: false);
-            SourceExpression.Validate(bodytostateCode, nameof(bodytostateCode), required: false);
-            SourceExpression.Validate(bodytoobservations, nameof(bodytoobservations), required: false);
-            SourceExpression.Validate(bodytophone, nameof(bodytophone), required: false);
-            SourceExpression.Validate(bodytoemail, nameof(bodytoemail), required: false);
-            SourceExpression.Validate(bodytodistributionCenterId, nameof(bodytodistributionCenterId), required: false);
-            SourceExpression.Validate(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
-            SourceExpression.Validate(bodyclientAdditionalInfocategory, nameof(bodyclientAdditionalInfocategory), required: false);
-            SourceExpression.Validate(bodyserviceAttributescashOnDelivery, nameof(bodyserviceAttributescashOnDelivery), required: false);
-            SourceExpression.Validate(bodyserviceCode, nameof(bodyserviceCode), required: false);
-            SourceExpression.Validate(bodydistributionCenterId, nameof(bodydistributionCenterId), required: false);
-            SourceExpression.Validate(bodycarrierCode, nameof(bodycarrierCode), required: false);
-            SourceExpression.Validate(bodyclientReference, nameof(bodyclientReference), required: false);
-            SourceExpression.Validate(bodyshippingDate, nameof(bodyshippingDate), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytotalAmount, nameof(bodytotalAmount), required: false);
-            SourceExpression.Validate(bodycustomsinvoiceId, nameof(bodycustomsinvoiceId), required: false);
-            SourceExpression.Validate(bodybatchreference, nameof(bodybatchreference), required: false);
-            SourceExpression.Validate(bodyestimatedDate, nameof(bodyestimatedDate), required: false);
-            SourceExpression.Validate(bodyparcels, nameof(bodyparcels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/shipments";
@@ -331,9 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction Label([WorkflowExpression] Func<string> delivereaReference, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(delivereaReference, nameof(delivereaReference), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/shipments/{0}/label", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(delivereaReference, 1));
@@ -350,8 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IBodyWorkflowAction<DistributionCentersResponse> DistributionCenters([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/distribution-centers";
@@ -368,9 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IBodyWorkflowAction<CarriersInDistributionCenterResponse> CarriersInDistributionCenter([WorkflowExpression] Func<string> distributionCenter, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(distributionCenter, nameof(distributionCenter), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/distribution-centers/{0}/carriers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(distributionCenter, 1));
@@ -387,9 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction CancelShipment([WorkflowExpression] Func<string> delivereaReference, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(delivereaReference, nameof(delivereaReference), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/shipments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(delivereaReference, 1));

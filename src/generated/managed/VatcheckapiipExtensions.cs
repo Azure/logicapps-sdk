@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
         public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<int> vatNumber = null, [WorkflowExpression] Func<string> countryCode = null)
         {
-            SourceExpression.Validate(vatNumber, nameof(vatNumber), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/check";

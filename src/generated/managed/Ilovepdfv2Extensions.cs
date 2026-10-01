@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Compress([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodycompressionLevelInput> bodycompressionLevel = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodycompressionLevel, nameof(bodycompressionLevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/compress";
@@ -61,15 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Split([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<bodysplitModeInput> bodysplitMode, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodyranges = null, [WorkflowExpression] Func<string> bodyfixedRange = null, [WorkflowExpression] Func<string> bodyremovePages = null, [WorkflowExpression] Func<bodymergeAfterInput> bodymergeAfter = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodysplitMode, nameof(bodysplitMode), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyranges, nameof(bodyranges), required: false);
-            SourceExpression.Validate(bodyfixedRange, nameof(bodyfixedRange), required: false);
-            SourceExpression.Validate(bodyremovePages, nameof(bodyremovePages), required: false);
-            SourceExpression.Validate(bodymergeAfter, nameof(bodymergeAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/split";
@@ -132,11 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Protect([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/protect";
@@ -175,11 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> PDFtoJPG([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodypdfjpgModeInput> bodypdfjpgMode = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodypdfjpgMode, nameof(bodypdfjpgMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdftojpg";
@@ -222,13 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> ImageToPDF([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodyorientation = null, [WorkflowExpression] Func<string> bodymargin = null, [WorkflowExpression] Func<bodypagesizeInput> bodypagesize = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyorientation, nameof(bodyorientation), required: false);
-            SourceExpression.Validate(bodymargin, nameof(bodymargin), required: false);
-            SourceExpression.Validate(bodypagesize, nameof(bodypagesize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/jpgtoimg";
@@ -283,12 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> PDFtoPDFA([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyconformanceInput> bodyconformance = null, [WorkflowExpression] Func<bodyallowDowngradeInput> bodyallowDowngrade = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyconformance, nameof(bodyconformance), required: false);
-            SourceExpression.Validate(bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdftopdfa";
@@ -337,11 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Unlock([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/unlock";
@@ -384,22 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> AddPageNumber([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyfacingPagesInput> bodyfacingPages = null, [WorkflowExpression] Func<bodyfirstCoverInput> bodyfirstCover = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodystartingNumber = null, [WorkflowExpression] Func<bodyverticalPositionInput> bodyverticalPosition = null, [WorkflowExpression] Func<bodyhorizontalPositionInput> bodyhorizontalPosition = null, [WorkflowExpression] Func<string> bodyverticalPositionAdjustment = null, [WorkflowExpression] Func<string> bodyhorizontalPositionAdjustment = null, [WorkflowExpression] Func<bodyfontFamilyInput> bodyfontFamily = null, [WorkflowExpression] Func<string> bodyfontSize = null, [WorkflowExpression] Func<string> bodyfontColor = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyfacingPages, nameof(bodyfacingPages), required: false);
-            SourceExpression.Validate(bodyfirstCover, nameof(bodyfirstCover), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodystartingNumber, nameof(bodystartingNumber), required: false);
-            SourceExpression.Validate(bodyverticalPosition, nameof(bodyverticalPosition), required: false);
-            SourceExpression.Validate(bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
-            SourceExpression.Validate(bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
-            SourceExpression.Validate(bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
-            SourceExpression.Validate(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            SourceExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            SourceExpression.Validate(bodyfontColor, nameof(bodyfontColor), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pagenumber";
@@ -508,14 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Merge([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyfileSource2Input> bodyfileSource2 = null, [WorkflowExpression] Func<string> bodyfileName2 = null, [WorkflowExpression] Func<string> bodyfile2 = null, [WorkflowExpression] Func<string> bodyfileUrl2 = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyfileSource2, nameof(bodyfileSource2), required: false);
-            SourceExpression.Validate(bodyfileName2, nameof(bodyfileName2), required: false);
-            SourceExpression.Validate(bodyfile2, nameof(bodyfile2), required: false);
-            SourceExpression.Validate(bodyfileUrl2, nameof(bodyfileUrl2), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/merge";
@@ -576,29 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Watermark([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodymodeInput> bodymode = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyimageSource = null, [WorkflowExpression] Func<string> bodyimageName = null, [WorkflowExpression] Func<string> bodyimageFile = null, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<bodyverticalPositionInput> bodyverticalPosition = null, [WorkflowExpression] Func<bodyhorizontalPositionInput> bodyhorizontalPosition = null, [WorkflowExpression] Func<string> bodyverticalPositionAdjustment = null, [WorkflowExpression] Func<string> bodyhorizontalPositionAdjustment = null, [WorkflowExpression] Func<bodymosaicInput> bodymosaic = null, [WorkflowExpression] Func<string> bodyrotation = null, [WorkflowExpression] Func<bodyfontFamilyInput> bodyfontFamily = null, [WorkflowExpression] Func<bodyfontStyleInput> bodyfontStyle = null, [WorkflowExpression] Func<string> bodyfontSize = null, [WorkflowExpression] Func<string> bodyfontColor = null, [WorkflowExpression] Func<string> bodytransparency = null, [WorkflowExpression] Func<bodylayerInput> bodylayer = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyimageSource, nameof(bodyimageSource), required: false);
-            SourceExpression.Validate(bodyimageName, nameof(bodyimageName), required: false);
-            SourceExpression.Validate(bodyimageFile, nameof(bodyimageFile), required: false);
-            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyverticalPosition, nameof(bodyverticalPosition), required: false);
-            SourceExpression.Validate(bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
-            SourceExpression.Validate(bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
-            SourceExpression.Validate(bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
-            SourceExpression.Validate(bodymosaic, nameof(bodymosaic), required: false);
-            SourceExpression.Validate(bodyrotation, nameof(bodyrotation), required: false);
-            SourceExpression.Validate(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            SourceExpression.Validate(bodyfontStyle, nameof(bodyfontStyle), required: false);
-            SourceExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            SourceExpression.Validate(bodyfontColor, nameof(bodyfontColor), required: false);
-            SourceExpression.Validate(bodytransparency, nameof(bodytransparency), required: false);
-            SourceExpression.Validate(bodylayer, nameof(bodylayer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/watermark";
@@ -749,11 +660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Rotate([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyrotateInput> bodyrotate = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyrotate, nameof(bodyrotate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rotate";
@@ -796,11 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> PDFOCR([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodyocrLanguages = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyocrLanguages, nameof(bodyocrLanguages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdfocr";
@@ -843,10 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> OfficeToPDF([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/officetopdf";
@@ -883,10 +780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> DetectForms([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/detectforms";
@@ -923,12 +816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Summarize([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodyoutputFormat = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/summarize";
@@ -973,12 +860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> Translate([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodylanguageOutput = null, [WorkflowExpression] Func<string> bodytranslateMode = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodylanguageOutput, nameof(bodylanguageOutput), required: false);
-            SourceExpression.Validate(bodytranslateMode, nameof(bodytranslateMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/translate";
@@ -1027,11 +908,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> SplitSmart([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/splitsmart";
@@ -1070,10 +946,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
         public IBodyWorkflowAction<object> PDFMarkdown([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdfmarkdown";

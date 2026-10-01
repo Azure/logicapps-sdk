@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML([WorkflowExpression] Func<string> bodyurl)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fetch-html";
@@ -39,9 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         public IBodyWorkflowAction<SelectElementsResponse> SelectElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
         {
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            SourceExpression.Validate(bodyselector, nameof(bodyselector), required: true);
-            SourceExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select";
@@ -84,10 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<string> bodyattribute, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
         {
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            SourceExpression.Validate(bodyselector, nameof(bodyselector), required: true);
-            SourceExpression.Validate(bodyattribute, nameof(bodyattribute), required: true);
-            SourceExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/extract";
@@ -132,10 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytagName, [WorkflowExpression] Func<string> bodyattributesid = null, [WorkflowExpression] Func<string> bodyattributesClass = null)
         {
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            SourceExpression.Validate(bodytagName, nameof(bodytagName), required: true);
-            SourceExpression.Validate(bodyattributesid, nameof(bodyattributesid), required: false);
-            SourceExpression.Validate(bodyattributesClass, nameof(bodyattributesClass), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/find-all";
@@ -182,9 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
         public IBodyWorkflowAction<ParseTableResponse> ParseTable([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytableSelector = null, [WorkflowExpression] Func<bool> bodyheaderRowsExist = null)
         {
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            SourceExpression.Validate(bodytableSelector, nameof(bodytableSelector), required: false);
-            SourceExpression.Validate(bodyheaderRowsExist, nameof(bodyheaderRowsExist), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/parse-table";

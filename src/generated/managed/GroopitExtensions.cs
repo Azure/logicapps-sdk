@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
         public IBodyWorkflowAction<AssignmentDataExportDTO[]> GetForms([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/forms", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -43,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
         public IBodyWorkflowAction<GroopItDataExportDTO[]> GetReports([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/forms/{1}/reports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -67,9 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
         public IBodyWorkflowAction<GroopItDataExportDTO[]> GetReports2([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/reports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -90,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
         public IBodyWorkflowAction<LinkedGroupMembershipDataExportDTO[]> GetLinkedMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/linked-members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -113,10 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
         public IBodyWorkflowAction<string> AddListOption([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<int> fieldId, [WorkflowExpression] Func<string> option = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(option, nameof(option), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/forms/{1}/fields/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(fieldId, 1));
@@ -135,9 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
     {
         public IBodyWorkflowTrigger<GroopItWebhookDTO> SubscribeToReports([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<subscribeupdateType0Created1EditedInput> subscribeupdateType0Created1Edited, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(subscribeupdateType0Created1Edited, nameof(subscribeupdateType0Created1Edited), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/forms/{1}/reports/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -161,8 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
         public IBodyWorkflowTrigger<GroopItWebhookDTO> SubscribeToReports2([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<subscribeupdateType0Created1EditedInput> subscribeupdateType0Created1Edited, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(subscribeupdateType0Created1Edited, nameof(subscribeupdateType0Created1Edited), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/reports/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -186,8 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
         public IBodyWorkflowTrigger<GroopItWebhookDTO> SubscribeToLinkedMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<subscribeeventTypeInput> subscribeeventType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(subscribeeventType, nameof(subscribeeventType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/data/groups/{0}/linked-members/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));

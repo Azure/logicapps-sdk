@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
         public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> day = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(day, nameof(day), required: false);
-            SourceExpression.Validate(month, nameof(month), required: false);
-            SourceExpression.Validate(location, nameof(location), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/holidays";

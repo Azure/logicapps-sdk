@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction CompaniesList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies";
@@ -38,91 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction CompaniesCreate([WorkflowExpression] Func<string> bodypropertiesname, [WorkflowExpression] Func<string> bodypropertiesaboutUs = null, [WorkflowExpression] Func<string> bodypropertiesaddress = null, [WorkflowExpression] Func<string> bodypropertiesaddress2 = null, [WorkflowExpression] Func<string> bodypropertiesannualrevenue = null, [WorkflowExpression] Func<string> bodypropertiescity = null, [WorkflowExpression] Func<string> bodypropertiesclosedate = null, [WorkflowExpression] Func<string> bodypropertiescountry = null, [WorkflowExpression] Func<string> bodypropertiescreatedate = null, [WorkflowExpression] Func<string> bodypropertiesdaysToClose = null, [WorkflowExpression] Func<string> bodypropertiesdescription = null, [WorkflowExpression] Func<string> bodypropertiesdomain = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBooked = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedCampaign = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedMedium = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedSource = null, [WorkflowExpression] Func<string> bodypropertiesfacebookCompanyPage = null, [WorkflowExpression] Func<string> bodypropertiesfacebookfans = null, [WorkflowExpression] Func<string> bodypropertiesfirstContactCreatedate = null, [WorkflowExpression] Func<string> bodypropertiesfirstConversionDate = null, [WorkflowExpression] Func<string> bodypropertiesfirstConversionEventName = null, [WorkflowExpression] Func<string> bodypropertiesfirstDealCreatedDate = null, [WorkflowExpression] Func<string> bodypropertiesfoundedYear = null, [WorkflowExpression] Func<string> bodypropertiesgoogleplusPage = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstTouchConvertingCampaign = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstVisitTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastTouchConvertingCampaign = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastVisitTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsNumPageViews = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsNumVisits = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSource = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData1 = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData2 = null, [WorkflowExpression] Func<string> bodypropertieshsCreatedate = null, [WorkflowExpression] Func<string> bodypropertieshsIdealCustomerProfile = null, [WorkflowExpression] Func<string> bodypropertieshsIsTargetAccount = null, [WorkflowExpression] Func<string> bodypropertieshsLastBookedMeetingDate = null, [WorkflowExpression] Func<string> bodypropertieshsLastLoggedCallDate = null, [WorkflowExpression] Func<string> bodypropertieshsLastOpenTaskDate = null, [WorkflowExpression] Func<string> bodypropertieshsLastSalesActivityTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> bodypropertieshsLeadStatus = null, [WorkflowExpression] Func<string> bodypropertieshsNumBlockers = null, [WorkflowExpression] Func<string> bodypropertieshsNumChildCompanies = null, [WorkflowExpression] Func<string> bodypropertieshsNumContactsWithBuyingRoles = null, [WorkflowExpression] Func<string> bodypropertieshsNumDecisionMakers = null, [WorkflowExpression] Func<string> bodypropertieshsNumOpenDeals = null, [WorkflowExpression] Func<string> bodypropertieshsObjectId = null, [WorkflowExpression] Func<string> bodypropertieshsParentCompanyId = null, [WorkflowExpression] Func<string> bodypropertieshsPredictivecontactscoreV2 = null, [WorkflowExpression] Func<string> bodypropertieshsTotalDealValue = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> bodypropertieshubspotTeamId = null, [WorkflowExpression] Func<string> bodypropertiesindustry = null, [WorkflowExpression] Func<string> bodypropertiesisPublic = null, [WorkflowExpression] Func<string> bodypropertieslifecyclestage = null, [WorkflowExpression] Func<string> bodypropertieslinkedinCompanyPage = null, [WorkflowExpression] Func<string> bodypropertieslinkedinbio = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastContacted = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastUpdated = null, [WorkflowExpression] Func<string> bodypropertiesnotesNextActivityDate = null, [WorkflowExpression] Func<string> bodypropertiesnumAssociatedContacts = null, [WorkflowExpression] Func<string> bodypropertiesnumAssociatedDeals = null, [WorkflowExpression] Func<string> bodypropertiesnumContactedNotes = null, [WorkflowExpression] Func<string> bodypropertiesnumConversionEvents = null, [WorkflowExpression] Func<string> bodypropertiesnumberofemployees = null, [WorkflowExpression] Func<string> bodypropertiesphone = null, [WorkflowExpression] Func<string> bodypropertiesrecentConversionDate = null, [WorkflowExpression] Func<string> bodypropertiesrecentConversionEventName = null, [WorkflowExpression] Func<string> bodypropertiesrecentDealAmount = null, [WorkflowExpression] Func<string> bodypropertiesrecentDealCloseDate = null, [WorkflowExpression] Func<string> bodypropertiesstate = null, [WorkflowExpression] Func<string> bodypropertiestimezone = null, [WorkflowExpression] Func<string> bodypropertiestotalMoneyRaised = null, [WorkflowExpression] Func<string> bodypropertiestotalRevenue = null, [WorkflowExpression] Func<string> bodypropertiestwitterbio = null, [WorkflowExpression] Func<string> bodypropertiestwitterfollowers = null, [WorkflowExpression] Func<string> bodypropertiestwitterhandle = null, [WorkflowExpression] Func<string> bodypropertiestype = null, [WorkflowExpression] Func<string> bodypropertieswebTechnologies = null, [WorkflowExpression] Func<string> bodypropertieswebsite = null, [WorkflowExpression] Func<string> bodypropertieszip = null)
         {
-            SourceExpression.Validate(bodypropertiesname, nameof(bodypropertiesname), required: true);
-            SourceExpression.Validate(bodypropertiesaboutUs, nameof(bodypropertiesaboutUs), required: false);
-            SourceExpression.Validate(bodypropertiesaddress, nameof(bodypropertiesaddress), required: false);
-            SourceExpression.Validate(bodypropertiesaddress2, nameof(bodypropertiesaddress2), required: false);
-            SourceExpression.Validate(bodypropertiesannualrevenue, nameof(bodypropertiesannualrevenue), required: false);
-            SourceExpression.Validate(bodypropertiescity, nameof(bodypropertiescity), required: false);
-            SourceExpression.Validate(bodypropertiesclosedate, nameof(bodypropertiesclosedate), required: false);
-            SourceExpression.Validate(bodypropertiescountry, nameof(bodypropertiescountry), required: false);
-            SourceExpression.Validate(bodypropertiescreatedate, nameof(bodypropertiescreatedate), required: false);
-            SourceExpression.Validate(bodypropertiesdaysToClose, nameof(bodypropertiesdaysToClose), required: false);
-            SourceExpression.Validate(bodypropertiesdescription, nameof(bodypropertiesdescription), required: false);
-            SourceExpression.Validate(bodypropertiesdomain, nameof(bodypropertiesdomain), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBooked, nameof(bodypropertiesengagementsLastMeetingBooked), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedCampaign, nameof(bodypropertiesengagementsLastMeetingBookedCampaign), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedMedium, nameof(bodypropertiesengagementsLastMeetingBookedMedium), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedSource, nameof(bodypropertiesengagementsLastMeetingBookedSource), required: false);
-            SourceExpression.Validate(bodypropertiesfacebookCompanyPage, nameof(bodypropertiesfacebookCompanyPage), required: false);
-            SourceExpression.Validate(bodypropertiesfacebookfans, nameof(bodypropertiesfacebookfans), required: false);
-            SourceExpression.Validate(bodypropertiesfirstContactCreatedate, nameof(bodypropertiesfirstContactCreatedate), required: false);
-            SourceExpression.Validate(bodypropertiesfirstConversionDate, nameof(bodypropertiesfirstConversionDate), required: false);
-            SourceExpression.Validate(bodypropertiesfirstConversionEventName, nameof(bodypropertiesfirstConversionEventName), required: false);
-            SourceExpression.Validate(bodypropertiesfirstDealCreatedDate, nameof(bodypropertiesfirstDealCreatedDate), required: false);
-            SourceExpression.Validate(bodypropertiesfoundedYear, nameof(bodypropertiesfoundedYear), required: false);
-            SourceExpression.Validate(bodypropertiesgoogleplusPage, nameof(bodypropertiesgoogleplusPage), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstTimestamp, nameof(bodypropertieshsAnalyticsFirstTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstTouchConvertingCampaign, nameof(bodypropertieshsAnalyticsFirstTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstVisitTimestamp, nameof(bodypropertieshsAnalyticsFirstVisitTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastTimestamp, nameof(bodypropertieshsAnalyticsLastTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastTouchConvertingCampaign, nameof(bodypropertieshsAnalyticsLastTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastVisitTimestamp, nameof(bodypropertieshsAnalyticsLastVisitTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsNumPageViews, nameof(bodypropertieshsAnalyticsNumPageViews), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsNumVisits, nameof(bodypropertieshsAnalyticsNumVisits), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSource, nameof(bodypropertieshsAnalyticsSource), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData1, nameof(bodypropertieshsAnalyticsSourceData1), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData2, nameof(bodypropertieshsAnalyticsSourceData2), required: false);
-            SourceExpression.Validate(bodypropertieshsCreatedate, nameof(bodypropertieshsCreatedate), required: false);
-            SourceExpression.Validate(bodypropertieshsIdealCustomerProfile, nameof(bodypropertieshsIdealCustomerProfile), required: false);
-            SourceExpression.Validate(bodypropertieshsIsTargetAccount, nameof(bodypropertieshsIsTargetAccount), required: false);
-            SourceExpression.Validate(bodypropertieshsLastBookedMeetingDate, nameof(bodypropertieshsLastBookedMeetingDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLastLoggedCallDate, nameof(bodypropertieshsLastLoggedCallDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLastOpenTaskDate, nameof(bodypropertieshsLastOpenTaskDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLastSalesActivityTimestamp, nameof(bodypropertieshsLastSalesActivityTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsLastmodifieddate, nameof(bodypropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(bodypropertieshsLeadStatus, nameof(bodypropertieshsLeadStatus), required: false);
-            SourceExpression.Validate(bodypropertieshsNumBlockers, nameof(bodypropertieshsNumBlockers), required: false);
-            SourceExpression.Validate(bodypropertieshsNumChildCompanies, nameof(bodypropertieshsNumChildCompanies), required: false);
-            SourceExpression.Validate(bodypropertieshsNumContactsWithBuyingRoles, nameof(bodypropertieshsNumContactsWithBuyingRoles), required: false);
-            SourceExpression.Validate(bodypropertieshsNumDecisionMakers, nameof(bodypropertieshsNumDecisionMakers), required: false);
-            SourceExpression.Validate(bodypropertieshsNumOpenDeals, nameof(bodypropertieshsNumOpenDeals), required: false);
-            SourceExpression.Validate(bodypropertieshsObjectId, nameof(bodypropertieshsObjectId), required: false);
-            SourceExpression.Validate(bodypropertieshsParentCompanyId, nameof(bodypropertieshsParentCompanyId), required: false);
-            SourceExpression.Validate(bodypropertieshsPredictivecontactscoreV2, nameof(bodypropertieshsPredictivecontactscoreV2), required: false);
-            SourceExpression.Validate(bodypropertieshsTotalDealValue, nameof(bodypropertieshsTotalDealValue), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerAssigneddate, nameof(bodypropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerId, nameof(bodypropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(bodypropertieshubspotTeamId, nameof(bodypropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(bodypropertiesindustry, nameof(bodypropertiesindustry), required: false);
-            SourceExpression.Validate(bodypropertiesisPublic, nameof(bodypropertiesisPublic), required: false);
-            SourceExpression.Validate(bodypropertieslifecyclestage, nameof(bodypropertieslifecyclestage), required: false);
-            SourceExpression.Validate(bodypropertieslinkedinCompanyPage, nameof(bodypropertieslinkedinCompanyPage), required: false);
-            SourceExpression.Validate(bodypropertieslinkedinbio, nameof(bodypropertieslinkedinbio), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastContacted, nameof(bodypropertiesnotesLastContacted), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastUpdated, nameof(bodypropertiesnotesLastUpdated), required: false);
-            SourceExpression.Validate(bodypropertiesnotesNextActivityDate, nameof(bodypropertiesnotesNextActivityDate), required: false);
-            SourceExpression.Validate(bodypropertiesnumAssociatedContacts, nameof(bodypropertiesnumAssociatedContacts), required: false);
-            SourceExpression.Validate(bodypropertiesnumAssociatedDeals, nameof(bodypropertiesnumAssociatedDeals), required: false);
-            SourceExpression.Validate(bodypropertiesnumContactedNotes, nameof(bodypropertiesnumContactedNotes), required: false);
-            SourceExpression.Validate(bodypropertiesnumConversionEvents, nameof(bodypropertiesnumConversionEvents), required: false);
-            SourceExpression.Validate(bodypropertiesnumberofemployees, nameof(bodypropertiesnumberofemployees), required: false);
-            SourceExpression.Validate(bodypropertiesphone, nameof(bodypropertiesphone), required: false);
-            SourceExpression.Validate(bodypropertiesrecentConversionDate, nameof(bodypropertiesrecentConversionDate), required: false);
-            SourceExpression.Validate(bodypropertiesrecentConversionEventName, nameof(bodypropertiesrecentConversionEventName), required: false);
-            SourceExpression.Validate(bodypropertiesrecentDealAmount, nameof(bodypropertiesrecentDealAmount), required: false);
-            SourceExpression.Validate(bodypropertiesrecentDealCloseDate, nameof(bodypropertiesrecentDealCloseDate), required: false);
-            SourceExpression.Validate(bodypropertiesstate, nameof(bodypropertiesstate), required: false);
-            SourceExpression.Validate(bodypropertiestimezone, nameof(bodypropertiestimezone), required: false);
-            SourceExpression.Validate(bodypropertiestotalMoneyRaised, nameof(bodypropertiestotalMoneyRaised), required: false);
-            SourceExpression.Validate(bodypropertiestotalRevenue, nameof(bodypropertiestotalRevenue), required: false);
-            SourceExpression.Validate(bodypropertiestwitterbio, nameof(bodypropertiestwitterbio), required: false);
-            SourceExpression.Validate(bodypropertiestwitterfollowers, nameof(bodypropertiestwitterfollowers), required: false);
-            SourceExpression.Validate(bodypropertiestwitterhandle, nameof(bodypropertiestwitterhandle), required: false);
-            SourceExpression.Validate(bodypropertiestype, nameof(bodypropertiestype), required: false);
-            SourceExpression.Validate(bodypropertieswebTechnologies, nameof(bodypropertieswebTechnologies), required: false);
-            SourceExpression.Validate(bodypropertieswebsite, nameof(bodypropertieswebsite), required: false);
-            SourceExpression.Validate(bodypropertieszip, nameof(bodypropertieszip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/companies";
@@ -657,9 +569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction CompaniesRead([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
@@ -678,7 +587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction CompaniesArchive([WorkflowExpression] Func<string> companyId)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
@@ -693,92 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction CompaniesUpdate([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> propertiespropertiesname, [WorkflowExpression] Func<string> propertiespropertiesaboutUs = null, [WorkflowExpression] Func<string> propertiespropertiesaddress = null, [WorkflowExpression] Func<string> propertiespropertiesaddress2 = null, [WorkflowExpression] Func<string> propertiespropertiesannualrevenue = null, [WorkflowExpression] Func<string> propertiespropertiescity = null, [WorkflowExpression] Func<string> propertiespropertiesclosedate = null, [WorkflowExpression] Func<string> propertiespropertiescountry = null, [WorkflowExpression] Func<string> propertiespropertiescreatedate = null, [WorkflowExpression] Func<string> propertiespropertiesdaysToClose = null, [WorkflowExpression] Func<string> propertiespropertiesdescription = null, [WorkflowExpression] Func<string> propertiespropertiesdomain = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBooked = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBookedCampaign = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBookedMedium = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBookedSource = null, [WorkflowExpression] Func<string> propertiespropertiesfacebookCompanyPage = null, [WorkflowExpression] Func<string> propertiespropertiesfacebookfans = null, [WorkflowExpression] Func<string> propertiespropertiesfirstContactCreatedate = null, [WorkflowExpression] Func<string> propertiespropertiesfirstConversionDate = null, [WorkflowExpression] Func<string> propertiespropertiesfirstConversionEventName = null, [WorkflowExpression] Func<string> propertiespropertiesfirstDealCreatedDate = null, [WorkflowExpression] Func<string> propertiespropertiesfoundedYear = null, [WorkflowExpression] Func<string> propertiespropertiesgoogleplusPage = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstTouchConvertingCampaign = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstVisitTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastTouchConvertingCampaign = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastVisitTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsNumPageViews = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsNumVisits = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsSource = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsSourceData1 = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsSourceData2 = null, [WorkflowExpression] Func<string> propertiespropertieshsCreatedate = null, [WorkflowExpression] Func<string> propertiespropertieshsIdealCustomerProfile = null, [WorkflowExpression] Func<string> propertiespropertieshsIsTargetAccount = null, [WorkflowExpression] Func<string> propertiespropertieshsLastBookedMeetingDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLastLoggedCallDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLastOpenTaskDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLastSalesActivityTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> propertiespropertieshsLeadStatus = null, [WorkflowExpression] Func<string> propertiespropertieshsNumBlockers = null, [WorkflowExpression] Func<string> propertiespropertieshsNumChildCompanies = null, [WorkflowExpression] Func<string> propertiespropertieshsNumContactsWithBuyingRoles = null, [WorkflowExpression] Func<string> propertiespropertieshsNumDecisionMakers = null, [WorkflowExpression] Func<string> propertiespropertieshsNumOpenDeals = null, [WorkflowExpression] Func<string> propertiespropertieshsObjectId = null, [WorkflowExpression] Func<string> propertiespropertieshsParentCompanyId = null, [WorkflowExpression] Func<string> propertiespropertieshsPredictivecontactscoreV2 = null, [WorkflowExpression] Func<string> propertiespropertieshsTotalDealValue = null, [WorkflowExpression] Func<string> propertiespropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> propertiespropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> propertiespropertieshubspotTeamId = null, [WorkflowExpression] Func<string> propertiespropertiesindustry = null, [WorkflowExpression] Func<string> propertiespropertiesisPublic = null, [WorkflowExpression] Func<string> propertiespropertieslifecyclestage = null, [WorkflowExpression] Func<string> propertiespropertieslinkedinCompanyPage = null, [WorkflowExpression] Func<string> propertiespropertieslinkedinbio = null, [WorkflowExpression] Func<string> propertiespropertiesnotesLastContacted = null, [WorkflowExpression] Func<string> propertiespropertiesnotesLastUpdated = null, [WorkflowExpression] Func<string> propertiespropertiesnotesNextActivityDate = null, [WorkflowExpression] Func<string> propertiespropertiesnumAssociatedContacts = null, [WorkflowExpression] Func<string> propertiespropertiesnumAssociatedDeals = null, [WorkflowExpression] Func<string> propertiespropertiesnumContactedNotes = null, [WorkflowExpression] Func<string> propertiespropertiesnumConversionEvents = null, [WorkflowExpression] Func<string> propertiespropertiesnumberofemployees = null, [WorkflowExpression] Func<string> propertiespropertiesphone = null, [WorkflowExpression] Func<string> propertiespropertiesrecentConversionDate = null, [WorkflowExpression] Func<string> propertiespropertiesrecentConversionEventName = null, [WorkflowExpression] Func<string> propertiespropertiesrecentDealAmount = null, [WorkflowExpression] Func<string> propertiespropertiesrecentDealCloseDate = null, [WorkflowExpression] Func<string> propertiespropertiesstate = null, [WorkflowExpression] Func<string> propertiespropertiestimezone = null, [WorkflowExpression] Func<string> propertiespropertiestotalMoneyRaised = null, [WorkflowExpression] Func<string> propertiespropertiestotalRevenue = null, [WorkflowExpression] Func<string> propertiespropertiestwitterbio = null, [WorkflowExpression] Func<string> propertiespropertiestwitterfollowers = null, [WorkflowExpression] Func<string> propertiespropertiestwitterhandle = null, [WorkflowExpression] Func<string> propertiespropertiestype = null, [WorkflowExpression] Func<string> propertiespropertieswebTechnologies = null, [WorkflowExpression] Func<string> propertiespropertieswebsite = null, [WorkflowExpression] Func<string> propertiespropertieszip = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(propertiespropertiesname, nameof(propertiespropertiesname), required: true);
-            SourceExpression.Validate(propertiespropertiesaboutUs, nameof(propertiespropertiesaboutUs), required: false);
-            SourceExpression.Validate(propertiespropertiesaddress, nameof(propertiespropertiesaddress), required: false);
-            SourceExpression.Validate(propertiespropertiesaddress2, nameof(propertiespropertiesaddress2), required: false);
-            SourceExpression.Validate(propertiespropertiesannualrevenue, nameof(propertiespropertiesannualrevenue), required: false);
-            SourceExpression.Validate(propertiespropertiescity, nameof(propertiespropertiescity), required: false);
-            SourceExpression.Validate(propertiespropertiesclosedate, nameof(propertiespropertiesclosedate), required: false);
-            SourceExpression.Validate(propertiespropertiescountry, nameof(propertiespropertiescountry), required: false);
-            SourceExpression.Validate(propertiespropertiescreatedate, nameof(propertiespropertiescreatedate), required: false);
-            SourceExpression.Validate(propertiespropertiesdaysToClose, nameof(propertiespropertiesdaysToClose), required: false);
-            SourceExpression.Validate(propertiespropertiesdescription, nameof(propertiespropertiesdescription), required: false);
-            SourceExpression.Validate(propertiespropertiesdomain, nameof(propertiespropertiesdomain), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBooked, nameof(propertiespropertiesengagementsLastMeetingBooked), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBookedCampaign, nameof(propertiespropertiesengagementsLastMeetingBookedCampaign), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBookedMedium, nameof(propertiespropertiesengagementsLastMeetingBookedMedium), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBookedSource, nameof(propertiespropertiesengagementsLastMeetingBookedSource), required: false);
-            SourceExpression.Validate(propertiespropertiesfacebookCompanyPage, nameof(propertiespropertiesfacebookCompanyPage), required: false);
-            SourceExpression.Validate(propertiespropertiesfacebookfans, nameof(propertiespropertiesfacebookfans), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstContactCreatedate, nameof(propertiespropertiesfirstContactCreatedate), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstConversionDate, nameof(propertiespropertiesfirstConversionDate), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstConversionEventName, nameof(propertiespropertiesfirstConversionEventName), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstDealCreatedDate, nameof(propertiespropertiesfirstDealCreatedDate), required: false);
-            SourceExpression.Validate(propertiespropertiesfoundedYear, nameof(propertiespropertiesfoundedYear), required: false);
-            SourceExpression.Validate(propertiespropertiesgoogleplusPage, nameof(propertiespropertiesgoogleplusPage), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstTimestamp, nameof(propertiespropertieshsAnalyticsFirstTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstTouchConvertingCampaign, nameof(propertiespropertieshsAnalyticsFirstTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstVisitTimestamp, nameof(propertiespropertieshsAnalyticsFirstVisitTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastTimestamp, nameof(propertiespropertieshsAnalyticsLastTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastTouchConvertingCampaign, nameof(propertiespropertieshsAnalyticsLastTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastVisitTimestamp, nameof(propertiespropertieshsAnalyticsLastVisitTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsNumPageViews, nameof(propertiespropertieshsAnalyticsNumPageViews), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsNumVisits, nameof(propertiespropertieshsAnalyticsNumVisits), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsSource, nameof(propertiespropertieshsAnalyticsSource), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsSourceData1, nameof(propertiespropertieshsAnalyticsSourceData1), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsSourceData2, nameof(propertiespropertieshsAnalyticsSourceData2), required: false);
-            SourceExpression.Validate(propertiespropertieshsCreatedate, nameof(propertiespropertieshsCreatedate), required: false);
-            SourceExpression.Validate(propertiespropertieshsIdealCustomerProfile, nameof(propertiespropertieshsIdealCustomerProfile), required: false);
-            SourceExpression.Validate(propertiespropertieshsIsTargetAccount, nameof(propertiespropertieshsIsTargetAccount), required: false);
-            SourceExpression.Validate(propertiespropertieshsLastBookedMeetingDate, nameof(propertiespropertieshsLastBookedMeetingDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLastLoggedCallDate, nameof(propertiespropertieshsLastLoggedCallDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLastOpenTaskDate, nameof(propertiespropertieshsLastOpenTaskDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLastSalesActivityTimestamp, nameof(propertiespropertieshsLastSalesActivityTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsLastmodifieddate, nameof(propertiespropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLeadStatus, nameof(propertiespropertieshsLeadStatus), required: false);
-            SourceExpression.Validate(propertiespropertieshsNumBlockers, nameof(propertiespropertieshsNumBlockers), required: false);
-            SourceExpression.Validate(propertiespropertieshsNumChildCompanies, nameof(propertiespropertieshsNumChildCompanies), required: false);
-            SourceExpression.Validate(propertiespropertieshsNumContactsWithBuyingRoles, nameof(propertiespropertieshsNumContactsWithBuyingRoles), required: false);
-            SourceExpression.Validate(propertiespropertieshsNumDecisionMakers, nameof(propertiespropertieshsNumDecisionMakers), required: false);
-            SourceExpression.Validate(propertiespropertieshsNumOpenDeals, nameof(propertiespropertieshsNumOpenDeals), required: false);
-            SourceExpression.Validate(propertiespropertieshsObjectId, nameof(propertiespropertieshsObjectId), required: false);
-            SourceExpression.Validate(propertiespropertieshsParentCompanyId, nameof(propertiespropertieshsParentCompanyId), required: false);
-            SourceExpression.Validate(propertiespropertieshsPredictivecontactscoreV2, nameof(propertiespropertieshsPredictivecontactscoreV2), required: false);
-            SourceExpression.Validate(propertiespropertieshsTotalDealValue, nameof(propertiespropertieshsTotalDealValue), required: false);
-            SourceExpression.Validate(propertiespropertieshubspotOwnerAssigneddate, nameof(propertiespropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(propertiespropertieshubspotOwnerId, nameof(propertiespropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(propertiespropertieshubspotTeamId, nameof(propertiespropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(propertiespropertiesindustry, nameof(propertiespropertiesindustry), required: false);
-            SourceExpression.Validate(propertiespropertiesisPublic, nameof(propertiespropertiesisPublic), required: false);
-            SourceExpression.Validate(propertiespropertieslifecyclestage, nameof(propertiespropertieslifecyclestage), required: false);
-            SourceExpression.Validate(propertiespropertieslinkedinCompanyPage, nameof(propertiespropertieslinkedinCompanyPage), required: false);
-            SourceExpression.Validate(propertiespropertieslinkedinbio, nameof(propertiespropertieslinkedinbio), required: false);
-            SourceExpression.Validate(propertiespropertiesnotesLastContacted, nameof(propertiespropertiesnotesLastContacted), required: false);
-            SourceExpression.Validate(propertiespropertiesnotesLastUpdated, nameof(propertiespropertiesnotesLastUpdated), required: false);
-            SourceExpression.Validate(propertiespropertiesnotesNextActivityDate, nameof(propertiespropertiesnotesNextActivityDate), required: false);
-            SourceExpression.Validate(propertiespropertiesnumAssociatedContacts, nameof(propertiespropertiesnumAssociatedContacts), required: false);
-            SourceExpression.Validate(propertiespropertiesnumAssociatedDeals, nameof(propertiespropertiesnumAssociatedDeals), required: false);
-            SourceExpression.Validate(propertiespropertiesnumContactedNotes, nameof(propertiespropertiesnumContactedNotes), required: false);
-            SourceExpression.Validate(propertiespropertiesnumConversionEvents, nameof(propertiespropertiesnumConversionEvents), required: false);
-            SourceExpression.Validate(propertiespropertiesnumberofemployees, nameof(propertiespropertiesnumberofemployees), required: false);
-            SourceExpression.Validate(propertiespropertiesphone, nameof(propertiespropertiesphone), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentConversionDate, nameof(propertiespropertiesrecentConversionDate), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentConversionEventName, nameof(propertiespropertiesrecentConversionEventName), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentDealAmount, nameof(propertiespropertiesrecentDealAmount), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentDealCloseDate, nameof(propertiespropertiesrecentDealCloseDate), required: false);
-            SourceExpression.Validate(propertiespropertiesstate, nameof(propertiespropertiesstate), required: false);
-            SourceExpression.Validate(propertiespropertiestimezone, nameof(propertiespropertiestimezone), required: false);
-            SourceExpression.Validate(propertiespropertiestotalMoneyRaised, nameof(propertiespropertiestotalMoneyRaised), required: false);
-            SourceExpression.Validate(propertiespropertiestotalRevenue, nameof(propertiespropertiestotalRevenue), required: false);
-            SourceExpression.Validate(propertiespropertiestwitterbio, nameof(propertiespropertiestwitterbio), required: false);
-            SourceExpression.Validate(propertiespropertiestwitterfollowers, nameof(propertiespropertiestwitterfollowers), required: false);
-            SourceExpression.Validate(propertiespropertiestwitterhandle, nameof(propertiespropertiestwitterhandle), required: false);
-            SourceExpression.Validate(propertiespropertiestype, nameof(propertiespropertiestype), required: false);
-            SourceExpression.Validate(propertiespropertieswebTechnologies, nameof(propertiespropertieswebTechnologies), required: false);
-            SourceExpression.Validate(propertiespropertieswebsite, nameof(propertiespropertieswebsite), required: false);
-            SourceExpression.Validate(propertiespropertieszip, nameof(propertiespropertieszip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1));
@@ -1313,8 +1135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ContactsList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<string> properties = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts";
@@ -1332,165 +1152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ContactsCreate([WorkflowExpression] Func<string> bodypropertiesaddress = null, [WorkflowExpression] Func<string> bodypropertiesannualrevenue = null, [WorkflowExpression] Func<string> bodypropertiescity = null, [WorkflowExpression] Func<string> bodypropertiesclosedate = null, [WorkflowExpression] Func<string> bodypropertiescompany = null, [WorkflowExpression] Func<string> bodypropertiescompanySize = null, [WorkflowExpression] Func<string> bodypropertiescountry = null, [WorkflowExpression] Func<string> bodypropertiescreatedate = null, [WorkflowExpression] Func<string> bodypropertiescurrentlyinworkflow = null, [WorkflowExpression] Func<string> bodypropertiesdateOfBirth = null, [WorkflowExpression] Func<string> bodypropertiesdaysToClose = null, [WorkflowExpression] Func<string> bodypropertiesdegree = null, [WorkflowExpression] Func<string> bodypropertiesemail = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBooked = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedCampaign = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedMedium = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedSource = null, [WorkflowExpression] Func<string> bodypropertiesfax = null, [WorkflowExpression] Func<string> bodypropertiesfieldOfStudy = null, [WorkflowExpression] Func<string> bodypropertiesfirstConversionDate = null, [WorkflowExpression] Func<string> bodypropertiesfirstConversionEventName = null, [WorkflowExpression] Func<string> bodypropertiesfirstDealCreatedDate = null, [WorkflowExpression] Func<string> bodypropertiesfirstname = null, [WorkflowExpression] Func<string> bodypropertiesgender = null, [WorkflowExpression] Func<string> bodypropertiesgraduationDate = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsAveragePageViews = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstReferrer = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstTouchConvertingCampaign = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstUrl = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsFirstVisitTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastReferrer = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastTouchConvertingCampaign = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastUrl = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsLastVisitTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsNumEventCompletions = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsNumPageViews = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsNumVisits = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsRevenue = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSource = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData1 = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData2 = null, [WorkflowExpression] Func<string> bodypropertieshsBuyingRole = null, [WorkflowExpression] Func<string> bodypropertieshsContentMembershipEmailConfirmed = null, [WorkflowExpression] Func<string> bodypropertieshsContentMembershipNotes = null, [WorkflowExpression] Func<string> bodypropertieshsContentMembershipRegisteredAt = null, [WorkflowExpression] Func<string> bodypropertieshsContentMembershipRegistrationDomainSentTo = null, [WorkflowExpression] Func<string> bodypropertieshsContentMembershipRegistrationEmailSentAt = null, [WorkflowExpression] Func<string> bodypropertieshsContentMembershipStatus = null, [WorkflowExpression] Func<string> bodypropertieshsCreatedate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailBadAddress = null, [WorkflowExpression] Func<string> bodypropertieshsEmailBounce = null, [WorkflowExpression] Func<string> bodypropertieshsEmailClick = null, [WorkflowExpression] Func<string> bodypropertieshsEmailCustomerQuarantinedReason = null, [WorkflowExpression] Func<string> bodypropertieshsEmailDelivered = null, [WorkflowExpression] Func<string> bodypropertieshsEmailDomain = null, [WorkflowExpression] Func<string> bodypropertieshsEmailFirstClickDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailFirstOpenDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailFirstReplyDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailFirstSendDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailHardBounceReasonEnum = null, [WorkflowExpression] Func<string> bodypropertieshsEmailLastClickDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailLastEmailName = null, [WorkflowExpression] Func<string> bodypropertieshsEmailLastOpenDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailLastReplyDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailLastSendDate = null, [WorkflowExpression] Func<string> bodypropertieshsEmailOpen = null, [WorkflowExpression] Func<string> bodypropertieshsEmailOptout = null, [WorkflowExpression] Func<string> bodypropertieshsEmailOptout12592317 = null, [WorkflowExpression] Func<string> bodypropertieshsEmailQuarantined = null, [WorkflowExpression] Func<string> bodypropertieshsEmailQuarantinedReason = null, [WorkflowExpression] Func<string> bodypropertieshsEmailReplied = null, [WorkflowExpression] Func<string> bodypropertieshsEmailSendsSinceLastEngagement = null, [WorkflowExpression] Func<string> bodypropertieshsEmailconfirmationstatus = null, [WorkflowExpression] Func<string> bodypropertieshsFacebookClickId = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastNpsFollowUp = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastNpsRating = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastSurveyDate = null, [WorkflowExpression] Func<string> bodypropertieshsGoogleClickId = null, [WorkflowExpression] Func<string> bodypropertieshsIpTimezone = null, [WorkflowExpression] Func<string> bodypropertieshsIsUnworked = null, [WorkflowExpression] Func<string> bodypropertieshsLanguage = null, [WorkflowExpression] Func<string> bodypropertieshsLastSalesActivityTimestamp = null, [WorkflowExpression] Func<string> bodypropertieshsLeadStatus = null, [WorkflowExpression] Func<string> bodypropertieshsLegalBasis = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageCustomerDate = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageEvangelistDate = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageLeadDate = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageMarketingqualifiedleadDate = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageOpportunityDate = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageOtherDate = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageSalesqualifiedleadDate = null, [WorkflowExpression] Func<string> bodypropertieshsLifecyclestageSubscriberDate = null, [WorkflowExpression] Func<string> bodypropertieshsMarketableReasonId = null, [WorkflowExpression] Func<string> bodypropertieshsMarketableReasonType = null, [WorkflowExpression] Func<string> bodypropertieshsMarketableStatus = null, [WorkflowExpression] Func<string> bodypropertieshsMarketableUntilRenewal = null, [WorkflowExpression] Func<string> bodypropertieshsObjectId = null, [WorkflowExpression] Func<string> bodypropertieshsPersona = null, [WorkflowExpression] Func<string> bodypropertieshsPredictivecontactscore = null, [WorkflowExpression] Func<string> bodypropertieshsPredictivecontactscoreV2 = null, [WorkflowExpression] Func<string> bodypropertieshsPredictivecontactscorebucket = null, [WorkflowExpression] Func<string> bodypropertieshsPredictivescoringtier = null, [WorkflowExpression] Func<string> bodypropertieshsSalesEmailLastClicked = null, [WorkflowExpression] Func<string> bodypropertieshsSalesEmailLastOpened = null, [WorkflowExpression] Func<string> bodypropertieshsSalesEmailLastReplied = null, [WorkflowExpression] Func<string> bodypropertieshsSequencesIsEnrolled = null, [WorkflowExpression] Func<string> bodypropertieshsTimeBetweenContactCreationAndDealClose = null, [WorkflowExpression] Func<string> bodypropertieshsTimeBetweenContactCreationAndDealCreation = null, [WorkflowExpression] Func<string> bodypropertieshsTimeToMoveFromLeadToCustomer = null, [WorkflowExpression] Func<string> bodypropertieshsTimeToMoveFromMarketingqualifiedleadToCustomer = null, [WorkflowExpression] Func<string> bodypropertieshsTimeToMoveFromOpportunityToCustomer = null, [WorkflowExpression] Func<string> bodypropertieshsTimeToMoveFromSalesqualifiedleadToCustomer = null, [WorkflowExpression] Func<string> bodypropertieshsTimeToMoveFromSubscriberToCustomer = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> bodypropertieshubspotTeamId = null, [WorkflowExpression] Func<string> bodypropertieshubspotscore = null, [WorkflowExpression] Func<string> bodypropertiesindustry = null, [WorkflowExpression] Func<string> bodypropertiesipCity = null, [WorkflowExpression] Func<string> bodypropertiesipCountry = null, [WorkflowExpression] Func<string> bodypropertiesipCountryCode = null, [WorkflowExpression] Func<string> bodypropertiesipState = null, [WorkflowExpression] Func<string> bodypropertiesipStateCode = null, [WorkflowExpression] Func<string> bodypropertiesjobFunction = null, [WorkflowExpression] Func<string> bodypropertiesjobtitle = null, [WorkflowExpression] Func<string> bodypropertieslastmodifieddate = null, [WorkflowExpression] Func<string> bodypropertieslastname = null, [WorkflowExpression] Func<string> bodypropertieslifecyclestage = null, [WorkflowExpression] Func<string> bodypropertiesmaritalStatus = null, [WorkflowExpression] Func<string> bodypropertiesmessage = null, [WorkflowExpression] Func<string> bodypropertiesmilitaryStatus = null, [WorkflowExpression] Func<string> bodypropertiesmobilephone = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastContacted = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastUpdated = null, [WorkflowExpression] Func<string> bodypropertiesnotesNextActivityDate = null, [WorkflowExpression] Func<string> bodypropertiesnumAssociatedDeals = null, [WorkflowExpression] Func<string> bodypropertiesnumContactedNotes = null, [WorkflowExpression] Func<string> bodypropertiesnumConversionEvents = null, [WorkflowExpression] Func<string> bodypropertiesnumNotes = null, [WorkflowExpression] Func<string> bodypropertiesnumUniqueConversionEvents = null, [WorkflowExpression] Func<string> bodypropertiesnumemployees = null, [WorkflowExpression] Func<string> bodypropertiesphone = null, [WorkflowExpression] Func<string> bodypropertiesrecentConversionDate = null, [WorkflowExpression] Func<string> bodypropertiesrecentConversionEventName = null, [WorkflowExpression] Func<string> bodypropertiesrecentDealAmount = null, [WorkflowExpression] Func<string> bodypropertiesrecentDealCloseDate = null, [WorkflowExpression] Func<string> bodypropertiesrelationshipStatus = null, [WorkflowExpression] Func<string> bodypropertiessalutation = null, [WorkflowExpression] Func<string> bodypropertiesschool = null, [WorkflowExpression] Func<string> bodypropertiesseniority = null, [WorkflowExpression] Func<string> bodypropertiesstartDate = null, [WorkflowExpression] Func<string> bodypropertiesstate = null, [WorkflowExpression] Func<string> bodypropertiestotalRevenue = null, [WorkflowExpression] Func<string> bodypropertiestwitterhandle = null, [WorkflowExpression] Func<string> bodypropertieswebsite = null, [WorkflowExpression] Func<string> bodypropertiesworkEmail = null, [WorkflowExpression] Func<string> bodypropertieszip = null)
         {
-            SourceExpression.Validate(bodypropertiesaddress, nameof(bodypropertiesaddress), required: false);
-            SourceExpression.Validate(bodypropertiesannualrevenue, nameof(bodypropertiesannualrevenue), required: false);
-            SourceExpression.Validate(bodypropertiescity, nameof(bodypropertiescity), required: false);
-            SourceExpression.Validate(bodypropertiesclosedate, nameof(bodypropertiesclosedate), required: false);
-            SourceExpression.Validate(bodypropertiescompany, nameof(bodypropertiescompany), required: false);
-            SourceExpression.Validate(bodypropertiescompanySize, nameof(bodypropertiescompanySize), required: false);
-            SourceExpression.Validate(bodypropertiescountry, nameof(bodypropertiescountry), required: false);
-            SourceExpression.Validate(bodypropertiescreatedate, nameof(bodypropertiescreatedate), required: false);
-            SourceExpression.Validate(bodypropertiescurrentlyinworkflow, nameof(bodypropertiescurrentlyinworkflow), required: false);
-            SourceExpression.Validate(bodypropertiesdateOfBirth, nameof(bodypropertiesdateOfBirth), required: false);
-            SourceExpression.Validate(bodypropertiesdaysToClose, nameof(bodypropertiesdaysToClose), required: false);
-            SourceExpression.Validate(bodypropertiesdegree, nameof(bodypropertiesdegree), required: false);
-            SourceExpression.Validate(bodypropertiesemail, nameof(bodypropertiesemail), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBooked, nameof(bodypropertiesengagementsLastMeetingBooked), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedCampaign, nameof(bodypropertiesengagementsLastMeetingBookedCampaign), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedMedium, nameof(bodypropertiesengagementsLastMeetingBookedMedium), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedSource, nameof(bodypropertiesengagementsLastMeetingBookedSource), required: false);
-            SourceExpression.Validate(bodypropertiesfax, nameof(bodypropertiesfax), required: false);
-            SourceExpression.Validate(bodypropertiesfieldOfStudy, nameof(bodypropertiesfieldOfStudy), required: false);
-            SourceExpression.Validate(bodypropertiesfirstConversionDate, nameof(bodypropertiesfirstConversionDate), required: false);
-            SourceExpression.Validate(bodypropertiesfirstConversionEventName, nameof(bodypropertiesfirstConversionEventName), required: false);
-            SourceExpression.Validate(bodypropertiesfirstDealCreatedDate, nameof(bodypropertiesfirstDealCreatedDate), required: false);
-            SourceExpression.Validate(bodypropertiesfirstname, nameof(bodypropertiesfirstname), required: false);
-            SourceExpression.Validate(bodypropertiesgender, nameof(bodypropertiesgender), required: false);
-            SourceExpression.Validate(bodypropertiesgraduationDate, nameof(bodypropertiesgraduationDate), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsAveragePageViews, nameof(bodypropertieshsAnalyticsAveragePageViews), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstReferrer, nameof(bodypropertieshsAnalyticsFirstReferrer), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstTimestamp, nameof(bodypropertieshsAnalyticsFirstTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstTouchConvertingCampaign, nameof(bodypropertieshsAnalyticsFirstTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstUrl, nameof(bodypropertieshsAnalyticsFirstUrl), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsFirstVisitTimestamp, nameof(bodypropertieshsAnalyticsFirstVisitTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastReferrer, nameof(bodypropertieshsAnalyticsLastReferrer), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastTimestamp, nameof(bodypropertieshsAnalyticsLastTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastTouchConvertingCampaign, nameof(bodypropertieshsAnalyticsLastTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastUrl, nameof(bodypropertieshsAnalyticsLastUrl), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsLastVisitTimestamp, nameof(bodypropertieshsAnalyticsLastVisitTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsNumEventCompletions, nameof(bodypropertieshsAnalyticsNumEventCompletions), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsNumPageViews, nameof(bodypropertieshsAnalyticsNumPageViews), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsNumVisits, nameof(bodypropertieshsAnalyticsNumVisits), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsRevenue, nameof(bodypropertieshsAnalyticsRevenue), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSource, nameof(bodypropertieshsAnalyticsSource), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData1, nameof(bodypropertieshsAnalyticsSourceData1), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData2, nameof(bodypropertieshsAnalyticsSourceData2), required: false);
-            SourceExpression.Validate(bodypropertieshsBuyingRole, nameof(bodypropertieshsBuyingRole), required: false);
-            SourceExpression.Validate(bodypropertieshsContentMembershipEmailConfirmed, nameof(bodypropertieshsContentMembershipEmailConfirmed), required: false);
-            SourceExpression.Validate(bodypropertieshsContentMembershipNotes, nameof(bodypropertieshsContentMembershipNotes), required: false);
-            SourceExpression.Validate(bodypropertieshsContentMembershipRegisteredAt, nameof(bodypropertieshsContentMembershipRegisteredAt), required: false);
-            SourceExpression.Validate(bodypropertieshsContentMembershipRegistrationDomainSentTo, nameof(bodypropertieshsContentMembershipRegistrationDomainSentTo), required: false);
-            SourceExpression.Validate(bodypropertieshsContentMembershipRegistrationEmailSentAt, nameof(bodypropertieshsContentMembershipRegistrationEmailSentAt), required: false);
-            SourceExpression.Validate(bodypropertieshsContentMembershipStatus, nameof(bodypropertieshsContentMembershipStatus), required: false);
-            SourceExpression.Validate(bodypropertieshsCreatedate, nameof(bodypropertieshsCreatedate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailBadAddress, nameof(bodypropertieshsEmailBadAddress), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailBounce, nameof(bodypropertieshsEmailBounce), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailClick, nameof(bodypropertieshsEmailClick), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailCustomerQuarantinedReason, nameof(bodypropertieshsEmailCustomerQuarantinedReason), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailDelivered, nameof(bodypropertieshsEmailDelivered), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailDomain, nameof(bodypropertieshsEmailDomain), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailFirstClickDate, nameof(bodypropertieshsEmailFirstClickDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailFirstOpenDate, nameof(bodypropertieshsEmailFirstOpenDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailFirstReplyDate, nameof(bodypropertieshsEmailFirstReplyDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailFirstSendDate, nameof(bodypropertieshsEmailFirstSendDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailHardBounceReasonEnum, nameof(bodypropertieshsEmailHardBounceReasonEnum), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailLastClickDate, nameof(bodypropertieshsEmailLastClickDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailLastEmailName, nameof(bodypropertieshsEmailLastEmailName), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailLastOpenDate, nameof(bodypropertieshsEmailLastOpenDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailLastReplyDate, nameof(bodypropertieshsEmailLastReplyDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailLastSendDate, nameof(bodypropertieshsEmailLastSendDate), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailOpen, nameof(bodypropertieshsEmailOpen), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailOptout, nameof(bodypropertieshsEmailOptout), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailOptout12592317, nameof(bodypropertieshsEmailOptout12592317), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailQuarantined, nameof(bodypropertieshsEmailQuarantined), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailQuarantinedReason, nameof(bodypropertieshsEmailQuarantinedReason), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailReplied, nameof(bodypropertieshsEmailReplied), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailSendsSinceLastEngagement, nameof(bodypropertieshsEmailSendsSinceLastEngagement), required: false);
-            SourceExpression.Validate(bodypropertieshsEmailconfirmationstatus, nameof(bodypropertieshsEmailconfirmationstatus), required: false);
-            SourceExpression.Validate(bodypropertieshsFacebookClickId, nameof(bodypropertieshsFacebookClickId), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastNpsFollowUp, nameof(bodypropertieshsFeedbackLastNpsFollowUp), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastNpsRating, nameof(bodypropertieshsFeedbackLastNpsRating), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastSurveyDate, nameof(bodypropertieshsFeedbackLastSurveyDate), required: false);
-            SourceExpression.Validate(bodypropertieshsGoogleClickId, nameof(bodypropertieshsGoogleClickId), required: false);
-            SourceExpression.Validate(bodypropertieshsIpTimezone, nameof(bodypropertieshsIpTimezone), required: false);
-            SourceExpression.Validate(bodypropertieshsIsUnworked, nameof(bodypropertieshsIsUnworked), required: false);
-            SourceExpression.Validate(bodypropertieshsLanguage, nameof(bodypropertieshsLanguage), required: false);
-            SourceExpression.Validate(bodypropertieshsLastSalesActivityTimestamp, nameof(bodypropertieshsLastSalesActivityTimestamp), required: false);
-            SourceExpression.Validate(bodypropertieshsLeadStatus, nameof(bodypropertieshsLeadStatus), required: false);
-            SourceExpression.Validate(bodypropertieshsLegalBasis, nameof(bodypropertieshsLegalBasis), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageCustomerDate, nameof(bodypropertieshsLifecyclestageCustomerDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageEvangelistDate, nameof(bodypropertieshsLifecyclestageEvangelistDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageLeadDate, nameof(bodypropertieshsLifecyclestageLeadDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageMarketingqualifiedleadDate, nameof(bodypropertieshsLifecyclestageMarketingqualifiedleadDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageOpportunityDate, nameof(bodypropertieshsLifecyclestageOpportunityDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageOtherDate, nameof(bodypropertieshsLifecyclestageOtherDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageSalesqualifiedleadDate, nameof(bodypropertieshsLifecyclestageSalesqualifiedleadDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLifecyclestageSubscriberDate, nameof(bodypropertieshsLifecyclestageSubscriberDate), required: false);
-            SourceExpression.Validate(bodypropertieshsMarketableReasonId, nameof(bodypropertieshsMarketableReasonId), required: false);
-            SourceExpression.Validate(bodypropertieshsMarketableReasonType, nameof(bodypropertieshsMarketableReasonType), required: false);
-            SourceExpression.Validate(bodypropertieshsMarketableStatus, nameof(bodypropertieshsMarketableStatus), required: false);
-            SourceExpression.Validate(bodypropertieshsMarketableUntilRenewal, nameof(bodypropertieshsMarketableUntilRenewal), required: false);
-            SourceExpression.Validate(bodypropertieshsObjectId, nameof(bodypropertieshsObjectId), required: false);
-            SourceExpression.Validate(bodypropertieshsPersona, nameof(bodypropertieshsPersona), required: false);
-            SourceExpression.Validate(bodypropertieshsPredictivecontactscore, nameof(bodypropertieshsPredictivecontactscore), required: false);
-            SourceExpression.Validate(bodypropertieshsPredictivecontactscoreV2, nameof(bodypropertieshsPredictivecontactscoreV2), required: false);
-            SourceExpression.Validate(bodypropertieshsPredictivecontactscorebucket, nameof(bodypropertieshsPredictivecontactscorebucket), required: false);
-            SourceExpression.Validate(bodypropertieshsPredictivescoringtier, nameof(bodypropertieshsPredictivescoringtier), required: false);
-            SourceExpression.Validate(bodypropertieshsSalesEmailLastClicked, nameof(bodypropertieshsSalesEmailLastClicked), required: false);
-            SourceExpression.Validate(bodypropertieshsSalesEmailLastOpened, nameof(bodypropertieshsSalesEmailLastOpened), required: false);
-            SourceExpression.Validate(bodypropertieshsSalesEmailLastReplied, nameof(bodypropertieshsSalesEmailLastReplied), required: false);
-            SourceExpression.Validate(bodypropertieshsSequencesIsEnrolled, nameof(bodypropertieshsSequencesIsEnrolled), required: false);
-            SourceExpression.Validate(bodypropertieshsTimeBetweenContactCreationAndDealClose, nameof(bodypropertieshsTimeBetweenContactCreationAndDealClose), required: false);
-            SourceExpression.Validate(bodypropertieshsTimeBetweenContactCreationAndDealCreation, nameof(bodypropertieshsTimeBetweenContactCreationAndDealCreation), required: false);
-            SourceExpression.Validate(bodypropertieshsTimeToMoveFromLeadToCustomer, nameof(bodypropertieshsTimeToMoveFromLeadToCustomer), required: false);
-            SourceExpression.Validate(bodypropertieshsTimeToMoveFromMarketingqualifiedleadToCustomer, nameof(bodypropertieshsTimeToMoveFromMarketingqualifiedleadToCustomer), required: false);
-            SourceExpression.Validate(bodypropertieshsTimeToMoveFromOpportunityToCustomer, nameof(bodypropertieshsTimeToMoveFromOpportunityToCustomer), required: false);
-            SourceExpression.Validate(bodypropertieshsTimeToMoveFromSalesqualifiedleadToCustomer, nameof(bodypropertieshsTimeToMoveFromSalesqualifiedleadToCustomer), required: false);
-            SourceExpression.Validate(bodypropertieshsTimeToMoveFromSubscriberToCustomer, nameof(bodypropertieshsTimeToMoveFromSubscriberToCustomer), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerAssigneddate, nameof(bodypropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerId, nameof(bodypropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(bodypropertieshubspotTeamId, nameof(bodypropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(bodypropertieshubspotscore, nameof(bodypropertieshubspotscore), required: false);
-            SourceExpression.Validate(bodypropertiesindustry, nameof(bodypropertiesindustry), required: false);
-            SourceExpression.Validate(bodypropertiesipCity, nameof(bodypropertiesipCity), required: false);
-            SourceExpression.Validate(bodypropertiesipCountry, nameof(bodypropertiesipCountry), required: false);
-            SourceExpression.Validate(bodypropertiesipCountryCode, nameof(bodypropertiesipCountryCode), required: false);
-            SourceExpression.Validate(bodypropertiesipState, nameof(bodypropertiesipState), required: false);
-            SourceExpression.Validate(bodypropertiesipStateCode, nameof(bodypropertiesipStateCode), required: false);
-            SourceExpression.Validate(bodypropertiesjobFunction, nameof(bodypropertiesjobFunction), required: false);
-            SourceExpression.Validate(bodypropertiesjobtitle, nameof(bodypropertiesjobtitle), required: false);
-            SourceExpression.Validate(bodypropertieslastmodifieddate, nameof(bodypropertieslastmodifieddate), required: false);
-            SourceExpression.Validate(bodypropertieslastname, nameof(bodypropertieslastname), required: false);
-            SourceExpression.Validate(bodypropertieslifecyclestage, nameof(bodypropertieslifecyclestage), required: false);
-            SourceExpression.Validate(bodypropertiesmaritalStatus, nameof(bodypropertiesmaritalStatus), required: false);
-            SourceExpression.Validate(bodypropertiesmessage, nameof(bodypropertiesmessage), required: false);
-            SourceExpression.Validate(bodypropertiesmilitaryStatus, nameof(bodypropertiesmilitaryStatus), required: false);
-            SourceExpression.Validate(bodypropertiesmobilephone, nameof(bodypropertiesmobilephone), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastContacted, nameof(bodypropertiesnotesLastContacted), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastUpdated, nameof(bodypropertiesnotesLastUpdated), required: false);
-            SourceExpression.Validate(bodypropertiesnotesNextActivityDate, nameof(bodypropertiesnotesNextActivityDate), required: false);
-            SourceExpression.Validate(bodypropertiesnumAssociatedDeals, nameof(bodypropertiesnumAssociatedDeals), required: false);
-            SourceExpression.Validate(bodypropertiesnumContactedNotes, nameof(bodypropertiesnumContactedNotes), required: false);
-            SourceExpression.Validate(bodypropertiesnumConversionEvents, nameof(bodypropertiesnumConversionEvents), required: false);
-            SourceExpression.Validate(bodypropertiesnumNotes, nameof(bodypropertiesnumNotes), required: false);
-            SourceExpression.Validate(bodypropertiesnumUniqueConversionEvents, nameof(bodypropertiesnumUniqueConversionEvents), required: false);
-            SourceExpression.Validate(bodypropertiesnumemployees, nameof(bodypropertiesnumemployees), required: false);
-            SourceExpression.Validate(bodypropertiesphone, nameof(bodypropertiesphone), required: false);
-            SourceExpression.Validate(bodypropertiesrecentConversionDate, nameof(bodypropertiesrecentConversionDate), required: false);
-            SourceExpression.Validate(bodypropertiesrecentConversionEventName, nameof(bodypropertiesrecentConversionEventName), required: false);
-            SourceExpression.Validate(bodypropertiesrecentDealAmount, nameof(bodypropertiesrecentDealAmount), required: false);
-            SourceExpression.Validate(bodypropertiesrecentDealCloseDate, nameof(bodypropertiesrecentDealCloseDate), required: false);
-            SourceExpression.Validate(bodypropertiesrelationshipStatus, nameof(bodypropertiesrelationshipStatus), required: false);
-            SourceExpression.Validate(bodypropertiessalutation, nameof(bodypropertiessalutation), required: false);
-            SourceExpression.Validate(bodypropertiesschool, nameof(bodypropertiesschool), required: false);
-            SourceExpression.Validate(bodypropertiesseniority, nameof(bodypropertiesseniority), required: false);
-            SourceExpression.Validate(bodypropertiesstartDate, nameof(bodypropertiesstartDate), required: false);
-            SourceExpression.Validate(bodypropertiesstate, nameof(bodypropertiesstate), required: false);
-            SourceExpression.Validate(bodypropertiestotalRevenue, nameof(bodypropertiestotalRevenue), required: false);
-            SourceExpression.Validate(bodypropertiestwitterhandle, nameof(bodypropertiestwitterhandle), required: false);
-            SourceExpression.Validate(bodypropertieswebsite, nameof(bodypropertieswebsite), required: false);
-            SourceExpression.Validate(bodypropertiesworkEmail, nameof(bodypropertiesworkEmail), required: false);
-            SourceExpression.Validate(bodypropertieszip, nameof(bodypropertieszip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/contacts";
@@ -2473,7 +2134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ContactsRead([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -2488,7 +2148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ContactsArchive([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -2503,166 +2162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ContactsUpdate([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> propertiespropertiesaddress = null, [WorkflowExpression] Func<string> propertiespropertiesannualrevenue = null, [WorkflowExpression] Func<string> propertiespropertiescity = null, [WorkflowExpression] Func<string> propertiespropertiesclosedate = null, [WorkflowExpression] Func<string> propertiespropertiescompany = null, [WorkflowExpression] Func<string> propertiespropertiescompanySize = null, [WorkflowExpression] Func<string> propertiespropertiescountry = null, [WorkflowExpression] Func<string> propertiespropertiescreatedate = null, [WorkflowExpression] Func<string> propertiespropertiescurrentlyinworkflow = null, [WorkflowExpression] Func<string> propertiespropertiesdateOfBirth = null, [WorkflowExpression] Func<string> propertiespropertiesdaysToClose = null, [WorkflowExpression] Func<string> propertiespropertiesdegree = null, [WorkflowExpression] Func<string> propertiespropertiesemail = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBooked = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBookedCampaign = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBookedMedium = null, [WorkflowExpression] Func<string> propertiespropertiesengagementsLastMeetingBookedSource = null, [WorkflowExpression] Func<string> propertiespropertiesfax = null, [WorkflowExpression] Func<string> propertiespropertiesfieldOfStudy = null, [WorkflowExpression] Func<string> propertiespropertiesfirstConversionDate = null, [WorkflowExpression] Func<string> propertiespropertiesfirstConversionEventName = null, [WorkflowExpression] Func<string> propertiespropertiesfirstDealCreatedDate = null, [WorkflowExpression] Func<string> propertiespropertiesfirstname = null, [WorkflowExpression] Func<string> propertiespropertiesgender = null, [WorkflowExpression] Func<string> propertiespropertiesgraduationDate = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsAveragePageViews = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstReferrer = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstTouchConvertingCampaign = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstUrl = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsFirstVisitTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastReferrer = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastTouchConvertingCampaign = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastUrl = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsLastVisitTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsNumEventCompletions = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsNumPageViews = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsNumVisits = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsRevenue = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsSource = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsSourceData1 = null, [WorkflowExpression] Func<string> propertiespropertieshsAnalyticsSourceData2 = null, [WorkflowExpression] Func<string> propertiespropertieshsBuyingRole = null, [WorkflowExpression] Func<string> propertiespropertieshsContentMembershipEmailConfirmed = null, [WorkflowExpression] Func<string> propertiespropertieshsContentMembershipNotes = null, [WorkflowExpression] Func<string> propertiespropertieshsContentMembershipRegisteredAt = null, [WorkflowExpression] Func<string> propertiespropertieshsContentMembershipRegistrationDomainSentTo = null, [WorkflowExpression] Func<string> propertiespropertieshsContentMembershipRegistrationEmailSentAt = null, [WorkflowExpression] Func<string> propertiespropertieshsContentMembershipStatus = null, [WorkflowExpression] Func<string> propertiespropertieshsCreatedate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailBadAddress = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailBounce = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailClick = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailCustomerQuarantinedReason = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailDelivered = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailDomain = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailFirstClickDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailFirstOpenDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailFirstReplyDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailFirstSendDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailHardBounceReasonEnum = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailLastClickDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailLastEmailName = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailLastOpenDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailLastReplyDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailLastSendDate = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailOpen = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailOptout = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailOptout12592317 = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailQuarantined = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailQuarantinedReason = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailReplied = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailSendsSinceLastEngagement = null, [WorkflowExpression] Func<string> propertiespropertieshsEmailconfirmationstatus = null, [WorkflowExpression] Func<string> propertiespropertieshsFacebookClickId = null, [WorkflowExpression] Func<string> propertiespropertieshsFeedbackLastNpsFollowUp = null, [WorkflowExpression] Func<string> propertiespropertieshsFeedbackLastNpsRating = null, [WorkflowExpression] Func<string> propertiespropertieshsFeedbackLastSurveyDate = null, [WorkflowExpression] Func<string> propertiespropertieshsGoogleClickId = null, [WorkflowExpression] Func<string> propertiespropertieshsIpTimezone = null, [WorkflowExpression] Func<string> propertiespropertieshsIsUnworked = null, [WorkflowExpression] Func<string> propertiespropertieshsLanguage = null, [WorkflowExpression] Func<string> propertiespropertieshsLastSalesActivityTimestamp = null, [WorkflowExpression] Func<string> propertiespropertieshsLeadStatus = null, [WorkflowExpression] Func<string> propertiespropertieshsLegalBasis = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageCustomerDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageEvangelistDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageLeadDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageMarketingqualifiedleadDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageOpportunityDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageOtherDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageSalesqualifiedleadDate = null, [WorkflowExpression] Func<string> propertiespropertieshsLifecyclestageSubscriberDate = null, [WorkflowExpression] Func<string> propertiespropertieshsMarketableReasonId = null, [WorkflowExpression] Func<string> propertiespropertieshsMarketableReasonType = null, [WorkflowExpression] Func<string> propertiespropertieshsMarketableStatus = null, [WorkflowExpression] Func<string> propertiespropertieshsMarketableUntilRenewal = null, [WorkflowExpression] Func<string> propertiespropertieshsObjectId = null, [WorkflowExpression] Func<string> propertiespropertieshsPersona = null, [WorkflowExpression] Func<string> propertiespropertieshsPredictivecontactscore = null, [WorkflowExpression] Func<string> propertiespropertieshsPredictivecontactscoreV2 = null, [WorkflowExpression] Func<string> propertiespropertieshsPredictivecontactscorebucket = null, [WorkflowExpression] Func<string> propertiespropertieshsPredictivescoringtier = null, [WorkflowExpression] Func<string> propertiespropertieshsSalesEmailLastClicked = null, [WorkflowExpression] Func<string> propertiespropertieshsSalesEmailLastOpened = null, [WorkflowExpression] Func<string> propertiespropertieshsSalesEmailLastReplied = null, [WorkflowExpression] Func<string> propertiespropertieshsSequencesIsEnrolled = null, [WorkflowExpression] Func<string> propertiespropertieshsTimeBetweenContactCreationAndDealClose = null, [WorkflowExpression] Func<string> propertiespropertieshsTimeBetweenContactCreationAndDealCreation = null, [WorkflowExpression] Func<string> propertiespropertieshsTimeToMoveFromLeadToCustomer = null, [WorkflowExpression] Func<string> propertiespropertieshsTimeToMoveFromMarketingqualifiedleadToCustomer = null, [WorkflowExpression] Func<string> propertiespropertieshsTimeToMoveFromOpportunityToCustomer = null, [WorkflowExpression] Func<string> propertiespropertieshsTimeToMoveFromSalesqualifiedleadToCustomer = null, [WorkflowExpression] Func<string> propertiespropertieshsTimeToMoveFromSubscriberToCustomer = null, [WorkflowExpression] Func<string> propertiespropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> propertiespropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> propertiespropertieshubspotTeamId = null, [WorkflowExpression] Func<string> propertiespropertieshubspotscore = null, [WorkflowExpression] Func<string> propertiespropertiesindustry = null, [WorkflowExpression] Func<string> propertiespropertiesipCity = null, [WorkflowExpression] Func<string> propertiespropertiesipCountry = null, [WorkflowExpression] Func<string> propertiespropertiesipCountryCode = null, [WorkflowExpression] Func<string> propertiespropertiesipState = null, [WorkflowExpression] Func<string> propertiespropertiesipStateCode = null, [WorkflowExpression] Func<string> propertiespropertiesjobFunction = null, [WorkflowExpression] Func<string> propertiespropertiesjobtitle = null, [WorkflowExpression] Func<string> propertiespropertieslastmodifieddate = null, [WorkflowExpression] Func<string> propertiespropertieslastname = null, [WorkflowExpression] Func<string> propertiespropertieslifecyclestage = null, [WorkflowExpression] Func<string> propertiespropertiesmaritalStatus = null, [WorkflowExpression] Func<string> propertiespropertiesmessage = null, [WorkflowExpression] Func<string> propertiespropertiesmilitaryStatus = null, [WorkflowExpression] Func<string> propertiespropertiesmobilephone = null, [WorkflowExpression] Func<string> propertiespropertiesnotesLastContacted = null, [WorkflowExpression] Func<string> propertiespropertiesnotesLastUpdated = null, [WorkflowExpression] Func<string> propertiespropertiesnotesNextActivityDate = null, [WorkflowExpression] Func<string> propertiespropertiesnumAssociatedDeals = null, [WorkflowExpression] Func<string> propertiespropertiesnumContactedNotes = null, [WorkflowExpression] Func<string> propertiespropertiesnumConversionEvents = null, [WorkflowExpression] Func<string> propertiespropertiesnumNotes = null, [WorkflowExpression] Func<string> propertiespropertiesnumUniqueConversionEvents = null, [WorkflowExpression] Func<string> propertiespropertiesnumemployees = null, [WorkflowExpression] Func<string> propertiespropertiesphone = null, [WorkflowExpression] Func<string> propertiespropertiesrecentConversionDate = null, [WorkflowExpression] Func<string> propertiespropertiesrecentConversionEventName = null, [WorkflowExpression] Func<string> propertiespropertiesrecentDealAmount = null, [WorkflowExpression] Func<string> propertiespropertiesrecentDealCloseDate = null, [WorkflowExpression] Func<string> propertiespropertiesrelationshipStatus = null, [WorkflowExpression] Func<string> propertiespropertiessalutation = null, [WorkflowExpression] Func<string> propertiespropertiesschool = null, [WorkflowExpression] Func<string> propertiespropertiesseniority = null, [WorkflowExpression] Func<string> propertiespropertiesstartDate = null, [WorkflowExpression] Func<string> propertiespropertiesstate = null, [WorkflowExpression] Func<string> propertiespropertiestotalRevenue = null, [WorkflowExpression] Func<string> propertiespropertiestwitterhandle = null, [WorkflowExpression] Func<string> propertiespropertieswebsite = null, [WorkflowExpression] Func<string> propertiespropertiesworkEmail = null, [WorkflowExpression] Func<string> propertiespropertieszip = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(propertiespropertiesaddress, nameof(propertiespropertiesaddress), required: false);
-            SourceExpression.Validate(propertiespropertiesannualrevenue, nameof(propertiespropertiesannualrevenue), required: false);
-            SourceExpression.Validate(propertiespropertiescity, nameof(propertiespropertiescity), required: false);
-            SourceExpression.Validate(propertiespropertiesclosedate, nameof(propertiespropertiesclosedate), required: false);
-            SourceExpression.Validate(propertiespropertiescompany, nameof(propertiespropertiescompany), required: false);
-            SourceExpression.Validate(propertiespropertiescompanySize, nameof(propertiespropertiescompanySize), required: false);
-            SourceExpression.Validate(propertiespropertiescountry, nameof(propertiespropertiescountry), required: false);
-            SourceExpression.Validate(propertiespropertiescreatedate, nameof(propertiespropertiescreatedate), required: false);
-            SourceExpression.Validate(propertiespropertiescurrentlyinworkflow, nameof(propertiespropertiescurrentlyinworkflow), required: false);
-            SourceExpression.Validate(propertiespropertiesdateOfBirth, nameof(propertiespropertiesdateOfBirth), required: false);
-            SourceExpression.Validate(propertiespropertiesdaysToClose, nameof(propertiespropertiesdaysToClose), required: false);
-            SourceExpression.Validate(propertiespropertiesdegree, nameof(propertiespropertiesdegree), required: false);
-            SourceExpression.Validate(propertiespropertiesemail, nameof(propertiespropertiesemail), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBooked, nameof(propertiespropertiesengagementsLastMeetingBooked), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBookedCampaign, nameof(propertiespropertiesengagementsLastMeetingBookedCampaign), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBookedMedium, nameof(propertiespropertiesengagementsLastMeetingBookedMedium), required: false);
-            SourceExpression.Validate(propertiespropertiesengagementsLastMeetingBookedSource, nameof(propertiespropertiesengagementsLastMeetingBookedSource), required: false);
-            SourceExpression.Validate(propertiespropertiesfax, nameof(propertiespropertiesfax), required: false);
-            SourceExpression.Validate(propertiespropertiesfieldOfStudy, nameof(propertiespropertiesfieldOfStudy), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstConversionDate, nameof(propertiespropertiesfirstConversionDate), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstConversionEventName, nameof(propertiespropertiesfirstConversionEventName), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstDealCreatedDate, nameof(propertiespropertiesfirstDealCreatedDate), required: false);
-            SourceExpression.Validate(propertiespropertiesfirstname, nameof(propertiespropertiesfirstname), required: false);
-            SourceExpression.Validate(propertiespropertiesgender, nameof(propertiespropertiesgender), required: false);
-            SourceExpression.Validate(propertiespropertiesgraduationDate, nameof(propertiespropertiesgraduationDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsAveragePageViews, nameof(propertiespropertieshsAnalyticsAveragePageViews), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstReferrer, nameof(propertiespropertieshsAnalyticsFirstReferrer), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstTimestamp, nameof(propertiespropertieshsAnalyticsFirstTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstTouchConvertingCampaign, nameof(propertiespropertieshsAnalyticsFirstTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstUrl, nameof(propertiespropertieshsAnalyticsFirstUrl), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsFirstVisitTimestamp, nameof(propertiespropertieshsAnalyticsFirstVisitTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastReferrer, nameof(propertiespropertieshsAnalyticsLastReferrer), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastTimestamp, nameof(propertiespropertieshsAnalyticsLastTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastTouchConvertingCampaign, nameof(propertiespropertieshsAnalyticsLastTouchConvertingCampaign), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastUrl, nameof(propertiespropertieshsAnalyticsLastUrl), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsLastVisitTimestamp, nameof(propertiespropertieshsAnalyticsLastVisitTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsNumEventCompletions, nameof(propertiespropertieshsAnalyticsNumEventCompletions), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsNumPageViews, nameof(propertiespropertieshsAnalyticsNumPageViews), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsNumVisits, nameof(propertiespropertieshsAnalyticsNumVisits), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsRevenue, nameof(propertiespropertieshsAnalyticsRevenue), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsSource, nameof(propertiespropertieshsAnalyticsSource), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsSourceData1, nameof(propertiespropertieshsAnalyticsSourceData1), required: false);
-            SourceExpression.Validate(propertiespropertieshsAnalyticsSourceData2, nameof(propertiespropertieshsAnalyticsSourceData2), required: false);
-            SourceExpression.Validate(propertiespropertieshsBuyingRole, nameof(propertiespropertieshsBuyingRole), required: false);
-            SourceExpression.Validate(propertiespropertieshsContentMembershipEmailConfirmed, nameof(propertiespropertieshsContentMembershipEmailConfirmed), required: false);
-            SourceExpression.Validate(propertiespropertieshsContentMembershipNotes, nameof(propertiespropertieshsContentMembershipNotes), required: false);
-            SourceExpression.Validate(propertiespropertieshsContentMembershipRegisteredAt, nameof(propertiespropertieshsContentMembershipRegisteredAt), required: false);
-            SourceExpression.Validate(propertiespropertieshsContentMembershipRegistrationDomainSentTo, nameof(propertiespropertieshsContentMembershipRegistrationDomainSentTo), required: false);
-            SourceExpression.Validate(propertiespropertieshsContentMembershipRegistrationEmailSentAt, nameof(propertiespropertieshsContentMembershipRegistrationEmailSentAt), required: false);
-            SourceExpression.Validate(propertiespropertieshsContentMembershipStatus, nameof(propertiespropertieshsContentMembershipStatus), required: false);
-            SourceExpression.Validate(propertiespropertieshsCreatedate, nameof(propertiespropertieshsCreatedate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailBadAddress, nameof(propertiespropertieshsEmailBadAddress), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailBounce, nameof(propertiespropertieshsEmailBounce), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailClick, nameof(propertiespropertieshsEmailClick), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailCustomerQuarantinedReason, nameof(propertiespropertieshsEmailCustomerQuarantinedReason), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailDelivered, nameof(propertiespropertieshsEmailDelivered), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailDomain, nameof(propertiespropertieshsEmailDomain), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailFirstClickDate, nameof(propertiespropertieshsEmailFirstClickDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailFirstOpenDate, nameof(propertiespropertieshsEmailFirstOpenDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailFirstReplyDate, nameof(propertiespropertieshsEmailFirstReplyDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailFirstSendDate, nameof(propertiespropertieshsEmailFirstSendDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailHardBounceReasonEnum, nameof(propertiespropertieshsEmailHardBounceReasonEnum), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailLastClickDate, nameof(propertiespropertieshsEmailLastClickDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailLastEmailName, nameof(propertiespropertieshsEmailLastEmailName), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailLastOpenDate, nameof(propertiespropertieshsEmailLastOpenDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailLastReplyDate, nameof(propertiespropertieshsEmailLastReplyDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailLastSendDate, nameof(propertiespropertieshsEmailLastSendDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailOpen, nameof(propertiespropertieshsEmailOpen), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailOptout, nameof(propertiespropertieshsEmailOptout), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailOptout12592317, nameof(propertiespropertieshsEmailOptout12592317), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailQuarantined, nameof(propertiespropertieshsEmailQuarantined), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailQuarantinedReason, nameof(propertiespropertieshsEmailQuarantinedReason), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailReplied, nameof(propertiespropertieshsEmailReplied), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailSendsSinceLastEngagement, nameof(propertiespropertieshsEmailSendsSinceLastEngagement), required: false);
-            SourceExpression.Validate(propertiespropertieshsEmailconfirmationstatus, nameof(propertiespropertieshsEmailconfirmationstatus), required: false);
-            SourceExpression.Validate(propertiespropertieshsFacebookClickId, nameof(propertiespropertieshsFacebookClickId), required: false);
-            SourceExpression.Validate(propertiespropertieshsFeedbackLastNpsFollowUp, nameof(propertiespropertieshsFeedbackLastNpsFollowUp), required: false);
-            SourceExpression.Validate(propertiespropertieshsFeedbackLastNpsRating, nameof(propertiespropertieshsFeedbackLastNpsRating), required: false);
-            SourceExpression.Validate(propertiespropertieshsFeedbackLastSurveyDate, nameof(propertiespropertieshsFeedbackLastSurveyDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsGoogleClickId, nameof(propertiespropertieshsGoogleClickId), required: false);
-            SourceExpression.Validate(propertiespropertieshsIpTimezone, nameof(propertiespropertieshsIpTimezone), required: false);
-            SourceExpression.Validate(propertiespropertieshsIsUnworked, nameof(propertiespropertieshsIsUnworked), required: false);
-            SourceExpression.Validate(propertiespropertieshsLanguage, nameof(propertiespropertieshsLanguage), required: false);
-            SourceExpression.Validate(propertiespropertieshsLastSalesActivityTimestamp, nameof(propertiespropertieshsLastSalesActivityTimestamp), required: false);
-            SourceExpression.Validate(propertiespropertieshsLeadStatus, nameof(propertiespropertieshsLeadStatus), required: false);
-            SourceExpression.Validate(propertiespropertieshsLegalBasis, nameof(propertiespropertieshsLegalBasis), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageCustomerDate, nameof(propertiespropertieshsLifecyclestageCustomerDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageEvangelistDate, nameof(propertiespropertieshsLifecyclestageEvangelistDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageLeadDate, nameof(propertiespropertieshsLifecyclestageLeadDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageMarketingqualifiedleadDate, nameof(propertiespropertieshsLifecyclestageMarketingqualifiedleadDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageOpportunityDate, nameof(propertiespropertieshsLifecyclestageOpportunityDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageOtherDate, nameof(propertiespropertieshsLifecyclestageOtherDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageSalesqualifiedleadDate, nameof(propertiespropertieshsLifecyclestageSalesqualifiedleadDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsLifecyclestageSubscriberDate, nameof(propertiespropertieshsLifecyclestageSubscriberDate), required: false);
-            SourceExpression.Validate(propertiespropertieshsMarketableReasonId, nameof(propertiespropertieshsMarketableReasonId), required: false);
-            SourceExpression.Validate(propertiespropertieshsMarketableReasonType, nameof(propertiespropertieshsMarketableReasonType), required: false);
-            SourceExpression.Validate(propertiespropertieshsMarketableStatus, nameof(propertiespropertieshsMarketableStatus), required: false);
-            SourceExpression.Validate(propertiespropertieshsMarketableUntilRenewal, nameof(propertiespropertieshsMarketableUntilRenewal), required: false);
-            SourceExpression.Validate(propertiespropertieshsObjectId, nameof(propertiespropertieshsObjectId), required: false);
-            SourceExpression.Validate(propertiespropertieshsPersona, nameof(propertiespropertieshsPersona), required: false);
-            SourceExpression.Validate(propertiespropertieshsPredictivecontactscore, nameof(propertiespropertieshsPredictivecontactscore), required: false);
-            SourceExpression.Validate(propertiespropertieshsPredictivecontactscoreV2, nameof(propertiespropertieshsPredictivecontactscoreV2), required: false);
-            SourceExpression.Validate(propertiespropertieshsPredictivecontactscorebucket, nameof(propertiespropertieshsPredictivecontactscorebucket), required: false);
-            SourceExpression.Validate(propertiespropertieshsPredictivescoringtier, nameof(propertiespropertieshsPredictivescoringtier), required: false);
-            SourceExpression.Validate(propertiespropertieshsSalesEmailLastClicked, nameof(propertiespropertieshsSalesEmailLastClicked), required: false);
-            SourceExpression.Validate(propertiespropertieshsSalesEmailLastOpened, nameof(propertiespropertieshsSalesEmailLastOpened), required: false);
-            SourceExpression.Validate(propertiespropertieshsSalesEmailLastReplied, nameof(propertiespropertieshsSalesEmailLastReplied), required: false);
-            SourceExpression.Validate(propertiespropertieshsSequencesIsEnrolled, nameof(propertiespropertieshsSequencesIsEnrolled), required: false);
-            SourceExpression.Validate(propertiespropertieshsTimeBetweenContactCreationAndDealClose, nameof(propertiespropertieshsTimeBetweenContactCreationAndDealClose), required: false);
-            SourceExpression.Validate(propertiespropertieshsTimeBetweenContactCreationAndDealCreation, nameof(propertiespropertieshsTimeBetweenContactCreationAndDealCreation), required: false);
-            SourceExpression.Validate(propertiespropertieshsTimeToMoveFromLeadToCustomer, nameof(propertiespropertieshsTimeToMoveFromLeadToCustomer), required: false);
-            SourceExpression.Validate(propertiespropertieshsTimeToMoveFromMarketingqualifiedleadToCustomer, nameof(propertiespropertieshsTimeToMoveFromMarketingqualifiedleadToCustomer), required: false);
-            SourceExpression.Validate(propertiespropertieshsTimeToMoveFromOpportunityToCustomer, nameof(propertiespropertieshsTimeToMoveFromOpportunityToCustomer), required: false);
-            SourceExpression.Validate(propertiespropertieshsTimeToMoveFromSalesqualifiedleadToCustomer, nameof(propertiespropertieshsTimeToMoveFromSalesqualifiedleadToCustomer), required: false);
-            SourceExpression.Validate(propertiespropertieshsTimeToMoveFromSubscriberToCustomer, nameof(propertiespropertieshsTimeToMoveFromSubscriberToCustomer), required: false);
-            SourceExpression.Validate(propertiespropertieshubspotOwnerAssigneddate, nameof(propertiespropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(propertiespropertieshubspotOwnerId, nameof(propertiespropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(propertiespropertieshubspotTeamId, nameof(propertiespropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(propertiespropertieshubspotscore, nameof(propertiespropertieshubspotscore), required: false);
-            SourceExpression.Validate(propertiespropertiesindustry, nameof(propertiespropertiesindustry), required: false);
-            SourceExpression.Validate(propertiespropertiesipCity, nameof(propertiespropertiesipCity), required: false);
-            SourceExpression.Validate(propertiespropertiesipCountry, nameof(propertiespropertiesipCountry), required: false);
-            SourceExpression.Validate(propertiespropertiesipCountryCode, nameof(propertiespropertiesipCountryCode), required: false);
-            SourceExpression.Validate(propertiespropertiesipState, nameof(propertiespropertiesipState), required: false);
-            SourceExpression.Validate(propertiespropertiesipStateCode, nameof(propertiespropertiesipStateCode), required: false);
-            SourceExpression.Validate(propertiespropertiesjobFunction, nameof(propertiespropertiesjobFunction), required: false);
-            SourceExpression.Validate(propertiespropertiesjobtitle, nameof(propertiespropertiesjobtitle), required: false);
-            SourceExpression.Validate(propertiespropertieslastmodifieddate, nameof(propertiespropertieslastmodifieddate), required: false);
-            SourceExpression.Validate(propertiespropertieslastname, nameof(propertiespropertieslastname), required: false);
-            SourceExpression.Validate(propertiespropertieslifecyclestage, nameof(propertiespropertieslifecyclestage), required: false);
-            SourceExpression.Validate(propertiespropertiesmaritalStatus, nameof(propertiespropertiesmaritalStatus), required: false);
-            SourceExpression.Validate(propertiespropertiesmessage, nameof(propertiespropertiesmessage), required: false);
-            SourceExpression.Validate(propertiespropertiesmilitaryStatus, nameof(propertiespropertiesmilitaryStatus), required: false);
-            SourceExpression.Validate(propertiespropertiesmobilephone, nameof(propertiespropertiesmobilephone), required: false);
-            SourceExpression.Validate(propertiespropertiesnotesLastContacted, nameof(propertiespropertiesnotesLastContacted), required: false);
-            SourceExpression.Validate(propertiespropertiesnotesLastUpdated, nameof(propertiespropertiesnotesLastUpdated), required: false);
-            SourceExpression.Validate(propertiespropertiesnotesNextActivityDate, nameof(propertiespropertiesnotesNextActivityDate), required: false);
-            SourceExpression.Validate(propertiespropertiesnumAssociatedDeals, nameof(propertiespropertiesnumAssociatedDeals), required: false);
-            SourceExpression.Validate(propertiespropertiesnumContactedNotes, nameof(propertiespropertiesnumContactedNotes), required: false);
-            SourceExpression.Validate(propertiespropertiesnumConversionEvents, nameof(propertiespropertiesnumConversionEvents), required: false);
-            SourceExpression.Validate(propertiespropertiesnumNotes, nameof(propertiespropertiesnumNotes), required: false);
-            SourceExpression.Validate(propertiespropertiesnumUniqueConversionEvents, nameof(propertiespropertiesnumUniqueConversionEvents), required: false);
-            SourceExpression.Validate(propertiespropertiesnumemployees, nameof(propertiespropertiesnumemployees), required: false);
-            SourceExpression.Validate(propertiespropertiesphone, nameof(propertiespropertiesphone), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentConversionDate, nameof(propertiespropertiesrecentConversionDate), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentConversionEventName, nameof(propertiespropertiesrecentConversionEventName), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentDealAmount, nameof(propertiespropertiesrecentDealAmount), required: false);
-            SourceExpression.Validate(propertiespropertiesrecentDealCloseDate, nameof(propertiespropertiesrecentDealCloseDate), required: false);
-            SourceExpression.Validate(propertiespropertiesrelationshipStatus, nameof(propertiespropertiesrelationshipStatus), required: false);
-            SourceExpression.Validate(propertiespropertiessalutation, nameof(propertiespropertiessalutation), required: false);
-            SourceExpression.Validate(propertiespropertiesschool, nameof(propertiespropertiesschool), required: false);
-            SourceExpression.Validate(propertiespropertiesseniority, nameof(propertiespropertiesseniority), required: false);
-            SourceExpression.Validate(propertiespropertiesstartDate, nameof(propertiespropertiesstartDate), required: false);
-            SourceExpression.Validate(propertiespropertiesstate, nameof(propertiespropertiesstate), required: false);
-            SourceExpression.Validate(propertiespropertiestotalRevenue, nameof(propertiespropertiestotalRevenue), required: false);
-            SourceExpression.Validate(propertiespropertiestwitterhandle, nameof(propertiespropertiestwitterhandle), required: false);
-            SourceExpression.Validate(propertiespropertieswebsite, nameof(propertiespropertieswebsite), required: false);
-            SourceExpression.Validate(propertiespropertiesworkEmail, nameof(propertiespropertiesworkEmail), required: false);
-            SourceExpression.Validate(propertiespropertieszip, nameof(propertiespropertieszip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -3645,10 +3144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction DealsList([WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals";
@@ -3673,44 +3168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction DealsCreate([WorkflowExpression] Func<string> bodypropertiesamount = null, [WorkflowExpression] Func<string> bodypropertiesamountInHomeCurrency = null, [WorkflowExpression] Func<string> bodypropertiesclosedLostReason = null, [WorkflowExpression] Func<string> bodypropertiesclosedWonReason = null, [WorkflowExpression] Func<string> bodypropertiesclosedate = null, [WorkflowExpression] Func<string> bodypropertiescreatedate = null, [WorkflowExpression] Func<string> bodypropertiesdealname = null, [WorkflowExpression] Func<string> bodypropertiesdealstage = null, [WorkflowExpression] Func<string> bodypropertiesdealtype = null, [WorkflowExpression] Func<string> bodypropertiesdescription = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBooked = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedCampaign = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedMedium = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedSource = null, [WorkflowExpression] Func<string> bodypropertieshsAcv = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSource = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData1 = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData2 = null, [WorkflowExpression] Func<string> bodypropertieshsArr = null, [WorkflowExpression] Func<string> bodypropertieshsForecastAmount = null, [WorkflowExpression] Func<string> bodypropertieshsForecastProbability = null, [WorkflowExpression] Func<string> bodypropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> bodypropertieshsManualForecastCategory = null, [WorkflowExpression] Func<string> bodypropertieshsMrr = null, [WorkflowExpression] Func<string> bodypropertieshsNextStep = null, [WorkflowExpression] Func<string> bodypropertieshsObjectId = null, [WorkflowExpression] Func<string> bodypropertieshsPriority = null, [WorkflowExpression] Func<string> bodypropertieshsTcv = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> bodypropertieshubspotTeamId = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastContacted = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastUpdated = null, [WorkflowExpression] Func<string> bodypropertiesnotesNextActivityDate = null, [WorkflowExpression] Func<string> bodypropertiesnumAssociatedContacts = null, [WorkflowExpression] Func<string> bodypropertiesnumContactedNotes = null, [WorkflowExpression] Func<string> bodypropertiesnumNotes = null, [WorkflowExpression] Func<string> bodypropertiespipeline = null)
         {
-            SourceExpression.Validate(bodypropertiesamount, nameof(bodypropertiesamount), required: false);
-            SourceExpression.Validate(bodypropertiesamountInHomeCurrency, nameof(bodypropertiesamountInHomeCurrency), required: false);
-            SourceExpression.Validate(bodypropertiesclosedLostReason, nameof(bodypropertiesclosedLostReason), required: false);
-            SourceExpression.Validate(bodypropertiesclosedWonReason, nameof(bodypropertiesclosedWonReason), required: false);
-            SourceExpression.Validate(bodypropertiesclosedate, nameof(bodypropertiesclosedate), required: false);
-            SourceExpression.Validate(bodypropertiescreatedate, nameof(bodypropertiescreatedate), required: false);
-            SourceExpression.Validate(bodypropertiesdealname, nameof(bodypropertiesdealname), required: false);
-            SourceExpression.Validate(bodypropertiesdealstage, nameof(bodypropertiesdealstage), required: false);
-            SourceExpression.Validate(bodypropertiesdealtype, nameof(bodypropertiesdealtype), required: false);
-            SourceExpression.Validate(bodypropertiesdescription, nameof(bodypropertiesdescription), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBooked, nameof(bodypropertiesengagementsLastMeetingBooked), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedCampaign, nameof(bodypropertiesengagementsLastMeetingBookedCampaign), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedMedium, nameof(bodypropertiesengagementsLastMeetingBookedMedium), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedSource, nameof(bodypropertiesengagementsLastMeetingBookedSource), required: false);
-            SourceExpression.Validate(bodypropertieshsAcv, nameof(bodypropertieshsAcv), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSource, nameof(bodypropertieshsAnalyticsSource), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData1, nameof(bodypropertieshsAnalyticsSourceData1), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData2, nameof(bodypropertieshsAnalyticsSourceData2), required: false);
-            SourceExpression.Validate(bodypropertieshsArr, nameof(bodypropertieshsArr), required: false);
-            SourceExpression.Validate(bodypropertieshsForecastAmount, nameof(bodypropertieshsForecastAmount), required: false);
-            SourceExpression.Validate(bodypropertieshsForecastProbability, nameof(bodypropertieshsForecastProbability), required: false);
-            SourceExpression.Validate(bodypropertieshsLastmodifieddate, nameof(bodypropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(bodypropertieshsManualForecastCategory, nameof(bodypropertieshsManualForecastCategory), required: false);
-            SourceExpression.Validate(bodypropertieshsMrr, nameof(bodypropertieshsMrr), required: false);
-            SourceExpression.Validate(bodypropertieshsNextStep, nameof(bodypropertieshsNextStep), required: false);
-            SourceExpression.Validate(bodypropertieshsObjectId, nameof(bodypropertieshsObjectId), required: false);
-            SourceExpression.Validate(bodypropertieshsPriority, nameof(bodypropertieshsPriority), required: false);
-            SourceExpression.Validate(bodypropertieshsTcv, nameof(bodypropertieshsTcv), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerAssigneddate, nameof(bodypropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerId, nameof(bodypropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(bodypropertieshubspotTeamId, nameof(bodypropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastContacted, nameof(bodypropertiesnotesLastContacted), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastUpdated, nameof(bodypropertiesnotesLastUpdated), required: false);
-            SourceExpression.Validate(bodypropertiesnotesNextActivityDate, nameof(bodypropertiesnotesNextActivityDate), required: false);
-            SourceExpression.Validate(bodypropertiesnumAssociatedContacts, nameof(bodypropertiesnumAssociatedContacts), required: false);
-            SourceExpression.Validate(bodypropertiesnumContactedNotes, nameof(bodypropertiesnumContactedNotes), required: false);
-            SourceExpression.Validate(bodypropertiesnumNotes, nameof(bodypropertiesnumNotes), required: false);
-            SourceExpression.Validate(bodypropertiespipeline, nameof(bodypropertiespipeline), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/deals";
@@ -3967,9 +3424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction DealsRead([WorkflowExpression] Func<string> dealId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
@@ -3989,7 +3443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction DealsArchive([WorkflowExpression] Func<string> dealId)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
@@ -4004,45 +3457,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction DealsUpdate([WorkflowExpression] Func<string> dealId, [WorkflowExpression] Func<string> bodypropertiesamount = null, [WorkflowExpression] Func<string> bodypropertiesamountInHomeCurrency = null, [WorkflowExpression] Func<string> bodypropertiesclosedLostReason = null, [WorkflowExpression] Func<string> bodypropertiesclosedWonReason = null, [WorkflowExpression] Func<string> bodypropertiesclosedate = null, [WorkflowExpression] Func<string> bodypropertiescreatedate = null, [WorkflowExpression] Func<string> bodypropertiesdealname = null, [WorkflowExpression] Func<string> bodypropertiesdealstage = null, [WorkflowExpression] Func<string> bodypropertiesdealtype = null, [WorkflowExpression] Func<string> bodypropertiesdescription = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBooked = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedCampaign = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedMedium = null, [WorkflowExpression] Func<string> bodypropertiesengagementsLastMeetingBookedSource = null, [WorkflowExpression] Func<string> bodypropertieshsAcv = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSource = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData1 = null, [WorkflowExpression] Func<string> bodypropertieshsAnalyticsSourceData2 = null, [WorkflowExpression] Func<string> bodypropertieshsArr = null, [WorkflowExpression] Func<string> bodypropertieshsForecastAmount = null, [WorkflowExpression] Func<string> bodypropertieshsForecastProbability = null, [WorkflowExpression] Func<string> bodypropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> bodypropertieshsManualForecastCategory = null, [WorkflowExpression] Func<string> bodypropertieshsMrr = null, [WorkflowExpression] Func<string> bodypropertieshsNextStep = null, [WorkflowExpression] Func<string> bodypropertieshsObjectId = null, [WorkflowExpression] Func<string> bodypropertieshsPriority = null, [WorkflowExpression] Func<string> bodypropertieshsTcv = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> bodypropertieshubspotTeamId = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastContacted = null, [WorkflowExpression] Func<string> bodypropertiesnotesLastUpdated = null, [WorkflowExpression] Func<string> bodypropertiesnotesNextActivityDate = null, [WorkflowExpression] Func<string> bodypropertiesnumAssociatedContacts = null, [WorkflowExpression] Func<string> bodypropertiesnumContactedNotes = null, [WorkflowExpression] Func<string> bodypropertiesnumNotes = null, [WorkflowExpression] Func<string> bodypropertiespipeline = null)
         {
-            SourceExpression.Validate(dealId, nameof(dealId), required: true);
-            SourceExpression.Validate(bodypropertiesamount, nameof(bodypropertiesamount), required: false);
-            SourceExpression.Validate(bodypropertiesamountInHomeCurrency, nameof(bodypropertiesamountInHomeCurrency), required: false);
-            SourceExpression.Validate(bodypropertiesclosedLostReason, nameof(bodypropertiesclosedLostReason), required: false);
-            SourceExpression.Validate(bodypropertiesclosedWonReason, nameof(bodypropertiesclosedWonReason), required: false);
-            SourceExpression.Validate(bodypropertiesclosedate, nameof(bodypropertiesclosedate), required: false);
-            SourceExpression.Validate(bodypropertiescreatedate, nameof(bodypropertiescreatedate), required: false);
-            SourceExpression.Validate(bodypropertiesdealname, nameof(bodypropertiesdealname), required: false);
-            SourceExpression.Validate(bodypropertiesdealstage, nameof(bodypropertiesdealstage), required: false);
-            SourceExpression.Validate(bodypropertiesdealtype, nameof(bodypropertiesdealtype), required: false);
-            SourceExpression.Validate(bodypropertiesdescription, nameof(bodypropertiesdescription), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBooked, nameof(bodypropertiesengagementsLastMeetingBooked), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedCampaign, nameof(bodypropertiesengagementsLastMeetingBookedCampaign), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedMedium, nameof(bodypropertiesengagementsLastMeetingBookedMedium), required: false);
-            SourceExpression.Validate(bodypropertiesengagementsLastMeetingBookedSource, nameof(bodypropertiesengagementsLastMeetingBookedSource), required: false);
-            SourceExpression.Validate(bodypropertieshsAcv, nameof(bodypropertieshsAcv), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSource, nameof(bodypropertieshsAnalyticsSource), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData1, nameof(bodypropertieshsAnalyticsSourceData1), required: false);
-            SourceExpression.Validate(bodypropertieshsAnalyticsSourceData2, nameof(bodypropertieshsAnalyticsSourceData2), required: false);
-            SourceExpression.Validate(bodypropertieshsArr, nameof(bodypropertieshsArr), required: false);
-            SourceExpression.Validate(bodypropertieshsForecastAmount, nameof(bodypropertieshsForecastAmount), required: false);
-            SourceExpression.Validate(bodypropertieshsForecastProbability, nameof(bodypropertieshsForecastProbability), required: false);
-            SourceExpression.Validate(bodypropertieshsLastmodifieddate, nameof(bodypropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(bodypropertieshsManualForecastCategory, nameof(bodypropertieshsManualForecastCategory), required: false);
-            SourceExpression.Validate(bodypropertieshsMrr, nameof(bodypropertieshsMrr), required: false);
-            SourceExpression.Validate(bodypropertieshsNextStep, nameof(bodypropertieshsNextStep), required: false);
-            SourceExpression.Validate(bodypropertieshsObjectId, nameof(bodypropertieshsObjectId), required: false);
-            SourceExpression.Validate(bodypropertieshsPriority, nameof(bodypropertieshsPriority), required: false);
-            SourceExpression.Validate(bodypropertieshsTcv, nameof(bodypropertieshsTcv), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerAssigneddate, nameof(bodypropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerId, nameof(bodypropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(bodypropertieshubspotTeamId, nameof(bodypropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastContacted, nameof(bodypropertiesnotesLastContacted), required: false);
-            SourceExpression.Validate(bodypropertiesnotesLastUpdated, nameof(bodypropertiesnotesLastUpdated), required: false);
-            SourceExpression.Validate(bodypropertiesnotesNextActivityDate, nameof(bodypropertiesnotesNextActivityDate), required: false);
-            SourceExpression.Validate(bodypropertiesnumAssociatedContacts, nameof(bodypropertiesnumAssociatedContacts), required: false);
-            SourceExpression.Validate(bodypropertiesnumContactedNotes, nameof(bodypropertiesnumContactedNotes), required: false);
-            SourceExpression.Validate(bodypropertiesnumNotes, nameof(bodypropertiesnumNotes), required: false);
-            SourceExpression.Validate(bodypropertiespipeline, nameof(bodypropertiespipeline), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dealId, 1));
@@ -4299,9 +3713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ProductsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products";
@@ -4324,22 +3735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ProductsCreate([WorkflowExpression] Func<string> bodypropertiescreatedate = null, [WorkflowExpression] Func<string> bodypropertiesdescription = null, [WorkflowExpression] Func<string> bodypropertieshsCostOfGoodsSold = null, [WorkflowExpression] Func<string> bodypropertieshsCreatedByUserId = null, [WorkflowExpression] Func<string> bodypropertieshsCreatedate = null, [WorkflowExpression] Func<string> bodypropertieshsImages = null, [WorkflowExpression] Func<string> bodypropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> bodypropertieshsObjectId = null, [WorkflowExpression] Func<string> bodypropertieshsRecurringBillingPeriod = null, [WorkflowExpression] Func<string> bodypropertieshsSku = null, [WorkflowExpression] Func<string> bodypropertieshsUpdatedByUserId = null, [WorkflowExpression] Func<string> bodypropertieshsUrl = null, [WorkflowExpression] Func<string> bodypropertiesname = null, [WorkflowExpression] Func<string> bodypropertiesprice = null, [WorkflowExpression] Func<string> bodypropertiesrecurringbillingfrequency = null, [WorkflowExpression] Func<string> bodypropertiestax = null)
         {
-            SourceExpression.Validate(bodypropertiescreatedate, nameof(bodypropertiescreatedate), required: false);
-            SourceExpression.Validate(bodypropertiesdescription, nameof(bodypropertiesdescription), required: false);
-            SourceExpression.Validate(bodypropertieshsCostOfGoodsSold, nameof(bodypropertieshsCostOfGoodsSold), required: false);
-            SourceExpression.Validate(bodypropertieshsCreatedByUserId, nameof(bodypropertieshsCreatedByUserId), required: false);
-            SourceExpression.Validate(bodypropertieshsCreatedate, nameof(bodypropertieshsCreatedate), required: false);
-            SourceExpression.Validate(bodypropertieshsImages, nameof(bodypropertieshsImages), required: false);
-            SourceExpression.Validate(bodypropertieshsLastmodifieddate, nameof(bodypropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(bodypropertieshsObjectId, nameof(bodypropertieshsObjectId), required: false);
-            SourceExpression.Validate(bodypropertieshsRecurringBillingPeriod, nameof(bodypropertieshsRecurringBillingPeriod), required: false);
-            SourceExpression.Validate(bodypropertieshsSku, nameof(bodypropertieshsSku), required: false);
-            SourceExpression.Validate(bodypropertieshsUpdatedByUserId, nameof(bodypropertieshsUpdatedByUserId), required: false);
-            SourceExpression.Validate(bodypropertieshsUrl, nameof(bodypropertieshsUrl), required: false);
-            SourceExpression.Validate(bodypropertiesname, nameof(bodypropertiesname), required: false);
-            SourceExpression.Validate(bodypropertiesprice, nameof(bodypropertiesprice), required: false);
-            SourceExpression.Validate(bodypropertiesrecurringbillingfrequency, nameof(bodypropertiesrecurringbillingfrequency), required: false);
-            SourceExpression.Validate(bodypropertiestax, nameof(bodypropertiestax), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/products";
@@ -4464,9 +3859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ProductsRead([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
@@ -4486,7 +3878,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ProductsArchive([WorkflowExpression] Func<string> productId)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
@@ -4501,23 +3892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction ProductsUpdate([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> propertiespropertiescreatedate = null, [WorkflowExpression] Func<string> propertiespropertiesdescription = null, [WorkflowExpression] Func<string> propertiespropertieshsCostOfGoodsSold = null, [WorkflowExpression] Func<string> propertiespropertieshsCreatedByUserId = null, [WorkflowExpression] Func<string> propertiespropertieshsCreatedate = null, [WorkflowExpression] Func<string> propertiespropertieshsImages = null, [WorkflowExpression] Func<string> propertiespropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> propertiespropertieshsObjectId = null, [WorkflowExpression] Func<string> propertiespropertieshsRecurringBillingPeriod = null, [WorkflowExpression] Func<string> propertiespropertieshsSku = null, [WorkflowExpression] Func<string> propertiespropertieshsUpdatedByUserId = null, [WorkflowExpression] Func<string> propertiespropertieshsUrl = null, [WorkflowExpression] Func<string> propertiespropertiesname = null, [WorkflowExpression] Func<string> propertiespropertiesprice = null, [WorkflowExpression] Func<string> propertiespropertiesrecurringbillingfrequency = null, [WorkflowExpression] Func<string> propertiespropertiestax = null)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
-            SourceExpression.Validate(propertiespropertiescreatedate, nameof(propertiespropertiescreatedate), required: false);
-            SourceExpression.Validate(propertiespropertiesdescription, nameof(propertiespropertiesdescription), required: false);
-            SourceExpression.Validate(propertiespropertieshsCostOfGoodsSold, nameof(propertiespropertieshsCostOfGoodsSold), required: false);
-            SourceExpression.Validate(propertiespropertieshsCreatedByUserId, nameof(propertiespropertieshsCreatedByUserId), required: false);
-            SourceExpression.Validate(propertiespropertieshsCreatedate, nameof(propertiespropertieshsCreatedate), required: false);
-            SourceExpression.Validate(propertiespropertieshsImages, nameof(propertiespropertieshsImages), required: false);
-            SourceExpression.Validate(propertiespropertieshsLastmodifieddate, nameof(propertiespropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(propertiespropertieshsObjectId, nameof(propertiespropertieshsObjectId), required: false);
-            SourceExpression.Validate(propertiespropertieshsRecurringBillingPeriod, nameof(propertiespropertieshsRecurringBillingPeriod), required: false);
-            SourceExpression.Validate(propertiespropertieshsSku, nameof(propertiespropertieshsSku), required: false);
-            SourceExpression.Validate(propertiespropertieshsUpdatedByUserId, nameof(propertiespropertieshsUpdatedByUserId), required: false);
-            SourceExpression.Validate(propertiespropertieshsUrl, nameof(propertiespropertieshsUrl), required: false);
-            SourceExpression.Validate(propertiespropertiesname, nameof(propertiespropertiesname), required: false);
-            SourceExpression.Validate(propertiespropertiesprice, nameof(propertiespropertiesprice), required: false);
-            SourceExpression.Validate(propertiespropertiesrecurringbillingfrequency, nameof(propertiespropertiesrecurringbillingfrequency), required: false);
-            SourceExpression.Validate(propertiespropertiestax, nameof(propertiespropertiestax), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1));
@@ -4642,10 +4016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction LineItemsList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items";
@@ -4668,12 +4038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction LineItemsCreate([WorkflowExpression] Func<string> propertiespropertiesname = null, [WorkflowExpression] Func<string> propertiespropertieshsProductId = null, [WorkflowExpression] Func<string> propertiespropertieshsRecurringBillingPeriod = null, [WorkflowExpression] Func<string> propertiespropertiesrecurringbillingfrequency = null, [WorkflowExpression] Func<string> propertiespropertiesquantity = null, [WorkflowExpression] Func<string> propertiespropertiesprice = null)
         {
-            SourceExpression.Validate(propertiespropertiesname, nameof(propertiespropertiesname), required: false);
-            SourceExpression.Validate(propertiespropertieshsProductId, nameof(propertiespropertieshsProductId), required: false);
-            SourceExpression.Validate(propertiespropertieshsRecurringBillingPeriod, nameof(propertiespropertieshsRecurringBillingPeriod), required: false);
-            SourceExpression.Validate(propertiespropertiesrecurringbillingfrequency, nameof(propertiespropertiesrecurringbillingfrequency), required: false);
-            SourceExpression.Validate(propertiespropertiesquantity, nameof(propertiespropertiesquantity), required: false);
-            SourceExpression.Validate(propertiespropertiesprice, nameof(propertiespropertiesprice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/line_items";
@@ -4738,11 +4102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction LineItemsRead([WorkflowExpression] Func<string> lineItemId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<string> idProperty = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(lineItemId, nameof(lineItemId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
@@ -4765,7 +4124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction LineItemsArchive([WorkflowExpression] Func<string> lineItemId)
         {
-            SourceExpression.Validate(lineItemId, nameof(lineItemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
@@ -4780,14 +4138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction LineItemsUpdate([WorkflowExpression] Func<string> lineItemId, [WorkflowExpression] Func<string> idProperty = null, [WorkflowExpression] Func<string> bodypropertiesname = null, [WorkflowExpression] Func<string> bodypropertieshsProductId = null, [WorkflowExpression] Func<string> bodypropertieshsRecurringBillingPeriod = null, [WorkflowExpression] Func<string> bodypropertiesrecurringbillingfrequency = null, [WorkflowExpression] Func<string> bodypropertiesquantity = null, [WorkflowExpression] Func<string> bodypropertiesprice = null)
         {
-            SourceExpression.Validate(lineItemId, nameof(lineItemId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
-            SourceExpression.Validate(bodypropertiesname, nameof(bodypropertiesname), required: false);
-            SourceExpression.Validate(bodypropertieshsProductId, nameof(bodypropertieshsProductId), required: false);
-            SourceExpression.Validate(bodypropertieshsRecurringBillingPeriod, nameof(bodypropertieshsRecurringBillingPeriod), required: false);
-            SourceExpression.Validate(bodypropertiesrecurringbillingfrequency, nameof(bodypropertiesrecurringbillingfrequency), required: false);
-            SourceExpression.Validate(bodypropertiesquantity, nameof(bodypropertiesquantity), required: false);
-            SourceExpression.Validate(bodypropertiesprice, nameof(bodypropertiesprice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lineItemId, 1));
@@ -4854,10 +4204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction TicketsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(associations, nameof(associations), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets";
@@ -4882,35 +4228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction TicketsCreate([WorkflowExpression] Func<string> bodypropertiesclosedDate = null, [WorkflowExpression] Func<string> bodypropertiescreatedate = null, [WorkflowExpression] Func<string> bodypropertiesfirstAgentReplyDate = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastCesFollowUp = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastCesRating = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastSurveyDate = null, [WorkflowExpression] Func<string> bodypropertieshsLastactivitydate = null, [WorkflowExpression] Func<string> bodypropertieshsLastcontacted = null, [WorkflowExpression] Func<string> bodypropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> bodypropertieshsNextactivitydate = null, [WorkflowExpression] Func<string> bodypropertieshsNumTimesContacted = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> bodypropertieslastReplyDate = null, [WorkflowExpression] Func<string> bodypropertiesnumNotes = null, [WorkflowExpression] Func<string> bodypropertiestimeToClose = null, [WorkflowExpression] Func<string> bodypropertiestimeToFirstAgentReply = null, [WorkflowExpression] Func<string> bodypropertiescontent = null, [WorkflowExpression] Func<string> bodypropertieshsFileUpload = null, [WorkflowExpression] Func<string> bodypropertieshsNumAssociatedCompanies = null, [WorkflowExpression] Func<string> bodypropertieshsPipeline = null, [WorkflowExpression] Func<string> bodypropertieshsPipelineStage = null, [WorkflowExpression] Func<string> bodypropertieshsResolution = null, [WorkflowExpression] Func<string> bodypropertieshsTicketCategory = null, [WorkflowExpression] Func<string> bodypropertieshsTicketId = null, [WorkflowExpression] Func<string> bodypropertieshsTicketPriority = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> bodypropertieshubspotTeamId = null, [WorkflowExpression] Func<string> bodypropertiessourceType = null, [WorkflowExpression] Func<string> bodypropertiessubject = null)
         {
-            SourceExpression.Validate(bodypropertiesclosedDate, nameof(bodypropertiesclosedDate), required: false);
-            SourceExpression.Validate(bodypropertiescreatedate, nameof(bodypropertiescreatedate), required: false);
-            SourceExpression.Validate(bodypropertiesfirstAgentReplyDate, nameof(bodypropertiesfirstAgentReplyDate), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastCesFollowUp, nameof(bodypropertieshsFeedbackLastCesFollowUp), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastCesRating, nameof(bodypropertieshsFeedbackLastCesRating), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastSurveyDate, nameof(bodypropertieshsFeedbackLastSurveyDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLastactivitydate, nameof(bodypropertieshsLastactivitydate), required: false);
-            SourceExpression.Validate(bodypropertieshsLastcontacted, nameof(bodypropertieshsLastcontacted), required: false);
-            SourceExpression.Validate(bodypropertieshsLastmodifieddate, nameof(bodypropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(bodypropertieshsNextactivitydate, nameof(bodypropertieshsNextactivitydate), required: false);
-            SourceExpression.Validate(bodypropertieshsNumTimesContacted, nameof(bodypropertieshsNumTimesContacted), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerAssigneddate, nameof(bodypropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(bodypropertieslastReplyDate, nameof(bodypropertieslastReplyDate), required: false);
-            SourceExpression.Validate(bodypropertiesnumNotes, nameof(bodypropertiesnumNotes), required: false);
-            SourceExpression.Validate(bodypropertiestimeToClose, nameof(bodypropertiestimeToClose), required: false);
-            SourceExpression.Validate(bodypropertiestimeToFirstAgentReply, nameof(bodypropertiestimeToFirstAgentReply), required: false);
-            SourceExpression.Validate(bodypropertiescontent, nameof(bodypropertiescontent), required: false);
-            SourceExpression.Validate(bodypropertieshsFileUpload, nameof(bodypropertieshsFileUpload), required: false);
-            SourceExpression.Validate(bodypropertieshsNumAssociatedCompanies, nameof(bodypropertieshsNumAssociatedCompanies), required: false);
-            SourceExpression.Validate(bodypropertieshsPipeline, nameof(bodypropertieshsPipeline), required: false);
-            SourceExpression.Validate(bodypropertieshsPipelineStage, nameof(bodypropertieshsPipelineStage), required: false);
-            SourceExpression.Validate(bodypropertieshsResolution, nameof(bodypropertieshsResolution), required: false);
-            SourceExpression.Validate(bodypropertieshsTicketCategory, nameof(bodypropertieshsTicketCategory), required: false);
-            SourceExpression.Validate(bodypropertieshsTicketId, nameof(bodypropertieshsTicketId), required: false);
-            SourceExpression.Validate(bodypropertieshsTicketPriority, nameof(bodypropertieshsTicketPriority), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerId, nameof(bodypropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(bodypropertieshubspotTeamId, nameof(bodypropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(bodypropertiessourceType, nameof(bodypropertiessourceType), required: false);
-            SourceExpression.Validate(bodypropertiessubject, nameof(bodypropertiessubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crm/v3/objects/tickets";
@@ -5113,10 +4430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction TicketsRead([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(properties, nameof(properties), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
@@ -5138,7 +4451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction TicketsArchive([WorkflowExpression] Func<string> ticketId)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
@@ -5153,37 +4465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
         public IWorkflowAction TicketsUpdate([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> idProperty = null, [WorkflowExpression] Func<string> bodypropertiesclosedDate = null, [WorkflowExpression] Func<string> bodypropertiescreatedate = null, [WorkflowExpression] Func<string> bodypropertiesfirstAgentReplyDate = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastCesFollowUp = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastCesRating = null, [WorkflowExpression] Func<string> bodypropertieshsFeedbackLastSurveyDate = null, [WorkflowExpression] Func<string> bodypropertieshsLastactivitydate = null, [WorkflowExpression] Func<string> bodypropertieshsLastcontacted = null, [WorkflowExpression] Func<string> bodypropertieshsLastmodifieddate = null, [WorkflowExpression] Func<string> bodypropertieshsNextactivitydate = null, [WorkflowExpression] Func<string> bodypropertieshsNumTimesContacted = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerAssigneddate = null, [WorkflowExpression] Func<string> bodypropertieslastReplyDate = null, [WorkflowExpression] Func<string> bodypropertiesnumNotes = null, [WorkflowExpression] Func<string> bodypropertiestimeToClose = null, [WorkflowExpression] Func<string> bodypropertiestimeToFirstAgentReply = null, [WorkflowExpression] Func<string> bodypropertiescontent = null, [WorkflowExpression] Func<string> bodypropertieshsFileUpload = null, [WorkflowExpression] Func<string> bodypropertieshsNumAssociatedCompanies = null, [WorkflowExpression] Func<string> bodypropertieshsPipeline = null, [WorkflowExpression] Func<string> bodypropertieshsPipelineStage = null, [WorkflowExpression] Func<string> bodypropertieshsResolution = null, [WorkflowExpression] Func<string> bodypropertieshsTicketCategory = null, [WorkflowExpression] Func<string> bodypropertieshsTicketId = null, [WorkflowExpression] Func<string> bodypropertieshsTicketPriority = null, [WorkflowExpression] Func<string> bodypropertieshubspotOwnerId = null, [WorkflowExpression] Func<string> bodypropertieshubspotTeamId = null, [WorkflowExpression] Func<string> bodypropertiessourceType = null, [WorkflowExpression] Func<string> bodypropertiessubject = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(idProperty, nameof(idProperty), required: false);
-            SourceExpression.Validate(bodypropertiesclosedDate, nameof(bodypropertiesclosedDate), required: false);
-            SourceExpression.Validate(bodypropertiescreatedate, nameof(bodypropertiescreatedate), required: false);
-            SourceExpression.Validate(bodypropertiesfirstAgentReplyDate, nameof(bodypropertiesfirstAgentReplyDate), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastCesFollowUp, nameof(bodypropertieshsFeedbackLastCesFollowUp), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastCesRating, nameof(bodypropertieshsFeedbackLastCesRating), required: false);
-            SourceExpression.Validate(bodypropertieshsFeedbackLastSurveyDate, nameof(bodypropertieshsFeedbackLastSurveyDate), required: false);
-            SourceExpression.Validate(bodypropertieshsLastactivitydate, nameof(bodypropertieshsLastactivitydate), required: false);
-            SourceExpression.Validate(bodypropertieshsLastcontacted, nameof(bodypropertieshsLastcontacted), required: false);
-            SourceExpression.Validate(bodypropertieshsLastmodifieddate, nameof(bodypropertieshsLastmodifieddate), required: false);
-            SourceExpression.Validate(bodypropertieshsNextactivitydate, nameof(bodypropertieshsNextactivitydate), required: false);
-            SourceExpression.Validate(bodypropertieshsNumTimesContacted, nameof(bodypropertieshsNumTimesContacted), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerAssigneddate, nameof(bodypropertieshubspotOwnerAssigneddate), required: false);
-            SourceExpression.Validate(bodypropertieslastReplyDate, nameof(bodypropertieslastReplyDate), required: false);
-            SourceExpression.Validate(bodypropertiesnumNotes, nameof(bodypropertiesnumNotes), required: false);
-            SourceExpression.Validate(bodypropertiestimeToClose, nameof(bodypropertiestimeToClose), required: false);
-            SourceExpression.Validate(bodypropertiestimeToFirstAgentReply, nameof(bodypropertiestimeToFirstAgentReply), required: false);
-            SourceExpression.Validate(bodypropertiescontent, nameof(bodypropertiescontent), required: false);
-            SourceExpression.Validate(bodypropertieshsFileUpload, nameof(bodypropertieshsFileUpload), required: false);
-            SourceExpression.Validate(bodypropertieshsNumAssociatedCompanies, nameof(bodypropertieshsNumAssociatedCompanies), required: false);
-            SourceExpression.Validate(bodypropertieshsPipeline, nameof(bodypropertieshsPipeline), required: false);
-            SourceExpression.Validate(bodypropertieshsPipelineStage, nameof(bodypropertieshsPipelineStage), required: false);
-            SourceExpression.Validate(bodypropertieshsResolution, nameof(bodypropertieshsResolution), required: false);
-            SourceExpression.Validate(bodypropertieshsTicketCategory, nameof(bodypropertieshsTicketCategory), required: false);
-            SourceExpression.Validate(bodypropertieshsTicketId, nameof(bodypropertieshsTicketId), required: false);
-            SourceExpression.Validate(bodypropertieshsTicketPriority, nameof(bodypropertieshsTicketPriority), required: false);
-            SourceExpression.Validate(bodypropertieshubspotOwnerId, nameof(bodypropertieshubspotOwnerId), required: false);
-            SourceExpression.Validate(bodypropertieshubspotTeamId, nameof(bodypropertieshubspotTeamId), required: false);
-            SourceExpression.Validate(bodypropertiessourceType, nameof(bodypropertiessourceType), required: false);
-            SourceExpression.Validate(bodypropertiessubject, nameof(bodypropertiessubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));

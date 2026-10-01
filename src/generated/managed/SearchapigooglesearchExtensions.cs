@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<deviceInput> device = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<string> uule = null, [WorkflowExpression] Func<string> googleDomain = null, [WorkflowExpression] Func<string> gl = null, [WorkflowExpression] Func<string> hl = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> cr = null, [WorkflowExpression] Func<nfprInput> nfpr = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<safeInput> safe = null, [WorkflowExpression] Func<int> num = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(device, nameof(device), required: false);
-            SourceExpression.Validate(location, nameof(location), required: false);
-            SourceExpression.Validate(uule, nameof(uule), required: false);
-            SourceExpression.Validate(googleDomain, nameof(googleDomain), required: false);
-            SourceExpression.Validate(gl, nameof(gl), required: false);
-            SourceExpression.Validate(hl, nameof(hl), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(cr, nameof(cr), required: false);
-            SourceExpression.Validate(nfpr, nameof(nfpr), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(safe, nameof(safe), required: false);
-            SourceExpression.Validate(num, nameof(num), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";

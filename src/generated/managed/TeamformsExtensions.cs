@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<FormMeta[]> Forms([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/forms";
@@ -44,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<FormSchema> Form([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/form";
@@ -62,8 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<File[]> Files([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/files";
@@ -80,8 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<File> Pdf([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf";
@@ -98,8 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<string> PdfContent([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf-content";
@@ -116,9 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<JToken> Response([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> responseId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response";
@@ -138,10 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
     {
         public IWorkflowTrigger SubscribeResponse([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<environmentInput> environment = null, [WorkflowExpression] Func<triggersInput> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(environment, nameof(environment), required: false);
-            SourceExpression.Validate(triggers, nameof(triggers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response-subscription";
@@ -170,8 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 
         public IWorkflowTrigger SubscribeResponseDeletion([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response-deletion-subscription";

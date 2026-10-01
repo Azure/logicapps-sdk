@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksmuseumip")]
         public IBodyWorkflowAction<GetCollectionResponse> GetCollection([WorkflowExpression] Func<cultureInput> culture, [WorkflowExpression] Func<string> objectnumber = null, [WorkflowExpression] Func<string> involvedMaker = null, [WorkflowExpression] Func<int> p = null, [WorkflowExpression] Func<int> ps = null, [WorkflowExpression] Func<sInput> s = null, [WorkflowExpression] Func<bool> toppieces = null, [WorkflowExpression] Func<bool> imgoly = null, [WorkflowExpression] Func<int> fDatingPeriod = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> technique = null, [WorkflowExpression] Func<string> material = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> place = null)
         {
-            SourceExpression.Validate(culture, nameof(culture), required: true);
-            SourceExpression.Validate(objectnumber, nameof(objectnumber), required: false);
-            SourceExpression.Validate(involvedMaker, nameof(involvedMaker), required: false);
-            SourceExpression.Validate(p, nameof(p), required: false);
-            SourceExpression.Validate(ps, nameof(ps), required: false);
-            SourceExpression.Validate(s, nameof(s), required: false);
-            SourceExpression.Validate(toppieces, nameof(toppieces), required: false);
-            SourceExpression.Validate(imgoly, nameof(imgoly), required: false);
-            SourceExpression.Validate(fDatingPeriod, nameof(fDatingPeriod), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(technique, nameof(technique), required: false);
-            SourceExpression.Validate(material, nameof(material), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(place, nameof(place), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/{0}/collection/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(culture, 1));
@@ -72,12 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksmuseumip")]
         public IBodyWorkflowAction<GetUsersetsResponse> GetUsersets([WorkflowExpression] Func<cultureInput> culture, [WorkflowExpression] Func<int> userId, [WorkflowExpression] Func<string> collectionName, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(culture, nameof(culture), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(collectionName, nameof(collectionName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/{0}/usersets/{1}-{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(culture, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<JToken> FeatureLayerApplyEdits([WorkflowExpression] Func<string> appLayer, [WorkflowExpression] Func<object> data = null)
         {
-            SourceExpression.Validate(appLayer, nameof(appLayer), required: true);
-            SourceExpression.Validate(data, nameof(data), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/featureLayer/applyEdits";
@@ -32,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<JToken> GetFeatureLayerInfo([WorkflowExpression] Func<string> appLayer)
         {
-            SourceExpression.Validate(appLayer, nameof(appLayer), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/featureLayer/information";
@@ -48,10 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode([WorkflowExpression] Func<double> x, [WorkflowExpression] Func<double> y, [WorkflowExpression] Func<string> srs = null, [WorkflowExpression] Func<locationTypeInput> locationType = null)
         {
-            SourceExpression.Validate(x, nameof(x), required: true);
-            SourceExpression.Validate(y, nameof(y), required: true);
-            SourceExpression.Validate(srs, nameof(srs), required: false);
-            SourceExpression.Validate(locationType, nameof(locationType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/geocode/reverseGeocode";
@@ -73,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<JToken> GeometryService([WorkflowExpression] Func<string> operation, [WorkflowExpression] Func<object> data = null)
         {
-            SourceExpression.Validate(operation, nameof(operation), required: true);
-            SourceExpression.Validate(data, nameof(data), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/geometry/process";
@@ -91,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<TimeConversionHelperResponse> TimeConversionHelper([WorkflowExpression] Func<string> datadateTime)
         {
-            SourceExpression.Validate(datadateTime, nameof(datadateTime), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/helper/convertTime";
@@ -114,9 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<CreatePointGeometryHelperResponse> CreatePointGeometryHelper([WorkflowExpression] Func<double> x, [WorkflowExpression] Func<double> y, [WorkflowExpression] Func<string> srs = null)
         {
-            SourceExpression.Validate(x, nameof(x), required: true);
-            SourceExpression.Validate(y, nameof(y), required: true);
-            SourceExpression.Validate(srs, nameof(srs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/helper/createPointGeometry";
@@ -135,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<JToken> EXIF([WorkflowExpression] Func<string> data = null)
         {
-            SourceExpression.Validate(data, nameof(data), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/helper/exif";
@@ -151,7 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<JToken> GeocodeAddresses([WorkflowExpression] Func<string> dataaddresses)
         {
-            SourceExpression.Validate(dataaddresses, nameof(dataaddresses), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/geocode/geocodeAddresses";
@@ -174,11 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<GeoenrichV2Response> Geoenrich([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> datacollection, [WorkflowExpression] Func<string> parameter, [WorkflowExpression] Func<buffertypeInput> buffertype, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(datacollection, nameof(datacollection), required: true);
-            SourceExpression.Validate(parameter, nameof(parameter), required: true);
-            SourceExpression.Validate(buffertype, nameof(buffertype), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/geoenrichment/enrich";
@@ -198,11 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<GetRouteV2Response> GetRoute([WorkflowExpression] Func<string> routingroutingStops, [WorkflowExpression] Func<string> travelModeName = null, [WorkflowExpression] Func<bool> findBestSequence = null, [WorkflowExpression] Func<bool> preserveFirstStop = null, [WorkflowExpression] Func<bool> returnDirections = null)
         {
-            SourceExpression.Validate(routingroutingStops, nameof(routingroutingStops), required: true);
-            SourceExpression.Validate(travelModeName, nameof(travelModeName), required: false);
-            SourceExpression.Validate(findBestSequence, nameof(findBestSequence), required: false);
-            SourceExpression.Validate(preserveFirstStop, nameof(preserveFirstStop), required: false);
-            SourceExpression.Validate(returnDirections, nameof(returnDirections), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/routing";

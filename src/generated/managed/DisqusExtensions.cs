@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<CreatePostResponse> Create([WorkflowExpression] Func<string> thread, [WorkflowExpression] Func<string> message)
         {
-            SourceExpression.Validate(thread, nameof(thread), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/posts/create.json";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<CreatePostResponse> ReplyTo([WorkflowExpression] Func<string> parent, [WorkflowExpression] Func<string> message)
         {
-            SourceExpression.Validate(parent, nameof(parent), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reply/posts/create.json";
@@ -50,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<OperationResultResponse> Remove([WorkflowExpression] Func<string> post)
         {
-            SourceExpression.Validate(post, nameof(post), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/posts/remove.json";
@@ -82,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<EmptyResponse> SubscribeToThread([WorkflowExpression] Func<string> thread)
         {
-            SourceExpression.Validate(thread, nameof(thread), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads/subscribe.json";
@@ -98,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<OperationResultResponse> OpenThread([WorkflowExpression] Func<string> thread)
         {
-            SourceExpression.Validate(thread, nameof(thread), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads/open.json";
@@ -114,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<OperationResultResponse> CloseThread([WorkflowExpression] Func<string> thread)
         {
-            SourceExpression.Validate(thread, nameof(thread), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads/close.json";
@@ -130,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<RecommendThreadResponse> RecommendThread([WorkflowExpression] Func<string> thread)
         {
-            SourceExpression.Validate(thread, nameof(thread), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads/vote.json";
@@ -147,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<GetThreadResponse> GetThread([WorkflowExpression] Func<string> thread)
         {
-            SourceExpression.Validate(thread, nameof(thread), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads/details.json";
@@ -163,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<Thread[]> GetForumThreads([WorkflowExpression] Func<string> forum)
         {
-            SourceExpression.Validate(forum, nameof(forum), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/forums/listThreads.json";
@@ -183,8 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
     {
         public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> forum, [WorkflowExpression] Func<string> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(forum, nameof(forum), required: true);
-            SourceExpression.Validate(thread, nameof(thread), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/posts/list.json";
@@ -203,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 
         public IBodyWorkflowTrigger<Thread[]> OnThreadCreated([WorkflowExpression] Func<string> forum, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(forum, nameof(forum), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads/list.json";

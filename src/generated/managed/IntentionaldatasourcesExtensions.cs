@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<SingleEntity> SingleEntity([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> oDataQuery = null)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(service, nameof(service), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
@@ -38,11 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<SingleEntity> SingleEntityById([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> oDataQuery = null)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(service, nameof(service), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -60,11 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<ListEntity> ListEntity([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> oDataQuery = null)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(service, nameof(service), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
@@ -84,11 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<ListEntity> ListEntityById([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> oDataQuery = null)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(service, nameof(service), required: true);
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

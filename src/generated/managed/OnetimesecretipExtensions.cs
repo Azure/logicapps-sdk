@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<GenerateSecretResponse> GenerateSecret([WorkflowExpression] Func<string> passphrase = null, [WorkflowExpression] Func<int> ttl = null, [WorkflowExpression] Func<string> recipient = null)
         {
-            SourceExpression.Validate(passphrase, nameof(passphrase), required: false);
-            SourceExpression.Validate(ttl, nameof(ttl), required: false);
-            SourceExpression.Validate(recipient, nameof(recipient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/generate";
@@ -37,10 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<CreateSecretResponse> CreateSecret([WorkflowExpression] Func<string> secret, [WorkflowExpression] Func<string> ttl = null, [WorkflowExpression] Func<string> passphrase = null, [WorkflowExpression] Func<string> recipient = null)
         {
-            SourceExpression.Validate(secret, nameof(secret), required: true);
-            SourceExpression.Validate(ttl, nameof(ttl), required: false);
-            SourceExpression.Validate(passphrase, nameof(passphrase), required: false);
-            SourceExpression.Validate(recipient, nameof(recipient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/share";
@@ -62,8 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<RetrieveSecretResponse> RetrieveSecret([WorkflowExpression] Func<string> sECRETKEY, [WorkflowExpression] Func<string> passphrase = null)
         {
-            SourceExpression.Validate(sECRETKEY, nameof(sECRETKEY), required: true);
-            SourceExpression.Validate(passphrase, nameof(passphrase), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secret/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sECRETKEY, 1));
@@ -80,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<RetrieveMetadataResponse> RetrieveMetadata([WorkflowExpression] Func<string> mETADATAKEY)
         {
-            SourceExpression.Validate(mETADATAKEY, nameof(mETADATAKEY), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/private/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mETADATAKEY, 1));
@@ -95,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<BurnASecretResponse> BurnASecret([WorkflowExpression] Func<string> mETADATAKEY)
         {
-            SourceExpression.Validate(mETADATAKEY, nameof(mETADATAKEY), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/private/{0}/burn", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mETADATAKEY, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<MD4GETResponse> MD4GET([WorkflowExpression] Func<string> value)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/md4/hex";
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<MD4POSTResponse> MD4POST([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/md4/hex";
@@ -48,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<MD5GETResponse> MD5GET([WorkflowExpression] Func<string> value)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/md5/hex";
@@ -64,8 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<MD5POSTResponse> MD5POST([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/md5/hex";
@@ -82,10 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway256POSTResponse> Highway256POST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway/base64url";
@@ -104,10 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway256RandomPOSTResponse> Highway256RandomPOST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway/base32";
@@ -126,10 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway64RandomPOSTResponse> Highway64RandomPOST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway-64/base32";
@@ -148,8 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway128GETResponse> Highway128GET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway-128/hex";
@@ -166,10 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway128RandomPOSTResponse> Highway128RandomPOST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway-128/hex";
@@ -188,8 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway128RandomGETResponse> Highway128RandomGET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway128";
@@ -206,8 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway64RandomGETResponse> Highway64RandomGET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway64";
@@ -224,10 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway64POSTResponse> Highway64POST([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> xHashifyKey, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(xHashifyKey, nameof(xHashifyKey), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway64";
@@ -246,8 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<Highway256RandomGETResponse> Highway256RandomGET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hash/highway";
@@ -264,8 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA1GETResponse> SHA1GET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> digestFormat)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(digestFormat, nameof(digestFormat), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
@@ -281,8 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA256GETResponse> SHA256GET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> digestFormat)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(digestFormat, nameof(digestFormat), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
@@ -298,9 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA256BodyPOSTResponse> SHA256BodyPOST([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> digestFormat, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(digestFormat, nameof(digestFormat), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
@@ -345,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<M200> Keygen([WorkflowExpression] Func<string> keyLength)
         {
-            SourceExpression.Validate(keyLength, nameof(keyLength), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keygen/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyLength, 1));

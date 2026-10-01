@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> contractAddress = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(contractAddress, nameof(contractAddress), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/nifties/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -38,9 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator([WorkflowExpression] Func<string> creatorProfileName, [WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset)
         {
-            SourceExpression.Validate(creatorProfileName, nameof(creatorProfileName), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/creators/{0}/collectors/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(creatorProfileName, 1));

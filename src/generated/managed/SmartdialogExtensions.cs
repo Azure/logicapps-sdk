@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null, [WorkflowExpression] Func<requestBodyunicodeCharacterHandlingPolicyInput> requestBodyunicodeCharacterHandlingPolicy = null)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
-            SourceExpression.Validate(requestBodysender, nameof(requestBodysender), required: true);
-            SourceExpression.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
-            SourceExpression.Validate(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
-            SourceExpression.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            SourceExpression.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            SourceExpression.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            SourceExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            SourceExpression.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
-            SourceExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            SourceExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
-            SourceExpression.Validate(requestBodyunicodeCharacterHandlingPolicy, nameof(requestBodyunicodeCharacterHandlingPolicy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages";
@@ -99,20 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage([WorkflowExpression] Func<string> parentMessageId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null, [WorkflowExpression] Func<requestBodyunicodeCharacterHandlingPolicyInput> requestBodyunicodeCharacterHandlingPolicy = null)
         {
-            SourceExpression.Validate(parentMessageId, nameof(parentMessageId), required: true);
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
-            SourceExpression.Validate(requestBodysender, nameof(requestBodysender), required: true);
-            SourceExpression.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
-            SourceExpression.Validate(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
-            SourceExpression.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            SourceExpression.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            SourceExpression.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            SourceExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            SourceExpression.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
-            SourceExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            SourceExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
-            SourceExpression.Validate(requestBodyunicodeCharacterHandlingPolicy, nameof(requestBodyunicodeCharacterHandlingPolicy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentMessageId, 1));
@@ -185,10 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> SendDiscussionReplyMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> requestBodythreadId, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<string> requestBodycustomerData = null)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(requestBodythreadId, nameof(requestBodythreadId), required: true);
-            SourceExpression.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
-            SourceExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages/discussion/reply";
@@ -220,14 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IWorkflowAction CreateWhatsappTemplate([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> identityNumber, [WorkflowExpression] Func<string> requestBodydisplayName, [WorkflowExpression] Func<string> requestBodyrawContent, [WorkflowExpression] Func<string> requestBodycategory, [WorkflowExpression] Func<string> requestBodylanguage, [WorkflowExpression] Func<requestBodybuttonsInputItem[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodyattachmentUrl = null)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(identityNumber, nameof(identityNumber), required: true);
-            SourceExpression.Validate(requestBodydisplayName, nameof(requestBodydisplayName), required: true);
-            SourceExpression.Validate(requestBodyrawContent, nameof(requestBodyrawContent), required: true);
-            SourceExpression.Validate(requestBodycategory, nameof(requestBodycategory), required: true);
-            SourceExpression.Validate(requestBodylanguage, nameof(requestBodylanguage), required: true);
-            SourceExpression.Validate(requestBodybuttons, nameof(requestBodybuttons), required: false);
-            SourceExpression.Validate(requestBodyattachmentUrl, nameof(requestBodyattachmentUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/whatsapp/templates/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityNumber, 1));
@@ -268,19 +229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodytemplateName, [WorkflowExpression] Func<requestBodyrecipientsInputItem2[]> requestBodyrecipients, [WorkflowExpression] Func<string[]> requestBodybodyParameters = null, [WorkflowExpression] Func<string[]> requestBodyheaderParameters = null, [WorkflowExpression] Func<requestBodybuttonsInputItem22[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<bool> requestBodyuseSmsFallback = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
-            SourceExpression.Validate(requestBodytemplateName, nameof(requestBodytemplateName), required: true);
-            SourceExpression.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            SourceExpression.Validate(requestBodybodyParameters, nameof(requestBodybodyParameters), required: false);
-            SourceExpression.Validate(requestBodyheaderParameters, nameof(requestBodyheaderParameters), required: false);
-            SourceExpression.Validate(requestBodybuttons, nameof(requestBodybuttons), required: false);
-            SourceExpression.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            SourceExpression.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            SourceExpression.Validate(requestBodyuseSmsFallback, nameof(requestBodyuseSmsFallback), required: false);
-            SourceExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            SourceExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            SourceExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages/templates/whatsapp";
@@ -361,10 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<GetGroupContactResponse> GetGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> region = null)
         {
-            SourceExpression.Validate(customer, nameof(customer), required: true);
-            SourceExpression.Validate(groupService, nameof(groupService), required: true);
-            SourceExpression.Validate(phone, nameof(phone), required: true);
-            SourceExpression.Validate(region, nameof(region), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
@@ -381,9 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> DeleteGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone)
         {
-            SourceExpression.Validate(customer, nameof(customer), required: true);
-            SourceExpression.Validate(groupService, nameof(groupService), required: true);
-            SourceExpression.Validate(phone, nameof(phone), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
@@ -398,21 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> UpdateGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<bool> requestBodyactive = null, [WorkflowExpression] Func<string> requestBodyemail = null, [WorkflowExpression] Func<string> requestBodyfirstName = null, [WorkflowExpression] Func<string> requestBodylastName = null, [WorkflowExpression] Func<requestBodygenderInput> requestBodygender = null, [WorkflowExpression] Func<int> requestBodybirthYear = null, [WorkflowExpression] Func<string> requestBodystreetAddress = null, [WorkflowExpression] Func<string> requestBodyzipCode = null, [WorkflowExpression] Func<string> requestBodycity = null, [WorkflowExpression] Func<string> requestBodycountryCode = null, [WorkflowExpression] Func<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, [WorkflowExpression] Func<string[]> requestBodyphoneNumberRegions = null)
         {
-            SourceExpression.Validate(customer, nameof(customer), required: true);
-            SourceExpression.Validate(groupService, nameof(groupService), required: true);
-            SourceExpression.Validate(phone, nameof(phone), required: true);
-            SourceExpression.Validate(requestBodyactive, nameof(requestBodyactive), required: false);
-            SourceExpression.Validate(requestBodyemail, nameof(requestBodyemail), required: false);
-            SourceExpression.Validate(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
-            SourceExpression.Validate(requestBodylastName, nameof(requestBodylastName), required: false);
-            SourceExpression.Validate(requestBodygender, nameof(requestBodygender), required: false);
-            SourceExpression.Validate(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
-            SourceExpression.Validate(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
-            SourceExpression.Validate(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
-            SourceExpression.Validate(requestBodycity, nameof(requestBodycity), required: false);
-            SourceExpression.Validate(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
-            SourceExpression.Validate(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
-            SourceExpression.Validate(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
@@ -515,8 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> DeleteAllGroupContacts([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService)
         {
-            SourceExpression.Validate(customer, nameof(customer), required: true);
-            SourceExpression.Validate(groupService, nameof(groupService), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1));
@@ -531,21 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<string> CreateGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> requestBodyphone, [WorkflowExpression] Func<bool> requestBodyactive = null, [WorkflowExpression] Func<string> requestBodyemail = null, [WorkflowExpression] Func<string> requestBodyfirstName = null, [WorkflowExpression] Func<string> requestBodylastName = null, [WorkflowExpression] Func<requestBodygenderInput> requestBodygender = null, [WorkflowExpression] Func<int> requestBodybirthYear = null, [WorkflowExpression] Func<string> requestBodystreetAddress = null, [WorkflowExpression] Func<string> requestBodyzipCode = null, [WorkflowExpression] Func<string> requestBodycity = null, [WorkflowExpression] Func<string> requestBodycountryCode = null, [WorkflowExpression] Func<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, [WorkflowExpression] Func<string[]> requestBodyphoneNumberRegions = null)
         {
-            SourceExpression.Validate(customer, nameof(customer), required: true);
-            SourceExpression.Validate(groupService, nameof(groupService), required: true);
-            SourceExpression.Validate(requestBodyphone, nameof(requestBodyphone), required: true);
-            SourceExpression.Validate(requestBodyactive, nameof(requestBodyactive), required: false);
-            SourceExpression.Validate(requestBodyemail, nameof(requestBodyemail), required: false);
-            SourceExpression.Validate(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
-            SourceExpression.Validate(requestBodylastName, nameof(requestBodylastName), required: false);
-            SourceExpression.Validate(requestBodygender, nameof(requestBodygender), required: false);
-            SourceExpression.Validate(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
-            SourceExpression.Validate(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
-            SourceExpression.Validate(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
-            SourceExpression.Validate(requestBodycity, nameof(requestBodycity), required: false);
-            SourceExpression.Validate(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
-            SourceExpression.Validate(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
-            SourceExpression.Validate(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customer, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupService, 1));
@@ -652,8 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     {
         public IBodyWorkflowTrigger<NewMessageResponse> NewMessage([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> service, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(customer, nameof(customer), required: true);
-            SourceExpression.Validate(service, nameof(service), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/service/{0}/pipelines/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));

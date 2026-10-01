@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
         public IBodyWorkflowAction<ParseAddressResponse> ParseAddress([WorkflowExpression] Func<string> bodyaddress)
         {
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/parsed-address";

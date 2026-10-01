@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentResponse> GETAppointment([WorkflowExpression] Func<string> patient = null, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(patient, nameof(patient), required: false);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Appointment";
@@ -37,24 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTAppointmentResponse> POSTAppointment([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodyserviceCategoryInputItem[]> bodyserviceCategory = null, [WorkflowExpression] Func<bodyserviceTypeInputItem[]> bodyserviceType = null, [WorkflowExpression] Func<bodyspecialtyInputItem[]> bodyspecialty = null, [WorkflowExpression] Func<bodyappointmentTypecodingInputItem[]> bodyappointmentTypecoding = null, [WorkflowExpression] Func<bodyreasonReferenceInputItem[]> bodyreasonReference = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<bodybasedOnInputItem[]> bodybasedOn = null, [WorkflowExpression] Func<bodyparticipantInputItem[]> bodyparticipant = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyserviceCategory, nameof(bodyserviceCategory), required: false);
-            SourceExpression.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
-            SourceExpression.Validate(bodyspecialty, nameof(bodyspecialty), required: false);
-            SourceExpression.Validate(bodyappointmentTypecoding, nameof(bodyappointmentTypecoding), required: false);
-            SourceExpression.Validate(bodyreasonReference, nameof(bodyreasonReference), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodybasedOn, nameof(bodybasedOn), required: false);
-            SourceExpression.Validate(bodyparticipant, nameof(bodyparticipant), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Appointment";
@@ -199,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentIdResponse> GETAppointmentId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -214,15 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEAppointmentIdResponse> DELETEAppointmentId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodyparticipantInputItem[]> bodyparticipant = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyparticipant, nameof(bodyparticipant), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -307,15 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTAppointmentIdResponse> PUTAppointmentId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodyparticipantInputItem[]> bodyparticipant = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyparticipant, nameof(bodyparticipant), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -400,8 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentIdVERSIONResponse> GETAppointmentIdVERSION([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -416,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentIdHistoryResponse> GETAppointmentIdHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -431,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentHistoryResponse> GETAppointmentHistory([WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Appointment/_history";
@@ -448,9 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentResponseResponse> GETAppointmentResponse([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AppointmentResponse";
@@ -471,15 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTAppointmentResponseResponse> POSTAppointmentResponse([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodyappointmentreference = null, [WorkflowExpression] Func<string> bodyappointmentdisplay = null, [WorkflowExpression] Func<string> bodyactorreference = null, [WorkflowExpression] Func<string> bodyactordisplay = null, [WorkflowExpression] Func<string> bodyparticipantStatus = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyappointmentreference, nameof(bodyappointmentreference), required: false);
-            SourceExpression.Validate(bodyappointmentdisplay, nameof(bodyappointmentdisplay), required: false);
-            SourceExpression.Validate(bodyactorreference, nameof(bodyactorreference), required: false);
-            SourceExpression.Validate(bodyactordisplay, nameof(bodyactordisplay), required: false);
-            SourceExpression.Validate(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AppointmentResponse";
@@ -578,7 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentResponseIdResponse> GETAppointmentResponseId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -593,18 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEAppointmentResponseIdResponse> DELETEAppointmentResponseId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodyappointmentreference = null, [WorkflowExpression] Func<string> bodyappointmentdisplay = null, [WorkflowExpression] Func<string> bodyactorreference = null, [WorkflowExpression] Func<string> bodyactordisplay = null, [WorkflowExpression] Func<string> bodyparticipantStatus = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyappointmentreference, nameof(bodyappointmentreference), required: false);
-            SourceExpression.Validate(bodyappointmentdisplay, nameof(bodyappointmentdisplay), required: false);
-            SourceExpression.Validate(bodyactorreference, nameof(bodyactorreference), required: false);
-            SourceExpression.Validate(bodyactordisplay, nameof(bodyactordisplay), required: false);
-            SourceExpression.Validate(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -723,18 +654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTAppointmentResponseIdResponse> PUTAppointmentResponseId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodyappointmentreference = null, [WorkflowExpression] Func<string> bodyappointmentdisplay = null, [WorkflowExpression] Func<string> bodyactorreference = null, [WorkflowExpression] Func<string> bodyactordisplay = null, [WorkflowExpression] Func<string> bodyparticipantStatus = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyappointmentreference, nameof(bodyappointmentreference), required: false);
-            SourceExpression.Validate(bodyappointmentdisplay, nameof(bodyappointmentdisplay), required: false);
-            SourceExpression.Validate(bodyactorreference, nameof(bodyactorreference), required: false);
-            SourceExpression.Validate(bodyactordisplay, nameof(bodyactordisplay), required: false);
-            SourceExpression.Validate(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -853,8 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentResponseIdVersionResponse> GETAppointmentResponseIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -869,7 +786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentResponseIdHistoryResponse> GETAppointmentResponseIdHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -898,9 +814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETDeviceResponse> GETDevice([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Device";
@@ -921,21 +834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTDeviceResponse> POSTDevice([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyudiCarrierInputItem[]> bodyudiCarrier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodydistinctIdentifier = null, [WorkflowExpression] Func<string> bodymanufactureDate = null, [WorkflowExpression] Func<string> bodyexpirationDate = null, [WorkflowExpression] Func<string> bodylotNumber = null, [WorkflowExpression] Func<string> bodyserialNumber = null, [WorkflowExpression] Func<bodydeviceNameInputItem[]> bodydeviceName = null, [WorkflowExpression] Func<bodytypecodingInputItem[]> bodytypecoding = null, [WorkflowExpression] Func<string> bodytypetext = null, [WorkflowExpression] Func<string> bodypatientreference = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodyudiCarrier, nameof(bodyudiCarrier), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodydistinctIdentifier, nameof(bodydistinctIdentifier), required: false);
-            SourceExpression.Validate(bodymanufactureDate, nameof(bodymanufactureDate), required: false);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            SourceExpression.Validate(bodylotNumber, nameof(bodylotNumber), required: false);
-            SourceExpression.Validate(bodyserialNumber, nameof(bodyserialNumber), required: false);
-            SourceExpression.Validate(bodydeviceName, nameof(bodydeviceName), required: false);
-            SourceExpression.Validate(bodytypecoding, nameof(bodytypecoding), required: false);
-            SourceExpression.Validate(bodytypetext, nameof(bodytypetext), required: false);
-            SourceExpression.Validate(bodypatientreference, nameof(bodypatientreference), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Device";
@@ -1070,7 +968,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETDeviceIdResponse> GETDeviceId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1085,14 +982,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEDeviceIdResponse> DELETEDeviceId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1171,14 +1060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTDeviceIdResponse> PUTDeviceId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1257,8 +1138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETDeviceIdVERSIONResponse> GETDeviceIdVERSION([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -1273,7 +1152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETDeviceIdHISTORYResponse> GETDeviceIdHISTORY([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1302,9 +1180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETEncounterResponse> GETEncounter([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Encounter";
@@ -1325,21 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTEncounterResponse> POSTEncounter([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyClasssystem = null, [WorkflowExpression] Func<string> bodyClasscode = null, [WorkflowExpression] Func<bodytypeInputItem[]> bodytype = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<bodyparticipantInputItem2[]> bodyparticipant = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyserviceProviderreference = null, [WorkflowExpression] Func<string> bodyserviceProviderdisplay = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyClasssystem, nameof(bodyClasssystem), required: false);
-            SourceExpression.Validate(bodyClasscode, nameof(bodyClasscode), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyparticipant, nameof(bodyparticipant), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodyperiodend, nameof(bodyperiodend), required: false);
-            SourceExpression.Validate(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
-            SourceExpression.Validate(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Encounter";
@@ -1490,7 +1350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETEncounterIdResponse> GETEncounterId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1505,22 +1364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEEncounterIdResponse> DELETEEncounterId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyClasssystem = null, [WorkflowExpression] Func<string> bodyClasscode = null, [WorkflowExpression] Func<bodytypeInputItem[]> bodytype = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<bodyparticipantInputItem2[]> bodyparticipant = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyserviceProviderreference = null, [WorkflowExpression] Func<string> bodyserviceProviderdisplay = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyClasssystem, nameof(bodyClasssystem), required: false);
-            SourceExpression.Validate(bodyClasscode, nameof(bodyClasscode), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyparticipant, nameof(bodyparticipant), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodyperiodend, nameof(bodyperiodend), required: false);
-            SourceExpression.Validate(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
-            SourceExpression.Validate(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1671,22 +1514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTEncounterIdResponse> PUTEncounterId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyClasssystem = null, [WorkflowExpression] Func<string> bodyClasscode = null, [WorkflowExpression] Func<bodytypeInputItem[]> bodytype = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<bodyparticipantInputItem2[]> bodyparticipant = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyserviceProviderreference = null, [WorkflowExpression] Func<string> bodyserviceProviderdisplay = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyClasssystem, nameof(bodyClasssystem), required: false);
-            SourceExpression.Validate(bodyClasscode, nameof(bodyClasscode), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyparticipant, nameof(bodyparticipant), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodyperiodend, nameof(bodyperiodend), required: false);
-            SourceExpression.Validate(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
-            SourceExpression.Validate(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1837,8 +1664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETEncounterIdVersionResponse> GETEncounterIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -1853,7 +1678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETEncounterIdHISTORYResponse> GETEncounterIdHISTORY([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1882,9 +1706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETFlagResponse> GETFlag([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Flag";
@@ -1905,21 +1726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTFLAGResponse> POSTFLAG([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem2[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyauthorreference = null, [WorkflowExpression] Func<string> bodyauthordisplay = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodyperiodend, nameof(bodyperiodend), required: false);
-            SourceExpression.Validate(bodyauthorreference, nameof(bodyauthorreference), required: false);
-            SourceExpression.Validate(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Flag";
@@ -2070,7 +1876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETFlagIdResponse> GETFlagId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2085,22 +1890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEFlagIdResponse> DELETEFlagId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem2[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyauthorreference = null, [WorkflowExpression] Func<string> bodyauthordisplay = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodyperiodend, nameof(bodyperiodend), required: false);
-            SourceExpression.Validate(bodyauthorreference, nameof(bodyauthorreference), required: false);
-            SourceExpression.Validate(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2251,22 +2040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTFlagIdResponse> PUTFlagId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem2[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyauthorreference = null, [WorkflowExpression] Func<string> bodyauthordisplay = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodyperiodend, nameof(bodyperiodend), required: false);
-            SourceExpression.Validate(bodyauthorreference, nameof(bodyauthorreference), required: false);
-            SourceExpression.Validate(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2417,8 +2190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETFlagIdVersionResponse> GETFlagIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -2433,7 +2204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETFlagIdHistoryResponse> GETFlagIdHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2462,9 +2232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETLocationResponse> GETLocation([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Location";
@@ -2485,15 +2252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTLocationResponse> POSTLocation([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodypartOfreference = null, [WorkflowExpression] Func<string> bodypartOfdisplay = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodypartOfreference, nameof(bodypartOfreference), required: false);
-            SourceExpression.Validate(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Location";
@@ -2584,7 +2342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETLocationIdResponse> GETLocationId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2599,16 +2356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETELocationIdResponse> DELETELocationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodypartOfreference = null, [WorkflowExpression] Func<string> bodypartOfdisplay = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodypartOfreference, nameof(bodypartOfreference), required: false);
-            SourceExpression.Validate(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2699,16 +2446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTLocationIdResponse> PUTLocationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodypartOfreference = null, [WorkflowExpression] Func<string> bodypartOfdisplay = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodypartOfreference, nameof(bodypartOfreference), required: false);
-            SourceExpression.Validate(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2799,8 +2536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETLocationIdVersionResponse> GETLocationIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -2815,7 +2550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETLocationIdHistoryResponse> GETLocationIdHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2844,9 +2578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPatientResponse> GETPatient([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Patient";
@@ -2867,14 +2598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTPatientResponse> POSTPatient([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bool> bodydeceasedBoolean = null, [WorkflowExpression] Func<bodyaddressInputItem[]> bodyaddress = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodybirthDate, nameof(bodybirthDate), required: false);
-            SourceExpression.Validate(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Patient";
@@ -2943,7 +2666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPatientIdResponse> GETPatientId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2958,16 +2680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEPatientIdResponse> DELETEPatientId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bool> bodydeceasedBoolean = null, [WorkflowExpression] Func<bodyaddressInputItem[]> bodyaddress = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodybirthDate, nameof(bodybirthDate), required: false);
-            SourceExpression.Validate(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3042,16 +2754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTPatientIdResponse> PUTPatientId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bool> bodydeceasedBoolean = null, [WorkflowExpression] Func<bodyaddressInputItem[]> bodyaddress = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodybirthDate, nameof(bodybirthDate), required: false);
-            SourceExpression.Validate(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3126,8 +2828,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPatientIdVersionResponse> GETPatientIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -3142,7 +2842,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPatientIdHistoryResponse> GETPatientIdHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3171,9 +2870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPersonResponse> GETPerson([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Person";
@@ -3194,17 +2890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTPersonResponse> POSTPerson([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bodyaddressInputItem2[]> bodyaddress = null, [WorkflowExpression] Func<string> bodymanagingOrganizationreference = null, [WorkflowExpression] Func<string> bodymanagingOrganizationdisplay = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodylinkInputItem[]> bodylink = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodybirthDate, nameof(bodybirthDate), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodymanagingOrganizationreference, nameof(bodymanagingOrganizationreference), required: false);
-            SourceExpression.Validate(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Person";
@@ -3299,7 +2984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPersonIdResponse> GETPersonId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3314,18 +2998,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEPersonIdResponse> DELETEPersonId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bodyaddressInputItem2[]> bodyaddress = null, [WorkflowExpression] Func<string> bodymanagingOrganizationreference = null, [WorkflowExpression] Func<string> bodymanagingOrganizationdisplay = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodylinkInputItem[]> bodylink = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodybirthDate, nameof(bodybirthDate), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodymanagingOrganizationreference, nameof(bodymanagingOrganizationreference), required: false);
-            SourceExpression.Validate(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3420,18 +3092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTPersonIdResponse> PUTPersonId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bodyaddressInputItem2[]> bodyaddress = null, [WorkflowExpression] Func<string> bodymanagingOrganizationreference = null, [WorkflowExpression] Func<string> bodymanagingOrganizationdisplay = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodylinkInputItem[]> bodylink = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
-            SourceExpression.Validate(bodybirthDate, nameof(bodybirthDate), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodymanagingOrganizationreference, nameof(bodymanagingOrganizationreference), required: false);
-            SourceExpression.Validate(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3526,8 +3186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPersonIdVersionResponse> GETPersonIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -3542,7 +3200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPersonIdHistoryResponse> GETPersonIdHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3571,9 +3228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPractitionerResponse> GETPractitioner([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Practitioner";
@@ -3594,12 +3248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<POSTPractitionerResponse> POSTPractitioner([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem2[]> bodyname = null, [WorkflowExpression] Func<bodyaddressInputItem22[]> bodyaddress = null, [WorkflowExpression] Func<bodyqualificationInputItem[]> bodyqualification = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodyqualification, nameof(bodyqualification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Practitioner";
@@ -3656,7 +3304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPractitionerIdResponse> GETPractitionerId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3671,17 +3318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<DELETEPractitionerIdResponse> DELETEPractitionerId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem2[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<bodyaddressInputItem222[]> bodyaddress = null, [WorkflowExpression] Func<string> bodygender = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3770,17 +3406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<PUTPractitionerIdResponse> PUTPractitionerId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem2[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<bodyaddressInputItem222[]> bodyaddress = null, [WorkflowExpression] Func<string> bodygender = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytelecom, nameof(bodytelecom), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3869,8 +3494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPractitionerIdVersionResponse> GETPractitionerIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(vid, nameof(vid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
@@ -3885,7 +3508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPractitionerIdHistoryResponse> GETPractitionerIdHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

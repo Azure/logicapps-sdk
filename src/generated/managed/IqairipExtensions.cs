@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<ListStatesResponse> ListStates([WorkflowExpression] Func<string> country = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/states";
@@ -45,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<ListCitiesResponse> ListCities([WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> country = null)
         {
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cities";
@@ -65,8 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<CityResponse> GetDataByCoordinates([WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<string> lon = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nearest_city";
@@ -85,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<CityResponse> GetDataByCity([WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> country = null)
         {
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/city";

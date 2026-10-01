@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CombinePDFResponse> CombinePDF([WorkflowExpression] Func<string> filesArraymergedPDFFileName, [WorkflowExpression] Func<string[]> filesArrayfiles, [WorkflowExpression] Func<xRegionValueInput> xRegionValue = null)
         {
-            SourceExpression.Validate(filesArraymergedPDFFileName, nameof(filesArraymergedPDFFileName), required: true);
-            SourceExpression.Validate(filesArrayfiles, nameof(filesArrayfiles), required: true);
-            SourceExpression.Validate(xRegionValue, nameof(xRegionValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/operation/v1/combinePDF";

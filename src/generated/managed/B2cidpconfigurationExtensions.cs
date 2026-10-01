@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<Application> PostApplication([WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bool> bodyisFallbackPublicClient = null, [WorkflowExpression] Func<string[]> bodywebredirectUris = null, [WorkflowExpression] Func<bool> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, [WorkflowExpression] Func<bool> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
         {
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodyisFallbackPublicClient, nameof(bodyisFallbackPublicClient), required: false);
-            SourceExpression.Validate(bodywebredirectUris, nameof(bodywebredirectUris), required: false);
-            SourceExpression.Validate(bodywebimplicitGrantSettingsenableIdTokenIssuance, nameof(bodywebimplicitGrantSettingsenableIdTokenIssuance), required: false);
-            SourceExpression.Validate(bodywebimplicitGrantSettingsenableAccessTokenIssuance, nameof(bodywebimplicitGrantSettingsenableAccessTokenIssuance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/applications";
@@ -99,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IWorkflowAction PatchApplication([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -148,11 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<PermissionGrant> PostPermissionGrant([WorkflowExpression] Func<string> bodyclientId = null, [WorkflowExpression] Func<string> bodyconsentType = null, [WorkflowExpression] Func<string> bodyprincipalId = null, [WorkflowExpression] Func<string> bodyresourceId = null, [WorkflowExpression] Func<string> bodyscope = null)
         {
-            SourceExpression.Validate(bodyclientId, nameof(bodyclientId), required: false);
-            SourceExpression.Validate(bodyconsentType, nameof(bodyconsentType), required: false);
-            SourceExpression.Validate(bodyprincipalId, nameof(bodyprincipalId), required: false);
-            SourceExpression.Validate(bodyresourceId, nameof(bodyresourceId), required: false);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/oauth2PermissionGrants";
@@ -217,9 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<UserFlow> PostUserflow([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyuserFlowType = null, [WorkflowExpression] Func<int> bodyuserFlowTypeVersion = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
-            SourceExpression.Validate(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/identity/userFlows";
@@ -272,10 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<UserFlow> PostB2cUserflow([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyuserFlowType = null, [WorkflowExpression] Func<int> bodyuserFlowTypeVersion = null, [WorkflowExpression] Func<bool> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
-            SourceExpression.Validate(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
-            SourceExpression.Validate(bodytokenClaimsConfigurationisIssuerEntityUserFlow, nameof(bodytokenClaimsConfigurationisIssuerEntityUserFlow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/identity/b2cUserflows";
@@ -362,10 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<ServicePrinciple> PostServicePrinciple([WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<string> bodyappId = null, [WorkflowExpression] Func<bool> bodyappRoleAssignmentRequired = null, [WorkflowExpression] Func<string[]> bodyreplyUrls = null)
         {
-            SourceExpression.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
-            SourceExpression.Validate(bodyappId, nameof(bodyappId), required: false);
-            SourceExpression.Validate(bodyappRoleAssignmentRequired, nameof(bodyappRoleAssignmentRequired), required: false);
-            SourceExpression.Validate(bodyreplyUrls, nameof(bodyreplyUrls), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/serviceprincipals";

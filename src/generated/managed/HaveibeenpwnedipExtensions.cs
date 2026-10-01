@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bool> truncateResponse = null, [WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<bool> includeUnverified = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(truncateResponse, nameof(truncateResponse), required: false);
-            SourceExpression.Validate(domain, nameof(domain), required: false);
-            SourceExpression.Validate(includeUnverified, nameof(includeUnverified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/breachedaccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -54,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<PastesResponseItem[]> Pastes([WorkflowExpression] Func<string> account)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/pasteaccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -83,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<BreachSingleResponse> BreachSingle([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/breach/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));

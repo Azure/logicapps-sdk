@@ -14,52 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theguardian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theguardian")]
         public IBodyWorkflowAction<SearchContentGetResponse> SearchContentGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> queryFields = null, [WorkflowExpression] Func<string> section = null, [WorkflowExpression] Func<string> reference = null, [WorkflowExpression] Func<string> referenceType = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> rights = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> productionOffice = null, [WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<starRatingInput> starRating = null, [WorkflowExpression] Func<string> fromDate = null, [WorkflowExpression] Func<string> toDate = null, [WorkflowExpression] Func<useDateInput> useDate = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<orderByInput> orderBy = null, [WorkflowExpression] Func<orderDateInput> orderDate = null, [WorkflowExpression] Func<string> showFields = null, [WorkflowExpression] Func<string> trailText = null, [WorkflowExpression] Func<string> headline = null, [WorkflowExpression] Func<showInRelatedContentInput> showInRelatedContent = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> lastModified = null, [WorkflowExpression] Func<hasStoryPackageInput> hasStoryPackage = null, [WorkflowExpression] Func<string> score = null, [WorkflowExpression] Func<string> standfirst = null, [WorkflowExpression] Func<string> shortUrl = null, [WorkflowExpression] Func<string> thumbnail = null, [WorkflowExpression] Func<string> wordcount = null, [WorkflowExpression] Func<commentableInput> commentable = null, [WorkflowExpression] Func<isPremoderatedInput> isPremoderated = null, [WorkflowExpression] Func<allowUgcInput> allowUgc = null, [WorkflowExpression] Func<string> byline = null, [WorkflowExpression] Func<string> publication = null, [WorkflowExpression] Func<string> internalPageCode = null, [WorkflowExpression] Func<string> productionOffice2 = null, [WorkflowExpression] Func<shouldHideAdvertsInput> shouldHideAdverts = null, [WorkflowExpression] Func<liveBloggingNowInput> liveBloggingNow = null, [WorkflowExpression] Func<string> commentCloseDate = null, [WorkflowExpression] Func<showTagsInput> showTags = null, [WorkflowExpression] Func<showSectionInput> showSection = null, [WorkflowExpression] Func<showBlocksInput> showBlocks = null, [WorkflowExpression] Func<showElementsInput> showElements = null, [WorkflowExpression] Func<showReferencesInput> showReferences = null, [WorkflowExpression] Func<showRightsInput> showRights = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(queryFields, nameof(queryFields), required: false);
-            SourceExpression.Validate(section, nameof(section), required: false);
-            SourceExpression.Validate(reference, nameof(reference), required: false);
-            SourceExpression.Validate(referenceType, nameof(referenceType), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(rights, nameof(rights), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(productionOffice, nameof(productionOffice), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
-            SourceExpression.Validate(starRating, nameof(starRating), required: false);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: false);
-            SourceExpression.Validate(toDate, nameof(toDate), required: false);
-            SourceExpression.Validate(useDate, nameof(useDate), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(orderDate, nameof(orderDate), required: false);
-            SourceExpression.Validate(showFields, nameof(showFields), required: false);
-            SourceExpression.Validate(trailText, nameof(trailText), required: false);
-            SourceExpression.Validate(headline, nameof(headline), required: false);
-            SourceExpression.Validate(showInRelatedContent, nameof(showInRelatedContent), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
-            SourceExpression.Validate(hasStoryPackage, nameof(hasStoryPackage), required: false);
-            SourceExpression.Validate(score, nameof(score), required: false);
-            SourceExpression.Validate(standfirst, nameof(standfirst), required: false);
-            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: false);
-            SourceExpression.Validate(thumbnail, nameof(thumbnail), required: false);
-            SourceExpression.Validate(wordcount, nameof(wordcount), required: false);
-            SourceExpression.Validate(commentable, nameof(commentable), required: false);
-            SourceExpression.Validate(isPremoderated, nameof(isPremoderated), required: false);
-            SourceExpression.Validate(allowUgc, nameof(allowUgc), required: false);
-            SourceExpression.Validate(byline, nameof(byline), required: false);
-            SourceExpression.Validate(publication, nameof(publication), required: false);
-            SourceExpression.Validate(internalPageCode, nameof(internalPageCode), required: false);
-            SourceExpression.Validate(productionOffice2, nameof(productionOffice2), required: false);
-            SourceExpression.Validate(shouldHideAdverts, nameof(shouldHideAdverts), required: false);
-            SourceExpression.Validate(liveBloggingNow, nameof(liveBloggingNow), required: false);
-            SourceExpression.Validate(commentCloseDate, nameof(commentCloseDate), required: false);
-            SourceExpression.Validate(showTags, nameof(showTags), required: false);
-            SourceExpression.Validate(showSection, nameof(showSection), required: false);
-            SourceExpression.Validate(showBlocks, nameof(showBlocks), required: false);
-            SourceExpression.Validate(showElements, nameof(showElements), required: false);
-            SourceExpression.Validate(showReferences, nameof(showReferences), required: false);
-            SourceExpression.Validate(showRights, nameof(showRights), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -169,15 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theguardian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theguardian")]
         public IBodyWorkflowAction<TagsGetResponse> TagsGet([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> webTitle = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> section = null, [WorkflowExpression] Func<string> reference = null, [WorkflowExpression] Func<string> referenceType = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<showReferencesInput> showReferences = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(webTitle, nameof(webTitle), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(section, nameof(section), required: false);
-            SourceExpression.Validate(reference, nameof(reference), required: false);
-            SourceExpression.Validate(referenceType, nameof(referenceType), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(showReferences, nameof(showReferences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tags";
@@ -210,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theguardian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theguardian")]
         public IBodyWorkflowAction<SectionsGetResponse> SectionsGet([WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sections";
@@ -227,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theguardian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theguardian")]
         public IBodyWorkflowAction<EditionsGetResponse> EditionsGet([WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/editions";
@@ -244,7 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theguardian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theguardian")]
         public IBodyWorkflowAction<ItemGetResponse> ItemGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

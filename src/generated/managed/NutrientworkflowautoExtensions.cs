@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientworkflowauto")]
         public IBodyWorkflowAction<SubmitFormResponse> SubmitForm([WorkflowExpression] Func<string> processGuid, [WorkflowExpression] Func<string> processTaskGuid, [WorkflowExpression] Func<object> dynamicListSchema = null)
         {
-            SourceExpression.Validate(processGuid, nameof(processGuid), required: true);
-            SourceExpression.Validate(processTaskGuid, nameof(processTaskGuid), required: true);
-            SourceExpression.Validate(dynamicListSchema, nameof(dynamicListSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/instance/start/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(processGuid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(processTaskGuid, 1));

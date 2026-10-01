@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IWorkflowAction DeleteMessage([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> popreceipt)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(popreceipt, nameof(popreceipt), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -33,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<Messages> GetMessages([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> numofmessages = null, [WorkflowExpression] Func<string> visibilitytimeout = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(numofmessages, nameof(numofmessages), required: false);
-            SourceExpression.Validate(visibilitytimeout, nameof(visibilitytimeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));
@@ -55,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<Queue[]> ListQueues([WorkflowExpression] Func<string> storageAccountName)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
@@ -70,9 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IWorkflowAction PutMessage([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> message = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(message, nameof(message), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));
@@ -90,9 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
     {
         public IBodyWorkflowTrigger<Messages> OnMessagesV2([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> visibilitytimeout = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(visibilitytimeout, nameof(visibilitytimeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));
@@ -108,9 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
         public IBodyWorkflowTrigger<string> OnMessageThresholdReachedV2([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> threshold, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(threshold, nameof(threshold), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 1));

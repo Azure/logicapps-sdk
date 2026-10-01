@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huedatagate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huedatagate")]
         public IWorkflowAction Odata([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> roleId, [WorkflowExpression] Func<string> roleSecret)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(roleId, nameof(roleId), required: true);
-            SourceExpression.Validate(roleSecret, nameof(roleSecret), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/odata";

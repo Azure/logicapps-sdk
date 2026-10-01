@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         public IOutputWorkflowAction<DeleteRowOutput> DeleteRow([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> searchCondition)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(searchCondition, nameof(searchCondition), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -37,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         public IOutputWorkflowAction<ExecuteNonQueryOutput> ExecuteNonQuery([WorkflowExpression] Func<string> statement, [WorkflowExpression] Func<object> sqlParameters = null)
         {
-            SourceExpression.Validate(statement, nameof(statement), required: true);
-            SourceExpression.Validate(sqlParameters, nameof(sqlParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -62,8 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         public IBodyWorkflowAction<JToken[]> ExecuteQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -87,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables([WorkflowExpression] Func<string> schema = null)
         {
-            SourceExpression.Validate(schema, nameof(schema), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -110,8 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         public IOutputWorkflowAction<InsertRowOutput> InsertRow([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> insertParameters)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(insertParameters, nameof(insertParameters), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -131,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         public IBodyWorkflowAction<JToken[]> StoredProcedure([WorkflowExpression] Func<string> procedureName, [WorkflowExpression] Func<object> procedureParameters = null)
         {
-            SourceExpression.Validate(procedureName, nameof(procedureName), required: true);
-            SourceExpression.Validate(procedureParameters, nameof(procedureParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -156,9 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
         public IOutputWorkflowAction<UpdateRowOutput> UpdateRow([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> updatedColumns, [WorkflowExpression] Func<object> searchCondition)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(updatedColumns, nameof(updatedColumns), required: true);
-            SourceExpression.Validate(searchCondition, nameof(searchCondition), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

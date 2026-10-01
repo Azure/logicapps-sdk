@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetCompanyPrioritiesResponse> GetCompanyPriorities([WorkflowExpression] Func<int> accountId, [WorkflowExpression] Func<string> bodyworkload = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyworkload, nameof(bodyworkload), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/api/priorities/{0}/account_priorities/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -43,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetFinancialsResponse> GetFinancials([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/api/account_profile/{0}/financials/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -59,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetDecisionMakersResponse> GetDecisionMakers([WorkflowExpression] Func<int> accountId, [WorkflowExpression] Func<string> bodyworkload = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyworkload, nameof(bodyworkload), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/executives/{0}/key_executives/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -88,7 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetRelevantWorkloadsResponse> GetRelevantWorkloads([WorkflowExpression] Func<string> bodyuserDescription)
         {
-            SourceExpression.Validate(bodyuserDescription, nameof(bodyuserDescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/universe/get_relevant_workloads/";
@@ -112,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetAccountIdsResponse> GetAccountIds([WorkflowExpression] Func<string> bodysearchKey)
         {
-            SourceExpression.Validate(bodysearchKey, nameof(bodysearchKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/universe/search/";
@@ -136,7 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetItSpendResponse> GetItSpend([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/{0}/financials/revenue_by_it_spend/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -152,8 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetCompetitorsResponse> GetCompetitors([WorkflowExpression] Func<int> accountId, [WorkflowExpression] Func<string> bodyworkload = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyworkload, nameof(bodyworkload), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/{0}/get_product_competitors/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -181,7 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetCompanySignalsResponse> GetCompanySignals([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/api/account_profile/{0}/top_signals/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -197,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetRevenueByBusinessResponse> GetRevenueByBusiness([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/api/account_profile/{0}/revenue_by_business/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -213,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetRevenueByRegionResponse> GetRevenueByRegion([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/{0}/financials/revenue_by_region", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -229,8 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetOutsourcingDetailsResponse> GetOutsourcingDetails([WorkflowExpression] Func<int> accountId, [WorkflowExpression] Func<string> bodyoutsourcingInWorkloads = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyoutsourcingInWorkloads, nameof(bodyoutsourcingInWorkloads), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/{0}/outsourcing/engagement_details/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -258,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetCompanyDetailsResponse> GetCompanyDetails([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/api/account_profile/{0}/about/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -274,7 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetTechStackProductsResponse> GetTechStackProducts([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/api/tech_stack/{0}/tech_stack_products/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -290,7 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetHiringTimelineResponse> GetHiringTimeline([WorkflowExpression] Func<int> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasub/accounts/hiring/timeline/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(accountId, 1));
@@ -306,8 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetLocationDemographicsResponse> GetLocationDemographics([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<bool> isCountry = null)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(isCountry, nameof(isCountry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/ecosystem/v2/get_location_demographics_data/";
@@ -326,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetKeyTrendsResponse> GetKeyTrends([WorkflowExpression] Func<string> bodyvertical)
         {
-            SourceExpression.Validate(bodyvertical, nameof(bodyvertical), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/ecosystem/api/v2/vertical_key_priorities/";
@@ -350,8 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetEcosystemTechStackResponse> GetEcosystemTechStack([WorkflowExpression] Func<string> bodywidget, [WorkflowExpression] Func<string> bodyvertical)
         {
-            SourceExpression.Validate(bodywidget, nameof(bodywidget), required: true);
-            SourceExpression.Validate(bodyvertical, nameof(bodyvertical), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/ecosystem/api/v2/tech_stack/";
@@ -377,8 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetVerticalOutsourcingDataResponse> GetVerticalOutsourcingData([WorkflowExpression] Func<string> bodywidget, [WorkflowExpression] Func<string> bodyvertical)
         {
-            SourceExpression.Validate(bodywidget, nameof(bodywidget), required: true);
-            SourceExpression.Validate(bodyvertical, nameof(bodyvertical), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/ecosystem/api/v2/vertical_outsourcing/";
@@ -404,10 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<GetEmployersDataResponse> GetEmployersData([WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodyvertical = null, [WorkflowExpression] Func<bool> bodyisCountry = null, [WorkflowExpression] Func<string> bodyanalysisType = null)
         {
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodyvertical, nameof(bodyvertical), required: false);
-            SourceExpression.Validate(bodyisCountry, nameof(bodyisCountry), required: false);
-            SourceExpression.Validate(bodyanalysisType, nameof(bodyanalysisType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/ecosystem/v2/get_employers_data/";
@@ -453,7 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
         public IBodyWorkflowAction<ExtractEntitiesResponse> ExtractEntities([WorkflowExpression] Func<string> bodyuserQuery)
         {
-            SourceExpression.Validate(bodyuserQuery, nameof(bodyuserQuery), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasub/core/extract_entities/";

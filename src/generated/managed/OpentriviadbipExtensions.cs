@@ -28,10 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<GetQuestionResponse> GetQuestion([WorkflowExpression] Func<int> amount, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<difficultyInput> difficulty = null, [WorkflowExpression] Func<typeInput> type = null)
         {
-            SourceExpression.Validate(amount, nameof(amount), required: true);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(difficulty, nameof(difficulty), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api.php";
@@ -53,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup([WorkflowExpression] Func<int> category)
         {
-            SourceExpression.Validate(category, nameof(category), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api_count.php";

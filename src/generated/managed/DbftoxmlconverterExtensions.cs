@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dbftoxmlconverter")]
         public IWorkflowAction Dbf2XmlConvert([WorkflowExpression] Func<string> bodycontenType, [WorkflowExpression] Func<bodyencodingInput> bodyencoding)
         {
-            SourceExpression.Validate(bodycontenType, nameof(bodycontenType), required: true);
-            SourceExpression.Validate(bodyencoding, nameof(bodyencoding), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/DBF2XML";

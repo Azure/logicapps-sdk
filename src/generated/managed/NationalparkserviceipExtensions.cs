@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetActivities([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/activities";
@@ -43,11 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetActvitiesParks([WorkflowExpression] Func<string[]> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string[]> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/activities/parks";
@@ -72,11 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetAlerts([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/alerts";
@@ -101,10 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetAmenities([WorkflowExpression] Func<string[]> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/amenities";
@@ -127,12 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetAmenitiesParksplaces([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/amenities/parksplaces";
@@ -159,12 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetAmenitiesParksvisitorcenters([WorkflowExpression] Func<string> parkCode = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string[]> sort = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/amenities/parksvisitorcenters";
@@ -191,11 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetArticles([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/articles";
@@ -220,11 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetCampgrounds([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/campgrounds";
@@ -249,22 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetEvents([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> organization = null, [WorkflowExpression] Func<string[]> subject = null, [WorkflowExpression] Func<string[]> portal = null, [WorkflowExpression] Func<string[]> tagsAll = null, [WorkflowExpression] Func<string[]> tagsOne = null, [WorkflowExpression] Func<string[]> tagsNone = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<string> dateStart = null, [WorkflowExpression] Func<string> dateEnd = null, [WorkflowExpression] Func<string[]> eventType = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<bool> expandRecurring = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(subject, nameof(subject), required: false);
-            SourceExpression.Validate(portal, nameof(portal), required: false);
-            SourceExpression.Validate(tagsAll, nameof(tagsAll), required: false);
-            SourceExpression.Validate(tagsOne, nameof(tagsOne), required: false);
-            SourceExpression.Validate(tagsNone, nameof(tagsNone), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(dateStart, nameof(dateStart), required: false);
-            SourceExpression.Validate(dateEnd, nameof(dateEnd), required: false);
-            SourceExpression.Validate(eventType, nameof(eventType), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(expandRecurring, nameof(expandRecurring), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/events";
@@ -311,12 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetLessonPlans([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string[]> sort = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lessonplans";
@@ -343,12 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetNewsReleases([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string[]> sort = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/newsreleases";
@@ -375,12 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetPark([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string[]> sort = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/parks";
@@ -407,11 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetPassportstamplocations([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/passportstamplocations";
@@ -436,11 +356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetPeople([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/people";
@@ -465,11 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetPlaces([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places";
@@ -494,13 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetThingstodo([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> parkCode = null, [WorkflowExpression] Func<string> stateCode = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/thingstodo";
@@ -529,11 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetTopics([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/topics";
@@ -558,11 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetTopicsParks([WorkflowExpression] Func<string[]> id = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/topics/parks";
@@ -587,12 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetTours([WorkflowExpression] Func<string[]> id = null, [WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tours";
@@ -619,11 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetVisitorCenters([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/visitorcenters";
@@ -648,12 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalparkserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalparkserviceip")]
         public IBodyWorkflowAction<JToken> GetWebcams([WorkflowExpression] Func<string[]> parkCode = null, [WorkflowExpression] Func<string[]> stateCode = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(parkCode, nameof(parkCode), required: false);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webcams";

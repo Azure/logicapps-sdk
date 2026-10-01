@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
         public IWorkflowAction CreateWorkflowInstance([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<object> bodystartData = null)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(bodystartData, nameof(bodystartData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));

@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction SendAlertRequest([WorkflowExpression] Func<string> bodyalertText, [WorkflowExpression] Func<string> bodyalertTitle, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<bool> bodyisMandatory = null, [WorkflowExpression] Func<bool> bodysendSMS = null)
         {
-            SourceExpression.Validate(bodyalertText, nameof(bodyalertText), required: true);
-            SourceExpression.Validate(bodyalertTitle, nameof(bodyalertTitle), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodyisMandatory, nameof(bodyisMandatory), required: false);
-            SourceExpression.Validate(bodysendSMS, nameof(bodysendSMS), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/alerts/";
@@ -124,22 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<InternalContent> CreateInternalNews([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedInternalContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null, [WorkflowExpression] Func<bool> bodyareCommentsAuthorized = null, [WorkflowExpression] Func<bool> bodyshouldNotifyUsers = null, [WorkflowExpression] Func<bool> bodyisMustReadContent = null)
         {
-            SourceExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: true);
-            SourceExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
-            SourceExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
-            SourceExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            SourceExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            SourceExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            SourceExpression.Validate(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
-            SourceExpression.Validate(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
-            SourceExpression.Validate(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/content/internalnews";
@@ -248,25 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<ExternalContent> CreateExternalContent([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedExternalContentCreation[]> bodycontents, [WorkflowExpression] Func<string> bodycontentUrl, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null, [WorkflowExpression] Func<bool> bodyisShareable = null, [WorkflowExpression] Func<bool> bodyisOfficialContent = null, [WorkflowExpression] Func<bool> bodyareCommentsAuthorized = null, [WorkflowExpression] Func<bool> bodyshouldNotifyUsers = null, [WorkflowExpression] Func<bool> bodyisMustReadContent = null)
         {
-            SourceExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: true);
-            SourceExpression.Validate(bodycontentUrl, nameof(bodycontentUrl), required: true);
-            SourceExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
-            SourceExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
-            SourceExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            SourceExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            SourceExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            SourceExpression.Validate(bodyisShareable, nameof(bodyisShareable), required: false);
-            SourceExpression.Validate(bodyisOfficialContent, nameof(bodyisOfficialContent), required: false);
-            SourceExpression.Validate(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
-            SourceExpression.Validate(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
-            SourceExpression.Validate(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/content/external";
@@ -389,19 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaSuggestContent> CtaSuggestContentCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedBaseCtaContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            SourceExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: true);
-            SourceExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
-            SourceExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
-            SourceExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            SourceExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            SourceExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/content/Cta/Suggest";
@@ -496,19 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaInvitationContent> CtaInvitationContentCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedBaseCtaContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            SourceExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: true);
-            SourceExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
-            SourceExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
-            SourceExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            SourceExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            SourceExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/content/Cta/Invitation";
@@ -603,19 +534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaMobileContent> CtaMobileContentCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedBaseCtaContentCreation[]> bodycontents, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            SourceExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: true);
-            SourceExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
-            SourceExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
-            SourceExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            SourceExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            SourceExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/content/Cta/Mobile";
@@ -710,23 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaEventContent> CtaEventCreation([WorkflowExpression] Func<string[]> bodychannelIds, [WorkflowExpression] Func<LocalizedCtaEventContentCreation[]> bodycontents, [WorkflowExpression] Func<string> bodyaudienceId = null, [WorkflowExpression] Func<string[]> bodycategoryIds = null, [WorkflowExpression] Func<string> bodylink = null, [WorkflowExpression] Func<int> bodyawardedBonus = null, [WorkflowExpression] Func<bool> bodyshouldDisplayTitle = null, [WorkflowExpression] Func<bool> bodyshouldDisplayButton = null, [WorkflowExpression] Func<string> bodypublicationStartDate = null, [WorkflowExpression] Func<string> bodypublicationEndDate = null, [WorkflowExpression] Func<bodymyNewsDisplayInput> bodymyNewsDisplay = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfMyNews = null, [WorkflowExpression] Func<string> bodypinOfMyNewsStartDate = null, [WorkflowExpression] Func<string> bodypinOfMyNewsEndDate = null, [WorkflowExpression] Func<bool> bodyshouldPinTopOfSelectedChannels = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsStartDate = null, [WorkflowExpression] Func<string> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            SourceExpression.Validate(bodychannelIds, nameof(bodychannelIds), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: true);
-            SourceExpression.Validate(bodyaudienceId, nameof(bodyaudienceId), required: false);
-            SourceExpression.Validate(bodycategoryIds, nameof(bodycategoryIds), required: false);
-            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
-            SourceExpression.Validate(bodyawardedBonus, nameof(bodyawardedBonus), required: false);
-            SourceExpression.Validate(bodyshouldDisplayTitle, nameof(bodyshouldDisplayTitle), required: false);
-            SourceExpression.Validate(bodyshouldDisplayButton, nameof(bodyshouldDisplayButton), required: false);
-            SourceExpression.Validate(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            SourceExpression.Validate(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            SourceExpression.Validate(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            SourceExpression.Validate(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            SourceExpression.Validate(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            SourceExpression.Validate(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/content/Cta/Event";
@@ -845,9 +746,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction AssignBadgeToUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> bodybadgeId, [WorkflowExpression] Func<int> bodylevel)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(bodybadgeId, nameof(bodybadgeId), required: true);
-            SourceExpression.Validate(bodylevel, nameof(bodylevel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/badges/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -872,11 +770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction AssignCustomActionToUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<bodycontentsInputItem[]> bodycontents, [WorkflowExpression] Func<bool> bodyisEngaging = null, [WorkflowExpression] Func<bool> bodyisInternal = null, [WorkflowExpression] Func<int> bodypoints = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: true);
-            SourceExpression.Validate(bodyisEngaging, nameof(bodyisEngaging), required: false);
-            SourceExpression.Validate(bodyisInternal, nameof(bodyisInternal), required: false);
-            SourceExpression.Validate(bodypoints, nameof(bodypoints), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/customactions/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -931,7 +824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> GetBadgeLevels([WorkflowExpression] Func<string> badgeId)
         {
-            SourceExpression.Validate(badgeId, nameof(badgeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/badges/{0}/levels", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(badgeId, 1));
@@ -946,7 +838,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetFoldersResponse> GetMediaDriveFolders([WorkflowExpression] Func<string> culture = null)
         {
-            SourceExpression.Validate(culture, nameof(culture), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mediadrive";

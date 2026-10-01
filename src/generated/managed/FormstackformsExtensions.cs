@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formstackforms
     {
         public IBodyWorkflowTrigger<FormstackFormSubmittedResponse> FormstackFormSubmitted([WorkflowExpression] Func<int> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/form/{0}/webhook/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(formId, 1));

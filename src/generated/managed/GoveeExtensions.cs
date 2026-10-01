@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice([WorkflowExpression] Func<string> bodydeviceMACAddress, [WorkflowExpression] Func<string> bodydeviceModel, [WorkflowExpression] Func<bodycmdcommandNameInput> bodycmdcommandName = null, [WorkflowExpression] Func<bodyturnInput> bodyturn = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<int> bodycolorcolorRed = null, [WorkflowExpression] Func<int> bodycolorcolorGreen = null, [WorkflowExpression] Func<int> bodycolorcolorBlue = null, [WorkflowExpression] Func<int> bodycolorTemperature = null)
         {
-            SourceExpression.Validate(bodydeviceMACAddress, nameof(bodydeviceMACAddress), required: true);
-            SourceExpression.Validate(bodydeviceModel, nameof(bodydeviceModel), required: true);
-            SourceExpression.Validate(bodycmdcommandName, nameof(bodycmdcommandName), required: false);
-            SourceExpression.Validate(bodyturn, nameof(bodyturn), required: false);
-            SourceExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
-            SourceExpression.Validate(bodycolorcolorRed, nameof(bodycolorcolorRed), required: false);
-            SourceExpression.Validate(bodycolorcolorGreen, nameof(bodycolorcolorGreen), required: false);
-            SourceExpression.Validate(bodycolorcolorBlue, nameof(bodycolorcolorBlue), required: false);
-            SourceExpression.Validate(bodycolorTemperature, nameof(bodycolorTemperature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/devices/control";
@@ -105,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation([WorkflowExpression] Func<string> device = null, [WorkflowExpression] Func<string> model = null)
         {
-            SourceExpression.Validate(device, nameof(device), required: false);
-            SourceExpression.Validate(model, nameof(model), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/devices";

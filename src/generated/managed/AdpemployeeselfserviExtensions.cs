@@ -14,18 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<bodyrelationInput> bodyrelation, [WorkflowExpression] Func<bool> bodyisPrimary, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodyaddressCountry = null, [WorkflowExpression] Func<string> bodyaddressPostalCode = null, [WorkflowExpression] Func<bodyphonesInputItem[]> bodyphones = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
-            SourceExpression.Validate(bodyrelation, nameof(bodyrelation), required: true);
-            SourceExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: true);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            SourceExpression.Validate(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
-            SourceExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
-            SourceExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
-            SourceExpression.Validate(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            SourceExpression.Validate(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            SourceExpression.Validate(bodyphones, nameof(bodyphones), required: false);
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/create-emergency-contact";
@@ -106,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts([WorkflowExpression] Func<string[]> bodyitemIds)
         {
-            SourceExpression.Validate(bodyitemIds, nameof(bodyitemIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/delete-emergency-contacts";
@@ -185,19 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<UpdateContactResponse> UpdateContact([WorkflowExpression] Func<string> bodyitemId, [WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<bodyrelationInput> bodyrelation, [WorkflowExpression] Func<bool> bodyisPrimary, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodyaddressCountry = null, [WorkflowExpression] Func<string> bodyaddressPostalCode = null, [WorkflowExpression] Func<bodyphonesInputItem22[]> bodyphones = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            SourceExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
-            SourceExpression.Validate(bodyrelation, nameof(bodyrelation), required: true);
-            SourceExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: true);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            SourceExpression.Validate(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
-            SourceExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
-            SourceExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
-            SourceExpression.Validate(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            SourceExpression.Validate(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            SourceExpression.Validate(bodyphones, nameof(bodyphones), required: false);
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/update-emergency-contact";
@@ -280,11 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<UpdateUserResponse> UpdateUser([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodymobileCountry = null, [WorkflowExpression] Func<string> bodymobileArea = null, [WorkflowExpression] Func<string> bodymobileNumber = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodymobileCountry, nameof(bodymobileCountry), required: false);
-            SourceExpression.Validate(bodymobileArea, nameof(bodymobileArea), required: false);
-            SourceExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/update-profile";

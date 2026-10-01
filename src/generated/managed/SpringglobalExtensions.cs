@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
         public IBodyWorkflowAction<JToken> GetExecutionById([WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> publicationId, [WorkflowExpression] Func<bool> advancedInfo = null)
         {
-            SourceExpression.Validate(executionId, nameof(executionId), required: true);
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
-            SourceExpression.Validate(publicationId, nameof(publicationId), required: true);
-            SourceExpression.Validate(advancedInfo, nameof(advancedInfo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(executionId, 1));
@@ -37,7 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
         public IBodyWorkflowAction<GetUserByIdResponse> GetUserById([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -54,8 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
     {
         public IWorkflowTrigger OnSurveyExecution([WorkflowExpression] Func<string> bodyparameterssurveyId = null, [WorkflowExpression] Func<string> bodyparameterspublicationId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
-            SourceExpression.Validate(bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook-service/subscribe/surveyexecution";

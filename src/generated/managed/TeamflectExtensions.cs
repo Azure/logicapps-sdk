@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<Feedback> SendFeedbackRequest([WorkflowExpression] Func<string> bodyfeedbackSubject, [WorkflowExpression] Func<string> bodyfeedbackProvider, [WorkflowExpression] Func<string> bodyrequestNote, [WorkflowExpression] Func<string> bodytemplateTitle, [WorkflowExpression] Func<double> bodydueDays, [WorkflowExpression] Func<bool> bodyisPrivate)
         {
-            SourceExpression.Validate(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
-            SourceExpression.Validate(bodyfeedbackProvider, nameof(bodyfeedbackProvider), required: true);
-            SourceExpression.Validate(bodyrequestNote, nameof(bodyrequestNote), required: true);
-            SourceExpression.Validate(bodytemplateTitle, nameof(bodytemplateTitle), required: true);
-            SourceExpression.Validate(bodydueDays, nameof(bodydueDays), required: true);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/feedback/sendFeedbackRequest";
@@ -52,14 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<Feedback> SendExternalFeedbackRequest([WorkflowExpression] Func<string> bodyfeedbackSubject, [WorkflowExpression] Func<string> bodyexternalEmail, [WorkflowExpression] Func<string> bodyproviderName, [WorkflowExpression] Func<string> bodyrequestNote, [WorkflowExpression] Func<string> bodytemplateTitle, [WorkflowExpression] Func<double> bodydueDays, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<bool> bodyisAnonymous)
         {
-            SourceExpression.Validate(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
-            SourceExpression.Validate(bodyexternalEmail, nameof(bodyexternalEmail), required: true);
-            SourceExpression.Validate(bodyproviderName, nameof(bodyproviderName), required: true);
-            SourceExpression.Validate(bodyrequestNote, nameof(bodyrequestNote), required: true);
-            SourceExpression.Validate(bodytemplateTitle, nameof(bodytemplateTitle), required: true);
-            SourceExpression.Validate(bodydueDays, nameof(bodydueDays), required: true);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            SourceExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/feedback/sendExternalFeedbackRequest";
@@ -96,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<Goal> GetGoal([WorkflowExpression] Func<string> goalId)
         {
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/goal/getGoal";
@@ -112,14 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<Goal[]> GetGoals([WorkflowExpression] Func<string> userOId = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> selectedLabels = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(userOId, nameof(userOId), required: false);
-            SourceExpression.Validate(userUPN, nameof(userUPN), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(selectedLabels, nameof(selectedLabels), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/goal/getGoals";
@@ -150,12 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<Goal> UpdateGoal([WorkflowExpression] Func<string> bodygoalId, [WorkflowExpression] Func<string> bodynewProgressValue, [WorkflowExpression] Func<bodyupdaterTypeInput> bodyupdaterType, [WorkflowExpression] Func<string> bodysystemName, [WorkflowExpression] Func<string> bodyupdateComment = null, [WorkflowExpression] Func<string> bodynewStatus = null)
         {
-            SourceExpression.Validate(bodygoalId, nameof(bodygoalId), required: true);
-            SourceExpression.Validate(bodynewProgressValue, nameof(bodynewProgressValue), required: true);
-            SourceExpression.Validate(bodyupdaterType, nameof(bodyupdaterType), required: true);
-            SourceExpression.Validate(bodysystemName, nameof(bodysystemName), required: true);
-            SourceExpression.Validate(bodyupdateComment, nameof(bodyupdateComment), required: false);
-            SourceExpression.Validate(bodynewStatus, nameof(bodynewStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/goal/updateProgress";
@@ -196,20 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<Goal> CreateGoal([WorkflowExpression] Func<string> bodygoalTitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodydueDate, [WorkflowExpression] Func<string> bodygoalType, [WorkflowExpression] Func<object> bodygoalOwner, [WorkflowExpression] Func<string> bodygoalCreator, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyprogressFormat, [WorkflowExpression] Func<string> bodycurrencyCode, [WorkflowExpression] Func<double> bodyinitialValue, [WorkflowExpression] Func<double> bodytargetValue, [WorkflowExpression] Func<string> bodyparentGoalId, [WorkflowExpression] Func<bool> bodynotifyOwner)
         {
-            SourceExpression.Validate(bodygoalTitle, nameof(bodygoalTitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: true);
-            SourceExpression.Validate(bodygoalType, nameof(bodygoalType), required: true);
-            SourceExpression.Validate(bodygoalOwner, nameof(bodygoalOwner), required: true);
-            SourceExpression.Validate(bodygoalCreator, nameof(bodygoalCreator), required: true);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            SourceExpression.Validate(bodyprogressFormat, nameof(bodyprogressFormat), required: true);
-            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            SourceExpression.Validate(bodyinitialValue, nameof(bodyinitialValue), required: true);
-            SourceExpression.Validate(bodytargetValue, nameof(bodytargetValue), required: true);
-            SourceExpression.Validate(bodyparentGoalId, nameof(bodyparentGoalId), required: true);
-            SourceExpression.Validate(bodynotifyOwner, nameof(bodynotifyOwner), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/goal/createNewGoal";
@@ -258,9 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<Goal> AddCommentGoal([WorkflowExpression] Func<string> commentidOfTheGoal, [WorkflowExpression] Func<string> commentobjectIdOrUserPrincipalNameOfTheCommenter, [WorkflowExpression] Func<string> commentcommentItself)
         {
-            SourceExpression.Validate(commentidOfTheGoal, nameof(commentidOfTheGoal), required: true);
-            SourceExpression.Validate(commentobjectIdOrUserPrincipalNameOfTheCommenter, nameof(commentobjectIdOrUserPrincipalNameOfTheCommenter), required: true);
-            SourceExpression.Validate(commentcommentItself, nameof(commentcommentItself), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/goal/commentGoal";
@@ -287,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<RecognitionResponse> GetRecognition([WorkflowExpression] Func<string> recognitionId)
         {
-            SourceExpression.Validate(recognitionId, nameof(recognitionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recognition/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recognitionId, 1));
@@ -302,10 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<RecognitionResponse[]> GetRecognitions([WorkflowExpression] Func<string[]> bodyrecipientsToSearch, [WorkflowExpression] Func<string> bodyrecognitionTitle, [WorkflowExpression] Func<string> bodyupdateDate, [WorkflowExpression] Func<string> bodycreationDate)
         {
-            SourceExpression.Validate(bodyrecipientsToSearch, nameof(bodyrecipientsToSearch), required: true);
-            SourceExpression.Validate(bodyrecognitionTitle, nameof(bodyrecognitionTitle), required: true);
-            SourceExpression.Validate(bodyupdateDate, nameof(bodyupdateDate), required: true);
-            SourceExpression.Validate(bodycreationDate, nameof(bodycreationDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/recognition";
@@ -334,11 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<RecognitionCreateResponse> CreateRecognition([WorkflowExpression] Func<string> bodyrecognitionSender, [WorkflowExpression] Func<string[]> bodyrecognitionRecipients, [WorkflowExpression] Func<string> bodybadgeTitle, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyrecognitionMessage)
         {
-            SourceExpression.Validate(bodyrecognitionSender, nameof(bodyrecognitionSender), required: true);
-            SourceExpression.Validate(bodyrecognitionRecipients, nameof(bodyrecognitionRecipients), required: true);
-            SourceExpression.Validate(bodybadgeTitle, nameof(bodybadgeTitle), required: true);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            SourceExpression.Validate(bodyrecognitionMessage, nameof(bodyrecognitionMessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/recognition/createNewRecognitions";
@@ -369,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<TaskObject> GetTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -384,13 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<TaskObject[]> GetTasks([WorkflowExpression] Func<string> userOId = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(userOId, nameof(userOId), required: false);
-            SourceExpression.Validate(userUPN, nameof(userUPN), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/task";
@@ -419,7 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IBodyWorkflowAction<User> GetUser([WorkflowExpression] Func<string> userMail)
         {
-            SourceExpression.Validate(userMail, nameof(userMail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user/getUser";
@@ -435,8 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
         public IWorkflowAction UpdateUser([WorkflowExpression] Func<string> bodyuserEmail = null, [WorkflowExpression] Func<bodyuserAttributesInputItem[]> bodyuserAttributes = null)
         {
-            SourceExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: false);
-            SourceExpression.Validate(bodyuserAttributes, nameof(bodyuserAttributes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user/updateUser";

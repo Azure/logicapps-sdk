@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<ListCompanyResponse> ListCompany([WorkflowExpression] Func<string> bcenvironment)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 1));
@@ -43,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<GetCompanyResponse> GetCompany([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 1));

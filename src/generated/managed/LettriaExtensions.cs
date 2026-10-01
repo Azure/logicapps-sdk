@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
         public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend([WorkflowExpression] Func<string[]> bodydocuments = null)
         {
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
         public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify([WorkflowExpression] Func<string[]> bodydocuments = null)
         {
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nls/classification";

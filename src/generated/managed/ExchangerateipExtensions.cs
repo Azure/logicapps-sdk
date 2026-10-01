@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRatesResponse> GetExchangeRates([WorkflowExpression] Func<string> basecurrency)
         {
-            SourceExpression.Validate(basecurrency, nameof(basecurrency), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/latest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basecurrency, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate([WorkflowExpression] Func<string> baseCurrency, [WorkflowExpression] Func<string> targetCurrency)
         {
-            SourceExpression.Validate(baseCurrency, nameof(baseCurrency), required: true);
-            SourceExpression.Validate(targetCurrency, nameof(targetCurrency), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pair/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseCurrency, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(targetCurrency, 1));
@@ -59,10 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalRatesResponse> GetHistoricalRates([WorkflowExpression] Func<string> baseCurrency, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
         {
-            SourceExpression.Validate(baseCurrency, nameof(baseCurrency), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(month, nameof(month), required: true);
-            SourceExpression.Validate(day, nameof(day), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseCurrency, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(month, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(day, 1));
@@ -77,11 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalConversionsResponse> GetHistoricalConversions([WorkflowExpression] Func<string> baseCurrency, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day, [WorkflowExpression] Func<string> amount)
         {
-            SourceExpression.Validate(baseCurrency, nameof(baseCurrency), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(month, nameof(month), required: true);
-            SourceExpression.Validate(day, nameof(day), required: true);
-            SourceExpression.Validate(amount, nameof(amount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseCurrency, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(month, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(day, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(amount, 1));

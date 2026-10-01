@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction ProfileTimeBasedMetrics([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofile = null)
         {
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
-            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
-            SourceExpression.Validate(bodyprofile, nameof(bodyprofile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/profile_time_based_metrics";
@@ -62,10 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction ProfileAggregatedMetrics([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
-            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/profiles_aggregated_metrics";
@@ -110,10 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction Posts([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
-            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            SourceExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/posts";
@@ -158,9 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction Stories([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
-            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stories";

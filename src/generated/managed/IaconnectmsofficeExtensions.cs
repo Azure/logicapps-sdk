@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordCreateInstanceResponse> MSWordCreateInstance([WorkflowExpression] Func<string> mSWordCreateInstanceworkflow, [WorkflowExpression] Func<bool> mSWordCreateInstanceshowWord = null)
         {
-            SourceExpression.Validate(mSWordCreateInstanceworkflow, nameof(mSWordCreateInstanceworkflow), required: true);
-            SourceExpression.Validate(mSWordCreateInstanceshowWord, nameof(mSWordCreateInstanceshowWord), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/CreateInstance";
@@ -54,8 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordCloseInstance([WorkflowExpression] Func<string> mSWordCloseInstanceworkflow, [WorkflowExpression] Func<int> mSWordCloseInstancehandle = null)
         {
-            SourceExpression.Validate(mSWordCloseInstanceworkflow, nameof(mSWordCloseInstanceworkflow), required: true);
-            SourceExpression.Validate(mSWordCloseInstancehandle, nameof(mSWordCloseInstancehandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/CloseInstance";
@@ -94,8 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordDetachFromInstance([WorkflowExpression] Func<string> mSWordDetachFromInstanceworkflow, [WorkflowExpression] Func<int> mSWordDetachFromInstancehandle = null)
         {
-            SourceExpression.Validate(mSWordDetachFromInstanceworkflow, nameof(mSWordDetachFromInstanceworkflow), required: true);
-            SourceExpression.Validate(mSWordDetachFromInstancehandle, nameof(mSWordDetachFromInstancehandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/DetachFromInstance";
@@ -134,11 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordAttachToExistingInstanceResponse> MSWordAttachToExistingInstance([WorkflowExpression] Func<string> mSWordAttachToExistingInstanceworkflow, [WorkflowExpression] Func<string> mSWordAttachToExistingInstancefilename = null, [WorkflowExpression] Func<bool> mSWordAttachToExistingInstancetoggleWindow = null, [WorkflowExpression] Func<bool> mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> mSWordAttachToExistingInstancetoggleDelay = null)
         {
-            SourceExpression.Validate(mSWordAttachToExistingInstanceworkflow, nameof(mSWordAttachToExistingInstanceworkflow), required: true);
-            SourceExpression.Validate(mSWordAttachToExistingInstancefilename, nameof(mSWordAttachToExistingInstancefilename), required: false);
-            SourceExpression.Validate(mSWordAttachToExistingInstancetoggleWindow, nameof(mSWordAttachToExistingInstancetoggleWindow), required: false);
-            SourceExpression.Validate(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(mSWordAttachToExistingInstancetoggleDelay, nameof(mSWordAttachToExistingInstancetoggleDelay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/AttachToExistingInstance";
@@ -215,8 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordShowWord([WorkflowExpression] Func<string> mSWordShowWordworkflow, [WorkflowExpression] Func<int> mSWordShowWordhandle = null)
         {
-            SourceExpression.Validate(mSWordShowWordworkflow, nameof(mSWordShowWordworkflow), required: true);
-            SourceExpression.Validate(mSWordShowWordhandle, nameof(mSWordShowWordhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/ShowWord";
@@ -255,8 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordHideWord([WorkflowExpression] Func<string> mSWordHideWordworkflow, [WorkflowExpression] Func<int> mSWordHideWordhandle = null)
         {
-            SourceExpression.Validate(mSWordHideWordworkflow, nameof(mSWordHideWordworkflow), required: true);
-            SourceExpression.Validate(mSWordHideWordhandle, nameof(mSWordHideWordhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/HideWord";
@@ -295,8 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordCreateDocumentResponse> MSWordCreateDocument([WorkflowExpression] Func<string> mSWordCreateDocumentworkflow, [WorkflowExpression] Func<int> mSWordCreateDocumenthandle = null)
         {
-            SourceExpression.Validate(mSWordCreateDocumentworkflow, nameof(mSWordCreateDocumentworkflow), required: true);
-            SourceExpression.Validate(mSWordCreateDocumenthandle, nameof(mSWordCreateDocumenthandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/CreateDocument";
@@ -335,13 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordOpenDocumentResponse> MSWordOpenDocument([WorkflowExpression] Func<string> mSWordOpenDocumentfilename, [WorkflowExpression] Func<string> mSWordOpenDocumentworkflow, [WorkflowExpression] Func<int> mSWordOpenDocumenthandle = null, [WorkflowExpression] Func<bool> mSWordOpenDocumentopenReadOnly = null, [WorkflowExpression] Func<bool> mSWordOpenDocumentaddToRecentFiles = null, [WorkflowExpression] Func<string> mSWordOpenDocumentpassword = null, [WorkflowExpression] Func<bool> mSWordOpenDocumentopenAndRepair = null)
         {
-            SourceExpression.Validate(mSWordOpenDocumentfilename, nameof(mSWordOpenDocumentfilename), required: true);
-            SourceExpression.Validate(mSWordOpenDocumentworkflow, nameof(mSWordOpenDocumentworkflow), required: true);
-            SourceExpression.Validate(mSWordOpenDocumenthandle, nameof(mSWordOpenDocumenthandle), required: false);
-            SourceExpression.Validate(mSWordOpenDocumentopenReadOnly, nameof(mSWordOpenDocumentopenReadOnly), required: false);
-            SourceExpression.Validate(mSWordOpenDocumentaddToRecentFiles, nameof(mSWordOpenDocumentaddToRecentFiles), required: false);
-            SourceExpression.Validate(mSWordOpenDocumentpassword, nameof(mSWordOpenDocumentpassword), required: false);
-            SourceExpression.Validate(mSWordOpenDocumentopenAndRepair, nameof(mSWordOpenDocumentopenAndRepair), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/OpenDocument";
@@ -436,9 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSaveDocument([WorkflowExpression] Func<string> mSWordSaveDocumentworkflow, [WorkflowExpression] Func<int> mSWordSaveDocumenthandle = null, [WorkflowExpression] Func<string> mSWordSaveDocumentdocumentName = null)
         {
-            SourceExpression.Validate(mSWordSaveDocumentworkflow, nameof(mSWordSaveDocumentworkflow), required: true);
-            SourceExpression.Validate(mSWordSaveDocumenthandle, nameof(mSWordSaveDocumenthandle), required: false);
-            SourceExpression.Validate(mSWordSaveDocumentdocumentName, nameof(mSWordSaveDocumentdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/Save";
@@ -483,10 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordSaveAsDocumentResponse> MSWordSaveAsDocument([WorkflowExpression] Func<string> mSWordSaveAsDocumentsaveFilename, [WorkflowExpression] Func<string> mSWordSaveAsDocumentworkflow, [WorkflowExpression] Func<int> mSWordSaveAsDocumenthandle = null, [WorkflowExpression] Func<string> mSWordSaveAsDocumentdocumentName = null)
         {
-            SourceExpression.Validate(mSWordSaveAsDocumentsaveFilename, nameof(mSWordSaveAsDocumentsaveFilename), required: true);
-            SourceExpression.Validate(mSWordSaveAsDocumentworkflow, nameof(mSWordSaveAsDocumentworkflow), required: true);
-            SourceExpression.Validate(mSWordSaveAsDocumenthandle, nameof(mSWordSaveAsDocumenthandle), required: false);
-            SourceExpression.Validate(mSWordSaveAsDocumentdocumentName, nameof(mSWordSaveAsDocumentdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/SaveAs";
@@ -533,9 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordCloseDocument([WorkflowExpression] Func<string> mSWordCloseDocumentworkflow, [WorkflowExpression] Func<int> mSWordCloseDocumenthandle = null, [WorkflowExpression] Func<string> mSWordCloseDocumentdocumentName = null)
         {
-            SourceExpression.Validate(mSWordCloseDocumentworkflow, nameof(mSWordCloseDocumentworkflow), required: true);
-            SourceExpression.Validate(mSWordCloseDocumenthandle, nameof(mSWordCloseDocumenthandle), required: false);
-            SourceExpression.Validate(mSWordCloseDocumentdocumentName, nameof(mSWordCloseDocumentdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/CloseDocument";
@@ -580,9 +546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordTypeText([WorkflowExpression] Func<string> mSWordTypeTexttext, [WorkflowExpression] Func<string> mSWordTypeTextworkflow, [WorkflowExpression] Func<int> mSWordTypeTexthandle = null)
         {
-            SourceExpression.Validate(mSWordTypeTexttext, nameof(mSWordTypeTexttext), required: true);
-            SourceExpression.Validate(mSWordTypeTextworkflow, nameof(mSWordTypeTextworkflow), required: true);
-            SourceExpression.Validate(mSWordTypeTexthandle, nameof(mSWordTypeTexthandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/TypeText";
@@ -623,9 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectAll([WorkflowExpression] Func<string> mSWordSelectAllworkflow, [WorkflowExpression] Func<int> mSWordSelectAllhandle = null, [WorkflowExpression] Func<string> mSWordSelectAlldocumentName = null)
         {
-            SourceExpression.Validate(mSWordSelectAllworkflow, nameof(mSWordSelectAllworkflow), required: true);
-            SourceExpression.Validate(mSWordSelectAllhandle, nameof(mSWordSelectAllhandle), required: false);
-            SourceExpression.Validate(mSWordSelectAlldocumentName, nameof(mSWordSelectAlldocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/SelectAll";
@@ -670,11 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectRange([WorkflowExpression] Func<int> mSWordSelectRangestart, [WorkflowExpression] Func<int> mSWordSelectRangefinish, [WorkflowExpression] Func<string> mSWordSelectRangeworkflow, [WorkflowExpression] Func<int> mSWordSelectRangehandle = null, [WorkflowExpression] Func<string> mSWordSelectRangedocumentName = null)
         {
-            SourceExpression.Validate(mSWordSelectRangestart, nameof(mSWordSelectRangestart), required: true);
-            SourceExpression.Validate(mSWordSelectRangefinish, nameof(mSWordSelectRangefinish), required: true);
-            SourceExpression.Validate(mSWordSelectRangeworkflow, nameof(mSWordSelectRangeworkflow), required: true);
-            SourceExpression.Validate(mSWordSelectRangehandle, nameof(mSWordSelectRangehandle), required: false);
-            SourceExpression.Validate(mSWordSelectRangedocumentName, nameof(mSWordSelectRangedocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/SelectRange";
@@ -723,8 +678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordCopyToClipboard([WorkflowExpression] Func<string> mSWordCopyToClipboardworkflow, [WorkflowExpression] Func<int> mSWordCopyToClipboardhandle = null)
         {
-            SourceExpression.Validate(mSWordCopyToClipboardworkflow, nameof(mSWordCopyToClipboardworkflow), required: true);
-            SourceExpression.Validate(mSWordCopyToClipboardhandle, nameof(mSWordCopyToClipboardhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/CopyToClipboard";
@@ -763,8 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordPasteFromClipboard([WorkflowExpression] Func<string> mSWordPasteFromClipboardworkflow, [WorkflowExpression] Func<int> mSWordPasteFromClipboardhandle = null)
         {
-            SourceExpression.Validate(mSWordPasteFromClipboardworkflow, nameof(mSWordPasteFromClipboardworkflow), required: true);
-            SourceExpression.Validate(mSWordPasteFromClipboardhandle, nameof(mSWordPasteFromClipboardhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/PasteFromClipboard";
@@ -803,7 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordClearClipboard([WorkflowExpression] Func<string> mSWordClearClipboardworkflow)
         {
-            SourceExpression.Validate(mSWordClearClipboardworkflow, nameof(mSWordClearClipboardworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/ClearClipboard";
@@ -826,11 +776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetDocumentBodyTextResponse> MSWordGetDocumentBodyText([WorkflowExpression] Func<int> mSWordGetDocumentBodyTextstart, [WorkflowExpression] Func<int> mSWordGetDocumentBodyTextfinish, [WorkflowExpression] Func<string> mSWordGetDocumentBodyTextworkflow, [WorkflowExpression] Func<int> mSWordGetDocumentBodyTexthandle = null, [WorkflowExpression] Func<string> mSWordGetDocumentBodyTextdocumentName = null)
         {
-            SourceExpression.Validate(mSWordGetDocumentBodyTextstart, nameof(mSWordGetDocumentBodyTextstart), required: true);
-            SourceExpression.Validate(mSWordGetDocumentBodyTextfinish, nameof(mSWordGetDocumentBodyTextfinish), required: true);
-            SourceExpression.Validate(mSWordGetDocumentBodyTextworkflow, nameof(mSWordGetDocumentBodyTextworkflow), required: true);
-            SourceExpression.Validate(mSWordGetDocumentBodyTexthandle, nameof(mSWordGetDocumentBodyTexthandle), required: false);
-            SourceExpression.Validate(mSWordGetDocumentBodyTextdocumentName, nameof(mSWordGetDocumentBodyTextdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/GetDocumentBodyText";
@@ -879,9 +824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetNumberOfTablesInDocumentResponse> MSWordGetNumberOfTablesInDocument([WorkflowExpression] Func<string> mSWordGetNumberOfTablesInDocumentworkflow, [WorkflowExpression] Func<int> mSWordGetNumberOfTablesInDocumenthandle = null, [WorkflowExpression] Func<string> mSWordGetNumberOfTablesInDocumentdocumentName = null)
         {
-            SourceExpression.Validate(mSWordGetNumberOfTablesInDocumentworkflow, nameof(mSWordGetNumberOfTablesInDocumentworkflow), required: true);
-            SourceExpression.Validate(mSWordGetNumberOfTablesInDocumenthandle, nameof(mSWordGetNumberOfTablesInDocumenthandle), required: false);
-            SourceExpression.Validate(mSWordGetNumberOfTablesInDocumentdocumentName, nameof(mSWordGetNumberOfTablesInDocumentdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/GetNumberOfTablesInDocument";
@@ -926,11 +868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordUpdateBookmark([WorkflowExpression] Func<string> mSWordUpdateBookmarkbookmarkName, [WorkflowExpression] Func<string> mSWordUpdateBookmarkworkflow, [WorkflowExpression] Func<int> mSWordUpdateBookmarkhandle = null, [WorkflowExpression] Func<string> mSWordUpdateBookmarkdocumentName = null, [WorkflowExpression] Func<string> mSWordUpdateBookmarknewValue = null)
         {
-            SourceExpression.Validate(mSWordUpdateBookmarkbookmarkName, nameof(mSWordUpdateBookmarkbookmarkName), required: true);
-            SourceExpression.Validate(mSWordUpdateBookmarkworkflow, nameof(mSWordUpdateBookmarkworkflow), required: true);
-            SourceExpression.Validate(mSWordUpdateBookmarkhandle, nameof(mSWordUpdateBookmarkhandle), required: false);
-            SourceExpression.Validate(mSWordUpdateBookmarkdocumentName, nameof(mSWordUpdateBookmarkdocumentName), required: false);
-            SourceExpression.Validate(mSWordUpdateBookmarknewValue, nameof(mSWordUpdateBookmarknewValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/UpdateBookmark";
@@ -983,10 +920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectTable([WorkflowExpression] Func<int> mSWordSelectTabletableIndex, [WorkflowExpression] Func<string> mSWordSelectTableworkflow, [WorkflowExpression] Func<int> mSWordSelectTablehandle = null, [WorkflowExpression] Func<string> mSWordSelectTabledocumentName = null)
         {
-            SourceExpression.Validate(mSWordSelectTabletableIndex, nameof(mSWordSelectTabletableIndex), required: true);
-            SourceExpression.Validate(mSWordSelectTableworkflow, nameof(mSWordSelectTableworkflow), required: true);
-            SourceExpression.Validate(mSWordSelectTablehandle, nameof(mSWordSelectTablehandle), required: false);
-            SourceExpression.Validate(mSWordSelectTabledocumentName, nameof(mSWordSelectTabledocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/SelectTable";
@@ -1033,10 +966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetTableBoundsResponse> MSWordGetTableBounds([WorkflowExpression] Func<int> mSWordGetTableBoundstableIndex, [WorkflowExpression] Func<string> mSWordGetTableBoundsworkflow, [WorkflowExpression] Func<int> mSWordGetTableBoundshandle = null, [WorkflowExpression] Func<string> mSWordGetTableBoundsdocumentName = null)
         {
-            SourceExpression.Validate(mSWordGetTableBoundstableIndex, nameof(mSWordGetTableBoundstableIndex), required: true);
-            SourceExpression.Validate(mSWordGetTableBoundsworkflow, nameof(mSWordGetTableBoundsworkflow), required: true);
-            SourceExpression.Validate(mSWordGetTableBoundshandle, nameof(mSWordGetTableBoundshandle), required: false);
-            SourceExpression.Validate(mSWordGetTableBoundsdocumentName, nameof(mSWordGetTableBoundsdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/GetTableBounds";
@@ -1083,12 +1012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectTableCell([WorkflowExpression] Func<int> mSWordSelectTableCelltableIndex, [WorkflowExpression] Func<int> mSWordSelectTableCellrowIndex, [WorkflowExpression] Func<int> mSWordSelectTableCellcolumnIndex, [WorkflowExpression] Func<string> mSWordSelectTableCellworkflow, [WorkflowExpression] Func<int> mSWordSelectTableCellhandle = null, [WorkflowExpression] Func<string> mSWordSelectTableCelldocumentName = null)
         {
-            SourceExpression.Validate(mSWordSelectTableCelltableIndex, nameof(mSWordSelectTableCelltableIndex), required: true);
-            SourceExpression.Validate(mSWordSelectTableCellrowIndex, nameof(mSWordSelectTableCellrowIndex), required: true);
-            SourceExpression.Validate(mSWordSelectTableCellcolumnIndex, nameof(mSWordSelectTableCellcolumnIndex), required: true);
-            SourceExpression.Validate(mSWordSelectTableCellworkflow, nameof(mSWordSelectTableCellworkflow), required: true);
-            SourceExpression.Validate(mSWordSelectTableCellhandle, nameof(mSWordSelectTableCellhandle), required: false);
-            SourceExpression.Validate(mSWordSelectTableCelldocumentName, nameof(mSWordSelectTableCelldocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/SelectTableCell";
@@ -1139,12 +1062,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetTableCellTextValueResponse> MSWordGetTableCellTextValue([WorkflowExpression] Func<int> mSWordGetTableCellTextValuetableIndex, [WorkflowExpression] Func<int> mSWordGetTableCellTextValuerowIndex, [WorkflowExpression] Func<int> mSWordGetTableCellTextValuecolumnIndex, [WorkflowExpression] Func<string> mSWordGetTableCellTextValueworkflow, [WorkflowExpression] Func<int> mSWordGetTableCellTextValuehandle = null, [WorkflowExpression] Func<string> mSWordGetTableCellTextValuedocumentName = null)
         {
-            SourceExpression.Validate(mSWordGetTableCellTextValuetableIndex, nameof(mSWordGetTableCellTextValuetableIndex), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValuerowIndex, nameof(mSWordGetTableCellTextValuerowIndex), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValuecolumnIndex, nameof(mSWordGetTableCellTextValuecolumnIndex), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValueworkflow, nameof(mSWordGetTableCellTextValueworkflow), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValuehandle, nameof(mSWordGetTableCellTextValuehandle), required: false);
-            SourceExpression.Validate(mSWordGetTableCellTextValuedocumentName, nameof(mSWordGetTableCellTextValuedocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/GetTableCellTextValue";
@@ -1195,12 +1112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetTableCellTextValueTrimmedResponse> MSWordGetTableCellTextValueTrimmed([WorkflowExpression] Func<int> mSWordGetTableCellTextValueTrimmedtableIndex, [WorkflowExpression] Func<int> mSWordGetTableCellTextValueTrimmedrowIndex, [WorkflowExpression] Func<int> mSWordGetTableCellTextValueTrimmedcolumnIndex, [WorkflowExpression] Func<string> mSWordGetTableCellTextValueTrimmedworkflow, [WorkflowExpression] Func<int> mSWordGetTableCellTextValueTrimmedhandle = null, [WorkflowExpression] Func<string> mSWordGetTableCellTextValueTrimmeddocumentName = null)
         {
-            SourceExpression.Validate(mSWordGetTableCellTextValueTrimmedtableIndex, nameof(mSWordGetTableCellTextValueTrimmedtableIndex), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValueTrimmedrowIndex, nameof(mSWordGetTableCellTextValueTrimmedrowIndex), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValueTrimmedcolumnIndex, nameof(mSWordGetTableCellTextValueTrimmedcolumnIndex), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValueTrimmedworkflow, nameof(mSWordGetTableCellTextValueTrimmedworkflow), required: true);
-            SourceExpression.Validate(mSWordGetTableCellTextValueTrimmedhandle, nameof(mSWordGetTableCellTextValueTrimmedhandle), required: false);
-            SourceExpression.Validate(mSWordGetTableCellTextValueTrimmeddocumentName, nameof(mSWordGetTableCellTextValueTrimmeddocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/GetTableCellTextValueTrimmed";
@@ -1251,13 +1162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSetTableCellTextValue([WorkflowExpression] Func<int> mSWordSetTableCellTextValuetableIndex, [WorkflowExpression] Func<int> mSWordSetTableCellTextValuerowIndex, [WorkflowExpression] Func<int> mSWordSetTableCellTextValuecolumnIndex, [WorkflowExpression] Func<string> mSWordSetTableCellTextValueworkflow, [WorkflowExpression] Func<int> mSWordSetTableCellTextValuehandle = null, [WorkflowExpression] Func<string> mSWordSetTableCellTextValuedocumentName = null, [WorkflowExpression] Func<string> mSWordSetTableCellTextValuenewCellText = null)
         {
-            SourceExpression.Validate(mSWordSetTableCellTextValuetableIndex, nameof(mSWordSetTableCellTextValuetableIndex), required: true);
-            SourceExpression.Validate(mSWordSetTableCellTextValuerowIndex, nameof(mSWordSetTableCellTextValuerowIndex), required: true);
-            SourceExpression.Validate(mSWordSetTableCellTextValuecolumnIndex, nameof(mSWordSetTableCellTextValuecolumnIndex), required: true);
-            SourceExpression.Validate(mSWordSetTableCellTextValueworkflow, nameof(mSWordSetTableCellTextValueworkflow), required: true);
-            SourceExpression.Validate(mSWordSetTableCellTextValuehandle, nameof(mSWordSetTableCellTextValuehandle), required: false);
-            SourceExpression.Validate(mSWordSetTableCellTextValuedocumentName, nameof(mSWordSetTableCellTextValuedocumentName), required: false);
-            SourceExpression.Validate(mSWordSetTableCellTextValuenewCellText, nameof(mSWordSetTableCellTextValuenewCellText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/SetTableCellTextValue";
@@ -1314,10 +1218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordExportDocumentAsPDF([WorkflowExpression] Func<string> mSWordExportDocumentAsPDFsaveFileName, [WorkflowExpression] Func<string> mSWordExportDocumentAsPDFworkflow, [WorkflowExpression] Func<int> mSWordExportDocumentAsPDFhandle = null, [WorkflowExpression] Func<string> mSWordExportDocumentAsPDFdocumentName = null)
         {
-            SourceExpression.Validate(mSWordExportDocumentAsPDFsaveFileName, nameof(mSWordExportDocumentAsPDFsaveFileName), required: true);
-            SourceExpression.Validate(mSWordExportDocumentAsPDFworkflow, nameof(mSWordExportDocumentAsPDFworkflow), required: true);
-            SourceExpression.Validate(mSWordExportDocumentAsPDFhandle, nameof(mSWordExportDocumentAsPDFhandle), required: false);
-            SourceExpression.Validate(mSWordExportDocumentAsPDFdocumentName, nameof(mSWordExportDocumentAsPDFdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/ExportDocumentAsPDF";
@@ -1364,12 +1264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordAddTable([WorkflowExpression] Func<int> mSWordAddTablenumberOfRows, [WorkflowExpression] Func<int> mSWordAddTablenumberOfColumns, [WorkflowExpression] Func<string> mSWordAddTableworkflow, [WorkflowExpression] Func<int> mSWordAddTablehandle = null, [WorkflowExpression] Func<string> mSWordAddTabledocumentName = null, [WorkflowExpression] Func<int> mSWordAddTableautoFitBehaviour = null)
         {
-            SourceExpression.Validate(mSWordAddTablenumberOfRows, nameof(mSWordAddTablenumberOfRows), required: true);
-            SourceExpression.Validate(mSWordAddTablenumberOfColumns, nameof(mSWordAddTablenumberOfColumns), required: true);
-            SourceExpression.Validate(mSWordAddTableworkflow, nameof(mSWordAddTableworkflow), required: true);
-            SourceExpression.Validate(mSWordAddTablehandle, nameof(mSWordAddTablehandle), required: false);
-            SourceExpression.Validate(mSWordAddTabledocumentName, nameof(mSWordAddTabledocumentName), required: false);
-            SourceExpression.Validate(mSWordAddTableautoFitBehaviour, nameof(mSWordAddTableautoFitBehaviour), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/AddTable";
@@ -1434,10 +1328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordAddTableRow([WorkflowExpression] Func<int> mSWordAddTableRowtableIndex, [WorkflowExpression] Func<string> mSWordAddTableRowworkflow, [WorkflowExpression] Func<int> mSWordAddTableRowhandle = null, [WorkflowExpression] Func<string> mSWordAddTableRowdocumentName = null)
         {
-            SourceExpression.Validate(mSWordAddTableRowtableIndex, nameof(mSWordAddTableRowtableIndex), required: true);
-            SourceExpression.Validate(mSWordAddTableRowworkflow, nameof(mSWordAddTableRowworkflow), required: true);
-            SourceExpression.Validate(mSWordAddTableRowhandle, nameof(mSWordAddTableRowhandle), required: false);
-            SourceExpression.Validate(mSWordAddTableRowdocumentName, nameof(mSWordAddTableRowdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/AddTableRow";
@@ -1484,10 +1374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordAddTableColumn([WorkflowExpression] Func<int> mSWordAddTableColumntableIndex, [WorkflowExpression] Func<string> mSWordAddTableColumnworkflow, [WorkflowExpression] Func<int> mSWordAddTableColumnhandle = null, [WorkflowExpression] Func<string> mSWordAddTableColumndocumentName = null)
         {
-            SourceExpression.Validate(mSWordAddTableColumntableIndex, nameof(mSWordAddTableColumntableIndex), required: true);
-            SourceExpression.Validate(mSWordAddTableColumnworkflow, nameof(mSWordAddTableColumnworkflow), required: true);
-            SourceExpression.Validate(mSWordAddTableColumnhandle, nameof(mSWordAddTableColumnhandle), required: false);
-            SourceExpression.Validate(mSWordAddTableColumndocumentName, nameof(mSWordAddTableColumndocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/AddTableColumn";
@@ -1534,9 +1420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetHighlightedTextResponse> MSWordGetHighlightedText([WorkflowExpression] Func<string> mSWordGetHighlightedTextworkflow, [WorkflowExpression] Func<int> mSWordGetHighlightedTexthandle = null, [WorkflowExpression] Func<string> mSWordGetHighlightedTextdocumentName = null)
         {
-            SourceExpression.Validate(mSWordGetHighlightedTextworkflow, nameof(mSWordGetHighlightedTextworkflow), required: true);
-            SourceExpression.Validate(mSWordGetHighlightedTexthandle, nameof(mSWordGetHighlightedTexthandle), required: false);
-            SourceExpression.Validate(mSWordGetHighlightedTextdocumentName, nameof(mSWordGetHighlightedTextdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/GetHighlightedText";
@@ -1581,10 +1464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordExecuteCommandBarObjectResponse> MSWordExecuteCommandBarObject([WorkflowExpression] Func<string> mSWordExecuteCommandBarObjectobjectId, [WorkflowExpression] Func<string> mSWordExecuteCommandBarObjectworkflow, [WorkflowExpression] Func<int> mSWordExecuteCommandBarObjecthandle = null, [WorkflowExpression] Func<bool> mSWordExecuteCommandBarObjectrunInBackground = null)
         {
-            SourceExpression.Validate(mSWordExecuteCommandBarObjectobjectId, nameof(mSWordExecuteCommandBarObjectobjectId), required: true);
-            SourceExpression.Validate(mSWordExecuteCommandBarObjectworkflow, nameof(mSWordExecuteCommandBarObjectworkflow), required: true);
-            SourceExpression.Validate(mSWordExecuteCommandBarObjecthandle, nameof(mSWordExecuteCommandBarObjecthandle), required: false);
-            SourceExpression.Validate(mSWordExecuteCommandBarObjectrunInBackground, nameof(mSWordExecuteCommandBarObjectrunInBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/ExecuteCommandBarObject";
@@ -1641,14 +1520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordSetDocumentSensitivityLabelResponse> MSWordSetDocumentSensitivityLabel([WorkflowExpression] Func<mSWordSetDocumentSensitivityLabelassignmentMethodInput> mSWordSetDocumentSensitivityLabelassignmentMethod, [WorkflowExpression] Func<string> mSWordSetDocumentSensitivityLabellabelId, [WorkflowExpression] Func<string> mSWordSetDocumentSensitivityLabelworkflow, [WorkflowExpression] Func<int> mSWordSetDocumentSensitivityLabelhandle = null, [WorkflowExpression] Func<string> mSWordSetDocumentSensitivityLabeldocumentName = null, [WorkflowExpression] Func<string> mSWordSetDocumentSensitivityLabellabelName = null, [WorkflowExpression] Func<string> mSWordSetDocumentSensitivityLabelsiteId = null, [WorkflowExpression] Func<string> mSWordSetDocumentSensitivityLabeljustification = null)
         {
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabelassignmentMethod, nameof(mSWordSetDocumentSensitivityLabelassignmentMethod), required: true);
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabellabelId, nameof(mSWordSetDocumentSensitivityLabellabelId), required: true);
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabelworkflow, nameof(mSWordSetDocumentSensitivityLabelworkflow), required: true);
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabelhandle, nameof(mSWordSetDocumentSensitivityLabelhandle), required: false);
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabeldocumentName, nameof(mSWordSetDocumentSensitivityLabeldocumentName), required: false);
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabellabelName, nameof(mSWordSetDocumentSensitivityLabellabelName), required: false);
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabelsiteId, nameof(mSWordSetDocumentSensitivityLabelsiteId), required: false);
-            SourceExpression.Validate(mSWordSetDocumentSensitivityLabeljustification, nameof(mSWordSetDocumentSensitivityLabeljustification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/MSWordSetDocumentSensitivityLabel";
@@ -1715,9 +1586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetDocumentSensitivityLabelResponse> MSWordGetDocumentSensitivityLabel([WorkflowExpression] Func<string> mSWordGetDocumentSensitivityLabelworkflow, [WorkflowExpression] Func<int> mSWordGetDocumentSensitivityLabelhandle = null, [WorkflowExpression] Func<string> mSWordGetDocumentSensitivityLabeldocumentName = null)
         {
-            SourceExpression.Validate(mSWordGetDocumentSensitivityLabelworkflow, nameof(mSWordGetDocumentSensitivityLabelworkflow), required: true);
-            SourceExpression.Validate(mSWordGetDocumentSensitivityLabelhandle, nameof(mSWordGetDocumentSensitivityLabelhandle), required: false);
-            SourceExpression.Validate(mSWordGetDocumentSensitivityLabeldocumentName, nameof(mSWordGetDocumentSensitivityLabeldocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSWord/MSWordGetDocumentSensitivityLabel";
@@ -1762,9 +1630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCreateInstanceResponse> MSExcelCreateInstance([WorkflowExpression] Func<string> mSExcelCreateInstanceworkflow, [WorkflowExpression] Func<bool> mSExcelCreateInstanceenableEvents = null, [WorkflowExpression] Func<bool> mSExcelCreateInstanceshowExcel = null)
         {
-            SourceExpression.Validate(mSExcelCreateInstanceworkflow, nameof(mSExcelCreateInstanceworkflow), required: true);
-            SourceExpression.Validate(mSExcelCreateInstanceenableEvents, nameof(mSExcelCreateInstanceenableEvents), required: false);
-            SourceExpression.Validate(mSExcelCreateInstanceshowExcel, nameof(mSExcelCreateInstanceshowExcel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CreateInstance";
@@ -1819,8 +1684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCloseInstance([WorkflowExpression] Func<string> mSExcelCloseInstanceworkflow, [WorkflowExpression] Func<int> mSExcelCloseInstancehandle = null)
         {
-            SourceExpression.Validate(mSExcelCloseInstanceworkflow, nameof(mSExcelCloseInstanceworkflow), required: true);
-            SourceExpression.Validate(mSExcelCloseInstancehandle, nameof(mSExcelCloseInstancehandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CloseInstance";
@@ -1859,11 +1722,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelAttachToExistingInstanceResponse> MSExcelAttachToExistingInstance([WorkflowExpression] Func<string> mSExcelAttachToExistingInstanceworkflow, [WorkflowExpression] Func<string> mSExcelAttachToExistingInstancefilename = null, [WorkflowExpression] Func<bool> mSExcelAttachToExistingInstancetoggleWindow = null, [WorkflowExpression] Func<bool> mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> mSExcelAttachToExistingInstancetoggleDelay = null)
         {
-            SourceExpression.Validate(mSExcelAttachToExistingInstanceworkflow, nameof(mSExcelAttachToExistingInstanceworkflow), required: true);
-            SourceExpression.Validate(mSExcelAttachToExistingInstancefilename, nameof(mSExcelAttachToExistingInstancefilename), required: false);
-            SourceExpression.Validate(mSExcelAttachToExistingInstancetoggleWindow, nameof(mSExcelAttachToExistingInstancetoggleWindow), required: false);
-            SourceExpression.Validate(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(mSExcelAttachToExistingInstancetoggleDelay, nameof(mSExcelAttachToExistingInstancetoggleDelay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/MSExcelAttachToExistingInstance";
@@ -1940,8 +1798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelShowExcel([WorkflowExpression] Func<string> mSExcelShowExcelworkflow, [WorkflowExpression] Func<int> mSExcelShowExcelhandle = null)
         {
-            SourceExpression.Validate(mSExcelShowExcelworkflow, nameof(mSExcelShowExcelworkflow), required: true);
-            SourceExpression.Validate(mSExcelShowExcelhandle, nameof(mSExcelShowExcelhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/ShowExcel";
@@ -1980,8 +1836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelHideExcel([WorkflowExpression] Func<string> mSExcelHideExcelworkflow, [WorkflowExpression] Func<int> mSExcelHideExcelhandle = null)
         {
-            SourceExpression.Validate(mSExcelHideExcelworkflow, nameof(mSExcelHideExcelworkflow), required: true);
-            SourceExpression.Validate(mSExcelHideExcelhandle, nameof(mSExcelHideExcelhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/HideExcel";
@@ -2020,15 +1874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelOpenWorkbookResponse> MSExcelOpenWorkbook([WorkflowExpression] Func<string> mSExcelOpenWorkbookworkflow, [WorkflowExpression] Func<int> mSExcelOpenWorkbookhandle = null, [WorkflowExpression] Func<string> mSExcelOpenWorkbookfilename = null, [WorkflowExpression] Func<bool> mSExcelOpenWorkbookreadOnly = null, [WorkflowExpression] Func<bool> mSExcelOpenWorkbookupdateLinks = null, [WorkflowExpression] Func<string> mSExcelOpenWorkbookpassword = null, [WorkflowExpression] Func<bool> mSExcelOpenWorkbookenableEvents = null, [WorkflowExpression] Func<bool> mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode = null, [WorkflowExpression] Func<bool> mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode = null)
         {
-            SourceExpression.Validate(mSExcelOpenWorkbookworkflow, nameof(mSExcelOpenWorkbookworkflow), required: true);
-            SourceExpression.Validate(mSExcelOpenWorkbookhandle, nameof(mSExcelOpenWorkbookhandle), required: false);
-            SourceExpression.Validate(mSExcelOpenWorkbookfilename, nameof(mSExcelOpenWorkbookfilename), required: false);
-            SourceExpression.Validate(mSExcelOpenWorkbookreadOnly, nameof(mSExcelOpenWorkbookreadOnly), required: false);
-            SourceExpression.Validate(mSExcelOpenWorkbookupdateLinks, nameof(mSExcelOpenWorkbookupdateLinks), required: false);
-            SourceExpression.Validate(mSExcelOpenWorkbookpassword, nameof(mSExcelOpenWorkbookpassword), required: false);
-            SourceExpression.Validate(mSExcelOpenWorkbookenableEvents, nameof(mSExcelOpenWorkbookenableEvents), required: false);
-            SourceExpression.Validate(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode, nameof(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode), required: false);
-            SourceExpression.Validate(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode, nameof(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/OpenWorkbook";
@@ -2159,10 +2004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelPutWorkbookInEditModeResponse> MSExcelPutWorkbookInEditMode([WorkflowExpression] Func<string> mSExcelPutWorkbookInEditModeworkflow, [WorkflowExpression] Func<int> mSExcelPutWorkbookInEditModehandle = null, [WorkflowExpression] Func<string> mSExcelPutWorkbookInEditModeworkbookName = null, [WorkflowExpression] Func<bool> mSExcelPutWorkbookInEditModeforce = null)
         {
-            SourceExpression.Validate(mSExcelPutWorkbookInEditModeworkflow, nameof(mSExcelPutWorkbookInEditModeworkflow), required: true);
-            SourceExpression.Validate(mSExcelPutWorkbookInEditModehandle, nameof(mSExcelPutWorkbookInEditModehandle), required: false);
-            SourceExpression.Validate(mSExcelPutWorkbookInEditModeworkbookName, nameof(mSExcelPutWorkbookInEditModeworkbookName), required: false);
-            SourceExpression.Validate(mSExcelPutWorkbookInEditModeforce, nameof(mSExcelPutWorkbookInEditModeforce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/PutWorkbookInEditMode";
@@ -2223,8 +2064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCreateWorkbookResponse> MSExcelCreateWorkbook([WorkflowExpression] Func<string> mSExcelCreateWorkbookworkflow, [WorkflowExpression] Func<int> mSExcelCreateWorkbookhandle = null)
         {
-            SourceExpression.Validate(mSExcelCreateWorkbookworkflow, nameof(mSExcelCreateWorkbookworkflow), required: true);
-            SourceExpression.Validate(mSExcelCreateWorkbookhandle, nameof(mSExcelCreateWorkbookhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CreateWorkbook";
@@ -2263,10 +2102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCloseWorkbook([WorkflowExpression] Func<string> mSExcelCloseWorkbookworkflow, [WorkflowExpression] Func<int> mSExcelCloseWorkbookhandle = null, [WorkflowExpression] Func<string> mSExcelCloseWorkbookworkbookName = null, [WorkflowExpression] Func<bool> mSExcelCloseWorkbooksaveData = null)
         {
-            SourceExpression.Validate(mSExcelCloseWorkbookworkflow, nameof(mSExcelCloseWorkbookworkflow), required: true);
-            SourceExpression.Validate(mSExcelCloseWorkbookhandle, nameof(mSExcelCloseWorkbookhandle), required: false);
-            SourceExpression.Validate(mSExcelCloseWorkbookworkbookName, nameof(mSExcelCloseWorkbookworkbookName), required: false);
-            SourceExpression.Validate(mSExcelCloseWorkbooksaveData, nameof(mSExcelCloseWorkbooksaveData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CloseWorkbook";
@@ -2327,8 +2162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCloseCurrentWorkbook([WorkflowExpression] Func<string> mSExcelCloseCurrentWorkbookworkflow, [WorkflowExpression] Func<int> mSExcelCloseCurrentWorkbookhandle = null)
         {
-            SourceExpression.Validate(mSExcelCloseCurrentWorkbookworkflow, nameof(mSExcelCloseCurrentWorkbookworkflow), required: true);
-            SourceExpression.Validate(mSExcelCloseCurrentWorkbookhandle, nameof(mSExcelCloseCurrentWorkbookhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CloseCurrentWorkbook";
@@ -2367,11 +2200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelGoToCell([WorkflowExpression] Func<string> mSExcelGoToCellcellReference, [WorkflowExpression] Func<string> mSExcelGoToCellworkflow, [WorkflowExpression] Func<int> mSExcelGoToCellhandle = null, [WorkflowExpression] Func<string> mSExcelGoToCellworkbookName = null, [WorkflowExpression] Func<string> mSExcelGoToCellworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGoToCellcellReference, nameof(mSExcelGoToCellcellReference), required: true);
-            SourceExpression.Validate(mSExcelGoToCellworkflow, nameof(mSExcelGoToCellworkflow), required: true);
-            SourceExpression.Validate(mSExcelGoToCellhandle, nameof(mSExcelGoToCellhandle), required: false);
-            SourceExpression.Validate(mSExcelGoToCellworkbookName, nameof(mSExcelGoToCellworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGoToCellworksheetName, nameof(mSExcelGoToCellworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GoToCell";
@@ -2424,11 +2252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellValueResponse> MSExcelGetCellValue([WorkflowExpression] Func<string> mSExcelGetCellValuecellReference, [WorkflowExpression] Func<string> mSExcelGetCellValueworkflow, [WorkflowExpression] Func<int> mSExcelGetCellValuehandle = null, [WorkflowExpression] Func<string> mSExcelGetCellValueworkbookName = null, [WorkflowExpression] Func<string> mSExcelGetCellValueworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetCellValuecellReference, nameof(mSExcelGetCellValuecellReference), required: true);
-            SourceExpression.Validate(mSExcelGetCellValueworkflow, nameof(mSExcelGetCellValueworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetCellValuehandle, nameof(mSExcelGetCellValuehandle), required: false);
-            SourceExpression.Validate(mSExcelGetCellValueworkbookName, nameof(mSExcelGetCellValueworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetCellValueworksheetName, nameof(mSExcelGetCellValueworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetCellValue";
@@ -2481,11 +2304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellValue2Response> MSExcelGetCellValue2([WorkflowExpression] Func<string> mSExcelGetCellValue2cellReference, [WorkflowExpression] Func<string> mSExcelGetCellValue2workflow, [WorkflowExpression] Func<int> mSExcelGetCellValue2handle = null, [WorkflowExpression] Func<string> mSExcelGetCellValue2workbookName = null, [WorkflowExpression] Func<string> mSExcelGetCellValue2worksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetCellValue2cellReference, nameof(mSExcelGetCellValue2cellReference), required: true);
-            SourceExpression.Validate(mSExcelGetCellValue2workflow, nameof(mSExcelGetCellValue2workflow), required: true);
-            SourceExpression.Validate(mSExcelGetCellValue2handle, nameof(mSExcelGetCellValue2handle), required: false);
-            SourceExpression.Validate(mSExcelGetCellValue2workbookName, nameof(mSExcelGetCellValue2workbookName), required: false);
-            SourceExpression.Validate(mSExcelGetCellValue2worksheetName, nameof(mSExcelGetCellValue2worksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetCellValue2";
@@ -2538,11 +2356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellTextResponse> MSExcelGetCellText([WorkflowExpression] Func<string> mSExcelGetCellTextcellReference, [WorkflowExpression] Func<string> mSExcelGetCellTextworkflow, [WorkflowExpression] Func<int> mSExcelGetCellTexthandle = null, [WorkflowExpression] Func<string> mSExcelGetCellTextworkbookName = null, [WorkflowExpression] Func<string> mSExcelGetCellTextworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetCellTextcellReference, nameof(mSExcelGetCellTextcellReference), required: true);
-            SourceExpression.Validate(mSExcelGetCellTextworkflow, nameof(mSExcelGetCellTextworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetCellTexthandle, nameof(mSExcelGetCellTexthandle), required: false);
-            SourceExpression.Validate(mSExcelGetCellTextworkbookName, nameof(mSExcelGetCellTextworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetCellTextworksheetName, nameof(mSExcelGetCellTextworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetCellText";
@@ -2595,13 +2408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelSetCellValue([WorkflowExpression] Func<string> mSExcelSetCellValuecellReference, [WorkflowExpression] Func<string> mSExcelSetCellValueworkflow, [WorkflowExpression] Func<int> mSExcelSetCellValuehandle = null, [WorkflowExpression] Func<string> mSExcelSetCellValueworkbookName = null, [WorkflowExpression] Func<string> mSExcelSetCellValueworksheetName = null, [WorkflowExpression] Func<string> mSExcelSetCellValuecellValue = null, [WorkflowExpression] Func<bool> mSExcelSetCellValuecellValueContainsStoredPassword = null)
         {
-            SourceExpression.Validate(mSExcelSetCellValuecellReference, nameof(mSExcelSetCellValuecellReference), required: true);
-            SourceExpression.Validate(mSExcelSetCellValueworkflow, nameof(mSExcelSetCellValueworkflow), required: true);
-            SourceExpression.Validate(mSExcelSetCellValuehandle, nameof(mSExcelSetCellValuehandle), required: false);
-            SourceExpression.Validate(mSExcelSetCellValueworkbookName, nameof(mSExcelSetCellValueworkbookName), required: false);
-            SourceExpression.Validate(mSExcelSetCellValueworksheetName, nameof(mSExcelSetCellValueworksheetName), required: false);
-            SourceExpression.Validate(mSExcelSetCellValuecellValue, nameof(mSExcelSetCellValuecellValue), required: false);
-            SourceExpression.Validate(mSExcelSetCellValuecellValueContainsStoredPassword, nameof(mSExcelSetCellValuecellValueContainsStoredPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SetCellValue";
@@ -2676,16 +2482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelFindNextCellWithValueResponse> MSExcelFindNextCellWithValue([WorkflowExpression] Func<mSExcelFindNextCellWithValuedirectionInput> mSExcelFindNextCellWithValuedirection, [WorkflowExpression] Func<string> mSExcelFindNextCellWithValuesearchValue, [WorkflowExpression] Func<string> mSExcelFindNextCellWithValueworkflow, [WorkflowExpression] Func<int> mSExcelFindNextCellWithValuehandle = null, [WorkflowExpression] Func<string> mSExcelFindNextCellWithValueworkbookName = null, [WorkflowExpression] Func<string> mSExcelFindNextCellWithValueworksheetName = null, [WorkflowExpression] Func<bool> mSExcelFindNextCellWithValuecaseSensitive = null, [WorkflowExpression] Func<mSExcelFindNextCellWithValuecomparisonTypeInput> mSExcelFindNextCellWithValuecomparisonType = null, [WorkflowExpression] Func<int> mSExcelFindNextCellWithValuemaxCellsToSearch = null, [WorkflowExpression] Func<bool> mSExcelFindNextCellWithValueactivateCell = null)
         {
-            SourceExpression.Validate(mSExcelFindNextCellWithValuedirection, nameof(mSExcelFindNextCellWithValuedirection), required: true);
-            SourceExpression.Validate(mSExcelFindNextCellWithValuesearchValue, nameof(mSExcelFindNextCellWithValuesearchValue), required: true);
-            SourceExpression.Validate(mSExcelFindNextCellWithValueworkflow, nameof(mSExcelFindNextCellWithValueworkflow), required: true);
-            SourceExpression.Validate(mSExcelFindNextCellWithValuehandle, nameof(mSExcelFindNextCellWithValuehandle), required: false);
-            SourceExpression.Validate(mSExcelFindNextCellWithValueworkbookName, nameof(mSExcelFindNextCellWithValueworkbookName), required: false);
-            SourceExpression.Validate(mSExcelFindNextCellWithValueworksheetName, nameof(mSExcelFindNextCellWithValueworksheetName), required: false);
-            SourceExpression.Validate(mSExcelFindNextCellWithValuecaseSensitive, nameof(mSExcelFindNextCellWithValuecaseSensitive), required: false);
-            SourceExpression.Validate(mSExcelFindNextCellWithValuecomparisonType, nameof(mSExcelFindNextCellWithValuecomparisonType), required: false);
-            SourceExpression.Validate(mSExcelFindNextCellWithValuemaxCellsToSearch, nameof(mSExcelFindNextCellWithValuemaxCellsToSearch), required: false);
-            SourceExpression.Validate(mSExcelFindNextCellWithValueactivateCell, nameof(mSExcelFindNextCellWithValueactivateCell), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/FindNextCellWithValue";
@@ -2784,12 +2580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelFindNextEmptyCellResponse> MSExcelFindNextEmptyCell([WorkflowExpression] Func<mSExcelFindNextEmptyCelldirectionInput> mSExcelFindNextEmptyCelldirection, [WorkflowExpression] Func<string> mSExcelFindNextEmptyCellworkflow, [WorkflowExpression] Func<int> mSExcelFindNextEmptyCellhandle = null, [WorkflowExpression] Func<string> mSExcelFindNextEmptyCellworkbookName = null, [WorkflowExpression] Func<string> mSExcelFindNextEmptyCellworksheetName = null, [WorkflowExpression] Func<bool> mSExcelFindNextEmptyCellactivateCell = null)
         {
-            SourceExpression.Validate(mSExcelFindNextEmptyCelldirection, nameof(mSExcelFindNextEmptyCelldirection), required: true);
-            SourceExpression.Validate(mSExcelFindNextEmptyCellworkflow, nameof(mSExcelFindNextEmptyCellworkflow), required: true);
-            SourceExpression.Validate(mSExcelFindNextEmptyCellhandle, nameof(mSExcelFindNextEmptyCellhandle), required: false);
-            SourceExpression.Validate(mSExcelFindNextEmptyCellworkbookName, nameof(mSExcelFindNextEmptyCellworkbookName), required: false);
-            SourceExpression.Validate(mSExcelFindNextEmptyCellworksheetName, nameof(mSExcelFindNextEmptyCellworksheetName), required: false);
-            SourceExpression.Validate(mSExcelFindNextEmptyCellactivateCell, nameof(mSExcelFindNextEmptyCellactivateCell), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/FindNextEmptyCell";
@@ -2858,10 +2648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellLeftResponse> MSExcelGotoNextEmptyCellLeft([WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellLeftworkflow, [WorkflowExpression] Func<int> mSExcelGotoNextEmptyCellLefthandle = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellLeftworkbookName = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellLeftworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellLeftworkflow, nameof(mSExcelGotoNextEmptyCellLeftworkflow), required: true);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellLefthandle, nameof(mSExcelGotoNextEmptyCellLefthandle), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellLeftworkbookName, nameof(mSExcelGotoNextEmptyCellLeftworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellLeftworksheetName, nameof(mSExcelGotoNextEmptyCellLeftworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellLeft";
@@ -2912,10 +2698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellRightResponse> MSExcelGotoNextEmptyCellRight([WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellRightworkflow, [WorkflowExpression] Func<int> mSExcelGotoNextEmptyCellRighthandle = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellRightworkbookName = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellRightworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellRightworkflow, nameof(mSExcelGotoNextEmptyCellRightworkflow), required: true);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellRighthandle, nameof(mSExcelGotoNextEmptyCellRighthandle), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellRightworkbookName, nameof(mSExcelGotoNextEmptyCellRightworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellRightworksheetName, nameof(mSExcelGotoNextEmptyCellRightworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellRight";
@@ -2966,10 +2748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellUpResponse> MSExcelGotoNextEmptyCellUp([WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellUpworkflow, [WorkflowExpression] Func<int> mSExcelGotoNextEmptyCellUphandle = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellUpworkbookName = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellUpworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellUpworkflow, nameof(mSExcelGotoNextEmptyCellUpworkflow), required: true);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellUphandle, nameof(mSExcelGotoNextEmptyCellUphandle), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellUpworkbookName, nameof(mSExcelGotoNextEmptyCellUpworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellUpworksheetName, nameof(mSExcelGotoNextEmptyCellUpworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellUp";
@@ -3020,10 +2798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellDownResponse> MSExcelGotoNextEmptyCellDown([WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellDownworkflow, [WorkflowExpression] Func<int> mSExcelGotoNextEmptyCellDownhandle = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellDownworkbookName = null, [WorkflowExpression] Func<string> mSExcelGotoNextEmptyCellDownworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellDownworkflow, nameof(mSExcelGotoNextEmptyCellDownworkflow), required: true);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellDownhandle, nameof(mSExcelGotoNextEmptyCellDownhandle), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellDownworkbookName, nameof(mSExcelGotoNextEmptyCellDownworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGotoNextEmptyCellDownworksheetName, nameof(mSExcelGotoNextEmptyCellDownworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellDown";
@@ -3074,9 +2848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookResponse> MSExcelSaveWorkbook([WorkflowExpression] Func<string> mSExcelSaveWorkbookworkflow, [WorkflowExpression] Func<int> mSExcelSaveWorkbookhandle = null, [WorkflowExpression] Func<string> mSExcelSaveWorkbookworkbookName = null)
         {
-            SourceExpression.Validate(mSExcelSaveWorkbookworkflow, nameof(mSExcelSaveWorkbookworkflow), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookhandle, nameof(mSExcelSaveWorkbookhandle), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookworkbookName, nameof(mSExcelSaveWorkbookworkbookName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SaveWorkbook";
@@ -3121,12 +2892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsResponse> MSExcelSaveWorkbookAs([WorkflowExpression] Func<string> mSExcelSaveWorkbookAssaveFilename, [WorkflowExpression] Func<string> mSExcelSaveWorkbookAsworkflow, [WorkflowExpression] Func<int> mSExcelSaveWorkbookAshandle = null, [WorkflowExpression] Func<string> mSExcelSaveWorkbookAsworkbookName = null, [WorkflowExpression] Func<bool> mSExcelSaveWorkbookAsdeleteExistingSaveFilename = null, [WorkflowExpression] Func<mSExcelSaveWorkbookAsexcelFileFormatInput> mSExcelSaveWorkbookAsexcelFileFormat = null)
         {
-            SourceExpression.Validate(mSExcelSaveWorkbookAssaveFilename, nameof(mSExcelSaveWorkbookAssaveFilename), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsworkflow, nameof(mSExcelSaveWorkbookAsworkflow), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookAshandle, nameof(mSExcelSaveWorkbookAshandle), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsworkbookName, nameof(mSExcelSaveWorkbookAsworkbookName), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsdeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsdeleteExistingSaveFilename), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsexcelFileFormat, nameof(mSExcelSaveWorkbookAsexcelFileFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SaveWorkbookAs";
@@ -3205,11 +2970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsCSVResponse> MSExcelSaveWorkbookAsCSV([WorkflowExpression] Func<string> mSExcelSaveWorkbookAsCSVsaveFilename, [WorkflowExpression] Func<string> mSExcelSaveWorkbookAsCSVworkflow, [WorkflowExpression] Func<int> mSExcelSaveWorkbookAsCSVhandle = null, [WorkflowExpression] Func<string> mSExcelSaveWorkbookAsCSVworkbookName = null, [WorkflowExpression] Func<bool> mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
-            SourceExpression.Validate(mSExcelSaveWorkbookAsCSVsaveFilename, nameof(mSExcelSaveWorkbookAsCSVsaveFilename), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsCSVworkflow, nameof(mSExcelSaveWorkbookAsCSVworkflow), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsCSVhandle, nameof(mSExcelSaveWorkbookAsCSVhandle), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsCSVworkbookName, nameof(mSExcelSaveWorkbookAsCSVworkbookName), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SaveWorkbookAsCSV";
@@ -3272,13 +3032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsWithPasswordResponse> MSExcelSaveWorkbookAsWithPassword([WorkflowExpression] Func<string> mSExcelSaveWorkbookAsWithPasswordsaveFilename, [WorkflowExpression] Func<string> mSExcelSaveWorkbookAsWithPasswordpassword, [WorkflowExpression] Func<string> mSExcelSaveWorkbookAsWithPasswordworkflow, [WorkflowExpression] Func<int> mSExcelSaveWorkbookAsWithPasswordhandle = null, [WorkflowExpression] Func<string> mSExcelSaveWorkbookAsWithPasswordworkbookName = null, [WorkflowExpression] Func<bool> mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename = null, [WorkflowExpression] Func<mSExcelSaveWorkbookAsWithPasswordexcelFileFormatInput> mSExcelSaveWorkbookAsWithPasswordexcelFileFormat = null)
         {
-            SourceExpression.Validate(mSExcelSaveWorkbookAsWithPasswordsaveFilename, nameof(mSExcelSaveWorkbookAsWithPasswordsaveFilename), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsWithPasswordpassword, nameof(mSExcelSaveWorkbookAsWithPasswordpassword), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsWithPasswordworkflow, nameof(mSExcelSaveWorkbookAsWithPasswordworkflow), required: true);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsWithPasswordhandle, nameof(mSExcelSaveWorkbookAsWithPasswordhandle), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsWithPasswordworkbookName, nameof(mSExcelSaveWorkbookAsWithPasswordworkbookName), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename), required: false);
-            SourceExpression.Validate(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat, nameof(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SaveWorkbookAsWithPassword";
@@ -3359,8 +3112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookResponse> MSExcelSaveCurrentWorkbook([WorkflowExpression] Func<string> mSExcelSaveCurrentWorkbookworkflow, [WorkflowExpression] Func<int> mSExcelSaveCurrentWorkbookhandle = null)
         {
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookworkflow, nameof(mSExcelSaveCurrentWorkbookworkflow), required: true);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookhandle, nameof(mSExcelSaveCurrentWorkbookhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SaveCurrentWorkbook";
@@ -3399,11 +3150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsResponse> MSExcelSaveCurrentWorkbookAs([WorkflowExpression] Func<string> mSExcelSaveCurrentWorkbookAsworkflow, [WorkflowExpression] Func<int> mSExcelSaveCurrentWorkbookAshandle = null, [WorkflowExpression] Func<string> mSExcelSaveCurrentWorkbookAssaveFilename = null, [WorkflowExpression] Func<bool> mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename = null, [WorkflowExpression] Func<mSExcelSaveCurrentWorkbookAsexcelFileFormatInput> mSExcelSaveCurrentWorkbookAsexcelFileFormat = null)
         {
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAsworkflow, nameof(mSExcelSaveCurrentWorkbookAsworkflow), required: true);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAshandle, nameof(mSExcelSaveCurrentWorkbookAshandle), required: false);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAssaveFilename, nameof(mSExcelSaveCurrentWorkbookAssaveFilename), required: false);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename, nameof(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename), required: false);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAsexcelFileFormat, nameof(mSExcelSaveCurrentWorkbookAsexcelFileFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SaveCurrentWorkbookAs";
@@ -3480,10 +3226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsCSVResponse> MSExcelSaveCurrentWorkbookAsCSV([WorkflowExpression] Func<string> mSExcelSaveCurrentWorkbookAsCSVsaveFilename, [WorkflowExpression] Func<string> mSExcelSaveCurrentWorkbookAsCSVworkflow, [WorkflowExpression] Func<int> mSExcelSaveCurrentWorkbookAsCSVhandle = null, [WorkflowExpression] Func<bool> mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAsCSVsaveFilename, nameof(mSExcelSaveCurrentWorkbookAsCSVsaveFilename), required: true);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAsCSVworkflow, nameof(mSExcelSaveCurrentWorkbookAsCSVworkflow), required: true);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAsCSVhandle, nameof(mSExcelSaveCurrentWorkbookAsCSVhandle), required: false);
-            SourceExpression.Validate(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename, nameof(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SaveCurrentWorkbookAsCSV";
@@ -3540,9 +3282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetNamesResponse> MSExcelGetWorksheetNames([WorkflowExpression] Func<string> mSExcelGetWorksheetNamesworkflow, [WorkflowExpression] Func<int> mSExcelGetWorksheetNameshandle = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetNamesworkbookName = null)
         {
-            SourceExpression.Validate(mSExcelGetWorksheetNamesworkflow, nameof(mSExcelGetWorksheetNamesworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetWorksheetNameshandle, nameof(mSExcelGetWorksheetNameshandle), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetNamesworkbookName, nameof(mSExcelGetWorksheetNamesworkbookName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetWorksheetNames";
@@ -3587,10 +3326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetNameResponse> MSExcelGetWorksheetName([WorkflowExpression] Func<string> mSExcelGetWorksheetNameworkflow, [WorkflowExpression] Func<int> mSExcelGetWorksheetNamehandle = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetNameworkbookName = null, [WorkflowExpression] Func<int> mSExcelGetWorksheetNameposition = null)
         {
-            SourceExpression.Validate(mSExcelGetWorksheetNameworkflow, nameof(mSExcelGetWorksheetNameworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetWorksheetNamehandle, nameof(mSExcelGetWorksheetNamehandle), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetNameworkbookName, nameof(mSExcelGetWorksheetNameworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetNameposition, nameof(mSExcelGetWorksheetNameposition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetWorksheetName";
@@ -3641,11 +3376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelActivateWorksheet([WorkflowExpression] Func<string> mSExcelActivateWorksheetworkflow, [WorkflowExpression] Func<int> mSExcelActivateWorksheethandle = null, [WorkflowExpression] Func<string> mSExcelActivateWorksheetworkbookName = null, [WorkflowExpression] Func<string> mSExcelActivateWorksheetworksheetName = null, [WorkflowExpression] Func<bool> mSExcelActivateWorksheetcreateIfMissing = null)
         {
-            SourceExpression.Validate(mSExcelActivateWorksheetworkflow, nameof(mSExcelActivateWorksheetworkflow), required: true);
-            SourceExpression.Validate(mSExcelActivateWorksheethandle, nameof(mSExcelActivateWorksheethandle), required: false);
-            SourceExpression.Validate(mSExcelActivateWorksheetworkbookName, nameof(mSExcelActivateWorksheetworkbookName), required: false);
-            SourceExpression.Validate(mSExcelActivateWorksheetworksheetName, nameof(mSExcelActivateWorksheetworksheetName), required: false);
-            SourceExpression.Validate(mSExcelActivateWorksheetcreateIfMissing, nameof(mSExcelActivateWorksheetcreateIfMissing), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/ActivateWorksheet";
@@ -3712,10 +3442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCreateWorksheet([WorkflowExpression] Func<string> mSExcelCreateWorksheetworkflow, [WorkflowExpression] Func<int> mSExcelCreateWorksheethandle = null, [WorkflowExpression] Func<string> mSExcelCreateWorksheetworkbookName = null, [WorkflowExpression] Func<string> mSExcelCreateWorksheetworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelCreateWorksheetworkflow, nameof(mSExcelCreateWorksheetworkflow), required: true);
-            SourceExpression.Validate(mSExcelCreateWorksheethandle, nameof(mSExcelCreateWorksheethandle), required: false);
-            SourceExpression.Validate(mSExcelCreateWorksheetworkbookName, nameof(mSExcelCreateWorksheetworkbookName), required: false);
-            SourceExpression.Validate(mSExcelCreateWorksheetworksheetName, nameof(mSExcelCreateWorksheetworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CreateWorksheet";
@@ -3766,10 +3492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelDeleteWorksheet([WorkflowExpression] Func<string> mSExcelDeleteWorksheetworkflow, [WorkflowExpression] Func<int> mSExcelDeleteWorksheethandle = null, [WorkflowExpression] Func<string> mSExcelDeleteWorksheetworkbookName = null, [WorkflowExpression] Func<string> mSExcelDeleteWorksheetworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelDeleteWorksheetworkflow, nameof(mSExcelDeleteWorksheetworkflow), required: true);
-            SourceExpression.Validate(mSExcelDeleteWorksheethandle, nameof(mSExcelDeleteWorksheethandle), required: false);
-            SourceExpression.Validate(mSExcelDeleteWorksheetworkbookName, nameof(mSExcelDeleteWorksheetworkbookName), required: false);
-            SourceExpression.Validate(mSExcelDeleteWorksheetworksheetName, nameof(mSExcelDeleteWorksheetworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/DeleteWorksheet";
@@ -3820,21 +3542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetAsCollectionEnhancedResponse> MSExcelGetWorksheetAsCollectionEnhanced([WorkflowExpression] Func<string> mSExcelGetWorksheetAsCollectionEnhancedworkflow, [WorkflowExpression] Func<int> mSExcelGetWorksheetAsCollectionEnhancedhandle = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetAsCollectionEnhancedworkbookName = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetAsCollectionEnhancedworksheetName = null, [WorkflowExpression] Func<bool> mSExcelGetWorksheetAsCollectionEnhanceduseHeader = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetAsCollectionEnhancedstartCell = null, [WorkflowExpression] Func<int> mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber = null, [WorkflowExpression] Func<bool> mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows = null, [WorkflowExpression] Func<bool> mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetAsCollectionEnhancedkeyColumn = null, [WorkflowExpression] Func<bool> mSExcelGetWorksheetAsCollectionEnhancedgetRawData = null, [WorkflowExpression] Func<int> mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount = null, [WorkflowExpression] Func<int> mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows = null, [WorkflowExpression] Func<int> mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn = null, [WorkflowExpression] Func<int> mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn = null)
         {
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedworkflow, nameof(mSExcelGetWorksheetAsCollectionEnhancedworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedhandle, nameof(mSExcelGetWorksheetAsCollectionEnhancedhandle), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedworkbookName, nameof(mSExcelGetWorksheetAsCollectionEnhancedworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedworksheetName, nameof(mSExcelGetWorksheetAsCollectionEnhancedworksheetName), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhanceduseHeader, nameof(mSExcelGetWorksheetAsCollectionEnhanceduseHeader), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedstartCell, nameof(mSExcelGetWorksheetAsCollectionEnhancedstartCell), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows, nameof(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader, nameof(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn, nameof(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedgetRawData, nameof(mSExcelGetWorksheetAsCollectionEnhancedgetRawData), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount, nameof(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn, nameof(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetWorksheetAsCollectionEnhanced";
@@ -4041,10 +3748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetNumberOfRowsResponse> MSExcelGetNumberOfRows([WorkflowExpression] Func<string> mSExcelGetNumberOfRowsworkflow, [WorkflowExpression] Func<int> mSExcelGetNumberOfRowshandle = null, [WorkflowExpression] Func<string> mSExcelGetNumberOfRowsworkbookName = null, [WorkflowExpression] Func<string> mSExcelGetNumberOfRowsworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetNumberOfRowsworkflow, nameof(mSExcelGetNumberOfRowsworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetNumberOfRowshandle, nameof(mSExcelGetNumberOfRowshandle), required: false);
-            SourceExpression.Validate(mSExcelGetNumberOfRowsworkbookName, nameof(mSExcelGetNumberOfRowsworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetNumberOfRowsworksheetName, nameof(mSExcelGetNumberOfRowsworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetNumberOfRows";
@@ -4095,9 +3798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelEvaluateExpressionResponse> MSExcelEvaluateExpression([WorkflowExpression] Func<string> mSExcelEvaluateExpressionexpression, [WorkflowExpression] Func<string> mSExcelEvaluateExpressionworkflow, [WorkflowExpression] Func<int> mSExcelEvaluateExpressionhandle = null)
         {
-            SourceExpression.Validate(mSExcelEvaluateExpressionexpression, nameof(mSExcelEvaluateExpressionexpression), required: true);
-            SourceExpression.Validate(mSExcelEvaluateExpressionworkflow, nameof(mSExcelEvaluateExpressionworkflow), required: true);
-            SourceExpression.Validate(mSExcelEvaluateExpressionhandle, nameof(mSExcelEvaluateExpressionhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/EvaluateExpression";
@@ -4138,10 +3838,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetUsedRangeResponse> MSExcelGetWorksheetUsedRange([WorkflowExpression] Func<string> mSExcelGetWorksheetUsedRangeworkflow, [WorkflowExpression] Func<int> mSExcelGetWorksheetUsedRangehandle = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetUsedRangeworkbookName = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetUsedRangeworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetWorksheetUsedRangeworkflow, nameof(mSExcelGetWorksheetUsedRangeworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetWorksheetUsedRangehandle, nameof(mSExcelGetWorksheetUsedRangehandle), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetUsedRangeworkbookName, nameof(mSExcelGetWorksheetUsedRangeworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetUsedRangeworksheetName, nameof(mSExcelGetWorksheetUsedRangeworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetWorksheetUsedRange";
@@ -4192,8 +3888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCountrySettingResponse> MSExcelGetCountrySetting([WorkflowExpression] Func<string> mSExcelGetCountrySettingworkflow, [WorkflowExpression] Func<int> mSExcelGetCountrySettinghandle = null)
         {
-            SourceExpression.Validate(mSExcelGetCountrySettingworkflow, nameof(mSExcelGetCountrySettingworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetCountrySettinghandle, nameof(mSExcelGetCountrySettinghandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetCountrySetting";
@@ -4232,13 +3926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelWriteCollection([WorkflowExpression] Func<string> mSExcelWriteCollectioncellReference, [WorkflowExpression] Func<string> mSExcelWriteCollectioncollectionToWriteJSON, [WorkflowExpression] Func<string> mSExcelWriteCollectionworkflow, [WorkflowExpression] Func<int> mSExcelWriteCollectionhandle = null, [WorkflowExpression] Func<string> mSExcelWriteCollectionworkbookName = null, [WorkflowExpression] Func<string> mSExcelWriteCollectionworksheetName = null, [WorkflowExpression] Func<bool> mSExcelWriteCollectionincludeColumnNames = null)
         {
-            SourceExpression.Validate(mSExcelWriteCollectioncellReference, nameof(mSExcelWriteCollectioncellReference), required: true);
-            SourceExpression.Validate(mSExcelWriteCollectioncollectionToWriteJSON, nameof(mSExcelWriteCollectioncollectionToWriteJSON), required: true);
-            SourceExpression.Validate(mSExcelWriteCollectionworkflow, nameof(mSExcelWriteCollectionworkflow), required: true);
-            SourceExpression.Validate(mSExcelWriteCollectionhandle, nameof(mSExcelWriteCollectionhandle), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionworkbookName, nameof(mSExcelWriteCollectionworkbookName), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionworksheetName, nameof(mSExcelWriteCollectionworksheetName), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionincludeColumnNames, nameof(mSExcelWriteCollectionincludeColumnNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/WriteCollection";
@@ -4309,15 +3996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelWriteCollectionWithDates([WorkflowExpression] Func<string> mSExcelWriteCollectionWithDatescellReference, [WorkflowExpression] Func<string> mSExcelWriteCollectionWithDatescollectionToWriteJSON, [WorkflowExpression] Func<string> mSExcelWriteCollectionWithDatesworkflow, [WorkflowExpression] Func<int> mSExcelWriteCollectionWithDateshandle = null, [WorkflowExpression] Func<string> mSExcelWriteCollectionWithDatesworkbookName = null, [WorkflowExpression] Func<string> mSExcelWriteCollectionWithDatesworksheetName = null, [WorkflowExpression] Func<bool> mSExcelWriteCollectionWithDatesincludeColumnNames = null, [WorkflowExpression] Func<bool> mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate = null, [WorkflowExpression] Func<string> mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON = null)
         {
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatescellReference, nameof(mSExcelWriteCollectionWithDatescellReference), required: true);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatescollectionToWriteJSON, nameof(mSExcelWriteCollectionWithDatescollectionToWriteJSON), required: true);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatesworkflow, nameof(mSExcelWriteCollectionWithDatesworkflow), required: true);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDateshandle, nameof(mSExcelWriteCollectionWithDateshandle), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatesworkbookName, nameof(mSExcelWriteCollectionWithDatesworkbookName), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatesworksheetName, nameof(mSExcelWriteCollectionWithDatesworksheetName), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatesincludeColumnNames, nameof(mSExcelWriteCollectionWithDatesincludeColumnNames), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate, nameof(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate), required: false);
-            SourceExpression.Validate(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON, nameof(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/WriteCollectionWithDates";
@@ -4410,8 +4088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetActiveCellResponse> MSExcelGetActiveCell([WorkflowExpression] Func<string> mSExcelGetActiveCellworkflow, [WorkflowExpression] Func<int> mSExcelGetActiveCellhandle = null)
         {
-            SourceExpression.Validate(mSExcelGetActiveCellworkflow, nameof(mSExcelGetActiveCellworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetActiveCellhandle, nameof(mSExcelGetActiveCellhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetActiveCell";
@@ -4450,12 +4126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelFormatCell([WorkflowExpression] Func<string> mSExcelFormatCellcellReference, [WorkflowExpression] Func<string> mSExcelFormatCellcellFormat, [WorkflowExpression] Func<string> mSExcelFormatCellworkflow, [WorkflowExpression] Func<int> mSExcelFormatCellhandle = null, [WorkflowExpression] Func<string> mSExcelFormatCellworkbookName = null, [WorkflowExpression] Func<string> mSExcelFormatCellworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelFormatCellcellReference, nameof(mSExcelFormatCellcellReference), required: true);
-            SourceExpression.Validate(mSExcelFormatCellcellFormat, nameof(mSExcelFormatCellcellFormat), required: true);
-            SourceExpression.Validate(mSExcelFormatCellworkflow, nameof(mSExcelFormatCellworkflow), required: true);
-            SourceExpression.Validate(mSExcelFormatCellhandle, nameof(mSExcelFormatCellhandle), required: false);
-            SourceExpression.Validate(mSExcelFormatCellworkbookName, nameof(mSExcelFormatCellworkbookName), required: false);
-            SourceExpression.Validate(mSExcelFormatCellworksheetName, nameof(mSExcelFormatCellworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/FormatCell";
@@ -4510,9 +4180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelFormatCurrentCell([WorkflowExpression] Func<string> mSExcelFormatCurrentCellcellFormat, [WorkflowExpression] Func<string> mSExcelFormatCurrentCellworkflow, [WorkflowExpression] Func<int> mSExcelFormatCurrentCellhandle = null)
         {
-            SourceExpression.Validate(mSExcelFormatCurrentCellcellFormat, nameof(mSExcelFormatCurrentCellcellFormat), required: true);
-            SourceExpression.Validate(mSExcelFormatCurrentCellworkflow, nameof(mSExcelFormatCurrentCellworkflow), required: true);
-            SourceExpression.Validate(mSExcelFormatCurrentCellhandle, nameof(mSExcelFormatCurrentCellhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/FormatCurrentCell";
@@ -4553,13 +4220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelSelectCellRange([WorkflowExpression] Func<string> mSExcelSelectCellRangecellReference, [WorkflowExpression] Func<string> mSExcelSelectCellRangeworkflow, [WorkflowExpression] Func<int> mSExcelSelectCellRangehandle = null, [WorkflowExpression] Func<string> mSExcelSelectCellRangeworkbookName = null, [WorkflowExpression] Func<string> mSExcelSelectCellRangeworksheetName = null, [WorkflowExpression] Func<bool> mSExcelSelectCellRangeentireRow = null, [WorkflowExpression] Func<bool> mSExcelSelectCellRangeentireColumn = null)
         {
-            SourceExpression.Validate(mSExcelSelectCellRangecellReference, nameof(mSExcelSelectCellRangecellReference), required: true);
-            SourceExpression.Validate(mSExcelSelectCellRangeworkflow, nameof(mSExcelSelectCellRangeworkflow), required: true);
-            SourceExpression.Validate(mSExcelSelectCellRangehandle, nameof(mSExcelSelectCellRangehandle), required: false);
-            SourceExpression.Validate(mSExcelSelectCellRangeworkbookName, nameof(mSExcelSelectCellRangeworkbookName), required: false);
-            SourceExpression.Validate(mSExcelSelectCellRangeworksheetName, nameof(mSExcelSelectCellRangeworksheetName), required: false);
-            SourceExpression.Validate(mSExcelSelectCellRangeentireRow, nameof(mSExcelSelectCellRangeentireRow), required: false);
-            SourceExpression.Validate(mSExcelSelectCellRangeentireColumn, nameof(mSExcelSelectCellRangeentireColumn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SelectCellRange";
@@ -4644,13 +4304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCopySelection([WorkflowExpression] Func<string> mSExcelCopySelectionworkflow, [WorkflowExpression] Func<int> mSExcelCopySelectionhandle = null, [WorkflowExpression] Func<string> mSExcelCopySelectionworkbookName = null, [WorkflowExpression] Func<string> mSExcelCopySelectionworksheetName = null, [WorkflowExpression] Func<string> mSExcelCopySelectioncellReference = null, [WorkflowExpression] Func<bool> mSExcelCopySelectionentireRow = null, [WorkflowExpression] Func<bool> mSExcelCopySelectionentireColumn = null)
         {
-            SourceExpression.Validate(mSExcelCopySelectionworkflow, nameof(mSExcelCopySelectionworkflow), required: true);
-            SourceExpression.Validate(mSExcelCopySelectionhandle, nameof(mSExcelCopySelectionhandle), required: false);
-            SourceExpression.Validate(mSExcelCopySelectionworkbookName, nameof(mSExcelCopySelectionworkbookName), required: false);
-            SourceExpression.Validate(mSExcelCopySelectionworksheetName, nameof(mSExcelCopySelectionworksheetName), required: false);
-            SourceExpression.Validate(mSExcelCopySelectioncellReference, nameof(mSExcelCopySelectioncellReference), required: false);
-            SourceExpression.Validate(mSExcelCopySelectionentireRow, nameof(mSExcelCopySelectionentireRow), required: false);
-            SourceExpression.Validate(mSExcelCopySelectionentireColumn, nameof(mSExcelCopySelectionentireColumn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CopySelection";
@@ -4739,13 +4392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCutSelection([WorkflowExpression] Func<string> mSExcelCutSelectionworkflow, [WorkflowExpression] Func<int> mSExcelCutSelectionhandle = null, [WorkflowExpression] Func<string> mSExcelCutSelectionworkbookName = null, [WorkflowExpression] Func<string> mSExcelCutSelectionworksheetName = null, [WorkflowExpression] Func<string> mSExcelCutSelectioncellReference = null, [WorkflowExpression] Func<bool> mSExcelCutSelectionentireRow = null, [WorkflowExpression] Func<bool> mSExcelCutSelectionentireColumn = null)
         {
-            SourceExpression.Validate(mSExcelCutSelectionworkflow, nameof(mSExcelCutSelectionworkflow), required: true);
-            SourceExpression.Validate(mSExcelCutSelectionhandle, nameof(mSExcelCutSelectionhandle), required: false);
-            SourceExpression.Validate(mSExcelCutSelectionworkbookName, nameof(mSExcelCutSelectionworkbookName), required: false);
-            SourceExpression.Validate(mSExcelCutSelectionworksheetName, nameof(mSExcelCutSelectionworksheetName), required: false);
-            SourceExpression.Validate(mSExcelCutSelectioncellReference, nameof(mSExcelCutSelectioncellReference), required: false);
-            SourceExpression.Validate(mSExcelCutSelectionentireRow, nameof(mSExcelCutSelectionentireRow), required: false);
-            SourceExpression.Validate(mSExcelCutSelectionentireColumn, nameof(mSExcelCutSelectionentireColumn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CutSelection";
@@ -4834,15 +4480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelPasteIntoSelection([WorkflowExpression] Func<string> mSExcelPasteIntoSelectionworkflow, [WorkflowExpression] Func<int> mSExcelPasteIntoSelectionhandle = null, [WorkflowExpression] Func<string> mSExcelPasteIntoSelectionworkbookName = null, [WorkflowExpression] Func<string> mSExcelPasteIntoSelectionworksheetName = null, [WorkflowExpression] Func<bool> mSExcelPasteIntoSelectionvaluesOnly = null, [WorkflowExpression] Func<bool> mSExcelPasteIntoSelectionsimplePasteOnly = null, [WorkflowExpression] Func<string> mSExcelPasteIntoSelectioncellReference = null, [WorkflowExpression] Func<bool> mSExcelPasteIntoSelectionentireRow = null, [WorkflowExpression] Func<bool> mSExcelPasteIntoSelectionentireColumn = null)
         {
-            SourceExpression.Validate(mSExcelPasteIntoSelectionworkflow, nameof(mSExcelPasteIntoSelectionworkflow), required: true);
-            SourceExpression.Validate(mSExcelPasteIntoSelectionhandle, nameof(mSExcelPasteIntoSelectionhandle), required: false);
-            SourceExpression.Validate(mSExcelPasteIntoSelectionworkbookName, nameof(mSExcelPasteIntoSelectionworkbookName), required: false);
-            SourceExpression.Validate(mSExcelPasteIntoSelectionworksheetName, nameof(mSExcelPasteIntoSelectionworksheetName), required: false);
-            SourceExpression.Validate(mSExcelPasteIntoSelectionvaluesOnly, nameof(mSExcelPasteIntoSelectionvaluesOnly), required: false);
-            SourceExpression.Validate(mSExcelPasteIntoSelectionsimplePasteOnly, nameof(mSExcelPasteIntoSelectionsimplePasteOnly), required: false);
-            SourceExpression.Validate(mSExcelPasteIntoSelectioncellReference, nameof(mSExcelPasteIntoSelectioncellReference), required: false);
-            SourceExpression.Validate(mSExcelPasteIntoSelectionentireRow, nameof(mSExcelPasteIntoSelectionentireRow), required: false);
-            SourceExpression.Validate(mSExcelPasteIntoSelectionentireColumn, nameof(mSExcelPasteIntoSelectionentireColumn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/PasteIntoSelection";
@@ -4963,14 +4600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelInsertOnSelection([WorkflowExpression] Func<string> mSExcelInsertOnSelectionworkflow, [WorkflowExpression] Func<int> mSExcelInsertOnSelectionhandle = null, [WorkflowExpression] Func<string> mSExcelInsertOnSelectionworkbookName = null, [WorkflowExpression] Func<string> mSExcelInsertOnSelectionworksheetName = null, [WorkflowExpression] Func<string> mSExcelInsertOnSelectioncellReference = null, [WorkflowExpression] Func<bool> mSExcelInsertOnSelectionentireRow = null, [WorkflowExpression] Func<bool> mSExcelInsertOnSelectionentireColumn = null, [WorkflowExpression] Func<mSExcelInsertOnSelectionshiftInput> mSExcelInsertOnSelectionshift = null)
         {
-            SourceExpression.Validate(mSExcelInsertOnSelectionworkflow, nameof(mSExcelInsertOnSelectionworkflow), required: true);
-            SourceExpression.Validate(mSExcelInsertOnSelectionhandle, nameof(mSExcelInsertOnSelectionhandle), required: false);
-            SourceExpression.Validate(mSExcelInsertOnSelectionworkbookName, nameof(mSExcelInsertOnSelectionworkbookName), required: false);
-            SourceExpression.Validate(mSExcelInsertOnSelectionworksheetName, nameof(mSExcelInsertOnSelectionworksheetName), required: false);
-            SourceExpression.Validate(mSExcelInsertOnSelectioncellReference, nameof(mSExcelInsertOnSelectioncellReference), required: false);
-            SourceExpression.Validate(mSExcelInsertOnSelectionentireRow, nameof(mSExcelInsertOnSelectionentireRow), required: false);
-            SourceExpression.Validate(mSExcelInsertOnSelectionentireColumn, nameof(mSExcelInsertOnSelectionentireColumn), required: false);
-            SourceExpression.Validate(mSExcelInsertOnSelectionshift, nameof(mSExcelInsertOnSelectionshift), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/InsertOnSelection";
@@ -5065,14 +4694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelDeleteSelection([WorkflowExpression] Func<string> mSExcelDeleteSelectionworkflow, [WorkflowExpression] Func<int> mSExcelDeleteSelectionhandle = null, [WorkflowExpression] Func<string> mSExcelDeleteSelectionworkbookName = null, [WorkflowExpression] Func<string> mSExcelDeleteSelectionworksheetName = null, [WorkflowExpression] Func<string> mSExcelDeleteSelectioncellReference = null, [WorkflowExpression] Func<bool> mSExcelDeleteSelectionentireRow = null, [WorkflowExpression] Func<bool> mSExcelDeleteSelectionentireColumn = null, [WorkflowExpression] Func<mSExcelDeleteSelectionshiftInput> mSExcelDeleteSelectionshift = null)
         {
-            SourceExpression.Validate(mSExcelDeleteSelectionworkflow, nameof(mSExcelDeleteSelectionworkflow), required: true);
-            SourceExpression.Validate(mSExcelDeleteSelectionhandle, nameof(mSExcelDeleteSelectionhandle), required: false);
-            SourceExpression.Validate(mSExcelDeleteSelectionworkbookName, nameof(mSExcelDeleteSelectionworkbookName), required: false);
-            SourceExpression.Validate(mSExcelDeleteSelectionworksheetName, nameof(mSExcelDeleteSelectionworksheetName), required: false);
-            SourceExpression.Validate(mSExcelDeleteSelectioncellReference, nameof(mSExcelDeleteSelectioncellReference), required: false);
-            SourceExpression.Validate(mSExcelDeleteSelectionentireRow, nameof(mSExcelDeleteSelectionentireRow), required: false);
-            SourceExpression.Validate(mSExcelDeleteSelectionentireColumn, nameof(mSExcelDeleteSelectionentireColumn), required: false);
-            SourceExpression.Validate(mSExcelDeleteSelectionshift, nameof(mSExcelDeleteSelectionshift), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/DeleteSelection";
@@ -5167,8 +4788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelClearExcelClipboard([WorkflowExpression] Func<string> mSExcelClearExcelClipboardworkflow, [WorkflowExpression] Func<int> mSExcelClearExcelClipboardhandle = null)
         {
-            SourceExpression.Validate(mSExcelClearExcelClipboardworkflow, nameof(mSExcelClearExcelClipboardworkflow), required: true);
-            SourceExpression.Validate(mSExcelClearExcelClipboardhandle, nameof(mSExcelClearExcelClipboardhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/ClearExcelClipboard";
@@ -5207,21 +4826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelRunMacroResponse> MSExcelRunMacro([WorkflowExpression] Func<string> mSExcelRunMacromacroName, [WorkflowExpression] Func<string> mSExcelRunMacroworkflow, [WorkflowExpression] Func<int> mSExcelRunMacrohandle = null, [WorkflowExpression] Func<int> mSExcelRunMacronumberOfArguments = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument1 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument2 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument3 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument4 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument5 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument6 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument7 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument8 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument9 = null, [WorkflowExpression] Func<string> mSExcelRunMacroargument10 = null, [WorkflowExpression] Func<bool> mSExcelRunMacrorunInBackground = null)
         {
-            SourceExpression.Validate(mSExcelRunMacromacroName, nameof(mSExcelRunMacromacroName), required: true);
-            SourceExpression.Validate(mSExcelRunMacroworkflow, nameof(mSExcelRunMacroworkflow), required: true);
-            SourceExpression.Validate(mSExcelRunMacrohandle, nameof(mSExcelRunMacrohandle), required: false);
-            SourceExpression.Validate(mSExcelRunMacronumberOfArguments, nameof(mSExcelRunMacronumberOfArguments), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument1, nameof(mSExcelRunMacroargument1), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument2, nameof(mSExcelRunMacroargument2), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument3, nameof(mSExcelRunMacroargument3), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument4, nameof(mSExcelRunMacroargument4), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument5, nameof(mSExcelRunMacroargument5), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument6, nameof(mSExcelRunMacroargument6), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument7, nameof(mSExcelRunMacroargument7), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument8, nameof(mSExcelRunMacroargument8), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument9, nameof(mSExcelRunMacroargument9), required: false);
-            SourceExpression.Validate(mSExcelRunMacroargument10, nameof(mSExcelRunMacroargument10), required: false);
-            SourceExpression.Validate(mSExcelRunMacrorunInBackground, nameof(mSExcelRunMacrorunInBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/RunMacro";
@@ -5344,10 +4948,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelAddMacroToWorkbook([WorkflowExpression] Func<string> mSExcelAddMacroToWorkbookmacroCode, [WorkflowExpression] Func<string> mSExcelAddMacroToWorkbookworkflow, [WorkflowExpression] Func<int> mSExcelAddMacroToWorkbookhandle = null, [WorkflowExpression] Func<string> mSExcelAddMacroToWorkbookworkbookName = null)
         {
-            SourceExpression.Validate(mSExcelAddMacroToWorkbookmacroCode, nameof(mSExcelAddMacroToWorkbookmacroCode), required: true);
-            SourceExpression.Validate(mSExcelAddMacroToWorkbookworkflow, nameof(mSExcelAddMacroToWorkbookworkflow), required: true);
-            SourceExpression.Validate(mSExcelAddMacroToWorkbookhandle, nameof(mSExcelAddMacroToWorkbookhandle), required: false);
-            SourceExpression.Validate(mSExcelAddMacroToWorkbookworkbookName, nameof(mSExcelAddMacroToWorkbookworkbookName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/AddMacroToWorkbook";
@@ -5394,9 +4994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelTrustVBOMInRegistry([WorkflowExpression] Func<string> mSExcelTrustVBOMInRegistryworkflow, [WorkflowExpression] Func<int> mSExcelTrustVBOMInRegistryexcelVersion = null, [WorkflowExpression] Func<bool> mSExcelTrustVBOMInRegistrytrustVBOM = null)
         {
-            SourceExpression.Validate(mSExcelTrustVBOMInRegistryworkflow, nameof(mSExcelTrustVBOMInRegistryworkflow), required: true);
-            SourceExpression.Validate(mSExcelTrustVBOMInRegistryexcelVersion, nameof(mSExcelTrustVBOMInRegistryexcelVersion), required: false);
-            SourceExpression.Validate(mSExcelTrustVBOMInRegistrytrustVBOM, nameof(mSExcelTrustVBOMInRegistrytrustVBOM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/TrustVBOMInRegistry";
@@ -5441,9 +5038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelSetCalculationMode([WorkflowExpression] Func<int> mSExcelSetCalculationModecalculationMode, [WorkflowExpression] Func<string> mSExcelSetCalculationModeworkflow, [WorkflowExpression] Func<int> mSExcelSetCalculationModehandle = null)
         {
-            SourceExpression.Validate(mSExcelSetCalculationModecalculationMode, nameof(mSExcelSetCalculationModecalculationMode), required: true);
-            SourceExpression.Validate(mSExcelSetCalculationModeworkflow, nameof(mSExcelSetCalculationModeworkflow), required: true);
-            SourceExpression.Validate(mSExcelSetCalculationModehandle, nameof(mSExcelSetCalculationModehandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SetCalculationMode";
@@ -5484,10 +5078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelExecuteCommandBarObject([WorkflowExpression] Func<string> mSExcelExecuteCommandBarObjectobjectId, [WorkflowExpression] Func<string> mSExcelExecuteCommandBarObjectworkflow, [WorkflowExpression] Func<int> mSExcelExecuteCommandBarObjecthandle = null, [WorkflowExpression] Func<bool> mSExcelExecuteCommandBarObjectrunInBackground = null)
         {
-            SourceExpression.Validate(mSExcelExecuteCommandBarObjectobjectId, nameof(mSExcelExecuteCommandBarObjectobjectId), required: true);
-            SourceExpression.Validate(mSExcelExecuteCommandBarObjectworkflow, nameof(mSExcelExecuteCommandBarObjectworkflow), required: true);
-            SourceExpression.Validate(mSExcelExecuteCommandBarObjecthandle, nameof(mSExcelExecuteCommandBarObjecthandle), required: false);
-            SourceExpression.Validate(mSExcelExecuteCommandBarObjectrunInBackground, nameof(mSExcelExecuteCommandBarObjectrunInBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/ExecuteCommandBarObject";
@@ -5544,21 +5134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCopyBetweenCellsResponse> MSExcelCopyBetweenCells([WorkflowExpression] Func<string> mSExcelCopyBetweenCellssourceCellReference, [WorkflowExpression] Func<string> mSExcelCopyBetweenCellstargetCellReference, [WorkflowExpression] Func<string> mSExcelCopyBetweenCellsworkflow, [WorkflowExpression] Func<int> mSExcelCopyBetweenCellssourceHandle = null, [WorkflowExpression] Func<string> mSExcelCopyBetweenCellssourceWorkbookName = null, [WorkflowExpression] Func<string> mSExcelCopyBetweenCellssourceWorksheetName = null, [WorkflowExpression] Func<bool> mSExcelCopyBetweenCellssourceEntireRow = null, [WorkflowExpression] Func<bool> mSExcelCopyBetweenCellssourceEntireColumn = null, [WorkflowExpression] Func<int> mSExcelCopyBetweenCellstargetHandle = null, [WorkflowExpression] Func<string> mSExcelCopyBetweenCellstargetWorkbookName = null, [WorkflowExpression] Func<string> mSExcelCopyBetweenCellstargetWorksheetName = null, [WorkflowExpression] Func<bool> mSExcelCopyBetweenCellstargetEntireRow = null, [WorkflowExpression] Func<bool> mSExcelCopyBetweenCellstargetEntireColumn = null, [WorkflowExpression] Func<bool> mSExcelCopyBetweenCellsvaluesOnly = null, [WorkflowExpression] Func<bool> mSExcelCopyBetweenCellssimplePasteOnly = null)
         {
-            SourceExpression.Validate(mSExcelCopyBetweenCellssourceCellReference, nameof(mSExcelCopyBetweenCellssourceCellReference), required: true);
-            SourceExpression.Validate(mSExcelCopyBetweenCellstargetCellReference, nameof(mSExcelCopyBetweenCellstargetCellReference), required: true);
-            SourceExpression.Validate(mSExcelCopyBetweenCellsworkflow, nameof(mSExcelCopyBetweenCellsworkflow), required: true);
-            SourceExpression.Validate(mSExcelCopyBetweenCellssourceHandle, nameof(mSExcelCopyBetweenCellssourceHandle), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellssourceWorkbookName, nameof(mSExcelCopyBetweenCellssourceWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellssourceWorksheetName, nameof(mSExcelCopyBetweenCellssourceWorksheetName), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellssourceEntireRow, nameof(mSExcelCopyBetweenCellssourceEntireRow), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellssourceEntireColumn, nameof(mSExcelCopyBetweenCellssourceEntireColumn), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellstargetHandle, nameof(mSExcelCopyBetweenCellstargetHandle), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellstargetWorkbookName, nameof(mSExcelCopyBetweenCellstargetWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellstargetWorksheetName, nameof(mSExcelCopyBetweenCellstargetWorksheetName), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellstargetEntireRow, nameof(mSExcelCopyBetweenCellstargetEntireRow), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellstargetEntireColumn, nameof(mSExcelCopyBetweenCellstargetEntireColumn), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellsvaluesOnly, nameof(mSExcelCopyBetweenCellsvaluesOnly), required: false);
-            SourceExpression.Validate(mSExcelCopyBetweenCellssimplePasteOnly, nameof(mSExcelCopyBetweenCellssimplePasteOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CopyBetweenCells";
@@ -5737,20 +5312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCutBetweenCellsResponse> MSExcelCutBetweenCells([WorkflowExpression] Func<string> mSExcelCutBetweenCellssourceCellReference, [WorkflowExpression] Func<string> mSExcelCutBetweenCellstargetCellReference, [WorkflowExpression] Func<string> mSExcelCutBetweenCellsworkflow, [WorkflowExpression] Func<int> mSExcelCutBetweenCellssourceHandle = null, [WorkflowExpression] Func<string> mSExcelCutBetweenCellssourceWorkbookName = null, [WorkflowExpression] Func<string> mSExcelCutBetweenCellssourceWorksheetName = null, [WorkflowExpression] Func<bool> mSExcelCutBetweenCellssourceEntireRow = null, [WorkflowExpression] Func<bool> mSExcelCutBetweenCellssourceEntireColumn = null, [WorkflowExpression] Func<int> mSExcelCutBetweenCellstargetHandle = null, [WorkflowExpression] Func<string> mSExcelCutBetweenCellstargetWorkbookName = null, [WorkflowExpression] Func<string> mSExcelCutBetweenCellstargetWorksheetName = null, [WorkflowExpression] Func<bool> mSExcelCutBetweenCellstargetEntireRow = null, [WorkflowExpression] Func<bool> mSExcelCutBetweenCellstargetEntireColumn = null, [WorkflowExpression] Func<bool> mSExcelCutBetweenCellsvaluesOnly = null)
         {
-            SourceExpression.Validate(mSExcelCutBetweenCellssourceCellReference, nameof(mSExcelCutBetweenCellssourceCellReference), required: true);
-            SourceExpression.Validate(mSExcelCutBetweenCellstargetCellReference, nameof(mSExcelCutBetweenCellstargetCellReference), required: true);
-            SourceExpression.Validate(mSExcelCutBetweenCellsworkflow, nameof(mSExcelCutBetweenCellsworkflow), required: true);
-            SourceExpression.Validate(mSExcelCutBetweenCellssourceHandle, nameof(mSExcelCutBetweenCellssourceHandle), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellssourceWorkbookName, nameof(mSExcelCutBetweenCellssourceWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellssourceWorksheetName, nameof(mSExcelCutBetweenCellssourceWorksheetName), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellssourceEntireRow, nameof(mSExcelCutBetweenCellssourceEntireRow), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellssourceEntireColumn, nameof(mSExcelCutBetweenCellssourceEntireColumn), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellstargetHandle, nameof(mSExcelCutBetweenCellstargetHandle), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellstargetWorkbookName, nameof(mSExcelCutBetweenCellstargetWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellstargetWorksheetName, nameof(mSExcelCutBetweenCellstargetWorksheetName), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellstargetEntireRow, nameof(mSExcelCutBetweenCellstargetEntireRow), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellstargetEntireColumn, nameof(mSExcelCutBetweenCellstargetEntireColumn), required: false);
-            SourceExpression.Validate(mSExcelCutBetweenCellsvaluesOnly, nameof(mSExcelCutBetweenCellsvaluesOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CutBetweenCells";
@@ -5913,8 +5474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelMinimiseWindowResponse> MSExcelMinimiseWindow([WorkflowExpression] Func<string> mSExcelMinimiseWindowworkflow, [WorkflowExpression] Func<int> mSExcelMinimiseWindowhandle = null)
         {
-            SourceExpression.Validate(mSExcelMinimiseWindowworkflow, nameof(mSExcelMinimiseWindowworkflow), required: true);
-            SourceExpression.Validate(mSExcelMinimiseWindowhandle, nameof(mSExcelMinimiseWindowhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/MinimiseWindow";
@@ -5953,8 +5512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelMaximiseWindowResponse> MSExcelMaximiseWindow([WorkflowExpression] Func<string> mSExcelMaximiseWindowworkflow, [WorkflowExpression] Func<int> mSExcelMaximiseWindowhandle = null)
         {
-            SourceExpression.Validate(mSExcelMaximiseWindowworkflow, nameof(mSExcelMaximiseWindowworkflow), required: true);
-            SourceExpression.Validate(mSExcelMaximiseWindowhandle, nameof(mSExcelMaximiseWindowhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/MaximiseWindow";
@@ -5993,8 +5550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelNormaliseWindowResponse> MSExcelNormaliseWindow([WorkflowExpression] Func<string> mSExcelNormaliseWindowworkflow, [WorkflowExpression] Func<int> mSExcelNormaliseWindowhandle = null)
         {
-            SourceExpression.Validate(mSExcelNormaliseWindowworkflow, nameof(mSExcelNormaliseWindowworkflow), required: true);
-            SourceExpression.Validate(mSExcelNormaliseWindowhandle, nameof(mSExcelNormaliseWindowhandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/NormaliseWindow";
@@ -6033,15 +5588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetAndSetCellValueResponse> MSExcelGetAndSetCellValue([WorkflowExpression] Func<string> mSExcelGetAndSetCellValuesourceCellReference, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValuetargetCellReference, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValueworkflow, [WorkflowExpression] Func<int> mSExcelGetAndSetCellValuesourceHandle = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValuesourceWorkbookName = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValuesourceWorksheetName = null, [WorkflowExpression] Func<int> mSExcelGetAndSetCellValuetargetHandle = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValuetargetWorkbookName = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValuetargetWorksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetAndSetCellValuesourceCellReference, nameof(mSExcelGetAndSetCellValuesourceCellReference), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellValuetargetCellReference, nameof(mSExcelGetAndSetCellValuetargetCellReference), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellValueworkflow, nameof(mSExcelGetAndSetCellValueworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellValuesourceHandle, nameof(mSExcelGetAndSetCellValuesourceHandle), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValuesourceWorkbookName, nameof(mSExcelGetAndSetCellValuesourceWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValuesourceWorksheetName, nameof(mSExcelGetAndSetCellValuesourceWorksheetName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValuetargetHandle, nameof(mSExcelGetAndSetCellValuetargetHandle), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValuetargetWorkbookName, nameof(mSExcelGetAndSetCellValuetargetWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValuetargetWorksheetName, nameof(mSExcelGetAndSetCellValuetargetWorksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetAndSetCellValue";
@@ -6124,15 +5670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetAndSetCellValue2Response> MSExcelGetAndSetCellValue2([WorkflowExpression] Func<string> mSExcelGetAndSetCellValue2sourceCellReference, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValue2targetCellReference, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValue2workflow, [WorkflowExpression] Func<int> mSExcelGetAndSetCellValue2sourceHandle = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValue2sourceWorkbookName = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValue2sourceWorksheetName = null, [WorkflowExpression] Func<int> mSExcelGetAndSetCellValue2targetHandle = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValue2targetWorkbookName = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellValue2targetWorksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2sourceCellReference, nameof(mSExcelGetAndSetCellValue2sourceCellReference), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2targetCellReference, nameof(mSExcelGetAndSetCellValue2targetCellReference), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2workflow, nameof(mSExcelGetAndSetCellValue2workflow), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2sourceHandle, nameof(mSExcelGetAndSetCellValue2sourceHandle), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2sourceWorkbookName, nameof(mSExcelGetAndSetCellValue2sourceWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2sourceWorksheetName, nameof(mSExcelGetAndSetCellValue2sourceWorksheetName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2targetHandle, nameof(mSExcelGetAndSetCellValue2targetHandle), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2targetWorkbookName, nameof(mSExcelGetAndSetCellValue2targetWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellValue2targetWorksheetName, nameof(mSExcelGetAndSetCellValue2targetWorksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetAndSetCellValue2";
@@ -6215,15 +5752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetAndSetCellTextResponse> MSExcelGetAndSetCellText([WorkflowExpression] Func<string> mSExcelGetAndSetCellTextsourceCellReference, [WorkflowExpression] Func<string> mSExcelGetAndSetCellTexttargetCellReference, [WorkflowExpression] Func<string> mSExcelGetAndSetCellTextworkflow, [WorkflowExpression] Func<int> mSExcelGetAndSetCellTextsourceHandle = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellTextsourceWorkbookName = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellTextsourceWorksheetName = null, [WorkflowExpression] Func<int> mSExcelGetAndSetCellTexttargetHandle = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellTexttargetWorkbookName = null, [WorkflowExpression] Func<string> mSExcelGetAndSetCellTexttargetWorksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetAndSetCellTextsourceCellReference, nameof(mSExcelGetAndSetCellTextsourceCellReference), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellTexttargetCellReference, nameof(mSExcelGetAndSetCellTexttargetCellReference), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellTextworkflow, nameof(mSExcelGetAndSetCellTextworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetAndSetCellTextsourceHandle, nameof(mSExcelGetAndSetCellTextsourceHandle), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellTextsourceWorkbookName, nameof(mSExcelGetAndSetCellTextsourceWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellTextsourceWorksheetName, nameof(mSExcelGetAndSetCellTextsourceWorksheetName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellTexttargetHandle, nameof(mSExcelGetAndSetCellTexttargetHandle), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellTexttargetWorkbookName, nameof(mSExcelGetAndSetCellTexttargetWorkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetAndSetCellTexttargetWorksheetName, nameof(mSExcelGetAndSetCellTexttargetWorksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetAndSetCellText";
@@ -6306,13 +5834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCheckOLEObjectResponse> MSExcelCheckOLEObject([WorkflowExpression] Func<string> mSExcelCheckOLEObjectoLEObjectName, [WorkflowExpression] Func<string> mSExcelCheckOLEObjectworkflow, [WorkflowExpression] Func<int> mSExcelCheckOLEObjecthandle = null, [WorkflowExpression] Func<string> mSExcelCheckOLEObjectworkbookName = null, [WorkflowExpression] Func<string> mSExcelCheckOLEObjectworksheetName = null, [WorkflowExpression] Func<bool> mSExcelCheckOLEObjectChecked = null, [WorkflowExpression] Func<bool> mSExcelCheckOLEObjectrunInBackground = null)
         {
-            SourceExpression.Validate(mSExcelCheckOLEObjectoLEObjectName, nameof(mSExcelCheckOLEObjectoLEObjectName), required: true);
-            SourceExpression.Validate(mSExcelCheckOLEObjectworkflow, nameof(mSExcelCheckOLEObjectworkflow), required: true);
-            SourceExpression.Validate(mSExcelCheckOLEObjecthandle, nameof(mSExcelCheckOLEObjecthandle), required: false);
-            SourceExpression.Validate(mSExcelCheckOLEObjectworkbookName, nameof(mSExcelCheckOLEObjectworkbookName), required: false);
-            SourceExpression.Validate(mSExcelCheckOLEObjectworksheetName, nameof(mSExcelCheckOLEObjectworksheetName), required: false);
-            SourceExpression.Validate(mSExcelCheckOLEObjectChecked, nameof(mSExcelCheckOLEObjectChecked), required: false);
-            SourceExpression.Validate(mSExcelCheckOLEObjectrunInBackground, nameof(mSExcelCheckOLEObjectrunInBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/CheckOLEObject";
@@ -6397,13 +5918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelInputTextIntoOLEObjectResponse> MSExcelInputTextIntoOLEObject([WorkflowExpression] Func<string> mSExcelInputTextIntoOLEObjectoLEObjectName, [WorkflowExpression] Func<string> mSExcelInputTextIntoOLEObjectworkflow, [WorkflowExpression] Func<int> mSExcelInputTextIntoOLEObjecthandle = null, [WorkflowExpression] Func<string> mSExcelInputTextIntoOLEObjectworkbookName = null, [WorkflowExpression] Func<string> mSExcelInputTextIntoOLEObjectworksheetName = null, [WorkflowExpression] Func<string> mSExcelInputTextIntoOLEObjecttextToInput = null, [WorkflowExpression] Func<bool> mSExcelInputTextIntoOLEObjectrunInBackground = null)
         {
-            SourceExpression.Validate(mSExcelInputTextIntoOLEObjectoLEObjectName, nameof(mSExcelInputTextIntoOLEObjectoLEObjectName), required: true);
-            SourceExpression.Validate(mSExcelInputTextIntoOLEObjectworkflow, nameof(mSExcelInputTextIntoOLEObjectworkflow), required: true);
-            SourceExpression.Validate(mSExcelInputTextIntoOLEObjecthandle, nameof(mSExcelInputTextIntoOLEObjecthandle), required: false);
-            SourceExpression.Validate(mSExcelInputTextIntoOLEObjectworkbookName, nameof(mSExcelInputTextIntoOLEObjectworkbookName), required: false);
-            SourceExpression.Validate(mSExcelInputTextIntoOLEObjectworksheetName, nameof(mSExcelInputTextIntoOLEObjectworksheetName), required: false);
-            SourceExpression.Validate(mSExcelInputTextIntoOLEObjecttextToInput, nameof(mSExcelInputTextIntoOLEObjecttextToInput), required: false);
-            SourceExpression.Validate(mSExcelInputTextIntoOLEObjectrunInBackground, nameof(mSExcelInputTextIntoOLEObjectrunInBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/InputTextIntoOLEObject";
@@ -6478,12 +5992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSetCellBackgroundColourResponse> MSExcelSetCellBackgroundColour([WorkflowExpression] Func<string> mSExcelSetCellBackgroundColourcellReference, [WorkflowExpression] Func<int> mSExcelSetCellBackgroundColourcolourIndex, [WorkflowExpression] Func<string> mSExcelSetCellBackgroundColourworkflow, [WorkflowExpression] Func<int> mSExcelSetCellBackgroundColourhandle = null, [WorkflowExpression] Func<string> mSExcelSetCellBackgroundColourworkbookName = null, [WorkflowExpression] Func<string> mSExcelSetCellBackgroundColourworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelSetCellBackgroundColourcellReference, nameof(mSExcelSetCellBackgroundColourcellReference), required: true);
-            SourceExpression.Validate(mSExcelSetCellBackgroundColourcolourIndex, nameof(mSExcelSetCellBackgroundColourcolourIndex), required: true);
-            SourceExpression.Validate(mSExcelSetCellBackgroundColourworkflow, nameof(mSExcelSetCellBackgroundColourworkflow), required: true);
-            SourceExpression.Validate(mSExcelSetCellBackgroundColourhandle, nameof(mSExcelSetCellBackgroundColourhandle), required: false);
-            SourceExpression.Validate(mSExcelSetCellBackgroundColourworkbookName, nameof(mSExcelSetCellBackgroundColourworkbookName), required: false);
-            SourceExpression.Validate(mSExcelSetCellBackgroundColourworksheetName, nameof(mSExcelSetCellBackgroundColourworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SetCellBackgroundColour";
@@ -6538,11 +6046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellBackgroundColourResponse> MSExcelGetCellBackgroundColour([WorkflowExpression] Func<string> mSExcelGetCellBackgroundColourcellReference, [WorkflowExpression] Func<string> mSExcelGetCellBackgroundColourworkflow, [WorkflowExpression] Func<int> mSExcelGetCellBackgroundColourhandle = null, [WorkflowExpression] Func<string> mSExcelGetCellBackgroundColourworkbookName = null, [WorkflowExpression] Func<string> mSExcelGetCellBackgroundColourworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetCellBackgroundColourcellReference, nameof(mSExcelGetCellBackgroundColourcellReference), required: true);
-            SourceExpression.Validate(mSExcelGetCellBackgroundColourworkflow, nameof(mSExcelGetCellBackgroundColourworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetCellBackgroundColourhandle, nameof(mSExcelGetCellBackgroundColourhandle), required: false);
-            SourceExpression.Validate(mSExcelGetCellBackgroundColourworkbookName, nameof(mSExcelGetCellBackgroundColourworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetCellBackgroundColourworksheetName, nameof(mSExcelGetCellBackgroundColourworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetCellBackgroundColour";
@@ -6595,11 +6098,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetOLEObjectValueResponse> MSExcelGetOLEObjectValue([WorkflowExpression] Func<string> mSExcelGetOLEObjectValueoLEObjectName, [WorkflowExpression] Func<string> mSExcelGetOLEObjectValueworkflow, [WorkflowExpression] Func<int> mSExcelGetOLEObjectValuehandle = null, [WorkflowExpression] Func<string> mSExcelGetOLEObjectValueworkbookName = null, [WorkflowExpression] Func<string> mSExcelGetOLEObjectValueworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelGetOLEObjectValueoLEObjectName, nameof(mSExcelGetOLEObjectValueoLEObjectName), required: true);
-            SourceExpression.Validate(mSExcelGetOLEObjectValueworkflow, nameof(mSExcelGetOLEObjectValueworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetOLEObjectValuehandle, nameof(mSExcelGetOLEObjectValuehandle), required: false);
-            SourceExpression.Validate(mSExcelGetOLEObjectValueworkbookName, nameof(mSExcelGetOLEObjectValueworkbookName), required: false);
-            SourceExpression.Validate(mSExcelGetOLEObjectValueworksheetName, nameof(mSExcelGetOLEObjectValueworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetOLEObjectValue";
@@ -6652,11 +6150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelDoesOLEObjectExistResponse> MSExcelDoesOLEObjectExist([WorkflowExpression] Func<string> mSExcelDoesOLEObjectExistoLEObjectName, [WorkflowExpression] Func<string> mSExcelDoesOLEObjectExistworkflow, [WorkflowExpression] Func<int> mSExcelDoesOLEObjectExisthandle = null, [WorkflowExpression] Func<string> mSExcelDoesOLEObjectExistworkbookName = null, [WorkflowExpression] Func<string> mSExcelDoesOLEObjectExistworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelDoesOLEObjectExistoLEObjectName, nameof(mSExcelDoesOLEObjectExistoLEObjectName), required: true);
-            SourceExpression.Validate(mSExcelDoesOLEObjectExistworkflow, nameof(mSExcelDoesOLEObjectExistworkflow), required: true);
-            SourceExpression.Validate(mSExcelDoesOLEObjectExisthandle, nameof(mSExcelDoesOLEObjectExisthandle), required: false);
-            SourceExpression.Validate(mSExcelDoesOLEObjectExistworkbookName, nameof(mSExcelDoesOLEObjectExistworkbookName), required: false);
-            SourceExpression.Validate(mSExcelDoesOLEObjectExistworksheetName, nameof(mSExcelDoesOLEObjectExistworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/DoesOLEObjectExist";
@@ -6709,12 +6202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelPressOLEObjectResponse> MSExcelPressOLEObject([WorkflowExpression] Func<string> mSExcelPressOLEObjectoLEObjectName, [WorkflowExpression] Func<string> mSExcelPressOLEObjectworkflow, [WorkflowExpression] Func<int> mSExcelPressOLEObjecthandle = null, [WorkflowExpression] Func<string> mSExcelPressOLEObjectworkbookName = null, [WorkflowExpression] Func<string> mSExcelPressOLEObjectworksheetName = null, [WorkflowExpression] Func<bool> mSExcelPressOLEObjectrunInBackground = null)
         {
-            SourceExpression.Validate(mSExcelPressOLEObjectoLEObjectName, nameof(mSExcelPressOLEObjectoLEObjectName), required: true);
-            SourceExpression.Validate(mSExcelPressOLEObjectworkflow, nameof(mSExcelPressOLEObjectworkflow), required: true);
-            SourceExpression.Validate(mSExcelPressOLEObjecthandle, nameof(mSExcelPressOLEObjecthandle), required: false);
-            SourceExpression.Validate(mSExcelPressOLEObjectworkbookName, nameof(mSExcelPressOLEObjectworkbookName), required: false);
-            SourceExpression.Validate(mSExcelPressOLEObjectworksheetName, nameof(mSExcelPressOLEObjectworksheetName), required: false);
-            SourceExpression.Validate(mSExcelPressOLEObjectrunInBackground, nameof(mSExcelPressOLEObjectrunInBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/PressOLEObject";
@@ -6783,14 +6270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSetWorksheetSensitivityLabelResponse> MSExcelSetWorksheetSensitivityLabel([WorkflowExpression] Func<mSExcelSetWorksheetSensitivityLabelassignmentMethodInput> mSExcelSetWorksheetSensitivityLabelassignmentMethod, [WorkflowExpression] Func<string> mSExcelSetWorksheetSensitivityLabellabelId, [WorkflowExpression] Func<string> mSExcelSetWorksheetSensitivityLabelworkflow, [WorkflowExpression] Func<int> mSExcelSetWorksheetSensitivityLabelhandle = null, [WorkflowExpression] Func<string> mSExcelSetWorksheetSensitivityLabelworkbookName = null, [WorkflowExpression] Func<string> mSExcelSetWorksheetSensitivityLabellabelName = null, [WorkflowExpression] Func<string> mSExcelSetWorksheetSensitivityLabelsiteId = null, [WorkflowExpression] Func<string> mSExcelSetWorksheetSensitivityLabeljustification = null)
         {
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabelassignmentMethod, nameof(mSExcelSetWorksheetSensitivityLabelassignmentMethod), required: true);
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabellabelId, nameof(mSExcelSetWorksheetSensitivityLabellabelId), required: true);
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabelworkflow, nameof(mSExcelSetWorksheetSensitivityLabelworkflow), required: true);
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabelhandle, nameof(mSExcelSetWorksheetSensitivityLabelhandle), required: false);
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabelworkbookName, nameof(mSExcelSetWorksheetSensitivityLabelworkbookName), required: false);
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabellabelName, nameof(mSExcelSetWorksheetSensitivityLabellabelName), required: false);
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabelsiteId, nameof(mSExcelSetWorksheetSensitivityLabelsiteId), required: false);
-            SourceExpression.Validate(mSExcelSetWorksheetSensitivityLabeljustification, nameof(mSExcelSetWorksheetSensitivityLabeljustification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/SetWorksheetSensitivityLabel";
@@ -6857,9 +6336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetSensitivityLabelResponse> MSExcelGetWorksheetSensitivityLabel([WorkflowExpression] Func<string> mSExcelGetWorksheetSensitivityLabelworkflow, [WorkflowExpression] Func<int> mSExcelGetWorksheetSensitivityLabelhandle = null, [WorkflowExpression] Func<string> mSExcelGetWorksheetSensitivityLabelworkbookName = null)
         {
-            SourceExpression.Validate(mSExcelGetWorksheetSensitivityLabelworkflow, nameof(mSExcelGetWorksheetSensitivityLabelworkflow), required: true);
-            SourceExpression.Validate(mSExcelGetWorksheetSensitivityLabelhandle, nameof(mSExcelGetWorksheetSensitivityLabelhandle), required: false);
-            SourceExpression.Validate(mSExcelGetWorksheetSensitivityLabelworkbookName, nameof(mSExcelGetWorksheetSensitivityLabelworkbookName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/GetWorksheetSensitivityLabel";
@@ -6904,13 +6380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelWriteArrayResponse> MSExcelWriteArray([WorkflowExpression] Func<string> mSExcelWriteArraycellReference, [WorkflowExpression] Func<string> mSExcelWriteArrayarrayToWriteJSON, [WorkflowExpression] Func<mSExcelWriteArraydirectionInput> mSExcelWriteArraydirection, [WorkflowExpression] Func<string> mSExcelWriteArrayworkflow, [WorkflowExpression] Func<int> mSExcelWriteArrayhandle = null, [WorkflowExpression] Func<string> mSExcelWriteArrayworkbookName = null, [WorkflowExpression] Func<string> mSExcelWriteArrayworksheetName = null)
         {
-            SourceExpression.Validate(mSExcelWriteArraycellReference, nameof(mSExcelWriteArraycellReference), required: true);
-            SourceExpression.Validate(mSExcelWriteArrayarrayToWriteJSON, nameof(mSExcelWriteArrayarrayToWriteJSON), required: true);
-            SourceExpression.Validate(mSExcelWriteArraydirection, nameof(mSExcelWriteArraydirection), required: true);
-            SourceExpression.Validate(mSExcelWriteArrayworkflow, nameof(mSExcelWriteArrayworkflow), required: true);
-            SourceExpression.Validate(mSExcelWriteArrayhandle, nameof(mSExcelWriteArrayhandle), required: false);
-            SourceExpression.Validate(mSExcelWriteArrayworkbookName, nameof(mSExcelWriteArrayworkbookName), required: false);
-            SourceExpression.Validate(mSExcelWriteArrayworksheetName, nameof(mSExcelWriteArrayworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSExcel/WriteArray";
@@ -6967,9 +6436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookCreateInstanceResponse> MSOutlookCreateInstance([WorkflowExpression] Func<string> mSOutlookCreateInstanceworkflow, [WorkflowExpression] Func<string> mSOutlookCreateInstanceprofileName = null, [WorkflowExpression] Func<bool> mSOutlookCreateInstanceshowOutlook = null)
         {
-            SourceExpression.Validate(mSOutlookCreateInstanceworkflow, nameof(mSOutlookCreateInstanceworkflow), required: true);
-            SourceExpression.Validate(mSOutlookCreateInstanceprofileName, nameof(mSOutlookCreateInstanceprofileName), required: false);
-            SourceExpression.Validate(mSOutlookCreateInstanceshowOutlook, nameof(mSOutlookCreateInstanceshowOutlook), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/CreateInstance";
@@ -7014,8 +6480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookCloseInstance([WorkflowExpression] Func<string> mSOutlookCloseInstanceworkflow, [WorkflowExpression] Func<int> mSOutlookCloseInstancesecondsToWaitForProcessToClose = null)
         {
-            SourceExpression.Validate(mSOutlookCloseInstanceworkflow, nameof(mSOutlookCloseInstanceworkflow), required: true);
-            SourceExpression.Validate(mSOutlookCloseInstancesecondsToWaitForProcessToClose, nameof(mSOutlookCloseInstancesecondsToWaitForProcessToClose), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/CloseInstance";
@@ -7054,10 +6518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookCloseInstanceUsingWindow([WorkflowExpression] Func<string> mSOutlookCloseInstanceUsingWindowworkflow, [WorkflowExpression] Func<bool> mSOutlookCloseInstanceUsingWindowuseNativeWindow = null, [WorkflowExpression] Func<bool> mSOutlookCloseInstanceUsingWindowuseUIA = null, [WorkflowExpression] Func<int> mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose = null)
         {
-            SourceExpression.Validate(mSOutlookCloseInstanceUsingWindowworkflow, nameof(mSOutlookCloseInstanceUsingWindowworkflow), required: true);
-            SourceExpression.Validate(mSOutlookCloseInstanceUsingWindowuseNativeWindow, nameof(mSOutlookCloseInstanceUsingWindowuseNativeWindow), required: false);
-            SourceExpression.Validate(mSOutlookCloseInstanceUsingWindowuseUIA, nameof(mSOutlookCloseInstanceUsingWindowuseUIA), required: false);
-            SourceExpression.Validate(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose, nameof(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/CloseInstanceUsingWindow";
@@ -7128,10 +6588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookAttachToExistingInstanceResponse> MSOutlookAttachToExistingInstance([WorkflowExpression] Func<string> mSOutlookAttachToExistingInstanceworkflow, [WorkflowExpression] Func<bool> mSOutlookAttachToExistingInstancetoggleWindow = null, [WorkflowExpression] Func<bool> mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> mSOutlookAttachToExistingInstancetoggleDelay = null)
         {
-            SourceExpression.Validate(mSOutlookAttachToExistingInstanceworkflow, nameof(mSOutlookAttachToExistingInstanceworkflow), required: true);
-            SourceExpression.Validate(mSOutlookAttachToExistingInstancetoggleWindow, nameof(mSOutlookAttachToExistingInstancetoggleWindow), required: false);
-            SourceExpression.Validate(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(mSOutlookAttachToExistingInstancetoggleDelay, nameof(mSOutlookAttachToExistingInstancetoggleDelay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/MSOutlookAttachToExistingInstance";
@@ -7202,7 +6658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookIsConnectedResponse> MSOutlookIsConnected([WorkflowExpression] Func<string> mSOutlookIsConnectedworkflow)
         {
-            SourceExpression.Validate(mSOutlookIsConnectedworkflow, nameof(mSOutlookIsConnectedworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/IsOutlookConnected";
@@ -7225,7 +6680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookShow([WorkflowExpression] Func<string> mSOutlookShowworkflow)
         {
-            SourceExpression.Validate(mSOutlookShowworkflow, nameof(mSOutlookShowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/ShowOutlook";
@@ -7248,7 +6702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetNameSpaceInformationResponse> MSOutlookGetNameSpaceInformation([WorkflowExpression] Func<string> mSOutlookGetNameSpaceInformationworkflow)
         {
-            SourceExpression.Validate(mSOutlookGetNameSpaceInformationworkflow, nameof(mSOutlookGetNameSpaceInformationworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetNameSpaceInformation";
@@ -7271,9 +6724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetMailFoldersResponse> MSOutlookGetMailFolders([WorkflowExpression] Func<string> mSOutlookGetMailFoldersworkflow, [WorkflowExpression] Func<string> mSOutlookGetMailFoldersfolderPath = null, [WorkflowExpression] Func<bool> mSOutlookGetMailFolderssubFolders = null)
         {
-            SourceExpression.Validate(mSOutlookGetMailFoldersworkflow, nameof(mSOutlookGetMailFoldersworkflow), required: true);
-            SourceExpression.Validate(mSOutlookGetMailFoldersfolderPath, nameof(mSOutlookGetMailFoldersfolderPath), required: false);
-            SourceExpression.Validate(mSOutlookGetMailFolderssubFolders, nameof(mSOutlookGetMailFolderssubFolders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetMailFolders";
@@ -7318,9 +6768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookMarkEmailAsRead([WorkflowExpression] Func<string> mSOutlookMarkEmailAsReadentryId, [WorkflowExpression] Func<string> mSOutlookMarkEmailAsReadworkflow, [WorkflowExpression] Func<bool> mSOutlookMarkEmailAsReadread = null)
         {
-            SourceExpression.Validate(mSOutlookMarkEmailAsReadentryId, nameof(mSOutlookMarkEmailAsReadentryId), required: true);
-            SourceExpression.Validate(mSOutlookMarkEmailAsReadworkflow, nameof(mSOutlookMarkEmailAsReadworkflow), required: true);
-            SourceExpression.Validate(mSOutlookMarkEmailAsReadread, nameof(mSOutlookMarkEmailAsReadread), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/MarkEmailAsRead";
@@ -7361,9 +6808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetEmailBodyResponse> MSOutlookGetEmailBody([WorkflowExpression] Func<string> mSOutlookGetEmailBodyentryId, [WorkflowExpression] Func<string> mSOutlookGetEmailBodyworkflow, [WorkflowExpression] Func<bool> mSOutlookGetEmailBodyclickAllowButtonIfRequired = null)
         {
-            SourceExpression.Validate(mSOutlookGetEmailBodyentryId, nameof(mSOutlookGetEmailBodyentryId), required: true);
-            SourceExpression.Validate(mSOutlookGetEmailBodyworkflow, nameof(mSOutlookGetEmailBodyworkflow), required: true);
-            SourceExpression.Validate(mSOutlookGetEmailBodyclickAllowButtonIfRequired, nameof(mSOutlookGetEmailBodyclickAllowButtonIfRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetEmailBody";
@@ -7404,9 +6848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetEmailAttachmentFilenamesResponse> MSOutlookGetEmailAttachmentFilenames([WorkflowExpression] Func<string> mSOutlookGetEmailAttachmentFilenamesentryId, [WorkflowExpression] Func<string> mSOutlookGetEmailAttachmentFilenamesworkflow, [WorkflowExpression] Func<bool> mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = null)
         {
-            SourceExpression.Validate(mSOutlookGetEmailAttachmentFilenamesentryId, nameof(mSOutlookGetEmailAttachmentFilenamesentryId), required: true);
-            SourceExpression.Validate(mSOutlookGetEmailAttachmentFilenamesworkflow, nameof(mSOutlookGetEmailAttachmentFilenamesworkflow), required: true);
-            SourceExpression.Validate(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired, nameof(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetEmailAttachmentFilenames";
@@ -7447,13 +6888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookSaveEmailAttachmentsAsFileResponse> MSOutlookSaveEmailAttachmentsAsFile([WorkflowExpression] Func<string> mSOutlookSaveEmailAttachmentsAsFileentryId, [WorkflowExpression] Func<string> mSOutlookSaveEmailAttachmentsAsFileworkflow, [WorkflowExpression] Func<string> mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = null, [WorkflowExpression] Func<bool> mSOutlookSaveEmailAttachmentsAsFilecreateFolder = null, [WorkflowExpression] Func<string> mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = null, [WorkflowExpression] Func<bool> mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = null, [WorkflowExpression] Func<bool> mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = null)
         {
-            SourceExpression.Validate(mSOutlookSaveEmailAttachmentsAsFileentryId, nameof(mSOutlookSaveEmailAttachmentsAsFileentryId), required: true);
-            SourceExpression.Validate(mSOutlookSaveEmailAttachmentsAsFileworkflow, nameof(mSOutlookSaveEmailAttachmentsAsFileworkflow), required: true);
-            SourceExpression.Validate(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath, nameof(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath), required: false);
-            SourceExpression.Validate(mSOutlookSaveEmailAttachmentsAsFilecreateFolder, nameof(mSOutlookSaveEmailAttachmentsAsFilecreateFolder), required: false);
-            SourceExpression.Validate(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard, nameof(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard), required: false);
-            SourceExpression.Validate(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments, nameof(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments), required: false);
-            SourceExpression.Validate(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired, nameof(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/SaveEmailAttachmentsAsFile";
@@ -7538,8 +6972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookDeleteEmail([WorkflowExpression] Func<string> mSOutlookDeleteEmailentryId, [WorkflowExpression] Func<string> mSOutlookDeleteEmailworkflow)
         {
-            SourceExpression.Validate(mSOutlookDeleteEmailentryId, nameof(mSOutlookDeleteEmailentryId), required: true);
-            SourceExpression.Validate(mSOutlookDeleteEmailworkflow, nameof(mSOutlookDeleteEmailworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/DeleteEmail";
@@ -7564,9 +6996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookMoveEmail([WorkflowExpression] Func<string> mSOutlookMoveEmailentryId, [WorkflowExpression] Func<string> mSOutlookMoveEmailworkflow, [WorkflowExpression] Func<string> mSOutlookMoveEmaildestinationFolder = null)
         {
-            SourceExpression.Validate(mSOutlookMoveEmailentryId, nameof(mSOutlookMoveEmailentryId), required: true);
-            SourceExpression.Validate(mSOutlookMoveEmailworkflow, nameof(mSOutlookMoveEmailworkflow), required: true);
-            SourceExpression.Validate(mSOutlookMoveEmaildestinationFolder, nameof(mSOutlookMoveEmaildestinationFolder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/MoveEmail";
@@ -7597,21 +7026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookSendEmail([WorkflowExpression] Func<string> mSOutlookSendEmailworkflow, [WorkflowExpression] Func<string> mSOutlookSendEmailto = null, [WorkflowExpression] Func<string> mSOutlookSendEmailcC = null, [WorkflowExpression] Func<string> mSOutlookSendEmailbCC = null, [WorkflowExpression] Func<string> mSOutlookSendEmailsubject = null, [WorkflowExpression] Func<mSOutlookSendEmailbodyFormatInput> mSOutlookSendEmailbodyFormat = null, [WorkflowExpression] Func<string> mSOutlookSendEmailbody = null, [WorkflowExpression] Func<string> mSOutlookSendEmailhTMLBody = null, [WorkflowExpression] Func<string> mSOutlookSendEmailrTFBody = null, [WorkflowExpression] Func<string> mSOutlookSendEmailattachmentFilenamesJSON = null, [WorkflowExpression] Func<bool> mSOutlookSendEmaildontSendIfAttachmentFilenameMissing = null, [WorkflowExpression] Func<bool> mSOutlookSendEmailclickAllowButtonIfRequired = null, [WorkflowExpression] Func<string> mSOutlookSendEmailvotingOptions = null, [WorkflowExpression] Func<string> mSOutlookSendEmailsendAsSMTPAddress = null, [WorkflowExpression] Func<bool> mSOutlookSendEmailbodyContainsStoredPassword = null)
         {
-            SourceExpression.Validate(mSOutlookSendEmailworkflow, nameof(mSOutlookSendEmailworkflow), required: true);
-            SourceExpression.Validate(mSOutlookSendEmailto, nameof(mSOutlookSendEmailto), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailcC, nameof(mSOutlookSendEmailcC), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailbCC, nameof(mSOutlookSendEmailbCC), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailsubject, nameof(mSOutlookSendEmailsubject), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailbodyFormat, nameof(mSOutlookSendEmailbodyFormat), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailbody, nameof(mSOutlookSendEmailbody), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailhTMLBody, nameof(mSOutlookSendEmailhTMLBody), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailrTFBody, nameof(mSOutlookSendEmailrTFBody), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailattachmentFilenamesJSON, nameof(mSOutlookSendEmailattachmentFilenamesJSON), required: false);
-            SourceExpression.Validate(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailclickAllowButtonIfRequired, nameof(mSOutlookSendEmailclickAllowButtonIfRequired), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailvotingOptions, nameof(mSOutlookSendEmailvotingOptions), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailsendAsSMTPAddress, nameof(mSOutlookSendEmailsendAsSMTPAddress), required: false);
-            SourceExpression.Validate(mSOutlookSendEmailbodyContainsStoredPassword, nameof(mSOutlookSendEmailbodyContainsStoredPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/SendEmail";
@@ -7748,9 +7162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookCreateMailFolder([WorkflowExpression] Func<string> mSOutlookCreateMailFolderworkflow, [WorkflowExpression] Func<string> mSOutlookCreateMailFolderparentFolderPath = null, [WorkflowExpression] Func<string> mSOutlookCreateMailFoldernewFolderName = null)
         {
-            SourceExpression.Validate(mSOutlookCreateMailFolderworkflow, nameof(mSOutlookCreateMailFolderworkflow), required: true);
-            SourceExpression.Validate(mSOutlookCreateMailFolderparentFolderPath, nameof(mSOutlookCreateMailFolderparentFolderPath), required: false);
-            SourceExpression.Validate(mSOutlookCreateMailFoldernewFolderName, nameof(mSOutlookCreateMailFoldernewFolderName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/CreateMailFolder";
@@ -7785,19 +7196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookReplyToEmail([WorkflowExpression] Func<string> mSOutlookReplyToEmailentryId, [WorkflowExpression] Func<string> mSOutlookReplyToEmailworkflow, [WorkflowExpression] Func<bool> mSOutlookReplyToEmailreplyToAll = null, [WorkflowExpression] Func<mSOutlookReplyToEmailbodyFormatInput> mSOutlookReplyToEmailbodyFormat = null, [WorkflowExpression] Func<string> mSOutlookReplyToEmailbody = null, [WorkflowExpression] Func<string> mSOutlookReplyToEmailhTMLBody = null, [WorkflowExpression] Func<string> mSOutlookReplyToEmailrTFBody = null, [WorkflowExpression] Func<string> mSOutlookReplyToEmailattachmentFilenamesJSON = null, [WorkflowExpression] Func<bool> mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = null, [WorkflowExpression] Func<bool> mSOutlookReplyToEmailclickAllowButtonIfRequired = null, [WorkflowExpression] Func<string> mSOutlookReplyToEmailvotingOptions = null, [WorkflowExpression] Func<string> mSOutlookReplyToEmailsendAsSMTPAddress = null, [WorkflowExpression] Func<bool> mSOutlookReplyToEmailbodyContainsStoredPassword = null)
         {
-            SourceExpression.Validate(mSOutlookReplyToEmailentryId, nameof(mSOutlookReplyToEmailentryId), required: true);
-            SourceExpression.Validate(mSOutlookReplyToEmailworkflow, nameof(mSOutlookReplyToEmailworkflow), required: true);
-            SourceExpression.Validate(mSOutlookReplyToEmailreplyToAll, nameof(mSOutlookReplyToEmailreplyToAll), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailbodyFormat, nameof(mSOutlookReplyToEmailbodyFormat), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailbody, nameof(mSOutlookReplyToEmailbody), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailhTMLBody, nameof(mSOutlookReplyToEmailhTMLBody), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailrTFBody, nameof(mSOutlookReplyToEmailrTFBody), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailattachmentFilenamesJSON, nameof(mSOutlookReplyToEmailattachmentFilenamesJSON), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailclickAllowButtonIfRequired, nameof(mSOutlookReplyToEmailclickAllowButtonIfRequired), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailvotingOptions, nameof(mSOutlookReplyToEmailvotingOptions), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailsendAsSMTPAddress, nameof(mSOutlookReplyToEmailsendAsSMTPAddress), required: false);
-            SourceExpression.Validate(mSOutlookReplyToEmailbodyContainsStoredPassword, nameof(mSOutlookReplyToEmailbodyContainsStoredPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/ReplyToEmail";
@@ -7928,26 +7326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookForwardEmail([WorkflowExpression] Func<string> mSOutlookForwardEmailentryId, [WorkflowExpression] Func<string> mSOutlookForwardEmailworkflow, [WorkflowExpression] Func<string> mSOutlookForwardEmailto = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailcC = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailbCC = null, [WorkflowExpression] Func<bool> mSOutlookForwardEmailoverrideSubject = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailsubject = null, [WorkflowExpression] Func<bool> mSOutlookForwardEmailoverrideBody = null, [WorkflowExpression] Func<mSOutlookForwardEmailbodyFormatInput> mSOutlookForwardEmailbodyFormat = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailbody = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailhTMLBody = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailrTFBody = null, [WorkflowExpression] Func<bool> mSOutlookForwardEmailclickAllowButtonIfRequired = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailvotingOptions = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailsendAsSMTPAddress = null, [WorkflowExpression] Func<bool> mSOutlookForwardEmailincludeExistingHiddenAttachments = null, [WorkflowExpression] Func<bool> mSOutlookForwardEmailincludeExistingVisibleAttachments = null, [WorkflowExpression] Func<string> mSOutlookForwardEmailattachmentFilenamesJSON = null, [WorkflowExpression] Func<bool> mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = null, [WorkflowExpression] Func<bool> mSOutlookForwardEmailbodyContainsStoredPassword = null)
         {
-            SourceExpression.Validate(mSOutlookForwardEmailentryId, nameof(mSOutlookForwardEmailentryId), required: true);
-            SourceExpression.Validate(mSOutlookForwardEmailworkflow, nameof(mSOutlookForwardEmailworkflow), required: true);
-            SourceExpression.Validate(mSOutlookForwardEmailto, nameof(mSOutlookForwardEmailto), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailcC, nameof(mSOutlookForwardEmailcC), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailbCC, nameof(mSOutlookForwardEmailbCC), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailoverrideSubject, nameof(mSOutlookForwardEmailoverrideSubject), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailsubject, nameof(mSOutlookForwardEmailsubject), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailoverrideBody, nameof(mSOutlookForwardEmailoverrideBody), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailbodyFormat, nameof(mSOutlookForwardEmailbodyFormat), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailbody, nameof(mSOutlookForwardEmailbody), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailhTMLBody, nameof(mSOutlookForwardEmailhTMLBody), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailrTFBody, nameof(mSOutlookForwardEmailrTFBody), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailclickAllowButtonIfRequired, nameof(mSOutlookForwardEmailclickAllowButtonIfRequired), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailvotingOptions, nameof(mSOutlookForwardEmailvotingOptions), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailsendAsSMTPAddress, nameof(mSOutlookForwardEmailsendAsSMTPAddress), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailincludeExistingHiddenAttachments, nameof(mSOutlookForwardEmailincludeExistingHiddenAttachments), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailincludeExistingVisibleAttachments, nameof(mSOutlookForwardEmailincludeExistingVisibleAttachments), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailattachmentFilenamesJSON, nameof(mSOutlookForwardEmailattachmentFilenamesJSON), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing), required: false);
-            SourceExpression.Validate(mSOutlookForwardEmailbodyContainsStoredPassword, nameof(mSOutlookForwardEmailbodyContainsStoredPassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/MSOutlookForwardEmail";
@@ -8150,7 +7528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetMAPIProfilesResponse> MSOutlookGetMAPIProfiles([WorkflowExpression] Func<string> mSOutlookGetMAPIProfilesworkflow)
         {
-            SourceExpression.Validate(mSOutlookGetMAPIProfilesworkflow, nameof(mSOutlookGetMAPIProfilesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetMAPIProfiles";
@@ -8173,7 +7550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetOutlookProcessIdResponse> MSOutlookGetOutlookProcessId([WorkflowExpression] Func<string> mSOutlookGetOutlookProcessIdworkflow)
         {
-            SourceExpression.Validate(mSOutlookGetOutlookProcessIdworkflow, nameof(mSOutlookGetOutlookProcessIdworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetOutlookProcessId";
@@ -8196,11 +7572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookBackgroundMonitorForAllowPopup([WorkflowExpression] Func<string> mSOutlookBackgroundMonitorForAllowPopupworkflow, [WorkflowExpression] Func<int> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog = null, [WorkflowExpression] Func<int> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton = null, [WorkflowExpression] Func<int> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled = null, [WorkflowExpression] Func<string> mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName = null)
         {
-            SourceExpression.Validate(mSOutlookBackgroundMonitorForAllowPopupworkflow, nameof(mSOutlookBackgroundMonitorForAllowPopupworkflow), required: true);
-            SourceExpression.Validate(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog), required: false);
-            SourceExpression.Validate(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton), required: false);
-            SourceExpression.Validate(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled), required: false);
-            SourceExpression.Validate(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName, nameof(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/BackgroundMonitorForAllowPopup";
@@ -8287,10 +7658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookSetAllowPopupDetails([WorkflowExpression] Func<string> mSOutlookSetAllowPopupDetailsworkflow, [WorkflowExpression] Func<string> mSOutlookSetAllowPopupDetailsoutlookAllowButtonName = null, [WorkflowExpression] Func<string> mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId = null, [WorkflowExpression] Func<string> mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId = null)
         {
-            SourceExpression.Validate(mSOutlookSetAllowPopupDetailsworkflow, nameof(mSOutlookSetAllowPopupDetailsworkflow), required: true);
-            SourceExpression.Validate(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName), required: false);
-            SourceExpression.Validate(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId), required: false);
-            SourceExpression.Validate(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/MSOutlookSetAllowPopupDetails";
@@ -8361,9 +7728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookExecuteCommandBarObjectResponse> MSOutlookExecuteCommandBarObject([WorkflowExpression] Func<string> mSOutlookExecuteCommandBarObjectobjectId, [WorkflowExpression] Func<string> mSOutlookExecuteCommandBarObjectworkflow, [WorkflowExpression] Func<bool> mSOutlookExecuteCommandBarObjectrunInBackground = null)
         {
-            SourceExpression.Validate(mSOutlookExecuteCommandBarObjectobjectId, nameof(mSOutlookExecuteCommandBarObjectobjectId), required: true);
-            SourceExpression.Validate(mSOutlookExecuteCommandBarObjectworkflow, nameof(mSOutlookExecuteCommandBarObjectworkflow), required: true);
-            SourceExpression.Validate(mSOutlookExecuteCommandBarObjectrunInBackground, nameof(mSOutlookExecuteCommandBarObjectrunInBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/MSOutlookExecuteCommandBarObject";
@@ -8404,19 +7768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetEmailsResponse> MSOutlookGetEmails([WorkflowExpression] Func<string> mSOutlookGetEmailsworkflow, [WorkflowExpression] Func<string> mSOutlookGetEmailsfolderPath = null, [WorkflowExpression] Func<bool> mSOutlookGetEmailssearchRead = null, [WorkflowExpression] Func<bool> mSOutlookGetEmailssearchUnread = null, [WorkflowExpression] Func<string> mSOutlookGetEmailssearchSubject = null, [WorkflowExpression] Func<string> mSOutlookGetEmailssearchFromSMTP = null, [WorkflowExpression] Func<string> mSOutlookGetEmailssearchFromName = null, [WorkflowExpression] Func<string> mSOutlookGetEmailssearchQuery = null, [WorkflowExpression] Func<int> mSOutlookGetEmailssearchMaxAgeInDays = null, [WorkflowExpression] Func<string> mSOutlookGetEmailssearchStartDateTimeAsString = null, [WorkflowExpression] Func<string> mSOutlookGetEmailssearchEndDateTimeAsString = null, [WorkflowExpression] Func<int> mSOutlookGetEmailsmaxResultsToReturn = null, [WorkflowExpression] Func<bool> mSOutlookGetEmailsclickAllowButtonIfRequired = null)
         {
-            SourceExpression.Validate(mSOutlookGetEmailsworkflow, nameof(mSOutlookGetEmailsworkflow), required: true);
-            SourceExpression.Validate(mSOutlookGetEmailsfolderPath, nameof(mSOutlookGetEmailsfolderPath), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchRead, nameof(mSOutlookGetEmailssearchRead), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchUnread, nameof(mSOutlookGetEmailssearchUnread), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchSubject, nameof(mSOutlookGetEmailssearchSubject), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchFromSMTP, nameof(mSOutlookGetEmailssearchFromSMTP), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchFromName, nameof(mSOutlookGetEmailssearchFromName), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchQuery, nameof(mSOutlookGetEmailssearchQuery), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchMaxAgeInDays, nameof(mSOutlookGetEmailssearchMaxAgeInDays), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchStartDateTimeAsString, nameof(mSOutlookGetEmailssearchStartDateTimeAsString), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailssearchEndDateTimeAsString, nameof(mSOutlookGetEmailssearchEndDateTimeAsString), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailsmaxResultsToReturn, nameof(mSOutlookGetEmailsmaxResultsToReturn), required: false);
-            SourceExpression.Validate(mSOutlookGetEmailsclickAllowButtonIfRequired, nameof(mSOutlookGetEmailsclickAllowButtonIfRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetEmails";
@@ -8561,18 +7912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetFirstEmailResponse> MSOutlookGetFirstEmail([WorkflowExpression] Func<string> mSOutlookGetFirstEmailworkflow, [WorkflowExpression] Func<string> mSOutlookGetFirstEmailfolderPath = null, [WorkflowExpression] Func<bool> mSOutlookGetFirstEmailsearchRead = null, [WorkflowExpression] Func<bool> mSOutlookGetFirstEmailsearchUnread = null, [WorkflowExpression] Func<string> mSOutlookGetFirstEmailsearchSubject = null, [WorkflowExpression] Func<string> mSOutlookGetFirstEmailsearchFromSMTP = null, [WorkflowExpression] Func<string> mSOutlookGetFirstEmailsearchFromName = null, [WorkflowExpression] Func<string> mSOutlookGetFirstEmailsearchQuery = null, [WorkflowExpression] Func<int> mSOutlookGetFirstEmailsearchMaxAgeInDays = null, [WorkflowExpression] Func<string> mSOutlookGetFirstEmailsearchStartDateTimeAsString = null, [WorkflowExpression] Func<string> mSOutlookGetFirstEmailsearchEndDateTimeAsString = null, [WorkflowExpression] Func<bool> mSOutlookGetFirstEmailclickAllowButtonIfRequired = null)
         {
-            SourceExpression.Validate(mSOutlookGetFirstEmailworkflow, nameof(mSOutlookGetFirstEmailworkflow), required: true);
-            SourceExpression.Validate(mSOutlookGetFirstEmailfolderPath, nameof(mSOutlookGetFirstEmailfolderPath), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchRead, nameof(mSOutlookGetFirstEmailsearchRead), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchUnread, nameof(mSOutlookGetFirstEmailsearchUnread), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchSubject, nameof(mSOutlookGetFirstEmailsearchSubject), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchFromSMTP, nameof(mSOutlookGetFirstEmailsearchFromSMTP), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchFromName, nameof(mSOutlookGetFirstEmailsearchFromName), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchQuery, nameof(mSOutlookGetFirstEmailsearchQuery), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchMaxAgeInDays, nameof(mSOutlookGetFirstEmailsearchMaxAgeInDays), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchStartDateTimeAsString, nameof(mSOutlookGetFirstEmailsearchStartDateTimeAsString), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailsearchEndDateTimeAsString, nameof(mSOutlookGetFirstEmailsearchEndDateTimeAsString), required: false);
-            SourceExpression.Validate(mSOutlookGetFirstEmailclickAllowButtonIfRequired, nameof(mSOutlookGetFirstEmailclickAllowButtonIfRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetFirstEmail";
@@ -8701,17 +8040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetNumberOfEmailsResponse> MSOutlookGetNumberOfEmails([WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailsworkflow, [WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailsfolderPath = null, [WorkflowExpression] Func<bool> mSOutlookGetNumberOfEmailssearchRead = null, [WorkflowExpression] Func<bool> mSOutlookGetNumberOfEmailssearchUnread = null, [WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailssearchSubject = null, [WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailssearchFromSMTP = null, [WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailssearchFromName = null, [WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailssearchQuery = null, [WorkflowExpression] Func<int> mSOutlookGetNumberOfEmailssearchMaxAgeInDays = null, [WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailssearchStartDateTimeAsString = null, [WorkflowExpression] Func<string> mSOutlookGetNumberOfEmailssearchEndDateTimeAsString = null)
         {
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailsworkflow, nameof(mSOutlookGetNumberOfEmailsworkflow), required: true);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailsfolderPath, nameof(mSOutlookGetNumberOfEmailsfolderPath), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchRead, nameof(mSOutlookGetNumberOfEmailssearchRead), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchUnread, nameof(mSOutlookGetNumberOfEmailssearchUnread), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchSubject, nameof(mSOutlookGetNumberOfEmailssearchSubject), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchFromSMTP, nameof(mSOutlookGetNumberOfEmailssearchFromSMTP), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchFromName, nameof(mSOutlookGetNumberOfEmailssearchFromName), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchQuery, nameof(mSOutlookGetNumberOfEmailssearchQuery), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchMaxAgeInDays, nameof(mSOutlookGetNumberOfEmailssearchMaxAgeInDays), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString, nameof(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString), required: false);
-            SourceExpression.Validate(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString, nameof(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MSOutlook/GetNumberOfEmails";

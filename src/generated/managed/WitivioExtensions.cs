@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IWorkflowAction SendFeedback([WorkflowExpression] Func<string> botId)
         {
-            SourceExpression.Validate(botId, nameof(botId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/feedback", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -51,8 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodymessage)
         {
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -83,8 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<JToken> StartEscalation([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyinitialQuestion)
         {
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(bodyinitialQuestion, nameof(bodyinitialQuestion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/startescalation", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -131,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendAdaptiveResponse> SendAdaptive([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyadaptiveCardJson)
         {
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(bodyadaptiveCardJson, nameof(bodyadaptiveCardJson), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/adaptive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -163,9 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageInputResponse> SendMessageInput([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<bool> bodyfileWaiting)
         {
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            SourceExpression.Validate(bodyfileWaiting, nameof(bodyfileWaiting), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -198,18 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageInputListResponse> SendMessageInputList([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<string> bodyfirstChoice, [WorkflowExpression] Func<string> bodysecondChoice, [WorkflowExpression] Func<string> bodythirdChoice = null, [WorkflowExpression] Func<string> bodyfourthChoice = null, [WorkflowExpression] Func<string> bodyfifthChoice = null, [WorkflowExpression] Func<string> bodysixthChoice = null, [WorkflowExpression] Func<string> bodyseventhChoice = null, [WorkflowExpression] Func<string> bodyeigthChoice = null, [WorkflowExpression] Func<string> bodyninethChoice = null, [WorkflowExpression] Func<string> bodytenthChoice = null)
         {
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            SourceExpression.Validate(bodyfirstChoice, nameof(bodyfirstChoice), required: true);
-            SourceExpression.Validate(bodysecondChoice, nameof(bodysecondChoice), required: true);
-            SourceExpression.Validate(bodythirdChoice, nameof(bodythirdChoice), required: false);
-            SourceExpression.Validate(bodyfourthChoice, nameof(bodyfourthChoice), required: false);
-            SourceExpression.Validate(bodyfifthChoice, nameof(bodyfifthChoice), required: false);
-            SourceExpression.Validate(bodysixthChoice, nameof(bodysixthChoice), required: false);
-            SourceExpression.Validate(bodyseventhChoice, nameof(bodyseventhChoice), required: false);
-            SourceExpression.Validate(bodyeigthChoice, nameof(bodyeigthChoice), required: false);
-            SourceExpression.Validate(bodyninethChoice, nameof(bodyninethChoice), required: false);
-            SourceExpression.Validate(bodytenthChoice, nameof(bodytenthChoice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -292,10 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
         public IBodyWorkflowAction<SendMessageInputArrayResponse> SendMessageInputArray([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<JToken[]> bodylistOfChoices, [WorkflowExpression] Func<string> bodyvalueToSelectInList)
         {
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            SourceExpression.Validate(bodylistOfChoices, nameof(bodylistOfChoices), required: true);
-            SourceExpression.Validate(bodyvalueToSelectInList, nameof(bodyvalueToSelectInList), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/array", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -332,11 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
     {
         public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> licenceId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> questionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(licenceId, nameof(licenceId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(language, nameof(language), required: true);
-            SourceExpression.Validate(profileId, nameof(profileId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -360,11 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
         public IWorkflowTrigger WebhookEscalationTrigger([WorkflowExpression] Func<string> licenceId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> escalationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(licenceId, nameof(licenceId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(language, nameof(language), required: true);
-            SourceExpression.Validate(profileId, nameof(profileId), required: true);
-            SourceExpression.Validate(escalationId, nameof(escalationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(escalationId, 1));

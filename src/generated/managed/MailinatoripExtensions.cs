@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<InboxGetResponse> InboxGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> decodeSubject = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(inbox, nameof(inbox), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(decodeSubject, nameof(decodeSubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1));
@@ -42,9 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageGetResponse> MessageGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(inbox, nameof(inbox), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -59,9 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageDeleteResponse> MessageDelete([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(inbox, nameof(inbox), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -76,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageAttachmentsGetResponse> MessageAttachmentsGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(inbox, nameof(inbox), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -93,9 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageLinksGetResponse> MessageLinksGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(inbox, nameof(inbox), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -110,20 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> bodyfromfull = null, [WorkflowExpression] Func<string> bodyheadersmimeVersion = null, [WorkflowExpression] Func<string> bodyheadersdate = null, [WorkflowExpression] Func<string> bodyheaderssubject = null, [WorkflowExpression] Func<string> bodyheaderscontentType = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodypartsInputItem[]> bodyparts = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<int> bodytime = null, [WorkflowExpression] Func<int> bodysecondsAgo = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(inbox, nameof(inbox), required: true);
-            SourceExpression.Validate(bodyfromfull, nameof(bodyfromfull), required: false);
-            SourceExpression.Validate(bodyheadersmimeVersion, nameof(bodyheadersmimeVersion), required: false);
-            SourceExpression.Validate(bodyheadersdate, nameof(bodyheadersdate), required: false);
-            SourceExpression.Validate(bodyheaderssubject, nameof(bodyheaderssubject), required: false);
-            SourceExpression.Validate(bodyheaderscontentType, nameof(bodyheaderscontentType), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodyparts, nameof(bodyparts), required: false);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: false);
-            SourceExpression.Validate(bodysecondsAgo, nameof(bodysecondsAgo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1));
@@ -252,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<DomainGetResponse> DomainGet([WorkflowExpression] Func<string> domainId)
         {
-            SourceExpression.Validate(domainId, nameof(domainId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1));

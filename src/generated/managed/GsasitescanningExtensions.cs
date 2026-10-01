@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         public IBodyWorkflowAction<AnalysisDto> AnalysisControllerGetResults([WorkflowExpression] Func<string> targetUrlDomain = null, [WorkflowExpression] Func<string> finalUrlDomain = null, [WorkflowExpression] Func<bool> finalUrlLive = null, [WorkflowExpression] Func<bool> targetUrlRedirects = null, [WorkflowExpression] Func<string> targetUrlAgencyOwner = null, [WorkflowExpression] Func<string> targetUrlBureauOwner = null, [WorkflowExpression] Func<primaryScanStatusInput> primaryScanStatus = null, [WorkflowExpression] Func<bool> dapDetectedFinalUrl = null)
         {
-            SourceExpression.Validate(targetUrlDomain, nameof(targetUrlDomain), required: false);
-            SourceExpression.Validate(finalUrlDomain, nameof(finalUrlDomain), required: false);
-            SourceExpression.Validate(finalUrlLive, nameof(finalUrlLive), required: false);
-            SourceExpression.Validate(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
-            SourceExpression.Validate(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
-            SourceExpression.Validate(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
-            SourceExpression.Validate(primaryScanStatus, nameof(primaryScanStatus), required: false);
-            SourceExpression.Validate(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/analysis";
@@ -52,16 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         public IBodyWorkflowAction<PaginatedWebsiteResponseDto> WebsiteControllerGetResults([WorkflowExpression] Func<string> targetUrlDomain = null, [WorkflowExpression] Func<string> finalUrlDomain = null, [WorkflowExpression] Func<bool> finalUrlLive = null, [WorkflowExpression] Func<bool> targetUrlRedirects = null, [WorkflowExpression] Func<string> targetUrlAgencyOwner = null, [WorkflowExpression] Func<string> targetUrlBureauOwner = null, [WorkflowExpression] Func<primaryScanStatusInput> primaryScanStatus = null, [WorkflowExpression] Func<bool> dapDetectedFinalUrl = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(targetUrlDomain, nameof(targetUrlDomain), required: false);
-            SourceExpression.Validate(finalUrlDomain, nameof(finalUrlDomain), required: false);
-            SourceExpression.Validate(finalUrlLive, nameof(finalUrlLive), required: false);
-            SourceExpression.Validate(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
-            SourceExpression.Validate(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
-            SourceExpression.Validate(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
-            SourceExpression.Validate(primaryScanStatus, nameof(primaryScanStatus), required: false);
-            SourceExpression.Validate(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/websites";
@@ -96,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         public IBodyWorkflowAction<WebsiteApiResultDto> WebsiteControllerGetResultByUrl([WorkflowExpression] Func<string> url)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/websites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(url, 1));

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSIP([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<string> max = null, [WorkflowExpression] Func<string> lastSeenAfter = null, [WorkflowExpression] Func<string> firstSeenBefore = null)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(lastSeenAfter, nameof(lastSeenAfter), required: false);
-            SourceExpression.Validate(firstSeenBefore, nameof(firstSeenBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/pdns/data/ip";
@@ -39,11 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSRESOURCEDATA([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> max = null, [WorkflowExpression] Func<string> lastSeenAfter = null, [WorkflowExpression] Func<string> firstSeenBefore = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(lastSeenAfter, nameof(lastSeenAfter), required: false);
-            SourceExpression.Validate(firstSeenBefore, nameof(firstSeenBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/pdns/data/name";
@@ -67,11 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSRESOURCEDATAHEX([WorkflowExpression] Func<string> hex, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> max = null, [WorkflowExpression] Func<string> lastSeenAfter = null, [WorkflowExpression] Func<string> firstSeenBefore = null)
         {
-            SourceExpression.Validate(hex, nameof(hex), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(lastSeenAfter, nameof(lastSeenAfter), required: false);
-            SourceExpression.Validate(firstSeenBefore, nameof(firstSeenBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/pdns/data/raw";
@@ -95,11 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSNAME([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> max = null, [WorkflowExpression] Func<string> lastSeenAfter = null, [WorkflowExpression] Func<string> firstSeenBefore = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(lastSeenAfter, nameof(lastSeenAfter), required: false);
-            SourceExpression.Validate(firstSeenBefore, nameof(firstSeenBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/pdns/name";
@@ -123,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertWithHostPage> SSLBYHOST([WorkflowExpression] Func<string> host)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ssl/cert/host";
@@ -139,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertPage> SSLBYSERIAL([WorkflowExpression] Func<string> serial)
         {
-            SourceExpression.Validate(serial, nameof(serial), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ssl/cert/serial";
@@ -155,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCert> SSLBYSHA1([WorkflowExpression] Func<string> sha1)
         {
-            SourceExpression.Validate(sha1, nameof(sha1), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ssl/cert/sha1";
@@ -171,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertHostPage> HOSTSBYSSLSHA1([WorkflowExpression] Func<string> certSha1)
         {
-            SourceExpression.Validate(certSha1, nameof(certSha1), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ssl/host";
@@ -187,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertPage> SSLBYNAME([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ssl/cert/name";
@@ -203,9 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISIP([WorkflowExpression] Func<string> address, [WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> maxResults = null)
         {
-            SourceExpression.Validate(address, nameof(address), required: true);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/whois/address";
@@ -225,9 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISDOMAIN([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> maxResults = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/whois/domain";
@@ -247,9 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYEMAIL([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> maxResults = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/whois/email";
@@ -269,9 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYNAME([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> maxResults = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/whois/name";
@@ -291,9 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYNAMESERVER([WorkflowExpression] Func<string> nameserver, [WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> maxResults = null)
         {
-            SourceExpression.Validate(nameserver, nameof(nameserver), required: true);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/whois/nameserver";
@@ -313,9 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYORGANIZATION([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> maxResults = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/whois/org";
@@ -335,9 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYPHONE([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> exact = null, [WorkflowExpression] Func<string> maxResults = null)
         {
-            SourceExpression.Validate(phone, nameof(phone), required: true);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/whois/phone";
@@ -357,14 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSHOST([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
@@ -393,14 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSDOMAIN([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/trackers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
@@ -429,14 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSIP([WorkflowExpression] Func<string> address, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(address, nameof(address), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/trackers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(address, 1));
@@ -465,14 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostPairsResult> HOSTPAIRSCHILD([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/children/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
@@ -501,14 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostPairsResult> HOSTPAIRSPARENT([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/parents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
@@ -537,14 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTHOST([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/components/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
@@ -573,14 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTSDOMAIN([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/components/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
@@ -609,14 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTSIP([WorkflowExpression] Func<string> address, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(address, nameof(address), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/components/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(address, 1));
@@ -645,14 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostCookieResult> COOKIESHOST([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/cookies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
@@ -681,14 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostCookieResult> COOKIESIP([WorkflowExpression] Func<string> address, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null, [WorkflowExpression] Func<int> beforeDay = null, [WorkflowExpression] Func<int> afterDay = null, [WorkflowExpression] Func<string> exact = null)
         {
-            SourceExpression.Validate(address, nameof(address), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(beforeDay, nameof(beforeDay), required: false);
-            SourceExpression.Validate(afterDay, nameof(afterDay), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/cookies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(address, 1));
@@ -717,15 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<JToken> ENRICHMENTHOST([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<bool> whois = null, [WorkflowExpression] Func<bool> hostDetails = null, [WorkflowExpression] Func<bool> ipDetails = null, [WorkflowExpression] Func<bool> linkedAssetCounts = null, [WorkflowExpression] Func<bool> recentPDNS = null, [WorkflowExpression] Func<bool> subDomainPDNS = null, [WorkflowExpression] Func<bool> openPorts = null, [WorkflowExpression] Func<bool> certificates = null)
         {
-            SourceExpression.Validate(host, nameof(host), required: true);
-            SourceExpression.Validate(whois, nameof(whois), required: false);
-            SourceExpression.Validate(hostDetails, nameof(hostDetails), required: false);
-            SourceExpression.Validate(ipDetails, nameof(ipDetails), required: false);
-            SourceExpression.Validate(linkedAssetCounts, nameof(linkedAssetCounts), required: false);
-            SourceExpression.Validate(recentPDNS, nameof(recentPDNS), required: false);
-            SourceExpression.Validate(subDomainPDNS, nameof(subDomainPDNS), required: false);
-            SourceExpression.Validate(openPorts, nameof(openPorts), required: false);
-            SourceExpression.Validate(certificates, nameof(certificates), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/enrich/host/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
@@ -764,12 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<JToken> ENRICHMENTIP([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<bool> whois = null, [WorkflowExpression] Func<bool> hostDetails = null, [WorkflowExpression] Func<bool> linkedAssetCounts = null, [WorkflowExpression] Func<bool> openPorts = null, [WorkflowExpression] Func<bool> certificates = null)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
-            SourceExpression.Validate(whois, nameof(whois), required: false);
-            SourceExpression.Validate(hostDetails, nameof(hostDetails), required: false);
-            SourceExpression.Validate(linkedAssetCounts, nameof(linkedAssetCounts), required: false);
-            SourceExpression.Validate(openPorts, nameof(openPorts), required: false);
-            SourceExpression.Validate(certificates, nameof(certificates), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v0/enrich/ip/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));

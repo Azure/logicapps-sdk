@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AbEntry/action/find";
@@ -45,8 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AbEntryCreateSchema> ActionAbEntryCreate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(applyActionTo, nameof(applyActionTo), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AbEntry/action/create";
@@ -63,13 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AbEntryUpdateSchema> ActionAbEntryUpdate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(applyActionTo, nameof(applyActionTo), required: true);
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AbEntry/action/update";
@@ -96,13 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFindOrCreate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(applyActionTo, nameof(applyActionTo), required: true);
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AbEntry/action/findOrCreate";
@@ -129,8 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentCreate([WorkflowExpression] Func<linkWithTypeInput> linkWithType = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(linkWithType, nameof(linkWithType), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Appointment/action/create";
@@ -148,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AppointmentUpdateSchema> ActionAppointmentUpdate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Appointment/action/update";
@@ -164,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentFind([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Appointment/action/find";
@@ -180,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentDelete([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Appointment/action/delete";
@@ -196,7 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<PACaseView> ActionCaseCreate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Case/action/create";
@@ -212,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<PACaseView> ActionCaseUpdate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Case/action/update";
@@ -228,12 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<CaseFindOrCreateSchema> ActionCaseFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Case/api/Case/action/findOrCreate";
@@ -259,8 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<HotlistTaskCreateSchema> ActionHTaskCreate([WorkflowExpression] Func<parentTypeInput> parentType, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(parentType, nameof(parentType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/HTask/action/create";
@@ -277,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<InteractionLogCreateSchema> ActionInteractionCreate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Interaction/action/create";
@@ -293,12 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<LeadFindSchema> ActionLeadFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/action/find";
@@ -324,7 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<LeadCreateSchema> ActionLeadCreate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/action/create";
@@ -340,12 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<LeadUpdateSchema> ActionLeadUpdate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/action/update";
@@ -371,12 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<LeadFindOrCreateSchema> ActionLeadFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/action/findOrCreate";
@@ -402,10 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<LeadConvertSchema> ActionLeadConvert([WorkflowExpression] Func<convertOptionInput> convertOption = null, [WorkflowExpression] Func<doNotCreateAContactInput> doNotCreateAContact = null, [WorkflowExpression] Func<doNotCreateAnOpportunityInput> doNotCreateAnOpportunity = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(convertOption, nameof(convertOption), required: false);
-            SourceExpression.Validate(doNotCreateAContact, nameof(doNotCreateAContact), required: false);
-            SourceExpression.Validate(doNotCreateAnOpportunity, nameof(doNotCreateAnOpportunity), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/action/convert";
@@ -430,8 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<NoteCreateSchema> ActionNoteCreate([WorkflowExpression] Func<parentTypeInput> parentType, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(parentType, nameof(parentType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Note/action/create";
@@ -448,12 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<OpportunityFindSchema> ActionOpportunityFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/action/find";
@@ -479,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<OpportunityCreateSchema> ActionOpportunityCreate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/action/create";
@@ -495,12 +425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<OpportunityFindOrCreateSchema> ActionOpportunityFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(udf1, nameof(udf1), required: false);
-            SourceExpression.Validate(udf2, nameof(udf2), required: false);
-            SourceExpression.Validate(udf3, nameof(udf3), required: false);
-            SourceExpression.Validate(udf4, nameof(udf4), required: false);
-            SourceExpression.Validate(udf5, nameof(udf5), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/action/findOrCreate";
@@ -526,7 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<OpportunityUpdateSchema> ActionOpportunityUpdate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/action/update";
@@ -542,7 +465,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<PersonalTaskCreateSchema> ActionPTaskCreate([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/PTask/action/create";
@@ -558,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
         public IBodyWorkflowAction<UserFindSchema> ActionUserFind([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/User/action/find";
@@ -576,7 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     {
         public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AbEntry/trigger/updated";
@@ -591,7 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AbEntry/trigger/created";
@@ -606,7 +525,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AbEntry/trigger/DateNotification";
@@ -621,7 +539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Appointment/trigger/Updated";
@@ -636,7 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Appointment/trigger/created";
@@ -651,7 +567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Appointment/trigger/DateNotification";
@@ -666,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Case/api/Case/trigger/Updated";
@@ -681,7 +595,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Case/trigger/DateNotification";
@@ -696,7 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Case/api/Case/trigger/Created";
@@ -711,7 +623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/HotlistTask/trigger/created";
@@ -726,7 +637,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/trigger/DateNotification";
@@ -741,7 +651,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/trigger/updated";
@@ -756,7 +665,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead/trigger/created";
@@ -771,7 +679,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<WebhookCreated> WebhookOppStageChanged([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
@@ -786,7 +693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/trigger/Created";
@@ -801,7 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/trigger/Updated";
@@ -816,7 +721,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
         public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Opportunity/trigger/DateNotification";

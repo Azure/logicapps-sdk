@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
         public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential([WorkflowExpression] Func<string> bodyorganisationId, [WorkflowExpression] Func<string> bodyeventId, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<bool> bodygenerate = null, [WorkflowExpression] Func<bool> bodypublish = null, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null)
         {
-            SourceExpression.Validate(bodyorganisationId, nameof(bodyorganisationId), required: true);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            SourceExpression.Validate(bodygenerate, nameof(bodygenerate), required: false);
-            SourceExpression.Validate(bodypublish, nameof(bodypublish), required: false);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/certificates";

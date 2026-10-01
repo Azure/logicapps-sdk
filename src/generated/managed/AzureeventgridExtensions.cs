@@ -17,13 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
     {
         public IWorkflowTrigger CreateSubscription([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceType, [WorkflowExpression] Func<string> subscriptionName = null, [WorkflowExpression] Func<string> bodypropertiesresourceName = null, [WorkflowExpression] Func<string> bodypropertiesfilterprefixFilter = null, [WorkflowExpression] Func<string> bodypropertiesfiltersuffixFilter = null, [WorkflowExpression] Func<string[]> bodypropertiesfiltereventType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceType, nameof(resourceType), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: false);
-            SourceExpression.Validate(bodypropertiesresourceName, nameof(bodypropertiesresourceName), required: false);
-            SourceExpression.Validate(bodypropertiesfilterprefixFilter, nameof(bodypropertiesfilterprefixFilter), required: false);
-            SourceExpression.Validate(bodypropertiesfiltersuffixFilter, nameof(bodypropertiesfiltersuffixFilter), required: false);
-            SourceExpression.Validate(bodypropertiesfiltereventType, nameof(bodypropertiesfiltereventType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/{1}/resource/eventSubscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceType, 1));

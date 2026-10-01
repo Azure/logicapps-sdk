@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
         public IBodyWorkflowAction<string> CreateContactList([WorkflowExpression] Func<string> listName)
         {
-            SourceExpression.Validate(listName, nameof(listName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/listCreate/";
@@ -32,14 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
         public IBodyWorkflowAction<int> CreateContact([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> middleName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> jobTitle = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> notes = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(middleName, nameof(middleName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(jobTitle, nameof(jobTitle), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(notes, nameof(notes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/listAddContacts/";

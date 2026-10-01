@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction AddMemberToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> userUpn)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(userUpn, nameof(userUpn), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/$ref", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -49,11 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupsResponse> ListGroups([WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/groups";
@@ -78,19 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> UpdateCalendarEvent([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> @event, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodystartstartTime = null, [WorkflowExpression] Func<string> bodyendendTime = null, [WorkflowExpression] Func<string> bodybodybody = null, [WorkflowExpression] Func<string> bodylocationlocation = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<bool> bodyisAllDay = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null, [WorkflowExpression] Func<int> bodyreminderStartDuration = null, [WorkflowExpression] Func<bodyshowAsInput> bodyshowAs = null, [WorkflowExpression] Func<bool> bodyresponseRequested = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(@event, nameof(@event), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodystartstartTime, nameof(bodystartstartTime), required: false);
-            SourceExpression.Validate(bodyendendTime, nameof(bodyendendTime), required: false);
-            SourceExpression.Validate(bodybodybody, nameof(bodybodybody), required: false);
-            SourceExpression.Validate(bodylocationlocation, nameof(bodylocationlocation), required: false);
-            SourceExpression.Validate(bodyimportance, nameof(bodyimportance), required: false);
-            SourceExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: false);
-            SourceExpression.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            SourceExpression.Validate(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
-            SourceExpression.Validate(bodyshowAs, nameof(bodyshowAs), required: false);
-            SourceExpression.Validate(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@event, 2));
@@ -211,8 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RemoveMemberFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> userUpn)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(userUpn, nameof(userUpn), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/memberId/$ref", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -242,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RestoreDeletedGroup([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/directory/deletedItems/{0}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -257,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupsResponse> ListDeletedGroupsByOwner([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/directory/deletedItems/getUserOwnedObjects";
@@ -273,8 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction CalendarDeleteItem([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> @event)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(@event, nameof(@event), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@event, 2));
@@ -289,18 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> CreateCalendarEvent([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodystartstartTime = null, [WorkflowExpression] Func<string> bodyendendTime = null, [WorkflowExpression] Func<string> bodybodybody = null, [WorkflowExpression] Func<string> bodylocationlocation = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<bool> bodyisAllDay = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null, [WorkflowExpression] Func<int> bodyreminderStartDuration = null, [WorkflowExpression] Func<bodyshowAsInput> bodyshowAs = null, [WorkflowExpression] Func<bool> bodyresponseRequested = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodystartstartTime, nameof(bodystartstartTime), required: false);
-            SourceExpression.Validate(bodyendendTime, nameof(bodyendendTime), required: false);
-            SourceExpression.Validate(bodybodybody, nameof(bodybodybody), required: false);
-            SourceExpression.Validate(bodylocationlocation, nameof(bodylocationlocation), required: false);
-            SourceExpression.Validate(bodyimportance, nameof(bodyimportance), required: false);
-            SourceExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: false);
-            SourceExpression.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            SourceExpression.Validate(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
-            SourceExpression.Validate(bodyshowAs, nameof(bodyshowAs), required: false);
-            SourceExpression.Validate(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/v1.0/groups/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -421,15 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(customHeader1, nameof(customHeader1), required: false);
-            SourceExpression.Validate(customHeader2, nameof(customHeader2), required: false);
-            SourceExpression.Validate(customHeader3, nameof(customHeader3), required: false);
-            SourceExpression.Validate(customHeader4, nameof(customHeader4), required: false);
-            SourceExpression.Validate(customHeader5, nameof(customHeader5), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/httprequest";
@@ -460,8 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListOwnedGroupsResponse> ListOwnedGroups([WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null)
         {
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/v1.0/me/memberOf/$/microsoft.graph.group";
@@ -482,7 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
     {
         public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/v1.0/groups/delta";
@@ -498,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
         public IBodyWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));

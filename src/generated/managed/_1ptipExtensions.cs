@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1ptip")]
         public IBodyWorkflowAction<URLGetResponse> URLGet([WorkflowExpression] Func<string> @long, [WorkflowExpression] Func<string> @short = null)
         {
-            SourceExpression.Validate(@long, nameof(@long), required: true);
-            SourceExpression.Validate(@short, nameof(@short), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addURL";

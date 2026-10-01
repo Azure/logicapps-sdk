@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
         public IBodyWorkflowAction<LinkPostResponse> Link([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodyttl = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyttl, nameof(bodyttl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/";
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
         public IBodyWorkflowAction<bool> LinkDelete([WorkflowExpression] Func<string> bodykey = null)
         {
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/destroy/";
@@ -71,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
         public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<int> bodyttl = null)
         {
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodyttl, nameof(bodyttl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages/create/";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<GetDetailsResponse> GetDetails([WorkflowExpression] Func<string> pantryId)
         {
-            SourceExpression.Validate(pantryId, nameof(pantryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryId, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<GetContentsResponse> GetContents([WorkflowExpression] Func<string> pantryId, [WorkflowExpression] Func<string> basketName)
         {
-            SourceExpression.Validate(pantryId, nameof(pantryId), required: true);
-            SourceExpression.Validate(basketName, nameof(basketName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
@@ -45,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<string> Delete([WorkflowExpression] Func<string> pantryId, [WorkflowExpression] Func<string> basketName)
         {
-            SourceExpression.Validate(pantryId, nameof(pantryId), required: true);
-            SourceExpression.Validate(basketName, nameof(basketName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
@@ -61,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<string> CreateAndOrReplace([WorkflowExpression] Func<string> pantryId, [WorkflowExpression] Func<string> basketName)
         {
-            SourceExpression.Validate(pantryId, nameof(pantryId), required: true);
-            SourceExpression.Validate(basketName, nameof(basketName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
@@ -77,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents([WorkflowExpression] Func<string> pantryId, [WorkflowExpression] Func<string> basketName)
         {
-            SourceExpression.Validate(pantryId, nameof(pantryId), required: true);
-            SourceExpression.Validate(basketName, nameof(basketName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));

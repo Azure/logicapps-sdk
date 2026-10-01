@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> EncodeJson([WorkflowExpression] Func<string> documentSpec = null)
         {
-            SourceExpression.Validate(documentSpec, nameof(documentSpec), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EncodeJson";
@@ -37,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> EncodeXml([WorkflowExpression] Func<string> documentSpec = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(documentSpec, nameof(documentSpec), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EncodeXml";
@@ -56,8 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> Send([WorkflowExpression] Func<string> receiveLocationAddress, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(receiveLocationAddress, nameof(receiveLocationAddress), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Send";

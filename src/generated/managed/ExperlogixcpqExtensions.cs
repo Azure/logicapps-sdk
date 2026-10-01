@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IWorkflowAction InvokeMCP([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            SourceExpression.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/webhooks/mcp";
@@ -82,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationResponse> GetConfigurationXml([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ConfigurationXml";
@@ -100,10 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationResponse> CreateConfigurationFromCopy([WorkflowExpression] Func<string> reqtargetId, [WorkflowExpression] Func<string> reqsourceId, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<int[]> reqlineItemIds = null)
         {
-            SourceExpression.Validate(reqtargetId, nameof(reqtargetId), required: true);
-            SourceExpression.Validate(reqsourceId, nameof(reqsourceId), required: true);
-            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
-            SourceExpression.Validate(reqlineItemIds, nameof(reqlineItemIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CreateConfigurationFromCopy";
@@ -136,9 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationResponse> UpdateConfiguration([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<string> reqconfigurationXml)
         {
-            SourceExpression.Validate(reqid, nameof(reqid), required: true);
-            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
-            SourceExpression.Validate(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UpdateConfiguration";
@@ -165,9 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationResponse> CreateConfiguration([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<string> reqconfigurationXml)
         {
-            SourceExpression.Validate(reqid, nameof(reqid), required: true);
-            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
-            SourceExpression.Validate(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CreateConfiguration";
@@ -194,12 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationResponse> CreateConfigurationFromChanges([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<string> reqseriesId, [WorkflowExpression] Func<string> reqmodelId, [WorkflowExpression] Func<ChangeConfig[]> reqchanges = null, [WorkflowExpression] Func<bool> reqsaveConfiguration = null)
         {
-            SourceExpression.Validate(reqid, nameof(reqid), required: true);
-            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
-            SourceExpression.Validate(reqseriesId, nameof(reqseriesId), required: true);
-            SourceExpression.Validate(reqmodelId, nameof(reqmodelId), required: true);
-            SourceExpression.Validate(reqchanges, nameof(reqchanges), required: false);
-            SourceExpression.Validate(reqsaveConfiguration, nameof(reqsaveConfiguration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CreateConfigurationFromChanges";
@@ -250,10 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationResponse> UpdateConfigurationFromChanges([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<ChangeConfig[]> reqchanges = null, [WorkflowExpression] Func<bool> reqsaveConfiguration = null)
         {
-            SourceExpression.Validate(reqid, nameof(reqid), required: true);
-            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
-            SourceExpression.Validate(reqchanges, nameof(reqchanges), required: false);
-            SourceExpression.Validate(reqsaveConfiguration, nameof(reqsaveConfiguration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UpdateConfigurationFromChanges";
@@ -300,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetModelMetadataResponse> GetModelMetadata([WorkflowExpression] Func<string[]> reqrelevantCategories = null)
         {
-            SourceExpression.Validate(reqrelevantCategories, nameof(reqrelevantCategories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ModelMetadata";

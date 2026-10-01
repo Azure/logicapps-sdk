@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis([WorkflowExpression] Func<string> url)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/site";
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis([WorkflowExpression] Func<int> bytes, [WorkflowExpression] Func<greenInput> green)
         {
-            SourceExpression.Validate(bytes, nameof(bytes), required: true);
-            SourceExpression.Validate(green, nameof(green), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/data";

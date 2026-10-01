@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> UserTimeline([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/usertimeline";
@@ -34,7 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> HomeTimeline([WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hometimeline";
@@ -52,9 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> SearchTweet([WorkflowExpression] Func<string> searchQuery, [WorkflowExpression] Func<int> maxResults = null, [WorkflowExpression] Func<string> sinceId = null)
         {
-            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: true);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
-            SourceExpression.Validate(sinceId, nameof(sinceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchtweets";
@@ -75,8 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> Followers([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/followers";
@@ -95,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> MyFollowers([WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/myfollowers";
@@ -113,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> Following([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/friends";
@@ -133,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> MyFollowing([WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/myfriends";
@@ -151,7 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel> User([WorkflowExpression] Func<string> userName)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user";
@@ -167,8 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetResponseModel> Tweet([WorkflowExpression] Func<string> tweetText = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(tweetText, nameof(tweetText), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/posttweet";
@@ -186,8 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetResponseModel> Retweet([WorkflowExpression] Func<string> tweetId, [WorkflowExpression] Func<bool> trimUser = null)
         {
-            SourceExpression.Validate(tweetId, nameof(tweetId), required: true);
-            SourceExpression.Validate(trimUser, nameof(trimUser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/retweet";
@@ -208,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
     {
         public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet([WorkflowExpression] Func<string> searchQuery, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/onnewtweet";

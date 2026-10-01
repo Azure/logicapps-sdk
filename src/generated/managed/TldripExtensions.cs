@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<ArticleHumanPostResponse> ArticleHuman([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodyminLength = null, [WorkflowExpression] Func<int> bodymaxLength = null, [WorkflowExpression] Func<bool> bodyisDetailed = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyminLength, nameof(bodyminLength), required: false);
-            SourceExpression.Validate(bodymaxLength, nameof(bodymaxLength), required: false);
-            SourceExpression.Validate(bodyisDetailed, nameof(bodyisDetailed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/model/abstractive/summarize-url/";
@@ -78,9 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<ExtractArticlePostResponse> ExtractArticle([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodynumSentences = null, [WorkflowExpression] Func<bool> bodyisDetailed = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodynumSentences, nameof(bodynumSentences), required: false);
-            SourceExpression.Validate(bodyisDetailed, nameof(bodyisDetailed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/model/extractive/summarize-url/";
@@ -125,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<TextHumanPostResponse> TextHuman([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength = null, [WorkflowExpression] Func<int> bodymaxLength = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyminLength, nameof(bodyminLength), required: false);
-            SourceExpression.Validate(bodymaxLength, nameof(bodymaxLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/model/abstractive/summarize-text/";
@@ -182,8 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<ExtractTextPostResponse> ExtractText([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodynumSentences = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodynumSentences, nameof(bodynumSentences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/model/extractive/summarize-text/";

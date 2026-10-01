@@ -14,22 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnationalvulnerip")]
         public IBodyWorkflowAction<GetCVECollectionResponse> GetCVECollection([WorkflowExpression] Func<addOnsInput> addOns = null, [WorkflowExpression] Func<string> cpeMatchString = null, [WorkflowExpression] Func<string> cvssV2Metrics = null, [WorkflowExpression] Func<cvssV2SeverityInput> cvssV2Severity = null, [WorkflowExpression] Func<string> cvssV3Metrics = null, [WorkflowExpression] Func<cvssV3SeverityInput> cvssV3Severity = null, [WorkflowExpression] Func<string> cweId = null, [WorkflowExpression] Func<bool> includeMatchStringChange = null, [WorkflowExpression] Func<bool> isExactMatch = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> modStartDate = null, [WorkflowExpression] Func<string> modEndDate = null, [WorkflowExpression] Func<string> pubStartDate = null, [WorkflowExpression] Func<string> pubEndDate = null, [WorkflowExpression] Func<int> resultsPerPage = null, [WorkflowExpression] Func<int> startIndex = null)
         {
-            SourceExpression.Validate(addOns, nameof(addOns), required: false);
-            SourceExpression.Validate(cpeMatchString, nameof(cpeMatchString), required: false);
-            SourceExpression.Validate(cvssV2Metrics, nameof(cvssV2Metrics), required: false);
-            SourceExpression.Validate(cvssV2Severity, nameof(cvssV2Severity), required: false);
-            SourceExpression.Validate(cvssV3Metrics, nameof(cvssV3Metrics), required: false);
-            SourceExpression.Validate(cvssV3Severity, nameof(cvssV3Severity), required: false);
-            SourceExpression.Validate(cweId, nameof(cweId), required: false);
-            SourceExpression.Validate(includeMatchStringChange, nameof(includeMatchStringChange), required: false);
-            SourceExpression.Validate(isExactMatch, nameof(isExactMatch), required: false);
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(modStartDate, nameof(modStartDate), required: false);
-            SourceExpression.Validate(modEndDate, nameof(modEndDate), required: false);
-            SourceExpression.Validate(pubStartDate, nameof(pubStartDate), required: false);
-            SourceExpression.Validate(pubEndDate, nameof(pubEndDate), required: false);
-            SourceExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
-            SourceExpression.Validate(startIndex, nameof(startIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cves/1.0/";
@@ -76,14 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnationalvulnerip")]
         public IBodyWorkflowAction<GetCPECollectionResponse> GetCPECollection([WorkflowExpression] Func<addOnsInput> addOns = null, [WorkflowExpression] Func<string> cpeMatchString = null, [WorkflowExpression] Func<bool> includeDeprecated = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> modStartDate = null, [WorkflowExpression] Func<string> modEndDate = null, [WorkflowExpression] Func<int> resultsPerPage = null, [WorkflowExpression] Func<int> startIndex = null)
         {
-            SourceExpression.Validate(addOns, nameof(addOns), required: false);
-            SourceExpression.Validate(cpeMatchString, nameof(cpeMatchString), required: false);
-            SourceExpression.Validate(includeDeprecated, nameof(includeDeprecated), required: false);
-            SourceExpression.Validate(keyword, nameof(keyword), required: false);
-            SourceExpression.Validate(modStartDate, nameof(modStartDate), required: false);
-            SourceExpression.Validate(modEndDate, nameof(modEndDate), required: false);
-            SourceExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
-            SourceExpression.Validate(startIndex, nameof(startIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cpes/1.0/";

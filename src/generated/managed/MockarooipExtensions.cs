@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
         public IBodyWorkflowAction<JToken[]> GenerateDataFromExistingSchema([WorkflowExpression] Func<string> bodyschemaName = null, [WorkflowExpression] Func<string> bodyschemaJSON = null, [WorkflowExpression] Func<int> bodyrecordCount = null)
         {
-            SourceExpression.Validate(bodyschemaName, nameof(bodyschemaName), required: false);
-            SourceExpression.Validate(bodyschemaJSON, nameof(bodyschemaJSON), required: false);
-            SourceExpression.Validate(bodyrecordCount, nameof(bodyrecordCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/generate.json";

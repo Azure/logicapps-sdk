@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<WorkItemSearchResponse> SearchWorkItemsAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> searchRequestsearchText, [WorkflowExpression] Func<int> searchRequestskip = null, [WorkflowExpression] Func<int> searchRequesttop = null, [WorkflowExpression] Func<bool> searchRequestincludeFacets = null, [WorkflowExpression] Func<SortOption[]> searchRequestorderBy = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(searchRequestsearchText, nameof(searchRequestsearchText), required: true);
-            SourceExpression.Validate(searchRequestskip, nameof(searchRequestskip), required: false);
-            SourceExpression.Validate(searchRequesttop, nameof(searchRequesttop), required: false);
-            SourceExpression.Validate(searchRequestincludeFacets, nameof(searchRequestincludeFacets), required: false);
-            SourceExpression.Validate(searchRequestorderBy, nameof(searchRequestorderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_apis/search/workitemsearchresults";
@@ -77,9 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<BuildResult> GetBuildAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> buildId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(buildId, nameof(buildId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(buildId, 1));
@@ -95,12 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Timeline> GetBuildTimelineAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> buildId, [WorkflowExpression] Func<string> timelineId = null, [WorkflowExpression] Func<int> changeId = null, [WorkflowExpression] Func<string> planId = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(buildId, nameof(buildId), required: true);
-            SourceExpression.Validate(timelineId, nameof(timelineId), required: false);
-            SourceExpression.Validate(changeId, nameof(changeId), required: false);
-            SourceExpression.Validate(planId, nameof(planId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds/{1}/timeline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(buildId, 1));
@@ -136,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Profile> GetProfile([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -151,9 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListTeamSettingsIteration> ListIterations([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(team, nameof(team), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/iterations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -170,8 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListGitRef> ListBuildBranchesAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/branches", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -187,18 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListBuildResult> ListBuilds([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> definitions = null, [WorkflowExpression] Func<string> buildNumber = null, [WorkflowExpression] Func<string> branchName = null, [WorkflowExpression] Func<resultFilterInput> resultFilter = null, [WorkflowExpression] Func<statusFilterInput> statusFilter = null, [WorkflowExpression] Func<reasonFilterInput> reasonFilter = null, [WorkflowExpression] Func<string> requestedFor = null, [WorkflowExpression] Func<string> minTime = null, [WorkflowExpression] Func<string> maxTime = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(definitions, nameof(definitions), required: false);
-            SourceExpression.Validate(buildNumber, nameof(buildNumber), required: false);
-            SourceExpression.Validate(branchName, nameof(branchName), required: false);
-            SourceExpression.Validate(resultFilter, nameof(resultFilter), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(reasonFilter, nameof(reasonFilter), required: false);
-            SourceExpression.Validate(requestedFor, nameof(requestedFor), required: false);
-            SourceExpression.Validate(minTime, nameof(minTime), required: false);
-            SourceExpression.Validate(maxTime, nameof(maxTime), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -234,11 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<BuildResult> QueueNewBuild([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> buildDefId, [WorkflowExpression] Func<string> buildDetailssourceBranch = null, [WorkflowExpression] Func<string> buildDetailsparameters = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(buildDefId, nameof(buildDefId), required: true);
-            SourceExpression.Validate(buildDetailssourceBranch, nameof(buildDetailssourceBranch), required: false);
-            SourceExpression.Validate(buildDetailsparameters, nameof(buildDetailsparameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -273,8 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListTeamMember> ListBuildRequestersAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/requesters", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -290,8 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListGitRepository> ListGitRepositories([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/git/repositories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -307,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListProject> ListProjects([WorkflowExpression] Func<string> account)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_apis/projects";
@@ -323,8 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListReleaseDefinition> ListReleaseDefinitions([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/definitions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -340,13 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Release> CreateRelease([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> releaseDefId, [WorkflowExpression] Func<string> releaseStartMetadatadescription = null, [WorkflowExpression] Func<bool> releaseStartMetadataisDraft = null, [WorkflowExpression] Func<releaseStartMetadatareasonInput> releaseStartMetadatareason = null, [WorkflowExpression] Func<ConfigurationVariable[]> releaseStartMetadatareleaseVariables = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(releaseDefId, nameof(releaseDefId), required: true);
-            SourceExpression.Validate(releaseStartMetadatadescription, nameof(releaseStartMetadatadescription), required: false);
-            SourceExpression.Validate(releaseStartMetadataisDraft, nameof(releaseStartMetadataisDraft), required: false);
-            SourceExpression.Validate(releaseStartMetadatareason, nameof(releaseStartMetadatareason), required: false);
-            SourceExpression.Validate(releaseStartMetadatareleaseVariables, nameof(releaseStartMetadatareleaseVariables), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/releases", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -393,11 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<parametersmethodInput> parametersmethod, [WorkflowExpression] Func<string> parametersrelativeURI, [WorkflowExpression] Func<string> parametersbody = null, [WorkflowExpression] Func<bool> parametersbodyIsBase64 = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(parametersmethod, nameof(parametersmethod), required: true);
-            SourceExpression.Validate(parametersrelativeURI, nameof(parametersrelativeURI), required: true);
-            SourceExpression.Validate(parametersbody, nameof(parametersbody), required: false);
-            SourceExpression.Validate(parametersbodyIsBase64, nameof(parametersbodyIsBase64), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/httprequest";
@@ -443,9 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListWorkItemField> ListWorkItemFieldsAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<expandInput> expand = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_apis/wit/fields";
@@ -465,8 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_apis/wit/workitemtypes";
@@ -483,10 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<DynamicWorkItemResponse> GetWorkItemDetails([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> typeName, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(typeName, nameof(typeName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -504,19 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> UpdateWorkItem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> workItemtitle = null, [WorkflowExpression] Func<string> workItemdescription = null, [WorkflowExpression] Func<int> workItempriority = null, [WorkflowExpression] Func<string> workItemiterationPath = null, [WorkflowExpression] Func<string> workItemareaPath = null, [WorkflowExpression] Func<string> workItemlinkURL = null, [WorkflowExpression] Func<workItemlinkTypeInput> workItemlinkType = null, [WorkflowExpression] Func<string> workItemlinkComment = null, [WorkflowExpression] Func<object> workItemdynamicFields = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(project, nameof(project), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(workItemtitle, nameof(workItemtitle), required: false);
-            SourceExpression.Validate(workItemdescription, nameof(workItemdescription), required: false);
-            SourceExpression.Validate(workItempriority, nameof(workItempriority), required: false);
-            SourceExpression.Validate(workItemiterationPath, nameof(workItemiterationPath), required: false);
-            SourceExpression.Validate(workItemareaPath, nameof(workItemareaPath), required: false);
-            SourceExpression.Validate(workItemlinkURL, nameof(workItemlinkURL), required: false);
-            SourceExpression.Validate(workItemlinkType, nameof(workItemlinkType), required: false);
-            SourceExpression.Validate(workItemlinkComment, nameof(workItemlinkComment), required: false);
-            SourceExpression.Validate(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -604,12 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<WorkItemDetailsV2Response> GetWorkItemDetailsV2Async([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> typeName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> asOf = null, [WorkflowExpression] Func<expandInput> expand = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(typeName, nameof(typeName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(asOf, nameof(asOf), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/v2/workitems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -631,10 +545,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> GetWorkItemChildren([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workItemType = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(workItemType, nameof(workItemType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -654,10 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<WorkItemAttachmentResponse> GetWorkItemAttachmentAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> attachmentId, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> fileName = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(project, nameof(project), required: false);
-            SourceExpression.Validate(fileName, nameof(fileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -677,13 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<WorkItemCommentsResponse> GetWorkItemCommentsAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> workItemId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<bool> includeDeleted = null, [WorkflowExpression] Func<expandInput> expand = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(workItemId, nameof(workItemId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(includeDeleted, nameof(includeDeleted), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workItemId, 1));
@@ -710,12 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<WorkItemComment> CreateWorkItemCommentAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> workItemId, [WorkflowExpression] Func<string> commentcommentText, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(workItemId, nameof(workItemId), required: true);
-            SourceExpression.Validate(commentcommentText, nameof(commentcommentText), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workItemId, 1));
@@ -745,13 +638,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> AddWorkItemLinkAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> type, [WorkflowExpression] Func<int> workItemId, [WorkflowExpression] Func<linkRequestlinkTypeInput> linkRequestlinkType, [WorkflowExpression] Func<string> linkRequesttargetURL, [WorkflowExpression] Func<string> linkRequestcomment = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(workItemId, nameof(workItemId), required: true);
-            SourceExpression.Validate(linkRequestlinkType, nameof(linkRequestlinkType), required: true);
-            SourceExpression.Validate(linkRequesttargetURL, nameof(linkRequesttargetURL), required: true);
-            SourceExpression.Validate(linkRequestcomment, nameof(linkRequestcomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workItemId, 1));
@@ -785,13 +671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> DeleteWorkItemLinkAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> type, [WorkflowExpression] Func<int> workItemId, [WorkflowExpression] Func<int> linkRequestrelationId = null, [WorkflowExpression] Func<string> linkRequestworkItemLinkToRemove = null, [WorkflowExpression] Func<linkRequestlinkRelationTypeInput> linkRequestlinkRelationType = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(workItemId, nameof(workItemId), required: true);
-            SourceExpression.Validate(linkRequestrelationId, nameof(linkRequestrelationId), required: false);
-            SourceExpression.Validate(linkRequestworkItemLinkToRemove, nameof(linkRequestworkItemLinkToRemove), required: false);
-            SourceExpression.Validate(linkRequestlinkRelationType, nameof(linkRequestlinkRelationType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/links/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workItemId, 1));
@@ -833,12 +712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<WorkItemComment> UpdateWorkItemCommentAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> workItemId, [WorkflowExpression] Func<int> commentId, [WorkflowExpression] Func<string> commentcommentText, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(workItemId, nameof(workItemId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
-            SourceExpression.Validate(commentcommentText, nameof(commentcommentText), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/comments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workItemId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(commentId, 1));
@@ -866,10 +739,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IWorkflowAction DeleteWorkItemCommentAsync([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> workItemId, [WorkflowExpression] Func<int> commentId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(workItemId, nameof(workItemId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/comments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(workItemId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(commentId, 1));
@@ -886,19 +755,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> CreateWorkItem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> workItemtitle, [WorkflowExpression] Func<bool> shouldReturnAllFields = null, [WorkflowExpression] Func<string> workItemdescription = null, [WorkflowExpression] Func<int> workItempriority = null, [WorkflowExpression] Func<string> workItemiterationPath = null, [WorkflowExpression] Func<string> workItemareaPath = null, [WorkflowExpression] Func<string> workItemlinkURL = null, [WorkflowExpression] Func<workItemlinkTypeInput> workItemlinkType = null, [WorkflowExpression] Func<string> workItemlinkComment = null, [WorkflowExpression] Func<object> workItemdynamicFields = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(workItemtitle, nameof(workItemtitle), required: true);
-            SourceExpression.Validate(shouldReturnAllFields, nameof(shouldReturnAllFields), required: false);
-            SourceExpression.Validate(workItemdescription, nameof(workItemdescription), required: false);
-            SourceExpression.Validate(workItempriority, nameof(workItempriority), required: false);
-            SourceExpression.Validate(workItemiterationPath, nameof(workItemiterationPath), required: false);
-            SourceExpression.Validate(workItemareaPath, nameof(workItemareaPath), required: false);
-            SourceExpression.Validate(workItemlinkURL, nameof(workItemlinkURL), required: false);
-            SourceExpression.Validate(workItemlinkType, nameof(workItemlinkType), required: false);
-            SourceExpression.Validate(workItemlinkComment, nameof(workItemlinkComment), required: false);
-            SourceExpression.Validate(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems/${1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
@@ -980,8 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/queries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -997,9 +851,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> folderPath)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/queriesInFolder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -1016,10 +867,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> workItemIds, [WorkflowExpression] Func<string> workItemType = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(workItemIds, nameof(workItemIds), required: true);
-            SourceExpression.Validate(workItemType, nameof(workItemType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -1039,8 +886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Pipeline> ListPipelines([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -1056,9 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Run> ListPipelineRuns([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> pipelineId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(pipelineId, nameof(pipelineId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines/{1}/runs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pipelineId, 1));
@@ -1074,11 +916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResults([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> queryId, [WorkflowExpression] Func<int> workItemsCount = null, [WorkflowExpression] Func<bool> throwIfQueryChanged = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(queryId, nameof(queryId), required: true);
-            SourceExpression.Validate(workItemsCount, nameof(workItemsCount), required: false);
-            SourceExpression.Validate(throwIfQueryChanged, nameof(throwIfQueryChanged), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/{0}/queryResults/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queryId, 1));
@@ -1101,10 +938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     {
         public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<resultFilterInput> resultFilter = null, [WorkflowExpression] Func<string> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(resultFilter, nameof(resultFilter), required: false);
-            SourceExpression.Validate(definitions, nameof(definitions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/buildcompleted_trigger/{0}/_apis/build/builds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -1123,10 +956,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(repository, nameof(repository), required: true);
-            SourceExpression.Validate(refName, nameof(refName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(repository, 1));
@@ -1143,11 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> sourceRefName = null, [WorkflowExpression] Func<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(repository, nameof(repository), required: true);
-            SourceExpression.Validate(sourceRefName, nameof(sourceRefName), required: false);
-            SourceExpression.Validate(targetRefName, nameof(targetRefName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(repository, 1));
@@ -1166,11 +990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> sourceRefName = null, [WorkflowExpression] Func<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(repository, nameof(repository), required: true);
-            SourceExpression.Validate(sourceRefName, nameof(sourceRefName), required: false);
-            SourceExpression.Validate(targetRefName, nameof(targetRefName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(repository, 1));
@@ -1189,10 +1008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> author = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(team, nameof(team), required: false);
-            SourceExpression.Validate(author, nameof(author), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tfvccheckin_trigger/_apis/tfvc/changesets";
@@ -1212,17 +1027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team, [WorkflowExpression] Func<string> wiqlSystemAssignedTo, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(team, nameof(team), required: true);
-            SourceExpression.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: true);
-            SourceExpression.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            SourceExpression.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            SourceExpression.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
-            SourceExpression.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            SourceExpression.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
-            SourceExpression.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            SourceExpression.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -1255,18 +1059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> closedState = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(team, nameof(team), required: false);
-            SourceExpression.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
-            SourceExpression.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            SourceExpression.Validate(closedState, nameof(closedState), required: false);
-            SourceExpression.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            SourceExpression.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
-            SourceExpression.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            SourceExpression.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
-            SourceExpression.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            SourceExpression.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -1305,17 +1097,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(team, nameof(team), required: false);
-            SourceExpression.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
-            SourceExpression.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            SourceExpression.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            SourceExpression.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
-            SourceExpression.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            SourceExpression.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
-            SourceExpression.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            SourceExpression.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -1351,17 +1132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(team, nameof(team), required: false);
-            SourceExpression.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
-            SourceExpression.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            SourceExpression.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            SourceExpression.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
-            SourceExpression.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            SourceExpression.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
-            SourceExpression.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            SourceExpression.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));

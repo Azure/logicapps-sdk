@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocumentContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/update-content/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -41,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UnreserveDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/check-in/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -56,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction ReserveDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/check-out/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -71,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/get/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -87,8 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentPropertiesResponse> GetDocumentProperties([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/get-properties/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -103,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentContentResponse> GetDocumentContent([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/get-content/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -118,8 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentVersionContentResponse> GetDocumentVersionContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> versionId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(versionId, nameof(versionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/get-content/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(versionId, 1));
@@ -134,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/delete/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -149,8 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteDocumentVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> versionId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(versionId, nameof(versionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/delete/{0}/version/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(versionId, 1));
@@ -165,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<Version[]> GetDocumentVersions([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/get-versions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -180,8 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction MoveDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> parentId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(parentId, nameof(parentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/move/{0}/to/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentId, 1));
@@ -196,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CopyDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> parentId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(parentId, nameof(parentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/copy/{0}/to/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentId, 1));
@@ -212,8 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetFolderResponse> GetFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/folder/get/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -228,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteFolder([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/folder/delete/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -243,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> GetFolderChildren([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/folder/get-children/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -258,8 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> SimpleSearch([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/search/simple/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -282,9 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> AdvancedSearch([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodylimit = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/search/advanced";
@@ -319,8 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> ExecuteWebReport([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/command/execute/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -336,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<TrusteeRead[]> GetItemTrustees([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/security/get/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -351,8 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction AddTrustees([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<TrusteeWrite[]> body = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/security/add/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -368,8 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateTrustees([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<TrusteeWrite[]> body = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/security/update/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -385,8 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction RemoveTrustees([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/security/remove/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -402,8 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetBusinessWorkspaceResponse> GetBusinessWorkspace([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/workspace/get/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -418,11 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateBusinessWorkspace([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<object> bodyfields, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/workspace/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -455,13 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<string> bodymetadatadisplayName, [WorkflowExpression] Func<object> bodymetadatafields, [WorkflowExpression] Func<string> bodyFilefileName, [WorkflowExpression] Func<string> bodyFilefileContent, [WorkflowExpression] Func<string> bodymetadatadescription = null)
         {
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
-            SourceExpression.Validate(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
-            SourceExpression.Validate(bodymetadatafields, nameof(bodymetadatafields), required: true);
-            SourceExpression.Validate(bodyFilefileName, nameof(bodyFilefileName), required: true);
-            SourceExpression.Validate(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
-            SourceExpression.Validate(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -514,11 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateFolder([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<object> bodyfields, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/folder/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -551,10 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateBusinessWorkspace([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<object> bodyfields)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/workspace/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -579,13 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodymetadatadisplayName, [WorkflowExpression] Func<object> bodymetadatafields, [WorkflowExpression] Func<string> bodyFilefileName, [WorkflowExpression] Func<string> bodyFilefileContent, [WorkflowExpression] Func<string> bodymetadatadescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
-            SourceExpression.Validate(bodymetadatafields, nameof(bodymetadatafields), required: true);
-            SourceExpression.Validate(bodyFilefileName, nameof(bodyFilefileName), required: true);
-            SourceExpression.Validate(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
-            SourceExpression.Validate(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -636,11 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocumentProperties([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<object> bodyfields, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/update-properties/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -671,11 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<object> bodyfields, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/folder/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
@@ -708,9 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
     {
         public IWorkflowTrigger DocumentCreated([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/DocumentCreated";
@@ -758,9 +677,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger DocumentUpdated([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/DocumentUpdated";
@@ -808,9 +724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger DocumentDeleted([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/DocumentDeleted";
@@ -858,9 +771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger FolderCreated([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/FolderCreated";
@@ -908,9 +818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger FolderUpdated([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/FolderUpdated";
@@ -958,9 +865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger FolderDeleted([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/FolderDeleted";
@@ -1008,9 +912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger BusinessWorkspaceCreated([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/BusinessWorkspaceCreated";
@@ -1058,9 +959,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger BusinessWorkspaceUpdated([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/BusinessWorkspaceUpdated";
@@ -1108,9 +1006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger BusinessWorkspaceDeleted([WorkflowExpression] Func<string> bodyfilterparentId = null, [WorkflowExpression] Func<string> bodyfilterancestorId = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentId, nameof(bodyfilterparentId), required: false);
-            SourceExpression.Validate(bodyfilterancestorId, nameof(bodyfilterancestorId), required: false);
-            SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/web-hook/create/BusinessWorkspaceDeleted";

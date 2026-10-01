@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     {
         public IBodyWorkflowTrigger<OnWorkfrontEventResponse> OnWorkfrontEvent([WorkflowExpression] Func<bodyobjectTypeInput> bodyobjectType, [WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, [WorkflowExpression] Func<bodyeventFiltersInputItem[]> bodyeventFilters = null, [WorkflowExpression] Func<bodyfilterConnectorInput> bodyfilterConnector = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyobjectType, nameof(bodyobjectType), required: true);
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
-            SourceExpression.Validate(bodyeventFilters, nameof(bodyeventFilters), required: false);
-            SourceExpression.Validate(bodyfilterConnector, nameof(bodyfilterConnector), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/attask/eventsubscription/api/v1/subscriptions";

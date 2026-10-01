@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListAccount> ListAccounts([WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_apis/Accounts";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<Profile> GetProfile([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -45,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListProject> ListProjects([WorkflowExpression] Func<string> account)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -60,8 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/queries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -76,8 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitemtypes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -92,9 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> ids)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(ids, nameof(ids), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1));
@@ -110,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> folderPath)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/queries/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderPath, 1));
@@ -127,9 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListJObject> GetQueryResults([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> queryId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(queryId, nameof(queryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/wiql/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queryId, 1));
@@ -144,10 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListSubject> GetSubject([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> subjectQueryDetailssearchTerm, [WorkflowExpression] Func<string[]> subjectQueryDetailssubjectKind, [WorkflowExpression] Func<string> subjectQueryDetailsscopeDescriptor = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(subjectQueryDetailssearchTerm, nameof(subjectQueryDetailssearchTerm), required: true);
-            SourceExpression.Validate(subjectQueryDetailssubjectKind, nameof(subjectQueryDetailssubjectKind), required: true);
-            SourceExpression.Validate(subjectQueryDetailsscopeDescriptor, nameof(subjectQueryDetailsscopeDescriptor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/_apis/graph/subjectquery", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -178,11 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<JToken> UpdateWorkItem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> workItempriority = null, [WorkflowExpression] Func<KeyValuePair[]> workItemotherFields = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(workItempriority, nameof(workItempriority), required: false);
-            SourceExpression.Validate(workItemotherFields, nameof(workItemotherFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitems/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(project, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

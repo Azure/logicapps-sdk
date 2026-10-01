@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
         public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate([WorkflowExpression] Func<string> templateToken, [WorkflowExpression] Func<string> docDeliveryType = null, [WorkflowExpression] Func<int> docUrlExpiresIn = null, [WorkflowExpression] Func<string> latexCompiler = null, [WorkflowExpression] Func<int> latexRuns = null, [WorkflowExpression] Func<string> mainFileName = null, [WorkflowExpression] Func<string> docFileName = null, [WorkflowExpression] Func<string> encryptType = null)
         {
-            SourceExpression.Validate(templateToken, nameof(templateToken), required: true);
-            SourceExpression.Validate(docDeliveryType, nameof(docDeliveryType), required: false);
-            SourceExpression.Validate(docUrlExpiresIn, nameof(docUrlExpiresIn), required: false);
-            SourceExpression.Validate(latexCompiler, nameof(latexCompiler), required: false);
-            SourceExpression.Validate(latexRuns, nameof(latexRuns), required: false);
-            SourceExpression.Validate(mainFileName, nameof(mainFileName), required: false);
-            SourceExpression.Validate(docFileName, nameof(docFileName), required: false);
-            SourceExpression.Validate(encryptType, nameof(encryptType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}/compile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateToken, 1));

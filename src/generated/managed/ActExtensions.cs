@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
         public IBodyWorkflowAction<ActWebApiModelsContact> CreateContact([WorkflowExpression] Func<string> contactfullName = null, [WorkflowExpression] Func<string> contactemailAddress = null, [WorkflowExpression] Func<string> contactcompany = null, [WorkflowExpression] Func<string> contactidStatus = null, [WorkflowExpression] Func<string> contactreferredBy = null, [WorkflowExpression] Func<string> contactjobTitle = null, [WorkflowExpression] Func<string> contactbusinessPhoneNumber = null, [WorkflowExpression] Func<string> contactmobilePhoneNumber = null)
         {
-            SourceExpression.Validate(contactfullName, nameof(contactfullName), required: false);
-            SourceExpression.Validate(contactemailAddress, nameof(contactemailAddress), required: false);
-            SourceExpression.Validate(contactcompany, nameof(contactcompany), required: false);
-            SourceExpression.Validate(contactidStatus, nameof(contactidStatus), required: false);
-            SourceExpression.Validate(contactreferredBy, nameof(contactreferredBy), required: false);
-            SourceExpression.Validate(contactjobTitle, nameof(contactjobTitle), required: false);
-            SourceExpression.Validate(contactbusinessPhoneNumber, nameof(contactbusinessPhoneNumber), required: false);
-            SourceExpression.Validate(contactmobilePhoneNumber, nameof(contactmobilePhoneNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Contacts/";
@@ -98,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
         public IBodyWorkflowAction<ActWebApiModelsContact> GetContact([WorkflowExpression] Func<string> contactid)
         {
-            SourceExpression.Validate(contactid, nameof(contactid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactid, 1));

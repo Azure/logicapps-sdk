@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
         public IBodyWorkflowAction<TranscriptResponse> GetTranscript([WorkflowExpression] Func<string> bodyyouTubeVideoId)
         {
-            SourceExpression.Validate(bodyyouTubeVideoId, nameof(bodyyouTubeVideoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/youtubei/v1/get_transcript";

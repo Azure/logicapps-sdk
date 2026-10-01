@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers([WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users.json";
@@ -87,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -102,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetSpecificOrganisationResponse> GetSpecificOrganisation([WorkflowExpression] Func<string> organisation)
         {
-            SourceExpression.Validate(organisation, nameof(organisation), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organisations/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisation, 1));

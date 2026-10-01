@@ -14,51 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectEntryResponseItem[]> SelectEntry([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<int> bodyaddressTypeId = null, [WorkflowExpression] Func<bodybirthGenderEnumInput> bodybirthGenderEnum = null, [WorkflowExpression] Func<int> bodybookingId = null, [WorkflowExpression] Func<int> bodycategoryId = null, [WorkflowExpression] Func<string> bodyconferenceEmail = null, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<int> bodycreatedBySecurityUserId = null, [WorkflowExpression] Func<string> bodydateCreatedvalue = null, [WorkflowExpression] Func<bodydateCreatedOperatorInput> bodydateCreatedOperator = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<bool> bodydirectoryFlagPrivacy = null, [WorkflowExpression] Func<string> bodydOBvalue = null, [WorkflowExpression] Func<bodydOBOperatorInput> bodydOBOperator = null, [WorkflowExpression] Func<int> bodyentryApplicationId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<bodyentryStatusEnumInput> bodyentryStatusEnum = null, [WorkflowExpression] Func<int> bodyeventId = null, [WorkflowExpression] Func<bodygenderEnumInput> bodygenderEnum = null, [WorkflowExpression] Func<string> bodyiD1 = null, [WorkflowExpression] Func<string> bodyiD2 = null, [WorkflowExpression] Func<string> bodyiD3 = null, [WorkflowExpression] Func<int> bodyiD4 = null, [WorkflowExpression] Func<int> bodyiD5 = null, [WorkflowExpression] Func<string> bodylastCheckInOutDatevalue = null, [WorkflowExpression] Func<bodylastCheckInOutDateOperatorInput> bodylastCheckInOutDateOperator = null, [WorkflowExpression] Func<string> bodynameFirst = null, [WorkflowExpression] Func<string> bodynameInitials = null, [WorkflowExpression] Func<string> bodynameLast = null, [WorkflowExpression] Func<string> bodynameOther = null, [WorkflowExpression] Func<string> bodynamePreferred = null, [WorkflowExpression] Func<string> bodynameSharer = null, [WorkflowExpression] Func<string> bodynameTitle = null, [WorkflowExpression] Func<string> bodynameWeb = null, [WorkflowExpression] Func<int> bodypinNumber = null, [WorkflowExpression] Func<string> bodyportalAuthProviderUserId = null, [WorkflowExpression] Func<string> bodyportalEmail = null, [WorkflowExpression] Func<string> bodyposition = null, [WorkflowExpression] Func<bodypreviousEntryStatusEnumInput> bodypreviousEntryStatusEnum = null, [WorkflowExpression] Func<bodytaxExemptionEnumInput> bodytaxExemptionEnum = null, [WorkflowExpression] Func<bool> bodytesting = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyaddressTypeId, nameof(bodyaddressTypeId), required: false);
-            SourceExpression.Validate(bodybirthGenderEnum, nameof(bodybirthGenderEnum), required: false);
-            SourceExpression.Validate(bodybookingId, nameof(bodybookingId), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodyconferenceEmail, nameof(bodyconferenceEmail), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodycreatedBySecurityUserId, nameof(bodycreatedBySecurityUserId), required: false);
-            SourceExpression.Validate(bodydateCreatedvalue, nameof(bodydateCreatedvalue), required: false);
-            SourceExpression.Validate(bodydateCreatedOperator, nameof(bodydateCreatedOperator), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydirectoryFlagPrivacy, nameof(bodydirectoryFlagPrivacy), required: false);
-            SourceExpression.Validate(bodydOBvalue, nameof(bodydOBvalue), required: false);
-            SourceExpression.Validate(bodydOBOperator, nameof(bodydOBOperator), required: false);
-            SourceExpression.Validate(bodyentryApplicationId, nameof(bodyentryApplicationId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyentryStatusEnum, nameof(bodyentryStatusEnum), required: false);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
-            SourceExpression.Validate(bodygenderEnum, nameof(bodygenderEnum), required: false);
-            SourceExpression.Validate(bodyiD1, nameof(bodyiD1), required: false);
-            SourceExpression.Validate(bodyiD2, nameof(bodyiD2), required: false);
-            SourceExpression.Validate(bodyiD3, nameof(bodyiD3), required: false);
-            SourceExpression.Validate(bodyiD4, nameof(bodyiD4), required: false);
-            SourceExpression.Validate(bodyiD5, nameof(bodyiD5), required: false);
-            SourceExpression.Validate(bodylastCheckInOutDatevalue, nameof(bodylastCheckInOutDatevalue), required: false);
-            SourceExpression.Validate(bodylastCheckInOutDateOperator, nameof(bodylastCheckInOutDateOperator), required: false);
-            SourceExpression.Validate(bodynameFirst, nameof(bodynameFirst), required: false);
-            SourceExpression.Validate(bodynameInitials, nameof(bodynameInitials), required: false);
-            SourceExpression.Validate(bodynameLast, nameof(bodynameLast), required: false);
-            SourceExpression.Validate(bodynameOther, nameof(bodynameOther), required: false);
-            SourceExpression.Validate(bodynamePreferred, nameof(bodynamePreferred), required: false);
-            SourceExpression.Validate(bodynameSharer, nameof(bodynameSharer), required: false);
-            SourceExpression.Validate(bodynameTitle, nameof(bodynameTitle), required: false);
-            SourceExpression.Validate(bodynameWeb, nameof(bodynameWeb), required: false);
-            SourceExpression.Validate(bodypinNumber, nameof(bodypinNumber), required: false);
-            SourceExpression.Validate(bodyportalAuthProviderUserId, nameof(bodyportalAuthProviderUserId), required: false);
-            SourceExpression.Validate(bodyportalEmail, nameof(bodyportalEmail), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodypreviousEntryStatusEnum, nameof(bodypreviousEntryStatusEnum), required: false);
-            SourceExpression.Validate(bodytaxExemptionEnum, nameof(bodytaxExemptionEnum), required: false);
-            SourceExpression.Validate(bodytesting, nameof(bodytesting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/entry.json";
@@ -383,40 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<CreateEntryResponse> CreateEntry([WorkflowExpression] Func<string> bodynameFirst, [WorkflowExpression] Func<string> bodynameLast, [WorkflowExpression] Func<int> bodyaddressTypeId = null, [WorkflowExpression] Func<bodybirthGenderEnumInput> bodybirthGenderEnum = null, [WorkflowExpression] Func<int> bodybookingId = null, [WorkflowExpression] Func<int> bodycategoryId = null, [WorkflowExpression] Func<string> bodyconferenceEmail = null, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<bool> bodydirectoryFlagPrivacy = null, [WorkflowExpression] Func<string> bodydOB = null, [WorkflowExpression] Func<int> bodyentryApplicationId = null, [WorkflowExpression] Func<bodyentryStatusEnumInput> bodyentryStatusEnum = null, [WorkflowExpression] Func<int> bodyeventId = null, [WorkflowExpression] Func<bodygenderEnumInput> bodygenderEnum = null, [WorkflowExpression] Func<string> bodyiD1 = null, [WorkflowExpression] Func<string> bodyiD2 = null, [WorkflowExpression] Func<string> bodyiD3 = null, [WorkflowExpression] Func<int> bodyiD4 = null, [WorkflowExpression] Func<int> bodyiD5 = null, [WorkflowExpression] Func<string> bodylastCheckInOutDate = null, [WorkflowExpression] Func<string> bodynameInitials = null, [WorkflowExpression] Func<string> bodynameOther = null, [WorkflowExpression] Func<string> bodynamePreferred = null, [WorkflowExpression] Func<string> bodynameSharer = null, [WorkflowExpression] Func<string> bodynameTitle = null, [WorkflowExpression] Func<string> bodynameWeb = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<int> bodypinNumber = null, [WorkflowExpression] Func<string> bodyportalAuthProviderUserId = null, [WorkflowExpression] Func<string> bodyportalEmail = null, [WorkflowExpression] Func<string> bodyposition = null, [WorkflowExpression] Func<bodypreviousEntryStatusEnumInput> bodypreviousEntryStatusEnum = null, [WorkflowExpression] Func<bodytaxExemptionEnumInput> bodytaxExemptionEnum = null, [WorkflowExpression] Func<bool> bodytesting = null)
         {
-            SourceExpression.Validate(bodynameFirst, nameof(bodynameFirst), required: true);
-            SourceExpression.Validate(bodynameLast, nameof(bodynameLast), required: true);
-            SourceExpression.Validate(bodyaddressTypeId, nameof(bodyaddressTypeId), required: false);
-            SourceExpression.Validate(bodybirthGenderEnum, nameof(bodybirthGenderEnum), required: false);
-            SourceExpression.Validate(bodybookingId, nameof(bodybookingId), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodyconferenceEmail, nameof(bodyconferenceEmail), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodydirectoryFlagPrivacy, nameof(bodydirectoryFlagPrivacy), required: false);
-            SourceExpression.Validate(bodydOB, nameof(bodydOB), required: false);
-            SourceExpression.Validate(bodyentryApplicationId, nameof(bodyentryApplicationId), required: false);
-            SourceExpression.Validate(bodyentryStatusEnum, nameof(bodyentryStatusEnum), required: false);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
-            SourceExpression.Validate(bodygenderEnum, nameof(bodygenderEnum), required: false);
-            SourceExpression.Validate(bodyiD1, nameof(bodyiD1), required: false);
-            SourceExpression.Validate(bodyiD2, nameof(bodyiD2), required: false);
-            SourceExpression.Validate(bodyiD3, nameof(bodyiD3), required: false);
-            SourceExpression.Validate(bodyiD4, nameof(bodyiD4), required: false);
-            SourceExpression.Validate(bodyiD5, nameof(bodyiD5), required: false);
-            SourceExpression.Validate(bodylastCheckInOutDate, nameof(bodylastCheckInOutDate), required: false);
-            SourceExpression.Validate(bodynameInitials, nameof(bodynameInitials), required: false);
-            SourceExpression.Validate(bodynameOther, nameof(bodynameOther), required: false);
-            SourceExpression.Validate(bodynamePreferred, nameof(bodynamePreferred), required: false);
-            SourceExpression.Validate(bodynameSharer, nameof(bodynameSharer), required: false);
-            SourceExpression.Validate(bodynameTitle, nameof(bodynameTitle), required: false);
-            SourceExpression.Validate(bodynameWeb, nameof(bodynameWeb), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodypinNumber, nameof(bodypinNumber), required: false);
-            SourceExpression.Validate(bodyportalAuthProviderUserId, nameof(bodyportalAuthProviderUserId), required: false);
-            SourceExpression.Validate(bodyportalEmail, nameof(bodyportalEmail), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodypreviousEntryStatusEnum, nameof(bodypreviousEntryStatusEnum), required: false);
-            SourceExpression.Validate(bodytaxExemptionEnum, nameof(bodytaxExemptionEnum), required: false);
-            SourceExpression.Validate(bodytesting, nameof(bodytesting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/entry.json";
@@ -633,41 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateEntryResponse> UpdateEntry([WorkflowExpression] Func<int> entryId, [WorkflowExpression] Func<int> bodyaddressTypeId = null, [WorkflowExpression] Func<bodybirthGenderEnumInput> bodybirthGenderEnum = null, [WorkflowExpression] Func<int> bodybookingId = null, [WorkflowExpression] Func<int> bodycategoryId = null, [WorkflowExpression] Func<string> bodyconferenceEmail = null, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<bool> bodydirectoryFlagPrivacy = null, [WorkflowExpression] Func<string> bodydOB = null, [WorkflowExpression] Func<int> bodyentryApplicationId = null, [WorkflowExpression] Func<bodyentryStatusEnumInput> bodyentryStatusEnum = null, [WorkflowExpression] Func<int> bodyeventId = null, [WorkflowExpression] Func<bodygenderEnumInput> bodygenderEnum = null, [WorkflowExpression] Func<string> bodyiD1 = null, [WorkflowExpression] Func<string> bodyiD2 = null, [WorkflowExpression] Func<string> bodyiD3 = null, [WorkflowExpression] Func<int> bodyiD4 = null, [WorkflowExpression] Func<int> bodyiD5 = null, [WorkflowExpression] Func<string> bodylastCheckInOutDate = null, [WorkflowExpression] Func<string> bodynameFirst = null, [WorkflowExpression] Func<string> bodynameInitials = null, [WorkflowExpression] Func<string> bodynameLast = null, [WorkflowExpression] Func<string> bodynameOther = null, [WorkflowExpression] Func<string> bodynamePreferred = null, [WorkflowExpression] Func<string> bodynameSharer = null, [WorkflowExpression] Func<string> bodynameTitle = null, [WorkflowExpression] Func<string> bodynameWeb = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<int> bodypinNumber = null, [WorkflowExpression] Func<string> bodyportalAuthProviderUserId = null, [WorkflowExpression] Func<string> bodyportalEmail = null, [WorkflowExpression] Func<string> bodyposition = null, [WorkflowExpression] Func<bodypreviousEntryStatusEnumInput> bodypreviousEntryStatusEnum = null, [WorkflowExpression] Func<bodytaxExemptionEnumInput> bodytaxExemptionEnum = null, [WorkflowExpression] Func<bool> bodytesting = null)
         {
-            SourceExpression.Validate(entryId, nameof(entryId), required: true);
-            SourceExpression.Validate(bodyaddressTypeId, nameof(bodyaddressTypeId), required: false);
-            SourceExpression.Validate(bodybirthGenderEnum, nameof(bodybirthGenderEnum), required: false);
-            SourceExpression.Validate(bodybookingId, nameof(bodybookingId), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodyconferenceEmail, nameof(bodyconferenceEmail), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodydirectoryFlagPrivacy, nameof(bodydirectoryFlagPrivacy), required: false);
-            SourceExpression.Validate(bodydOB, nameof(bodydOB), required: false);
-            SourceExpression.Validate(bodyentryApplicationId, nameof(bodyentryApplicationId), required: false);
-            SourceExpression.Validate(bodyentryStatusEnum, nameof(bodyentryStatusEnum), required: false);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
-            SourceExpression.Validate(bodygenderEnum, nameof(bodygenderEnum), required: false);
-            SourceExpression.Validate(bodyiD1, nameof(bodyiD1), required: false);
-            SourceExpression.Validate(bodyiD2, nameof(bodyiD2), required: false);
-            SourceExpression.Validate(bodyiD3, nameof(bodyiD3), required: false);
-            SourceExpression.Validate(bodyiD4, nameof(bodyiD4), required: false);
-            SourceExpression.Validate(bodyiD5, nameof(bodyiD5), required: false);
-            SourceExpression.Validate(bodylastCheckInOutDate, nameof(bodylastCheckInOutDate), required: false);
-            SourceExpression.Validate(bodynameFirst, nameof(bodynameFirst), required: false);
-            SourceExpression.Validate(bodynameInitials, nameof(bodynameInitials), required: false);
-            SourceExpression.Validate(bodynameLast, nameof(bodynameLast), required: false);
-            SourceExpression.Validate(bodynameOther, nameof(bodynameOther), required: false);
-            SourceExpression.Validate(bodynamePreferred, nameof(bodynamePreferred), required: false);
-            SourceExpression.Validate(bodynameSharer, nameof(bodynameSharer), required: false);
-            SourceExpression.Validate(bodynameTitle, nameof(bodynameTitle), required: false);
-            SourceExpression.Validate(bodynameWeb, nameof(bodynameWeb), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodypinNumber, nameof(bodypinNumber), required: false);
-            SourceExpression.Validate(bodyportalAuthProviderUserId, nameof(bodyportalAuthProviderUserId), required: false);
-            SourceExpression.Validate(bodyportalEmail, nameof(bodyportalEmail), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodypreviousEntryStatusEnum, nameof(bodypreviousEntryStatusEnum), required: false);
-            SourceExpression.Validate(bodytaxExemptionEnum, nameof(bodytaxExemptionEnum), required: false);
-            SourceExpression.Validate(bodytesting, nameof(bodytesting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/entry.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(entryId, 1));
@@ -892,8 +778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<JToken> Delete([WorkflowExpression] Func<tableNameInput> tableName, [WorkflowExpression] Func<int> rowId)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/delete/{0}.json/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rowId, 1));
@@ -908,22 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectEntryCustomFieldResponseItem[]> SelectEntryCustomField([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<int> bodycustomFieldDefinitionId = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<int> bodyentryCustomFieldId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<bodyfieldDataTypeEnumInput> bodyfieldDataTypeEnum = null, [WorkflowExpression] Func<bool> bodyvalueBoolean = null, [WorkflowExpression] Func<string> bodyvalueDatevalue = null, [WorkflowExpression] Func<bodyvalueDateOperatorInput> bodyvalueDateOperator = null, [WorkflowExpression] Func<int> bodyvalueInteger = null, [WorkflowExpression] Func<double> bodyvalueMoney = null, [WorkflowExpression] Func<string> bodyvalueString = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodycustomFieldDefinitionId, nameof(bodycustomFieldDefinitionId), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodyentryCustomFieldId, nameof(bodyentryCustomFieldId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyfieldDataTypeEnum, nameof(bodyfieldDataTypeEnum), required: false);
-            SourceExpression.Validate(bodyvalueBoolean, nameof(bodyvalueBoolean), required: false);
-            SourceExpression.Validate(bodyvalueDatevalue, nameof(bodyvalueDatevalue), required: false);
-            SourceExpression.Validate(bodyvalueDateOperator, nameof(bodyvalueDateOperator), required: false);
-            SourceExpression.Validate(bodyvalueInteger, nameof(bodyvalueInteger), required: false);
-            SourceExpression.Validate(bodyvalueMoney, nameof(bodyvalueMoney), required: false);
-            SourceExpression.Validate(bodyvalueString, nameof(bodyvalueString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/EntryCustomField.json";
@@ -1058,15 +926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateEntryCustomFieldResponse> UpdateEntryCustomField([WorkflowExpression] Func<int> entryCustomFieldId, [WorkflowExpression] Func<int> bodycustomFieldDefinitionId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<bodyfieldDataTypeEnumInput> bodyfieldDataTypeEnum = null, [WorkflowExpression] Func<bool> bodyvalueBoolean = null, [WorkflowExpression] Func<string> bodyvalueDate = null, [WorkflowExpression] Func<int> bodyvalueInteger = null, [WorkflowExpression] Func<double> bodyvalueMoney = null, [WorkflowExpression] Func<string> bodyvalueString = null)
         {
-            SourceExpression.Validate(entryCustomFieldId, nameof(entryCustomFieldId), required: true);
-            SourceExpression.Validate(bodycustomFieldDefinitionId, nameof(bodycustomFieldDefinitionId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyfieldDataTypeEnum, nameof(bodyfieldDataTypeEnum), required: false);
-            SourceExpression.Validate(bodyvalueBoolean, nameof(bodyvalueBoolean), required: false);
-            SourceExpression.Validate(bodyvalueDate, nameof(bodyvalueDate), required: false);
-            SourceExpression.Validate(bodyvalueInteger, nameof(bodyvalueInteger), required: false);
-            SourceExpression.Validate(bodyvalueMoney, nameof(bodyvalueMoney), required: false);
-            SourceExpression.Validate(bodyvalueString, nameof(bodyvalueString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/entryCustomField.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(entryCustomFieldId, 1));
@@ -1135,25 +994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectTermResponseItem[]> SelectTerm([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodyactiveDateClosevalue = null, [WorkflowExpression] Func<bodyactiveDateCloseOperatorInput> bodyactiveDateCloseOperator = null, [WorkflowExpression] Func<string> bodyactiveDateOpenvalue = null, [WorkflowExpression] Func<bodyactiveDateOpenOperatorInput> bodyactiveDateOpenOperator = null, [WorkflowExpression] Func<int> bodycategoryId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodyrecordTypeEnumInput> bodyrecordTypeEnum = null, [WorkflowExpression] Func<string> bodytermCode = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<int> bodytermTypeId = null, [WorkflowExpression] Func<string> bodywebDescription = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            SourceExpression.Validate(bodyactiveDateClosevalue, nameof(bodyactiveDateClosevalue), required: false);
-            SourceExpression.Validate(bodyactiveDateCloseOperator, nameof(bodyactiveDateCloseOperator), required: false);
-            SourceExpression.Validate(bodyactiveDateOpenvalue, nameof(bodyactiveDateOpenvalue), required: false);
-            SourceExpression.Validate(bodyactiveDateOpenOperator, nameof(bodyactiveDateOpenOperator), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyrecordTypeEnum, nameof(bodyrecordTypeEnum), required: false);
-            SourceExpression.Validate(bodytermCode, nameof(bodytermCode), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodytermTypeId, nameof(bodytermTypeId), required: false);
-            SourceExpression.Validate(bodywebDescription, nameof(bodywebDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/Term.json";
@@ -1314,36 +1154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectEntryAddressResponseItem[]> SelectEntryAddress([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<string> bodyactiveDateEndvalue = null, [WorkflowExpression] Func<bodyactiveDateEndOperatorInput> bodyactiveDateEndOperator = null, [WorkflowExpression] Func<string> bodyactiveDateStartvalue = null, [WorkflowExpression] Func<bodyactiveDateStartOperatorInput> bodyactiveDateStartOperator = null, [WorkflowExpression] Func<int> bodyaddressTypeId = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactName2 = null, [WorkflowExpression] Func<int> bodycountryId = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyentryAddressId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyphoneMobileCell = null, [WorkflowExpression] Func<string> bodyphoneOther = null, [WorkflowExpression] Func<string> bodyphoneOther2 = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodyrelationship = null, [WorkflowExpression] Func<string> bodysalutation = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodystreet2 = null, [WorkflowExpression] Func<string> bodyzipPostcode = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyactiveDateEndvalue, nameof(bodyactiveDateEndvalue), required: false);
-            SourceExpression.Validate(bodyactiveDateEndOperator, nameof(bodyactiveDateEndOperator), required: false);
-            SourceExpression.Validate(bodyactiveDateStartvalue, nameof(bodyactiveDateStartvalue), required: false);
-            SourceExpression.Validate(bodyactiveDateStartOperator, nameof(bodyactiveDateStartOperator), required: false);
-            SourceExpression.Validate(bodyaddressTypeId, nameof(bodyaddressTypeId), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycontactName2, nameof(bodycontactName2), required: false);
-            SourceExpression.Validate(bodycountryId, nameof(bodycountryId), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyentryAddressId, nameof(bodyentryAddressId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyphoneMobileCell, nameof(bodyphoneMobileCell), required: false);
-            SourceExpression.Validate(bodyphoneOther, nameof(bodyphoneOther), required: false);
-            SourceExpression.Validate(bodyphoneOther2, nameof(bodyphoneOther2), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodyrelationship, nameof(bodyrelationship), required: false);
-            SourceExpression.Validate(bodysalutation, nameof(bodysalutation), required: false);
-            SourceExpression.Validate(bodystateProvince, nameof(bodystateProvince), required: false);
-            SourceExpression.Validate(bodystreet, nameof(bodystreet), required: false);
-            SourceExpression.Validate(bodystreet2, nameof(bodystreet2), required: false);
-            SourceExpression.Validate(bodyzipPostcode, nameof(bodyzipPostcode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/EntryAddress.json";
@@ -1570,28 +1380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateEntryAddressResponse> UpdateEntryAddress([WorkflowExpression] Func<int> entryAddressId, [WorkflowExpression] Func<string> bodyactiveDateEnd = null, [WorkflowExpression] Func<string> bodyactiveDateStart = null, [WorkflowExpression] Func<int> bodyaddressTypeId = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactName2 = null, [WorkflowExpression] Func<int> bodycountryId = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyphoneMobileCell = null, [WorkflowExpression] Func<string> bodyphoneOther = null, [WorkflowExpression] Func<string> bodyphoneOther2 = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodyrelationship = null, [WorkflowExpression] Func<string> bodysalutation = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodystreet2 = null, [WorkflowExpression] Func<string> bodyzipPostcode = null)
         {
-            SourceExpression.Validate(entryAddressId, nameof(entryAddressId), required: true);
-            SourceExpression.Validate(bodyactiveDateEnd, nameof(bodyactiveDateEnd), required: false);
-            SourceExpression.Validate(bodyactiveDateStart, nameof(bodyactiveDateStart), required: false);
-            SourceExpression.Validate(bodyaddressTypeId, nameof(bodyaddressTypeId), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycontactName2, nameof(bodycontactName2), required: false);
-            SourceExpression.Validate(bodycountryId, nameof(bodycountryId), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyphoneMobileCell, nameof(bodyphoneMobileCell), required: false);
-            SourceExpression.Validate(bodyphoneOther, nameof(bodyphoneOther), required: false);
-            SourceExpression.Validate(bodyphoneOther2, nameof(bodyphoneOther2), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodyrelationship, nameof(bodyrelationship), required: false);
-            SourceExpression.Validate(bodysalutation, nameof(bodysalutation), required: false);
-            SourceExpression.Validate(bodystateProvince, nameof(bodystateProvince), required: false);
-            SourceExpression.Validate(bodystreet, nameof(bodystreet), required: false);
-            SourceExpression.Validate(bodystreet2, nameof(bodystreet2), required: false);
-            SourceExpression.Validate(bodyzipPostcode, nameof(bodyzipPostcode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/entryAddress.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(entryAddressId, 1));
@@ -1738,88 +1526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectEntryApplicationResponseItem[]> SelectEntryApplication([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<bodyallocateOptionEnumInput> bodyallocateOptionEnum = null, [WorkflowExpression] Func<string> bodyapplicationDatevalue = null, [WorkflowExpression] Func<bodyapplicationDateOperatorInput> bodyapplicationDateOperator = null, [WorkflowExpression] Func<int> bodyapplicationStatusId = null, [WorkflowExpression] Func<string> bodycancelDatevalue = null, [WorkflowExpression] Func<bodycancelDateOperatorInput> bodycancelDateOperator = null, [WorkflowExpression] Func<int> bodyclassificationId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycommentsInternal = null, [WorkflowExpression] Func<string> bodycompleteDatevalue = null, [WorkflowExpression] Func<bodycompleteDateOperatorInput> bodycompleteDateOperator = null, [WorkflowExpression] Func<string> bodycontractSignedDatevalue = null, [WorkflowExpression] Func<bodycontractSignedDateOperatorInput> bodycontractSignedDateOperator = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<bool> bodycustomBit3 = null, [WorkflowExpression] Func<bool> bodycustomBit4 = null, [WorkflowExpression] Func<string> bodycustomDate1value = null, [WorkflowExpression] Func<bodycustomDate1OperatorInput> bodycustomDate1Operator = null, [WorkflowExpression] Func<string> bodycustomDate2value = null, [WorkflowExpression] Func<bodycustomDate2OperatorInput> bodycustomDate2Operator = null, [WorkflowExpression] Func<string> bodycustomDate3value = null, [WorkflowExpression] Func<bodycustomDate3OperatorInput> bodycustomDate3Operator = null, [WorkflowExpression] Func<string> bodycustomDate4value = null, [WorkflowExpression] Func<bodycustomDate4OperatorInput> bodycustomDate4Operator = null, [WorkflowExpression] Func<string> bodydateCreatedvalue = null, [WorkflowExpression] Func<bodydateCreatedOperatorInput> bodydateCreatedOperator = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodyenquiryDatevalue = null, [WorkflowExpression] Func<bodyenquiryDateOperatorInput> bodyenquiryDateOperator = null, [WorkflowExpression] Func<int> bodyentryApplicationId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyexpectedArrivalDatevalue = null, [WorkflowExpression] Func<bodyexpectedArrivalDateOperatorInput> bodyexpectedArrivalDateOperator = null, [WorkflowExpression] Func<string> bodyexpectedArrivalDateLatestvalue = null, [WorkflowExpression] Func<bodyexpectedArrivalDateLatestOperatorInput> bodyexpectedArrivalDateLatestOperator = null, [WorkflowExpression] Func<string> bodyexpectedDepartureDatevalue = null, [WorkflowExpression] Func<bodyexpectedDepartureDateOperatorInput> bodyexpectedDepartureDateOperator = null, [WorkflowExpression] Func<string> bodyofferedDatevalue = null, [WorkflowExpression] Func<bodyofferedDateOperatorInput> bodyofferedDateOperator = null, [WorkflowExpression] Func<string> bodyofferReplyDatevalue = null, [WorkflowExpression] Func<bodyofferReplyDateOperatorInput> bodyofferReplyDateOperator = null, [WorkflowExpression] Func<bodyofferReplyEnumInput> bodyofferReplyEnum = null, [WorkflowExpression] Func<string> bodyofferReplyReason = null, [WorkflowExpression] Func<string> bodyofferSentDatevalue = null, [WorkflowExpression] Func<bodyofferSentDateOperatorInput> bodyofferSentDateOperator = null, [WorkflowExpression] Func<bool> bodyportalTrackingOnly = null, [WorkflowExpression] Func<string> bodypreferenceComments = null, [WorkflowExpression] Func<string> bodyrating = null, [WorkflowExpression] Func<string> bodyreceivedDatevalue = null, [WorkflowExpression] Func<bodyreceivedDateOperatorInput> bodyreceivedDateOperator = null, [WorkflowExpression] Func<bool> bodyreceivedDeposit = null, [WorkflowExpression] Func<bool> bodyreceivedDepositWaived = null, [WorkflowExpression] Func<int> bodyreceivedDepositPaymentId = null, [WorkflowExpression] Func<int> bodyreceivedDepositWebPaymentId = null, [WorkflowExpression] Func<double> bodyreceivedDepositAmount = null, [WorkflowExpression] Func<string> bodyreceivedDepositDatevalue = null, [WorkflowExpression] Func<bodyreceivedDepositDateOperatorInput> bodyreceivedDepositDateOperator = null, [WorkflowExpression] Func<bool> bodyreceivedFee = null, [WorkflowExpression] Func<int> bodyreceivedFeePaymentId = null, [WorkflowExpression] Func<int> bodyreceivedFeeWebPaymentId = null, [WorkflowExpression] Func<double> bodyreceivedFeeAmount = null, [WorkflowExpression] Func<string> bodyreceivedFeeDatevalue = null, [WorkflowExpression] Func<bodyreceivedFeeDateOperatorInput> bodyreceivedFeeDateOperator = null, [WorkflowExpression] Func<string> bodyreceivedPhotoDatevalue = null, [WorkflowExpression] Func<bodyreceivedPhotoDateOperatorInput> bodyreceivedPhotoDateOperator = null, [WorkflowExpression] Func<bool> bodyreturning = null, [WorkflowExpression] Func<string> bodyroomMateDescription = null, [WorkflowExpression] Func<int> bodyroommateGroupId = null, [WorkflowExpression] Func<int> bodyroomMateGroupSortOrder = null, [WorkflowExpression] Func<bool> bodyroomMateShowInSearch = null, [WorkflowExpression] Func<string> bodyroomPreferenceComments = null, [WorkflowExpression] Func<int> bodyroomSelectionNumber = null, [WorkflowExpression] Func<string> bodyroomSelectionTimeslot = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<bool> bodyweb = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyallocateOptionEnum, nameof(bodyallocateOptionEnum), required: false);
-            SourceExpression.Validate(bodyapplicationDatevalue, nameof(bodyapplicationDatevalue), required: false);
-            SourceExpression.Validate(bodyapplicationDateOperator, nameof(bodyapplicationDateOperator), required: false);
-            SourceExpression.Validate(bodyapplicationStatusId, nameof(bodyapplicationStatusId), required: false);
-            SourceExpression.Validate(bodycancelDatevalue, nameof(bodycancelDatevalue), required: false);
-            SourceExpression.Validate(bodycancelDateOperator, nameof(bodycancelDateOperator), required: false);
-            SourceExpression.Validate(bodyclassificationId, nameof(bodyclassificationId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycommentsInternal, nameof(bodycommentsInternal), required: false);
-            SourceExpression.Validate(bodycompleteDatevalue, nameof(bodycompleteDatevalue), required: false);
-            SourceExpression.Validate(bodycompleteDateOperator, nameof(bodycompleteDateOperator), required: false);
-            SourceExpression.Validate(bodycontractSignedDatevalue, nameof(bodycontractSignedDatevalue), required: false);
-            SourceExpression.Validate(bodycontractSignedDateOperator, nameof(bodycontractSignedDateOperator), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomBit3, nameof(bodycustomBit3), required: false);
-            SourceExpression.Validate(bodycustomBit4, nameof(bodycustomBit4), required: false);
-            SourceExpression.Validate(bodycustomDate1value, nameof(bodycustomDate1value), required: false);
-            SourceExpression.Validate(bodycustomDate1Operator, nameof(bodycustomDate1Operator), required: false);
-            SourceExpression.Validate(bodycustomDate2value, nameof(bodycustomDate2value), required: false);
-            SourceExpression.Validate(bodycustomDate2Operator, nameof(bodycustomDate2Operator), required: false);
-            SourceExpression.Validate(bodycustomDate3value, nameof(bodycustomDate3value), required: false);
-            SourceExpression.Validate(bodycustomDate3Operator, nameof(bodycustomDate3Operator), required: false);
-            SourceExpression.Validate(bodycustomDate4value, nameof(bodycustomDate4value), required: false);
-            SourceExpression.Validate(bodycustomDate4Operator, nameof(bodycustomDate4Operator), required: false);
-            SourceExpression.Validate(bodydateCreatedvalue, nameof(bodydateCreatedvalue), required: false);
-            SourceExpression.Validate(bodydateCreatedOperator, nameof(bodydateCreatedOperator), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodyenquiryDatevalue, nameof(bodyenquiryDatevalue), required: false);
-            SourceExpression.Validate(bodyenquiryDateOperator, nameof(bodyenquiryDateOperator), required: false);
-            SourceExpression.Validate(bodyentryApplicationId, nameof(bodyentryApplicationId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDatevalue, nameof(bodyexpectedArrivalDatevalue), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDateOperator, nameof(bodyexpectedArrivalDateOperator), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDateLatestvalue, nameof(bodyexpectedArrivalDateLatestvalue), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDateLatestOperator, nameof(bodyexpectedArrivalDateLatestOperator), required: false);
-            SourceExpression.Validate(bodyexpectedDepartureDatevalue, nameof(bodyexpectedDepartureDatevalue), required: false);
-            SourceExpression.Validate(bodyexpectedDepartureDateOperator, nameof(bodyexpectedDepartureDateOperator), required: false);
-            SourceExpression.Validate(bodyofferedDatevalue, nameof(bodyofferedDatevalue), required: false);
-            SourceExpression.Validate(bodyofferedDateOperator, nameof(bodyofferedDateOperator), required: false);
-            SourceExpression.Validate(bodyofferReplyDatevalue, nameof(bodyofferReplyDatevalue), required: false);
-            SourceExpression.Validate(bodyofferReplyDateOperator, nameof(bodyofferReplyDateOperator), required: false);
-            SourceExpression.Validate(bodyofferReplyEnum, nameof(bodyofferReplyEnum), required: false);
-            SourceExpression.Validate(bodyofferReplyReason, nameof(bodyofferReplyReason), required: false);
-            SourceExpression.Validate(bodyofferSentDatevalue, nameof(bodyofferSentDatevalue), required: false);
-            SourceExpression.Validate(bodyofferSentDateOperator, nameof(bodyofferSentDateOperator), required: false);
-            SourceExpression.Validate(bodyportalTrackingOnly, nameof(bodyportalTrackingOnly), required: false);
-            SourceExpression.Validate(bodypreferenceComments, nameof(bodypreferenceComments), required: false);
-            SourceExpression.Validate(bodyrating, nameof(bodyrating), required: false);
-            SourceExpression.Validate(bodyreceivedDatevalue, nameof(bodyreceivedDatevalue), required: false);
-            SourceExpression.Validate(bodyreceivedDateOperator, nameof(bodyreceivedDateOperator), required: false);
-            SourceExpression.Validate(bodyreceivedDeposit, nameof(bodyreceivedDeposit), required: false);
-            SourceExpression.Validate(bodyreceivedDepositWaived, nameof(bodyreceivedDepositWaived), required: false);
-            SourceExpression.Validate(bodyreceivedDepositPaymentId, nameof(bodyreceivedDepositPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedDepositWebPaymentId, nameof(bodyreceivedDepositWebPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedDepositAmount, nameof(bodyreceivedDepositAmount), required: false);
-            SourceExpression.Validate(bodyreceivedDepositDatevalue, nameof(bodyreceivedDepositDatevalue), required: false);
-            SourceExpression.Validate(bodyreceivedDepositDateOperator, nameof(bodyreceivedDepositDateOperator), required: false);
-            SourceExpression.Validate(bodyreceivedFee, nameof(bodyreceivedFee), required: false);
-            SourceExpression.Validate(bodyreceivedFeePaymentId, nameof(bodyreceivedFeePaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedFeeWebPaymentId, nameof(bodyreceivedFeeWebPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedFeeAmount, nameof(bodyreceivedFeeAmount), required: false);
-            SourceExpression.Validate(bodyreceivedFeeDatevalue, nameof(bodyreceivedFeeDatevalue), required: false);
-            SourceExpression.Validate(bodyreceivedFeeDateOperator, nameof(bodyreceivedFeeDateOperator), required: false);
-            SourceExpression.Validate(bodyreceivedPhotoDatevalue, nameof(bodyreceivedPhotoDatevalue), required: false);
-            SourceExpression.Validate(bodyreceivedPhotoDateOperator, nameof(bodyreceivedPhotoDateOperator), required: false);
-            SourceExpression.Validate(bodyreturning, nameof(bodyreturning), required: false);
-            SourceExpression.Validate(bodyroomMateDescription, nameof(bodyroomMateDescription), required: false);
-            SourceExpression.Validate(bodyroommateGroupId, nameof(bodyroommateGroupId), required: false);
-            SourceExpression.Validate(bodyroomMateGroupSortOrder, nameof(bodyroomMateGroupSortOrder), required: false);
-            SourceExpression.Validate(bodyroomMateShowInSearch, nameof(bodyroomMateShowInSearch), required: false);
-            SourceExpression.Validate(bodyroomPreferenceComments, nameof(bodyroomPreferenceComments), required: false);
-            SourceExpression.Validate(bodyroomSelectionNumber, nameof(bodyroomSelectionNumber), required: false);
-            SourceExpression.Validate(bodyroomSelectionTimeslot, nameof(bodyroomSelectionTimeslot), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodyweb, nameof(bodyweb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/EntryApplication.json";
@@ -2502,60 +2208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<CreateEntryApplicationResponse> CreateEntryApplication([WorkflowExpression] Func<int> bodyentryId, [WorkflowExpression] Func<bodyallocateOptionEnumInput> bodyallocateOptionEnum = null, [WorkflowExpression] Func<string> bodyapplicationDate = null, [WorkflowExpression] Func<int> bodyapplicationStatusId = null, [WorkflowExpression] Func<string> bodycancelDate = null, [WorkflowExpression] Func<int> bodyclassificationId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycommentsInternal = null, [WorkflowExpression] Func<string> bodycompleteDate = null, [WorkflowExpression] Func<string> bodycontractSignedDate = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<bool> bodycustomBit3 = null, [WorkflowExpression] Func<bool> bodycustomBit4 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomDate3 = null, [WorkflowExpression] Func<string> bodycustomDate4 = null, [WorkflowExpression] Func<string> bodyenquiryDate = null, [WorkflowExpression] Func<string> bodyexpectedArrivalDate = null, [WorkflowExpression] Func<string> bodyexpectedArrivalDateLatest = null, [WorkflowExpression] Func<string> bodyexpectedDepartureDate = null, [WorkflowExpression] Func<string> bodyofferedDate = null, [WorkflowExpression] Func<string> bodyofferReplyDate = null, [WorkflowExpression] Func<bodyofferReplyEnumInput> bodyofferReplyEnum = null, [WorkflowExpression] Func<string> bodyofferReplyReason = null, [WorkflowExpression] Func<string> bodyofferSentDate = null, [WorkflowExpression] Func<bool> bodyportalTrackingOnly = null, [WorkflowExpression] Func<string> bodypreferenceComments = null, [WorkflowExpression] Func<string> bodyrating = null, [WorkflowExpression] Func<string> bodyreceivedDate = null, [WorkflowExpression] Func<bool> bodyreceivedDeposit = null, [WorkflowExpression] Func<int> bodyreceivedDepositPaymentId = null, [WorkflowExpression] Func<int> bodyreceivedDepositWebPaymentId = null, [WorkflowExpression] Func<double> bodyreceivedDepositAmount = null, [WorkflowExpression] Func<string> bodyreceivedDepositDate = null, [WorkflowExpression] Func<bool> bodyreceivedDepositWaived = null, [WorkflowExpression] Func<bool> bodyreceivedFee = null, [WorkflowExpression] Func<int> bodyreceivedFeePaymentId = null, [WorkflowExpression] Func<int> bodyreceivedFeeWebPaymentId = null, [WorkflowExpression] Func<double> bodyreceivedFeeAmount = null, [WorkflowExpression] Func<string> bodyreceivedFeeDate = null, [WorkflowExpression] Func<string> bodyreceivedPhotoDate = null, [WorkflowExpression] Func<bool> bodyreturning = null, [WorkflowExpression] Func<string> bodyroomMateDescription = null, [WorkflowExpression] Func<int> bodyroommateGroupId = null, [WorkflowExpression] Func<int> bodyroomMateGroupSortOrder = null, [WorkflowExpression] Func<bool> bodyroomMateShowInSearch = null, [WorkflowExpression] Func<string> bodyroomPreferenceComments = null, [WorkflowExpression] Func<int> bodyroomSelectionNumber = null, [WorkflowExpression] Func<string> bodyroomSelectionTimeslot = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<bool> bodyweb = null)
         {
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: true);
-            SourceExpression.Validate(bodyallocateOptionEnum, nameof(bodyallocateOptionEnum), required: false);
-            SourceExpression.Validate(bodyapplicationDate, nameof(bodyapplicationDate), required: false);
-            SourceExpression.Validate(bodyapplicationStatusId, nameof(bodyapplicationStatusId), required: false);
-            SourceExpression.Validate(bodycancelDate, nameof(bodycancelDate), required: false);
-            SourceExpression.Validate(bodyclassificationId, nameof(bodyclassificationId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycommentsInternal, nameof(bodycommentsInternal), required: false);
-            SourceExpression.Validate(bodycompleteDate, nameof(bodycompleteDate), required: false);
-            SourceExpression.Validate(bodycontractSignedDate, nameof(bodycontractSignedDate), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomBit3, nameof(bodycustomBit3), required: false);
-            SourceExpression.Validate(bodycustomBit4, nameof(bodycustomBit4), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomDate3, nameof(bodycustomDate3), required: false);
-            SourceExpression.Validate(bodycustomDate4, nameof(bodycustomDate4), required: false);
-            SourceExpression.Validate(bodyenquiryDate, nameof(bodyenquiryDate), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDate, nameof(bodyexpectedArrivalDate), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDateLatest, nameof(bodyexpectedArrivalDateLatest), required: false);
-            SourceExpression.Validate(bodyexpectedDepartureDate, nameof(bodyexpectedDepartureDate), required: false);
-            SourceExpression.Validate(bodyofferedDate, nameof(bodyofferedDate), required: false);
-            SourceExpression.Validate(bodyofferReplyDate, nameof(bodyofferReplyDate), required: false);
-            SourceExpression.Validate(bodyofferReplyEnum, nameof(bodyofferReplyEnum), required: false);
-            SourceExpression.Validate(bodyofferReplyReason, nameof(bodyofferReplyReason), required: false);
-            SourceExpression.Validate(bodyofferSentDate, nameof(bodyofferSentDate), required: false);
-            SourceExpression.Validate(bodyportalTrackingOnly, nameof(bodyportalTrackingOnly), required: false);
-            SourceExpression.Validate(bodypreferenceComments, nameof(bodypreferenceComments), required: false);
-            SourceExpression.Validate(bodyrating, nameof(bodyrating), required: false);
-            SourceExpression.Validate(bodyreceivedDate, nameof(bodyreceivedDate), required: false);
-            SourceExpression.Validate(bodyreceivedDeposit, nameof(bodyreceivedDeposit), required: false);
-            SourceExpression.Validate(bodyreceivedDepositPaymentId, nameof(bodyreceivedDepositPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedDepositWebPaymentId, nameof(bodyreceivedDepositWebPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedDepositAmount, nameof(bodyreceivedDepositAmount), required: false);
-            SourceExpression.Validate(bodyreceivedDepositDate, nameof(bodyreceivedDepositDate), required: false);
-            SourceExpression.Validate(bodyreceivedDepositWaived, nameof(bodyreceivedDepositWaived), required: false);
-            SourceExpression.Validate(bodyreceivedFee, nameof(bodyreceivedFee), required: false);
-            SourceExpression.Validate(bodyreceivedFeePaymentId, nameof(bodyreceivedFeePaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedFeeWebPaymentId, nameof(bodyreceivedFeeWebPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedFeeAmount, nameof(bodyreceivedFeeAmount), required: false);
-            SourceExpression.Validate(bodyreceivedFeeDate, nameof(bodyreceivedFeeDate), required: false);
-            SourceExpression.Validate(bodyreceivedPhotoDate, nameof(bodyreceivedPhotoDate), required: false);
-            SourceExpression.Validate(bodyreturning, nameof(bodyreturning), required: false);
-            SourceExpression.Validate(bodyroomMateDescription, nameof(bodyroomMateDescription), required: false);
-            SourceExpression.Validate(bodyroommateGroupId, nameof(bodyroommateGroupId), required: false);
-            SourceExpression.Validate(bodyroomMateGroupSortOrder, nameof(bodyroomMateGroupSortOrder), required: false);
-            SourceExpression.Validate(bodyroomMateShowInSearch, nameof(bodyroomMateShowInSearch), required: false);
-            SourceExpression.Validate(bodyroomPreferenceComments, nameof(bodyroomPreferenceComments), required: false);
-            SourceExpression.Validate(bodyroomSelectionNumber, nameof(bodyroomSelectionNumber), required: false);
-            SourceExpression.Validate(bodyroomSelectionTimeslot, nameof(bodyroomSelectionTimeslot), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodyweb, nameof(bodyweb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/entryapplication.json";
@@ -2896,61 +2548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateEntryApplicationResponse> UpdateEntryApplication([WorkflowExpression] Func<int> entryApplicationId, [WorkflowExpression] Func<bodyallocateOptionEnumInput> bodyallocateOptionEnum = null, [WorkflowExpression] Func<string> bodyapplicationDate = null, [WorkflowExpression] Func<int> bodyapplicationStatusId = null, [WorkflowExpression] Func<string> bodycancelDate = null, [WorkflowExpression] Func<int> bodyclassificationId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycommentsInternal = null, [WorkflowExpression] Func<string> bodycompleteDate = null, [WorkflowExpression] Func<string> bodycontractSignedDate = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<bool> bodycustomBit3 = null, [WorkflowExpression] Func<bool> bodycustomBit4 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomDate3 = null, [WorkflowExpression] Func<string> bodycustomDate4 = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyenquiryDate = null, [WorkflowExpression] Func<string> bodyexpectedArrivalDate = null, [WorkflowExpression] Func<string> bodyexpectedArrivalDateLatest = null, [WorkflowExpression] Func<string> bodyexpectedDepartureDate = null, [WorkflowExpression] Func<string> bodyofferedDate = null, [WorkflowExpression] Func<string> bodyofferReplyDate = null, [WorkflowExpression] Func<bodyofferReplyEnumInput> bodyofferReplyEnum = null, [WorkflowExpression] Func<string> bodyofferReplyReason = null, [WorkflowExpression] Func<string> bodyofferSentDate = null, [WorkflowExpression] Func<bool> bodyportalTrackingOnly = null, [WorkflowExpression] Func<string> bodypreferenceComments = null, [WorkflowExpression] Func<string> bodyrating = null, [WorkflowExpression] Func<string> bodyreceivedDate = null, [WorkflowExpression] Func<bool> bodyreceivedDeposit = null, [WorkflowExpression] Func<int> bodyreceivedDepositPaymentId = null, [WorkflowExpression] Func<int> bodyreceivedDepositWebPaymentId = null, [WorkflowExpression] Func<double> bodyreceivedDepositAmount = null, [WorkflowExpression] Func<string> bodyreceivedDepositDate = null, [WorkflowExpression] Func<bool> bodyreceivedDepositWaived = null, [WorkflowExpression] Func<bool> bodyreceivedFee = null, [WorkflowExpression] Func<int> bodyreceivedFeePaymentId = null, [WorkflowExpression] Func<int> bodyreceivedFeeWebPaymentId = null, [WorkflowExpression] Func<double> bodyreceivedFeeAmount = null, [WorkflowExpression] Func<string> bodyreceivedFeeDate = null, [WorkflowExpression] Func<string> bodyreceivedPhotoDate = null, [WorkflowExpression] Func<bool> bodyreturning = null, [WorkflowExpression] Func<string> bodyroomMateDescription = null, [WorkflowExpression] Func<int> bodyroommateGroupId = null, [WorkflowExpression] Func<int> bodyroomMateGroupSortOrder = null, [WorkflowExpression] Func<bool> bodyroomMateShowInSearch = null, [WorkflowExpression] Func<string> bodyroomPreferenceComments = null, [WorkflowExpression] Func<int> bodyroomSelectionNumber = null, [WorkflowExpression] Func<string> bodyroomSelectionTimeslot = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<bool> bodyweb = null)
         {
-            SourceExpression.Validate(entryApplicationId, nameof(entryApplicationId), required: true);
-            SourceExpression.Validate(bodyallocateOptionEnum, nameof(bodyallocateOptionEnum), required: false);
-            SourceExpression.Validate(bodyapplicationDate, nameof(bodyapplicationDate), required: false);
-            SourceExpression.Validate(bodyapplicationStatusId, nameof(bodyapplicationStatusId), required: false);
-            SourceExpression.Validate(bodycancelDate, nameof(bodycancelDate), required: false);
-            SourceExpression.Validate(bodyclassificationId, nameof(bodyclassificationId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycommentsInternal, nameof(bodycommentsInternal), required: false);
-            SourceExpression.Validate(bodycompleteDate, nameof(bodycompleteDate), required: false);
-            SourceExpression.Validate(bodycontractSignedDate, nameof(bodycontractSignedDate), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomBit3, nameof(bodycustomBit3), required: false);
-            SourceExpression.Validate(bodycustomBit4, nameof(bodycustomBit4), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomDate3, nameof(bodycustomDate3), required: false);
-            SourceExpression.Validate(bodycustomDate4, nameof(bodycustomDate4), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyenquiryDate, nameof(bodyenquiryDate), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDate, nameof(bodyexpectedArrivalDate), required: false);
-            SourceExpression.Validate(bodyexpectedArrivalDateLatest, nameof(bodyexpectedArrivalDateLatest), required: false);
-            SourceExpression.Validate(bodyexpectedDepartureDate, nameof(bodyexpectedDepartureDate), required: false);
-            SourceExpression.Validate(bodyofferedDate, nameof(bodyofferedDate), required: false);
-            SourceExpression.Validate(bodyofferReplyDate, nameof(bodyofferReplyDate), required: false);
-            SourceExpression.Validate(bodyofferReplyEnum, nameof(bodyofferReplyEnum), required: false);
-            SourceExpression.Validate(bodyofferReplyReason, nameof(bodyofferReplyReason), required: false);
-            SourceExpression.Validate(bodyofferSentDate, nameof(bodyofferSentDate), required: false);
-            SourceExpression.Validate(bodyportalTrackingOnly, nameof(bodyportalTrackingOnly), required: false);
-            SourceExpression.Validate(bodypreferenceComments, nameof(bodypreferenceComments), required: false);
-            SourceExpression.Validate(bodyrating, nameof(bodyrating), required: false);
-            SourceExpression.Validate(bodyreceivedDate, nameof(bodyreceivedDate), required: false);
-            SourceExpression.Validate(bodyreceivedDeposit, nameof(bodyreceivedDeposit), required: false);
-            SourceExpression.Validate(bodyreceivedDepositPaymentId, nameof(bodyreceivedDepositPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedDepositWebPaymentId, nameof(bodyreceivedDepositWebPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedDepositAmount, nameof(bodyreceivedDepositAmount), required: false);
-            SourceExpression.Validate(bodyreceivedDepositDate, nameof(bodyreceivedDepositDate), required: false);
-            SourceExpression.Validate(bodyreceivedDepositWaived, nameof(bodyreceivedDepositWaived), required: false);
-            SourceExpression.Validate(bodyreceivedFee, nameof(bodyreceivedFee), required: false);
-            SourceExpression.Validate(bodyreceivedFeePaymentId, nameof(bodyreceivedFeePaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedFeeWebPaymentId, nameof(bodyreceivedFeeWebPaymentId), required: false);
-            SourceExpression.Validate(bodyreceivedFeeAmount, nameof(bodyreceivedFeeAmount), required: false);
-            SourceExpression.Validate(bodyreceivedFeeDate, nameof(bodyreceivedFeeDate), required: false);
-            SourceExpression.Validate(bodyreceivedPhotoDate, nameof(bodyreceivedPhotoDate), required: false);
-            SourceExpression.Validate(bodyreturning, nameof(bodyreturning), required: false);
-            SourceExpression.Validate(bodyroomMateDescription, nameof(bodyroomMateDescription), required: false);
-            SourceExpression.Validate(bodyroommateGroupId, nameof(bodyroommateGroupId), required: false);
-            SourceExpression.Validate(bodyroomMateGroupSortOrder, nameof(bodyroomMateGroupSortOrder), required: false);
-            SourceExpression.Validate(bodyroomMateShowInSearch, nameof(bodyroomMateShowInSearch), required: false);
-            SourceExpression.Validate(bodyroomPreferenceComments, nameof(bodyroomPreferenceComments), required: false);
-            SourceExpression.Validate(bodyroomSelectionNumber, nameof(bodyroomSelectionNumber), required: false);
-            SourceExpression.Validate(bodyroomSelectionTimeslot, nameof(bodyroomSelectionTimeslot), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodyweb, nameof(bodyweb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/entryapplication.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(entryApplicationId, 1));
@@ -3295,65 +2892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectTermSessionResponseItem[]> SelectTermSession([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<int> bodybookingTypeId = null, [WorkflowExpression] Func<int> bodycancelBookingDefaultEndBookingReasonId = null, [WorkflowExpression] Func<bodycancelBookingUpdateEndBookingReasonBooleanAskEnumInput> bodycancelBookingUpdateEndBookingReasonBooleanAskEnum = null, [WorkflowExpression] Func<string> bodycheckInDatevalue = null, [WorkflowExpression] Func<bodycheckInDateOperatorInput> bodycheckInDateOperator = null, [WorkflowExpression] Func<bodycheckInDateActualDecreaseBooleanAskEnumInput> bodycheckInDateActualDecreaseBooleanAskEnum = null, [WorkflowExpression] Func<bodycheckInDateActualIncreaseBooleanAskEnumInput> bodycheckInDateActualIncreaseBooleanAskEnum = null, [WorkflowExpression] Func<int> bodycheckInDefaultStartBookingReasonId = null, [WorkflowExpression] Func<bodycheckInUpdateStartBookingReasonBooleanAskEnumInput> bodycheckInUpdateStartBookingReasonBooleanAskEnum = null, [WorkflowExpression] Func<string> bodycheckOutDatevalue = null, [WorkflowExpression] Func<bodycheckOutDateOperatorInput> bodycheckOutDateOperator = null, [WorkflowExpression] Func<bodycheckOutDateActualDecreaseBooleanAskEnumInput> bodycheckOutDateActualDecreaseBooleanAskEnum = null, [WorkflowExpression] Func<bodycheckOutDateActualIncreaseBooleanAskEnumInput> bodycheckOutDateActualIncreaseBooleanAskEnum = null, [WorkflowExpression] Func<int> bodycheckOutDefaultEndBookingReasonId = null, [WorkflowExpression] Func<bodycheckOutUpdateEndBookingReasonBooleanAskEnumInput> bodycheckOutUpdateEndBookingReasonBooleanAskEnum = null, [WorkflowExpression] Func<bodycontractDateCheckInDecreaseBooleanAskEnumInput> bodycontractDateCheckInDecreaseBooleanAskEnum = null, [WorkflowExpression] Func<bodycontractDateCheckInIncreaseBooleanAskEnumInput> bodycontractDateCheckInIncreaseBooleanAskEnum = null, [WorkflowExpression] Func<bodycontractDateCheckOutDecreaseBooleanAskEnumInput> bodycontractDateCheckOutDecreaseBooleanAskEnum = null, [WorkflowExpression] Func<bodycontractDateCheckOutIncreaseBooleanAskEnumInput> bodycontractDateCheckOutIncreaseBooleanAskEnum = null, [WorkflowExpression] Func<string> bodycontractDateEndvalue = null, [WorkflowExpression] Func<bodycontractDateEndOperatorInput> bodycontractDateEndOperator = null, [WorkflowExpression] Func<string> bodycontractDateStartvalue = null, [WorkflowExpression] Func<bodycontractDateStartOperatorInput> bodycontractDateStartOperator = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1value = null, [WorkflowExpression] Func<bodycustomDate1OperatorInput> bodycustomDate1Operator = null, [WorkflowExpression] Func<string> bodycustomDate2value = null, [WorkflowExpression] Func<bodycustomDate2OperatorInput> bodycustomDate2Operator = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyendBookingReasonId = null, [WorkflowExpression] Func<bodyentryStatusEnumInput> bodyentryStatusEnum = null, [WorkflowExpression] Func<string> bodyeTA = null, [WorkflowExpression] Func<string> bodyeTD = null, [WorkflowExpression] Func<int> bodyhousekeepingId = null, [WorkflowExpression] Func<bodyrecordTypeEnumInput> bodyrecordTypeEnum = null, [WorkflowExpression] Func<bool> bodyroomLocationFixed = null, [WorkflowExpression] Func<int> bodyroomLocationId = null, [WorkflowExpression] Func<double> bodyroomRateAmount = null, [WorkflowExpression] Func<int> bodyroomRateId = null, [WorkflowExpression] Func<int> bodyroomTypeId = null, [WorkflowExpression] Func<int> bodystartBookingReasonId = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<string> bodytermSessionCode = null, [WorkflowExpression] Func<int> bodytermSessionId = null, [WorkflowExpression] Func<bool> bodyuseActiveBookingAsTemplate = null, [WorkflowExpression] Func<string> bodywebDescription = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodybookingTypeId, nameof(bodybookingTypeId), required: false);
-            SourceExpression.Validate(bodycancelBookingDefaultEndBookingReasonId, nameof(bodycancelBookingDefaultEndBookingReasonId), required: false);
-            SourceExpression.Validate(bodycancelBookingUpdateEndBookingReasonBooleanAskEnum, nameof(bodycancelBookingUpdateEndBookingReasonBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycheckInDatevalue, nameof(bodycheckInDatevalue), required: false);
-            SourceExpression.Validate(bodycheckInDateOperator, nameof(bodycheckInDateOperator), required: false);
-            SourceExpression.Validate(bodycheckInDateActualDecreaseBooleanAskEnum, nameof(bodycheckInDateActualDecreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycheckInDateActualIncreaseBooleanAskEnum, nameof(bodycheckInDateActualIncreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycheckInDefaultStartBookingReasonId, nameof(bodycheckInDefaultStartBookingReasonId), required: false);
-            SourceExpression.Validate(bodycheckInUpdateStartBookingReasonBooleanAskEnum, nameof(bodycheckInUpdateStartBookingReasonBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycheckOutDatevalue, nameof(bodycheckOutDatevalue), required: false);
-            SourceExpression.Validate(bodycheckOutDateOperator, nameof(bodycheckOutDateOperator), required: false);
-            SourceExpression.Validate(bodycheckOutDateActualDecreaseBooleanAskEnum, nameof(bodycheckOutDateActualDecreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycheckOutDateActualIncreaseBooleanAskEnum, nameof(bodycheckOutDateActualIncreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycheckOutDefaultEndBookingReasonId, nameof(bodycheckOutDefaultEndBookingReasonId), required: false);
-            SourceExpression.Validate(bodycheckOutUpdateEndBookingReasonBooleanAskEnum, nameof(bodycheckOutUpdateEndBookingReasonBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycontractDateCheckInDecreaseBooleanAskEnum, nameof(bodycontractDateCheckInDecreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycontractDateCheckInIncreaseBooleanAskEnum, nameof(bodycontractDateCheckInIncreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycontractDateCheckOutDecreaseBooleanAskEnum, nameof(bodycontractDateCheckOutDecreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycontractDateCheckOutIncreaseBooleanAskEnum, nameof(bodycontractDateCheckOutIncreaseBooleanAskEnum), required: false);
-            SourceExpression.Validate(bodycontractDateEndvalue, nameof(bodycontractDateEndvalue), required: false);
-            SourceExpression.Validate(bodycontractDateEndOperator, nameof(bodycontractDateEndOperator), required: false);
-            SourceExpression.Validate(bodycontractDateStartvalue, nameof(bodycontractDateStartvalue), required: false);
-            SourceExpression.Validate(bodycontractDateStartOperator, nameof(bodycontractDateStartOperator), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1value, nameof(bodycustomDate1value), required: false);
-            SourceExpression.Validate(bodycustomDate1Operator, nameof(bodycustomDate1Operator), required: false);
-            SourceExpression.Validate(bodycustomDate2value, nameof(bodycustomDate2value), required: false);
-            SourceExpression.Validate(bodycustomDate2Operator, nameof(bodycustomDate2Operator), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyendBookingReasonId, nameof(bodyendBookingReasonId), required: false);
-            SourceExpression.Validate(bodyentryStatusEnum, nameof(bodyentryStatusEnum), required: false);
-            SourceExpression.Validate(bodyeTA, nameof(bodyeTA), required: false);
-            SourceExpression.Validate(bodyeTD, nameof(bodyeTD), required: false);
-            SourceExpression.Validate(bodyhousekeepingId, nameof(bodyhousekeepingId), required: false);
-            SourceExpression.Validate(bodyrecordTypeEnum, nameof(bodyrecordTypeEnum), required: false);
-            SourceExpression.Validate(bodyroomLocationFixed, nameof(bodyroomLocationFixed), required: false);
-            SourceExpression.Validate(bodyroomLocationId, nameof(bodyroomLocationId), required: false);
-            SourceExpression.Validate(bodyroomRateAmount, nameof(bodyroomRateAmount), required: false);
-            SourceExpression.Validate(bodyroomRateId, nameof(bodyroomRateId), required: false);
-            SourceExpression.Validate(bodyroomTypeId, nameof(bodyroomTypeId), required: false);
-            SourceExpression.Validate(bodystartBookingReasonId, nameof(bodystartBookingReasonId), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodytermSessionCode, nameof(bodytermSessionCode), required: false);
-            SourceExpression.Validate(bodytermSessionId, nameof(bodytermSessionId), required: false);
-            SourceExpression.Validate(bodyuseActiveBookingAsTemplate, nameof(bodyuseActiveBookingAsTemplate), required: false);
-            SourceExpression.Validate(bodywebDescription, nameof(bodywebDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/TermSession.json";
@@ -3786,107 +3324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectEntryDetailResponseItem[]> SelectEntryDetail([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<bool> bodyacademicHold = null, [WorkflowExpression] Func<int> bodyaccountPaymentTypeId = null, [WorkflowExpression] Func<bool> bodyaccountHold = null, [WorkflowExpression] Func<string> bodyaccountBankName = null, [WorkflowExpression] Func<string> bodyaccountBankNumber = null, [WorkflowExpression] Func<string> bodyaccountCode = null, [WorkflowExpression] Func<string> bodyaccountComments = null, [WorkflowExpression] Func<string> bodyaccountDetail1 = null, [WorkflowExpression] Func<string> bodyaccountDetail2 = null, [WorkflowExpression] Func<string> bodyaccountDetail3 = null, [WorkflowExpression] Func<string> bodyaccountDetail4 = null, [WorkflowExpression] Func<string> bodyaccountDueDatevalue = null, [WorkflowExpression] Func<bodyaccountDueDateOperatorInput> bodyaccountDueDateOperator = null, [WorkflowExpression] Func<bool> bodyathlete = null, [WorkflowExpression] Func<string> bodyathleteTeam = null, [WorkflowExpression] Func<bodyattendeeStatusEnumInput> bodyattendeeStatusEnum = null, [WorkflowExpression] Func<string> bodycareer = null, [WorkflowExpression] Func<string> bodycareerComments = null, [WorkflowExpression] Func<int> bodycitizenshipCountryId = null, [WorkflowExpression] Func<int> bodyclassificationId = null, [WorkflowExpression] Func<bool> bodyclassificationOverride = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodycountryOfBirthCountryId = null, [WorkflowExpression] Func<int> bodycountryOfResidenceCountryId = null, [WorkflowExpression] Func<double> bodycumulativeGPA = null, [WorkflowExpression] Func<double> bodycumulativeHours = null, [WorkflowExpression] Func<double> bodycurrentGPA = null, [WorkflowExpression] Func<double> bodycurrentHours = null, [WorkflowExpression] Func<string> bodycurrentMajor = null, [WorkflowExpression] Func<string> bodycurrentMinor = null, [WorkflowExpression] Func<string> bodydateEntryvalue = null, [WorkflowExpression] Func<bodydateEntryOperatorInput> bodydateEntryOperator = null, [WorkflowExpression] Func<string> bodydateExitvalue = null, [WorkflowExpression] Func<bodydateExitOperatorInput> bodydateExitOperator = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<bool> bodydeceased = null, [WorkflowExpression] Func<string> bodydeceasedDatevalue = null, [WorkflowExpression] Func<bodydeceasedDateOperatorInput> bodydeceasedDateOperator = null, [WorkflowExpression] Func<string> bodydietary = null, [WorkflowExpression] Func<string> bodydisability = null, [WorkflowExpression] Func<string> bodyemploymentDetails = null, [WorkflowExpression] Func<string> bodyenrollmentClass = null, [WorkflowExpression] Func<string> bodyenrollmentLevel = null, [WorkflowExpression] Func<string> bodyenrollmentStatus = null, [WorkflowExpression] Func<string> bodyenrollmentTerm = null, [WorkflowExpression] Func<int> bodyenrollmentYear = null, [WorkflowExpression] Func<int> bodyentryDetailId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyethnicity = null, [WorkflowExpression] Func<int> bodyeventRegistrationFeeId = null, [WorkflowExpression] Func<string> bodyexpectedGraduationDatevalue = null, [WorkflowExpression] Func<bodyexpectedGraduationDateOperatorInput> bodyexpectedGraduationDateOperator = null, [WorkflowExpression] Func<string> bodyfinancialComments = null, [WorkflowExpression] Func<int> bodyfinancialSupportId = null, [WorkflowExpression] Func<string> bodyhearAboutUs = null, [WorkflowExpression] Func<bool> bodyhonorsIndicator = null, [WorkflowExpression] Func<bool> bodyimmunizationsHold = null, [WorkflowExpression] Func<bool> bodyincidentHold = null, [WorkflowExpression] Func<string> bodyincidentHoldComments = null, [WorkflowExpression] Func<bool> bodyinternational = null, [WorkflowExpression] Func<string> bodyinternationalDetails = null, [WorkflowExpression] Func<bool> bodylivingWithDependents = null, [WorkflowExpression] Func<bool> bodymarried = null, [WorkflowExpression] Func<string> bodymedical = null, [WorkflowExpression] Func<int> bodynationalityId = null, [WorkflowExpression] Func<string> bodyoccupation = null, [WorkflowExpression] Func<string> bodyphotoPath = null, [WorkflowExpression] Func<string> bodypreviousMemberName = null, [WorkflowExpression] Func<string> bodypreviousMemberRelationship = null, [WorkflowExpression] Func<string> bodypreviousMembership = null, [WorkflowExpression] Func<string> bodypreviousMembershipYears = null, [WorkflowExpression] Func<string> bodypreviousMemberYears = null, [WorkflowExpression] Func<string> bodyprofileInterests = null, [WorkflowExpression] Func<int> bodyregionOfBirthId = null, [WorkflowExpression] Func<string> bodyreligion = null, [WorkflowExpression] Func<string> bodyresidency = null, [WorkflowExpression] Func<string> bodyresidentStatus = null, [WorkflowExpression] Func<int> bodyresidentYear = null, [WorkflowExpression] Func<string> bodysituationResponseComments = null, [WorkflowExpression] Func<string> bodysituationResponseDetail = null, [WorkflowExpression] Func<bodysituationResponseEnumInput> bodysituationResponseEnum = null, [WorkflowExpression] Func<string> bodysituationResponseExpiryDatevalue = null, [WorkflowExpression] Func<bodysituationResponseExpiryDateOperatorInput> bodysituationResponseExpiryDateOperator = null, [WorkflowExpression] Func<string> bodysituationResponseModifiedDatevalue = null, [WorkflowExpression] Func<bodysituationResponseModifiedDateOperatorInput> bodysituationResponseModifiedDateOperator = null, [WorkflowExpression] Func<string> bodysituationResponseSituation = null, [WorkflowExpression] Func<string> bodyspecialNeeds = null, [WorkflowExpression] Func<int> bodystaffId = null, [WorkflowExpression] Func<bool> bodyusesScreenReader = null, [WorkflowExpression] Func<string> bodyvehicleDetails = null, [WorkflowExpression] Func<string> bodyvehiclePermit = null, [WorkflowExpression] Func<string> bodyvehicleRegistration = null, [WorkflowExpression] Func<string> bodyveteranStatus = null, [WorkflowExpression] Func<bool> bodyvisa = null, [WorkflowExpression] Func<string> bodyvisaDetails = null, [WorkflowExpression] Func<bool> bodyvisitorHold = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyacademicHold, nameof(bodyacademicHold), required: false);
-            SourceExpression.Validate(bodyaccountPaymentTypeId, nameof(bodyaccountPaymentTypeId), required: false);
-            SourceExpression.Validate(bodyaccountHold, nameof(bodyaccountHold), required: false);
-            SourceExpression.Validate(bodyaccountBankName, nameof(bodyaccountBankName), required: false);
-            SourceExpression.Validate(bodyaccountBankNumber, nameof(bodyaccountBankNumber), required: false);
-            SourceExpression.Validate(bodyaccountCode, nameof(bodyaccountCode), required: false);
-            SourceExpression.Validate(bodyaccountComments, nameof(bodyaccountComments), required: false);
-            SourceExpression.Validate(bodyaccountDetail1, nameof(bodyaccountDetail1), required: false);
-            SourceExpression.Validate(bodyaccountDetail2, nameof(bodyaccountDetail2), required: false);
-            SourceExpression.Validate(bodyaccountDetail3, nameof(bodyaccountDetail3), required: false);
-            SourceExpression.Validate(bodyaccountDetail4, nameof(bodyaccountDetail4), required: false);
-            SourceExpression.Validate(bodyaccountDueDatevalue, nameof(bodyaccountDueDatevalue), required: false);
-            SourceExpression.Validate(bodyaccountDueDateOperator, nameof(bodyaccountDueDateOperator), required: false);
-            SourceExpression.Validate(bodyathlete, nameof(bodyathlete), required: false);
-            SourceExpression.Validate(bodyathleteTeam, nameof(bodyathleteTeam), required: false);
-            SourceExpression.Validate(bodyattendeeStatusEnum, nameof(bodyattendeeStatusEnum), required: false);
-            SourceExpression.Validate(bodycareer, nameof(bodycareer), required: false);
-            SourceExpression.Validate(bodycareerComments, nameof(bodycareerComments), required: false);
-            SourceExpression.Validate(bodycitizenshipCountryId, nameof(bodycitizenshipCountryId), required: false);
-            SourceExpression.Validate(bodyclassificationId, nameof(bodyclassificationId), required: false);
-            SourceExpression.Validate(bodyclassificationOverride, nameof(bodyclassificationOverride), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycountryOfBirthCountryId, nameof(bodycountryOfBirthCountryId), required: false);
-            SourceExpression.Validate(bodycountryOfResidenceCountryId, nameof(bodycountryOfResidenceCountryId), required: false);
-            SourceExpression.Validate(bodycumulativeGPA, nameof(bodycumulativeGPA), required: false);
-            SourceExpression.Validate(bodycumulativeHours, nameof(bodycumulativeHours), required: false);
-            SourceExpression.Validate(bodycurrentGPA, nameof(bodycurrentGPA), required: false);
-            SourceExpression.Validate(bodycurrentHours, nameof(bodycurrentHours), required: false);
-            SourceExpression.Validate(bodycurrentMajor, nameof(bodycurrentMajor), required: false);
-            SourceExpression.Validate(bodycurrentMinor, nameof(bodycurrentMinor), required: false);
-            SourceExpression.Validate(bodydateEntryvalue, nameof(bodydateEntryvalue), required: false);
-            SourceExpression.Validate(bodydateEntryOperator, nameof(bodydateEntryOperator), required: false);
-            SourceExpression.Validate(bodydateExitvalue, nameof(bodydateExitvalue), required: false);
-            SourceExpression.Validate(bodydateExitOperator, nameof(bodydateExitOperator), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydeceased, nameof(bodydeceased), required: false);
-            SourceExpression.Validate(bodydeceasedDatevalue, nameof(bodydeceasedDatevalue), required: false);
-            SourceExpression.Validate(bodydeceasedDateOperator, nameof(bodydeceasedDateOperator), required: false);
-            SourceExpression.Validate(bodydietary, nameof(bodydietary), required: false);
-            SourceExpression.Validate(bodydisability, nameof(bodydisability), required: false);
-            SourceExpression.Validate(bodyemploymentDetails, nameof(bodyemploymentDetails), required: false);
-            SourceExpression.Validate(bodyenrollmentClass, nameof(bodyenrollmentClass), required: false);
-            SourceExpression.Validate(bodyenrollmentLevel, nameof(bodyenrollmentLevel), required: false);
-            SourceExpression.Validate(bodyenrollmentStatus, nameof(bodyenrollmentStatus), required: false);
-            SourceExpression.Validate(bodyenrollmentTerm, nameof(bodyenrollmentTerm), required: false);
-            SourceExpression.Validate(bodyenrollmentYear, nameof(bodyenrollmentYear), required: false);
-            SourceExpression.Validate(bodyentryDetailId, nameof(bodyentryDetailId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyethnicity, nameof(bodyethnicity), required: false);
-            SourceExpression.Validate(bodyeventRegistrationFeeId, nameof(bodyeventRegistrationFeeId), required: false);
-            SourceExpression.Validate(bodyexpectedGraduationDatevalue, nameof(bodyexpectedGraduationDatevalue), required: false);
-            SourceExpression.Validate(bodyexpectedGraduationDateOperator, nameof(bodyexpectedGraduationDateOperator), required: false);
-            SourceExpression.Validate(bodyfinancialComments, nameof(bodyfinancialComments), required: false);
-            SourceExpression.Validate(bodyfinancialSupportId, nameof(bodyfinancialSupportId), required: false);
-            SourceExpression.Validate(bodyhearAboutUs, nameof(bodyhearAboutUs), required: false);
-            SourceExpression.Validate(bodyhonorsIndicator, nameof(bodyhonorsIndicator), required: false);
-            SourceExpression.Validate(bodyimmunizationsHold, nameof(bodyimmunizationsHold), required: false);
-            SourceExpression.Validate(bodyincidentHold, nameof(bodyincidentHold), required: false);
-            SourceExpression.Validate(bodyincidentHoldComments, nameof(bodyincidentHoldComments), required: false);
-            SourceExpression.Validate(bodyinternational, nameof(bodyinternational), required: false);
-            SourceExpression.Validate(bodyinternationalDetails, nameof(bodyinternationalDetails), required: false);
-            SourceExpression.Validate(bodylivingWithDependents, nameof(bodylivingWithDependents), required: false);
-            SourceExpression.Validate(bodymarried, nameof(bodymarried), required: false);
-            SourceExpression.Validate(bodymedical, nameof(bodymedical), required: false);
-            SourceExpression.Validate(bodynationalityId, nameof(bodynationalityId), required: false);
-            SourceExpression.Validate(bodyoccupation, nameof(bodyoccupation), required: false);
-            SourceExpression.Validate(bodyphotoPath, nameof(bodyphotoPath), required: false);
-            SourceExpression.Validate(bodypreviousMemberName, nameof(bodypreviousMemberName), required: false);
-            SourceExpression.Validate(bodypreviousMemberRelationship, nameof(bodypreviousMemberRelationship), required: false);
-            SourceExpression.Validate(bodypreviousMembership, nameof(bodypreviousMembership), required: false);
-            SourceExpression.Validate(bodypreviousMembershipYears, nameof(bodypreviousMembershipYears), required: false);
-            SourceExpression.Validate(bodypreviousMemberYears, nameof(bodypreviousMemberYears), required: false);
-            SourceExpression.Validate(bodyprofileInterests, nameof(bodyprofileInterests), required: false);
-            SourceExpression.Validate(bodyregionOfBirthId, nameof(bodyregionOfBirthId), required: false);
-            SourceExpression.Validate(bodyreligion, nameof(bodyreligion), required: false);
-            SourceExpression.Validate(bodyresidency, nameof(bodyresidency), required: false);
-            SourceExpression.Validate(bodyresidentStatus, nameof(bodyresidentStatus), required: false);
-            SourceExpression.Validate(bodyresidentYear, nameof(bodyresidentYear), required: false);
-            SourceExpression.Validate(bodysituationResponseComments, nameof(bodysituationResponseComments), required: false);
-            SourceExpression.Validate(bodysituationResponseDetail, nameof(bodysituationResponseDetail), required: false);
-            SourceExpression.Validate(bodysituationResponseEnum, nameof(bodysituationResponseEnum), required: false);
-            SourceExpression.Validate(bodysituationResponseExpiryDatevalue, nameof(bodysituationResponseExpiryDatevalue), required: false);
-            SourceExpression.Validate(bodysituationResponseExpiryDateOperator, nameof(bodysituationResponseExpiryDateOperator), required: false);
-            SourceExpression.Validate(bodysituationResponseModifiedDatevalue, nameof(bodysituationResponseModifiedDatevalue), required: false);
-            SourceExpression.Validate(bodysituationResponseModifiedDateOperator, nameof(bodysituationResponseModifiedDateOperator), required: false);
-            SourceExpression.Validate(bodysituationResponseSituation, nameof(bodysituationResponseSituation), required: false);
-            SourceExpression.Validate(bodyspecialNeeds, nameof(bodyspecialNeeds), required: false);
-            SourceExpression.Validate(bodystaffId, nameof(bodystaffId), required: false);
-            SourceExpression.Validate(bodyusesScreenReader, nameof(bodyusesScreenReader), required: false);
-            SourceExpression.Validate(bodyvehicleDetails, nameof(bodyvehicleDetails), required: false);
-            SourceExpression.Validate(bodyvehiclePermit, nameof(bodyvehiclePermit), required: false);
-            SourceExpression.Validate(bodyvehicleRegistration, nameof(bodyvehicleRegistration), required: false);
-            SourceExpression.Validate(bodyveteranStatus, nameof(bodyveteranStatus), required: false);
-            SourceExpression.Validate(bodyvisa, nameof(bodyvisa), required: false);
-            SourceExpression.Validate(bodyvisaDetails, nameof(bodyvisaDetails), required: false);
-            SourceExpression.Validate(bodyvisitorHold, nameof(bodyvisitorHold), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/EntryDetail.json";
@@ -4579,94 +4016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateEntryDetailResponse> UpdateEntryDetail([WorkflowExpression] Func<int> entryDetailId, [WorkflowExpression] Func<bool> bodyacademicHold = null, [WorkflowExpression] Func<int> bodyaccountPaymentTypeId = null, [WorkflowExpression] Func<string> bodyaccountBankName = null, [WorkflowExpression] Func<string> bodyaccountBankNumber = null, [WorkflowExpression] Func<string> bodyaccountCode = null, [WorkflowExpression] Func<string> bodyaccountComments = null, [WorkflowExpression] Func<string> bodyaccountDetail1 = null, [WorkflowExpression] Func<string> bodyaccountDetail2 = null, [WorkflowExpression] Func<string> bodyaccountDetail3 = null, [WorkflowExpression] Func<string> bodyaccountDetail4 = null, [WorkflowExpression] Func<string> bodyaccountDueDate = null, [WorkflowExpression] Func<bool> bodyaccountHold = null, [WorkflowExpression] Func<bool> bodyathlete = null, [WorkflowExpression] Func<string> bodyathleteTeam = null, [WorkflowExpression] Func<bodyattendeeStatusEnumInput> bodyattendeeStatusEnum = null, [WorkflowExpression] Func<string> bodycareer = null, [WorkflowExpression] Func<string> bodycareerComments = null, [WorkflowExpression] Func<int> bodycitizenshipCountryId = null, [WorkflowExpression] Func<int> bodyclassificationId = null, [WorkflowExpression] Func<bool> bodyclassificationOverride = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodycountryOfBirthCountryId = null, [WorkflowExpression] Func<int> bodycountryOfResidenceCountryId = null, [WorkflowExpression] Func<double> bodycumulativeGPA = null, [WorkflowExpression] Func<double> bodycumulativeHours = null, [WorkflowExpression] Func<double> bodycurrentGPA = null, [WorkflowExpression] Func<double> bodycurrentHours = null, [WorkflowExpression] Func<string> bodycurrentMajor = null, [WorkflowExpression] Func<string> bodycurrentMinor = null, [WorkflowExpression] Func<string> bodydateEntry = null, [WorkflowExpression] Func<string> bodydateExit = null, [WorkflowExpression] Func<bool> bodydeceased = null, [WorkflowExpression] Func<string> bodydeceasedDate = null, [WorkflowExpression] Func<string> bodydietary = null, [WorkflowExpression] Func<string> bodydisability = null, [WorkflowExpression] Func<string> bodyemploymentDetails = null, [WorkflowExpression] Func<string> bodyenrollmentClass = null, [WorkflowExpression] Func<string> bodyenrollmentLevel = null, [WorkflowExpression] Func<string> bodyenrollmentStatus = null, [WorkflowExpression] Func<string> bodyenrollmentTerm = null, [WorkflowExpression] Func<int> bodyenrollmentYear = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyethnicity = null, [WorkflowExpression] Func<int> bodyeventRegistrationFeeId = null, [WorkflowExpression] Func<string> bodyexpectedGraduationDate = null, [WorkflowExpression] Func<string> bodyfinancialComments = null, [WorkflowExpression] Func<int> bodyfinancialSupportId = null, [WorkflowExpression] Func<string> bodyhearAboutUs = null, [WorkflowExpression] Func<bool> bodyhonorsIndicator = null, [WorkflowExpression] Func<bool> bodyimmunizationsHold = null, [WorkflowExpression] Func<bool> bodyincidentHold = null, [WorkflowExpression] Func<string> bodyincidentHoldComments = null, [WorkflowExpression] Func<bool> bodyinternational = null, [WorkflowExpression] Func<string> bodyinternationalDetails = null, [WorkflowExpression] Func<bool> bodylivingWithDependents = null, [WorkflowExpression] Func<bool> bodymarried = null, [WorkflowExpression] Func<string> bodymedical = null, [WorkflowExpression] Func<int> bodynationalityId = null, [WorkflowExpression] Func<string> bodyoccupation = null, [WorkflowExpression] Func<string> bodyphotoPath = null, [WorkflowExpression] Func<string> bodypreviousMemberName = null, [WorkflowExpression] Func<string> bodypreviousMemberRelationship = null, [WorkflowExpression] Func<string> bodypreviousMembership = null, [WorkflowExpression] Func<string> bodypreviousMembershipYears = null, [WorkflowExpression] Func<string> bodypreviousMemberYears = null, [WorkflowExpression] Func<string> bodyprofileInterests = null, [WorkflowExpression] Func<int> bodyregionOfBirthId = null, [WorkflowExpression] Func<string> bodyreligion = null, [WorkflowExpression] Func<string> bodyresidency = null, [WorkflowExpression] Func<string> bodyresidentStatus = null, [WorkflowExpression] Func<int> bodyresidentYear = null, [WorkflowExpression] Func<string> bodysituationResponseComments = null, [WorkflowExpression] Func<string> bodysituationResponseDetail = null, [WorkflowExpression] Func<bodysituationResponseEnumInput> bodysituationResponseEnum = null, [WorkflowExpression] Func<string> bodysituationResponseExpiryDate = null, [WorkflowExpression] Func<string> bodysituationResponseModifiedDate = null, [WorkflowExpression] Func<string> bodysituationResponseSituation = null, [WorkflowExpression] Func<string> bodyspecialNeeds = null, [WorkflowExpression] Func<int> bodystaffId = null, [WorkflowExpression] Func<bool> bodyusesScreenReader = null, [WorkflowExpression] Func<string> bodyvehicleDetails = null, [WorkflowExpression] Func<string> bodyvehiclePermit = null, [WorkflowExpression] Func<string> bodyvehicleRegistration = null, [WorkflowExpression] Func<string> bodyveteranStatus = null, [WorkflowExpression] Func<bool> bodyvisa = null, [WorkflowExpression] Func<string> bodyvisaDetails = null, [WorkflowExpression] Func<bool> bodyvisitorHold = null)
         {
-            SourceExpression.Validate(entryDetailId, nameof(entryDetailId), required: true);
-            SourceExpression.Validate(bodyacademicHold, nameof(bodyacademicHold), required: false);
-            SourceExpression.Validate(bodyaccountPaymentTypeId, nameof(bodyaccountPaymentTypeId), required: false);
-            SourceExpression.Validate(bodyaccountBankName, nameof(bodyaccountBankName), required: false);
-            SourceExpression.Validate(bodyaccountBankNumber, nameof(bodyaccountBankNumber), required: false);
-            SourceExpression.Validate(bodyaccountCode, nameof(bodyaccountCode), required: false);
-            SourceExpression.Validate(bodyaccountComments, nameof(bodyaccountComments), required: false);
-            SourceExpression.Validate(bodyaccountDetail1, nameof(bodyaccountDetail1), required: false);
-            SourceExpression.Validate(bodyaccountDetail2, nameof(bodyaccountDetail2), required: false);
-            SourceExpression.Validate(bodyaccountDetail3, nameof(bodyaccountDetail3), required: false);
-            SourceExpression.Validate(bodyaccountDetail4, nameof(bodyaccountDetail4), required: false);
-            SourceExpression.Validate(bodyaccountDueDate, nameof(bodyaccountDueDate), required: false);
-            SourceExpression.Validate(bodyaccountHold, nameof(bodyaccountHold), required: false);
-            SourceExpression.Validate(bodyathlete, nameof(bodyathlete), required: false);
-            SourceExpression.Validate(bodyathleteTeam, nameof(bodyathleteTeam), required: false);
-            SourceExpression.Validate(bodyattendeeStatusEnum, nameof(bodyattendeeStatusEnum), required: false);
-            SourceExpression.Validate(bodycareer, nameof(bodycareer), required: false);
-            SourceExpression.Validate(bodycareerComments, nameof(bodycareerComments), required: false);
-            SourceExpression.Validate(bodycitizenshipCountryId, nameof(bodycitizenshipCountryId), required: false);
-            SourceExpression.Validate(bodyclassificationId, nameof(bodyclassificationId), required: false);
-            SourceExpression.Validate(bodyclassificationOverride, nameof(bodyclassificationOverride), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycountryOfBirthCountryId, nameof(bodycountryOfBirthCountryId), required: false);
-            SourceExpression.Validate(bodycountryOfResidenceCountryId, nameof(bodycountryOfResidenceCountryId), required: false);
-            SourceExpression.Validate(bodycumulativeGPA, nameof(bodycumulativeGPA), required: false);
-            SourceExpression.Validate(bodycumulativeHours, nameof(bodycumulativeHours), required: false);
-            SourceExpression.Validate(bodycurrentGPA, nameof(bodycurrentGPA), required: false);
-            SourceExpression.Validate(bodycurrentHours, nameof(bodycurrentHours), required: false);
-            SourceExpression.Validate(bodycurrentMajor, nameof(bodycurrentMajor), required: false);
-            SourceExpression.Validate(bodycurrentMinor, nameof(bodycurrentMinor), required: false);
-            SourceExpression.Validate(bodydateEntry, nameof(bodydateEntry), required: false);
-            SourceExpression.Validate(bodydateExit, nameof(bodydateExit), required: false);
-            SourceExpression.Validate(bodydeceased, nameof(bodydeceased), required: false);
-            SourceExpression.Validate(bodydeceasedDate, nameof(bodydeceasedDate), required: false);
-            SourceExpression.Validate(bodydietary, nameof(bodydietary), required: false);
-            SourceExpression.Validate(bodydisability, nameof(bodydisability), required: false);
-            SourceExpression.Validate(bodyemploymentDetails, nameof(bodyemploymentDetails), required: false);
-            SourceExpression.Validate(bodyenrollmentClass, nameof(bodyenrollmentClass), required: false);
-            SourceExpression.Validate(bodyenrollmentLevel, nameof(bodyenrollmentLevel), required: false);
-            SourceExpression.Validate(bodyenrollmentStatus, nameof(bodyenrollmentStatus), required: false);
-            SourceExpression.Validate(bodyenrollmentTerm, nameof(bodyenrollmentTerm), required: false);
-            SourceExpression.Validate(bodyenrollmentYear, nameof(bodyenrollmentYear), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyethnicity, nameof(bodyethnicity), required: false);
-            SourceExpression.Validate(bodyeventRegistrationFeeId, nameof(bodyeventRegistrationFeeId), required: false);
-            SourceExpression.Validate(bodyexpectedGraduationDate, nameof(bodyexpectedGraduationDate), required: false);
-            SourceExpression.Validate(bodyfinancialComments, nameof(bodyfinancialComments), required: false);
-            SourceExpression.Validate(bodyfinancialSupportId, nameof(bodyfinancialSupportId), required: false);
-            SourceExpression.Validate(bodyhearAboutUs, nameof(bodyhearAboutUs), required: false);
-            SourceExpression.Validate(bodyhonorsIndicator, nameof(bodyhonorsIndicator), required: false);
-            SourceExpression.Validate(bodyimmunizationsHold, nameof(bodyimmunizationsHold), required: false);
-            SourceExpression.Validate(bodyincidentHold, nameof(bodyincidentHold), required: false);
-            SourceExpression.Validate(bodyincidentHoldComments, nameof(bodyincidentHoldComments), required: false);
-            SourceExpression.Validate(bodyinternational, nameof(bodyinternational), required: false);
-            SourceExpression.Validate(bodyinternationalDetails, nameof(bodyinternationalDetails), required: false);
-            SourceExpression.Validate(bodylivingWithDependents, nameof(bodylivingWithDependents), required: false);
-            SourceExpression.Validate(bodymarried, nameof(bodymarried), required: false);
-            SourceExpression.Validate(bodymedical, nameof(bodymedical), required: false);
-            SourceExpression.Validate(bodynationalityId, nameof(bodynationalityId), required: false);
-            SourceExpression.Validate(bodyoccupation, nameof(bodyoccupation), required: false);
-            SourceExpression.Validate(bodyphotoPath, nameof(bodyphotoPath), required: false);
-            SourceExpression.Validate(bodypreviousMemberName, nameof(bodypreviousMemberName), required: false);
-            SourceExpression.Validate(bodypreviousMemberRelationship, nameof(bodypreviousMemberRelationship), required: false);
-            SourceExpression.Validate(bodypreviousMembership, nameof(bodypreviousMembership), required: false);
-            SourceExpression.Validate(bodypreviousMembershipYears, nameof(bodypreviousMembershipYears), required: false);
-            SourceExpression.Validate(bodypreviousMemberYears, nameof(bodypreviousMemberYears), required: false);
-            SourceExpression.Validate(bodyprofileInterests, nameof(bodyprofileInterests), required: false);
-            SourceExpression.Validate(bodyregionOfBirthId, nameof(bodyregionOfBirthId), required: false);
-            SourceExpression.Validate(bodyreligion, nameof(bodyreligion), required: false);
-            SourceExpression.Validate(bodyresidency, nameof(bodyresidency), required: false);
-            SourceExpression.Validate(bodyresidentStatus, nameof(bodyresidentStatus), required: false);
-            SourceExpression.Validate(bodyresidentYear, nameof(bodyresidentYear), required: false);
-            SourceExpression.Validate(bodysituationResponseComments, nameof(bodysituationResponseComments), required: false);
-            SourceExpression.Validate(bodysituationResponseDetail, nameof(bodysituationResponseDetail), required: false);
-            SourceExpression.Validate(bodysituationResponseEnum, nameof(bodysituationResponseEnum), required: false);
-            SourceExpression.Validate(bodysituationResponseExpiryDate, nameof(bodysituationResponseExpiryDate), required: false);
-            SourceExpression.Validate(bodysituationResponseModifiedDate, nameof(bodysituationResponseModifiedDate), required: false);
-            SourceExpression.Validate(bodysituationResponseSituation, nameof(bodysituationResponseSituation), required: false);
-            SourceExpression.Validate(bodyspecialNeeds, nameof(bodyspecialNeeds), required: false);
-            SourceExpression.Validate(bodystaffId, nameof(bodystaffId), required: false);
-            SourceExpression.Validate(bodyusesScreenReader, nameof(bodyusesScreenReader), required: false);
-            SourceExpression.Validate(bodyvehicleDetails, nameof(bodyvehicleDetails), required: false);
-            SourceExpression.Validate(bodyvehiclePermit, nameof(bodyvehiclePermit), required: false);
-            SourceExpression.Validate(bodyvehicleRegistration, nameof(bodyvehicleRegistration), required: false);
-            SourceExpression.Validate(bodyveteranStatus, nameof(bodyveteranStatus), required: false);
-            SourceExpression.Validate(bodyvisa, nameof(bodyvisa), required: false);
-            SourceExpression.Validate(bodyvisaDetails, nameof(bodyvisaDetails), required: false);
-            SourceExpression.Validate(bodyvisitorHold, nameof(bodyvisitorHold), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/entrydetail.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(entryDetailId, 1));
@@ -5209,51 +4558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectEntryEnrollmentResponseItem[]> SelectEntryEnrollment([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<string> bodycampus = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodycourseId = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1value = null, [WorkflowExpression] Func<bodycustomDate1OperatorInput> bodycustomDate1Operator = null, [WorkflowExpression] Func<string> bodycustomDate2value = null, [WorkflowExpression] Func<bodycustomDate2OperatorInput> bodycustomDate2Operator = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateEndvalue = null, [WorkflowExpression] Func<bodydateEndOperatorInput> bodydateEndOperator = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydateStartvalue = null, [WorkflowExpression] Func<bodydateStartOperatorInput> bodydateStartOperator = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyenrollmentField = null, [WorkflowExpression] Func<int> bodyenrollmentOrder = null, [WorkflowExpression] Func<bodyenrollmentTypeEnumInput> bodyenrollmentTypeEnum = null, [WorkflowExpression] Func<int> bodyentryEnrollmentId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyfaculty = null, [WorkflowExpression] Func<bool> bodyfullTime = null, [WorkflowExpression] Func<string> bodygraduationDatevalue = null, [WorkflowExpression] Func<bodygraduationDateOperatorInput> bodygraduationDateOperator = null, [WorkflowExpression] Func<string> bodyinstitution = null, [WorkflowExpression] Func<bool> bodyisEnrolled = null, [WorkflowExpression] Func<string> bodymajor = null, [WorkflowExpression] Func<string> bodymajorCategory = null, [WorkflowExpression] Func<string> bodyminor = null, [WorkflowExpression] Func<bool> bodypostGrad = null, [WorkflowExpression] Func<int> bodysequence = null, [WorkflowExpression] Func<string> bodysubjects = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<string> bodyyears = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodycampus, nameof(bodycampus), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1value, nameof(bodycustomDate1value), required: false);
-            SourceExpression.Validate(bodycustomDate1Operator, nameof(bodycustomDate1Operator), required: false);
-            SourceExpression.Validate(bodycustomDate2value, nameof(bodycustomDate2value), required: false);
-            SourceExpression.Validate(bodycustomDate2Operator, nameof(bodycustomDate2Operator), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateEndvalue, nameof(bodydateEndvalue), required: false);
-            SourceExpression.Validate(bodydateEndOperator, nameof(bodydateEndOperator), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydateStartvalue, nameof(bodydateStartvalue), required: false);
-            SourceExpression.Validate(bodydateStartOperator, nameof(bodydateStartOperator), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyenrollmentField, nameof(bodyenrollmentField), required: false);
-            SourceExpression.Validate(bodyenrollmentOrder, nameof(bodyenrollmentOrder), required: false);
-            SourceExpression.Validate(bodyenrollmentTypeEnum, nameof(bodyenrollmentTypeEnum), required: false);
-            SourceExpression.Validate(bodyentryEnrollmentId, nameof(bodyentryEnrollmentId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyfaculty, nameof(bodyfaculty), required: false);
-            SourceExpression.Validate(bodyfullTime, nameof(bodyfullTime), required: false);
-            SourceExpression.Validate(bodygraduationDatevalue, nameof(bodygraduationDatevalue), required: false);
-            SourceExpression.Validate(bodygraduationDateOperator, nameof(bodygraduationDateOperator), required: false);
-            SourceExpression.Validate(bodyinstitution, nameof(bodyinstitution), required: false);
-            SourceExpression.Validate(bodyisEnrolled, nameof(bodyisEnrolled), required: false);
-            SourceExpression.Validate(bodymajor, nameof(bodymajor), required: false);
-            SourceExpression.Validate(bodymajorCategory, nameof(bodymajorCategory), required: false);
-            SourceExpression.Validate(bodyminor, nameof(bodyminor), required: false);
-            SourceExpression.Validate(bodypostGrad, nameof(bodypostGrad), required: false);
-            SourceExpression.Validate(bodysequence, nameof(bodysequence), required: false);
-            SourceExpression.Validate(bodysubjects, nameof(bodysubjects), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodyyears, nameof(bodyyears), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/EntryEnrollment.json";
@@ -5594,39 +4898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<CreateEntryEnrollmentResponse> CreateEntryEnrollment([WorkflowExpression] Func<int> bodyentryId, [WorkflowExpression] Func<string> bodycampus = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodycourseId = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateEnd = null, [WorkflowExpression] Func<string> bodydateStart = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyenrollmentField = null, [WorkflowExpression] Func<int> bodyenrollmentOrder = null, [WorkflowExpression] Func<bodyenrollmentTypeEnumInput> bodyenrollmentTypeEnum = null, [WorkflowExpression] Func<string> bodyfaculty = null, [WorkflowExpression] Func<bool> bodyfullTime = null, [WorkflowExpression] Func<string> bodygraduationDate = null, [WorkflowExpression] Func<string> bodyinstitution = null, [WorkflowExpression] Func<bool> bodyisEnrolled = null, [WorkflowExpression] Func<string> bodymajor = null, [WorkflowExpression] Func<string> bodymajorCategory = null, [WorkflowExpression] Func<string> bodyminor = null, [WorkflowExpression] Func<bool> bodypostGrad = null, [WorkflowExpression] Func<int> bodysequence = null, [WorkflowExpression] Func<string> bodysubjects = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<string> bodyyears = null)
         {
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: true);
-            SourceExpression.Validate(bodycampus, nameof(bodycampus), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateEnd, nameof(bodydateEnd), required: false);
-            SourceExpression.Validate(bodydateStart, nameof(bodydateStart), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyenrollmentField, nameof(bodyenrollmentField), required: false);
-            SourceExpression.Validate(bodyenrollmentOrder, nameof(bodyenrollmentOrder), required: false);
-            SourceExpression.Validate(bodyenrollmentTypeEnum, nameof(bodyenrollmentTypeEnum), required: false);
-            SourceExpression.Validate(bodyfaculty, nameof(bodyfaculty), required: false);
-            SourceExpression.Validate(bodyfullTime, nameof(bodyfullTime), required: false);
-            SourceExpression.Validate(bodygraduationDate, nameof(bodygraduationDate), required: false);
-            SourceExpression.Validate(bodyinstitution, nameof(bodyinstitution), required: false);
-            SourceExpression.Validate(bodyisEnrolled, nameof(bodyisEnrolled), required: false);
-            SourceExpression.Validate(bodymajor, nameof(bodymajor), required: false);
-            SourceExpression.Validate(bodymajorCategory, nameof(bodymajorCategory), required: false);
-            SourceExpression.Validate(bodyminor, nameof(bodyminor), required: false);
-            SourceExpression.Validate(bodypostGrad, nameof(bodypostGrad), required: false);
-            SourceExpression.Validate(bodysequence, nameof(bodysequence), required: false);
-            SourceExpression.Validate(bodysubjects, nameof(bodysubjects), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodyyears, nameof(bodyyears), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/entryenrollment.json";
@@ -5841,40 +5112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateEntryEnrollmentResponse> UpdateEntryEnrollment([WorkflowExpression] Func<int> entryEnrollmentId, [WorkflowExpression] Func<string> bodycampus = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodycourseId = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateEnd = null, [WorkflowExpression] Func<string> bodydateStart = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyenrollmentField = null, [WorkflowExpression] Func<int> bodyenrollmentOrder = null, [WorkflowExpression] Func<bodyenrollmentTypeEnumInput> bodyenrollmentTypeEnum = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<string> bodyfaculty = null, [WorkflowExpression] Func<bool> bodyfullTime = null, [WorkflowExpression] Func<string> bodygraduationDate = null, [WorkflowExpression] Func<string> bodyinstitution = null, [WorkflowExpression] Func<bool> bodyisEnrolled = null, [WorkflowExpression] Func<string> bodymajor = null, [WorkflowExpression] Func<string> bodymajorCategory = null, [WorkflowExpression] Func<string> bodyminor = null, [WorkflowExpression] Func<bool> bodypostGrad = null, [WorkflowExpression] Func<int> bodysequence = null, [WorkflowExpression] Func<string> bodysubjects = null, [WorkflowExpression] Func<int> bodytermId = null, [WorkflowExpression] Func<string> bodyyears = null)
         {
-            SourceExpression.Validate(entryEnrollmentId, nameof(entryEnrollmentId), required: true);
-            SourceExpression.Validate(bodycampus, nameof(bodycampus), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateEnd, nameof(bodydateEnd), required: false);
-            SourceExpression.Validate(bodydateStart, nameof(bodydateStart), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyenrollmentField, nameof(bodyenrollmentField), required: false);
-            SourceExpression.Validate(bodyenrollmentOrder, nameof(bodyenrollmentOrder), required: false);
-            SourceExpression.Validate(bodyenrollmentTypeEnum, nameof(bodyenrollmentTypeEnum), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyfaculty, nameof(bodyfaculty), required: false);
-            SourceExpression.Validate(bodyfullTime, nameof(bodyfullTime), required: false);
-            SourceExpression.Validate(bodygraduationDate, nameof(bodygraduationDate), required: false);
-            SourceExpression.Validate(bodyinstitution, nameof(bodyinstitution), required: false);
-            SourceExpression.Validate(bodyisEnrolled, nameof(bodyisEnrolled), required: false);
-            SourceExpression.Validate(bodymajor, nameof(bodymajor), required: false);
-            SourceExpression.Validate(bodymajorCategory, nameof(bodymajorCategory), required: false);
-            SourceExpression.Validate(bodyminor, nameof(bodyminor), required: false);
-            SourceExpression.Validate(bodypostGrad, nameof(bodypostGrad), required: false);
-            SourceExpression.Validate(bodysequence, nameof(bodysequence), required: false);
-            SourceExpression.Validate(bodysubjects, nameof(bodysubjects), required: false);
-            SourceExpression.Validate(bodytermId, nameof(bodytermId), required: false);
-            SourceExpression.Validate(bodyyears, nameof(bodyyears), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/entryenrollment.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(entryEnrollmentId, 1));
@@ -6093,89 +5330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectBookingResponseItem[]> SelectBooking([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<int> bodyadditionalOccupantCount = null, [WorkflowExpression] Func<string> bodyautoAllocationDetail = null, [WorkflowExpression] Func<int> bodybookingId = null, [WorkflowExpression] Func<bodybookingLinkTypeEnumInput> bodybookingLinkTypeEnum = null, [WorkflowExpression] Func<int> bodybookingTypeId = null, [WorkflowExpression] Func<string> bodycheckInDatevalue = null, [WorkflowExpression] Func<bodycheckInDateOperatorInput> bodycheckInDateOperator = null, [WorkflowExpression] Func<string> bodycheckInDateActualvalue = null, [WorkflowExpression] Func<bodycheckInDateActualOperatorInput> bodycheckInDateActualOperator = null, [WorkflowExpression] Func<string> bodycheckOutDatevalue = null, [WorkflowExpression] Func<bodycheckOutDateOperatorInput> bodycheckOutDateOperator = null, [WorkflowExpression] Func<string> bodycheckOutDateActualvalue = null, [WorkflowExpression] Func<bodycheckOutDateActualOperatorInput> bodycheckOutDateActualOperator = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycontractDateEndvalue = null, [WorkflowExpression] Func<bodycontractDateEndOperatorInput> bodycontractDateEndOperator = null, [WorkflowExpression] Func<string> bodycontractDateStartvalue = null, [WorkflowExpression] Func<bodycontractDateStartOperatorInput> bodycontractDateStartOperator = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<bool> bodycustomBit3 = null, [WorkflowExpression] Func<bool> bodycustomBit4 = null, [WorkflowExpression] Func<string> bodycustomDate1value = null, [WorkflowExpression] Func<bodycustomDate1OperatorInput> bodycustomDate1Operator = null, [WorkflowExpression] Func<string> bodycustomDate2value = null, [WorkflowExpression] Func<bodycustomDate2OperatorInput> bodycustomDate2Operator = null, [WorkflowExpression] Func<string> bodycustomDate3value = null, [WorkflowExpression] Func<bodycustomDate3OperatorInput> bodycustomDate3Operator = null, [WorkflowExpression] Func<string> bodycustomDate4value = null, [WorkflowExpression] Func<bodycustomDate4OperatorInput> bodycustomDate4Operator = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodycustomString7 = null, [WorkflowExpression] Func<string> bodycustomString8 = null, [WorkflowExpression] Func<string> bodycustomString9 = null, [WorkflowExpression] Func<string> bodycustomString10 = null, [WorkflowExpression] Func<string> bodydateBilledvalue = null, [WorkflowExpression] Func<bodydateBilledOperatorInput> bodydateBilledOperator = null, [WorkflowExpression] Func<string> bodydateChargedTovalue = null, [WorkflowExpression] Func<bodydateChargedToOperatorInput> bodydateChargedToOperator = null, [WorkflowExpression] Func<string> bodydateCreatedvalue = null, [WorkflowExpression] Func<bodydateCreatedOperatorInput> bodydateCreatedOperator = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydateModifiedBillingvalue = null, [WorkflowExpression] Func<bodydateModifiedBillingOperatorInput> bodydateModifiedBillingOperator = null, [WorkflowExpression] Func<int> bodyemotionalSupportAnimalCount = null, [WorkflowExpression] Func<int> bodyendBookingReasonId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<int> bodyentryInvitationId = null, [WorkflowExpression] Func<bodyentryStatusEnumInput> bodyentryStatusEnum = null, [WorkflowExpression] Func<string> bodyeTA = null, [WorkflowExpression] Func<string> bodyeTD = null, [WorkflowExpression] Func<double> bodyexcess = null, [WorkflowExpression] Func<int> bodygroupId = null, [WorkflowExpression] Func<int> bodyhousekeepingId = null, [WorkflowExpression] Func<int> bodynumberOfChildren = null, [WorkflowExpression] Func<int> bodynumberOfChildrenFree = null, [WorkflowExpression] Func<int> bodynumberOfGuests = null, [WorkflowExpression] Func<int> bodynumberOfGuestsFree = null, [WorkflowExpression] Func<string> bodypaidTovalue = null, [WorkflowExpression] Func<bodypaidToOperatorInput> bodypaidToOperator = null, [WorkflowExpression] Func<int> bodypetCount = null, [WorkflowExpression] Func<bool> bodyresvChargeToEntry = null, [WorkflowExpression] Func<bool> bodyroomLocationFixed = null, [WorkflowExpression] Func<int> bodyroomLocationId = null, [WorkflowExpression] Func<double> bodyroomRateAmount = null, [WorkflowExpression] Func<int> bodyroomRateId = null, [WorkflowExpression] Func<int> bodyroomSpaceId = null, [WorkflowExpression] Func<int> bodyroomTypeId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodyserviceAnimalCount = null, [WorkflowExpression] Func<string> bodyspecialRequirement = null, [WorkflowExpression] Func<int> bodystartBookingReasonId = null, [WorkflowExpression] Func<int> bodytermSessionId = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyadditionalOccupantCount, nameof(bodyadditionalOccupantCount), required: false);
-            SourceExpression.Validate(bodyautoAllocationDetail, nameof(bodyautoAllocationDetail), required: false);
-            SourceExpression.Validate(bodybookingId, nameof(bodybookingId), required: false);
-            SourceExpression.Validate(bodybookingLinkTypeEnum, nameof(bodybookingLinkTypeEnum), required: false);
-            SourceExpression.Validate(bodybookingTypeId, nameof(bodybookingTypeId), required: false);
-            SourceExpression.Validate(bodycheckInDatevalue, nameof(bodycheckInDatevalue), required: false);
-            SourceExpression.Validate(bodycheckInDateOperator, nameof(bodycheckInDateOperator), required: false);
-            SourceExpression.Validate(bodycheckInDateActualvalue, nameof(bodycheckInDateActualvalue), required: false);
-            SourceExpression.Validate(bodycheckInDateActualOperator, nameof(bodycheckInDateActualOperator), required: false);
-            SourceExpression.Validate(bodycheckOutDatevalue, nameof(bodycheckOutDatevalue), required: false);
-            SourceExpression.Validate(bodycheckOutDateOperator, nameof(bodycheckOutDateOperator), required: false);
-            SourceExpression.Validate(bodycheckOutDateActualvalue, nameof(bodycheckOutDateActualvalue), required: false);
-            SourceExpression.Validate(bodycheckOutDateActualOperator, nameof(bodycheckOutDateActualOperator), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycontractDateEndvalue, nameof(bodycontractDateEndvalue), required: false);
-            SourceExpression.Validate(bodycontractDateEndOperator, nameof(bodycontractDateEndOperator), required: false);
-            SourceExpression.Validate(bodycontractDateStartvalue, nameof(bodycontractDateStartvalue), required: false);
-            SourceExpression.Validate(bodycontractDateStartOperator, nameof(bodycontractDateStartOperator), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomBit3, nameof(bodycustomBit3), required: false);
-            SourceExpression.Validate(bodycustomBit4, nameof(bodycustomBit4), required: false);
-            SourceExpression.Validate(bodycustomDate1value, nameof(bodycustomDate1value), required: false);
-            SourceExpression.Validate(bodycustomDate1Operator, nameof(bodycustomDate1Operator), required: false);
-            SourceExpression.Validate(bodycustomDate2value, nameof(bodycustomDate2value), required: false);
-            SourceExpression.Validate(bodycustomDate2Operator, nameof(bodycustomDate2Operator), required: false);
-            SourceExpression.Validate(bodycustomDate3value, nameof(bodycustomDate3value), required: false);
-            SourceExpression.Validate(bodycustomDate3Operator, nameof(bodycustomDate3Operator), required: false);
-            SourceExpression.Validate(bodycustomDate4value, nameof(bodycustomDate4value), required: false);
-            SourceExpression.Validate(bodycustomDate4Operator, nameof(bodycustomDate4Operator), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodycustomString7, nameof(bodycustomString7), required: false);
-            SourceExpression.Validate(bodycustomString8, nameof(bodycustomString8), required: false);
-            SourceExpression.Validate(bodycustomString9, nameof(bodycustomString9), required: false);
-            SourceExpression.Validate(bodycustomString10, nameof(bodycustomString10), required: false);
-            SourceExpression.Validate(bodydateBilledvalue, nameof(bodydateBilledvalue), required: false);
-            SourceExpression.Validate(bodydateBilledOperator, nameof(bodydateBilledOperator), required: false);
-            SourceExpression.Validate(bodydateChargedTovalue, nameof(bodydateChargedTovalue), required: false);
-            SourceExpression.Validate(bodydateChargedToOperator, nameof(bodydateChargedToOperator), required: false);
-            SourceExpression.Validate(bodydateCreatedvalue, nameof(bodydateCreatedvalue), required: false);
-            SourceExpression.Validate(bodydateCreatedOperator, nameof(bodydateCreatedOperator), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydateModifiedBillingvalue, nameof(bodydateModifiedBillingvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedBillingOperator, nameof(bodydateModifiedBillingOperator), required: false);
-            SourceExpression.Validate(bodyemotionalSupportAnimalCount, nameof(bodyemotionalSupportAnimalCount), required: false);
-            SourceExpression.Validate(bodyendBookingReasonId, nameof(bodyendBookingReasonId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyentryInvitationId, nameof(bodyentryInvitationId), required: false);
-            SourceExpression.Validate(bodyentryStatusEnum, nameof(bodyentryStatusEnum), required: false);
-            SourceExpression.Validate(bodyeTA, nameof(bodyeTA), required: false);
-            SourceExpression.Validate(bodyeTD, nameof(bodyeTD), required: false);
-            SourceExpression.Validate(bodyexcess, nameof(bodyexcess), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyhousekeepingId, nameof(bodyhousekeepingId), required: false);
-            SourceExpression.Validate(bodynumberOfChildren, nameof(bodynumberOfChildren), required: false);
-            SourceExpression.Validate(bodynumberOfChildrenFree, nameof(bodynumberOfChildrenFree), required: false);
-            SourceExpression.Validate(bodynumberOfGuests, nameof(bodynumberOfGuests), required: false);
-            SourceExpression.Validate(bodynumberOfGuestsFree, nameof(bodynumberOfGuestsFree), required: false);
-            SourceExpression.Validate(bodypaidTovalue, nameof(bodypaidTovalue), required: false);
-            SourceExpression.Validate(bodypaidToOperator, nameof(bodypaidToOperator), required: false);
-            SourceExpression.Validate(bodypetCount, nameof(bodypetCount), required: false);
-            SourceExpression.Validate(bodyresvChargeToEntry, nameof(bodyresvChargeToEntry), required: false);
-            SourceExpression.Validate(bodyroomLocationFixed, nameof(bodyroomLocationFixed), required: false);
-            SourceExpression.Validate(bodyroomLocationId, nameof(bodyroomLocationId), required: false);
-            SourceExpression.Validate(bodyroomRateAmount, nameof(bodyroomRateAmount), required: false);
-            SourceExpression.Validate(bodyroomRateId, nameof(bodyroomRateId), required: false);
-            SourceExpression.Validate(bodyroomSpaceId, nameof(bodyroomSpaceId), required: false);
-            SourceExpression.Validate(bodyroomTypeId, nameof(bodyroomTypeId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodyserviceAnimalCount, nameof(bodyserviceAnimalCount), required: false);
-            SourceExpression.Validate(bodyspecialRequirement, nameof(bodyspecialRequirement), required: false);
-            SourceExpression.Validate(bodystartBookingReasonId, nameof(bodystartBookingReasonId), required: false);
-            SourceExpression.Validate(bodytermSessionId, nameof(bodytermSessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/Booking.json";
@@ -6824,65 +5978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<CreateBookingResponse> CreateBooking([WorkflowExpression] Func<int> bodyentryId, [WorkflowExpression] Func<int> bodyadditionalOccupantCount = null, [WorkflowExpression] Func<string> bodyautoAllocationDetail = null, [WorkflowExpression] Func<bodybookingLinkTypeEnumInput> bodybookingLinkTypeEnum = null, [WorkflowExpression] Func<int> bodybookingTypeId = null, [WorkflowExpression] Func<string> bodycheckInDate = null, [WorkflowExpression] Func<string> bodycheckInDateActual = null, [WorkflowExpression] Func<string> bodycheckOutDate = null, [WorkflowExpression] Func<string> bodycheckOutDateActual = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycontractDateEnd = null, [WorkflowExpression] Func<string> bodycontractDateStart = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<bool> bodycustomBit3 = null, [WorkflowExpression] Func<bool> bodycustomBit4 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomDate3 = null, [WorkflowExpression] Func<string> bodycustomDate4 = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodycustomString7 = null, [WorkflowExpression] Func<string> bodycustomString8 = null, [WorkflowExpression] Func<string> bodycustomString9 = null, [WorkflowExpression] Func<string> bodycustomString10 = null, [WorkflowExpression] Func<string> bodydateBilled = null, [WorkflowExpression] Func<string> bodydateChargedTo = null, [WorkflowExpression] Func<int> bodyemotionalSupportAnimalCount = null, [WorkflowExpression] Func<int> bodyendBookingReasonId = null, [WorkflowExpression] Func<int> bodyentryInvitationId = null, [WorkflowExpression] Func<bodyentryStatusEnumInput> bodyentryStatusEnum = null, [WorkflowExpression] Func<string> bodyeTA = null, [WorkflowExpression] Func<string> bodyeTD = null, [WorkflowExpression] Func<double> bodyexcess = null, [WorkflowExpression] Func<int> bodygroupId = null, [WorkflowExpression] Func<int> bodyhousekeepingId = null, [WorkflowExpression] Func<int> bodynumberOfChildren = null, [WorkflowExpression] Func<int> bodynumberOfChildrenFree = null, [WorkflowExpression] Func<int> bodynumberOfGuests = null, [WorkflowExpression] Func<int> bodynumberOfGuestsFree = null, [WorkflowExpression] Func<string> bodypaidTo = null, [WorkflowExpression] Func<int> bodypetCount = null, [WorkflowExpression] Func<bool> bodyresvChargeToEntry = null, [WorkflowExpression] Func<bool> bodyroomLocationFixed = null, [WorkflowExpression] Func<int> bodyroomLocationId = null, [WorkflowExpression] Func<double> bodyroomRateAmount = null, [WorkflowExpression] Func<int> bodyroomRateId = null, [WorkflowExpression] Func<int> bodyroomSpaceId = null, [WorkflowExpression] Func<int> bodyroomTypeId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodyserviceAnimalCount = null, [WorkflowExpression] Func<string> bodyspecialRequirement = null, [WorkflowExpression] Func<int> bodystartBookingReasonId = null, [WorkflowExpression] Func<int> bodytermSessionId = null)
         {
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: true);
-            SourceExpression.Validate(bodyadditionalOccupantCount, nameof(bodyadditionalOccupantCount), required: false);
-            SourceExpression.Validate(bodyautoAllocationDetail, nameof(bodyautoAllocationDetail), required: false);
-            SourceExpression.Validate(bodybookingLinkTypeEnum, nameof(bodybookingLinkTypeEnum), required: false);
-            SourceExpression.Validate(bodybookingTypeId, nameof(bodybookingTypeId), required: false);
-            SourceExpression.Validate(bodycheckInDate, nameof(bodycheckInDate), required: false);
-            SourceExpression.Validate(bodycheckInDateActual, nameof(bodycheckInDateActual), required: false);
-            SourceExpression.Validate(bodycheckOutDate, nameof(bodycheckOutDate), required: false);
-            SourceExpression.Validate(bodycheckOutDateActual, nameof(bodycheckOutDateActual), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycontractDateEnd, nameof(bodycontractDateEnd), required: false);
-            SourceExpression.Validate(bodycontractDateStart, nameof(bodycontractDateStart), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomBit3, nameof(bodycustomBit3), required: false);
-            SourceExpression.Validate(bodycustomBit4, nameof(bodycustomBit4), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomDate3, nameof(bodycustomDate3), required: false);
-            SourceExpression.Validate(bodycustomDate4, nameof(bodycustomDate4), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodycustomString7, nameof(bodycustomString7), required: false);
-            SourceExpression.Validate(bodycustomString8, nameof(bodycustomString8), required: false);
-            SourceExpression.Validate(bodycustomString9, nameof(bodycustomString9), required: false);
-            SourceExpression.Validate(bodycustomString10, nameof(bodycustomString10), required: false);
-            SourceExpression.Validate(bodydateBilled, nameof(bodydateBilled), required: false);
-            SourceExpression.Validate(bodydateChargedTo, nameof(bodydateChargedTo), required: false);
-            SourceExpression.Validate(bodyemotionalSupportAnimalCount, nameof(bodyemotionalSupportAnimalCount), required: false);
-            SourceExpression.Validate(bodyendBookingReasonId, nameof(bodyendBookingReasonId), required: false);
-            SourceExpression.Validate(bodyentryInvitationId, nameof(bodyentryInvitationId), required: false);
-            SourceExpression.Validate(bodyentryStatusEnum, nameof(bodyentryStatusEnum), required: false);
-            SourceExpression.Validate(bodyeTA, nameof(bodyeTA), required: false);
-            SourceExpression.Validate(bodyeTD, nameof(bodyeTD), required: false);
-            SourceExpression.Validate(bodyexcess, nameof(bodyexcess), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyhousekeepingId, nameof(bodyhousekeepingId), required: false);
-            SourceExpression.Validate(bodynumberOfChildren, nameof(bodynumberOfChildren), required: false);
-            SourceExpression.Validate(bodynumberOfChildrenFree, nameof(bodynumberOfChildrenFree), required: false);
-            SourceExpression.Validate(bodynumberOfGuests, nameof(bodynumberOfGuests), required: false);
-            SourceExpression.Validate(bodynumberOfGuestsFree, nameof(bodynumberOfGuestsFree), required: false);
-            SourceExpression.Validate(bodypaidTo, nameof(bodypaidTo), required: false);
-            SourceExpression.Validate(bodypetCount, nameof(bodypetCount), required: false);
-            SourceExpression.Validate(bodyresvChargeToEntry, nameof(bodyresvChargeToEntry), required: false);
-            SourceExpression.Validate(bodyroomLocationFixed, nameof(bodyroomLocationFixed), required: false);
-            SourceExpression.Validate(bodyroomLocationId, nameof(bodyroomLocationId), required: false);
-            SourceExpression.Validate(bodyroomRateAmount, nameof(bodyroomRateAmount), required: false);
-            SourceExpression.Validate(bodyroomRateId, nameof(bodyroomRateId), required: false);
-            SourceExpression.Validate(bodyroomSpaceId, nameof(bodyroomSpaceId), required: false);
-            SourceExpression.Validate(bodyroomTypeId, nameof(bodyroomTypeId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodyserviceAnimalCount, nameof(bodyserviceAnimalCount), required: false);
-            SourceExpression.Validate(bodyspecialRequirement, nameof(bodyspecialRequirement), required: false);
-            SourceExpression.Validate(bodystartBookingReasonId, nameof(bodystartBookingReasonId), required: false);
-            SourceExpression.Validate(bodytermSessionId, nameof(bodytermSessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/booking.json";
@@ -7253,66 +6348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateBookingResponse> UpdateBooking([WorkflowExpression] Func<int> bookingId, [WorkflowExpression] Func<int> bodyadditionalOccupantCount = null, [WorkflowExpression] Func<string> bodyautoAllocationDetail = null, [WorkflowExpression] Func<bodybookingLinkTypeEnumInput> bodybookingLinkTypeEnum = null, [WorkflowExpression] Func<int> bodybookingTypeId = null, [WorkflowExpression] Func<string> bodycheckInDate = null, [WorkflowExpression] Func<string> bodycheckInDateActual = null, [WorkflowExpression] Func<string> bodycheckOutDate = null, [WorkflowExpression] Func<string> bodycheckOutDateActual = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycontractDateEnd = null, [WorkflowExpression] Func<string> bodycontractDateStart = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<bool> bodycustomBit3 = null, [WorkflowExpression] Func<bool> bodycustomBit4 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomDate3 = null, [WorkflowExpression] Func<string> bodycustomDate4 = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodycustomString7 = null, [WorkflowExpression] Func<string> bodycustomString8 = null, [WorkflowExpression] Func<string> bodycustomString9 = null, [WorkflowExpression] Func<string> bodycustomString10 = null, [WorkflowExpression] Func<string> bodydateBilled = null, [WorkflowExpression] Func<string> bodydateChargedTo = null, [WorkflowExpression] Func<int> bodyemotionalSupportAnimalCount = null, [WorkflowExpression] Func<int> bodyendBookingReasonId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<int> bodyentryInvitationId = null, [WorkflowExpression] Func<bodyentryStatusEnumInput> bodyentryStatusEnum = null, [WorkflowExpression] Func<string> bodyeTA = null, [WorkflowExpression] Func<string> bodyeTD = null, [WorkflowExpression] Func<double> bodyexcess = null, [WorkflowExpression] Func<int> bodygroupId = null, [WorkflowExpression] Func<int> bodyhousekeepingId = null, [WorkflowExpression] Func<int> bodynumberOfChildren = null, [WorkflowExpression] Func<int> bodynumberOfChildrenFree = null, [WorkflowExpression] Func<int> bodynumberOfGuests = null, [WorkflowExpression] Func<int> bodynumberOfGuestsFree = null, [WorkflowExpression] Func<string> bodypaidTo = null, [WorkflowExpression] Func<int> bodypetCount = null, [WorkflowExpression] Func<bool> bodyresvChargeToEntry = null, [WorkflowExpression] Func<bool> bodyroomLocationFixed = null, [WorkflowExpression] Func<int> bodyroomLocationId = null, [WorkflowExpression] Func<double> bodyroomRateAmount = null, [WorkflowExpression] Func<int> bodyroomRateId = null, [WorkflowExpression] Func<int> bodyroomSpaceId = null, [WorkflowExpression] Func<int> bodyroomTypeId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodyserviceAnimalCount = null, [WorkflowExpression] Func<string> bodyspecialRequirement = null, [WorkflowExpression] Func<int> bodystartBookingReasonId = null, [WorkflowExpression] Func<int> bodytermSessionId = null)
         {
-            SourceExpression.Validate(bookingId, nameof(bookingId), required: true);
-            SourceExpression.Validate(bodyadditionalOccupantCount, nameof(bodyadditionalOccupantCount), required: false);
-            SourceExpression.Validate(bodyautoAllocationDetail, nameof(bodyautoAllocationDetail), required: false);
-            SourceExpression.Validate(bodybookingLinkTypeEnum, nameof(bodybookingLinkTypeEnum), required: false);
-            SourceExpression.Validate(bodybookingTypeId, nameof(bodybookingTypeId), required: false);
-            SourceExpression.Validate(bodycheckInDate, nameof(bodycheckInDate), required: false);
-            SourceExpression.Validate(bodycheckInDateActual, nameof(bodycheckInDateActual), required: false);
-            SourceExpression.Validate(bodycheckOutDate, nameof(bodycheckOutDate), required: false);
-            SourceExpression.Validate(bodycheckOutDateActual, nameof(bodycheckOutDateActual), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycontractDateEnd, nameof(bodycontractDateEnd), required: false);
-            SourceExpression.Validate(bodycontractDateStart, nameof(bodycontractDateStart), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomBit3, nameof(bodycustomBit3), required: false);
-            SourceExpression.Validate(bodycustomBit4, nameof(bodycustomBit4), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomDate3, nameof(bodycustomDate3), required: false);
-            SourceExpression.Validate(bodycustomDate4, nameof(bodycustomDate4), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodycustomString7, nameof(bodycustomString7), required: false);
-            SourceExpression.Validate(bodycustomString8, nameof(bodycustomString8), required: false);
-            SourceExpression.Validate(bodycustomString9, nameof(bodycustomString9), required: false);
-            SourceExpression.Validate(bodycustomString10, nameof(bodycustomString10), required: false);
-            SourceExpression.Validate(bodydateBilled, nameof(bodydateBilled), required: false);
-            SourceExpression.Validate(bodydateChargedTo, nameof(bodydateChargedTo), required: false);
-            SourceExpression.Validate(bodyemotionalSupportAnimalCount, nameof(bodyemotionalSupportAnimalCount), required: false);
-            SourceExpression.Validate(bodyendBookingReasonId, nameof(bodyendBookingReasonId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyentryInvitationId, nameof(bodyentryInvitationId), required: false);
-            SourceExpression.Validate(bodyentryStatusEnum, nameof(bodyentryStatusEnum), required: false);
-            SourceExpression.Validate(bodyeTA, nameof(bodyeTA), required: false);
-            SourceExpression.Validate(bodyeTD, nameof(bodyeTD), required: false);
-            SourceExpression.Validate(bodyexcess, nameof(bodyexcess), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyhousekeepingId, nameof(bodyhousekeepingId), required: false);
-            SourceExpression.Validate(bodynumberOfChildren, nameof(bodynumberOfChildren), required: false);
-            SourceExpression.Validate(bodynumberOfChildrenFree, nameof(bodynumberOfChildrenFree), required: false);
-            SourceExpression.Validate(bodynumberOfGuests, nameof(bodynumberOfGuests), required: false);
-            SourceExpression.Validate(bodynumberOfGuestsFree, nameof(bodynumberOfGuestsFree), required: false);
-            SourceExpression.Validate(bodypaidTo, nameof(bodypaidTo), required: false);
-            SourceExpression.Validate(bodypetCount, nameof(bodypetCount), required: false);
-            SourceExpression.Validate(bodyresvChargeToEntry, nameof(bodyresvChargeToEntry), required: false);
-            SourceExpression.Validate(bodyroomLocationFixed, nameof(bodyroomLocationFixed), required: false);
-            SourceExpression.Validate(bodyroomLocationId, nameof(bodyroomLocationId), required: false);
-            SourceExpression.Validate(bodyroomRateAmount, nameof(bodyroomRateAmount), required: false);
-            SourceExpression.Validate(bodyroomRateId, nameof(bodyroomRateId), required: false);
-            SourceExpression.Validate(bodyroomSpaceId, nameof(bodyroomSpaceId), required: false);
-            SourceExpression.Validate(bodyroomTypeId, nameof(bodyroomTypeId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodyserviceAnimalCount, nameof(bodyserviceAnimalCount), required: false);
-            SourceExpression.Validate(bodyspecialRequirement, nameof(bodyspecialRequirement), required: false);
-            SourceExpression.Validate(bodystartBookingReasonId, nameof(bodystartBookingReasonId), required: false);
-            SourceExpression.Validate(bodytermSessionId, nameof(bodytermSessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/booking.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(bookingId, 1));
@@ -7687,33 +6722,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectRoomSpaceResponseItem[]> SelectRoomSpace([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<bool> bodyallocateExclude = null, [WorkflowExpression] Func<int> bodyallocateSortOrder = null, [WorkflowExpression] Func<int> bodybathrooms = null, [WorkflowExpression] Func<int> bodybedCapacity = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyextensionId = null, [WorkflowExpression] Func<bool> bodyhold = null, [WorkflowExpression] Func<bool> bodynetworked = null, [WorkflowExpression] Func<bodyrecordTypeEnumInput> bodyrecordTypeEnum = null, [WorkflowExpression] Func<int> bodyroomBaseId = null, [WorkflowExpression] Func<int> bodyroomId = null, [WorkflowExpression] Func<int> bodyroomRateId = null, [WorkflowExpression] Func<int> bodyroomSpaceId = null, [WorkflowExpression] Func<bodyroomSpaceTypeEnumInput> bodyroomSpaceTypeEnum = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodysortOrder = null, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodystreet2 = null, [WorkflowExpression] Func<string> bodywebDescription = null, [WorkflowExpression] Func<string> bodyzipPostcode = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyallocateExclude, nameof(bodyallocateExclude), required: false);
-            SourceExpression.Validate(bodyallocateSortOrder, nameof(bodyallocateSortOrder), required: false);
-            SourceExpression.Validate(bodybathrooms, nameof(bodybathrooms), required: false);
-            SourceExpression.Validate(bodybedCapacity, nameof(bodybedCapacity), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyextensionId, nameof(bodyextensionId), required: false);
-            SourceExpression.Validate(bodyhold, nameof(bodyhold), required: false);
-            SourceExpression.Validate(bodynetworked, nameof(bodynetworked), required: false);
-            SourceExpression.Validate(bodyrecordTypeEnum, nameof(bodyrecordTypeEnum), required: false);
-            SourceExpression.Validate(bodyroomBaseId, nameof(bodyroomBaseId), required: false);
-            SourceExpression.Validate(bodyroomId, nameof(bodyroomId), required: false);
-            SourceExpression.Validate(bodyroomRateId, nameof(bodyroomRateId), required: false);
-            SourceExpression.Validate(bodyroomSpaceId, nameof(bodyroomSpaceId), required: false);
-            SourceExpression.Validate(bodyroomSpaceTypeEnum, nameof(bodyroomSpaceTypeEnum), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
-            SourceExpression.Validate(bodystreet, nameof(bodystreet), required: false);
-            SourceExpression.Validate(bodystreet2, nameof(bodystreet2), required: false);
-            SourceExpression.Validate(bodywebDescription, nameof(bodywebDescription), required: false);
-            SourceExpression.Validate(bodyzipPostcode, nameof(bodyzipPostcode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/RoomSpace.json";
@@ -7906,26 +6914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<CreateRoomSpaceResponse> CreateRoomSpace([WorkflowExpression] Func<bool> bodyallocateExclude = null, [WorkflowExpression] Func<int> bodyallocateSortOrder = null, [WorkflowExpression] Func<int> bodybathrooms = null, [WorkflowExpression] Func<int> bodybedCapacity = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyextensionId = null, [WorkflowExpression] Func<bool> bodyhold = null, [WorkflowExpression] Func<bool> bodynetworked = null, [WorkflowExpression] Func<bodyrecordTypeEnumInput> bodyrecordTypeEnum = null, [WorkflowExpression] Func<int> bodyroomBaseId = null, [WorkflowExpression] Func<int> bodyroomId = null, [WorkflowExpression] Func<int> bodyroomRateId = null, [WorkflowExpression] Func<bodyroomSpaceTypeEnumInput> bodyroomSpaceTypeEnum = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodysortOrder = null, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodystreet2 = null, [WorkflowExpression] Func<string> bodywebDescription = null, [WorkflowExpression] Func<string> bodyzipPostcode = null)
         {
-            SourceExpression.Validate(bodyallocateExclude, nameof(bodyallocateExclude), required: false);
-            SourceExpression.Validate(bodyallocateSortOrder, nameof(bodyallocateSortOrder), required: false);
-            SourceExpression.Validate(bodybathrooms, nameof(bodybathrooms), required: false);
-            SourceExpression.Validate(bodybedCapacity, nameof(bodybedCapacity), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyextensionId, nameof(bodyextensionId), required: false);
-            SourceExpression.Validate(bodyhold, nameof(bodyhold), required: false);
-            SourceExpression.Validate(bodynetworked, nameof(bodynetworked), required: false);
-            SourceExpression.Validate(bodyrecordTypeEnum, nameof(bodyrecordTypeEnum), required: false);
-            SourceExpression.Validate(bodyroomBaseId, nameof(bodyroomBaseId), required: false);
-            SourceExpression.Validate(bodyroomId, nameof(bodyroomId), required: false);
-            SourceExpression.Validate(bodyroomRateId, nameof(bodyroomRateId), required: false);
-            SourceExpression.Validate(bodyroomSpaceTypeEnum, nameof(bodyroomSpaceTypeEnum), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
-            SourceExpression.Validate(bodystreet, nameof(bodystreet), required: false);
-            SourceExpression.Validate(bodystreet2, nameof(bodystreet2), required: false);
-            SourceExpression.Validate(bodywebDescription, nameof(bodywebDescription), required: false);
-            SourceExpression.Validate(bodyzipPostcode, nameof(bodyzipPostcode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/roomspace.json";
@@ -8066,44 +7054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectRoomLocationResponseItem[]> SelectRoomLocation([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<int> bodyallocateSortOrder = null, [WorkflowExpression] Func<int> bodycategoryId = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodycountryId = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1value = null, [WorkflowExpression] Func<bodycustomDate1OperatorInput> bodycustomDate1Operator = null, [WorkflowExpression] Func<string> bodycustomDate2value = null, [WorkflowExpression] Func<bodycustomDate2OperatorInput> bodycustomDate2Operator = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodygenderTypeEnumInput> bodygenderTypeEnum = null, [WorkflowExpression] Func<bool> bodylease = null, [WorkflowExpression] Func<bool> bodymanagedExternally = null, [WorkflowExpression] Func<bool> bodynonResidential = null, [WorkflowExpression] Func<bodyrecordTypeEnumInput> bodyrecordTypeEnum = null, [WorkflowExpression] Func<int> bodyroomLocationAreaId = null, [WorkflowExpression] Func<int> bodyroomLocationId = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<bool> bodyviewOnWeb = null, [WorkflowExpression] Func<string> bodywebComments = null, [WorkflowExpression] Func<string> bodywebDescription = null, [WorkflowExpression] Func<string> bodywebImageAltText = null, [WorkflowExpression] Func<string> bodywebImageLocation = null, [WorkflowExpression] Func<string> bodyzipPostcode = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyallocateSortOrder, nameof(bodyallocateSortOrder), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycountryId, nameof(bodycountryId), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1value, nameof(bodycustomDate1value), required: false);
-            SourceExpression.Validate(bodycustomDate1Operator, nameof(bodycustomDate1Operator), required: false);
-            SourceExpression.Validate(bodycustomDate2value, nameof(bodycustomDate2value), required: false);
-            SourceExpression.Validate(bodycustomDate2Operator, nameof(bodycustomDate2Operator), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodygenderTypeEnum, nameof(bodygenderTypeEnum), required: false);
-            SourceExpression.Validate(bodylease, nameof(bodylease), required: false);
-            SourceExpression.Validate(bodymanagedExternally, nameof(bodymanagedExternally), required: false);
-            SourceExpression.Validate(bodynonResidential, nameof(bodynonResidential), required: false);
-            SourceExpression.Validate(bodyrecordTypeEnum, nameof(bodyrecordTypeEnum), required: false);
-            SourceExpression.Validate(bodyroomLocationAreaId, nameof(bodyroomLocationAreaId), required: false);
-            SourceExpression.Validate(bodyroomLocationId, nameof(bodyroomLocationId), required: false);
-            SourceExpression.Validate(bodystateProvince, nameof(bodystateProvince), required: false);
-            SourceExpression.Validate(bodyviewOnWeb, nameof(bodyviewOnWeb), required: false);
-            SourceExpression.Validate(bodywebComments, nameof(bodywebComments), required: false);
-            SourceExpression.Validate(bodywebDescription, nameof(bodywebDescription), required: false);
-            SourceExpression.Validate(bodywebImageAltText, nameof(bodywebImageAltText), required: false);
-            SourceExpression.Validate(bodywebImageLocation, nameof(bodywebImageLocation), required: false);
-            SourceExpression.Validate(bodyzipPostcode, nameof(bodyzipPostcode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/RoomLocation.json";
@@ -8378,50 +7328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectTransactionResponseItem[]> SelectTransaction([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<bodycallTypeEnumInput> bodycallTypeEnum = null, [WorkflowExpression] Func<int> bodychargeGroupId = null, [WorkflowExpression] Func<int> bodychargeItemId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodycreatedBySecurityUserId = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydueDatevalue = null, [WorkflowExpression] Func<bodydueDateOperatorInput> bodydueDateOperator = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<int> bodyendOfSessionId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<double> bodyexcess = null, [WorkflowExpression] Func<int> bodyextension = null, [WorkflowExpression] Func<int> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalReceiptId = null, [WorkflowExpression] Func<int> bodyinvoiceId = null, [WorkflowExpression] Func<string> bodypaidFromvalue = null, [WorkflowExpression] Func<bodypaidFromOperatorInput> bodypaidFromOperator = null, [WorkflowExpression] Func<string> bodypaidTovalue = null, [WorkflowExpression] Func<bodypaidToOperatorInput> bodypaidToOperator = null, [WorkflowExpression] Func<int> bodypaymentId = null, [WorkflowExpression] Func<string> bodyprocessedDatevalue = null, [WorkflowExpression] Func<bodyprocessedDateOperatorInput> bodyprocessedDateOperator = null, [WorkflowExpression] Func<int> bodyreferenceBookingId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodytableId = null, [WorkflowExpression] Func<string> bodytableName = null, [WorkflowExpression] Func<string> bodytag = null, [WorkflowExpression] Func<string> bodytagFinance = null, [WorkflowExpression] Func<double> bodytaxAmount = null, [WorkflowExpression] Func<double> bodytaxAmount2 = null, [WorkflowExpression] Func<double> bodytaxAmount3 = null, [WorkflowExpression] Func<int> bodytermSessionId = null, [WorkflowExpression] Func<string> bodytransactionDatevalue = null, [WorkflowExpression] Func<bodytransactionDateOperatorInput> bodytransactionDateOperator = null, [WorkflowExpression] Func<int> bodytransactionId = null, [WorkflowExpression] Func<bodytransactionTypeEnumInput> bodytransactionTypeEnum = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            SourceExpression.Validate(bodycallTypeEnum, nameof(bodycallTypeEnum), required: false);
-            SourceExpression.Validate(bodychargeGroupId, nameof(bodychargeGroupId), required: false);
-            SourceExpression.Validate(bodychargeItemId, nameof(bodychargeItemId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycreatedBySecurityUserId, nameof(bodycreatedBySecurityUserId), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydueDatevalue, nameof(bodydueDatevalue), required: false);
-            SourceExpression.Validate(bodydueDateOperator, nameof(bodydueDateOperator), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodyendOfSessionId, nameof(bodyendOfSessionId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyexcess, nameof(bodyexcess), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexternalReceiptId, nameof(bodyexternalReceiptId), required: false);
-            SourceExpression.Validate(bodyinvoiceId, nameof(bodyinvoiceId), required: false);
-            SourceExpression.Validate(bodypaidFromvalue, nameof(bodypaidFromvalue), required: false);
-            SourceExpression.Validate(bodypaidFromOperator, nameof(bodypaidFromOperator), required: false);
-            SourceExpression.Validate(bodypaidTovalue, nameof(bodypaidTovalue), required: false);
-            SourceExpression.Validate(bodypaidToOperator, nameof(bodypaidToOperator), required: false);
-            SourceExpression.Validate(bodypaymentId, nameof(bodypaymentId), required: false);
-            SourceExpression.Validate(bodyprocessedDatevalue, nameof(bodyprocessedDatevalue), required: false);
-            SourceExpression.Validate(bodyprocessedDateOperator, nameof(bodyprocessedDateOperator), required: false);
-            SourceExpression.Validate(bodyreferenceBookingId, nameof(bodyreferenceBookingId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodytableId, nameof(bodytableId), required: false);
-            SourceExpression.Validate(bodytableName, nameof(bodytableName), required: false);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: false);
-            SourceExpression.Validate(bodytagFinance, nameof(bodytagFinance), required: false);
-            SourceExpression.Validate(bodytaxAmount, nameof(bodytaxAmount), required: false);
-            SourceExpression.Validate(bodytaxAmount2, nameof(bodytaxAmount2), required: false);
-            SourceExpression.Validate(bodytaxAmount3, nameof(bodytaxAmount3), required: false);
-            SourceExpression.Validate(bodytermSessionId, nameof(bodytermSessionId), required: false);
-            SourceExpression.Validate(bodytransactionDatevalue, nameof(bodytransactionDatevalue), required: false);
-            SourceExpression.Validate(bodytransactionDateOperator, nameof(bodytransactionDateOperator), required: false);
-            SourceExpression.Validate(bodytransactionId, nameof(bodytransactionId), required: false);
-            SourceExpression.Validate(bodytransactionTypeEnum, nameof(bodytransactionTypeEnum), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/Transaction.json";
@@ -8756,37 +7662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<CreateTransactionResponse> CreateTransaction([WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<int> bodychargeGroupId, [WorkflowExpression] Func<bodycallTypeEnumInput> bodycallTypeEnum = null, [WorkflowExpression] Func<int> bodychargeItemId = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<int> bodyendOfSessionId = null, [WorkflowExpression] Func<int> bodyentryId = null, [WorkflowExpression] Func<double> bodyexcess = null, [WorkflowExpression] Func<int> bodyextension = null, [WorkflowExpression] Func<int> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalReceiptId = null, [WorkflowExpression] Func<int> bodyinvoiceId = null, [WorkflowExpression] Func<string> bodypaidFrom = null, [WorkflowExpression] Func<string> bodypaidTo = null, [WorkflowExpression] Func<int> bodypaymentId = null, [WorkflowExpression] Func<string> bodyprocessedDate = null, [WorkflowExpression] Func<int> bodyreferenceBookingId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<int> bodytableId = null, [WorkflowExpression] Func<string> bodytableName = null, [WorkflowExpression] Func<string> bodytag = null, [WorkflowExpression] Func<string> bodytagFinance = null, [WorkflowExpression] Func<double> bodytaxAmount = null, [WorkflowExpression] Func<double> bodytaxAmount2 = null, [WorkflowExpression] Func<double> bodytaxAmount3 = null, [WorkflowExpression] Func<int> bodytermSessionId = null, [WorkflowExpression] Func<string> bodytransactionDate = null, [WorkflowExpression] Func<bodytransactionTypeEnumInput> bodytransactionTypeEnum = null)
         {
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: true);
-            SourceExpression.Validate(bodychargeGroupId, nameof(bodychargeGroupId), required: true);
-            SourceExpression.Validate(bodycallTypeEnum, nameof(bodycallTypeEnum), required: false);
-            SourceExpression.Validate(bodychargeItemId, nameof(bodychargeItemId), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodyendOfSessionId, nameof(bodyendOfSessionId), required: false);
-            SourceExpression.Validate(bodyentryId, nameof(bodyentryId), required: false);
-            SourceExpression.Validate(bodyexcess, nameof(bodyexcess), required: false);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexternalReceiptId, nameof(bodyexternalReceiptId), required: false);
-            SourceExpression.Validate(bodyinvoiceId, nameof(bodyinvoiceId), required: false);
-            SourceExpression.Validate(bodypaidFrom, nameof(bodypaidFrom), required: false);
-            SourceExpression.Validate(bodypaidTo, nameof(bodypaidTo), required: false);
-            SourceExpression.Validate(bodypaymentId, nameof(bodypaymentId), required: false);
-            SourceExpression.Validate(bodyprocessedDate, nameof(bodyprocessedDate), required: false);
-            SourceExpression.Validate(bodyreferenceBookingId, nameof(bodyreferenceBookingId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodytableId, nameof(bodytableId), required: false);
-            SourceExpression.Validate(bodytableName, nameof(bodytableName), required: false);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: false);
-            SourceExpression.Validate(bodytagFinance, nameof(bodytagFinance), required: false);
-            SourceExpression.Validate(bodytaxAmount, nameof(bodytaxAmount), required: false);
-            SourceExpression.Validate(bodytaxAmount2, nameof(bodytaxAmount2), required: false);
-            SourceExpression.Validate(bodytaxAmount3, nameof(bodytaxAmount3), required: false);
-            SourceExpression.Validate(bodytermSessionId, nameof(bodytermSessionId), required: false);
-            SourceExpression.Validate(bodytransactionDate, nameof(bodytransactionDate), required: false);
-            SourceExpression.Validate(bodytransactionTypeEnum, nameof(bodytransactionTypeEnum), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/transaction.json";
@@ -8985,74 +7860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<SelectRoomSpaceMaintenanceResponseItem[]> SelectRoomSpaceMaintenance([WorkflowExpression] Func<bodyPageSizeInput> bodyPageSize, [WorkflowExpression] Func<int> bodyPageIndex, [WorkflowExpression] Func<bool> bodyReturnEmptyArrayOnNoResult = null, [WorkflowExpression] Func<string> bodyOrderby = null, [WorkflowExpression] Func<string> bodyaccountCode = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<bool> bodycharge = null, [WorkflowExpression] Func<int> bodychargeEntryId = null, [WorkflowExpression] Func<double> bodychargeAmount = null, [WorkflowExpression] Func<bool> bodychargeInvoiced = null, [WorkflowExpression] Func<string> bodychargeInvoiceNumber = null, [WorkflowExpression] Func<string> bodychargeType = null, [WorkflowExpression] Func<string> bodycompleteDatevalue = null, [WorkflowExpression] Func<bodycompleteDateOperatorInput> bodycompleteDateOperator = null, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<string> bodycontractDatevalue = null, [WorkflowExpression] Func<bodycontractDateOperatorInput> bodycontractDateOperator = null, [WorkflowExpression] Func<double> bodycontractorCost = null, [WorkflowExpression] Func<double> bodycontractorCostEstimate = null, [WorkflowExpression] Func<string> bodycontractorDatevalue = null, [WorkflowExpression] Func<bodycontractorDateOperatorInput> bodycontractorDateOperator = null, [WorkflowExpression] Func<string> bodycontractorETA = null, [WorkflowExpression] Func<string> bodycontractorOrderNumber = null, [WorkflowExpression] Func<int> bodycreatedBySecurityUserId = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1value = null, [WorkflowExpression] Func<bodycustomDate1OperatorInput> bodycustomDate1Operator = null, [WorkflowExpression] Func<string> bodycustomDate2value = null, [WorkflowExpression] Func<bodycustomDate2OperatorInput> bodycustomDate2Operator = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateCreatedvalue = null, [WorkflowExpression] Func<bodydateCreatedOperatorInput> bodydateCreatedOperator = null, [WorkflowExpression] Func<string> bodydateDuevalue = null, [WorkflowExpression] Func<bodydateDueOperatorInput> bodydateDueOperator = null, [WorkflowExpression] Func<string> bodydateModifiedvalue = null, [WorkflowExpression] Func<bodydateModifiedOperatorInput> bodydateModifiedOperator = null, [WorkflowExpression] Func<string> bodydateReportedvalue = null, [WorkflowExpression] Func<bodydateReportedOperatorInput> bodydateReportedOperator = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyjobSent = null, [WorkflowExpression] Func<string> bodyjobStatus = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<int> bodyoccupantEntryId = null, [WorkflowExpression] Func<string> bodyoccupantEntryName = null, [WorkflowExpression] Func<bool> bodyoccupantPresent = null, [WorkflowExpression] Func<string> bodyoccupantPresentReason = null, [WorkflowExpression] Func<string> bodyotherServiceNumber = null, [WorkflowExpression] Func<int> bodypriorityId = null, [WorkflowExpression] Func<string> bodyrepairDescription = null, [WorkflowExpression] Func<string> bodyreportedByName = null, [WorkflowExpression] Func<string> bodyreportedByPhone = null, [WorkflowExpression] Func<int> bodyroomSpaceClosedId = null, [WorkflowExpression] Func<int> bodyroomSpaceId = null, [WorkflowExpression] Func<int> bodyroomSpaceMaintenanceCategoryId = null, [WorkflowExpression] Func<int> bodyroomSpaceMaintenanceId = null, [WorkflowExpression] Func<int> bodyroomSpaceMaintenanceItemId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<string> bodystartDatevalue = null, [WorkflowExpression] Func<bodystartDateOperatorInput> bodystartDateOperator = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytechnician = null, [WorkflowExpression] Func<bool> bodyviewOnWeb = null)
         {
-            SourceExpression.Validate(bodyPageSize, nameof(bodyPageSize), required: true);
-            SourceExpression.Validate(bodyPageIndex, nameof(bodyPageIndex), required: true);
-            SourceExpression.Validate(bodyReturnEmptyArrayOnNoResult, nameof(bodyReturnEmptyArrayOnNoResult), required: false);
-            SourceExpression.Validate(bodyOrderby, nameof(bodyOrderby), required: false);
-            SourceExpression.Validate(bodyaccountCode, nameof(bodyaccountCode), required: false);
-            SourceExpression.Validate(bodycause, nameof(bodycause), required: false);
-            SourceExpression.Validate(bodycharge, nameof(bodycharge), required: false);
-            SourceExpression.Validate(bodychargeEntryId, nameof(bodychargeEntryId), required: false);
-            SourceExpression.Validate(bodychargeAmount, nameof(bodychargeAmount), required: false);
-            SourceExpression.Validate(bodychargeInvoiced, nameof(bodychargeInvoiced), required: false);
-            SourceExpression.Validate(bodychargeInvoiceNumber, nameof(bodychargeInvoiceNumber), required: false);
-            SourceExpression.Validate(bodychargeType, nameof(bodychargeType), required: false);
-            SourceExpression.Validate(bodycompleteDatevalue, nameof(bodycompleteDatevalue), required: false);
-            SourceExpression.Validate(bodycompleteDateOperator, nameof(bodycompleteDateOperator), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodycontractDatevalue, nameof(bodycontractDatevalue), required: false);
-            SourceExpression.Validate(bodycontractDateOperator, nameof(bodycontractDateOperator), required: false);
-            SourceExpression.Validate(bodycontractorCost, nameof(bodycontractorCost), required: false);
-            SourceExpression.Validate(bodycontractorCostEstimate, nameof(bodycontractorCostEstimate), required: false);
-            SourceExpression.Validate(bodycontractorDatevalue, nameof(bodycontractorDatevalue), required: false);
-            SourceExpression.Validate(bodycontractorDateOperator, nameof(bodycontractorDateOperator), required: false);
-            SourceExpression.Validate(bodycontractorETA, nameof(bodycontractorETA), required: false);
-            SourceExpression.Validate(bodycontractorOrderNumber, nameof(bodycontractorOrderNumber), required: false);
-            SourceExpression.Validate(bodycreatedBySecurityUserId, nameof(bodycreatedBySecurityUserId), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1value, nameof(bodycustomDate1value), required: false);
-            SourceExpression.Validate(bodycustomDate1Operator, nameof(bodycustomDate1Operator), required: false);
-            SourceExpression.Validate(bodycustomDate2value, nameof(bodycustomDate2value), required: false);
-            SourceExpression.Validate(bodycustomDate2Operator, nameof(bodycustomDate2Operator), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateCreatedvalue, nameof(bodydateCreatedvalue), required: false);
-            SourceExpression.Validate(bodydateCreatedOperator, nameof(bodydateCreatedOperator), required: false);
-            SourceExpression.Validate(bodydateDuevalue, nameof(bodydateDuevalue), required: false);
-            SourceExpression.Validate(bodydateDueOperator, nameof(bodydateDueOperator), required: false);
-            SourceExpression.Validate(bodydateModifiedvalue, nameof(bodydateModifiedvalue), required: false);
-            SourceExpression.Validate(bodydateModifiedOperator, nameof(bodydateModifiedOperator), required: false);
-            SourceExpression.Validate(bodydateReportedvalue, nameof(bodydateReportedvalue), required: false);
-            SourceExpression.Validate(bodydateReportedOperator, nameof(bodydateReportedOperator), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyjobSent, nameof(bodyjobSent), required: false);
-            SourceExpression.Validate(bodyjobStatus, nameof(bodyjobStatus), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodyoccupantEntryId, nameof(bodyoccupantEntryId), required: false);
-            SourceExpression.Validate(bodyoccupantEntryName, nameof(bodyoccupantEntryName), required: false);
-            SourceExpression.Validate(bodyoccupantPresent, nameof(bodyoccupantPresent), required: false);
-            SourceExpression.Validate(bodyoccupantPresentReason, nameof(bodyoccupantPresentReason), required: false);
-            SourceExpression.Validate(bodyotherServiceNumber, nameof(bodyotherServiceNumber), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodyrepairDescription, nameof(bodyrepairDescription), required: false);
-            SourceExpression.Validate(bodyreportedByName, nameof(bodyreportedByName), required: false);
-            SourceExpression.Validate(bodyreportedByPhone, nameof(bodyreportedByPhone), required: false);
-            SourceExpression.Validate(bodyroomSpaceClosedId, nameof(bodyroomSpaceClosedId), required: false);
-            SourceExpression.Validate(bodyroomSpaceId, nameof(bodyroomSpaceId), required: false);
-            SourceExpression.Validate(bodyroomSpaceMaintenanceCategoryId, nameof(bodyroomSpaceMaintenanceCategoryId), required: false);
-            SourceExpression.Validate(bodyroomSpaceMaintenanceId, nameof(bodyroomSpaceMaintenanceId), required: false);
-            SourceExpression.Validate(bodyroomSpaceMaintenanceItemId, nameof(bodyroomSpaceMaintenanceItemId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodystartDatevalue, nameof(bodystartDatevalue), required: false);
-            SourceExpression.Validate(bodystartDateOperator, nameof(bodystartDateOperator), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytechnician, nameof(bodytechnician), required: false);
-            SourceExpression.Validate(bodyviewOnWeb, nameof(bodyviewOnWeb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/select/RoomSpaceMaintenance.json";
@@ -9563,56 +8370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<CreateRoomSpaceMaintenanceResponse> CreateRoomSpaceMaintenance([WorkflowExpression] Func<int> bodyroomSpaceId, [WorkflowExpression] Func<string> bodyaccountCode = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<bool> bodycharge = null, [WorkflowExpression] Func<int> bodychargeEntryId = null, [WorkflowExpression] Func<double> bodychargeAmount = null, [WorkflowExpression] Func<bool> bodychargeInvoiced = null, [WorkflowExpression] Func<string> bodychargeInvoiceNumber = null, [WorkflowExpression] Func<string> bodychargeType = null, [WorkflowExpression] Func<string> bodycompleteDate = null, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<string> bodycontractDate = null, [WorkflowExpression] Func<double> bodycontractorCost = null, [WorkflowExpression] Func<double> bodycontractorCostEstimate = null, [WorkflowExpression] Func<string> bodycontractorDate = null, [WorkflowExpression] Func<string> bodycontractorETA = null, [WorkflowExpression] Func<string> bodycontractorOrderNumber = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateDue = null, [WorkflowExpression] Func<string> bodydateReported = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyjobSent = null, [WorkflowExpression] Func<string> bodyjobStatus = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<int> bodyoccupantEntryId = null, [WorkflowExpression] Func<string> bodyoccupantEntryName = null, [WorkflowExpression] Func<bool> bodyoccupantPresent = null, [WorkflowExpression] Func<string> bodyoccupantPresentReason = null, [WorkflowExpression] Func<string> bodyotherServiceNumber = null, [WorkflowExpression] Func<int> bodypriorityId = null, [WorkflowExpression] Func<string> bodyrepairDescription = null, [WorkflowExpression] Func<string> bodyreportedByName = null, [WorkflowExpression] Func<string> bodyreportedByPhone = null, [WorkflowExpression] Func<int> bodyroomSpaceClosedId = null, [WorkflowExpression] Func<int> bodyroomSpaceMaintenanceCategoryId = null, [WorkflowExpression] Func<int> bodyroomSpaceMaintenanceItemId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytechnician = null, [WorkflowExpression] Func<bool> bodyviewOnWeb = null)
         {
-            SourceExpression.Validate(bodyroomSpaceId, nameof(bodyroomSpaceId), required: true);
-            SourceExpression.Validate(bodyaccountCode, nameof(bodyaccountCode), required: false);
-            SourceExpression.Validate(bodycause, nameof(bodycause), required: false);
-            SourceExpression.Validate(bodycharge, nameof(bodycharge), required: false);
-            SourceExpression.Validate(bodychargeEntryId, nameof(bodychargeEntryId), required: false);
-            SourceExpression.Validate(bodychargeAmount, nameof(bodychargeAmount), required: false);
-            SourceExpression.Validate(bodychargeInvoiced, nameof(bodychargeInvoiced), required: false);
-            SourceExpression.Validate(bodychargeInvoiceNumber, nameof(bodychargeInvoiceNumber), required: false);
-            SourceExpression.Validate(bodychargeType, nameof(bodychargeType), required: false);
-            SourceExpression.Validate(bodycompleteDate, nameof(bodycompleteDate), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodycontractDate, nameof(bodycontractDate), required: false);
-            SourceExpression.Validate(bodycontractorCost, nameof(bodycontractorCost), required: false);
-            SourceExpression.Validate(bodycontractorCostEstimate, nameof(bodycontractorCostEstimate), required: false);
-            SourceExpression.Validate(bodycontractorDate, nameof(bodycontractorDate), required: false);
-            SourceExpression.Validate(bodycontractorETA, nameof(bodycontractorETA), required: false);
-            SourceExpression.Validate(bodycontractorOrderNumber, nameof(bodycontractorOrderNumber), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateDue, nameof(bodydateDue), required: false);
-            SourceExpression.Validate(bodydateReported, nameof(bodydateReported), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyjobSent, nameof(bodyjobSent), required: false);
-            SourceExpression.Validate(bodyjobStatus, nameof(bodyjobStatus), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodyoccupantEntryId, nameof(bodyoccupantEntryId), required: false);
-            SourceExpression.Validate(bodyoccupantEntryName, nameof(bodyoccupantEntryName), required: false);
-            SourceExpression.Validate(bodyoccupantPresent, nameof(bodyoccupantPresent), required: false);
-            SourceExpression.Validate(bodyoccupantPresentReason, nameof(bodyoccupantPresentReason), required: false);
-            SourceExpression.Validate(bodyotherServiceNumber, nameof(bodyotherServiceNumber), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodyrepairDescription, nameof(bodyrepairDescription), required: false);
-            SourceExpression.Validate(bodyreportedByName, nameof(bodyreportedByName), required: false);
-            SourceExpression.Validate(bodyreportedByPhone, nameof(bodyreportedByPhone), required: false);
-            SourceExpression.Validate(bodyroomSpaceClosedId, nameof(bodyroomSpaceClosedId), required: false);
-            SourceExpression.Validate(bodyroomSpaceMaintenanceCategoryId, nameof(bodyroomSpaceMaintenanceCategoryId), required: false);
-            SourceExpression.Validate(bodyroomSpaceMaintenanceItemId, nameof(bodyroomSpaceMaintenanceItemId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytechnician, nameof(bodytechnician), required: false);
-            SourceExpression.Validate(bodyviewOnWeb, nameof(bodyviewOnWeb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create/roomspacemaintenance.json";
@@ -9929,57 +8686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
         public IBodyWorkflowAction<UpdateRoomSpaceMaintenanceResponse> UpdateRoomSpaceMaintenance([WorkflowExpression] Func<int> roomSpaceMaintenanceId, [WorkflowExpression] Func<string> bodyaccountCode = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<bool> bodycharge = null, [WorkflowExpression] Func<int> bodychargeEntryId = null, [WorkflowExpression] Func<double> bodychargeAmount = null, [WorkflowExpression] Func<bool> bodychargeInvoiced = null, [WorkflowExpression] Func<string> bodychargeInvoiceNumber = null, [WorkflowExpression] Func<string> bodychargeType = null, [WorkflowExpression] Func<string> bodycompleteDate = null, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<string> bodycontractDate = null, [WorkflowExpression] Func<double> bodycontractorCost = null, [WorkflowExpression] Func<double> bodycontractorCostEstimate = null, [WorkflowExpression] Func<string> bodycontractorDate = null, [WorkflowExpression] Func<string> bodycontractorETA = null, [WorkflowExpression] Func<string> bodycontractorOrderNumber = null, [WorkflowExpression] Func<bool> bodycustomBit1 = null, [WorkflowExpression] Func<bool> bodycustomBit2 = null, [WorkflowExpression] Func<string> bodycustomDate1 = null, [WorkflowExpression] Func<string> bodycustomDate2 = null, [WorkflowExpression] Func<string> bodycustomString1 = null, [WorkflowExpression] Func<string> bodycustomString2 = null, [WorkflowExpression] Func<string> bodycustomString3 = null, [WorkflowExpression] Func<string> bodycustomString4 = null, [WorkflowExpression] Func<string> bodycustomString5 = null, [WorkflowExpression] Func<string> bodycustomString6 = null, [WorkflowExpression] Func<string> bodydateDue = null, [WorkflowExpression] Func<string> bodydateReported = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyjobSent = null, [WorkflowExpression] Func<string> bodyjobStatus = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<int> bodyoccupantEntryId = null, [WorkflowExpression] Func<string> bodyoccupantEntryName = null, [WorkflowExpression] Func<bool> bodyoccupantPresent = null, [WorkflowExpression] Func<string> bodyoccupantPresentReason = null, [WorkflowExpression] Func<string> bodyotherServiceNumber = null, [WorkflowExpression] Func<int> bodypriorityId = null, [WorkflowExpression] Func<string> bodyrepairDescription = null, [WorkflowExpression] Func<string> bodyreportedByName = null, [WorkflowExpression] Func<string> bodyreportedByPhone = null, [WorkflowExpression] Func<int> bodyroomSpaceClosedId = null, [WorkflowExpression] Func<int> bodyroomSpaceId = null, [WorkflowExpression] Func<int> bodyroomSpaceMaintenanceCategoryId = null, [WorkflowExpression] Func<int> bodyroomSpaceMaintenanceItemId = null, [WorkflowExpression] Func<int> bodysecurityUserId = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytechnician = null, [WorkflowExpression] Func<bool> bodyviewOnWeb = null)
         {
-            SourceExpression.Validate(roomSpaceMaintenanceId, nameof(roomSpaceMaintenanceId), required: true);
-            SourceExpression.Validate(bodyaccountCode, nameof(bodyaccountCode), required: false);
-            SourceExpression.Validate(bodycause, nameof(bodycause), required: false);
-            SourceExpression.Validate(bodycharge, nameof(bodycharge), required: false);
-            SourceExpression.Validate(bodychargeEntryId, nameof(bodychargeEntryId), required: false);
-            SourceExpression.Validate(bodychargeAmount, nameof(bodychargeAmount), required: false);
-            SourceExpression.Validate(bodychargeInvoiced, nameof(bodychargeInvoiced), required: false);
-            SourceExpression.Validate(bodychargeInvoiceNumber, nameof(bodychargeInvoiceNumber), required: false);
-            SourceExpression.Validate(bodychargeType, nameof(bodychargeType), required: false);
-            SourceExpression.Validate(bodycompleteDate, nameof(bodycompleteDate), required: false);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodycontractDate, nameof(bodycontractDate), required: false);
-            SourceExpression.Validate(bodycontractorCost, nameof(bodycontractorCost), required: false);
-            SourceExpression.Validate(bodycontractorCostEstimate, nameof(bodycontractorCostEstimate), required: false);
-            SourceExpression.Validate(bodycontractorDate, nameof(bodycontractorDate), required: false);
-            SourceExpression.Validate(bodycontractorETA, nameof(bodycontractorETA), required: false);
-            SourceExpression.Validate(bodycontractorOrderNumber, nameof(bodycontractorOrderNumber), required: false);
-            SourceExpression.Validate(bodycustomBit1, nameof(bodycustomBit1), required: false);
-            SourceExpression.Validate(bodycustomBit2, nameof(bodycustomBit2), required: false);
-            SourceExpression.Validate(bodycustomDate1, nameof(bodycustomDate1), required: false);
-            SourceExpression.Validate(bodycustomDate2, nameof(bodycustomDate2), required: false);
-            SourceExpression.Validate(bodycustomString1, nameof(bodycustomString1), required: false);
-            SourceExpression.Validate(bodycustomString2, nameof(bodycustomString2), required: false);
-            SourceExpression.Validate(bodycustomString3, nameof(bodycustomString3), required: false);
-            SourceExpression.Validate(bodycustomString4, nameof(bodycustomString4), required: false);
-            SourceExpression.Validate(bodycustomString5, nameof(bodycustomString5), required: false);
-            SourceExpression.Validate(bodycustomString6, nameof(bodycustomString6), required: false);
-            SourceExpression.Validate(bodydateDue, nameof(bodydateDue), required: false);
-            SourceExpression.Validate(bodydateReported, nameof(bodydateReported), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyjobSent, nameof(bodyjobSent), required: false);
-            SourceExpression.Validate(bodyjobStatus, nameof(bodyjobStatus), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodyoccupantEntryId, nameof(bodyoccupantEntryId), required: false);
-            SourceExpression.Validate(bodyoccupantEntryName, nameof(bodyoccupantEntryName), required: false);
-            SourceExpression.Validate(bodyoccupantPresent, nameof(bodyoccupantPresent), required: false);
-            SourceExpression.Validate(bodyoccupantPresentReason, nameof(bodyoccupantPresentReason), required: false);
-            SourceExpression.Validate(bodyotherServiceNumber, nameof(bodyotherServiceNumber), required: false);
-            SourceExpression.Validate(bodypriorityId, nameof(bodypriorityId), required: false);
-            SourceExpression.Validate(bodyrepairDescription, nameof(bodyrepairDescription), required: false);
-            SourceExpression.Validate(bodyreportedByName, nameof(bodyreportedByName), required: false);
-            SourceExpression.Validate(bodyreportedByPhone, nameof(bodyreportedByPhone), required: false);
-            SourceExpression.Validate(bodyroomSpaceClosedId, nameof(bodyroomSpaceClosedId), required: false);
-            SourceExpression.Validate(bodyroomSpaceId, nameof(bodyroomSpaceId), required: false);
-            SourceExpression.Validate(bodyroomSpaceMaintenanceCategoryId, nameof(bodyroomSpaceMaintenanceCategoryId), required: false);
-            SourceExpression.Validate(bodyroomSpaceMaintenanceItemId, nameof(bodyroomSpaceMaintenanceItemId), required: false);
-            SourceExpression.Validate(bodysecurityUserId, nameof(bodysecurityUserId), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytechnician, nameof(bodytechnician), required: false);
-            SourceExpression.Validate(bodyviewOnWeb, nameof(bodyviewOnWeb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/update/roomspacemaintenance.json/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(roomSpaceMaintenanceId, 1));

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction TriggerInvitation([WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
         {
-            SourceExpression.Validate(service, nameof(service), required: true);
-            SourceExpression.Validate(instanceURL, nameof(instanceURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
@@ -39,8 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction SendExperienceSignals([WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
         {
-            SourceExpression.Validate(service, nameof(service), required: true);
-            SourceExpression.Validate(instanceURL, nameof(instanceURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/inbound/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));

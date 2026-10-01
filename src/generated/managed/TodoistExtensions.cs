@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<TaskV2> CreateItem([WorkflowExpression] Func<string> newItemtitle, [WorkflowExpression] Func<string> newItemprojectId = null, [WorkflowExpression] Func<string> newItemdueDate = null, [WorkflowExpression] Func<int> newItempriority = null, [WorkflowExpression] Func<string> newItemparentId = null, [WorkflowExpression] Func<int> newItemchildOrder = null)
         {
-            SourceExpression.Validate(newItemtitle, nameof(newItemtitle), required: true);
-            SourceExpression.Validate(newItemprojectId, nameof(newItemprojectId), required: false);
-            SourceExpression.Validate(newItemdueDate, nameof(newItemdueDate), required: false);
-            SourceExpression.Validate(newItempriority, nameof(newItempriority), required: false);
-            SourceExpression.Validate(newItemparentId, nameof(newItemparentId), required: false);
-            SourceExpression.Validate(newItemchildOrder, nameof(newItemchildOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/tasks/createTask";
@@ -72,9 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<LabelV4> CreateLabel([WorkflowExpression] Func<string> newLabelname, [WorkflowExpression] Func<string> newLabelcolor = null, [WorkflowExpression] Func<int> newLabelorder = null)
         {
-            SourceExpression.Validate(newLabelname, nameof(newLabelname), required: true);
-            SourceExpression.Validate(newLabelcolor, nameof(newLabelcolor), required: false);
-            SourceExpression.Validate(newLabelorder, nameof(newLabelorder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/labels/createLabel";
@@ -109,10 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<ProjectV4> CreateProject([WorkflowExpression] Func<string> newProjectname, [WorkflowExpression] Func<string> newProjectcolor = null, [WorkflowExpression] Func<string> newProjectparentId = null, [WorkflowExpression] Func<bool> newProjectisFavorite = null)
         {
-            SourceExpression.Validate(newProjectname, nameof(newProjectname), required: true);
-            SourceExpression.Validate(newProjectcolor, nameof(newProjectcolor), required: false);
-            SourceExpression.Validate(newProjectparentId, nameof(newProjectparentId), required: false);
-            SourceExpression.Validate(newProjectisFavorite, nameof(newProjectisFavorite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/projects/createProject";
@@ -167,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<TaskV2[]> ListItemsByProject([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/tasks/getTasksByProject";
@@ -211,8 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<ProjectV4> ShareProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> shareProjectemail)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(shareProjectemail, nameof(shareProjectemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/sync/shareProject";
@@ -236,10 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IWorkflowAction UpdateItem([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeItemtitle, [WorkflowExpression] Func<int> changeItempriority = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(changeItemtitle, nameof(changeItemtitle), required: true);
-            SourceExpression.Validate(changeItempriority, nameof(changeItempriority), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/tasks/updateTask";
@@ -270,10 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IWorkflowAction UpdateLabel([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeLabelname = null, [WorkflowExpression] Func<string> changeLabelcolor = null, [WorkflowExpression] Func<int> changeLabelorder = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(changeLabelname, nameof(changeLabelname), required: false);
-            SourceExpression.Validate(changeLabelcolor, nameof(changeLabelcolor), required: false);
-            SourceExpression.Validate(changeLabelorder, nameof(changeLabelorder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/labels/updateLabel";
@@ -313,10 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IWorkflowAction UpdateProject([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeProjectname, [WorkflowExpression] Func<string> changeProjectcolor = null, [WorkflowExpression] Func<bool> changeProjectisFavorite = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(changeProjectname, nameof(changeProjectname), required: true);
-            SourceExpression.Validate(changeProjectcolor, nameof(changeProjectcolor), required: false);
-            SourceExpression.Validate(changeProjectisFavorite, nameof(changeProjectisFavorite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/projects/updateProject";
@@ -354,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
     {
         public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/trigger/completed/get_all";
@@ -369,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
         public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/trigger/sync";

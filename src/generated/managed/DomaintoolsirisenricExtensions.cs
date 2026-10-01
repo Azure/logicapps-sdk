@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisenric")]
         public IBodyWorkflowAction<EnrichResponse> EnrichDomain([WorkflowExpression] Func<string> domain)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-enrich/";

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5102AddHtmlToWord> AddHtmlToWord([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5102_AddHtmlToWord";
@@ -51,12 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5032AddImageToWord> AddImageToWord([WorkflowExpression] Func<string> dtoRequestimage, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestcaptionText = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageHeight = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestimage, nameof(dtoRequestimage), required: true);
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestcaptionText, nameof(dtoRequestcaptionText), required: false);
-            SourceExpression.Validate(dtoRequestmaximumImageWidth, nameof(dtoRequestmaximumImageWidth), required: false);
-            SourceExpression.Validate(dtoRequestmaximumImageHeight, nameof(dtoRequestmaximumImageHeight), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5032_AddImageToWord";
@@ -109,12 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5043AddImageWithinTableToWord> AddImageWithinTableToWord([WorkflowExpression] Func<string> dtoRequestimage, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestdescriptionText = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageHeight = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestimage, nameof(dtoRequestimage), required: true);
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestdescriptionText, nameof(dtoRequestdescriptionText), required: false);
-            SourceExpression.Validate(dtoRequestmaximumImageWidth, nameof(dtoRequestmaximumImageWidth), required: false);
-            SourceExpression.Validate(dtoRequestmaximumImageHeight, nameof(dtoRequestmaximumImageHeight), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5043_AddImageWithinTableToWord";
@@ -167,12 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5053AddTableToWord> AddTableToWord([WorkflowExpression] Func<string> dtoRequesttableData, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<bool> dtoRequestshowHeaders = null, [WorkflowExpression] Func<string> dtoRequesttableStyle = null, [WorkflowExpression] Func<string> dtoRequesttableCaption = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesttableData, nameof(dtoRequesttableData), required: true);
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestshowHeaders, nameof(dtoRequestshowHeaders), required: false);
-            SourceExpression.Validate(dtoRequesttableStyle, nameof(dtoRequesttableStyle), required: false);
-            SourceExpression.Validate(dtoRequesttableCaption, nameof(dtoRequesttableCaption), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5053_AddTableToWord";
@@ -245,10 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5062AddTextToWord> AddTextToWord([WorkflowExpression] Func<string> dtoRequesttype, [WorkflowExpression] Func<string> dtoRequesttext, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesttype, nameof(dtoRequesttype), required: true);
-            SourceExpression.Validate(dtoRequesttext, nameof(dtoRequesttext), required: true);
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5062_AddTextToWord";
@@ -285,10 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2081CombineCsvs> CombineCsvs([WorkflowExpression] Func<string> dtoRequestV2081CombineCsvsmainCSV, [WorkflowExpression] Func<string> dtoRequestV2081CombineCsvscombineColumnName, [WorkflowExpression] Func<string> dtoRequestV2081CombineCsvssecondCSV, [WorkflowExpression] Func<string> dtoRequestV2081CombineCsvssecondCSVColumn = null)
         {
-            SourceExpression.Validate(dtoRequestV2081CombineCsvsmainCSV, nameof(dtoRequestV2081CombineCsvsmainCSV), required: true);
-            SourceExpression.Validate(dtoRequestV2081CombineCsvscombineColumnName, nameof(dtoRequestV2081CombineCsvscombineColumnName), required: true);
-            SourceExpression.Validate(dtoRequestV2081CombineCsvssecondCSV, nameof(dtoRequestV2081CombineCsvssecondCSV), required: true);
-            SourceExpression.Validate(dtoRequestV2081CombineCsvssecondCSVColumn, nameof(dtoRequestV2081CombineCsvssecondCSVColumn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2081_CombineCsvs";
@@ -321,10 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2091CombineJsonArrays> CombineJsonArrays([WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArraysmainJSON, [WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArrayscombinePropertyName, [WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArrayssecondJSON, [WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArrayssecondJSONProperty = null)
         {
-            SourceExpression.Validate(dtoRequestV2091CombineJsonArraysmainJSON, nameof(dtoRequestV2091CombineJsonArraysmainJSON), required: true);
-            SourceExpression.Validate(dtoRequestV2091CombineJsonArrayscombinePropertyName, nameof(dtoRequestV2091CombineJsonArrayscombinePropertyName), required: true);
-            SourceExpression.Validate(dtoRequestV2091CombineJsonArrayssecondJSON, nameof(dtoRequestV2091CombineJsonArrayssecondJSON), required: true);
-            SourceExpression.Validate(dtoRequestV2091CombineJsonArrayssecondJSONProperty, nameof(dtoRequestV2091CombineJsonArrayssecondJSONProperty), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2091_CombineJsonArrays";
@@ -357,9 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3042CompressImage> CompressImage([WorkflowExpression] Func<string> dtoRequestimageFile, [WorkflowExpression] Func<int> dtoRequestimageQuality = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
-            SourceExpression.Validate(dtoRequestimageQuality, nameof(dtoRequestimageQuality), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3042_CompressImage";
@@ -394,13 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4081CompressPdf> CompressPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<bool> dtoRequestcompressImages = null, [WorkflowExpression] Func<int> dtoRequestimageQuality = null, [WorkflowExpression] Func<bool> dtoRequestoptimizeFonts = null, [WorkflowExpression] Func<bool> dtoRequestoptimizePageContents = null, [WorkflowExpression] Func<bool> dtoRequestremoveMetadata = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestcompressImages, nameof(dtoRequestcompressImages), required: false);
-            SourceExpression.Validate(dtoRequestimageQuality, nameof(dtoRequestimageQuality), required: false);
-            SourceExpression.Validate(dtoRequestoptimizeFonts, nameof(dtoRequestoptimizeFonts), required: false);
-            SourceExpression.Validate(dtoRequestoptimizePageContents, nameof(dtoRequestoptimizePageContents), required: false);
-            SourceExpression.Validate(dtoRequestremoveMetadata, nameof(dtoRequestremoveMetadata), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4081_CompressPdf";
@@ -459,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2071ConvertColor> ConvertColor([WorkflowExpression] Func<string> dtoRequestV2071ConvertColorcolor)
         {
-            SourceExpression.Validate(dtoRequestV2071ConvertColorcolor, nameof(dtoRequestV2071ConvertColorcolor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2071_ConvertColor";
@@ -482,20 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1035ConvertCsvToExcel> ConvertCsvToExcel([WorkflowExpression] Func<string> dtoRequestcSV, [WorkflowExpression] Func<bool> dtoRequestcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequeststopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<int> dtoRequestcSVInputEncoding = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestcSV, nameof(dtoRequestcSV), required: true);
-            SourceExpression.Validate(dtoRequestcSVHasHeaders, nameof(dtoRequestcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestautoDetectFieldTypes, nameof(dtoRequestautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestnumberOfRowsForFieldTypeDetection, nameof(dtoRequestnumberOfRowsForFieldTypeDetection), required: false);
-            SourceExpression.Validate(dtoRequestremoveEmptyRows, nameof(dtoRequestremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestskipANumberOfRows, nameof(dtoRequestskipANumberOfRows), required: false);
-            SourceExpression.Validate(dtoRequeststopAtASpecificRow, nameof(dtoRequeststopAtASpecificRow), required: false);
-            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
-            SourceExpression.Validate(dtoRequestautoDetectQuoteDelimiter, nameof(dtoRequestautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestcSVInputEncoding, nameof(dtoRequestcSVInputEncoding), required: false);
-            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
-            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
-            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1035_ConvertCsvToExcel";
@@ -656,15 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseHtml> ConvertCsvToHtmlTable([WorkflowExpression] Func<string> dtoRequestV7061ConvertCsvToHtmlTablecSV, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV7061ConvertCsvToHtmlTableseparator = null, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter = null)
         {
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablecSV, nameof(dtoRequestV7061ConvertCsvToHtmlTablecSV), required: true);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders, nameof(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes, nameof(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection, nameof(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection), required: false);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows, nameof(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows, nameof(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows), required: false);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow, nameof(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow), required: false);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableseparator, nameof(dtoRequestV7061ConvertCsvToHtmlTableseparator), required: false);
-            SourceExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter, nameof(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7061_ConvertCsvToHtmlTable";
@@ -775,15 +708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1022ConvertCsvToJson> ConvertCsvToJson([WorkflowExpression] Func<string> dtoRequestV1022ConvertCsvToJsoncSV, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsoncSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsonremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV1022ConvertCsvToJsonskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV1022ConvertCsvToJsonseparator = null, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter = null)
         {
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsoncSV, nameof(dtoRequestV1022ConvertCsvToJsoncSV), required: true);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders, nameof(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes, nameof(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection), required: false);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows, nameof(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows, nameof(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows), required: false);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow, nameof(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow), required: false);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsonseparator, nameof(dtoRequestV1022ConvertCsvToJsonseparator), required: false);
-            SourceExpression.Validate(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter, nameof(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1022_ConvertCsvToJson";
@@ -894,13 +818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1150ConvertCsvToMarkdown> ConvertCsvToMarkdown([WorkflowExpression] Func<string> dtoRequestcSV, [WorkflowExpression] Func<bool> dtoRequestfirstRowIsTheHeader = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestvaluesMayBeInQuotes = null, [WorkflowExpression] Func<bool> dtoRequestskipEmptyLines = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestcSV, nameof(dtoRequestcSV), required: true);
-            SourceExpression.Validate(dtoRequestfirstRowIsTheHeader, nameof(dtoRequestfirstRowIsTheHeader), required: false);
-            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
-            SourceExpression.Validate(dtoRequestvaluesMayBeInQuotes, nameof(dtoRequestvaluesMayBeInQuotes), required: false);
-            SourceExpression.Validate(dtoRequestskipEmptyLines, nameof(dtoRequestskipEmptyLines), required: false);
-            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1150_ConvertCsvToMarkdown";
@@ -959,10 +876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson> ConvertExcelToJson([WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonexcelFile, [WorkflowExpression] Func<bool> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, [WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonstartCell = null, [WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonsheetName = null)
         {
-            SourceExpression.Validate(dtoRequestV1100ConvertExcelToJsonexcelFile, nameof(dtoRequestV1100ConvertExcelToJsonexcelFile), required: true);
-            SourceExpression.Validate(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders, nameof(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestV1100ConvertExcelToJsonstartCell, nameof(dtoRequestV1100ConvertExcelToJsonstartCell), required: false);
-            SourceExpression.Validate(dtoRequestV1100ConvertExcelToJsonsheetName, nameof(dtoRequestV1100ConvertExcelToJsonsheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1100_ConvertExcelToJson";
@@ -1013,11 +926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1140ConvertExcelToMarkdown> ConvertExcelToMarkdown([WorkflowExpression] Func<string> dtoRequestexcel, [WorkflowExpression] Func<bool> dtoRequestfirstRowIsTheHeader = null, [WorkflowExpression] Func<bool> dtoRequestaddSheetNames = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestexcel, nameof(dtoRequestexcel), required: true);
-            SourceExpression.Validate(dtoRequestfirstRowIsTheHeader, nameof(dtoRequestfirstRowIsTheHeader), required: false);
-            SourceExpression.Validate(dtoRequestaddSheetNames, nameof(dtoRequestaddSheetNames), required: false);
-            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1140_ConvertExcelToMarkdown";
@@ -1064,11 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4014ConvertFileToPdf> ConvertFileToPdf([WorkflowExpression] Func<string> dtoRequestFile, [WorkflowExpression] Func<string> dtoRequestoriginFileName = null, [WorkflowExpression] Func<string> dtoRequestoriginFileExtension = null, [WorkflowExpression] Func<int> dtoRequestconformanceLevel = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestFile, nameof(dtoRequestFile), required: true);
-            SourceExpression.Validate(dtoRequestoriginFileName, nameof(dtoRequestoriginFileName), required: false);
-            SourceExpression.Validate(dtoRequestoriginFileExtension, nameof(dtoRequestoriginFileExtension), required: false);
-            SourceExpression.Validate(dtoRequestconformanceLevel, nameof(dtoRequestconformanceLevel), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4014_ConvertFileToPdf";
@@ -1115,8 +1018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV7070ConvertHtmlTableToCsv> ConvertHtmlTableToCsv([WorkflowExpression] Func<string> dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, [WorkflowExpression] Func<string> dtoRequestV7070ConvertHtmlTableToCsvseparator = null)
         {
-            SourceExpression.Validate(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, nameof(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable), required: true);
-            SourceExpression.Validate(dtoRequestV7070ConvertHtmlTableToCsvseparator, nameof(dtoRequestV7070ConvertHtmlTableToCsvseparator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7070_ConvertHtmlTableToCsv";
@@ -1145,8 +1046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV7082ConvertHtmlTableToExcel> ConvertHtmlTableToExcel([WorkflowExpression] Func<string> dtoRequesthTMLTable, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesthTMLTable, nameof(dtoRequesthTMLTable), required: true);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7082_ConvertHtmlTableToExcel";
@@ -1175,7 +1074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV7013ConvertHtmlTableToJson> ConvertHtmlTableToJson([WorkflowExpression] Func<string> dtoRequesthTMLTable)
         {
-            SourceExpression.Validate(dtoRequesthTMLTable, nameof(dtoRequesthTMLTable), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7013_ConvertHtmlTableToJson";
@@ -1198,10 +1096,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV7032ConvertHtmlToImage> ConvertHtmlToImage([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<int> dtoRequestwidth = null, [WorkflowExpression] Func<int> dtoRequestheight = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
-            SourceExpression.Validate(dtoRequestwidth, nameof(dtoRequestwidth), required: false);
-            SourceExpression.Validate(dtoRequestheight, nameof(dtoRequestheight), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7032_ConvertHtmlToImage";
@@ -1242,11 +1136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV7090ConvertHtmlToMarkdown> ConvertHtmlToMarkdown([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<bool> dtoRequestremoveMenusAndExtras = null, [WorkflowExpression] Func<bool> dtoRequestkeepImagePlaceholders = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
-            SourceExpression.Validate(dtoRequestremoveMenusAndExtras, nameof(dtoRequestremoveMenusAndExtras), required: false);
-            SourceExpression.Validate(dtoRequestkeepImagePlaceholders, nameof(dtoRequestkeepImagePlaceholders), required: false);
-            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7090_ConvertHtmlToMarkdown";
@@ -1293,19 +1182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV7023ConvertHtmlToPdf> ConvertHtmlToPdf([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<bool> dtoRequestlandscapeFormat = null, [WorkflowExpression] Func<int> dtoRequestqualityOfImageContent = null, [WorkflowExpression] Func<int> dtoRequestfooterOptions = null, [WorkflowExpression] Func<int> dtoRequestheaderOptions = null, [WorkflowExpression] Func<string> dtoRequestpaperFormat = null, [WorkflowExpression] Func<int> dtoRequesttopMargin = null, [WorkflowExpression] Func<int> dtoRequestbottomMargin = null, [WorkflowExpression] Func<int> dtoRequestleftMargin = null, [WorkflowExpression] Func<int> dtoRequestrightMargin = null, [WorkflowExpression] Func<string> dtoRequestpageRanges = null, [WorkflowExpression] Func<double> dtoRequestscale = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
-            SourceExpression.Validate(dtoRequestlandscapeFormat, nameof(dtoRequestlandscapeFormat), required: false);
-            SourceExpression.Validate(dtoRequestqualityOfImageContent, nameof(dtoRequestqualityOfImageContent), required: false);
-            SourceExpression.Validate(dtoRequestfooterOptions, nameof(dtoRequestfooterOptions), required: false);
-            SourceExpression.Validate(dtoRequestheaderOptions, nameof(dtoRequestheaderOptions), required: false);
-            SourceExpression.Validate(dtoRequestpaperFormat, nameof(dtoRequestpaperFormat), required: false);
-            SourceExpression.Validate(dtoRequesttopMargin, nameof(dtoRequesttopMargin), required: false);
-            SourceExpression.Validate(dtoRequestbottomMargin, nameof(dtoRequestbottomMargin), required: false);
-            SourceExpression.Validate(dtoRequestleftMargin, nameof(dtoRequestleftMargin), required: false);
-            SourceExpression.Validate(dtoRequestrightMargin, nameof(dtoRequestrightMargin), required: false);
-            SourceExpression.Validate(dtoRequestpageRanges, nameof(dtoRequestpageRanges), required: false);
-            SourceExpression.Validate(dtoRequestscale, nameof(dtoRequestscale), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7023_ConvertHtmlToPdf";
@@ -1410,7 +1286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseFile> ConvertHtmlToWord([WorkflowExpression] Func<string> dtoRequestV7041ConvertHtmlToWordhTML)
         {
-            SourceExpression.Validate(dtoRequestV7041ConvertHtmlToWordhTML, nameof(dtoRequestV7041ConvertHtmlToWordhTML), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7041_ConvertHtmlToWord";
@@ -1433,8 +1308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseFile> ConvertImage([WorkflowExpression] Func<string> dtoRequestV3012ConvertImageimageFile, [WorkflowExpression] Func<string> dtoRequestV3012ConvertImageoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestV3012ConvertImageimageFile, nameof(dtoRequestV3012ConvertImageimageFile), required: true);
-            SourceExpression.Validate(dtoRequestV3012ConvertImageoutputFormat, nameof(dtoRequestV3012ConvertImageoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3012_ConvertImage";
@@ -1473,8 +1346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1013ConvertJsonToCsv> ConvertJsonToCsv([WorkflowExpression] Func<string> dtoRequestV1013ConvertJsonToCsvjSON, [WorkflowExpression] Func<string> dtoRequestV1013ConvertJsonToCsvseparator = null)
         {
-            SourceExpression.Validate(dtoRequestV1013ConvertJsonToCsvjSON, nameof(dtoRequestV1013ConvertJsonToCsvjSON), required: true);
-            SourceExpression.Validate(dtoRequestV1013ConvertJsonToCsvseparator, nameof(dtoRequestV1013ConvertJsonToCsvseparator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1013_ConvertJsonToCsv";
@@ -1503,12 +1374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1064ConvertJsonToExcel> ConvertJsonToExcel([WorkflowExpression] Func<string> dtoRequestjSON, [WorkflowExpression] Func<bool> dtoRequestallInOneTable = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestjSON, nameof(dtoRequestjSON), required: true);
-            SourceExpression.Validate(dtoRequestallInOneTable, nameof(dtoRequestallInOneTable), required: false);
-            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
-            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
-            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1064_ConvertJsonToExcel";
@@ -1591,7 +1456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseHtml> ConvertJsonToHtmlTable([WorkflowExpression] Func<string> dtoRequestV7051ConvertJsonToHtmlTablejSON)
         {
-            SourceExpression.Validate(dtoRequestV7051ConvertJsonToHtmlTablejSON, nameof(dtoRequestV7051ConvertJsonToHtmlTablejSON), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V7051_ConvertJsonToHtmlTable";
@@ -1614,7 +1478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1090ConvertJsonToTextTable> ConvertJsonToTextTable([WorkflowExpression] Func<string> dtoRequestV1090ConvertJsonToTextTablejSON)
         {
-            SourceExpression.Validate(dtoRequestV1090ConvertJsonToTextTablejSON, nameof(dtoRequestV1090ConvertJsonToTextTablejSON), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1090_ConvertJsonToTextTable";
@@ -1637,7 +1500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1042ConvertJsonToXml> ConvertJsonToXml([WorkflowExpression] Func<string> dtoRequestV1042ConvertJsonToXmljSON)
         {
-            SourceExpression.Validate(dtoRequestV1042ConvertJsonToXmljSON, nameof(dtoRequestV1042ConvertJsonToXmljSON), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1042_ConvertJsonToXml";
@@ -1660,7 +1522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1081ConvertJsonToYaml> ConvertJsonToYaml([WorkflowExpression] Func<string> dtoRequestV1081ConvertJsonToYamljSON)
         {
-            SourceExpression.Validate(dtoRequestV1081ConvertJsonToYamljSON, nameof(dtoRequestV1081ConvertJsonToYamljSON), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1081_ConvertJsonToYaml";
@@ -1683,20 +1544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1110ConvertMultiCsvToExcel> ConvertMultiCsvToExcel([WorkflowExpression] Func<CsvSheetItem[]> dtoRequestsheet, [WorkflowExpression] Func<bool> dtoRequestcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequeststopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<string> dtoRequestexcelFileName = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestsheet, nameof(dtoRequestsheet), required: true);
-            SourceExpression.Validate(dtoRequestcSVHasHeaders, nameof(dtoRequestcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestautoDetectFieldTypes, nameof(dtoRequestautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestnumberOfRowsForFieldTypeDetection, nameof(dtoRequestnumberOfRowsForFieldTypeDetection), required: false);
-            SourceExpression.Validate(dtoRequestremoveEmptyRows, nameof(dtoRequestremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestskipANumberOfRows, nameof(dtoRequestskipANumberOfRows), required: false);
-            SourceExpression.Validate(dtoRequeststopAtASpecificRow, nameof(dtoRequeststopAtASpecificRow), required: false);
-            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
-            SourceExpression.Validate(dtoRequestautoDetectQuoteDelimiter, nameof(dtoRequestautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
-            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
-            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
-            SourceExpression.Validate(dtoRequestexcelFileName, nameof(dtoRequestexcelFileName), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1110_ConvertMultiCsvToExcel";
@@ -1857,14 +1704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4130ConvertPdfToMarkdown> ConvertPdfToMarkdown([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<bool> dtoRequestkeepReadingOrder = null, [WorkflowExpression] Func<bool> dtoRequestmarkHeadings = null, [WorkflowExpression] Func<bool> dtoRequestaddPageMarkers = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            SourceExpression.Validate(dtoRequestkeepReadingOrder, nameof(dtoRequestkeepReadingOrder), required: false);
-            SourceExpression.Validate(dtoRequestmarkHeadings, nameof(dtoRequestmarkHeadings), required: false);
-            SourceExpression.Validate(dtoRequestaddPageMarkers, nameof(dtoRequestaddPageMarkers), required: false);
-            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4130_ConvertPdfToMarkdown";
@@ -1929,9 +1768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4071ConvertPdfToPdfA> ConvertPdfToPdfA([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestconformanceLevel = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestconformanceLevel, nameof(dtoRequestconformanceLevel), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4071_ConvertPdfToPdfA";
@@ -1966,7 +1802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV6011ConvertSharePointSearchResults> ConvertSharePointSearchResults([WorkflowExpression] Func<string> dtoRequestV6011ConvertSharePointSearchResultssPSearchResult)
         {
-            SourceExpression.Validate(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult, nameof(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V6011_ConvertSharePointSearchResults";
@@ -1989,10 +1824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml> ConvertWordToHtml([WorkflowExpression] Func<string> dtoRequestword, [WorkflowExpression] Func<bool> dtoRequestembedImages = null, [WorkflowExpression] Func<bool> dtoRequestfullHTMLDocument = null, [WorkflowExpression] Func<string> dtoRequesttitle = null)
         {
-            SourceExpression.Validate(dtoRequestword, nameof(dtoRequestword), required: true);
-            SourceExpression.Validate(dtoRequestembedImages, nameof(dtoRequestembedImages), required: false);
-            SourceExpression.Validate(dtoRequestfullHTMLDocument, nameof(dtoRequestfullHTMLDocument), required: false);
-            SourceExpression.Validate(dtoRequesttitle, nameof(dtoRequesttitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5160_ConvertWordToHtml";
@@ -2033,10 +1864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5170ConvertWordToMarkdown> ConvertWordToMarkdown([WorkflowExpression] Func<string> dtoRequestword, [WorkflowExpression] Func<bool> dtoRequestkeepImagePlaceholders = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestword, nameof(dtoRequestword), required: true);
-            SourceExpression.Validate(dtoRequestkeepImagePlaceholders, nameof(dtoRequestkeepImagePlaceholders), required: false);
-            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5170_ConvertWordToMarkdown";
@@ -2077,11 +1904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1130ConvertXmlToCsv> ConvertXmlToCsv([WorkflowExpression] Func<string> dtoRequestxML, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestignoreXMLFormatting = null, [WorkflowExpression] Func<string> dtoRequestcSVFileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestxML, nameof(dtoRequestxML), required: true);
-            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
-            SourceExpression.Validate(dtoRequestignoreXMLFormatting, nameof(dtoRequestignoreXMLFormatting), required: false);
-            SourceExpression.Validate(dtoRequestcSVFileName, nameof(dtoRequestcSVFileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1130_ConvertXmlToCsv";
@@ -2138,14 +1960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1120ConvertXmlToExcel> ConvertXmlToExcel([WorkflowExpression] Func<string> dtoRequestxML, [WorkflowExpression] Func<bool> dtoRequestignoreXMLFormatting = null, [WorkflowExpression] Func<bool> dtoRequestallInOneTable = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<string> dtoRequestexcelFileName = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestxML, nameof(dtoRequestxML), required: true);
-            SourceExpression.Validate(dtoRequestignoreXMLFormatting, nameof(dtoRequestignoreXMLFormatting), required: false);
-            SourceExpression.Validate(dtoRequestallInOneTable, nameof(dtoRequestallInOneTable), required: false);
-            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
-            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
-            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
-            SourceExpression.Validate(dtoRequestexcelFileName, nameof(dtoRequestexcelFileName), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1120_ConvertXmlToExcel";
@@ -2250,8 +2064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1053ConvertXmlToJson> ConvertXmlToJson([WorkflowExpression] Func<string> dtoRequestxML, [WorkflowExpression] Func<bool> dtoRequestignoreXMLFormatting = null)
         {
-            SourceExpression.Validate(dtoRequestxML, nameof(dtoRequestxML), required: true);
-            SourceExpression.Validate(dtoRequestignoreXMLFormatting, nameof(dtoRequestignoreXMLFormatting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1053_ConvertXmlToJson";
@@ -2280,8 +2092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV8011ConvertXRechnungToPdf> ConvertXRechnungToPdf([WorkflowExpression] Func<string> dtoRequestxRechnung, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestxRechnung, nameof(dtoRequestxRechnung), required: true);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V8011_ConvertXRechnungToPdf";
@@ -2310,7 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1071ConvertYamlToJson> ConvertYamlToJson([WorkflowExpression] Func<string> dtoRequestV1071YamlToJsonyAML)
         {
-            SourceExpression.Validate(dtoRequestV1071YamlToJsonyAML, nameof(dtoRequestV1071YamlToJsonyAML), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V1071_ConvertYamlToJson";
@@ -2333,13 +2142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3092CreateChartImage> CreateChartImage([WorkflowExpression] Func<string> dtoRequesttableData, [WorkflowExpression] Func<int> dtoRequestimageWidth = null, [WorkflowExpression] Func<int> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestbackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestchartType = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesttableData, nameof(dtoRequesttableData), required: true);
-            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestbackgroundColor, nameof(dtoRequestbackgroundColor), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequestchartType, nameof(dtoRequestchartType), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3092_CreateChartImage";
@@ -2398,15 +2200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3063CreateCode> CreateCode([WorkflowExpression] Func<string> dtoRequestcontent, [WorkflowExpression] Func<string> dtoRequestcodeFormat = null, [WorkflowExpression] Func<int> dtoRequestwidth = null, [WorkflowExpression] Func<int> dtoRequestheight = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestembeddedImage = null, [WorkflowExpression] Func<double> dtoRequestembeddedImageOpacity = null, [WorkflowExpression] Func<double> dtoRequestembeddedImageRatio = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestcontent, nameof(dtoRequestcontent), required: true);
-            SourceExpression.Validate(dtoRequestcodeFormat, nameof(dtoRequestcodeFormat), required: false);
-            SourceExpression.Validate(dtoRequestwidth, nameof(dtoRequestwidth), required: false);
-            SourceExpression.Validate(dtoRequestheight, nameof(dtoRequestheight), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequestembeddedImage, nameof(dtoRequestembeddedImage), required: false);
-            SourceExpression.Validate(dtoRequestembeddedImageOpacity, nameof(dtoRequestembeddedImageOpacity), required: false);
-            SourceExpression.Validate(dtoRequestembeddedImageRatio, nameof(dtoRequestembeddedImageRatio), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3063_CreateCode";
@@ -2477,12 +2270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3112CreateGraphImage> CreateGraphImage([WorkflowExpression] Func<string> dtoRequestgraphData, [WorkflowExpression] Func<int> dtoRequestimageWidth = null, [WorkflowExpression] Func<int> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestbackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestgraphData, nameof(dtoRequestgraphData), required: true);
-            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestbackgroundColor, nameof(dtoRequestbackgroundColor), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3112_CreateGraphImage";
@@ -2535,14 +2322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3102CreateTableImage> CreateTableImage([WorkflowExpression] Func<string> dtoRequesttableData, [WorkflowExpression] Func<int> dtoRequestimageWidth = null, [WorkflowExpression] Func<int> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestbackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<string> dtoRequesttitle = null, [WorkflowExpression] Func<bool> dtoRequestshowTableBorders = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequesttableData, nameof(dtoRequesttableData), required: true);
-            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestbackgroundColor, nameof(dtoRequestbackgroundColor), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequesttitle, nameof(dtoRequesttitle), required: false);
-            SourceExpression.Validate(dtoRequestshowTableBorders, nameof(dtoRequestshowTableBorders), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3102_CreateTableImage";
@@ -2617,13 +2396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3082CreateWatermarkImage> CreateWatermarkImage([WorkflowExpression] Func<string> dtoRequestmainImage, [WorkflowExpression] Func<string> dtoRequestwatermarkImage, [WorkflowExpression] Func<int> dtoRequestwatermarkOpacity = null, [WorkflowExpression] Func<int> dtoRequestwatermarkRatio = null, [WorkflowExpression] Func<string> dtoRequestwatermarkHorizontalPosition = null, [WorkflowExpression] Func<string> dtoRequestwatermarkVerticalPosition = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestmainImage, nameof(dtoRequestmainImage), required: true);
-            SourceExpression.Validate(dtoRequestwatermarkImage, nameof(dtoRequestwatermarkImage), required: true);
-            SourceExpression.Validate(dtoRequestwatermarkOpacity, nameof(dtoRequestwatermarkOpacity), required: false);
-            SourceExpression.Validate(dtoRequestwatermarkRatio, nameof(dtoRequestwatermarkRatio), required: false);
-            SourceExpression.Validate(dtoRequestwatermarkHorizontalPosition, nameof(dtoRequestwatermarkHorizontalPosition), required: false);
-            SourceExpression.Validate(dtoRequestwatermarkVerticalPosition, nameof(dtoRequestwatermarkVerticalPosition), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3082_CreateWatermarkImage";
@@ -2678,9 +2450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5012CreateWordFile> CreateWordFile([WorkflowExpression] Func<Section[]> dtoRequestsection, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestsection, nameof(dtoRequestsection), required: true);
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5012_CreateWordFile";
@@ -2715,11 +2484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf> ExtractImagesFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<string> dtoRequestfileNamePrefix = null, [WorkflowExpression] Func<bool> dtoRequestincludeBase64String = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            SourceExpression.Validate(dtoRequestfileNamePrefix, nameof(dtoRequestfileNamePrefix), required: false);
-            SourceExpression.Validate(dtoRequestincludeBase64String, nameof(dtoRequestincludeBase64String), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4090_ExtractImagesFromPdf";
@@ -2766,8 +2530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2100ExtractJsonObjectProperties> ExtractJsonObjectProperties([WorkflowExpression] Func<string> dtoRequestV2100ExtractJsonObjectPropertiesjSON, [WorkflowExpression] Func<bool> dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties = null)
         {
-            SourceExpression.Validate(dtoRequestV2100ExtractJsonObjectPropertiesjSON, nameof(dtoRequestV2100ExtractJsonObjectPropertiesjSON), required: true);
-            SourceExpression.Validate(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties, nameof(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2100_ExtractJsonObjectProperties";
@@ -2806,9 +2568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4061ExtractPdfPages> ExtractPdfPages([WorkflowExpression] Func<string> dtoRequestpDFFile, [WorkflowExpression] Func<string> dtoRequestpagesToExtract, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestpDFFile, nameof(dtoRequestpDFFile), required: true);
-            SourceExpression.Validate(dtoRequestpagesToExtract, nameof(dtoRequestpagesToExtract), required: true);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4061_ExtractPdfPages";
@@ -2839,13 +2598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4160ExtractPdfTablesToCsv> ExtractPdfTablesToCsv([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<string> dtoRequestcSVFileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
-            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
-            SourceExpression.Validate(dtoRequestcSVFileName, nameof(dtoRequestcSVFileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4160_ExtractPdfTablesToCsv";
@@ -2904,12 +2656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4150ExtractPdfTablesToExcel> ExtractPdfTablesToExcel([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null, [WorkflowExpression] Func<string> dtoRequestexcelFileName = null, [WorkflowExpression] Func<int> dtoRequestfileResponse = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
-            SourceExpression.Validate(dtoRequestexcelFileName, nameof(dtoRequestexcelFileName), required: false);
-            SourceExpression.Validate(dtoRequestfileResponse, nameof(dtoRequestfileResponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4150_ExtractPdfTablesToExcel";
@@ -2962,12 +2708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4170ExtractPdfTablesToHtml> ExtractPdfTablesToHtml([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null, [WorkflowExpression] Func<string> dtoRequesthTMLFileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
-            SourceExpression.Validate(dtoRequesthTMLFileName, nameof(dtoRequesthTMLFileName), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4170_ExtractPdfTablesToHtml";
@@ -3020,10 +2760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4140ExtractPdfTablesToJson> ExtractPdfTablesToJson([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4140_ExtractPdfTablesToJson";
@@ -3064,10 +2800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2140ExtractTextAccordingToPattern> ExtractTextAccordingToPattern([WorkflowExpression] Func<string> dtoRequestV2140ExtractTextAccordingToPatterntext, [WorkflowExpression] Func<string> dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, [WorkflowExpression] Func<bool> dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled = null, [WorkflowExpression] Func<string> dtoRequestV2140ExtractTextAccordingToPatterntrimStrings = null)
         {
-            SourceExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatterntext, nameof(dtoRequestV2140ExtractTextAccordingToPatterntext), required: true);
-            SourceExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, nameof(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern), required: true);
-            SourceExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled, nameof(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled), required: false);
-            SourceExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings, nameof(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2140_ExtractTextAccordingToPattern";
@@ -3104,13 +2836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf> ExtractTextFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<bool> dtoRequestlayoutBased = null, [WorkflowExpression] Func<bool> dtoRequestincludePages = null, [WorkflowExpression] Func<string> dtoRequestpageSeparator = null, [WorkflowExpression] Func<bool> dtoRequestnormalizeWhitespace = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            SourceExpression.Validate(dtoRequestlayoutBased, nameof(dtoRequestlayoutBased), required: false);
-            SourceExpression.Validate(dtoRequestincludePages, nameof(dtoRequestincludePages), required: false);
-            SourceExpression.Validate(dtoRequestpageSeparator, nameof(dtoRequestpageSeparator), required: false);
-            SourceExpression.Validate(dtoRequestnormalizeWhitespace, nameof(dtoRequestnormalizeWhitespace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4100_ExtractTextFromPdf";
@@ -3169,10 +2894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks> ExtractWordBookmarks([WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarksFile, [WorkflowExpression] Func<bool> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchName = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
         {
-            SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarksFile, nameof(dtoRequestV5021ExtractWordBookmarksFile), required: true);
-            SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks, nameof(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks), required: false);
-            SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarkssearchName, nameof(dtoRequestV5021ExtractWordBookmarkssearchName), required: false);
-            SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarkssearchContent, nameof(dtoRequestV5021ExtractWordBookmarkssearchContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5021_ExtractWordBookmarks";
@@ -3223,9 +2944,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls> ExtractWordContentControls([WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlsFile, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTag = null, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
         {
-            SourceExpression.Validate(dtoRequestV5120ExtractWordContentControlsFile, nameof(dtoRequestV5120ExtractWordContentControlsFile), required: true);
-            SourceExpression.Validate(dtoRequestV5120ExtractWordContentControlssearchTag, nameof(dtoRequestV5120ExtractWordContentControlssearchTag), required: false);
-            SourceExpression.Validate(dtoRequestV5120ExtractWordContentControlssearchTitle, nameof(dtoRequestV5120ExtractWordContentControlssearchTitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5120_ExtractWordContentControls";
@@ -3260,7 +2978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2021IbanData> IbanData([WorkflowExpression] Func<string> dtoRequestV2021IbanDataiBAN)
         {
-            SourceExpression.Validate(dtoRequestV2021IbanDataiBAN, nameof(dtoRequestV2021IbanDataiBAN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2021_IbanData";
@@ -3283,7 +3000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3071ImageMetaData> ImageMetaData([WorkflowExpression] Func<string> dtoRequestV3071ImageMetaDataimageFile)
         {
-            SourceExpression.Validate(dtoRequestV3071ImageMetaDataimageFile, nameof(dtoRequestV3071ImageMetaDataimageFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3071_ImageMetaData";
@@ -3306,13 +3022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseFile> InsertImageToPowerPoint([WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderImage, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderName = null, [WorkflowExpression] Func<int> dtoRequestV9020InsertImagePowerPointmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV9020InsertImagePowerPointmaximumImageHeight = null, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderSuffix = null)
         {
-            SourceExpression.Validate(dtoRequestV9020InsertImagePowerPointexistingFileContent, nameof(dtoRequestV9020InsertImagePowerPointexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderImage, nameof(dtoRequestV9020InsertImagePowerPointplaceholderImage), required: true);
-            SourceExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderName, nameof(dtoRequestV9020InsertImagePowerPointplaceholderName), required: false);
-            SourceExpression.Validate(dtoRequestV9020InsertImagePowerPointmaximumImageWidth, nameof(dtoRequestV9020InsertImagePowerPointmaximumImageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV9020InsertImagePowerPointmaximumImageHeight, nameof(dtoRequestV9020InsertImagePowerPointmaximumImageHeight), required: false);
-            SourceExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderPrefix, nameof(dtoRequestV9020InsertImagePowerPointplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderSuffix, nameof(dtoRequestV9020InsertImagePowerPointplaceholderSuffix), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V9020_InsertImageToPowerPoint";
@@ -3367,14 +3076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5082InsertImageToWord> InsertImageToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestimage, [WorkflowExpression] Func<string> dtoRequestplaceholderName = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageHeight = null, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestimage, nameof(dtoRequestimage), required: true);
-            SourceExpression.Validate(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: false);
-            SourceExpression.Validate(dtoRequestmaximumImageWidth, nameof(dtoRequestmaximumImageWidth), required: false);
-            SourceExpression.Validate(dtoRequestmaximumImageHeight, nameof(dtoRequestmaximumImageHeight), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5082_InsertImageToWord";
@@ -3435,11 +3136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5111InsertMultipleTextSectionsToWord> InsertMultipleTextSectionsToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<InsertSection[]> dtoRequestplaceholder, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestplaceholder, nameof(dtoRequestplaceholder), required: true);
-            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5111_InsertMultipleTextSectionsToWord";
@@ -3482,14 +3178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5092InsertTableToWord> InsertTableToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestplaceholderName = null, [WorkflowExpression] Func<string> dtoRequestplaceholderTable = null, [WorkflowExpression] Func<string> dtoRequesttableStyle = null, [WorkflowExpression] Func<bool> dtoRequestshowHeaders = null, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderTable, nameof(dtoRequestplaceholderTable), required: false);
-            SourceExpression.Validate(dtoRequesttableStyle, nameof(dtoRequesttableStyle), required: false);
-            SourceExpression.Validate(dtoRequestshowHeaders, nameof(dtoRequestshowHeaders), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5092_InsertTableToWord";
@@ -3574,11 +3262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseFile> InsertTextToPowerPoint([WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderName, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderText = null, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = null)
         {
-            SourceExpression.Validate(dtoRequestV9010InsertTextToPowerPointexistingFileContent, nameof(dtoRequestV9010InsertTextToPowerPointexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderName, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderName), required: true);
-            SourceExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderText, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderText), required: false);
-            SourceExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V9010_InsertTextToPowerPoint";
@@ -3621,12 +3304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5072InsertTextToWord> InsertTextToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestplaceholderName, [WorkflowExpression] Func<string> dtoRequestplaceholderText = null, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: true);
-            SourceExpression.Validate(dtoRequestplaceholderText, nameof(dtoRequestplaceholderText), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5072_InsertTextToWord";
@@ -3675,15 +3352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4120MergeMultiplePdfs> MergeMultiplePdfs([WorkflowExpression] Func<PdfMergeItem[]> dtoRequestpDF, [WorkflowExpression] Func<bool> dtoRequestaddPageNumbers = null, [WorkflowExpression] Func<int> dtoRequestpageNumberFormat = null, [WorkflowExpression] Func<int> dtoRequestpageNumberPosition = null, [WorkflowExpression] Func<bool> dtoRequestaddBookmarks = null, [WorkflowExpression] Func<string> dtoRequestpDFTitle = null, [WorkflowExpression] Func<string> dtoRequestpDFAuthor = null, [WorkflowExpression] Func<string> dtoRequestpDFFileName = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestaddPageNumbers, nameof(dtoRequestaddPageNumbers), required: false);
-            SourceExpression.Validate(dtoRequestpageNumberFormat, nameof(dtoRequestpageNumberFormat), required: false);
-            SourceExpression.Validate(dtoRequestpageNumberPosition, nameof(dtoRequestpageNumberPosition), required: false);
-            SourceExpression.Validate(dtoRequestaddBookmarks, nameof(dtoRequestaddBookmarks), required: false);
-            SourceExpression.Validate(dtoRequestpDFTitle, nameof(dtoRequestpDFTitle), required: false);
-            SourceExpression.Validate(dtoRequestpDFAuthor, nameof(dtoRequestpDFAuthor), required: false);
-            SourceExpression.Validate(dtoRequestpDFFileName, nameof(dtoRequestpDFFileName), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4120_MergeMultiplePdfs";
@@ -3774,9 +3442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4022MergePdfs> MergePdfs([WorkflowExpression] Func<string> dtoRequestfile1, [WorkflowExpression] Func<string> dtoRequestfile2, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestfile1, nameof(dtoRequestfile1), required: true);
-            SourceExpression.Validate(dtoRequestfile2, nameof(dtoRequestfile2), required: true);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4022_MergePdfs";
@@ -3807,8 +3472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2120MatchPatternCheck> PatternMatchCheck([WorkflowExpression] Func<string> dtoRequestV2120PatternMatchCheckinputText, [WorkflowExpression] Func<string> dtoRequestV2120PatternMatchCheckmatchPattern)
         {
-            SourceExpression.Validate(dtoRequestV2120PatternMatchCheckinputText, nameof(dtoRequestV2120PatternMatchCheckinputText), required: true);
-            SourceExpression.Validate(dtoRequestV2120PatternMatchCheckmatchPattern, nameof(dtoRequestV2120PatternMatchCheckmatchPattern), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2120_PatternMatchCheck";
@@ -3833,7 +3496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4031PdfMetadata> PdfMetadata([WorkflowExpression] Func<string> dtoRequestV4031PdfMetadataFile)
         {
-            SourceExpression.Validate(dtoRequestV4031PdfMetadataFile, nameof(dtoRequestV4031PdfMetadataFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4031_PdfMetadata";
@@ -3856,10 +3518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4042ProtectPdf> ProtectPdf([WorkflowExpression] Func<string> dtoRequestFile, [WorkflowExpression] Func<string> dtoRequestownerPassword = null, [WorkflowExpression] Func<string> dtoRequestuserPassword = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestFile, nameof(dtoRequestFile), required: true);
-            SourceExpression.Validate(dtoRequestownerPassword, nameof(dtoRequestownerPassword), required: false);
-            SourceExpression.Validate(dtoRequestuserPassword, nameof(dtoRequestuserPassword), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4042_ProtectPdf";
@@ -3900,7 +3558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3051ReadCode> ReadCode([WorkflowExpression] Func<string> dtoRequestReadCodeDataqROrBarcode)
         {
-            SourceExpression.Validate(dtoRequestReadCodeDataqROrBarcode, nameof(dtoRequestReadCodeDataqROrBarcode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3051_ReadCode";
@@ -3923,9 +3580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2011RegularExpression> RegularExpression([WorkflowExpression] Func<string> dtoRequestV2011RegularExpressiontextToMatch, [WorkflowExpression] Func<string> dtoRequestV2011RegularExpressionregularExpression = null, [WorkflowExpression] Func<string> dtoRequestV2011RegularExpressionregularExpressionOption = null)
         {
-            SourceExpression.Validate(dtoRequestV2011RegularExpressiontextToMatch, nameof(dtoRequestV2011RegularExpressiontextToMatch), required: true);
-            SourceExpression.Validate(dtoRequestV2011RegularExpressionregularExpression, nameof(dtoRequestV2011RegularExpressionregularExpression), required: false);
-            SourceExpression.Validate(dtoRequestV2011RegularExpressionregularExpressionOption, nameof(dtoRequestV2011RegularExpressionregularExpressionOption), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2011_RegularExpression";
@@ -3960,12 +3614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4111RemovePagesFromPdf> RemovePagesFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<string> dtoRequestpages, [WorkflowExpression] Func<bool> dtoRequestinputIs1Based = null, [WorkflowExpression] Func<int> dtoRequestmode = null, [WorkflowExpression] Func<bool> dtoRequestfailIfPageOutOfRange = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            SourceExpression.Validate(dtoRequestpages, nameof(dtoRequestpages), required: true);
-            SourceExpression.Validate(dtoRequestinputIs1Based, nameof(dtoRequestinputIs1Based), required: false);
-            SourceExpression.Validate(dtoRequestmode, nameof(dtoRequestmode), required: false);
-            SourceExpression.Validate(dtoRequestfailIfPageOutOfRange, nameof(dtoRequestfailIfPageOutOfRange), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4111_RemovePagesFromPdf";
@@ -4014,9 +3662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2110ReplaceTextWithPattern> ReplaceTextWithPattern([WorkflowExpression] Func<string> dtoRequestV2110ReplaceTextWithPatterninputText, [WorkflowExpression] Func<string> dtoRequestV2110ReplaceTextWithPatternsearchPattern, [WorkflowExpression] Func<string> dtoRequestV2110ReplaceTextWithPatternreplacementText = null)
         {
-            SourceExpression.Validate(dtoRequestV2110ReplaceTextWithPatterninputText, nameof(dtoRequestV2110ReplaceTextWithPatterninputText), required: true);
-            SourceExpression.Validate(dtoRequestV2110ReplaceTextWithPatternsearchPattern, nameof(dtoRequestV2110ReplaceTextWithPatternsearchPattern), required: true);
-            SourceExpression.Validate(dtoRequestV2110ReplaceTextWithPatternreplacementText, nameof(dtoRequestV2110ReplaceTextWithPatternreplacementText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2110_ReplaceTextWithPattern";
@@ -4047,11 +3692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3023ResizeImage> ResizeImage([WorkflowExpression] Func<string> dtoRequestimageFile, [WorkflowExpression] Func<double> dtoRequestimageWidth = null, [WorkflowExpression] Func<double> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestresizeBy = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
-            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestresizeBy, nameof(dtoRequestresizeBy), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3023_ResizeImage";
@@ -4098,10 +3738,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV3032RotateImage> RotateImage([WorkflowExpression] Func<string> dtoRequestimageFile, [WorkflowExpression] Func<double> dtoRequestrotate = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
-            SourceExpression.Validate(dtoRequestrotate, nameof(dtoRequestrotate), required: false);
-            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V3032_RotateImage";
@@ -4142,10 +3778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2151RunCode> RunCode([WorkflowExpression] Func<string> dtopythonOrJavaScriptCode, [WorkflowExpression] Func<int> dtoruntime = null, [WorkflowExpression] Func<int> dtotimeoutSeconds = null, [WorkflowExpression] Func<bool> dtoprintLastExpression = null)
         {
-            SourceExpression.Validate(dtopythonOrJavaScriptCode, nameof(dtopythonOrJavaScriptCode), required: true);
-            SourceExpression.Validate(dtoruntime, nameof(dtoruntime), required: false);
-            SourceExpression.Validate(dtotimeoutSeconds, nameof(dtotimeoutSeconds), required: false);
-            SourceExpression.Validate(dtoprintLastExpression, nameof(dtoprintLastExpression), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2151_RunCode";
@@ -4186,10 +3818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2130SmartTextSplit> SmartTextSplit([WorkflowExpression] Func<string> dtoRequestV2130SmartTextSplitinputText, [WorkflowExpression] Func<string> dtoRequestV2130SmartTextSplitsplitPattern = null, [WorkflowExpression] Func<bool> dtoRequestV2130SmartTextSplittrimEnabled = null, [WorkflowExpression] Func<string> dtoRequestV2130SmartTextSplittrimStrings = null)
         {
-            SourceExpression.Validate(dtoRequestV2130SmartTextSplitinputText, nameof(dtoRequestV2130SmartTextSplitinputText), required: true);
-            SourceExpression.Validate(dtoRequestV2130SmartTextSplitsplitPattern, nameof(dtoRequestV2130SmartTextSplitsplitPattern), required: false);
-            SourceExpression.Validate(dtoRequestV2130SmartTextSplittrimEnabled, nameof(dtoRequestV2130SmartTextSplittrimEnabled), required: false);
-            SourceExpression.Validate(dtoRequestV2130SmartTextSplittrimStrings, nameof(dtoRequestV2130SmartTextSplittrimStrings), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2130_SmartTextSplit";
@@ -4230,18 +3858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2061SortCsv> SortCsv([WorkflowExpression] Func<string> dtoRequestV2061SortCsvcSV, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV2061SortCsvskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV2061SortCsvstopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV2061SortCsvseparator = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<string> dtoRequestV2061SortCsvsortColumn = null, [WorkflowExpression] Func<string> dtoRequestV2061SortCsvfurtherSortingColumn = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvreverseOrder = null)
         {
-            SourceExpression.Validate(dtoRequestV2061SortCsvcSV, nameof(dtoRequestV2061SortCsvcSV), required: true);
-            SourceExpression.Validate(dtoRequestV2061SortCsvcSVHasHeaders, nameof(dtoRequestV2061SortCsvcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvautoDetectFieldTypes, nameof(dtoRequestV2061SortCsvautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvremoveEmptyRows, nameof(dtoRequestV2061SortCsvremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvskipANumberOfRows, nameof(dtoRequestV2061SortCsvskipANumberOfRows), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvstopAtASpecificRow, nameof(dtoRequestV2061SortCsvstopAtASpecificRow), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvseparator, nameof(dtoRequestV2061SortCsvseparator), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvautoDetectQuoteDelimiter, nameof(dtoRequestV2061SortCsvautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvsortColumn, nameof(dtoRequestV2061SortCsvsortColumn), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvfurtherSortingColumn, nameof(dtoRequestV2061SortCsvfurtherSortingColumn), required: false);
-            SourceExpression.Validate(dtoRequestV2061SortCsvreverseOrder, nameof(dtoRequestV2061SortCsvreverseOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2061_SortCsv";
@@ -4380,10 +3996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2051SortJson> SortJson([WorkflowExpression] Func<string> dtoRequestV2051SortJsonjSON, [WorkflowExpression] Func<string> dtoRequestV2051SortJsonsortProperty = null, [WorkflowExpression] Func<string> dtoRequestV2051SortJsonfurtherSortingProperty = null, [WorkflowExpression] Func<bool> dtoRequestV2051SortJsonreverseOrder = null)
         {
-            SourceExpression.Validate(dtoRequestV2051SortJsonjSON, nameof(dtoRequestV2051SortJsonjSON), required: true);
-            SourceExpression.Validate(dtoRequestV2051SortJsonsortProperty, nameof(dtoRequestV2051SortJsonsortProperty), required: false);
-            SourceExpression.Validate(dtoRequestV2051SortJsonfurtherSortingProperty, nameof(dtoRequestV2051SortJsonfurtherSortingProperty), required: false);
-            SourceExpression.Validate(dtoRequestV2051SortJsonreverseOrder, nameof(dtoRequestV2051SortJsonreverseOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2051_SortJson";
@@ -4434,9 +4046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2041Translate> Translate([WorkflowExpression] Func<string> dtoRequestV2041Translatetext, [WorkflowExpression] Func<string> dtoRequestV2041Translateto, [WorkflowExpression] Func<string> dtoRequestV2041Translatefrom = null)
         {
-            SourceExpression.Validate(dtoRequestV2041Translatetext, nameof(dtoRequestV2041Translatetext), required: true);
-            SourceExpression.Validate(dtoRequestV2041Translateto, nameof(dtoRequestV2041Translateto), required: true);
-            SourceExpression.Validate(dtoRequestV2041Translatefrom, nameof(dtoRequestV2041Translatefrom), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2041_Translate";
@@ -4467,10 +4076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV4052UnProtectPdf> UnProtectPdf([WorkflowExpression] Func<string> dtoRequestFile, [WorkflowExpression] Func<string> dtoRequestownerPassword = null, [WorkflowExpression] Func<bool> dtoRequestremovePermissions = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestFile, nameof(dtoRequestFile), required: true);
-            SourceExpression.Validate(dtoRequestownerPassword, nameof(dtoRequestownerPassword), required: false);
-            SourceExpression.Validate(dtoRequestremovePermissions, nameof(dtoRequestremovePermissions), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4052_UnProtectPdf";
@@ -4511,9 +4116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5151UpdateMultipleWordContentControls> UpdateMultipleWordContentControls([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<ContentControl[]> dtoRequestcontentControl, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestcontentControl, nameof(dtoRequestcontentControl), required: true);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5151_UpdateMultipleWordContentControls";
@@ -4544,10 +4146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5141UpdateWordContentControl> UpdateWordContentControl([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestname, [WorkflowExpression] Func<string> dtoRequestvalue = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestname, nameof(dtoRequestname), required: true);
-            SourceExpression.Validate(dtoRequestvalue, nameof(dtoRequestvalue), required: false);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5141_UpdateWordContentControl";
@@ -4584,8 +4182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV5131UpdateWordTableOfContents> UpdateWordTableOfContents([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V5131_UpdateWordTableOfContents";
@@ -4614,8 +4210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV2032UrlToFile> UrlToFile([WorkflowExpression] Func<string> dtoRequestuRL, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestuRL, nameof(dtoRequestuRL), required: true);
-            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V2032_UrlToFile";

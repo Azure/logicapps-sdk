@@ -14,24 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         public IBodyWorkflowAction<GetCompaniesResponse> GetCompanies([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<int> gupAmeeCompanyId = null, [WorkflowExpression] Func<bool> isGup = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> postcode = null, [WorkflowExpression] Func<string> provinceName = null, [WorkflowExpression] Func<string> ukSic2007 = null, [WorkflowExpression] Func<int> minEmployees = null, [WorkflowExpression] Func<int> maxEmployees = null, [WorkflowExpression] Func<int> minAnnualSalesLocal = null, [WorkflowExpression] Func<int> maxAnnualSalesLocal = null, [WorkflowExpression] Func<int> minScore = null, [WorkflowExpression] Func<int> maxScore = null, [WorkflowExpression] Func<string> fromLatLon = null, [WorkflowExpression] Func<int> distance = null, [WorkflowExpression] Func<string> stats = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(companyName, nameof(companyName), required: false);
-            SourceExpression.Validate(gupAmeeCompanyId, nameof(gupAmeeCompanyId), required: false);
-            SourceExpression.Validate(isGup, nameof(isGup), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(postcode, nameof(postcode), required: false);
-            SourceExpression.Validate(provinceName, nameof(provinceName), required: false);
-            SourceExpression.Validate(ukSic2007, nameof(ukSic2007), required: false);
-            SourceExpression.Validate(minEmployees, nameof(minEmployees), required: false);
-            SourceExpression.Validate(maxEmployees, nameof(maxEmployees), required: false);
-            SourceExpression.Validate(minAnnualSalesLocal, nameof(minAnnualSalesLocal), required: false);
-            SourceExpression.Validate(maxAnnualSalesLocal, nameof(maxAnnualSalesLocal), required: false);
-            SourceExpression.Validate(minScore, nameof(minScore), required: false);
-            SourceExpression.Validate(maxScore, nameof(maxScore), required: false);
-            SourceExpression.Validate(fromLatLon, nameof(fromLatLon), required: false);
-            SourceExpression.Validate(distance, nameof(distance), required: false);
-            SourceExpression.Validate(stats, nameof(stats), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/companies";
@@ -82,8 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         public IBodyWorkflowAction<GetCompanyResponse> GetCompany([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

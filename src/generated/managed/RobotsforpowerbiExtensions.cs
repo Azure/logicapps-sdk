@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/playlist.enable";
@@ -39,8 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/playlist.disable";
@@ -64,8 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/playlist.execute";

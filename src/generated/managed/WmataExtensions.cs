@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses([WorkflowExpression] Func<string> stopId)
         {
-            SourceExpression.Validate(stopId, nameof(stopId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/NextBusService.svc/json/jPredictions";
@@ -30,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions([WorkflowExpression] Func<string> routeId = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jBusPositions";
@@ -56,8 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jRouteDetails";
@@ -89,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jRouteSchedule";
@@ -108,8 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule([WorkflowExpression] Func<string> stopId, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(stopId, nameof(stopId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jStopSchedule";
@@ -127,9 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusStopsResponse> GetBusStops([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jStops";
@@ -150,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains([WorkflowExpression] Func<string> stationCodes)
         {
-            SourceExpression.Validate(stationCodes, nameof(stationCodes), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCodes, 1));
@@ -179,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationParkingResponse> GetStationParking([WorkflowExpression] Func<string> stationCode = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Rail.svc/json/jStationParking";
@@ -196,8 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetPathBetweenStationsResponse> GetPathBetweenStations([WorkflowExpression] Func<string> fromStationCode, [WorkflowExpression] Func<string> toStationCode)
         {
-            SourceExpression.Validate(fromStationCode, nameof(fromStationCode), required: true);
-            SourceExpression.Validate(toStationCode, nameof(toStationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Rail.svc/json/jPath";
@@ -214,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetJsonStationsResponse> GetJsonStations([WorkflowExpression] Func<string> lineCode = null)
         {
-            SourceExpression.Validate(lineCode, nameof(lineCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Rail.svc/json/jStations";
@@ -231,9 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationEntrancesResponse> GetStationEntrances([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Rail.svc/json/jStationEntrances";
@@ -254,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationInfoResponse> GetStationInfo([WorkflowExpression] Func<string> stationCode)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Rail.svc/json/jStationInfo";
@@ -270,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationTimesResponse> GetStationTimes([WorkflowExpression] Func<string> stationCode)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Rail.svc/json/jStationTimes";
@@ -286,8 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationToStationInfoResponse> GetStationToStationInfo([WorkflowExpression] Func<string> fromStationCode, [WorkflowExpression] Func<string> toStationCode)
         {
-            SourceExpression.Validate(fromStationCode, nameof(fromStationCode), required: true);
-            SourceExpression.Validate(toStationCode, nameof(toStationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
@@ -349,7 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusIncidentsResponse> GetBusIncidents([WorkflowExpression] Func<string> route = null)
         {
-            SourceExpression.Validate(route, nameof(route), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Incidents.svc/json/BusIncidents";
@@ -366,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetElevatorIncidentsResponse> GetElevatorIncidents([WorkflowExpression] Func<string> stationCode = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Incidents.svc/json/ElevatorIncidents";

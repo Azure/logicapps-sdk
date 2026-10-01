@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction ChoicePrompt([WorkflowExpression] Func<string> requestprompt, [WorkflowExpression] Func<string> requestconversationReference, [WorkflowExpression] Func<string[]> requestchoices = null)
         {
-            SourceExpression.Validate(requestprompt, nameof(requestprompt), required: true);
-            SourceExpression.Validate(requestconversationReference, nameof(requestconversationReference), required: true);
-            SourceExpression.Validate(requestchoices, nameof(requestchoices), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/choicePrompt";
@@ -49,10 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction ConfirmPrompt([WorkflowExpression] Func<string> requestprompt, [WorkflowExpression] Func<string> requestconversationReference, [WorkflowExpression] Func<string> requestyesText = null, [WorkflowExpression] Func<string> requestnoText = null)
         {
-            SourceExpression.Validate(requestprompt, nameof(requestprompt), required: true);
-            SourceExpression.Validate(requestconversationReference, nameof(requestconversationReference), required: true);
-            SourceExpression.Validate(requestyesText, nameof(requestyesText), required: false);
-            SourceExpression.Validate(requestnoText, nameof(requestnoText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/confirmPrompt";
@@ -111,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction ProactiveDialogStart([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyupn)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyupn, nameof(bodyupn), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/proactiveDialogs/{0}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -135,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction Reply([WorkflowExpression] Func<string> messageActivitytext, [WorkflowExpression] Func<string> messageActivityconversationReference = null)
         {
-            SourceExpression.Validate(messageActivitytext, nameof(messageActivitytext), required: true);
-            SourceExpression.Validate(messageActivityconversationReference, nameof(messageActivityconversationReference), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reply";
@@ -165,8 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction TextPrompt([WorkflowExpression] Func<string> requestprompt, [WorkflowExpression] Func<string> requestconversationReference)
         {
-            SourceExpression.Validate(requestprompt, nameof(requestprompt), required: true);
-            SourceExpression.Validate(requestconversationReference, nameof(requestconversationReference), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/textPrompt";
@@ -195,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
     {
         public IWorkflowTrigger ProactiveDialogSubscribe([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/proactiveDialogs";
@@ -219,9 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
         public IWorkflowTrigger SmartDialogSubscribe([WorkflowExpression] Func<string> bodyappId, [WorkflowExpression] Func<string> bodyintent, [WorkflowExpression] Func<string> bodydescription, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyappId, nameof(bodyappId), required: true);
-            SourceExpression.Validate(bodyintent, nameof(bodyintent), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/smartDialogs";
@@ -249,9 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
         public IWorkflowTrigger SmartSourceSubscribe([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<string> bodyicon = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodyicon, nameof(bodyicon), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/smartSources";

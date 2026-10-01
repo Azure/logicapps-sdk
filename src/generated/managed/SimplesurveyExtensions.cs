@@ -29,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
         public IBodyWorkflowAction<GetSurveyRespondentsDetailsResponse> GetSurveyRespondentsDetails([WorkflowExpression] Func<string> idProject, [WorkflowExpression] Func<string> tableCode, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> xSAKKey)
         {
-            SourceExpression.Validate(idProject, nameof(idProject), required: true);
-            SourceExpression.Validate(tableCode, nameof(tableCode), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(xSAKKey, nameof(xSAKKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/data/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idProject, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableCode, 1));
@@ -49,9 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
         public IBodyWorkflowAction<GetSurveyDataWarehouseReportResponse> GetSurveyDataWarehouseReport([WorkflowExpression] Func<string> idProject, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> xSAKKey)
         {
-            SourceExpression.Validate(idProject, nameof(idProject), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(xSAKKey, nameof(xSAKKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/dw/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idProject, 1));
@@ -68,9 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
         public IBodyWorkflowAction<GetSurveyStatsResponse> GetSurveyStats([WorkflowExpression] Func<string> idProject, [WorkflowExpression] Func<bool> f, [WorkflowExpression] Func<string> xSAKKey)
         {
-            SourceExpression.Validate(idProject, nameof(idProject), required: true);
-            SourceExpression.Validate(f, nameof(f), required: true);
-            SourceExpression.Validate(xSAKKey, nameof(xSAKKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idProject, 1));
@@ -89,10 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
     {
         public IWorkflowTrigger ResponseSubmitted([WorkflowExpression] Func<string> idProject, [WorkflowExpression] Func<int> automationId, [WorkflowExpression] Func<string> xSAKKey, [WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(idProject, nameof(idProject), required: true);
-            SourceExpression.Validate(automationId, nameof(automationId), required: true);
-            SourceExpression.Validate(xSAKKey, nameof(xSAKKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/events/{0}/automations/{1}/webhooks/register", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idProject, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(automationId, 1));
@@ -117,10 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
 
         public IWorkflowTrigger ResponseChanged([WorkflowExpression] Func<string> idProject, [WorkflowExpression] Func<int> automationId, [WorkflowExpression] Func<string> xSAKKey, [WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(idProject, nameof(idProject), required: true);
-            SourceExpression.Validate(automationId, nameof(automationId), required: true);
-            SourceExpression.Validate(xSAKKey, nameof(xSAKKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/events/{0}/automations/{1}/webhooks/register/cr", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idProject, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(automationId, 1));

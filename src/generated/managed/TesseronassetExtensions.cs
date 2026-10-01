@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<AddAssetResponse> AddAsset([WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields, [WorkflowExpression] Func<int> bodyenterpriseId = null, [WorkflowExpression] Func<int> bodystatus = null, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<int> bodydocumentationId = null, [WorkflowExpression] Func<string> bodydocumentationName = null, [WorkflowExpression] Func<string> bodyliveCycleName = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            SourceExpression.Validate(bodydocumentationId, nameof(bodydocumentationId), required: false);
-            SourceExpression.Validate(bodydocumentationName, nameof(bodydocumentationName), required: false);
-            SourceExpression.Validate(bodyliveCycleName, nameof(bodyliveCycleName), required: false);
-            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddAsset";
@@ -89,16 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset([WorkflowExpression] Func<int> bodyassetId, [WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<int> bodyenterpriseId = null, [WorkflowExpression] Func<int> bodydocumentationId = null, [WorkflowExpression] Func<string> bodydocumentationName = null, [WorkflowExpression] Func<int> bodystatus = null, [WorkflowExpression] Func<string> bodyliveCycleState = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            SourceExpression.Validate(bodyassetId, nameof(bodyassetId), required: true);
-            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            SourceExpression.Validate(bodydocumentationId, nameof(bodydocumentationId), required: false);
-            SourceExpression.Validate(bodydocumentationName, nameof(bodydocumentationName), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyliveCycleState, nameof(bodyliveCycleState), required: false);
-            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UpdateAsset";
@@ -167,18 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<GetAssetSearchResponse> GetAssetSearch([WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<int> bodyenterpriseId = null, [WorkflowExpression] Func<int> bodydocumentationId = null, [WorkflowExpression] Func<int> bodyassetStatus = null, [WorkflowExpression] Func<bool> bodyisDeprecated = null, [WorkflowExpression] Func<string> bodylastUpdateDateStart = null, [WorkflowExpression] Func<string> bodylastUpdateDateEnd = null, [WorkflowExpression] Func<int> bodyresponseType = null, [WorkflowExpression] Func<bool> bodyincludeAccessAuditedFieldValues = null)
         {
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: false);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            SourceExpression.Validate(bodydocumentationId, nameof(bodydocumentationId), required: false);
-            SourceExpression.Validate(bodyassetStatus, nameof(bodyassetStatus), required: false);
-            SourceExpression.Validate(bodyisDeprecated, nameof(bodyisDeprecated), required: false);
-            SourceExpression.Validate(bodylastUpdateDateStart, nameof(bodylastUpdateDateStart), required: false);
-            SourceExpression.Validate(bodylastUpdateDateEnd, nameof(bodylastUpdateDateEnd), required: false);
-            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: false);
-            SourceExpression.Validate(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetAssetSearch";
@@ -259,9 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<GetAssetInfoResponse> GetAssetInfo([WorkflowExpression] Func<int> bodyassetId, [WorkflowExpression] Func<bool> bodyincludeAccessAuditedFieldValues = null, [WorkflowExpression] Func<int> bodyresponseType = null)
         {
-            SourceExpression.Validate(bodyassetId, nameof(bodyassetId), required: true);
-            SourceExpression.Validate(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
-            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetAssetInfo";
@@ -296,8 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<GetConfigResponse> GetConfig([WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<int> bodyenterpriseId = null)
         {
-            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetConfig";

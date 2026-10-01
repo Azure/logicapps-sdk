@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<BulkloadOpportunityResponse> BulkloadOpportunity([WorkflowExpression] Func<string> integrationId, [WorkflowExpression] Func<contentTypeInput> contentType = null, [WorkflowExpression] Func<string> columnDelimiter = null, [WorkflowExpression] Func<contentType2Input> contentType2 = null, [WorkflowExpression] Func<object> bulkloadOpportunityRequest = null)
         {
-            SourceExpression.Validate(integrationId, nameof(integrationId), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(columnDelimiter, nameof(columnDelimiter), required: false);
-            SourceExpression.Validate(contentType2, nameof(contentType2), required: false);
-            SourceExpression.Validate(bulkloadOpportunityRequest, nameof(bulkloadOpportunityRequest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bulk/v1/bulkload_opportunity";
@@ -44,11 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<BulkloadResponse> BulkloadData([WorkflowExpression] Func<string> integrationId, [WorkflowExpression] Func<dataFormatInput> dataFormat = null, [WorkflowExpression] Func<string> columnDelimiter = null, [WorkflowExpression] Func<contentTypeInput> contentType = null, [WorkflowExpression] Func<object> bulkloadRequest = null)
         {
-            SourceExpression.Validate(integrationId, nameof(integrationId), required: true);
-            SourceExpression.Validate(dataFormat, nameof(dataFormat), required: false);
-            SourceExpression.Validate(columnDelimiter, nameof(columnDelimiter), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bulkloadRequest, nameof(bulkloadRequest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bulk/v1/bulkload";
@@ -74,10 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<BulkloadStatusResponse> GetBulkloadStatus([WorkflowExpression] Func<string> integrationId, [WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<bool> includeErrors = null, [WorkflowExpression] Func<double> maxErrors = null)
         {
-            SourceExpression.Validate(integrationId, nameof(integrationId), required: true);
-            SourceExpression.Validate(executionId, nameof(executionId), required: true);
-            SourceExpression.Validate(includeErrors, nameof(includeErrors), required: false);
-            SourceExpression.Validate(maxErrors, nameof(maxErrors), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bulk/v1/status/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(integrationId, 1));
@@ -99,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<GetExternalIdResponse> GetExternalId([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/v1/object/{0}/external_id", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -114,9 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<ExternalIdResponse> UpdateExternalId([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> requestBodyexternalId, [WorkflowExpression] Func<string> requestBodyfieldName = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(requestBodyexternalId, nameof(requestBodyexternalId), required: true);
-            SourceExpression.Validate(requestBodyfieldName, nameof(requestBodyfieldName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/v1/object/{0}/external_id", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -145,12 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<AuditResponse> ObjectAudit([WorkflowExpression] Func<auditRequestBodyfieldNameInput> auditRequestBodyfieldName, [WorkflowExpression] Func<auditRequestBodystatusCodeInput> auditRequestBodystatusCode, [WorkflowExpression] Func<string> auditRequestBodymessage, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> auditRequestBodyintegrationId = null, [WorkflowExpression] Func<string> auditRequestBodyexternalId = null)
         {
-            SourceExpression.Validate(auditRequestBodyfieldName, nameof(auditRequestBodyfieldName), required: true);
-            SourceExpression.Validate(auditRequestBodystatusCode, nameof(auditRequestBodystatusCode), required: true);
-            SourceExpression.Validate(auditRequestBodymessage, nameof(auditRequestBodymessage), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(auditRequestBodyintegrationId, nameof(auditRequestBodyintegrationId), required: false);
-            SourceExpression.Validate(auditRequestBodyexternalId, nameof(auditRequestBodyexternalId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/v1/object/{0}/audit", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -189,8 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<GetReportListResponse> GetReportList([WorkflowExpression] Func<int> bodypagenumber = null, [WorkflowExpression] Func<int> bodypagesize = null)
         {
-            SourceExpression.Validate(bodypagenumber, nameof(bodypagenumber), required: false);
-            SourceExpression.Validate(bodypagesize, nameof(bodypagesize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/report/v1/list";
@@ -231,11 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
         public IBodyWorkflowAction<ReportDataResponse> GetReportData([WorkflowExpression] Func<int> reportId, [WorkflowExpression] Func<int> requestBodypagenumber, [WorkflowExpression] Func<int> requestBodypagesize, [WorkflowExpression] Func<ReportFieldFilter[]> requestBodyfiltersfieldFilters = null, [WorkflowExpression] Func<requestBodyfiltersopInput> requestBodyfiltersop = null)
         {
-            SourceExpression.Validate(reportId, nameof(reportId), required: true);
-            SourceExpression.Validate(requestBodypagenumber, nameof(requestBodypagenumber), required: true);
-            SourceExpression.Validate(requestBodypagesize, nameof(requestBodypagesize), required: true);
-            SourceExpression.Validate(requestBodyfiltersfieldFilters, nameof(requestBodyfiltersfieldFilters), required: false);
-            SourceExpression.Validate(requestBodyfiltersop, nameof(requestBodyfiltersop), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/report/v1/{0}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(reportId, 1));
@@ -290,10 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
     {
         public IBodyWorkflowTrigger<SubscribeResp> Subscribe([WorkflowExpression] Func<string> subscribeBodyeventName, [WorkflowExpression] Func<string> subscribeBodysubscriberName, [WorkflowExpression] Func<string[]> subscribeBodyworkSpanObjectId = null, [WorkflowExpression] Func<string> subscribeBodyfilterExampleStageInClosedWonLostANDSalesDetailsPartnerP1 = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(subscribeBodyeventName, nameof(subscribeBodyeventName), required: true);
-            SourceExpression.Validate(subscribeBodysubscriberName, nameof(subscribeBodysubscriberName), required: true);
-            SourceExpression.Validate(subscribeBodyworkSpanObjectId, nameof(subscribeBodyworkSpanObjectId), required: false);
-            SourceExpression.Validate(subscribeBodyfilterExampleStageInClosedWonLostANDSalesDetailsPartnerP1, nameof(subscribeBodyfilterExampleStageInClosedWonLostANDSalesDetailsPartnerP1), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/v1/subscriber";
@@ -341,11 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
         public IBodyWorkflowTrigger<SubscribeResp> SubscribeObjectEvent([WorkflowExpression] Func<subscribeBodysubscribeToObjectEventsInputItem[]> subscribeBodysubscribeToObjectEvents, [WorkflowExpression] Func<string> subscribeBodyname, [WorkflowExpression] Func<string> subscribeBodyselectIntegrationConfiguredInWorkSpan, [WorkflowExpression] Func<string[]> subscribeBodyobjectIds = null, [WorkflowExpression] Func<string> subscribeBodyfilterExampleStageInClosedWonLostANDSalesDetailsPartnerP1 = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(subscribeBodysubscribeToObjectEvents, nameof(subscribeBodysubscribeToObjectEvents), required: true);
-            SourceExpression.Validate(subscribeBodyname, nameof(subscribeBodyname), required: true);
-            SourceExpression.Validate(subscribeBodyselectIntegrationConfiguredInWorkSpan, nameof(subscribeBodyselectIntegrationConfiguredInWorkSpan), required: true);
-            SourceExpression.Validate(subscribeBodyobjectIds, nameof(subscribeBodyobjectIds), required: false);
-            SourceExpression.Validate(subscribeBodyfilterExampleStageInClosedWonLostANDSalesDetailsPartnerP1, nameof(subscribeBodyfilterExampleStageInClosedWonLostANDSalesDetailsPartnerP1), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/v1/subscriber/object_integration_event";
@@ -395,8 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
         public IBodyWorkflowTrigger<SubscribeResp> SubmitToPartnerCenterObjectEvent([WorkflowExpression] Func<string> subscribeBodyname, [WorkflowExpression] Func<string> subscribeBodyselectIntegrationConfiguredInWorkSpan, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(subscribeBodyname, nameof(subscribeBodyname), required: true);
-            SourceExpression.Validate(subscribeBodyselectIntegrationConfiguredInWorkSpan, nameof(subscribeBodyselectIntegrationConfiguredInWorkSpan), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/v1/subscriber/submit_to_partner_center";

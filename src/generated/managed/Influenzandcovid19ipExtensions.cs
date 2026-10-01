@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19totalsforallUSStatesResponseItem[]> GetCOVID19totalsforallUSStates([WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<bool> yesterday = null, [WorkflowExpression] Func<bool> allowNull = null)
         {
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(yesterday, nameof(yesterday), required: false);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/states";
@@ -37,9 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19totalsforspecificUSStatesResponse> GetCOVID19totalsforspecificUSStates([WorkflowExpression] Func<statesInput> states, [WorkflowExpression] Func<string> yesterday = null, [WorkflowExpression] Func<string> allowNull = null)
         {
-            SourceExpression.Validate(states, nameof(states), required: true);
-            SourceExpression.Validate(yesterday, nameof(yesterday), required: false);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/states/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(states, 1));
@@ -58,10 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19totalsforallcontinentsResponseItem[]> GetCOVID19totalsforallcontinents([WorkflowExpression] Func<bool> yesterday = null, [WorkflowExpression] Func<bool> twoDaysAgo = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<bool> allowNull = null)
         {
-            SourceExpression.Validate(yesterday, nameof(yesterday), required: false);
-            SourceExpression.Validate(twoDaysAgo, nameof(twoDaysAgo), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/continents";
@@ -84,11 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19totalsforaspecificcontinentResponse> GetCOVID19totalsforaspecificcontinent([WorkflowExpression] Func<continentInput> continent, [WorkflowExpression] Func<string> yesterday = null, [WorkflowExpression] Func<string> twoDaysAgo = null, [WorkflowExpression] Func<string> strict = null, [WorkflowExpression] Func<string> allowNull = null)
         {
-            SourceExpression.Validate(continent, nameof(continent), required: true);
-            SourceExpression.Validate(yesterday, nameof(yesterday), required: false);
-            SourceExpression.Validate(twoDaysAgo, nameof(twoDaysAgo), required: false);
-            SourceExpression.Validate(strict, nameof(strict), required: false);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/continents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(continent, 1));
@@ -111,10 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19totalsforallcountriesResponseItem[]> GetCOVID19totalsforallcountries([WorkflowExpression] Func<string> yesterday = null, [WorkflowExpression] Func<string> twoDaysAgo = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> allowNull = null)
         {
-            SourceExpression.Validate(yesterday, nameof(yesterday), required: false);
-            SourceExpression.Validate(twoDaysAgo, nameof(twoDaysAgo), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/countries";
@@ -137,11 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountryResponse> GetCOVID19totalsforaspecificcountry([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> yesterday = null, [WorkflowExpression] Func<string> twoDaysAgo = null, [WorkflowExpression] Func<string> strict = null, [WorkflowExpression] Func<string> allowNull = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(yesterday, nameof(yesterday), required: false);
-            SourceExpression.Validate(twoDaysAgo, nameof(twoDaysAgo), required: false);
-            SourceExpression.Validate(strict, nameof(strict), required: false);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/countries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1));
@@ -178,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountyResponseItem[]> GetCOVID19totalsforaspecificcounty([WorkflowExpression] Func<countyInput> county)
         {
-            SourceExpression.Validate(county, nameof(county), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/jhucsse/counties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(county, 1));
@@ -207,8 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19timeseriesdataforaspecificcountryResponse> GetCOVID19timeseriesdataforaspecificcountry([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> lastdays = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/historical/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1));
@@ -225,8 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[]> GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstate([WorkflowExpression] Func<stateInput> state, [WorkflowExpression] Func<string> lastdays = null)
         {
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/historical/usacounties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
@@ -243,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19timeseriesdataforallcountriesandtheirprovincesResponseItem[]> GetCOVID19timeseriesdataforallcountriesandtheirprovinces([WorkflowExpression] Func<string> lastdays = null)
         {
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/historical";
@@ -260,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetglobalaccumulatedCOVID19timeseriesdataResponse> GetglobalaccumulatedCOVID19timeseriesdata([WorkflowExpression] Func<string> lastdays = null)
         {
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/historical/all";
@@ -277,7 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19timeseriesdataforallavailableUScountiesbeganResponseItem[]> GetCOVID19timeseriesdataforallavailableUScountiesbegan([WorkflowExpression] Func<int> lastdays = null)
         {
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/nyt/counties";
@@ -294,8 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19timeseriesdataforsincethepandemicbeganResponseItem[]> GetCOVID19timeseriesdataforsincethepandemicbegan([WorkflowExpression] Func<countyInput> county, [WorkflowExpression] Func<string> lastdays = null)
         {
-            SourceExpression.Validate(county, nameof(county), required: true);
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/nyt/counties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(county, 1));
@@ -340,8 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[]> GetCOVID19governmentreporteddataforaspecificcountry([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> allowNull = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/gov/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1));
@@ -358,8 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19vaccinedosesforallcountriesResponseItem[]> GetCOVID19vaccinedosesforallcountries([WorkflowExpression] Func<string> lastdays = null, [WorkflowExpression] Func<string> fullData = null)
         {
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
-            SourceExpression.Validate(fullData, nameof(fullData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/vaccine/coverage/countries";
@@ -378,9 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19vaccinedoseforasinglecountryResponse> GetCOVID19vaccinedoseforasinglecountry([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> lastdays = null, [WorkflowExpression] Func<string> fullData = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
-            SourceExpression.Validate(fullData, nameof(fullData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/vaccine/coverage/countries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1));
@@ -399,8 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19vaccinedosesforallstatesResponseItem[]> GetCOVID19vaccinedosesforallstates([WorkflowExpression] Func<string> lastdays = null, [WorkflowExpression] Func<string> fullData = null)
         {
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
-            SourceExpression.Validate(fullData, nameof(fullData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/vaccine/coverage/states";
@@ -419,9 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetCOVID19vaccinedoseforastateResponse> GetCOVID19vaccinedoseforastate([WorkflowExpression] Func<stateInput> state, [WorkflowExpression] Func<string> lastdays = null, [WorkflowExpression] Func<string> fullData = null)
         {
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
-            SourceExpression.Validate(fullData, nameof(fullData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/covid-19/vaccine/coverage/states/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
@@ -440,8 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GettotalglobalCOVID19vaccinedosesResponse> GettotalglobalCOVID19vaccinedoses([WorkflowExpression] Func<string> lastdays = null, [WorkflowExpression] Func<string> fullData = null)
         {
-            SourceExpression.Validate(lastdays, nameof(lastdays), required: false);
-            SourceExpression.Validate(fullData, nameof(fullData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/vaccine/coverage";
@@ -488,9 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
         public IBodyWorkflowAction<GetglobalCOVID19totalsfortodayyesterdayandtwodaysagoResponse> GetglobalCOVID19totalsfortodayyesterdayandtwodaysago([WorkflowExpression] Func<string> yesterday = null, [WorkflowExpression] Func<string> twoDaysAgo = null, [WorkflowExpression] Func<string> allowNull = null)
         {
-            SourceExpression.Validate(yesterday, nameof(yesterday), required: false);
-            SourceExpression.Validate(twoDaysAgo, nameof(twoDaysAgo), required: false);
-            SourceExpression.Validate(allowNull, nameof(allowNull), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/covid-19/all";

@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetReportData([WorkflowExpression] Func<reportNameInput> reportName, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(reportName, nameof(reportName), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reports/{0}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
@@ -41,12 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetAgencyReportData([WorkflowExpression] Func<agencyNameInput> agencyName, [WorkflowExpression] Func<reportNameInput> reportName, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(agencyName, nameof(agencyName), required: true);
-            SourceExpression.Validate(reportName, nameof(reportName), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agencies/{0}/reports/{1}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agencyName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
@@ -69,12 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetDomainReportData([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<reportNameInput> reportName, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(reportName, nameof(reportName), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domain/{0}/reports/{1}/data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));

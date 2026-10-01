@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HighlightListGetResponse> HighlightListGet([WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> bookId = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> hightlightedAtLt = null, [WorkflowExpression] Func<string> highlightedAtGt = null)
         {
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(bookId, nameof(bookId), required: false);
-            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
-            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
-            SourceExpression.Validate(hightlightedAtLt, nameof(hightlightedAtLt), required: false);
-            SourceExpression.Validate(highlightedAtGt, nameof(highlightedAtGt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/highlights/";
@@ -49,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSave([WorkflowExpression] Func<bodyhighlightsInputItem[]> bodyhighlights)
         {
-            SourceExpression.Validate(bodyhighlights, nameof(bodyhighlights), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/highlights/";
@@ -72,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HighlightExportGetResponse> HighlightExportGet([WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> pageCursor = null)
         {
-            SourceExpression.Validate(updatedAfter, nameof(updatedAfter), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(pageCursor, nameof(pageCursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/export/";
@@ -95,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HightlightDetailGetResponse> HightlightDetailGet([WorkflowExpression] Func<string> highlightId)
         {
-            SourceExpression.Validate(highlightId, nameof(highlightId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
@@ -110,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<string> HighlightDelete([WorkflowExpression] Func<string> highlightId)
         {
-            SourceExpression.Validate(highlightId, nameof(highlightId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
@@ -125,12 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HighlightUpdatePatchResponse> HighlightUpdatePatch([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodylocation = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodycolor = null)
         {
-            SourceExpression.Validate(highlightId, nameof(highlightId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
@@ -181,9 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HighlightTagsGetResponse> HighlightTagsGet([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null)
         {
-            SourceExpression.Validate(highlightId, nameof(highlightId), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
@@ -202,8 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTags([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(highlightId, nameof(highlightId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
@@ -226,8 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<string> HighlightTagsDelete([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(highlightId, nameof(highlightId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -242,9 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<HighlightTagsUpdateResponse> HighlightTagsUpdate([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(highlightId, nameof(highlightId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -267,17 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<BookListGetResponse> BookListGet([WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<int> numHighlights = null, [WorkflowExpression] Func<int> numHighlightsLt = null, [WorkflowExpression] Func<int> numHighlightsGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> lastHighlightAtLt = null, [WorkflowExpression] Func<string> lastHighlightGt = null)
         {
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(numHighlights, nameof(numHighlights), required: false);
-            SourceExpression.Validate(numHighlightsLt, nameof(numHighlightsLt), required: false);
-            SourceExpression.Validate(numHighlightsGt, nameof(numHighlightsGt), required: false);
-            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
-            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
-            SourceExpression.Validate(lastHighlightAtLt, nameof(lastHighlightAtLt), required: false);
-            SourceExpression.Validate(lastHighlightGt, nameof(lastHighlightGt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/books/";
@@ -314,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<BookGetResponse> BookGet([WorkflowExpression] Func<string> bookId)
         {
-            SourceExpression.Validate(bookId, nameof(bookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
@@ -329,9 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<BookTagsGetResponse> BookTagsGet([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null)
         {
-            SourceExpression.Validate(bookId, nameof(bookId), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
@@ -350,8 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<BookTagsCreateResponse> BookTagsCreate([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bookId, nameof(bookId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
@@ -374,8 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<string> BookTagsDelete([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(bookId, nameof(bookId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -390,9 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
         public IBodyWorkflowAction<BookTagsUpdateResponse> BookTagsUpdate([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bookId, nameof(bookId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));

@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alertrelay
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alertrelay")]
         public IBodyWorkflowAction<GetItemOrFileVersionHistoryResponse> GetItemOrFileVersionHistory([WorkflowExpression] Func<string> bodysiteURL, [WorkflowExpression] Func<string> bodylistOrLibrary, [WorkflowExpression] Func<int> bodyitemId, [WorkflowExpression] Func<int> bodymaximumUsageUnits, [WorkflowExpression] Func<int> bodymaximumVersions = null, [WorkflowExpression] Func<string[]> bodyfieldsToReturn = null, [WorkflowExpression] Func<string> bodycompareFrom = null, [WorkflowExpression] Func<string> bodycompareTo = null, [WorkflowExpression] Func<string> bodypagingToken = null, [WorkflowExpression] Func<bool> bodyincludeMinorVersions = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<string> bodytimeFormat = null, [WorkflowExpression] Func<string> bodytimezone = null)
         {
-            SourceExpression.Validate(bodysiteURL, nameof(bodysiteURL), required: true);
-            SourceExpression.Validate(bodylistOrLibrary, nameof(bodylistOrLibrary), required: true);
-            SourceExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
-            SourceExpression.Validate(bodymaximumUsageUnits, nameof(bodymaximumUsageUnits), required: true);
-            SourceExpression.Validate(bodymaximumVersions, nameof(bodymaximumVersions), required: false);
-            SourceExpression.Validate(bodyfieldsToReturn, nameof(bodyfieldsToReturn), required: false);
-            SourceExpression.Validate(bodycompareFrom, nameof(bodycompareFrom), required: false);
-            SourceExpression.Validate(bodycompareTo, nameof(bodycompareTo), required: false);
-            SourceExpression.Validate(bodypagingToken, nameof(bodypagingToken), required: false);
-            SourceExpression.Validate(bodyincludeMinorVersions, nameof(bodyincludeMinorVersions), required: false);
-            SourceExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            SourceExpression.Validate(bodytimeFormat, nameof(bodytimeFormat), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/versionhistory";

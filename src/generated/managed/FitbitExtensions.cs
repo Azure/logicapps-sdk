@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepGoalResponse> GetSleepGoal([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/goal.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepLogbyDateResponse> GetSleepLogbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -45,9 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> GetSleepLogbyDateRange([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(startDate, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endDate, 1));
@@ -62,11 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepLogListResponse> GetSleepLogList([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> afterDate = null, [WorkflowExpression] Func<string> beforeDate = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(afterDate, nameof(afterDate), required: false);
-            SourceExpression.Validate(beforeDate, nameof(beforeDate), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/list.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -91,8 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetActivityGoalsResponse> GetActivityGoals([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<periodInput> period)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(period, nameof(period), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/goals/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
@@ -107,11 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetActivityLogListResponse> GetActivityLogList([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> afterDate = null, [WorkflowExpression] Func<string> beforeDate = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(afterDate, nameof(afterDate), required: false);
-            SourceExpression.Validate(beforeDate, nameof(beforeDate), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/list.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -136,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IWorkflowAction GetActivityTCX([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> logId, [WorkflowExpression] Func<bool> includePartialTCX = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(logId, nameof(logId), required: true);
-            SourceExpression.Validate(includePartialTCX, nameof(includePartialTCX), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.tcx", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(logId, 1));
@@ -155,8 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetAcitivityTypeResponse> GetAcitivityType([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> activityId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -185,8 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetDailyActivitySummaryResponse> GetDailyActivitySummary([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -201,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> GetFavoriteActivities([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/favorite.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -216,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> GetFrequentActivities([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}activities/frequent.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -231,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetLifetimeStatsResponse> GetLifetimeStats([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -246,7 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> GetRecentActivityTypes([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/recent.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -261,10 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> GetActivityTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<resourceInput> resource, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(resource, nameof(resource), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(period, nameof(period), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}/date/{2}/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
@@ -279,8 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyGoalsResponse> GetBodyGoals([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<goalTypeInput> goalType)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(goalType, nameof(goalType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/{1}/goal.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalType, 1));
@@ -295,8 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyFattLogResponse> GetBodyFattLog([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -311,8 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetWeightLogResponse> GetWeightLog([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -327,10 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> GetBodyTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<resourceInput> resource, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(resource, nameof(resource), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(period, nameof(period), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/{1}/date/{2}/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
@@ -345,9 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> GetBodyFatTimerSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(period, nameof(period), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
@@ -362,9 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> GetWeightTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(period, nameof(period), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
@@ -379,8 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> GetBreathingRateSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/br/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -395,8 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> GetVO2MaxSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/cardioscore/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -411,7 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetDevicesResponseItem[]> GetDevices([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -426,8 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetAlarmsResponse> GetAlarms([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> trackerId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(trackerId, nameof(trackerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices/tracker/{1}/alarms.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackerId, 1));
@@ -442,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetFriendsLeaderboardResponse> GetFriendsLeaderboard([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.1/user/{0}/leaderboard/friends.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -457,8 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetHRVSummarybyDateResponse> GetHRVSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/hrv/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -473,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBadgesResponse> GetBadges([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/badges.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -488,7 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetProfileResponse> GetProfile([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/profile.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));

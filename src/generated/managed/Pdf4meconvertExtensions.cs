@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> ConvertHtmlToPdf([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocName, [WorkflowExpression] Func<string> bodyindexFilePath = null, [WorkflowExpression] Func<bodylayoutInput> bodylayout = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<double> bodyscale = null, [WorkflowExpression] Func<string> bodytopMargin = null, [WorkflowExpression] Func<string> bodybottomMargin = null, [WorkflowExpression] Func<string> bodyleftMargin = null, [WorkflowExpression] Func<string> bodyrightMargin = null, [WorkflowExpression] Func<bool> bodyprintBackground = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocName, nameof(bodydocName), required: true);
-            SourceExpression.Validate(bodyindexFilePath, nameof(bodyindexFilePath), required: false);
-            SourceExpression.Validate(bodylayout, nameof(bodylayout), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodyscale, nameof(bodyscale), required: false);
-            SourceExpression.Validate(bodytopMargin, nameof(bodytopMargin), required: false);
-            SourceExpression.Validate(bodybottomMargin, nameof(bodybottomMargin), required: false);
-            SourceExpression.Validate(bodyleftMargin, nameof(bodyleftMargin), required: false);
-            SourceExpression.Validate(bodyrightMargin, nameof(bodyrightMargin), required: false);
-            SourceExpression.Validate(bodyprintBackground, nameof(bodyprintBackground), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertHtmlToPdf";
@@ -183,17 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> ConvertJsonToExcel([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<int> bodyfirstRow = null, [WorkflowExpression] Func<int> bodyfirstColumn = null, [WorkflowExpression] Func<string> bodyworksheetName = null, [WorkflowExpression] Func<bool> bodyconvertNumberAndDate = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<string> bodynumberFormat = null, [WorkflowExpression] Func<bool> bodyignoreNullValues = null, [WorkflowExpression] Func<bool> bodyisTitleBold = null, [WorkflowExpression] Func<bool> bodyisTitleWrapText = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodyfirstRow, nameof(bodyfirstRow), required: false);
-            SourceExpression.Validate(bodyfirstColumn, nameof(bodyfirstColumn), required: false);
-            SourceExpression.Validate(bodyworksheetName, nameof(bodyworksheetName), required: false);
-            SourceExpression.Validate(bodyconvertNumberAndDate, nameof(bodyconvertNumberAndDate), required: false);
-            SourceExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            SourceExpression.Validate(bodynumberFormat, nameof(bodynumberFormat), required: false);
-            SourceExpression.Validate(bodyignoreNullValues, nameof(bodyignoreNullValues), required: false);
-            SourceExpression.Validate(bodyisTitleBold, nameof(bodyisTitleBold), required: false);
-            SourceExpression.Validate(bodyisTitleWrapText, nameof(bodyisTitleWrapText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertJsonToExcel";
@@ -354,9 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> ConvertMdToPdf([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocName, [WorkflowExpression] Func<string> bodymdFilePath = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocName, nameof(bodydocName), required: true);
-            SourceExpression.Validate(bodymdFilePath, nameof(bodymdFilePath), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertMdToPdf";
@@ -387,8 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> ConvertToPdf([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertToPdf";
@@ -425,10 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> ConvertUrlToPdf([WorkflowExpression] Func<string> bodywebUrl, [WorkflowExpression] Func<bodyauthTypeInput> bodyauthType = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            SourceExpression.Validate(bodywebUrl, nameof(bodywebUrl), required: true);
-            SourceExpression.Validate(bodyauthType, nameof(bodyauthType), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertUrlToPdf";
@@ -479,8 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> ConvertVisio([WorkflowExpression] Func<schemaValInput> schemaVal = null, [WorkflowExpression] Func<object> operation = null)
         {
-            SourceExpression.Validate(schemaVal, nameof(schemaVal), required: false);
-            SourceExpression.Validate(operation, nameof(operation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertVisio";
@@ -499,8 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> ConvertWordToPdfForm([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertWordToPdfForm";
@@ -537,11 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> CreatePdfA([WorkflowExpression] Func<bodycomplianceInput> bodycompliance, [WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bool> bodyallowUpgrade = null, [WorkflowExpression] Func<bool> bodyallowDowngrade = null)
         {
-            SourceExpression.Validate(bodycompliance, nameof(bodycompliance), required: true);
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodyallowUpgrade, nameof(bodyallowUpgrade), required: false);
-            SourceExpression.Validate(bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/PdfA";
@@ -612,8 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IWorkflowAction CustomAPI([WorkflowExpression] Func<string> featurePath, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(featurePath, nameof(featurePath), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(featurePath, 1));
@@ -630,13 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> PdfToExcel([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyqualityTypeInput> bodyqualityType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodymergeAllSheets = null, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodyqualityType, nameof(bodyqualityType), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodymergeAllSheets, nameof(bodymergeAllSheets), required: false);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            SourceExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToExcel";
@@ -729,11 +680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> PdfToPowerPoint([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bodyqualityTypeInput> bodyqualityType = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodyqualityType, nameof(bodyqualityType), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToPowerPoint";
@@ -808,11 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
         public IBodyWorkflowAction<string> PdfToWord([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyqualityTypeInput> bodyqualityType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodyqualityType, nameof(bodyqualityType), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToWord";

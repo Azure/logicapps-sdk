@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ClientReceiveMessage> GetEmail([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> internetMessageId = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(includeAttachments, nameof(includeAttachments), required: false);
-            SourceExpression.Validate(internetMessageId, nameof(internetMessageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -36,7 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction DeleteEmail([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -51,8 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ClientReceiveMessageStringEnums> Move([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> folderPath)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/Move/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -68,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction Flag([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/Flag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -83,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction MarkAsRead([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/MarkAsRead/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -98,8 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<string> GetAttachment([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> attachmentId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/{0}/Attachments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -114,17 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<SubscriptionResponse> SendMailWithOptions([WorkflowExpression] Func<string> optionsEmailSubscriptionmessageto, [WorkflowExpression] Func<string> optionsEmailSubscriptionmessagesubject = null, [WorkflowExpression] Func<string> optionsEmailSubscriptionmessageuserOptions = null, [WorkflowExpression] Func<string> optionsEmailSubscriptionmessageheaderText = null, [WorkflowExpression] Func<string> optionsEmailSubscriptionmessageselectionText = null, [WorkflowExpression] Func<string> optionsEmailSubscriptionmessagebody = null, [WorkflowExpression] Func<optionsEmailSubscriptionmessageimportanceInput> optionsEmailSubscriptionmessageimportance = null, [WorkflowExpression] Func<ClientSendAttachment[]> optionsEmailSubscriptionmessageattachments = null, [WorkflowExpression] Func<bool> optionsEmailSubscriptionmessageuseOnlyHTMLMessage = null, [WorkflowExpression] Func<bool> optionsEmailSubscriptionmessagehideHTMLMessage = null, [WorkflowExpression] Func<bool> optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
-            SourceExpression.Validate(optionsEmailSubscriptionmessageto, nameof(optionsEmailSubscriptionmessageto), required: true);
-            SourceExpression.Validate(optionsEmailSubscriptionmessagesubject, nameof(optionsEmailSubscriptionmessagesubject), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessageuserOptions, nameof(optionsEmailSubscriptionmessageuserOptions), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessageheaderText, nameof(optionsEmailSubscriptionmessageheaderText), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessageselectionText, nameof(optionsEmailSubscriptionmessageselectionText), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessagebody, nameof(optionsEmailSubscriptionmessagebody), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessageimportance, nameof(optionsEmailSubscriptionmessageimportance), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessageattachments, nameof(optionsEmailSubscriptionmessageattachments), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(optionsEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessagehideHTMLMessage, nameof(optionsEmailSubscriptionmessagehideHTMLMessage), required: false);
-            SourceExpression.Validate(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mailwithoptions/$subscriptions";
@@ -267,17 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<SubscriptionResponse> SendApprovalMail([WorkflowExpression] Func<string> approvalEmailSubscriptionmessageto, [WorkflowExpression] Func<string> approvalEmailSubscriptionmessagesubject = null, [WorkflowExpression] Func<string> approvalEmailSubscriptionmessageuserOptions = null, [WorkflowExpression] Func<string> approvalEmailSubscriptionmessageheaderText = null, [WorkflowExpression] Func<string> approvalEmailSubscriptionmessageselectionText = null, [WorkflowExpression] Func<string> approvalEmailSubscriptionmessagebody = null, [WorkflowExpression] Func<approvalEmailSubscriptionmessageimportanceInput> approvalEmailSubscriptionmessageimportance = null, [WorkflowExpression] Func<ClientSendAttachment[]> approvalEmailSubscriptionmessageattachments = null, [WorkflowExpression] Func<bool> approvalEmailSubscriptionmessageuseOnlyHTMLMessage = null, [WorkflowExpression] Func<bool> approvalEmailSubscriptionmessagehideHTMLMessage = null, [WorkflowExpression] Func<bool> approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
-            SourceExpression.Validate(approvalEmailSubscriptionmessageto, nameof(approvalEmailSubscriptionmessageto), required: true);
-            SourceExpression.Validate(approvalEmailSubscriptionmessagesubject, nameof(approvalEmailSubscriptionmessagesubject), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessageuserOptions, nameof(approvalEmailSubscriptionmessageuserOptions), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessageheaderText, nameof(approvalEmailSubscriptionmessageheaderText), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessageselectionText, nameof(approvalEmailSubscriptionmessageselectionText), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessagebody, nameof(approvalEmailSubscriptionmessagebody), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessageimportance, nameof(approvalEmailSubscriptionmessageimportance), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessageattachments, nameof(approvalEmailSubscriptionmessageattachments), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(approvalEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessagehideHTMLMessage, nameof(approvalEmailSubscriptionmessagehideHTMLMessage), required: false);
-            SourceExpression.Validate(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/approvalmail/$subscriptions";
@@ -434,8 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction CalendarDeleteItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/calendars/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -464,11 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseContactResponse> ContactGetItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -491,54 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactPostItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> itemgivenName, [WorkflowExpression] Func<string[]> itemhomePhones, [WorkflowExpression] Func<string> itemid = null, [WorkflowExpression] Func<string> itemparentFolderId = null, [WorkflowExpression] Func<string> itembirthday = null, [WorkflowExpression] Func<string> itemfileAs = null, [WorkflowExpression] Func<string> itemdisplayName = null, [WorkflowExpression] Func<string> iteminitials = null, [WorkflowExpression] Func<string> itemmiddleName = null, [WorkflowExpression] Func<string> itemnickname = null, [WorkflowExpression] Func<string> itemsurname = null, [WorkflowExpression] Func<string> itemtitle = null, [WorkflowExpression] Func<string> itemgeneration = null, [WorkflowExpression] Func<EmailAddress[]> itememailAddresses = null, [WorkflowExpression] Func<string[]> itemiMAddresses = null, [WorkflowExpression] Func<string> itemjobTitle = null, [WorkflowExpression] Func<string> itemcompanyName = null, [WorkflowExpression] Func<string> itemdepartment = null, [WorkflowExpression] Func<string> itemofficeLocation = null, [WorkflowExpression] Func<string> itemprofession = null, [WorkflowExpression] Func<string> itembusinessHomePage = null, [WorkflowExpression] Func<string> itemassistantName = null, [WorkflowExpression] Func<string> itemmanager = null, [WorkflowExpression] Func<string[]> itembusinessPhones = null, [WorkflowExpression] Func<string> itemmobilePhone = null, [WorkflowExpression] Func<string> itemhomeAddressstreet = null, [WorkflowExpression] Func<string> itemhomeAddresscity = null, [WorkflowExpression] Func<string> itemhomeAddressstate = null, [WorkflowExpression] Func<string> itemhomeAddresscountryOrRegion = null, [WorkflowExpression] Func<string> itemhomeAddresspostalCode = null, [WorkflowExpression] Func<string> itembusinessAddressstreet = null, [WorkflowExpression] Func<string> itembusinessAddresscity = null, [WorkflowExpression] Func<string> itembusinessAddressstate = null, [WorkflowExpression] Func<string> itembusinessAddresscountryOrRegion = null, [WorkflowExpression] Func<string> itembusinessAddresspostalCode = null, [WorkflowExpression] Func<string> itemotherAddressstreet = null, [WorkflowExpression] Func<string> itemotherAddresscity = null, [WorkflowExpression] Func<string> itemotherAddressstate = null, [WorkflowExpression] Func<string> itemotherAddresscountryOrRegion = null, [WorkflowExpression] Func<string> itemotherAddresspostalCode = null, [WorkflowExpression] Func<string> itemyomiCompanyName = null, [WorkflowExpression] Func<string> itemyomiGivenName = null, [WorkflowExpression] Func<string> itemyomiSurname = null, [WorkflowExpression] Func<string[]> itemcategories = null, [WorkflowExpression] Func<string> itemchangeKey = null, [WorkflowExpression] Func<string> itemcreatedTime = null, [WorkflowExpression] Func<string> itemlastModifiedTime = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(itemgivenName, nameof(itemgivenName), required: true);
-            SourceExpression.Validate(itemhomePhones, nameof(itemhomePhones), required: true);
-            SourceExpression.Validate(itemid, nameof(itemid), required: false);
-            SourceExpression.Validate(itemparentFolderId, nameof(itemparentFolderId), required: false);
-            SourceExpression.Validate(itembirthday, nameof(itembirthday), required: false);
-            SourceExpression.Validate(itemfileAs, nameof(itemfileAs), required: false);
-            SourceExpression.Validate(itemdisplayName, nameof(itemdisplayName), required: false);
-            SourceExpression.Validate(iteminitials, nameof(iteminitials), required: false);
-            SourceExpression.Validate(itemmiddleName, nameof(itemmiddleName), required: false);
-            SourceExpression.Validate(itemnickname, nameof(itemnickname), required: false);
-            SourceExpression.Validate(itemsurname, nameof(itemsurname), required: false);
-            SourceExpression.Validate(itemtitle, nameof(itemtitle), required: false);
-            SourceExpression.Validate(itemgeneration, nameof(itemgeneration), required: false);
-            SourceExpression.Validate(itememailAddresses, nameof(itememailAddresses), required: false);
-            SourceExpression.Validate(itemiMAddresses, nameof(itemiMAddresses), required: false);
-            SourceExpression.Validate(itemjobTitle, nameof(itemjobTitle), required: false);
-            SourceExpression.Validate(itemcompanyName, nameof(itemcompanyName), required: false);
-            SourceExpression.Validate(itemdepartment, nameof(itemdepartment), required: false);
-            SourceExpression.Validate(itemofficeLocation, nameof(itemofficeLocation), required: false);
-            SourceExpression.Validate(itemprofession, nameof(itemprofession), required: false);
-            SourceExpression.Validate(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
-            SourceExpression.Validate(itemassistantName, nameof(itemassistantName), required: false);
-            SourceExpression.Validate(itemmanager, nameof(itemmanager), required: false);
-            SourceExpression.Validate(itembusinessPhones, nameof(itembusinessPhones), required: false);
-            SourceExpression.Validate(itemmobilePhone, nameof(itemmobilePhone), required: false);
-            SourceExpression.Validate(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
-            SourceExpression.Validate(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
-            SourceExpression.Validate(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
-            SourceExpression.Validate(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
-            SourceExpression.Validate(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
-            SourceExpression.Validate(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
-            SourceExpression.Validate(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
-            SourceExpression.Validate(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
-            SourceExpression.Validate(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
-            SourceExpression.Validate(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
-            SourceExpression.Validate(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
-            SourceExpression.Validate(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
-            SourceExpression.Validate(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
-            SourceExpression.Validate(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
-            SourceExpression.Validate(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
-            SourceExpression.Validate(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
-            SourceExpression.Validate(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
-            SourceExpression.Validate(itemyomiSurname, nameof(itemyomiSurname), required: false);
-            SourceExpression.Validate(itemcategories, nameof(itemcategories), required: false);
-            SourceExpression.Validate(itemchangeKey, nameof(itemchangeKey), required: false);
-            SourceExpression.Validate(itemcreatedTime, nameof(itemcreatedTime), required: false);
-            SourceExpression.Validate(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -857,8 +770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactGetItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -873,8 +784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ContactDeleteItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -889,55 +798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactPatchItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> itemgivenName, [WorkflowExpression] Func<string[]> itemhomePhones, [WorkflowExpression] Func<string> itemid = null, [WorkflowExpression] Func<string> itemparentFolderId = null, [WorkflowExpression] Func<string> itembirthday = null, [WorkflowExpression] Func<string> itemfileAs = null, [WorkflowExpression] Func<string> itemdisplayName = null, [WorkflowExpression] Func<string> iteminitials = null, [WorkflowExpression] Func<string> itemmiddleName = null, [WorkflowExpression] Func<string> itemnickname = null, [WorkflowExpression] Func<string> itemsurname = null, [WorkflowExpression] Func<string> itemtitle = null, [WorkflowExpression] Func<string> itemgeneration = null, [WorkflowExpression] Func<EmailAddress[]> itememailAddresses = null, [WorkflowExpression] Func<string[]> itemiMAddresses = null, [WorkflowExpression] Func<string> itemjobTitle = null, [WorkflowExpression] Func<string> itemcompanyName = null, [WorkflowExpression] Func<string> itemdepartment = null, [WorkflowExpression] Func<string> itemofficeLocation = null, [WorkflowExpression] Func<string> itemprofession = null, [WorkflowExpression] Func<string> itembusinessHomePage = null, [WorkflowExpression] Func<string> itemassistantName = null, [WorkflowExpression] Func<string> itemmanager = null, [WorkflowExpression] Func<string[]> itembusinessPhones = null, [WorkflowExpression] Func<string> itemmobilePhone = null, [WorkflowExpression] Func<string> itemhomeAddressstreet = null, [WorkflowExpression] Func<string> itemhomeAddresscity = null, [WorkflowExpression] Func<string> itemhomeAddressstate = null, [WorkflowExpression] Func<string> itemhomeAddresscountryOrRegion = null, [WorkflowExpression] Func<string> itemhomeAddresspostalCode = null, [WorkflowExpression] Func<string> itembusinessAddressstreet = null, [WorkflowExpression] Func<string> itembusinessAddresscity = null, [WorkflowExpression] Func<string> itembusinessAddressstate = null, [WorkflowExpression] Func<string> itembusinessAddresscountryOrRegion = null, [WorkflowExpression] Func<string> itembusinessAddresspostalCode = null, [WorkflowExpression] Func<string> itemotherAddressstreet = null, [WorkflowExpression] Func<string> itemotherAddresscity = null, [WorkflowExpression] Func<string> itemotherAddressstate = null, [WorkflowExpression] Func<string> itemotherAddresscountryOrRegion = null, [WorkflowExpression] Func<string> itemotherAddresspostalCode = null, [WorkflowExpression] Func<string> itemyomiCompanyName = null, [WorkflowExpression] Func<string> itemyomiGivenName = null, [WorkflowExpression] Func<string> itemyomiSurname = null, [WorkflowExpression] Func<string[]> itemcategories = null, [WorkflowExpression] Func<string> itemchangeKey = null, [WorkflowExpression] Func<string> itemcreatedTime = null, [WorkflowExpression] Func<string> itemlastModifiedTime = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(itemgivenName, nameof(itemgivenName), required: true);
-            SourceExpression.Validate(itemhomePhones, nameof(itemhomePhones), required: true);
-            SourceExpression.Validate(itemid, nameof(itemid), required: false);
-            SourceExpression.Validate(itemparentFolderId, nameof(itemparentFolderId), required: false);
-            SourceExpression.Validate(itembirthday, nameof(itembirthday), required: false);
-            SourceExpression.Validate(itemfileAs, nameof(itemfileAs), required: false);
-            SourceExpression.Validate(itemdisplayName, nameof(itemdisplayName), required: false);
-            SourceExpression.Validate(iteminitials, nameof(iteminitials), required: false);
-            SourceExpression.Validate(itemmiddleName, nameof(itemmiddleName), required: false);
-            SourceExpression.Validate(itemnickname, nameof(itemnickname), required: false);
-            SourceExpression.Validate(itemsurname, nameof(itemsurname), required: false);
-            SourceExpression.Validate(itemtitle, nameof(itemtitle), required: false);
-            SourceExpression.Validate(itemgeneration, nameof(itemgeneration), required: false);
-            SourceExpression.Validate(itememailAddresses, nameof(itememailAddresses), required: false);
-            SourceExpression.Validate(itemiMAddresses, nameof(itemiMAddresses), required: false);
-            SourceExpression.Validate(itemjobTitle, nameof(itemjobTitle), required: false);
-            SourceExpression.Validate(itemcompanyName, nameof(itemcompanyName), required: false);
-            SourceExpression.Validate(itemdepartment, nameof(itemdepartment), required: false);
-            SourceExpression.Validate(itemofficeLocation, nameof(itemofficeLocation), required: false);
-            SourceExpression.Validate(itemprofession, nameof(itemprofession), required: false);
-            SourceExpression.Validate(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
-            SourceExpression.Validate(itemassistantName, nameof(itemassistantName), required: false);
-            SourceExpression.Validate(itemmanager, nameof(itemmanager), required: false);
-            SourceExpression.Validate(itembusinessPhones, nameof(itembusinessPhones), required: false);
-            SourceExpression.Validate(itemmobilePhone, nameof(itemmobilePhone), required: false);
-            SourceExpression.Validate(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
-            SourceExpression.Validate(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
-            SourceExpression.Validate(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
-            SourceExpression.Validate(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
-            SourceExpression.Validate(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
-            SourceExpression.Validate(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
-            SourceExpression.Validate(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
-            SourceExpression.Validate(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
-            SourceExpression.Validate(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
-            SourceExpression.Validate(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
-            SourceExpression.Validate(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
-            SourceExpression.Validate(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
-            SourceExpression.Validate(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
-            SourceExpression.Validate(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
-            SourceExpression.Validate(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
-            SourceExpression.Validate(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
-            SourceExpression.Validate(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
-            SourceExpression.Validate(itemyomiSurname, nameof(itemyomiSurname), required: false);
-            SourceExpression.Validate(itemcategories, nameof(itemcategories), required: false);
-            SourceExpression.Validate(itemchangeKey, nameof(itemchangeKey), required: false);
-            SourceExpression.Validate(itemcreatedTime, nameof(itemcreatedTime), required: false);
-            SourceExpression.Validate(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -1256,10 +1116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction RespondToEvent([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<responseInput> response, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<bool> bodysendResponse = null)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(response, nameof(response), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodysendResponse, nameof(bodysendResponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/api/v2.0/me/events/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(response, 1));
@@ -1302,9 +1158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ForwardEmail([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/api/v2.0/me/messages/{0}/forward", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -1333,8 +1186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarGetItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v2/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -1349,11 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventListClientReceive> CalendarGetItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v3/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -1376,25 +1222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarPatchItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> itemsubject, [WorkflowExpression] Func<string> itemstartTime, [WorkflowExpression] Func<string> itemendTime, [WorkflowExpression] Func<itemtimeZoneInput> itemtimeZone = null, [WorkflowExpression] Func<string> itemrequiredAttendees = null, [WorkflowExpression] Func<string> itemoptionalAttendees = null, [WorkflowExpression] Func<string> itemresourceAttendees = null, [WorkflowExpression] Func<string> itembody = null, [WorkflowExpression] Func<string> itemlocation = null, [WorkflowExpression] Func<itemimportanceInput> itemimportance = null, [WorkflowExpression] Func<bool> itemisAllDayEvent = null, [WorkflowExpression] Func<itemrecurrenceInput> itemrecurrence = null, [WorkflowExpression] Func<string> itemrecurrenceEndTime = null, [WorkflowExpression] Func<int> itemnumberOfOccurrences = null, [WorkflowExpression] Func<int> itemreminder = null, [WorkflowExpression] Func<itemshowAsInput> itemshowAs = null, [WorkflowExpression] Func<bool> itemresponseRequested = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(itemsubject, nameof(itemsubject), required: true);
-            SourceExpression.Validate(itemstartTime, nameof(itemstartTime), required: true);
-            SourceExpression.Validate(itemendTime, nameof(itemendTime), required: true);
-            SourceExpression.Validate(itemtimeZone, nameof(itemtimeZone), required: false);
-            SourceExpression.Validate(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
-            SourceExpression.Validate(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
-            SourceExpression.Validate(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
-            SourceExpression.Validate(itembody, nameof(itembody), required: false);
-            SourceExpression.Validate(itemlocation, nameof(itemlocation), required: false);
-            SourceExpression.Validate(itemimportance, nameof(itemimportance), required: false);
-            SourceExpression.Validate(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
-            SourceExpression.Validate(itemrecurrence, nameof(itemrecurrence), required: false);
-            SourceExpression.Validate(itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
-            SourceExpression.Validate(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
-            SourceExpression.Validate(itemreminder, nameof(itemreminder), required: false);
-            SourceExpression.Validate(itemshowAs, nameof(itemshowAs), required: false);
-            SourceExpression.Validate(itemresponseRequested, nameof(itemresponseRequested), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v3/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -1505,24 +1332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarPostItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> itemsubject, [WorkflowExpression] Func<string> itemstartTime, [WorkflowExpression] Func<string> itemendTime, [WorkflowExpression] Func<itemtimeZoneInput> itemtimeZone = null, [WorkflowExpression] Func<string> itemrequiredAttendees = null, [WorkflowExpression] Func<string> itemoptionalAttendees = null, [WorkflowExpression] Func<string> itemresourceAttendees = null, [WorkflowExpression] Func<string> itembody = null, [WorkflowExpression] Func<string> itemlocation = null, [WorkflowExpression] Func<itemimportanceInput> itemimportance = null, [WorkflowExpression] Func<bool> itemisAllDayEvent = null, [WorkflowExpression] Func<itemrecurrenceInput> itemrecurrence = null, [WorkflowExpression] Func<string> itemrecurrenceEndTime = null, [WorkflowExpression] Func<int> itemnumberOfOccurrences = null, [WorkflowExpression] Func<int> itemreminder = null, [WorkflowExpression] Func<itemshowAsInput> itemshowAs = null, [WorkflowExpression] Func<bool> itemresponseRequested = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(itemsubject, nameof(itemsubject), required: true);
-            SourceExpression.Validate(itemstartTime, nameof(itemstartTime), required: true);
-            SourceExpression.Validate(itemendTime, nameof(itemendTime), required: true);
-            SourceExpression.Validate(itemtimeZone, nameof(itemtimeZone), required: false);
-            SourceExpression.Validate(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
-            SourceExpression.Validate(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
-            SourceExpression.Validate(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
-            SourceExpression.Validate(itembody, nameof(itembody), required: false);
-            SourceExpression.Validate(itemlocation, nameof(itemlocation), required: false);
-            SourceExpression.Validate(itemimportance, nameof(itemimportance), required: false);
-            SourceExpression.Validate(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
-            SourceExpression.Validate(itemrecurrence, nameof(itemrecurrence), required: false);
-            SourceExpression.Validate(itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
-            SourceExpression.Validate(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
-            SourceExpression.Validate(itemreminder, nameof(itemreminder), required: false);
-            SourceExpression.Validate(itemshowAs, nameof(itemshowAs), required: false);
-            SourceExpression.Validate(itemresponseRequested, nameof(itemresponseRequested), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v3/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -1633,18 +1442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<BatchResponseClientReceiveMessage> GetEmails([WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null, [WorkflowExpression] Func<string> subjectFilter = null, [WorkflowExpression] Func<bool> fetchOnlyUnread = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> searchQuery = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(cc, nameof(cc), required: false);
-            SourceExpression.Validate(toOrCc, nameof(toOrCc), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(importance, nameof(importance), required: false);
-            SourceExpression.Validate(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            SourceExpression.Validate(subjectFilter, nameof(subjectFilter), required: false);
-            SourceExpression.Validate(fetchOnlyUnread, nameof(fetchOnlyUnread), required: false);
-            SourceExpression.Validate(includeAttachments, nameof(includeAttachments), required: false);
-            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Mail";
@@ -1690,14 +1487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseCalendarEventClientReceiveStringEnums> GetEventsCalendarView([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> startDateTimeOffset, [WorkflowExpression] Func<string> endDateTimeOffset, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(startDateTimeOffset, nameof(startDateTimeOffset), required: true);
-            SourceExpression.Validate(endDateTimeOffset, nameof(endDateTimeOffset), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/calendars/v2/tables/items/calendarview";
@@ -1725,15 +1514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ReplyTo([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> replyParametersto = null, [WorkflowExpression] Func<string> replyParameterscC = null, [WorkflowExpression] Func<string> replyParametersbCC = null, [WorkflowExpression] Func<string> replyParameterssubject = null, [WorkflowExpression] Func<string> replyParametersbody = null, [WorkflowExpression] Func<bool> replyParametersreplyAll = null, [WorkflowExpression] Func<replyParametersimportanceInput> replyParametersimportance = null, [WorkflowExpression] Func<ClientSendAttachment[]> replyParametersattachments = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(replyParametersto, nameof(replyParametersto), required: false);
-            SourceExpression.Validate(replyParameterscC, nameof(replyParameterscC), required: false);
-            SourceExpression.Validate(replyParametersbCC, nameof(replyParametersbCC), required: false);
-            SourceExpression.Validate(replyParameterssubject, nameof(replyParameterssubject), required: false);
-            SourceExpression.Validate(replyParametersbody, nameof(replyParametersbody), required: false);
-            SourceExpression.Validate(replyParametersreplyAll, nameof(replyParametersreplyAll), required: false);
-            SourceExpression.Validate(replyParametersimportance, nameof(replyParametersimportance), required: false);
-            SourceExpression.Validate(replyParametersattachments, nameof(replyParametersattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/Mail/ReplyTo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -1802,15 +1582,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction SendEmail([WorkflowExpression] Func<string> emailMessageto, [WorkflowExpression] Func<string> emailMessagesubject, [WorkflowExpression] Func<string> emailMessagebody, [WorkflowExpression] Func<string> emailMessagefromSendAs = null, [WorkflowExpression] Func<string> emailMessagecC = null, [WorkflowExpression] Func<string> emailMessagebCC = null, [WorkflowExpression] Func<ClientSendAttachment[]> emailMessageattachments = null, [WorkflowExpression] Func<string> emailMessagereplyTo = null, [WorkflowExpression] Func<emailMessageimportanceInput> emailMessageimportance = null)
         {
-            SourceExpression.Validate(emailMessageto, nameof(emailMessageto), required: true);
-            SourceExpression.Validate(emailMessagesubject, nameof(emailMessagesubject), required: true);
-            SourceExpression.Validate(emailMessagebody, nameof(emailMessagebody), required: true);
-            SourceExpression.Validate(emailMessagefromSendAs, nameof(emailMessagefromSendAs), required: false);
-            SourceExpression.Validate(emailMessagecC, nameof(emailMessagecC), required: false);
-            SourceExpression.Validate(emailMessagebCC, nameof(emailMessagebCC), required: false);
-            SourceExpression.Validate(emailMessageattachments, nameof(emailMessageattachments), required: false);
-            SourceExpression.Validate(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
-            SourceExpression.Validate(emailMessageimportance, nameof(emailMessageimportance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Mail";
@@ -1885,9 +1656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     {
         public IBodyWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> incomingDays = null, [WorkflowExpression] Func<int> pastDays = null, string triggerName = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(incomingDays, nameof(incomingDays), required: false);
-            SourceExpression.Validate(pastDays, nameof(pastDays), required: false);
             ApiConnectionNotificationActionInput BuildSourceInput()
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -1939,10 +1707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v2/tables/{0}/onnewitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -1962,10 +1726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v2/tables/{0}/onupdateditems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -1985,15 +1745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmail([WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> subjectFilter = null, string triggerName = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(cc, nameof(cc), required: false);
-            SourceExpression.Validate(toOrCc, nameof(toOrCc), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(importance, nameof(importance), required: false);
-            SourceExpression.Validate(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            SourceExpression.Validate(includeAttachments, nameof(includeAttachments), required: false);
-            SourceExpression.Validate(subjectFilter, nameof(subjectFilter), required: false);
             ApiConnectionNotificationActionInput BuildSourceInput()
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -2064,15 +1815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmail([WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> subjectFilter = null, string triggerName = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(cc, nameof(cc), required: false);
-            SourceExpression.Validate(toOrCc, nameof(toOrCc), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(importance, nameof(importance), required: false);
-            SourceExpression.Validate(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            SourceExpression.Validate(includeAttachments, nameof(includeAttachments), required: false);
-            SourceExpression.Validate(subjectFilter, nameof(subjectFilter), required: false);
             ApiConnectionNotificationActionInput BuildSourceInput()
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -2143,15 +1885,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmail([WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> subjectFilter = null, string triggerName = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(cc, nameof(cc), required: false);
-            SourceExpression.Validate(toOrCc, nameof(toOrCc), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(importance, nameof(importance), required: false);
-            SourceExpression.Validate(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            SourceExpression.Validate(includeAttachments, nameof(includeAttachments), required: false);
-            SourceExpression.Validate(subjectFilter, nameof(subjectFilter), required: false);
             ApiConnectionNotificationActionInput BuildSourceInput()
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -2220,8 +1953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEvents([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> lookAheadTimeInMinutes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(lookAheadTimeInMinutes, nameof(lookAheadTimeInMinutes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Events/OnUpcomingEvents";

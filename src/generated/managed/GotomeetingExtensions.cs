@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<Meeting> GetMeeting([WorkflowExpression] Func<string> meetingId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
@@ -43,13 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IWorkflowAction UpdateMeeting([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> meetingsubject, [WorkflowExpression] Func<string> meetingstartTime, [WorkflowExpression] Func<string> meetingendTime, [WorkflowExpression] Func<bool> meetingrequiresPassword, [WorkflowExpression] Func<meetingconferenceCallInfoInput> meetingconferenceCallInfo, [WorkflowExpression] Func<meetingmeetingTypeInput> meetingmeetingType = null)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
-            SourceExpression.Validate(meetingsubject, nameof(meetingsubject), required: true);
-            SourceExpression.Validate(meetingstartTime, nameof(meetingstartTime), required: true);
-            SourceExpression.Validate(meetingendTime, nameof(meetingendTime), required: true);
-            SourceExpression.Validate(meetingrequiresPassword, nameof(meetingrequiresPassword), required: true);
-            SourceExpression.Validate(meetingconferenceCallInfo, nameof(meetingconferenceCallInfo), required: true);
-            SourceExpression.Validate(meetingmeetingType, nameof(meetingmeetingType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
@@ -86,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<Attendee[]> GetMeetingAttendees([WorkflowExpression] Func<string> meetingId)
         {
-            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}/attendees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
@@ -101,12 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<NewMeetingResponse> CreateMeeting([WorkflowExpression] Func<string> newMeetingsubject, [WorkflowExpression] Func<string> newMeetingstartTime, [WorkflowExpression] Func<string> newMeetingendTime, [WorkflowExpression] Func<bool> newMeetingrequiresPassword, [WorkflowExpression] Func<newMeetingconferenceCallInfoInput> newMeetingconferenceCallInfo, [WorkflowExpression] Func<newMeetingmeetingTypeInput> newMeetingmeetingType)
         {
-            SourceExpression.Validate(newMeetingsubject, nameof(newMeetingsubject), required: true);
-            SourceExpression.Validate(newMeetingstartTime, nameof(newMeetingstartTime), required: true);
-            SourceExpression.Validate(newMeetingendTime, nameof(newMeetingendTime), required: true);
-            SourceExpression.Validate(newMeetingrequiresPassword, nameof(newMeetingrequiresPassword), required: true);
-            SourceExpression.Validate(newMeetingconferenceCallInfo, nameof(newMeetingconferenceCallInfo), required: true);
-            SourceExpression.Validate(newMeetingmeetingType, nameof(newMeetingmeetingType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/meetings";

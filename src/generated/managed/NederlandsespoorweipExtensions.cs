@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetArrivalsResponse> GetArrivals([WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> uicCode = null, [WorkflowExpression] Func<string> dateTime = null, [WorkflowExpression] Func<int> maxJourneys = null)
         {
-            SourceExpression.Validate(lang, nameof(lang), required: false);
-            SourceExpression.Validate(station, nameof(station), required: false);
-            SourceExpression.Validate(uicCode, nameof(uicCode), required: false);
-            SourceExpression.Validate(dateTime, nameof(dateTime), required: false);
-            SourceExpression.Validate(maxJourneys, nameof(maxJourneys), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/arrivals";
@@ -43,11 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetDeparturesResponse> GetDepartures([WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> uicCode = null, [WorkflowExpression] Func<string> dateTime = null, [WorkflowExpression] Func<string> maxJourneys = null)
         {
-            SourceExpression.Validate(lang, nameof(lang), required: false);
-            SourceExpression.Validate(station, nameof(station), required: false);
-            SourceExpression.Validate(uicCode, nameof(uicCode), required: false);
-            SourceExpression.Validate(dateTime, nameof(dateTime), required: false);
-            SourceExpression.Validate(maxJourneys, nameof(maxJourneys), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/departures";
@@ -72,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> GetStationDisruptions([WorkflowExpression] Func<string> stationCode)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/disruptions/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));

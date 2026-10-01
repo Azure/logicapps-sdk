@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
         public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<int> bodyroomId, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyroomId, nameof(bodyroomId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/public/v1/murals";
@@ -47,12 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
         public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> muralId, [WorkflowExpression] Func<bodyshapeInput> bodyshape, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
-            SourceExpression.Validate(muralId, nameof(muralId), required: true);
-            SourceExpression.Validate(bodyshape, nameof(bodyshape), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(muralId, 1));

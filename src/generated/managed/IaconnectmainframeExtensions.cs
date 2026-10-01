@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPISetHLLAPIdLL([WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLdLLFilename, [WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLworkflow, [WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLiAHLLAPIPath = null, [WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLentryPointName = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIdLLisEnhancedInterface = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIdLLis64BitHLLAPIdLL = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL = null)
         {
-            SourceExpression.Validate(hLLAPISetHLLAPIdLLdLLFilename, nameof(hLLAPISetHLLAPIdLLdLLFilename), required: true);
-            SourceExpression.Validate(hLLAPISetHLLAPIdLLworkflow, nameof(hLLAPISetHLLAPIdLLworkflow), required: true);
-            SourceExpression.Validate(hLLAPISetHLLAPIdLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIdLLiAHLLAPIPath), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIdLLentryPointName, nameof(hLLAPISetHLLAPIdLLentryPointName), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIdLLisEnhancedInterface, nameof(hLLAPISetHLLAPIdLLisEnhancedInterface), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIdLLis64BitHLLAPIdLL, nameof(hLLAPISetHLLAPIdLLis64BitHLLAPIdLL), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL, nameof(hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
@@ -105,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPIDispose([WorkflowExpression] Func<string> hLLAPIDisposeworkflow)
         {
-            SourceExpression.Validate(hLLAPIDisposeworkflow, nameof(hLLAPIDisposeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIDispose";
@@ -128,8 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPIConnect([WorkflowExpression] Func<string> hLLAPIConnectsessionId, [WorkflowExpression] Func<string> hLLAPIConnectworkflow)
         {
-            SourceExpression.Validate(hLLAPIConnectsessionId, nameof(hLLAPIConnectsessionId), required: true);
-            SourceExpression.Validate(hLLAPIConnectworkflow, nameof(hLLAPIConnectworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIConnect";
@@ -154,8 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus([WorkflowExpression] Func<string> hLLAPIGetConnectStatussessionId, [WorkflowExpression] Func<string> hLLAPIGetConnectStatusworkflow)
         {
-            SourceExpression.Validate(hLLAPIGetConnectStatussessionId, nameof(hLLAPIGetConnectStatussessionId), required: true);
-            SourceExpression.Validate(hLLAPIGetConnectStatusworkflow, nameof(hLLAPIGetConnectStatusworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIGetConnectStatus";
@@ -180,8 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPIDisconnect([WorkflowExpression] Func<string> hLLAPIDisconnectsessionId, [WorkflowExpression] Func<string> hLLAPIDisconnectworkflow)
         {
-            SourceExpression.Validate(hLLAPIDisconnectsessionId, nameof(hLLAPIDisconnectsessionId), required: true);
-            SourceExpression.Validate(hLLAPIDisconnectworkflow, nameof(hLLAPIDisconnectworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIDisconnect";
@@ -206,10 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPISetCursorPos([WorkflowExpression] Func<string> hLLAPISetCursorPossessionId, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISetCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPISetCursorPossessionId, nameof(hLLAPISetCursorPossessionId), required: true);
-            SourceExpression.Validate(hLLAPISetCursorPoscursorRowIndex, nameof(hLLAPISetCursorPoscursorRowIndex), required: true);
-            SourceExpression.Validate(hLLAPISetCursorPoscursorColIndex, nameof(hLLAPISetCursorPoscursorColIndex), required: true);
-            SourceExpression.Validate(hLLAPISetCursorPosworkflow, nameof(hLLAPISetCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetCursorPos";
@@ -238,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos([WorkflowExpression] Func<string> hLLAPIGetCursorPossessionId, [WorkflowExpression] Func<string> hLLAPIGetCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPIGetCursorPossessionId, nameof(hLLAPIGetCursorPossessionId), required: true);
-            SourceExpression.Validate(hLLAPIGetCursorPosworkflow, nameof(hLLAPIGetCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIGetCursorPos";
@@ -264,8 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPISendString([WorkflowExpression] Func<string> hLLAPISendStringinputString, [WorkflowExpression] Func<string> hLLAPISendStringworkflow)
         {
-            SourceExpression.Validate(hLLAPISendStringinputString, nameof(hLLAPISendStringinputString), required: true);
-            SourceExpression.Validate(hLLAPISendStringworkflow, nameof(hLLAPISendStringworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendString";
@@ -290,8 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPISendPassword([WorkflowExpression] Func<string> hLLAPISendPasswordinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordworkflow)
         {
-            SourceExpression.Validate(hLLAPISendPasswordinputPassword, nameof(hLLAPISendPasswordinputPassword), required: true);
-            SourceExpression.Validate(hLLAPISendPasswordworkflow, nameof(hLLAPISendPasswordworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendPassword";
@@ -316,11 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPISendStringAtCursorPos([WorkflowExpression] Func<string> hLLAPISendStringAtCursorPossessionId, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosinputString, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPISendStringAtCursorPossessionId, nameof(hLLAPISendStringAtCursorPossessionId), required: true);
-            SourceExpression.Validate(hLLAPISendStringAtCursorPoscursorRowIndex, nameof(hLLAPISendStringAtCursorPoscursorRowIndex), required: true);
-            SourceExpression.Validate(hLLAPISendStringAtCursorPoscursorColIndex, nameof(hLLAPISendStringAtCursorPoscursorColIndex), required: true);
-            SourceExpression.Validate(hLLAPISendStringAtCursorPosinputString, nameof(hLLAPISendStringAtCursorPosinputString), required: true);
-            SourceExpression.Validate(hLLAPISendStringAtCursorPosworkflow, nameof(hLLAPISendStringAtCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendStringAtCursorPos";
@@ -351,11 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPISendPasswordAtCursorPos([WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPossessionId, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPISendPasswordAtCursorPossessionId, nameof(hLLAPISendPasswordAtCursorPossessionId), required: true);
-            SourceExpression.Validate(hLLAPISendPasswordAtCursorPoscursorRowIndex, nameof(hLLAPISendPasswordAtCursorPoscursorRowIndex), required: true);
-            SourceExpression.Validate(hLLAPISendPasswordAtCursorPoscursorColIndex, nameof(hLLAPISendPasswordAtCursorPoscursorColIndex), required: true);
-            SourceExpression.Validate(hLLAPISendPasswordAtCursorPosinputPassword, nameof(hLLAPISendPasswordAtCursorPosinputPassword), required: true);
-            SourceExpression.Validate(hLLAPISendPasswordAtCursorPosworkflow, nameof(hLLAPISendPasswordAtCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendPasswordAtCursorPos";
@@ -386,11 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos([WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPossessionId, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorColIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPosreadScreenLength, [WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPIReadScreenAtCursorPossessionId, nameof(hLLAPIReadScreenAtCursorPossessionId), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenAtCursorPoscursorRowIndex, nameof(hLLAPIReadScreenAtCursorPoscursorRowIndex), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenAtCursorPoscursorColIndex, nameof(hLLAPIReadScreenAtCursorPoscursorColIndex), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenAtCursorPosreadScreenLength, nameof(hLLAPIReadScreenAtCursorPosreadScreenLength), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenAtCursorPosworkflow, nameof(hLLAPIReadScreenAtCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIReadScreenAtCursorPos";
@@ -421,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> HLLAPIQuerySessionStatus([WorkflowExpression] Func<string> hLLAPIQuerySessionStatusworkflow)
         {
-            SourceExpression.Validate(hLLAPIQuerySessionStatusworkflow, nameof(hLLAPIQuerySessionStatusworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIQuerySessionStatus";
@@ -444,12 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows([WorkflowExpression] Func<string> hLLAPIReadScreenRowssessionId, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsstartRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsendRowIndex, [WorkflowExpression] Func<string> hLLAPIReadScreenRowsworkflow, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfRowsInSession = null, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
         {
-            SourceExpression.Validate(hLLAPIReadScreenRowssessionId, nameof(hLLAPIReadScreenRowssessionId), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenRowsstartRowIndex, nameof(hLLAPIReadScreenRowsstartRowIndex), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenRowsendRowIndex, nameof(hLLAPIReadScreenRowsendRowIndex), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenRowsworkflow, nameof(hLLAPIReadScreenRowsworkflow), required: true);
-            SourceExpression.Validate(hLLAPIReadScreenRowsnumberOfRowsInSession, nameof(hLLAPIReadScreenRowsnumberOfRowsInSession), required: false);
-            SourceExpression.Validate(hLLAPIReadScreenRowsnumberOfColumnsInSession, nameof(hLLAPIReadScreenRowsnumberOfColumnsInSession), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIReadScreenRows";
@@ -490,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> HLLAPIIsKeyboardUnlocked([WorkflowExpression] Func<string> hLLAPIIsKeyboardUnlockedworkflow)
         {
-            SourceExpression.Validate(hLLAPIIsKeyboardUnlockedworkflow, nameof(hLLAPIIsKeyboardUnlockedworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIIsKeyboardUnlocked";
@@ -513,9 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> HLLAPIWaitForKeyboardUnlocked([WorkflowExpression] Func<double> hLLAPIWaitForKeyboardUnlockedsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForKeyboardUnlockedworkflow, [WorkflowExpression] Func<double> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
         {
-            SourceExpression.Validate(hLLAPIWaitForKeyboardUnlockedsecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockedsecondsToWait), required: true);
-            SourceExpression.Validate(hLLAPIWaitForKeyboardUnlockedworkflow, nameof(hLLAPIWaitForKeyboardUnlockedworkflow), required: true);
-            SourceExpression.Validate(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForKeyboardUnlocked";
@@ -556,9 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> HLLAPIWaitForSystemReady([WorkflowExpression] Func<double> hLLAPIWaitForSystemReadysecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForSystemReadyworkflow, [WorkflowExpression] Func<double> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
         {
-            SourceExpression.Validate(hLLAPIWaitForSystemReadysecondsToWait, nameof(hLLAPIWaitForSystemReadysecondsToWait), required: true);
-            SourceExpression.Validate(hLLAPIWaitForSystemReadyworkflow, nameof(hLLAPIWaitForSystemReadyworkflow), required: true);
-            SourceExpression.Validate(hLLAPIWaitForSystemReadydeltaSecondsToWait, nameof(hLLAPIWaitForSystemReadydeltaSecondsToWait), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForSystemReady";
@@ -599,7 +546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPIPressReset([WorkflowExpression] Func<string> hLLAPIPressResetworkflow)
         {
-            SourceExpression.Validate(hLLAPIPressResetworkflow, nameof(hLLAPIPressResetworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIPressReset";
@@ -622,12 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString([WorkflowExpression] Func<string> hLLAPISearchForStringsessionId, [WorkflowExpression] Func<string> hLLAPISearchForStringsearchString, [WorkflowExpression] Func<string> hLLAPISearchForStringworkflow, [WorkflowExpression] Func<bool> hLLAPISearchForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartColIndex = null)
         {
-            SourceExpression.Validate(hLLAPISearchForStringsessionId, nameof(hLLAPISearchForStringsessionId), required: true);
-            SourceExpression.Validate(hLLAPISearchForStringsearchString, nameof(hLLAPISearchForStringsearchString), required: true);
-            SourceExpression.Validate(hLLAPISearchForStringworkflow, nameof(hLLAPISearchForStringworkflow), required: true);
-            SourceExpression.Validate(hLLAPISearchForStringsearchEntireScreen, nameof(hLLAPISearchForStringsearchEntireScreen), required: false);
-            SourceExpression.Validate(hLLAPISearchForStringsearchStartRowIndex, nameof(hLLAPISearchForStringsearchStartRowIndex), required: false);
-            SourceExpression.Validate(hLLAPISearchForStringsearchStartColIndex, nameof(hLLAPISearchForStringsearchStartColIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISearchForString";
@@ -682,14 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString([WorkflowExpression] Func<string> hLLAPIWaitForStringsessionId, [WorkflowExpression] Func<string> hLLAPIWaitForStringsearchString, [WorkflowExpression] Func<double> hLLAPIWaitForStringsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForStringworkflow, [WorkflowExpression] Func<bool> hLLAPIWaitForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartColIndex = null, [WorkflowExpression] Func<double> hLLAPIWaitForStringdeltaSecondsToWait = null)
         {
-            SourceExpression.Validate(hLLAPIWaitForStringsessionId, nameof(hLLAPIWaitForStringsessionId), required: true);
-            SourceExpression.Validate(hLLAPIWaitForStringsearchString, nameof(hLLAPIWaitForStringsearchString), required: true);
-            SourceExpression.Validate(hLLAPIWaitForStringsecondsToWait, nameof(hLLAPIWaitForStringsecondsToWait), required: true);
-            SourceExpression.Validate(hLLAPIWaitForStringworkflow, nameof(hLLAPIWaitForStringworkflow), required: true);
-            SourceExpression.Validate(hLLAPIWaitForStringsearchEntireScreen, nameof(hLLAPIWaitForStringsearchEntireScreen), required: false);
-            SourceExpression.Validate(hLLAPIWaitForStringsearchStartRowIndex, nameof(hLLAPIWaitForStringsearchStartRowIndex), required: false);
-            SourceExpression.Validate(hLLAPIWaitForStringsearchStartColIndex, nameof(hLLAPIWaitForStringsearchStartColIndex), required: false);
-            SourceExpression.Validate(hLLAPIWaitForStringdeltaSecondsToWait, nameof(hLLAPIWaitForStringdeltaSecondsToWait), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForString";
@@ -762,8 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPISetSessionParameter([WorkflowExpression] Func<string> hLLAPISetSessionParameterparameter, [WorkflowExpression] Func<string> hLLAPISetSessionParameterworkflow)
         {
-            SourceExpression.Validate(hLLAPISetSessionParameterparameter, nameof(hLLAPISetSessionParameterparameter), required: true);
-            SourceExpression.Validate(hLLAPISetSessionParameterworkflow, nameof(hLLAPISetSessionParameterworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetSessionParameter";
@@ -788,7 +718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IWorkflowAction HLLAPIResetSystem([WorkflowExpression] Func<string> hLLAPIResetSystemworkflow)
         {
-            SourceExpression.Validate(hLLAPIResetSystemworkflow, nameof(hLLAPIResetSystemworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPIResetSystem";
@@ -811,7 +740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
         public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> HLLAPICopyOperatorInformationArea([WorkflowExpression] Func<string> hLLAPICopyOperatorInformationAreaworkflow)
         {
-            SourceExpression.Validate(hLLAPICopyOperatorInformationAreaworkflow, nameof(hLLAPICopyOperatorInformationAreaworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPICopyOperatorInformationArea";

@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints([WorkflowExpression] Func<string> author, [WorkflowExpression] Func<string> slug)
         {
-            SourceExpression.Validate(author, nameof(author), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(author, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<GetGenerationResponse> GetGeneration([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/generation";
@@ -74,8 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -100,8 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<CompletionResponse> Completion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyprompt)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/completions";

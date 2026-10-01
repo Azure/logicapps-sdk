@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<ProjectsWrapper> ListProjects([WorkflowExpression] Func<string> siteUrl)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_api/ProjectServer/Projects";
@@ -30,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<Project> CreateProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projprojectName, [WorkflowExpression] Func<string> projprojectDescription = null, [WorkflowExpression] Func<string> projprojectStartDate = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(projprojectName, nameof(projprojectName), required: true);
-            SourceExpression.Validate(projprojectDescription, nameof(projprojectDescription), required: false);
-            SourceExpression.Validate(projprojectStartDate, nameof(projprojectStartDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_api/ProjectServer/Projects";
@@ -69,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<Project> ListProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -89,12 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<TaskObject> CreateTask([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> taskparameterstaskName, [WorkflowExpression] Func<string> taskparameterstaskNotes = null, [WorkflowExpression] Func<string> taskparameterstaskStartDate = null, [WorkflowExpression] Func<string> taskparameterstaskDuration = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(taskparameterstaskName, nameof(taskparameterstaskName), required: true);
-            SourceExpression.Validate(taskparameterstaskNotes, nameof(taskparameterstaskNotes), required: false);
-            SourceExpression.Validate(taskparameterstaskStartDate, nameof(taskparameterstaskStartDate), required: false);
-            SourceExpression.Validate(taskparameterstaskDuration, nameof(taskparameterstaskDuration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Tasks/Add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -144,11 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<EnterpriseResource> CreateResource([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> resourceresourceName, [WorkflowExpression] Func<bool> resourceisResourceInBudget = null, [WorkflowExpression] Func<bool> resourceisResourceGeneric = null, [WorkflowExpression] Func<bool> resourceisResourceInactive = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(resourceresourceName, nameof(resourceresourceName), required: true);
-            SourceExpression.Validate(resourceisResourceInBudget, nameof(resourceisResourceInBudget), required: false);
-            SourceExpression.Validate(resourceisResourceGeneric, nameof(resourceisResourceGeneric), required: false);
-            SourceExpression.Validate(resourceisResourceInactive, nameof(resourceisResourceInactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_api/ProjectServer/EnterpriseResources";
@@ -190,10 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<TasksWrapper> ListTasks([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -213,8 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<TaskObject> GetProjectSummaryTask([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/ProjectSummaryTask", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -230,8 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<JToken> CheckoutProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/checkOut", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -247,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
         public IBodyWorkflowAction<JToken> PublishProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Publish(true)", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -266,8 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
     {
         public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnNewProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(select, nameof(select), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/trigger/_api/ProjectData/Projects";
@@ -283,8 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
         public IBodyWorkflowTrigger<TriggerResourcesWrapper> OnNewResource([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(select, nameof(select), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/trigger/_api/ProjectData/Resources";
@@ -300,8 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
         public IBodyWorkflowTrigger<TriggerTasksWrapper> OnNewTask([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(select, nameof(select), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/trigger/_api/ProjectData/Tasks";
@@ -317,8 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
         public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(select, nameof(select), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/trigger/_api/ProjectData/PublishedProjects";

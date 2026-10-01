@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<BookListResponse> BookList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/book";
@@ -40,11 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<BookGetResponse> BookGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/book/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -67,11 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<BookGetChaptersResponse> BookGetChapters([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/book/{0}/chapter", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -94,10 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<MovieListResponse> MovieList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/movie";
@@ -120,11 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<MovieGetResponse> MovieGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/movie/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -147,11 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<MovieGetQuoteResponse> MovieGetQuote([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/movie/{0}/quote", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -174,10 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<CharacterListResponse> CharacterList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/character";
@@ -200,11 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<CharacterGetResponse> CharacterGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/character/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -227,11 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<CharacterGetQuoteResponse> CharacterGetQuote([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/character/{0}/quote", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -254,10 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<QuoteListResponse> QuoteList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/quote";
@@ -280,11 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<QuoteGetResponse> QuoteGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/quote/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -307,10 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<ChapterListResponse> ChapterList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/chapter";
@@ -333,11 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
         public IBodyWorkflowAction<ChapterGetResponse> ChapterGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> sorting = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sorting, nameof(sorting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/chapter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<AskQuestionResponse> AskQuestion([WorkflowExpression] Func<string> requestBodyquestion, [WorkflowExpression] Func<int> requestBodyscoreThreshold = null, [WorkflowExpression] Func<string> requestBodyuserEmail = null)
         {
-            SourceExpression.Validate(requestBodyquestion, nameof(requestBodyquestion), required: true);
-            SourceExpression.Validate(requestBodyscoreThreshold, nameof(requestBodyscoreThreshold), required: false);
-            SourceExpression.Validate(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ask";
@@ -65,8 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<ParseTextResponse> ParseText([WorkflowExpression] Func<string> requestBodyinputText, [WorkflowExpression] Func<requestBodyoutputFormatInput> requestBodyoutputFormat)
         {
-            SourceExpression.Validate(requestBodyinputText, nameof(requestBodyinputText), required: true);
-            SourceExpression.Validate(requestBodyoutputFormat, nameof(requestBodyoutputFormat), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/parse";
@@ -91,8 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<TranslateResponse> Translate([WorkflowExpression] Func<string> requestBodytargetLanguageCode, [WorkflowExpression] Func<string> requestBodyinputText)
         {
-            SourceExpression.Validate(requestBodytargetLanguageCode, nameof(requestBodytargetLanguageCode), required: true);
-            SourceExpression.Validate(requestBodyinputText, nameof(requestBodyinputText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/translate";
@@ -117,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetAllTopicsResponse> GetAllTopics([WorkflowExpression] Func<string> filterByExpert = null)
         {
-            SourceExpression.Validate(filterByExpert, nameof(filterByExpert), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get-all-topics";
@@ -134,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetTopicResponse> GetTopic([WorkflowExpression] Func<string> topicName)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get-topic";
@@ -150,10 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetAllAnswersResponse> GetAllAnswers([WorkflowExpression] Func<string> filterByTopic = null, [WorkflowExpression] Func<string> filterByShortDescription = null, [WorkflowExpression] Func<string> filterByQuestionText = null, [WorkflowExpression] Func<string> filterByAnswerText = null)
         {
-            SourceExpression.Validate(filterByTopic, nameof(filterByTopic), required: false);
-            SourceExpression.Validate(filterByShortDescription, nameof(filterByShortDescription), required: false);
-            SourceExpression.Validate(filterByQuestionText, nameof(filterByQuestionText), required: false);
-            SourceExpression.Validate(filterByAnswerText, nameof(filterByAnswerText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get-all-answers";
@@ -176,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetExpertsResponse> GetExperts([WorkflowExpression] Func<string> topic)
         {
-            SourceExpression.Validate(topic, nameof(topic), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get-experts";
@@ -192,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddExpert([WorkflowExpression] Func<string> requestBodytopic, [WorkflowExpression] Func<string> requestBodyexpertEmail)
         {
-            SourceExpression.Validate(requestBodytopic, nameof(requestBodytopic), required: true);
-            SourceExpression.Validate(requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-expert";
@@ -218,8 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction RemoveExpert([WorkflowExpression] Func<string> requestBodyexpertEmail, [WorkflowExpression] Func<string> requestBodytopic = null)
         {
-            SourceExpression.Validate(requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
-            SourceExpression.Validate(requestBodytopic, nameof(requestBodytopic), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/remove-expert";
@@ -248,9 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddTopic([WorkflowExpression] Func<string> requestBodyname, [WorkflowExpression] Func<string> requestBodydescription, [WorkflowExpression] Func<string[]> requestBodyexpertEmails)
         {
-            SourceExpression.Validate(requestBodyname, nameof(requestBodyname), required: true);
-            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: true);
-            SourceExpression.Validate(requestBodyexpertEmails, nameof(requestBodyexpertEmails), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-topic";
@@ -277,8 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction RenameTopic([WorkflowExpression] Func<string> requestBodyname, [WorkflowExpression] Func<string> requestBodynewName)
         {
-            SourceExpression.Validate(requestBodyname, nameof(requestBodyname), required: true);
-            SourceExpression.Validate(requestBodynewName, nameof(requestBodynewName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rename-topic";
@@ -303,11 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddAnswer([WorkflowExpression] Func<string> requestBodytopic, [WorkflowExpression] Func<string> requestBodyshortDescription, [WorkflowExpression] Func<string[]> requestBodyquestions, [WorkflowExpression] Func<string> requestBodyanswerText, [WorkflowExpression] Func<string> requestBodyuserEmail = null)
         {
-            SourceExpression.Validate(requestBodytopic, nameof(requestBodytopic), required: true);
-            SourceExpression.Validate(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
-            SourceExpression.Validate(requestBodyquestions, nameof(requestBodyquestions), required: true);
-            SourceExpression.Validate(requestBodyanswerText, nameof(requestBodyanswerText), required: true);
-            SourceExpression.Validate(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-answer";
@@ -342,12 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction EditAnswer([WorkflowExpression] Func<string> requestBodyshortDescription, [WorkflowExpression] Func<string> requestBodynewTopic = null, [WorkflowExpression] Func<string> requestBodynewShortDescription = null, [WorkflowExpression] Func<string[]> requestBodynewQuestions = null, [WorkflowExpression] Func<string> requestBodynewAnswerText = null, [WorkflowExpression] Func<string> requestBodyuserEmail = null)
         {
-            SourceExpression.Validate(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
-            SourceExpression.Validate(requestBodynewTopic, nameof(requestBodynewTopic), required: false);
-            SourceExpression.Validate(requestBodynewShortDescription, nameof(requestBodynewShortDescription), required: false);
-            SourceExpression.Validate(requestBodynewQuestions, nameof(requestBodynewQuestions), required: false);
-            SourceExpression.Validate(requestBodynewAnswerText, nameof(requestBodynewAnswerText), required: false);
-            SourceExpression.Validate(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/edit-answer";
@@ -400,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction DeleteAnswer([WorkflowExpression] Func<string> requestBodyshortDescription)
         {
-            SourceExpression.Validate(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/delete-answer";
@@ -423,10 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddSubAnswer([WorkflowExpression] Func<string> requestBodyshortDescription, [WorkflowExpression] Func<string> requestBodysubShortDescription, [WorkflowExpression] Func<string[]> requestBodysubQuestions, [WorkflowExpression] Func<string> requestBodysubAnswerText)
         {
-            SourceExpression.Validate(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
-            SourceExpression.Validate(requestBodysubShortDescription, nameof(requestBodysubShortDescription), required: true);
-            SourceExpression.Validate(requestBodysubQuestions, nameof(requestBodysubQuestions), required: true);
-            SourceExpression.Validate(requestBodysubAnswerText, nameof(requestBodysubAnswerText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-subanswer";
@@ -455,10 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetOpenTicketsResponse> GetOpenTickets([WorkflowExpression] Func<int> filterByHoursSinceOpened = null, [WorkflowExpression] Func<int> filterByHoursSinceOpenedMax = null, [WorkflowExpression] Func<string> filterByTopic = null, [WorkflowExpression] Func<string> filterByExpertEmail = null)
         {
-            SourceExpression.Validate(filterByHoursSinceOpened, nameof(filterByHoursSinceOpened), required: false);
-            SourceExpression.Validate(filterByHoursSinceOpenedMax, nameof(filterByHoursSinceOpenedMax), required: false);
-            SourceExpression.Validate(filterByTopic, nameof(filterByTopic), required: false);
-            SourceExpression.Validate(filterByExpertEmail, nameof(filterByExpertEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get-tickets";
@@ -481,9 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<OpenTicketQuestionResponse> OpenTicketQuestion([WorkflowExpression] Func<string> requestBodyuserEmail, [WorkflowExpression] Func<string> requestBodyqueryText, [WorkflowExpression] Func<string> requestBodytopic = null)
         {
-            SourceExpression.Validate(requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
-            SourceExpression.Validate(requestBodyqueryText, nameof(requestBodyqueryText), required: true);
-            SourceExpression.Validate(requestBodytopic, nameof(requestBodytopic), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/open-ticket-question";
@@ -514,10 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<OpenTicketFeedbackResponse> OpenTicketFeedback([WorkflowExpression] Func<string> requestBodyuserEmail, [WorkflowExpression] Func<string> requestBodyqueryText, [WorkflowExpression] Func<string> requestBodyanswerShortDescription, [WorkflowExpression] Func<string> requestBodyfeedbackText)
         {
-            SourceExpression.Validate(requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
-            SourceExpression.Validate(requestBodyqueryText, nameof(requestBodyqueryText), required: true);
-            SourceExpression.Validate(requestBodyanswerShortDescription, nameof(requestBodyanswerShortDescription), required: true);
-            SourceExpression.Validate(requestBodyfeedbackText, nameof(requestBodyfeedbackText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/open-ticket-feedback";
@@ -546,9 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction CloseTicket([WorkflowExpression] Func<string> requestBodyticketId, [WorkflowExpression] Func<string> requestBodyeditorEmail, [WorkflowExpression] Func<string> requestBodyeditorComment)
         {
-            SourceExpression.Validate(requestBodyticketId, nameof(requestBodyticketId), required: true);
-            SourceExpression.Validate(requestBodyeditorEmail, nameof(requestBodyeditorEmail), required: true);
-            SourceExpression.Validate(requestBodyeditorComment, nameof(requestBodyeditorComment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/close-ticket";

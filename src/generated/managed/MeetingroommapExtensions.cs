@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IWorkflowAction GetCustomLocations([WorkflowExpression] Func<string[]> bodycategories = null)
         {
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CustomLocations/GetCustomLocations";
@@ -41,8 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<GetCustomLocationsByImageNameResponse> GetCustomLocationsByImageName([WorkflowExpression] Func<string> bodyimageName, [WorkflowExpression] Func<string[]> bodycategories = null)
         {
-            SourceExpression.Validate(bodyimageName, nameof(bodyimageName), required: true);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CustomLocations/GetCustomLocationsByImageName";
@@ -85,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IWorkflowAction LocationDetails([WorkflowExpression] Func<string> locationId)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CustomLocations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -100,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<SearchLocationsResponseItem[]> SearchLocations([WorkflowExpression] Func<string> locationName, [WorkflowExpression] Func<string> category = null)
         {
-            SourceExpression.Validate(locationName, nameof(locationName), required: true);
-            SourceExpression.Validate(category, nameof(category), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CustomLocations/findbyname/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationName, 1));
@@ -118,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<string> GetCustomLocationImage([WorkflowExpression] Func<string> locationId, [WorkflowExpression] Func<bool> large = null)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
-            SourceExpression.Validate(large, nameof(large), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CustomLocations/createimage/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -150,8 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<string> GetMeetingRoomImage([WorkflowExpression] Func<string> roomName, [WorkflowExpression] Func<bool> large = null)
         {
-            SourceExpression.Validate(roomName, nameof(roomName), required: true);
-            SourceExpression.Validate(large, nameof(large), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/MapImage/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomName, 1));
@@ -168,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IWorkflowAction NextMeetings([WorkflowExpression] Func<int> meetingCount)
         {
-            SourceExpression.Validate(meetingCount, nameof(meetingCount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/MapImage/meetings/{0}/roomdetails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(meetingCount, 1));
@@ -183,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IWorkflowAction GetMeetingRoomDetails([WorkflowExpression] Func<string> roomName)
         {
-            SourceExpression.Validate(roomName, nameof(roomName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/MapImage/roomdetails_v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomName, 1));
@@ -212,7 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<SearchCoworkersResponseItem[]> SearchCoworkers([WorkflowExpression] Func<string> personSearch)
         {
-            SourceExpression.Validate(personSearch, nameof(personSearch), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/officelocations/searchCoworkers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personSearch, 1));
@@ -227,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<GetOfficeLocationsByImageResponse> GetOfficeLocationsByImage([WorkflowExpression] Func<string> imageName)
         {
-            SourceExpression.Validate(imageName, nameof(imageName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/officelocations/bymapimage/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(imageName, 1));
@@ -242,8 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<GetRoomWithPersonsDetailsResponse> GetRoomWithPersonsDetails([WorkflowExpression] Func<string> officeLocationName, [WorkflowExpression] Func<bool> inludeUserInfo = null)
         {
-            SourceExpression.Validate(officeLocationName, nameof(officeLocationName), required: true);
-            SourceExpression.Validate(inludeUserInfo, nameof(inludeUserInfo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/officelocations/mapimagewithpersoninfo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(officeLocationName, 1));
@@ -261,8 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<string> GetOfficeLocationImage([WorkflowExpression] Func<string> officeLocationName, [WorkflowExpression] Func<bool> large = null)
         {
-            SourceExpression.Validate(officeLocationName, nameof(officeLocationName), required: true);
-            SourceExpression.Validate(large, nameof(large), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/officelocationimage/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(officeLocationName, 1));
@@ -293,7 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<AADMeetingRoomCollection> SearchMeetingRooms([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rooms/findbyname/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -322,7 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<AADMeetingRoomCollection> RoomsByListAddress([WorkflowExpression] Func<string> meetingRoomListAddress)
         {
-            SourceExpression.Validate(meetingRoomListAddress, nameof(meetingRoomListAddress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rooms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingRoomListAddress, 1));
@@ -337,7 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
         public IBodyWorkflowAction<GetRoomsByImageNameResponse> GetRoomsByImageName([WorkflowExpression] Func<string> imageName)
         {
-            SourceExpression.Validate(imageName, nameof(imageName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rooms/GetRoomsByImageName/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(imageName, 1));

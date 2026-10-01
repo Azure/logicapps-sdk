@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<InsertEntityResponse> CreateEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
@@ -39,9 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTableResponse> CreateTable([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName = null, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: false);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
@@ -59,12 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction DeleteEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> ifMatch = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(rowKey, nameof(rowKey), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
@@ -83,9 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction DeleteTable([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
@@ -102,11 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetEntitiesResponse> GetEntities([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
@@ -127,12 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetEntityResponse> GetEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(rowKey, nameof(rowKey), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
@@ -151,9 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTableResponse> GetTable([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
@@ -170,8 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTablesResponse> GetTables([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
@@ -188,11 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction InsertMergeEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(rowKey, nameof(rowKey), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
@@ -215,11 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction InsertReplaceEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(rowKey, nameof(rowKey), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
@@ -242,12 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction MergeEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(rowKey, nameof(rowKey), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
@@ -271,12 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction ReplaceEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(rowKey, nameof(rowKey), required: true);
-            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
-            SourceExpression.Validate(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));

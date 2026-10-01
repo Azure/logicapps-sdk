@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uscongresscrs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uscongresscrs")]
         public IWorkflowAction AmendmentCosponsors([WorkflowExpression] Func<int> congress, [WorkflowExpression] Func<string> amendmentType, [WorkflowExpression] Func<int> amendmentNumber, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(amendmentType, nameof(amendmentType), required: true);
-            SourceExpression.Validate(amendmentNumber, nameof(amendmentNumber), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/amendment/{0}/{1}/{2}/cosponsors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(amendmentType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(amendmentNumber, 1));
@@ -40,12 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uscongresscrs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uscongresscrs")]
         public IWorkflowAction AmendmentAmendments([WorkflowExpression] Func<int> congress, [WorkflowExpression] Func<string> amendmentType, [WorkflowExpression] Func<int> amendmentNumber, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(amendmentType, nameof(amendmentType), required: true);
-            SourceExpression.Validate(amendmentNumber, nameof(amendmentNumber), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/amendment/{0}/{1}/{2}/amendments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(amendmentType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(amendmentNumber, 1));
@@ -66,9 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uscongresscrs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uscongresscrs")]
         public IWorkflowAction CongressCurrentList([WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/congress/current";
@@ -89,11 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uscongresscrs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uscongresscrs")]
         public IWorkflowAction MemberListByCongressStateDistrict([WorkflowExpression] Func<int> congress, [WorkflowExpression] Func<string> stateCode, [WorkflowExpression] Func<int> district, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> currentMember = null)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(stateCode, nameof(stateCode), required: true);
-            SourceExpression.Validate(district, nameof(district), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(currentMember, nameof(currentMember), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/member/congress/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stateCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(district, 1));
@@ -112,10 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uscongresscrs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uscongresscrs")]
         public IWorkflowAction CommitteeMeetingCongress([WorkflowExpression] Func<int> congress, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/committee-meeting/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(congress, 1));
@@ -136,11 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uscongresscrs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uscongresscrs")]
         public IBodyWorkflowAction<NominationListResponse> NominationList([WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> fromDateTime = null, [WorkflowExpression] Func<string> toDateTime = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(fromDateTime, nameof(fromDateTime), required: false);
-            SourceExpression.Validate(toDateTime, nameof(toDateTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nomination";

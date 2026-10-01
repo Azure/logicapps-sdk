@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reachabilityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reachabilityip")]
         public IBodyWorkflowAction<ReachResponse> Reach([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reachability";

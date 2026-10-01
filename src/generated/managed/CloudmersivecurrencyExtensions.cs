@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<double> sourcePrice = null)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
-            SourceExpression.Validate(sourcePrice, nameof(sourcePrice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));
@@ -46,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(destination, nameof(destination), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));

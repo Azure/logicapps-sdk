@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> ExecuteQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -41,9 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken> ExecuteQueryWithOutputAsDictionary([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null, [WorkflowExpression] Func<bool> includeEmptyResultSets = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
-            SourceExpression.Validate(includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -76,9 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure([WorkflowExpression] Func<string> storedProcedureName, [WorkflowExpression] Func<object> storedProcedureParameters = null, [WorkflowExpression] Func<bool> includeEmptyResultSets = null)
         {
-            SourceExpression.Validate(storedProcedureName, nameof(storedProcedureName), required: true);
-            SourceExpression.Validate(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
-            SourceExpression.Validate(includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -111,8 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken> InsertRow([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> setColumns = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(setColumns, nameof(setColumns), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -136,9 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> DeleteRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<string> primaryKey = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            SourceExpression.Validate(primaryKey, nameof(primaryKey), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -167,10 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> GetRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<string> primaryKey = null, [WorkflowExpression] Func<object> queries = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            SourceExpression.Validate(primaryKey, nameof(primaryKey), required: false);
-            SourceExpression.Validate(queries, nameof(queries), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -204,8 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<GetRowsV2Output> GetRowsV2([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> queries = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(queries, nameof(queries), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -229,10 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> UpdateRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> setColumns, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<string> primaryKey = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(setColumns, nameof(setColumns), required: true);
-            SourceExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            SourceExpression.Validate(primaryKey, nameof(primaryKey), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -277,8 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<ExecuteStoredProcedureWithOutputAsDictionaryOutput> ExecuteStoredProcedureWithOutputAsDictionary([WorkflowExpression] Func<string> storedProcedureName, [WorkflowExpression] Func<object> storedProcedureParameters = null)
         {
-            SourceExpression.Validate(storedProcedureName, nameof(storedProcedureName), required: true);
-            SourceExpression.Validate(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -304,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
     {
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsUpdated([WorkflowExpression] Func<string> tableName)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -322,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsDeleted([WorkflowExpression] Func<string> tableName)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -340,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsInserted([WorkflowExpression] Func<string> tableName)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -358,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsModified([WorkflowExpression] Func<string> tableName)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

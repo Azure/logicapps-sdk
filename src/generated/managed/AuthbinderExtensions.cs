@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
         public IBodyWorkflowAction<EventResponse> LogAgentEvent([WorkflowExpression] Func<string> bodytenantId, [WorkflowExpression] Func<string> bodyagentId, [WorkflowExpression] Func<string> bodytool, [WorkflowExpression] Func<string> bodydestination = null, [WorkflowExpression] Func<string> bodyaction = null, [WorkflowExpression] Func<bool> bodyapproved = null, [WorkflowExpression] Func<bool> bodysuccess = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<int> bodydurationMs = null, [WorkflowExpression] Func<string> bodytimestamp = null)
         {
-            SourceExpression.Validate(bodytenantId, nameof(bodytenantId), required: true);
-            SourceExpression.Validate(bodyagentId, nameof(bodyagentId), required: true);
-            SourceExpression.Validate(bodytool, nameof(bodytool), required: true);
-            SourceExpression.Validate(bodydestination, nameof(bodydestination), required: false);
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: false);
-            SourceExpression.Validate(bodyapproved, nameof(bodyapproved), required: false);
-            SourceExpression.Validate(bodysuccess, nameof(bodysuccess), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodydurationMs, nameof(bodydurationMs), required: false);
-            SourceExpression.Validate(bodytimestamp, nameof(bodytimestamp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/events";
@@ -92,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
         public IBodyWorkflowAction<BatchResponse> LogAgentEventsBatch([WorkflowExpression] Func<EventIngest[]> bodyevents)
         {
-            SourceExpression.Validate(bodyevents, nameof(bodyevents), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/events/batch";
@@ -143,8 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
         public IBodyWorkflowAction<ListFindingsResponseItem[]> ListFindings([WorkflowExpression] Func<string> resolved = null, [WorkflowExpression] Func<string> suppressed = null)
         {
-            SourceExpression.Validate(resolved, nameof(resolved), required: false);
-            SourceExpression.Validate(suppressed, nameof(suppressed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/findings";
@@ -163,8 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
         public IBodyWorkflowAction<ListReportsResponseItem[]> ListReports([WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> reportType = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(reportType, nameof(reportType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reports";
@@ -183,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
         public IBodyWorkflowAction<GetReportResponse> GetReport([WorkflowExpression] Func<string> reportId)
         {
-            SourceExpression.Validate(reportId, nameof(reportId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reports/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));

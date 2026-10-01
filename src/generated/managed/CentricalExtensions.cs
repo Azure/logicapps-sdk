@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
         public IWorkflowAction PostLearning([WorkflowExpression] Func<string> learningType, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodycourseName, [WorkflowExpression] Func<double> bodyscore, [WorkflowExpression] Func<string> bodycontentCategory = null)
         {
-            SourceExpression.Validate(learningType, nameof(learningType), required: true);
-            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            SourceExpression.Validate(bodycourseName, nameof(bodycourseName), required: true);
-            SourceExpression.Validate(bodyscore, nameof(bodyscore), required: true);
-            SourceExpression.Validate(bodycontentCategory, nameof(bodycontentCategory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/push/lms_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(learningType, 1));
@@ -54,12 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
         public IWorkflowAction PostPerformance([WorkflowExpression] Func<string> performanceType, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodykpiName, [WorkflowExpression] Func<double> bodykpiValue, [WorkflowExpression] Func<string> bodyadditionalData = null)
         {
-            SourceExpression.Validate(performanceType, nameof(performanceType), required: true);
-            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            SourceExpression.Validate(bodykpiName, nameof(bodykpiName), required: true);
-            SourceExpression.Validate(bodykpiValue, nameof(bodykpiValue), required: true);
-            SourceExpression.Validate(bodyadditionalData, nameof(bodyadditionalData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/push/kpi_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(performanceType, 1));

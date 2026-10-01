@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodysourceNumber = null, [WorkflowExpression] Func<bool> bodydeliveryReport = null, [WorkflowExpression] Func<string> bodycallbackUrl = null, [WorkflowExpression] Func<bodymetadataInputItem[]> bodymetadata = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodysourceNumber, nameof(bodysourceNumber), required: false);
-            SourceExpression.Validate(bodydeliveryReport, nameof(bodydeliveryReport), required: false);
-            SourceExpression.Validate(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/int-power-automate/send-message";
@@ -92,11 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         public IBodyWorkflowAction<SendMmsResponse> SendMms([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodymedia = null, [WorkflowExpression] Func<string> bodysourceNumber = null, [WorkflowExpression] Func<bodymetadataInputItem[]> bodymetadata = null)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodymedia, nameof(bodymedia), required: false);
-            SourceExpression.Validate(bodysourceNumber, nameof(bodysourceNumber), required: false);
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/int-power-automate/send-mms";
@@ -139,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         public IBodyWorkflowAction<Message> GetMessageStatus([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -154,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         public IWorkflowAction SendRCS([WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/int-power-automate/send-message-v2";

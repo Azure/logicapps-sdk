@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
         public IBodyWorkflowAction<SingleJob> EndJob([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string> bodyturnoverType, [WorkflowExpression] Func<string> bodyturnoverReason = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            SourceExpression.Validate(bodyturnoverType, nameof(bodyturnoverType), required: true);
-            SourceExpression.Validate(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/job-end/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

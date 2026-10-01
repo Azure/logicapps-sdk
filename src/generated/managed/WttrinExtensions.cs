@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
         public IBodyWorkflowAction<string> WeatherGet([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<viewInput> view = null, [WorkflowExpression] Func<langInput> lang = null)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(view, nameof(view), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));

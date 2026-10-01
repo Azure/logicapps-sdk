@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsUserViewModel> AccountGetCurrentUser([WorkflowExpression] Func<string> xApiVersion)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Account/GetCurrentUser";
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<string> AccountGetApiKey([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Account/GetAPIKey";
@@ -49,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> ClassesGet([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Classes/Get";
@@ -68,8 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> ClassesGetByProject([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> projectId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Classes/GetByProject";
@@ -87,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> ClassesGetByUser([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> projectId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Classes/GetByUser";
@@ -109,8 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentGetDocument([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/Get";
@@ -128,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentGetHierarchy([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetHierarchy";
@@ -147,8 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentDelete([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/Delete";
@@ -166,10 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetPreviews([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> stpdId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetPreviews";
@@ -191,9 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetImages([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<int> stpdId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetImages";
@@ -213,8 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> DocumentGetBlobById([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetBlobById";
@@ -232,8 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> DocumentDeleteBlob([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/DeleteBlob";
@@ -251,10 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> DocumentGetClassification([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> docId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(docId, nameof(docId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetClassification";
@@ -276,8 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGet([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ParamDef/Get";
@@ -295,8 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGetParentService([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ParamDef/GetParentService";
@@ -314,12 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGetHierachy([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<bool> includeCount = null, [WorkflowExpression] Func<bool> includeSettings = null, [WorkflowExpression] Func<bool> includeChildren = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(includeCount, nameof(includeCount), required: false);
-            SourceExpression.Validate(includeSettings, nameof(includeSettings), required: false);
-            SourceExpression.Validate(includeChildren, nameof(includeChildren), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ParamDef/GetHierachy";
@@ -348,12 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> ParametersGet([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> docId = null, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<categoryInput> category = null, [WorkflowExpression] Func<groupingInput> grouping = null, [WorkflowExpression] Func<bool> includeverification = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(grouping, nameof(grouping), required: false);
-            SourceExpression.Validate(includeverification, nameof(includeverification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Parameters/Get";
@@ -380,10 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> ParametersGetHierarchy([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> docId = null, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<bool> includeverification = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(includeverification, nameof(includeverification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Parameters/GetHierarchy";
@@ -406,8 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> ParametersDelete([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> paramid = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(paramid, nameof(paramid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Parameters/Delete";
@@ -425,8 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> ParametersGetByVerification([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> verificationId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(verificationId, nameof(verificationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Parameters/GetByVerification";
@@ -444,8 +389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocParamSummary[]> ParametersGetSummary([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> projectId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Parameters/GetSummary";
@@ -463,8 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentExtraction[]> ParametersExtract([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> docid = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(docid, nameof(docid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Parameters/Extract";
@@ -482,8 +423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel[]> ProjectGetByUser([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Project/GetByUser";
@@ -501,9 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> ProjectGetUserProject([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> projectId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Project/GetUserProject";
@@ -523,15 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> ProjectGetHierachies([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<int> groupId = null, [WorkflowExpression] Func<bool> includeCount = null, [WorkflowExpression] Func<bool> onlyServices = null, [WorkflowExpression] Func<bool> includeSettings = null, [WorkflowExpression] Func<bool> includeChildren = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(groupId, nameof(groupId), required: false);
-            SourceExpression.Validate(includeCount, nameof(includeCount), required: false);
-            SourceExpression.Validate(onlyServices, nameof(onlyServices), required: false);
-            SourceExpression.Validate(includeSettings, nameof(includeSettings), required: false);
-            SourceExpression.Validate(includeChildren, nameof(includeChildren), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Project/GetHierachies";
@@ -567,9 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> ProjectGetByName([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<string> projectName = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(projectName, nameof(projectName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Project/GetByName";
@@ -589,11 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> ProjectGetServices([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> stlfilter = null, [WorkflowExpression] Func<string> enginefilter = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(stlfilter, nameof(stlfilter), required: false);
-            SourceExpression.Validate(enginefilter, nameof(enginefilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Project/GetServices";
@@ -617,8 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ServicesGet([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> stpdId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Services/Get";
@@ -636,7 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<string> SystemGetSystemDate([WorkflowExpression] Func<string> xApiVersion)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/System/GetSystemDate";
@@ -652,7 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<JToken> SystemGetSystemInfo([WorkflowExpression] Func<string> xApiVersion)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/System/GetSystemInfo";
@@ -668,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDataTypeViewModel[]> SystemGetDataTypes([WorkflowExpression] Func<string> xApiVersion)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/System/GetDataTypes";
@@ -684,7 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsEnumDataViewModel[]> SystemGetEnumData([WorkflowExpression] Func<string> xApiVersion)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/System/GetEnumData";
@@ -700,8 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> VerificationGet([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> verificationId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(verificationId, nameof(verificationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Verification/Get";
@@ -719,9 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel[]> VerificationGetAll([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> docId = null, [WorkflowExpression] Func<int> parameterId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: false);
-            SourceExpression.Validate(parameterId, nameof(parameterId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Verification/GetAll";
@@ -741,10 +649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> VerificationGetLatest([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> docId = null, [WorkflowExpression] Func<int> parameterId = null, [WorkflowExpression] Func<int> pdId = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: false);
-            SourceExpression.Validate(parameterId, nameof(parameterId), required: false);
-            SourceExpression.Validate(pdId, nameof(pdId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Verification/GetLatest";
@@ -766,12 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> VerificationGetShred([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> docId = null, [WorkflowExpression] Func<int> parId = null, [WorkflowExpression] Func<int> verificationId = null, [WorkflowExpression] Func<bool> inline = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(docId, nameof(docId), required: false);
-            SourceExpression.Validate(parId, nameof(parId), required: false);
-            SourceExpression.Validate(verificationId, nameof(verificationId), required: false);
-            SourceExpression.Validate(inline, nameof(inline), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Verification/GetShred";
@@ -798,11 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> VerificationGetSummary([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<int> pdId = null, [WorkflowExpression] Func<bool> latestOnly = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(pdId, nameof(pdId), required: false);
-            SourceExpression.Validate(latestOnly, nameof(latestOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Verification/GetSummary";
@@ -827,10 +720,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> VerificationGetHeatmap([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<bool> latestOnly = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(latestOnly, nameof(latestOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Verification/GetHeatmap";
@@ -853,10 +742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> DocumentGetBlob([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<typeInput> type = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetBlob";
@@ -878,14 +763,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetData([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<int> blobid = null, [WorkflowExpression] Func<int> pageindex = null, [WorkflowExpression] Func<int> imagesCount = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(text, nameof(text), required: false);
-            SourceExpression.Validate(blobid, nameof(blobid), required: false);
-            SourceExpression.Validate(pageindex, nameof(pageindex), required: false);
-            SourceExpression.Validate(imagesCount, nameof(imagesCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetData";
@@ -915,28 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetExtended([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<usageInput> usage = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> classname = null, [WorkflowExpression] Func<string> filename = null, [WorkflowExpression] Func<string> filetype = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<int> masterid = null, [WorkflowExpression] Func<int> pageNo = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null, [WorkflowExpression] Func<string> comment = null, [WorkflowExpression] Func<string> result = null, [WorkflowExpression] Func<string> resultId = null, [WorkflowExpression] Func<int> resultIndex = null, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> docGuid = null)
         {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(usage, nameof(usage), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(classname, nameof(classname), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
-            SourceExpression.Validate(filetype, nameof(filetype), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(masterid, nameof(masterid), required: false);
-            SourceExpression.Validate(pageNo, nameof(pageNo), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sortField, nameof(sortField), required: false);
-            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
-            SourceExpression.Validate(comment, nameof(comment), required: false);
-            SourceExpression.Validate(result, nameof(result), required: false);
-            SourceExpression.Validate(resultId, nameof(resultId), required: false);
-            SourceExpression.Validate(resultIndex, nameof(resultIndex), required: false);
-            SourceExpression.Validate(externalId, nameof(externalId), required: false);
-            SourceExpression.Validate(docGuid, nameof(docGuid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Document/GetExtended";

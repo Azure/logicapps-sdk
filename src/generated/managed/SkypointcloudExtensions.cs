@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IBodyWorkflowAction<GetEntitiesResponseItem[]> GetEntities([WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> instanceId)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/dataflows/entities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
@@ -32,13 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IWorkflowAction GetItems([WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/instances/{0}/data/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1));
@@ -64,10 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IWorkflowAction GetItem([WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<string> itemId)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/instances/{0}/data/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemId, 1));
@@ -85,9 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
     {
         public IWorkflowTrigger OnDataflowRefreshComplete([WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(bodyevents, nameof(bodyevents), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/hooks/dataflow_refresh_complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
@@ -112,9 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
 
         public IWorkflowTrigger OnDataflowRefreshFail([WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(bodyevents, nameof(bodyevents), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/hooks/dataflow_refresh_fail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));

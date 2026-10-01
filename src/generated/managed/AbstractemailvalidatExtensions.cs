@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractemailvalidat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractemailvalidat")]
         public IBodyWorkflowAction<ValidationResponse> Validation([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/";

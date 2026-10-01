@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
         public IBodyWorkflowAction<GetLinksResponse> GetLinks([WorkflowExpression] Func<int> xSBRUserId, [WorkflowExpression] Func<string> xSBRTokenKey, [WorkflowExpression] Func<searchTypesInput> searchTypes, [WorkflowExpression] Func<int> domainId)
         {
-            SourceExpression.Validate(xSBRUserId, nameof(xSBRUserId), required: true);
-            SourceExpression.Validate(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
-            SourceExpression.Validate(searchTypes, nameof(searchTypes), required: true);
-            SourceExpression.Validate(domainId, nameof(domainId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/links";
@@ -39,15 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
         public IBodyWorkflowAction<CreateLinkResponse> CreateLink([WorkflowExpression] Func<int> xSBRUserId, [WorkflowExpression] Func<string> xSBRTokenKey, [WorkflowExpression] Func<bool> bodycache, [WorkflowExpression] Func<int> bodydomainId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyredirect, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<bodytypeInput> bodytype)
         {
-            SourceExpression.Validate(xSBRUserId, nameof(xSBRUserId), required: true);
-            SourceExpression.Validate(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
-            SourceExpression.Validate(bodycache, nameof(bodycache), required: true);
-            SourceExpression.Validate(bodydomainId, nameof(bodydomainId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyredirect, nameof(bodyredirect), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/links";
@@ -85,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
         public IBodyWorkflowAction<GetDomainsResponse> GetDomains([WorkflowExpression] Func<int> xSBRUserId, [WorkflowExpression] Func<string> xSBRTokenKey)
         {
-            SourceExpression.Validate(xSBRUserId, nameof(xSBRUserId), required: true);
-            SourceExpression.Validate(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/domains";
@@ -103,9 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
         public IWorkflowAction DeleteLink([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> xSBRUserId, [WorkflowExpression] Func<string> xSBRTokenKey)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(xSBRUserId, nameof(xSBRUserId), required: true);
-            SourceExpression.Validate(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/links/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -123,15 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
         public IBodyWorkflowAction<UpdateLinkResponse> UpdateLink([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> xSBRUserId, [WorkflowExpression] Func<string> xSBRTokenKey, [WorkflowExpression] Func<bool> bodycache, [WorkflowExpression] Func<int> bodydomainId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyredirect, [WorkflowExpression] Func<bodystatusInput> bodystatus)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(xSBRUserId, nameof(xSBRUserId), required: true);
-            SourceExpression.Validate(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
-            SourceExpression.Validate(bodycache, nameof(bodycache), required: true);
-            SourceExpression.Validate(bodydomainId, nameof(bodydomainId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyredirect, nameof(bodyredirect), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/links/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -167,10 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
         public IWorkflowAction DeletePredefinedLink([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> key, [WorkflowExpression] Func<int> xSBRUserId, [WorkflowExpression] Func<string> xSBRTokenKey)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(xSBRUserId, nameof(xSBRUserId), required: true);
-            SourceExpression.Validate(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/links/{0}/predefined/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -188,13 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
         public IBodyWorkflowAction<CreatePredefinedLinkResponse> CreatePredefinedLink([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> key, [WorkflowExpression] Func<int> xSBRUserId, [WorkflowExpression] Func<string> xSBRTokenKey, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyredirect, [WorkflowExpression] Func<string> bodynotes = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(xSBRUserId, nameof(xSBRUserId), required: true);
-            SourceExpression.Validate(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
-            SourceExpression.Validate(bodyredirect, nameof(bodyredirect), required: true);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/links/{0}/predefined/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));

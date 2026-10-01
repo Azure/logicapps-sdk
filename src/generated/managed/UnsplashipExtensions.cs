@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Users> UserGet([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> w = null, [WorkflowExpression] Func<int> h = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(w, nameof(w), required: false);
-            SourceExpression.Validate(h, nameof(h), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -35,10 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> UserGetPhotos([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/photos", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -59,10 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> UserGetLiked([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/likes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -83,9 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Collections[]> UserGetCollections([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/collections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -104,9 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> PhotoGetPage([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/photos";
@@ -127,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> PhotoSearch([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> category)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(category, nameof(category), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/photos/search";
@@ -145,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photo> PhotoGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/photos/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -160,12 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photo> PhotoGetRandom([WorkflowExpression] Func<string> collections = null, [WorkflowExpression] Func<string> topics = null, [WorkflowExpression] Func<string> username = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<orientationInput> orientation = null, [WorkflowExpression] Func<contentFilterInput> contentFilter = null)
         {
-            SourceExpression.Validate(collections, nameof(collections), required: false);
-            SourceExpression.Validate(topics, nameof(topics), required: false);
-            SourceExpression.Validate(username, nameof(username), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(orientation, nameof(orientation), required: false);
-            SourceExpression.Validate(contentFilter, nameof(contentFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/photos/random";

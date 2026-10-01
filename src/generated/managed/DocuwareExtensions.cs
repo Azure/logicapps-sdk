@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<SearchForDocumentsInFileCabinetResponse> SearchForDocumentsInFileCabinet([WorkflowExpression] Func<string> fileCabinet, [WorkflowExpression] Func<string> searchDialogId, [WorkflowExpression] Func<object> searchQuery = null)
         {
-            SourceExpression.Validate(fileCabinet, nameof(fileCabinet), required: true);
-            SourceExpression.Validate(searchDialogId, nameof(searchDialogId), required: true);
-            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinet, 1));
@@ -47,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<GetFileCabinetsResponse> GetFileCabinets([WorkflowExpression] Func<fileCabinetTypeInput> fileCabinetType)
         {
-            SourceExpression.Validate(fileCabinetType, nameof(fileCabinetType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FileCabinets";
@@ -63,8 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<GetDocumentInformationResponse> GetDocumentInformation([WorkflowExpression] Func<string> fileCabinetId, [WorkflowExpression] Func<int> documentId)
         {
-            SourceExpression.Validate(fileCabinetId, nameof(fileCabinetId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Documents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -79,8 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> fileCabinetId, [WorkflowExpression] Func<int> documentId)
         {
-            SourceExpression.Validate(fileCabinetId, nameof(fileCabinetId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Documents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -95,10 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<string> DownloadFile([WorkflowExpression] Func<string> fileCabinetId, [WorkflowExpression] Func<int> documentId, [WorkflowExpression] Func<string> fileNumber, [WorkflowExpression] Func<documentFormatInput> documentFormat)
         {
-            SourceExpression.Validate(fileCabinetId, nameof(fileCabinetId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(fileNumber, nameof(fileNumber), required: true);
-            SourceExpression.Validate(documentFormat, nameof(documentFormat), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Documents/{1}/Sections/{2}/Download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileNumber, 1));
@@ -116,9 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> fileCabinetId, [WorkflowExpression] Func<int> documentId, [WorkflowExpression] Func<documentFormatInput> documentFormat)
         {
-            SourceExpression.Validate(fileCabinetId, nameof(fileCabinetId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(documentFormat, nameof(documentFormat), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Documents/{1}/Download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -136,9 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<UpdateIndexFieldsResponse> UpdateIndexFields([WorkflowExpression] Func<string> fileCabinetId, [WorkflowExpression] Func<int> documentId, [WorkflowExpression] Func<documentFieldsInputItem[]> documentFields = null)
         {
-            SourceExpression.Validate(fileCabinetId, nameof(fileCabinetId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(documentFields, nameof(documentFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Documents/{1}/Fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -154,12 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<TransferDocumentResponse> TransferDocument([WorkflowExpression] Func<string> destinationFileCabinetId, [WorkflowExpression] Func<string> transferInfosourceFileCabinetDocumentTray, [WorkflowExpression] Func<string> storeDialogId = null, [WorkflowExpression] Func<transferInfodocsInputItem[]> transferInfodocs = null, [WorkflowExpression] Func<bool> transferInfokeepSource = null, [WorkflowExpression] Func<bool> transferInfofillIntellix = null)
         {
-            SourceExpression.Validate(destinationFileCabinetId, nameof(destinationFileCabinetId), required: true);
-            SourceExpression.Validate(transferInfosourceFileCabinetDocumentTray, nameof(transferInfosourceFileCabinetDocumentTray), required: true);
-            SourceExpression.Validate(storeDialogId, nameof(storeDialogId), required: false);
-            SourceExpression.Validate(transferInfodocs, nameof(transferInfodocs), required: false);
-            SourceExpression.Validate(transferInfokeepSource, nameof(transferInfokeepSource), required: false);
-            SourceExpression.Validate(transferInfofillIntellix, nameof(transferInfofillIntellix), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Task/Transfer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(destinationFileCabinetId, 1));
@@ -202,16 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<PlaceAStampResponse> PlaceAStamp([WorkflowExpression] Func<string> fileCabinetId, [WorkflowExpression] Func<int> documentId, [WorkflowExpression] Func<int> stampDatafileNumber, [WorkflowExpression] Func<int> stampDatapageNumber, [WorkflowExpression] Func<int> stampDatalayer, [WorkflowExpression] Func<string> stampDatastamp, [WorkflowExpression] Func<double> stampDatahorizontalPositionXPosition = null, [WorkflowExpression] Func<double> stampDataverticalPositionYPosition = null, [WorkflowExpression] Func<string> stampDatapassword = null, [WorkflowExpression] Func<stampDatafieldInputItem[]> stampDatafield = null)
         {
-            SourceExpression.Validate(fileCabinetId, nameof(fileCabinetId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(stampDatafileNumber, nameof(stampDatafileNumber), required: true);
-            SourceExpression.Validate(stampDatapageNumber, nameof(stampDatapageNumber), required: true);
-            SourceExpression.Validate(stampDatalayer, nameof(stampDatalayer), required: true);
-            SourceExpression.Validate(stampDatastamp, nameof(stampDatastamp), required: true);
-            SourceExpression.Validate(stampDatahorizontalPositionXPosition, nameof(stampDatahorizontalPositionXPosition), required: false);
-            SourceExpression.Validate(stampDataverticalPositionYPosition, nameof(stampDataverticalPositionYPosition), required: false);
-            SourceExpression.Validate(stampDatapassword, nameof(stampDatapassword), required: false);
-            SourceExpression.Validate(stampDatafield, nameof(stampDatafield), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Documents/{1}/Annotation", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -264,8 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<GetDialogsResponse> GetDialogs([WorkflowExpression] Func<string> fileCabinet, [WorkflowExpression] Func<dialogTypeInput> dialogType = null)
         {
-            SourceExpression.Validate(fileCabinet, nameof(fileCabinet), required: true);
-            SourceExpression.Validate(dialogType, nameof(dialogType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Dialogs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinet, 1));
@@ -283,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<GetStampsResponse> GetStamps([WorkflowExpression] Func<string> fileCabinet)
         {
-            SourceExpression.Validate(fileCabinet, nameof(fileCabinet), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Stamps", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinet, 1));
@@ -298,8 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<GetStampFieldsResponse> GetStampFields([WorkflowExpression] Func<string> fileCabinet, [WorkflowExpression] Func<string> stamp)
         {
-            SourceExpression.Validate(fileCabinet, nameof(fileCabinet), required: true);
-            SourceExpression.Validate(stamp, nameof(stamp), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Stamps/{1}/Fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinet, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stamp, 1));
@@ -314,8 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<GetFileCabinetFieldsResponse> GetFileCabinetFields([WorkflowExpression] Func<string> fileCabinet, [WorkflowExpression] Func<fieldTypeInput> fieldType = null)
         {
-            SourceExpression.Validate(fileCabinet, nameof(fileCabinet), required: true);
-            SourceExpression.Validate(fieldType, nameof(fieldType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinet, 1));
@@ -332,8 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<GetDialogFieldsResponse> GetDialogFields([WorkflowExpression] Func<string> fileCabinet, [WorkflowExpression] Func<string> dialogId)
         {
-            SourceExpression.Validate(fileCabinet, nameof(fileCabinet), required: true);
-            SourceExpression.Validate(dialogId, nameof(dialogId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/FileCabinets/{0}/Dialogs/{1}/Fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileCabinet, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dialogId, 1));
@@ -348,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
         public IBodyWorkflowAction<ListDocumentsInDocumentTrayResponse> ListDocumentsInDocumentTray([WorkflowExpression] Func<string> documentTray)
         {
-            SourceExpression.Validate(documentTray, nameof(documentTray), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/DocumentTrays/{0}/Search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentTray, 1));

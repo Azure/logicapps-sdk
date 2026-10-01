@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
         public IBodyWorkflowAction<ReadCoursesResponse> ReadCourses([WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> keywords = null)
         {
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/o/kh-gateway/lms/v1.1/courses";
@@ -39,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
         public IBodyWorkflowAction<ReadCourseDetailResponse> ReadCourseDetail([WorkflowExpression] Func<int> courseId)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/o/kh-gateway/lms/v1.1/course/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(courseId, 1));
@@ -54,9 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
         public IBodyWorkflowAction<ProgressByCourseIdResponse> ProgressByCourseId([WorkflowExpression] Func<int> courseId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/o/kh-gateway/lms/v1.1/progress/course/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(courseId, 1));
@@ -77,9 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
         public IBodyWorkflowAction<ProgressByEmailResponse> ProgressByEmail([WorkflowExpression] Func<string> learnerEmail, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(learnerEmail, nameof(learnerEmail), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/o/kh-gateway/lms/v1.1/progress/learner";
@@ -101,11 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
         public IWorkflowAction BookCourse([WorkflowExpression] Func<int> bodycommunityId, [WorkflowExpression] Func<int> bodycourseId, [WorkflowExpression] Func<string> bodylearnerEmail, [WorkflowExpression] Func<string> bodylearnerFirstname = null, [WorkflowExpression] Func<string> bodylearnerLastname = null)
         {
-            SourceExpression.Validate(bodycommunityId, nameof(bodycommunityId), required: true);
-            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: true);
-            SourceExpression.Validate(bodylearnerEmail, nameof(bodylearnerEmail), required: true);
-            SourceExpression.Validate(bodylearnerFirstname, nameof(bodylearnerFirstname), required: false);
-            SourceExpression.Validate(bodylearnerLastname, nameof(bodylearnerLastname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/o/kh-gateway/lms/v1.1/course/booking";

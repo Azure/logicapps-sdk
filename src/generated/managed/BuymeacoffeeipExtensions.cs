@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buymeacoffeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buymeacoffeeip")]
         public IBodyWorkflowAction<MemberGetResponse> MemberGet([WorkflowExpression] Func<statusInput> status = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/subscriptions";
@@ -32,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buymeacoffeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buymeacoffeeip")]
         public IBodyWorkflowAction<MemberGetAResponse> MemberGetA([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/subscriptions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buymeacoffeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buymeacoffeeip")]
         public IBodyWorkflowAction<SupporterGetAResponse> SupporterGetA([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/supporters/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buymeacoffeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buymeacoffeeip")]
         public IBodyWorkflowAction<ExtraGetAResponse> ExtraGetA([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/extras/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

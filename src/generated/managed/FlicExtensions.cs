@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
     {
         public IWorkflowTrigger FlicButtonTrigger([WorkflowExpression] Func<string> buttonUuid, [WorkflowExpression] Func<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(buttonUuid, nameof(buttonUuid), required: true);
-            SourceExpression.Validate(requestBodyOfWebhookevents, nameof(requestBodyOfWebhookevents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(buttonUuid, 1));
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
         public IWorkflowTrigger FlicTaskTrigger([WorkflowExpression] Func<string> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(taskUuid, nameof(taskUuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskUuid, 1));

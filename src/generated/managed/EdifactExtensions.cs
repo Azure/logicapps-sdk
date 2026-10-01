@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<UpdateControlNumberResult[]> AddOrUpdateControlNumbers([WorkflowExpression] Func<ReplicableControlNumberContent[]> controlNumberContents = null)
         {
-            SourceExpression.Validate(controlNumberContents, nameof(controlNumberContents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/controlnumbers";
@@ -30,17 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement> Decode([WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<payloadCharacterSetInput> payloadCharacterSet = null, [WorkflowExpression] Func<bool> preserveInterchange = null, [WorkflowExpression] Func<bool> suspendInterchangeOnError = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            SourceExpression.Validate(payloadCharacterSet, nameof(payloadCharacterSet), required: false);
-            SourceExpression.Validate(preserveInterchange, nameof(preserveInterchange), required: false);
-            SourceExpression.Validate(suspendInterchangeOnError, nameof(suspendInterchangeOnError), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/decode";
@@ -84,14 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdiAgreementProperties> ResolveAgreement([WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resolveAgreement";
@@ -128,15 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(agreementName, nameof(agreementName), required: true);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/encode/resolvebyname";
@@ -167,15 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(agreementName, nameof(agreementName), required: true);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EncodeV2/ResolveByName";
@@ -206,17 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<string> messagesToBatchbatchName = null, [WorkflowExpression] Func<string> messagesToBatchpartitionName = null, [WorkflowExpression] Func<BatchItem[]> messagesToBatchitems = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null)
         {
-            SourceExpression.Validate(agreementName, nameof(agreementName), required: true);
-            SourceExpression.Validate(messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
-            SourceExpression.Validate(messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
-            SourceExpression.Validate(messagesToBatchitems, nameof(messagesToBatchitems), required: false);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Encode/Batch/ResolveByName";
@@ -270,20 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> senderQualifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> receiverQualifier, [WorkflowExpression] Func<string> messagesToBatchbatchName = null, [WorkflowExpression] Func<string> messagesToBatchpartitionName = null, [WorkflowExpression] Func<BatchItem[]> messagesToBatchitems = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null)
         {
-            SourceExpression.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
-            SourceExpression.Validate(senderQualifier, nameof(senderQualifier), required: true);
-            SourceExpression.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
-            SourceExpression.Validate(receiverQualifier, nameof(receiverQualifier), required: true);
-            SourceExpression.Validate(messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
-            SourceExpression.Validate(messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
-            SourceExpression.Validate(messagesToBatchitems, nameof(messagesToBatchitems), required: false);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Encode/Batch/ResolveByIdentities";
@@ -340,18 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> senderQualifier = null, [WorkflowExpression] Func<string> receiverQualifier = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
-            SourceExpression.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
-            SourceExpression.Validate(senderQualifier, nameof(senderQualifier), required: false);
-            SourceExpression.Validate(receiverQualifier, nameof(receiverQualifier), required: false);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/encode/resolvebyidentities";
@@ -387,18 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
         public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> senderQualifier = null, [WorkflowExpression] Func<string> receiverQualifier = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
-            SourceExpression.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
-            SourceExpression.Validate(senderQualifier, nameof(senderQualifier), required: false);
-            SourceExpression.Validate(receiverQualifier, nameof(receiverQualifier), required: false);
-            SourceExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            SourceExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            SourceExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            SourceExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            SourceExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            SourceExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            SourceExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EncodeV2/ResolveByIdentities";
@@ -436,7 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     {
         public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber([WorkflowExpression] Func<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(startSyncTime, nameof(startSyncTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/triggers/onmodifiedcontrolnumber";

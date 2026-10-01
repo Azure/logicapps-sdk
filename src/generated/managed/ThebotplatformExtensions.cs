@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage([WorkflowExpression] Func<bodydataattributesmessagesInputItem[]> bodydataattributesmessages = null, [WorkflowExpression] Func<string> bodydataattributesrecipient = null)
         {
-            SourceExpression.Validate(bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
-            SourceExpression.Validate(bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/activity/external";
@@ -66,8 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute([WorkflowExpression] Func<string> bodydataattributesname = null, [WorkflowExpression] Func<bodydataattributesisPiiInput> bodydataattributesisPii = null)
         {
-            SourceExpression.Validate(bodydataattributesname, nameof(bodydataattributesname), required: false);
-            SourceExpression.Validate(bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/userattributes";
@@ -118,8 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IWorkflowAction SetUserAttribute([WorkflowExpression] Func<string> emailaddress, [WorkflowExpression] Func<bodydataattributesstateInputItem[]> bodydataattributesstate)
         {
-            SourceExpression.Validate(emailaddress, nameof(emailaddress), required: true);
-            SourceExpression.Validate(bodydataattributesstate, nameof(bodydataattributesstate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(emailaddress, 1));

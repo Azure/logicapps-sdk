@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<ListedScorecards> GetScorecards([WorkflowExpression] Func<string> groupid)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1));
@@ -30,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<CreatedScorecard> CreateScorecard([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardname, [WorkflowExpression] Func<string> scorecarddescription = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardname, nameof(scorecardname), required: true);
-            SourceExpression.Validate(scorecarddescription, nameof(scorecarddescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1));
@@ -62,8 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<FetchedGoals> GetMultipleGoals([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1));
@@ -80,17 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<CreateGoalResponse> CreateGoal([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalname, [WorkflowExpression] Func<string> goalowner = null, [WorkflowExpression] Func<string> goalcurrentValue = null, [WorkflowExpression] Func<string> goaltargetValue = null, [WorkflowExpression] Func<goalstatusInput> goalstatus = null, [WorkflowExpression] Func<string> goalstartDate = null, [WorkflowExpression] Func<string> goalcompletionDate = null, [WorkflowExpression] Func<string> goalnote = null, [WorkflowExpression] Func<string> goalparentGoalId = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalname, nameof(goalname), required: true);
-            SourceExpression.Validate(goalowner, nameof(goalowner), required: false);
-            SourceExpression.Validate(goalcurrentValue, nameof(goalcurrentValue), required: false);
-            SourceExpression.Validate(goaltargetValue, nameof(goaltargetValue), required: false);
-            SourceExpression.Validate(goalstatus, nameof(goalstatus), required: false);
-            SourceExpression.Validate(goalstartDate, nameof(goalstartDate), required: false);
-            SourceExpression.Validate(goalcompletionDate, nameof(goalcompletionDate), required: false);
-            SourceExpression.Validate(goalnote, nameof(goalnote), required: false);
-            SourceExpression.Validate(goalparentGoalId, nameof(goalparentGoalId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1));
@@ -172,9 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<FetchedGoal> GetGoal([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
@@ -191,16 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction UpdateGoal([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalname = null, [WorkflowExpression] Func<string> goalowner = null, [WorkflowExpression] Func<double> goalcurrentValue = null, [WorkflowExpression] Func<double> goaltargetValue = null, [WorkflowExpression] Func<goalstatusInput> goalstatus = null, [WorkflowExpression] Func<string> goalstartDate = null, [WorkflowExpression] Func<string> goalcompletionDate = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
-            SourceExpression.Validate(goalname, nameof(goalname), required: false);
-            SourceExpression.Validate(goalowner, nameof(goalowner), required: false);
-            SourceExpression.Validate(goalcurrentValue, nameof(goalcurrentValue), required: false);
-            SourceExpression.Validate(goaltargetValue, nameof(goaltargetValue), required: false);
-            SourceExpression.Validate(goalstatus, nameof(goalstatus), required: false);
-            SourceExpression.Validate(goalstartDate, nameof(goalstartDate), required: false);
-            SourceExpression.Validate(goalcompletionDate, nameof(goalcompletionDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
@@ -274,11 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<QueryExecutionResults> ExecuteDatasetQuery([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid, [WorkflowExpression] Func<string> specificationqueryText, [WorkflowExpression] Func<bool> specificationserializerSettingsnullsIncluded = null, [WorkflowExpression] Func<string> specificationimpersonateUser = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(datasetid, nameof(datasetid), required: true);
-            SourceExpression.Validate(specificationqueryText, nameof(specificationqueryText), required: true);
-            SourceExpression.Validate(specificationserializerSettingsnullsIncluded, nameof(specificationserializerSettingsnullsIncluded), required: false);
-            SourceExpression.Validate(specificationimpersonateUser, nameof(specificationimpersonateUser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1));
@@ -332,8 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<JToken> ExecuteDatasetQueriesJson([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(datasetid, nameof(datasetid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/internalFlowActionOverloadAsJson/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1));
@@ -355,10 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction AddRows([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid, [WorkflowExpression] Func<string> tablename, [WorkflowExpression] Func<object> payload = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(datasetid, nameof(datasetid), required: true);
-            SourceExpression.Validate(tablename, nameof(tablename), required: true);
-            SourceExpression.Validate(payload, nameof(payload), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/tables/{2}/rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tablename, 1));
@@ -375,11 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction GoalValueCheckinNote([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalCheckin, [WorkflowExpression] Func<string> note = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
-            SourceExpression.Validate(goalCheckin, nameof(goalCheckin), required: true);
-            SourceExpression.Validate(note, nameof(note), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})/notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalCheckin, 1));
@@ -396,13 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction GoalValueCheckin([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> checkindate, [WorkflowExpression] Func<double> checkinvalue = null, [WorkflowExpression] Func<checkinstatusInput> checkinstatus = null, [WorkflowExpression] Func<string> checkinnote = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
-            SourceExpression.Validate(checkindate, nameof(checkindate), required: true);
-            SourceExpression.Validate(checkinvalue, nameof(checkinvalue), required: false);
-            SourceExpression.Validate(checkinstatus, nameof(checkinstatus), required: false);
-            SourceExpression.Validate(checkinnote, nameof(checkinnote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
@@ -454,9 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<GetGoalCheckinsResponse> GetGoalCheckins([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1));
@@ -473,12 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction UpdateGoalCheckin([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalCheckin, [WorkflowExpression] Func<double> checkinvalue = null, [WorkflowExpression] Func<checkinstatusInput> checkinstatus = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
-            SourceExpression.Validate(goalCheckin, nameof(goalCheckin), required: true);
-            SourceExpression.Validate(checkinvalue, nameof(checkinvalue), required: false);
-            SourceExpression.Validate(checkinstatus, nameof(checkinstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalCheckin, 1));
@@ -522,10 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<GetGoalCheckinResponse> GetGoalCheckin([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalCheckin)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            SourceExpression.Validate(goalId, nameof(goalId), required: true);
-            SourceExpression.Validate(goalCheckin, nameof(goalCheckin), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scorecardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalCheckin, 1));
@@ -542,8 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IWorkflowAction RefreshDataset([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(datasetid, nameof(datasetid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/refreshes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetid, 1));
@@ -559,16 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<string> InitiateExportToFileForPbiReports([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> reportid, [WorkflowExpression] Func<exportPayloadPowerBIReportformatInput> exportPayloadPowerBIReportformat, [WorkflowExpression] Func<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, [WorkflowExpression] Func<bool> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, [WorkflowExpression] Func<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, [WorkflowExpression] Func<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, [WorkflowExpression] Func<ExportFilter[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, [WorkflowExpression] Func<ExportReportPage[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, [WorkflowExpression] Func<EffectiveIdentity[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(reportid, nameof(reportid), required: true);
-            SourceExpression.Validate(exportPayloadPowerBIReportformat, nameof(exportPayloadPowerBIReportformat), required: true);
-            SourceExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale), required: false);
-            SourceExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages), required: false);
-            SourceExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname), required: false);
-            SourceExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate), required: false);
-            SourceExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters), required: false);
-            SourceExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages), required: false);
-            SourceExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportTo", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportid, 1));
@@ -657,11 +579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
         public IBodyWorkflowAction<string> InitiateExportToFileForPaginatedReports([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> reportid, [WorkflowExpression] Func<exportPayloadPaginatedReportformatInput> exportPayloadPaginatedReportformat, [WorkflowExpression] Func<EffectiveIdentity[]> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, [WorkflowExpression] Func<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
         {
-            SourceExpression.Validate(groupid, nameof(groupid), required: true);
-            SourceExpression.Validate(reportid, nameof(reportid), required: true);
-            SourceExpression.Validate(exportPayloadPaginatedReportformat, nameof(exportPayloadPaginatedReportformat), required: true);
-            SourceExpression.Validate(exportPayloadPaginatedReportpaginatedReportConfigurationidentities, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationidentities), required: false);
-            SourceExpression.Validate(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportToPaginatedReports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportid, 1));

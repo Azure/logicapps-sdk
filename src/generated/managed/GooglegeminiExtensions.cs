@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateTextContentResponse> GenerateTextContent([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem[]> bodycontents = null, [WorkflowExpression] Func<bodysafetySettingsInputItem[]> bodysafetySettings = null, [WorkflowExpression] Func<int> bodygenerationConfigmaxOutputTokens = null, [WorkflowExpression] Func<double> bodygenerationConfigtemperature = null, [WorkflowExpression] Func<double> bodygenerationConfigtopP = null, [WorkflowExpression] Func<int> bodygenerationConfigtopK = null, [WorkflowExpression] Func<int> bodygenerationConfigcandidateCount = null, [WorkflowExpression] Func<string[]> bodygenerationConfigstopSequences = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
-            SourceExpression.Validate(bodysafetySettings, nameof(bodysafetySettings), required: false);
-            SourceExpression.Validate(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
-            SourceExpression.Validate(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
-            SourceExpression.Validate(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
-            SourceExpression.Validate(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
-            SourceExpression.Validate(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
-            SourceExpression.Validate(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -100,16 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> GenerateStreamContent([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem[]> bodycontents = null, [WorkflowExpression] Func<bodysafetySettingsInputItem[]> bodysafetySettings = null, [WorkflowExpression] Func<double> bodygenerationConfigtemperature = null, [WorkflowExpression] Func<int> bodygenerationConfigmaxOutputTokens = null, [WorkflowExpression] Func<double> bodygenerationConfigtopP = null, [WorkflowExpression] Func<int> bodygenerationConfigtopK = null, [WorkflowExpression] Func<int> bodygenerationConfigcandidateCount = null, [WorkflowExpression] Func<string[]> bodygenerationConfigstopSequences = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
-            SourceExpression.Validate(bodysafetySettings, nameof(bodysafetySettings), required: false);
-            SourceExpression.Validate(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
-            SourceExpression.Validate(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
-            SourceExpression.Validate(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
-            SourceExpression.Validate(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
-            SourceExpression.Validate(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
-            SourceExpression.Validate(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:streamGenerateContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -186,15 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateMultiModalContentResponse> GenerateMultiModalContent([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem2[]> bodycontents = null, [WorkflowExpression] Func<bodysafetySettingsInputItem[]> bodysafetySettings = null, [WorkflowExpression] Func<int> bodygenerationConfigmaxOutputTokens = null, [WorkflowExpression] Func<double> bodygenerationConfigtemperature = null, [WorkflowExpression] Func<double> bodygenerationConfigtopP = null, [WorkflowExpression] Func<int> bodygenerationConfigtopK = null, [WorkflowExpression] Func<string[]> bodygenerationConfigstopSequences = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
-            SourceExpression.Validate(bodysafetySettings, nameof(bodysafetySettings), required: false);
-            SourceExpression.Validate(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
-            SourceExpression.Validate(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
-            SourceExpression.Validate(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
-            SourceExpression.Validate(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
-            SourceExpression.Validate(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}-vision:generateContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -265,9 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<CountTokensResponse> CountTokens([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem22[]> bodycontents = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
-            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTokens", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -294,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetAllModelsResponse> GetAllModels([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1));
@@ -309,8 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetModelDetailsResponse> GetModelDetails([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -325,12 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<string> bodymodelResourceName, [WorkflowExpression] Func<bodycontentpartsInputItem[]> bodycontentparts = null, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
-            SourceExpression.Validate(bodymodelResourceName, nameof(bodymodelResourceName), required: true);
-            SourceExpression.Validate(bodycontentparts, nameof(bodycontentparts), required: false);
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -379,9 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodyrequestsInputItem[]> bodyrequests)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
-            SourceExpression.Validate(bodyrequests, nameof(bodyrequests), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:batchEmbedContents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));

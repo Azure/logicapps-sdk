@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetLibraryRolesResponse> GetLibraryRoles([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<bool> isExternal = null)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
-            SourceExpression.Validate(isExternal, nameof(isExternal), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getLibraryRoles";
@@ -34,9 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetLookupAliasesResponse> GetLookupAliases([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> lookupFieldId, [WorkflowExpression] Func<string> parentAlias = null)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
-            SourceExpression.Validate(lookupFieldId, nameof(lookupFieldId), required: true);
-            SourceExpression.Validate(parentAlias, nameof(parentAlias), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getLookupAliases";
@@ -57,13 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<SearchCustomPropertyResponseBody> SearchCustomPropertyAliases([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> lookupFieldId, [WorkflowExpression] Func<string> parentAlias = null, [WorkflowExpression] Func<string> alias = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<bool> hipaa = null, [WorkflowExpression] Func<enabledStateInput> enabledState = null)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
-            SourceExpression.Validate(lookupFieldId, nameof(lookupFieldId), required: true);
-            SourceExpression.Validate(parentAlias, nameof(parentAlias), required: false);
-            SourceExpression.Validate(alias, nameof(alias), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(hipaa, nameof(hipaa), required: false);
-            SourceExpression.Validate(enabledState, nameof(enabledState), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchCustomPropertyAliases";
@@ -93,9 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<JToken> CreateCustomOrPropertyLookup([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodylookupFieldId, [WorkflowExpression] Func<object> bodyaliasInfo)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            SourceExpression.Validate(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createCustomOrPropertyLookup";
@@ -123,15 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodyisExternal, [WorkflowExpression] Func<string> bodypreferredLibrary, [WorkflowExpression] Func<string> bodyrole, [WorkflowExpression] Func<bool> bodyignoreIfUserAlreadyExists, [WorkflowExpression] Func<bodypasswordCreateMethodInput> bodypasswordCreateMethod, [WorkflowExpression] Func<object> bodycreatePassword)
         {
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyisExternal, nameof(bodyisExternal), required: true);
-            SourceExpression.Validate(bodypreferredLibrary, nameof(bodypreferredLibrary), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
-            SourceExpression.Validate(bodyignoreIfUserAlreadyExists, nameof(bodyignoreIfUserAlreadyExists), required: true);
-            SourceExpression.Validate(bodypasswordCreateMethod, nameof(bodypasswordCreateMethod), required: true);
-            SourceExpression.Validate(bodycreatePassword, nameof(bodycreatePassword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createUser";
@@ -171,10 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<AssignUserToLibraryResponse> AssignUserToLibrary([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodyrole, [WorkflowExpression] Func<bool> bodyisPreferredLibrary)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
-            SourceExpression.Validate(bodyisPreferredLibrary, nameof(bodyisPreferredLibrary), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/assignUserToLibrary";
@@ -204,18 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<CreateFolderResponseBody> AddFolder([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<bodyparentTypeInput> bodyparentType, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity, [WorkflowExpression] Func<bodyinheritProfileFromWorkspaceInput> bodyinheritProfileFromWorkspace, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<object> bodyprofileProperties = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
-            SourceExpression.Validate(bodyparentType, nameof(bodyparentType), required: true);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            SourceExpression.Validate(bodyinheritProfileFromWorkspace, nameof(bodyinheritProfileFromWorkspace), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodyClass, nameof(bodyClass), required: false);
-            SourceExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
-            SourceExpression.Validate(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            SourceExpression.Validate(bodyprofileProperties, nameof(bodyprofileProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addFolder";
@@ -299,11 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<CreateTabResponseBody> AddTab([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyowner = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addTab";
@@ -343,7 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetMyMattersCategoriesResponse> GetMyMattersCategories([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getMyMattersCategories";
@@ -360,9 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> AddShortcutsToMyMattersAdmin([WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodycategoryId = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addShortcutsToMyMattersAdmin";
@@ -394,9 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<JToken> UpdateCustomField([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodylookupFieldId, [WorkflowExpression] Func<object> bodyaliasInfo)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            SourceExpression.Validate(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateCustomField";
@@ -424,9 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> GetRowsFromCSVDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodycolumnNames, [WorkflowExpression] Func<bool> bodylatest = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodycolumnNames, nameof(bodycolumnNames), required: true);
-            SourceExpression.Validate(bodylatest, nameof(bodylatest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getRowsFromCSVDocument";
@@ -468,8 +413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<MoveFolderResponseBody> MoveFolder([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodydestinationId)
         {
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodydestinationId, nameof(bodydestinationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/moveFolder";
@@ -495,16 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> UpdateFolder([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<object> bodyprofile = null)
         {
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodyClass, nameof(bodyClass), required: false);
-            SourceExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
-            SourceExpression.Validate(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            SourceExpression.Validate(bodyprofile, nameof(bodyprofile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateFolder";

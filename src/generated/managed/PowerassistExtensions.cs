@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArraySortResponse> ArraySort([WorkflowExpression] Func<JToken[]> bodyarray)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/sort";
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse([WorkflowExpression] Func<JToken[]> bodyarray)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/reverse";
@@ -60,9 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bool> bodydescending)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
-            SourceExpression.Validate(bodydescending, nameof(bodydescending), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/sortByProperty";
@@ -89,11 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
-            SourceExpression.Validate(bodycomparison, nameof(bodycomparison), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/filter";
@@ -142,9 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<object> bodyvalue, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/prepend";
@@ -185,11 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
-            SourceExpression.Validate(bodycomparison, nameof(bodycomparison), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/any";
@@ -238,11 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
-            SourceExpression.Validate(bodycomparison, nameof(bodycomparison), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/every";
@@ -291,11 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
-            SourceExpression.Validate(bodycomparison, nameof(bodycomparison), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/removeFirst";
@@ -344,8 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypropertyName, nameof(bodypropertyName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/groupBy";
@@ -374,11 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            SourceExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            SourceExpression.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
-            SourceExpression.Validate(bodycomparison, nameof(bodycomparison), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/array/findFirst";
@@ -427,7 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<RoundResponse> Round([WorkflowExpression] Func<double> bodynumber)
         {
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/math/round";
@@ -450,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathCeilResponse> MathCeil([WorkflowExpression] Func<double> bodynumber)
         {
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/math/ceil";
@@ -473,7 +436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathFloorResponse> MathFloor([WorkflowExpression] Func<double> bodynumber)
         {
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/math/floor";
@@ -496,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathAverageResponse> MathAverage([WorkflowExpression] Func<double[]> bodynumbers)
         {
-            SourceExpression.Validate(bodynumbers, nameof(bodynumbers), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/math/average";
@@ -519,7 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathMedianResponse> MathMedian([WorkflowExpression] Func<JToken[]> bodynumbers)
         {
-            SourceExpression.Validate(bodynumbers, nameof(bodynumbers), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/math/median";
@@ -542,7 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathModeResponse> MathMode([WorkflowExpression] Func<JToken[]> bodynumbers)
         {
-            SourceExpression.Validate(bodynumbers, nameof(bodynumbers), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/math/mode";
@@ -565,7 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathRandomResponse> MathRandom([WorkflowExpression] Func<int> bodymaximum)
         {
-            SourceExpression.Validate(bodymaximum, nameof(bodymaximum), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/math/random";
@@ -588,9 +546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll([WorkflowExpression] Func<string> bodysourceString, [WorkflowExpression] Func<string> bodysearchValue, [WorkflowExpression] Func<string> bodyreplaceValue)
         {
-            SourceExpression.Validate(bodysourceString, nameof(bodysourceString), required: true);
-            SourceExpression.Validate(bodysearchValue, nameof(bodysearchValue), required: true);
-            SourceExpression.Validate(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/replaceAll";
@@ -617,9 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace([WorkflowExpression] Func<string> bodysourceString, [WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodyreplaceValue)
         {
-            SourceExpression.Validate(bodysourceString, nameof(bodysourceString), required: true);
-            SourceExpression.Validate(bodypattern, nameof(bodypattern), required: true);
-            SourceExpression.Validate(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/regexReplace";
@@ -646,7 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/capitalize";
@@ -669,8 +620,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimResponse> StringTrim([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodycharacters = null)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodycharacters, nameof(bodycharacters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/trim";
@@ -699,8 +648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodycharacters = null)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodycharacters, nameof(bodycharacters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/trimStart";
@@ -729,8 +676,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodycharacters = null)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodycharacters, nameof(bodycharacters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/trimEnd";
@@ -759,7 +704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/slugify";
@@ -782,8 +726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringWordsResponse> StringWords([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodydelimiter = null)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodydelimiter, nameof(bodydelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/words";
@@ -812,8 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringWordCountResponse> StringWordCount([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodydelimiter = null)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodydelimiter, nameof(bodydelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/wordCount";
@@ -842,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/stripHtml";
@@ -865,7 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCleanResponse> StringClean([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/clean";
@@ -888,7 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/cleanDiacritics";
@@ -911,7 +848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/escapeHtml";
@@ -934,7 +870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/unescapeHtml";
@@ -957,9 +892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodysubstring, [WorkflowExpression] Func<bool> bodyignoreCase = null)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodysubstring, nameof(bodysubstring), required: true);
-            SourceExpression.Validate(bodyignoreCase, nameof(bodyignoreCase), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/countInstances";
@@ -1000,8 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringChopResponse> StringChop([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<int> bodyinterval)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodyinterval, nameof(bodyinterval), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/chop";
@@ -1026,7 +956,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString([WorkflowExpression] Func<object> bodyvalue)
         {
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/types/isString";
@@ -1049,8 +978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber([WorkflowExpression] Func<object> bodyvalue, [WorkflowExpression] Func<bool> bodyincludeNumbersInStrings)
         {
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodyincludeNumbersInStrings, nameof(bodyincludeNumbersInStrings), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/types/isNumber";
@@ -1075,7 +1002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty([WorkflowExpression] Func<object> bodyvalue)
         {
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/types/isNullOrEmpty";
@@ -1098,7 +1024,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray([WorkflowExpression] Func<object> bodyvalue)
         {
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/types/isArray";
@@ -1121,7 +1046,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject([WorkflowExpression] Func<object> bodyvalue)
         {
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/types/isObject";
@@ -1144,7 +1068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail([WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/validate/email";
@@ -1167,8 +1090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodypattern)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodypattern, nameof(bodypattern), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/validate/regex";

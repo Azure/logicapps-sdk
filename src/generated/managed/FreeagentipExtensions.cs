@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction DeleteContact([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<GetContactResponse> GetContact([WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -44,11 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction UpdateContact([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<bool> bodycontactcontactNameOnInvoices = null, [WorkflowExpression] Func<int> bodycontactdefaultPaymentTermsInDays = null, [WorkflowExpression] Func<string> bodycontactlocale = null, [WorkflowExpression] Func<string> bodycontactcountry = null)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(bodycontactcontactNameOnInvoices, nameof(bodycontactcontactNameOnInvoices), required: false);
-            SourceExpression.Validate(bodycontactdefaultPaymentTermsInDays, nameof(bodycontactdefaultPaymentTermsInDays), required: false);
-            SourceExpression.Validate(bodycontactlocale, nameof(bodycontactlocale), required: false);
-            SourceExpression.Validate(bodycontactcountry, nameof(bodycontactcountry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -101,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction DeleteInvoice([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -116,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ShowInvoiceResponse> ShowInvoice([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -131,13 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction UpdateInvoice([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinvoicedatedOn = null, [WorkflowExpression] Func<string> bodyinvoicedueOn = null, [WorkflowExpression] Func<string> bodyinvoicecurrency = null, [WorkflowExpression] Func<string> bodyinvoiceexchangeRate = null, [WorkflowExpression] Func<string> bodyinvoicestatus = null, [WorkflowExpression] Func<bodyinvoiceinvoiceItemsInputItem[]> bodyinvoiceinvoiceItems = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
-            SourceExpression.Validate(bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
-            SourceExpression.Validate(bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
-            SourceExpression.Validate(bodyinvoiceexchangeRate, nameof(bodyinvoiceexchangeRate), required: false);
-            SourceExpression.Validate(bodyinvoicestatus, nameof(bodyinvoicestatus), required: false);
-            SourceExpression.Validate(bodyinvoiceinvoiceItems, nameof(bodyinvoiceinvoiceItems), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -216,19 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodycontactfirstName = null, [WorkflowExpression] Func<string> bodycontactlastName = null, [WorkflowExpression] Func<string> bodycontactorganisationName = null, [WorkflowExpression] Func<string> bodycontactemail = null, [WorkflowExpression] Func<string> bodycontacttelephone = null, [WorkflowExpression] Func<string> bodycontactmobile = null, [WorkflowExpression] Func<string> bodycontactaddress1 = null, [WorkflowExpression] Func<string> bodycontactaddress2 = null, [WorkflowExpression] Func<string> bodycontactaddress3 = null, [WorkflowExpression] Func<string> bodycontacttown = null, [WorkflowExpression] Func<string> bodycontactregion = null, [WorkflowExpression] Func<string> bodycontactpostcode = null, [WorkflowExpression] Func<string> bodycontactcountry = null)
         {
-            SourceExpression.Validate(bodycontactfirstName, nameof(bodycontactfirstName), required: false);
-            SourceExpression.Validate(bodycontactlastName, nameof(bodycontactlastName), required: false);
-            SourceExpression.Validate(bodycontactorganisationName, nameof(bodycontactorganisationName), required: false);
-            SourceExpression.Validate(bodycontactemail, nameof(bodycontactemail), required: false);
-            SourceExpression.Validate(bodycontacttelephone, nameof(bodycontacttelephone), required: false);
-            SourceExpression.Validate(bodycontactmobile, nameof(bodycontactmobile), required: false);
-            SourceExpression.Validate(bodycontactaddress1, nameof(bodycontactaddress1), required: false);
-            SourceExpression.Validate(bodycontactaddress2, nameof(bodycontactaddress2), required: false);
-            SourceExpression.Validate(bodycontactaddress3, nameof(bodycontactaddress3), required: false);
-            SourceExpression.Validate(bodycontacttown, nameof(bodycontacttown), required: false);
-            SourceExpression.Validate(bodycontactregion, nameof(bodycontactregion), required: false);
-            SourceExpression.Validate(bodycontactpostcode, nameof(bodycontactpostcode), required: false);
-            SourceExpression.Validate(bodycontactcountry, nameof(bodycontactcountry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";
@@ -363,13 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<CreateInvoiceResponse> CreateInvoice([WorkflowExpression] Func<string> bodyinvoicecontact = null, [WorkflowExpression] Func<string> bodyinvoicedatedOn = null, [WorkflowExpression] Func<string> bodyinvoicedueOn = null, [WorkflowExpression] Func<string> bodyinvoicecurrency = null, [WorkflowExpression] Func<bool> bodyinvoiceomitHeader = null, [WorkflowExpression] Func<bool> bodyinvoicealwaysShowBICAndIBAN = null, [WorkflowExpression] Func<int> bodyinvoicepaymentTermsInDays = null)
         {
-            SourceExpression.Validate(bodyinvoicecontact, nameof(bodyinvoicecontact), required: false);
-            SourceExpression.Validate(bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
-            SourceExpression.Validate(bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
-            SourceExpression.Validate(bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
-            SourceExpression.Validate(bodyinvoiceomitHeader, nameof(bodyinvoiceomitHeader), required: false);
-            SourceExpression.Validate(bodyinvoicealwaysShowBICAndIBAN, nameof(bodyinvoicealwaysShowBICAndIBAN), required: false);
-            SourceExpression.Validate(bodyinvoicepaymentTermsInDays, nameof(bodyinvoicepaymentTermsInDays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoices";
@@ -440,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ShowRecurringInvoiceResponse> ShowRecurringInvoice([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recurring_invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -455,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsCancelled([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_cancelled", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -470,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsDraft([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -485,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsScheduled([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_scheduled", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -500,7 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IWorkflowAction MarkInvoiceAsSent([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_sent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

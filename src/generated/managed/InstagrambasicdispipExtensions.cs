@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
         public IBodyWorkflowAction<GetMyMediaResponse> GetMyMedia([WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me/media";
@@ -32,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
         public IBodyWorkflowAction<GetMyDetailsResponse> GetMyDetails([WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/me";
@@ -50,8 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
         public IBodyWorkflowAction<GetMediaDetailsResponse> GetMediaDetails([WorkflowExpression] Func<string> mediaId, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(mediaId, nameof(mediaId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
@@ -69,8 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
         public IBodyWorkflowAction<RefreshTokenResponse> RefreshToken([WorkflowExpression] Func<string> grantType, [WorkflowExpression] Func<string> accessToken)
         {
-            SourceExpression.Validate(grantType, nameof(grantType), required: true);
-            SourceExpression.Validate(accessToken, nameof(accessToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/refresh_access_token";

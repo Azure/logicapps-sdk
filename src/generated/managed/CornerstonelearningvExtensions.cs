@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         public IWorkflowAction AddInstructorResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response/addInstuctor";
@@ -51,10 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         public IWorkflowAction GetAttendanceResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<Attendees[]> bodyattendees = null)
         {
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodyattendees, nameof(bodyattendees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response/getAttendance";
@@ -95,10 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         public IWorkflowAction LaunchSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodyjoinUrl = null)
         {
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodyjoinUrl, nameof(bodyjoinUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response/launchSession";
@@ -139,15 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         public IWorkflowAction CreateSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycorpId = null, [WorkflowExpression] Func<string> bodymeetingId = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodyjoinURL = null)
         {
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycorpId, nameof(bodycorpId), required: false);
-            SourceExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: false);
-            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
-            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
-            SourceExpression.Validate(bodyjoinURL, nameof(bodyjoinURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response/createSession";
@@ -218,15 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         public IWorkflowAction UpdateSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycorpId = null, [WorkflowExpression] Func<string> bodymeetingId = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodyjoinURL = null)
         {
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycorpId, nameof(bodycorpId), required: false);
-            SourceExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: false);
-            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
-            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
-            SourceExpression.Validate(bodyjoinURL, nameof(bodyjoinURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response/updateSession";
@@ -297,9 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         public IWorkflowAction DeleteSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response/deleteSession";
@@ -334,9 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
         public IWorkflowAction UpdateInstructorResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/response/updateInstructor";

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IBodyWorkflowAction<GroupExtended> GroupMgrGroupApproval([WorkflowExpression] Func<string> bodylistItemId, [WorkflowExpression] Func<bodyapprovedInput> bodyapproved)
         {
-            SourceExpression.Validate(bodylistItemId, nameof(bodylistItemId), required: true);
-            SourceExpression.Validate(bodyapproved, nameof(bodyapproved), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ConfimationTrigger";
@@ -40,15 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IBodyWorkflowAction<GroupExtended> GroupMgrCreateGroup([WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string[]> bodyowners, [WorkflowExpression] Func<string[]> bodymembers = null, [WorkflowExpression] Func<string> bodygroupType = null, [WorkflowExpression] Func<bodyisPublicInput> bodyisPublic = null, [WorkflowExpression] Func<bool> bodycreateTeam = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycreatedBy = null)
         {
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyowners, nameof(bodyowners), required: true);
-            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
-            SourceExpression.Validate(bodygroupType, nameof(bodygroupType), required: false);
-            SourceExpression.Validate(bodyisPublic, nameof(bodyisPublic), required: false);
-            SourceExpression.Validate(bodycreateTeam, nameof(bodycreateTeam), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -131,14 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IBodyWorkflowAction<GroupExtended> GroupMgrUpdateGroup([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string[]> bodyowners = null, [WorkflowExpression] Func<string[]> bodymembers = null, [WorkflowExpression] Func<string> bodygroupType = null, [WorkflowExpression] Func<bodyisPublicInput> bodyisPublic = null, [WorkflowExpression] Func<bool> bodycreateTeam = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodyowners, nameof(bodyowners), required: false);
-            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
-            SourceExpression.Validate(bodygroupType, nameof(bodygroupType), required: false);
-            SourceExpression.Validate(bodyisPublic, nameof(bodyisPublic), required: false);
-            SourceExpression.Validate(bodycreateTeam, nameof(bodycreateTeam), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -223,7 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IWorkflowAction GroupMgrDeleteGroup([WorkflowExpression] Func<string> bodylistItemId)
         {
-            SourceExpression.Validate(bodylistItemId, nameof(bodylistItemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -246,8 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IWorkflowAction GroupMgrArchiveGroup([WorkflowExpression] Func<string> bodylistItemId, [WorkflowExpression] Func<bodyarchiveInput> bodyarchive)
         {
-            SourceExpression.Validate(bodylistItemId, nameof(bodylistItemId), required: true);
-            SourceExpression.Validate(bodyarchive, nameof(bodyarchive), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -274,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     {
         public IWorkflowTrigger GroupMgrGroupRequested([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhookrequest/GroupRequested";

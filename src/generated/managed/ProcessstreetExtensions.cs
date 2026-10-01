@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<SimpleUser> GetUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -29,10 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<CreateWorkflowRunResponse> CreateWorkflowRun([WorkflowExpression] Func<string> bodyworkflowId, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyshared = null)
         {
-            SourceExpression.Validate(bodyworkflowId, nameof(bodyworkflowId), required: true);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyshared, nameof(bodyshared), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflow-runs";
@@ -73,11 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<WorkflowRunResponse> UpdateWorkflowRun([WorkflowExpression] Func<string> workflowRunId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyshared, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydueDate = null)
         {
-            SourceExpression.Validate(workflowRunId, nameof(workflowRunId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyshared, nameof(bodyshared), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowRunId, 1));
@@ -110,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<JToken> ListFormFieldValues([WorkflowExpression] Func<string> workflowRunId, [WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> taskId = null)
         {
-            SourceExpression.Validate(workflowRunId, nameof(workflowRunId), required: true);
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}/form-fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowRunId, 1));
@@ -130,10 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<FindWorkflowRunsResponse> FindWorkflowRuns([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string[]> bodyassignees = null, [WorkflowExpression] Func<object> bodyformFields = null, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(bodyassignees, nameof(bodyassignees), required: false);
-            SourceExpression.Validate(bodyformFields, nameof(bodyformFields), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
@@ -172,10 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse> UpdateFormFieldValuesWithWorkflowId([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> workflowRunId, [WorkflowExpression] Func<string> taskId = null, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(workflowRunId, nameof(workflowRunId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/{1}/form-fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowRunId, 1));
@@ -195,9 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
     {
         public IWorkflowTrigger CreateTaskStateChangedTrigger([WorkflowExpression] Func<bodytaskStateInput> bodytaskState, [WorkflowExpression] Func<string> bodytaskId = null, [WorkflowExpression] Func<string> bodyworkflowId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytaskState, nameof(bodytaskState), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
-            SourceExpression.Validate(bodyworkflowId, nameof(bodyworkflowId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/triggers/task-state-changed";
@@ -233,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
         public IWorkflowTrigger CreateWorkflowRunCompletedTrigger([WorkflowExpression] Func<string> bodyworkflowId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowId, nameof(bodyworkflowId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/triggers/workflow-run-completed";
@@ -261,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
         public IWorkflowTrigger CreateWorkflowRunCreatedTrigger([WorkflowExpression] Func<string> bodyworkflowId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowId, nameof(bodyworkflowId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/triggers/workflow-run-created";

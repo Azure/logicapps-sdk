@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<Incident> GetIncidentByKey([WorkflowExpression] Func<string> incidentKey)
         {
-            SourceExpression.Validate(incidentKey, nameof(incidentKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action8/incidents";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<User> GetUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -45,9 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<AddNoteResponse> AddNoteToIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestaddedBy, [WorkflowExpression] Func<string> requestnote)
         {
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(requestaddedBy, nameof(requestaddedBy), required: true);
-            SourceExpression.Validate(requestnote, nameof(requestnote), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/incidents/{0}/notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -72,8 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> AcknowledgeIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestacknowledgedBy)
         {
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(requestacknowledgedBy, nameof(requestacknowledgedBy), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/action1/incidents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -96,8 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> ResolveIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestresolvedBy)
         {
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(requestresolvedBy, nameof(requestresolvedBy), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/action2/incidents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -120,9 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> ReassignIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestfromUser, [WorkflowExpression] Func<string> requesttoUser)
         {
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(requestfromUser, nameof(requestfromUser), required: true);
-            SourceExpression.Validate(requesttoUser, nameof(requesttoUser), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/action3/incidents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -147,9 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> SnoozeIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestsnoozedBy, [WorkflowExpression] Func<int> requestsnooze)
         {
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(requestsnoozedBy, nameof(requestsnoozedBy), required: true);
-            SourceExpression.Validate(requestsnooze, nameof(requestsnooze), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/action4/incidents/{0}/snooze", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -174,9 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> EscalateIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestescalatedBy, [WorkflowExpression] Func<string> requestescalationPolicy)
         {
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(requestescalatedBy, nameof(requestescalatedBy), required: true);
-            SourceExpression.Validate(requestescalationPolicy, nameof(requestescalationPolicy), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/action5/incidents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -201,8 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<NewIncident> CreateIncident([WorkflowExpression] Func<string> requestserviceKey, [WorkflowExpression] Func<string> requestdescription)
         {
-            SourceExpression.Validate(requestserviceKey, nameof(requestserviceKey), required: true);
-            SourceExpression.Validate(requestdescription, nameof(requestdescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/incidents/create";
@@ -229,7 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
     {
         public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote([WorkflowExpression] Func<string> incidentId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger1/incidents/{0}/notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -256,7 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
         public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned([WorkflowExpression] Func<string> userId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger3/incidents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));

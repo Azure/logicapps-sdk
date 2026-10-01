@@ -16,7 +16,7 @@ $publish = Join-Path $work 'publish'
 if (Test-Path -LiteralPath $work) {
     Remove-Item -LiteralPath $work -Recurse -Force
 }
-foreach ($fixture in @('Consumer', 'Generator', 'WorkerConsumer', 'SamplesConsumer')) {
+foreach ($fixture in @('Consumer', 'Generator', 'WorkerConsumer', 'SamplesConsumer', 'ConnectorConsumer')) {
     foreach ($directory in @('bin', 'obj')) {
         $generated = Join-Path $root "$fixture\$directory"
         if (Test-Path -LiteralPath $generated) {
@@ -35,6 +35,7 @@ try {
         'lib/netstandard2.0/Microsoft.Azure.Workflows.Sdk.dll',
         'buildTransitive/Microsoft.Azure.Workflows.Sdk.props',
         'buildTransitive/Microsoft.Azure.Workflows.Sdk.targets',
+        'buildTransitive/Microsoft.Azure.Workflows.Sdk.BuildTasks.targets',
         'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.dll',
         'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.deps.json',
         'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.runtimeconfig.json',
@@ -67,6 +68,11 @@ $project = Join-Path $root 'Consumer\Consumer.csproj'
 $source = Join-Path $root 'Consumer\Program.cs'
 $hash = (Get-FileHash -LiteralPath $source).Hash
 $properties = @("-p:SdkPackageVersion=$version", "-p:RestorePackagesPath=$packages")
+$connectorProject = Join-Path $root 'ConnectorConsumer\ConnectorConsumer.csproj'
+Invoke-DotNet (@('restore', $connectorProject, '--force', "-p:RestoreAdditionalProjectSources=$feed") + $properties)
+Invoke-DotNet (@('build', $connectorProject, '--no-restore', '-c', $Configuration, '-v:q') + $properties)
+Invoke-DotNet (@('run', '--project', $connectorProject, '--no-build', '--no-restore', '-c', $Configuration) + $properties)
+Write-Host 'CHECK packaged-connectors-without-consumer-rewriting PASS'
 Invoke-DotNet (@('restore', $project, '--force', "-p:RestoreAdditionalProjectSources=$feed") + $properties)
 $restoredPackage = Join-Path $packages "microsoft.azure.workflows.sdk\$version\microsoft.azure.workflows.sdk.$version.nupkg"
 if ((Get-FileHash -LiteralPath $restoredPackage).Hash -ne (Get-FileHash -LiteralPath $package.FullName).Hash) {

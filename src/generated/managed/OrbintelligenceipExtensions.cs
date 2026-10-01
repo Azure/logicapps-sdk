@@ -14,21 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbintelligenceip")]
         public IBodyWorkflowAction<MatchResponse> Match([WorkflowExpression] Func<string> apiKey = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> website = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> ein = null, [WorkflowExpression] Func<string> npi = null, [WorkflowExpression] Func<string> lei = null, [WorkflowExpression] Func<string> requestId = null, [WorkflowExpression] Func<string> orbNum = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(address1, nameof(address1), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(website, nameof(website), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(ein, nameof(ein), required: false);
-            SourceExpression.Validate(npi, nameof(npi), required: false);
-            SourceExpression.Validate(lei, nameof(lei), required: false);
-            SourceExpression.Validate(requestId, nameof(requestId), required: false);
-            SourceExpression.Validate(orbNum, nameof(orbNum), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/3/match/";
@@ -73,8 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbintelligenceip")]
         public IBodyWorkflowAction<FetchResponse> Fetch([WorkflowExpression] Func<string> orbNum, [WorkflowExpression] Func<string> apiKey = null)
         {
-            SourceExpression.Validate(orbNum, nameof(orbNum), required: true);
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/3/fetch/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orbNum, 1));
@@ -91,34 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbintelligenceip")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> apiKey = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<entityTypeInput> entityType = null, [WorkflowExpression] Func<string> parentOrbNum = null, [WorkflowExpression] Func<int> ultimateParentOrbNum = null, [WorkflowExpression] Func<string> industry = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<employeesInputItem[]> employees = null, [WorkflowExpression] Func<revenueInputItem[]> revenue = null, [WorkflowExpression] Func<string> techs = null, [WorkflowExpression] Func<string> techCategories = null, [WorkflowExpression] Func<string> naicsCodes = null, [WorkflowExpression] Func<string> sicCodes = null, [WorkflowExpression] Func<string> rankings = null, [WorkflowExpression] Func<string> importanceScore = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> cusip = null, [WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<string> exchange = null, [WorkflowExpression] Func<bool> showFullProfile = null, [WorkflowExpression] Func<string> include = null, [WorkflowExpression] Func<int> orbNum = null, [WorkflowExpression] Func<string[]> categories = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(entityType, nameof(entityType), required: false);
-            SourceExpression.Validate(parentOrbNum, nameof(parentOrbNum), required: false);
-            SourceExpression.Validate(ultimateParentOrbNum, nameof(ultimateParentOrbNum), required: false);
-            SourceExpression.Validate(industry, nameof(industry), required: false);
-            SourceExpression.Validate(address1, nameof(address1), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(employees, nameof(employees), required: false);
-            SourceExpression.Validate(revenue, nameof(revenue), required: false);
-            SourceExpression.Validate(techs, nameof(techs), required: false);
-            SourceExpression.Validate(techCategories, nameof(techCategories), required: false);
-            SourceExpression.Validate(naicsCodes, nameof(naicsCodes), required: false);
-            SourceExpression.Validate(sicCodes, nameof(sicCodes), required: false);
-            SourceExpression.Validate(rankings, nameof(rankings), required: false);
-            SourceExpression.Validate(importanceScore, nameof(importanceScore), required: false);
-            SourceExpression.Validate(cik, nameof(cik), required: false);
-            SourceExpression.Validate(cusip, nameof(cusip), required: false);
-            SourceExpression.Validate(ticker, nameof(ticker), required: false);
-            SourceExpression.Validate(exchange, nameof(exchange), required: false);
-            SourceExpression.Validate(showFullProfile, nameof(showFullProfile), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
-            SourceExpression.Validate(orbNum, nameof(orbNum), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/3/search/";
@@ -191,29 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbintelligenceip")]
         public IBodyWorkflowAction<LookAlikeResponse> LookAlike([WorkflowExpression] Func<int> orbNum, [WorkflowExpression] Func<string> apiKey = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> industry = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<employeesInputItem[]> employees = null, [WorkflowExpression] Func<revenueInputItem[]> revenue = null, [WorkflowExpression] Func<string> techs = null, [WorkflowExpression] Func<string> techCategories = null, [WorkflowExpression] Func<string> naicsCodes = null, [WorkflowExpression] Func<string> sicCodes = null, [WorkflowExpression] Func<string> rankings = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> cusip = null, [WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<string> exchange = null, [WorkflowExpression] Func<bool> showFullProfile = null, [WorkflowExpression] Func<string> include = null)
         {
-            SourceExpression.Validate(orbNum, nameof(orbNum), required: true);
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(industry, nameof(industry), required: false);
-            SourceExpression.Validate(address1, nameof(address1), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(employees, nameof(employees), required: false);
-            SourceExpression.Validate(revenue, nameof(revenue), required: false);
-            SourceExpression.Validate(techs, nameof(techs), required: false);
-            SourceExpression.Validate(techCategories, nameof(techCategories), required: false);
-            SourceExpression.Validate(naicsCodes, nameof(naicsCodes), required: false);
-            SourceExpression.Validate(sicCodes, nameof(sicCodes), required: false);
-            SourceExpression.Validate(rankings, nameof(rankings), required: false);
-            SourceExpression.Validate(cik, nameof(cik), required: false);
-            SourceExpression.Validate(cusip, nameof(cusip), required: false);
-            SourceExpression.Validate(ticker, nameof(ticker), required: false);
-            SourceExpression.Validate(exchange, nameof(exchange), required: false);
-            SourceExpression.Validate(showFullProfile, nameof(showFullProfile), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/3/lookalike/";
@@ -275,10 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbintelligenceip")]
         public IBodyWorkflowAction<CorporateTreeResponse> CorporateTree([WorkflowExpression] Func<string> orbNum, [WorkflowExpression] Func<string> apiKey = null, [WorkflowExpression] Func<bool> showFullProfile = null, [WorkflowExpression] Func<string> include = null)
         {
-            SourceExpression.Validate(orbNum, nameof(orbNum), required: true);
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: false);
-            SourceExpression.Validate(showFullProfile, nameof(showFullProfile), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/3/corporate_tree/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orbNum, 1));

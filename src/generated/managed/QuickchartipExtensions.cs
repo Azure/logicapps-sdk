@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<ChartPostResponse> Chart([WorkflowExpression] Func<string> bodychart, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<string> bodydevicePixelRatio = null, [WorkflowExpression] Func<string> bodybackgroundColor = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<bodyencodingInput> bodyencoding = null, [WorkflowExpression] Func<string> bodyversion = null)
         {
-            SourceExpression.Validate(bodychart, nameof(bodychart), required: true);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            SourceExpression.Validate(bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
-            SourceExpression.Validate(bodybackgroundColor, nameof(bodybackgroundColor), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodyencoding, nameof(bodyencoding), required: false);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/chart";
@@ -106,14 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<ChartURLResponse> ChartURL([WorkflowExpression] Func<string> bodychart, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<string> bodydevicePixelRatio = null, [WorkflowExpression] Func<string> bodybackgroundColor = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<bodyencodingInput> bodyencoding = null, [WorkflowExpression] Func<string> bodyversion = null)
         {
-            SourceExpression.Validate(bodychart, nameof(bodychart), required: true);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            SourceExpression.Validate(bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
-            SourceExpression.Validate(bodybackgroundColor, nameof(bodybackgroundColor), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodyencoding, nameof(bodyencoding), required: false);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/chart/create";
@@ -198,11 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<ChartTemplateResponse> ChartTemplate([WorkflowExpression] Func<string> chartId, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> labels = null, [WorkflowExpression] Func<string> data1 = null, [WorkflowExpression] Func<string> data2 = null)
         {
-            SourceExpression.Validate(chartId, nameof(chartId), required: true);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(labels, nameof(labels), required: false);
-            SourceExpression.Validate(data1, nameof(data1), required: false);
-            SourceExpression.Validate(data2, nameof(data2), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/chart/render/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chartId, 1));
@@ -225,17 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<QRCodeResponse> QRCode([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<int> margin = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> dark = null, [WorkflowExpression] Func<string> light = null, [WorkflowExpression] Func<ecLevelInput> ecLevel = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> centerImageUrl = null, [WorkflowExpression] Func<double> centerImageSizeRatio = null, [WorkflowExpression] Func<int> centerImageWidth = null, [WorkflowExpression] Func<int> centerImageHeight = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: false);
-            SourceExpression.Validate(margin, nameof(margin), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(dark, nameof(dark), required: false);
-            SourceExpression.Validate(light, nameof(light), required: false);
-            SourceExpression.Validate(ecLevel, nameof(ecLevel), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(centerImageUrl, nameof(centerImageUrl), required: false);
-            SourceExpression.Validate(centerImageSizeRatio, nameof(centerImageSizeRatio), required: false);
-            SourceExpression.Validate(centerImageWidth, nameof(centerImageWidth), required: false);
-            SourceExpression.Validate(centerImageHeight, nameof(centerImageHeight), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/qr";
@@ -278,11 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<GraphVizResponse> GraphViz([WorkflowExpression] Func<string> bodygraph, [WorkflowExpression] Func<bodylayoutInput> bodylayout = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null)
         {
-            SourceExpression.Validate(bodygraph, nameof(bodygraph), required: true);
-            SourceExpression.Validate(bodylayout, nameof(bodylayout), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphviz";
@@ -349,24 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<WordCloudResponse> WordCloud([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<string> backgroundColor = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> fontFamily = null, [WorkflowExpression] Func<string> loadGoogleFonts = null, [WorkflowExpression] Func<int> fontScale = null, [WorkflowExpression] Func<scaleInput> scale = null, [WorkflowExpression] Func<int> padding = null, [WorkflowExpression] Func<int> rotation = null, [WorkflowExpression] Func<int> maxNumWords = null, [WorkflowExpression] Func<int> minWordLength = null, [WorkflowExpression] Func<@caseInput> @case = null, [WorkflowExpression] Func<string> colors = null, [WorkflowExpression] Func<bool> removeStopwords = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> useWordList = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: false);
-            SourceExpression.Validate(width, nameof(width), required: false);
-            SourceExpression.Validate(height, nameof(height), required: false);
-            SourceExpression.Validate(backgroundColor, nameof(backgroundColor), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(fontFamily, nameof(fontFamily), required: false);
-            SourceExpression.Validate(loadGoogleFonts, nameof(loadGoogleFonts), required: false);
-            SourceExpression.Validate(fontScale, nameof(fontScale), required: false);
-            SourceExpression.Validate(scale, nameof(scale), required: false);
-            SourceExpression.Validate(padding, nameof(padding), required: false);
-            SourceExpression.Validate(rotation, nameof(rotation), required: false);
-            SourceExpression.Validate(maxNumWords, nameof(maxNumWords), required: false);
-            SourceExpression.Validate(minWordLength, nameof(minWordLength), required: false);
-            SourceExpression.Validate(@case, nameof(@case), required: false);
-            SourceExpression.Validate(colors, nameof(colors), required: false);
-            SourceExpression.Validate(removeStopwords, nameof(removeStopwords), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(useWordList, nameof(useWordList), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/wordcloud";

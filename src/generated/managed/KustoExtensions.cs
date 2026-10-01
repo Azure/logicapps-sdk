@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kusto")]
         public IBodyWorkflowAction<MCPQueryResponse> McpKustoQueryManagement([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mcp/KustoQueryManagement";

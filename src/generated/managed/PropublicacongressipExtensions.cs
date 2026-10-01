@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<MemberGetResponse> MemberGet([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<bool> inOffice = null)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(inOffice, nameof(inOffice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/members.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -33,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<MemberGetAResponse> MemberGetA([WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -62,8 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<MemberGetStateResponse> MemberGetState([WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<string> state)
         {
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(state, nameof(state), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/{1}/current.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
@@ -78,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<MemberGetLeavingResponse> MemberGetLeaving([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/members/leaving.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -94,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<MemberGetVoteResponse> MemberGetVote([WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/votes.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -109,10 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<MemberGetVotePositionsResponse> MemberGetVotePositions([WorkflowExpression] Func<string> firstMemberId, [WorkflowExpression] Func<string> secondMemberId, [WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber)
         {
-            SourceExpression.Validate(firstMemberId, nameof(firstMemberId), required: true);
-            SourceExpression.Validate(secondMemberId, nameof(secondMemberId), required: true);
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/votes/{1}/{2}/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(firstMemberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secondMemberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -127,10 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<MemberGetBillResponse> MemberGetBill([WorkflowExpression] Func<string> firstMemberId, [WorkflowExpression] Func<string> secondMemberId, [WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber)
         {
-            SourceExpression.Validate(firstMemberId, nameof(firstMemberId), required: true);
-            SourceExpression.Validate(secondMemberId, nameof(secondMemberId), required: true);
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/bills/{1}/{2}/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(firstMemberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secondMemberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -145,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillRecentMemberResponse> BillRecentMember([WorkflowExpression] Func<string> memberId, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/bills/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
@@ -161,9 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<HouseOfficeExpenseResponse> HouseOfficeExpense([WorkflowExpression] Func<string> memberId, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> quarter)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(quarter, nameof(quarter), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/office_expenses/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(quarter, 1));
@@ -178,8 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<HouseOfficeCategoryResponse> HouseOfficeCategory([WorkflowExpression] Func<string> memberId, [WorkflowExpression] Func<categoryInput> category)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
-            SourceExpression.Validate(category, nameof(category), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/office_expenses/category/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(category, 1));
@@ -194,9 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<HouseOfficeQuarterCategoryResponse> HouseOfficeQuarterCategory([WorkflowExpression] Func<categoryInput> category, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> quarter)
         {
-            SourceExpression.Validate(category, nameof(category), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(quarter, nameof(quarter), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/office_expenses/category/{0}/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(category, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(quarter, 1));
@@ -211,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<TripPrivateGetResponse> TripPrivateGet([WorkflowExpression] Func<string> congress)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/private-trips.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1));
@@ -226,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<TripPrivateGetAResponse> TripPrivateGetA([WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/private-trips.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -241,9 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillSearchResponse> BillSearch([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<dirInput> dir = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(dir, nameof(dir), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bills/search.json";
@@ -266,9 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillRecentResponse> BillRecent([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/bills/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
@@ -283,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillRecentSubjectResponse> BillRecentSubject([WorkflowExpression] Func<string> subject)
         {
-            SourceExpression.Validate(subject, nameof(subject), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bills/subjects/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subject, 1));
@@ -298,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillUpcomingResponse> BillUpcoming([WorkflowExpression] Func<chamberInput> chamber)
         {
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bills/upcoming/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -313,8 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillGetResponse> BillGet([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<string> billId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(billId, nameof(billId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/bills/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billId, 1));
@@ -329,8 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillAmendmentsResponse> BillAmendments([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<string> billId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(billId, nameof(billId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/bills/{1}/amendments.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billId, 1));
@@ -345,8 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillSubjectResponse> BillSubject([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<string> billId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(billId, nameof(billId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/bills/{1}/subjects.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billId, 1));
@@ -361,8 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillRelatedResponse> BillRelated([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<string> billId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(billId, nameof(billId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/bills/{1}/related.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billId, 1));
@@ -377,8 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<BillCosponsorResponse> BillCosponsor([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<string> billId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(billId, nameof(billId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/bills/{1}/cosponsors.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billId, 1));
@@ -393,8 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<VoteRecentResponse> VoteRecent([WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/votes/recent.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -411,10 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<VoteRollCallResponse> VoteRollCall([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<string> sessionNumber, [WorkflowExpression] Func<int> rollCallNumber)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(sessionNumber, nameof(sessionNumber), required: true);
-            SourceExpression.Validate(rollCallNumber, nameof(rollCallNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/sessions/{2}/votes/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(rollCallNumber, 1));
@@ -429,9 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<VoteTypeResponse> VoteType([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<voteTypeInput> voteType)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(voteType, nameof(voteType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/votes/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(voteType, 1));
@@ -446,9 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<VoteDateResponse> VoteDate([WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate)
         {
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/votes/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(startDate, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endDate, 1));
@@ -463,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<VoteNominationResponse> VoteNomination([WorkflowExpression] Func<string> congress)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/nominations.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1));
@@ -478,8 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<ExplanationRecentResponse> ExplanationRecent([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/explanations.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1));
@@ -496,9 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<ExplanationRecentGetResponse> ExplanationRecentGet([WorkflowExpression] Func<string> memberId, [WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/members/{0}/explanations/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1));
@@ -515,8 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<CommitteeGetResponse> CommitteeGet([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/committees.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -531,9 +464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<CommitteeGetAResponse> CommitteeGetA([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<string> committeeId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(committeeId, nameof(committeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/committees/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(committeeId, 1));
@@ -548,7 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<CommitteeHearingRecentResponse> CommitteeHearingRecent([WorkflowExpression] Func<string> congress)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/committees/hearings.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1));
@@ -563,10 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<CommitteeHearingAResponse> CommitteeHearingA([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<string> committeeId, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(committeeId, nameof(committeeId), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/committees/{2}/hearings.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(committeeId, 1));
@@ -583,10 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<SubcommitteeGetResponse> SubcommitteeGet([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<string> committeeId, [WorkflowExpression] Func<string> subcommitteeId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(committeeId, nameof(committeeId), required: true);
-            SourceExpression.Validate(subcommitteeId, nameof(subcommitteeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/committees/{2}/subcommittees/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(committeeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subcommitteeId, 1));
@@ -601,7 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<CommunicationRecentResponse> CommunicationRecent([WorkflowExpression] Func<string> congress)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/communications.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1));
@@ -616,8 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<CommunicationRecentCategoryResponse> CommunicationRecentCategory([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<categoryInput> category)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(category, nameof(category), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/communications/category/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(category, 1));
@@ -632,7 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<CommunicationDateResponse> CommunicationDate([WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/communications/date/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -647,8 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<NominationGetResponse> NominationGet([WorkflowExpression] Func<string> congress, [WorkflowExpression] Func<string> nomineeId)
         {
-            SourceExpression.Validate(congress, nameof(congress), required: true);
-            SourceExpression.Validate(nomineeId, nameof(nomineeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/nominees/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(congress, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nomineeId, 1));
@@ -663,8 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<FloorActionResponse> FloorAction([WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/floor_updates.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1));
@@ -681,10 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<FloorActionDateResponse> FloorActionDate([WorkflowExpression] Func<chamberInput> chamber, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
         {
-            SourceExpression.Validate(chamber, nameof(chamber), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(month, nameof(month), required: true);
-            SourceExpression.Validate(day, nameof(day), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/floor_updates/{1}/{2}/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chamber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(month, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(day, 1));
@@ -699,7 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<LobbyingResponse> Lobbying([WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lobbying/latest.json";
@@ -716,8 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<LobbyingSearchResponse> LobbyingSearch([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lobbying/search.json";
@@ -736,7 +642,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
         public IBodyWorkflowAction<LobbyingGetAResponse> LobbyingGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lobbying/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

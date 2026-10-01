@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
         public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms([WorkflowExpression] Func<string> wPSITEURL)
         {
-            SourceExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
@@ -32,8 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     {
         public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));

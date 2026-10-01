@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventListEntry> ListEvents([WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> lookupId = null, [WorkflowExpression] Func<string> startDateFrom = null, [WorkflowExpression] Func<string> startDateTo = null, [WorkflowExpression] Func<bool> includeInactive = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> eventId = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(lookupId, nameof(lookupId), required: false);
-            SourceExpression.Validate(startDateFrom, nameof(startDateFrom), required: false);
-            SourceExpression.Validate(startDateTo, nameof(startDateTo), required: false);
-            SourceExpression.Validate(includeInactive, nameof(includeInactive), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(eventId, nameof(eventId), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/v1/eventlist";
@@ -61,19 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEvent> CreateEvent([WorkflowExpression] Func<string> bodyeventName, [WorkflowExpression] Func<string> bodycategorycategory, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<int> bodycapacity = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<string> bodycampaignId = null, [WorkflowExpression] Func<string> bodyfundId = null, [WorkflowExpression] Func<bool> bodyinactive = null)
         {
-            SourceExpression.Validate(bodyeventName, nameof(bodyeventName), required: true);
-            SourceExpression.Validate(bodycategorycategory, nameof(bodycategorycategory), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodycapacity, nameof(bodycapacity), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
-            SourceExpression.Validate(bodyfundId, nameof(bodyfundId), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/v1/events";
@@ -168,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiEvent> GetEvent([WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -183,20 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditEvent([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<string> bodycategorycategory, [WorkflowExpression] Func<string> bodyeventName = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<int> bodycapacity = null, [WorkflowExpression] Func<double> bodygoal = null, [WorkflowExpression] Func<string> bodycampaignId = null, [WorkflowExpression] Func<string> bodyfundId = null, [WorkflowExpression] Func<bool> bodyinactive = null)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(bodycategorycategory, nameof(bodycategorycategory), required: true);
-            SourceExpression.Validate(bodyeventName, nameof(bodyeventName), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodycapacity, nameof(bodycapacity), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
-            SourceExpression.Validate(bodyfundId, nameof(bodyfundId), required: false);
-            SourceExpression.Validate(bodyinactive, nameof(bodyinactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -299,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiEventAttachmentCollection> ListEventAttachments([WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -314,15 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEventAttachment> CreateEventAttachment([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodythumbnailId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodythumbnailId, nameof(bodythumbnailId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -387,12 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditEventAttachment([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<string> attachmentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/attachments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -437,7 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventFee> ListEventFees([WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventfees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -452,10 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEventFee> CreateEventFee([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyfeeAmount, [WorkflowExpression] Func<double> bodycontributionAmount)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyfeeAmount, nameof(bodyfeeAmount), required: true);
-            SourceExpression.Validate(bodycontributionAmount, nameof(bodycontributionAmount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventfees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -482,7 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventParticipantOption> ListEventParticipantOptions([WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventparticipantoptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -497,11 +436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEventParticipantOption> CreateEventParticipantOption([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyinputTypeInput> bodyinputType, [WorkflowExpression] Func<bool> bodyallowMultiSelect = null, [WorkflowExpression] Func<EventApiCreateParticipantOptionListOption[]> bodylistOptions = null)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyinputType, nameof(bodyinputType), required: true);
-            SourceExpression.Validate(bodyallowMultiSelect, nameof(bodyallowMultiSelect), required: false);
-            SourceExpression.Validate(bodylistOptions, nameof(bodylistOptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventparticipantoptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -538,20 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantListEntry> ListEventParticipants([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<rsvpStatusInput> rsvpStatus = null, [WorkflowExpression] Func<invitationStatusInput> invitationStatus = null, [WorkflowExpression] Func<string> participationLevel = null, [WorkflowExpression] Func<bool> attendedFilter = null, [WorkflowExpression] Func<bool> feesPaidFilter = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> isConstituentFilter = null, [WorkflowExpression] Func<bool> emailEligibleFilter = null, [WorkflowExpression] Func<bool> phoneCallEligibleFilter = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(rsvpStatus, nameof(rsvpStatus), required: false);
-            SourceExpression.Validate(invitationStatus, nameof(invitationStatus), required: false);
-            SourceExpression.Validate(participationLevel, nameof(participationLevel), required: false);
-            SourceExpression.Validate(attendedFilter, nameof(attendedFilter), required: false);
-            SourceExpression.Validate(feesPaidFilter, nameof(feesPaidFilter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(isConstituentFilter, nameof(isConstituentFilter), required: false);
-            SourceExpression.Validate(emailEligibleFilter, nameof(emailEligibleFilter), required: false);
-            SourceExpression.Validate(phoneCallEligibleFilter, nameof(phoneCallEligibleFilter), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/participants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -593,20 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipant> CreateParticipant([WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<string> bodyconstituentId, [WorkflowExpression] Func<string> bodyparticipationLevelparticipationLevel, [WorkflowExpression] Func<string> bodyhostId = null, [WorkflowExpression] Func<bodyrSVPStatusInput> bodyrSVPStatus = null, [WorkflowExpression] Func<bool> bodyattended = null, [WorkflowExpression] Func<bodyinvitationStatusInput> bodyinvitationStatus = null, [WorkflowExpression] Func<int> bodyrSVPDateday = null, [WorkflowExpression] Func<int> bodyrSVPDatemonth = null, [WorkflowExpression] Func<int> bodyrSVPDateyear = null, [WorkflowExpression] Func<int> bodyinvitationDateday = null, [WorkflowExpression] Func<int> bodyinvitationDatemonth = null, [WorkflowExpression] Func<int> bodyinvitationDateyear = null, [WorkflowExpression] Func<string> bodysummaryNote = null)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
-            SourceExpression.Validate(bodyhostId, nameof(bodyhostId), required: false);
-            SourceExpression.Validate(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
-            SourceExpression.Validate(bodyattended, nameof(bodyattended), required: false);
-            SourceExpression.Validate(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
-            SourceExpression.Validate(bodyrSVPDateday, nameof(bodyrSVPDateday), required: false);
-            SourceExpression.Validate(bodyrSVPDatemonth, nameof(bodyrSVPDatemonth), required: false);
-            SourceExpression.Validate(bodyrSVPDateyear, nameof(bodyrSVPDateyear), required: false);
-            SourceExpression.Validate(bodyinvitationDateday, nameof(bodyinvitationDateday), required: false);
-            SourceExpression.Validate(bodyinvitationDatemonth, nameof(bodyinvitationDatemonth), required: false);
-            SourceExpression.Validate(bodyinvitationDateyear, nameof(bodyinvitationDateyear), required: false);
-            SourceExpression.Validate(bodysummaryNote, nameof(bodysummaryNote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/participants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -721,8 +627,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditParticipantOption([WorkflowExpression] Func<string> optionId, [WorkflowExpression] Func<string> bodyvalue)
         {
-            SourceExpression.Validate(optionId, nameof(optionId), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participantoptions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(optionId, 1));
@@ -745,7 +649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiParticipant> GetParticipant([WorkflowExpression] Func<string> participantId)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -760,20 +663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditParticipant([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<string> bodyparticipationLevelparticipationLevel, [WorkflowExpression] Func<string> bodyconstituentId = null, [WorkflowExpression] Func<string> bodyhostId = null, [WorkflowExpression] Func<bodyrSVPStatusInput> bodyrSVPStatus = null, [WorkflowExpression] Func<bool> bodyattended = null, [WorkflowExpression] Func<bodyinvitationStatusInput> bodyinvitationStatus = null, [WorkflowExpression] Func<int> bodyrSVPDateday = null, [WorkflowExpression] Func<int> bodyrSVPDatemonth = null, [WorkflowExpression] Func<int> bodyrSVPDateyear = null, [WorkflowExpression] Func<int> bodyinvitationDateday = null, [WorkflowExpression] Func<int> bodyinvitationDatemonth = null, [WorkflowExpression] Func<int> bodyinvitationDateyear = null, [WorkflowExpression] Func<string> bodysummaryNote = null)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: false);
-            SourceExpression.Validate(bodyhostId, nameof(bodyhostId), required: false);
-            SourceExpression.Validate(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
-            SourceExpression.Validate(bodyattended, nameof(bodyattended), required: false);
-            SourceExpression.Validate(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
-            SourceExpression.Validate(bodyrSVPDateday, nameof(bodyrSVPDateday), required: false);
-            SourceExpression.Validate(bodyrSVPDatemonth, nameof(bodyrSVPDatemonth), required: false);
-            SourceExpression.Validate(bodyrSVPDateyear, nameof(bodyrSVPDateyear), required: false);
-            SourceExpression.Validate(bodyinvitationDateday, nameof(bodyinvitationDateday), required: false);
-            SourceExpression.Validate(bodyinvitationDatemonth, nameof(bodyinvitationDatemonth), required: false);
-            SourceExpression.Validate(bodyinvitationDateyear, nameof(bodyinvitationDateyear), required: false);
-            SourceExpression.Validate(bodysummaryNote, nameof(bodysummaryNote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -892,9 +781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantDonation> ListParticipantDonations([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/donations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -914,8 +800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantDonation> CreateParticipantDonation([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<string> bodygiftId)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(bodygiftId, nameof(bodygiftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/donations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -938,9 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantFeePayment> ListParticipantFeePayments([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/feepayments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -960,9 +841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantFeePayment> CreateParticipantFeePayment([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<string> bodygiftId, [WorkflowExpression] Func<double> bodyappliedAmount)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(bodygiftId, nameof(bodygiftId), required: true);
-            SourceExpression.Validate(bodyappliedAmount, nameof(bodyappliedAmount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/feepayments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -987,9 +865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantFee> ListParticipantFees([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/fees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -1009,15 +884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantFee> CreateParticipantFee([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<string> bodyeventId, [WorkflowExpression] Func<string> bodyfee, [WorkflowExpression] Func<int> bodyquantity, [WorkflowExpression] Func<double> bodyfeeAmount, [WorkflowExpression] Func<double> bodycontributionAmount, [WorkflowExpression] Func<int> bodydateday = null, [WorkflowExpression] Func<int> bodydatemonth = null, [WorkflowExpression] Func<int> bodydateyear = null)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: true);
-            SourceExpression.Validate(bodyfee, nameof(bodyfee), required: true);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: true);
-            SourceExpression.Validate(bodyfeeAmount, nameof(bodyfeeAmount), required: true);
-            SourceExpression.Validate(bodycontributionAmount, nameof(bodycontributionAmount), required: true);
-            SourceExpression.Validate(bodydateday, nameof(bodydateday), required: false);
-            SourceExpression.Validate(bodydatemonth, nameof(bodydatemonth), required: false);
-            SourceExpression.Validate(bodydateyear, nameof(bodydateyear), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/fees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -1074,7 +940,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantOption> ListParticipantOptions([WorkflowExpression] Func<string> participantId)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/participantoptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));
@@ -1089,10 +954,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantOption> CreateParticipantOption([WorkflowExpression] Func<string> participantId, [WorkflowExpression] Func<string> bodyeventId, [WorkflowExpression] Func<string> bodyoption, [WorkflowExpression] Func<object> bodyoptionValue)
         {
-            SourceExpression.Validate(participantId, nameof(participantId), required: true);
-            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: true);
-            SourceExpression.Validate(bodyoption, nameof(bodyoption), required: true);
-            SourceExpression.Validate(bodyoptionValue, nameof(bodyoptionValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/participantoptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(participantId, 1));

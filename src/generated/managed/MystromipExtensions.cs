@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<ExecuteSceneResponse> ExecuteScene([WorkflowExpression] Func<string> sceneId, [WorkflowExpression] Func<string> authToken)
         {
-            SourceExpression.Validate(sceneId, nameof(sceneId), required: true);
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/scene/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sceneId, 1));
@@ -31,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<GetWebhookResponse> GetWebhook([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> authToken)
         {
-            SourceExpression.Validate(deviceId, nameof(deviceId), required: true);
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
@@ -48,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<DeleteWebhookResponse> DeleteWebhook([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> authToken)
         {
-            SourceExpression.Validate(deviceId, nameof(deviceId), required: true);
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
@@ -65,9 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<CreateWebhookResponse> CreateWebhook([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> webhook, [WorkflowExpression] Func<string> authToken)
         {
-            SourceExpression.Validate(deviceId, nameof(deviceId), required: true);
-            SourceExpression.Validate(webhook, nameof(webhook), required: true);
-            SourceExpression.Validate(authToken, nameof(authToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));

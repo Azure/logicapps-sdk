@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarpro")]
         public IBodyWorkflowAction<Event> GetEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -30,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarpro")]
         public IWorkflowAction DeleteEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -46,20 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarpro")]
         public IBodyWorkflowAction<Event> UpdateEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<bodytimeZoneInput> bodytimeZone, [WorkflowExpression] Func<string> bodyaddressfullAddress, [WorkflowExpression] Func<double> bodyaddresslat, [WorkflowExpression] Func<double> bodyaddresslng, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycolor = null, [WorkflowExpression] Func<string> bodyresourceId = null, [WorkflowExpression] Func<bodymodeRecurrenceInput> bodymodeRecurrence = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
-            SourceExpression.Validate(bodyaddressfullAddress, nameof(bodyaddressfullAddress), required: true);
-            SourceExpression.Validate(bodyaddresslat, nameof(bodyaddresslat), required: true);
-            SourceExpression.Validate(bodyaddresslng, nameof(bodyaddresslng), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: false);
-            SourceExpression.Validate(bodyresourceId, nameof(bodyresourceId), required: false);
-            SourceExpression.Validate(bodymodeRecurrence, nameof(bodymodeRecurrence), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -132,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarpro")]
         public IBodyWorkflowAction<Event[]> GetAllEvents([WorkflowExpression] Func<string> calendarId)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
@@ -147,19 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarpro")]
         public IBodyWorkflowAction<Event> CreateNewEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<bodytimeZoneInput> bodytimeZone, [WorkflowExpression] Func<string> bodyaddressfullAddress, [WorkflowExpression] Func<double> bodyaddresslat, [WorkflowExpression] Func<double> bodyaddresslng, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycolor = null, [WorkflowExpression] Func<string> bodyresourceId = null, [WorkflowExpression] Func<bodymodeRecurrenceInput> bodymodeRecurrence = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
-            SourceExpression.Validate(bodyaddressfullAddress, nameof(bodyaddressfullAddress), required: true);
-            SourceExpression.Validate(bodyaddresslat, nameof(bodyaddresslat), required: true);
-            SourceExpression.Validate(bodyaddresslng, nameof(bodyaddresslng), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: false);
-            SourceExpression.Validate(bodyresourceId, nameof(bodyresourceId), required: false);
-            SourceExpression.Validate(bodymodeRecurrence, nameof(bodymodeRecurrence), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));

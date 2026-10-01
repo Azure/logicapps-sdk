@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<AddNewPartnerEmployeeToPartnerCompanyResponse> AddNewPartnerEmployeeToPartnerCompany([WorkflowExpression] Func<string> partnerCompanyId, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodypasswordExpirationDate = null, [WorkflowExpression] Func<bool> bodyenabled = null, [WorkflowExpression] Func<bool> bodywebsiteAccess = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycontactInformationemailAddress = null)
         {
-            SourceExpression.Validate(partnerCompanyId, nameof(partnerCompanyId), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodypasswordExpirationDate, nameof(bodypasswordExpirationDate), required: false);
-            SourceExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
-            SourceExpression.Validate(bodywebsiteAccess, nameof(bodywebsiteAccess), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodycontactInformationemailAddress, nameof(bodycontactInformationemailAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddNewPartnerEmployeeToPartnerCompany";
@@ -100,20 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<CreateNewFileResponse> CreateNewFile([WorkflowExpression] Func<bodybuyersInputItem[]> bodybuyers = null, [WorkflowExpression] Func<bodysellersInputItem[]> bodysellers = null, [WorkflowExpression] Func<string> bodyestimatedSettlementDate = null, [WorkflowExpression] Func<int> bodytransactionProductTypetransactionTypeId = null, [WorkflowExpression] Func<int> bodytransactionProductTypeproductTypeId = null, [WorkflowExpression] Func<int> bodysalesPrice = null, [WorkflowExpression] Func<string> bodyclientFileNumber = null, [WorkflowExpression] Func<string> bodypiggybackFileNumber = null, [WorkflowExpression] Func<string> bodymainFileNumber = null, [WorkflowExpression] Func<int> bodysourceOfBusinessId = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields = null, [WorkflowExpression] Func<bodyloansInputItem[]> bodyloans = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null)
         {
-            SourceExpression.Validate(bodybuyers, nameof(bodybuyers), required: false);
-            SourceExpression.Validate(bodysellers, nameof(bodysellers), required: false);
-            SourceExpression.Validate(bodyestimatedSettlementDate, nameof(bodyestimatedSettlementDate), required: false);
-            SourceExpression.Validate(bodytransactionProductTypetransactionTypeId, nameof(bodytransactionProductTypetransactionTypeId), required: false);
-            SourceExpression.Validate(bodytransactionProductTypeproductTypeId, nameof(bodytransactionProductTypeproductTypeId), required: false);
-            SourceExpression.Validate(bodysalesPrice, nameof(bodysalesPrice), required: false);
-            SourceExpression.Validate(bodyclientFileNumber, nameof(bodyclientFileNumber), required: false);
-            SourceExpression.Validate(bodypiggybackFileNumber, nameof(bodypiggybackFileNumber), required: false);
-            SourceExpression.Validate(bodymainFileNumber, nameof(bodymainFileNumber), required: false);
-            SourceExpression.Validate(bodysourceOfBusinessId, nameof(bodysourceOfBusinessId), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
-            SourceExpression.Validate(bodyloans, nameof(bodyloans), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CreateNewFile";
@@ -226,8 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetTransactionAndProductTypesForEstimationAndOrderPlacementResponseItem[]> GetTransactionAndProductTypesForEstimationAndOrderPlacement([WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> county = null)
         {
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(county, nameof(county), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetTransactionAndProductTypesForEstimationAndOrderPlacement";
@@ -246,14 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<UpdateActionForFileResponse> UpdateActionForFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> fileActionId, [WorkflowExpression] Func<int> bodystartTaskcoordinatorTypeId = null, [WorkflowExpression] Func<string> bodystartTaskdueDate = null, [WorkflowExpression] Func<bool> bodystartTaskdoneDateLocked = null, [WorkflowExpression] Func<int> bodycompleteTaskcoordinatorTypeId = null, [WorkflowExpression] Func<string> bodycompleteTaskdueDate = null, [WorkflowExpression] Func<bool> bodycompleteTaskdoneDateLocked = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(fileActionId, nameof(fileActionId), required: true);
-            SourceExpression.Validate(bodystartTaskcoordinatorTypeId, nameof(bodystartTaskcoordinatorTypeId), required: false);
-            SourceExpression.Validate(bodystartTaskdueDate, nameof(bodystartTaskdueDate), required: false);
-            SourceExpression.Validate(bodystartTaskdoneDateLocked, nameof(bodystartTaskdoneDateLocked), required: false);
-            SourceExpression.Validate(bodycompleteTaskcoordinatorTypeId, nameof(bodycompleteTaskcoordinatorTypeId), required: false);
-            SourceExpression.Validate(bodycompleteTaskdueDate, nameof(bodycompleteTaskdueDate), required: false);
-            SourceExpression.Validate(bodycompleteTaskdoneDateLocked, nameof(bodycompleteTaskdoneDateLocked), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UpdateActionForFile";
@@ -328,35 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> GetsFilesFromGivenSearchCriteria([WorkflowExpression] Func<string> bodyfileNumber = null, [WorkflowExpression] Func<int> bodyfileId = null, [WorkflowExpression] Func<int> bodyofficeId = null, [WorkflowExpression] Func<string> bodyclientsFileNumber = null, [WorkflowExpression] Func<int> bodytransactionProductTypetransactionTypeId = null, [WorkflowExpression] Func<int> bodytransactionProductTypeproductTypeId = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null, [WorkflowExpression] Func<string> bodypolicyNumber = null, [WorkflowExpression] Func<string> bodysearchNumber = null, [WorkflowExpression] Func<string> bodyloanNumber = null, [WorkflowExpression] Func<bool> bodypropertyisPrimary = null, [WorkflowExpression] Func<string> bodypropertystreetNumber = null, [WorkflowExpression] Func<string> bodypropertystreetName = null, [WorkflowExpression] Func<string> bodypropertycity = null, [WorkflowExpression] Func<string> bodypropertystate = null, [WorkflowExpression] Func<string> bodypropertyzip = null, [WorkflowExpression] Func<string> bodypropertysubdivision = null, [WorkflowExpression] Func<string> bodypropertyparcelId = null, [WorkflowExpression] Func<string> bodybuyerentityType = null, [WorkflowExpression] Func<string> bodybuyerprimaryfirst = null, [WorkflowExpression] Func<string> bodybuyerprimarylast = null, [WorkflowExpression] Func<bool> bodybuyerusePropertyAddress = null, [WorkflowExpression] Func<string> bodybuyermaritalStatus = null, [WorkflowExpression] Func<int> bodyfilePartnerprimaryEmployeeuserId = null, [WorkflowExpression] Func<int> bodyfilePartnerpartnerTypeId = null, [WorkflowExpression] Func<int> bodyfilePartnerpartnerId = null, [WorkflowExpression] Func<int> bodyfilePartnerpartnerTypepartnerTypeId = null, [WorkflowExpression] Func<string> bodyopenedFromDate = null, [WorkflowExpression] Func<string> bodyopenedToDate = null)
         {
-            SourceExpression.Validate(bodyfileNumber, nameof(bodyfileNumber), required: false);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodyofficeId, nameof(bodyofficeId), required: false);
-            SourceExpression.Validate(bodyclientsFileNumber, nameof(bodyclientsFileNumber), required: false);
-            SourceExpression.Validate(bodytransactionProductTypetransactionTypeId, nameof(bodytransactionProductTypetransactionTypeId), required: false);
-            SourceExpression.Validate(bodytransactionProductTypeproductTypeId, nameof(bodytransactionProductTypeproductTypeId), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
-            SourceExpression.Validate(bodypolicyNumber, nameof(bodypolicyNumber), required: false);
-            SourceExpression.Validate(bodysearchNumber, nameof(bodysearchNumber), required: false);
-            SourceExpression.Validate(bodyloanNumber, nameof(bodyloanNumber), required: false);
-            SourceExpression.Validate(bodypropertyisPrimary, nameof(bodypropertyisPrimary), required: false);
-            SourceExpression.Validate(bodypropertystreetNumber, nameof(bodypropertystreetNumber), required: false);
-            SourceExpression.Validate(bodypropertystreetName, nameof(bodypropertystreetName), required: false);
-            SourceExpression.Validate(bodypropertycity, nameof(bodypropertycity), required: false);
-            SourceExpression.Validate(bodypropertystate, nameof(bodypropertystate), required: false);
-            SourceExpression.Validate(bodypropertyzip, nameof(bodypropertyzip), required: false);
-            SourceExpression.Validate(bodypropertysubdivision, nameof(bodypropertysubdivision), required: false);
-            SourceExpression.Validate(bodypropertyparcelId, nameof(bodypropertyparcelId), required: false);
-            SourceExpression.Validate(bodybuyerentityType, nameof(bodybuyerentityType), required: false);
-            SourceExpression.Validate(bodybuyerprimaryfirst, nameof(bodybuyerprimaryfirst), required: false);
-            SourceExpression.Validate(bodybuyerprimarylast, nameof(bodybuyerprimarylast), required: false);
-            SourceExpression.Validate(bodybuyerusePropertyAddress, nameof(bodybuyerusePropertyAddress), required: false);
-            SourceExpression.Validate(bodybuyermaritalStatus, nameof(bodybuyermaritalStatus), required: false);
-            SourceExpression.Validate(bodyfilePartnerprimaryEmployeeuserId, nameof(bodyfilePartnerprimaryEmployeeuserId), required: false);
-            SourceExpression.Validate(bodyfilePartnerpartnerTypeId, nameof(bodyfilePartnerpartnerTypeId), required: false);
-            SourceExpression.Validate(bodyfilePartnerpartnerId, nameof(bodyfilePartnerpartnerId), required: false);
-            SourceExpression.Validate(bodyfilePartnerpartnerTypepartnerTypeId, nameof(bodyfilePartnerpartnerTypepartnerTypeId), required: false);
-            SourceExpression.Validate(bodyopenedFromDate, nameof(bodyopenedFromDate), required: false);
-            SourceExpression.Validate(bodyopenedToDate, nameof(bodyopenedToDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetsFilesFromGivenSearchCriteria";
@@ -607,8 +545,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> DeletePartnerOnSpecificFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<bodypartnersInputItem[]> bodypartners = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodypartners, nameof(bodypartners), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DeletePartnerOnSpecificFile";
@@ -636,7 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetPartnerInformationResponse> GetPartnerInformation([WorkflowExpression] Func<string> partnerCompanyId)
         {
-            SourceExpression.Validate(partnerCompanyId, nameof(partnerCompanyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetPartnerInformation";
@@ -652,8 +587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> CancelsPreviouslyPlacedOrder([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<int> bodyfileId = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CancelsPreviouslyPlacedOrder";
@@ -681,12 +614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<CreateNewDocumentOnSpecificFileResponse> CreateNewDocumentOnSpecificFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> bodydocumentName = null, [WorkflowExpression] Func<int> bodydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyinternalOnly = null, [WorkflowExpression] Func<string> bodydocumentBody = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
-            SourceExpression.Validate(bodydocumentTypedocumentTypeId, nameof(bodydocumentTypedocumentTypeId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyinternalOnly, nameof(bodyinternalOnly), required: false);
-            SourceExpression.Validate(bodydocumentBody, nameof(bodydocumentBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CreateNewDocumentOnSpecificFile";
@@ -746,8 +673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> DeletePreviouslyPlacedOrder([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<int> bodyfileId = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DeletePreviouslyPlacedOrder";
@@ -775,8 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> AddOrUpdateCustomFieldOnSpecificFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddOrUpdateCustomFieldOnSpecificFile";
@@ -804,8 +727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> AddPartnerToSpecificFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<bodypartnersInputItem2[]> bodypartners = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodypartners, nameof(bodypartners), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddPartnerToSpecificFile";
@@ -833,43 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<UpdatePartnerInformationForSpecificFileResponse> UpdatePartnerInformationForSpecificFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<int> bodyfileId = null, [WorkflowExpression] Func<int> bodyprimaryEmployeeuserId = null, [WorkflowExpression] Func<string> bodyprimaryEmployeename = null, [WorkflowExpression] Func<string> bodyprimaryEmployeefirstName = null, [WorkflowExpression] Func<string> bodyprimaryEmployeelastName = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationphoneNumber = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationhomePhoneNumber = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationcellPhoneNumber = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationvoicemail = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationfaxNumber = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationemailAddress = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationpreferredCommunicationMethod = null, [WorkflowExpression] Func<string> bodyprimaryEmployeecontactInformationwebsite = null, [WorkflowExpression] Func<bodysecondaryEmployeesInputItem[]> bodysecondaryEmployees = null, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<string> bodyremoteFileNumber = null, [WorkflowExpression] Func<int> bodypartnerTypeId = null, [WorkflowExpression] Func<int> bodypartnerId = null, [WorkflowExpression] Func<int> bodypartnerTypepartnerTypeId = null, [WorkflowExpression] Func<string> bodypartnerTypepartnerTypeName = null, [WorkflowExpression] Func<int> bodyofficeId = null, [WorkflowExpression] Func<string> bodypartnerName = null, [WorkflowExpression] Func<string> bodymailingAddressaddress1 = null, [WorkflowExpression] Func<string> bodymailingAddressaddress2 = null, [WorkflowExpression] Func<string> bodymailingAddresscity = null, [WorkflowExpression] Func<string> bodymailingAddressstate = null, [WorkflowExpression] Func<string> bodymailingAddresszip = null, [WorkflowExpression] Func<string> bodycontactInformationphoneNumber = null, [WorkflowExpression] Func<string> bodycontactInformationhomePhoneNumber = null, [WorkflowExpression] Func<string> bodycontactInformationcellPhoneNumber = null, [WorkflowExpression] Func<string> bodycontactInformationvoicemail = null, [WorkflowExpression] Func<string> bodycontactInformationfaxNumber = null, [WorkflowExpression] Func<string> bodycontactInformationemailAddress = null, [WorkflowExpression] Func<string> bodycontactInformationpreferredCommunicationMethod = null, [WorkflowExpression] Func<string> bodycontactInformationwebsite = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(partnerId, nameof(partnerId), required: true);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeeuserId, nameof(bodyprimaryEmployeeuserId), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeename, nameof(bodyprimaryEmployeename), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeefirstName, nameof(bodyprimaryEmployeefirstName), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeelastName, nameof(bodyprimaryEmployeelastName), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationphoneNumber, nameof(bodyprimaryEmployeecontactInformationphoneNumber), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationhomePhoneNumber, nameof(bodyprimaryEmployeecontactInformationhomePhoneNumber), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationcellPhoneNumber, nameof(bodyprimaryEmployeecontactInformationcellPhoneNumber), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationvoicemail, nameof(bodyprimaryEmployeecontactInformationvoicemail), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationfaxNumber, nameof(bodyprimaryEmployeecontactInformationfaxNumber), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationemailAddress, nameof(bodyprimaryEmployeecontactInformationemailAddress), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationpreferredCommunicationMethod, nameof(bodyprimaryEmployeecontactInformationpreferredCommunicationMethod), required: false);
-            SourceExpression.Validate(bodyprimaryEmployeecontactInformationwebsite, nameof(bodyprimaryEmployeecontactInformationwebsite), required: false);
-            SourceExpression.Validate(bodysecondaryEmployees, nameof(bodysecondaryEmployees), required: false);
-            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            SourceExpression.Validate(bodyremoteFileNumber, nameof(bodyremoteFileNumber), required: false);
-            SourceExpression.Validate(bodypartnerTypeId, nameof(bodypartnerTypeId), required: false);
-            SourceExpression.Validate(bodypartnerId, nameof(bodypartnerId), required: false);
-            SourceExpression.Validate(bodypartnerTypepartnerTypeId, nameof(bodypartnerTypepartnerTypeId), required: false);
-            SourceExpression.Validate(bodypartnerTypepartnerTypeName, nameof(bodypartnerTypepartnerTypeName), required: false);
-            SourceExpression.Validate(bodyofficeId, nameof(bodyofficeId), required: false);
-            SourceExpression.Validate(bodypartnerName, nameof(bodypartnerName), required: false);
-            SourceExpression.Validate(bodymailingAddressaddress1, nameof(bodymailingAddressaddress1), required: false);
-            SourceExpression.Validate(bodymailingAddressaddress2, nameof(bodymailingAddressaddress2), required: false);
-            SourceExpression.Validate(bodymailingAddresscity, nameof(bodymailingAddresscity), required: false);
-            SourceExpression.Validate(bodymailingAddressstate, nameof(bodymailingAddressstate), required: false);
-            SourceExpression.Validate(bodymailingAddresszip, nameof(bodymailingAddresszip), required: false);
-            SourceExpression.Validate(bodycontactInformationphoneNumber, nameof(bodycontactInformationphoneNumber), required: false);
-            SourceExpression.Validate(bodycontactInformationhomePhoneNumber, nameof(bodycontactInformationhomePhoneNumber), required: false);
-            SourceExpression.Validate(bodycontactInformationcellPhoneNumber, nameof(bodycontactInformationcellPhoneNumber), required: false);
-            SourceExpression.Validate(bodycontactInformationvoicemail, nameof(bodycontactInformationvoicemail), required: false);
-            SourceExpression.Validate(bodycontactInformationfaxNumber, nameof(bodycontactInformationfaxNumber), required: false);
-            SourceExpression.Validate(bodycontactInformationemailAddress, nameof(bodycontactInformationemailAddress), required: false);
-            SourceExpression.Validate(bodycontactInformationpreferredCommunicationMethod, nameof(bodycontactInformationpreferredCommunicationMethod), required: false);
-            SourceExpression.Validate(bodycontactInformationwebsite, nameof(bodycontactInformationwebsite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UpdatePartnerInformationForSpecificFile";
@@ -1142,9 +1026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<AddNoteToFileResponse> AddNoteToFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddNoteToFile";
@@ -1178,7 +1059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetPartnersForSpecificFileResponse> GetPartnersForSpecificFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetPartnersForSpecificFile";
@@ -1194,12 +1074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<UploadWebURLDocumentToSpecificFileResponse> UploadWebURLDocumentToSpecificFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> bodydocumentName = null, [WorkflowExpression] Func<int> bodydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyinternalOnly = null, [WorkflowExpression] Func<string> bodywebURL = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
-            SourceExpression.Validate(bodydocumentTypedocumentTypeId, nameof(bodydocumentTypedocumentTypeId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyinternalOnly, nameof(bodyinternalOnly), required: false);
-            SourceExpression.Validate(bodywebURL, nameof(bodywebURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UploadWebUrlDocumentToSpecificFile";
@@ -1259,9 +1133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> AddOrUpdateCustomFieldOnSpecificDocument([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddOrUpdateCustomFieldOnSpecificDocument";
@@ -1290,17 +1161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<UpdatePartnerEmployeeResponse> UpdatePartnerEmployee([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> partnerCompanyId, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodypasswordExpirationDate = null, [WorkflowExpression] Func<bodyrolesInputItem[]> bodyroles = null, [WorkflowExpression] Func<bool> bodyenabled = null, [WorkflowExpression] Func<bool> bodywebsiteAccess = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycontactInformationemailAddress = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(partnerCompanyId, nameof(partnerCompanyId), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodypasswordExpirationDate, nameof(bodypasswordExpirationDate), required: false);
-            SourceExpression.Validate(bodyroles, nameof(bodyroles), required: false);
-            SourceExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
-            SourceExpression.Validate(bodywebsiteAccess, nameof(bodywebsiteAccess), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodycontactInformationemailAddress, nameof(bodycontactInformationemailAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UpdatePartnerEmployee";
@@ -1385,7 +1245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetPartiesForSpecificFileResponse> GetPartiesForSpecificFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetPartiesForSpecificFile";
@@ -1401,7 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetNotesForSpecificFileResponse> GetNotesForSpecificFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetNotesForSpecificFile";
@@ -1417,7 +1275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetNoteResponse> GetNote([WorkflowExpression] Func<string> noteId)
         {
-            SourceExpression.Validate(noteId, nameof(noteId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetNote";
@@ -1433,13 +1290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<AddActionToFileResponse> AddActionToFile([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<int> bodyactionTypeactionTypeId = null, [WorkflowExpression] Func<int> bodygroupactionGroupId = null, [WorkflowExpression] Func<int> bodystartTaskcoordinatorTypeId = null, [WorkflowExpression] Func<string> bodystartTaskdueDate = null, [WorkflowExpression] Func<int> bodycompleteTaskpartnerpartnerTypepartnerTypeId = null, [WorkflowExpression] Func<string> bodycompleteTaskdueDate = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(bodyactionTypeactionTypeId, nameof(bodyactionTypeactionTypeId), required: false);
-            SourceExpression.Validate(bodygroupactionGroupId, nameof(bodygroupactionGroupId), required: false);
-            SourceExpression.Validate(bodystartTaskcoordinatorTypeId, nameof(bodystartTaskcoordinatorTypeId), required: false);
-            SourceExpression.Validate(bodystartTaskdueDate, nameof(bodystartTaskdueDate), required: false);
-            SourceExpression.Validate(bodycompleteTaskpartnerpartnerTypepartnerTypeId, nameof(bodycompleteTaskpartnerpartnerTypepartnerTypeId), required: false);
-            SourceExpression.Validate(bodycompleteTaskdueDate, nameof(bodycompleteTaskdueDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddActionToFile";
@@ -1545,8 +1395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetCustomFieldsOnSpecificDocumentResponse> GetCustomFieldsOnSpecificDocument([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetCustomFieldsOnSpecificDocument";
@@ -1563,7 +1411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetDocumentsForSpecificFileResponse> GetDocumentsForSpecificFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetDocumentsForSpecificFile";
@@ -1579,7 +1426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetDocument";
@@ -1595,7 +1441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetCustomFieldsForSpecificFileResponse> GetCustomFieldsForSpecificFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetCustomFieldsForSpecificFile";
@@ -1611,7 +1456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetClosingFeeEstimateReceiptResponse> GetClosingFeeEstimateReceipt([WorkflowExpression] Func<string> closingFeeId)
         {
-            SourceExpression.Validate(closingFeeId, nameof(closingFeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetClosingFeeEstimateReceipt";
@@ -1627,7 +1471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<JToken> GetClosingFeeEstimateReceiptPDF([WorkflowExpression] Func<string> closingFeeId)
         {
-            SourceExpression.Validate(closingFeeId, nameof(closingFeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetClosingFeeEstimateReceiptPDF";
@@ -1643,7 +1486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<GetActionsForSpecificFileResponse> GetActionsForSpecificFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetActionsForSpecificFile";
@@ -1673,14 +1515,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
         public IBodyWorkflowAction<EstimateClosingFeeResponse> EstimateClosingFee([WorkflowExpression] Func<int> bodytransactionProductTypetransactionTypeId = null, [WorkflowExpression] Func<int> bodytransactionProductTypeproductTypeId = null, [WorkflowExpression] Func<string> bodysettlementStatementVersion = null, [WorkflowExpression] Func<int> bodysalesPrice = null, [WorkflowExpression] Func<bodyloansInputItem2[]> bodyloans = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null, [WorkflowExpression] Func<bodyfilePartnersInputItem[]> bodyfilePartners = null, [WorkflowExpression] Func<bodyendorsementsInputItem[]> bodyendorsements = null)
         {
-            SourceExpression.Validate(bodytransactionProductTypetransactionTypeId, nameof(bodytransactionProductTypetransactionTypeId), required: false);
-            SourceExpression.Validate(bodytransactionProductTypeproductTypeId, nameof(bodytransactionProductTypeproductTypeId), required: false);
-            SourceExpression.Validate(bodysettlementStatementVersion, nameof(bodysettlementStatementVersion), required: false);
-            SourceExpression.Validate(bodysalesPrice, nameof(bodysalesPrice), required: false);
-            SourceExpression.Validate(bodyloans, nameof(bodyloans), required: false);
-            SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
-            SourceExpression.Validate(bodyfilePartners, nameof(bodyfilePartners), required: false);
-            SourceExpression.Validate(bodyendorsements, nameof(bodyendorsements), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EstimateClosingFee";

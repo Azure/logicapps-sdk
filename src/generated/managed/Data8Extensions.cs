@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsUsableNameResponse> IsUsableName([WorkflowExpression] Func<string> bodynametitle = null, [WorkflowExpression] Func<string> bodynameforename = null, [WorkflowExpression] Func<string> bodynamemiddleName = null, [WorkflowExpression] Func<string> bodynamesurname = null)
         {
-            SourceExpression.Validate(bodynametitle, nameof(bodynametitle), required: false);
-            SourceExpression.Validate(bodynameforename, nameof(bodynameforename), required: false);
-            SourceExpression.Validate(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            SourceExpression.Validate(bodynamesurname, nameof(bodynamesurname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SalaciousName/IsUnusableName.json";
@@ -70,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsCallableTPSResponse> IsCallableTPS([WorkflowExpression] Func<string> bodynumber)
         {
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/TPS/IsCallable.json";
@@ -93,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsCallableCTPSResponse> IsCallableCTPS([WorkflowExpression] Func<string> bodynumber)
         {
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CTPS/IsCallable.json";
@@ -116,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidBankAccountResponse> IsValidBankAccount([WorkflowExpression] Func<string> bodysortCode, [WorkflowExpression] Func<string> bodybankAccountNumber = null)
         {
-            SourceExpression.Validate(bodysortCode, nameof(bodysortCode), required: true);
-            SourceExpression.Validate(bodybankAccountNumber, nameof(bodybankAccountNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/BankAccountValidation/IsValid.json";
@@ -146,8 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidEmailResponse> IsValidEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodylevelInput> bodylevel)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodylevel, nameof(bodylevel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EmailValidation/IsValid.json";
@@ -172,10 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidTelephoneResponse> IsValidTelephone([WorkflowExpression] Func<string> bodytelephoneNumber, [WorkflowExpression] Func<string> bodydefaultCountry, [WorkflowExpression] Func<bool> bodyoptionsuseLineValidation = null, [WorkflowExpression] Func<bool> bodyoptionsuseMobileValidation = null)
         {
-            SourceExpression.Validate(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            SourceExpression.Validate(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
-            SourceExpression.Validate(bodyoptionsuseLineValidation, nameof(bodyoptionsuseLineValidation), required: false);
-            SourceExpression.Validate(bodyoptionsuseMobileValidation, nameof(bodyoptionsuseMobileValidation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/InternationalTelephoneValidation/IsValid.json";
@@ -220,11 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<CleanAddressResponse> CleanAddress([WorkflowExpression] Func<string[]> bodyaddresslines = null, [WorkflowExpression] Func<string> bodyoptionsdefaultCountryCode = null, [WorkflowExpression] Func<bool> bodyoptionsdetectCountry = null, [WorkflowExpression] Func<string> bodyoptionscountry = null, [WorkflowExpression] Func<bool> bodyoptionsincludeCountry = null)
         {
-            SourceExpression.Validate(bodyaddresslines, nameof(bodyaddresslines), required: false);
-            SourceExpression.Validate(bodyoptionsdefaultCountryCode, nameof(bodyoptionsdefaultCountryCode), required: false);
-            SourceExpression.Validate(bodyoptionsdetectCountry, nameof(bodyoptionsdetectCountry), required: false);
-            SourceExpression.Validate(bodyoptionscountry, nameof(bodyoptionscountry), required: false);
-            SourceExpression.Validate(bodyoptionsincludeCountry, nameof(bodyoptionsincludeCountry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Postcoder/CleanAddress.json";
@@ -291,24 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<GetFullAddressResponse> GetFullAddress([WorkflowExpression] Func<bodylicenceInput> bodylicence, [WorkflowExpression] Func<string> bodypostcode, [WorkflowExpression] Func<string> bodybuilding = null, [WorkflowExpression] Func<bool> bodyoptionsfixTownCounty = null, [WorkflowExpression] Func<int> bodyoptionsmaxLines = null, [WorkflowExpression] Func<int> bodyoptionsmaxLineLength = null, [WorkflowExpression] Func<bool> bodyoptionsnormalizeCase = null, [WorkflowExpression] Func<bool> bodyoptionsnormalizeTownCase = null, [WorkflowExpression] Func<bool> bodyoptionsexcludeCounty = null, [WorkflowExpression] Func<bool> bodyoptionsuseAnyAvailableCounty = null, [WorkflowExpression] Func<bool> bodyoptionsunwantedPunctuation = null, [WorkflowExpression] Func<bool> bodyoptionsfixBuilding = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUDPRN = null, [WorkflowExpression] Func<bool> bodyoptionsincludeLocation = null, [WorkflowExpression] Func<bool> bodyoptionsreturnResultCount = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bodyoptionsformatterInput> bodyoptionsformatter = null)
         {
-            SourceExpression.Validate(bodylicence, nameof(bodylicence), required: true);
-            SourceExpression.Validate(bodypostcode, nameof(bodypostcode), required: true);
-            SourceExpression.Validate(bodybuilding, nameof(bodybuilding), required: false);
-            SourceExpression.Validate(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            SourceExpression.Validate(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            SourceExpression.Validate(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            SourceExpression.Validate(bodyoptionsnormalizeCase, nameof(bodyoptionsnormalizeCase), required: false);
-            SourceExpression.Validate(bodyoptionsnormalizeTownCase, nameof(bodyoptionsnormalizeTownCase), required: false);
-            SourceExpression.Validate(bodyoptionsexcludeCounty, nameof(bodyoptionsexcludeCounty), required: false);
-            SourceExpression.Validate(bodyoptionsuseAnyAvailableCounty, nameof(bodyoptionsuseAnyAvailableCounty), required: false);
-            SourceExpression.Validate(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            SourceExpression.Validate(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            SourceExpression.Validate(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            SourceExpression.Validate(bodyoptionsincludeLocation, nameof(bodyoptionsincludeLocation), required: false);
-            SourceExpression.Validate(bodyoptionsreturnResultCount, nameof(bodyoptionsreturnResultCount), required: false);
-            SourceExpression.Validate(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
-            SourceExpression.Validate(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            SourceExpression.Validate(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddressCapture/GetFullAddress.json";
@@ -457,13 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased([WorkflowExpression] Func<string> bodyRecordnamesurname, [WorkflowExpression] Func<string[]> bodyRecordaddresslines, [WorkflowExpression] Func<bool> bodymarketing, [WorkflowExpression] Func<string> bodyRecordnametitle = null, [WorkflowExpression] Func<string> bodyRecordnameforename = null, [WorkflowExpression] Func<string> bodyRecordnamemiddleName = null, [WorkflowExpression] Func<bodyoptionsmatchLevelInput> bodyoptionsmatchLevel = null)
         {
-            SourceExpression.Validate(bodyRecordnamesurname, nameof(bodyRecordnamesurname), required: true);
-            SourceExpression.Validate(bodyRecordaddresslines, nameof(bodyRecordaddresslines), required: true);
-            SourceExpression.Validate(bodymarketing, nameof(bodymarketing), required: true);
-            SourceExpression.Validate(bodyRecordnametitle, nameof(bodyRecordnametitle), required: false);
-            SourceExpression.Validate(bodyRecordnameforename, nameof(bodyRecordnameforename), required: false);
-            SourceExpression.Validate(bodyRecordnamemiddleName, nameof(bodyRecordnamemiddleName), required: false);
-            SourceExpression.Validate(bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Deceased/IsDeceased.json";
@@ -556,12 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<SearchPredictiveAddressResponse> SearchPredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodysearch, [WorkflowExpression] Func<string> bodytelephoneNumber = null, [WorkflowExpression] Func<string> bodysession = null, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null)
         {
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: true);
-            SourceExpression.Validate(bodytelephoneNumber, nameof(bodytelephoneNumber), required: false);
-            SourceExpression.Validate(bodysession, nameof(bodysession), required: false);
-            SourceExpression.Validate(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            SourceExpression.Validate(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PredictiveAddress/Search.json";
@@ -618,10 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> DrilldownPredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null)
         {
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            SourceExpression.Validate(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PredictiveAddress/DrillDown.json";
@@ -666,17 +612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<RetrievePredictiveAddressResponse> RetrievePredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<int> bodyoptionsmaxLineLength = null, [WorkflowExpression] Func<int> bodyoptionsmaxLines = null, [WorkflowExpression] Func<bool> bodyoptionsfixTownCounty = null, [WorkflowExpression] Func<bool> bodyoptionsfixPostcode = null, [WorkflowExpression] Func<bool> bodyoptionsfixBuilding = null, [WorkflowExpression] Func<string> bodyoptionsunwantedPunctuation = null, [WorkflowExpression] Func<bodyoptionsformatterInput> bodyoptionsformatter = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUDPRN = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUPRN = null)
         {
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            SourceExpression.Validate(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            SourceExpression.Validate(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            SourceExpression.Validate(bodyoptionsfixPostcode, nameof(bodyoptionsfixPostcode), required: false);
-            SourceExpression.Validate(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            SourceExpression.Validate(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            SourceExpression.Validate(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
-            SourceExpression.Validate(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            SourceExpression.Validate(bodyoptionsincludeUPRN, nameof(bodyoptionsincludeUPRN), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PredictiveAddress/Retrieve.json";
@@ -843,13 +778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<CleanseEmailResponse> CleanseEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodylevelInput> bodylevel, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyforename = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodysurname = null, [WorkflowExpression] Func<string> bodycompany = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodylevel, nameof(bodylevel), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyforename, nameof(bodyforename), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodysurname, nameof(bodysurname), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EmailValidation/CleanseSimple.json";
@@ -904,8 +832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidPhoneResponse> IsValidPhone([WorkflowExpression] Func<string> bodytelephoneNumber, [WorkflowExpression] Func<int> bodydefaultCountry)
         {
-            SourceExpression.Validate(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            SourceExpression.Validate(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PhoneValidation/IsValid.json";

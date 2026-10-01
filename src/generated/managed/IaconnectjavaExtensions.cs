@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABConnectToJavaAccessBridgeResponse> JABConnectToJavaAccessBridge([WorkflowExpression] Func<string> jABConnectToJavaAccessBridgeworkflow, [WorkflowExpression] Func<string> jABConnectToJavaAccessBridgewindowsAccessBridgeDLLSearchFolder = null, [WorkflowExpression] Func<string> jABConnectToJavaAccessBridgeiAJavaAccessBridgePath = null, [WorkflowExpression] Func<bool> jABConnectToJavaAccessBridgeis64BitJABDLL = null, [WorkflowExpression] Func<bool> jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL = null, [WorkflowExpression] Func<bool> jABConnectToJavaAccessBridgeenableJavaAccessBridge = null, [WorkflowExpression] Func<string> jABConnectToJavaAccessBridgeaccessibilityFilepath = null, [WorkflowExpression] Func<int> jABConnectToJavaAccessBridgecommandTimeoutInSeconds = null)
         {
-            SourceExpression.Validate(jABConnectToJavaAccessBridgeworkflow, nameof(jABConnectToJavaAccessBridgeworkflow), required: true);
-            SourceExpression.Validate(jABConnectToJavaAccessBridgewindowsAccessBridgeDLLSearchFolder, nameof(jABConnectToJavaAccessBridgewindowsAccessBridgeDLLSearchFolder), required: false);
-            SourceExpression.Validate(jABConnectToJavaAccessBridgeiAJavaAccessBridgePath, nameof(jABConnectToJavaAccessBridgeiAJavaAccessBridgePath), required: false);
-            SourceExpression.Validate(jABConnectToJavaAccessBridgeis64BitJABDLL, nameof(jABConnectToJavaAccessBridgeis64BitJABDLL), required: false);
-            SourceExpression.Validate(jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL, nameof(jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL), required: false);
-            SourceExpression.Validate(jABConnectToJavaAccessBridgeenableJavaAccessBridge, nameof(jABConnectToJavaAccessBridgeenableJavaAccessBridge), required: false);
-            SourceExpression.Validate(jABConnectToJavaAccessBridgeaccessibilityFilepath, nameof(jABConnectToJavaAccessBridgeaccessibilityFilepath), required: false);
-            SourceExpression.Validate(jABConnectToJavaAccessBridgecommandTimeoutInSeconds, nameof(jABConnectToJavaAccessBridgecommandTimeoutInSeconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABConnectToJavaAccessBridge";
@@ -136,9 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABDisconnectFromJavaAccessBridge([WorkflowExpression] Func<string> jABDisconnectFromJavaAccessBridgeworkflow, [WorkflowExpression] Func<bool> jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge = null, [WorkflowExpression] Func<string> jABDisconnectFromJavaAccessBridgeaccessibilityFilepath = null)
         {
-            SourceExpression.Validate(jABDisconnectFromJavaAccessBridgeworkflow, nameof(jABDisconnectFromJavaAccessBridgeworkflow), required: true);
-            SourceExpression.Validate(jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge, nameof(jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge), required: false);
-            SourceExpression.Validate(jABDisconnectFromJavaAccessBridgeaccessibilityFilepath, nameof(jABDisconnectFromJavaAccessBridgeaccessibilityFilepath), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABDisconnectFromJavaAccessBridge";
@@ -193,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetConnectionStatusResponse> JABGetConnectionStatus([WorkflowExpression] Func<string> jABGetConnectionStatusworkflow)
         {
-            SourceExpression.Validate(jABGetConnectionStatusworkflow, nameof(jABGetConnectionStatusworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetConnectionStatus";
@@ -216,17 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABIsJavaWindowResponse> JABIsJavaWindow([WorkflowExpression] Func<int> jABIsJavaWindowparentWindowHandle, [WorkflowExpression] Func<string> jABIsJavaWindowworkflow, [WorkflowExpression] Func<string> jABIsJavaWindowsearchElementName = null, [WorkflowExpression] Func<string> jABIsJavaWindowsearchElementClassName = null, [WorkflowExpression] Func<string> jABIsJavaWindowsearchElementAutomationId = null, [WorkflowExpression] Func<string> jABIsJavaWindowsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> jABIsJavaWindowsearchSubTree = null, [WorkflowExpression] Func<int> jABIsJavaWindowmatchIndex = null, [WorkflowExpression] Func<string> jABIsJavaWindowsearchFilter = null, [WorkflowExpression] Func<string> jABIsJavaWindowsortByColumn = null, [WorkflowExpression] Func<bool> jABIsJavaWindowmatchIndexAscending = null)
         {
-            SourceExpression.Validate(jABIsJavaWindowparentWindowHandle, nameof(jABIsJavaWindowparentWindowHandle), required: true);
-            SourceExpression.Validate(jABIsJavaWindowworkflow, nameof(jABIsJavaWindowworkflow), required: true);
-            SourceExpression.Validate(jABIsJavaWindowsearchElementName, nameof(jABIsJavaWindowsearchElementName), required: false);
-            SourceExpression.Validate(jABIsJavaWindowsearchElementClassName, nameof(jABIsJavaWindowsearchElementClassName), required: false);
-            SourceExpression.Validate(jABIsJavaWindowsearchElementAutomationId, nameof(jABIsJavaWindowsearchElementAutomationId), required: false);
-            SourceExpression.Validate(jABIsJavaWindowsearchLocalizedControlType, nameof(jABIsJavaWindowsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(jABIsJavaWindowsearchSubTree, nameof(jABIsJavaWindowsearchSubTree), required: false);
-            SourceExpression.Validate(jABIsJavaWindowmatchIndex, nameof(jABIsJavaWindowmatchIndex), required: false);
-            SourceExpression.Validate(jABIsJavaWindowsearchFilter, nameof(jABIsJavaWindowsearchFilter), required: false);
-            SourceExpression.Validate(jABIsJavaWindowsortByColumn, nameof(jABIsJavaWindowsortByColumn), required: false);
-            SourceExpression.Validate(jABIsJavaWindowmatchIndexAscending, nameof(jABIsJavaWindowmatchIndexAscending), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABIsJavaWindow";
@@ -335,8 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetWindowsAccessBridgeInfoResponse> JABGetWindowsAccessBridgeInfo([WorkflowExpression] Func<int> jABGetWindowsAccessBridgeInfovMId, [WorkflowExpression] Func<string> jABGetWindowsAccessBridgeInfoworkflow)
         {
-            SourceExpression.Validate(jABGetWindowsAccessBridgeInfovMId, nameof(jABGetWindowsAccessBridgeInfovMId), required: true);
-            SourceExpression.Validate(jABGetWindowsAccessBridgeInfoworkflow, nameof(jABGetWindowsAccessBridgeInfoworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetWindowsAccessBridgeInfo";
@@ -361,18 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetUIAElementPropertiesResponse> JABGetUIAElementProperties([WorkflowExpression] Func<int> jABGetUIAElementPropertiesparentWindowHandle, [WorkflowExpression] Func<string> jABGetUIAElementPropertiesworkflow, [WorkflowExpression] Func<string> jABGetUIAElementPropertiessearchElementName = null, [WorkflowExpression] Func<string> jABGetUIAElementPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> jABGetUIAElementPropertiessearchElementAutomationId = null, [WorkflowExpression] Func<string> jABGetUIAElementPropertiessearchLocalizedControlType = null, [WorkflowExpression] Func<bool> jABGetUIAElementPropertiessearchSubTree = null, [WorkflowExpression] Func<int> jABGetUIAElementPropertiesmatchIndex = null, [WorkflowExpression] Func<string> jABGetUIAElementPropertiessearchFilter = null, [WorkflowExpression] Func<string> jABGetUIAElementPropertiessortByColumn = null, [WorkflowExpression] Func<bool> jABGetUIAElementPropertiesmatchIndexAscending = null, [WorkflowExpression] Func<int> jABGetUIAElementPropertiesmaxStringLength = null)
         {
-            SourceExpression.Validate(jABGetUIAElementPropertiesparentWindowHandle, nameof(jABGetUIAElementPropertiesparentWindowHandle), required: true);
-            SourceExpression.Validate(jABGetUIAElementPropertiesworkflow, nameof(jABGetUIAElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetUIAElementPropertiessearchElementName, nameof(jABGetUIAElementPropertiessearchElementName), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiessearchElementClassName, nameof(jABGetUIAElementPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiessearchElementAutomationId, nameof(jABGetUIAElementPropertiessearchElementAutomationId), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiessearchLocalizedControlType, nameof(jABGetUIAElementPropertiessearchLocalizedControlType), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiessearchSubTree, nameof(jABGetUIAElementPropertiessearchSubTree), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiesmatchIndex, nameof(jABGetUIAElementPropertiesmatchIndex), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiessearchFilter, nameof(jABGetUIAElementPropertiessearchFilter), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiessortByColumn, nameof(jABGetUIAElementPropertiessortByColumn), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiesmatchIndexAscending, nameof(jABGetUIAElementPropertiesmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetUIAElementPropertiesmaxStringLength, nameof(jABGetUIAElementPropertiesmaxStringLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetUIAElementProperties";
@@ -497,24 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetJABElementPropertiesResponse> JABGetJABElementProperties([WorkflowExpression] Func<int> jABGetJABElementPropertiessearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetJABElementPropertiesworkflow, [WorkflowExpression] Func<string> jABGetJABElementPropertiessearchElementJABName = null, [WorkflowExpression] Func<string> jABGetJABElementPropertiessearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetJABElementPropertiessearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetJABElementPropertiessearchSubTree = null, [WorkflowExpression] Func<int> jABGetJABElementPropertiesmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetJABElementPropertiesmatchIndex = null, [WorkflowExpression] Func<string> jABGetJABElementPropertiessearchFilter = null, [WorkflowExpression] Func<string> jABGetJABElementPropertiessortByColumn = null, [WorkflowExpression] Func<bool> jABGetJABElementPropertiesmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetJABElementPropertiescaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetJABElementPropertiesonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetJABElementPropertiesonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetJABElementPropertieselementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetJABElementPropertiesmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABGetJABElementPropertiesmaxStringLength = null)
         {
-            SourceExpression.Validate(jABGetJABElementPropertiessearchParentElementJABHandle, nameof(jABGetJABElementPropertiessearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetJABElementPropertiesworkflow, nameof(jABGetJABElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetJABElementPropertiessearchElementJABName, nameof(jABGetJABElementPropertiessearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiessearchElementJABDescription, nameof(jABGetJABElementPropertiessearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiessearchElementJABRole, nameof(jABGetJABElementPropertiessearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiessearchSubTree, nameof(jABGetJABElementPropertiessearchSubTree), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesmaxRelativeDepth, nameof(jABGetJABElementPropertiesmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesmatchIndex, nameof(jABGetJABElementPropertiesmatchIndex), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiessearchFilter, nameof(jABGetJABElementPropertiessearchFilter), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiessortByColumn, nameof(jABGetJABElementPropertiessortByColumn), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesmatchIndexAscending, nameof(jABGetJABElementPropertiesmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiescaseSensitiveSearch, nameof(jABGetJABElementPropertiescaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesonlySearchVisibleElements, nameof(jABGetJABElementPropertiesonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesonlySearchShowingElements, nameof(jABGetJABElementPropertiesonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertieselementRolesNotToTraverse, nameof(jABGetJABElementPropertieselementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesmaximumElementsToSearch, nameof(jABGetJABElementPropertiesmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode, nameof(jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetJABElementPropertiesmaxStringLength, nameof(jABGetJABElementPropertiesmaxStringLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetJABElementProperties";
@@ -735,25 +680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABDrawRectangleAroundJABElement([WorkflowExpression] Func<int> jABDrawRectangleAroundJABElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementworkflow, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABDrawRectangleAroundJABElementsearchSubTree = null, [WorkflowExpression] Func<int> jABDrawRectangleAroundJABElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABDrawRectangleAroundJABElementmatchIndex = null, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementsearchFilter = null, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementsortByColumn = null, [WorkflowExpression] Func<bool> jABDrawRectangleAroundJABElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABDrawRectangleAroundJABElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABDrawRectangleAroundJABElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABDrawRectangleAroundJABElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABDrawRectangleAroundJABElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> jABDrawRectangleAroundJABElementpenColour = null, [WorkflowExpression] Func<int> jABDrawRectangleAroundJABElementpenThicknessPixels = null)
         {
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementsearchParentElementJABHandle, nameof(jABDrawRectangleAroundJABElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementworkflow, nameof(jABDrawRectangleAroundJABElementworkflow), required: true);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementsearchElementJABName, nameof(jABDrawRectangleAroundJABElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementsearchElementJABDescription, nameof(jABDrawRectangleAroundJABElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementsearchElementJABRole, nameof(jABDrawRectangleAroundJABElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementsearchSubTree, nameof(jABDrawRectangleAroundJABElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementmaxRelativeDepth, nameof(jABDrawRectangleAroundJABElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementmatchIndex, nameof(jABDrawRectangleAroundJABElementmatchIndex), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementsearchFilter, nameof(jABDrawRectangleAroundJABElementsearchFilter), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementsortByColumn, nameof(jABDrawRectangleAroundJABElementsortByColumn), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementmatchIndexAscending, nameof(jABDrawRectangleAroundJABElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementcaseSensitiveSearch, nameof(jABDrawRectangleAroundJABElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementonlySearchVisibleElements, nameof(jABDrawRectangleAroundJABElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementonlySearchShowingElements, nameof(jABDrawRectangleAroundJABElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementelementRolesNotToTraverse, nameof(jABDrawRectangleAroundJABElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementmaximumElementsToSearch, nameof(jABDrawRectangleAroundJABElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode, nameof(jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementpenColour, nameof(jABDrawRectangleAroundJABElementpenColour), required: false);
-            SourceExpression.Validate(jABDrawRectangleAroundJABElementpenThicknessPixels, nameof(jABDrawRectangleAroundJABElementpenThicknessPixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABDrawRectangleAroundJABElement";
@@ -990,23 +916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABDoesElementExistResponse> JABDoesElementExist([WorkflowExpression] Func<int> jABDoesElementExistsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABDoesElementExistworkflow, [WorkflowExpression] Func<string> jABDoesElementExistsearchElementJABName = null, [WorkflowExpression] Func<string> jABDoesElementExistsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABDoesElementExistsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABDoesElementExistsearchSubTree = null, [WorkflowExpression] Func<int> jABDoesElementExistmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABDoesElementExistmatchIndex = null, [WorkflowExpression] Func<string> jABDoesElementExistsearchFilter = null, [WorkflowExpression] Func<string> jABDoesElementExistsortByColumn = null, [WorkflowExpression] Func<bool> jABDoesElementExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABDoesElementExistcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABDoesElementExistonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABDoesElementExistonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABDoesElementExistelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABDoesElementExistmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABDoesElementExistmaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABDoesElementExistsearchParentElementJABHandle, nameof(jABDoesElementExistsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABDoesElementExistworkflow, nameof(jABDoesElementExistworkflow), required: true);
-            SourceExpression.Validate(jABDoesElementExistsearchElementJABName, nameof(jABDoesElementExistsearchElementJABName), required: false);
-            SourceExpression.Validate(jABDoesElementExistsearchElementJABDescription, nameof(jABDoesElementExistsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABDoesElementExistsearchElementJABRole, nameof(jABDoesElementExistsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABDoesElementExistsearchSubTree, nameof(jABDoesElementExistsearchSubTree), required: false);
-            SourceExpression.Validate(jABDoesElementExistmaxRelativeDepth, nameof(jABDoesElementExistmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABDoesElementExistmatchIndex, nameof(jABDoesElementExistmatchIndex), required: false);
-            SourceExpression.Validate(jABDoesElementExistsearchFilter, nameof(jABDoesElementExistsearchFilter), required: false);
-            SourceExpression.Validate(jABDoesElementExistsortByColumn, nameof(jABDoesElementExistsortByColumn), required: false);
-            SourceExpression.Validate(jABDoesElementExistmatchIndexAscending, nameof(jABDoesElementExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABDoesElementExistcaseSensitiveSearch, nameof(jABDoesElementExistcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABDoesElementExistonlySearchVisibleElements, nameof(jABDoesElementExistonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABDoesElementExistonlySearchShowingElements, nameof(jABDoesElementExistonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABDoesElementExistelementRolesNotToTraverse, nameof(jABDoesElementExistelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABDoesElementExistmaximumElementsToSearch, nameof(jABDoesElementExistmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABDoesElementExistmaximumChildElementsToSearchPerNode, nameof(jABDoesElementExistmaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABDoesElementExist";
@@ -1211,25 +1120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABWaitForElementResponse> JABWaitForElement([WorkflowExpression] Func<int> jABWaitForElementsearchParentElementJABHandle, [WorkflowExpression] Func<double> jABWaitForElementsecondsToWait, [WorkflowExpression] Func<string> jABWaitForElementworkflow, [WorkflowExpression] Func<string> jABWaitForElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABWaitForElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABWaitForElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABWaitForElementsearchSubTree = null, [WorkflowExpression] Func<int> jABWaitForElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABWaitForElementmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForElementsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForElementsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABWaitForElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABWaitForElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABWaitForElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABWaitForElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABWaitForElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABWaitForElementraiseExceptionIfElementNotFound = null)
         {
-            SourceExpression.Validate(jABWaitForElementsearchParentElementJABHandle, nameof(jABWaitForElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABWaitForElementsecondsToWait, nameof(jABWaitForElementsecondsToWait), required: true);
-            SourceExpression.Validate(jABWaitForElementworkflow, nameof(jABWaitForElementworkflow), required: true);
-            SourceExpression.Validate(jABWaitForElementsearchElementJABName, nameof(jABWaitForElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABWaitForElementsearchElementJABDescription, nameof(jABWaitForElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABWaitForElementsearchElementJABRole, nameof(jABWaitForElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABWaitForElementsearchSubTree, nameof(jABWaitForElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABWaitForElementmaxRelativeDepth, nameof(jABWaitForElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABWaitForElementmatchIndex, nameof(jABWaitForElementmatchIndex), required: false);
-            SourceExpression.Validate(jABWaitForElementsearchFilter, nameof(jABWaitForElementsearchFilter), required: false);
-            SourceExpression.Validate(jABWaitForElementsortByColumn, nameof(jABWaitForElementsortByColumn), required: false);
-            SourceExpression.Validate(jABWaitForElementmatchIndexAscending, nameof(jABWaitForElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABWaitForElementcaseSensitiveSearch, nameof(jABWaitForElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABWaitForElementonlySearchVisibleElements, nameof(jABWaitForElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABWaitForElementonlySearchShowingElements, nameof(jABWaitForElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABWaitForElementelementRolesNotToTraverse, nameof(jABWaitForElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABWaitForElementmaximumElementsToSearch, nameof(jABWaitForElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABWaitForElementmaximumChildElementsToSearchPerNode, nameof(jABWaitForElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABWaitForElementraiseExceptionIfElementNotFound, nameof(jABWaitForElementraiseExceptionIfElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForElement";
@@ -1452,25 +1342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABWaitForElementToNotExistResponse> JABWaitForElementToNotExist([WorkflowExpression] Func<int> jABWaitForElementToNotExistsearchParentElementJABHandle, [WorkflowExpression] Func<double> jABWaitForElementToNotExistsecondsToWait, [WorkflowExpression] Func<string> jABWaitForElementToNotExistworkflow, [WorkflowExpression] Func<string> jABWaitForElementToNotExistsearchElementJABName = null, [WorkflowExpression] Func<string> jABWaitForElementToNotExistsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABWaitForElementToNotExistsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABWaitForElementToNotExistsearchSubTree = null, [WorkflowExpression] Func<int> jABWaitForElementToNotExistmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABWaitForElementToNotExistmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForElementToNotExistsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForElementToNotExistsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForElementToNotExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForElementToNotExistcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABWaitForElementToNotExistonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABWaitForElementToNotExistonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABWaitForElementToNotExistelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABWaitForElementToNotExistmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABWaitForElementToNotExistraiseExceptionIfElementStillExists = null)
         {
-            SourceExpression.Validate(jABWaitForElementToNotExistsearchParentElementJABHandle, nameof(jABWaitForElementToNotExistsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABWaitForElementToNotExistsecondsToWait, nameof(jABWaitForElementToNotExistsecondsToWait), required: true);
-            SourceExpression.Validate(jABWaitForElementToNotExistworkflow, nameof(jABWaitForElementToNotExistworkflow), required: true);
-            SourceExpression.Validate(jABWaitForElementToNotExistsearchElementJABName, nameof(jABWaitForElementToNotExistsearchElementJABName), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistsearchElementJABDescription, nameof(jABWaitForElementToNotExistsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistsearchElementJABRole, nameof(jABWaitForElementToNotExistsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistsearchSubTree, nameof(jABWaitForElementToNotExistsearchSubTree), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistmaxRelativeDepth, nameof(jABWaitForElementToNotExistmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistmatchIndex, nameof(jABWaitForElementToNotExistmatchIndex), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistsearchFilter, nameof(jABWaitForElementToNotExistsearchFilter), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistsortByColumn, nameof(jABWaitForElementToNotExistsortByColumn), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistmatchIndexAscending, nameof(jABWaitForElementToNotExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistcaseSensitiveSearch, nameof(jABWaitForElementToNotExistcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistonlySearchVisibleElements, nameof(jABWaitForElementToNotExistonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistonlySearchShowingElements, nameof(jABWaitForElementToNotExistonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistelementRolesNotToTraverse, nameof(jABWaitForElementToNotExistelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistmaximumElementsToSearch, nameof(jABWaitForElementToNotExistmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode, nameof(jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABWaitForElementToNotExistraiseExceptionIfElementStillExists, nameof(jABWaitForElementToNotExistraiseExceptionIfElementStillExists), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForElementToNotExist";
@@ -1693,14 +1564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetDesktopElementsResponse> JABGetDesktopElements([WorkflowExpression] Func<string> jABGetDesktopElementsworkflow, [WorkflowExpression] Func<string> jABGetDesktopElementssearchElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABGetDesktopElementssearchProcessId = null, [WorkflowExpression] Func<int> jABGetDesktopElementsfirstItemToReturn = null, [WorkflowExpression] Func<int> jABGetDesktopElementsmaxItemsToReturn = null, [WorkflowExpression] Func<bool> jABGetDesktopElementssearchChildElements = null, [WorkflowExpression] Func<int> jABGetDesktopElementsmaxStringLength = null, [WorkflowExpression] Func<bool> jABGetDesktopElementsincludeChildProcesses = null)
         {
-            SourceExpression.Validate(jABGetDesktopElementsworkflow, nameof(jABGetDesktopElementsworkflow), required: true);
-            SourceExpression.Validate(jABGetDesktopElementssearchElementLocalizedControlType, nameof(jABGetDesktopElementssearchElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABGetDesktopElementssearchProcessId, nameof(jABGetDesktopElementssearchProcessId), required: false);
-            SourceExpression.Validate(jABGetDesktopElementsfirstItemToReturn, nameof(jABGetDesktopElementsfirstItemToReturn), required: false);
-            SourceExpression.Validate(jABGetDesktopElementsmaxItemsToReturn, nameof(jABGetDesktopElementsmaxItemsToReturn), required: false);
-            SourceExpression.Validate(jABGetDesktopElementssearchChildElements, nameof(jABGetDesktopElementssearchChildElements), required: false);
-            SourceExpression.Validate(jABGetDesktopElementsmaxStringLength, nameof(jABGetDesktopElementsmaxStringLength), required: false);
-            SourceExpression.Validate(jABGetDesktopElementsincludeChildProcesses, nameof(jABGetDesktopElementsincludeChildProcesses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetDesktopElements";
@@ -1825,17 +1688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABDoesDesktopElementExistResponse> JABDoesDesktopElementExist([WorkflowExpression] Func<string> jABDoesDesktopElementExistworkflow, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementName = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABDoesDesktopElementExistsearchProcessId = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistsearchChildElements = null, [WorkflowExpression] Func<int> jABDoesDesktopElementExistmatchIndex = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchFilter = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsortByColumn = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistincludeChildProcesses = null)
         {
-            SourceExpression.Validate(jABDoesDesktopElementExistworkflow, nameof(jABDoesDesktopElementExistworkflow), required: true);
-            SourceExpression.Validate(jABDoesDesktopElementExistsearchUIAElementName, nameof(jABDoesDesktopElementExistsearchUIAElementName), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistsearchUIAElementClassName, nameof(jABDoesDesktopElementExistsearchUIAElementClassName), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistsearchUIAElementLocalizedControlType, nameof(jABDoesDesktopElementExistsearchUIAElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistsearchProcessId, nameof(jABDoesDesktopElementExistsearchProcessId), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistsearchChildElements, nameof(jABDoesDesktopElementExistsearchChildElements), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistmatchIndex, nameof(jABDoesDesktopElementExistmatchIndex), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistsearchFilter, nameof(jABDoesDesktopElementExistsearchFilter), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistsortByColumn, nameof(jABDoesDesktopElementExistsortByColumn), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistmatchIndexAscending, nameof(jABDoesDesktopElementExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistincludeChildProcesses, nameof(jABDoesDesktopElementExistincludeChildProcesses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABDoesDesktopElementExist";
@@ -1968,19 +1820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABWaitForDesktopElementResponse> JABWaitForDesktopElement([WorkflowExpression] Func<double> jABWaitForDesktopElementsecondsToWait, [WorkflowExpression] Func<string> jABWaitForDesktopElementworkflow, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementsearchProcessId = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementsearchChildElements = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementincludeChildProcesses = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementraiseExceptionIfElementNotFound = null)
         {
-            SourceExpression.Validate(jABWaitForDesktopElementsecondsToWait, nameof(jABWaitForDesktopElementsecondsToWait), required: true);
-            SourceExpression.Validate(jABWaitForDesktopElementworkflow, nameof(jABWaitForDesktopElementworkflow), required: true);
-            SourceExpression.Validate(jABWaitForDesktopElementsearchUIAElementName, nameof(jABWaitForDesktopElementsearchUIAElementName), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementsearchUIAElementClassName, nameof(jABWaitForDesktopElementsearchUIAElementClassName), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementsearchUIAElementLocalizedControlType, nameof(jABWaitForDesktopElementsearchUIAElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementsearchProcessId, nameof(jABWaitForDesktopElementsearchProcessId), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementsearchChildElements, nameof(jABWaitForDesktopElementsearchChildElements), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementmatchIndex, nameof(jABWaitForDesktopElementmatchIndex), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementsearchFilter, nameof(jABWaitForDesktopElementsearchFilter), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementsortByColumn, nameof(jABWaitForDesktopElementsortByColumn), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementmatchIndexAscending, nameof(jABWaitForDesktopElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementincludeChildProcesses, nameof(jABWaitForDesktopElementincludeChildProcesses), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementraiseExceptionIfElementNotFound, nameof(jABWaitForDesktopElementraiseExceptionIfElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForDesktopElement";
@@ -2131,19 +1970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABWaitForDesktopElementToNotExistResponse> JABWaitForDesktopElementToNotExist([WorkflowExpression] Func<double> jABWaitForDesktopElementToNotExistsecondsToWait, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistworkflow, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementToNotExistsearchProcessId = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistsearchChildElements = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementToNotExistmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistincludeChildProcesses = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists = null)
         {
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsecondsToWait, nameof(jABWaitForDesktopElementToNotExistsecondsToWait), required: true);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistworkflow, nameof(jABWaitForDesktopElementToNotExistworkflow), required: true);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchUIAElementName, nameof(jABWaitForDesktopElementToNotExistsearchUIAElementName), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchUIAElementClassName, nameof(jABWaitForDesktopElementToNotExistsearchUIAElementClassName), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType, nameof(jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchProcessId, nameof(jABWaitForDesktopElementToNotExistsearchProcessId), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchChildElements, nameof(jABWaitForDesktopElementToNotExistsearchChildElements), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistmatchIndex, nameof(jABWaitForDesktopElementToNotExistmatchIndex), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchFilter, nameof(jABWaitForDesktopElementToNotExistsearchFilter), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsortByColumn, nameof(jABWaitForDesktopElementToNotExistsortByColumn), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistmatchIndexAscending, nameof(jABWaitForDesktopElementToNotExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistincludeChildProcesses, nameof(jABWaitForDesktopElementToNotExistincludeChildProcesses), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists, nameof(jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForDesktopElementToNotExist";
@@ -2294,7 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABFreeAllJABHandles([WorkflowExpression] Func<string> jABFreeAllJABHandlesworkflow)
         {
-            SourceExpression.Validate(jABFreeAllJABHandlesworkflow, nameof(jABFreeAllJABHandlesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABFreeAllJABHandles";
@@ -2317,10 +2142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetChildJABElementPropertiesResponse> JABGetChildJABElementProperties([WorkflowExpression] Func<int> jABGetChildJABElementPropertiessearchElementJABHandle, [WorkflowExpression] Func<int> jABGetChildJABElementPropertiessearchChildIndex, [WorkflowExpression] Func<string> jABGetChildJABElementPropertiesworkflow, [WorkflowExpression] Func<int> jABGetChildJABElementPropertiesmaxStringLength = null)
         {
-            SourceExpression.Validate(jABGetChildJABElementPropertiessearchElementJABHandle, nameof(jABGetChildJABElementPropertiessearchElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetChildJABElementPropertiessearchChildIndex, nameof(jABGetChildJABElementPropertiessearchChildIndex), required: true);
-            SourceExpression.Validate(jABGetChildJABElementPropertiesworkflow, nameof(jABGetChildJABElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetChildJABElementPropertiesmaxStringLength, nameof(jABGetChildJABElementPropertiesmaxStringLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetChildJABElementProperties";
@@ -2363,14 +2184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetAllChildJABElementPropertiesResponse> JABGetAllChildJABElementProperties([WorkflowExpression] Func<int> jABGetAllChildJABElementPropertiessearchElementJABHandle, [WorkflowExpression] Func<string> jABGetAllChildJABElementPropertiesworkflow, [WorkflowExpression] Func<int> jABGetAllChildJABElementPropertiesfirstItemToReturn = null, [WorkflowExpression] Func<int> jABGetAllChildJABElementPropertiesmaxItemsToReturn = null, [WorkflowExpression] Func<int> jABGetAllChildJABElementPropertiesmaxStringLength = null, [WorkflowExpression] Func<bool> jABGetAllChildJABElementPropertiessearchDescendants = null, [WorkflowExpression] Func<string> jABGetAllChildJABElementPropertiessearchRole = null, [WorkflowExpression] Func<int> jABGetAllChildJABElementPropertiesmaxRelativeDepth = null)
         {
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiessearchElementJABHandle, nameof(jABGetAllChildJABElementPropertiessearchElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiesworkflow, nameof(jABGetAllChildJABElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiesfirstItemToReturn, nameof(jABGetAllChildJABElementPropertiesfirstItemToReturn), required: false);
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiesmaxItemsToReturn, nameof(jABGetAllChildJABElementPropertiesmaxItemsToReturn), required: false);
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiesmaxStringLength, nameof(jABGetAllChildJABElementPropertiesmaxStringLength), required: false);
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiessearchDescendants, nameof(jABGetAllChildJABElementPropertiessearchDescendants), required: false);
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiessearchRole, nameof(jABGetAllChildJABElementPropertiessearchRole), required: false);
-            SourceExpression.Validate(jABGetAllChildJABElementPropertiesmaxRelativeDepth, nameof(jABGetAllChildJABElementPropertiesmaxRelativeDepth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetAllChildJABElementProperties";
@@ -2481,9 +2294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetParentJABElementPropertiesResponse> JABGetParentJABElementProperties([WorkflowExpression] Func<int> jABGetParentJABElementPropertiessearchElementJABHandle, [WorkflowExpression] Func<string> jABGetParentJABElementPropertiesworkflow, [WorkflowExpression] Func<int> jABGetParentJABElementPropertiesmaxStringLength = null)
         {
-            SourceExpression.Validate(jABGetParentJABElementPropertiessearchElementJABHandle, nameof(jABGetParentJABElementPropertiessearchElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetParentJABElementPropertiesworkflow, nameof(jABGetParentJABElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetParentJABElementPropertiesmaxStringLength, nameof(jABGetParentJABElementPropertiesmaxStringLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetParentJABElementProperties";
@@ -2524,27 +2334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABPressElement([WorkflowExpression] Func<int> jABPressElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABPressElementworkflow, [WorkflowExpression] Func<string> jABPressElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABPressElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABPressElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABPressElementsearchSubTree = null, [WorkflowExpression] Func<int> jABPressElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABPressElementmatchIndex = null, [WorkflowExpression] Func<string> jABPressElementsearchFilter = null, [WorkflowExpression] Func<string> jABPressElementsortByColumn = null, [WorkflowExpression] Func<bool> jABPressElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABPressElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABPressElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABPressElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABPressElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABPressElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABPressElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABPressElementnumberOfTimesToPressElement = null, [WorkflowExpression] Func<double> jABPressElementsecondsToWaitBetweenPresses = null, [WorkflowExpression] Func<bool> jABPressElementautoDetectActionName = null, [WorkflowExpression] Func<string> jABPressElementoverrideActionName = null)
         {
-            SourceExpression.Validate(jABPressElementsearchParentElementJABHandle, nameof(jABPressElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABPressElementworkflow, nameof(jABPressElementworkflow), required: true);
-            SourceExpression.Validate(jABPressElementsearchElementJABName, nameof(jABPressElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABPressElementsearchElementJABDescription, nameof(jABPressElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABPressElementsearchElementJABRole, nameof(jABPressElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABPressElementsearchSubTree, nameof(jABPressElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABPressElementmaxRelativeDepth, nameof(jABPressElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABPressElementmatchIndex, nameof(jABPressElementmatchIndex), required: false);
-            SourceExpression.Validate(jABPressElementsearchFilter, nameof(jABPressElementsearchFilter), required: false);
-            SourceExpression.Validate(jABPressElementsortByColumn, nameof(jABPressElementsortByColumn), required: false);
-            SourceExpression.Validate(jABPressElementmatchIndexAscending, nameof(jABPressElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABPressElementcaseSensitiveSearch, nameof(jABPressElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABPressElementonlySearchVisibleElements, nameof(jABPressElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABPressElementonlySearchShowingElements, nameof(jABPressElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABPressElementelementRolesNotToTraverse, nameof(jABPressElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABPressElementmaximumElementsToSearch, nameof(jABPressElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABPressElementmaximumChildElementsToSearchPerNode, nameof(jABPressElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABPressElementnumberOfTimesToPressElement, nameof(jABPressElementnumberOfTimesToPressElement), required: false);
-            SourceExpression.Validate(jABPressElementsecondsToWaitBetweenPresses, nameof(jABPressElementsecondsToWaitBetweenPresses), required: false);
-            SourceExpression.Validate(jABPressElementautoDetectActionName, nameof(jABPressElementautoDetectActionName), required: false);
-            SourceExpression.Validate(jABPressElementoverrideActionName, nameof(jABPressElementoverrideActionName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABPressElement";
@@ -2803,24 +2592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABPerformActionOnElement([WorkflowExpression] Func<int> jABPerformActionOnElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABPerformActionOnElementaction, [WorkflowExpression] Func<string> jABPerformActionOnElementworkflow, [WorkflowExpression] Func<string> jABPerformActionOnElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABPerformActionOnElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABPerformActionOnElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABPerformActionOnElementsearchSubTree = null, [WorkflowExpression] Func<int> jABPerformActionOnElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABPerformActionOnElementmatchIndex = null, [WorkflowExpression] Func<string> jABPerformActionOnElementsearchFilter = null, [WorkflowExpression] Func<string> jABPerformActionOnElementsortByColumn = null, [WorkflowExpression] Func<bool> jABPerformActionOnElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABPerformActionOnElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABPerformActionOnElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABPerformActionOnElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABPerformActionOnElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABPerformActionOnElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABPerformActionOnElementmaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABPerformActionOnElementsearchParentElementJABHandle, nameof(jABPerformActionOnElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABPerformActionOnElementaction, nameof(jABPerformActionOnElementaction), required: true);
-            SourceExpression.Validate(jABPerformActionOnElementworkflow, nameof(jABPerformActionOnElementworkflow), required: true);
-            SourceExpression.Validate(jABPerformActionOnElementsearchElementJABName, nameof(jABPerformActionOnElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementsearchElementJABDescription, nameof(jABPerformActionOnElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementsearchElementJABRole, nameof(jABPerformActionOnElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementsearchSubTree, nameof(jABPerformActionOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementmaxRelativeDepth, nameof(jABPerformActionOnElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementmatchIndex, nameof(jABPerformActionOnElementmatchIndex), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementsearchFilter, nameof(jABPerformActionOnElementsearchFilter), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementsortByColumn, nameof(jABPerformActionOnElementsortByColumn), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementmatchIndexAscending, nameof(jABPerformActionOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementcaseSensitiveSearch, nameof(jABPerformActionOnElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementonlySearchVisibleElements, nameof(jABPerformActionOnElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementonlySearchShowingElements, nameof(jABPerformActionOnElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementelementRolesNotToTraverse, nameof(jABPerformActionOnElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementmaximumElementsToSearch, nameof(jABPerformActionOnElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABPerformActionOnElementmaximumChildElementsToSearchPerNode, nameof(jABPerformActionOnElementmaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABPerformActionOnElement";
@@ -3027,28 +2798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABGlobalLeftMouseClickOnElement([WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGlobalLeftMouseClickOnElementworkflow, [WorkflowExpression] Func<string> jABGlobalLeftMouseClickOnElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABGlobalLeftMouseClickOnElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGlobalLeftMouseClickOnElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGlobalLeftMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> jABGlobalLeftMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> jABGlobalLeftMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> jABGlobalLeftMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGlobalLeftMouseClickOnElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGlobalLeftMouseClickOnElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGlobalLeftMouseClickOnElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGlobalLeftMouseClickOnElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<jABGlobalLeftMouseClickOnElementoffsetRelativeToInput> jABGlobalLeftMouseClickOnElementoffsetRelativeTo = null, [WorkflowExpression] Func<int> jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement = null, [WorkflowExpression] Func<double> jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks = null)
         {
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsearchParentElementJABHandle, nameof(jABGlobalLeftMouseClickOnElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementworkflow, nameof(jABGlobalLeftMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsearchElementJABName, nameof(jABGlobalLeftMouseClickOnElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsearchElementJABDescription, nameof(jABGlobalLeftMouseClickOnElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsearchElementJABRole, nameof(jABGlobalLeftMouseClickOnElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsearchSubTree, nameof(jABGlobalLeftMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementmaxRelativeDepth, nameof(jABGlobalLeftMouseClickOnElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementmatchIndex, nameof(jABGlobalLeftMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsearchFilter, nameof(jABGlobalLeftMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsortByColumn, nameof(jABGlobalLeftMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementmatchIndexAscending, nameof(jABGlobalLeftMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementcaseSensitiveSearch, nameof(jABGlobalLeftMouseClickOnElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementonlySearchVisibleElements, nameof(jABGlobalLeftMouseClickOnElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementonlySearchShowingElements, nameof(jABGlobalLeftMouseClickOnElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementelementRolesNotToTraverse, nameof(jABGlobalLeftMouseClickOnElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementmaximumElementsToSearch, nameof(jABGlobalLeftMouseClickOnElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode, nameof(jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementclickOffsetX, nameof(jABGlobalLeftMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementclickOffsetY, nameof(jABGlobalLeftMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementoffsetRelativeTo, nameof(jABGlobalLeftMouseClickOnElementoffsetRelativeTo), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement, nameof(jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement), required: false);
-            SourceExpression.Validate(jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks, nameof(jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalLeftMouseClickOnElement";
@@ -3323,26 +3072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABGlobalRightMouseClickOnElement([WorkflowExpression] Func<int> jABGlobalRightMouseClickOnElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGlobalRightMouseClickOnElementworkflow, [WorkflowExpression] Func<string> jABGlobalRightMouseClickOnElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABGlobalRightMouseClickOnElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGlobalRightMouseClickOnElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGlobalRightMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<int> jABGlobalRightMouseClickOnElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGlobalRightMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> jABGlobalRightMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> jABGlobalRightMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> jABGlobalRightMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGlobalRightMouseClickOnElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGlobalRightMouseClickOnElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGlobalRightMouseClickOnElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGlobalRightMouseClickOnElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGlobalRightMouseClickOnElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABGlobalRightMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> jABGlobalRightMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<jABGlobalRightMouseClickOnElementoffsetRelativeToInput> jABGlobalRightMouseClickOnElementoffsetRelativeTo = null)
         {
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementsearchParentElementJABHandle, nameof(jABGlobalRightMouseClickOnElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementworkflow, nameof(jABGlobalRightMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementsearchElementJABName, nameof(jABGlobalRightMouseClickOnElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementsearchElementJABDescription, nameof(jABGlobalRightMouseClickOnElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementsearchElementJABRole, nameof(jABGlobalRightMouseClickOnElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementsearchSubTree, nameof(jABGlobalRightMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementmaxRelativeDepth, nameof(jABGlobalRightMouseClickOnElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementmatchIndex, nameof(jABGlobalRightMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementsearchFilter, nameof(jABGlobalRightMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementsortByColumn, nameof(jABGlobalRightMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementmatchIndexAscending, nameof(jABGlobalRightMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementcaseSensitiveSearch, nameof(jABGlobalRightMouseClickOnElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementonlySearchVisibleElements, nameof(jABGlobalRightMouseClickOnElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementonlySearchShowingElements, nameof(jABGlobalRightMouseClickOnElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementelementRolesNotToTraverse, nameof(jABGlobalRightMouseClickOnElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementmaximumElementsToSearch, nameof(jABGlobalRightMouseClickOnElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode, nameof(jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementclickOffsetX, nameof(jABGlobalRightMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementclickOffsetY, nameof(jABGlobalRightMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(jABGlobalRightMouseClickOnElementoffsetRelativeTo, nameof(jABGlobalRightMouseClickOnElementoffsetRelativeTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalRightMouseClickOnElement";
@@ -3585,26 +3314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABGlobalMiddleMouseClickOnElement([WorkflowExpression] Func<int> jABGlobalMiddleMouseClickOnElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGlobalMiddleMouseClickOnElementworkflow, [WorkflowExpression] Func<string> jABGlobalMiddleMouseClickOnElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABGlobalMiddleMouseClickOnElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGlobalMiddleMouseClickOnElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGlobalMiddleMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<int> jABGlobalMiddleMouseClickOnElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGlobalMiddleMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> jABGlobalMiddleMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> jABGlobalMiddleMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> jABGlobalMiddleMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGlobalMiddleMouseClickOnElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGlobalMiddleMouseClickOnElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABGlobalMiddleMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> jABGlobalMiddleMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<jABGlobalMiddleMouseClickOnElementoffsetRelativeToInput> jABGlobalMiddleMouseClickOnElementoffsetRelativeTo = null)
         {
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementsearchParentElementJABHandle, nameof(jABGlobalMiddleMouseClickOnElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementworkflow, nameof(jABGlobalMiddleMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementsearchElementJABName, nameof(jABGlobalMiddleMouseClickOnElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementsearchElementJABDescription, nameof(jABGlobalMiddleMouseClickOnElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementsearchElementJABRole, nameof(jABGlobalMiddleMouseClickOnElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementsearchSubTree, nameof(jABGlobalMiddleMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementmaxRelativeDepth, nameof(jABGlobalMiddleMouseClickOnElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementmatchIndex, nameof(jABGlobalMiddleMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementsearchFilter, nameof(jABGlobalMiddleMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementsortByColumn, nameof(jABGlobalMiddleMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementmatchIndexAscending, nameof(jABGlobalMiddleMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch, nameof(jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements, nameof(jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementonlySearchShowingElements, nameof(jABGlobalMiddleMouseClickOnElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementelementRolesNotToTraverse, nameof(jABGlobalMiddleMouseClickOnElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch, nameof(jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode, nameof(jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementclickOffsetX, nameof(jABGlobalMiddleMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementclickOffsetY, nameof(jABGlobalMiddleMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(jABGlobalMiddleMouseClickOnElementoffsetRelativeTo, nameof(jABGlobalMiddleMouseClickOnElementoffsetRelativeTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalMiddleMouseClickOnElement";
@@ -3847,27 +3556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABGlobalDoubleLeftMouseClickOnElement([WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGlobalDoubleLeftMouseClickOnElementworkflow, [WorkflowExpression] Func<string> jABGlobalDoubleLeftMouseClickOnElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABGlobalDoubleLeftMouseClickOnElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGlobalDoubleLeftMouseClickOnElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGlobalDoubleLeftMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> jABGlobalDoubleLeftMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> jABGlobalDoubleLeftMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGlobalDoubleLeftMouseClickOnElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput> jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo = null, [WorkflowExpression] Func<int> jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds = null)
         {
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementsearchParentElementJABHandle, nameof(jABGlobalDoubleLeftMouseClickOnElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementworkflow, nameof(jABGlobalDoubleLeftMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABName, nameof(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABDescription, nameof(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABRole, nameof(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementsearchSubTree, nameof(jABGlobalDoubleLeftMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth, nameof(jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementmatchIndex, nameof(jABGlobalDoubleLeftMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementsearchFilter, nameof(jABGlobalDoubleLeftMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementsortByColumn, nameof(jABGlobalDoubleLeftMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending, nameof(jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch, nameof(jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements, nameof(jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements, nameof(jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementelementRolesNotToTraverse, nameof(jABGlobalDoubleLeftMouseClickOnElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch, nameof(jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode, nameof(jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementclickOffsetX, nameof(jABGlobalDoubleLeftMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementclickOffsetY, nameof(jABGlobalDoubleLeftMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo, nameof(jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo), required: false);
-            SourceExpression.Validate(jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds, nameof(jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalDoubleLeftMouseClickOnElement";
@@ -4126,23 +3814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetActionsForElementResponse> JABGetActionsForElement([WorkflowExpression] Func<int> jABGetActionsForElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetActionsForElementworkflow, [WorkflowExpression] Func<string> jABGetActionsForElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABGetActionsForElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetActionsForElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetActionsForElementsearchSubTree = null, [WorkflowExpression] Func<int> jABGetActionsForElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetActionsForElementmatchIndex = null, [WorkflowExpression] Func<string> jABGetActionsForElementsearchFilter = null, [WorkflowExpression] Func<string> jABGetActionsForElementsortByColumn = null, [WorkflowExpression] Func<bool> jABGetActionsForElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetActionsForElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetActionsForElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetActionsForElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetActionsForElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetActionsForElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetActionsForElementmaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABGetActionsForElementsearchParentElementJABHandle, nameof(jABGetActionsForElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetActionsForElementworkflow, nameof(jABGetActionsForElementworkflow), required: true);
-            SourceExpression.Validate(jABGetActionsForElementsearchElementJABName, nameof(jABGetActionsForElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetActionsForElementsearchElementJABDescription, nameof(jABGetActionsForElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetActionsForElementsearchElementJABRole, nameof(jABGetActionsForElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetActionsForElementsearchSubTree, nameof(jABGetActionsForElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABGetActionsForElementmaxRelativeDepth, nameof(jABGetActionsForElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetActionsForElementmatchIndex, nameof(jABGetActionsForElementmatchIndex), required: false);
-            SourceExpression.Validate(jABGetActionsForElementsearchFilter, nameof(jABGetActionsForElementsearchFilter), required: false);
-            SourceExpression.Validate(jABGetActionsForElementsortByColumn, nameof(jABGetActionsForElementsortByColumn), required: false);
-            SourceExpression.Validate(jABGetActionsForElementmatchIndexAscending, nameof(jABGetActionsForElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetActionsForElementcaseSensitiveSearch, nameof(jABGetActionsForElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetActionsForElementonlySearchVisibleElements, nameof(jABGetActionsForElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetActionsForElementonlySearchShowingElements, nameof(jABGetActionsForElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetActionsForElementelementRolesNotToTraverse, nameof(jABGetActionsForElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetActionsForElementmaximumElementsToSearch, nameof(jABGetActionsForElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetActionsForElementmaximumChildElementsToSearchPerNode, nameof(jABGetActionsForElementmaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetActionsForElement";
@@ -4347,23 +4018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABFocusElement([WorkflowExpression] Func<int> jABFocusElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABFocusElementworkflow, [WorkflowExpression] Func<string> jABFocusElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABFocusElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABFocusElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABFocusElementsearchSubTree = null, [WorkflowExpression] Func<int> jABFocusElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABFocusElementmatchIndex = null, [WorkflowExpression] Func<string> jABFocusElementsearchFilter = null, [WorkflowExpression] Func<string> jABFocusElementsortByColumn = null, [WorkflowExpression] Func<bool> jABFocusElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABFocusElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABFocusElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABFocusElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABFocusElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABFocusElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABFocusElementmaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABFocusElementsearchParentElementJABHandle, nameof(jABFocusElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABFocusElementworkflow, nameof(jABFocusElementworkflow), required: true);
-            SourceExpression.Validate(jABFocusElementsearchElementJABName, nameof(jABFocusElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABFocusElementsearchElementJABDescription, nameof(jABFocusElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABFocusElementsearchElementJABRole, nameof(jABFocusElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABFocusElementsearchSubTree, nameof(jABFocusElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABFocusElementmaxRelativeDepth, nameof(jABFocusElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABFocusElementmatchIndex, nameof(jABFocusElementmatchIndex), required: false);
-            SourceExpression.Validate(jABFocusElementsearchFilter, nameof(jABFocusElementsearchFilter), required: false);
-            SourceExpression.Validate(jABFocusElementsortByColumn, nameof(jABFocusElementsortByColumn), required: false);
-            SourceExpression.Validate(jABFocusElementmatchIndexAscending, nameof(jABFocusElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABFocusElementcaseSensitiveSearch, nameof(jABFocusElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABFocusElementonlySearchVisibleElements, nameof(jABFocusElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABFocusElementonlySearchShowingElements, nameof(jABFocusElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABFocusElementelementRolesNotToTraverse, nameof(jABFocusElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABFocusElementmaximumElementsToSearch, nameof(jABFocusElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABFocusElementmaximumChildElementsToSearchPerNode, nameof(jABFocusElementmaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABFocusElement";
@@ -4568,24 +4222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABInputPasswordIntoElement([WorkflowExpression] Func<int> jABInputPasswordIntoElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABInputPasswordIntoElementpasswordToInput, [WorkflowExpression] Func<string> jABInputPasswordIntoElementworkflow, [WorkflowExpression] Func<string> jABInputPasswordIntoElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABInputPasswordIntoElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABInputPasswordIntoElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABInputPasswordIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> jABInputPasswordIntoElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABInputPasswordIntoElementmatchIndex = null, [WorkflowExpression] Func<string> jABInputPasswordIntoElementsearchFilter = null, [WorkflowExpression] Func<string> jABInputPasswordIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> jABInputPasswordIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABInputPasswordIntoElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABInputPasswordIntoElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABInputPasswordIntoElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABInputPasswordIntoElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABInputPasswordIntoElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABInputPasswordIntoElementsearchParentElementJABHandle, nameof(jABInputPasswordIntoElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABInputPasswordIntoElementpasswordToInput, nameof(jABInputPasswordIntoElementpasswordToInput), required: true);
-            SourceExpression.Validate(jABInputPasswordIntoElementworkflow, nameof(jABInputPasswordIntoElementworkflow), required: true);
-            SourceExpression.Validate(jABInputPasswordIntoElementsearchElementJABName, nameof(jABInputPasswordIntoElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementsearchElementJABDescription, nameof(jABInputPasswordIntoElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementsearchElementJABRole, nameof(jABInputPasswordIntoElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementsearchSubTree, nameof(jABInputPasswordIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementmaxRelativeDepth, nameof(jABInputPasswordIntoElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementmatchIndex, nameof(jABInputPasswordIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementsearchFilter, nameof(jABInputPasswordIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementsortByColumn, nameof(jABInputPasswordIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementmatchIndexAscending, nameof(jABInputPasswordIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementcaseSensitiveSearch, nameof(jABInputPasswordIntoElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementonlySearchVisibleElements, nameof(jABInputPasswordIntoElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementonlySearchShowingElements, nameof(jABInputPasswordIntoElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementelementRolesNotToTraverse, nameof(jABInputPasswordIntoElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementmaximumElementsToSearch, nameof(jABInputPasswordIntoElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode, nameof(jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABInputPasswordIntoElement";
@@ -4792,26 +4428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABInputTextIntoElement([WorkflowExpression] Func<int> jABInputTextIntoElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABInputTextIntoElementworkflow, [WorkflowExpression] Func<string> jABInputTextIntoElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABInputTextIntoElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABInputTextIntoElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABInputTextIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> jABInputTextIntoElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABInputTextIntoElementmatchIndex = null, [WorkflowExpression] Func<string> jABInputTextIntoElementsearchFilter = null, [WorkflowExpression] Func<string> jABInputTextIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> jABInputTextIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABInputTextIntoElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABInputTextIntoElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABInputTextIntoElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABInputTextIntoElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABInputTextIntoElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABInputTextIntoElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> jABInputTextIntoElementtextToInput = null, [WorkflowExpression] Func<bool> jABInputTextIntoElementreplaceExistingValue = null, [WorkflowExpression] Func<int> jABInputTextIntoElementinsertPosition = null)
         {
-            SourceExpression.Validate(jABInputTextIntoElementsearchParentElementJABHandle, nameof(jABInputTextIntoElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABInputTextIntoElementworkflow, nameof(jABInputTextIntoElementworkflow), required: true);
-            SourceExpression.Validate(jABInputTextIntoElementsearchElementJABName, nameof(jABInputTextIntoElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementsearchElementJABDescription, nameof(jABInputTextIntoElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementsearchElementJABRole, nameof(jABInputTextIntoElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementsearchSubTree, nameof(jABInputTextIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementmaxRelativeDepth, nameof(jABInputTextIntoElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementmatchIndex, nameof(jABInputTextIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementsearchFilter, nameof(jABInputTextIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementsortByColumn, nameof(jABInputTextIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementmatchIndexAscending, nameof(jABInputTextIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementcaseSensitiveSearch, nameof(jABInputTextIntoElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementonlySearchVisibleElements, nameof(jABInputTextIntoElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementonlySearchShowingElements, nameof(jABInputTextIntoElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementelementRolesNotToTraverse, nameof(jABInputTextIntoElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementmaximumElementsToSearch, nameof(jABInputTextIntoElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementmaximumChildElementsToSearchPerNode, nameof(jABInputTextIntoElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementtextToInput, nameof(jABInputTextIntoElementtextToInput), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementreplaceExistingValue, nameof(jABInputTextIntoElementreplaceExistingValue), required: false);
-            SourceExpression.Validate(jABInputTextIntoElementinsertPosition, nameof(jABInputTextIntoElementinsertPosition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABInputTextIntoElement";
@@ -5054,23 +4670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetElementTextValueResponse> JABGetElementTextValue([WorkflowExpression] Func<int> jABGetElementTextValuesearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetElementTextValueworkflow, [WorkflowExpression] Func<string> jABGetElementTextValuesearchElementJABName = null, [WorkflowExpression] Func<string> jABGetElementTextValuesearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetElementTextValuesearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetElementTextValuesearchSubTree = null, [WorkflowExpression] Func<int> jABGetElementTextValuemaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetElementTextValuematchIndex = null, [WorkflowExpression] Func<string> jABGetElementTextValuesearchFilter = null, [WorkflowExpression] Func<string> jABGetElementTextValuesortByColumn = null, [WorkflowExpression] Func<bool> jABGetElementTextValuematchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetElementTextValuecaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetElementTextValueonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetElementTextValueonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetElementTextValueelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetElementTextValuemaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetElementTextValuemaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABGetElementTextValuesearchParentElementJABHandle, nameof(jABGetElementTextValuesearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetElementTextValueworkflow, nameof(jABGetElementTextValueworkflow), required: true);
-            SourceExpression.Validate(jABGetElementTextValuesearchElementJABName, nameof(jABGetElementTextValuesearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetElementTextValuesearchElementJABDescription, nameof(jABGetElementTextValuesearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetElementTextValuesearchElementJABRole, nameof(jABGetElementTextValuesearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetElementTextValuesearchSubTree, nameof(jABGetElementTextValuesearchSubTree), required: false);
-            SourceExpression.Validate(jABGetElementTextValuemaxRelativeDepth, nameof(jABGetElementTextValuemaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetElementTextValuematchIndex, nameof(jABGetElementTextValuematchIndex), required: false);
-            SourceExpression.Validate(jABGetElementTextValuesearchFilter, nameof(jABGetElementTextValuesearchFilter), required: false);
-            SourceExpression.Validate(jABGetElementTextValuesortByColumn, nameof(jABGetElementTextValuesortByColumn), required: false);
-            SourceExpression.Validate(jABGetElementTextValuematchIndexAscending, nameof(jABGetElementTextValuematchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetElementTextValuecaseSensitiveSearch, nameof(jABGetElementTextValuecaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetElementTextValueonlySearchVisibleElements, nameof(jABGetElementTextValueonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetElementTextValueonlySearchShowingElements, nameof(jABGetElementTextValueonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetElementTextValueelementRolesNotToTraverse, nameof(jABGetElementTextValueelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetElementTextValuemaximumElementsToSearch, nameof(jABGetElementTextValuemaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetElementTextValuemaximumChildElementsToSearchPerNode, nameof(jABGetElementTextValuemaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetElementTextValue";
@@ -5275,23 +4874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetElementValueResponse> JABGetElementValue([WorkflowExpression] Func<int> jABGetElementValuesearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetElementValueworkflow, [WorkflowExpression] Func<string> jABGetElementValuesearchElementJABName = null, [WorkflowExpression] Func<string> jABGetElementValuesearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetElementValuesearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetElementValuesearchSubTree = null, [WorkflowExpression] Func<int> jABGetElementValuemaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetElementValuematchIndex = null, [WorkflowExpression] Func<string> jABGetElementValuesearchFilter = null, [WorkflowExpression] Func<string> jABGetElementValuesortByColumn = null, [WorkflowExpression] Func<bool> jABGetElementValuematchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetElementValuecaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetElementValueonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetElementValueonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetElementValueelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetElementValuemaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetElementValuemaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABGetElementValuesearchParentElementJABHandle, nameof(jABGetElementValuesearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetElementValueworkflow, nameof(jABGetElementValueworkflow), required: true);
-            SourceExpression.Validate(jABGetElementValuesearchElementJABName, nameof(jABGetElementValuesearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetElementValuesearchElementJABDescription, nameof(jABGetElementValuesearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetElementValuesearchElementJABRole, nameof(jABGetElementValuesearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetElementValuesearchSubTree, nameof(jABGetElementValuesearchSubTree), required: false);
-            SourceExpression.Validate(jABGetElementValuemaxRelativeDepth, nameof(jABGetElementValuemaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetElementValuematchIndex, nameof(jABGetElementValuematchIndex), required: false);
-            SourceExpression.Validate(jABGetElementValuesearchFilter, nameof(jABGetElementValuesearchFilter), required: false);
-            SourceExpression.Validate(jABGetElementValuesortByColumn, nameof(jABGetElementValuesortByColumn), required: false);
-            SourceExpression.Validate(jABGetElementValuematchIndexAscending, nameof(jABGetElementValuematchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetElementValuecaseSensitiveSearch, nameof(jABGetElementValuecaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetElementValueonlySearchVisibleElements, nameof(jABGetElementValueonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetElementValueonlySearchShowingElements, nameof(jABGetElementValueonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetElementValueelementRolesNotToTraverse, nameof(jABGetElementValueelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetElementValuemaximumElementsToSearch, nameof(jABGetElementValuemaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetElementValuemaximumChildElementsToSearchPerNode, nameof(jABGetElementValuemaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetElementValue";
@@ -5496,26 +5078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABCheckElement([WorkflowExpression] Func<int> jABCheckElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABCheckElementworkflow, [WorkflowExpression] Func<string> jABCheckElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABCheckElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABCheckElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABCheckElementsearchSubTree = null, [WorkflowExpression] Func<int> jABCheckElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABCheckElementmatchIndex = null, [WorkflowExpression] Func<string> jABCheckElementsearchFilter = null, [WorkflowExpression] Func<string> jABCheckElementsortByColumn = null, [WorkflowExpression] Func<bool> jABCheckElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABCheckElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABCheckElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABCheckElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABCheckElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABCheckElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABCheckElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABCheckElementcheckElement = null, [WorkflowExpression] Func<bool> jABCheckElementautoDetectActionName = null, [WorkflowExpression] Func<string> jABCheckElementoverrideActionName = null)
         {
-            SourceExpression.Validate(jABCheckElementsearchParentElementJABHandle, nameof(jABCheckElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABCheckElementworkflow, nameof(jABCheckElementworkflow), required: true);
-            SourceExpression.Validate(jABCheckElementsearchElementJABName, nameof(jABCheckElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABCheckElementsearchElementJABDescription, nameof(jABCheckElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABCheckElementsearchElementJABRole, nameof(jABCheckElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABCheckElementsearchSubTree, nameof(jABCheckElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABCheckElementmaxRelativeDepth, nameof(jABCheckElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABCheckElementmatchIndex, nameof(jABCheckElementmatchIndex), required: false);
-            SourceExpression.Validate(jABCheckElementsearchFilter, nameof(jABCheckElementsearchFilter), required: false);
-            SourceExpression.Validate(jABCheckElementsortByColumn, nameof(jABCheckElementsortByColumn), required: false);
-            SourceExpression.Validate(jABCheckElementmatchIndexAscending, nameof(jABCheckElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABCheckElementcaseSensitiveSearch, nameof(jABCheckElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABCheckElementonlySearchVisibleElements, nameof(jABCheckElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABCheckElementonlySearchShowingElements, nameof(jABCheckElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABCheckElementelementRolesNotToTraverse, nameof(jABCheckElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABCheckElementmaximumElementsToSearch, nameof(jABCheckElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABCheckElementmaximumChildElementsToSearchPerNode, nameof(jABCheckElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABCheckElementcheckElement, nameof(jABCheckElementcheckElement), required: false);
-            SourceExpression.Validate(jABCheckElementautoDetectActionName, nameof(jABCheckElementautoDetectActionName), required: false);
-            SourceExpression.Validate(jABCheckElementoverrideActionName, nameof(jABCheckElementoverrideActionName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABCheckElement";
@@ -5758,24 +5320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetElementPropertiesAsListResponse> JABGetElementPropertiesAsList([WorkflowExpression] Func<int> jABGetElementPropertiesAsListsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetElementPropertiesAsListworkflow, [WorkflowExpression] Func<string> jABGetElementPropertiesAsListsearchElementJABName = null, [WorkflowExpression] Func<string> jABGetElementPropertiesAsListsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetElementPropertiesAsListsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetElementPropertiesAsListsearchSubTree = null, [WorkflowExpression] Func<int> jABGetElementPropertiesAsListmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetElementPropertiesAsListmatchIndex = null, [WorkflowExpression] Func<string> jABGetElementPropertiesAsListsearchFilter = null, [WorkflowExpression] Func<string> jABGetElementPropertiesAsListsortByColumn = null, [WorkflowExpression] Func<bool> jABGetElementPropertiesAsListmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetElementPropertiesAsListcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetElementPropertiesAsListonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetElementPropertiesAsListonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetElementPropertiesAsListelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetElementPropertiesAsListmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABGetElementPropertiesAsListmaxStringLength = null)
         {
-            SourceExpression.Validate(jABGetElementPropertiesAsListsearchParentElementJABHandle, nameof(jABGetElementPropertiesAsListsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetElementPropertiesAsListworkflow, nameof(jABGetElementPropertiesAsListworkflow), required: true);
-            SourceExpression.Validate(jABGetElementPropertiesAsListsearchElementJABName, nameof(jABGetElementPropertiesAsListsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListsearchElementJABDescription, nameof(jABGetElementPropertiesAsListsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListsearchElementJABRole, nameof(jABGetElementPropertiesAsListsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListsearchSubTree, nameof(jABGetElementPropertiesAsListsearchSubTree), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListmaxRelativeDepth, nameof(jABGetElementPropertiesAsListmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListmatchIndex, nameof(jABGetElementPropertiesAsListmatchIndex), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListsearchFilter, nameof(jABGetElementPropertiesAsListsearchFilter), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListsortByColumn, nameof(jABGetElementPropertiesAsListsortByColumn), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListmatchIndexAscending, nameof(jABGetElementPropertiesAsListmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListcaseSensitiveSearch, nameof(jABGetElementPropertiesAsListcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListonlySearchVisibleElements, nameof(jABGetElementPropertiesAsListonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListonlySearchShowingElements, nameof(jABGetElementPropertiesAsListonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListelementRolesNotToTraverse, nameof(jABGetElementPropertiesAsListelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListmaximumElementsToSearch, nameof(jABGetElementPropertiesAsListmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode, nameof(jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetElementPropertiesAsListmaxStringLength, nameof(jABGetElementPropertiesAsListmaxStringLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetElementPropertiesAsList";
@@ -5996,32 +5540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABGlobalInputPasswordIntoElement([WorkflowExpression] Func<int> jABGlobalInputPasswordIntoElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementpasswordToInput, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementworkflow, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> jABGlobalInputPasswordIntoElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGlobalInputPasswordIntoElementmatchIndex = null, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementsearchFilter = null, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGlobalInputPasswordIntoElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGlobalInputPasswordIntoElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementfocusElement = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementglobalMouseClickOnElement = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementsendKeyEvents = null, [WorkflowExpression] Func<int> jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds = null, [WorkflowExpression] Func<int> jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds = null, [WorkflowExpression] Func<bool> jABGlobalInputPasswordIntoElementdontInterpretSymbols = null)
         {
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsearchParentElementJABHandle, nameof(jABGlobalInputPasswordIntoElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementpasswordToInput, nameof(jABGlobalInputPasswordIntoElementpasswordToInput), required: true);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementworkflow, nameof(jABGlobalInputPasswordIntoElementworkflow), required: true);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsearchElementJABName, nameof(jABGlobalInputPasswordIntoElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsearchElementJABDescription, nameof(jABGlobalInputPasswordIntoElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsearchElementJABRole, nameof(jABGlobalInputPasswordIntoElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsearchSubTree, nameof(jABGlobalInputPasswordIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementmaxRelativeDepth, nameof(jABGlobalInputPasswordIntoElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementmatchIndex, nameof(jABGlobalInputPasswordIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsearchFilter, nameof(jABGlobalInputPasswordIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsortByColumn, nameof(jABGlobalInputPasswordIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementmatchIndexAscending, nameof(jABGlobalInputPasswordIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementcaseSensitiveSearch, nameof(jABGlobalInputPasswordIntoElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementonlySearchVisibleElements, nameof(jABGlobalInputPasswordIntoElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementonlySearchShowingElements, nameof(jABGlobalInputPasswordIntoElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementelementRolesNotToTraverse, nameof(jABGlobalInputPasswordIntoElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementmaximumElementsToSearch, nameof(jABGlobalInputPasswordIntoElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode, nameof(jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementfocusElement, nameof(jABGlobalInputPasswordIntoElementfocusElement), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementglobalMouseClickOnElement, nameof(jABGlobalInputPasswordIntoElementglobalMouseClickOnElement), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete, nameof(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete, nameof(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementsendKeyEvents, nameof(jABGlobalInputPasswordIntoElementsendKeyEvents), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds, nameof(jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds, nameof(jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(jABGlobalInputPasswordIntoElementdontInterpretSymbols, nameof(jABGlobalInputPasswordIntoElementdontInterpretSymbols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalInputPasswordIntoElement";
@@ -6356,32 +5874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABGlobalInputTextIntoElement([WorkflowExpression] Func<int> jABGlobalInputTextIntoElementsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementworkflow, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementsearchElementJABName = null, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> jABGlobalInputTextIntoElementmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGlobalInputTextIntoElementmatchIndex = null, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementsearchFilter = null, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGlobalInputTextIntoElementmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementfocusElement = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementglobalMouseClickOnElement = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete = null, [WorkflowExpression] Func<string> jABGlobalInputTextIntoElementtextToInput = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementsendKeyEvents = null, [WorkflowExpression] Func<int> jABGlobalInputTextIntoElementkeyIntervalInMilliseconds = null, [WorkflowExpression] Func<int> jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds = null, [WorkflowExpression] Func<bool> jABGlobalInputTextIntoElementdontInterpretSymbols = null)
         {
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsearchParentElementJABHandle, nameof(jABGlobalInputTextIntoElementsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementworkflow, nameof(jABGlobalInputTextIntoElementworkflow), required: true);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsearchElementJABName, nameof(jABGlobalInputTextIntoElementsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsearchElementJABDescription, nameof(jABGlobalInputTextIntoElementsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsearchElementJABRole, nameof(jABGlobalInputTextIntoElementsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsearchSubTree, nameof(jABGlobalInputTextIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementmaxRelativeDepth, nameof(jABGlobalInputTextIntoElementmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementmatchIndex, nameof(jABGlobalInputTextIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsearchFilter, nameof(jABGlobalInputTextIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsortByColumn, nameof(jABGlobalInputTextIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementmatchIndexAscending, nameof(jABGlobalInputTextIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementcaseSensitiveSearch, nameof(jABGlobalInputTextIntoElementcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementonlySearchVisibleElements, nameof(jABGlobalInputTextIntoElementonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementonlySearchShowingElements, nameof(jABGlobalInputTextIntoElementonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementelementRolesNotToTraverse, nameof(jABGlobalInputTextIntoElementelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementmaximumElementsToSearch, nameof(jABGlobalInputTextIntoElementmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode, nameof(jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementfocusElement, nameof(jABGlobalInputTextIntoElementfocusElement), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementglobalMouseClickOnElement, nameof(jABGlobalInputTextIntoElementglobalMouseClickOnElement), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete, nameof(jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete, nameof(jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementtextToInput, nameof(jABGlobalInputTextIntoElementtextToInput), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementsendKeyEvents, nameof(jABGlobalInputTextIntoElementsendKeyEvents), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementkeyIntervalInMilliseconds, nameof(jABGlobalInputTextIntoElementkeyIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds, nameof(jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(jABGlobalInputTextIntoElementdontInterpretSymbols, nameof(jABGlobalInputTextIntoElementdontInterpretSymbols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalInputTextIntoElement";
@@ -6720,29 +6212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetSelectionElementItemsResponse> JABGetSelectionElementItems([WorkflowExpression] Func<int> jABGetSelectionElementItemssearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetSelectionElementItemsworkflow, [WorkflowExpression] Func<string> jABGetSelectionElementItemssearchElementJABName = null, [WorkflowExpression] Func<string> jABGetSelectionElementItemssearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetSelectionElementItemssearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemssearchSubTree = null, [WorkflowExpression] Func<int> jABGetSelectionElementItemsmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetSelectionElementItemsmatchIndex = null, [WorkflowExpression] Func<string> jABGetSelectionElementItemssearchFilter = null, [WorkflowExpression] Func<string> jABGetSelectionElementItemssortByColumn = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemsmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemscaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemsonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemsonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetSelectionElementItemselementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetSelectionElementItemsmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemsgetListOfOptionsBySelecting = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemsgetListOfOptionsByReadingLabels = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemsexpandFirst = null, [WorkflowExpression] Func<bool> jABGetSelectionElementItemscollapseAfter = null, [WorkflowExpression] Func<double> jABGetSelectionElementItemssecondsBetweenExpandCollapse = null, [WorkflowExpression] Func<int> jABGetSelectionElementItemsmaxListItemsToReturn = null)
         {
-            SourceExpression.Validate(jABGetSelectionElementItemssearchParentElementJABHandle, nameof(jABGetSelectionElementItemssearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetSelectionElementItemsworkflow, nameof(jABGetSelectionElementItemsworkflow), required: true);
-            SourceExpression.Validate(jABGetSelectionElementItemssearchElementJABName, nameof(jABGetSelectionElementItemssearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemssearchElementJABDescription, nameof(jABGetSelectionElementItemssearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemssearchElementJABRole, nameof(jABGetSelectionElementItemssearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemssearchSubTree, nameof(jABGetSelectionElementItemssearchSubTree), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsmaxRelativeDepth, nameof(jABGetSelectionElementItemsmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsmatchIndex, nameof(jABGetSelectionElementItemsmatchIndex), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemssearchFilter, nameof(jABGetSelectionElementItemssearchFilter), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemssortByColumn, nameof(jABGetSelectionElementItemssortByColumn), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsmatchIndexAscending, nameof(jABGetSelectionElementItemsmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemscaseSensitiveSearch, nameof(jABGetSelectionElementItemscaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsonlySearchVisibleElements, nameof(jABGetSelectionElementItemsonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsonlySearchShowingElements, nameof(jABGetSelectionElementItemsonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemselementRolesNotToTraverse, nameof(jABGetSelectionElementItemselementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsmaximumElementsToSearch, nameof(jABGetSelectionElementItemsmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode, nameof(jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsgetListOfOptionsBySelecting, nameof(jABGetSelectionElementItemsgetListOfOptionsBySelecting), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsgetListOfOptionsByReadingLabels, nameof(jABGetSelectionElementItemsgetListOfOptionsByReadingLabels), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsexpandFirst, nameof(jABGetSelectionElementItemsexpandFirst), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemscollapseAfter, nameof(jABGetSelectionElementItemscollapseAfter), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemssecondsBetweenExpandCollapse, nameof(jABGetSelectionElementItemssecondsBetweenExpandCollapse), required: false);
-            SourceExpression.Validate(jABGetSelectionElementItemsmaxListItemsToReturn, nameof(jABGetSelectionElementItemsmaxListItemsToReturn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetSelectionElementItems";
@@ -7043,27 +6512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABSetSelectionByIndex([WorkflowExpression] Func<int> jABSetSelectionByIndexsearchParentElementJABHandle, [WorkflowExpression] Func<int> jABSetSelectionByIndexitemIndex, [WorkflowExpression] Func<string> jABSetSelectionByIndexworkflow, [WorkflowExpression] Func<string> jABSetSelectionByIndexsearchElementJABName = null, [WorkflowExpression] Func<string> jABSetSelectionByIndexsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABSetSelectionByIndexsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexsearchSubTree = null, [WorkflowExpression] Func<int> jABSetSelectionByIndexmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABSetSelectionByIndexmatchIndex = null, [WorkflowExpression] Func<string> jABSetSelectionByIndexsearchFilter = null, [WorkflowExpression] Func<string> jABSetSelectionByIndexsortByColumn = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABSetSelectionByIndexelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABSetSelectionByIndexmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABSetSelectionByIndexmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexselectItem = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexclearSelectionFirst = null, [WorkflowExpression] Func<bool> jABSetSelectionByIndexrecoverOnFailure = null)
         {
-            SourceExpression.Validate(jABSetSelectionByIndexsearchParentElementJABHandle, nameof(jABSetSelectionByIndexsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABSetSelectionByIndexitemIndex, nameof(jABSetSelectionByIndexitemIndex), required: true);
-            SourceExpression.Validate(jABSetSelectionByIndexworkflow, nameof(jABSetSelectionByIndexworkflow), required: true);
-            SourceExpression.Validate(jABSetSelectionByIndexsearchElementJABName, nameof(jABSetSelectionByIndexsearchElementJABName), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexsearchElementJABDescription, nameof(jABSetSelectionByIndexsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexsearchElementJABRole, nameof(jABSetSelectionByIndexsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexsearchSubTree, nameof(jABSetSelectionByIndexsearchSubTree), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexmaxRelativeDepth, nameof(jABSetSelectionByIndexmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexmatchIndex, nameof(jABSetSelectionByIndexmatchIndex), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexsearchFilter, nameof(jABSetSelectionByIndexsearchFilter), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexsortByColumn, nameof(jABSetSelectionByIndexsortByColumn), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexmatchIndexAscending, nameof(jABSetSelectionByIndexmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexcaseSensitiveSearch, nameof(jABSetSelectionByIndexcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexonlySearchVisibleElements, nameof(jABSetSelectionByIndexonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexonlySearchShowingElements, nameof(jABSetSelectionByIndexonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexelementRolesNotToTraverse, nameof(jABSetSelectionByIndexelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexmaximumElementsToSearch, nameof(jABSetSelectionByIndexmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexmaximumChildElementsToSearchPerNode, nameof(jABSetSelectionByIndexmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexselectItem, nameof(jABSetSelectionByIndexselectItem), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexclearSelectionFirst, nameof(jABSetSelectionByIndexclearSelectionFirst), required: false);
-            SourceExpression.Validate(jABSetSelectionByIndexrecoverOnFailure, nameof(jABSetSelectionByIndexrecoverOnFailure), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABSetSelectionByIndex";
@@ -7318,34 +6766,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABSetSelectionByName([WorkflowExpression] Func<int> jABSetSelectionByNamesearchParentElementJABHandle, [WorkflowExpression] Func<string> jABSetSelectionByNameitemName, [WorkflowExpression] Func<string> jABSetSelectionByNameworkflow, [WorkflowExpression] Func<string> jABSetSelectionByNamesearchElementJABName = null, [WorkflowExpression] Func<string> jABSetSelectionByNamesearchElementJABDescription = null, [WorkflowExpression] Func<string> jABSetSelectionByNamesearchElementJABRole = null, [WorkflowExpression] Func<bool> jABSetSelectionByNamesearchSubTree = null, [WorkflowExpression] Func<int> jABSetSelectionByNamemaxRelativeDepth = null, [WorkflowExpression] Func<int> jABSetSelectionByNamematchIndex = null, [WorkflowExpression] Func<string> jABSetSelectionByNamesearchFilter = null, [WorkflowExpression] Func<string> jABSetSelectionByNamesortByColumn = null, [WorkflowExpression] Func<bool> jABSetSelectionByNamematchIndexAscending = null, [WorkflowExpression] Func<bool> jABSetSelectionByNamecaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABSetSelectionByNameonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABSetSelectionByNameonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABSetSelectionByNameelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABSetSelectionByNamemaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABSetSelectionByNamemaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABSetSelectionByNameselectItem = null, [WorkflowExpression] Func<bool> jABSetSelectionByNameitemNameCaseSensitive = null, [WorkflowExpression] Func<bool> jABSetSelectionByNameclearSelectionFirst = null, [WorkflowExpression] Func<bool> jABSetSelectionByNamegetListOfOptionsBySelecting = null, [WorkflowExpression] Func<bool> jABSetSelectionByNamegetListOfOptionsByReadingLabels = null, [WorkflowExpression] Func<bool> jABSetSelectionByNameexpandFirst = null, [WorkflowExpression] Func<bool> jABSetSelectionByNamecollapseAfter = null, [WorkflowExpression] Func<double> jABSetSelectionByNamesecondsBetweenExpandCollapse = null, [WorkflowExpression] Func<bool> jABSetSelectionByNameforceEvenIfInCorrectState = null, [WorkflowExpression] Func<bool> jABSetSelectionByNamerecoverOnFailure = null)
         {
-            SourceExpression.Validate(jABSetSelectionByNamesearchParentElementJABHandle, nameof(jABSetSelectionByNamesearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABSetSelectionByNameitemName, nameof(jABSetSelectionByNameitemName), required: true);
-            SourceExpression.Validate(jABSetSelectionByNameworkflow, nameof(jABSetSelectionByNameworkflow), required: true);
-            SourceExpression.Validate(jABSetSelectionByNamesearchElementJABName, nameof(jABSetSelectionByNamesearchElementJABName), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamesearchElementJABDescription, nameof(jABSetSelectionByNamesearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamesearchElementJABRole, nameof(jABSetSelectionByNamesearchElementJABRole), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamesearchSubTree, nameof(jABSetSelectionByNamesearchSubTree), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamemaxRelativeDepth, nameof(jABSetSelectionByNamemaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamematchIndex, nameof(jABSetSelectionByNamematchIndex), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamesearchFilter, nameof(jABSetSelectionByNamesearchFilter), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamesortByColumn, nameof(jABSetSelectionByNamesortByColumn), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamematchIndexAscending, nameof(jABSetSelectionByNamematchIndexAscending), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamecaseSensitiveSearch, nameof(jABSetSelectionByNamecaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameonlySearchVisibleElements, nameof(jABSetSelectionByNameonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameonlySearchShowingElements, nameof(jABSetSelectionByNameonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameelementRolesNotToTraverse, nameof(jABSetSelectionByNameelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamemaximumElementsToSearch, nameof(jABSetSelectionByNamemaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamemaximumChildElementsToSearchPerNode, nameof(jABSetSelectionByNamemaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameselectItem, nameof(jABSetSelectionByNameselectItem), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameitemNameCaseSensitive, nameof(jABSetSelectionByNameitemNameCaseSensitive), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameclearSelectionFirst, nameof(jABSetSelectionByNameclearSelectionFirst), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamegetListOfOptionsBySelecting, nameof(jABSetSelectionByNamegetListOfOptionsBySelecting), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamegetListOfOptionsByReadingLabels, nameof(jABSetSelectionByNamegetListOfOptionsByReadingLabels), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameexpandFirst, nameof(jABSetSelectionByNameexpandFirst), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamecollapseAfter, nameof(jABSetSelectionByNamecollapseAfter), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamesecondsBetweenExpandCollapse, nameof(jABSetSelectionByNamesecondsBetweenExpandCollapse), required: false);
-            SourceExpression.Validate(jABSetSelectionByNameforceEvenIfInCorrectState, nameof(jABSetSelectionByNameforceEvenIfInCorrectState), required: false);
-            SourceExpression.Validate(jABSetSelectionByNamerecoverOnFailure, nameof(jABSetSelectionByNamerecoverOnFailure), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABSetSelectionByName";
@@ -7712,26 +7132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABExpandSelection([WorkflowExpression] Func<int> jABExpandSelectionsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABExpandSelectionworkflow, [WorkflowExpression] Func<string> jABExpandSelectionsearchElementJABName = null, [WorkflowExpression] Func<string> jABExpandSelectionsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABExpandSelectionsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABExpandSelectionsearchSubTree = null, [WorkflowExpression] Func<int> jABExpandSelectionmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABExpandSelectionmatchIndex = null, [WorkflowExpression] Func<string> jABExpandSelectionsearchFilter = null, [WorkflowExpression] Func<string> jABExpandSelectionsortByColumn = null, [WorkflowExpression] Func<bool> jABExpandSelectionmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABExpandSelectioncaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABExpandSelectiononlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABExpandSelectiononlySearchShowingElements = null, [WorkflowExpression] Func<string> jABExpandSelectionelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABExpandSelectionmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABExpandSelectionmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABExpandSelectionexpand = null, [WorkflowExpression] Func<bool> jABExpandSelectionverifyElementState = null, [WorkflowExpression] Func<double> jABExpandSelectionsecondsToWaitForStateChange = null)
         {
-            SourceExpression.Validate(jABExpandSelectionsearchParentElementJABHandle, nameof(jABExpandSelectionsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABExpandSelectionworkflow, nameof(jABExpandSelectionworkflow), required: true);
-            SourceExpression.Validate(jABExpandSelectionsearchElementJABName, nameof(jABExpandSelectionsearchElementJABName), required: false);
-            SourceExpression.Validate(jABExpandSelectionsearchElementJABDescription, nameof(jABExpandSelectionsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABExpandSelectionsearchElementJABRole, nameof(jABExpandSelectionsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABExpandSelectionsearchSubTree, nameof(jABExpandSelectionsearchSubTree), required: false);
-            SourceExpression.Validate(jABExpandSelectionmaxRelativeDepth, nameof(jABExpandSelectionmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABExpandSelectionmatchIndex, nameof(jABExpandSelectionmatchIndex), required: false);
-            SourceExpression.Validate(jABExpandSelectionsearchFilter, nameof(jABExpandSelectionsearchFilter), required: false);
-            SourceExpression.Validate(jABExpandSelectionsortByColumn, nameof(jABExpandSelectionsortByColumn), required: false);
-            SourceExpression.Validate(jABExpandSelectionmatchIndexAscending, nameof(jABExpandSelectionmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABExpandSelectioncaseSensitiveSearch, nameof(jABExpandSelectioncaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABExpandSelectiononlySearchVisibleElements, nameof(jABExpandSelectiononlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABExpandSelectiononlySearchShowingElements, nameof(jABExpandSelectiononlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABExpandSelectionelementRolesNotToTraverse, nameof(jABExpandSelectionelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABExpandSelectionmaximumElementsToSearch, nameof(jABExpandSelectionmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABExpandSelectionmaximumChildElementsToSearchPerNode, nameof(jABExpandSelectionmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABExpandSelectionexpand, nameof(jABExpandSelectionexpand), required: false);
-            SourceExpression.Validate(jABExpandSelectionverifyElementState, nameof(jABExpandSelectionverifyElementState), required: false);
-            SourceExpression.Validate(jABExpandSelectionsecondsToWaitForStateChange, nameof(jABExpandSelectionsecondsToWaitForStateChange), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABExpandSelection";
@@ -7984,24 +7384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetSelectionStateByIndexResponse> JABGetSelectionStateByIndex([WorkflowExpression] Func<int> jABGetSelectionStateByIndexsearchParentElementJABHandle, [WorkflowExpression] Func<int> jABGetSelectionStateByIndexitemIndex, [WorkflowExpression] Func<string> jABGetSelectionStateByIndexworkflow, [WorkflowExpression] Func<string> jABGetSelectionStateByIndexsearchElementJABName = null, [WorkflowExpression] Func<string> jABGetSelectionStateByIndexsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetSelectionStateByIndexsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByIndexsearchSubTree = null, [WorkflowExpression] Func<int> jABGetSelectionStateByIndexmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetSelectionStateByIndexmatchIndex = null, [WorkflowExpression] Func<string> jABGetSelectionStateByIndexsearchFilter = null, [WorkflowExpression] Func<string> jABGetSelectionStateByIndexsortByColumn = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByIndexmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByIndexcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByIndexonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByIndexonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetSelectionStateByIndexelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetSelectionStateByIndexmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode = null)
         {
-            SourceExpression.Validate(jABGetSelectionStateByIndexsearchParentElementJABHandle, nameof(jABGetSelectionStateByIndexsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetSelectionStateByIndexitemIndex, nameof(jABGetSelectionStateByIndexitemIndex), required: true);
-            SourceExpression.Validate(jABGetSelectionStateByIndexworkflow, nameof(jABGetSelectionStateByIndexworkflow), required: true);
-            SourceExpression.Validate(jABGetSelectionStateByIndexsearchElementJABName, nameof(jABGetSelectionStateByIndexsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexsearchElementJABDescription, nameof(jABGetSelectionStateByIndexsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexsearchElementJABRole, nameof(jABGetSelectionStateByIndexsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexsearchSubTree, nameof(jABGetSelectionStateByIndexsearchSubTree), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexmaxRelativeDepth, nameof(jABGetSelectionStateByIndexmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexmatchIndex, nameof(jABGetSelectionStateByIndexmatchIndex), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexsearchFilter, nameof(jABGetSelectionStateByIndexsearchFilter), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexsortByColumn, nameof(jABGetSelectionStateByIndexsortByColumn), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexmatchIndexAscending, nameof(jABGetSelectionStateByIndexmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexcaseSensitiveSearch, nameof(jABGetSelectionStateByIndexcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexonlySearchVisibleElements, nameof(jABGetSelectionStateByIndexonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexonlySearchShowingElements, nameof(jABGetSelectionStateByIndexonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexelementRolesNotToTraverse, nameof(jABGetSelectionStateByIndexelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexmaximumElementsToSearch, nameof(jABGetSelectionStateByIndexmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode, nameof(jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetSelectionStateByIndex";
@@ -8208,25 +7590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetSelectionStateByNameResponse> JABGetSelectionStateByName([WorkflowExpression] Func<int> jABGetSelectionStateByNamesearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetSelectionStateByNameitemName, [WorkflowExpression] Func<string> jABGetSelectionStateByNameworkflow, [WorkflowExpression] Func<string> jABGetSelectionStateByNamesearchElementJABName = null, [WorkflowExpression] Func<string> jABGetSelectionStateByNamesearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetSelectionStateByNamesearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByNamesearchSubTree = null, [WorkflowExpression] Func<int> jABGetSelectionStateByNamemaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetSelectionStateByNamematchIndex = null, [WorkflowExpression] Func<string> jABGetSelectionStateByNamesearchFilter = null, [WorkflowExpression] Func<string> jABGetSelectionStateByNamesortByColumn = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByNamematchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByNamecaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByNameonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByNameonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetSelectionStateByNameelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetSelectionStateByNamemaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGetSelectionStateByNameitemNameCaseSensitive = null)
         {
-            SourceExpression.Validate(jABGetSelectionStateByNamesearchParentElementJABHandle, nameof(jABGetSelectionStateByNamesearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetSelectionStateByNameitemName, nameof(jABGetSelectionStateByNameitemName), required: true);
-            SourceExpression.Validate(jABGetSelectionStateByNameworkflow, nameof(jABGetSelectionStateByNameworkflow), required: true);
-            SourceExpression.Validate(jABGetSelectionStateByNamesearchElementJABName, nameof(jABGetSelectionStateByNamesearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamesearchElementJABDescription, nameof(jABGetSelectionStateByNamesearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamesearchElementJABRole, nameof(jABGetSelectionStateByNamesearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamesearchSubTree, nameof(jABGetSelectionStateByNamesearchSubTree), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamemaxRelativeDepth, nameof(jABGetSelectionStateByNamemaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamematchIndex, nameof(jABGetSelectionStateByNamematchIndex), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamesearchFilter, nameof(jABGetSelectionStateByNamesearchFilter), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamesortByColumn, nameof(jABGetSelectionStateByNamesortByColumn), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamematchIndexAscending, nameof(jABGetSelectionStateByNamematchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamecaseSensitiveSearch, nameof(jABGetSelectionStateByNamecaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNameonlySearchVisibleElements, nameof(jABGetSelectionStateByNameonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNameonlySearchShowingElements, nameof(jABGetSelectionStateByNameonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNameelementRolesNotToTraverse, nameof(jABGetSelectionStateByNameelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamemaximumElementsToSearch, nameof(jABGetSelectionStateByNamemaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode, nameof(jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetSelectionStateByNameitemNameCaseSensitive, nameof(jABGetSelectionStateByNameitemNameCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetSelectionStateByName";
@@ -8449,31 +7812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetTablePropertiesResponse> JABGetTableProperties([WorkflowExpression] Func<int> jABGetTablePropertiessearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetTablePropertiesworkflow, [WorkflowExpression] Func<string> jABGetTablePropertiessearchElementJABName = null, [WorkflowExpression] Func<string> jABGetTablePropertiessearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetTablePropertiessearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetTablePropertiessearchSubTree = null, [WorkflowExpression] Func<int> jABGetTablePropertiesmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetTablePropertiesmatchIndex = null, [WorkflowExpression] Func<string> jABGetTablePropertiessearchFilter = null, [WorkflowExpression] Func<string> jABGetTablePropertiessortByColumn = null, [WorkflowExpression] Func<bool> jABGetTablePropertiesmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetTablePropertiescaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetTablePropertiesonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetTablePropertiesonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetTablePropertieselementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetTablePropertiesmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetTablePropertiesmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGetTablePropertiesenumerateViewport = null, [WorkflowExpression] Func<bool> jABGetTablePropertiesprocessViewportParents = null, [WorkflowExpression] Func<int> jABGetTablePropertiesmaxViewportParentsToProcess = null, [WorkflowExpression] Func<string> jABGetTablePropertiesviewportParentElementRolesToConsider = null, [WorkflowExpression] Func<int> jABGetTablePropertiesviewportLeftMargin = null, [WorkflowExpression] Func<int> jABGetTablePropertiesviewportTopMargin = null, [WorkflowExpression] Func<int> jABGetTablePropertiesviewportRightMargin = null, [WorkflowExpression] Func<int> jABGetTablePropertiesviewportBottomMargin = null)
         {
-            SourceExpression.Validate(jABGetTablePropertiessearchParentElementJABHandle, nameof(jABGetTablePropertiessearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetTablePropertiesworkflow, nameof(jABGetTablePropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetTablePropertiessearchElementJABName, nameof(jABGetTablePropertiessearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetTablePropertiessearchElementJABDescription, nameof(jABGetTablePropertiessearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetTablePropertiessearchElementJABRole, nameof(jABGetTablePropertiessearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetTablePropertiessearchSubTree, nameof(jABGetTablePropertiessearchSubTree), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesmaxRelativeDepth, nameof(jABGetTablePropertiesmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesmatchIndex, nameof(jABGetTablePropertiesmatchIndex), required: false);
-            SourceExpression.Validate(jABGetTablePropertiessearchFilter, nameof(jABGetTablePropertiessearchFilter), required: false);
-            SourceExpression.Validate(jABGetTablePropertiessortByColumn, nameof(jABGetTablePropertiessortByColumn), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesmatchIndexAscending, nameof(jABGetTablePropertiesmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetTablePropertiescaseSensitiveSearch, nameof(jABGetTablePropertiescaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesonlySearchVisibleElements, nameof(jABGetTablePropertiesonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesonlySearchShowingElements, nameof(jABGetTablePropertiesonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetTablePropertieselementRolesNotToTraverse, nameof(jABGetTablePropertieselementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesmaximumElementsToSearch, nameof(jABGetTablePropertiesmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesmaximumChildElementsToSearchPerNode, nameof(jABGetTablePropertiesmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesenumerateViewport, nameof(jABGetTablePropertiesenumerateViewport), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesprocessViewportParents, nameof(jABGetTablePropertiesprocessViewportParents), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesmaxViewportParentsToProcess, nameof(jABGetTablePropertiesmaxViewportParentsToProcess), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesviewportParentElementRolesToConsider, nameof(jABGetTablePropertiesviewportParentElementRolesToConsider), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesviewportLeftMargin, nameof(jABGetTablePropertiesviewportLeftMargin), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesviewportTopMargin, nameof(jABGetTablePropertiesviewportTopMargin), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesviewportRightMargin, nameof(jABGetTablePropertiesviewportRightMargin), required: false);
-            SourceExpression.Validate(jABGetTablePropertiesviewportBottomMargin, nameof(jABGetTablePropertiesviewportBottomMargin), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableProperties";
@@ -8806,34 +8144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetTableCellPropertiesResponse> JABGetTableCellProperties([WorkflowExpression] Func<int> jABGetTableCellPropertiessearchParentElementJABHandle, [WorkflowExpression] Func<int> jABGetTableCellPropertiesrowIndex, [WorkflowExpression] Func<int> jABGetTableCellPropertiescolumnIndex, [WorkflowExpression] Func<string> jABGetTableCellPropertiesworkflow, [WorkflowExpression] Func<string> jABGetTableCellPropertiessearchElementJABName = null, [WorkflowExpression] Func<string> jABGetTableCellPropertiessearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetTableCellPropertiessearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiessearchSubTree = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesmatchIndex = null, [WorkflowExpression] Func<string> jABGetTableCellPropertiessearchFilter = null, [WorkflowExpression] Func<string> jABGetTableCellPropertiessortByColumn = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiesmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiescaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiesonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiesonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetTableCellPropertieselementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiesreturnJABHandle = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiesenumerateViewport = null, [WorkflowExpression] Func<bool> jABGetTableCellPropertiesprocessViewportParents = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesmaxViewportParentsToProcess = null, [WorkflowExpression] Func<string> jABGetTableCellPropertiesviewportParentElementRolesToConsider = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesviewportLeftMargin = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesviewportTopMargin = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesviewportRightMargin = null, [WorkflowExpression] Func<int> jABGetTableCellPropertiesviewportBottomMargin = null)
         {
-            SourceExpression.Validate(jABGetTableCellPropertiessearchParentElementJABHandle, nameof(jABGetTableCellPropertiessearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetTableCellPropertiesrowIndex, nameof(jABGetTableCellPropertiesrowIndex), required: true);
-            SourceExpression.Validate(jABGetTableCellPropertiescolumnIndex, nameof(jABGetTableCellPropertiescolumnIndex), required: true);
-            SourceExpression.Validate(jABGetTableCellPropertiesworkflow, nameof(jABGetTableCellPropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetTableCellPropertiessearchElementJABName, nameof(jABGetTableCellPropertiessearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiessearchElementJABDescription, nameof(jABGetTableCellPropertiessearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiessearchElementJABRole, nameof(jABGetTableCellPropertiessearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiessearchSubTree, nameof(jABGetTableCellPropertiessearchSubTree), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesmaxRelativeDepth, nameof(jABGetTableCellPropertiesmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesmatchIndex, nameof(jABGetTableCellPropertiesmatchIndex), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiessearchFilter, nameof(jABGetTableCellPropertiessearchFilter), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiessortByColumn, nameof(jABGetTableCellPropertiessortByColumn), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesmatchIndexAscending, nameof(jABGetTableCellPropertiesmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiescaseSensitiveSearch, nameof(jABGetTableCellPropertiescaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesonlySearchVisibleElements, nameof(jABGetTableCellPropertiesonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesonlySearchShowingElements, nameof(jABGetTableCellPropertiesonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertieselementRolesNotToTraverse, nameof(jABGetTableCellPropertieselementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesmaximumElementsToSearch, nameof(jABGetTableCellPropertiesmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode, nameof(jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesreturnJABHandle, nameof(jABGetTableCellPropertiesreturnJABHandle), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesenumerateViewport, nameof(jABGetTableCellPropertiesenumerateViewport), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesprocessViewportParents, nameof(jABGetTableCellPropertiesprocessViewportParents), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesmaxViewportParentsToProcess, nameof(jABGetTableCellPropertiesmaxViewportParentsToProcess), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesviewportParentElementRolesToConsider, nameof(jABGetTableCellPropertiesviewportParentElementRolesToConsider), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesviewportLeftMargin, nameof(jABGetTableCellPropertiesviewportLeftMargin), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesviewportTopMargin, nameof(jABGetTableCellPropertiesviewportTopMargin), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesviewportRightMargin, nameof(jABGetTableCellPropertiesviewportRightMargin), required: false);
-            SourceExpression.Validate(jABGetTableCellPropertiesviewportBottomMargin, nameof(jABGetTableCellPropertiesviewportBottomMargin), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableCellProperties";
@@ -9186,30 +8496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetTableContentsResponse> JABGetTableContents([WorkflowExpression] Func<int> jABGetTableContentssearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetTableContentsworkflow, [WorkflowExpression] Func<string> jABGetTableContentssearchElementJABName = null, [WorkflowExpression] Func<string> jABGetTableContentssearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetTableContentssearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetTableContentssearchSubTree = null, [WorkflowExpression] Func<int> jABGetTableContentsmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetTableContentsmatchIndex = null, [WorkflowExpression] Func<string> jABGetTableContentssearchFilter = null, [WorkflowExpression] Func<string> jABGetTableContentssortByColumn = null, [WorkflowExpression] Func<bool> jABGetTableContentsmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetTableContentscaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetTableContentsonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetTableContentsonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetTableContentselementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetTableContentsmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetTableContentsmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<int> jABGetTableContentsfirstRowToReturn = null, [WorkflowExpression] Func<int> jABGetTableContentsmaxRowsToReturn = null, [WorkflowExpression] Func<int> jABGetTableContentsfirstColumnToReturn = null, [WorkflowExpression] Func<int> jABGetTableContentsmaxColumnsToReturn = null, [WorkflowExpression] Func<bool> jABGetTableContentsuseColumnHeadersFromTable = null, [WorkflowExpression] Func<bool> jABGetTableContentsreturnRowIndexInOutputCollection = null, [WorkflowExpression] Func<string> jABGetTableContentsnameOfColumnToStoreRowIndex = null)
         {
-            SourceExpression.Validate(jABGetTableContentssearchParentElementJABHandle, nameof(jABGetTableContentssearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetTableContentsworkflow, nameof(jABGetTableContentsworkflow), required: true);
-            SourceExpression.Validate(jABGetTableContentssearchElementJABName, nameof(jABGetTableContentssearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetTableContentssearchElementJABDescription, nameof(jABGetTableContentssearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetTableContentssearchElementJABRole, nameof(jABGetTableContentssearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetTableContentssearchSubTree, nameof(jABGetTableContentssearchSubTree), required: false);
-            SourceExpression.Validate(jABGetTableContentsmaxRelativeDepth, nameof(jABGetTableContentsmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetTableContentsmatchIndex, nameof(jABGetTableContentsmatchIndex), required: false);
-            SourceExpression.Validate(jABGetTableContentssearchFilter, nameof(jABGetTableContentssearchFilter), required: false);
-            SourceExpression.Validate(jABGetTableContentssortByColumn, nameof(jABGetTableContentssortByColumn), required: false);
-            SourceExpression.Validate(jABGetTableContentsmatchIndexAscending, nameof(jABGetTableContentsmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetTableContentscaseSensitiveSearch, nameof(jABGetTableContentscaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetTableContentsonlySearchVisibleElements, nameof(jABGetTableContentsonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetTableContentsonlySearchShowingElements, nameof(jABGetTableContentsonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetTableContentselementRolesNotToTraverse, nameof(jABGetTableContentselementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetTableContentsmaximumElementsToSearch, nameof(jABGetTableContentsmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetTableContentsmaximumChildElementsToSearchPerNode, nameof(jABGetTableContentsmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetTableContentsfirstRowToReturn, nameof(jABGetTableContentsfirstRowToReturn), required: false);
-            SourceExpression.Validate(jABGetTableContentsmaxRowsToReturn, nameof(jABGetTableContentsmaxRowsToReturn), required: false);
-            SourceExpression.Validate(jABGetTableContentsfirstColumnToReturn, nameof(jABGetTableContentsfirstColumnToReturn), required: false);
-            SourceExpression.Validate(jABGetTableContentsmaxColumnsToReturn, nameof(jABGetTableContentsmaxColumnsToReturn), required: false);
-            SourceExpression.Validate(jABGetTableContentsuseColumnHeadersFromTable, nameof(jABGetTableContentsuseColumnHeadersFromTable), required: false);
-            SourceExpression.Validate(jABGetTableContentsreturnRowIndexInOutputCollection, nameof(jABGetTableContentsreturnRowIndexInOutputCollection), required: false);
-            SourceExpression.Validate(jABGetTableContentsnameOfColumnToStoreRowIndex, nameof(jABGetTableContentsnameOfColumnToStoreRowIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableContents";
@@ -9516,32 +8802,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABIsTableCellVisibleOnscreenResponse> JABIsTableCellVisibleOnscreen([WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreensearchParentElementJABHandle, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreencellRowIndex, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreencellColumnIndex, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreenworkflow, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreensearchElementJABName = null, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreensearchElementJABDescription = null, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreensearchElementJABRole = null, [WorkflowExpression] Func<bool> jABIsTableCellVisibleOnscreensearchSubTree = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenmatchIndex = null, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreensearchFilter = null, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreensortByColumn = null, [WorkflowExpression] Func<bool> jABIsTableCellVisibleOnscreenmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABIsTableCellVisibleOnscreencaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABIsTableCellVisibleOnscreenonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABIsTableCellVisibleOnscreenonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreenelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABIsTableCellVisibleOnscreenprocessViewportParents = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess = null, [WorkflowExpression] Func<string> jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenviewportLeftMargin = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenviewportTopMargin = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenviewportRightMargin = null, [WorkflowExpression] Func<int> jABIsTableCellVisibleOnscreenviewportBottomMargin = null)
         {
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreensearchParentElementJABHandle, nameof(jABIsTableCellVisibleOnscreensearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreencellRowIndex, nameof(jABIsTableCellVisibleOnscreencellRowIndex), required: true);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreencellColumnIndex, nameof(jABIsTableCellVisibleOnscreencellColumnIndex), required: true);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenworkflow, nameof(jABIsTableCellVisibleOnscreenworkflow), required: true);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreensearchElementJABName, nameof(jABIsTableCellVisibleOnscreensearchElementJABName), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreensearchElementJABDescription, nameof(jABIsTableCellVisibleOnscreensearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreensearchElementJABRole, nameof(jABIsTableCellVisibleOnscreensearchElementJABRole), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreensearchSubTree, nameof(jABIsTableCellVisibleOnscreensearchSubTree), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenmaxRelativeDepth, nameof(jABIsTableCellVisibleOnscreenmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenmatchIndex, nameof(jABIsTableCellVisibleOnscreenmatchIndex), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreensearchFilter, nameof(jABIsTableCellVisibleOnscreensearchFilter), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreensortByColumn, nameof(jABIsTableCellVisibleOnscreensortByColumn), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenmatchIndexAscending, nameof(jABIsTableCellVisibleOnscreenmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreencaseSensitiveSearch, nameof(jABIsTableCellVisibleOnscreencaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenonlySearchVisibleElements, nameof(jABIsTableCellVisibleOnscreenonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenonlySearchShowingElements, nameof(jABIsTableCellVisibleOnscreenonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenelementRolesNotToTraverse, nameof(jABIsTableCellVisibleOnscreenelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenmaximumElementsToSearch, nameof(jABIsTableCellVisibleOnscreenmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode, nameof(jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenprocessViewportParents, nameof(jABIsTableCellVisibleOnscreenprocessViewportParents), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess, nameof(jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider, nameof(jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenviewportLeftMargin, nameof(jABIsTableCellVisibleOnscreenviewportLeftMargin), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenviewportTopMargin, nameof(jABIsTableCellVisibleOnscreenviewportTopMargin), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenviewportRightMargin, nameof(jABIsTableCellVisibleOnscreenviewportRightMargin), required: false);
-            SourceExpression.Validate(jABIsTableCellVisibleOnscreenviewportBottomMargin, nameof(jABIsTableCellVisibleOnscreenviewportBottomMargin), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABIsTableCellVisibleOnscreen";
@@ -9862,9 +9122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABIsJABHandleSameObjectResponse> JABIsJABHandleSameObject([WorkflowExpression] Func<int> jABIsJABHandleSameObjectelement1JABHandle, [WorkflowExpression] Func<int> jABIsJABHandleSameObjectelement2JABHandle, [WorkflowExpression] Func<string> jABIsJABHandleSameObjectworkflow)
         {
-            SourceExpression.Validate(jABIsJABHandleSameObjectelement1JABHandle, nameof(jABIsJABHandleSameObjectelement1JABHandle), required: true);
-            SourceExpression.Validate(jABIsJABHandleSameObjectelement2JABHandle, nameof(jABIsJABHandleSameObjectelement2JABHandle), required: true);
-            SourceExpression.Validate(jABIsJABHandleSameObjectworkflow, nameof(jABIsJABHandleSameObjectworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABIsJABHandleSameObject";
@@ -9891,11 +9148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetVisibleBoundingRectangleOfElementOnscreenResponse> JABGetVisibleBoundingRectangleOfElementOnscreen([WorkflowExpression] Func<int> jABGetVisibleBoundingRectangleOfElementOnscreenelementJABHandle, [WorkflowExpression] Func<string> jABGetVisibleBoundingRectangleOfElementOnscreenworkflow, [WorkflowExpression] Func<int> jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess = null, [WorkflowExpression] Func<string> jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider = null, [WorkflowExpression] Func<bool> jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle = null)
         {
-            SourceExpression.Validate(jABGetVisibleBoundingRectangleOfElementOnscreenelementJABHandle, nameof(jABGetVisibleBoundingRectangleOfElementOnscreenelementJABHandle), required: true);
-            SourceExpression.Validate(jABGetVisibleBoundingRectangleOfElementOnscreenworkflow, nameof(jABGetVisibleBoundingRectangleOfElementOnscreenworkflow), required: true);
-            SourceExpression.Validate(jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess, nameof(jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess), required: false);
-            SourceExpression.Validate(jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider, nameof(jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider), required: false);
-            SourceExpression.Validate(jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle, nameof(jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetVisibleBoundingRectangleOfElementOnscreen";
@@ -9968,10 +9220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABCreateHandleForJABElementAtScreenCoordinateResponse> JABCreateHandleForJABElementAtScreenCoordinate([WorkflowExpression] Func<int> jABCreateHandleForJABElementAtScreenCoordinateparentElementJABHandle, [WorkflowExpression] Func<int> jABCreateHandleForJABElementAtScreenCoordinatescreenX, [WorkflowExpression] Func<int> jABCreateHandleForJABElementAtScreenCoordinatescreenY, [WorkflowExpression] Func<string> jABCreateHandleForJABElementAtScreenCoordinateworkflow)
         {
-            SourceExpression.Validate(jABCreateHandleForJABElementAtScreenCoordinateparentElementJABHandle, nameof(jABCreateHandleForJABElementAtScreenCoordinateparentElementJABHandle), required: true);
-            SourceExpression.Validate(jABCreateHandleForJABElementAtScreenCoordinatescreenX, nameof(jABCreateHandleForJABElementAtScreenCoordinatescreenX), required: true);
-            SourceExpression.Validate(jABCreateHandleForJABElementAtScreenCoordinatescreenY, nameof(jABCreateHandleForJABElementAtScreenCoordinatescreenY), required: true);
-            SourceExpression.Validate(jABCreateHandleForJABElementAtScreenCoordinateworkflow, nameof(jABCreateHandleForJABElementAtScreenCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABCreateHandleForJABElementAtScreenCoordinate";
@@ -10000,11 +9248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetTableCellAtScreenCoordinateResponse> JABGetTableCellAtScreenCoordinate([WorkflowExpression] Func<int> jABGetTableCellAtScreenCoordinatetableElementJABHandle, [WorkflowExpression] Func<int> jABGetTableCellAtScreenCoordinatescreenX, [WorkflowExpression] Func<int> jABGetTableCellAtScreenCoordinatescreenY, [WorkflowExpression] Func<string> jABGetTableCellAtScreenCoordinateworkflow, [WorkflowExpression] Func<bool> jABGetTableCellAtScreenCoordinatereturnJABHandle = null)
         {
-            SourceExpression.Validate(jABGetTableCellAtScreenCoordinatetableElementJABHandle, nameof(jABGetTableCellAtScreenCoordinatetableElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetTableCellAtScreenCoordinatescreenX, nameof(jABGetTableCellAtScreenCoordinatescreenX), required: true);
-            SourceExpression.Validate(jABGetTableCellAtScreenCoordinatescreenY, nameof(jABGetTableCellAtScreenCoordinatescreenY), required: true);
-            SourceExpression.Validate(jABGetTableCellAtScreenCoordinateworkflow, nameof(jABGetTableCellAtScreenCoordinateworkflow), required: true);
-            SourceExpression.Validate(jABGetTableCellAtScreenCoordinatereturnJABHandle, nameof(jABGetTableCellAtScreenCoordinatereturnJABHandle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableCellAtScreenCoordinate";
@@ -10049,10 +9292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetMultipleParentJABElementPropertiesResponse> JABGetMultipleParentJABElementProperties([WorkflowExpression] Func<int> jABGetMultipleParentJABElementPropertiessearchElementJABHandle, [WorkflowExpression] Func<string> jABGetMultipleParentJABElementPropertiesworkflow, [WorkflowExpression] Func<int> jABGetMultipleParentJABElementPropertiesmaxStringLength = null, [WorkflowExpression] Func<int> jABGetMultipleParentJABElementPropertiesmaxParentsToProcess = null)
         {
-            SourceExpression.Validate(jABGetMultipleParentJABElementPropertiessearchElementJABHandle, nameof(jABGetMultipleParentJABElementPropertiessearchElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetMultipleParentJABElementPropertiesworkflow, nameof(jABGetMultipleParentJABElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(jABGetMultipleParentJABElementPropertiesmaxStringLength, nameof(jABGetMultipleParentJABElementPropertiesmaxStringLength), required: false);
-            SourceExpression.Validate(jABGetMultipleParentJABElementPropertiesmaxParentsToProcess, nameof(jABGetMultipleParentJABElementPropertiesmaxParentsToProcess), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetMultipleParentJABElementProperties";
@@ -10109,38 +9348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IWorkflowAction JABGlobalMouseClickOnTableCell([WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellsearchParentElementJABHandle, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellrowIndex, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellcolumnIndex, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellmouseButton, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellworkflow, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellsearchElementJABName = null, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGlobalMouseClickOnTableCellsearchSubTree = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellmatchIndex = null, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellsearchFilter = null, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellsortByColumn = null, [WorkflowExpression] Func<bool> jABGlobalMouseClickOnTableCellmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGlobalMouseClickOnTableCellcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGlobalMouseClickOnTableCellonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGlobalMouseClickOnTableCellonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGlobalMouseClickOnTableCellenumerateViewport = null, [WorkflowExpression] Func<bool> jABGlobalMouseClickOnTableCellprocessViewportParents = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess = null, [WorkflowExpression] Func<string> jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellviewportLeftMargin = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellviewportTopMargin = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellviewportRightMargin = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellviewportBottomMargin = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellclickOffsetX = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCellclickOffsetY = null, [WorkflowExpression] Func<jABGlobalMouseClickOnTableCelloffsetRelativeToInput> jABGlobalMouseClickOnTableCelloffsetRelativeTo = null, [WorkflowExpression] Func<int> jABGlobalMouseClickOnTableCelldelayInMilliseconds = null)
         {
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellsearchParentElementJABHandle, nameof(jABGlobalMouseClickOnTableCellsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellrowIndex, nameof(jABGlobalMouseClickOnTableCellrowIndex), required: true);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellcolumnIndex, nameof(jABGlobalMouseClickOnTableCellcolumnIndex), required: true);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellmouseButton, nameof(jABGlobalMouseClickOnTableCellmouseButton), required: true);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellworkflow, nameof(jABGlobalMouseClickOnTableCellworkflow), required: true);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellsearchElementJABName, nameof(jABGlobalMouseClickOnTableCellsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellsearchElementJABDescription, nameof(jABGlobalMouseClickOnTableCellsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellsearchElementJABRole, nameof(jABGlobalMouseClickOnTableCellsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellsearchSubTree, nameof(jABGlobalMouseClickOnTableCellsearchSubTree), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellmaxRelativeDepth, nameof(jABGlobalMouseClickOnTableCellmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellmatchIndex, nameof(jABGlobalMouseClickOnTableCellmatchIndex), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellsearchFilter, nameof(jABGlobalMouseClickOnTableCellsearchFilter), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellsortByColumn, nameof(jABGlobalMouseClickOnTableCellsortByColumn), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellmatchIndexAscending, nameof(jABGlobalMouseClickOnTableCellmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellcaseSensitiveSearch, nameof(jABGlobalMouseClickOnTableCellcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellonlySearchVisibleElements, nameof(jABGlobalMouseClickOnTableCellonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellonlySearchShowingElements, nameof(jABGlobalMouseClickOnTableCellonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellelementRolesNotToTraverse, nameof(jABGlobalMouseClickOnTableCellelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellmaximumElementsToSearch, nameof(jABGlobalMouseClickOnTableCellmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode, nameof(jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellenumerateViewport, nameof(jABGlobalMouseClickOnTableCellenumerateViewport), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellprocessViewportParents, nameof(jABGlobalMouseClickOnTableCellprocessViewportParents), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess, nameof(jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider, nameof(jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellviewportLeftMargin, nameof(jABGlobalMouseClickOnTableCellviewportLeftMargin), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellviewportTopMargin, nameof(jABGlobalMouseClickOnTableCellviewportTopMargin), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellviewportRightMargin, nameof(jABGlobalMouseClickOnTableCellviewportRightMargin), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellviewportBottomMargin, nameof(jABGlobalMouseClickOnTableCellviewportBottomMargin), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellclickOffsetX, nameof(jABGlobalMouseClickOnTableCellclickOffsetX), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCellclickOffsetY, nameof(jABGlobalMouseClickOnTableCellclickOffsetY), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCelloffsetRelativeTo, nameof(jABGlobalMouseClickOnTableCelloffsetRelativeTo), required: false);
-            SourceExpression.Validate(jABGlobalMouseClickOnTableCelldelayInMilliseconds, nameof(jABGlobalMouseClickOnTableCelldelayInMilliseconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalMouseClickOnTableCell";
@@ -10533,26 +9740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetRoleCSVFromElementSearchResponse> JABGetRoleCSVFromElementSearch([WorkflowExpression] Func<int> jABGetRoleCSVFromElementSearchsearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementSearchworkflow, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementSearchsearchElementJABName = null, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementSearchsearchElementJABDescription = null, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementSearchsearchElementJABRole = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchsearchSubTree = null, [WorkflowExpression] Func<int> jABGetRoleCSVFromElementSearchmaxRelativeDepth = null, [WorkflowExpression] Func<int> jABGetRoleCSVFromElementSearchmatchIndex = null, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementSearchsearchFilter = null, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementSearchsortByColumn = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchcaseSensitiveSearch = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementSearchelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetRoleCSVFromElementSearchmaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchindentRoleInCSV = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchincludeDescriptionInCSV = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementSearchincludeDimensionsInCSV = null)
         {
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchsearchParentElementJABHandle, nameof(jABGetRoleCSVFromElementSearchsearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchworkflow, nameof(jABGetRoleCSVFromElementSearchworkflow), required: true);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchsearchElementJABName, nameof(jABGetRoleCSVFromElementSearchsearchElementJABName), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchsearchElementJABDescription, nameof(jABGetRoleCSVFromElementSearchsearchElementJABDescription), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchsearchElementJABRole, nameof(jABGetRoleCSVFromElementSearchsearchElementJABRole), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchsearchSubTree, nameof(jABGetRoleCSVFromElementSearchsearchSubTree), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchmaxRelativeDepth, nameof(jABGetRoleCSVFromElementSearchmaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchmatchIndex, nameof(jABGetRoleCSVFromElementSearchmatchIndex), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchsearchFilter, nameof(jABGetRoleCSVFromElementSearchsearchFilter), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchsortByColumn, nameof(jABGetRoleCSVFromElementSearchsortByColumn), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchmatchIndexAscending, nameof(jABGetRoleCSVFromElementSearchmatchIndexAscending), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchcaseSensitiveSearch, nameof(jABGetRoleCSVFromElementSearchcaseSensitiveSearch), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchonlySearchVisibleElements, nameof(jABGetRoleCSVFromElementSearchonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchonlySearchShowingElements, nameof(jABGetRoleCSVFromElementSearchonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchelementRolesNotToTraverse, nameof(jABGetRoleCSVFromElementSearchelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchmaximumElementsToSearch, nameof(jABGetRoleCSVFromElementSearchmaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode, nameof(jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchindentRoleInCSV, nameof(jABGetRoleCSVFromElementSearchindentRoleInCSV), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchincludeDescriptionInCSV, nameof(jABGetRoleCSVFromElementSearchincludeDescriptionInCSV), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementSearchincludeDimensionsInCSV, nameof(jABGetRoleCSVFromElementSearchincludeDimensionsInCSV), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetRoleCSVFromElementSearch";
@@ -10805,18 +9992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
         public IBodyWorkflowAction<JABGetRoleCSVFromElementHandleResponse> JABGetRoleCSVFromElementHandle([WorkflowExpression] Func<int> jABGetRoleCSVFromElementHandlesearchParentElementJABHandle, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementHandleworkflow, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementHandlesearchSubTree = null, [WorkflowExpression] Func<int> jABGetRoleCSVFromElementHandlemaxRelativeDepth = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementHandleonlySearchVisibleElements = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementHandleonlySearchShowingElements = null, [WorkflowExpression] Func<string> jABGetRoleCSVFromElementHandleelementRolesNotToTraverse = null, [WorkflowExpression] Func<int> jABGetRoleCSVFromElementHandlemaximumElementsToSearch = null, [WorkflowExpression] Func<int> jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementHandleindentRoleInCSV = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementHandleincludeDescriptionInCSV = null, [WorkflowExpression] Func<bool> jABGetRoleCSVFromElementHandleincludeDimensionsInCSV = null)
         {
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandlesearchParentElementJABHandle, nameof(jABGetRoleCSVFromElementHandlesearchParentElementJABHandle), required: true);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandleworkflow, nameof(jABGetRoleCSVFromElementHandleworkflow), required: true);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandlesearchSubTree, nameof(jABGetRoleCSVFromElementHandlesearchSubTree), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandlemaxRelativeDepth, nameof(jABGetRoleCSVFromElementHandlemaxRelativeDepth), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandleonlySearchVisibleElements, nameof(jABGetRoleCSVFromElementHandleonlySearchVisibleElements), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandleonlySearchShowingElements, nameof(jABGetRoleCSVFromElementHandleonlySearchShowingElements), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandleelementRolesNotToTraverse, nameof(jABGetRoleCSVFromElementHandleelementRolesNotToTraverse), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandlemaximumElementsToSearch, nameof(jABGetRoleCSVFromElementHandlemaximumElementsToSearch), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode, nameof(jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandleindentRoleInCSV, nameof(jABGetRoleCSVFromElementHandleindentRoleInCSV), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandleincludeDescriptionInCSV, nameof(jABGetRoleCSVFromElementHandleincludeDescriptionInCSV), required: false);
-            SourceExpression.Validate(jABGetRoleCSVFromElementHandleincludeDimensionsInCSV, nameof(jABGetRoleCSVFromElementHandleincludeDimensionsInCSV), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetRoleCSVFromElementHandle";

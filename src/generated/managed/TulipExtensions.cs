@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> CreateRecord([WorkflowExpression] Func<string> tableId, [WorkflowExpression] Func<object> dynamicTableSchema = null)
         {
-            SourceExpression.Validate(tableId, nameof(tableId), required: true);
-            SourceExpression.Validate(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tables/{0}/records", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableId, 1));
@@ -31,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> GetRecord([WorkflowExpression] Func<string> tableId, [WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(tableId, nameof(tableId), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -47,9 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> UpdateRecord([WorkflowExpression] Func<string> tableId, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> dynamicTableSchema = null)
         {
-            SourceExpression.Validate(tableId, nameof(tableId), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));

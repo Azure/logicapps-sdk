@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<PostList> ListPosts([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));
@@ -47,11 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Create([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> posttitle, [WorkflowExpression] Func<string> postcontent, [WorkflowExpression] Func<string[]> postlabels = null, [WorkflowExpression] Func<bool> isDraft = null)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(posttitle, nameof(posttitle), required: true);
-            SourceExpression.Validate(postcontent, nameof(postcontent), required: true);
-            SourceExpression.Validate(postlabels, nameof(postlabels), required: false);
-            SourceExpression.Validate(isDraft, nameof(isDraft), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));
@@ -85,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Get([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -101,11 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Edit([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<string> posttitle = null, [WorkflowExpression] Func<string> postcontent = null, [WorkflowExpression] Func<string[]> postlabels = null)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
-            SourceExpression.Validate(posttitle, nameof(posttitle), required: false);
-            SourceExpression.Validate(postcontent, nameof(postcontent), required: false);
-            SourceExpression.Validate(postlabels, nameof(postlabels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -144,8 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IWorkflowAction Delete([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -160,8 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Publish([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/publish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -176,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Revert([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/revert", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -194,8 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
     {
         public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<statusInput> status, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(blogId, nameof(blogId), required: true);
-            SourceExpression.Validate(status, nameof(status), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger1/blogs/{0}/posts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogId, 1));

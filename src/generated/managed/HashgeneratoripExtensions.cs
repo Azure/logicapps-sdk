@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
         public IBodyWorkflowAction<HashResponse> Hash([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<bodytypeInput> bodytype = null)
         {
-            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

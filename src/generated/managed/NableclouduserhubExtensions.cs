@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> filter)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/directory/v1/users";
@@ -46,8 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetGraphUserResponse> GetGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
@@ -62,8 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction DeleteGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
@@ -78,10 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction PatchGraphUserPassword([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            SourceExpression.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            SourceExpression.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
@@ -137,13 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<PostGraphUserResponse> PostGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
-            SourceExpression.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
-            SourceExpression.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            SourceExpression.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -208,8 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetUserLicenseDetailsResponse> GetUserLicenseDetails([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
@@ -224,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetsubscribedSkusResponse> GetsubscribedSkus([WorkflowExpression] Func<string> organizationId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/subscribedSkus", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -239,10 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<PostUserLicenseResponse> PostUserLicense([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<bodyaddLicensesInputItem[]> bodyaddLicenses = null, [WorkflowExpression] Func<JToken[]> bodyremoveLicenses = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            SourceExpression.Validate(bodyaddLicenses, nameof(bodyaddLicenses), required: false);
-            SourceExpression.Validate(bodyremoveLicenses, nameof(bodyremoveLicenses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
@@ -275,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetGroupsResponse> GetGroups([WorkflowExpression] Func<string> filter)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/directory/v1/usergroups";
@@ -292,8 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<UserGroupMembersResponse> UserGroupMembers([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1));
@@ -309,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetADSecurityGroupsResponse> GetADSecurityGroups([WorkflowExpression] Func<string> organizationId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -325,13 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<PostGraphGroupResponse> PostGraphGroup([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string[]> bodygroupTypes = null, [WorkflowExpression] Func<bool> bodymailEnabled = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<bool> bodysecurityEnabled = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodygroupTypes, nameof(bodygroupTypes), required: false);
-            SourceExpression.Validate(bodymailEnabled, nameof(bodymailEnabled), required: false);
-            SourceExpression.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
-            SourceExpression.Validate(bodysecurityEnabled, nameof(bodysecurityEnabled), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -388,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetGraphDomainsResponse> GetGraphDomains([WorkflowExpression] Func<string> organizationId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/domains", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -403,8 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction DeleteUserGroup([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1));
@@ -419,9 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction DeleteUserGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId, [WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -436,9 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction PostUserGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId, [WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -453,9 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction AddGraphGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
@@ -478,9 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction RemoveGraphGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> groupMicrosoftObjectId, [WorkflowExpression] Func<string> userMicrosoftObjectId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(groupMicrosoftObjectId, nameof(groupMicrosoftObjectId), required: true);
-            SourceExpression.Validate(userMicrosoftObjectId, nameof(userMicrosoftObjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupMicrosoftObjectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userMicrosoftObjectId, 1));
@@ -495,9 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IBodyWorkflowAction<GetSubscriptionsResponse> GetSubscriptions([WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> tenantId)
         {
-            SourceExpression.Validate(partnerId, nameof(partnerId), required: true);
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partnerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1));
@@ -512,11 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
         public IWorkflowAction PatchSubscriptionQuantity([WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<int> bodyquantity = null)
         {
-            SourceExpression.Validate(partnerId, nameof(partnerId), required: true);
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partnerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));

@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         public IBodyWorkflowAction<SpellcheckResponse> Spellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyminLength, nameof(bodyminLength), required: true);
-            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            SourceExpression.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
-            SourceExpression.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/spellcheck";
@@ -64,12 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyminLength, nameof(bodyminLength), required: true);
-            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            SourceExpression.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
-            SourceExpression.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/medical-spellcheck";
@@ -114,8 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         public IBodyWorkflowAction<AutocompleteResponse> Autocomplete([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodysessionId)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/complete";
@@ -140,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         public IBodyWorkflowAction<StatisticsResponse> Statistics([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodysessionId)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/statistics";
@@ -166,8 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
         public IBodyWorkflowAction<DetectAiResponse> DetectAi([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodysentScores = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodysentScores, nameof(bodysentScores), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/aidetect";

@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
         public IWorkflowAction SendEmail([WorkflowExpression] Func<string> emailMessagefrom = null, [WorkflowExpression] Func<string> emailMessageto = null, [WorkflowExpression] Func<string> emailMessagecC = null, [WorkflowExpression] Func<string> emailMessagesubject = null, [WorkflowExpression] Func<string> emailMessagebody = null, [WorkflowExpression] Func<string> emailMessagebcc = null, [WorkflowExpression] Func<emailMessageimportanceInput> emailMessageimportance = null, [WorkflowExpression] Func<string> emailMessagereadReceipt = null, [WorkflowExpression] Func<string> emailMessagedeliveryReceipt = null, [WorkflowExpression] Func<AttachmentV2[]> emailMessageattachments = null)
         {
-            SourceExpression.Validate(emailMessagefrom, nameof(emailMessagefrom), required: false);
-            SourceExpression.Validate(emailMessageto, nameof(emailMessageto), required: false);
-            SourceExpression.Validate(emailMessagecC, nameof(emailMessagecC), required: false);
-            SourceExpression.Validate(emailMessagesubject, nameof(emailMessagesubject), required: false);
-            SourceExpression.Validate(emailMessagebody, nameof(emailMessagebody), required: false);
-            SourceExpression.Validate(emailMessagebcc, nameof(emailMessagebcc), required: false);
-            SourceExpression.Validate(emailMessageimportance, nameof(emailMessageimportance), required: false);
-            SourceExpression.Validate(emailMessagereadReceipt, nameof(emailMessagereadReceipt), required: false);
-            SourceExpression.Validate(emailMessagedeliveryReceipt, nameof(emailMessagedeliveryReceipt), required: false);
-            SourceExpression.Validate(emailMessageattachments, nameof(emailMessageattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SendEmailV3";

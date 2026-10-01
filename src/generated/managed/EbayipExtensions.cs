@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetDefaultCategoryTreeIdResponse> GetDefaultCategoryTreeId([WorkflowExpression] Func<string> marketplaceId, [WorkflowExpression] Func<string> acceptLanguage)
         {
-            SourceExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
-            SourceExpression.Validate(acceptLanguage, nameof(acceptLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/commerce/taxonomy/v1/get_default_category_tree_id";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetCategorySuggestionsResponse> GetCategorySuggestions([WorkflowExpression] Func<string> categoryTreeId, [WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(categoryTreeId, nameof(categoryTreeId), required: true);
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryTreeId, 1));
@@ -51,8 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetItemAspectsResponse> GetItemAspects([WorkflowExpression] Func<string> categoryTreeId, [WorkflowExpression] Func<string> categoryId)
         {
-            SourceExpression.Validate(categoryTreeId, nameof(categoryTreeId), required: true);
-            SourceExpression.Validate(categoryId, nameof(categoryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryTreeId, 1));
@@ -68,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetFulfillmentPoliciesResponse> GetFulfillmentPolicies([WorkflowExpression] Func<string> marketplaceId)
         {
-            SourceExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sell/account/v1/fulfillment_policy";
@@ -84,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetFulfillmentPolicyResponse> GetFulfillmentPolicy([WorkflowExpression] Func<string> fulfillmentPolicyId)
         {
-            SourceExpression.Validate(fulfillmentPolicyId, nameof(fulfillmentPolicyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/account/v1/fulfillment_policy/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fulfillmentPolicyId, 1));
@@ -99,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetPaymentPolicyResponse> GetPaymentPolicy([WorkflowExpression] Func<string> paymentPolicyId)
         {
-            SourceExpression.Validate(paymentPolicyId, nameof(paymentPolicyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/account/v1/payment_policy/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(paymentPolicyId, 1));
@@ -114,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetReturnPoliciesResponse> GetReturnPolicies([WorkflowExpression] Func<string> marketplaceId)
         {
-            SourceExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sell/account/v1/return_policy";
@@ -130,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetReturnPolicyResponse> GetReturnPolicy([WorkflowExpression] Func<string> returnPolicyId)
         {
-            SourceExpression.Validate(returnPolicyId, nameof(returnPolicyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/account/v1/return_policy/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(returnPolicyId, 1));
@@ -145,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetInventoryItemResponse> GetInventoryItem([WorkflowExpression] Func<string> sku)
         {
-            SourceExpression.Validate(sku, nameof(sku), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sku, 1));
@@ -161,31 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse> CreateOrReplaceInventoryItem([WorkflowExpression] Func<string> sku, [WorkflowExpression] Func<string> contentLanguage, [WorkflowExpression] Func<bodyavailabilitypickupAtLocationAvailabilityInputItem[]> bodyavailabilitypickupAtLocationAvailability = null, [WorkflowExpression] Func<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, [WorkflowExpression] Func<int> bodyavailabilityshipToLocationAvailabilityquantity = null, [WorkflowExpression] Func<bodyconditionInput> bodycondition = null, [WorkflowExpression] Func<string> bodyconditionDescription = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizedimensionsheight = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizedimensionslength = null, [WorkflowExpression] Func<bodypackageWeightAndSizedimensionsunitInput> bodypackageWeightAndSizedimensionsunit = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizedimensionswidth = null, [WorkflowExpression] Func<bodypackageWeightAndSizepackageTypeInput> bodypackageWeightAndSizepackageType = null, [WorkflowExpression] Func<bodypackageWeightAndSizeweightunitInput> bodypackageWeightAndSizeweightunit = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizeweightvalue = null, [WorkflowExpression] Func<string> bodyproductbrand = null, [WorkflowExpression] Func<string> bodyproductdescription = null, [WorkflowExpression] Func<string[]> bodyproductean = null, [WorkflowExpression] Func<string> bodyproductepid = null, [WorkflowExpression] Func<string[]> bodyproductimageUrls = null, [WorkflowExpression] Func<string[]> bodyproductisbn = null, [WorkflowExpression] Func<string> bodyproductmpn = null, [WorkflowExpression] Func<string> bodyproductsubtitle = null, [WorkflowExpression] Func<string> bodyproducttitle = null, [WorkflowExpression] Func<string[]> bodyproductupc = null, [WorkflowExpression] Func<string[]> bodyproductvideoIds = null)
         {
-            SourceExpression.Validate(sku, nameof(sku), required: true);
-            SourceExpression.Validate(contentLanguage, nameof(contentLanguage), required: true);
-            SourceExpression.Validate(bodyavailabilitypickupAtLocationAvailability, nameof(bodyavailabilitypickupAtLocationAvailability), required: false);
-            SourceExpression.Validate(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions, nameof(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions), required: false);
-            SourceExpression.Validate(bodyavailabilityshipToLocationAvailabilityquantity, nameof(bodyavailabilityshipToLocationAvailabilityquantity), required: false);
-            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
-            SourceExpression.Validate(bodyconditionDescription, nameof(bodyconditionDescription), required: false);
-            SourceExpression.Validate(bodypackageWeightAndSizedimensionsheight, nameof(bodypackageWeightAndSizedimensionsheight), required: false);
-            SourceExpression.Validate(bodypackageWeightAndSizedimensionslength, nameof(bodypackageWeightAndSizedimensionslength), required: false);
-            SourceExpression.Validate(bodypackageWeightAndSizedimensionsunit, nameof(bodypackageWeightAndSizedimensionsunit), required: false);
-            SourceExpression.Validate(bodypackageWeightAndSizedimensionswidth, nameof(bodypackageWeightAndSizedimensionswidth), required: false);
-            SourceExpression.Validate(bodypackageWeightAndSizepackageType, nameof(bodypackageWeightAndSizepackageType), required: false);
-            SourceExpression.Validate(bodypackageWeightAndSizeweightunit, nameof(bodypackageWeightAndSizeweightunit), required: false);
-            SourceExpression.Validate(bodypackageWeightAndSizeweightvalue, nameof(bodypackageWeightAndSizeweightvalue), required: false);
-            SourceExpression.Validate(bodyproductbrand, nameof(bodyproductbrand), required: false);
-            SourceExpression.Validate(bodyproductdescription, nameof(bodyproductdescription), required: false);
-            SourceExpression.Validate(bodyproductean, nameof(bodyproductean), required: false);
-            SourceExpression.Validate(bodyproductepid, nameof(bodyproductepid), required: false);
-            SourceExpression.Validate(bodyproductimageUrls, nameof(bodyproductimageUrls), required: false);
-            SourceExpression.Validate(bodyproductisbn, nameof(bodyproductisbn), required: false);
-            SourceExpression.Validate(bodyproductmpn, nameof(bodyproductmpn), required: false);
-            SourceExpression.Validate(bodyproductsubtitle, nameof(bodyproductsubtitle), required: false);
-            SourceExpression.Validate(bodyproducttitle, nameof(bodyproducttitle), required: false);
-            SourceExpression.Validate(bodyproductupc, nameof(bodyproductupc), required: false);
-            SourceExpression.Validate(bodyproductvideoIds, nameof(bodyproductvideoIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sku, 1));
@@ -403,8 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetInventoryItemsResponse> GetInventoryItems([WorkflowExpression] Func<string> Limit = null, [WorkflowExpression] Func<string> Offset = null)
         {
-            SourceExpression.Validate(Limit, nameof(Limit), required: false);
-            SourceExpression.Validate(Offset, nameof(Offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sell/inventory/v1/inventory_item";
@@ -424,7 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetInventoryLocationResponse> GetInventoryLocation([WorkflowExpression] Func<string> merchantLocationKey)
         {
-            SourceExpression.Validate(merchantLocationKey, nameof(merchantLocationKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(merchantLocationKey, 1));
@@ -439,25 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<string> CreateInventoryLocation([WorkflowExpression] Func<string> merchantLocationKey, [WorkflowExpression] Func<string> bodylocationaddressaddressLine1 = null, [WorkflowExpression] Func<string> bodylocationaddressaddressLine2 = null, [WorkflowExpression] Func<string> bodylocationaddresscity = null, [WorkflowExpression] Func<string> bodylocationaddresscountry = null, [WorkflowExpression] Func<string> bodylocationaddresscounty = null, [WorkflowExpression] Func<string> bodylocationaddresspostalCode = null, [WorkflowExpression] Func<string> bodylocationaddressstateOrProvince = null, [WorkflowExpression] Func<string> bodylocationgeoCoordinateslatitude = null, [WorkflowExpression] Func<string> bodylocationgeoCoordinateslongitude = null, [WorkflowExpression] Func<string> bodylocationAdditionalInformation = null, [WorkflowExpression] Func<string> bodylocationInstructions = null, [WorkflowExpression] Func<bodylocationTypesInputItem[]> bodylocationTypes = null, [WorkflowExpression] Func<string> bodylocationWebUrl = null, [WorkflowExpression] Func<string> bodymerchantLocationStatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodyoperatingHoursInputItem[]> bodyoperatingHours = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<bodyspecialHoursInputItem[]> bodyspecialHours = null)
         {
-            SourceExpression.Validate(merchantLocationKey, nameof(merchantLocationKey), required: true);
-            SourceExpression.Validate(bodylocationaddressaddressLine1, nameof(bodylocationaddressaddressLine1), required: false);
-            SourceExpression.Validate(bodylocationaddressaddressLine2, nameof(bodylocationaddressaddressLine2), required: false);
-            SourceExpression.Validate(bodylocationaddresscity, nameof(bodylocationaddresscity), required: false);
-            SourceExpression.Validate(bodylocationaddresscountry, nameof(bodylocationaddresscountry), required: false);
-            SourceExpression.Validate(bodylocationaddresscounty, nameof(bodylocationaddresscounty), required: false);
-            SourceExpression.Validate(bodylocationaddresspostalCode, nameof(bodylocationaddresspostalCode), required: false);
-            SourceExpression.Validate(bodylocationaddressstateOrProvince, nameof(bodylocationaddressstateOrProvince), required: false);
-            SourceExpression.Validate(bodylocationgeoCoordinateslatitude, nameof(bodylocationgeoCoordinateslatitude), required: false);
-            SourceExpression.Validate(bodylocationgeoCoordinateslongitude, nameof(bodylocationgeoCoordinateslongitude), required: false);
-            SourceExpression.Validate(bodylocationAdditionalInformation, nameof(bodylocationAdditionalInformation), required: false);
-            SourceExpression.Validate(bodylocationInstructions, nameof(bodylocationInstructions), required: false);
-            SourceExpression.Validate(bodylocationTypes, nameof(bodylocationTypes), required: false);
-            SourceExpression.Validate(bodylocationWebUrl, nameof(bodylocationWebUrl), required: false);
-            SourceExpression.Validate(bodymerchantLocationStatus, nameof(bodymerchantLocationStatus), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyoperatingHours, nameof(bodyoperatingHours), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyspecialHours, nameof(bodyspecialHours), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(merchantLocationKey, 1));
@@ -611,8 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetInventoryLocationsResponse> GetInventoryLocations([WorkflowExpression] Func<string> Offset = null, [WorkflowExpression] Func<string> Limit = null)
         {
-            SourceExpression.Validate(Offset, nameof(Offset), required: false);
-            SourceExpression.Validate(Limit, nameof(Limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sell/inventory/v1/location";
@@ -631,8 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetItemConditionPoliciesResponse> GetItemConditionPolicies([WorkflowExpression] Func<string> marketplaceId, [WorkflowExpression] Func<string> Filter = null)
         {
-            SourceExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
-            SourceExpression.Validate(Filter, nameof(Filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(marketplaceId, 1));
@@ -649,11 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetOffersResponse> GetOffers([WorkflowExpression] Func<string> sku, [WorkflowExpression] Func<string> MarketplaceId = null, [WorkflowExpression] Func<string> Format = null, [WorkflowExpression] Func<string> Limit = null, [WorkflowExpression] Func<string> Offset = null)
         {
-            SourceExpression.Validate(sku, nameof(sku), required: true);
-            SourceExpression.Validate(MarketplaceId, nameof(MarketplaceId), required: false);
-            SourceExpression.Validate(Format, nameof(Format), required: false);
-            SourceExpression.Validate(Limit, nameof(Limit), required: false);
-            SourceExpression.Validate(Offset, nameof(Offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sell/inventory/v1/offer";
@@ -678,56 +610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<CreateOfferResponse> CreateOffer([WorkflowExpression] Func<int> bodyavailableQuantity = null, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<string> bodycharitycharityId = null, [WorkflowExpression] Func<string> bodycharitydonationPercentage = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproducerProductId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityshipmentPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductDocumentationId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<bool> bodyhideBuyerDetails = null, [WorkflowExpression] Func<bool> bodyincludeCatalogProductDetails = null, [WorkflowExpression] Func<string> bodylistingDescription = null, [WorkflowExpression] Func<bodylistingDurationInput> bodylistingDuration = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, [WorkflowExpression] Func<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, [WorkflowExpression] Func<bool> bodylistingPolicieseBayPlusIfEligible = null, [WorkflowExpression] Func<string> bodylistingPoliciesfulfillmentPolicyId = null, [WorkflowExpression] Func<string> bodylistingPoliciespaymentPolicyId = null, [WorkflowExpression] Func<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, [WorkflowExpression] Func<string> bodylistingPoliciesreturnPolicyId = null, [WorkflowExpression] Func<bodylistingPoliciesshippingCostOverridesInputItem[]> bodylistingPoliciesshippingCostOverrides = null, [WorkflowExpression] Func<string> bodylistingPoliciestakeBackPolicyId = null, [WorkflowExpression] Func<string> bodylistingStartDate = null, [WorkflowExpression] Func<int> bodylotSize = null, [WorkflowExpression] Func<string> bodymarketplaceId = null, [WorkflowExpression] Func<string> bodymerchantLocationKey = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricevalue = null, [WorkflowExpression] Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummarypricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummarypricevalue = null, [WorkflowExpression] Func<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, [WorkflowExpression] Func<int> bodyquantityLimitPerBuyer = null, [WorkflowExpression] Func<string> bodysecondaryCategoryId = null, [WorkflowExpression] Func<string> bodysku = null, [WorkflowExpression] Func<string[]> bodystoreCategoryNames = null, [WorkflowExpression] Func<bool> bodytaxapplyTax = null, [WorkflowExpression] Func<string> bodytaxthirdPartyTaxCategory = null, [WorkflowExpression] Func<double> bodytaxvatPercentage = null)
         {
-            SourceExpression.Validate(bodyavailableQuantity, nameof(bodyavailableQuantity), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodycharitycharityId, nameof(bodycharitycharityId), required: false);
-            SourceExpression.Validate(bodycharitydonationPercentage, nameof(bodycharitydonationPercentage), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityproducerProductId, nameof(bodyextendedProducerResponsibilityproducerProductId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityproductPackageId, nameof(bodyextendedProducerResponsibilityproductPackageId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityshipmentPackageId, nameof(bodyextendedProducerResponsibilityshipmentPackageId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityproductDocumentationId, nameof(bodyextendedProducerResponsibilityproductDocumentationId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeecurrency, nameof(bodyextendedProducerResponsibilityecoParticipationFeecurrency), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeevalue, nameof(bodyextendedProducerResponsibilityecoParticipationFeevalue), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodyhideBuyerDetails, nameof(bodyhideBuyerDetails), required: false);
-            SourceExpression.Validate(bodyincludeCatalogProductDetails, nameof(bodyincludeCatalogProductDetails), required: false);
-            SourceExpression.Validate(bodylistingDescription, nameof(bodylistingDescription), required: false);
-            SourceExpression.Validate(bodylistingDuration, nameof(bodylistingDuration), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsbestOfferEnabled, nameof(bodylistingPoliciesbestOfferTermsbestOfferEnabled), required: false);
-            SourceExpression.Validate(bodylistingPolicieseBayPlusIfEligible, nameof(bodylistingPolicieseBayPlusIfEligible), required: false);
-            SourceExpression.Validate(bodylistingPoliciesfulfillmentPolicyId, nameof(bodylistingPoliciesfulfillmentPolicyId), required: false);
-            SourceExpression.Validate(bodylistingPoliciespaymentPolicyId, nameof(bodylistingPoliciespaymentPolicyId), required: false);
-            SourceExpression.Validate(bodylistingPoliciesproductCompliancePolicyIds, nameof(bodylistingPoliciesproductCompliancePolicyIds), required: false);
-            SourceExpression.Validate(bodylistingPoliciesreturnPolicyId, nameof(bodylistingPoliciesreturnPolicyId), required: false);
-            SourceExpression.Validate(bodylistingPoliciesshippingCostOverrides, nameof(bodylistingPoliciesshippingCostOverrides), required: false);
-            SourceExpression.Validate(bodylistingPoliciestakeBackPolicyId, nameof(bodylistingPoliciestakeBackPolicyId), required: false);
-            SourceExpression.Validate(bodylistingStartDate, nameof(bodylistingStartDate), required: false);
-            SourceExpression.Validate(bodylotSize, nameof(bodylotSize), required: false);
-            SourceExpression.Validate(bodymarketplaceId, nameof(bodymarketplaceId), required: false);
-            SourceExpression.Validate(bodymerchantLocationKey, nameof(bodymerchantLocationKey), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionReservePricecurrency, nameof(bodypricingSummaryauctionReservePricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionReservePricevalue, nameof(bodypricingSummaryauctionReservePricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionStartPricecurrency, nameof(bodypricingSummaryauctionStartPricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionStartPricevalue, nameof(bodypricingSummaryauctionStartPricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummaryminimumAdvertisedPricecurrency, nameof(bodypricingSummaryminimumAdvertisedPricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryminimumAdvertisedPricevalue, nameof(bodypricingSummaryminimumAdvertisedPricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummaryoriginallySoldForRetailPriceOn, nameof(bodypricingSummaryoriginallySoldForRetailPriceOn), required: false);
-            SourceExpression.Validate(bodypricingSummaryoriginalRetailPricecurrency, nameof(bodypricingSummaryoriginalRetailPricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryoriginalRetailPricevalue, nameof(bodypricingSummaryoriginalRetailPricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummarypricecurrency, nameof(bodypricingSummarypricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummarypricevalue, nameof(bodypricingSummarypricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummarypricingVisibility, nameof(bodypricingSummarypricingVisibility), required: false);
-            SourceExpression.Validate(bodyquantityLimitPerBuyer, nameof(bodyquantityLimitPerBuyer), required: false);
-            SourceExpression.Validate(bodysecondaryCategoryId, nameof(bodysecondaryCategoryId), required: false);
-            SourceExpression.Validate(bodysku, nameof(bodysku), required: false);
-            SourceExpression.Validate(bodystoreCategoryNames, nameof(bodystoreCategoryNames), required: false);
-            SourceExpression.Validate(bodytaxapplyTax, nameof(bodytaxapplyTax), required: false);
-            SourceExpression.Validate(bodytaxthirdPartyTaxCategory, nameof(bodytaxthirdPartyTaxCategory), required: false);
-            SourceExpression.Validate(bodytaxvatPercentage, nameof(bodytaxvatPercentage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sell/inventory/v1/offer";
@@ -1162,7 +1044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetOfferResponse> GetOffer([WorkflowExpression] Func<string> offerId)
         {
-            SourceExpression.Validate(offerId, nameof(offerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
@@ -1178,7 +1059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<string> DeleteOffer([WorkflowExpression] Func<string> offerId)
         {
-            SourceExpression.Validate(offerId, nameof(offerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
@@ -1195,54 +1075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<UpdateOfferResponse> UpdateOffer([WorkflowExpression] Func<string> offerId, [WorkflowExpression] Func<int> bodyavailableQuantity = null, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<string> bodycharitycharityId = null, [WorkflowExpression] Func<string> bodycharitydonationPercentage = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproducerProductId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityshipmentPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductDocumentationId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, [WorkflowExpression] Func<bool> bodyhideBuyerDetails = null, [WorkflowExpression] Func<bool> bodyincludeCatalogProductDetails = null, [WorkflowExpression] Func<string> bodylistingDescription = null, [WorkflowExpression] Func<bodylistingDurationInput> bodylistingDuration = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, [WorkflowExpression] Func<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, [WorkflowExpression] Func<bool> bodylistingPolicieseBayPlusIfEligible = null, [WorkflowExpression] Func<string> bodylistingPoliciesfulfillmentPolicyId = null, [WorkflowExpression] Func<string> bodylistingPoliciespaymentPolicyId = null, [WorkflowExpression] Func<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, [WorkflowExpression] Func<string> bodylistingPoliciesreturnPolicyId = null, [WorkflowExpression] Func<bodylistingPoliciesshippingCostOverridesInputItem22[]> bodylistingPoliciesshippingCostOverrides = null, [WorkflowExpression] Func<string> bodylistingPoliciestakeBackPolicyId = null, [WorkflowExpression] Func<string> bodylistingStartDate = null, [WorkflowExpression] Func<int> bodylotSize = null, [WorkflowExpression] Func<string> bodymerchantLocationKey = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricevalue = null, [WorkflowExpression] Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummarypricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummarypricevalue = null, [WorkflowExpression] Func<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, [WorkflowExpression] Func<int> bodyquantityLimitPerBuyer = null, [WorkflowExpression] Func<string> bodysecondaryCategoryId = null, [WorkflowExpression] Func<string[]> bodystoreCategoryNames = null, [WorkflowExpression] Func<bool> bodytaxapplyTax = null, [WorkflowExpression] Func<string> bodytaxthirdPartyTaxCategory = null, [WorkflowExpression] Func<double> bodytaxvatPercentage = null)
         {
-            SourceExpression.Validate(offerId, nameof(offerId), required: true);
-            SourceExpression.Validate(bodyavailableQuantity, nameof(bodyavailableQuantity), required: false);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodycharitycharityId, nameof(bodycharitycharityId), required: false);
-            SourceExpression.Validate(bodycharitydonationPercentage, nameof(bodycharitydonationPercentage), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityproducerProductId, nameof(bodyextendedProducerResponsibilityproducerProductId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityproductPackageId, nameof(bodyextendedProducerResponsibilityproductPackageId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityshipmentPackageId, nameof(bodyextendedProducerResponsibilityshipmentPackageId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityproductDocumentationId, nameof(bodyextendedProducerResponsibilityproductDocumentationId), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeecurrency, nameof(bodyextendedProducerResponsibilityecoParticipationFeecurrency), required: false);
-            SourceExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeevalue, nameof(bodyextendedProducerResponsibilityecoParticipationFeevalue), required: false);
-            SourceExpression.Validate(bodyhideBuyerDetails, nameof(bodyhideBuyerDetails), required: false);
-            SourceExpression.Validate(bodyincludeCatalogProductDetails, nameof(bodyincludeCatalogProductDetails), required: false);
-            SourceExpression.Validate(bodylistingDescription, nameof(bodylistingDescription), required: false);
-            SourceExpression.Validate(bodylistingDuration, nameof(bodylistingDuration), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue), required: false);
-            SourceExpression.Validate(bodylistingPoliciesbestOfferTermsbestOfferEnabled, nameof(bodylistingPoliciesbestOfferTermsbestOfferEnabled), required: false);
-            SourceExpression.Validate(bodylistingPolicieseBayPlusIfEligible, nameof(bodylistingPolicieseBayPlusIfEligible), required: false);
-            SourceExpression.Validate(bodylistingPoliciesfulfillmentPolicyId, nameof(bodylistingPoliciesfulfillmentPolicyId), required: false);
-            SourceExpression.Validate(bodylistingPoliciespaymentPolicyId, nameof(bodylistingPoliciespaymentPolicyId), required: false);
-            SourceExpression.Validate(bodylistingPoliciesproductCompliancePolicyIds, nameof(bodylistingPoliciesproductCompliancePolicyIds), required: false);
-            SourceExpression.Validate(bodylistingPoliciesreturnPolicyId, nameof(bodylistingPoliciesreturnPolicyId), required: false);
-            SourceExpression.Validate(bodylistingPoliciesshippingCostOverrides, nameof(bodylistingPoliciesshippingCostOverrides), required: false);
-            SourceExpression.Validate(bodylistingPoliciestakeBackPolicyId, nameof(bodylistingPoliciestakeBackPolicyId), required: false);
-            SourceExpression.Validate(bodylistingStartDate, nameof(bodylistingStartDate), required: false);
-            SourceExpression.Validate(bodylotSize, nameof(bodylotSize), required: false);
-            SourceExpression.Validate(bodymerchantLocationKey, nameof(bodymerchantLocationKey), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionReservePricecurrency, nameof(bodypricingSummaryauctionReservePricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionReservePricevalue, nameof(bodypricingSummaryauctionReservePricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionStartPricecurrency, nameof(bodypricingSummaryauctionStartPricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryauctionStartPricevalue, nameof(bodypricingSummaryauctionStartPricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummaryminimumAdvertisedPricecurrency, nameof(bodypricingSummaryminimumAdvertisedPricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryminimumAdvertisedPricevalue, nameof(bodypricingSummaryminimumAdvertisedPricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummaryoriginallySoldForRetailPriceOn, nameof(bodypricingSummaryoriginallySoldForRetailPriceOn), required: false);
-            SourceExpression.Validate(bodypricingSummaryoriginalRetailPricecurrency, nameof(bodypricingSummaryoriginalRetailPricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummaryoriginalRetailPricevalue, nameof(bodypricingSummaryoriginalRetailPricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummarypricecurrency, nameof(bodypricingSummarypricecurrency), required: false);
-            SourceExpression.Validate(bodypricingSummarypricevalue, nameof(bodypricingSummarypricevalue), required: false);
-            SourceExpression.Validate(bodypricingSummarypricingVisibility, nameof(bodypricingSummarypricingVisibility), required: false);
-            SourceExpression.Validate(bodyquantityLimitPerBuyer, nameof(bodyquantityLimitPerBuyer), required: false);
-            SourceExpression.Validate(bodysecondaryCategoryId, nameof(bodysecondaryCategoryId), required: false);
-            SourceExpression.Validate(bodystoreCategoryNames, nameof(bodystoreCategoryNames), required: false);
-            SourceExpression.Validate(bodytaxapplyTax, nameof(bodytaxapplyTax), required: false);
-            SourceExpression.Validate(bodytaxthirdPartyTaxCategory, nameof(bodytaxthirdPartyTaxCategory), required: false);
-            SourceExpression.Validate(bodytaxvatPercentage, nameof(bodytaxvatPercentage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
@@ -1658,7 +1490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<WithdrawOfferResponse> WithdrawOffer([WorkflowExpression] Func<string> offerId)
         {
-            SourceExpression.Validate(offerId, nameof(offerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/withdraw", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));
@@ -1674,7 +1505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<PublishOfferResponse> PublishOffer([WorkflowExpression] Func<string> offerId)
         {
-            SourceExpression.Validate(offerId, nameof(offerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/publish/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(offerId, 1));

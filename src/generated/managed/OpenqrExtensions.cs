@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<FolderUpdatePostResponse> FolderUpdate([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -52,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<FolderPostResponse> Folder([WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/folders";
@@ -89,9 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<QRPostResponse> QR([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydataurl = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodydataurl, nameof(bodydataurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/qr-codes";
@@ -130,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<QRGetResponse> QRGet([WorkflowExpression] Func<string> qrCodeId)
         {
-            SourceExpression.Validate(qrCodeId, nameof(qrCodeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(qrCodeId, 1));
@@ -145,10 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<QRUpdatePostResponse> QRUpdate([WorkflowExpression] Func<string> qrCodeId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodydataurl = null)
         {
-            SourceExpression.Validate(qrCodeId, nameof(qrCodeId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodydataurl, nameof(bodydataurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(qrCodeId, 1));

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
         public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/EdiToJson";
@@ -51,9 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
         public IBodyWorkflowAction<JToken> XmlToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
-            SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/EdiToXml";

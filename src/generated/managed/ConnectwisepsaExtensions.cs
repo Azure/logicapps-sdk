@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
         public IWorkflowAction GetServiceTickets([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<string> conditions = null, [WorkflowExpression] Func<string> childConditions = null, [WorkflowExpression] Func<string> customFieldConditions = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> pageId = null)
         {
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
-            SourceExpression.Validate(conditions, nameof(conditions), required: false);
-            SourceExpression.Validate(childConditions, nameof(childConditions), required: false);
-            SourceExpression.Validate(customFieldConditions, nameof(customFieldConditions), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(pageId, nameof(pageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";
@@ -54,8 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
         public IWorkflowAction PostServiceTickets([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(clientId, nameof(clientId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";

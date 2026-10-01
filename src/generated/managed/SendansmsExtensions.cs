@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
         public IWorkflowAction SendSms([WorkflowExpression] Func<string> xTopMessageKey, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodydatafrom = null, [WorkflowExpression] Func<string[]> bodydatato = null, [WorkflowExpression] Func<string> bodydatatext = null)
         {
-            SourceExpression.Validate(xTopMessageKey, nameof(xTopMessageKey), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodydatafrom, nameof(bodydatafrom), required: false);
-            SourceExpression.Validate(bodydatato, nameof(bodydatato), required: false);
-            SourceExpression.Validate(bodydatatext, nameof(bodydatatext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages";

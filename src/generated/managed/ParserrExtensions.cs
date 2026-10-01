@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
     {
         public IWorkflowTrigger WebhookEmailReceived([WorkflowExpression] Func<string> bodyemail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/microsoft/subscription/create";

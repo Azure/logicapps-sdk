@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<AccessTokenGetResponse> AccessTokenGet([WorkflowExpression] Func<string> bodyauthRequestuseremail = null, [WorkflowExpression] Func<string> bodyauthRequestuserpassword = null, [WorkflowExpression] Func<string> bodyauthRequestapiKey = null)
         {
-            SourceExpression.Validate(bodyauthRequestuseremail, nameof(bodyauthRequestuseremail), required: false);
-            SourceExpression.Validate(bodyauthRequestuserpassword, nameof(bodyauthRequestuserpassword), required: false);
-            SourceExpression.Validate(bodyauthRequestapiKey, nameof(bodyauthRequestapiKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/userservice/tokens";
@@ -71,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectInformationGetResponse> ProjectInformationGet([WorkflowExpression] Func<string> projectIds = null)
         {
-            SourceExpression.Validate(projectIds, nameof(projectIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/projectservice/projects/collection/ids";
@@ -88,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectInformationSetIDsResponse> ProjectInformationSetIDs([WorkflowExpression] Func<string> projectIds = null)
         {
-            SourceExpression.Validate(projectIds, nameof(projectIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/projectservice/projects/collection/summary/ids";
@@ -105,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<CampaignProjectGetResponse> CampaignProjectGet([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/campaign/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -123,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<CampaignSummaryProjectResponse> CampaignSummaryProject([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/campaign/{0}/projects/summary", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -141,8 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectCountryGetResponse> ProjectCountryGet([WorkflowExpression] Func<string> iso3166CountryCode, [WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(iso3166CountryCode, nameof(iso3166CountryCode), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/countries/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iso3166CountryCode, 1));
@@ -159,8 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectSummaryCountryResponse> ProjectSummaryCountry([WorkflowExpression] Func<string> iso3166CountryCode, [WorkflowExpression] Func<string> nextProjectId = null)
         {
-            SourceExpression.Validate(iso3166CountryCode, nameof(iso3166CountryCode), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/countries/{0}/projects/summary", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iso3166CountryCode, 1));
@@ -177,8 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectThemeResponse> ProjectTheme([WorkflowExpression] Func<string> themeId, [WorkflowExpression] Func<string> nextProjectId = null)
         {
-            SourceExpression.Validate(themeId, nameof(themeId), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/themes/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(themeId, 1));
@@ -195,8 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectThemeSummaryResponse> ProjectThemeSummary([WorkflowExpression] Func<string> themeId, [WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(themeId, nameof(themeId), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/themes/{0}/projects/summary", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(themeId, 1));
@@ -213,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectOrganizationResponse> ProjectOrganization([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/organizations/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -231,8 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectOrganizationSummaryResponse> ProjectOrganizationSummary([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/organizations/{0}/projects/summary", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
@@ -249,7 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectGetResponse> ProjectGet([WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/projectservice/all/projects";
@@ -266,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectSummaryGetResponse> ProjectSummaryGet([WorkflowExpression] Func<int> nextProjectId = null)
         {
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/projectservice/all/projects/summary";
@@ -325,7 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ImageGalleryResponse> ImageGallery([WorkflowExpression] Func<int> projectid)
         {
-            SourceExpression.Validate(projectid, nameof(projectid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/projects/{0}/imagegallery", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(projectid, 1));
@@ -340,7 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<OrganizationGetResponse> OrganizationGet([WorkflowExpression] Func<string> organizationid)
         {
-            SourceExpression.Validate(organizationid, nameof(organizationid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/orgservice/organization/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationid, 1));
@@ -355,7 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<OrganizationGetAllResponse> OrganizationGetAll([WorkflowExpression] Func<string> nextProjectId = null)
         {
-            SourceExpression.Validate(nextProjectId, nameof(nextProjectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/orgservice/all/organizations";
@@ -400,7 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectRegionCountResponse> ProjectRegionCount([WorkflowExpression] Func<string> regionname)
         {
-            SourceExpression.Validate(regionname, nameof(regionname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/regions/{0}/countries/projects/count", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionname, 1));
@@ -443,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectGetAResponse> ProjectGetA([WorkflowExpression] Func<int> projectid)
         {
-            SourceExpression.Validate(projectid, nameof(projectid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(projectid, 1));
@@ -458,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectSummaryResponse> ProjectSummary([WorkflowExpression] Func<int> projectid)
         {
-            SourceExpression.Validate(projectid, nameof(projectid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/projectservice/projects/{0}/summary", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(projectid, 1));
@@ -501,9 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<ProjectSearchResponse> ProjectSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/services/search/projects";
@@ -524,26 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<DonationSubmitResponse> DonationSubmit([WorkflowExpression] Func<bool> isTest = null, [WorkflowExpression] Func<int> bodydonationrefcode = null, [WorkflowExpression] Func<string> bodydonationtransactionId = null, [WorkflowExpression] Func<string> bodydonationemail = null, [WorkflowExpression] Func<double> bodydonationamount = null, [WorkflowExpression] Func<int> bodydonationprojectid = null, [WorkflowExpression] Func<bool> bodydonationsignupForGGNewsletter = null, [WorkflowExpression] Func<bool> bodydonationsignupForCharityNewsletter = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailfirstname = null, [WorkflowExpression] Func<string> bodydonationpaymentDetaillastname = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailaddress = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailaddress2 = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailcity = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailstate = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailiso3166CountryCode = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailpaymentGateway = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailpaymentGatewayKey = null, [WorkflowExpression] Func<string> bodydonationpaymentDetailpaymentGatewayNonce = null, [WorkflowExpression] Func<string> bodydonationipAddress = null, [WorkflowExpression] Func<string> bodydonationuserAgent = null)
         {
-            SourceExpression.Validate(isTest, nameof(isTest), required: false);
-            SourceExpression.Validate(bodydonationrefcode, nameof(bodydonationrefcode), required: false);
-            SourceExpression.Validate(bodydonationtransactionId, nameof(bodydonationtransactionId), required: false);
-            SourceExpression.Validate(bodydonationemail, nameof(bodydonationemail), required: false);
-            SourceExpression.Validate(bodydonationamount, nameof(bodydonationamount), required: false);
-            SourceExpression.Validate(bodydonationprojectid, nameof(bodydonationprojectid), required: false);
-            SourceExpression.Validate(bodydonationsignupForGGNewsletter, nameof(bodydonationsignupForGGNewsletter), required: false);
-            SourceExpression.Validate(bodydonationsignupForCharityNewsletter, nameof(bodydonationsignupForCharityNewsletter), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailfirstname, nameof(bodydonationpaymentDetailfirstname), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetaillastname, nameof(bodydonationpaymentDetaillastname), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailaddress, nameof(bodydonationpaymentDetailaddress), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailaddress2, nameof(bodydonationpaymentDetailaddress2), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailcity, nameof(bodydonationpaymentDetailcity), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailstate, nameof(bodydonationpaymentDetailstate), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailiso3166CountryCode, nameof(bodydonationpaymentDetailiso3166CountryCode), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailpaymentGateway, nameof(bodydonationpaymentDetailpaymentGateway), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailpaymentGatewayKey, nameof(bodydonationpaymentDetailpaymentGatewayKey), required: false);
-            SourceExpression.Validate(bodydonationpaymentDetailpaymentGatewayNonce, nameof(bodydonationpaymentDetailpaymentGatewayNonce), required: false);
-            SourceExpression.Validate(bodydonationipAddress, nameof(bodydonationipAddress), required: false);
-            SourceExpression.Validate(bodydonationuserAgent, nameof(bodydonationuserAgent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/secure/givingservice/donationsclient";
@@ -718,32 +666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<GiftCardSendResponse> GiftCardSend([WorkflowExpression] Func<bool> isTest = null, [WorkflowExpression] Func<int> bodygiftCardrefcode = null, [WorkflowExpression] Func<string> bodygiftCardtransactionId = null, [WorkflowExpression] Func<string> bodygiftCardemail = null, [WorkflowExpression] Func<double> bodygiftCardamount = null, [WorkflowExpression] Func<string> bodygiftCardpaymentDetailfirstname = null, [WorkflowExpression] Func<string> bodygiftCardpaymentDetaillastname = null, [WorkflowExpression] Func<string> bodygiftCardpaymentDetailaddress = null, [WorkflowExpression] Func<string> bodygiftCardpaymentDetailaddress2 = null, [WorkflowExpression] Func<string> bodygiftCardpaymentDetailcity = null, [WorkflowExpression] Func<string> bodygiftCardpaymentDetailstate = null, [WorkflowExpression] Func<string> bodygiftCardpaymentDetailiso3166CountryCode = null, [WorkflowExpression] Func<int> bodygiftCardpaymentDetailzip = null, [WorkflowExpression] Func<int> bodygiftCardpaymentDetailcreditCardNumber = null, [WorkflowExpression] Func<int> bodygiftCardpaymentDetailsecurityCode = null, [WorkflowExpression] Func<int> bodygiftCardpaymentDetailexpiryDateMonth = null, [WorkflowExpression] Func<int> bodygiftCardpaymentDetailexpiryDateYear = null, [WorkflowExpression] Func<int> bodygiftCardgiftCardDesignid = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetaildateToSend = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetailfirstname = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetaillastname = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetailemail = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetailphone = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetailto = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetailfrom = null, [WorkflowExpression] Func<string> bodygiftCardgiftCardDetailmessage = null)
         {
-            SourceExpression.Validate(isTest, nameof(isTest), required: false);
-            SourceExpression.Validate(bodygiftCardrefcode, nameof(bodygiftCardrefcode), required: false);
-            SourceExpression.Validate(bodygiftCardtransactionId, nameof(bodygiftCardtransactionId), required: false);
-            SourceExpression.Validate(bodygiftCardemail, nameof(bodygiftCardemail), required: false);
-            SourceExpression.Validate(bodygiftCardamount, nameof(bodygiftCardamount), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailfirstname, nameof(bodygiftCardpaymentDetailfirstname), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetaillastname, nameof(bodygiftCardpaymentDetaillastname), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailaddress, nameof(bodygiftCardpaymentDetailaddress), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailaddress2, nameof(bodygiftCardpaymentDetailaddress2), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailcity, nameof(bodygiftCardpaymentDetailcity), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailstate, nameof(bodygiftCardpaymentDetailstate), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailiso3166CountryCode, nameof(bodygiftCardpaymentDetailiso3166CountryCode), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailzip, nameof(bodygiftCardpaymentDetailzip), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailcreditCardNumber, nameof(bodygiftCardpaymentDetailcreditCardNumber), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailsecurityCode, nameof(bodygiftCardpaymentDetailsecurityCode), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailexpiryDateMonth, nameof(bodygiftCardpaymentDetailexpiryDateMonth), required: false);
-            SourceExpression.Validate(bodygiftCardpaymentDetailexpiryDateYear, nameof(bodygiftCardpaymentDetailexpiryDateYear), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDesignid, nameof(bodygiftCardgiftCardDesignid), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetaildateToSend, nameof(bodygiftCardgiftCardDetaildateToSend), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetailfirstname, nameof(bodygiftCardgiftCardDetailfirstname), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetaillastname, nameof(bodygiftCardgiftCardDetaillastname), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetailemail, nameof(bodygiftCardgiftCardDetailemail), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetailphone, nameof(bodygiftCardgiftCardDetailphone), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetailto, nameof(bodygiftCardgiftCardDetailto), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetailfrom, nameof(bodygiftCardgiftCardDetailfrom), required: false);
-            SourceExpression.Validate(bodygiftCardgiftCardDetailmessage, nameof(bodygiftCardgiftCardDetailmessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/secure/givingservice/giftcards";
@@ -948,12 +870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<GiftCertificateOrderResponse> GiftCertificateOrder([WorkflowExpression] Func<bool> isTest = null, [WorkflowExpression] Func<int> bodygiftCertificaterefcode = null, [WorkflowExpression] Func<double> bodygiftCertificateamount = null, [WorkflowExpression] Func<string> bodygiftCertificatethirdPartyIdentifier = null, [WorkflowExpression] Func<string> bodygiftCertificatecurrencyCode = null, [WorkflowExpression] Func<string> bodygiftCertificateexpirationDate = null)
         {
-            SourceExpression.Validate(isTest, nameof(isTest), required: false);
-            SourceExpression.Validate(bodygiftCertificaterefcode, nameof(bodygiftCertificaterefcode), required: false);
-            SourceExpression.Validate(bodygiftCertificateamount, nameof(bodygiftCertificateamount), required: false);
-            SourceExpression.Validate(bodygiftCertificatethirdPartyIdentifier, nameof(bodygiftCertificatethirdPartyIdentifier), required: false);
-            SourceExpression.Validate(bodygiftCertificatecurrencyCode, nameof(bodygiftCertificatecurrencyCode), required: false);
-            SourceExpression.Validate(bodygiftCertificateexpirationDate, nameof(bodygiftCertificateexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/secure/givingservice/giftcertificates";
@@ -1014,7 +930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
         public IBodyWorkflowAction<GiftCertificateDetailsResponse> GiftCertificateDetails([WorkflowExpression] Func<string> giftcertid)
         {
-            SourceExpression.Validate(giftcertid, nameof(giftcertid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secure/givingservice/giftcertificatedetail/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftcertid, 1));

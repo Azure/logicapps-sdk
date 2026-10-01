@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
         public IBodyWorkflowAction<CompanyFormat> CompanyGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<fieldsInput> fields = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/company";
@@ -35,10 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
         public IBodyWorkflowAction<SearchResponse> SearchGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -61,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
         public IBodyWorkflowAction<DocumentGetResponse> DocumentGet([WorkflowExpression] Func<string> token)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/download-file";

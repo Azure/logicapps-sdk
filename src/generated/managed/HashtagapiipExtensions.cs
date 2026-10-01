@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<HashtagsSimilarGetResponse> HashtagsSimilarGet([WorkflowExpression] Func<string> keyword)
         {
-            SourceExpression.Validate(keyword, nameof(keyword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tag/predict";
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<PostCountGetResponse> PostCountGet([WorkflowExpression] Func<string> tag)
         {
-            SourceExpression.Validate(tag, nameof(tag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tag/count";
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags([WorkflowExpression] Func<string> bodyimage)
         {
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tag/generate";
@@ -111,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CategoryGetResponse> CategoryGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/categories/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet([WorkflowExpression] Func<string> countryName)
         {
-            SourceExpression.Validate(countryName, nameof(countryName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trending/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryName, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
         public IBodyWorkflowAction<BitlinkV2> CreateBitlink([WorkflowExpression] Func<string> bodyuRL)
         {
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/shorten";
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     {
         public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated([WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/bitlinks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

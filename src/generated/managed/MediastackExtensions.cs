@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
         public IBodyWorkflowAction<ListNewsResponse> ListNews([WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> languages = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(sources, nameof(sources), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(countries, nameof(countries), required: false);
-            SourceExpression.Validate(languages, nameof(languages), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/news";
@@ -58,12 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
         public IBodyWorkflowAction<ListSourcesResponse> ListSources([WorkflowExpression] Func<string> search, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> languages = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: true);
-            SourceExpression.Validate(countries, nameof(countries), required: false);
-            SourceExpression.Validate(languages, nameof(languages), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/sources";

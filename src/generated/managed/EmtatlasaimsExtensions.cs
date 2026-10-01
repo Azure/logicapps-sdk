@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline([WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/aimsapi/assets/configuration/base_line/";
@@ -33,8 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline([WorkflowExpression] Func<string> baselineId, [WorkflowExpression] Func<string> baseUrl)
         {
-            SourceExpression.Validate(baselineId, nameof(baselineId), required: true);
-            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baselineId, 1));
@@ -50,15 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<AssetSearchResult> AssetsSearch([WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> bodycontractId = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<int> bodypageSize = null, [WorkflowExpression] Func<string> bodymodifiedDategreaterThan = null, [WorkflowExpression] Func<string> bodymodifiedDatelessThan = null, [WorkflowExpression] Func<string> bodysortKey = null, [WorkflowExpression] Func<string> bodysortOrder = null, [WorkflowExpression] Func<string[]> bodyfilteredAssetClassCode = null)
         {
-            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
-            SourceExpression.Validate(bodycontractId, nameof(bodycontractId), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: false);
-            SourceExpression.Validate(bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
-            SourceExpression.Validate(bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
-            SourceExpression.Validate(bodysortKey, nameof(bodysortKey), required: false);
-            SourceExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
-            SourceExpression.Validate(bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/aimsapi/assets/search/";
@@ -136,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<UserDataResponseDoc> GetUserData([WorkflowExpression] Func<string> baseUrl)
         {
-            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/aimsapi/user/user_data/";

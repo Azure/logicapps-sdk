@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gienitsservermcp")]
         public IBodyWorkflowAction<QueryResponse> GieniTSserver([WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sse";

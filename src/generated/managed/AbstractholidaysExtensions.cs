@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractholidays")]
         public IBodyWorkflowAction<ListHolidaysResponseItem[]> ListHolidays([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> day = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(month, nameof(month), required: false);
-            SourceExpression.Validate(day, nameof(day), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/";

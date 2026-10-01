@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<IssueResponse> CreateIssue([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> bodyissueTitle, [WorkflowExpression] Func<bodyissueTypeInput> bodyissueType, [WorkflowExpression] Func<bodypriorityInput> bodypriority, [WorkflowExpression] Func<string> bodycontentdescription = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycomponentcomponent = null, [WorkflowExpression] Func<string> bodymilestonemilestone = null, [WorkflowExpression] Func<string> bodyversionversion = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(bodyissueTitle, nameof(bodyissueTitle), required: true);
-            SourceExpression.Validate(bodyissueType, nameof(bodyissueType), required: true);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: true);
-            SourceExpression.Validate(bodycontentdescription, nameof(bodycontentdescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycomponentcomponent, nameof(bodycomponentcomponent), required: false);
-            SourceExpression.Validate(bodymilestonemilestone, nameof(bodymilestonemilestone), required: false);
-            SourceExpression.Validate(bodyversionversion, nameof(bodyversionversion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -112,9 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<IssueResponse> GetIssueById([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> issueId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(issueId, nameof(issueId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueId, 1));
@@ -129,9 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<ApprovePullRequestResponse> ApprovePullRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> pullrequestId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(pullrequestId, nameof(pullrequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pullrequestId, 1));
@@ -146,9 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> DeclinePullRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> pullrequestId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(pullrequestId, nameof(pullrequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pullrequestId, 1));
@@ -163,9 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> MergePullRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> pullrequestId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(pullrequestId, nameof(pullrequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pullrequestId, 1));
@@ -180,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<UserResponse> GetUserById([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2.0/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -197,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     {
         public IBodyWorkflowTrigger<ListRepositoriesResponse> OnNewRepo([WorkflowExpression] Func<string> account, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/repository_created_trigger/2.0/repositories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -211,8 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookIssueCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -234,8 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookIssueUpdated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -257,8 +229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestApproved([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -280,8 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -303,8 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestDeclined([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -326,8 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestMerged([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -349,8 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookRepositoryPush([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));

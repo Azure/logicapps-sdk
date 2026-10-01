@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/document/delete/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<DocumentRead> GetDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationSet)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationSet, nameof(configurationSet), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/document/get/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationSet, 1));
@@ -45,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<File> GetDocumentContent([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/document/get-content/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -60,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<DocumentMetadataRead> GetDocumentProperties([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationSet)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationSet, nameof(configurationSet), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/document/get-properties/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationSet, 1));
@@ -76,9 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction UpdateDocumentContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fileDtofileName, [WorkflowExpression] Func<string> fileDtofileContent)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fileDtofileName, nameof(fileDtofileName), required: true);
-            SourceExpression.Validate(fileDtofileContent, nameof(fileDtofileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/document/update-content/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -103,13 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> configurationSet, [WorkflowExpression] Func<string> documentDtoparentId, [WorkflowExpression] Func<string> documentDtoFilefileName, [WorkflowExpression] Func<string> documentDtoFilefileContent, [WorkflowExpression] Func<string> documentDtometadatadisplayName, [WorkflowExpression] Func<object> documentDtometadatafields, [WorkflowExpression] Func<string> documentDtometadatadescription = null)
         {
-            SourceExpression.Validate(configurationSet, nameof(configurationSet), required: true);
-            SourceExpression.Validate(documentDtoparentId, nameof(documentDtoparentId), required: true);
-            SourceExpression.Validate(documentDtoFilefileName, nameof(documentDtoFilefileName), required: true);
-            SourceExpression.Validate(documentDtoFilefileContent, nameof(documentDtoFilefileContent), required: true);
-            SourceExpression.Validate(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
-            SourceExpression.Validate(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
-            SourceExpression.Validate(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationSet, 1));
@@ -162,13 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationSet, [WorkflowExpression] Func<string> documentDtoFilefileName, [WorkflowExpression] Func<string> documentDtoFilefileContent, [WorkflowExpression] Func<string> documentDtometadatadisplayName, [WorkflowExpression] Func<object> documentDtometadatafields, [WorkflowExpression] Func<string> documentDtometadatadescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationSet, nameof(configurationSet), required: true);
-            SourceExpression.Validate(documentDtoFilefileName, nameof(documentDtoFilefileName), required: true);
-            SourceExpression.Validate(documentDtoFilefileContent, nameof(documentDtoFilefileContent), required: true);
-            SourceExpression.Validate(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
-            SourceExpression.Validate(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
-            SourceExpression.Validate(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationSet, 1));
@@ -219,11 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction UpdateDocumentProperties([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationSet, [WorkflowExpression] Func<string> metadataDtodisplayName, [WorkflowExpression] Func<object> metadataDtofields, [WorkflowExpression] Func<string> metadataDtodescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationSet, nameof(configurationSet), required: true);
-            SourceExpression.Validate(metadataDtodisplayName, nameof(metadataDtodisplayName), required: true);
-            SourceExpression.Validate(metadataDtofields, nameof(metadataDtofields), required: true);
-            SourceExpression.Validate(metadataDtodescription, nameof(metadataDtodescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/update-properties/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationSet, 1));

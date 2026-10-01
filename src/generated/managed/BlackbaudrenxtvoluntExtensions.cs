@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiJob> GetJob([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiJobSkillCollection> ListJobSkills([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/jobs/{0}/skills", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiJobAssignmentCollection> ListJobAssignments([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/jobs/{0}/volunteers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiVolunteerAssignmentCollection> ListVolunteerJobAssignments([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/{0}/assignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -74,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiEmergencyContact> GetVolunteerEmergencyContact([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/{0}/emergencycontact", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -89,10 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IWorkflowAction EditVolunteerEmergencyContact([WorkflowExpression] Func<string> constituentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyrelationship = null, [WorkflowExpression] Func<string> bodyphone = null)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyrelationship, nameof(bodyrelationship), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/{0}/emergencycontact", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -131,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiVolunteerInterestCollection> ListVolunteerInterests([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/{0}/interests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -146,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiVolunteerSkillCollection> ListVolunteerSkills([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/{0}/skills", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -161,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiVolunteerTimesheetCollection> ListVolunteerTimesheets([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/{0}/timesheets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -176,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiVolunteerTypeCollection> ListVolunteerTypes([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/{0}/types", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -191,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiCreatedVolunteerInterest> CreateVolunteerInterest([WorkflowExpression] Func<string> bodyconstituentId, [WorkflowExpression] Func<string> bodyinterest)
         {
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodyinterest, nameof(bodyinterest), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/volunteer/v1/volunteers/interests";
@@ -217,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IWorkflowAction DeleteVolunteerInterest([WorkflowExpression] Func<string> volunteerInterestId)
         {
-            SourceExpression.Validate(volunteerInterestId, nameof(volunteerInterestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/interests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(volunteerInterestId, 1));
@@ -232,14 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiCreatedVolunteerSkill> CreateVolunteerSkill([WorkflowExpression] Func<string> bodyconstituentId, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodyskillLevel = null, [WorkflowExpression] Func<string> bodylicenseType = null, [WorkflowExpression] Func<int> bodyexpirationDateday = null, [WorkflowExpression] Func<int> bodyexpirationDatemonth = null, [WorkflowExpression] Func<int> bodyexpirationDateyear = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyskillLevel, nameof(bodyskillLevel), required: false);
-            SourceExpression.Validate(bodylicenseType, nameof(bodylicenseType), required: false);
-            SourceExpression.Validate(bodyexpirationDateday, nameof(bodyexpirationDateday), required: false);
-            SourceExpression.Validate(bodyexpirationDatemonth, nameof(bodyexpirationDatemonth), required: false);
-            SourceExpression.Validate(bodyexpirationDateyear, nameof(bodyexpirationDateyear), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/volunteer/v1/volunteers/skills";
@@ -308,7 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IWorkflowAction DeleteVolunteerSkill([WorkflowExpression] Func<string> volunteerSkillId)
         {
-            SourceExpression.Validate(volunteerSkillId, nameof(volunteerSkillId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/skills/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(volunteerSkillId, 1));
@@ -323,14 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IWorkflowAction EditVolunteerSkill([WorkflowExpression] Func<string> volunteerSkillId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyskillLevel = null, [WorkflowExpression] Func<string> bodylicenseType = null, [WorkflowExpression] Func<int> bodyexpirationDateday = null, [WorkflowExpression] Func<int> bodyexpirationDatemonth = null, [WorkflowExpression] Func<int> bodyexpirationDateyear = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(volunteerSkillId, nameof(volunteerSkillId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyskillLevel, nameof(bodyskillLevel), required: false);
-            SourceExpression.Validate(bodylicenseType, nameof(bodylicenseType), required: false);
-            SourceExpression.Validate(bodyexpirationDateday, nameof(bodyexpirationDateday), required: false);
-            SourceExpression.Validate(bodyexpirationDatemonth, nameof(bodyexpirationDatemonth), required: false);
-            SourceExpression.Validate(bodyexpirationDateyear, nameof(bodyexpirationDateyear), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/skills/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(volunteerSkillId, 1));
@@ -401,16 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IBodyWorkflowAction<VolunteerApiCreatedVolunteerType> CreateVolunteerType([WorkflowExpression] Func<string> bodyconstituentId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodydateStartedday = null, [WorkflowExpression] Func<int> bodydateStartedmonth = null, [WorkflowExpression] Func<int> bodydateStartedyear = null, [WorkflowExpression] Func<int> bodydateFinishedday = null, [WorkflowExpression] Func<int> bodydateFinishedmonth = null, [WorkflowExpression] Func<int> bodydateFinishedyear = null, [WorkflowExpression] Func<string> bodyreasonFinished = null)
         {
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodydateStartedday, nameof(bodydateStartedday), required: false);
-            SourceExpression.Validate(bodydateStartedmonth, nameof(bodydateStartedmonth), required: false);
-            SourceExpression.Validate(bodydateStartedyear, nameof(bodydateStartedyear), required: false);
-            SourceExpression.Validate(bodydateFinishedday, nameof(bodydateFinishedday), required: false);
-            SourceExpression.Validate(bodydateFinishedmonth, nameof(bodydateFinishedmonth), required: false);
-            SourceExpression.Validate(bodydateFinishedyear, nameof(bodydateFinishedyear), required: false);
-            SourceExpression.Validate(bodyreasonFinished, nameof(bodyreasonFinished), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/volunteer/v1/volunteers/types";
@@ -499,7 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IWorkflowAction DeleteVolunteerType([WorkflowExpression] Func<string> volunteerTypeId)
         {
-            SourceExpression.Validate(volunteerTypeId, nameof(volunteerTypeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(volunteerTypeId, 1));
@@ -514,16 +470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
         public IWorkflowAction EditVolunteerType([WorkflowExpression] Func<string> volunteerTypeId, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodydateStartedday = null, [WorkflowExpression] Func<int> bodydateStartedmonth = null, [WorkflowExpression] Func<int> bodydateStartedyear = null, [WorkflowExpression] Func<int> bodydateFinishedday = null, [WorkflowExpression] Func<int> bodydateFinishedmonth = null, [WorkflowExpression] Func<int> bodydateFinishedyear = null, [WorkflowExpression] Func<string> bodyreasonFinished = null)
         {
-            SourceExpression.Validate(volunteerTypeId, nameof(volunteerTypeId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodydateStartedday, nameof(bodydateStartedday), required: false);
-            SourceExpression.Validate(bodydateStartedmonth, nameof(bodydateStartedmonth), required: false);
-            SourceExpression.Validate(bodydateStartedyear, nameof(bodydateStartedyear), required: false);
-            SourceExpression.Validate(bodydateFinishedday, nameof(bodydateFinishedday), required: false);
-            SourceExpression.Validate(bodydateFinishedmonth, nameof(bodydateFinishedmonth), required: false);
-            SourceExpression.Validate(bodydateFinishedyear, nameof(bodydateFinishedyear), required: false);
-            SourceExpression.Validate(bodyreasonFinished, nameof(bodyreasonFinished), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/volunteer/v1/volunteers/types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(volunteerTypeId, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
         public IBodyWorkflowAction<GetSessionIdResponse> GetSessionId([WorkflowExpression] Func<string> account)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/publicinterface/get_session_id.json";
@@ -30,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
         public IWorkflowAction PutSessionUpload([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> fileContent = null)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/direct_upload/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileName, 1));
@@ -48,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
         public IBodyWorkflowAction<EndSessionResponse> EndSession([WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/publicinterface/end_session.json";

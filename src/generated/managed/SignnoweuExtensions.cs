@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IWorkflowAction DeleteDocGroupEmbeddedInvites([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,10 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse> CreateDocGroupEmbeddedInvites([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<inviteinvitesInputItem[]> inviteinvites = null, [WorkflowExpression] Func<inviteadvancedInputItem[]> inviteadvanced = null, [WorkflowExpression] Func<inviteqESSignatureInput> inviteqESSignature = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inviteinvites, nameof(inviteinvites), required: false);
-            SourceExpression.Validate(inviteadvanced, nameof(inviteadvanced), required: false);
-            SourceExpression.Validate(inviteqESSignature, nameof(inviteqESSignature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -71,11 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse> GenerateDocGroupEmbeddedInviteLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> inviteId, [WorkflowExpression] Func<string> inviteemail, [WorkflowExpression] Func<int> invitelinkExpiration = null, [WorkflowExpression] Func<int> invitesessionExpiration = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inviteId, nameof(inviteId), required: true);
-            SourceExpression.Validate(inviteemail, nameof(inviteemail), required: true);
-            SourceExpression.Validate(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
-            SourceExpression.Validate(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites/{1}/link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inviteId, 1));
@@ -110,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IWorkflowAction DeleteEmbeddedInvites([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -125,11 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateEmbeddedInvitesResponse> CreateEmbeddedInvites([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<inviteinvitesInputItem22[]> inviteinvites = null, [WorkflowExpression] Func<string> invitenameFormula = null, [WorkflowExpression] Func<inviteinviteAdvancedParametersInputItem[]> inviteinviteAdvancedParameters = null, [WorkflowExpression] Func<inviteqESSignatureInput> inviteqESSignature = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inviteinvites, nameof(inviteinvites), required: false);
-            SourceExpression.Validate(invitenameFormula, nameof(invitenameFormula), required: false);
-            SourceExpression.Validate(inviteinviteAdvancedParameters, nameof(inviteinviteAdvancedParameters), required: false);
-            SourceExpression.Validate(inviteqESSignature, nameof(inviteqESSignature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -174,10 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse> GenerateEmbeddedInviteLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldInviteId, [WorkflowExpression] Func<int> invitelinkExpiration = null, [WorkflowExpression] Func<int> invitesessionExpiration = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fieldInviteId, nameof(fieldInviteId), required: true);
-            SourceExpression.Validate(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
-            SourceExpression.Validate(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites/{1}/link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldInviteId, 1));
@@ -210,9 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DocumentGroupsResponse> GetListDocGroups([WorkflowExpression] Func<bool> template, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(template, nameof(template), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/documentgroups";
@@ -232,8 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse> CreateDocGroupFromFiles([WorkflowExpression] Func<string> bodydocumentGroupName, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null)
         {
-            SourceExpression.Validate(bodydocumentGroupName, nameof(bodydocumentGroupName), required: true);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/documentgroups";
@@ -262,8 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DocumentGroupProperties> GetDocumentGroup([WorkflowExpression] Func<string> docGroupId, [WorkflowExpression] Func<bool> template)
         {
-            SourceExpression.Validate(docGroupId, nameof(docGroupId), required: true);
-            SourceExpression.Validate(template, nameof(template), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
@@ -279,8 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateFromTemplateGroupResponse> CreateFromTemplateGroup([WorkflowExpression] Func<string> docGroupId, [WorkflowExpression] Func<string> bodydocumentGroupName = null)
         {
-            SourceExpression.Validate(docGroupId, nameof(docGroupId), required: true);
-            SourceExpression.Validate(bodydocumentGroupName, nameof(bodydocumentGroupName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
@@ -307,9 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<UpdateGroupFieldValuesResponse> UpdateGroupFieldValues([WorkflowExpression] Func<string> templateGroupId, [WorkflowExpression] Func<string> docGroupId, [WorkflowExpression] Func<object> fields = null)
         {
-            SourceExpression.Validate(templateGroupId, nameof(templateGroupId), required: true);
-            SourceExpression.Validate(docGroupId, nameof(docGroupId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
@@ -326,9 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<UpdateGroupSmartFieldValuesResponse> UpdateGroupSmartFieldValues([WorkflowExpression] Func<string> templateGroupId, [WorkflowExpression] Func<string> docGroupId, [WorkflowExpression] Func<object> fields = null)
         {
-            SourceExpression.Validate(templateGroupId, nameof(templateGroupId), required: true);
-            SourceExpression.Validate(docGroupId, nameof(docGroupId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/smartfields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docGroupId, 1));
@@ -345,8 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DocumentProperties[]> GetListDoc([WorkflowExpression] Func<bool> template = null, [WorkflowExpression] Func<bool> includeDefaultTemplate = null)
         {
-            SourceExpression.Validate(template, nameof(template), required: false);
-            SourceExpression.Validate(includeDefaultTemplate, nameof(includeDefaultTemplate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document";
@@ -366,8 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DocumentProperties> GetDoc([WorkflowExpression] Func<bool> template, [WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(template, nameof(template), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -383,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<DeleteDocResponse> DeleteDoc([WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -398,8 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateFromTemplateResponse> CreateFromTemplate([WorkflowExpression] Func<string> docId, [WorkflowExpression] Func<string> bodydocumentName = null)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -426,8 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateSigningLinkResponse> CreateSigningLink([WorkflowExpression] Func<string> docId, [WorkflowExpression] Func<object> fields = null)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -443,9 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> SendInvite([WorkflowExpression] Func<bool> template, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(template, nameof(template), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/invite", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -462,9 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> SendGroupInvite([WorkflowExpression] Func<bool> template, [WorkflowExpression] Func<string> templateGroupId, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(template, nameof(template), required: true);
-            SourceExpression.Validate(templateGroupId, nameof(templateGroupId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateGroupId, 1));
@@ -481,12 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> SendUserDefinedInvite([WorkflowExpression] Func<string> docId, [WorkflowExpression] Func<bodyroleInputItem[]> bodyrole = null, [WorkflowExpression] Func<string> bodycC = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodyemailAllPartiesOnCompletion = null)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodycC, nameof(bodycC), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodyemailAllPartiesOnCompletion, nameof(bodyemailAllPartiesOnCompletion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-user-defined-schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -537,7 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> CancelInvite([WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -552,8 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> docId, [WorkflowExpression] Func<string> mode = null)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(mode, nameof(mode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -571,9 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IWorkflowAction PrefillSmartFields([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> docId, [WorkflowExpression] Func<object> fields = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/smartfields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -590,7 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GetInviteStatusResponse> GetInviteStatus([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -605,7 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<GetDocumentGroupInviteStatusResponse> GetDocumentGroupInviteStatus([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}/invite-status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -620,9 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse> ReplaceRecipientsInDocumentInvite([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<replaceToreplaceToInputItem[]> replaceToreplaceTo = null, [WorkflowExpression] Func<replaceToadvancedParametersInputItem[]> replaceToadvancedParameters = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(replaceToreplaceTo, nameof(replaceToreplaceTo), required: false);
-            SourceExpression.Validate(replaceToadvancedParameters, nameof(replaceToadvancedParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/replace-recipients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -655,14 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse> ReplaceRecipientsInDocumentGroupInvite([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> inviteId, [WorkflowExpression] Func<string> replaceTostepId = null, [WorkflowExpression] Func<string> replaceTorecipientToReplace = null, [WorkflowExpression] Func<string> replaceTonewRecipient = null, [WorkflowExpression] Func<int> replaceToexpirationDays = null, [WorkflowExpression] Func<int> replaceToreminder = null, [WorkflowExpression] Func<replaceToinviteActionAttributesInputItem[]> replaceToinviteActionAttributes = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inviteId, nameof(inviteId), required: true);
-            SourceExpression.Validate(replaceTostepId, nameof(replaceTostepId), required: false);
-            SourceExpression.Validate(replaceTorecipientToReplace, nameof(replaceTorecipientToReplace), required: false);
-            SourceExpression.Validate(replaceTonewRecipient, nameof(replaceTonewRecipient), required: false);
-            SourceExpression.Validate(replaceToexpirationDays, nameof(replaceToexpirationDays), required: false);
-            SourceExpression.Validate(replaceToreminder, nameof(replaceToreminder), required: false);
-            SourceExpression.Validate(replaceToinviteActionAttributes, nameof(replaceToinviteActionAttributes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite/{1}/replace-recipients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inviteId, 1));
@@ -729,11 +654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse> CreateEmbeddedInviteSettingsLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<inviteSettingstypeInput> inviteSettingstype = null, [WorkflowExpression] Func<string> inviteSettingsredirectUri = null, [WorkflowExpression] Func<int> inviteSettingslinkExpiration = null, [WorkflowExpression] Func<inviteSettingsredirectTargetInput> inviteSettingsredirectTarget = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inviteSettingstype, nameof(inviteSettingstype), required: false);
-            SourceExpression.Validate(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
-            SourceExpression.Validate(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
-            SourceExpression.Validate(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-sending", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -788,11 +708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse> CreateDocGroupEmbeddedInviteSettingsLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<inviteSettingstypeInput> inviteSettingstype = null, [WorkflowExpression] Func<string> inviteSettingsredirectUri = null, [WorkflowExpression] Func<int> inviteSettingslinkExpiration = null, [WorkflowExpression] Func<inviteSettingsredirectTargetInput> inviteSettingsredirectTarget = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inviteSettingstype, nameof(inviteSettingstype), required: false);
-            SourceExpression.Validate(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
-            SourceExpression.Validate(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
-            SourceExpression.Validate(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-sending", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -857,22 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<InviteToSignAllOptionsResponse> InviteToSignAllOptions([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<invitesignersInputItem[]> invitesigners = null, [WorkflowExpression] Func<invitesignerAdvancedPropertiesInputItem[]> invitesignerAdvancedProperties = null, [WorkflowExpression] Func<inviteviewersInputItem[]> inviteviewers = null, [WorkflowExpression] Func<inviteviewerAdvancedPropertiesInputItem[]> inviteviewerAdvancedProperties = null, [WorkflowExpression] Func<inviteapproversInputItem[]> inviteapprovers = null, [WorkflowExpression] Func<inviteapproverAdvancedPropertiesInputItem[]> inviteapproverAdvancedProperties = null, [WorkflowExpression] Func<string> invitefrom = null, [WorkflowExpression] Func<inviteemailGroupsInputItem[]> inviteemailGroups = null, [WorkflowExpression] Func<invitecCInputItem[]> invitecC = null, [WorkflowExpression] Func<invitecCStepsInputItem[]> invitecCSteps = null, [WorkflowExpression] Func<string> invitesubject = null, [WorkflowExpression] Func<string> invitemessage = null, [WorkflowExpression] Func<string> invitecCSubject = null, [WorkflowExpression] Func<string> invitecCMessage = null, [WorkflowExpression] Func<inviteqESSignatureInput> inviteqESSignature = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(invitesigners, nameof(invitesigners), required: false);
-            SourceExpression.Validate(invitesignerAdvancedProperties, nameof(invitesignerAdvancedProperties), required: false);
-            SourceExpression.Validate(inviteviewers, nameof(inviteviewers), required: false);
-            SourceExpression.Validate(inviteviewerAdvancedProperties, nameof(inviteviewerAdvancedProperties), required: false);
-            SourceExpression.Validate(inviteapprovers, nameof(inviteapprovers), required: false);
-            SourceExpression.Validate(inviteapproverAdvancedProperties, nameof(inviteapproverAdvancedProperties), required: false);
-            SourceExpression.Validate(invitefrom, nameof(invitefrom), required: false);
-            SourceExpression.Validate(inviteemailGroups, nameof(inviteemailGroups), required: false);
-            SourceExpression.Validate(invitecC, nameof(invitecC), required: false);
-            SourceExpression.Validate(invitecCSteps, nameof(invitecCSteps), required: false);
-            SourceExpression.Validate(invitesubject, nameof(invitesubject), required: false);
-            SourceExpression.Validate(invitemessage, nameof(invitemessage), required: false);
-            SourceExpression.Validate(invitecCSubject, nameof(invitecCSubject), required: false);
-            SourceExpression.Validate(invitecCMessage, nameof(invitecCMessage), required: false);
-            SourceExpression.Validate(inviteqESSignature, nameof(inviteqESSignature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-all-options", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -983,15 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse> InviteToSignDocGroupAllOptions([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<inviteinviteStepsInputItem[]> inviteinviteSteps = null, [WorkflowExpression] Func<inviteinviteEmailsInputItem[]> inviteinviteEmails = null, [WorkflowExpression] Func<inviteemailGroupsInputItem2[]> inviteemailGroups = null, [WorkflowExpression] Func<invitecompletionEmailsInputItem[]> invitecompletionEmails = null, [WorkflowExpression] Func<bool> invitesignAsMerged = null, [WorkflowExpression] Func<int> inviteclientTimestamp = null, [WorkflowExpression] Func<invitecCInputItem[]> invitecC = null, [WorkflowExpression] Func<inviteqESSignatureInput> inviteqESSignature = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(inviteinviteSteps, nameof(inviteinviteSteps), required: false);
-            SourceExpression.Validate(inviteinviteEmails, nameof(inviteinviteEmails), required: false);
-            SourceExpression.Validate(inviteemailGroups, nameof(inviteemailGroups), required: false);
-            SourceExpression.Validate(invitecompletionEmails, nameof(invitecompletionEmails), required: false);
-            SourceExpression.Validate(invitesignAsMerged, nameof(invitesignAsMerged), required: false);
-            SourceExpression.Validate(inviteclientTimestamp, nameof(inviteclientTimestamp), required: false);
-            SourceExpression.Validate(invitecC, nameof(invitecC), required: false);
-            SourceExpression.Validate(inviteqESSignature, nameof(inviteqESSignature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite-all-options", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1060,8 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<JToken> GetDocFields([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -1077,9 +965,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
         public IBodyWorkflowAction<UpdateFieldValuesV2Response> UpdateFieldValues([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> docId, [WorkflowExpression] Func<object> fields = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -1098,7 +983,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     {
         public IBodyWorkflowTrigger<TriggersV2Response> Triggers([WorkflowExpression] Func<string> bodyEvent, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/multievent";

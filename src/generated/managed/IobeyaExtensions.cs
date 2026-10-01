@@ -30,13 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<CreateRoomsResponse> CreateRooms([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<int> bodymaximumBoards = null, [WorkflowExpression] Func<int> bodymaximumUsers = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyadministrator = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
-            SourceExpression.Validate(bodymaximumBoards, nameof(bodymaximumBoards), required: false);
-            SourceExpression.Validate(bodymaximumUsers, nameof(bodymaximumUsers), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyadministrator, nameof(bodyadministrator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rooms";
@@ -91,8 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<ListBoardsResponse> ListBoards([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/boards";
@@ -114,8 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<CreateCardResponse> CreateCard([WorkflowExpression] Func<typeCardInput> typeCard, [WorkflowExpression] Func<object> dynamicSchema = null)
         {
-            SourceExpression.Validate(typeCard, nameof(typeCard), required: true);
-            SourceExpression.Validate(dynamicSchema, nameof(dynamicSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards";
@@ -132,8 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> UpdateQCDIndicatorsValue([WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<JToken[]> bodyletters)
         {
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
-            SourceExpression.Validate(bodyletters, nameof(bodyletters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/qcd/indicators-values";
@@ -158,12 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> ComputeQCDIndicator([WorkflowExpression] Func<string> letterName, [WorkflowExpression] Func<string> indicatorName, [WorkflowExpression] Func<double> wedgeValue, [WorkflowExpression] Func<int> wedgeNumber, [WorkflowExpression] Func<wedgeRingInput> wedgeRing, [WorkflowExpression] Func<string> period = null)
         {
-            SourceExpression.Validate(letterName, nameof(letterName), required: true);
-            SourceExpression.Validate(indicatorName, nameof(indicatorName), required: true);
-            SourceExpression.Validate(wedgeValue, nameof(wedgeValue), required: true);
-            SourceExpression.Validate(wedgeNumber, nameof(wedgeNumber), required: true);
-            SourceExpression.Validate(wedgeRing, nameof(wedgeRing), required: true);
-            SourceExpression.Validate(period, nameof(period), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/qcd/compute-indicator";
@@ -185,11 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<ListCardsActivityResponse> ListCardsActivity([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<int> page, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards/activity";
@@ -213,9 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> UpdateGauge([WorkflowExpression] Func<string> gaugeId, [WorkflowExpression] Func<double> bodyvalue, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(gaugeId, nameof(gaugeId), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gauges/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gaugeId, 1));

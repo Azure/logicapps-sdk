@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tuxmailer")]
         public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> teamName = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(teamName, nameof(teamName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/common/v1/user/validate/email";

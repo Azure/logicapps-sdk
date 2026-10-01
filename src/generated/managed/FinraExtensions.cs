@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
         public IBodyWorkflowAction<string> EquityWeeklySummary([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<int> limit)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/data/group/otcMarket/name/weeklySummary";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
         public IBodyWorkflowAction<string> EquityMonthlySummary([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<int> limit)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/data/group/otcMarket/name/monthlySummary";
@@ -50,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
         public IBodyWorkflowAction<string> EquityOTCBlockSummary([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<int> limit)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/data/group/otcMarket/name/otcBlocksSummary";

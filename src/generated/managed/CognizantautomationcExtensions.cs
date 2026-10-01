@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<ActivityActionStatusResponse> ActivityActionStatus([WorkflowExpression] Func<int> activityId, [WorkflowExpression] Func<int> activityActionId)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(activityActionId, nameof(activityActionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activity/{0}/actions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(activityId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(activityActionId, 1));
@@ -31,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<TriggerActionResponse> TriggerAction([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<int> bodyactionId, [WorkflowExpression] Func<int> bodyactivityId, [WorkflowExpression] Func<string> bodycIId)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(bodyactionId, nameof(bodyactionId), required: true);
-            SourceExpression.Validate(bodyactivityId, nameof(bodyactivityId), required: true);
-            SourceExpression.Validate(bodycIId, nameof(bodycIId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activity/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -62,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<ReadActivityAttributeResponse> ReadActivityAttribute([WorkflowExpression] Func<string> activityId)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activity/{0}/attributes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -78,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<SetActivityAdditionalAttributeResponse> SetActivityAdditionalAttribute([WorkflowExpression] Func<string> activityId)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activity/{0}/attributes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -100,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<FetchISExecutionStatusResponse> FetchISExecutionStatus([WorkflowExpression] Func<string> activityId)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -116,8 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<TriggerISResponse> TriggerIS([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> bodyskillId)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(bodyskillId, nameof(bodyskillId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -141,9 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<UpdateActionOutputResponse> UpdateActionOutput([WorkflowExpression] Func<string> activityActionId, [WorkflowExpression] Func<string> bodyoutput, [WorkflowExpression] Func<bodyexecutionStatusInput> bodyexecutionStatus = null)
         {
-            SourceExpression.Validate(activityActionId, nameof(activityActionId), required: true);
-            SourceExpression.Validate(bodyoutput, nameof(bodyoutput), required: true);
-            SourceExpression.Validate(bodyexecutionStatus, nameof(bodyexecutionStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activityaction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityActionId, 1));
@@ -172,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<LinkAsChildActivityResponse> LinkAsChildActivity([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<int> bodychildId)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(bodychildId, nameof(bodychildId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portal/ino/api/v3/collab/activity/{0}/v1/link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -197,14 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<CreateActivityResponse> CreateActivity([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodycIId, [WorkflowExpression] Func<string> bodycustomerId, [WorkflowExpression] Func<string> bodyrunId = null, [WorkflowExpression] Func<string> bodyworkflowRunURL = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyassignmentGroup = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodycIId, nameof(bodycIId), required: true);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: true);
-            SourceExpression.Validate(bodyrunId, nameof(bodyrunId), required: false);
-            SourceExpression.Validate(bodyworkflowRunURL, nameof(bodyworkflowRunURL), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyassignmentGroup, nameof(bodyassignmentGroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/portal/ino/api/v3/collab/activity";
@@ -279,9 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
         public IBodyWorkflowAction<CreateaActivityLogResponse> CreateaActivityLog([WorkflowExpression] Func<int> bodyactivityId, [WorkflowExpression] Func<string> bodylogMessage, [WorkflowExpression] Func<int> bodyuserId)
         {
-            SourceExpression.Validate(bodyactivityId, nameof(bodyactivityId), required: true);
-            SourceExpression.Validate(bodylogMessage, nameof(bodylogMessage), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/portal/ino/api/v3/collab/activity/0/logs";

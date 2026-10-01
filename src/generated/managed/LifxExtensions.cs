@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction MoveEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodydirectionInput> bodydirection = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            SourceExpression.Validate(lights, nameof(lights), required: true);
-            SourceExpression.Validate(bodydirection, nameof(bodydirection), required: false);
-            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
-            SourceExpression.Validate(bodycycles, nameof(bodycycles), required: false);
-            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/move", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
@@ -83,13 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction PulseEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<bodyfromColorInput> bodyfromColor = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypersist = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            SourceExpression.Validate(lights, nameof(lights), required: true);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: true);
-            SourceExpression.Validate(bodyfromColor, nameof(bodyfromColor), required: false);
-            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
-            SourceExpression.Validate(bodycycles, nameof(bodycycles), required: false);
-            SourceExpression.Validate(bodypersist, nameof(bodypersist), required: false);
-            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/pulse", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
@@ -172,8 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction ActivateScene([WorkflowExpression] Func<string> scene, [WorkflowExpression] Func<int> bodyduration = null)
         {
-            SourceExpression.Validate(scene, nameof(scene), required: true);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/scenes/{0}/activate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scene, 1));
@@ -210,12 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IBodyWorkflowAction<SetStateResponse> SetState([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodypowerInput> bodypower = null, [WorkflowExpression] Func<bodycolorInput> bodycolor = null, [WorkflowExpression] Func<double> bodybrightness = null, [WorkflowExpression] Func<double> bodyduration = null, [WorkflowExpression] Func<double> bodyinfrared = null)
         {
-            SourceExpression.Validate(lights, nameof(lights), required: true);
-            SourceExpression.Validate(bodypower, nameof(bodypower), required: false);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: false);
-            SourceExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodyinfrared, nameof(bodyinfrared), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/state", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
@@ -286,8 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction EffectsOff([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bool> bodypowerOff = null)
         {
-            SourceExpression.Validate(lights, nameof(lights), required: true);
-            SourceExpression.Validate(bodypowerOff, nameof(bodypowerOff), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/off", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
@@ -314,12 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction SetStates([WorkflowExpression] Func<bodystatesInputItem[]> bodystates, [WorkflowExpression] Func<bodydefaultspowerInput> bodydefaultspower = null, [WorkflowExpression] Func<bodydefaultscolorInput> bodydefaultscolor = null, [WorkflowExpression] Func<double> bodydefaultsbrightness = null, [WorkflowExpression] Func<double> bodydefaultsduration = null, [WorkflowExpression] Func<double> bodydefaultsinfrared = null)
         {
-            SourceExpression.Validate(bodystates, nameof(bodystates), required: true);
-            SourceExpression.Validate(bodydefaultspower, nameof(bodydefaultspower), required: false);
-            SourceExpression.Validate(bodydefaultscolor, nameof(bodydefaultscolor), required: false);
-            SourceExpression.Validate(bodydefaultsbrightness, nameof(bodydefaultsbrightness), required: false);
-            SourceExpression.Validate(bodydefaultsduration, nameof(bodydefaultsduration), required: false);
-            SourceExpression.Validate(bodydefaultsinfrared, nameof(bodydefaultsinfrared), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/lights/states";
@@ -400,8 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction TogglePower([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<double> bodyduration = null)
         {
-            SourceExpression.Validate(lights, nameof(lights), required: true);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/toggle", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
@@ -438,14 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction BreatheEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<bodyfromColorInput> bodyfromColor = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypersist = null, [WorkflowExpression] Func<bool> bodypowerOn = null, [WorkflowExpression] Func<double> bodypeak = null)
         {
-            SourceExpression.Validate(lights, nameof(lights), required: true);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: true);
-            SourceExpression.Validate(bodyfromColor, nameof(bodyfromColor), required: false);
-            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
-            SourceExpression.Validate(bodycycles, nameof(bodycycles), required: false);
-            SourceExpression.Validate(bodypersist, nameof(bodypersist), required: false);
-            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
-            SourceExpression.Validate(bodypeak, nameof(bodypeak), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/breathe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
@@ -544,11 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction MorphEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<int> bodyperiod = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<string[]> bodypalette = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            SourceExpression.Validate(lights, nameof(lights), required: true);
-            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodypalette, nameof(bodypalette), required: false);
-            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/morph", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));

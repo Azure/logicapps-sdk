@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> Create([WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null, [WorkflowExpression] Func<bool> bodyisCmyk = null)
         {
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodyexportType, nameof(bodyexportType), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            SourceExpression.Validate(bodyisCmyk, nameof(bodyisCmyk), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create";
@@ -68,11 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> CreateMerge([WorkflowExpression] Func<JToken[]> bodytemplates, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null, [WorkflowExpression] Func<string> bodypaging = null)
         {
-            SourceExpression.Validate(bodytemplates, nameof(bodytemplates), required: true);
-            SourceExpression.Validate(bodyexportType, nameof(bodyexportType), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            SourceExpression.Validate(bodypaging, nameof(bodypaging), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create-merge";
@@ -119,8 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseListTemplate> ListTemplates([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/list-templates";
@@ -139,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> NewTemplateFrom([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/new-template-from";
@@ -169,9 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseUpdateTemplate> UpdateTemplate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyjson = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyjson, nameof(bodyjson), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/update-template";
@@ -206,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> DeleteTemplate([WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/delete-template";
@@ -222,15 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> CreateEditorSession([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<bool> bodycanSave = null, [WorkflowExpression] Func<bool> bodycanCreatePDF = null, [WorkflowExpression] Func<bool> bodycanViewSettings = null, [WorkflowExpression] Func<bool> bodycanPreview = null, [WorkflowExpression] Func<bool> bodycanEditJSON = null, [WorkflowExpression] Func<bool> bodycanShowHeader = null, [WorkflowExpression] Func<int> bodyjsonMode = null, [WorkflowExpression] Func<string> bodybackURL = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodycanSave, nameof(bodycanSave), required: false);
-            SourceExpression.Validate(bodycanCreatePDF, nameof(bodycanCreatePDF), required: false);
-            SourceExpression.Validate(bodycanViewSettings, nameof(bodycanViewSettings), required: false);
-            SourceExpression.Validate(bodycanPreview, nameof(bodycanPreview), required: false);
-            SourceExpression.Validate(bodycanEditJSON, nameof(bodycanEditJSON), required: false);
-            SourceExpression.Validate(bodycanShowHeader, nameof(bodycanShowHeader), required: false);
-            SourceExpression.Validate(bodyjsonMode, nameof(bodyjsonMode), required: false);
-            SourceExpression.Validate(bodybackURL, nameof(bodybackURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create-editor-session";
@@ -309,8 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseListTransactions> ListTransactions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/list-transactions";
@@ -343,9 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> MergePdfs([WorkflowExpression] Func<JToken[]> bodyurls, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null)
         {
-            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/merge-pdfs";
@@ -380,15 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> AddWatermark([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyfontSize = null, [WorkflowExpression] Func<int> bodyopacity = null, [WorkflowExpression] Func<int> bodyrotation = null, [WorkflowExpression] Func<string> bodyhexColor = null, [WorkflowExpression] Func<string> bodyfontFamily = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            SourceExpression.Validate(bodyopacity, nameof(bodyopacity), required: false);
-            SourceExpression.Validate(bodyrotation, nameof(bodyrotation), required: false);
-            SourceExpression.Validate(bodyhexColor, nameof(bodyhexColor), required: false);
-            SourceExpression.Validate(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add-watermark";

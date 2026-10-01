@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
         public IBodyWorkflowAction<GetDataResponse> GetData([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<formattedInput> formatted = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(lng, nameof(lng), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(formatted, nameof(formatted), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/json";

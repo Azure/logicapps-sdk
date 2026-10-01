@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityGeoResponse> AirQualityGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest/by-lat-lng";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityPostalResponse> AirQualityPostal([WorkflowExpression] Func<int> postalCode = null, [WorkflowExpression] Func<string> countryCode = null)
         {
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest/by-postal-code";
@@ -54,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityCityResponse> AirQualityCity([WorkflowExpression] Func<string> city = null)
         {
-            SourceExpression.Validate(city, nameof(city), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest/by-city";
@@ -71,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityCountryResponse> AirQualityCountry([WorkflowExpression] Func<string> countryCode = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest/by-country-code";
@@ -88,10 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityGeoHistoryResponse> AirQualityGeoHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/history/by-lat-lng";
@@ -114,10 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityPostalHistoryResponse> AirQualityPostalHistory([WorkflowExpression] Func<int> postalCode = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/history/by-postal-code";
@@ -168,8 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WeatherCurrentResponse> WeatherCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/weather/latest/by-lat-lng";
@@ -188,10 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WeatherHistoryResponse> WeatherHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/weather/history/by-lat-lng";
@@ -214,9 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WeatherForecastResponse> WeatherForecast([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/weather/forecast/by-lat-lng";
@@ -237,8 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenLatestGeoResponse> PollenLatestGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest/pollen/by-lat-lng";
@@ -257,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenLatestPlaceResponse> PollenLatestPlace([WorkflowExpression] Func<string> place = null)
         {
-            SourceExpression.Validate(place, nameof(place), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest/pollen/by-place";
@@ -274,10 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenHistoryGeoResponse> PollenHistoryGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/history/pollen/by-lat-lng";
@@ -300,9 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenHistoryPlaceResponse> PollenHistoryPlace([WorkflowExpression] Func<string> place = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(place, nameof(place), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/history/pollen/by-place";
@@ -323,8 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollForecastGeoResponse> PollForecastGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/forecast/pollen/by-lat-lng";
@@ -343,8 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<FireCurrentResponse> FireCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/latest/fire";
@@ -363,8 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<SoilCurrentResponse> SoilCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/soil/latest/by-lat-lng";
@@ -383,10 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<SoilHistoryResponse> SoilHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/soil/history/by-lat-lng";
@@ -409,8 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WaterVaporCurrentResponse> WaterVaporCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/waterVapor/latest/by-lat-lng";
@@ -429,10 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WaterVaporGeoResponse> WaterVaporGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(lng, nameof(lng), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/waterVapor/history/by-lat-lng";

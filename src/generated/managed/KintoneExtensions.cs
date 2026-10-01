@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
         public IWorkflowAction AddRecord([WorkflowExpression] Func<string> requestBodyOfRecordappId, [WorkflowExpression] Func<object> requestBodyOfRecordRecord = null)
         {
-            SourceExpression.Validate(requestBodyOfRecordappId, nameof(requestBodyOfRecordappId), required: true);
-            SourceExpression.Validate(requestBodyOfRecordRecord, nameof(requestBodyOfRecordRecord), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/k/v1/record.json";
@@ -46,9 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
         public IWorkflowAction UpdateRecord([WorkflowExpression] Func<string> requestBodyOfRecordappId, [WorkflowExpression] Func<string> requestBodyOfRecordrecordNumber, [WorkflowExpression] Func<object> requestBodyOfRecordRecord = null)
         {
-            SourceExpression.Validate(requestBodyOfRecordappId, nameof(requestBodyOfRecordappId), required: true);
-            SourceExpression.Validate(requestBodyOfRecordrecordNumber, nameof(requestBodyOfRecordrecordNumber), required: true);
-            SourceExpression.Validate(requestBodyOfRecordRecord, nameof(requestBodyOfRecordRecord), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/k/v1/record.json";
@@ -83,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
     {
         public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookappId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook.json";
@@ -113,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForUpdatingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_record.json";
@@ -141,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForDeletingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/delete_record.json";
@@ -169,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForAddingRecordComment([WorkflowExpression] Func<string> requestBodyOfWebhookappId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/add_record_comment.json";
@@ -197,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForUpdatingStatus([WorkflowExpression] Func<string> requestBodyOfWebhookappId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_status.json";

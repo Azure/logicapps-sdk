@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<GetAllTicketsResponse> GetAllTickets([WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<orderByInput> orderBy = null, [WorkflowExpression] Func<orderTypeInput> orderType = null, [WorkflowExpression] Func<string> updatedSince = null, [WorkflowExpression] Func<includeDescriptionInput> includeDescription = null)
         {
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(orderType, nameof(orderType), required: false);
-            SourceExpression.Validate(updatedSince, nameof(updatedSince), required: false);
-            SourceExpression.Validate(includeDescription, nameof(includeDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets";
@@ -49,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<GetTicketResponse> GetTicket([WorkflowExpression] Func<int> ticketNumber = null)
         {
-            SourceExpression.Validate(ticketNumber, nameof(ticketNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/details";
@@ -67,14 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<CreateTicketResponse> CreateTicket([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodyagent, nameof(bodyagent), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/create";
@@ -132,14 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<UpdateTicketResponse> UpdateTicket([WorkflowExpression] Func<int> ticketNumber, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodyassignTo = null, [WorkflowExpression] Func<string> bodycategory = null)
         {
-            SourceExpression.Validate(ticketNumber, nameof(ticketNumber), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyassignTo, nameof(bodyassignTo), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/update";
@@ -204,11 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<AddNoteResponse> AddNote([WorkflowExpression] Func<int> ticketNumber, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string> bodyagentEmail = null, [WorkflowExpression] Func<string> bodynotifyAgent = null, [WorkflowExpression] Func<bodyPrivateInput> bodyPrivate = null)
         {
-            SourceExpression.Validate(ticketNumber, nameof(ticketNumber), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
-            SourceExpression.Validate(bodyagentEmail, nameof(bodyagentEmail), required: false);
-            SourceExpression.Validate(bodynotifyAgent, nameof(bodynotifyAgent), required: false);
-            SourceExpression.Validate(bodyPrivate, nameof(bodyPrivate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/add_note";
@@ -262,12 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     {
         public IWorkflowTrigger CreateTicketWebhook([WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyagent, nameof(bodyagent), required: false);
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/create_ticket_webhook";
@@ -325,12 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
         public IWorkflowTrigger UpdateTicketWebhook([WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyagent, nameof(bodyagent), required: false);
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/update_ticket_webhook";
@@ -388,9 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
         public IWorkflowTrigger AddNoteWebhook([WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<bodyPrivateInput> bodyPrivate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyagent, nameof(bodyagent), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyPrivate, nameof(bodyPrivate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/add_note_webhook";
@@ -430,8 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
         public IWorkflowTrigger AddReplyWebhook([WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<bodyresponseTypeInput> bodyresponseType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/add_reply_webhook";

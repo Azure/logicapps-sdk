@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certinalesign")]
         public IBodyWorkflowAction<CreateTransactionResponse> CreateTransaction([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodymailmessage = null, [WorkflowExpression] Func<bodynotificationSubscriptionsInputItem[]> bodynotificationSubscriptions = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexpiryAndRemindersexpiresAtTimestamp = null, [WorkflowExpression] Func<string> bodyexpiryAndRemindersremindFromTimestamp = null, [WorkflowExpression] Func<int> bodyexpiryAndRemindersreminderFrequency = null, [WorkflowExpression] Func<bool> bodysignatureBlockDefault = null, [WorkflowExpression] Func<bodyparticipantsInputItem[]> bodyparticipants = null, [WorkflowExpression] Func<bodyccUsersInputItem[]> bodyccUsers = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodymailmessage, nameof(bodymailmessage), required: false);
-            SourceExpression.Validate(bodynotificationSubscriptions, nameof(bodynotificationSubscriptions), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyexpiryAndRemindersexpiresAtTimestamp, nameof(bodyexpiryAndRemindersexpiresAtTimestamp), required: false);
-            SourceExpression.Validate(bodyexpiryAndRemindersremindFromTimestamp, nameof(bodyexpiryAndRemindersremindFromTimestamp), required: false);
-            SourceExpression.Validate(bodyexpiryAndRemindersreminderFrequency, nameof(bodyexpiryAndRemindersreminderFrequency), required: false);
-            SourceExpression.Validate(bodysignatureBlockDefault, nameof(bodysignatureBlockDefault), required: false);
-            SourceExpression.Validate(bodyparticipants, nameof(bodyparticipants), required: false);
-            SourceExpression.Validate(bodyccUsers, nameof(bodyccUsers), required: false);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/il/rssp/v1/transactions";
@@ -146,8 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certinalesign")]
         public IBodyWorkflowAction<object> DownloadDocuments([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> documentType)
         {
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
-            SourceExpression.Validate(documentType, nameof(documentType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/il/rssp/v1/transactions/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
@@ -164,8 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certinalesign")]
         public IBodyWorkflowAction<ListUsersResponse> ListUsers([WorkflowExpression] Func<int> bodypageNumber, [WorkflowExpression] Func<int> bodyrecordsPerPage)
         {
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: true);
-            SourceExpression.Validate(bodyrecordsPerPage, nameof(bodyrecordsPerPage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/il/auth/v1/users/all";
@@ -193,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certinalesign")]
         public IBodyWorkflowAction<GetUserDetailsResponse> GetUserDetails([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/il/auth/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -209,22 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certinalesign")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<string> bodysalutation = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyphoneCountryCode = null, [WorkflowExpression] Func<string[]> bodyroles = null, [WorkflowExpression] Func<bool> bodyfinalMailDisabled = null, [WorkflowExpression] Func<bool> bodyreminderMailDisabled = null, [WorkflowExpression] Func<bool> bodysenderMailDisabled = null, [WorkflowExpression] Func<bool> bodyintegrationUser = null)
         {
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            SourceExpression.Validate(bodysalutation, nameof(bodysalutation), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodyphoneCountryCode, nameof(bodyphoneCountryCode), required: false);
-            SourceExpression.Validate(bodyroles, nameof(bodyroles), required: false);
-            SourceExpression.Validate(bodyfinalMailDisabled, nameof(bodyfinalMailDisabled), required: false);
-            SourceExpression.Validate(bodyreminderMailDisabled, nameof(bodyreminderMailDisabled), required: false);
-            SourceExpression.Validate(bodysenderMailDisabled, nameof(bodysenderMailDisabled), required: false);
-            SourceExpression.Validate(bodyintegrationUser, nameof(bodyintegrationUser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/il/auth/v1/users";
@@ -342,7 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certinalesign")]
         public IWorkflowAction DeleteSubscription([WorkflowExpression] Func<string> webhookId)
         {
-            SourceExpression.Validate(webhookId, nameof(webhookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/unsubscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1));
@@ -358,16 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certinalesign")]
         public IBodyWorkflowAction<CreateTransactionUsingTemplateResponse> CreateTransactionUsingTemplate([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<string[]> bodysecondaryTemplateIds = null, [WorkflowExpression] Func<string> bodymailmessage = null, [WorkflowExpression] Func<bodynotificationSubscriptionsInputItem[]> bodynotificationSubscriptions = null, [WorkflowExpression] Func<bodyparticipantsInputItem2[]> bodyparticipants = null, [WorkflowExpression] Func<bodyccUsersInputItem[]> bodyccUsers = null, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodysecondaryTemplateIds, nameof(bodysecondaryTemplateIds), required: false);
-            SourceExpression.Validate(bodymailmessage, nameof(bodymailmessage), required: false);
-            SourceExpression.Validate(bodynotificationSubscriptions, nameof(bodynotificationSubscriptions), required: false);
-            SourceExpression.Validate(bodyparticipants, nameof(bodyparticipants), required: false);
-            SourceExpression.Validate(bodyccUsers, nameof(bodyccUsers), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/il/rssp/v1/transactions/templates";
@@ -459,7 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
     {
         public IWorkflowTrigger TransactionStatusChanged([WorkflowExpression] Func<eventTypeInputItem[]> eventType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventType, nameof(eventType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/subscribe";

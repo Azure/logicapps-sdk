@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorActionResponse> ExecuteRecommendationAction([WorkflowExpression] Func<string> bodyrecommendationName, [WorkflowExpression] Func<object> bodyparameters, [WorkflowExpression] Func<string> actionName, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(bodyrecommendationName, nameof(bodyrecommendationName), required: true);
-            SourceExpression.Validate(bodyparameters, nameof(bodyparameters), required: true);
-            SourceExpression.Validate(actionName, nameof(actionName), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/analytics/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionName, 1));
@@ -43,9 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorChatMessageResponse> SendAdvisorChatMessage([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyconversationId = null)
         {
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/analytics/advisor/chat/messages";
@@ -75,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorRecommendationIEnumerableResponseWithContinuation> GetRecommendations([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/analytics/advisorRecommendations";
@@ -91,8 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation> GetRecommendationResources([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(scenario, nameof(scenario), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/analytics/advisorRecommendations/{0}/resources", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scenario, 1));
@@ -108,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantApplicationPackageContinuationResponse> GetTenantApplicationPackage([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/appmanagement/applicationPackages";
@@ -124,10 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ApplicationPackageContinuationResponse> GetEnvironmentApplicationPackage([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<appInstallStateInput> appInstallState = null, [WorkflowExpression] Func<string> lcid = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(appInstallState, nameof(appInstallState), required: false);
-            SourceExpression.Validate(lcid, nameof(lcid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -147,10 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<InstancePackage> InstallApplicationPackage([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> uniqueName, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodypayloadValue = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(uniqueName, nameof(uniqueName), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodypayloadValue, nameof(bodypayloadValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages/{1}/install", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uniqueName, 1));
@@ -178,9 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<InstancePackageOperationPollingResponse> GetApplicationPackageInstallStatus([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> operationId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(operationId, nameof(operationId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/operations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationId, 1));
@@ -196,8 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> ListEnvironmentGroupRoleAssignments([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environmentGroups/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentGroupId, 1));
@@ -213,12 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> CreateEnvironmentGroupRoleAssignment([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyprincipalObjectId = null, [WorkflowExpression] Func<string> bodyroleDefinitionId = null, [WorkflowExpression] Func<string> bodyscope = null, [WorkflowExpression] Func<string> bodyprincipalType = null)
         {
-            SourceExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
-            SourceExpression.Validate(bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
-            SourceExpression.Validate(bodyprincipalType, nameof(bodyprincipalType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environmentGroups/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentGroupId, 1));
@@ -264,9 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteEnvironmentGroupRoleAssignment([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<string> roleAssignmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
-            SourceExpression.Validate(roleAssignmentId, nameof(roleAssignmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environmentGroups/{0}/roleAssignments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleAssignmentId, 1));
@@ -282,8 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> ListEnvironmentRoleAssignments([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environments/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -299,12 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> CreateEnvironmentRoleAssignment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyprincipalObjectId = null, [WorkflowExpression] Func<string> bodyroleDefinitionId = null, [WorkflowExpression] Func<string> bodyscope = null, [WorkflowExpression] Func<string> bodyprincipalType = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
-            SourceExpression.Validate(bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
-            SourceExpression.Validate(bodyprincipalType, nameof(bodyprincipalType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environments/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -350,9 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteEnvironmentRoleAssignment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> roleAssignmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(roleAssignmentId, nameof(roleAssignmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environments/{0}/roleAssignments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleAssignmentId, 1));
@@ -368,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> ListRoleAssignments([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/authorization/roleAssignments";
@@ -384,11 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> CreateRoleAssignment([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyprincipalObjectId = null, [WorkflowExpression] Func<string> bodyroleDefinitionId = null, [WorkflowExpression] Func<string> bodyscope = null, [WorkflowExpression] Func<string> bodyprincipalType = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
-            SourceExpression.Validate(bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
-            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
-            SourceExpression.Validate(bodyprincipalType, nameof(bodyprincipalType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/authorization/roleAssignments";
@@ -434,8 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteRoleAssignment([WorkflowExpression] Func<string> roleAssignmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(roleAssignmentId, nameof(roleAssignmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/roleAssignments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleAssignmentId, 1));
@@ -451,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleDefinitionResponse> ListRoleDefinitions([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/authorization/roleDefinitions";
@@ -467,8 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ListConnectionsResponse> ListConnections([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -484,9 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ListConnectorsResponse> ListConnectors([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -503,10 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<GetConnectorByIdResponse> GetConnectorById([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> connectorId, [WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(connectorId, nameof(connectorId), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectorId, 1));
@@ -523,11 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<string> DownloadAgentChannelManifest([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<string> channelName, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> includeAgentSchema = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(agentId, nameof(agentId), required: true);
-            SourceExpression.Validate(channelName, nameof(channelName), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(includeAgentSchema, nameof(includeAgentSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/agents/{1}/channels/{2}/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelName, 1));
@@ -546,9 +479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteCopilotAgent([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botAdminOperations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -564,10 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction ReassignCopilotAgent([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodynewOwnerAadUserId)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodynewOwnerAadUserId, nameof(bodynewOwnerAadUserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botAdminOperations/reassign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -591,9 +517,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BotQuarantineStatus> GetBotQuarantineStatus([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -609,9 +532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsQuarantined([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsQuarantined", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -627,9 +547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsUnquarantined([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsUnquarantined", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -645,9 +562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ConnectorConsentBypassResponse> GetConnectorConsentBypass([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/connectorConsentBypass", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -663,10 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ConnectorConsentBypassResponse> SetConnectorConsentBypass([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> bodyadminConsentBypass)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyadminConsentBypass, nameof(bodyadminConsentBypass), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/connectorConsentBypass", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -690,9 +600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TestRunCollection> ListMakerEvaluationTestRuns([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testruns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -708,10 +615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TestRun> GetMakerEvaluationTestRun([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testRunId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(testRunId, nameof(testRunId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testruns/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testRunId, 1));
@@ -727,10 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<string> DownloadMakerEvaluationSnapshot([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testRunId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(testRunId, nameof(testRunId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testruns/{2}/snapshot", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testRunId, 1));
@@ -746,9 +645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TestSetCollection> ListMakerEvaluationTestSets([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testsets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -764,10 +660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TestSet> GetMakerEvaluationTestSet([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testSetId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(testSetId, nameof(testSetId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testsets/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testSetId, 1));
@@ -783,14 +675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RunStatusResponse> RunMakerEvaluationTestSet([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testSetId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyevaluationRunName = null, [WorkflowExpression] Func<string> bodymcsConnectionId = null, [WorkflowExpression] Func<bool> bodyrunOnPublishedBot = null, [WorkflowExpression] Func<ToolsConnections[]> bodytoolsConnections = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(testSetId, nameof(testSetId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyevaluationRunName, nameof(bodyevaluationRunName), required: false);
-            SourceExpression.Validate(bodymcsConnectionId, nameof(bodymcsConnectionId), required: false);
-            SourceExpression.Validate(bodyrunOnPublishedBot, nameof(bodyrunOnPublishedBot), required: false);
-            SourceExpression.Validate(bodytoolsConnections, nameof(bodytoolsConnections), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testsets/{2}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testSetId, 1));
@@ -846,8 +730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> GetEnvironmentGroupOperation([WorkflowExpression] Func<string> operationId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(operationId, nameof(operationId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroupOperations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationId, 1));
@@ -863,8 +745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> DeleteEnvironmentGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -880,9 +760,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> AddEnvironmentToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/addEnvironment/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -898,9 +775,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> RemoveEnvironmentFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/removeEnvironment/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -916,12 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<EnvironmentList> ListEnvironmentsForUser([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/environmentmanagement/environments";
@@ -947,9 +815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<EnvironmentResponse> GetEnvironmentByIdForUser([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -967,9 +832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<Policy> CreateRuleBasedPolicy([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/governance/ruleBasedPolicies";
@@ -1003,7 +865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ListPolicyResponse> ListRuleBasedPolicies([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/governance/ruleBasedPolicies";
@@ -1019,8 +880,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<Policy> GetRuleBasedPolicyById([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(policyId, nameof(policyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(policyId, 1));
@@ -1036,10 +895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignment> UpdateRuleBasedPolicyById([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
         {
-            SourceExpression.Validate(policyId, nameof(policyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(policyId, 1));
@@ -1073,10 +928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<Policy> PatchRuleBasedPolicy([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
         {
-            SourceExpression.Validate(policyId, nameof(policyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(policyId, 1));
@@ -1110,9 +961,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByPolicyId([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(policyId, nameof(policyId), required: true);
-            SourceExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}/assignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(policyId, 1));
@@ -1129,10 +977,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<Policy> RemoveRuleFromRuleBasedPolicy([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
         {
-            SourceExpression.Validate(policyId, nameof(policyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}/removeRule", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(policyId, 1));
@@ -1166,8 +1010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignments([WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/governance/ruleBasedPolicies/assignments";
@@ -1184,9 +1026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentGroupId([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
-            SourceExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environmentGroups/{0}/assignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentGroupId, 1));
@@ -1203,9 +1042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentId([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environments/{0}/assignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1222,7 +1058,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithOdataContinuation> ListCrossTenantConnectionReports([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/governance/crossTenantConnectionReports";
@@ -1238,8 +1073,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<CrossTenantConnectionReport> GetCrossTenantConnectionReport([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(reportId, nameof(reportId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/crossTenantConnectionReports/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
@@ -1255,8 +1088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantEntitlementResponseModel> GetEntitlement([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
@@ -1272,15 +1103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<EnvironmentEntitlementSnapshotResponseModelPagedResponse> GetEnvironmentResources([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> includeFields = null, [WorkflowExpression] Func<string> orderbyConsumed = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
-            SourceExpression.Validate(toDate, nameof(toDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
-            SourceExpression.Validate(includeFields, nameof(includeFields), required: false);
-            SourceExpression.Validate(orderbyConsumed, nameof(orderbyConsumed), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/environments/{1}/resources", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1306,12 +1128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantEntitlementLicenseTrendResponseModelPagedResponse> GetTenantLicenseTrends([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
-            SourceExpression.Validate(toDate, nameof(toDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/licenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
@@ -1333,12 +1149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantEnvironmentResourceSnapshotResponseModelPagedResponse> GetTenantResourcesAcrossEnvironments([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
-            SourceExpression.Validate(toDate, nameof(toDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/resources", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
@@ -1360,14 +1170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantUserResponseModelPagedResponse> GetTenantUserConsumptionByResource([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> resourceId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(resourceId, nameof(resourceId), required: true);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
-            SourceExpression.Validate(toDate, nameof(toDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/resources/{1}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceId, 1));
@@ -1392,8 +1194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ResourceThresholdModel[]> GetAllResourceThresholds([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/resourceThresholds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
@@ -1409,14 +1209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantUserResponseModelPagedResponse> GetTenantUsers([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> orderbyConsumed = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
-            SourceExpression.Validate(toDate, nameof(toDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
-            SourceExpression.Validate(orderbyConsumed, nameof(orderbyConsumed), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
@@ -1443,14 +1235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantResourceResponseModelPagedResponse> GetTenantResourceConsumptionByUser([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
-            SourceExpression.Validate(toDate, nameof(toDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/users/{1}/resources", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -1475,9 +1259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<EnvironmentEntitlementResponseModel[]> GetManyEnvironmentEntitlements([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/entitlements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1495,16 +1276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ResourceThresholdModel> UpsertResourceThreshold([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> resourceId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> bodystopResource = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<bool> bodystopIfOverCapacity = null, [WorkflowExpression] Func<bool> bodynotifyIfOverCapacity = null, [WorkflowExpression] Func<int> bodynotificationThreshold = null, [WorkflowExpression] Func<double> bodyresourceConsumption = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
-            SourceExpression.Validate(resourceId, nameof(resourceId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodystopResource, nameof(bodystopResource), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodystopIfOverCapacity, nameof(bodystopIfOverCapacity), required: false);
-            SourceExpression.Validate(bodynotifyIfOverCapacity, nameof(bodynotifyIfOverCapacity), required: false);
-            SourceExpression.Validate(bodynotificationThreshold, nameof(bodynotificationThreshold), required: false);
-            SourceExpression.Validate(bodyresourceConsumption, nameof(bodyresourceConsumption), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/entitlements/{1}/resources/{2}/threshold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceId, 1));
@@ -1562,7 +1333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationByEnvironmentModel[]> ListAllocationsByEnvironment([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/allocationsByEnvironment";
@@ -1578,9 +1348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationByEnvironmentModel> UpdateAllocationsByEnvironment([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyenvironmentId = null, [WorkflowExpression] Func<CurrencyAllocationModel[]> bodycurrencyAllocations = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyenvironmentId, nameof(bodyenvironmentId), required: false);
-            SourceExpression.Validate(bodycurrencyAllocations, nameof(bodycurrencyAllocations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/allocationsByEnvironment";
@@ -1614,8 +1381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationByEnvironmentModel> GetAllocationsByEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/allocationsByEnvironment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1631,8 +1396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithOdataContinuation> ListBillingPolicies([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> top = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/billingPolicies";
@@ -1650,13 +1413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> CreateBillingPolicy([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodybillingInstrumentsubscriptionId = null, [WorkflowExpression] Func<string> bodybillingInstrumentresourceGroup = null, [WorkflowExpression] Func<string> bodybillingInstrumentid = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
-            SourceExpression.Validate(bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
-            SourceExpression.Validate(bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/billingPolicies";
@@ -1722,8 +1478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> GetBillingPolicy([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1));
@@ -1739,10 +1493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> UpdateBillingPolicy([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1));
@@ -1776,8 +1526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteBillingPolicy([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1));
@@ -1793,8 +1541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation> ListBillingPolicyEnvironments([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1));
@@ -1810,9 +1556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1> GetBillingPolicyEnvironment([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1828,9 +1571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction AddBillingPolicyEnvironment([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string[]> bodyenvironmentIds = null)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1));
@@ -1858,9 +1598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction RemoveBillingPolicyEnvironment([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string[]> bodyenvironmentIds = null)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1));
@@ -1888,8 +1625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> RefreshProvisioningStatus([WorkflowExpression] Func<string> billingPolicyId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(billingPolicyId, nameof(billingPolicyId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/refreshProvisioningStatus", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(billingPolicyId, 1));
@@ -1905,8 +1640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> GetCurrencyAllocationByEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1922,9 +1655,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> PatchCurrencyAllocationByEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<CurrencyAllocationRequestModelV1[]> bodycurrencyAllocations = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodycurrencyAllocations, nameof(bodycurrencyAllocations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1952,8 +1682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> GetEnvironmentBillingPolicy([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/billingPolicy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -1969,8 +1697,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModelResponseWithOdataContinuation> ListISVContracts([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> top = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/isvContracts";
@@ -1988,19 +1714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModel> CreateISVContract([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodygeo, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyconsumertenantId = null, [WorkflowExpression] Func<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, [WorkflowExpression] Func<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, [WorkflowExpression] Func<string> bodybillingInstrumentsubscriptionId = null, [WorkflowExpression] Func<string> bodybillingInstrumentresourceGroup = null, [WorkflowExpression] Func<string> bodybillingInstrumentid = null, [WorkflowExpression] Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodygeo, nameof(bodygeo), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyconsumertenantId, nameof(bodyconsumertenantId), required: false);
-            SourceExpression.Validate(bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
-            SourceExpression.Validate(bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
-            SourceExpression.Validate(bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
-            SourceExpression.Validate(bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
-            SourceExpression.Validate(bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
-            SourceExpression.Validate(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
-            SourceExpression.Validate(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
-            SourceExpression.Validate(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/isvContracts";
@@ -2126,8 +1839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModel> GetISVContract([WorkflowExpression] Func<string> isvContractId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(isvContractId, nameof(isvContractId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(isvContractId, 1));
@@ -2143,15 +1854,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModel> UpdateISVContract([WorkflowExpression] Func<string> isvContractId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<bool> bodyconditionsapiFilterallowOtherPremiumConnectors = null, [WorkflowExpression] Func<BillingPolicyConditionsApiModel[]> bodyconditionsapiFilterrequiredApis = null, [WorkflowExpression] Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, [WorkflowExpression] Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
         {
-            SourceExpression.Validate(isvContractId, nameof(isvContractId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
-            SourceExpression.Validate(bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
-            SourceExpression.Validate(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
-            SourceExpression.Validate(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
-            SourceExpression.Validate(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(isvContractId, 1));
@@ -2239,8 +1941,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteISVContract([WorkflowExpression] Func<string> isvContractId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(isvContractId, nameof(isvContractId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(isvContractId, 1));
@@ -2256,7 +1956,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantCapacityDetailsModel> GetTenantCapacityDetails([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/tenantCapacity";
@@ -2272,9 +1971,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<CurrencyReportV2[]> ListCurrencyReports([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> includeAllocations = null, [WorkflowExpression] Func<bool> includeConsumptions = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(includeAllocations, nameof(includeAllocations), required: false);
-            SourceExpression.Validate(includeConsumptions, nameof(includeConsumptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/tenantCapacity/currencyReports";
@@ -2296,16 +1992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceRecord> GetUserPerFlowCapacitySource([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<string> flowContext = null, [WorkflowExpression] Func<string> flowLicenseCategorization = null, [WorkflowExpression] Func<string> resourceId = null, [WorkflowExpression] Func<string> environmentId = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
-            SourceExpression.Validate(flowContext, nameof(flowContext), required: false);
-            SourceExpression.Validate(flowLicenseCategorization, nameof(flowLicenseCategorization), required: false);
-            SourceExpression.Validate(resourceId, nameof(resourceId), required: false);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/UserPerFlowCapacitySource";
@@ -2340,12 +2026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceFlowContextRecord> GetUserPerFlowCapacitySourceFlowContextSummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/UserPerFlowCapacitySource/FlowContextSummary";
@@ -2372,13 +2052,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceFlowContextRecord> GetUserPerFlowCapacitySourceFlowContextSummaryForUserId([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/UserPerFlowCapacitySource/FlowContextSummary/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -2405,10 +2078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<UserPerFlowCapacitySourceTenantContextSummaryRecord[]> GetUserPerFlowCapacitySourceTenantContextSummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> environmentId = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/UserPerFlowCapacitySource/TenantContextSummary";
@@ -2429,12 +2098,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceUserContextRecord> GetUserPerFlowCapacitySourceUserContextSummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/UserPerFlowCapacitySource/UserContextSummary";
@@ -2461,13 +2124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceUserContextRecord> GetUserPerFlowCapacitySourceUserContextSummaryForUserId([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/UserPerFlowCapacitySource/UserContextSummary/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -2494,10 +2150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ResourceArrayPowerApp> GetAdminApps([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -2518,9 +2170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<PowerApp> GetAdminApp([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> app, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(app, nameof(app), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(app, 1));
@@ -2536,12 +2185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ResourceQueryResponse> QueryResources([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodytableName, [WorkflowExpression] Func<Clause[]> bodyclauses, [WorkflowExpression] Func<int> bodyoptionstop = null, [WorkflowExpression] Func<int> bodyoptionsskip = null, [WorkflowExpression] Func<string> bodyoptionsskipToken = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodytableName, nameof(bodytableName), required: true);
-            SourceExpression.Validate(bodyclauses, nameof(bodyclauses), required: true);
-            SourceExpression.Validate(bodyoptionstop, nameof(bodyoptionstop), required: false);
-            SourceExpression.Validate(bodyoptionsskip, nameof(bodyoptionsskip), required: false);
-            SourceExpression.Validate(bodyoptionsskipToken, nameof(bodyoptionsskipToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resourcequery/resources/query";
@@ -2593,8 +2236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction ApplyAdminRole([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/usermanagement/environments/{0}/user/applyAdminRole", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -2610,10 +2251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrFlowRunsResponse> GetFlowRunActionsForDsr([WorkflowExpression] Func<string> aiFlowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> continuationToken = null)
         {
-            SourceExpression.Validate(aiFlowId, nameof(aiFlowId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/aiFlows/{0}/runs/{1}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aiFlowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -2631,8 +2268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetApprovals([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflowsagent/approvals";
@@ -2650,8 +2285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteApproval([WorkflowExpression] Func<string> approvalId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(approvalId, nameof(approvalId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/approvals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalId, 1));
@@ -2667,8 +2300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetConnections([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflowsagent/connections";
@@ -2686,8 +2317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteConnection([WorkflowExpression] Func<string> connectionIdentifier, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(connectionIdentifier, nameof(connectionIdentifier), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/connections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectionIdentifier, 1));
@@ -2703,8 +2332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrConversationTranscriptsResponse> GetConversationTranscriptsForDsr([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflowsagent/conversationTranscripts";
@@ -2722,11 +2349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrFlowRunsResponse> GetFlowRunActionsWithEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> aiFlowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> continuationToken = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(aiFlowId, nameof(aiFlowId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/aiFlows/{1}/runs/{2}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aiFlowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -2744,9 +2366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrConversationTranscriptsResponse> GetConversationTranscriptsWithEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/conversationTranscripts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -2764,10 +2383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetFlowRunsNonSingleton([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(flowId, nameof(flowId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/flows/{1}/flowRuns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1));
@@ -2785,11 +2400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetRunHistoryDataNonSingleton([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(flowId, nameof(flowId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/flows/{1}/runs/{2}/runHistoryData", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -2807,8 +2417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetFlows([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflowsagent/flows";
@@ -2826,8 +2434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteFlow([WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(flowId, nameof(flowId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/flows/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1));
@@ -2843,9 +2449,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetFlowRunsSingleton([WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(flowId, nameof(flowId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/flows/{0}/flowRuns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1));
@@ -2863,10 +2466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetRunHistoryData([WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(flowId, nameof(flowId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/flows/{0}/runs/{1}/runHistoryData", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -2884,8 +2483,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<DsrPagedResponse> GetPrompts([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflowsagent/prompts";
@@ -2903,8 +2500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeletePrompt([WorkflowExpression] Func<string> promptId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(promptId, nameof(promptId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/prompts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(promptId, 1));
@@ -2920,10 +2515,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<MCPQueryResponse> McpEnvironmentManagement([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mcp/EnvironmentManagement";
@@ -2988,10 +2579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<MCPQueryResponse> McpGovernance([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mcp/Governance";
@@ -3056,8 +2643,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationAvailabilityResponseModel> GetAllocationsAvailability([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/allocationsV2/availability";
@@ -3075,7 +2660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<FinOpsLicenseSummaryV2Response> GetFinOpsLicenseSummary([WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/FinOpsLicensing/GetLicenseSummaryV2";
@@ -3091,8 +2675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<EntitlementReservedResponseModel[]> GetManyEntitlementsReserved([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/allocationsV2/entitlements/reserved";
@@ -3110,14 +2692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<NeptuneOperationResult> PutAllocations([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyscopetenantId = null, [WorkflowExpression] Func<string> bodyscopeenvironmentGroupId = null, [WorkflowExpression] Func<string> bodyscopeenvironmentId = null, [WorkflowExpression] Func<string> bodyscoperesourceId = null, [WorkflowExpression] Func<string> bodyscopeuserId = null, [WorkflowExpression] Func<string> bodyscopeuserGroupId = null, [WorkflowExpression] Func<EntitlementAllocationModel[]> bodyallocatedEntitlements = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyscopetenantId, nameof(bodyscopetenantId), required: false);
-            SourceExpression.Validate(bodyscopeenvironmentGroupId, nameof(bodyscopeenvironmentGroupId), required: false);
-            SourceExpression.Validate(bodyscopeenvironmentId, nameof(bodyscopeenvironmentId), required: false);
-            SourceExpression.Validate(bodyscoperesourceId, nameof(bodyscoperesourceId), required: false);
-            SourceExpression.Validate(bodyscopeuserId, nameof(bodyscopeuserId), required: false);
-            SourceExpression.Validate(bodyscopeuserGroupId, nameof(bodyscopeuserGroupId), required: false);
-            SourceExpression.Validate(bodyallocatedEntitlements, nameof(bodyallocatedEntitlements), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/licensing/allocationsV2";

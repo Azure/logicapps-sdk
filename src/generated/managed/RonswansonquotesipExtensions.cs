@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ronswansonquotesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ronswansonquotesip")]
         public IBodyWorkflowAction<string[]> Quotes([WorkflowExpression] Func<int> count)
         {
-            SourceExpression.Validate(count, nameof(count), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/quotes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(count, 1));
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ronswansonquotesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ronswansonquotesip")]
         public IBodyWorkflowAction<string[]> Search([WorkflowExpression] Func<string> term)
         {
-            SourceExpression.Validate(term, nameof(term), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/quotes/search/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(term, 1));

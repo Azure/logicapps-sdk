@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         public IBodyWorkflowAction<ScrapeResponse> Scrape([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(render, nameof(render), required: false);
-            SourceExpression.Validate(selector, nameof(selector), required: false);
-            SourceExpression.Validate(timeout, nameof(timeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/scraper";
@@ -42,12 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(render, nameof(render), required: false);
-            SourceExpression.Validate(selector, nameof(selector), required: false);
-            SourceExpression.Validate(timeout, nameof(timeout), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/scraper";

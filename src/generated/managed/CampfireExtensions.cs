@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Campfire
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "campfire")]
         public IBodyWorkflowAction<CreateMessageResponse> CreateMessage([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> message)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/room/{0}/speak.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
@@ -33,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Campfire
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "campfire")]
         public IBodyWorkflowAction<UserResponse> GetUser([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<int> userId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(userId, 1));
@@ -52,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Campfire
     {
         public IBodyWorkflowTrigger<RoomsResponse> OnNewRoom([WorkflowExpression] Func<string> account, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/OnNewRoom_trigger/rooms.json";
@@ -67,8 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Campfire
 
         public IBodyWorkflowTrigger<MessagesResponse> OnNewMessage([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/OnNewMessage_trigger/room/{0}/recent.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
@@ -83,8 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Campfire
 
         public IBodyWorkflowTrigger<UploadResponse> OnNewUpload([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/OnNewUpload_trigger/room/{0}/uploads.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));

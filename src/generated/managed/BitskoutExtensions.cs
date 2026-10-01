@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<RunPluginForFileResponse> RunPluginForFile([WorkflowExpression] Func<string> bodyplugin = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyplugin, nameof(bodyplugin), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/powerauto/run_file";
@@ -62,8 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<RunPluginTextResponse> RunPluginText([WorkflowExpression] Func<string> bodyplugin = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyplugin, nameof(bodyplugin), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/powerauto/run_text";
@@ -96,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> ExtractDataFromInvoice([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/invoices";
@@ -123,7 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> ExtractDataPurchaseOrders([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/purchase_order";
@@ -150,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataBillofLadingResponse> ExtractDataBillofLading([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/bill_of_lading";
@@ -177,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataCVResponse> ExtractDataCV([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/cv";
@@ -204,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType([WorkflowExpression] Func<doctypeInput> doctype, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(doctype, nameof(doctype), required: true);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions/doctype_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(doctype, 1));
@@ -232,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> ExtractDataBusinessCards([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/business_cards";
@@ -259,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractQRCodeResponse> ExtractQRCode([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/qrcodes";
@@ -286,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> ExtractBarcodeFromFile([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/barcodes";
@@ -313,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<DetectResponseColdEmailResponse> DetectResponseColdEmail([WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/cold_response";
@@ -340,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataHAROResponse> ExtractDataHARO([WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions/haro";

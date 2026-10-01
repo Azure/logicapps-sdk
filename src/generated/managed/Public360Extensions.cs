@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         public IBodyWorkflowAction<CreateFileResponse> CreateFile([WorkflowExpression] Func<string> hosturl, [WorkflowExpression] Func<string> bodyparametertitle = null, [WorkflowExpression] Func<string> bodyparameterdocumentNumber = null, [WorkflowExpression] Func<int> bodyparameterdocumentRecno = null, [WorkflowExpression] Func<string> bodyparameterformat = null, [WorkflowExpression] Func<string> bodyparameterbase64Data = null, [WorkflowExpression] Func<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
-            SourceExpression.Validate(hosturl, nameof(hosturl), required: true);
-            SourceExpression.Validate(bodyparametertitle, nameof(bodyparametertitle), required: false);
-            SourceExpression.Validate(bodyparameterdocumentNumber, nameof(bodyparameterdocumentNumber), required: false);
-            SourceExpression.Validate(bodyparameterdocumentRecno, nameof(bodyparameterdocumentRecno), required: false);
-            SourceExpression.Validate(bodyparameterformat, nameof(bodyparameterformat), required: false);
-            SourceExpression.Validate(bodyparameterbase64Data, nameof(bodyparameterbase64Data), required: false);
-            SourceExpression.Validate(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/FileService/CreateFile";
@@ -86,18 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument([WorkflowExpression] Func<string> hosturl, [WorkflowExpression] Func<string> bodyparametertitle = null, [WorkflowExpression] Func<string> bodyparametercaseNumber = null, [WorkflowExpression] Func<string> bodyparameterdefaultValueSet = null, [WorkflowExpression] Func<string> bodyparameterunofficialTitle = null, [WorkflowExpression] Func<string> bodyparameterresponsiblePersonEmail = null, [WorkflowExpression] Func<string> bodyparametercategory = null, [WorkflowExpression] Func<string> bodyparameterstatus = null, [WorkflowExpression] Func<string> bodyparameterarchive = null, [WorkflowExpression] Func<string> bodyparameternotes = null, [WorkflowExpression] Func<bodyparametercontactsInputItem[]> bodyparametercontacts = null, [WorkflowExpression] Func<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
-            SourceExpression.Validate(hosturl, nameof(hosturl), required: true);
-            SourceExpression.Validate(bodyparametertitle, nameof(bodyparametertitle), required: false);
-            SourceExpression.Validate(bodyparametercaseNumber, nameof(bodyparametercaseNumber), required: false);
-            SourceExpression.Validate(bodyparameterdefaultValueSet, nameof(bodyparameterdefaultValueSet), required: false);
-            SourceExpression.Validate(bodyparameterunofficialTitle, nameof(bodyparameterunofficialTitle), required: false);
-            SourceExpression.Validate(bodyparameterresponsiblePersonEmail, nameof(bodyparameterresponsiblePersonEmail), required: false);
-            SourceExpression.Validate(bodyparametercategory, nameof(bodyparametercategory), required: false);
-            SourceExpression.Validate(bodyparameterstatus, nameof(bodyparameterstatus), required: false);
-            SourceExpression.Validate(bodyparameterarchive, nameof(bodyparameterarchive), required: false);
-            SourceExpression.Validate(bodyparameternotes, nameof(bodyparameternotes), required: false);
-            SourceExpression.Validate(bodyparametercontacts, nameof(bodyparametercontacts), required: false);
-            SourceExpression.Validate(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/DocumentService/CreateDocument";
@@ -193,16 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         public IBodyWorkflowAction<CreateCaseResponse> CreateCase([WorkflowExpression] Func<string> hosturl, [WorkflowExpression] Func<string> bodyparametertitle = null, [WorkflowExpression] Func<string> bodyparameterdefaultValueSet = null, [WorkflowExpression] Func<string> bodyparameterunofficialTitle = null, [WorkflowExpression] Func<string> bodyparametercaseType = null, [WorkflowExpression] Func<string> bodyparameterresponsiblePersonEmail = null, [WorkflowExpression] Func<string> bodyparameterresponsiblePersonIdNumber = null, [WorkflowExpression] Func<string> bodyparameterresponsibleEnterpriseNumber = null, [WorkflowExpression] Func<int> bodyparameterprogressPlanId = null, [WorkflowExpression] Func<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
-            SourceExpression.Validate(hosturl, nameof(hosturl), required: true);
-            SourceExpression.Validate(bodyparametertitle, nameof(bodyparametertitle), required: false);
-            SourceExpression.Validate(bodyparameterdefaultValueSet, nameof(bodyparameterdefaultValueSet), required: false);
-            SourceExpression.Validate(bodyparameterunofficialTitle, nameof(bodyparameterunofficialTitle), required: false);
-            SourceExpression.Validate(bodyparametercaseType, nameof(bodyparametercaseType), required: false);
-            SourceExpression.Validate(bodyparameterresponsiblePersonEmail, nameof(bodyparameterresponsiblePersonEmail), required: false);
-            SourceExpression.Validate(bodyparameterresponsiblePersonIdNumber, nameof(bodyparameterresponsiblePersonIdNumber), required: false);
-            SourceExpression.Validate(bodyparameterresponsibleEnterpriseNumber, nameof(bodyparameterresponsibleEnterpriseNumber), required: false);
-            SourceExpression.Validate(bodyparameterprogressPlanId, nameof(bodyparameterprogressPlanId), required: false);
-            SourceExpression.Validate(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/CaseService/CreateCase";

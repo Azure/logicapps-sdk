@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsList([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<bool> hasActed = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(hasActed, nameof(hasActed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -33,21 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsCreate([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<actorModelactionInput> actorModelaction, [WorkflowExpression] Func<string> actorModelfirstname, [WorkflowExpression] Func<string> actorModellastname, [WorkflowExpression] Func<string> actorModelemail, [WorkflowExpression] Func<string> actorModelmobile, [WorkflowExpression] Func<string> actorModeldeadline, [WorkflowExpression] Func<actorModellanguageInput> actorModellanguage, [WorkflowExpression] Func<bool> actorModelvalidateRealIdentity, [WorkflowExpression] Func<string> actorModelprefix = null, [WorkflowExpression] Func<int> actorModeldossierPersonId = null, [WorkflowExpression] Func<string> actorModelmessage = null, [WorkflowExpression] Func<string> actorModelfieldName = null, [WorkflowExpression] Func<string> actorModelplaceholder = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(actorModelaction, nameof(actorModelaction), required: true);
-            SourceExpression.Validate(actorModelfirstname, nameof(actorModelfirstname), required: true);
-            SourceExpression.Validate(actorModellastname, nameof(actorModellastname), required: true);
-            SourceExpression.Validate(actorModelemail, nameof(actorModelemail), required: true);
-            SourceExpression.Validate(actorModelmobile, nameof(actorModelmobile), required: true);
-            SourceExpression.Validate(actorModeldeadline, nameof(actorModeldeadline), required: true);
-            SourceExpression.Validate(actorModellanguage, nameof(actorModellanguage), required: true);
-            SourceExpression.Validate(actorModelvalidateRealIdentity, nameof(actorModelvalidateRealIdentity), required: true);
-            SourceExpression.Validate(actorModelprefix, nameof(actorModelprefix), required: false);
-            SourceExpression.Validate(actorModeldossierPersonId, nameof(actorModeldossierPersonId), required: false);
-            SourceExpression.Validate(actorModelmessage, nameof(actorModelmessage), required: false);
-            SourceExpression.Validate(actorModelfieldName, nameof(actorModelfieldName), required: false);
-            SourceExpression.Validate(actorModelplaceholder, nameof(actorModelplaceholder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -122,20 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsUpdate([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> actorId, [WorkflowExpression] Func<actorModelModelactionInput> actorModelModelaction, [WorkflowExpression] Func<string> actorModelModelfirstname, [WorkflowExpression] Func<string> actorModelModellastname, [WorkflowExpression] Func<string> actorModelModelemail, [WorkflowExpression] Func<string> actorModelModelmobile, [WorkflowExpression] Func<string> actorModelModeldeadline, [WorkflowExpression] Func<actorModelModellanguageInput> actorModelModellanguage, [WorkflowExpression] Func<bool> actorModelModelvalidateRealIdentity, [WorkflowExpression] Func<string> actorModelModelprefix = null, [WorkflowExpression] Func<int> actorModelModeldossierPersonId = null, [WorkflowExpression] Func<string> actorModelModelmessage = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(actorId, nameof(actorId), required: true);
-            SourceExpression.Validate(actorModelModelaction, nameof(actorModelModelaction), required: true);
-            SourceExpression.Validate(actorModelModelfirstname, nameof(actorModelModelfirstname), required: true);
-            SourceExpression.Validate(actorModelModellastname, nameof(actorModelModellastname), required: true);
-            SourceExpression.Validate(actorModelModelemail, nameof(actorModelModelemail), required: true);
-            SourceExpression.Validate(actorModelModelmobile, nameof(actorModelModelmobile), required: true);
-            SourceExpression.Validate(actorModelModeldeadline, nameof(actorModelModeldeadline), required: true);
-            SourceExpression.Validate(actorModelModellanguage, nameof(actorModelModellanguage), required: true);
-            SourceExpression.Validate(actorModelModelvalidateRealIdentity, nameof(actorModelModelvalidateRealIdentity), required: true);
-            SourceExpression.Validate(actorModelModelprefix, nameof(actorModelModelprefix), required: false);
-            SourceExpression.Validate(actorModelModeldossierPersonId, nameof(actorModelModeldossierPersonId), required: false);
-            SourceExpression.Validate(actorModelModelmessage, nameof(actorModelModelmessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
@@ -190,9 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsGet([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> actorId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(actorId, nameof(actorId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
@@ -207,9 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsDelete([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> actorId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(actorId, nameof(actorId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
@@ -224,8 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsRequestActors([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<bool> hasActed = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(hasActed, nameof(hasActed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -242,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsResendCurrentInvite([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors/ResendCurrentInvite", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -257,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsWithdrawCurrentInvite([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors/WithdrawCurrentInvite", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -272,8 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsGet([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -288,11 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsUpdate([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<metadatadocumentTypeInput> metadatadocumentType, [WorkflowExpression] Func<string> metadataname = null, [WorkflowExpression] Func<string> metadatafilename = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(metadatadocumentType, nameof(metadatadocumentType), required: true);
-            SourceExpression.Validate(metadataname, nameof(metadataname), required: false);
-            SourceExpression.Validate(metadatafilename, nameof(metadatafilename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -327,8 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction DocumentsDelete([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -343,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroups([WorkflowExpression] Func<string> organisationId)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Organisations/{0}/workgroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -358,8 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroupsByUser([WorkflowExpression] Func<string> organisationId, [WorkflowExpression] Func<string> modelusername)
         {
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
-            SourceExpression.Validate(modelusername, nameof(modelusername), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Organisations/{0}/workgroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));
@@ -382,10 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsCreate([WorkflowExpression] Func<string> modelname, [WorkflowExpression] Func<int> modelclearancelevel, [WorkflowExpression] Func<string> modelworkgroupId = null, [WorkflowExpression] Func<string> modelowner = null)
         {
-            SourceExpression.Validate(modelname, nameof(modelname), required: true);
-            SourceExpression.Validate(modelclearancelevel, nameof(modelclearancelevel), required: true);
-            SourceExpression.Validate(modelworkgroupId, nameof(modelworkgroupId), required: false);
-            SourceExpression.Validate(modelowner, nameof(modelowner), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/requests";
@@ -422,8 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsGet([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> callbackAuthenticationKey = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(callbackAuthenticationKey, nameof(callbackAuthenticationKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -440,11 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsUpdate([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> modelname, [WorkflowExpression] Func<int> modelclearancelevel, [WorkflowExpression] Func<string> modelworkgroupId = null, [WorkflowExpression] Func<string> modelowner = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(modelname, nameof(modelname), required: true);
-            SourceExpression.Validate(modelclearancelevel, nameof(modelclearancelevel), required: true);
-            SourceExpression.Validate(modelworkgroupId, nameof(modelworkgroupId), required: false);
-            SourceExpression.Validate(modelowner, nameof(modelowner), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -481,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction RequestsDelete([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -496,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<object> RequestsDownload([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/Download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -511,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction RequestsSend([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/Send", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -528,8 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     {
         public IBodyWorkflowTrigger<WebhookResponseModel> WebhooksCreateWebhook([WorkflowExpression] Func<string[]> modelevents, [WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(modelevents, nameof(modelevents), required: true);
-            SourceExpression.Validate(organisationId, nameof(organisationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organisations/{0}/webhooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organisationId, 1));

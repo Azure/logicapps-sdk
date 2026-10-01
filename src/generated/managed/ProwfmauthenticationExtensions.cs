@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
         public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyclientId, [WorkflowExpression] Func<string> bodyclientSecret)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodyclientId, nameof(bodyclientId), required: true);
-            SourceExpression.Validate(bodyclientSecret, nameof(bodyclientSecret), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/authentication/access_token";

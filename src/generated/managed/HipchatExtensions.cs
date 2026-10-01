@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<UserList> ListUsers([WorkflowExpression] Func<string> roomId)
         {
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<UserResponse> GetUserById([WorkflowExpression] Func<string> userid)
         {
-            SourceExpression.Validate(userid, nameof(userid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userid, 1));
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<NewMessage> PostMessage([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> bodymessage)
         {
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/room/{0}/message", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
@@ -68,8 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<string> AddUserToRoom([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> memberid)
         {
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
-            SourceExpression.Validate(memberid, nameof(memberid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberid, 1));
@@ -86,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
     {
         public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage([WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
@@ -100,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
         public IBodyWorkflowTrigger<HistoryResponse> OnNewFile([WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveFlightUsingGETResponse> RetrieveFlightUsingGET([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> appKey, [WorkflowExpression] Func<string> resourceVersion, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(appKey, nameof(appKey), required: true);
-            SourceExpression.Validate(resourceVersion, nameof(resourceVersion), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/flights/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -36,24 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGETResponse> RetrieveFlightsForDateOrPeriodUsingGET([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> appKey, [WorkflowExpression] Func<string> resourceVersion, [WorkflowExpression] Func<string> scheduleDate = null, [WorkflowExpression] Func<string> scheduleTime = null, [WorkflowExpression] Func<string> flightName = null, [WorkflowExpression] Func<flightDirectionInput> flightDirection = null, [WorkflowExpression] Func<string> airline = null, [WorkflowExpression] Func<int> airlineCode = null, [WorkflowExpression] Func<string> route = null, [WorkflowExpression] Func<bool> includedelays = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> fromDateTime = null, [WorkflowExpression] Func<string> toDateTime = null, [WorkflowExpression] Func<string> searchDateTimeField = null, [WorkflowExpression] Func<string> fromScheduleDate = null, [WorkflowExpression] Func<string> toScheduleDate = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(appKey, nameof(appKey), required: true);
-            SourceExpression.Validate(resourceVersion, nameof(resourceVersion), required: true);
-            SourceExpression.Validate(scheduleDate, nameof(scheduleDate), required: false);
-            SourceExpression.Validate(scheduleTime, nameof(scheduleTime), required: false);
-            SourceExpression.Validate(flightName, nameof(flightName), required: false);
-            SourceExpression.Validate(flightDirection, nameof(flightDirection), required: false);
-            SourceExpression.Validate(airline, nameof(airline), required: false);
-            SourceExpression.Validate(airlineCode, nameof(airlineCode), required: false);
-            SourceExpression.Validate(route, nameof(route), required: false);
-            SourceExpression.Validate(includedelays, nameof(includedelays), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(fromDateTime, nameof(fromDateTime), required: false);
-            SourceExpression.Validate(toDateTime, nameof(toDateTime), required: false);
-            SourceExpression.Validate(searchDateTimeField, nameof(searchDateTimeField), required: false);
-            SourceExpression.Validate(fromScheduleDate, nameof(fromScheduleDate), required: false);
-            SourceExpression.Validate(toScheduleDate, nameof(toScheduleDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flights";
@@ -105,11 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllAirlinesUsingGETResponse> RetrieveAllAirlinesUsingGET([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> appKey, [WorkflowExpression] Func<string> resourceVersion, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(appKey, nameof(appKey), required: true);
-            SourceExpression.Validate(resourceVersion, nameof(resourceVersion), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airlines";
@@ -134,10 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAirlineUsingGETResponse> RetrieveAirlineUsingGET([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> appKey, [WorkflowExpression] Func<string> resourceVersion, [WorkflowExpression] Func<string> airline)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(appKey, nameof(appKey), required: true);
-            SourceExpression.Validate(resourceVersion, nameof(resourceVersion), required: true);
-            SourceExpression.Validate(airline, nameof(airline), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/airlines/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(airline, 1));
@@ -156,13 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGETResponse> RetrieveAllAircraftTypesUsingGET([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> appKey, [WorkflowExpression] Func<string> resourceVersion, [WorkflowExpression] Func<string> iataMain = null, [WorkflowExpression] Func<string> iataSub = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(appKey, nameof(appKey), required: true);
-            SourceExpression.Validate(resourceVersion, nameof(resourceVersion), required: true);
-            SourceExpression.Validate(iataMain, nameof(iataMain), required: false);
-            SourceExpression.Validate(iataSub, nameof(iataSub), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/aircrafttypes";
@@ -191,11 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllDestinationsUsingGETResponse> RetrieveAllDestinationsUsingGET([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> appKey, [WorkflowExpression] Func<string> resourceVersion, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(appKey, nameof(appKey), required: true);
-            SourceExpression.Validate(resourceVersion, nameof(resourceVersion), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/destinations";
@@ -220,10 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveDestinationUsingGETResponse> RetrieveDestinationUsingGET([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> appKey, [WorkflowExpression] Func<string> resourceVersion, [WorkflowExpression] Func<string> iata)
         {
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(appKey, nameof(appKey), required: true);
-            SourceExpression.Validate(resourceVersion, nameof(resourceVersion), required: true);
-            SourceExpression.Validate(iata, nameof(iata), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/destinations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iata, 1));

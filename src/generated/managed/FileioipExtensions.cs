@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileListResponse> FileList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";
@@ -40,10 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileUploadResponse> FileUpload([WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
-            SourceExpression.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
-            SourceExpression.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";
@@ -88,11 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileUpdateResponse> FileUpdate([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
-            SourceExpression.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
-            SourceExpression.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -137,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileDeleteResponse> FileDelete([WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));

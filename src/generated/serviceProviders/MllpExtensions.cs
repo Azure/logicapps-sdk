@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mllp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mllp")]
         public IWorkflowAction SendMessage([WorkflowExpression] Func<object> message)
         {
-            SourceExpression.Validate(message, nameof(message), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

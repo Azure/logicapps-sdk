@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AgenciesListResponse> AgenciesList([WorkflowExpression] Func<bool> featured = null, [WorkflowExpression] Func<string> agencyType = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(featured, nameof(featured), required: false);
-            SourceExpression.Validate(agencyType, nameof(agencyType), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/agencies/";
@@ -49,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AgencySerializerDetailed> AgenciesRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agencies/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -64,25 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AstronautListResponse> AstronautList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> nationality = null, [WorkflowExpression] Func<string> dateOfDeath = null, [WorkflowExpression] Func<string> agencyAbbrev = null, [WorkflowExpression] Func<string> agencyName = null, [WorkflowExpression] Func<string> dateOfBirth = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> dateOfBirthGt = null, [WorkflowExpression] Func<string> dateOfBirthLt = null, [WorkflowExpression] Func<string> dateOfBirthGte = null, [WorkflowExpression] Func<string> dateOfBirthLte = null, [WorkflowExpression] Func<string> dateOfDeathGt = null, [WorkflowExpression] Func<string> dateOfDeathLt = null, [WorkflowExpression] Func<string> dateOfDeathGte = null, [WorkflowExpression] Func<string> dateOfDeathLte = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(nationality, nameof(nationality), required: false);
-            SourceExpression.Validate(dateOfDeath, nameof(dateOfDeath), required: false);
-            SourceExpression.Validate(agencyAbbrev, nameof(agencyAbbrev), required: false);
-            SourceExpression.Validate(agencyName, nameof(agencyName), required: false);
-            SourceExpression.Validate(dateOfBirth, nameof(dateOfBirth), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(dateOfBirthGt, nameof(dateOfBirthGt), required: false);
-            SourceExpression.Validate(dateOfBirthLt, nameof(dateOfBirthLt), required: false);
-            SourceExpression.Validate(dateOfBirthGte, nameof(dateOfBirthGte), required: false);
-            SourceExpression.Validate(dateOfBirthLte, nameof(dateOfBirthLte), required: false);
-            SourceExpression.Validate(dateOfDeathGt, nameof(dateOfDeathGt), required: false);
-            SourceExpression.Validate(dateOfDeathLt, nameof(dateOfDeathLt), required: false);
-            SourceExpression.Validate(dateOfDeathGte, nameof(dateOfDeathGte), required: false);
-            SourceExpression.Validate(dateOfDeathLte, nameof(dateOfDeathLte), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/astronaut/";
@@ -135,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AstronautDetailed> AstronautRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/astronaut/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -150,10 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigAgencytypeListResponse> ConfigAgencytypeList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/agencytype/";
@@ -176,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AgencyType> ConfigAgencytypeRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/agencytype/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -191,10 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigAstronautroleListResponse> ConfigAstronautroleList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/astronautrole/";
@@ -217,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AstronautRole> ConfigAstronautroleRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/astronautrole/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -232,10 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigAstronautstatusListResponse> ConfigAstronautstatusList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/astronautstatus/";
@@ -258,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AstronautStatus> ConfigAstronautstatusRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/astronautstatus/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -273,10 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigAstronauttypeListResponse> ConfigAstronauttypeList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/astronauttype/";
@@ -299,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<AstronautType> ConfigAstronauttypeRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/astronauttype/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -314,10 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigDockinglocationListResponse> ConfigDockinglocationList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/dockinglocation/";
@@ -340,7 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<DockingLocation> ConfigDockinglocationRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/dockinglocation/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -355,10 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigEventtypeListResponse> ConfigEventtypeList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/eventtype/";
@@ -381,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<EventType> ConfigEventtypeRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/eventtype/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -396,10 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigFirststagetypeListResponse> ConfigFirststagetypeList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/firststagetype/";
@@ -422,7 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<FirstStageType> ConfigFirststagetypeRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/firststagetype/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -437,10 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigLandinglocationListResponse> ConfigLandinglocationList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/landinglocation/";
@@ -463,7 +396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LandingLocation> ConfigLandinglocationRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/landinglocation/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -478,17 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigLauncherListResponse> ConfigLauncherList([WorkflowExpression] Func<string> family = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<string> fullName = null, [WorkflowExpression] Func<string> active = null, [WorkflowExpression] Func<string> reusable = null, [WorkflowExpression] Func<string> program = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(family, nameof(family), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            SourceExpression.Validate(fullName, nameof(fullName), required: false);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(reusable, nameof(reusable), required: false);
-            SourceExpression.Validate(program, nameof(program), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/launcher/";
@@ -525,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LauncherConfigDetail> ConfigLauncherRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/launcher/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -540,10 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigLaunchstatusListResponse> ConfigLaunchstatusList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/launchstatus/";
@@ -566,7 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LaunchStatus> ConfigLaunchstatusRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/launchstatus/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -581,10 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigMissiontypeListResponse> ConfigMissiontypeList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/missiontype/";
@@ -607,7 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<MissionType> ConfigMissiontypeRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/missiontype/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -622,10 +532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigNoticetypeListResponse> ConfigNoticetypeList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/noticetype/";
@@ -648,7 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<NoticeType> ConfigNoticetypeRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/noticetype/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -663,10 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigOrbitListResponse> ConfigOrbitList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/orbit/";
@@ -689,7 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<Orbit> ConfigOrbitRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/orbit/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -704,10 +604,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigRoadclosurestatusListResponse> ConfigRoadclosurestatusList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/roadclosurestatus/";
@@ -730,7 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<RoadClosureStatus> ConfigRoadclosurestatusRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/roadclosurestatus/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -745,14 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigSpacecraftListResponse> ConfigSpacecraftList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<string> inUse = null, [WorkflowExpression] Func<string> humanRated = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            SourceExpression.Validate(inUse, nameof(inUse), required: false);
-            SourceExpression.Validate(humanRated, nameof(humanRated), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/spacecraft/";
@@ -783,7 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpacecraftConfigurationDetail> ConfigSpacecraftRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/spacecraft/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -798,10 +684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigSpacecraftstatusListResponse> ConfigSpacecraftstatusList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/spacecraftstatus/";
@@ -824,7 +706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpacecraftStatus> ConfigSpacecraftstatusRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/spacecraftstatus/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -839,10 +720,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ConfigSpacestationstatusListResponse> ConfigSpacestationstatusList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/config/spacestationstatus/";
@@ -865,7 +742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpaceStationStatus> ConfigSpacestationstatusRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/config/spacestationstatus/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -880,17 +756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<DockingEventListResponse> DockingEventList([WorkflowExpression] Func<double> spaceStationId = null, [WorkflowExpression] Func<double> dockingLocationId = null, [WorkflowExpression] Func<double> flightVehicleId = null, [WorkflowExpression] Func<string> dockingGt = null, [WorkflowExpression] Func<string> dockingLt = null, [WorkflowExpression] Func<string> dockingGte = null, [WorkflowExpression] Func<string> dockingLte = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(spaceStationId, nameof(spaceStationId), required: false);
-            SourceExpression.Validate(dockingLocationId, nameof(dockingLocationId), required: false);
-            SourceExpression.Validate(flightVehicleId, nameof(flightVehicleId), required: false);
-            SourceExpression.Validate(dockingGt, nameof(dockingGt), required: false);
-            SourceExpression.Validate(dockingLt, nameof(dockingLt), required: false);
-            SourceExpression.Validate(dockingGte, nameof(dockingGte), required: false);
-            SourceExpression.Validate(dockingLte, nameof(dockingLte), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/docking_event/";
@@ -927,7 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<DockingEventDetailed> DockingEventRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/docking_event/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -942,13 +806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<EventListResponse> EventList([WorkflowExpression] Func<string> slug = null, [WorkflowExpression] Func<double> id = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> program = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(program, nameof(program), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/";
@@ -977,11 +834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<EventPreviousListResponse> EventPreviousList([WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> program = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(program, nameof(program), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/previous/";
@@ -1006,7 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<Events> EventPreviousRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/previous/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1021,11 +872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<EventUpcomingListResponse> EventUpcomingList([WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> program = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(program, nameof(program), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/event/upcoming/";
@@ -1050,7 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<Events> EventUpcomingRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/upcoming/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1065,7 +910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<Events> EventRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1080,22 +924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ExpeditionListResponse> ExpeditionList([WorkflowExpression] Func<string> crewAstronaut = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> spaceStation = null, [WorkflowExpression] Func<string> crewAstronautAgency = null, [WorkflowExpression] Func<string> startGt = null, [WorkflowExpression] Func<string> startLt = null, [WorkflowExpression] Func<string> startGte = null, [WorkflowExpression] Func<string> startLte = null, [WorkflowExpression] Func<string> endGt = null, [WorkflowExpression] Func<string> endLt = null, [WorkflowExpression] Func<string> endGte = null, [WorkflowExpression] Func<string> endLte = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(crewAstronaut, nameof(crewAstronaut), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(spaceStation, nameof(spaceStation), required: false);
-            SourceExpression.Validate(crewAstronautAgency, nameof(crewAstronautAgency), required: false);
-            SourceExpression.Validate(startGt, nameof(startGt), required: false);
-            SourceExpression.Validate(startLt, nameof(startLt), required: false);
-            SourceExpression.Validate(startGte, nameof(startGte), required: false);
-            SourceExpression.Validate(startLte, nameof(startLte), required: false);
-            SourceExpression.Validate(endGt, nameof(endGt), required: false);
-            SourceExpression.Validate(endLt, nameof(endLt), required: false);
-            SourceExpression.Validate(endGte, nameof(endGte), required: false);
-            SourceExpression.Validate(endLte, nameof(endLte), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/expedition/";
@@ -1142,7 +970,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ExpeditionDetail> ExpeditionRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/expedition/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1157,49 +984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<UplistResponse> Uplist([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> slug = null, [WorkflowExpression] Func<string> rocketConfigurationName = null, [WorkflowExpression] Func<double> rocketConfigurationId = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> rocketSpacecraftflightSpacecraftName = null, [WorkflowExpression] Func<string> rocketSpacecraftflightSpacecraftNameIcontains = null, [WorkflowExpression] Func<double> rocketSpacecraftflightSpacecraftId = null, [WorkflowExpression] Func<string> rocketConfigurationManufacturerName = null, [WorkflowExpression] Func<string> rocketConfigurationManufacturerNameIcontains = null, [WorkflowExpression] Func<string> rocketConfigurationFullName = null, [WorkflowExpression] Func<string> rocketConfigurationFullNameIcontains = null, [WorkflowExpression] Func<string> missionOrbitName = null, [WorkflowExpression] Func<string> missionOrbitNameIcontains = null, [WorkflowExpression] Func<string> rSpacexApiId = null, [WorkflowExpression] Func<string> netGt = null, [WorkflowExpression] Func<string> netLt = null, [WorkflowExpression] Func<string> netGte = null, [WorkflowExpression] Func<string> netLte = null, [WorkflowExpression] Func<string> windowStartGt = null, [WorkflowExpression] Func<string> windowStartLt = null, [WorkflowExpression] Func<string> windowStartGte = null, [WorkflowExpression] Func<string> windowStartLte = null, [WorkflowExpression] Func<string> windowEndGt = null, [WorkflowExpression] Func<string> windowEndLt = null, [WorkflowExpression] Func<string> windowEndGte = null, [WorkflowExpression] Func<string> windowEndLte = null, [WorkflowExpression] Func<string> lastUpdatedGte = null, [WorkflowExpression] Func<string> lastUpdatedLte = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int[]> locationIds = null, [WorkflowExpression] Func<int[]> lspIds = null, [WorkflowExpression] Func<bool> isCrewed = null, [WorkflowExpression] Func<bool> includeSuborbital = null, [WorkflowExpression] Func<string> serialNumber = null, [WorkflowExpression] Func<string> lspName = null, [WorkflowExpression] Func<int> lspId = null, [WorkflowExpression] Func<int> lspConfigId = null, [WorkflowExpression] Func<int[]> spacecraftConfigIds = null, [WorkflowExpression] Func<bool> related = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(slug, nameof(slug), required: false);
-            SourceExpression.Validate(rocketConfigurationName, nameof(rocketConfigurationName), required: false);
-            SourceExpression.Validate(rocketConfigurationId, nameof(rocketConfigurationId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftName, nameof(rocketSpacecraftflightSpacecraftName), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftNameIcontains, nameof(rocketSpacecraftflightSpacecraftNameIcontains), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftId, nameof(rocketSpacecraftflightSpacecraftId), required: false);
-            SourceExpression.Validate(rocketConfigurationManufacturerName, nameof(rocketConfigurationManufacturerName), required: false);
-            SourceExpression.Validate(rocketConfigurationManufacturerNameIcontains, nameof(rocketConfigurationManufacturerNameIcontains), required: false);
-            SourceExpression.Validate(rocketConfigurationFullName, nameof(rocketConfigurationFullName), required: false);
-            SourceExpression.Validate(rocketConfigurationFullNameIcontains, nameof(rocketConfigurationFullNameIcontains), required: false);
-            SourceExpression.Validate(missionOrbitName, nameof(missionOrbitName), required: false);
-            SourceExpression.Validate(missionOrbitNameIcontains, nameof(missionOrbitNameIcontains), required: false);
-            SourceExpression.Validate(rSpacexApiId, nameof(rSpacexApiId), required: false);
-            SourceExpression.Validate(netGt, nameof(netGt), required: false);
-            SourceExpression.Validate(netLt, nameof(netLt), required: false);
-            SourceExpression.Validate(netGte, nameof(netGte), required: false);
-            SourceExpression.Validate(netLte, nameof(netLte), required: false);
-            SourceExpression.Validate(windowStartGt, nameof(windowStartGt), required: false);
-            SourceExpression.Validate(windowStartLt, nameof(windowStartLt), required: false);
-            SourceExpression.Validate(windowStartGte, nameof(windowStartGte), required: false);
-            SourceExpression.Validate(windowStartLte, nameof(windowStartLte), required: false);
-            SourceExpression.Validate(windowEndGt, nameof(windowEndGt), required: false);
-            SourceExpression.Validate(windowEndLt, nameof(windowEndLt), required: false);
-            SourceExpression.Validate(windowEndGte, nameof(windowEndGte), required: false);
-            SourceExpression.Validate(windowEndLte, nameof(windowEndLte), required: false);
-            SourceExpression.Validate(lastUpdatedGte, nameof(lastUpdatedGte), required: false);
-            SourceExpression.Validate(lastUpdatedLte, nameof(lastUpdatedLte), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(locationIds, nameof(locationIds), required: false);
-            SourceExpression.Validate(lspIds, nameof(lspIds), required: false);
-            SourceExpression.Validate(isCrewed, nameof(isCrewed), required: false);
-            SourceExpression.Validate(includeSuborbital, nameof(includeSuborbital), required: false);
-            SourceExpression.Validate(serialNumber, nameof(serialNumber), required: false);
-            SourceExpression.Validate(lspName, nameof(lspName), required: false);
-            SourceExpression.Validate(lspId, nameof(lspId), required: false);
-            SourceExpression.Validate(lspConfigId, nameof(lspConfigId), required: false);
-            SourceExpression.Validate(spacecraftConfigIds, nameof(spacecraftConfigIds), required: false);
-            SourceExpression.Validate(related, nameof(related), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/launch/";
@@ -1303,36 +1087,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LaunchPreviousListResponse> LaunchPreviousList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> slug = null, [WorkflowExpression] Func<string> rocketConfigurationName = null, [WorkflowExpression] Func<double> rocketConfigurationId = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> rocketSpacecraftflightSpacecraftName = null, [WorkflowExpression] Func<string> rocketSpacecraftflightSpacecraftIcontains = null, [WorkflowExpression] Func<double> rocketSpacecraftflightSpacecraftId = null, [WorkflowExpression] Func<string> rocketConfigurationManufacturerName = null, [WorkflowExpression] Func<string> rocketConfigurationManufacturerNameIcontains = null, [WorkflowExpression] Func<string> rocketConfigurationFullName = null, [WorkflowExpression] Func<string> rocketConfigurationFullNameIcontains = null, [WorkflowExpression] Func<string> missionOrbitName = null, [WorkflowExpression] Func<string> missionOrbitNameIcontains = null, [WorkflowExpression] Func<string> program = null, [WorkflowExpression] Func<string> rSpacexApiId = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int[]> locationIds = null, [WorkflowExpression] Func<int[]> lspIds = null, [WorkflowExpression] Func<bool> isCrewed = null, [WorkflowExpression] Func<bool> includeSuborbital = null, [WorkflowExpression] Func<string> serialNumber = null, [WorkflowExpression] Func<string> lspName = null, [WorkflowExpression] Func<int> lspId = null, [WorkflowExpression] Func<int> lspConfigId = null, [WorkflowExpression] Func<int[]> spacecraftConfigIds = null, [WorkflowExpression] Func<bool> related = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(slug, nameof(slug), required: false);
-            SourceExpression.Validate(rocketConfigurationName, nameof(rocketConfigurationName), required: false);
-            SourceExpression.Validate(rocketConfigurationId, nameof(rocketConfigurationId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftName, nameof(rocketSpacecraftflightSpacecraftName), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftIcontains, nameof(rocketSpacecraftflightSpacecraftIcontains), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftId, nameof(rocketSpacecraftflightSpacecraftId), required: false);
-            SourceExpression.Validate(rocketConfigurationManufacturerName, nameof(rocketConfigurationManufacturerName), required: false);
-            SourceExpression.Validate(rocketConfigurationManufacturerNameIcontains, nameof(rocketConfigurationManufacturerNameIcontains), required: false);
-            SourceExpression.Validate(rocketConfigurationFullName, nameof(rocketConfigurationFullName), required: false);
-            SourceExpression.Validate(rocketConfigurationFullNameIcontains, nameof(rocketConfigurationFullNameIcontains), required: false);
-            SourceExpression.Validate(missionOrbitName, nameof(missionOrbitName), required: false);
-            SourceExpression.Validate(missionOrbitNameIcontains, nameof(missionOrbitNameIcontains), required: false);
-            SourceExpression.Validate(program, nameof(program), required: false);
-            SourceExpression.Validate(rSpacexApiId, nameof(rSpacexApiId), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(locationIds, nameof(locationIds), required: false);
-            SourceExpression.Validate(lspIds, nameof(lspIds), required: false);
-            SourceExpression.Validate(isCrewed, nameof(isCrewed), required: false);
-            SourceExpression.Validate(includeSuborbital, nameof(includeSuborbital), required: false);
-            SourceExpression.Validate(serialNumber, nameof(serialNumber), required: false);
-            SourceExpression.Validate(lspName, nameof(lspName), required: false);
-            SourceExpression.Validate(lspId, nameof(lspId), required: false);
-            SourceExpression.Validate(lspConfigId, nameof(lspConfigId), required: false);
-            SourceExpression.Validate(spacecraftConfigIds, nameof(spacecraftConfigIds), required: false);
-            SourceExpression.Validate(related, nameof(related), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/launch/previous/";
@@ -1410,7 +1164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LaunchDetailed> LaunchPreviousRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/launch/previous/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1425,37 +1178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LaunchUpcomingListResponse> LaunchUpcomingList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> slug = null, [WorkflowExpression] Func<string> rocketConfigurationName = null, [WorkflowExpression] Func<double> rocketConfigurationId = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> rocketSpacecraftflightSpacecraftName = null, [WorkflowExpression] Func<string> rocketSpacecraftflightSpacecraftNameIcontains = null, [WorkflowExpression] Func<double> rocketSpacecraftflightSpacecraftId = null, [WorkflowExpression] Func<string> rocketConfigurationManufacturerName = null, [WorkflowExpression] Func<string> rocketConfigurationManufacturerNameIcontains = null, [WorkflowExpression] Func<string> rocketConfigurationFullName = null, [WorkflowExpression] Func<string> rocketConfigurationFullNameIcontains = null, [WorkflowExpression] Func<string> missionOrbitName = null, [WorkflowExpression] Func<string> missionOrbitNameIcontains = null, [WorkflowExpression] Func<string> program = null, [WorkflowExpression] Func<string> rSpacexApiId = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int[]> locationIds = null, [WorkflowExpression] Func<int[]> lspIds = null, [WorkflowExpression] Func<bool> isCrewed = null, [WorkflowExpression] Func<bool> includeSuborbital = null, [WorkflowExpression] Func<string> serialNumber = null, [WorkflowExpression] Func<string> lspName = null, [WorkflowExpression] Func<int> lspId = null, [WorkflowExpression] Func<int> lspConfigId = null, [WorkflowExpression] Func<int[]> spacecraftConfigIds = null, [WorkflowExpression] Func<bool> related = null, [WorkflowExpression] Func<bool> hideRecentPrevious = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(slug, nameof(slug), required: false);
-            SourceExpression.Validate(rocketConfigurationName, nameof(rocketConfigurationName), required: false);
-            SourceExpression.Validate(rocketConfigurationId, nameof(rocketConfigurationId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftName, nameof(rocketSpacecraftflightSpacecraftName), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftNameIcontains, nameof(rocketSpacecraftflightSpacecraftNameIcontains), required: false);
-            SourceExpression.Validate(rocketSpacecraftflightSpacecraftId, nameof(rocketSpacecraftflightSpacecraftId), required: false);
-            SourceExpression.Validate(rocketConfigurationManufacturerName, nameof(rocketConfigurationManufacturerName), required: false);
-            SourceExpression.Validate(rocketConfigurationManufacturerNameIcontains, nameof(rocketConfigurationManufacturerNameIcontains), required: false);
-            SourceExpression.Validate(rocketConfigurationFullName, nameof(rocketConfigurationFullName), required: false);
-            SourceExpression.Validate(rocketConfigurationFullNameIcontains, nameof(rocketConfigurationFullNameIcontains), required: false);
-            SourceExpression.Validate(missionOrbitName, nameof(missionOrbitName), required: false);
-            SourceExpression.Validate(missionOrbitNameIcontains, nameof(missionOrbitNameIcontains), required: false);
-            SourceExpression.Validate(program, nameof(program), required: false);
-            SourceExpression.Validate(rSpacexApiId, nameof(rSpacexApiId), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(locationIds, nameof(locationIds), required: false);
-            SourceExpression.Validate(lspIds, nameof(lspIds), required: false);
-            SourceExpression.Validate(isCrewed, nameof(isCrewed), required: false);
-            SourceExpression.Validate(includeSuborbital, nameof(includeSuborbital), required: false);
-            SourceExpression.Validate(serialNumber, nameof(serialNumber), required: false);
-            SourceExpression.Validate(lspName, nameof(lspName), required: false);
-            SourceExpression.Validate(lspId, nameof(lspId), required: false);
-            SourceExpression.Validate(lspConfigId, nameof(lspConfigId), required: false);
-            SourceExpression.Validate(spacecraftConfigIds, nameof(spacecraftConfigIds), required: false);
-            SourceExpression.Validate(related, nameof(related), required: false);
-            SourceExpression.Validate(hideRecentPrevious, nameof(hideRecentPrevious), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/launch/upcoming/";
@@ -1536,7 +1258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LaunchDetailed> LaunchUpcomingRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/launch/upcoming/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1551,7 +1272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LaunchDetailed> LaunchRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/launch/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1566,15 +1286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LauncherListResponse> LauncherList([WorkflowExpression] Func<double> id = null, [WorkflowExpression] Func<string> serialNumber = null, [WorkflowExpression] Func<string> flightProven = null, [WorkflowExpression] Func<string> launcherConfig = null, [WorkflowExpression] Func<string> launcherConfigManufacturer = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(serialNumber, nameof(serialNumber), required: false);
-            SourceExpression.Validate(flightProven, nameof(flightProven), required: false);
-            SourceExpression.Validate(launcherConfig, nameof(launcherConfig), required: false);
-            SourceExpression.Validate(launcherConfigManufacturer, nameof(launcherConfigManufacturer), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/launcher/";
@@ -1607,7 +1318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LauncherDetail> LauncherRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/launcher/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1622,13 +1332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LocationListResponse> LocationList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<double> id = null, [WorkflowExpression] Func<string> padLocationId = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(padLocationId, nameof(padLocationId), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/location/";
@@ -1657,7 +1360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<LocationDetail> LocationRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/location/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1672,12 +1374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<PadListResponse> PadList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<double> id = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(location, nameof(location), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pad/";
@@ -1704,7 +1400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<Pad> PadRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pad/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1719,10 +1414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<ProgramListResponse> ProgramList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/program/";
@@ -1745,7 +1436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<Program> ProgramRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/program/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1760,13 +1450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpacecraftListResponse> SpacecraftList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> spacecraftConfig = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(spacecraftConfig, nameof(spacecraftConfig), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/spacecraft/";
@@ -1795,9 +1478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpacecraftFlightListResponse> SpacecraftFlightList([WorkflowExpression] Func<string> spacecraft = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(spacecraft, nameof(spacecraft), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/spacecraft/flight/";
@@ -1818,7 +1498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpacecraftFlightDetailed> SpacecraftFlightRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spacecraft/flight/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1833,7 +1512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpacecraftDetailed> SpacecraftRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spacecraft/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1848,17 +1526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpacestationListResponse> SpacestationList([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> owners = null, [WorkflowExpression] Func<string> orbit = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> ownersName = null, [WorkflowExpression] Func<string> ownersAbbrev = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(owners, nameof(owners), required: false);
-            SourceExpression.Validate(orbit, nameof(orbit), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(ownersName, nameof(ownersName), required: false);
-            SourceExpression.Validate(ownersAbbrev, nameof(ownersAbbrev), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/spacestation/";
@@ -1895,7 +1562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<SpaceStationDetailed> SpacestationRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/spacestation/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1910,14 +1576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<UpdatesListResponse> UpdatesList([WorkflowExpression] Func<string> createdOn = null, [WorkflowExpression] Func<string> launch = null, [WorkflowExpression] Func<string> program = null, [WorkflowExpression] Func<string> launchLaunchServiceProvider = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(createdOn, nameof(createdOn), required: false);
-            SourceExpression.Validate(launch, nameof(launch), required: false);
-            SourceExpression.Validate(program, nameof(program), required: false);
-            SourceExpression.Validate(launchLaunchServiceProvider, nameof(launchLaunchServiceProvider), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updates/";
@@ -1948,7 +1606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "launchlibrary2ip")]
         public IBodyWorkflowAction<Update> UpdatesRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updates/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

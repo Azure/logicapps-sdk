@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfCicsCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-MfCicsCobol";
@@ -34,9 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfCtgCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-MfCtgCobol";
@@ -54,9 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfImsCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-MfImsCobol";
@@ -74,9 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfNatural([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-MfNatural";
@@ -94,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfVsamCics([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-MfVsamCics";
@@ -114,9 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> Mf3270Screens([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-Mf3270Screens";
@@ -134,9 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfMq([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-MfMq";

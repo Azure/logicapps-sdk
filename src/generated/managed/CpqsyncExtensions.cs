@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
     {
         public IWorkflowTrigger ProductUpdated([WorkflowExpression] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1));
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 
         public IWorkflowTrigger ProductCreated([WorkflowExpression] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemCreated", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1));

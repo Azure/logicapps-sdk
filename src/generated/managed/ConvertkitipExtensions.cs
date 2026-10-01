@@ -42,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -88,10 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<FormSubListResponse> FormSubList([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(subscriberState, nameof(subscriberState), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -128,10 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd([WorkflowExpression] Func<string> sequenceId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
-            SourceExpression.Validate(sequenceId, nameof(sequenceId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sequenceId, 1));
@@ -174,10 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList([WorkflowExpression] Func<string> sequenceId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(sequenceId, nameof(sequenceId), required: true);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(subscriberState, nameof(subscriberState), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sequenceId, 1));
@@ -214,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagAddResponse> TagAdd([WorkflowExpression] Func<string> bodytagname = null)
         {
-            SourceExpression.Validate(bodytagname, nameof(bodytagname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tags";
@@ -249,10 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubResponse> TagSub([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -299,8 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove([WorkflowExpression] Func<string> subscriberId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(subscriberId, nameof(subscriberId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -315,8 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tags/{0}/unsubscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -339,10 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubListResponse> TagSubList([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(subscriberState, nameof(subscriberState), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -365,14 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberListResponse> SubscriberList([WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> updatedFrom = null, [WorkflowExpression] Func<string> updatedTo = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<string> emailAddress = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(updatedFrom, nameof(updatedFrom), required: false);
-            SourceExpression.Validate(updatedTo, nameof(updatedTo), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(sortField, nameof(sortField), required: false);
-            SourceExpression.Validate(emailAddress, nameof(emailAddress), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscribers";
@@ -405,7 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet([WorkflowExpression] Func<string> subscriberId)
         {
-            SourceExpression.Validate(subscriberId, nameof(subscriberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
@@ -420,9 +382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate([WorkflowExpression] Func<string> subscriberId, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodyemailAddress = null)
         {
-            SourceExpression.Validate(subscriberId, nameof(subscriberId), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
@@ -463,7 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub([WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/unsubscribe";
@@ -486,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags([WorkflowExpression] Func<string> subscriberId)
         {
-            SourceExpression.Validate(subscriberId, nameof(subscriberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
@@ -515,16 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
-            SourceExpression.Validate(bodyPublic, nameof(bodyPublic), required: false);
-            SourceExpression.Validate(bodypublishedAt, nameof(bodypublishedAt), required: false);
-            SourceExpression.Validate(bodysendAt, nameof(bodysendAt), required: false);
-            SourceExpression.Validate(bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
-            SourceExpression.Validate(bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/broadcasts";
@@ -605,7 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet([WorkflowExpression] Func<string> broadcastId)
         {
-            SourceExpression.Validate(broadcastId, nameof(broadcastId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
@@ -620,17 +566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate([WorkflowExpression] Func<string> broadcastId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
-            SourceExpression.Validate(broadcastId, nameof(broadcastId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
-            SourceExpression.Validate(bodyPublic, nameof(bodyPublic), required: false);
-            SourceExpression.Validate(bodypublishedAt, nameof(bodypublishedAt), required: false);
-            SourceExpression.Validate(bodysendAt, nameof(bodysendAt), required: false);
-            SourceExpression.Validate(bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
-            SourceExpression.Validate(bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
@@ -711,7 +646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<string> BroadcastDelete([WorkflowExpression] Func<string> broadcastId)
         {
-            SourceExpression.Validate(broadcastId, nameof(broadcastId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
@@ -726,7 +660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat([WorkflowExpression] Func<string> broadcastId)
         {
-            SourceExpression.Validate(broadcastId, nameof(broadcastId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
@@ -741,7 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<PurchaseListResponse> PurchaseList([WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/purchases";
@@ -758,18 +690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd([WorkflowExpression] Func<string> bodypurchasetransactionId = null, [WorkflowExpression] Func<string> bodypurchaseemailAddress = null, [WorkflowExpression] Func<string> bodypurchasefirstName = null, [WorkflowExpression] Func<string> bodypurchasecurrency = null, [WorkflowExpression] Func<string> bodypurchasetransactionTime = null, [WorkflowExpression] Func<int> bodypurchasesubtotal = null, [WorkflowExpression] Func<int> bodypurchasetax = null, [WorkflowExpression] Func<int> bodypurchaseshipping = null, [WorkflowExpression] Func<int> bodypurchasediscount = null, [WorkflowExpression] Func<int> bodypurchasetotal = null, [WorkflowExpression] Func<string> bodypurchasestatus = null, [WorkflowExpression] Func<bodypurchaseproductsInputItem[]> bodypurchaseproducts = null)
         {
-            SourceExpression.Validate(bodypurchasetransactionId, nameof(bodypurchasetransactionId), required: false);
-            SourceExpression.Validate(bodypurchaseemailAddress, nameof(bodypurchaseemailAddress), required: false);
-            SourceExpression.Validate(bodypurchasefirstName, nameof(bodypurchasefirstName), required: false);
-            SourceExpression.Validate(bodypurchasecurrency, nameof(bodypurchasecurrency), required: false);
-            SourceExpression.Validate(bodypurchasetransactionTime, nameof(bodypurchasetransactionTime), required: false);
-            SourceExpression.Validate(bodypurchasesubtotal, nameof(bodypurchasesubtotal), required: false);
-            SourceExpression.Validate(bodypurchasetax, nameof(bodypurchasetax), required: false);
-            SourceExpression.Validate(bodypurchaseshipping, nameof(bodypurchaseshipping), required: false);
-            SourceExpression.Validate(bodypurchasediscount, nameof(bodypurchasediscount), required: false);
-            SourceExpression.Validate(bodypurchasetotal, nameof(bodypurchasetotal), required: false);
-            SourceExpression.Validate(bodypurchasestatus, nameof(bodypurchasestatus), required: false);
-            SourceExpression.Validate(bodypurchaseproducts, nameof(bodypurchaseproducts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/purchases";
@@ -870,7 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet([WorkflowExpression] Func<string> purchaseId)
         {
-            SourceExpression.Validate(purchaseId, nameof(purchaseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/purchases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(purchaseId, 1));

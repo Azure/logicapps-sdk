@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<FinishActionResponse> FinishAction([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyendActionchoice = null, [WorkflowExpression] Func<string> bodyendActiondescription = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
-            SourceExpression.Validate(bodyendActionchoice, nameof(bodyendActionchoice), required: false);
-            SourceExpression.Validate(bodyendActiondescription, nameof(bodyendActiondescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -58,11 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetsListResponse> ViewAssetsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -85,8 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateAssetResponse> CreateAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bodyassetsInputItem[]> bodyassets = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(bodyassets, nameof(bodyassets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -113,8 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetResponse> ViewAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
@@ -129,100 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> bodybEFORELOANDEPARTMENTId = null, [WorkflowExpression] Func<string> bodybEFORELOANEMPLOYEEId = null, [WorkflowExpression] Func<string> bodybEFORELOANLOCATIONId = null, [WorkflowExpression] Func<string> bodybILLINGPERIODICITYINMONTH = null, [WorkflowExpression] Func<string> bodybUYBACKVALUE = null, [WorkflowExpression] Func<string> bodybUYBACKVALUECURId = null, [WorkflowExpression] Func<string> bodycATALOGId = null, [WorkflowExpression] Func<string> bodycHARGEBACK = null, [WorkflowExpression] Func<string> bodycHARGEBACKCURId = null, [WorkflowExpression] Func<string> bodycISTATUSId = null, [WorkflowExpression] Func<string> bodycIVERSION = null, [WorkflowExpression] Func<string> bodycMDEFAULTCHANGEId = null, [WorkflowExpression] Func<string> bodycONFIGURATIONId = null, [WorkflowExpression] Func<string> bodycRITICALLEVELId = null, [WorkflowExpression] Func<string> bodydELIVERYDATE = null, [WorkflowExpression] Func<string> bodydELIVERYNUMBER = null, [WorkflowExpression] Func<string> bodydEPARTMENTId = null, [WorkflowExpression] Func<string> bodydEPRECIATIONRULEId = null, [WorkflowExpression] Func<string> bodydHARDWAREGUID = null, [WorkflowExpression] Func<string> bodyeMPLOYEEId = null, [WorkflowExpression] Func<string> bodyeNDOFWARANTY = null, [WorkflowExpression] Func<string> bodyeNTRYDATE = null, [WorkflowExpression] Func<string> bodyeSTIMATEDPERCENTAGEUSE = null, [WorkflowExpression] Func<string> bodyeXPECTEDENDLENDDATE = null, [WorkflowExpression] Func<string> bodyeXPECTEDRETURNDATE = null, [WorkflowExpression] Func<string> bodyfALLENTERM = null, [WorkflowExpression] Func<string> bodyfIXEDASSETNUMBER = null, [WorkflowExpression] Func<string> bodyiNITIALSTART = null, [WorkflowExpression] Func<string> bodyiNSTALLATIONDATE = null, [WorkflowExpression] Func<string> bodyiNTERNALDELIVERYDATE = null, [WorkflowExpression] Func<string> bodyiNVOICENUMBER = null, [WorkflowExpression] Func<string> bodyiSDML = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTPHYSICALINVENTORY = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylICENSEVERSION = null, [WorkflowExpression] Func<string> bodylOCATIONId = null, [WorkflowExpression] Func<string> bodymAINTENANCECOST = null, [WorkflowExpression] Func<string> bodymAINTENANCECOSTCURId = null, [WorkflowExpression] Func<string> bodymAINUSAGEId = null, [WorkflowExpression] Func<string> bodymAXINSTALLS = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOST = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOSTCURId = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTAL = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTALCURId = null, [WorkflowExpression] Func<string> bodymONTHDURATION = null, [WorkflowExpression] Func<string> bodynETWORKIdENTIFIER = null, [WorkflowExpression] Func<string> bodynEXTDEPARTMENTId = null, [WorkflowExpression] Func<string> bodynEXTMAINTENANCEDATE = null, [WorkflowExpression] Func<string> bodynEXTSTATUSId = null, [WorkflowExpression] Func<string> bodynEXTUSERAPPLICATIONDATE = null, [WorkflowExpression] Func<string> bodynEXTUSERId = null, [WorkflowExpression] Func<string> bodynOTICE = null, [WorkflowExpression] Func<string> bodyoRDERDETAILSId = null, [WorkflowExpression] Func<string> bodyoRDERNUMBER = null, [WorkflowExpression] Func<string> bodypIPELINESTATUSId = null, [WorkflowExpression] Func<string> bodypOWERCONSUMPTIONWH = null, [WorkflowExpression] Func<string> bodypROCESSORCOUNT = null, [WorkflowExpression] Func<string> bodypROCESSORSOCKETCOUNT = null, [WorkflowExpression] Func<string> bodypURCHASEDATE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICECURId = null, [WorkflowExpression] Func<string> bodypURCHASERATEId = null, [WorkflowExpression] Func<string> bodyrECYCLEDDATE = null, [WorkflowExpression] Func<string> bodyrECYCLINGPROVIdERId = null, [WorkflowExpression] Func<string> bodyrEFORMNUMBER = null, [WorkflowExpression] Func<string> bodyrEMOVEDDATE = null, [WorkflowExpression] Func<string> bodyrENEWALDECISIONId = null, [WorkflowExpression] Func<string> bodyrENEWALVALUE = null, [WorkflowExpression] Func<string> bodyrENEWALVALUECURId = null, [WorkflowExpression] Func<string> bodyrEPAIREDBYId = null, [WorkflowExpression] Func<string> bodyrESALESVALUE = null, [WorkflowExpression] Func<string> bodysCHEDULEDEND = null, [WorkflowExpression] Func<string> bodysDCATALOGId = null, [WorkflowExpression] Func<string> bodysERIALNUMBER = null, [WorkflowExpression] Func<string> bodysLAId = null, [WorkflowExpression] Func<string> bodysTATUSId = null, [WorkflowExpression] Func<string> bodysUPPLIERId = null, [WorkflowExpression] Func<string> bodytERM = null, [WorkflowExpression] Func<string> bodyuPDATECOVERAGETERM = null, [WorkflowExpression] Func<string> bodywARANTYTYPEId = null, [WorkflowExpression] Func<string> bodyassetLabel = null, [WorkflowExpression] Func<string> bodyassetTag = null, [WorkflowExpression] Func<string> bodyautomaticRenewal = null, [WorkflowExpression] Func<string> bodyavailabilitySlaId = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodycommentAsset = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
-            SourceExpression.Validate(bodybEFORELOANDEPARTMENTId, nameof(bodybEFORELOANDEPARTMENTId), required: false);
-            SourceExpression.Validate(bodybEFORELOANEMPLOYEEId, nameof(bodybEFORELOANEMPLOYEEId), required: false);
-            SourceExpression.Validate(bodybEFORELOANLOCATIONId, nameof(bodybEFORELOANLOCATIONId), required: false);
-            SourceExpression.Validate(bodybILLINGPERIODICITYINMONTH, nameof(bodybILLINGPERIODICITYINMONTH), required: false);
-            SourceExpression.Validate(bodybUYBACKVALUE, nameof(bodybUYBACKVALUE), required: false);
-            SourceExpression.Validate(bodybUYBACKVALUECURId, nameof(bodybUYBACKVALUECURId), required: false);
-            SourceExpression.Validate(bodycATALOGId, nameof(bodycATALOGId), required: false);
-            SourceExpression.Validate(bodycHARGEBACK, nameof(bodycHARGEBACK), required: false);
-            SourceExpression.Validate(bodycHARGEBACKCURId, nameof(bodycHARGEBACKCURId), required: false);
-            SourceExpression.Validate(bodycISTATUSId, nameof(bodycISTATUSId), required: false);
-            SourceExpression.Validate(bodycIVERSION, nameof(bodycIVERSION), required: false);
-            SourceExpression.Validate(bodycMDEFAULTCHANGEId, nameof(bodycMDEFAULTCHANGEId), required: false);
-            SourceExpression.Validate(bodycONFIGURATIONId, nameof(bodycONFIGURATIONId), required: false);
-            SourceExpression.Validate(bodycRITICALLEVELId, nameof(bodycRITICALLEVELId), required: false);
-            SourceExpression.Validate(bodydELIVERYDATE, nameof(bodydELIVERYDATE), required: false);
-            SourceExpression.Validate(bodydELIVERYNUMBER, nameof(bodydELIVERYNUMBER), required: false);
-            SourceExpression.Validate(bodydEPARTMENTId, nameof(bodydEPARTMENTId), required: false);
-            SourceExpression.Validate(bodydEPRECIATIONRULEId, nameof(bodydEPRECIATIONRULEId), required: false);
-            SourceExpression.Validate(bodydHARDWAREGUID, nameof(bodydHARDWAREGUID), required: false);
-            SourceExpression.Validate(bodyeMPLOYEEId, nameof(bodyeMPLOYEEId), required: false);
-            SourceExpression.Validate(bodyeNDOFWARANTY, nameof(bodyeNDOFWARANTY), required: false);
-            SourceExpression.Validate(bodyeNTRYDATE, nameof(bodyeNTRYDATE), required: false);
-            SourceExpression.Validate(bodyeSTIMATEDPERCENTAGEUSE, nameof(bodyeSTIMATEDPERCENTAGEUSE), required: false);
-            SourceExpression.Validate(bodyeXPECTEDENDLENDDATE, nameof(bodyeXPECTEDENDLENDDATE), required: false);
-            SourceExpression.Validate(bodyeXPECTEDRETURNDATE, nameof(bodyeXPECTEDRETURNDATE), required: false);
-            SourceExpression.Validate(bodyfALLENTERM, nameof(bodyfALLENTERM), required: false);
-            SourceExpression.Validate(bodyfIXEDASSETNUMBER, nameof(bodyfIXEDASSETNUMBER), required: false);
-            SourceExpression.Validate(bodyiNITIALSTART, nameof(bodyiNITIALSTART), required: false);
-            SourceExpression.Validate(bodyiNSTALLATIONDATE, nameof(bodyiNSTALLATIONDATE), required: false);
-            SourceExpression.Validate(bodyiNTERNALDELIVERYDATE, nameof(bodyiNTERNALDELIVERYDATE), required: false);
-            SourceExpression.Validate(bodyiNVOICENUMBER, nameof(bodyiNVOICENUMBER), required: false);
-            SourceExpression.Validate(bodyiSDML, nameof(bodyiSDML), required: false);
-            SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
-            SourceExpression.Validate(bodylASTPHYSICALINVENTORY, nameof(bodylASTPHYSICALINVENTORY), required: false);
-            SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
-            SourceExpression.Validate(bodylICENSEVERSION, nameof(bodylICENSEVERSION), required: false);
-            SourceExpression.Validate(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
-            SourceExpression.Validate(bodymAINTENANCECOST, nameof(bodymAINTENANCECOST), required: false);
-            SourceExpression.Validate(bodymAINTENANCECOSTCURId, nameof(bodymAINTENANCECOSTCURId), required: false);
-            SourceExpression.Validate(bodymAINUSAGEId, nameof(bodymAINUSAGEId), required: false);
-            SourceExpression.Validate(bodymAXINSTALLS, nameof(bodymAXINSTALLS), required: false);
-            SourceExpression.Validate(bodymONTHLYFIXEDCOST, nameof(bodymONTHLYFIXEDCOST), required: false);
-            SourceExpression.Validate(bodymONTHLYFIXEDCOSTCURId, nameof(bodymONTHLYFIXEDCOSTCURId), required: false);
-            SourceExpression.Validate(bodymONTHLYNETRENTAL, nameof(bodymONTHLYNETRENTAL), required: false);
-            SourceExpression.Validate(bodymONTHLYNETRENTALCURId, nameof(bodymONTHLYNETRENTALCURId), required: false);
-            SourceExpression.Validate(bodymONTHDURATION, nameof(bodymONTHDURATION), required: false);
-            SourceExpression.Validate(bodynETWORKIdENTIFIER, nameof(bodynETWORKIdENTIFIER), required: false);
-            SourceExpression.Validate(bodynEXTDEPARTMENTId, nameof(bodynEXTDEPARTMENTId), required: false);
-            SourceExpression.Validate(bodynEXTMAINTENANCEDATE, nameof(bodynEXTMAINTENANCEDATE), required: false);
-            SourceExpression.Validate(bodynEXTSTATUSId, nameof(bodynEXTSTATUSId), required: false);
-            SourceExpression.Validate(bodynEXTUSERAPPLICATIONDATE, nameof(bodynEXTUSERAPPLICATIONDATE), required: false);
-            SourceExpression.Validate(bodynEXTUSERId, nameof(bodynEXTUSERId), required: false);
-            SourceExpression.Validate(bodynOTICE, nameof(bodynOTICE), required: false);
-            SourceExpression.Validate(bodyoRDERDETAILSId, nameof(bodyoRDERDETAILSId), required: false);
-            SourceExpression.Validate(bodyoRDERNUMBER, nameof(bodyoRDERNUMBER), required: false);
-            SourceExpression.Validate(bodypIPELINESTATUSId, nameof(bodypIPELINESTATUSId), required: false);
-            SourceExpression.Validate(bodypOWERCONSUMPTIONWH, nameof(bodypOWERCONSUMPTIONWH), required: false);
-            SourceExpression.Validate(bodypROCESSORCOUNT, nameof(bodypROCESSORCOUNT), required: false);
-            SourceExpression.Validate(bodypROCESSORSOCKETCOUNT, nameof(bodypROCESSORSOCKETCOUNT), required: false);
-            SourceExpression.Validate(bodypURCHASEDATE, nameof(bodypURCHASEDATE), required: false);
-            SourceExpression.Validate(bodypURCHASEPRICE, nameof(bodypURCHASEPRICE), required: false);
-            SourceExpression.Validate(bodypURCHASEPRICECURId, nameof(bodypURCHASEPRICECURId), required: false);
-            SourceExpression.Validate(bodypURCHASERATEId, nameof(bodypURCHASERATEId), required: false);
-            SourceExpression.Validate(bodyrECYCLEDDATE, nameof(bodyrECYCLEDDATE), required: false);
-            SourceExpression.Validate(bodyrECYCLINGPROVIdERId, nameof(bodyrECYCLINGPROVIdERId), required: false);
-            SourceExpression.Validate(bodyrEFORMNUMBER, nameof(bodyrEFORMNUMBER), required: false);
-            SourceExpression.Validate(bodyrEMOVEDDATE, nameof(bodyrEMOVEDDATE), required: false);
-            SourceExpression.Validate(bodyrENEWALDECISIONId, nameof(bodyrENEWALDECISIONId), required: false);
-            SourceExpression.Validate(bodyrENEWALVALUE, nameof(bodyrENEWALVALUE), required: false);
-            SourceExpression.Validate(bodyrENEWALVALUECURId, nameof(bodyrENEWALVALUECURId), required: false);
-            SourceExpression.Validate(bodyrEPAIREDBYId, nameof(bodyrEPAIREDBYId), required: false);
-            SourceExpression.Validate(bodyrESALESVALUE, nameof(bodyrESALESVALUE), required: false);
-            SourceExpression.Validate(bodysCHEDULEDEND, nameof(bodysCHEDULEDEND), required: false);
-            SourceExpression.Validate(bodysDCATALOGId, nameof(bodysDCATALOGId), required: false);
-            SourceExpression.Validate(bodysERIALNUMBER, nameof(bodysERIALNUMBER), required: false);
-            SourceExpression.Validate(bodysLAId, nameof(bodysLAId), required: false);
-            SourceExpression.Validate(bodysTATUSId, nameof(bodysTATUSId), required: false);
-            SourceExpression.Validate(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
-            SourceExpression.Validate(bodytERM, nameof(bodytERM), required: false);
-            SourceExpression.Validate(bodyuPDATECOVERAGETERM, nameof(bodyuPDATECOVERAGETERM), required: false);
-            SourceExpression.Validate(bodywARANTYTYPEId, nameof(bodywARANTYTYPEId), required: false);
-            SourceExpression.Validate(bodyassetLabel, nameof(bodyassetLabel), required: false);
-            SourceExpression.Validate(bodyassetTag, nameof(bodyassetTag), required: false);
-            SourceExpression.Validate(bodyautomaticRenewal, nameof(bodyautomaticRenewal), required: false);
-            SourceExpression.Validate(bodyavailabilitySlaId, nameof(bodyavailabilitySlaId), required: false);
-            SourceExpression.Validate(bodyavailableField1, nameof(bodyavailableField1), required: false);
-            SourceExpression.Validate(bodyavailableField2, nameof(bodyavailableField2), required: false);
-            SourceExpression.Validate(bodyavailableField3, nameof(bodyavailableField3), required: false);
-            SourceExpression.Validate(bodyavailableField4, nameof(bodyavailableField4), required: false);
-            SourceExpression.Validate(bodyavailableField5, nameof(bodyavailableField5), required: false);
-            SourceExpression.Validate(bodyavailableField6, nameof(bodyavailableField6), required: false);
-            SourceExpression.Validate(bodycommentAsset, nameof(bodycommentAsset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
@@ -795,8 +688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetLinksResponse> ViewAssetLinks([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
@@ -811,9 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<string> DeleteAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> parentAssetId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
-            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
@@ -828,11 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateAssetLinkResponse> CreateAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> parentAssetId, [WorkflowExpression] Func<string> bodycontractRow = null, [WorkflowExpression] Func<string> bodymonthlyPayment = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
-            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
-            SourceExpression.Validate(bodycontractRow, nameof(bodycontractRow), required: false);
-            SourceExpression.Validate(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
@@ -865,11 +748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateAssetLinkResponse> UpdateAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> parentAssetId, [WorkflowExpression] Func<string> bodycontractRow = null, [WorkflowExpression] Func<string> bodymonthlyPayment = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
-            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
-            SourceExpression.Validate(bodycontractRow, nameof(bodycontractRow), required: false);
-            SourceExpression.Validate(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
@@ -902,9 +780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetLinkResponse> ViewAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentAssetId, [WorkflowExpression] Func<string> childAssetId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
-            SourceExpression.Validate(childAssetId, nameof(childAssetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childAssetId, 1));
@@ -919,11 +794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogAssetsListResponse> ViewCatalogAssetsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -946,8 +816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogAssetResponse> ViewCatalogAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> catalogId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(catalogId, nameof(catalogId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
@@ -962,10 +830,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestsListResponse> ViewCatalogRequestsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -986,11 +850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestsPathListResponse> ViewCatalogRequestsPathList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1013,8 +872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestPathResponse> ViewCatalogRequestPath([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> catalogId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(catalogId, nameof(catalogId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
@@ -1029,8 +886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestResponse> ViewCatalogRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> catalogId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(catalogId, nameof(catalogId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
@@ -1045,11 +900,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemsListResponse> ViewConfigurationItemsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1072,8 +922,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemResponse> ViewConfigurationItem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> ciId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(ciId, nameof(ciId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
@@ -1088,8 +936,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemLinksResponse> ViewConfigurationItemLinks([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> ciId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(ciId, nameof(ciId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
@@ -1104,9 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<string> DeleteConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
-            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
@@ -1121,9 +964,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemLinkResponse> ViewConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
-            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
@@ -1138,11 +978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateConfigurationItemLinkResponse> CreateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyrelationTypeId, [WorkflowExpression] Func<string> bodyblocking = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
-            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
-            SourceExpression.Validate(bodyrelationTypeId, nameof(bodyrelationTypeId), required: true);
-            SourceExpression.Validate(bodyblocking, nameof(bodyblocking), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
@@ -1171,11 +1006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse> UpdateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyblocking = null, [WorkflowExpression] Func<string> bodyrelationTypeId = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
-            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
-            SourceExpression.Validate(bodyblocking, nameof(bodyblocking), required: false);
-            SourceExpression.Validate(bodyrelationTypeId, nameof(bodyrelationTypeId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
@@ -1208,11 +1038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEntitiesListResponse> ViewEntitiesList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1235,8 +1060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEntityResponse> ViewEntity([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> departmentId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(departmentId, nameof(departmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(departmentId, 1));
@@ -1251,11 +1074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEmployeesListResponse> ViewEmployeesList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1278,8 +1096,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateEmployeeResponse> CreateEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bodyemployeesInputItem[]> bodyemployees = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(bodyemployees, nameof(bodyemployees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1306,8 +1122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEmployeeResponse> ViewEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> employeeId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(employeeId, 1));
@@ -1322,52 +1136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateEmployeeResponse> UpdateEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> bodyaPPROVEDTOVALIdATE = null, [WorkflowExpression] Func<string> bodyaVAILABILITYSTATUSId = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodybEGINOFCONTRACT = null, [WorkflowExpression] Func<string> bodycELLULARNUMBER = null, [WorkflowExpression] Func<string> bodycHATLOGIN = null, [WorkflowExpression] Func<string> bodycIVILSTATUSId = null, [WorkflowExpression] Func<string> bodycOMMENTEMPLOYEE = null, [WorkflowExpression] Func<string> bodycOSTPERHOUR = null, [WorkflowExpression] Func<string> bodycOSTPERHOURCURId = null, [WorkflowExpression] Func<string> bodydEFAULTCOSTCENTERId = null, [WorkflowExpression] Func<string> bodydELEGATIONFROM = null, [WorkflowExpression] Func<string> bodydELEGATIONId = null, [WorkflowExpression] Func<string> bodydELEGATIONTO = null, [WorkflowExpression] Func<string> bodydEPARTMENTId = null, [WorkflowExpression] Func<string> bodyeNDOFCONTRACT = null, [WorkflowExpression] Func<string> bodyeMAIL = null, [WorkflowExpression] Func<string> bodyfAXNUMBER = null, [WorkflowExpression] Func<string> bodyfUNCTIONId = null, [WorkflowExpression] Func<string> bodyiCQNUMBER = null, [WorkflowExpression] Func<string> bodyidENTIFICATION = null, [WorkflowExpression] Func<string> bodyiSAUTOMATICSTATUS = null, [WorkflowExpression] Func<string> bodyiTCORRESPONDENT = null, [WorkflowExpression] Func<string> bodylANGUAGEId = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTNAME = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylOCATIONId = null, [WorkflowExpression] Func<string> bodylOGIN = null, [WorkflowExpression] Func<string> bodymANAGERId = null, [WorkflowExpression] Func<string> bodymESSENGERSIGNNAME = null, [WorkflowExpression] Func<string> bodynOTIFICATIONTYPEId = null, [WorkflowExpression] Func<string> bodypASSWDLASTUPDATEUT = null, [WorkflowExpression] Func<string> bodypHONENUMBER = null, [WorkflowExpression] Func<string> bodypICTUREPATH = null, [WorkflowExpression] Func<string> bodysUPPLIERId = null, [WorkflowExpression] Func<string> bodyvALIdATORId = null, [WorkflowExpression] Func<string> bodyvIPLEVELId = null, [WorkflowExpression] Func<string> bodywAVEADDRESS = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(bodyaPPROVEDTOVALIdATE, nameof(bodyaPPROVEDTOVALIdATE), required: false);
-            SourceExpression.Validate(bodyaVAILABILITYSTATUSId, nameof(bodyaVAILABILITYSTATUSId), required: false);
-            SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
-            SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
-            SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
-            SourceExpression.Validate(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
-            SourceExpression.Validate(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
-            SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
-            SourceExpression.Validate(bodybEGINOFCONTRACT, nameof(bodybEGINOFCONTRACT), required: false);
-            SourceExpression.Validate(bodycELLULARNUMBER, nameof(bodycELLULARNUMBER), required: false);
-            SourceExpression.Validate(bodycHATLOGIN, nameof(bodycHATLOGIN), required: false);
-            SourceExpression.Validate(bodycIVILSTATUSId, nameof(bodycIVILSTATUSId), required: false);
-            SourceExpression.Validate(bodycOMMENTEMPLOYEE, nameof(bodycOMMENTEMPLOYEE), required: false);
-            SourceExpression.Validate(bodycOSTPERHOUR, nameof(bodycOSTPERHOUR), required: false);
-            SourceExpression.Validate(bodycOSTPERHOURCURId, nameof(bodycOSTPERHOURCURId), required: false);
-            SourceExpression.Validate(bodydEFAULTCOSTCENTERId, nameof(bodydEFAULTCOSTCENTERId), required: false);
-            SourceExpression.Validate(bodydELEGATIONFROM, nameof(bodydELEGATIONFROM), required: false);
-            SourceExpression.Validate(bodydELEGATIONId, nameof(bodydELEGATIONId), required: false);
-            SourceExpression.Validate(bodydELEGATIONTO, nameof(bodydELEGATIONTO), required: false);
-            SourceExpression.Validate(bodydEPARTMENTId, nameof(bodydEPARTMENTId), required: false);
-            SourceExpression.Validate(bodyeNDOFCONTRACT, nameof(bodyeNDOFCONTRACT), required: false);
-            SourceExpression.Validate(bodyeMAIL, nameof(bodyeMAIL), required: false);
-            SourceExpression.Validate(bodyfAXNUMBER, nameof(bodyfAXNUMBER), required: false);
-            SourceExpression.Validate(bodyfUNCTIONId, nameof(bodyfUNCTIONId), required: false);
-            SourceExpression.Validate(bodyiCQNUMBER, nameof(bodyiCQNUMBER), required: false);
-            SourceExpression.Validate(bodyidENTIFICATION, nameof(bodyidENTIFICATION), required: false);
-            SourceExpression.Validate(bodyiSAUTOMATICSTATUS, nameof(bodyiSAUTOMATICSTATUS), required: false);
-            SourceExpression.Validate(bodyiTCORRESPONDENT, nameof(bodyiTCORRESPONDENT), required: false);
-            SourceExpression.Validate(bodylANGUAGEId, nameof(bodylANGUAGEId), required: false);
-            SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
-            SourceExpression.Validate(bodylASTNAME, nameof(bodylASTNAME), required: false);
-            SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
-            SourceExpression.Validate(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
-            SourceExpression.Validate(bodylOGIN, nameof(bodylOGIN), required: false);
-            SourceExpression.Validate(bodymANAGERId, nameof(bodymANAGERId), required: false);
-            SourceExpression.Validate(bodymESSENGERSIGNNAME, nameof(bodymESSENGERSIGNNAME), required: false);
-            SourceExpression.Validate(bodynOTIFICATIONTYPEId, nameof(bodynOTIFICATIONTYPEId), required: false);
-            SourceExpression.Validate(bodypASSWDLASTUPDATEUT, nameof(bodypASSWDLASTUPDATEUT), required: false);
-            SourceExpression.Validate(bodypHONENUMBER, nameof(bodypHONENUMBER), required: false);
-            SourceExpression.Validate(bodypICTUREPATH, nameof(bodypICTUREPATH), required: false);
-            SourceExpression.Validate(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
-            SourceExpression.Validate(bodyvALIdATORId, nameof(bodyvALIdATORId), required: false);
-            SourceExpression.Validate(bodyvIPLEVELId, nameof(bodyvIPLEVELId), required: false);
-            SourceExpression.Validate(bodywAVEADDRESS, nameof(bodywAVEADDRESS), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(employeeId, 1));
@@ -1652,11 +1420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewKnownErrorsListResponse> ViewKnownErrorsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/known-problems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1679,8 +1442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewKnownErrorsResponse> ViewKnownErrors([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> kpId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(kpId, nameof(kpId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/known-problems/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(kpId, 1));
@@ -1695,11 +1456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewLocationsListResponse> ViewLocationsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1722,8 +1478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewLocationResponse> ViewLocation([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> locationId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(locationId, nameof(locationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
@@ -1738,10 +1492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewManufacturerListResponse> ViewManufacturerList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1762,8 +1512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewManufacturerResponse> ViewManufacturer([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> manufacturerId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(manufacturerId, nameof(manufacturerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(manufacturerId, 1));
@@ -1778,11 +1526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewRequestsIncidentsListResponse> ViewRequestsIncidentsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1805,8 +1548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateRequestIncidentResponse> CreateRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bodyrequestsInputItem[]> bodyrequests = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(bodyrequests, nameof(bodyrequests), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -1833,8 +1574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewRequestIncidentResponse> ViewRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -1849,9 +1588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CloseRequestIncidentResponse> CloseRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<bodyclosedInputItem[]> bodyclosed = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
-            SourceExpression.Validate(bodyclosed, nameof(bodyclosed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -1878,74 +1614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateRequestIncidentResponse> UpdateRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyanalyticalChargeId = null, [WorkflowExpression] Func<string> bodyassetId = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodybudgetPlanned = null, [WorkflowExpression] Func<string> bodycanBeDuplicated = null, [WorkflowExpression] Func<string> bodyciId = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontinuityPlanId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodycreationDateUt = null, [WorkflowExpression] Func<string> bodydelay = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydynamicDetails = null, [WorkflowExpression] Func<string> bodyeffectiveChangeDateEnd = null, [WorkflowExpression] Func<string> bodyeffectiveChangeDateStart = null, [WorkflowExpression] Func<string> bodyendDateUt = null, [WorkflowExpression] Func<string> bodyestimatedNetPrice = null, [WorkflowExpression] Func<string> bodyexpectedDateUt = null, [WorkflowExpression] Func<string> bodyexpectedDuration = null, [WorkflowExpression] Func<string> bodyexpectedEndDateUt = null, [WorkflowExpression] Func<string> bodyexpectedStartDateUt = null, [WorkflowExpression] Func<string> bodyexternalReference = null, [WorkflowExpression] Func<string> bodyfirstCallResolution = null, [WorkflowExpression] Func<string> bodyhourPerDay = null, [WorkflowExpression] Func<string> bodyimpactId = null, [WorkflowExpression] Func<string> bodyimputationDate = null, [WorkflowExpression] Func<string> bodyisMajorIncident = null, [WorkflowExpression] Func<string> bodyisTemplate = null, [WorkflowExpression] Func<string> bodyknownProblemsId = null, [WorkflowExpression] Func<string> bodylastUpdate = null, [WorkflowExpression] Func<string> bodymark1 = null, [WorkflowExpression] Func<string> bodymark2 = null, [WorkflowExpression] Func<string> bodymaxResolutionDateUt = null, [WorkflowExpression] Func<string> bodymsProjectImportValidationWaiting = null, [WorkflowExpression] Func<string> bodynetPrice = null, [WorkflowExpression] Func<string> bodynetPriceCurId = null, [WorkflowExpression] Func<string> bodyoriginToolId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyowningGroupId = null, [WorkflowExpression] Func<string> bodyplannedChangeDateEnd = null, [WorkflowExpression] Func<string> bodyplannedChangeDateStart = null, [WorkflowExpression] Func<string> bodypmStatusId = null, [WorkflowExpression] Func<string> bodyprojectName = null, [WorkflowExpression] Func<string> bodyprojectStartDateUt = null, [WorkflowExpression] Func<string> bodyqty = null, [WorkflowExpression] Func<string> bodyreleaseId = null, [WorkflowExpression] Func<string> bodyrentalNetPrice = null, [WorkflowExpression] Func<string> bodyrentalNetPriceCurId = null, [WorkflowExpression] Func<string> bodyrequestOriginId = null, [WorkflowExpression] Func<string> bodyrequestedChangeDateEnd = null, [WorkflowExpression] Func<string> bodyrequestedChangeDateStart = null, [WorkflowExpression] Func<string> bodyrequestorId = null, [WorkflowExpression] Func<string> bodyrequestorIpAddress = null, [WorkflowExpression] Func<string> bodyrequestorPhone = null, [WorkflowExpression] Func<string> bodyriskAmount = null, [WorkflowExpression] Func<string> bodyriskDescription = null, [WorkflowExpression] Func<string> bodyriskLevelId = null, [WorkflowExpression] Func<string> bodyrootCauseId = null, [WorkflowExpression] Func<string> bodysubmitDateUt = null, [WorkflowExpression] Func<string> bodytimeUsedToSolveRequest = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
-            SourceExpression.Validate(bodyanalyticalChargeId, nameof(bodyanalyticalChargeId), required: false);
-            SourceExpression.Validate(bodyassetId, nameof(bodyassetId), required: false);
-            SourceExpression.Validate(bodyavailableField1, nameof(bodyavailableField1), required: false);
-            SourceExpression.Validate(bodyavailableField2, nameof(bodyavailableField2), required: false);
-            SourceExpression.Validate(bodyavailableField3, nameof(bodyavailableField3), required: false);
-            SourceExpression.Validate(bodyavailableField4, nameof(bodyavailableField4), required: false);
-            SourceExpression.Validate(bodyavailableField5, nameof(bodyavailableField5), required: false);
-            SourceExpression.Validate(bodyavailableField6, nameof(bodyavailableField6), required: false);
-            SourceExpression.Validate(bodybudgetPlanned, nameof(bodybudgetPlanned), required: false);
-            SourceExpression.Validate(bodycanBeDuplicated, nameof(bodycanBeDuplicated), required: false);
-            SourceExpression.Validate(bodyciId, nameof(bodyciId), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodycontinuityPlanId, nameof(bodycontinuityPlanId), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodycreationDateUt, nameof(bodycreationDateUt), required: false);
-            SourceExpression.Validate(bodydelay, nameof(bodydelay), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydynamicDetails, nameof(bodydynamicDetails), required: false);
-            SourceExpression.Validate(bodyeffectiveChangeDateEnd, nameof(bodyeffectiveChangeDateEnd), required: false);
-            SourceExpression.Validate(bodyeffectiveChangeDateStart, nameof(bodyeffectiveChangeDateStart), required: false);
-            SourceExpression.Validate(bodyendDateUt, nameof(bodyendDateUt), required: false);
-            SourceExpression.Validate(bodyestimatedNetPrice, nameof(bodyestimatedNetPrice), required: false);
-            SourceExpression.Validate(bodyexpectedDateUt, nameof(bodyexpectedDateUt), required: false);
-            SourceExpression.Validate(bodyexpectedDuration, nameof(bodyexpectedDuration), required: false);
-            SourceExpression.Validate(bodyexpectedEndDateUt, nameof(bodyexpectedEndDateUt), required: false);
-            SourceExpression.Validate(bodyexpectedStartDateUt, nameof(bodyexpectedStartDateUt), required: false);
-            SourceExpression.Validate(bodyexternalReference, nameof(bodyexternalReference), required: false);
-            SourceExpression.Validate(bodyfirstCallResolution, nameof(bodyfirstCallResolution), required: false);
-            SourceExpression.Validate(bodyhourPerDay, nameof(bodyhourPerDay), required: false);
-            SourceExpression.Validate(bodyimpactId, nameof(bodyimpactId), required: false);
-            SourceExpression.Validate(bodyimputationDate, nameof(bodyimputationDate), required: false);
-            SourceExpression.Validate(bodyisMajorIncident, nameof(bodyisMajorIncident), required: false);
-            SourceExpression.Validate(bodyisTemplate, nameof(bodyisTemplate), required: false);
-            SourceExpression.Validate(bodyknownProblemsId, nameof(bodyknownProblemsId), required: false);
-            SourceExpression.Validate(bodylastUpdate, nameof(bodylastUpdate), required: false);
-            SourceExpression.Validate(bodymark1, nameof(bodymark1), required: false);
-            SourceExpression.Validate(bodymark2, nameof(bodymark2), required: false);
-            SourceExpression.Validate(bodymaxResolutionDateUt, nameof(bodymaxResolutionDateUt), required: false);
-            SourceExpression.Validate(bodymsProjectImportValidationWaiting, nameof(bodymsProjectImportValidationWaiting), required: false);
-            SourceExpression.Validate(bodynetPrice, nameof(bodynetPrice), required: false);
-            SourceExpression.Validate(bodynetPriceCurId, nameof(bodynetPriceCurId), required: false);
-            SourceExpression.Validate(bodyoriginToolId, nameof(bodyoriginToolId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyowningGroupId, nameof(bodyowningGroupId), required: false);
-            SourceExpression.Validate(bodyplannedChangeDateEnd, nameof(bodyplannedChangeDateEnd), required: false);
-            SourceExpression.Validate(bodyplannedChangeDateStart, nameof(bodyplannedChangeDateStart), required: false);
-            SourceExpression.Validate(bodypmStatusId, nameof(bodypmStatusId), required: false);
-            SourceExpression.Validate(bodyprojectName, nameof(bodyprojectName), required: false);
-            SourceExpression.Validate(bodyprojectStartDateUt, nameof(bodyprojectStartDateUt), required: false);
-            SourceExpression.Validate(bodyqty, nameof(bodyqty), required: false);
-            SourceExpression.Validate(bodyreleaseId, nameof(bodyreleaseId), required: false);
-            SourceExpression.Validate(bodyrentalNetPrice, nameof(bodyrentalNetPrice), required: false);
-            SourceExpression.Validate(bodyrentalNetPriceCurId, nameof(bodyrentalNetPriceCurId), required: false);
-            SourceExpression.Validate(bodyrequestOriginId, nameof(bodyrequestOriginId), required: false);
-            SourceExpression.Validate(bodyrequestedChangeDateEnd, nameof(bodyrequestedChangeDateEnd), required: false);
-            SourceExpression.Validate(bodyrequestedChangeDateStart, nameof(bodyrequestedChangeDateStart), required: false);
-            SourceExpression.Validate(bodyrequestorId, nameof(bodyrequestorId), required: false);
-            SourceExpression.Validate(bodyrequestorIpAddress, nameof(bodyrequestorIpAddress), required: false);
-            SourceExpression.Validate(bodyrequestorPhone, nameof(bodyrequestorPhone), required: false);
-            SourceExpression.Validate(bodyriskAmount, nameof(bodyriskAmount), required: false);
-            SourceExpression.Validate(bodyriskDescription, nameof(bodyriskDescription), required: false);
-            SourceExpression.Validate(bodyriskLevelId, nameof(bodyriskLevelId), required: false);
-            SourceExpression.Validate(bodyrootCauseId, nameof(bodyrootCauseId), required: false);
-            SourceExpression.Validate(bodysubmitDateUt, nameof(bodysubmitDateUt), required: false);
-            SourceExpression.Validate(bodytimeUsedToSolveRequest, nameof(bodytimeUsedToSolveRequest), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -2362,8 +2030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewRequestIncidentCommentResponse> ViewRequestIncidentComment([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/comment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -2378,8 +2044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<GetRequestIncidentDocumentListResponse> GetRequestIncidentDocumentList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -2394,9 +2058,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UploadAndAttachADocumentToARequestIncidentResponse> UploadAndAttachADocumentToARequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -2419,10 +2080,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<RestartRequestIncidentResponse> RestartRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<int> bodydoneById = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodydoneById, nameof(bodydoneById), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -2455,10 +2112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<SuspendRequestIncidentResponse> SuspendRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodydoneById = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodydoneById, nameof(bodydoneById), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/suspend", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -2491,24 +2144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IWorkflowAction CreateTask([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyactionTypeId, [WorkflowExpression] Func<string> bodyelapsedTime = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodycontractualCost = null, [WorkflowExpression] Func<string> bodycreationDateUt = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendDateUt = null, [WorkflowExpression] Func<string> bodygroupMail = null, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodystartDateUt = null, [WorkflowExpression] Func<string> bodytimeCost = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
-            SourceExpression.Validate(bodyactionTypeId, nameof(bodyactionTypeId), required: true);
-            SourceExpression.Validate(bodyelapsedTime, nameof(bodyelapsedTime), required: false);
-            SourceExpression.Validate(bodyavailableField1, nameof(bodyavailableField1), required: false);
-            SourceExpression.Validate(bodyavailableField2, nameof(bodyavailableField2), required: false);
-            SourceExpression.Validate(bodyavailableField3, nameof(bodyavailableField3), required: false);
-            SourceExpression.Validate(bodyavailableField4, nameof(bodyavailableField4), required: false);
-            SourceExpression.Validate(bodyavailableField5, nameof(bodyavailableField5), required: false);
-            SourceExpression.Validate(bodyavailableField6, nameof(bodyavailableField6), required: false);
-            SourceExpression.Validate(bodycontractualCost, nameof(bodycontractualCost), required: false);
-            SourceExpression.Validate(bodycreationDateUt, nameof(bodycreationDateUt), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyendDateUt, nameof(bodyendDateUt), required: false);
-            SourceExpression.Validate(bodygroupMail, nameof(bodygroupMail), required: false);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
-            SourceExpression.Validate(bodystartDateUt, nameof(bodystartDateUt), required: false);
-            SourceExpression.Validate(bodytimeCost, nameof(bodytimeCost), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
@@ -2621,11 +2256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewSlasListResponse> ViewSlasList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
@@ -2648,8 +2278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewSlaResponse> ViewSla([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slaId)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(slaId, nameof(slaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slaId, 1));

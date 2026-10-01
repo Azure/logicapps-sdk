@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _001addFixedSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodypayrollItemId, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<double> bodytotalLimitAmount = null, [WorkflowExpression] Func<double> bodypaidAmount = null, [WorkflowExpression] Func<double> bodysurplusAmount = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: true);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodytotalLimitAmount, nameof(bodytotalLimitAmount), required: false);
-            SourceExpression.Validate(bodypaidAmount, nameof(bodypaidAmount), required: false);
-            SourceExpression.Validate(bodysurplusAmount, nameof(bodysurplusAmount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/addFixedSalaryData";
@@ -96,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _002deleteFixedSalaryDataById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/deleteFixedSalaryDataById";
@@ -126,7 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> _003getUserInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getUserInfoById";
@@ -142,14 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _003updateFixedSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypayrollItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<double> bodytotalLimitAmount = null, [WorkflowExpression] Func<double> bodypaidAmount = null, [WorkflowExpression] Func<double> bodysurplusAmount = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: false);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodytotalLimitAmount, nameof(bodytotalLimitAmount), required: false);
-            SourceExpression.Validate(bodypaidAmount, nameof(bodypaidAmount), required: false);
-            SourceExpression.Validate(bodysurplusAmount, nameof(bodysurplusAmount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/updateFixedSalaryDataById";
@@ -214,17 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _004addLocationInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<double> bodylongitude, [WorkflowExpression] Func<double> bodylatitude, [WorkflowExpression] Func<string> bodyareaCode, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<bool> bodyisEnableGps = null, [WorkflowExpression] Func<bool> bodyisEnableBluetooth = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymapType = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            SourceExpression.Validate(bodylongitude, nameof(bodylongitude), required: true);
-            SourceExpression.Validate(bodylatitude, nameof(bodylatitude), required: true);
-            SourceExpression.Validate(bodyareaCode, nameof(bodyareaCode), required: true);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodyisEnableGps, nameof(bodyisEnableGps), required: false);
-            SourceExpression.Validate(bodyisEnableBluetooth, nameof(bodyisEnableBluetooth), required: false);
-            SourceExpression.Validate(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymapType, nameof(bodymapType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/addLocationInfo";
@@ -291,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV3PayrollFixedResp> _004getFixedSalaryDataByEmployeeId([WorkflowExpression] Func<string> employeeId)
         {
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getFixedSalaryDataByEmployeeId";
@@ -307,12 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _005addVariableSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodypayrollItemId, [WorkflowExpression] Func<double> bodymoney, [WorkflowExpression] Func<string> bodypayrollDate, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodydataType = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: true);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: true);
-            SourceExpression.Validate(bodypayrollDate, nameof(bodypayrollDate), required: true);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodydataType, nameof(bodydataType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/addVariableSalaryData";
@@ -353,7 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _005deleteLocationById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/deleteLocationById";
@@ -369,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _006deleteVariableSalaryDataById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/deleteVariableSalaryDataById";
@@ -385,18 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _006updateLocationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<double> bodylongitude = null, [WorkflowExpression] Func<double> bodylatitude = null, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<bool> bodyisEnableGps = null, [WorkflowExpression] Func<bool> bodyisEnableBluetooth = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymapType = null, [WorkflowExpression] Func<string> bodyareaCode = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodylongitude, nameof(bodylongitude), required: false);
-            SourceExpression.Validate(bodylatitude, nameof(bodylatitude), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodyisEnableGps, nameof(bodyisEnableGps), required: false);
-            SourceExpression.Validate(bodyisEnableBluetooth, nameof(bodyisEnableBluetooth), required: false);
-            SourceExpression.Validate(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymapType, nameof(bodymapType), required: false);
-            SourceExpression.Validate(bodyareaCode, nameof(bodyareaCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/updateLocationById";
@@ -485,9 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3AttAddressResp> _007getLocationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getLocationList";
@@ -508,9 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _007updateVariableSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/updateVariableSalaryDataById";
@@ -545,7 +489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3AttAddressResp> _008getLocationInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getLocationInfoById";
@@ -561,17 +504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> _008getVariableSalaryDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> payrollDateFilter = null, [WorkflowExpression] Func<string> moneyFilter = null, [WorkflowExpression] Func<string> payrollItemIdFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
-            SourceExpression.Validate(payrollDateFilter, nameof(payrollDateFilter), required: false);
-            SourceExpression.Validate(moneyFilter, nameof(moneyFilter), required: false);
-            SourceExpression.Validate(payrollItemIdFilter, nameof(payrollItemIdFilter), required: false);
-            SourceExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
-            SourceExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getVariableSalaryDataList";
@@ -608,13 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _009addExternalSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodybusinessSalaryItemId, [WorkflowExpression] Func<double> bodymoney, [WorkflowExpression] Func<string> bodyoccurrenceDate, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodybusinessSalaryItemId, nameof(bodybusinessSalaryItemId), required: true);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: true);
-            SourceExpression.Validate(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/addExternalSalaryData";
@@ -661,7 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3AttRuleResp> _009getLocationAttendanceRulesById([WorkflowExpression] Func<string> workLocationId)
         {
-            SourceExpression.Validate(workLocationId, nameof(workLocationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getLocationAttendanceRulesById";
@@ -677,10 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _010addDepartmentInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/addDepartmentInfo";
@@ -721,7 +641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _010deleteExternalSalaryDataById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/deleteExternalSalaryDataById";
@@ -737,7 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _011deleteDepartmentById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/deleteDepartmentById";
@@ -753,14 +671,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _011updateExternalSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyemployeeId = null, [WorkflowExpression] Func<string> bodybusinessSalaryItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyoccurrenceDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: false);
-            SourceExpression.Validate(bodybusinessSalaryItemId, nameof(bodybusinessSalaryItemId), required: false);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: false);
-            SourceExpression.Validate(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/updateExternalSalaryDataById";
@@ -825,17 +735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> _012getExternalSalaryDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> businessSalaryItemFilter = null, [WorkflowExpression] Func<string> occurrenceDateFilter = null, [WorkflowExpression] Func<string> moneyFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> labelFilter = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
-            SourceExpression.Validate(businessSalaryItemFilter, nameof(businessSalaryItemFilter), required: false);
-            SourceExpression.Validate(occurrenceDateFilter, nameof(occurrenceDateFilter), required: false);
-            SourceExpression.Validate(moneyFilter, nameof(moneyFilter), required: false);
-            SourceExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
-            SourceExpression.Validate(labelFilter, nameof(labelFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getExternalSalaryDataList";
@@ -872,11 +771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _012updateDepartmentById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/updateDepartmentById";
@@ -923,9 +817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3DepartmentResp> _013getDepartmentList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getDepartmentList";
@@ -946,10 +837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> _013getPayrollRunList([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getPayrollRunList";
@@ -971,9 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _014addPositionInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/addPositionInfo";
@@ -1008,9 +892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> _014getPayrollRunDataList([WorkflowExpression] Func<string> planId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(planId, nameof(planId), required: true);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getPayrollRunDataList";
@@ -1030,7 +911,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _015deletePositionById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/deletePositionById";
@@ -1046,7 +926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> _015getPayrollDetailsInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getPayrollDetailsInfoById";
@@ -1062,9 +941,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> _016getPayrollPolicyList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getPayrollPolicyList";
@@ -1085,10 +961,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _016updatePositionById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/updatePositionById";
@@ -1129,7 +1001,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3PayrollRegResp> _017getPayrollPolicyInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getPayrollPolicyInfoById";
@@ -1145,9 +1016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3PositionResp> _017getPositionList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getPositionList";
@@ -1168,9 +1036,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _018addCostCenterInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/addCostCenterInfo";
@@ -1205,13 +1070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> _018getPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> nameFilter = null, [WorkflowExpression] Func<string> paymentTypeFilter = null, [WorkflowExpression] Func<string> payrollItemTypeId = null, [WorkflowExpression] Func<string> statusFilter = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(nameFilter, nameof(nameFilter), required: false);
-            SourceExpression.Validate(paymentTypeFilter, nameof(paymentTypeFilter), required: false);
-            SourceExpression.Validate(payrollItemTypeId, nameof(payrollItemTypeId), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getPayItemList";
@@ -1240,7 +1098,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _019deleteCostCenterById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/deleteCostCenterById";
@@ -1256,7 +1113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3PayrollItemResp> _019getPayItemInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getPayItemInfoById";
@@ -1272,53 +1128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3AddEmployeeResp> _01addEmployeeInfo([WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyenglishName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyemployeeStatus = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysurnameEnglish = null, [WorkflowExpression] Func<string> bodypersonalNameEnglish = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodydate1 = null, [WorkflowExpression] Func<string> bodydate2 = null, [WorkflowExpression] Func<string> bodydate3 = null, [WorkflowExpression] Func<string> bodydate4 = null, [WorkflowExpression] Func<string> bodytext1 = null, [WorkflowExpression] Func<string> bodytext2 = null, [WorkflowExpression] Func<string> bodytext3 = null, [WorkflowExpression] Func<string> bodytext4 = null, [WorkflowExpression] Func<string> bodytext5 = null, [WorkflowExpression] Func<string> bodytext6 = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodymobileCardCalType = null, [WorkflowExpression] Func<string> bodyregularType = null, [WorkflowExpression] Func<string> bodyinsurePlanName = null, [WorkflowExpression] Func<string> bodybizLabelIds = null)
         {
-            SourceExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
-            SourceExpression.Validate(bodyenglishName, nameof(bodyenglishName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: false);
-            SourceExpression.Validate(bodysex, nameof(bodysex), required: false);
-            SourceExpression.Validate(bodynationality, nameof(bodynationality), required: false);
-            SourceExpression.Validate(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
-            SourceExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
-            SourceExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
-            SourceExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyidentityCard, nameof(bodyidentityCard), required: false);
-            SourceExpression.Validate(bodychineseName, nameof(bodychineseName), required: false);
-            SourceExpression.Validate(bodysurnameEnglish, nameof(bodysurnameEnglish), required: false);
-            SourceExpression.Validate(bodypersonalNameEnglish, nameof(bodypersonalNameEnglish), required: false);
-            SourceExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
-            SourceExpression.Validate(bodyemergencyContactRelation, nameof(bodyemergencyContactRelation), required: false);
-            SourceExpression.Validate(bodyemergencyContactPhone, nameof(bodyemergencyContactPhone), required: false);
-            SourceExpression.Validate(bodybankCode, nameof(bodybankCode), required: false);
-            SourceExpression.Validate(bodybankBranchNumber, nameof(bodybankBranchNumber), required: false);
-            SourceExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
-            SourceExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
-            SourceExpression.Validate(bodydate1, nameof(bodydate1), required: false);
-            SourceExpression.Validate(bodydate2, nameof(bodydate2), required: false);
-            SourceExpression.Validate(bodydate3, nameof(bodydate3), required: false);
-            SourceExpression.Validate(bodydate4, nameof(bodydate4), required: false);
-            SourceExpression.Validate(bodytext1, nameof(bodytext1), required: false);
-            SourceExpression.Validate(bodytext2, nameof(bodytext2), required: false);
-            SourceExpression.Validate(bodytext3, nameof(bodytext3), required: false);
-            SourceExpression.Validate(bodytext4, nameof(bodytext4), required: false);
-            SourceExpression.Validate(bodytext5, nameof(bodytext5), required: false);
-            SourceExpression.Validate(bodytext6, nameof(bodytext6), required: false);
-            SourceExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
-            SourceExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
-            SourceExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
-            SourceExpression.Validate(bodymobileCardCalType, nameof(bodymobileCardCalType), required: false);
-            SourceExpression.Validate(bodyregularType, nameof(bodyregularType), required: false);
-            SourceExpression.Validate(bodyinsurePlanName, nameof(bodyinsurePlanName), required: false);
-            SourceExpression.Validate(bodybizLabelIds, nameof(bodybizLabelIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/addEmployeeInfo";
@@ -1609,11 +1418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _01addLeaveBalanceAdjustInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyholidayType, [WorkflowExpression] Func<string> bodyoccurrenceTime, [WorkflowExpression] Func<string> bodycause, [WorkflowExpression] Func<string> bodyadjust)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: true);
-            SourceExpression.Validate(bodyoccurrenceTime, nameof(bodyoccurrenceTime), required: true);
-            SourceExpression.Validate(bodycause, nameof(bodycause), required: true);
-            SourceExpression.Validate(bodyadjust, nameof(bodyadjust), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/addLeaveBalanceAdjustInfo";
@@ -1644,21 +1448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _01addRosterInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyattendDay, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<double> bodyscheduledAmount = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyattendDay, nameof(bodyattendDay), required: true);
-            SourceExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
-            SourceExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
-            SourceExpression.Validate(bodyshiftTemplateId, nameof(bodyshiftTemplateId), required: false);
-            SourceExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
-            SourceExpression.Validate(bodydateType, nameof(bodydateType), required: false);
-            SourceExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
-            SourceExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
-            SourceExpression.Validate(bodyscheduledAmount, nameof(bodyscheduledAmount), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/addRosterInfo";
@@ -1753,11 +1542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3CalAttendanceResp> _01attendanceSummaryCalculate([WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string[]> bodyemployeeIds = null, [WorkflowExpression] Func<string[]> bodydepartmentIds = null, [WorkflowExpression] Func<string[]> bodypositionIds = null)
         {
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            SourceExpression.Validate(bodyemployeeIds, nameof(bodyemployeeIds), required: false);
-            SourceExpression.Validate(bodydepartmentIds, nameof(bodydepartmentIds), required: false);
-            SourceExpression.Validate(bodypositionIds, nameof(bodypositionIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/attendanceSummaryCalculate";
@@ -1814,9 +1598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> _01getExpenseTypeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/expense/getExpenseTypeList";
@@ -1837,9 +1618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> _020getExternalPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getExternalPayItemList";
@@ -1860,10 +1638,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _020updateCostCenterById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/updateCostCenterById";
@@ -1904,9 +1678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3CostCenterResp> _021getCostCenterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getCostCenterList";
@@ -1927,7 +1698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3ExternalPayItemResp> _021getExternalPayItemInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getExternalPayItemInfoById";
@@ -1943,10 +1713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _022addTagInfo([WorkflowExpression] Func<string> bodylabelName, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<int> bodylabelStatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodylabelName, nameof(bodylabelName), required: true);
-            SourceExpression.Validate(bodylabelCode, nameof(bodylabelCode), required: false);
-            SourceExpression.Validate(bodylabelStatus, nameof(bodylabelStatus), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/addTagInfo";
@@ -1987,22 +1753,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _022addWorkPatternInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyworkHoursForDay, [WorkflowExpression] Func<double> bodyworkHoursForWeek, [WorkflowExpression] Func<double> bodyworkHoursForYear, [WorkflowExpression] Func<double> bodytotalHours, [WorkflowExpression] Func<string> bodycycleType, [WorkflowExpression] Func<string> bodyadvancedSetting = null, [WorkflowExpression] Func<string> bodynumber = null, [WorkflowExpression] Func<string> bodyfte = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodysalaryCalculationStyle = null, [WorkflowExpression] Func<int> bodyworkTime = null, [WorkflowExpression] Func<string> bodydoubleWeekBaseDate = null, [WorkflowExpression] Func<string> bodyweekSalaryType = null, [WorkflowExpression] Func<int> bodyisThisWeek = null, [WorkflowExpression] Func<V3TermsSettingInsert[]> bodysettingList = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyworkHoursForDay, nameof(bodyworkHoursForDay), required: true);
-            SourceExpression.Validate(bodyworkHoursForWeek, nameof(bodyworkHoursForWeek), required: true);
-            SourceExpression.Validate(bodyworkHoursForYear, nameof(bodyworkHoursForYear), required: true);
-            SourceExpression.Validate(bodytotalHours, nameof(bodytotalHours), required: true);
-            SourceExpression.Validate(bodycycleType, nameof(bodycycleType), required: true);
-            SourceExpression.Validate(bodyadvancedSetting, nameof(bodyadvancedSetting), required: false);
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: false);
-            SourceExpression.Validate(bodyfte, nameof(bodyfte), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodysalaryCalculationStyle, nameof(bodysalaryCalculationStyle), required: false);
-            SourceExpression.Validate(bodyworkTime, nameof(bodyworkTime), required: false);
-            SourceExpression.Validate(bodydoubleWeekBaseDate, nameof(bodydoubleWeekBaseDate), required: false);
-            SourceExpression.Validate(bodyweekSalaryType, nameof(bodyweekSalaryType), required: false);
-            SourceExpression.Validate(bodyisThisWeek, nameof(bodyisThisWeek), required: false);
-            SourceExpression.Validate(bodysettingList, nameof(bodysettingList), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/addWorkPatternInfo";
@@ -2095,7 +1845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _023deleteTagById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/deleteTagById";
@@ -2111,24 +1860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _023updateWorkPatternById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyadvancedSetting = null, [WorkflowExpression] Func<string> bodynumber = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<double> bodyworkHoursForDay = null, [WorkflowExpression] Func<double> bodyworkHoursForWeek = null, [WorkflowExpression] Func<double> bodyworkHoursForYear = null, [WorkflowExpression] Func<double> bodytotalHours = null, [WorkflowExpression] Func<string> bodycycleType = null, [WorkflowExpression] Func<string> bodyfte = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodysalaryCalculationStyle = null, [WorkflowExpression] Func<int> bodyworkTime = null, [WorkflowExpression] Func<string> bodydoubleWeekBaseDate = null, [WorkflowExpression] Func<string> bodyweekSalaryType = null, [WorkflowExpression] Func<int> bodyisThisWeek = null, [WorkflowExpression] Func<string> bodytermsWorkDefaultId = null, [WorkflowExpression] Func<V3TermsSettingUpdate[]> bodysettingList = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyadvancedSetting, nameof(bodyadvancedSetting), required: false);
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyworkHoursForDay, nameof(bodyworkHoursForDay), required: false);
-            SourceExpression.Validate(bodyworkHoursForWeek, nameof(bodyworkHoursForWeek), required: false);
-            SourceExpression.Validate(bodyworkHoursForYear, nameof(bodyworkHoursForYear), required: false);
-            SourceExpression.Validate(bodytotalHours, nameof(bodytotalHours), required: false);
-            SourceExpression.Validate(bodycycleType, nameof(bodycycleType), required: false);
-            SourceExpression.Validate(bodyfte, nameof(bodyfte), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodysalaryCalculationStyle, nameof(bodysalaryCalculationStyle), required: false);
-            SourceExpression.Validate(bodyworkTime, nameof(bodyworkTime), required: false);
-            SourceExpression.Validate(bodydoubleWeekBaseDate, nameof(bodydoubleWeekBaseDate), required: false);
-            SourceExpression.Validate(bodyweekSalaryType, nameof(bodyweekSalaryType), required: false);
-            SourceExpression.Validate(bodyisThisWeek, nameof(bodyisThisWeek), required: false);
-            SourceExpression.Validate(bodytermsWorkDefaultId, nameof(bodytermsWorkDefaultId), required: false);
-            SourceExpression.Validate(bodysettingList, nameof(bodysettingList), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/updateWorkPatternById";
@@ -2253,7 +1984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _024deleteWorkPatternById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/deleteWorkPatternById";
@@ -2269,11 +1999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _024updateTagById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<string> bodylabelName = null, [WorkflowExpression] Func<int> bodylabelStatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylabelCode, nameof(bodylabelCode), required: false);
-            SourceExpression.Validate(bodylabelName, nameof(bodylabelName), required: false);
-            SourceExpression.Validate(bodylabelStatus, nameof(bodylabelStatus), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/updateTagById";
@@ -2320,9 +2045,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LabelResp> _025getTagList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getTagList";
@@ -2343,9 +2065,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> _025getWorkPatternList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getWorkPatternList";
@@ -2366,9 +2085,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3DeviceResp> _026getDeviceList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/company/getDeviceList";
@@ -2389,7 +2105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3WorkPatternResp> _026getWorkPatternInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/payroll/getWorkPatternInfoById";
@@ -2405,12 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> _02addExpenseApplicationInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyreimbursementType, [WorkflowExpression] Func<string> bodyreimbursementDate, [WorkflowExpression] Func<string> bodyreimbursementName, [WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyreimbursementType, nameof(bodyreimbursementType), required: true);
-            SourceExpression.Validate(bodyreimbursementDate, nameof(bodyreimbursementDate), required: true);
-            SourceExpression.Validate(bodyreimbursementName, nameof(bodyreimbursementName), required: true);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: true);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/expense/addExpenseApplicationInfo";
@@ -2447,19 +2156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _02batchSaveRosterInfo([WorkflowExpression] Func<string[]> bodyemployeeIds, [WorkflowExpression] Func<string[]> bodydates, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<bool> bodyreplaceOriginal = null)
         {
-            SourceExpression.Validate(bodyemployeeIds, nameof(bodyemployeeIds), required: true);
-            SourceExpression.Validate(bodydates, nameof(bodydates), required: true);
-            SourceExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
-            SourceExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
-            SourceExpression.Validate(bodyshiftTemplateId, nameof(bodyshiftTemplateId), required: false);
-            SourceExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
-            SourceExpression.Validate(bodydateType, nameof(bodydateType), required: false);
-            SourceExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
-            SourceExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyreplaceOriginal, nameof(bodyreplaceOriginal), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/batchSaveRosterInfo";
@@ -2542,7 +2238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _02deleteEmployeeById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/deleteAllData";
@@ -2558,7 +2253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _02deleteLeaveBalanceAdjustmentById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/deleteLeaveBalanceAdjustmentById";
@@ -2574,23 +2268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> _02getAttendanceSummaryList([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> unit, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> attendCalculationFilter = null, [WorkflowExpression] Func<string> employeeFilter = null, [WorkflowExpression] Func<string> labelFilter = null, [WorkflowExpression] Func<string> payrollRegulationFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> attendanceTypeFilter = null, [WorkflowExpression] Func<string> shiftTypeFilter = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(unit, nameof(unit), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
-            SourceExpression.Validate(positionFilter, nameof(positionFilter), required: false);
-            SourceExpression.Validate(attendCalculationFilter, nameof(attendCalculationFilter), required: false);
-            SourceExpression.Validate(employeeFilter, nameof(employeeFilter), required: false);
-            SourceExpression.Validate(labelFilter, nameof(labelFilter), required: false);
-            SourceExpression.Validate(payrollRegulationFilter, nameof(payrollRegulationFilter), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
-            SourceExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
-            SourceExpression.Validate(attendanceTypeFilter, nameof(attendanceTypeFilter), required: false);
-            SourceExpression.Validate(shiftTypeFilter, nameof(shiftTypeFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getAttendanceSummaryList";
@@ -2650,7 +2327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _03deleteExpenseApplicationById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/expense/deleteExpenseApplicationById";
@@ -2666,7 +2342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _03deleteRosterById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/deleteRosterById";
@@ -2682,7 +2357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> _03GetDataDictionaryDetailsInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/settings/getDataDictionaryDetailsInfoById";
@@ -2698,10 +2372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> _03getEmployeeDailyAttendanceList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> attendStatusFilter = null)
         {
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(attendStatusFilter, nameof(attendStatusFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getEmployeeDailyAttendanceList";
@@ -2721,10 +2391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> _03getLeaveBalanceAdjustmentList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> holidayType, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(holidayType, nameof(holidayType), required: true);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeaveBalanceAdjustmentList";
@@ -2745,53 +2411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _03updateEmployeeById([WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyenglishName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyemployeeStatus = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysurnameEnglish = null, [WorkflowExpression] Func<string> bodypersonalNameEnglish = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodydate1 = null, [WorkflowExpression] Func<string> bodydate2 = null, [WorkflowExpression] Func<string> bodydate3 = null, [WorkflowExpression] Func<string> bodydate4 = null, [WorkflowExpression] Func<string> bodytext1 = null, [WorkflowExpression] Func<string> bodytext2 = null, [WorkflowExpression] Func<string> bodytext3 = null, [WorkflowExpression] Func<string> bodytext4 = null, [WorkflowExpression] Func<string> bodytext5 = null, [WorkflowExpression] Func<string> bodytext6 = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodymobileCardCalType = null, [WorkflowExpression] Func<string> bodyregularType = null, [WorkflowExpression] Func<string> bodyinsurePlanName = null, [WorkflowExpression] Func<string> bodybizLabelIds = null)
         {
-            SourceExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
-            SourceExpression.Validate(bodyenglishName, nameof(bodyenglishName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: false);
-            SourceExpression.Validate(bodysex, nameof(bodysex), required: false);
-            SourceExpression.Validate(bodynationality, nameof(bodynationality), required: false);
-            SourceExpression.Validate(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
-            SourceExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
-            SourceExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
-            SourceExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyidentityCard, nameof(bodyidentityCard), required: false);
-            SourceExpression.Validate(bodychineseName, nameof(bodychineseName), required: false);
-            SourceExpression.Validate(bodysurnameEnglish, nameof(bodysurnameEnglish), required: false);
-            SourceExpression.Validate(bodypersonalNameEnglish, nameof(bodypersonalNameEnglish), required: false);
-            SourceExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
-            SourceExpression.Validate(bodyemergencyContactRelation, nameof(bodyemergencyContactRelation), required: false);
-            SourceExpression.Validate(bodyemergencyContactPhone, nameof(bodyemergencyContactPhone), required: false);
-            SourceExpression.Validate(bodybankCode, nameof(bodybankCode), required: false);
-            SourceExpression.Validate(bodybankBranchNumber, nameof(bodybankBranchNumber), required: false);
-            SourceExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
-            SourceExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
-            SourceExpression.Validate(bodydate1, nameof(bodydate1), required: false);
-            SourceExpression.Validate(bodydate2, nameof(bodydate2), required: false);
-            SourceExpression.Validate(bodydate3, nameof(bodydate3), required: false);
-            SourceExpression.Validate(bodydate4, nameof(bodydate4), required: false);
-            SourceExpression.Validate(bodytext1, nameof(bodytext1), required: false);
-            SourceExpression.Validate(bodytext2, nameof(bodytext2), required: false);
-            SourceExpression.Validate(bodytext3, nameof(bodytext3), required: false);
-            SourceExpression.Validate(bodytext4, nameof(bodytext4), required: false);
-            SourceExpression.Validate(bodytext5, nameof(bodytext5), required: false);
-            SourceExpression.Validate(bodytext6, nameof(bodytext6), required: false);
-            SourceExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
-            SourceExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
-            SourceExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
-            SourceExpression.Validate(bodymobileCardCalType, nameof(bodymobileCardCalType), required: false);
-            SourceExpression.Validate(bodyregularType, nameof(bodyregularType), required: false);
-            SourceExpression.Validate(bodyinsurePlanName, nameof(bodyinsurePlanName), required: false);
-            SourceExpression.Validate(bodybizLabelIds, nameof(bodybizLabelIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/updateEmployeeById";
@@ -3082,17 +2701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3AddMobileCardResp> _04addAttendanceDataInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodymode, [WorkflowExpression] Func<string> bodycardType = null, [WorkflowExpression] Func<double> bodyactualLongitude = null, [WorkflowExpression] Func<double> bodyactualLatitude = null, [WorkflowExpression] Func<string> bodydeviceName = null, [WorkflowExpression] Func<string> bodycodeSource = null, [WorkflowExpression] Func<string> bodylocationName = null, [WorkflowExpression] Func<string> bodyworkLocationId = null, [WorkflowExpression] Func<string> bodydeviceId = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: true);
-            SourceExpression.Validate(bodycardType, nameof(bodycardType), required: false);
-            SourceExpression.Validate(bodyactualLongitude, nameof(bodyactualLongitude), required: false);
-            SourceExpression.Validate(bodyactualLatitude, nameof(bodyactualLatitude), required: false);
-            SourceExpression.Validate(bodydeviceName, nameof(bodydeviceName), required: false);
-            SourceExpression.Validate(bodycodeSource, nameof(bodycodeSource), required: false);
-            SourceExpression.Validate(bodylocationName, nameof(bodylocationName), required: false);
-            SourceExpression.Validate(bodyworkLocationId, nameof(bodyworkLocationId), required: false);
-            SourceExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/addAttendanceDataInfo";
@@ -3167,11 +2775,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _04calculationLeaveBalance([WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bool> bodyisForceCal = null, [WorkflowExpression] Func<string[]> bodyemployeeIdsList = null, [WorkflowExpression] Func<string[]> bodyposition = null, [WorkflowExpression] Func<string[]> bodydept = null)
         {
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyisForceCal, nameof(bodyisForceCal), required: false);
-            SourceExpression.Validate(bodyemployeeIdsList, nameof(bodyemployeeIdsList), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodydept, nameof(bodydept), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/calculationLeaveBalance";
@@ -3222,8 +2825,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> _04getCustomizeUserFieldList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/settings/getCustomizeUserFieldList";
@@ -3242,19 +2843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> _04getEmployeeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> sex = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> calculateSalaryType = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> payrollRegulationId = null, [WorkflowExpression] Func<string> regularType = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(departmentId, nameof(departmentId), required: false);
-            SourceExpression.Validate(positionId, nameof(positionId), required: false);
-            SourceExpression.Validate(sex, nameof(sex), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(hireType, nameof(hireType), required: false);
-            SourceExpression.Validate(calculateSalaryType, nameof(calculateSalaryType), required: false);
-            SourceExpression.Validate(costCenterId, nameof(costCenterId), required: false);
-            SourceExpression.Validate(payrollRegulationId, nameof(payrollRegulationId), required: false);
-            SourceExpression.Validate(regularType, nameof(regularType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/getEmployeeList";
@@ -3295,12 +2883,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _04updateExpenseApplicationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyreimbursementType = null, [WorkflowExpression] Func<string> bodyreimbursementDate = null, [WorkflowExpression] Func<string> bodyreimbursementName = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyreimbursementType, nameof(bodyreimbursementType), required: false);
-            SourceExpression.Validate(bodyreimbursementDate, nameof(bodyreimbursementDate), required: false);
-            SourceExpression.Validate(bodyreimbursementName, nameof(bodyreimbursementName), required: false);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/expense/updateExpenseApplicationById";
@@ -3353,20 +2935,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _04updateRosterInfoById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<double> bodyscheduledAmount = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
-            SourceExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
-            SourceExpression.Validate(bodyshiftTemplateId, nameof(bodyshiftTemplateId), required: false);
-            SourceExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
-            SourceExpression.Validate(bodydateType, nameof(bodydateType), required: false);
-            SourceExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
-            SourceExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
-            SourceExpression.Validate(bodyscheduledAmount, nameof(bodyscheduledAmount), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/updateRosterInfoById";
@@ -3459,7 +3027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _05deleteAttendanceDataById([WorkflowExpression] Func<string> ids)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/deleteAttendanceDataById";
@@ -3475,7 +3042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> _05getCustomizeUserFieldInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/settings/getCustomizeUserFieldInfoById";
@@ -3491,7 +3057,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3EmployeeInfoResp> _05getEmployeeInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/getEmployeeInfoById";
@@ -3507,14 +3072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> _05GetExpenseApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> dateFilter = null, [WorkflowExpression] Func<string> reimbursementStatusFilter = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(dateFilter, nameof(dateFilter), required: false);
-            SourceExpression.Validate(reimbursementStatusFilter, nameof(reimbursementStatusFilter), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/expense/getExpenseApplicationList";
@@ -3545,19 +3102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> _05getLeaveBalanceList([WorkflowExpression] Func<string> holidayType, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> regularTypeFilter = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> sexFilter = null, [WorkflowExpression] Func<string> leaveHolidayBalanceStatusFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null)
         {
-            SourceExpression.Validate(holidayType, nameof(holidayType), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(regularTypeFilter, nameof(regularTypeFilter), required: false);
-            SourceExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
-            SourceExpression.Validate(positionFilter, nameof(positionFilter), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(sexFilter, nameof(sexFilter), required: false);
-            SourceExpression.Validate(leaveHolidayBalanceStatusFilter, nameof(leaveHolidayBalanceStatusFilter), required: false);
-            SourceExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
-            SourceExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
-            SourceExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeaveBalanceList";
@@ -3597,13 +3141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3RosterListResp> _05getRosterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendDay = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> attendStatus = null, [WorkflowExpression] Func<string> dateType = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(attendDay, nameof(attendDay), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(attendStatus, nameof(attendStatus), required: false);
-            SourceExpression.Validate(dateType, nameof(dateType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getRosterList";
@@ -3632,9 +3169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> _06getApproveProcessList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/settings/getApproveProcessList";
@@ -3655,7 +3189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> _06GetExpenseApplicationById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/expense/getExpenseApplicationById";
@@ -3671,8 +3204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> _06GetLeaveBalanceInfoById([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> holidayType)
         {
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(holidayType, nameof(holidayType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeaveBalanceInfoById";
@@ -3689,7 +3220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3RosterInfoResp> _06getRosterInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getRosterInfoById";
@@ -3705,10 +3235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _06resign([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylastWorkingDate, [WorkflowExpression] Func<string> bodyreasonsLeave, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylastWorkingDate, nameof(bodylastWorkingDate), required: true);
-            SourceExpression.Validate(bodyreasonsLeave, nameof(bodyreasonsLeave), required: true);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/resign";
@@ -3741,17 +3267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _06updateAttendanceDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodycardType = null, [WorkflowExpression] Func<double> bodyactualLongitude = null, [WorkflowExpression] Func<double> bodyactualLatitude = null, [WorkflowExpression] Func<string> bodydeviceName = null, [WorkflowExpression] Func<string> bodycodeSource = null, [WorkflowExpression] Func<string> bodylocationName = null, [WorkflowExpression] Func<string> bodyworkLocationId = null, [WorkflowExpression] Func<string> bodydeviceId = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodycardType, nameof(bodycardType), required: false);
-            SourceExpression.Validate(bodyactualLongitude, nameof(bodyactualLongitude), required: false);
-            SourceExpression.Validate(bodyactualLatitude, nameof(bodyactualLatitude), required: false);
-            SourceExpression.Validate(bodydeviceName, nameof(bodydeviceName), required: false);
-            SourceExpression.Validate(bodycodeSource, nameof(bodycodeSource), required: false);
-            SourceExpression.Validate(bodylocationName, nameof(bodylocationName), required: false);
-            SourceExpression.Validate(bodyworkLocationId, nameof(bodyworkLocationId), required: false);
-            SourceExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/updateAttendanceDataById";
@@ -3834,23 +3349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> _07addEmployeeHistory([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodytakeEffectType, [WorkflowExpression] Func<string> bodytakeEffectDate, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<string> bodymajorWorkLocationId = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
-            SourceExpression.Validate(bodytakeEffectType, nameof(bodytakeEffectType), required: true);
-            SourceExpression.Validate(bodytakeEffectDate, nameof(bodytakeEffectDate), required: true);
-            SourceExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
-            SourceExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
-            SourceExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
-            SourceExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
-            SourceExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
-            SourceExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
-            SourceExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
-            SourceExpression.Validate(bodycause, nameof(bodycause), required: false);
-            SourceExpression.Validate(bodymajorWorkLocationId, nameof(bodymajorWorkLocationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/addEmployeeHistory";
@@ -3957,17 +3455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> _07addLeaveApplicationInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyholidayType, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodyleaveTime, nameof(bodyleaveTime), required: false);
-            SourceExpression.Validate(bodytimeType, nameof(bodytimeType), required: false);
-            SourceExpression.Validate(bodyholidayDate, nameof(bodyholidayDate), required: false);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/addLeaveApplicationInfo";
@@ -4046,12 +3533,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _07addShitTemplateInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<int> bodymealTime = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
-            SourceExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
-            SourceExpression.Validate(bodydateType, nameof(bodydateType), required: false);
-            SourceExpression.Validate(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/addShitTemplateInfo";
@@ -4096,18 +3577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> _07getAttendanceDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
-            SourceExpression.Validate(positionFilter, nameof(positionFilter), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(attendCalculationId, nameof(attendCalculationId), required: false);
-            SourceExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
-            SourceExpression.Validate(hireTypeFilter, nameof(hireTypeFilter), required: false);
-            SourceExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getAttendanceDataList";
@@ -4146,7 +3615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _08deleteEmployeeHistoryById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/deleteEmployeeHistoryById";
@@ -4162,7 +3630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _08deleteLeaveApplicationById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/deleteLeaveApplicationById";
@@ -4178,7 +3645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _08deleteShiftTemplateById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/deleteShiftTemplateById";
@@ -4194,7 +3660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3MobileCardInfoResp> _08getAttendanceDataInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getAttendanceDataInfoById";
@@ -4210,9 +3675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> _09getAttendanceItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getAttendanceItemList";
@@ -4233,22 +3695,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _09updateEmployeeHistoryById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<string> bodymajorWorkLocationId = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyentryDate, nameof(bodyentryDate), required: true);
-            SourceExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
-            SourceExpression.Validate(bodyhireType, nameof(bodyhireType), required: false);
-            SourceExpression.Validate(bodypositionId, nameof(bodypositionId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodydirectSupervisorId, nameof(bodydirectSupervisorId), required: false);
-            SourceExpression.Validate(bodyattendCalculationId, nameof(bodyattendCalculationId), required: false);
-            SourceExpression.Validate(bodypayrollRegulationId, nameof(bodypayrollRegulationId), required: false);
-            SourceExpression.Validate(bodybasicPay, nameof(bodybasicPay), required: false);
-            SourceExpression.Validate(bodycalculateSalaryType, nameof(bodycalculateSalaryType), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
-            SourceExpression.Validate(bodycause, nameof(bodycause), required: false);
-            SourceExpression.Validate(bodymajorWorkLocationId, nameof(bodymajorWorkLocationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/updateEmployeeHistoryById";
@@ -4353,17 +3799,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _09updateLeaveApplicationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyholidayType = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodyleaveTime, nameof(bodyleaveTime), required: false);
-            SourceExpression.Validate(bodytimeType, nameof(bodytimeType), required: false);
-            SourceExpression.Validate(bodyholidayDate, nameof(bodyholidayDate), required: false);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/updateLeaveApplicationById";
@@ -4446,14 +3881,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _09updateShiftTemplateById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: true);
-            SourceExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: true);
-            SourceExpression.Validate(bodydateType, nameof(bodydateType), required: false);
-            SourceExpression.Validate(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/updateShiftTemplateById";
@@ -4506,17 +3933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3AddTimesheetResp> _10addTimesheetInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyworkOverTimeType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
-            SourceExpression.Validate(bodyworkOverTimeType, nameof(bodyworkOverTimeType), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
-            SourceExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/addTimesheetInfo";
@@ -4583,9 +3999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> _10getEmployeeHistoryList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/employee/getEmployeeHistoryList";
@@ -4605,18 +4018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> _10getLeaveApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> employeeFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> holidayTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> recordStatusFilter = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> startDateFilter = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
-            SourceExpression.Validate(employeeFilter, nameof(employeeFilter), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(holidayTypeFilter, nameof(holidayTypeFilter), required: false);
-            SourceExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
-            SourceExpression.Validate(recordStatusFilter, nameof(recordStatusFilter), required: false);
-            SourceExpression.Validate(attendCalculationId, nameof(attendCalculationId), required: false);
-            SourceExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
-            SourceExpression.Validate(startDateFilter, nameof(startDateFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeaveApplicationList";
@@ -4655,12 +4056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> _10getShiftTemplateList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendanceAddressId = null, [WorkflowExpression] Func<string> dateType = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(attendanceAddressId, nameof(attendanceAddressId), required: false);
-            SourceExpression.Validate(dateType, nameof(dateType), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getShiftTemplateList";
@@ -4687,18 +4082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _11addOpenShiftInfo([WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<int> bodyempPlanNo, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyshiftType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
-            SourceExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
-            SourceExpression.Validate(bodyempPlanNo, nameof(bodyempPlanNo), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodyshiftType, nameof(bodyshiftType), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/addOpenShiftInfo";
@@ -4767,7 +4150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _11deleteTimesheetById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/deleteTimesheetById";
@@ -4783,7 +4165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> _11getLeaveApplicationInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeaveApplicationInfoById";
@@ -4799,7 +4180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _12deleteOpenShiftById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/deleteOpenShiftById";
@@ -4815,7 +4195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV3LeaveProcessResp> _12getLeaveApplicationApproveProcessById([WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeaveApplicationApproveProcessById";
@@ -4831,17 +4210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _12updateTimesheetById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyworkOverTimeType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
-            SourceExpression.Validate(bodyworkOverTimeType, nameof(bodyworkOverTimeType), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
-            SourceExpression.Validate(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/updateTimesheetById";
@@ -4908,11 +4276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> _13getLeaveTypeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> shortName = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(shortName, nameof(shortName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeaveTypeList";
@@ -4937,19 +4300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> _13getTimesheetList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> addressCardId = null, [WorkflowExpression] Func<string> typeFilter = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
-            SourceExpression.Validate(positionFilter, nameof(positionFilter), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(bizLabelIds, nameof(bizLabelIds), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(addressCardId, nameof(addressCardId), required: false);
-            SourceExpression.Validate(typeFilter, nameof(typeFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getTimesheetList";
@@ -4990,18 +4340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _13updateOpenShiftById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<int> bodyempPlanNo, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyshiftType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
-            SourceExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
-            SourceExpression.Validate(bodyempPlanNo, nameof(bodyempPlanNo), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodyshiftType, nameof(bodyshiftType), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/updateOpenShiftById";
@@ -5070,10 +4408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> _14getLeavePolicyList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeavePolicyList";
@@ -5096,13 +4430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> _14getOpenShiftList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(costCenterId, nameof(costCenterId), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getOpenShiftList";
@@ -5131,7 +4458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3TimesheetInfoResp> _14getTimesheetInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getTimesheetInfoById";
@@ -5147,17 +4473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> _15addCalendarRemarkInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyemployeeStatus, [WorkflowExpression] Func<string> bodytimeType, [WorkflowExpression] Func<string> bodyexpectWorkStartTime, [WorkflowExpression] Func<string> bodyexpectWorkEndTime, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrecordDate = null, [WorkflowExpression] Func<string> bodyexpectWorkLocation = null, [WorkflowExpression] Func<string> bodyexpectWorkTimeTemplate = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: true);
-            SourceExpression.Validate(bodytimeType, nameof(bodytimeType), required: true);
-            SourceExpression.Validate(bodyexpectWorkStartTime, nameof(bodyexpectWorkStartTime), required: true);
-            SourceExpression.Validate(bodyexpectWorkEndTime, nameof(bodyexpectWorkEndTime), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyrecordDate, nameof(bodyrecordDate), required: false);
-            SourceExpression.Validate(bodyexpectWorkLocation, nameof(bodyexpectWorkLocation), required: false);
-            SourceExpression.Validate(bodyexpectWorkTimeTemplate, nameof(bodyexpectWorkTimeTemplate), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/addCalendarRemarkInfo";
@@ -5224,7 +4539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> _15getLeavePolicyInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeavePolicyInfoById";
@@ -5240,7 +4554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> _15getOpenShiftInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getOpenShiftInfoById";
@@ -5256,9 +4569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _16addProjectCategoryInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectCategoryInfo";
@@ -5293,7 +4603,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _16deleteCalendarRemarkById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/deleteCalendarRemarkById";
@@ -5309,13 +4618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> _16getLeavePolicyTypeList([WorkflowExpression] Func<string> regulationId, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> holidayId = null, [WorkflowExpression] Func<string> generationFrequency = null)
         {
-            SourceExpression.Validate(regulationId, nameof(regulationId), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(holidayId, nameof(holidayId), required: false);
-            SourceExpression.Validate(generationFrequency, nameof(generationFrequency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/leave/getLeavePolicyTypeList";
@@ -5343,7 +4645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _17deleteProjectCategoryById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/deleteProjectCategoryById";
@@ -5359,18 +4660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _17updateCalendarRemarkById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyemployeeStatus, [WorkflowExpression] Func<string> bodytimeType, [WorkflowExpression] Func<string> bodyexpectWorkStartTime, [WorkflowExpression] Func<string> bodyexpectWorkEndTime, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrecordDate = null, [WorkflowExpression] Func<string> bodyexpectWorkLocation = null, [WorkflowExpression] Func<string> bodyexpectWorkTimeTemplate = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyemployeeStatus, nameof(bodyemployeeStatus), required: true);
-            SourceExpression.Validate(bodytimeType, nameof(bodytimeType), required: true);
-            SourceExpression.Validate(bodyexpectWorkStartTime, nameof(bodyexpectWorkStartTime), required: true);
-            SourceExpression.Validate(bodyexpectWorkEndTime, nameof(bodyexpectWorkEndTime), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyrecordDate, nameof(bodyrecordDate), required: false);
-            SourceExpression.Validate(bodyexpectWorkLocation, nameof(bodyexpectWorkLocation), required: false);
-            SourceExpression.Validate(bodyexpectWorkTimeTemplate, nameof(bodyexpectWorkTimeTemplate), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/updateCalendarRemarkById";
@@ -5439,11 +4728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> _18getCalendarRemarkList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIds = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeIds, nameof(employeeIds), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendance/getCalendarRemarkList";
@@ -5468,10 +4752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _18updateProjectCategoryById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/updateProjectCategoryById";
@@ -5508,9 +4788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> _19getProjectCategoryList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectCategoryList";
@@ -5531,12 +4808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _20addProjectInfo([WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<double> bodyminRate = null, [WorkflowExpression] Func<double> bodymaxRate = null)
         {
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodyminRate, nameof(bodyminRate), required: false);
-            SourceExpression.Validate(bodymaxRate, nameof(bodymaxRate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectInfo";
@@ -5581,7 +4852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _21deleteProjectById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/deleteProjectById";
@@ -5597,13 +4867,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _22updateProjectById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<double> bodyminRate = null, [WorkflowExpression] Func<double> bodymaxRate = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyhourlyRate, nameof(bodyhourlyRate), required: true);
-            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            SourceExpression.Validate(bodyminRate, nameof(bodyminRate), required: false);
-            SourceExpression.Validate(bodymaxRate, nameof(bodymaxRate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/updateProjectById";
@@ -5650,9 +4913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3ProjectListResp> _23getProjectList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectList";
@@ -5673,7 +4933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3ProjectInfoResp> _24getProjectInfoById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectInfoById";
@@ -5689,13 +4948,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _25addProjectCertificateInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<double> bodyshiftHours, [WorkflowExpression] Func<double> bodyworkedHours, [WorkflowExpression] Func<string> bodytier = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            SourceExpression.Validate(bodyemployeeId, nameof(bodyemployeeId), required: true);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodyshiftHours, nameof(bodyshiftHours), required: true);
-            SourceExpression.Validate(bodyworkedHours, nameof(bodyworkedHours), required: true);
-            SourceExpression.Validate(bodytier, nameof(bodytier), required: false);
-            SourceExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectCertificateInfo";
@@ -5742,9 +4994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _26updateProjectCertificateById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodytier = null, [WorkflowExpression] Func<double> bodytierRate = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodytier, nameof(bodytier), required: false);
-            SourceExpression.Validate(bodytierRate, nameof(bodytierRate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/updateProjectCertificateById";
@@ -5779,15 +5028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> _27getProjectCertificateList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> projectId = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(departmentId, nameof(departmentId), required: false);
-            SourceExpression.Validate(positionId, nameof(positionId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(hireType, nameof(hireType), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectCertificateList";
@@ -5820,10 +5060,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _28addProjectCertificateHours([WorkflowExpression] Func<string> bodyprojectCertificateId, [WorkflowExpression] Func<string> bodyoccurrenceTime, [WorkflowExpression] Func<double> bodybalance, [WorkflowExpression] Func<string> bodyreason)
         {
-            SourceExpression.Validate(bodyprojectCertificateId, nameof(bodyprojectCertificateId), required: true);
-            SourceExpression.Validate(bodyoccurrenceTime, nameof(bodyoccurrenceTime), required: true);
-            SourceExpression.Validate(bodybalance, nameof(bodybalance), required: true);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectCertificateHours";
@@ -5852,7 +5088,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> _29deleteProjectCertificateHoursById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/deleteProjectCertificateHoursById";
@@ -5868,9 +5103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> _30getProjectCertificateHourList([WorkflowExpression] Func<string> projectCertificateId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(projectCertificateId, nameof(projectCertificateId), required: true);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectCertificateHourList";
@@ -5890,13 +5122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2AttendanceResp> GetAttendCalculationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendDay = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> attendStatus = null, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(attendDay, nameof(attendDay), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(attendStatus, nameof(attendStatus), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/attendance/list";
@@ -5925,11 +5150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2CostCenterResp> GetCostCenterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> costCenterCode = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(costCenterCode, nameof(costCenterCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/getCostCenterList";
@@ -5954,13 +5174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2DepartmentResp> GetDepartmentList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> departmentCode = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(departmentCode, nameof(departmentCode), required: false);
-            SourceExpression.Validate(parentId, nameof(parentId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/department/list";
@@ -5989,24 +5202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2EmployeeResp> GetEmployeeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> englishName = null, [WorkflowExpression] Func<string> chineseName = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> education = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> bankCode = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> payrollRegulationId = null, [WorkflowExpression] Func<string> workDate = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(englishName, nameof(englishName), required: false);
-            SourceExpression.Validate(chineseName, nameof(chineseName), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(education, nameof(education), required: false);
-            SourceExpression.Validate(departmentId, nameof(departmentId), required: false);
-            SourceExpression.Validate(positionId, nameof(positionId), required: false);
-            SourceExpression.Validate(hireType, nameof(hireType), required: false);
-            SourceExpression.Validate(bankCode, nameof(bankCode), required: false);
-            SourceExpression.Validate(costCenterId, nameof(costCenterId), required: false);
-            SourceExpression.Validate(payrollRegulationId, nameof(payrollRegulationId), required: false);
-            SourceExpression.Validate(workDate, nameof(workDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/employee/list";
@@ -6057,13 +5252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2ExpenseResp> GetExpenseApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> reimbursementStatusFilter = null, [WorkflowExpression] Func<string> reimbursementName = null, [WorkflowExpression] Func<string> departmentFilter = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(reimbursementStatusFilter, nameof(reimbursementStatusFilter), required: false);
-            SourceExpression.Validate(reimbursementName, nameof(reimbursementName), required: false);
-            SourceExpression.Validate(departmentFilter, nameof(departmentFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/getExpenseApplicationList";
@@ -6092,14 +5280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> GetExtPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> employeeCode = null, [WorkflowExpression] Func<string> businessSalaryItemId = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> businessSalaryItemFilter = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(employeeCode, nameof(employeeCode), required: false);
-            SourceExpression.Validate(businessSalaryItemId, nameof(businessSalaryItemId), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(businessSalaryItemFilter, nameof(businessSalaryItemFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/getExtPayItemData";
@@ -6130,11 +5310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> GetExtPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> paymentType = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(paymentType, nameof(paymentType), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/getExtPayItemList";
@@ -6159,11 +5334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> GetFixedPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> payrollItemId = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(payrollItemId, nameof(payrollItemId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/getFixedPayItemData";
@@ -6188,12 +5358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2LabelResp> GetLabelList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> labelCode = null, [WorkflowExpression] Func<string> labelName = null, [WorkflowExpression] Func<int> labelStatus = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(labelCode, nameof(labelCode), required: false);
-            SourceExpression.Validate(labelName, nameof(labelName), required: false);
-            SourceExpression.Validate(labelStatus, nameof(labelStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/label/list";
@@ -6220,13 +5384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> GetLeaveApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> holidayType = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> holidayDate = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(holidayType, nameof(holidayType), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(holidayDate, nameof(holidayDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/leave/list";
@@ -6255,11 +5412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2PayItemResp> GetPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/getPayItemList";
@@ -6284,9 +5436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> GetPayrunList([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/getPayrunList";
@@ -6306,11 +5455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2PositionResp> GetPositionList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> positionCode = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(positionCode, nameof(positionCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/getPositionList";
@@ -6335,19 +5479,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV2RosterResp> GetRosterDataList([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> englishName = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> surnameEnglish = null, [WorkflowExpression] Func<string> personalNameEnglish = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(attendCalculationId, nameof(attendCalculationId), required: false);
-            SourceExpression.Validate(departmentId, nameof(departmentId), required: false);
-            SourceExpression.Validate(positionId, nameof(positionId), required: false);
-            SourceExpression.Validate(statusFilter, nameof(statusFilter), required: false);
-            SourceExpression.Validate(englishName, nameof(englishName), required: false);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(surnameEnglish, nameof(surnameEnglish), required: false);
-            SourceExpression.Validate(personalNameEnglish, nameof(personalNameEnglish), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/getRosterDataList";
@@ -6400,13 +5531,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2TimesheetResp> GetTimesheetList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/timesheet/list";
@@ -6435,14 +5559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> GetVarPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> payrollItemId = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> payrollItemIdFilter = null, [WorkflowExpression] Func<string> payrollPlanId = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(employeeId, nameof(employeeId), required: false);
-            SourceExpression.Validate(payrollItemId, nameof(payrollItemId), required: false);
-            SourceExpression.Validate(employeeIdFilter, nameof(employeeIdFilter), required: false);
-            SourceExpression.Validate(payrollItemIdFilter, nameof(payrollItemIdFilter), required: false);
-            SourceExpression.Validate(payrollPlanId, nameof(payrollPlanId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/getVarPayItemData";
@@ -6473,12 +5589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> GetWorkLocationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> attendanceAddressCode = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(attendanceAddressCode, nameof(attendanceAddressCode), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/workLocation/list";
@@ -6505,9 +5615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateCardById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyisInValid = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyisInValid, nameof(bodyisInValid), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/attendance/updateCardById";
@@ -6542,10 +5649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateCostCenterInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/updateCostCenterInfo";
@@ -6586,11 +5689,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateDepartmentInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/department/updateById";
@@ -6637,72 +5735,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateEmployeeInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyenglishName = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodybankCard = null, [WorkflowExpression] Func<string> bodynickName = null, [WorkflowExpression] Func<string> bodyeducation = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankName = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyregionCode = null, [WorkflowExpression] Func<string> bodyidentityCardHk = null, [WorkflowExpression] Func<string> bodypassportNumber = null, [WorkflowExpression] Func<string> bodypassportIssuingPlace = null, [WorkflowExpression] Func<string> bodyspouseName = null, [WorkflowExpression] Func<string> bodyspouseIdentityCardHk = null, [WorkflowExpression] Func<string> bodyspousePassportNumber = null, [WorkflowExpression] Func<string> bodyspousePassportIssuingPlace = null, [WorkflowExpression] Func<string> bodypostalAddress = null, [WorkflowExpression] Func<string> bodyemployerName = null, [WorkflowExpression] Func<string> bodyhometown = null, [WorkflowExpression] Func<string> bodynation = null, [WorkflowExpression] Func<string> bodypoliticalStatus = null, [WorkflowExpression] Func<string> bodyhighestEducation = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyprobation = null, [WorkflowExpression] Func<bool> bodyisDisabled = null, [WorkflowExpression] Func<bool> bodyisForeignNationality = null, [WorkflowExpression] Func<string> bodydomicileLocation = null, [WorkflowExpression] Func<string> bodycertificateType = null, [WorkflowExpression] Func<string> bodycertificateNumber = null, [WorkflowExpression] Func<bool> bodyisMartyrDependents = null, [WorkflowExpression] Func<string> bodyoccupationTaxNumber = null, [WorkflowExpression] Func<string> bodynonLocalBlueCardNumber = null, [WorkflowExpression] Func<bool> bodyisForeignEmployees = null, [WorkflowExpression] Func<string> bodyweeklyLeaveWorkAgreement = null, [WorkflowExpression] Func<string> bodyemployeeType = null, [WorkflowExpression] Func<string> bodyjobLevel = null, [WorkflowExpression] Func<string> bodypost = null, [WorkflowExpression] Func<string> bodysalaryScale = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodyrecruitmentSource = null, [WorkflowExpression] Func<string> bodygraduatedSchool = null, [WorkflowExpression] Func<string> bodyprofession = null, [WorkflowExpression] Func<string> bodyappellation = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodyhomePhone = null, [WorkflowExpression] Func<string> bodyofficePhone = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodyprovince = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodypostcode = null, [WorkflowExpression] Func<string> bodycontractEndDate = null, [WorkflowExpression] Func<string> bodytaxIdentity = null, [WorkflowExpression] Func<string> bodyotherIncomeName = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyenglishName, nameof(bodyenglishName), required: false);
-            SourceExpression.Validate(bodychineseName, nameof(bodychineseName), required: false);
-            SourceExpression.Validate(bodysex, nameof(bodysex), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyidentityCard, nameof(bodyidentityCard), required: false);
-            SourceExpression.Validate(bodybankCard, nameof(bodybankCard), required: false);
-            SourceExpression.Validate(bodynickName, nameof(bodynickName), required: false);
-            SourceExpression.Validate(bodyeducation, nameof(bodyeducation), required: false);
-            SourceExpression.Validate(bodynationality, nameof(bodynationality), required: false);
-            SourceExpression.Validate(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
-            SourceExpression.Validate(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
-            SourceExpression.Validate(bodyemergencyContactRelation, nameof(bodyemergencyContactRelation), required: false);
-            SourceExpression.Validate(bodyemergencyContactPhone, nameof(bodyemergencyContactPhone), required: false);
-            SourceExpression.Validate(bodybankName, nameof(bodybankName), required: false);
-            SourceExpression.Validate(bodybankBranchNumber, nameof(bodybankBranchNumber), required: false);
-            SourceExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
-            SourceExpression.Validate(bodybankCode, nameof(bodybankCode), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodyregionCode, nameof(bodyregionCode), required: false);
-            SourceExpression.Validate(bodyidentityCardHk, nameof(bodyidentityCardHk), required: false);
-            SourceExpression.Validate(bodypassportNumber, nameof(bodypassportNumber), required: false);
-            SourceExpression.Validate(bodypassportIssuingPlace, nameof(bodypassportIssuingPlace), required: false);
-            SourceExpression.Validate(bodyspouseName, nameof(bodyspouseName), required: false);
-            SourceExpression.Validate(bodyspouseIdentityCardHk, nameof(bodyspouseIdentityCardHk), required: false);
-            SourceExpression.Validate(bodyspousePassportNumber, nameof(bodyspousePassportNumber), required: false);
-            SourceExpression.Validate(bodyspousePassportIssuingPlace, nameof(bodyspousePassportIssuingPlace), required: false);
-            SourceExpression.Validate(bodypostalAddress, nameof(bodypostalAddress), required: false);
-            SourceExpression.Validate(bodyemployerName, nameof(bodyemployerName), required: false);
-            SourceExpression.Validate(bodyhometown, nameof(bodyhometown), required: false);
-            SourceExpression.Validate(bodynation, nameof(bodynation), required: false);
-            SourceExpression.Validate(bodypoliticalStatus, nameof(bodypoliticalStatus), required: false);
-            SourceExpression.Validate(bodyhighestEducation, nameof(bodyhighestEducation), required: false);
-            SourceExpression.Validate(bodyworkDate, nameof(bodyworkDate), required: false);
-            SourceExpression.Validate(bodyconfirmationDate, nameof(bodyconfirmationDate), required: false);
-            SourceExpression.Validate(bodyprobation, nameof(bodyprobation), required: false);
-            SourceExpression.Validate(bodyisDisabled, nameof(bodyisDisabled), required: false);
-            SourceExpression.Validate(bodyisForeignNationality, nameof(bodyisForeignNationality), required: false);
-            SourceExpression.Validate(bodydomicileLocation, nameof(bodydomicileLocation), required: false);
-            SourceExpression.Validate(bodycertificateType, nameof(bodycertificateType), required: false);
-            SourceExpression.Validate(bodycertificateNumber, nameof(bodycertificateNumber), required: false);
-            SourceExpression.Validate(bodyisMartyrDependents, nameof(bodyisMartyrDependents), required: false);
-            SourceExpression.Validate(bodyoccupationTaxNumber, nameof(bodyoccupationTaxNumber), required: false);
-            SourceExpression.Validate(bodynonLocalBlueCardNumber, nameof(bodynonLocalBlueCardNumber), required: false);
-            SourceExpression.Validate(bodyisForeignEmployees, nameof(bodyisForeignEmployees), required: false);
-            SourceExpression.Validate(bodyweeklyLeaveWorkAgreement, nameof(bodyweeklyLeaveWorkAgreement), required: false);
-            SourceExpression.Validate(bodyemployeeType, nameof(bodyemployeeType), required: false);
-            SourceExpression.Validate(bodyjobLevel, nameof(bodyjobLevel), required: false);
-            SourceExpression.Validate(bodypost, nameof(bodypost), required: false);
-            SourceExpression.Validate(bodysalaryScale, nameof(bodysalaryScale), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodyrecruitmentSource, nameof(bodyrecruitmentSource), required: false);
-            SourceExpression.Validate(bodygraduatedSchool, nameof(bodygraduatedSchool), required: false);
-            SourceExpression.Validate(bodyprofession, nameof(bodyprofession), required: false);
-            SourceExpression.Validate(bodyappellation, nameof(bodyappellation), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodyhomePhone, nameof(bodyhomePhone), required: false);
-            SourceExpression.Validate(bodyofficePhone, nameof(bodyofficePhone), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodyprovince, nameof(bodyprovince), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodypostcode, nameof(bodypostcode), required: false);
-            SourceExpression.Validate(bodycontractEndDate, nameof(bodycontractEndDate), required: false);
-            SourceExpression.Validate(bodytaxIdentity, nameof(bodytaxIdentity), required: false);
-            SourceExpression.Validate(bodyotherIncomeName, nameof(bodyotherIncomeName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/employee/updateById";
@@ -7115,10 +6147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateExpenseApplication([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyreimbursementName = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyreimbursementName, nameof(bodyreimbursementName), required: false);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/updateExpenseApplication";
@@ -7163,12 +6191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateExternalSalary([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyoccurrenceDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: false);
-            SourceExpression.Validate(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/updateExternalSalary";
@@ -7225,11 +6247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateFixedSalary([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypayrollItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodypayrollItemId, nameof(bodypayrollItemId), required: false);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/updateFixedSalary";
@@ -7276,10 +6293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateLabelInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<string> bodylabelName = null, [WorkflowExpression] Func<int> bodylabelStatus = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodylabelCode, nameof(bodylabelCode), required: false);
-            SourceExpression.Validate(bodylabelName, nameof(bodylabelName), required: false);
-            SourceExpression.Validate(bodylabelStatus, nameof(bodylabelStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/label/update";
@@ -7320,17 +6333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateLeaveApplication([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyholidayType = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyholidayType, nameof(bodyholidayType), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodyleaveTime, nameof(bodyleaveTime), required: false);
-            SourceExpression.Validate(bodytimeType, nameof(bodytimeType), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodyholidayDate, nameof(bodyholidayDate), required: false);
-            SourceExpression.Validate(bodytime, nameof(bodytime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/leave/updateById";
@@ -7413,10 +6415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdatePositionInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodypositionCode, nameof(bodypositionCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/updatePositionInfo";
@@ -7457,15 +6455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateRosterData([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyshiftIn = null, [WorkflowExpression] Func<string> bodyshiftOff = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyacrossTheNight = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: false);
-            SourceExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyshiftStatus, nameof(bodyshiftStatus), required: false);
-            SourceExpression.Validate(bodyaddressCardId, nameof(bodyaddressCardId), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodydateType, nameof(bodydateType), required: false);
-            SourceExpression.Validate(bodyacrossTheNight, nameof(bodyacrossTheNight), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenants/updateRosterData";
@@ -7536,9 +6525,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateRosterItem([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/attendance/updateRosterItem";
@@ -7573,15 +6559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateShiftTemplate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyshiftIn = null, [WorkflowExpression] Func<string> bodyshiftOff = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodylunchStartTime = null, [WorkflowExpression] Func<string> bodylunchEndTime = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyshiftIn, nameof(bodyshiftIn), required: false);
-            SourceExpression.Validate(bodyshiftOff, nameof(bodyshiftOff), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
-            SourceExpression.Validate(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
-            SourceExpression.Validate(bodydateType, nameof(bodydateType), required: false);
-            SourceExpression.Validate(bodylunchStartTime, nameof(bodylunchStartTime), required: false);
-            SourceExpression.Validate(bodylunchEndTime, nameof(bodylunchEndTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/attendance/updateShiftTemplate";
@@ -7652,12 +6629,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateTenantInfo([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodybusinessRegistrationNumber = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodybankName = null, [WorkflowExpression] Func<string> bodybankBranchCode = null, [WorkflowExpression] Func<string> bodybankAccountNo = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodybusinessRegistrationNumber, nameof(bodybusinessRegistrationNumber), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodybankName, nameof(bodybankName), required: false);
-            SourceExpression.Validate(bodybankBranchCode, nameof(bodybankBranchCode), required: false);
-            SourceExpression.Validate(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tenant/updateById";
@@ -7714,12 +6685,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateTimesheet([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bool> bodyisCrossTheSky = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodymealTime = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyisCrossTheSky, nameof(bodyisCrossTheSky), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodymealTime, nameof(bodymealTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/timesheet/updateById";
@@ -7772,9 +6737,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateVarSalary([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodymoney, nameof(bodymoney), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/payroll/updateVarSalary";
@@ -7809,12 +6771,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultBoolean> UpdateWorkLocation([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyareaCode = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyareaCode, nameof(bodyareaCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/workLocation/updateById";

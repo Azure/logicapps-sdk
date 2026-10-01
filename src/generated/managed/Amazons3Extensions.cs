@@ -42,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3ObjectCollection> ListObjects([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> bucketRegion = null, [WorkflowExpression] Func<int> maxObjectCount = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(bucketName, nameof(bucketName), required: true);
-            SourceExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
-            SourceExpression.Validate(maxObjectCount, nameof(maxObjectCount), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/buckets/objects";
@@ -68,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3ObjectDeepMetadata> GetObjectMetadata([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null)
         {
-            SourceExpression.Validate(bucketName, nameof(bucketName), required: true);
-            SourceExpression.Validate(objectKey, nameof(objectKey), required: true);
-            SourceExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/buckets/objects/metadata";
@@ -89,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<string> GetObjectContent([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null)
         {
-            SourceExpression.Validate(bucketName, nameof(bucketName), required: true);
-            SourceExpression.Validate(objectKey, nameof(objectKey), required: true);
-            SourceExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/buckets/objects/content";
@@ -112,9 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
     {
         public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bucketName, nameof(bucketName), required: true);
-            SourceExpression.Validate(objectKey, nameof(objectKey), required: true);
-            SourceExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/buckets/objects/onupdate";

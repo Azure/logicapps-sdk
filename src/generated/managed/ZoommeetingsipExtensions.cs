@@ -28,17 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
         public IBodyWorkflowAction<CreateMeetingResponse> CreateMeeting([WorkflowExpression] Func<string> bodytopic = null, [WorkflowExpression] Func<int> bodytype = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<bool> bodysettingshostVideo = null, [WorkflowExpression] Func<bool> bodysettingsparticipantVideo = null, [WorkflowExpression] Func<bool> bodysettingsjoinBeforeHost = null, [WorkflowExpression] Func<string> bodysettingsmuteUponEntry = null, [WorkflowExpression] Func<string> bodysettingswatermark = null, [WorkflowExpression] Func<string> bodysettingsaudio = null, [WorkflowExpression] Func<string> bodysettingsautoRecording = null)
         {
-            SourceExpression.Validate(bodytopic, nameof(bodytopic), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodysettingshostVideo, nameof(bodysettingshostVideo), required: false);
-            SourceExpression.Validate(bodysettingsparticipantVideo, nameof(bodysettingsparticipantVideo), required: false);
-            SourceExpression.Validate(bodysettingsjoinBeforeHost, nameof(bodysettingsjoinBeforeHost), required: false);
-            SourceExpression.Validate(bodysettingsmuteUponEntry, nameof(bodysettingsmuteUponEntry), required: false);
-            SourceExpression.Validate(bodysettingswatermark, nameof(bodysettingswatermark), required: false);
-            SourceExpression.Validate(bodysettingsaudio, nameof(bodysettingsaudio), required: false);
-            SourceExpression.Validate(bodysettingsautoRecording, nameof(bodysettingsautoRecording), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/users/me/meetings";
@@ -133,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
         public IBodyWorkflowAction<MeetingDetailsResponse> MeetingDetails([WorkflowExpression] Func<string> meetingid)
         {
-            SourceExpression.Validate(meetingid, nameof(meetingid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/meetings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingid, 1));

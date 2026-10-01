@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> UploadVideo([WorkflowExpression] Func<string> videoUrl, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<privacyInput> privacy, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> callbackUrl = null)
         {
-            SourceExpression.Validate(videoUrl, nameof(videoUrl), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(privacy, nameof(privacy), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(externalId, nameof(externalId), required: false);
-            SourceExpression.Validate(metadata, nameof(metadata), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(partition, nameof(partition), required: false);
-            SourceExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Api/Partner/Breakdowns";
@@ -52,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/State", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -67,18 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> face = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> searchInPublicAccount = null, [WorkflowExpression] Func<privacyInput> privacy = null, [WorkflowExpression] Func<textScopeInput> textScope = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> owner = null, [WorkflowExpression] Func<double> pageSize = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> externalId = null)
         {
-            SourceExpression.Validate(face, nameof(face), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(searchInPublicAccount, nameof(searchInPublicAccount), required: false);
-            SourceExpression.Validate(privacy, nameof(privacy), required: false);
-            SourceExpression.Validate(textScope, nameof(textScope), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(partition, nameof(partition), required: false);
-            SourceExpression.Validate(owner, nameof(owner), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(externalId, nameof(externalId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/Search";
@@ -117,8 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetBreakdownResponse> GetBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<languageInput> language = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -135,8 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> DeleteBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> deleteInsights = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(deleteInsights, nameof(deleteInsights), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -153,8 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetInsightsWidgetUrl([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<widgetTypeInput> widgetType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(widgetType, nameof(widgetType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -171,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetPlayerWidgetUrl([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -186,8 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetVttUrl([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<languageInput> language = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/VttUrl", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -204,8 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetInsightsWidgetUrlByExternalId([WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<widgetTypeInput> widgetType = null)
         {
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
-            SourceExpression.Validate(widgetType, nameof(widgetType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/GetInsightsWidgetUrlByExternalId";
@@ -237,8 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> ReIndexBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> callbackUrl = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindex/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -255,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> ReIndexBreakdownByExternalId([WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<string> callbackUrl = null)
         {
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
-            SourceExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 1));
@@ -273,9 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> UpdateFaceName([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<double> faceId, [WorkflowExpression] Func<string> newName)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(faceId, nameof(faceId), required: true);
-            SourceExpression.Validate(newName, nameof(newName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/UpdateFaceName/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

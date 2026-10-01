@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
         public IBodyWorkflowAction<CheckDomainResponse> CheckDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<endpointInput> endpoint)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/checkDomain/";

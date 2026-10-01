@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IWorkflowAction DeleteTask([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UnassignUsers([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyremoveAssignedUsers)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyremoveAssignedUsers, nameof(bodyremoveAssignedUsers), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/unassignusers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -54,8 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> AssignUsers([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyassignedUserIds)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyassignedUserIds, nameof(bodyassignedUserIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/assignusers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -79,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListMyPlansResponse> ListGroupPlans([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/planner/plans", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -94,9 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<CreateBucketResponse> CreateBucket([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodyplanId)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/v1.0/planner/buckets";
@@ -123,39 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV3> CreateTask([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodybucketId = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<string> bodydueDateTime = null, [WorkflowExpression] Func<string> bodyassignedUserIds = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespink = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesred = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesyellow = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesblue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespurple = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbronze = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslime = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesaqua = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriessilver = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbrown = null, [WorkflowExpression] Func<bool> bodyappliedCategoriescranberry = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesorange = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespeach = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesmarigold = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesteal = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslavender = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesplum = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGray = null, [WorkflowExpression] Func<int> bodypriority = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodybucketId, nameof(bodybucketId), required: false);
-            SourceExpression.Validate(bodystartDateTime, nameof(bodystartDateTime), required: false);
-            SourceExpression.Validate(bodydueDateTime, nameof(bodydueDateTime), required: false);
-            SourceExpression.Validate(bodyassignedUserIds, nameof(bodyassignedUserIds), required: false);
-            SourceExpression.Validate(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
-            SourceExpression.Validate(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
-            SourceExpression.Validate(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
-            SourceExpression.Validate(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
-            SourceExpression.Validate(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/beta/planner/tasks";
@@ -371,7 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> GetTask([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -386,7 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> GetTaskDetails([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -401,8 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListBucketsResponse> ListBuckets([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/buckets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -432,8 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListTasksResponseV2> ListTasks([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -449,37 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UpdateTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydueDateTime = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<int> bodypercentComplete = null, [WorkflowExpression] Func<string> bodybucketId = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespink = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesred = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesyellow = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesblue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespurple = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbronze = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslime = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesaqua = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriessilver = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbrown = null, [WorkflowExpression] Func<bool> bodyappliedCategoriescranberry = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesorange = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespeach = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesmarigold = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesteal = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslavender = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesplum = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGray = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydueDateTime, nameof(bodydueDateTime), required: false);
-            SourceExpression.Validate(bodystartDateTime, nameof(bodystartDateTime), required: false);
-            SourceExpression.Validate(bodypercentComplete, nameof(bodypercentComplete), required: false);
-            SourceExpression.Validate(bodybucketId, nameof(bodybucketId), required: false);
-            SourceExpression.Validate(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
-            SourceExpression.Validate(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
-            SourceExpression.Validate(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
-            SourceExpression.Validate(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
-            SourceExpression.Validate(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
-            SourceExpression.Validate(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
-            SourceExpression.Validate(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -689,10 +610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> UpdateTaskDetails([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodyreferencesInputItem[]> bodyreferences = null, [WorkflowExpression] Func<bodychecklistInputItem[]> bodychecklist = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyreferences, nameof(bodyreferences), required: false);
-            SourceExpression.Validate(bodychecklist, nameof(bodychecklist), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -734,8 +651,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
     {
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -750,8 +665,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

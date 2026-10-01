@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<DataSourceInfo[]> DatasourcesList([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/Datasources";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<DataSource> DatasourcesDetails([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Datasources/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -46,13 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<DataValuesPaged> DatasourcesValues([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Datasources/{0}/values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -79,18 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<DataValue> DatasourcesDatasourceCreateValue([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<double> bodyvalue, [WorkflowExpression] Func<string> bodyvalueDate, [WorkflowExpression] Func<int> bodyareaId = null, [WorkflowExpression] Func<int> bodyassetId = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydimension = null, [WorkflowExpression] Func<string> bodydimension2 = null, [WorkflowExpression] Func<string> bodydimension3 = null, [WorkflowExpression] Func<string> bodydimension4 = null, [WorkflowExpression] Func<string> bodyexternalId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodyvalueDate, nameof(bodyvalueDate), required: true);
-            SourceExpression.Validate(bodyareaId, nameof(bodyareaId), required: false);
-            SourceExpression.Validate(bodyassetId, nameof(bodyassetId), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydimension, nameof(bodydimension), required: false);
-            SourceExpression.Validate(bodydimension2, nameof(bodydimension2), required: false);
-            SourceExpression.Validate(bodydimension3, nameof(bodydimension3), required: false);
-            SourceExpression.Validate(bodydimension4, nameof(bodydimension4), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Datasources/{0}/values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -169,8 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IWorkflowAction DatasourcesDatasourceDeleteValue([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> valueId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(valueId, nameof(valueId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Datasources/{0}/values/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(valueId, 1));
@@ -185,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<TaskInfo> TasksDetails([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -200,7 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<TaskInfo> TasksDelete([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -215,18 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<TaskInfo> TasksUpdate([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<int> bodyboardId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyresponsibleUserId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<int> bodyrowCategoryId = null, [WorkflowExpression] Func<int> bodycolumnCategoryId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyresponsibleUserId, nameof(bodyresponsibleUserId), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyrowCategoryId, nameof(bodyrowCategoryId), required: false);
-            SourceExpression.Validate(bodycolumnCategoryId, nameof(bodycolumnCategoryId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -309,17 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<TaskInfo> TasksCreate([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<int> bodyboardId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyresponsibleUserId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<int> bodyrowCategoryId = null, [WorkflowExpression] Func<int> bodycolumnCategoryId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyresponsibleUserId, nameof(bodyresponsibleUserId), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyrowCategoryId, nameof(bodyrowCategoryId), required: false);
-            SourceExpression.Validate(bodycolumnCategoryId, nameof(bodycolumnCategoryId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/Tasks";
@@ -402,18 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
         public IBodyWorkflowAction<TaskInfo> TasksCreateSubTask([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<int> bodyboardId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyresponsibleUserId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<int> bodyrowCategoryId = null, [WorkflowExpression] Func<int> bodycolumnCategoryId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyresponsibleUserId, nameof(bodyresponsibleUserId), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyrowCategoryId, nameof(bodyrowCategoryId), required: false);
-            SourceExpression.Validate(bodycolumnCategoryId, nameof(bodycolumnCategoryId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Tasks/{0}/SubTasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
         public IBodyWorkflowAction<JToken> BadgeCreate([WorkflowExpression] Func<string> label = null, [WorkflowExpression] Func<string> labelColor = null, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<string> style = null, [WorkflowExpression] Func<string> logo = null, [WorkflowExpression] Func<string> logoColor = null, [WorkflowExpression] Func<int> logoWidth = null, [WorkflowExpression] Func<string> link = null, [WorkflowExpression] Func<int> cacheSeconds = null)
         {
-            SourceExpression.Validate(label, nameof(label), required: false);
-            SourceExpression.Validate(labelColor, nameof(labelColor), required: false);
-            SourceExpression.Validate(message, nameof(message), required: false);
-            SourceExpression.Validate(color, nameof(color), required: false);
-            SourceExpression.Validate(style, nameof(style), required: false);
-            SourceExpression.Validate(logo, nameof(logo), required: false);
-            SourceExpression.Validate(logoColor, nameof(logoColor), required: false);
-            SourceExpression.Validate(logoWidth, nameof(logoWidth), required: false);
-            SourceExpression.Validate(link, nameof(link), required: false);
-            SourceExpression.Validate(cacheSeconds, nameof(cacheSeconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/static/v1";
@@ -59,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
         public IBodyWorkflowAction<JToken> BadgeGet([WorkflowExpression] Func<string> parameters)
         {
-            SourceExpression.Validate(parameters, nameof(parameters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parameters, 1));

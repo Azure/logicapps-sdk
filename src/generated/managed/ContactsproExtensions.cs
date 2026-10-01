@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> GetContact([WorkflowExpression] Func<string> contactListId, [WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactListId, nameof(contactListId), required: true);
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -30,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IWorkflowAction DeleteContact([WorkflowExpression] Func<string> contactListId, [WorkflowExpression] Func<string> contactId)
         {
-            SourceExpression.Validate(contactListId, nameof(contactListId), required: true);
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -46,24 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> UpdateContact([WorkflowExpression] Func<string> contactListId, [WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyinternetemail = null, [WorkflowExpression] Func<string> bodyinternetwebsite = null, [WorkflowExpression] Func<string> bodyinternetlinkedin = null, [WorkflowExpression] Func<string> bodyinternetfacebook = null, [WorkflowExpression] Func<string> bodyinternettwitter = null, [WorkflowExpression] Func<string> bodyphonesbusinessPhone = null, [WorkflowExpression] Func<string> bodyphonesmobile = null, [WorkflowExpression] Func<string> bodyphoneshome = null, [WorkflowExpression] Func<string> bodyphonesbusinessFax = null, [WorkflowExpression] Func<Address[]> bodyaddresses = null, [WorkflowExpression] Func<string> bodynotes = null)
         {
-            SourceExpression.Validate(contactListId, nameof(contactListId), required: true);
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyinternetemail, nameof(bodyinternetemail), required: false);
-            SourceExpression.Validate(bodyinternetwebsite, nameof(bodyinternetwebsite), required: false);
-            SourceExpression.Validate(bodyinternetlinkedin, nameof(bodyinternetlinkedin), required: false);
-            SourceExpression.Validate(bodyinternetfacebook, nameof(bodyinternetfacebook), required: false);
-            SourceExpression.Validate(bodyinternettwitter, nameof(bodyinternettwitter), required: false);
-            SourceExpression.Validate(bodyphonesbusinessPhone, nameof(bodyphonesbusinessPhone), required: false);
-            SourceExpression.Validate(bodyphonesmobile, nameof(bodyphonesmobile), required: false);
-            SourceExpression.Validate(bodyphoneshome, nameof(bodyphoneshome), required: false);
-            SourceExpression.Validate(bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
-            SourceExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -192,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact[]> GetAllContacts([WorkflowExpression] Func<string> contactListId)
         {
-            SourceExpression.Validate(contactListId, nameof(contactListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1));
@@ -207,23 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> CreateContact([WorkflowExpression] Func<string> contactListId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyinternetemail = null, [WorkflowExpression] Func<string> bodyinternetwebsite = null, [WorkflowExpression] Func<string> bodyinternetlinkedin = null, [WorkflowExpression] Func<string> bodyinternetfacebook = null, [WorkflowExpression] Func<string> bodyinternettwitter = null, [WorkflowExpression] Func<string> bodyphonesbusinessPhone = null, [WorkflowExpression] Func<string> bodyphonesmobile = null, [WorkflowExpression] Func<string> bodyphoneshome = null, [WorkflowExpression] Func<string> bodyphonesbusinessFax = null, [WorkflowExpression] Func<Address[]> bodyaddresses = null, [WorkflowExpression] Func<string> bodynotes = null)
         {
-            SourceExpression.Validate(contactListId, nameof(contactListId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            SourceExpression.Validate(bodyinternetemail, nameof(bodyinternetemail), required: false);
-            SourceExpression.Validate(bodyinternetwebsite, nameof(bodyinternetwebsite), required: false);
-            SourceExpression.Validate(bodyinternetlinkedin, nameof(bodyinternetlinkedin), required: false);
-            SourceExpression.Validate(bodyinternetfacebook, nameof(bodyinternetfacebook), required: false);
-            SourceExpression.Validate(bodyinternettwitter, nameof(bodyinternettwitter), required: false);
-            SourceExpression.Validate(bodyphonesbusinessPhone, nameof(bodyphonesbusinessPhone), required: false);
-            SourceExpression.Validate(bodyphonesmobile, nameof(bodyphonesmobile), required: false);
-            SourceExpression.Validate(bodyphoneshome, nameof(bodyphoneshome), required: false);
-            SourceExpression.Validate(bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
-            SourceExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactListId, 1));

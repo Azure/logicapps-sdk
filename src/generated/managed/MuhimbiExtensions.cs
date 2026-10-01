@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> CompositeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkData, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatawatermarkData, nameof(inputDatawatermarkData), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/composite_watermark";
@@ -74,33 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> CompressPdf([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<inputPdfDataremoveAnnotationsInput> inputPdfDataremoveAnnotations = null, [WorkflowExpression] Func<inputPdfDataremoveBlankPagesInput> inputPdfDataremoveBlankPages = null, [WorkflowExpression] Func<inputPdfDataremoveBookmarksInput> inputPdfDataremoveBookmarks = null, [WorkflowExpression] Func<inputPdfDataremoveEmbeddedFilesInput> inputPdfDataremoveEmbeddedFiles = null, [WorkflowExpression] Func<inputPdfDataremoveFormFieldsInput> inputPdfDataremoveFormFields = null, [WorkflowExpression] Func<inputPdfDataremoveHyperlinksInput> inputPdfDataremoveHyperlinks = null, [WorkflowExpression] Func<inputPdfDataremoveJavaScriptInput> inputPdfDataremoveJavaScript = null, [WorkflowExpression] Func<inputPdfDataremoveMetadataInput> inputPdfDataremoveMetadata = null, [WorkflowExpression] Func<inputPdfDataremovePageThumbnailsInput> inputPdfDataremovePageThumbnails = null, [WorkflowExpression] Func<inputPdfDatapackFontsInput> inputPdfDatapackFonts = null, [WorkflowExpression] Func<inputPdfDatapackDocumentInput> inputPdfDatapackDocument = null, [WorkflowExpression] Func<inputPdfDatarecompressImagesInput> inputPdfDatarecompressImages = null, [WorkflowExpression] Func<inputPdfDataenableMRCInput> inputPdfDataenableMRC = null, [WorkflowExpression] Func<int> inputPdfDatadownscaleResolutionMRC = null, [WorkflowExpression] Func<inputPdfDatapreserveSmoothingInput> inputPdfDatapreserveSmoothing = null, [WorkflowExpression] Func<inputPdfDataimageQualityInput> inputPdfDataimageQuality = null, [WorkflowExpression] Func<inputPdfDatadownscaleImagesInput> inputPdfDatadownscaleImages = null, [WorkflowExpression] Func<int> inputPdfDatadownscaleResolution = null, [WorkflowExpression] Func<inputPdfDataenableColorDetectionInput> inputPdfDataenableColorDetection = null, [WorkflowExpression] Func<inputPdfDataenableCharRepairInput> inputPdfDataenableCharRepair = null, [WorkflowExpression] Func<inputPdfDataenableJPEG2000Input> inputPdfDataenableJPEG2000 = null, [WorkflowExpression] Func<inputPdfDataenableJBIG2Input> inputPdfDataenableJBIG2 = null, [WorkflowExpression] Func<int> inputPdfDatajBIG2PMSThreshold = null, [WorkflowExpression] Func<string> inputPdfDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputPdfDataremoveAnnotations, nameof(inputPdfDataremoveAnnotations), required: false);
-            SourceExpression.Validate(inputPdfDataremoveBlankPages, nameof(inputPdfDataremoveBlankPages), required: false);
-            SourceExpression.Validate(inputPdfDataremoveBookmarks, nameof(inputPdfDataremoveBookmarks), required: false);
-            SourceExpression.Validate(inputPdfDataremoveEmbeddedFiles, nameof(inputPdfDataremoveEmbeddedFiles), required: false);
-            SourceExpression.Validate(inputPdfDataremoveFormFields, nameof(inputPdfDataremoveFormFields), required: false);
-            SourceExpression.Validate(inputPdfDataremoveHyperlinks, nameof(inputPdfDataremoveHyperlinks), required: false);
-            SourceExpression.Validate(inputPdfDataremoveJavaScript, nameof(inputPdfDataremoveJavaScript), required: false);
-            SourceExpression.Validate(inputPdfDataremoveMetadata, nameof(inputPdfDataremoveMetadata), required: false);
-            SourceExpression.Validate(inputPdfDataremovePageThumbnails, nameof(inputPdfDataremovePageThumbnails), required: false);
-            SourceExpression.Validate(inputPdfDatapackFonts, nameof(inputPdfDatapackFonts), required: false);
-            SourceExpression.Validate(inputPdfDatapackDocument, nameof(inputPdfDatapackDocument), required: false);
-            SourceExpression.Validate(inputPdfDatarecompressImages, nameof(inputPdfDatarecompressImages), required: false);
-            SourceExpression.Validate(inputPdfDataenableMRC, nameof(inputPdfDataenableMRC), required: false);
-            SourceExpression.Validate(inputPdfDatadownscaleResolutionMRC, nameof(inputPdfDatadownscaleResolutionMRC), required: false);
-            SourceExpression.Validate(inputPdfDatapreserveSmoothing, nameof(inputPdfDatapreserveSmoothing), required: false);
-            SourceExpression.Validate(inputPdfDataimageQuality, nameof(inputPdfDataimageQuality), required: false);
-            SourceExpression.Validate(inputPdfDatadownscaleImages, nameof(inputPdfDatadownscaleImages), required: false);
-            SourceExpression.Validate(inputPdfDatadownscaleResolution, nameof(inputPdfDatadownscaleResolution), required: false);
-            SourceExpression.Validate(inputPdfDataenableColorDetection, nameof(inputPdfDataenableColorDetection), required: false);
-            SourceExpression.Validate(inputPdfDataenableCharRepair, nameof(inputPdfDataenableCharRepair), required: false);
-            SourceExpression.Validate(inputPdfDataenableJPEG2000, nameof(inputPdfDataenableJPEG2000), required: false);
-            SourceExpression.Validate(inputPdfDataenableJBIG2, nameof(inputPdfDataenableJBIG2), required: false);
-            SourceExpression.Validate(inputPdfDatajBIG2PMSThreshold, nameof(inputPdfDatajBIG2PMSThreshold), required: false);
-            SourceExpression.Validate(inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/compress_pdf";
@@ -525,12 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> Convert([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDataoutputFormatInput> inputDataoutputFormat, [WorkflowExpression] Func<string> inputDataoverrideSettings = null, [WorkflowExpression] Func<string> inputDatatemplateFileContent = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataoutputFormat, nameof(inputDataoutputFormat), required: true);
-            SourceExpression.Validate(inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputDatatemplateFileContent, nameof(inputDatatemplateFileContent), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert";
@@ -597,20 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertCad([WorkflowExpression] Func<string> inputCadDatasourceFileName, [WorkflowExpression] Func<string> inputCadDatasourceFileContent, [WorkflowExpression] Func<inputCadDatapaperSizeInput> inputCadDatapaperSize = null, [WorkflowExpression] Func<string> inputCadDatapaperSizeCustom = null, [WorkflowExpression] Func<string> inputCadDatapageMargins = null, [WorkflowExpression] Func<string> inputCadDatabackgroundColor = null, [WorkflowExpression] Func<inputCadDataforegroundColorInput> inputCadDataforegroundColor = null, [WorkflowExpression] Func<string> inputCadDataforegroundColorCustom = null, [WorkflowExpression] Func<inputCadDataemptyLayoutDetectionInput> inputCadDataemptyLayoutDetection = null, [WorkflowExpression] Func<inputCadDatalayoutSortOrderInput> inputCadDatalayoutSortOrder = null, [WorkflowExpression] Func<int> inputCadDatastartPage = null, [WorkflowExpression] Func<int> inputCadDataendPage = null, [WorkflowExpression] Func<string> inputCadDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputCadDatafailOnError = null)
         {
-            SourceExpression.Validate(inputCadDatasourceFileName, nameof(inputCadDatasourceFileName), required: true);
-            SourceExpression.Validate(inputCadDatasourceFileContent, nameof(inputCadDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputCadDatapaperSize, nameof(inputCadDatapaperSize), required: false);
-            SourceExpression.Validate(inputCadDatapaperSizeCustom, nameof(inputCadDatapaperSizeCustom), required: false);
-            SourceExpression.Validate(inputCadDatapageMargins, nameof(inputCadDatapageMargins), required: false);
-            SourceExpression.Validate(inputCadDatabackgroundColor, nameof(inputCadDatabackgroundColor), required: false);
-            SourceExpression.Validate(inputCadDataforegroundColor, nameof(inputCadDataforegroundColor), required: false);
-            SourceExpression.Validate(inputCadDataforegroundColorCustom, nameof(inputCadDataforegroundColorCustom), required: false);
-            SourceExpression.Validate(inputCadDataemptyLayoutDetection, nameof(inputCadDataemptyLayoutDetection), required: false);
-            SourceExpression.Validate(inputCadDatalayoutSortOrder, nameof(inputCadDatalayoutSortOrder), required: false);
-            SourceExpression.Validate(inputCadDatastartPage, nameof(inputCadDatastartPage), required: false);
-            SourceExpression.Validate(inputCadDataendPage, nameof(inputCadDataendPage), required: false);
-            SourceExpression.Validate(inputCadDataoverrideSettings, nameof(inputCadDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputCadDatafailOnError, nameof(inputCadDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_cad";
@@ -789,26 +738,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertEmail([WorkflowExpression] Func<string> inputEmailDatasourceFileName, [WorkflowExpression] Func<string> inputEmailDatasourceFileContent, [WorkflowExpression] Func<bool> inputEmailDataincludeAttachments = null, [WorkflowExpression] Func<inputEmailDataattachmentActionInput> inputEmailDataattachmentAction = null, [WorkflowExpression] Func<bool> inputEmailDataattachmentSummary = null, [WorkflowExpression] Func<inputEmailDataunsupportedAttachmentActionInput> inputEmailDataunsupportedAttachmentAction = null, [WorkflowExpression] Func<string> inputEmailDataincludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputEmailDataexcludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputEmailDataviewportSize = null, [WorkflowExpression] Func<inputEmailDatapaperSizeInput> inputEmailDatapaperSize = null, [WorkflowExpression] Func<string> inputEmailDatapaperSizeCustom = null, [WorkflowExpression] Func<string> inputEmailDatapageMargins = null, [WorkflowExpression] Func<bool> inputEmailDataattachmentErrors = null, [WorkflowExpression] Func<int> inputEmailDataminImageSize = null, [WorkflowExpression] Func<bool> inputEmailDataofflineMode = null, [WorkflowExpression] Func<int> inputEmailDatastartPage = null, [WorkflowExpression] Func<int> inputEmailDataendPage = null, [WorkflowExpression] Func<inputEmailDataconversionQualityInput> inputEmailDataconversionQuality = null, [WorkflowExpression] Func<string> inputEmailDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputEmailDatafailOnError = null)
         {
-            SourceExpression.Validate(inputEmailDatasourceFileName, nameof(inputEmailDatasourceFileName), required: true);
-            SourceExpression.Validate(inputEmailDatasourceFileContent, nameof(inputEmailDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputEmailDataincludeAttachments, nameof(inputEmailDataincludeAttachments), required: false);
-            SourceExpression.Validate(inputEmailDataattachmentAction, nameof(inputEmailDataattachmentAction), required: false);
-            SourceExpression.Validate(inputEmailDataattachmentSummary, nameof(inputEmailDataattachmentSummary), required: false);
-            SourceExpression.Validate(inputEmailDataunsupportedAttachmentAction, nameof(inputEmailDataunsupportedAttachmentAction), required: false);
-            SourceExpression.Validate(inputEmailDataincludeAttachmentFilter, nameof(inputEmailDataincludeAttachmentFilter), required: false);
-            SourceExpression.Validate(inputEmailDataexcludeAttachmentFilter, nameof(inputEmailDataexcludeAttachmentFilter), required: false);
-            SourceExpression.Validate(inputEmailDataviewportSize, nameof(inputEmailDataviewportSize), required: false);
-            SourceExpression.Validate(inputEmailDatapaperSize, nameof(inputEmailDatapaperSize), required: false);
-            SourceExpression.Validate(inputEmailDatapaperSizeCustom, nameof(inputEmailDatapaperSizeCustom), required: false);
-            SourceExpression.Validate(inputEmailDatapageMargins, nameof(inputEmailDatapageMargins), required: false);
-            SourceExpression.Validate(inputEmailDataattachmentErrors, nameof(inputEmailDataattachmentErrors), required: false);
-            SourceExpression.Validate(inputEmailDataminImageSize, nameof(inputEmailDataminImageSize), required: false);
-            SourceExpression.Validate(inputEmailDataofflineMode, nameof(inputEmailDataofflineMode), required: false);
-            SourceExpression.Validate(inputEmailDatastartPage, nameof(inputEmailDatastartPage), required: false);
-            SourceExpression.Validate(inputEmailDataendPage, nameof(inputEmailDataendPage), required: false);
-            SourceExpression.Validate(inputEmailDataconversionQuality, nameof(inputEmailDataconversionQuality), required: false);
-            SourceExpression.Validate(inputEmailDataoverrideSettings, nameof(inputEmailDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputEmailDatafailOnError, nameof(inputEmailDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_email";
@@ -1043,19 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertExcel([WorkflowExpression] Func<string> inputExcelDatasourceFileName, [WorkflowExpression] Func<string> inputExcelDatasourceFileContent, [WorkflowExpression] Func<inputExcelDataoutputFormatInput> inputExcelDataoutputFormat, [WorkflowExpression] Func<inputExcelDatarangeInput> inputExcelDatarange = null, [WorkflowExpression] Func<bool> inputExcelDatarevealHiddenRows = null, [WorkflowExpression] Func<bool> inputExcelDatarevealHiddenColumns = null, [WorkflowExpression] Func<int> inputExcelDatafitToPagesWide = null, [WorkflowExpression] Func<int> inputExcelDatafitToPagesTall = null, [WorkflowExpression] Func<int> inputExcelDatastartPage = null, [WorkflowExpression] Func<int> inputExcelDataendPage = null, [WorkflowExpression] Func<inputExcelDataqualityInput> inputExcelDataquality = null, [WorkflowExpression] Func<string> inputExcelDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputExcelDatafailOnError = null)
         {
-            SourceExpression.Validate(inputExcelDatasourceFileName, nameof(inputExcelDatasourceFileName), required: true);
-            SourceExpression.Validate(inputExcelDatasourceFileContent, nameof(inputExcelDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputExcelDataoutputFormat, nameof(inputExcelDataoutputFormat), required: true);
-            SourceExpression.Validate(inputExcelDatarange, nameof(inputExcelDatarange), required: false);
-            SourceExpression.Validate(inputExcelDatarevealHiddenRows, nameof(inputExcelDatarevealHiddenRows), required: false);
-            SourceExpression.Validate(inputExcelDatarevealHiddenColumns, nameof(inputExcelDatarevealHiddenColumns), required: false);
-            SourceExpression.Validate(inputExcelDatafitToPagesWide, nameof(inputExcelDatafitToPagesWide), required: false);
-            SourceExpression.Validate(inputExcelDatafitToPagesTall, nameof(inputExcelDatafitToPagesTall), required: false);
-            SourceExpression.Validate(inputExcelDatastartPage, nameof(inputExcelDatastartPage), required: false);
-            SourceExpression.Validate(inputExcelDataendPage, nameof(inputExcelDataendPage), required: false);
-            SourceExpression.Validate(inputExcelDataquality, nameof(inputExcelDataquality), required: false);
-            SourceExpression.Validate(inputExcelDataoverrideSettings, nameof(inputExcelDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputExcelDatafailOnError, nameof(inputExcelDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_excel";
@@ -1184,15 +1100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertHtml([WorkflowExpression] Func<string> inputDatasourceURLOrHTML, [WorkflowExpression] Func<inputDatapageOrientationInput> inputDatapageOrientation = null, [WorkflowExpression] Func<inputDatamediaTypeInput> inputDatamediaType = null, [WorkflowExpression] Func<inputDataauthenticationTypeInput> inputDataauthenticationType = null, [WorkflowExpression] Func<string> inputDatauserName = null, [WorkflowExpression] Func<string> inputDatapassword = null, [WorkflowExpression] Func<string> inputDataviewportSize = null, [WorkflowExpression] Func<int> inputDataconversionDelay = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceURLOrHTML, nameof(inputDatasourceURLOrHTML), required: true);
-            SourceExpression.Validate(inputDatapageOrientation, nameof(inputDatapageOrientation), required: false);
-            SourceExpression.Validate(inputDatamediaType, nameof(inputDatamediaType), required: false);
-            SourceExpression.Validate(inputDataauthenticationType, nameof(inputDataauthenticationType), required: false);
-            SourceExpression.Validate(inputDatauserName, nameof(inputDatauserName), required: false);
-            SourceExpression.Validate(inputDatapassword, nameof(inputDatapassword), required: false);
-            SourceExpression.Validate(inputDataviewportSize, nameof(inputDataviewportSize), required: false);
-            SourceExpression.Validate(inputDataconversionDelay, nameof(inputDataconversionDelay), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_html";
@@ -1305,28 +1212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertInfopath([WorkflowExpression] Func<string> inputInfopathDatasourceFileName, [WorkflowExpression] Func<string> inputInfopathDatasourceFileContent, [WorkflowExpression] Func<inputInfopathDataoutputFormatInput> inputInfopathDataoutputFormat, [WorkflowExpression] Func<string> inputInfopathDatatemplateFileContent = null, [WorkflowExpression] Func<string> inputInfopathDataviewNames = null, [WorkflowExpression] Func<bool> inputInfopathDataincludeAttachment = null, [WorkflowExpression] Func<inputInfopathDataattachmentActionInput> inputInfopathDataattachmentAction = null, [WorkflowExpression] Func<inputInfopathDataunsupportedAttachmentActionInput> inputInfopathDataunsupportedAttachmentAction = null, [WorkflowExpression] Func<bool> inputInfopathDatabreakMergeOnError = null, [WorkflowExpression] Func<string> inputInfopathDataincludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputInfopathDataexcludeAttachmentFilter = null, [WorkflowExpression] Func<inputInfopathDatadefaultPaperSizeInput> inputInfopathDatadefaultPaperSize = null, [WorkflowExpression] Func<string> inputInfopathDatadefaultPaperSizeCustom = null, [WorkflowExpression] Func<inputInfopathDataforcePaperSizeInput> inputInfopathDataforcePaperSize = null, [WorkflowExpression] Func<string> inputInfopathDataforcePaperSizeCustom = null, [WorkflowExpression] Func<inputInfopathDatadefaultPageOrientationInput> inputInfopathDatadefaultPageOrientation = null, [WorkflowExpression] Func<inputInfopathDataforcePageOrientationInput> inputInfopathDataforcePageOrientation = null, [WorkflowExpression] Func<int> inputInfopathDatastartPage = null, [WorkflowExpression] Func<int> inputInfopathDataendPage = null, [WorkflowExpression] Func<inputInfopathDataconversionQualityInput> inputInfopathDataconversionQuality = null, [WorkflowExpression] Func<string> inputInfopathDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputInfopathDatafailOnError = null)
         {
-            SourceExpression.Validate(inputInfopathDatasourceFileName, nameof(inputInfopathDatasourceFileName), required: true);
-            SourceExpression.Validate(inputInfopathDatasourceFileContent, nameof(inputInfopathDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputInfopathDataoutputFormat, nameof(inputInfopathDataoutputFormat), required: true);
-            SourceExpression.Validate(inputInfopathDatatemplateFileContent, nameof(inputInfopathDatatemplateFileContent), required: false);
-            SourceExpression.Validate(inputInfopathDataviewNames, nameof(inputInfopathDataviewNames), required: false);
-            SourceExpression.Validate(inputInfopathDataincludeAttachment, nameof(inputInfopathDataincludeAttachment), required: false);
-            SourceExpression.Validate(inputInfopathDataattachmentAction, nameof(inputInfopathDataattachmentAction), required: false);
-            SourceExpression.Validate(inputInfopathDataunsupportedAttachmentAction, nameof(inputInfopathDataunsupportedAttachmentAction), required: false);
-            SourceExpression.Validate(inputInfopathDatabreakMergeOnError, nameof(inputInfopathDatabreakMergeOnError), required: false);
-            SourceExpression.Validate(inputInfopathDataincludeAttachmentFilter, nameof(inputInfopathDataincludeAttachmentFilter), required: false);
-            SourceExpression.Validate(inputInfopathDataexcludeAttachmentFilter, nameof(inputInfopathDataexcludeAttachmentFilter), required: false);
-            SourceExpression.Validate(inputInfopathDatadefaultPaperSize, nameof(inputInfopathDatadefaultPaperSize), required: false);
-            SourceExpression.Validate(inputInfopathDatadefaultPaperSizeCustom, nameof(inputInfopathDatadefaultPaperSizeCustom), required: false);
-            SourceExpression.Validate(inputInfopathDataforcePaperSize, nameof(inputInfopathDataforcePaperSize), required: false);
-            SourceExpression.Validate(inputInfopathDataforcePaperSizeCustom, nameof(inputInfopathDataforcePaperSizeCustom), required: false);
-            SourceExpression.Validate(inputInfopathDatadefaultPageOrientation, nameof(inputInfopathDatadefaultPageOrientation), required: false);
-            SourceExpression.Validate(inputInfopathDataforcePageOrientation, nameof(inputInfopathDataforcePageOrientation), required: false);
-            SourceExpression.Validate(inputInfopathDatastartPage, nameof(inputInfopathDatastartPage), required: false);
-            SourceExpression.Validate(inputInfopathDataendPage, nameof(inputInfopathDataendPage), required: false);
-            SourceExpression.Validate(inputInfopathDataconversionQuality, nameof(inputInfopathDataconversionQuality), required: false);
-            SourceExpression.Validate(inputInfopathDataoverrideSettings, nameof(inputInfopathDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputInfopathDatafailOnError, nameof(inputInfopathDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_infopath";
@@ -1509,11 +1394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertPdfa([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<inputPdfDatapDFProfileInput> inputPdfDatapDFProfile, [WorkflowExpression] Func<string> inputPdfDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputPdfDatapDFProfile, nameof(inputPdfDatapDFProfile), required: true);
-            SourceExpression.Validate(inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_pdfa";
@@ -1574,17 +1454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertPowerpoint([WorkflowExpression] Func<string> inputPowerpointDatasourceFileName, [WorkflowExpression] Func<string> inputPowerpointDatasourceFileContent, [WorkflowExpression] Func<inputPowerpointDataoutputFormatInput> inputPowerpointDataoutputFormat, [WorkflowExpression] Func<inputPowerpointDatarangeInput> inputPowerpointDatarange = null, [WorkflowExpression] Func<inputPowerpointDataprintLayoutHandoutsInput> inputPowerpointDataprintLayoutHandouts = null, [WorkflowExpression] Func<bool> inputPowerpointDataframeSlides = null, [WorkflowExpression] Func<int> inputPowerpointDatastartPage = null, [WorkflowExpression] Func<int> inputPowerpointDataendPage = null, [WorkflowExpression] Func<inputPowerpointDataqualityInput> inputPowerpointDataquality = null, [WorkflowExpression] Func<string> inputPowerpointDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPowerpointDatafailOnError = null)
         {
-            SourceExpression.Validate(inputPowerpointDatasourceFileName, nameof(inputPowerpointDatasourceFileName), required: true);
-            SourceExpression.Validate(inputPowerpointDatasourceFileContent, nameof(inputPowerpointDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputPowerpointDataoutputFormat, nameof(inputPowerpointDataoutputFormat), required: true);
-            SourceExpression.Validate(inputPowerpointDatarange, nameof(inputPowerpointDatarange), required: false);
-            SourceExpression.Validate(inputPowerpointDataprintLayoutHandouts, nameof(inputPowerpointDataprintLayoutHandouts), required: false);
-            SourceExpression.Validate(inputPowerpointDataframeSlides, nameof(inputPowerpointDataframeSlides), required: false);
-            SourceExpression.Validate(inputPowerpointDatastartPage, nameof(inputPowerpointDatastartPage), required: false);
-            SourceExpression.Validate(inputPowerpointDataendPage, nameof(inputPowerpointDataendPage), required: false);
-            SourceExpression.Validate(inputPowerpointDataquality, nameof(inputPowerpointDataquality), required: false);
-            SourceExpression.Validate(inputPowerpointDataoverrideSettings, nameof(inputPowerpointDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputPowerpointDatafailOnError, nameof(inputPowerpointDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_powerpoint";
@@ -1701,15 +1570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertVisio([WorkflowExpression] Func<string> inputVisioDatasourceFileName, [WorkflowExpression] Func<string> inputVisioDatasourceFileContent, [WorkflowExpression] Func<inputVisioDataoutputFormatInput> inputVisioDataoutputFormat, [WorkflowExpression] Func<inputVisioDatarangeInput> inputVisioDatarange = null, [WorkflowExpression] Func<int> inputVisioDatastartPage = null, [WorkflowExpression] Func<int> inputVisioDataendPage = null, [WorkflowExpression] Func<inputVisioDataqualityInput> inputVisioDataquality = null, [WorkflowExpression] Func<string> inputVisioDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputVisioDatafailOnError = null)
         {
-            SourceExpression.Validate(inputVisioDatasourceFileName, nameof(inputVisioDatasourceFileName), required: true);
-            SourceExpression.Validate(inputVisioDatasourceFileContent, nameof(inputVisioDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputVisioDataoutputFormat, nameof(inputVisioDataoutputFormat), required: true);
-            SourceExpression.Validate(inputVisioDatarange, nameof(inputVisioDatarange), required: false);
-            SourceExpression.Validate(inputVisioDatastartPage, nameof(inputVisioDatastartPage), required: false);
-            SourceExpression.Validate(inputVisioDataendPage, nameof(inputVisioDataendPage), required: false);
-            SourceExpression.Validate(inputVisioDataquality, nameof(inputVisioDataquality), required: false);
-            SourceExpression.Validate(inputVisioDataoverrideSettings, nameof(inputVisioDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputVisioDatafailOnError, nameof(inputVisioDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_visio";
@@ -1794,17 +1654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ConvertWord([WorkflowExpression] Func<string> inputWordDatasourceFileName, [WorkflowExpression] Func<string> inputWordDatasourceFileContent, [WorkflowExpression] Func<inputWordDataoutputFormatInput> inputWordDataoutputFormat, [WorkflowExpression] Func<inputWordDatadisplayForReviewInput> inputWordDatadisplayForReview = null, [WorkflowExpression] Func<inputWordDatareviewMarkupModeInput> inputWordDatareviewMarkupMode = null, [WorkflowExpression] Func<inputWordDatagenerateBookmarksInput> inputWordDatagenerateBookmarks = null, [WorkflowExpression] Func<int> inputWordDatastartPage = null, [WorkflowExpression] Func<int> inputWordDataendPage = null, [WorkflowExpression] Func<inputWordDataqualityInput> inputWordDataquality = null, [WorkflowExpression] Func<string> inputWordDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputWordDatafailOnError = null)
         {
-            SourceExpression.Validate(inputWordDatasourceFileName, nameof(inputWordDatasourceFileName), required: true);
-            SourceExpression.Validate(inputWordDatasourceFileContent, nameof(inputWordDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputWordDataoutputFormat, nameof(inputWordDataoutputFormat), required: true);
-            SourceExpression.Validate(inputWordDatadisplayForReview, nameof(inputWordDatadisplayForReview), required: false);
-            SourceExpression.Validate(inputWordDatareviewMarkupMode, nameof(inputWordDatareviewMarkupMode), required: false);
-            SourceExpression.Validate(inputWordDatagenerateBookmarks, nameof(inputWordDatagenerateBookmarks), required: false);
-            SourceExpression.Validate(inputWordDatastartPage, nameof(inputWordDatastartPage), required: false);
-            SourceExpression.Validate(inputWordDataendPage, nameof(inputWordDataendPage), required: false);
-            SourceExpression.Validate(inputWordDataquality, nameof(inputWordDataquality), required: false);
-            SourceExpression.Validate(inputWordDataoverrideSettings, nameof(inputWordDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputWordDatafailOnError, nameof(inputWordDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/convert_word";
@@ -1921,14 +1770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponseCommon> CopyMetadata([WorkflowExpression] Func<string> inputDatasiteUrl, [WorkflowExpression] Func<string> inputDatasourceFileUrl, [WorkflowExpression] Func<string> inputDatadestinationFilePath, [WorkflowExpression] Func<string> inputDatauserName = null, [WorkflowExpression] Func<string> inputDatapassword = null, [WorkflowExpression] Func<string> inputDatafieldsToCopy = null, [WorkflowExpression] Func<string> inputDatadestinationContentType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasiteUrl, nameof(inputDatasiteUrl), required: true);
-            SourceExpression.Validate(inputDatasourceFileUrl, nameof(inputDatasourceFileUrl), required: true);
-            SourceExpression.Validate(inputDatadestinationFilePath, nameof(inputDatadestinationFilePath), required: true);
-            SourceExpression.Validate(inputDatauserName, nameof(inputDatauserName), required: false);
-            SourceExpression.Validate(inputDatapassword, nameof(inputDatapassword), required: false);
-            SourceExpression.Validate(inputDatafieldsToCopy, nameof(inputDatafieldsToCopy), required: false);
-            SourceExpression.Validate(inputDatadestinationContentType, nameof(inputDatadestinationContentType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/copy_metadata";
@@ -1995,28 +1836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> EllipseWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatafillColor = null, [WorkflowExpression] Func<string> inputDatalineColor = null, [WorkflowExpression] Func<string> inputDatalineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatafillColor, nameof(inputDatafillColor), required: false);
-            SourceExpression.Validate(inputDatalineColor, nameof(inputDatalineColor), required: false);
-            SourceExpression.Validate(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/ellipse_watermark";
@@ -2213,10 +2032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ExportFormData([WorkflowExpression] Func<string> inputFromPdfDatasourceFileName, [WorkflowExpression] Func<string> inputFromPdfDatasourceFileContent, [WorkflowExpression] Func<inputFromPdfDataoutputDataFormatInput> inputFromPdfDataoutputDataFormat, [WorkflowExpression] Func<bool> inputFromPdfDatafailOnError = null)
         {
-            SourceExpression.Validate(inputFromPdfDatasourceFileName, nameof(inputFromPdfDatasourceFileName), required: true);
-            SourceExpression.Validate(inputFromPdfDatasourceFileContent, nameof(inputFromPdfDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputFromPdfDataoutputDataFormat, nameof(inputFromPdfDataoutputDataFormat), required: true);
-            SourceExpression.Validate(inputFromPdfDatafailOnError, nameof(inputFromPdfDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/export_form_data";
@@ -2271,10 +2086,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ExtractText([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<string> inputPdfDatapageRange = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
-            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/extract_text";
@@ -2341,29 +2152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ImageWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDataimage, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataimage, nameof(inputDataimage), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/image_watermark";
@@ -2562,17 +2350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ImportFormData([WorkflowExpression] Func<string> inputXmlDatasourceFileName, [WorkflowExpression] Func<string> inputXmlDatasourceFileContent, [WorkflowExpression] Func<string> inputXmlDatapDFFormFileContent = null, [WorkflowExpression] Func<string> inputXmlDatapDFFormURL = null, [WorkflowExpression] Func<string> inputXmlDatausername = null, [WorkflowExpression] Func<string> inputXmlDatadomain = null, [WorkflowExpression] Func<string> inputXmlDatapassword = null, [WorkflowExpression] Func<inputXmlDataflattenInput> inputXmlDataflatten = null, [WorkflowExpression] Func<inputXmlDatareadOnlyInput> inputXmlDatareadOnly = null, [WorkflowExpression] Func<string> inputXmlDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputXmlDatafailOnError = null)
         {
-            SourceExpression.Validate(inputXmlDatasourceFileName, nameof(inputXmlDatasourceFileName), required: true);
-            SourceExpression.Validate(inputXmlDatasourceFileContent, nameof(inputXmlDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputXmlDatapDFFormFileContent, nameof(inputXmlDatapDFFormFileContent), required: false);
-            SourceExpression.Validate(inputXmlDatapDFFormURL, nameof(inputXmlDatapDFFormURL), required: false);
-            SourceExpression.Validate(inputXmlDatausername, nameof(inputXmlDatausername), required: false);
-            SourceExpression.Validate(inputXmlDatadomain, nameof(inputXmlDatadomain), required: false);
-            SourceExpression.Validate(inputXmlDatapassword, nameof(inputXmlDatapassword), required: false);
-            SourceExpression.Validate(inputXmlDataflatten, nameof(inputXmlDataflatten), required: false);
-            SourceExpression.Validate(inputXmlDatareadOnly, nameof(inputXmlDatareadOnly), required: false);
-            SourceExpression.Validate(inputXmlDataoverrideSettings, nameof(inputXmlDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputXmlDatafailOnError, nameof(inputXmlDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/import_form_data";
@@ -2693,22 +2470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> ExtractKeyValuePairs([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<string> inputPdfDataoCRLanguage = null, [WorkflowExpression] Func<inputPdfDatadPIInput> inputPdfDatadPI = null, [WorkflowExpression] Func<inputPdfDatakVPOutputFormatInput> inputPdfDatakVPOutputFormat = null, [WorkflowExpression] Func<string> inputPdfDatapageRange = null, [WorkflowExpression] Func<inputPdfDataautorotateInput> inputPdfDataautorotate = null, [WorkflowExpression] Func<inputPdfDatatrimSymbolsInput> inputPdfDatatrimSymbols = null, [WorkflowExpression] Func<inputPdfDataincludeKeyBoundingBoxInput> inputPdfDataincludeKeyBoundingBox = null, [WorkflowExpression] Func<inputPdfDataincludeValueBoundingBoxInput> inputPdfDataincludeValueBoundingBox = null, [WorkflowExpression] Func<inputPdfDataincludePageNumberInput> inputPdfDataincludePageNumber = null, [WorkflowExpression] Func<inputPdfDataincludeConfidenceInput> inputPdfDataincludeConfidence = null, [WorkflowExpression] Func<int> inputPdfDataconfidenceThreshold = null, [WorkflowExpression] Func<inputPdfDataincludeTypeInput> inputPdfDataincludeType = null, [WorkflowExpression] Func<string> inputPdfDataexpectedKeys = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputPdfDataoCRLanguage, nameof(inputPdfDataoCRLanguage), required: false);
-            SourceExpression.Validate(inputPdfDatadPI, nameof(inputPdfDatadPI), required: false);
-            SourceExpression.Validate(inputPdfDatakVPOutputFormat, nameof(inputPdfDatakVPOutputFormat), required: false);
-            SourceExpression.Validate(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
-            SourceExpression.Validate(inputPdfDataautorotate, nameof(inputPdfDataautorotate), required: false);
-            SourceExpression.Validate(inputPdfDatatrimSymbols, nameof(inputPdfDatatrimSymbols), required: false);
-            SourceExpression.Validate(inputPdfDataincludeKeyBoundingBox, nameof(inputPdfDataincludeKeyBoundingBox), required: false);
-            SourceExpression.Validate(inputPdfDataincludeValueBoundingBox, nameof(inputPdfDataincludeValueBoundingBox), required: false);
-            SourceExpression.Validate(inputPdfDataincludePageNumber, nameof(inputPdfDataincludePageNumber), required: false);
-            SourceExpression.Validate(inputPdfDataincludeConfidence, nameof(inputPdfDataincludeConfidence), required: false);
-            SourceExpression.Validate(inputPdfDataconfidenceThreshold, nameof(inputPdfDataconfidenceThreshold), required: false);
-            SourceExpression.Validate(inputPdfDataincludeType, nameof(inputPdfDataincludeType), required: false);
-            SourceExpression.Validate(inputPdfDataexpectedKeys, nameof(inputPdfDataexpectedKeys), required: false);
-            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/key_value_pairs";
@@ -2957,27 +2718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> LineWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDataxCoordinateStart, [WorkflowExpression] Func<string> inputDatayCoordinateStart, [WorkflowExpression] Func<string> inputDataxCoordinateEnd, [WorkflowExpression] Func<string> inputDatayCoordinateEnd, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatalineColor = null, [WorkflowExpression] Func<string> inputDatalineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDataxCoordinateStart, nameof(inputDataxCoordinateStart), required: true);
-            SourceExpression.Validate(inputDatayCoordinateStart, nameof(inputDatayCoordinateStart), required: true);
-            SourceExpression.Validate(inputDataxCoordinateEnd, nameof(inputDataxCoordinateEnd), required: true);
-            SourceExpression.Validate(inputDatayCoordinateEnd, nameof(inputDatayCoordinateEnd), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatalineColor, nameof(inputDatalineColor), required: false);
-            SourceExpression.Validate(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/line_watermark";
@@ -3160,37 +2900,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> LinearBarcodeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatabarcodeContent, [WorkflowExpression] Func<inputDatabarcodeTypeInput> inputDatabarcodeType, [WorkflowExpression] Func<inputDatadisableCheckDigitInput> inputDatadisableCheckDigit, [WorkflowExpression] Func<inputDatashowCheckDigitInput> inputDatashowCheckDigit, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<inputDataomitEncodingOfStartStopSymbolsInput> inputDataomitEncodingOfStartStopSymbols = null, [WorkflowExpression] Func<string> inputDatamargin = null, [WorkflowExpression] Func<string> inputDatafontFamily = null, [WorkflowExpression] Func<string> inputDatafontSize = null, [WorkflowExpression] Func<string> inputDatafontStyle = null, [WorkflowExpression] Func<inputDatalabelPlacementInput> inputDatalabelPlacement = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatabarcodeBackgroundColor = null, [WorkflowExpression] Func<string> inputDatabarcodeBarColor = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatabarcodeContent, nameof(inputDatabarcodeContent), required: true);
-            SourceExpression.Validate(inputDatabarcodeType, nameof(inputDatabarcodeType), required: true);
-            SourceExpression.Validate(inputDatadisableCheckDigit, nameof(inputDatadisableCheckDigit), required: true);
-            SourceExpression.Validate(inputDatashowCheckDigit, nameof(inputDatashowCheckDigit), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataomitEncodingOfStartStopSymbols, nameof(inputDataomitEncodingOfStartStopSymbols), required: false);
-            SourceExpression.Validate(inputDatamargin, nameof(inputDatamargin), required: false);
-            SourceExpression.Validate(inputDatafontFamily, nameof(inputDatafontFamily), required: false);
-            SourceExpression.Validate(inputDatafontSize, nameof(inputDatafontSize), required: false);
-            SourceExpression.Validate(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
-            SourceExpression.Validate(inputDatalabelPlacement, nameof(inputDatalabelPlacement), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatabarcodeBackgroundColor, nameof(inputDatabarcodeBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatabarcodeBarColor, nameof(inputDatabarcodeBarColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/linear_barcode_watermark";
@@ -3445,20 +3154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> MergeToPdf([WorkflowExpression] Func<string> inputDatasourceFileName1 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent1 = null, [WorkflowExpression] Func<string> inputDatasourceFileName2 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent2 = null, [WorkflowExpression] Func<string> inputDatasourceFileName3 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent3 = null, [WorkflowExpression] Func<string> inputDatasourceFileName4 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent4 = null, [WorkflowExpression] Func<string> inputDatasourceFileName5 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent5 = null, [WorkflowExpression] Func<inputDataeachDocumentInput> inputDataeachDocument = null, [WorkflowExpression] Func<MergeSourceFile[]> inputDatasourceFiles = null, [WorkflowExpression] Func<string> inputDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileName1, nameof(inputDatasourceFileName1), required: false);
-            SourceExpression.Validate(inputDatasourceFileContent1, nameof(inputDatasourceFileContent1), required: false);
-            SourceExpression.Validate(inputDatasourceFileName2, nameof(inputDatasourceFileName2), required: false);
-            SourceExpression.Validate(inputDatasourceFileContent2, nameof(inputDatasourceFileContent2), required: false);
-            SourceExpression.Validate(inputDatasourceFileName3, nameof(inputDatasourceFileName3), required: false);
-            SourceExpression.Validate(inputDatasourceFileContent3, nameof(inputDatasourceFileContent3), required: false);
-            SourceExpression.Validate(inputDatasourceFileName4, nameof(inputDatasourceFileName4), required: false);
-            SourceExpression.Validate(inputDatasourceFileContent4, nameof(inputDatasourceFileContent4), required: false);
-            SourceExpression.Validate(inputDatasourceFileName5, nameof(inputDatasourceFileName5), required: false);
-            SourceExpression.Validate(inputDatasourceFileContent5, nameof(inputDatasourceFileContent5), required: false);
-            SourceExpression.Validate(inputDataeachDocument, nameof(inputDataeachDocument), required: false);
-            SourceExpression.Validate(inputDatasourceFiles, nameof(inputDatasourceFiles), required: false);
-            SourceExpression.Validate(inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/merge_to_pdf";
@@ -3593,15 +3288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> OcrPdf([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatalanguageInput> inputDatalanguage = null, [WorkflowExpression] Func<inputDataperformanceInput> inputDataperformance = null, [WorkflowExpression] Func<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, [WorkflowExpression] Func<string> inputDatacharacters = null, [WorkflowExpression] Func<bool> inputDatausePagination = null, [WorkflowExpression] Func<string> inputDataregions = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatalanguage, nameof(inputDatalanguage), required: false);
-            SourceExpression.Validate(inputDataperformance, nameof(inputDataperformance), required: false);
-            SourceExpression.Validate(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
-            SourceExpression.Validate(inputDatacharacters, nameof(inputDatacharacters), required: false);
-            SourceExpression.Validate(inputDatausePagination, nameof(inputDatausePagination), required: false);
-            SourceExpression.Validate(inputDataregions, nameof(inputDataregions), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/ocr_pdf";
@@ -3730,19 +3416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OcrOperationResponse> OcrText([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatalanguageInput> inputDatalanguage = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<string> inputDatawidth = null, [WorkflowExpression] Func<string> inputDataheight = null, [WorkflowExpression] Func<string> inputDatapageNumber = null, [WorkflowExpression] Func<inputDataperformanceInput> inputDataperformance = null, [WorkflowExpression] Func<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, [WorkflowExpression] Func<string> inputDatacharacters = null, [WorkflowExpression] Func<bool> inputDatausePagination = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatalanguage, nameof(inputDatalanguage), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: false);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: false);
-            SourceExpression.Validate(inputDatapageNumber, nameof(inputDatapageNumber), required: false);
-            SourceExpression.Validate(inputDataperformance, nameof(inputDataperformance), required: false);
-            SourceExpression.Validate(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
-            SourceExpression.Validate(inputDatacharacters, nameof(inputDatacharacters), required: false);
-            SourceExpression.Validate(inputDatausePagination, nameof(inputDatausePagination), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/ocr_text";
@@ -3903,26 +3576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> PdfWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatapDFWatermark, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatapDFWatermark, nameof(inputDatapDFWatermark), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/pdf_watermark";
@@ -4103,31 +3756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> QrCodeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatacontent, [WorkflowExpression] Func<inputDataversionInput> inputDataversion, [WorkflowExpression] Func<inputDatainputModeInput> inputDatainputMode, [WorkflowExpression] Func<inputDataerrorCorrectionLevelInput> inputDataerrorCorrectionLevel, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkForegroundColor = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatacontent, nameof(inputDatacontent), required: true);
-            SourceExpression.Validate(inputDataversion, nameof(inputDataversion), required: true);
-            SourceExpression.Validate(inputDatainputMode, nameof(inputDatainputMode), required: true);
-            SourceExpression.Validate(inputDataerrorCorrectionLevel, nameof(inputDataerrorCorrectionLevel), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkForegroundColor, nameof(inputDatawatermarkForegroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/qr_code_watermark";
@@ -4326,28 +3954,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> RectangleWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/rectangle_watermark";
@@ -4544,15 +4150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> Redact([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<inputPdfDataredactionTypeInput> inputPdfDataredactionType, [WorkflowExpression] Func<string> inputPdfDataredactPattern, [WorkflowExpression] Func<bool> inputPdfDataincludeAnnotations = null, [WorkflowExpression] Func<bool> inputPdfDatacaseSensitive = null, [WorkflowExpression] Func<string> inputPdfDatapageRange = null, [WorkflowExpression] Func<string> inputPdfDataopenPassword = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputPdfDataredactionType, nameof(inputPdfDataredactionType), required: true);
-            SourceExpression.Validate(inputPdfDataredactPattern, nameof(inputPdfDataredactPattern), required: true);
-            SourceExpression.Validate(inputPdfDataincludeAnnotations, nameof(inputPdfDataincludeAnnotations), required: false);
-            SourceExpression.Validate(inputPdfDatacaseSensitive, nameof(inputPdfDatacaseSensitive), required: false);
-            SourceExpression.Validate(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
-            SourceExpression.Validate(inputPdfDataopenPassword, nameof(inputPdfDataopenPassword), required: false);
-            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/redact";
@@ -4661,25 +4258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> RedactSmart([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<bool> inputPdfDataredactCreditCardNumber, [WorkflowExpression] Func<bool> inputPdfDataredactDate, [WorkflowExpression] Func<bool> inputPdfDataredactEmailAddress, [WorkflowExpression] Func<bool> inputPdfDataredactInternationalPhoneNumber, [WorkflowExpression] Func<bool> inputPdfDataredactIPv4Address, [WorkflowExpression] Func<bool> inputPdfDataredactIPv6Address, [WorkflowExpression] Func<bool> inputPdfDataredactMACAddress, [WorkflowExpression] Func<bool> inputPdfDataredactNorthAmericanPhoneNumber, [WorkflowExpression] Func<bool> inputPdfDataredactSocialSecurityNumber, [WorkflowExpression] Func<bool> inputPdfDataredactTime, [WorkflowExpression] Func<bool> inputPdfDataredactURL, [WorkflowExpression] Func<bool> inputPdfDataredactUSZipCode, [WorkflowExpression] Func<bool> inputPdfDataredactVIN, [WorkflowExpression] Func<bool> inputPdfDataincludeAnnotations = null, [WorkflowExpression] Func<string> inputPdfDatapageRange = null, [WorkflowExpression] Func<string> inputPdfDataopenPassword = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputPdfDataredactCreditCardNumber, nameof(inputPdfDataredactCreditCardNumber), required: true);
-            SourceExpression.Validate(inputPdfDataredactDate, nameof(inputPdfDataredactDate), required: true);
-            SourceExpression.Validate(inputPdfDataredactEmailAddress, nameof(inputPdfDataredactEmailAddress), required: true);
-            SourceExpression.Validate(inputPdfDataredactInternationalPhoneNumber, nameof(inputPdfDataredactInternationalPhoneNumber), required: true);
-            SourceExpression.Validate(inputPdfDataredactIPv4Address, nameof(inputPdfDataredactIPv4Address), required: true);
-            SourceExpression.Validate(inputPdfDataredactIPv6Address, nameof(inputPdfDataredactIPv6Address), required: true);
-            SourceExpression.Validate(inputPdfDataredactMACAddress, nameof(inputPdfDataredactMACAddress), required: true);
-            SourceExpression.Validate(inputPdfDataredactNorthAmericanPhoneNumber, nameof(inputPdfDataredactNorthAmericanPhoneNumber), required: true);
-            SourceExpression.Validate(inputPdfDataredactSocialSecurityNumber, nameof(inputPdfDataredactSocialSecurityNumber), required: true);
-            SourceExpression.Validate(inputPdfDataredactTime, nameof(inputPdfDataredactTime), required: true);
-            SourceExpression.Validate(inputPdfDataredactURL, nameof(inputPdfDataredactURL), required: true);
-            SourceExpression.Validate(inputPdfDataredactUSZipCode, nameof(inputPdfDataredactUSZipCode), required: true);
-            SourceExpression.Validate(inputPdfDataredactVIN, nameof(inputPdfDataredactVIN), required: true);
-            SourceExpression.Validate(inputPdfDataincludeAnnotations, nameof(inputPdfDataincludeAnnotations), required: false);
-            SourceExpression.Validate(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
-            SourceExpression.Validate(inputPdfDataopenPassword, nameof(inputPdfDataopenPassword), required: false);
-            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/redact_smart";
@@ -4794,29 +4372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> RtfWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/rtf_watermark";
@@ -5015,12 +4570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> SecurePdf([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataopenPassword = null, [WorkflowExpression] Func<string> inputDataownerPassword = null, [WorkflowExpression] Func<string> inputDatapDFRestrictions = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataopenPassword, nameof(inputDataopenPassword), required: false);
-            SourceExpression.Validate(inputDataownerPassword, nameof(inputDataownerPassword), required: false);
-            SourceExpression.Validate(inputDatapDFRestrictions, nameof(inputDatapDFRestrictions), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/secure_pdf";
@@ -5093,12 +4642,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<SplitOperationResponse> SplitPdf([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatasplitByInput> inputDatasplitBy, [WorkflowExpression] Func<int> inputDatasplitParameter, [WorkflowExpression] Func<string> inputDatafileNameTemplate = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatasplitBy, nameof(inputDatasplitBy), required: true);
-            SourceExpression.Validate(inputDatasplitParameter, nameof(inputDatasplitParameter), required: true);
-            SourceExpression.Validate(inputDatafileNameTemplate, nameof(inputDatafileNameTemplate), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/split_pdf";
@@ -5159,34 +4702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
         public IBodyWorkflowAction<OperationResponse> TextWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkContent, [WorkflowExpression] Func<string> inputDatafontFamilyName, [WorkflowExpression] Func<string> inputDatafontSize, [WorkflowExpression] Func<string> inputDatafontColor, [WorkflowExpression] Func<inputDatatextAlignmentInput> inputDatatextAlignment, [WorkflowExpression] Func<inputDatawordWrapInput> inputDatawordWrap, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatafontStyle = null, [WorkflowExpression] Func<string> inputDatafontOutlineColor = null, [WorkflowExpression] Func<string> inputDatafontOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
-            SourceExpression.Validate(inputDatafontFamilyName, nameof(inputDatafontFamilyName), required: true);
-            SourceExpression.Validate(inputDatafontSize, nameof(inputDatafontSize), required: true);
-            SourceExpression.Validate(inputDatafontColor, nameof(inputDatafontColor), required: true);
-            SourceExpression.Validate(inputDatatextAlignment, nameof(inputDatatextAlignment), required: true);
-            SourceExpression.Validate(inputDatawordWrap, nameof(inputDatawordWrap), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
-            SourceExpression.Validate(inputDatafontOutlineColor, nameof(inputDatafontOutlineColor), required: false);
-            SourceExpression.Validate(inputDatafontOutlineWidth, nameof(inputDatafontOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/text_watermark";

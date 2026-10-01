@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
         public IBodyWorkflowAction<SendSimpleSMSResponse> SendSimpleSMS([WorkflowExpression] Func<string> mSISDN, [WorkflowExpression] Func<string> messageData, [WorkflowExpression] Func<string> originator = null, [WorkflowExpression] Func<int> lifeTime = null, [WorkflowExpression] Func<string> deferredDeliveryTime = null, [WorkflowExpression] Func<string> transactionReferenceNumber = null)
         {
-            SourceExpression.Validate(mSISDN, nameof(mSISDN), required: true);
-            SourceExpression.Validate(messageData, nameof(messageData), required: true);
-            SourceExpression.Validate(originator, nameof(originator), required: false);
-            SourceExpression.Validate(lifeTime, nameof(lifeTime), required: false);
-            SourceExpression.Validate(deferredDeliveryTime, nameof(deferredDeliveryTime), required: false);
-            SourceExpression.Validate(transactionReferenceNumber, nameof(transactionReferenceNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SendSimpleSMS";

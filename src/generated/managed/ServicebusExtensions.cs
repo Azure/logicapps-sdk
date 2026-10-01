@@ -14,21 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction SendMessage([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<JToken> messagecontent = null, [WorkflowExpression] Func<string> messagecontentType = null, [WorkflowExpression] Func<string> messagemessageId = null, [WorkflowExpression] Func<string> messageto = null, [WorkflowExpression] Func<string> messagereplyTo = null, [WorkflowExpression] Func<string> messagereplyToSessionId = null, [WorkflowExpression] Func<string> messagelabel = null, [WorkflowExpression] Func<string> messagescheduledEnqueueTimeUtc = null, [WorkflowExpression] Func<string> messagesessionId = null, [WorkflowExpression] Func<string> messagecorrelationId = null, [WorkflowExpression] Func<int> messagesequenceNumber = null, [WorkflowExpression] Func<string> messagelockToken = null, [WorkflowExpression] Func<string> messagetimeToLive = null, [WorkflowExpression] Func<string> systemProperties = null)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(messagecontent, nameof(messagecontent), required: false);
-            SourceExpression.Validate(messagecontentType, nameof(messagecontentType), required: false);
-            SourceExpression.Validate(messagemessageId, nameof(messagemessageId), required: false);
-            SourceExpression.Validate(messageto, nameof(messageto), required: false);
-            SourceExpression.Validate(messagereplyTo, nameof(messagereplyTo), required: false);
-            SourceExpression.Validate(messagereplyToSessionId, nameof(messagereplyToSessionId), required: false);
-            SourceExpression.Validate(messagelabel, nameof(messagelabel), required: false);
-            SourceExpression.Validate(messagescheduledEnqueueTimeUtc, nameof(messagescheduledEnqueueTimeUtc), required: false);
-            SourceExpression.Validate(messagesessionId, nameof(messagesessionId), required: false);
-            SourceExpression.Validate(messagecorrelationId, nameof(messagecorrelationId), required: false);
-            SourceExpression.Validate(messagesequenceNumber, nameof(messagesequenceNumber), required: false);
-            SourceExpression.Validate(messagelockToken, nameof(messagelockToken), required: false);
-            SourceExpression.Validate(messagetimeToLive, nameof(messagetimeToLive), required: false);
-            SourceExpression.Validate(systemProperties, nameof(systemProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2));
@@ -138,9 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction SendMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<ServiceBusMessage[]> messages = null, [WorkflowExpression] Func<string> systemProperties = null)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(messages, nameof(messages), required: false);
-            SourceExpression.Validate(systemProperties, nameof(systemProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityName, 2));
@@ -159,10 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction CompleteMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -184,10 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction AbandonMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/abandon", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -209,10 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> sequenceNumber, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -234,10 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction DeferMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -259,11 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction DeadLetterMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/deadletter", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -288,9 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction RenewLockOnMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/renewlock", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -309,10 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/peek", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -336,8 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction CloseSessionInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/close", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -352,8 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction RenewLockOnSessionInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/renewlock", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -368,11 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction CompleteMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -394,11 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction AbandonMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/abandon", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -420,11 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> sequenceNumber, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -446,11 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction DeferMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -472,12 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction DeadLetterMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/deadletter", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -502,10 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction RenewLockOnMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/renewlock", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -524,10 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IBodyWorkflowAction<Subscription> CreateTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<object> subscriptionFilter = null, [WorkflowExpression] Func<subscriptionFilterTypeInput> subscriptionFilterType = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(subscriptionFilter, nameof(subscriptionFilter), required: false);
-            SourceExpression.Validate(subscriptionFilterType, nameof(subscriptionFilterType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -546,8 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction DeleteTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -562,11 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/peek", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -590,9 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction CloseSessionInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/close", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -607,9 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
         public IWorkflowAction RenewLockOnSessionInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/renewlock", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -626,8 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     {
         public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/head", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -644,9 +545,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
         public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/head/peek", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -666,9 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -688,10 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            SourceExpression.Validate(queueType, nameof(queueType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head/peek", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(queueName, 2));
@@ -714,9 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
         public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -733,10 +621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
         public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head/peek", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -756,10 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));
@@ -779,11 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            SourceExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head/peek", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionName, 1));

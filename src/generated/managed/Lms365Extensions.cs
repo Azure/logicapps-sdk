@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction ApproveEnrollmentRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -32,10 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<EnrollUserToCourseResponse> EnrollUserToCourse([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string> bodyuserLoginName, [WorkflowExpression] Func<string> bodycourseSessionId = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(bodyuserLoginName, nameof(bodyuserLoginName), required: true);
-            SourceExpression.Validate(bodycourseSessionId, nameof(bodycourseSessionId), required: false);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/Enroll", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -66,9 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction RejectEnrollmentRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Reject", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -97,7 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseCategoriesResponse> GetCourseCategories([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/v2/CourseCategories";
@@ -114,9 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<CreateCourseCategoryResponse> CreateCourseCategory([WorkflowExpression] Func<string> bodycategoryName, [WorkflowExpression] Func<string> bodycourseCatalogId, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(bodycategoryName, nameof(bodycategoryName), required: true);
-            SourceExpression.Validate(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/v2/CourseCategories";
@@ -143,42 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<CreateCourseResponse> CreateCourse([WorkflowExpression] Func<string> bodycourseCatalogId, [WorkflowExpression] Func<bodycoursetypeInput> bodycoursetype, [WorkflowExpression] Func<string> bodytrainingTitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodyculture, [WorkflowExpression] Func<string> bodyuICulture, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bodycategoriesInputItem[]> bodycategories = null, [WorkflowExpression] Func<bodytagsInputItem[]> bodytags = null, [WorkflowExpression] Func<bodyenrollmentFlowInput> bodyenrollmentFlow = null, [WorkflowExpression] Func<string> bodysiteTemplate = null, [WorkflowExpression] Func<string[]> bodylearningModules = null, [WorkflowExpression] Func<string[]> bodyquizzes = null, [WorkflowExpression] Func<bool> bodyautoResolveUrlConflict = null, [WorkflowExpression] Func<string> bodycourseLayoutId = null, [WorkflowExpression] Func<bodycourseSessionEnrollmentTypeInput> bodycourseSessionEnrollmentType = null, [WorkflowExpression] Func<string[]> bodyteacherLogins = null, [WorkflowExpression] Func<string[]> bodytrainerLogins = null, [WorkflowExpression] Func<string> bodycertificateTemplateId = null, [WorkflowExpression] Func<string> bodycourseId = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<string> bodylongDescription = null, [WorkflowExpression] Func<bool> bodypublishingSettingsisEnabled = null, [WorkflowExpression] Func<string> bodypublishingSettingsstartDate = null, [WorkflowExpression] Func<string> bodypublishingSettingsendDate = null, [WorkflowExpression] Func<bool> bodyexpirySettingsisEnabled = null, [WorkflowExpression] Func<string> bodyexpirySettingsfixedDate = null, [WorkflowExpression] Func<string> bodyexpirySettingsdaysAfterCompletion = null, [WorkflowExpression] Func<bool> bodydueDateSettingsisEnabled = null, [WorkflowExpression] Func<string> bodydueDateSettingsfixedDate = null, [WorkflowExpression] Func<string> bodydueDateSettingsdaysAfterEnrollment = null, [WorkflowExpression] Func<bool> bodyshowInCatalog = null, [WorkflowExpression] Func<double> bodycontinuingEducationUnits = null, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> bodyfailedCourseId = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
-            SourceExpression.Validate(bodycoursetype, nameof(bodycoursetype), required: true);
-            SourceExpression.Validate(bodytrainingTitle, nameof(bodytrainingTitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: true);
-            SourceExpression.Validate(bodyuICulture, nameof(bodyuICulture), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodyenrollmentFlow, nameof(bodyenrollmentFlow), required: false);
-            SourceExpression.Validate(bodysiteTemplate, nameof(bodysiteTemplate), required: false);
-            SourceExpression.Validate(bodylearningModules, nameof(bodylearningModules), required: false);
-            SourceExpression.Validate(bodyquizzes, nameof(bodyquizzes), required: false);
-            SourceExpression.Validate(bodyautoResolveUrlConflict, nameof(bodyautoResolveUrlConflict), required: false);
-            SourceExpression.Validate(bodycourseLayoutId, nameof(bodycourseLayoutId), required: false);
-            SourceExpression.Validate(bodycourseSessionEnrollmentType, nameof(bodycourseSessionEnrollmentType), required: false);
-            SourceExpression.Validate(bodyteacherLogins, nameof(bodyteacherLogins), required: false);
-            SourceExpression.Validate(bodytrainerLogins, nameof(bodytrainerLogins), required: false);
-            SourceExpression.Validate(bodycertificateTemplateId, nameof(bodycertificateTemplateId), required: false);
-            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodylongDescription, nameof(bodylongDescription), required: false);
-            SourceExpression.Validate(bodypublishingSettingsisEnabled, nameof(bodypublishingSettingsisEnabled), required: false);
-            SourceExpression.Validate(bodypublishingSettingsstartDate, nameof(bodypublishingSettingsstartDate), required: false);
-            SourceExpression.Validate(bodypublishingSettingsendDate, nameof(bodypublishingSettingsendDate), required: false);
-            SourceExpression.Validate(bodyexpirySettingsisEnabled, nameof(bodyexpirySettingsisEnabled), required: false);
-            SourceExpression.Validate(bodyexpirySettingsfixedDate, nameof(bodyexpirySettingsfixedDate), required: false);
-            SourceExpression.Validate(bodyexpirySettingsdaysAfterCompletion, nameof(bodyexpirySettingsdaysAfterCompletion), required: false);
-            SourceExpression.Validate(bodydueDateSettingsisEnabled, nameof(bodydueDateSettingsisEnabled), required: false);
-            SourceExpression.Validate(bodydueDateSettingsfixedDate, nameof(bodydueDateSettingsfixedDate), required: false);
-            SourceExpression.Validate(bodydueDateSettingsdaysAfterEnrollment, nameof(bodydueDateSettingsdaysAfterEnrollment), required: false);
-            SourceExpression.Validate(bodyshowInCatalog, nameof(bodyshowInCatalog), required: false);
-            SourceExpression.Validate(bodycontinuingEducationUnits, nameof(bodycontinuingEducationUnits), required: false);
-            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            SourceExpression.Validate(bodyfailedCourseId, nameof(bodyfailedCourseId), required: false);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/v2/Courses";
@@ -417,8 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseInfoResponse> GetCourseInfo([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -436,8 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CompleteEnrollmentById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -454,9 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction RetakeEnrollmentById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycourseSessionId = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycourseSessionId, nameof(bodycourseSessionId), required: false);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Retake", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -485,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseTagsResponse> GetCourseTags([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/v2/CourseTags";
@@ -502,9 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<CreateCourseTagResponse> CreateCourseTag([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycourseCatalogId, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/v2/CourseTags";
@@ -531,9 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseProvisioningStatusResponse> GetCourseProvisioningStatus([WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/v2/Courses/IncludeNotCreated";
@@ -556,8 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCoursesFromCatalogResponse> GetCoursesFromCatalog([WorkflowExpression] Func<string> courseCatalogId, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(courseCatalogId, nameof(courseCatalogId), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/CourseCatalogs({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseCatalogId, 1));
@@ -575,7 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetEnrollmentByIdResponse> GetEnrollmentById([WorkflowExpression] Func<string> enrollmentId)
         {
-            SourceExpression.Validate(enrollmentId, nameof(enrollmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
@@ -590,9 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CancelEnrollment([WorkflowExpression] Func<string> enrollmentId, [WorkflowExpression] Func<string> bodycancellationMessage = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(enrollmentId, nameof(enrollmentId), required: true);
-            SourceExpression.Validate(bodycancellationMessage, nameof(bodycancellationMessage), required: false);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
@@ -621,7 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/v2/Users";
@@ -639,19 +569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CreateCourseSession([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<bodytimeZoneInput> bodytimeZone, [WorkflowExpression] Func<string> bodyenrollmentDeadline = null, [WorkflowExpression] Func<string> bodyroomemailAddress = null, [WorkflowExpression] Func<string> bodyroomtitle = null, [WorkflowExpression] Func<string> bodyroomlocation = null, [WorkflowExpression] Func<bodyroomsourceInput> bodyroomsource = null, [WorkflowExpression] Func<string> bodymeetingUrl = null, [WorkflowExpression] Func<string> bodymaxAttendees = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
-            SourceExpression.Validate(bodyenrollmentDeadline, nameof(bodyenrollmentDeadline), required: false);
-            SourceExpression.Validate(bodyroomemailAddress, nameof(bodyroomemailAddress), required: false);
-            SourceExpression.Validate(bodyroomtitle, nameof(bodyroomtitle), required: false);
-            SourceExpression.Validate(bodyroomlocation, nameof(bodyroomlocation), required: false);
-            SourceExpression.Validate(bodyroomsource, nameof(bodyroomsource), required: false);
-            SourceExpression.Validate(bodymeetingUrl, nameof(bodymeetingUrl), required: false);
-            SourceExpression.Validate(bodymaxAttendees, nameof(bodymaxAttendees), required: false);
-            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/CourseSessions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -742,9 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction HttpRequest([WorkflowExpression] Func<parametersmethodInput> parametersmethod, [WorkflowExpression] Func<string> parametersuri, [WorkflowExpression] Func<string> parametersbody = null)
         {
-            SourceExpression.Validate(parametersmethod, nameof(parametersmethod), required: true);
-            SourceExpression.Validate(parametersuri, nameof(parametersuri), required: true);
-            SourceExpression.Validate(parametersbody, nameof(parametersbody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/httprequest";

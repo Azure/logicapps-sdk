@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetDailyOpenCloseResponse> GetDailyOpenClose([WorkflowExpression] Func<string> stocksTicker, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<bool> adjusted = null)
         {
-            SourceExpression.Validate(stocksTicker, nameof(stocksTicker), required: true);
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(adjusted, nameof(adjusted), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/open-close/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stocksTicker, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
@@ -33,18 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetTickersResponse> GetTickers([WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<marketInput> market = null, [WorkflowExpression] Func<string> exchange = null, [WorkflowExpression] Func<string> cusip = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(ticker, nameof(ticker), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(market, nameof(market), required: false);
-            SourceExpression.Validate(exchange, nameof(exchange), required: false);
-            SourceExpression.Validate(cusip, nameof(cusip), required: false);
-            SourceExpression.Validate(cik, nameof(cik), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/reference/tickers";
@@ -83,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetTickerDetailsResponse> GetTickerDetails([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(ticker, nameof(ticker), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/reference/tickers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticker, 1));
@@ -101,8 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetTickerEventsResponse> GetTickerEvents([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> types = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(types, nameof(types), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/vX/reference/tickers/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -119,12 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetStockSplitsResponse> GetStockSplits([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> executionDate = null, [WorkflowExpression] Func<bool> reverseSplit = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<sortInput> sort = null)
         {
-            SourceExpression.Validate(ticker, nameof(ticker), required: true);
-            SourceExpression.Validate(executionDate, nameof(executionDate), required: false);
-            SourceExpression.Validate(reverseSplit, nameof(reverseSplit), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/reference/splits";
@@ -151,14 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetStockDividendsResponse> GetStockDividends([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> exDividendDate = null, [WorkflowExpression] Func<string> recordDate = null, [WorkflowExpression] Func<string> declarationDate = null, [WorkflowExpression] Func<string> payDate = null, [WorkflowExpression] Func<frequencyInput> frequency = null, [WorkflowExpression] Func<double> cashAmount = null, [WorkflowExpression] Func<dividendTypeInput> dividendType = null)
         {
-            SourceExpression.Validate(ticker, nameof(ticker), required: true);
-            SourceExpression.Validate(exDividendDate, nameof(exDividendDate), required: false);
-            SourceExpression.Validate(recordDate, nameof(recordDate), required: false);
-            SourceExpression.Validate(declarationDate, nameof(declarationDate), required: false);
-            SourceExpression.Validate(payDate, nameof(payDate), required: false);
-            SourceExpression.Validate(frequency, nameof(frequency), required: false);
-            SourceExpression.Validate(cashAmount, nameof(cashAmount), required: false);
-            SourceExpression.Validate(dividendType, nameof(dividendType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/reference/dividends";
@@ -188,17 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetStockFinancialDetailsResponse> GetStockFinancialDetails([WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<string> sic = null, [WorkflowExpression] Func<string> filingDate = null, [WorkflowExpression] Func<string> periodOfReportDate = null, [WorkflowExpression] Func<timeframeInput> timeframe = null, [WorkflowExpression] Func<bool> includeSources = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<sortInput> sort = null)
         {
-            SourceExpression.Validate(ticker, nameof(ticker), required: false);
-            SourceExpression.Validate(cik, nameof(cik), required: false);
-            SourceExpression.Validate(companyName, nameof(companyName), required: false);
-            SourceExpression.Validate(sic, nameof(sic), required: false);
-            SourceExpression.Validate(filingDate, nameof(filingDate), required: false);
-            SourceExpression.Validate(periodOfReportDate, nameof(periodOfReportDate), required: false);
-            SourceExpression.Validate(timeframe, nameof(timeframe), required: false);
-            SourceExpression.Validate(includeSources, nameof(includeSources), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vX/reference/financials";
@@ -235,8 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
         public IBodyWorkflowAction<GetExchangesResponse> GetExchanges([WorkflowExpression] Func<assetClassInput> assetClass = null, [WorkflowExpression] Func<localeInput> locale = null)
         {
-            SourceExpression.Validate(assetClass, nameof(assetClass), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/reference/exchanges";

@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<CombinedResponse> Combined([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays, [WorkflowExpression] Func<string> nonWorkingDays = null, [WorkflowExpression] Func<string> country = null)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(workingDays, nameof(workingDays), required: true);
-            SourceExpression.Validate(xWorkingDays, nameof(xWorkingDays), required: true);
-            SourceExpression.Validate(nonWorkingDays, nameof(nonWorkingDays), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/combined/";
@@ -42,7 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<BasicNextWorkingDayResponse> BasicNextWorkingDay([WorkflowExpression] Func<string> date)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/basicNextWorkingDay/";
@@ -59,10 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<NextWorkingDayResponse> NextWorkingDay([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays, [WorkflowExpression] Func<string> nonWorkingDays = null)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(workingDays, nameof(workingDays), required: true);
-            SourceExpression.Validate(xWorkingDays, nameof(xWorkingDays), required: true);
-            SourceExpression.Validate(nonWorkingDays, nameof(nonWorkingDays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nextWorkingDay/";
@@ -83,10 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<DateDifferenceCalculatorResponse> DateDifferenceCalculator([WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> nonWorkingDays = null)
         {
-            SourceExpression.Validate(workingDays, nameof(workingDays), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(nonWorkingDays, nameof(nonWorkingDays), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dateDifferenceCalculator/";
@@ -107,8 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> FirstAndLastWorkingDayOfMonth([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(workingDays, nameof(workingDays), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/firstAndLastWorkingDayOfMonth/";
@@ -126,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<IsTodayAWorkingDayResponse> IsTodayAWorkingDay([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(workingDays, nameof(workingDays), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/isTodayAWorkingDay/";
@@ -145,9 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<DateInXWorkingDaysResponse> DateInXWorkingDays([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays)
         {
-            SourceExpression.Validate(date, nameof(date), required: true);
-            SourceExpression.Validate(workingDays, nameof(workingDays), required: true);
-            SourceExpression.Validate(xWorkingDays, nameof(xWorkingDays), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dateInXWorkingDays/";

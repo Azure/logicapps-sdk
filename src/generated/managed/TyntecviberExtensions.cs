@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberComplexV3Response> SendViberComplex([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodyrateType, [WorkflowExpression] Func<bodycontentcomponentsbodyInputItem[]> bodycontentcomponentsbody = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyrateType, nameof(bodyrateType), required: true);
-            SourceExpression.Validate(bodycontentcomponentsbody, nameof(bodycontentcomponentsbody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/components";
@@ -70,12 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberFileV3Response> SendViberFile([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessagePurpose, [WorkflowExpression] Func<string> bodycontentFileurl, [WorkflowExpression] Func<string> bodycontentFilefilename, [WorkflowExpression] Func<string> bodycontentFilefiletype)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodymessagePurpose, nameof(bodymessagePurpose), required: true);
-            SourceExpression.Validate(bodycontentFileurl, nameof(bodycontentFileurl), required: true);
-            SourceExpression.Validate(bodycontentFilefilename, nameof(bodycontentFilefilename), required: true);
-            SourceExpression.Validate(bodycontentFilefiletype, nameof(bodycontentFilefiletype), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/file";
@@ -128,10 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberImageV3Response> SendViberImage([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodyrateType, [WorkflowExpression] Func<string> bodycontentimageurl)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyrateType, nameof(bodyrateType), required: true);
-            SourceExpression.Validate(bodycontentimageurl, nameof(bodycontentimageurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/image";
@@ -180,10 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberTextV3Response> SendViberText([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodyrateType, [WorkflowExpression] Func<string> bodycontenttext = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyrateType, nameof(bodyrateType), required: true);
-            SourceExpression.Validate(bodycontenttext, nameof(bodycontenttext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/text";
@@ -228,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -245,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
     {
         public IWorkflowTrigger Incoming([WorkflowExpression] Func<string> viberServiceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(viberServiceId, nameof(viberServiceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/viber/phone-numbers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(viberServiceId, 1));

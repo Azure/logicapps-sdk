@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> bodybase64, [WorkflowExpression] Func<string> bodytitle)
         {
-            SourceExpression.Validate(bodybase64, nameof(bodybase64), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/pa_uploads";
@@ -45,11 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         public IWorkflowAction CreateEnvelopeFromTemplate([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytemplateTitle = null, [WorkflowExpression] Func<string> bodyuploadFile = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodysignersInputItem[]> bodysigners = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytemplateTitle, nameof(bodytemplateTitle), required: false);
-            SourceExpression.Validate(bodyuploadFile, nameof(bodyuploadFile), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodysigners, nameof(bodysigners), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/pa_envelopes";
@@ -101,13 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments, [WorkflowExpression] Func<bodysignersInputItem[]> bodysigners, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyenvelopeOptionssignInSequentialOrder = null, [WorkflowExpression] Func<bodycarbonCopiesInputItem[]> bodycarbonCopies = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: true);
-            SourceExpression.Validate(bodysigners, nameof(bodysigners), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyenvelopeOptionssignInSequentialOrder, nameof(bodyenvelopeOptionssignInSequentialOrder), required: false);
-            SourceExpression.Validate(bodycarbonCopies, nameof(bodycarbonCopies), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/pa_send_envelope";

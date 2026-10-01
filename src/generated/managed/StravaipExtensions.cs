@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<GetAthleteStatsResponse> GetAthleteStats([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/athletes/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -43,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<SummaryActivity[]> ListAthleteActivities([WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/athlete/activities";
@@ -71,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<Club[]> ListAthleteClubs([WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/athlete/clubs";
@@ -92,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<DetailedSegment> GetSegment([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/segments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -107,8 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<SummarySegment[]> ListStarredSegments([WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/segments/starred";
@@ -128,8 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<DetailedActivity> GetActivity([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> includeAllEfforts = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(includeAllEfforts, nameof(includeAllEfforts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/activities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -146,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<Lap[]> ListActivityLaps([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/activities/{0}/laps", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -161,9 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<ListActivityCommentsResponseItem[]> ListActivityComments([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/activities/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -183,9 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<SummaryAthlete[]> ListActivityKudoers([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/activities/{0}/kudos", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -205,7 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<Club> GetClub([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clubs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -220,9 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<ListClubMembersResponseItem[]> ListClubMembers([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clubs/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -242,9 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<SummaryAthlete[]> ListClubAdministrators([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clubs/{0}/admins", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -264,9 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stravaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stravaip")]
         public IBodyWorkflowAction<SummaryActivity[]> ListClubActivities([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> perPage = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clubs/{0}/activities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));

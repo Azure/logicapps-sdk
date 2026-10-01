@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<JToken> DopplerSecretsListSecrets([WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> configName, [WorkflowExpression] Func<bool> includeDynamicSecrets = null, [WorkflowExpression] Func<bool> includeManagedSecrets = null)
         {
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(configName, nameof(configName), required: true);
-            SourceExpression.Validate(includeDynamicSecrets, nameof(includeDynamicSecrets), required: false);
-            SourceExpression.Validate(includeManagedSecrets, nameof(includeManagedSecrets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/secrets";
@@ -40,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerSecretsUpdateSecretResponse> DopplerSecretsUpdateSecret([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyconfig)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyconfig, nameof(bodyconfig), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/secrets";
@@ -74,9 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerSecretsRetrieveSecretResponse> DopplerSecretsRetrieveSecret([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> config, [WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(config, nameof(config), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/secret";
@@ -94,9 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<JToken> DopplerSecretsDeleteSecret([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> config, [WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(config, nameof(config), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/secret";
@@ -114,10 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IWorkflowAction DopplerSecretsUpdateSecretNote([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyconfig, [WorkflowExpression] Func<string> bodysecret, [WorkflowExpression] Func<string> bodynote)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyconfig, nameof(bodyconfig), required: true);
-            SourceExpression.Validate(bodysecret, nameof(bodysecret), required: true);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/secrets/note";
@@ -146,9 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerConfigListConfigResponse> DopplerConfigListConfig([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> perPage)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(perPage, nameof(perPage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs";
@@ -166,9 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerConfigCreateConfigResponse> DopplerConfigCreateConfig([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyenvironment, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyenvironment, nameof(bodyenvironment), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs";
@@ -195,8 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerConfigRetrieveConfigResponse> DopplerConfigRetrieveConfig([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> config = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(config, nameof(config), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config";
@@ -214,9 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerConfigUpdateConfigNameResponse> DopplerConfigUpdateConfigName([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyconfig, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyconfig, nameof(bodyconfig), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config";
@@ -243,9 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerConfigCloneConfigResponse> DopplerConfigCloneConfig([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyconfig, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyconfig, nameof(bodyconfig), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/clone";
@@ -272,8 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerConfigLockConfigResponse> DopplerConfigLockConfig([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyconfig)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyconfig, nameof(bodyconfig), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/lock";
@@ -298,8 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerConfigUnlockConfigResponse> DopplerConfigUnlockConfig([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyconfig)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyconfig, nameof(bodyconfig), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/configs/config/unlock";
@@ -324,8 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectsListResponse> DopplerProjectsList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/projects";
@@ -346,8 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectsCreateResponse> DopplerProjectsCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/projects";
@@ -372,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectsRetrieveResponse> DopplerProjectsRetrieve([WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/projects/project";
@@ -388,9 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectsUpdateResponse> DopplerProjectsUpdate([WorkflowExpression] Func<string> bodyproject, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription)
         {
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/projects/project";
@@ -431,7 +389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectRolesRetrieveResponse> DopplerProjectRolesRetrieve([WorkflowExpression] Func<string> role)
         {
-            SourceExpression.Validate(role, nameof(role), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/projects/roles/role/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(role, 1));
@@ -446,7 +403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<JToken> DopplerProjectRolesDelete([WorkflowExpression] Func<string> role)
         {
-            SourceExpression.Validate(role, nameof(role), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/projects/roles/role/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(role, 1));
@@ -461,9 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectMembersListResponse> DopplerProjectMembersList([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/projects/project/members";
@@ -485,11 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectMembersAddResponse> DopplerProjectMembersAdd([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyslug, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string[]> bodyenvironments = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodyenvironments, nameof(bodyenvironments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/projects/project/members";
@@ -527,9 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectMembersRetrieveResponse> DopplerProjectMembersRetrieve([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -545,9 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<JToken> DopplerProjectMembersDelete([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> project)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
@@ -563,11 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectMembersUpdateResponse> DopplerProjectMembersUpdate([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string[]> bodyenvironments = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodyenvironments, nameof(bodyenvironments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));

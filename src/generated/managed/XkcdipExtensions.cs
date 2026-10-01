@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xkcdip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xkcdip")]
         public IBodyWorkflowAction<ComicGetAResponse> ComicGetA([WorkflowExpression] Func<int> number)
         {
-            SourceExpression.Validate(number, nameof(number), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/info.0.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(number, 1));

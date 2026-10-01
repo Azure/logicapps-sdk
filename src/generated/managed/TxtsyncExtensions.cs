@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<SMS[]> SendSMS([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodyto)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms/send";
@@ -46,10 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<SMS> SendBulkSMS([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string[]> bodyto = null, [WorkflowExpression] Func<string[]> bodytoTagName = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodytoTagName, nameof(bodytoTagName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms/send/bulk";
@@ -89,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<SearchContactResponseItem[]> SearchContact([WorkflowExpression] Func<string> search)
         {
-            SourceExpression.Validate(search, nameof(search), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";
@@ -107,24 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<AddContactResponse> AddContact([WorkflowExpression] Func<string> bodymobileNumber, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodyexternalReference = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycounty = null, [WorkflowExpression] Func<string> bodypostcode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycustom01 = null, [WorkflowExpression] Func<string> bodycustom02 = null, [WorkflowExpression] Func<string> bodycustom03 = null, [WorkflowExpression] Func<string> bodycustom04 = null, [WorkflowExpression] Func<string> bodycustom05 = null, [WorkflowExpression] Func<string> bodytagNames = null)
         {
-            SourceExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodyexternalReference, nameof(bodyexternalReference), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycounty, nameof(bodycounty), required: false);
-            SourceExpression.Validate(bodypostcode, nameof(bodypostcode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodycustom01, nameof(bodycustom01), required: false);
-            SourceExpression.Validate(bodycustom02, nameof(bodycustom02), required: false);
-            SourceExpression.Validate(bodycustom03, nameof(bodycustom03), required: false);
-            SourceExpression.Validate(bodycustom04, nameof(bodycustom04), required: false);
-            SourceExpression.Validate(bodycustom05, nameof(bodycustom05), required: false);
-            SourceExpression.Validate(bodytagNames, nameof(bodytagNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts";
@@ -251,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<string> DeleteContact([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -268,26 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<UpdateContactResponse> UpdateContact([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodymobileNumber = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodyexternalReference = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycounty = null, [WorkflowExpression] Func<string> bodypostcode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycustom01 = null, [WorkflowExpression] Func<string> bodycustom02 = null, [WorkflowExpression] Func<string> bodycustom03 = null, [WorkflowExpression] Func<string> bodycustom04 = null, [WorkflowExpression] Func<string> bodycustom05 = null, [WorkflowExpression] Func<bool> bodyallowSMS = null, [WorkflowExpression] Func<string> bodytagNames = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodyexternalReference, nameof(bodyexternalReference), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycounty, nameof(bodycounty), required: false);
-            SourceExpression.Validate(bodypostcode, nameof(bodypostcode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodycustom01, nameof(bodycustom01), required: false);
-            SourceExpression.Validate(bodycustom02, nameof(bodycustom02), required: false);
-            SourceExpression.Validate(bodycustom03, nameof(bodycustom03), required: false);
-            SourceExpression.Validate(bodycustom04, nameof(bodycustom04), required: false);
-            SourceExpression.Validate(bodycustom05, nameof(bodycustom05), required: false);
-            SourceExpression.Validate(bodyallowSMS, nameof(bodyallowSMS), required: false);
-            SourceExpression.Validate(bodytagNames, nameof(bodytagNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -424,7 +377,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<GetContactByExternalReferenceResponse> GetContactByExternalReference([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/external/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -441,7 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<string> DeleteContactByExternalReference([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/external/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -458,26 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
         public IBodyWorkflowAction<string> UpdateContactByExternalReference([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodymobileNumber = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodyexternalReference = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycounty = null, [WorkflowExpression] Func<string> bodypostcode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycustom01 = null, [WorkflowExpression] Func<string> bodycustom02 = null, [WorkflowExpression] Func<string> bodycustom03 = null, [WorkflowExpression] Func<string> bodycustom04 = null, [WorkflowExpression] Func<string> bodycustom05 = null, [WorkflowExpression] Func<bool> bodyallowSMS = null, [WorkflowExpression] Func<string> bodytagNames = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodyexternalReference, nameof(bodyexternalReference), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycounty, nameof(bodycounty), required: false);
-            SourceExpression.Validate(bodypostcode, nameof(bodypostcode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodycustom01, nameof(bodycustom01), required: false);
-            SourceExpression.Validate(bodycustom02, nameof(bodycustom02), required: false);
-            SourceExpression.Validate(bodycustom03, nameof(bodycustom03), required: false);
-            SourceExpression.Validate(bodycustom04, nameof(bodycustom04), required: false);
-            SourceExpression.Validate(bodycustom05, nameof(bodycustom05), required: false);
-            SourceExpression.Validate(bodyallowSMS, nameof(bodyallowSMS), required: false);
-            SourceExpression.Validate(bodytagNames, nameof(bodytagNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/external/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

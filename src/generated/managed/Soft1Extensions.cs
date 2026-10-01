@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IWorkflowAction Microservice([WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyendpoint)
         {
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyendpoint, nameof(bodyendpoint), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/custom";
@@ -41,9 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetCFNCUSDOCResponse> GetCFNCUSDOC([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getCFNCUSDOC";
@@ -83,9 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetCfnsupdocResponse> GetCfnsupdoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getCfnsupdoc";
@@ -125,9 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetChequeResponse> GetCheque([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getCheque";
@@ -167,9 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetContactResponse> GetContact([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getContact";
@@ -209,9 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetCustomerResponse> GetCustomer([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getCustomer";
@@ -251,9 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetDraftEntryResponse> GetDraftEntry([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getDraftEntry";
@@ -293,9 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetExpenseResponse> GetExpense([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getExpense";
@@ -335,9 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetExpensesDocResponse> GetExpensesDoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodylOCATEINFO = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getExpensesDoc";
@@ -391,9 +365,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetItedocResponse> GetItedoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getItedoc";
@@ -433,9 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetItemResponse> GetItem([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getItem";
@@ -475,9 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getProject";
@@ -517,9 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetPurdocResponse> GetPurdoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getPurdoc";
@@ -559,9 +521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetSaldocResponse> GetSaldoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getSaldoc";
@@ -601,9 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetServiceResponse> GetService([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getService";
@@ -643,9 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetSOEMAILResponse> GetSOEMAIL([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getSoemail";
@@ -685,9 +638,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetMeetingResponse> GetMeeting([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getSomeeting";
@@ -727,9 +677,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetSOTASKResponse> GetSOTASK([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getSotask";
@@ -769,9 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetSupplierResponse> GetSupplier([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getSupplier";
@@ -836,18 +780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetCFNCUSDOC([WorkflowExpression] Func<string> bodyvaluecFNCUSDOCsERIES, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCtRDR, [WorkflowExpression] Func<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, [WorkflowExpression] Func<bodyvaluecASHLINESInputItem[]> bodyvaluecASHLINES = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCcOLLECTOR = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCcOMMENTS = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCproject = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCsALESMAN = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodyvaluecFNCUSDOCsERIES, nameof(bodyvaluecFNCUSDOCsERIES), required: true);
-            SourceExpression.Validate(bodyvaluecFNCUSDOCtRDR, nameof(bodyvaluecFNCUSDOCtRDR), required: true);
-            SourceExpression.Validate(bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
-            SourceExpression.Validate(bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
-            SourceExpression.Validate(bodyvaluecFNCUSDOCcOLLECTOR, nameof(bodyvaluecFNCUSDOCcOLLECTOR), required: false);
-            SourceExpression.Validate(bodyvaluecFNCUSDOCcOMMENTS, nameof(bodyvaluecFNCUSDOCcOMMENTS), required: false);
-            SourceExpression.Validate(bodyvaluecFNCUSDOCproject, nameof(bodyvaluecFNCUSDOCproject), required: false);
-            SourceExpression.Validate(bodyvaluecFNCUSDOCsALESMAN, nameof(bodyvaluecFNCUSDOCsALESMAN), required: false);
-            SourceExpression.Validate(bodyvaluecFNCUSDOCtRNDATE, nameof(bodyvaluecFNCUSDOCtRNDATE), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setCfncusdoc";
@@ -957,16 +889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetCfnsupdoc([WorkflowExpression] Func<string> bodyvaluecFNSUPDOCsERIES, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCtRDR, [WorkflowExpression] Func<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, [WorkflowExpression] Func<bodyvaluecASHLINESInputItem2[]> bodyvaluecASHLINES = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCpRJC = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodyvaluecFNSUPDOCsERIES, nameof(bodyvaluecFNSUPDOCsERIES), required: true);
-            SourceExpression.Validate(bodyvaluecFNSUPDOCtRDR, nameof(bodyvaluecFNSUPDOCtRDR), required: true);
-            SourceExpression.Validate(bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
-            SourceExpression.Validate(bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
-            SourceExpression.Validate(bodyvaluecFNSUPDOCpRJC, nameof(bodyvaluecFNSUPDOCpRJC), required: false);
-            SourceExpression.Validate(bodyvaluecFNSUPDOCrEMARKS, nameof(bodyvaluecFNSUPDOCrEMARKS), required: false);
-            SourceExpression.Validate(bodyvaluecFNSUPDOCtRNDATE, nameof(bodyvaluecFNSUPDOCtRNDATE), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setCfnsupdoc";
@@ -1064,24 +986,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetCheque([WorkflowExpression] Func<string> bodyvaluecHEQUEbalance, [WorkflowExpression] Func<string> bodyvaluecHEQUEchequeNumber, [WorkflowExpression] Func<string> bodyvaluecHEQUEstatus, [WorkflowExpression] Func<string> bodyvaluecHEQUEvalue, [WorkflowExpression] Func<string> bodyvaluecHEQUEissueDate, [WorkflowExpression] Func<string> bodyvaluecHEQUEdueDate, [WorkflowExpression] Func<string> bodyvaluecHEQUEseries, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEbank = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerAddress = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerName = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerTelephone = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEreceiptDate = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEholderAddress = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEholderName = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerTRNo = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEcomments = null)
         {
-            SourceExpression.Validate(bodyvaluecHEQUEbalance, nameof(bodyvaluecHEQUEbalance), required: true);
-            SourceExpression.Validate(bodyvaluecHEQUEchequeNumber, nameof(bodyvaluecHEQUEchequeNumber), required: true);
-            SourceExpression.Validate(bodyvaluecHEQUEstatus, nameof(bodyvaluecHEQUEstatus), required: true);
-            SourceExpression.Validate(bodyvaluecHEQUEvalue, nameof(bodyvaluecHEQUEvalue), required: true);
-            SourceExpression.Validate(bodyvaluecHEQUEissueDate, nameof(bodyvaluecHEQUEissueDate), required: true);
-            SourceExpression.Validate(bodyvaluecHEQUEdueDate, nameof(bodyvaluecHEQUEdueDate), required: true);
-            SourceExpression.Validate(bodyvaluecHEQUEseries, nameof(bodyvaluecHEQUEseries), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEbank, nameof(bodyvaluecHEQUEbank), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEissuerAddress, nameof(bodyvaluecHEQUEissuerAddress), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEissuerName, nameof(bodyvaluecHEQUEissuerName), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEissuerTelephone, nameof(bodyvaluecHEQUEissuerTelephone), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEreceiptDate, nameof(bodyvaluecHEQUEreceiptDate), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEholderAddress, nameof(bodyvaluecHEQUEholderAddress), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEholderName, nameof(bodyvaluecHEQUEholderName), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEissuerTRNo, nameof(bodyvaluecHEQUEissuerTRNo), required: false);
-            SourceExpression.Validate(bodyvaluecHEQUEcomments, nameof(bodyvaluecHEQUEcomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setCheque";
@@ -1207,39 +1111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetContact([WorkflowExpression] Func<string> bodyvaluepRSNOUTcode, [WorkflowExpression] Func<string> bodyvaluepRSNOUTname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTaddress = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtRNo = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTgeographicalAreas = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTbIRTHDATE = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcity = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcountry = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTarea = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTprefecture = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTeducationLevel = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTemail = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTemail2 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTfax = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTidCardNo = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtaxOffice = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTmobileTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTsurname = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTfatherSName = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTmotherSName = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTnameOfSpouse = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTnationality = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtel1 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtel2 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTinternalTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTpersonalTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcomments = null, [WorkflowExpression] Func<bodyvaluepRSNOUTgenderInput> bodyvaluepRSNOUTgender = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTwebPage = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTzip = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
         {
-            SourceExpression.Validate(bodyvaluepRSNOUTcode, nameof(bodyvaluepRSNOUTcode), required: true);
-            SourceExpression.Validate(bodyvaluepRSNOUTname, nameof(bodyvaluepRSNOUTname), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTaddress, nameof(bodyvaluepRSNOUTaddress), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTtRNo, nameof(bodyvaluepRSNOUTtRNo), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTgeographicalAreas, nameof(bodyvaluepRSNOUTgeographicalAreas), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTbIRTHDATE, nameof(bodyvaluepRSNOUTbIRTHDATE), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTcity, nameof(bodyvaluepRSNOUTcity), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTcountry, nameof(bodyvaluepRSNOUTcountry), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTarea, nameof(bodyvaluepRSNOUTarea), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTprefecture, nameof(bodyvaluepRSNOUTprefecture), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTeducationLevel, nameof(bodyvaluepRSNOUTeducationLevel), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTemail, nameof(bodyvaluepRSNOUTemail), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTemail2, nameof(bodyvaluepRSNOUTemail2), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTfax, nameof(bodyvaluepRSNOUTfax), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTidCardNo, nameof(bodyvaluepRSNOUTidCardNo), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTtaxOffice, nameof(bodyvaluepRSNOUTtaxOffice), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTmobileTelephone, nameof(bodyvaluepRSNOUTmobileTelephone), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTsurname, nameof(bodyvaluepRSNOUTsurname), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTfatherSName, nameof(bodyvaluepRSNOUTfatherSName), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTmotherSName, nameof(bodyvaluepRSNOUTmotherSName), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTnameOfSpouse, nameof(bodyvaluepRSNOUTnameOfSpouse), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTnationality, nameof(bodyvaluepRSNOUTnationality), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTtel1, nameof(bodyvaluepRSNOUTtel1), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTtel2, nameof(bodyvaluepRSNOUTtel2), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTinternalTelephone, nameof(bodyvaluepRSNOUTinternalTelephone), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTpersonalTelephone, nameof(bodyvaluepRSNOUTpersonalTelephone), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTcomments, nameof(bodyvaluepRSNOUTcomments), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTgender, nameof(bodyvaluepRSNOUTgender), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTwebPage, nameof(bodyvaluepRSNOUTwebPage), required: false);
-            SourceExpression.Validate(bodyvaluepRSNOUTzip, nameof(bodyvaluepRSNOUTzip), required: false);
-            SourceExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setContact";
@@ -1475,24 +1346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetCustomer([WorkflowExpression] Func<string> bodyvaluecUSTOMERcode, [WorkflowExpression] Func<string> bodyvaluecUSTOMERname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprimaryAddress = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERtRNo = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERgeographicalAreas = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERcity = null, [WorkflowExpression] Func<int> bodyvaluecUSTOMERdiscount = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERlocationArea = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMEReMail = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERfax = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERtaxOffice = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprofession = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprimaryTelephone = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERcomments = null, [WorkflowExpression] Func<bodyvaluecUSTOMERtaxCategoryInput> bodyvaluecUSTOMERtaxCategory = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERzip = null)
         {
-            SourceExpression.Validate(bodyvaluecUSTOMERcode, nameof(bodyvaluecUSTOMERcode), required: true);
-            SourceExpression.Validate(bodyvaluecUSTOMERname, nameof(bodyvaluecUSTOMERname), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERprimaryAddress, nameof(bodyvaluecUSTOMERprimaryAddress), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERtRNo, nameof(bodyvaluecUSTOMERtRNo), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERgeographicalAreas, nameof(bodyvaluecUSTOMERgeographicalAreas), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERcity, nameof(bodyvaluecUSTOMERcity), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERdiscount, nameof(bodyvaluecUSTOMERdiscount), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERlocationArea, nameof(bodyvaluecUSTOMERlocationArea), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMEReMail, nameof(bodyvaluecUSTOMEReMail), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERfax, nameof(bodyvaluecUSTOMERfax), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERtaxOffice, nameof(bodyvaluecUSTOMERtaxOffice), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERprofession, nameof(bodyvaluecUSTOMERprofession), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERprimaryTelephone, nameof(bodyvaluecUSTOMERprimaryTelephone), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERcomments, nameof(bodyvaluecUSTOMERcomments), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERtaxCategory, nameof(bodyvaluecUSTOMERtaxCategory), required: false);
-            SourceExpression.Validate(bodyvaluecUSTOMERzip, nameof(bodyvaluecUSTOMERzip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setCustomer";
@@ -1638,38 +1491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetDraftEntry([WorkflowExpression] Func<string> bodyvaluesODRAFTcode, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTaddress = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTtRNo = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcity = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcountry = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTarea = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTprefecture = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcategory = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcompanyEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTbusinessEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTpersonalEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTidCardNo = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTactivity = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTmobileTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTnameTitle = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTfirstName = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTsurname = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTzip = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTbusinessTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTinternalTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTpersonalTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcomments = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTtitle = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTwebPage = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTzip2 = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKbranch = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKbusinessUnit = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKdepartment = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKproject = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKsource = null)
         {
-            SourceExpression.Validate(bodyvaluesODRAFTcode, nameof(bodyvaluesODRAFTcode), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTaddress, nameof(bodyvaluesODRAFTaddress), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTtRNo, nameof(bodyvaluesODRAFTtRNo), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTcity, nameof(bodyvaluesODRAFTcity), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTcountry, nameof(bodyvaluesODRAFTcountry), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTarea, nameof(bodyvaluesODRAFTarea), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTprefecture, nameof(bodyvaluesODRAFTprefecture), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTcategory, nameof(bodyvaluesODRAFTcategory), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTcompanyEmail, nameof(bodyvaluesODRAFTcompanyEmail), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTbusinessEmail, nameof(bodyvaluesODRAFTbusinessEmail), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTpersonalEmail, nameof(bodyvaluesODRAFTpersonalEmail), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTidCardNo, nameof(bodyvaluesODRAFTidCardNo), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTactivity, nameof(bodyvaluesODRAFTactivity), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTmobileTelephone, nameof(bodyvaluesODRAFTmobileTelephone), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTnameTitle, nameof(bodyvaluesODRAFTnameTitle), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTfirstName, nameof(bodyvaluesODRAFTfirstName), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTsurname, nameof(bodyvaluesODRAFTsurname), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTzip, nameof(bodyvaluesODRAFTzip), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTbusinessTelephone, nameof(bodyvaluesODRAFTbusinessTelephone), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTinternalTelephone, nameof(bodyvaluesODRAFTinternalTelephone), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTpersonalTelephone, nameof(bodyvaluesODRAFTpersonalTelephone), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTcomments, nameof(bodyvaluesODRAFTcomments), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTtitle, nameof(bodyvaluesODRAFTtitle), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTwebPage, nameof(bodyvaluesODRAFTwebPage), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTzip2, nameof(bodyvaluesODRAFTzip2), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTLNKbranch, nameof(bodyvaluesODRAFTLNKbranch), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTLNKbusinessUnit, nameof(bodyvaluesODRAFTLNKbusinessUnit), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTLNKdepartment, nameof(bodyvaluesODRAFTLNKdepartment), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTLNKproject, nameof(bodyvaluesODRAFTLNKproject), required: false);
-            SourceExpression.Validate(bodyvaluesODRAFTLNKsource, nameof(bodyvaluesODRAFTLNKsource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setDraftEntry";
@@ -1911,16 +1732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetExpense([WorkflowExpression] Func<string> bodyvaluelINEITEMcode, [WorkflowExpression] Func<bodyvaluelINEITEMinvoicingCategoryInput> bodyvaluelINEITEMinvoicingCategory, [WorkflowExpression] Func<string> bodyvaluelINEITEMname, [WorkflowExpression] Func<string> bodyvaluelINEITEMvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluelINEITEMcommercialCategory = null, [WorkflowExpression] Func<bodyvaluelINEITEMtypeInput> bodyvaluelINEITEMtype = null, [WorkflowExpression] Func<string> bodyvaluelINEITEMcomments = null, [WorkflowExpression] Func<bodyvaluelINEITEMfeeValueInput> bodyvaluelINEITEMfeeValue = null)
         {
-            SourceExpression.Validate(bodyvaluelINEITEMcode, nameof(bodyvaluelINEITEMcode), required: true);
-            SourceExpression.Validate(bodyvaluelINEITEMinvoicingCategory, nameof(bodyvaluelINEITEMinvoicingCategory), required: true);
-            SourceExpression.Validate(bodyvaluelINEITEMname, nameof(bodyvaluelINEITEMname), required: true);
-            SourceExpression.Validate(bodyvaluelINEITEMvatGroup, nameof(bodyvaluelINEITEMvatGroup), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvaluelINEITEMcommercialCategory, nameof(bodyvaluelINEITEMcommercialCategory), required: false);
-            SourceExpression.Validate(bodyvaluelINEITEMtype, nameof(bodyvaluelINEITEMtype), required: false);
-            SourceExpression.Validate(bodyvaluelINEITEMcomments, nameof(bodyvaluelINEITEMcomments), required: false);
-            SourceExpression.Validate(bodyvaluelINEITEMfeeValue, nameof(bodyvaluelINEITEMfeeValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setExpense";
@@ -2010,14 +1821,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetExpensesDoc([WorkflowExpression] Func<string> bodyvaluelINSUPDOCseries, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCsupplier, [WorkflowExpression] Func<bodyvalueunnamedInputItem[]> bodyvalueunnamed = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCproject = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCcomments = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCtRNDATE = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodyvaluelINSUPDOCseries, nameof(bodyvaluelINSUPDOCseries), required: true);
-            SourceExpression.Validate(bodyvaluelINSUPDOCsupplier, nameof(bodyvaluelINSUPDOCsupplier), required: true);
-            SourceExpression.Validate(bodyvalueunnamed, nameof(bodyvalueunnamed), required: false);
-            SourceExpression.Validate(bodyvaluelINSUPDOCproject, nameof(bodyvaluelINSUPDOCproject), required: false);
-            SourceExpression.Validate(bodyvaluelINSUPDOCcomments, nameof(bodyvaluelINSUPDOCcomments), required: false);
-            SourceExpression.Validate(bodyvaluelINSUPDOCtRNDATE, nameof(bodyvaluelINSUPDOCtRNDATE), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setExpensesDoc";
@@ -2103,14 +1906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetItedoc([WorkflowExpression] Func<string> bodyvalueiTEDOCseries, [WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCreason = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCtRNDATE = null, [WorkflowExpression] Func<bodyvalueiTELINESInputItem[]> bodyvalueiTELINES = null)
         {
-            SourceExpression.Validate(bodyvalueiTEDOCseries, nameof(bodyvalueiTEDOCseries), required: true);
-            SourceExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvalueiTEDOCreason, nameof(bodyvalueiTEDOCreason), required: false);
-            SourceExpression.Validate(bodyvalueiTEDOCrEMARKS, nameof(bodyvalueiTEDOCrEMARKS), required: false);
-            SourceExpression.Validate(bodyvalueiTEDOCtRNDATE, nameof(bodyvalueiTEDOCtRNDATE), required: false);
-            SourceExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setItedoc";
@@ -2204,18 +1999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetItem([WorkflowExpression] Func<string> bodyvalueiTEMcode, [WorkflowExpression] Func<string> bodyvalueiTEMbaseUnitOfMeasure, [WorkflowExpression] Func<string> bodyvalueiTEMname, [WorkflowExpression] Func<string> bodyvalueiTEMvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvalueiTEMcommercialCategory = null, [WorkflowExpression] Func<string> bodyvalueiTEMitemGroup = null, [WorkflowExpression] Func<string> bodyvalueiTEMretailPrice = null, [WorkflowExpression] Func<string> bodyvalueiTEMwholesalePrice = null, [WorkflowExpression] Func<string> bodyvalueiTEMcomments = null, [WorkflowExpression] Func<string> bodyvalueiTEMdiscount1 = null)
         {
-            SourceExpression.Validate(bodyvalueiTEMcode, nameof(bodyvalueiTEMcode), required: true);
-            SourceExpression.Validate(bodyvalueiTEMbaseUnitOfMeasure, nameof(bodyvalueiTEMbaseUnitOfMeasure), required: true);
-            SourceExpression.Validate(bodyvalueiTEMname, nameof(bodyvalueiTEMname), required: true);
-            SourceExpression.Validate(bodyvalueiTEMvatGroup, nameof(bodyvalueiTEMvatGroup), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvalueiTEMcommercialCategory, nameof(bodyvalueiTEMcommercialCategory), required: false);
-            SourceExpression.Validate(bodyvalueiTEMitemGroup, nameof(bodyvalueiTEMitemGroup), required: false);
-            SourceExpression.Validate(bodyvalueiTEMretailPrice, nameof(bodyvalueiTEMretailPrice), required: false);
-            SourceExpression.Validate(bodyvalueiTEMwholesalePrice, nameof(bodyvalueiTEMwholesalePrice), required: false);
-            SourceExpression.Validate(bodyvalueiTEMcomments, nameof(bodyvalueiTEMcomments), required: false);
-            SourceExpression.Validate(bodyvalueiTEMdiscount1, nameof(bodyvalueiTEMdiscount1), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setItem";
@@ -2317,16 +2100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetProject([WorkflowExpression] Func<string> bodyvaluepRJCcode, [WorkflowExpression] Func<string> bodyvaluepRJCname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<bodyvaluepRJCaCTSTATUSInput> bodyvaluepRJCaCTSTATUS = null, [WorkflowExpression] Func<string> bodyvaluepRJCfINALDATE = null, [WorkflowExpression] Func<string> bodyvaluepRJCfROMDATE = null, [WorkflowExpression] Func<bodyvaluepRJCpRJCRMInput> bodyvaluepRJCpRJCRM = null, [WorkflowExpression] Func<string> bodyvaluepRJCcomments = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
         {
-            SourceExpression.Validate(bodyvaluepRJCcode, nameof(bodyvaluepRJCcode), required: true);
-            SourceExpression.Validate(bodyvaluepRJCname, nameof(bodyvaluepRJCname), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvaluepRJCaCTSTATUS, nameof(bodyvaluepRJCaCTSTATUS), required: false);
-            SourceExpression.Validate(bodyvaluepRJCfINALDATE, nameof(bodyvaluepRJCfINALDATE), required: false);
-            SourceExpression.Validate(bodyvaluepRJCfROMDATE, nameof(bodyvaluepRJCfROMDATE), required: false);
-            SourceExpression.Validate(bodyvaluepRJCpRJCRM, nameof(bodyvaluepRJCpRJCRM), required: false);
-            SourceExpression.Validate(bodyvaluepRJCcomments, nameof(bodyvaluepRJCcomments), required: false);
-            SourceExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setProject";
@@ -2424,20 +2197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetPurdoc([WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyvaluepURDOCsERIES, [WorkflowExpression] Func<string> bodyvaluepURDOCsOCURRENCY, [WorkflowExpression] Func<string> bodyvaluepURDOCtRDR, [WorkflowExpression] Func<bodyvalueiTELINESInputItem2[]> bodyvalueiTELINES = null, [WorkflowExpression] Func<string> bodyvaluepURDOCdISC1PRC = null, [WorkflowExpression] Func<string> bodyvaluepURDOCpAYMENT = null, [WorkflowExpression] Func<string> bodyvaluepURDOCpRJC = null, [WorkflowExpression] Func<string> bodyvaluepURDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluepURDOCsUMAMNT = null, [WorkflowExpression] Func<string> bodyvaluepURDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluesRVLINESInputItem[]> bodyvaluesRVLINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
-            SourceExpression.Validate(bodyvaluepURDOCsERIES, nameof(bodyvaluepURDOCsERIES), required: true);
-            SourceExpression.Validate(bodyvaluepURDOCsOCURRENCY, nameof(bodyvaluepURDOCsOCURRENCY), required: true);
-            SourceExpression.Validate(bodyvaluepURDOCtRDR, nameof(bodyvaluepURDOCtRDR), required: true);
-            SourceExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
-            SourceExpression.Validate(bodyvaluepURDOCdISC1PRC, nameof(bodyvaluepURDOCdISC1PRC), required: false);
-            SourceExpression.Validate(bodyvaluepURDOCpAYMENT, nameof(bodyvaluepURDOCpAYMENT), required: false);
-            SourceExpression.Validate(bodyvaluepURDOCpRJC, nameof(bodyvaluepURDOCpRJC), required: false);
-            SourceExpression.Validate(bodyvaluepURDOCrEMARKS, nameof(bodyvaluepURDOCrEMARKS), required: false);
-            SourceExpression.Validate(bodyvaluepURDOCsUMAMNT, nameof(bodyvaluepURDOCsUMAMNT), required: false);
-            SourceExpression.Validate(bodyvaluepURDOCtRNDATE, nameof(bodyvaluepURDOCtRNDATE), required: false);
-            SourceExpression.Validate(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setPurdoc";
@@ -2559,23 +2318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetSaldoc([WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyvaluesALDOCpayment, [WorkflowExpression] Func<string> bodyvaluesALDOCseries, [WorkflowExpression] Func<string> bodyvaluesALDOCcurrency, [WorkflowExpression] Func<string> bodyvaluesALDOCcustomer, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<bodyvalueiTELINESInputItem22[]> bodyvalueiTELINES = null, [WorkflowExpression] Func<string> bodyvaluesALDOCdiscount = null, [WorkflowExpression] Func<string> bodyvaluesALDOCdiscountValue = null, [WorkflowExpression] Func<string> bodyvaluesALDOCnetAmount = null, [WorkflowExpression] Func<string> bodyvaluesALDOCproject = null, [WorkflowExpression] Func<string> bodyvaluesALDOCcomments = null, [WorkflowExpression] Func<string> bodyvaluesALDOCtotal = null, [WorkflowExpression] Func<string> bodyvaluesALDOCtRNDATE = null, [WorkflowExpression] Func<string> bodyvaluesALDOCvAT = null, [WorkflowExpression] Func<bodyvaluesRVLINESInputItem2[]> bodyvaluesRVLINES = null)
         {
-            SourceExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
-            SourceExpression.Validate(bodyvaluesALDOCpayment, nameof(bodyvaluesALDOCpayment), required: true);
-            SourceExpression.Validate(bodyvaluesALDOCseries, nameof(bodyvaluesALDOCseries), required: true);
-            SourceExpression.Validate(bodyvaluesALDOCcurrency, nameof(bodyvaluesALDOCcurrency), required: true);
-            SourceExpression.Validate(bodyvaluesALDOCcustomer, nameof(bodyvaluesALDOCcustomer), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCdiscount, nameof(bodyvaluesALDOCdiscount), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCdiscountValue, nameof(bodyvaluesALDOCdiscountValue), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCnetAmount, nameof(bodyvaluesALDOCnetAmount), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCproject, nameof(bodyvaluesALDOCproject), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCcomments, nameof(bodyvaluesALDOCcomments), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCtotal, nameof(bodyvaluesALDOCtotal), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCtRNDATE, nameof(bodyvaluesALDOCtRNDATE), required: false);
-            SourceExpression.Validate(bodyvaluesALDOCvAT, nameof(bodyvaluesALDOCvAT), required: false);
-            SourceExpression.Validate(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setSaldoc";
@@ -2711,18 +2453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetService([WorkflowExpression] Func<string> bodyvaluesERVICEcode, [WorkflowExpression] Func<string> bodyvaluesERVICEbaseUnitOfMeasure, [WorkflowExpression] Func<string> bodyvaluesERVICEname, [WorkflowExpression] Func<string> bodyvaluesERVICEvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluesERVICEcommercialCategory = null, [WorkflowExpression] Func<string> bodyvaluesERVICEserviceGroup = null, [WorkflowExpression] Func<string> bodyvaluesERVICEretailPrice = null, [WorkflowExpression] Func<string> bodyvaluesERVICEwholesalePrice = null, [WorkflowExpression] Func<string> bodyvaluesERVICEcomments = null, [WorkflowExpression] Func<string> bodyvaluesERVICEdiscount1 = null)
         {
-            SourceExpression.Validate(bodyvaluesERVICEcode, nameof(bodyvaluesERVICEcode), required: true);
-            SourceExpression.Validate(bodyvaluesERVICEbaseUnitOfMeasure, nameof(bodyvaluesERVICEbaseUnitOfMeasure), required: true);
-            SourceExpression.Validate(bodyvaluesERVICEname, nameof(bodyvaluesERVICEname), required: true);
-            SourceExpression.Validate(bodyvaluesERVICEvatGroup, nameof(bodyvaluesERVICEvatGroup), required: true);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            SourceExpression.Validate(bodyvaluesERVICEcommercialCategory, nameof(bodyvaluesERVICEcommercialCategory), required: false);
-            SourceExpression.Validate(bodyvaluesERVICEserviceGroup, nameof(bodyvaluesERVICEserviceGroup), required: false);
-            SourceExpression.Validate(bodyvaluesERVICEretailPrice, nameof(bodyvaluesERVICEretailPrice), required: false);
-            SourceExpression.Validate(bodyvaluesERVICEwholesalePrice, nameof(bodyvaluesERVICEwholesalePrice), required: false);
-            SourceExpression.Validate(bodyvaluesERVICEcomments, nameof(bodyvaluesERVICEcomments), required: false);
-            SourceExpression.Validate(bodyvaluesERVICEdiscount1, nameof(bodyvaluesERVICEdiscount1), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setService";
@@ -2824,19 +2554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetSOEMAIL([WorkflowExpression] Func<string> bodyvaluesOACTIONsERIES, [WorkflowExpression] Func<bodyvaluesOACTIONaCTSTATUSInput> bodyvaluesOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodyvaluesOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodyvaluesOACTIONtRNDATE = null, [WorkflowExpression] Func<string> bodyvaluesOMAILfROMADDRESS = null, [WorkflowExpression] Func<string> bodyvaluesOMAILfROMNAME = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOBCC = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOBODY = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOCC = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOTO = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodyvaluesOACTIONsERIES, nameof(bodyvaluesOACTIONsERIES), required: true);
-            SourceExpression.Validate(bodyvaluesOACTIONaCTSTATUS, nameof(bodyvaluesOACTIONaCTSTATUS), required: false);
-            SourceExpression.Validate(bodyvaluesOACTIONcOMMENTS, nameof(bodyvaluesOACTIONcOMMENTS), required: false);
-            SourceExpression.Validate(bodyvaluesOACTIONtRNDATE, nameof(bodyvaluesOACTIONtRNDATE), required: false);
-            SourceExpression.Validate(bodyvaluesOMAILfROMADDRESS, nameof(bodyvaluesOMAILfROMADDRESS), required: false);
-            SourceExpression.Validate(bodyvaluesOMAILfROMNAME, nameof(bodyvaluesOMAILfROMNAME), required: false);
-            SourceExpression.Validate(bodyvaluesOMAILsOBCC, nameof(bodyvaluesOMAILsOBCC), required: false);
-            SourceExpression.Validate(bodyvaluesOMAILsOBODY, nameof(bodyvaluesOMAILsOBODY), required: false);
-            SourceExpression.Validate(bodyvaluesOMAILsOCC, nameof(bodyvaluesOMAILsOCC), required: false);
-            SourceExpression.Validate(bodyvaluesOMAILsOTO, nameof(bodyvaluesOMAILsOTO), required: false);
-            SourceExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setSomail";
@@ -2964,23 +2681,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetMeeting([WorkflowExpression] Func<string> bodydATAsOACTIONsERIES, [WorkflowExpression] Func<string> bodydATAsOACTIONOperator = null, [WorkflowExpression] Func<string> bodydATAsOACTIONoperatorContact = null, [WorkflowExpression] Func<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfINALDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfROMDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedBy = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedByContact = null, [WorkflowExpression] Func<string> bodydATAsOACTIONpriority = null, [WorkflowExpression] Func<string> bodydATAsOACTIONproject = null, [WorkflowExpression] Func<string> bodydATAsOACTIONrEMARKS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRDR = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRNDATE = null, [WorkflowExpression] Func<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
-            SourceExpression.Validate(bodydATAsOACTIONOperator, nameof(bodydATAsOACTIONOperator), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
-            SourceExpression.Validate(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setSomeeting";
@@ -3124,23 +2824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetSOTASK([WorkflowExpression] Func<string> bodydATAsOACTIONsERIES, [WorkflowExpression] Func<string> bodydATAsOACTIONOperator = null, [WorkflowExpression] Func<string> bodydATAsOACTIONoperatorContact = null, [WorkflowExpression] Func<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfINALDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfROMDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedBy = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedByContact = null, [WorkflowExpression] Func<string> bodydATAsOACTIONpriority = null, [WorkflowExpression] Func<string> bodydATAsOACTIONproject = null, [WorkflowExpression] Func<string> bodydATAsOACTIONrEMARKS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRDR = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRNDATE = null, [WorkflowExpression] Func<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
-            SourceExpression.Validate(bodydATAsOACTIONOperator, nameof(bodydATAsOACTIONOperator), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
-            SourceExpression.Validate(bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
-            SourceExpression.Validate(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setSotask";
@@ -3284,22 +2967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<SetData200response> SetSupplier([WorkflowExpression] Func<string> bodyvaluesUPPLIERcODE, [WorkflowExpression] Func<string> bodyvaluesUPPLIERnAME, [WorkflowExpression] Func<bodyvaluesUPBANKACCInputItem[]> bodyvaluesUPBANKACC = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERaDDRESS = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERaFM = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERcITY = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERdISTRICT = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIEReMAIL = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERfAX = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERiRSDATA = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERjOBTYPETRD = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERpHONE01 = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERzIP = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            SourceExpression.Validate(bodyvaluesUPPLIERcODE, nameof(bodyvaluesUPPLIERcODE), required: true);
-            SourceExpression.Validate(bodyvaluesUPPLIERnAME, nameof(bodyvaluesUPPLIERnAME), required: true);
-            SourceExpression.Validate(bodyvaluesUPBANKACC, nameof(bodyvaluesUPBANKACC), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERaDDRESS, nameof(bodyvaluesUPPLIERaDDRESS), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERaFM, nameof(bodyvaluesUPPLIERaFM), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERcITY, nameof(bodyvaluesUPPLIERcITY), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERdISTRICT, nameof(bodyvaluesUPPLIERdISTRICT), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIEReMAIL, nameof(bodyvaluesUPPLIEReMAIL), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERfAX, nameof(bodyvaluesUPPLIERfAX), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERiRSDATA, nameof(bodyvaluesUPPLIERiRSDATA), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERjOBTYPETRD, nameof(bodyvaluesUPPLIERjOBTYPETRD), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERpHONE01, nameof(bodyvaluesUPPLIERpHONE01), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERrEMARKS, nameof(bodyvaluesUPPLIERrEMARKS), required: false);
-            SourceExpression.Validate(bodyvaluesUPPLIERzIP, nameof(bodyvaluesUPPLIERzIP), required: false);
-            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setSupplier";
@@ -3435,8 +3102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     {
         public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook";
@@ -3477,8 +3142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         public IWorkflowTrigger WebhookOnDelete([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/onDelete";
@@ -3519,8 +3182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         public IWorkflowTrigger WebhookOnInsert([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/onInsert";
@@ -3561,8 +3222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         public IWorkflowTrigger WebhookOnUpdate([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook/onUpdate";

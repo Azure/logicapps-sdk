@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> GetTheLinkedListTemplates([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(listName, nameof(listName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/DocFusion365/GetLinkedListTemplates";
@@ -46,11 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<ComposeLinkedTemplateResponse> ComposeALinkedTemplate([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<int> templateId, [WorkflowExpression] Func<int> listItemId, [WorkflowExpression] Func<bool> skipPostProcess)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(listName, nameof(listName), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(listItemId, nameof(listItemId), required: true);
-            SourceExpression.Validate(skipPostProcess, nameof(skipPostProcess), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/DocFusion365/ComposeLinkedTemplate";
@@ -70,10 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> ComposeAllTheLinkedTemplates([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<int> listItemId, [WorkflowExpression] Func<bool> skipPostProcess)
         {
-            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
-            SourceExpression.Validate(listName, nameof(listName), required: true);
-            SourceExpression.Validate(listItemId, nameof(listItemId), required: true);
-            SourceExpression.Validate(skipPostProcess, nameof(skipPostProcess), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/DocFusion365/ComposeAllLinkedTemplates";

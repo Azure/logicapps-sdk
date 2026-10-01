@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IBodyWorkflowAction<DetailedReceiveMessage> GetEmail([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> includeAttachments = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(includeAttachments, nameof(includeAttachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -33,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction DeleteEmail([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -48,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction TrashEmail([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Mail/{0}/trash", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -63,15 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction ReplyTo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> replyMessageto = null, [WorkflowExpression] Func<string> replyMessagecC = null, [WorkflowExpression] Func<string> replyMessagebCC = null, [WorkflowExpression] Func<string> replyMessagesubject = null, [WorkflowExpression] Func<string> replyMessagebody = null, [WorkflowExpression] Func<bool> replyMessagereplyAll = null, [WorkflowExpression] Func<replyMessageimportanceInput> replyMessageimportance = null, [WorkflowExpression] Func<Attachment[]> replyMessageattachments = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(replyMessageto, nameof(replyMessageto), required: false);
-            SourceExpression.Validate(replyMessagecC, nameof(replyMessagecC), required: false);
-            SourceExpression.Validate(replyMessagebCC, nameof(replyMessagebCC), required: false);
-            SourceExpression.Validate(replyMessagesubject, nameof(replyMessagesubject), required: false);
-            SourceExpression.Validate(replyMessagebody, nameof(replyMessagebody), required: false);
-            SourceExpression.Validate(replyMessagereplyAll, nameof(replyMessagereplyAll), required: false);
-            SourceExpression.Validate(replyMessageimportance, nameof(replyMessageimportance), required: false);
-            SourceExpression.Validate(replyMessageattachments, nameof(replyMessageattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/Mail/ReplyTo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -140,13 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction SendEmail([WorkflowExpression] Func<string> emailMessageto, [WorkflowExpression] Func<string> emailMessagecC = null, [WorkflowExpression] Func<string> emailMessagebCC = null, [WorkflowExpression] Func<string> emailMessagesubject = null, [WorkflowExpression] Func<string> emailMessagebody = null, [WorkflowExpression] Func<emailMessageimportanceInput> emailMessageimportance = null, [WorkflowExpression] Func<Attachment[]> emailMessageattachments = null)
         {
-            SourceExpression.Validate(emailMessageto, nameof(emailMessageto), required: true);
-            SourceExpression.Validate(emailMessagecC, nameof(emailMessagecC), required: false);
-            SourceExpression.Validate(emailMessagebCC, nameof(emailMessagebCC), required: false);
-            SourceExpression.Validate(emailMessagesubject, nameof(emailMessagesubject), required: false);
-            SourceExpression.Validate(emailMessagebody, nameof(emailMessagebody), required: false);
-            SourceExpression.Validate(emailMessageimportance, nameof(emailMessageimportance), required: false);
-            SourceExpression.Validate(emailMessageattachments, nameof(emailMessageattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Mail";
@@ -207,14 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
     {
         public IBodyWorkflowTrigger<DetailedReceiveMessage> OnNewEmail([WorkflowExpression] Func<string> label = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<starredInput> starred = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachments = null, [WorkflowExpression] Func<bool> includeAttachments = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(label, nameof(label), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(subject, nameof(subject), required: false);
-            SourceExpression.Validate(importance, nameof(importance), required: false);
-            SourceExpression.Validate(starred, nameof(starred), required: false);
-            SourceExpression.Validate(fetchOnlyWithAttachments, nameof(fetchOnlyWithAttachments), required: false);
-            SourceExpression.Validate(includeAttachments, nameof(includeAttachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Mail/OnNewEmail";

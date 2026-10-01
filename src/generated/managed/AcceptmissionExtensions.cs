@@ -28,20 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostcategoriesResponse> Postcategories([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodychipColor = null, [WorkflowExpression] Func<string> bodymissionsId = null, [WorkflowExpression] Func<int> bodycompanyId = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<string> bodytempImage = null, [WorkflowExpression] Func<string> bodymainImage = null, [WorkflowExpression] Func<string> bodyimageConfigs = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyupdatedBy = null, [WorkflowExpression] Func<string> bodyrecordUrl = null, [WorkflowExpression] Func<string> bodysyncId = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodychipColor, nameof(bodychipColor), required: false);
-            SourceExpression.Validate(bodymissionsId, nameof(bodymissionsId), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodytempImage, nameof(bodytempImage), required: false);
-            SourceExpression.Validate(bodymainImage, nameof(bodymainImage), required: false);
-            SourceExpression.Validate(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyupdatedBy, nameof(bodyupdatedBy), required: false);
-            SourceExpression.Validate(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/categories";
@@ -146,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetcategoriesIdResponse> GetcategoriesId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -161,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletecategoriesId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -176,21 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutcategoriesIdResponse> PutcategoriesId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodychipColor = null, [WorkflowExpression] Func<string> bodymissionsId = null, [WorkflowExpression] Func<int> bodycompanyId = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<string> bodytempImage = null, [WorkflowExpression] Func<string> bodymainImage = null, [WorkflowExpression] Func<string> bodyimageConfigs = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyupdatedBy = null, [WorkflowExpression] Func<string> bodyrecordUrl = null, [WorkflowExpression] Func<string> bodysyncId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodychipColor, nameof(bodychipColor), required: false);
-            SourceExpression.Validate(bodymissionsId, nameof(bodymissionsId), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodytempImage, nameof(bodytempImage), required: false);
-            SourceExpression.Validate(bodymainImage, nameof(bodymainImage), required: false);
-            SourceExpression.Validate(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyupdatedBy, nameof(bodyupdatedBy), required: false);
-            SourceExpression.Validate(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -295,8 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchcategoriesIdResponse> PatchcategoriesId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -337,8 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostdepartmentsResponse> Postdepartments([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyposition = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/departments";
@@ -371,7 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetdepartmentsIdResponse> GetdepartmentsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -386,7 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletedepartmentsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -401,21 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutdepartmentsIdResponse> PutdepartmentsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<int> bodycompanyId = null, [WorkflowExpression] Func<int> bodyideasCount = null, [WorkflowExpression] Func<int> bodyprojectsCount = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<string> bodytempImage = null, [WorkflowExpression] Func<string> bodymainImage = null, [WorkflowExpression] Func<string> bodyimageConfigs = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyupdatedBy = null, [WorkflowExpression] Func<string> bodyrecordUrl = null, [WorkflowExpression] Func<string> bodysyncId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyideasCount, nameof(bodyideasCount), required: false);
-            SourceExpression.Validate(bodyprojectsCount, nameof(bodyprojectsCount), required: false);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodytempImage, nameof(bodytempImage), required: false);
-            SourceExpression.Validate(bodymainImage, nameof(bodymainImage), required: false);
-            SourceExpression.Validate(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyupdatedBy, nameof(bodyupdatedBy), required: false);
-            SourceExpression.Validate(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -520,9 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchdepartmentsIdResponse> PatchdepartmentsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyposition = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -569,7 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostfunnelLanesResponse> PostfunnelLanes([WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/funnel_lanes";
@@ -596,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetfunnelLanesIdResponse> GetfunnelLanesId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -611,7 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletefunnelLanesId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -626,28 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutfunnelLanesIdResponse> PutfunnelLanesId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyfunnelStageType = null, [WorkflowExpression] Func<int> bodystageType = null, [WorkflowExpression] Func<string> bodycolor = null, [WorkflowExpression] Func<int> bodydeadline = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodymodifiedBy = null, [WorkflowExpression] Func<int> bodyfunnelId = null, [WorkflowExpression] Func<int> bodyfunnelStatusId = null, [WorkflowExpression] Func<int> bodyownerId = null, [WorkflowExpression] Func<bool> bodyenableNotification = null, [WorkflowExpression] Func<int> bodyideasCount = null, [WorkflowExpression] Func<int> bodyprojectsCount = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylink = null, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<bool> bodyshowInGraph = null, [WorkflowExpression] Func<bool> bodyshowInBubble = null, [WorkflowExpression] Func<int> bodyconfettiType = null, [WorkflowExpression] Func<string> bodyautomationOwnerId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyfunnelStageType, nameof(bodyfunnelStageType), required: false);
-            SourceExpression.Validate(bodystageType, nameof(bodystageType), required: false);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: false);
-            SourceExpression.Validate(bodydeadline, nameof(bodydeadline), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodymodifiedBy, nameof(bodymodifiedBy), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
-            SourceExpression.Validate(bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyenableNotification, nameof(bodyenableNotification), required: false);
-            SourceExpression.Validate(bodyideasCount, nameof(bodyideasCount), required: false);
-            SourceExpression.Validate(bodyprojectsCount, nameof(bodyprojectsCount), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyshowInGraph, nameof(bodyshowInGraph), required: false);
-            SourceExpression.Validate(bodyshowInBubble, nameof(bodyshowInBubble), required: false);
-            SourceExpression.Validate(bodyconfettiType, nameof(bodyconfettiType), required: false);
-            SourceExpression.Validate(bodyautomationOwnerId, nameof(bodyautomationOwnerId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -794,8 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchfunnelLanesIdResponse> PatchfunnelLanesId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -836,8 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction Postfunnels([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyfunnelType = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyfunnelType, nameof(bodyfunnelType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/funnels";
@@ -870,7 +786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetfunnelsIdResponse> GetfunnelsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -885,7 +800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletefunnelsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -900,29 +814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction PutfunnelsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodycompanyId = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<int> bodyfunnelType = null, [WorkflowExpression] Func<int> bodymodifiedBy = null, [WorkflowExpression] Func<int> bodyprivacySetting = null, [WorkflowExpression] Func<int> bodyownerId = null, [WorkflowExpression] Func<bool> bodyblockFunnelNotification = null, [WorkflowExpression] Func<int> bodyideasCount = null, [WorkflowExpression] Func<int> bodyprojectsCount = null, [WorkflowExpression] Func<bool> bodyhidden = null, [WorkflowExpression] Func<string> bodysetXAxis = null, [WorkflowExpression] Func<string> bodysetYAxis = null, [WorkflowExpression] Func<string> bodysetZAxis = null, [WorkflowExpression] Func<string> bodysetAxisColor = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<int> bodyprojectFunnelId = null, [WorkflowExpression] Func<string> bodyfromScript = null, [WorkflowExpression] Func<int> bodyuserPrivacySetting = null, [WorkflowExpression] Func<bool> bodyincludeInDashboard = null, [WorkflowExpression] Func<string> bodyrecordUrl = null, [WorkflowExpression] Func<string> bodysyncId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyfunnelType, nameof(bodyfunnelType), required: false);
-            SourceExpression.Validate(bodymodifiedBy, nameof(bodymodifiedBy), required: false);
-            SourceExpression.Validate(bodyprivacySetting, nameof(bodyprivacySetting), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodyblockFunnelNotification, nameof(bodyblockFunnelNotification), required: false);
-            SourceExpression.Validate(bodyideasCount, nameof(bodyideasCount), required: false);
-            SourceExpression.Validate(bodyprojectsCount, nameof(bodyprojectsCount), required: false);
-            SourceExpression.Validate(bodyhidden, nameof(bodyhidden), required: false);
-            SourceExpression.Validate(bodysetXAxis, nameof(bodysetXAxis), required: false);
-            SourceExpression.Validate(bodysetYAxis, nameof(bodysetYAxis), required: false);
-            SourceExpression.Validate(bodysetZAxis, nameof(bodysetZAxis), required: false);
-            SourceExpression.Validate(bodysetAxisColor, nameof(bodysetAxisColor), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyprojectFunnelId, nameof(bodyprojectFunnelId), required: false);
-            SourceExpression.Validate(bodyfromScript, nameof(bodyfromScript), required: false);
-            SourceExpression.Validate(bodyuserPrivacySetting, nameof(bodyuserPrivacySetting), required: false);
-            SourceExpression.Validate(bodyincludeInDashboard, nameof(bodyincludeInDashboard), required: false);
-            SourceExpression.Validate(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1075,9 +966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchfunnelsIdResponse> PatchfunnelsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodyfunnelType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyfunnelType, nameof(bodyfunnelType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1124,10 +1012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction Postideas([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<int> bodyfunnelId = null, [WorkflowExpression] Func<int> bodymissionId = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
-            SourceExpression.Validate(bodymissionId, nameof(bodymissionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/ideas";
@@ -1172,7 +1056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetideasIdeaIdTasksResponse> GetideasIdeaIdTasks([WorkflowExpression] Func<string> ideaId)
         {
-            SourceExpression.Validate(ideaId, nameof(ideaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ideaId, 1));
@@ -1187,9 +1070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostideasIdeaIdTasksResponse> PostideasIdeaIdTasks([WorkflowExpression] Func<string> ideaId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodystatus = null)
         {
-            SourceExpression.Validate(ideaId, nameof(ideaId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ideaId, 1));
@@ -1222,7 +1102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction GetideasId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1237,7 +1116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeleteideasId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1252,85 +1130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction PutideasId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<int> bodyroundId = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodydevice = null, [WorkflowExpression] Func<string> bodybrowser = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostalCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodyscreenRes = null, [WorkflowExpression] Func<string> bodyuserIp = null, [WorkflowExpression] Func<int> bodycommentsCount = null, [WorkflowExpression] Func<int> bodyreviewScoresCount = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<int> bodystage = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodystatusId = null, [WorkflowExpression] Func<string> bodyposition = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodyideaCreator = null, [WorkflowExpression] Func<string> bodyideationIdeaCategoryId = null, [WorkflowExpression] Func<string> bodyboardIdeaCategoryId = null, [WorkflowExpression] Func<int> bodycompanyId = null, [WorkflowExpression] Func<int> bodyideaLikesCount = null, [WorkflowExpression] Func<bool> bodybookmark = null, [WorkflowExpression] Func<int> bodyideaScoresCount = null, [WorkflowExpression] Func<int> bodylikesCount = null, [WorkflowExpression] Func<string> bodyboardId = null, [WorkflowExpression] Func<string> bodymissionId = null, [WorkflowExpression] Func<string> bodycreatorName = null, [WorkflowExpression] Func<int> bodytagsCount = null, [WorkflowExpression] Func<string> bodyfunnelId = null, [WorkflowExpression] Func<string> bodyfunnelStageId = null, [WorkflowExpression] Func<string> bodyfunnelStatusId = null, [WorkflowExpression] Func<string> bodyideaDeadline = null, [WorkflowExpression] Func<bool> bodydeadlineNotification = null, [WorkflowExpression] Func<int> bodyideaViews = null, [WorkflowExpression] Func<string> bodyrevenue = null, [WorkflowExpression] Func<string> bodycost = null, [WorkflowExpression] Func<string> bodyprofit = null, [WorkflowExpression] Func<string> bodystatusName = null, [WorkflowExpression] Func<string> bodyideaScores = null, [WorkflowExpression] Func<string> bodyapprovedAt = null, [WorkflowExpression] Func<string> bodydeniedAt = null, [WorkflowExpression] Func<string> bodyadminComments = null, [WorkflowExpression] Func<bool> bodyisChild = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodytempImage = null, [WorkflowExpression] Func<string> bodymainImage = null, [WorkflowExpression] Func<string> bodyimageConfigs = null, [WorkflowExpression] Func<int> bodyscoreCompleteScore = null, [WorkflowExpression] Func<int> bodyenrichmentScore = null, [WorkflowExpression] Func<int> bodyengagementScore = null, [WorkflowExpression] Func<int> bodyopportunityScore = null, [WorkflowExpression] Func<int> bodytrendScore = null, [WorkflowExpression] Func<string> bodycleanedText = null, [WorkflowExpression] Func<int> bodyduplicateIdeasCount = null, [WorkflowExpression] Func<string> bodysidekiqDuplicateIdeasCount = null, [WorkflowExpression] Func<string> bodyaiCreated = null, [WorkflowExpression] Func<string> bodyideaType = null, [WorkflowExpression] Func<string> bodyfromScript = null, [WorkflowExpression] Func<string> bodyembedding = null, [WorkflowExpression] Func<string> bodyreasonText = null, [WorkflowExpression] Func<string> bodycategoryText = null, [WorkflowExpression] Func<string> bodycanvassId = null, [WorkflowExpression] Func<string> bodybudgetTotal = null, [WorkflowExpression] Func<string> bodybudgetSpend = null, [WorkflowExpression] Func<string> bodybudgetResult = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytagText = null, [WorkflowExpression] Func<string> bodyinnovationTypeId = null, [WorkflowExpression] Func<string> bodyinnovationTypeText = null, [WorkflowExpression] Func<string> bodysyncId = null, [WorkflowExpression] Func<string> bodyrecordUrl = null, [WorkflowExpression] Func<string> bodydescriptionEnriched = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyroundId, nameof(bodyroundId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodydevice, nameof(bodydevice), required: false);
-            SourceExpression.Validate(bodybrowser, nameof(bodybrowser), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypostalCode, nameof(bodypostalCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodyscreenRes, nameof(bodyscreenRes), required: false);
-            SourceExpression.Validate(bodyuserIp, nameof(bodyuserIp), required: false);
-            SourceExpression.Validate(bodycommentsCount, nameof(bodycommentsCount), required: false);
-            SourceExpression.Validate(bodyreviewScoresCount, nameof(bodyreviewScoresCount), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodystage, nameof(bodystage), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodystatusId, nameof(bodystatusId), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodyideaCreator, nameof(bodyideaCreator), required: false);
-            SourceExpression.Validate(bodyideationIdeaCategoryId, nameof(bodyideationIdeaCategoryId), required: false);
-            SourceExpression.Validate(bodyboardIdeaCategoryId, nameof(bodyboardIdeaCategoryId), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyideaLikesCount, nameof(bodyideaLikesCount), required: false);
-            SourceExpression.Validate(bodybookmark, nameof(bodybookmark), required: false);
-            SourceExpression.Validate(bodyideaScoresCount, nameof(bodyideaScoresCount), required: false);
-            SourceExpression.Validate(bodylikesCount, nameof(bodylikesCount), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
-            SourceExpression.Validate(bodymissionId, nameof(bodymissionId), required: false);
-            SourceExpression.Validate(bodycreatorName, nameof(bodycreatorName), required: false);
-            SourceExpression.Validate(bodytagsCount, nameof(bodytagsCount), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
-            SourceExpression.Validate(bodyfunnelStageId, nameof(bodyfunnelStageId), required: false);
-            SourceExpression.Validate(bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
-            SourceExpression.Validate(bodyideaDeadline, nameof(bodyideaDeadline), required: false);
-            SourceExpression.Validate(bodydeadlineNotification, nameof(bodydeadlineNotification), required: false);
-            SourceExpression.Validate(bodyideaViews, nameof(bodyideaViews), required: false);
-            SourceExpression.Validate(bodyrevenue, nameof(bodyrevenue), required: false);
-            SourceExpression.Validate(bodycost, nameof(bodycost), required: false);
-            SourceExpression.Validate(bodyprofit, nameof(bodyprofit), required: false);
-            SourceExpression.Validate(bodystatusName, nameof(bodystatusName), required: false);
-            SourceExpression.Validate(bodyideaScores, nameof(bodyideaScores), required: false);
-            SourceExpression.Validate(bodyapprovedAt, nameof(bodyapprovedAt), required: false);
-            SourceExpression.Validate(bodydeniedAt, nameof(bodydeniedAt), required: false);
-            SourceExpression.Validate(bodyadminComments, nameof(bodyadminComments), required: false);
-            SourceExpression.Validate(bodyisChild, nameof(bodyisChild), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodytempImage, nameof(bodytempImage), required: false);
-            SourceExpression.Validate(bodymainImage, nameof(bodymainImage), required: false);
-            SourceExpression.Validate(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            SourceExpression.Validate(bodyscoreCompleteScore, nameof(bodyscoreCompleteScore), required: false);
-            SourceExpression.Validate(bodyenrichmentScore, nameof(bodyenrichmentScore), required: false);
-            SourceExpression.Validate(bodyengagementScore, nameof(bodyengagementScore), required: false);
-            SourceExpression.Validate(bodyopportunityScore, nameof(bodyopportunityScore), required: false);
-            SourceExpression.Validate(bodytrendScore, nameof(bodytrendScore), required: false);
-            SourceExpression.Validate(bodycleanedText, nameof(bodycleanedText), required: false);
-            SourceExpression.Validate(bodyduplicateIdeasCount, nameof(bodyduplicateIdeasCount), required: false);
-            SourceExpression.Validate(bodysidekiqDuplicateIdeasCount, nameof(bodysidekiqDuplicateIdeasCount), required: false);
-            SourceExpression.Validate(bodyaiCreated, nameof(bodyaiCreated), required: false);
-            SourceExpression.Validate(bodyideaType, nameof(bodyideaType), required: false);
-            SourceExpression.Validate(bodyfromScript, nameof(bodyfromScript), required: false);
-            SourceExpression.Validate(bodyembedding, nameof(bodyembedding), required: false);
-            SourceExpression.Validate(bodyreasonText, nameof(bodyreasonText), required: false);
-            SourceExpression.Validate(bodycategoryText, nameof(bodycategoryText), required: false);
-            SourceExpression.Validate(bodycanvassId, nameof(bodycanvassId), required: false);
-            SourceExpression.Validate(bodybudgetTotal, nameof(bodybudgetTotal), required: false);
-            SourceExpression.Validate(bodybudgetSpend, nameof(bodybudgetSpend), required: false);
-            SourceExpression.Validate(bodybudgetResult, nameof(bodybudgetResult), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodytagText, nameof(bodytagText), required: false);
-            SourceExpression.Validate(bodyinnovationTypeId, nameof(bodyinnovationTypeId), required: false);
-            SourceExpression.Validate(bodyinnovationTypeText, nameof(bodyinnovationTypeText), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
-            SourceExpression.Validate(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            SourceExpression.Validate(bodydescriptionEnriched, nameof(bodydescriptionEnriched), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1827,10 +1626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction PatchideasId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<int> bodyfunnelId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1883,11 +1678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction Postmissions([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyhidden = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyhidden, nameof(bodyhidden), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/missions";
@@ -1938,7 +1728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetmissionsIdResponse> GetmissionsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1953,7 +1742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletemissionsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1968,61 +1756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutmissionsIdResponse> PutmissionsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<int> bodycompanyId = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyisAnonymous = null, [WorkflowExpression] Func<string> bodyendingNote = null, [WorkflowExpression] Func<string> bodymissionPic = null, [WorkflowExpression] Func<int> bodyteamSize = null, [WorkflowExpression] Func<int> bodystatus = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<bool> bodyisTemplate = null, [WorkflowExpression] Func<int> bodyendDuration = null, [WorkflowExpression] Func<string> bodytoken = null, [WorkflowExpression] Func<bool> bodyisTryout = null, [WorkflowExpression] Func<int> bodytemplateType = null, [WorkflowExpression] Func<bool> bodyisOpen = null, [WorkflowExpression] Func<int> bodymissionType = null, [WorkflowExpression] Func<string> bodypublishedOnce = null, [WorkflowExpression] Func<string> bodyinboxQuestion = null, [WorkflowExpression] Func<string> bodyprivacySetting = null, [WorkflowExpression] Func<string> bodyagentProfile = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<bool> bodyenableReport = null, [WorkflowExpression] Func<int> bodyideasCount = null, [WorkflowExpression] Func<int> bodylikesCount = null, [WorkflowExpression] Func<int> bodycommentsCount = null, [WorkflowExpression] Func<string> bodyfunnelId = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<bool> bodyenableInboundEmail = null, [WorkflowExpression] Func<string> bodydepartmentName = null, [WorkflowExpression] Func<string> bodynotificationType = null, [WorkflowExpression] Func<string> bodynotificationFrequency = null, [WorkflowExpression] Func<string> bodynotificationText = null, [WorkflowExpression] Func<int> bodyposition = null, [WorkflowExpression] Func<string> bodymissionViews = null, [WorkflowExpression] Func<string> bodytempImage = null, [WorkflowExpression] Func<string> bodymainImage = null, [WorkflowExpression] Func<string> bodyimageConfigs = null, [WorkflowExpression] Func<string> bodyallowAiIdeas = null, [WorkflowExpression] Func<string> bodyaiMissionType = null, [WorkflowExpression] Func<string> bodyfromScript = null, [WorkflowExpression] Func<string> bodyideaAttachmentsAllowed = null, [WorkflowExpression] Func<string> bodyvideoLink = null, [WorkflowExpression] Func<string> bodyhidden = null, [WorkflowExpression] Func<string> bodyconfettiType = null, [WorkflowExpression] Func<string> bodyenable = null, [WorkflowExpression] Func<string> bodyaddAttachment = null, [WorkflowExpression] Func<string> bodyaddComment = null, [WorkflowExpression] Func<string> bodyrecordUrl = null, [WorkflowExpression] Func<string> bodysyncId = null, [WorkflowExpression] Func<string> bodyideaCustomFields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: false);
-            SourceExpression.Validate(bodyendingNote, nameof(bodyendingNote), required: false);
-            SourceExpression.Validate(bodymissionPic, nameof(bodymissionPic), required: false);
-            SourceExpression.Validate(bodyteamSize, nameof(bodyteamSize), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
-            SourceExpression.Validate(bodyisTemplate, nameof(bodyisTemplate), required: false);
-            SourceExpression.Validate(bodyendDuration, nameof(bodyendDuration), required: false);
-            SourceExpression.Validate(bodytoken, nameof(bodytoken), required: false);
-            SourceExpression.Validate(bodyisTryout, nameof(bodyisTryout), required: false);
-            SourceExpression.Validate(bodytemplateType, nameof(bodytemplateType), required: false);
-            SourceExpression.Validate(bodyisOpen, nameof(bodyisOpen), required: false);
-            SourceExpression.Validate(bodymissionType, nameof(bodymissionType), required: false);
-            SourceExpression.Validate(bodypublishedOnce, nameof(bodypublishedOnce), required: false);
-            SourceExpression.Validate(bodyinboxQuestion, nameof(bodyinboxQuestion), required: false);
-            SourceExpression.Validate(bodyprivacySetting, nameof(bodyprivacySetting), required: false);
-            SourceExpression.Validate(bodyagentProfile, nameof(bodyagentProfile), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyenableReport, nameof(bodyenableReport), required: false);
-            SourceExpression.Validate(bodyideasCount, nameof(bodyideasCount), required: false);
-            SourceExpression.Validate(bodylikesCount, nameof(bodylikesCount), required: false);
-            SourceExpression.Validate(bodycommentsCount, nameof(bodycommentsCount), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyenableInboundEmail, nameof(bodyenableInboundEmail), required: false);
-            SourceExpression.Validate(bodydepartmentName, nameof(bodydepartmentName), required: false);
-            SourceExpression.Validate(bodynotificationType, nameof(bodynotificationType), required: false);
-            SourceExpression.Validate(bodynotificationFrequency, nameof(bodynotificationFrequency), required: false);
-            SourceExpression.Validate(bodynotificationText, nameof(bodynotificationText), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodymissionViews, nameof(bodymissionViews), required: false);
-            SourceExpression.Validate(bodytempImage, nameof(bodytempImage), required: false);
-            SourceExpression.Validate(bodymainImage, nameof(bodymainImage), required: false);
-            SourceExpression.Validate(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            SourceExpression.Validate(bodyallowAiIdeas, nameof(bodyallowAiIdeas), required: false);
-            SourceExpression.Validate(bodyaiMissionType, nameof(bodyaiMissionType), required: false);
-            SourceExpression.Validate(bodyfromScript, nameof(bodyfromScript), required: false);
-            SourceExpression.Validate(bodyideaAttachmentsAllowed, nameof(bodyideaAttachmentsAllowed), required: false);
-            SourceExpression.Validate(bodyvideoLink, nameof(bodyvideoLink), required: false);
-            SourceExpression.Validate(bodyhidden, nameof(bodyhidden), required: false);
-            SourceExpression.Validate(bodyconfettiType, nameof(bodyconfettiType), required: false);
-            SourceExpression.Validate(bodyenable, nameof(bodyenable), required: false);
-            SourceExpression.Validate(bodyaddAttachment, nameof(bodyaddAttachment), required: false);
-            SourceExpression.Validate(bodyaddComment, nameof(bodyaddComment), required: false);
-            SourceExpression.Validate(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
-            SourceExpression.Validate(bodyideaCustomFields, nameof(bodyideaCustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2375,10 +2108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchmissionsIdResponse> PatchmissionsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyhidden = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyhidden, nameof(bodyhidden), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2431,11 +2160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostprojectsResponse> Postprojects([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyfunnelId = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/projects";
@@ -2486,7 +2210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetprojectsIdResponse> GetprojectsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2501,7 +2224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeleteprojectsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2516,59 +2238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutprojectsIdResponse> PutprojectsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodystatusId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodystageId = null, [WorkflowExpression] Func<string> bodyprojectManagerId = null, [WorkflowExpression] Func<string> bodybusinessOwnerId = null, [WorkflowExpression] Func<string> bodyprogress = null, [WorkflowExpression] Func<string> bodycompanyId = null, [WorkflowExpression] Func<string> bodycommentsCount = null, [WorkflowExpression] Func<string> bodyprojectScore = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyposition = null, [WorkflowExpression] Func<int> bodymodifiedBy = null, [WorkflowExpression] Func<int> bodytagsCount = null, [WorkflowExpression] Func<string> bodyfunnelId = null, [WorkflowExpression] Func<string> bodyfunnelStageId = null, [WorkflowExpression] Func<string> bodyfunnelStatusId = null, [WorkflowExpression] Func<string> bodystageDeadline = null, [WorkflowExpression] Func<string> bodydeadlineNotification = null, [WorkflowExpression] Func<string> bodystatusName = null, [WorkflowExpression] Func<string> bodyapprovedAt = null, [WorkflowExpression] Func<string> bodydeniedAt = null, [WorkflowExpression] Func<string> bodyamScores = null, [WorkflowExpression] Func<string> bodyprojectRevenue = null, [WorkflowExpression] Func<string> bodyprojectCost = null, [WorkflowExpression] Func<string> bodyprojectProfit = null, [WorkflowExpression] Func<string> bodyadminComments = null, [WorkflowExpression] Func<string> bodytempImage = null, [WorkflowExpression] Func<string> bodymainImage = null, [WorkflowExpression] Func<string> bodyimageConfigs = null, [WorkflowExpression] Func<string> bodyfromScript = null, [WorkflowExpression] Func<string> bodyreasonText = null, [WorkflowExpression] Func<string> bodycategoryText = null, [WorkflowExpression] Func<string> bodycanvassId = null, [WorkflowExpression] Func<string> bodybudgetTotal = null, [WorkflowExpression] Func<string> bodybudgetSpend = null, [WorkflowExpression] Func<string> bodybudgetResult = null, [WorkflowExpression] Func<string> bodytagText = null, [WorkflowExpression] Func<string> bodyestimatedTime = null, [WorkflowExpression] Func<string> bodytotalTimeSpend = null, [WorkflowExpression] Func<string> bodytotalTime = null, [WorkflowExpression] Func<string> bodyinnovationTypeId = null, [WorkflowExpression] Func<string> bodyinnovationTypeText = null, [WorkflowExpression] Func<string> bodysyncId = null, [WorkflowExpression] Func<string> bodyrecordUrl = null, [WorkflowExpression] Func<string> bodydescriptionEnriched = null, [WorkflowExpression] Func<string> bodycustomFieldValues = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodystatusId, nameof(bodystatusId), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodystageId, nameof(bodystageId), required: false);
-            SourceExpression.Validate(bodyprojectManagerId, nameof(bodyprojectManagerId), required: false);
-            SourceExpression.Validate(bodybusinessOwnerId, nameof(bodybusinessOwnerId), required: false);
-            SourceExpression.Validate(bodyprogress, nameof(bodyprogress), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodycommentsCount, nameof(bodycommentsCount), required: false);
-            SourceExpression.Validate(bodyprojectScore, nameof(bodyprojectScore), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodymodifiedBy, nameof(bodymodifiedBy), required: false);
-            SourceExpression.Validate(bodytagsCount, nameof(bodytagsCount), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
-            SourceExpression.Validate(bodyfunnelStageId, nameof(bodyfunnelStageId), required: false);
-            SourceExpression.Validate(bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
-            SourceExpression.Validate(bodystageDeadline, nameof(bodystageDeadline), required: false);
-            SourceExpression.Validate(bodydeadlineNotification, nameof(bodydeadlineNotification), required: false);
-            SourceExpression.Validate(bodystatusName, nameof(bodystatusName), required: false);
-            SourceExpression.Validate(bodyapprovedAt, nameof(bodyapprovedAt), required: false);
-            SourceExpression.Validate(bodydeniedAt, nameof(bodydeniedAt), required: false);
-            SourceExpression.Validate(bodyamScores, nameof(bodyamScores), required: false);
-            SourceExpression.Validate(bodyprojectRevenue, nameof(bodyprojectRevenue), required: false);
-            SourceExpression.Validate(bodyprojectCost, nameof(bodyprojectCost), required: false);
-            SourceExpression.Validate(bodyprojectProfit, nameof(bodyprojectProfit), required: false);
-            SourceExpression.Validate(bodyadminComments, nameof(bodyadminComments), required: false);
-            SourceExpression.Validate(bodytempImage, nameof(bodytempImage), required: false);
-            SourceExpression.Validate(bodymainImage, nameof(bodymainImage), required: false);
-            SourceExpression.Validate(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            SourceExpression.Validate(bodyfromScript, nameof(bodyfromScript), required: false);
-            SourceExpression.Validate(bodyreasonText, nameof(bodyreasonText), required: false);
-            SourceExpression.Validate(bodycategoryText, nameof(bodycategoryText), required: false);
-            SourceExpression.Validate(bodycanvassId, nameof(bodycanvassId), required: false);
-            SourceExpression.Validate(bodybudgetTotal, nameof(bodybudgetTotal), required: false);
-            SourceExpression.Validate(bodybudgetSpend, nameof(bodybudgetSpend), required: false);
-            SourceExpression.Validate(bodybudgetResult, nameof(bodybudgetResult), required: false);
-            SourceExpression.Validate(bodytagText, nameof(bodytagText), required: false);
-            SourceExpression.Validate(bodyestimatedTime, nameof(bodyestimatedTime), required: false);
-            SourceExpression.Validate(bodytotalTimeSpend, nameof(bodytotalTimeSpend), required: false);
-            SourceExpression.Validate(bodytotalTime, nameof(bodytotalTime), required: false);
-            SourceExpression.Validate(bodyinnovationTypeId, nameof(bodyinnovationTypeId), required: false);
-            SourceExpression.Validate(bodyinnovationTypeText, nameof(bodyinnovationTypeText), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
-            SourceExpression.Validate(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            SourceExpression.Validate(bodydescriptionEnriched, nameof(bodydescriptionEnriched), required: false);
-            SourceExpression.Validate(bodycustomFieldValues, nameof(bodycustomFieldValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2909,9 +2578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchprojectsIdResponse> PatchprojectsId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2944,7 +2610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetprojectsProjectIdTasksResponse> GetprojectsProjectIdTasks([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -2959,9 +2624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostprojectsProjectIdTasksResponse> PostprojectsProjectIdTasks([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodystatus = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -2994,7 +2656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetTaskBySyncIdResponse> GetTaskBySyncId([WorkflowExpression] Func<string> syncId = null)
         {
-            SourceExpression.Validate(syncId, nameof(syncId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/tasks";
@@ -3011,8 +2672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PosttasksResponse> Posttasks([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodystatus = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/tasks";
@@ -3045,7 +2704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GettasksIdResponse> GettasksId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3060,7 +2718,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletetasksId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3075,10 +2732,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchtasksIdResponse> PatchtasksId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<int> bodystatus = null, [WorkflowExpression] Func<string> bodysyncId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodysyncId, nameof(bodysyncId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3131,7 +2784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletetopicsId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/topics/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3160,12 +2812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostusersResponse> Postusers([WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<int> bodyposition = null)
         {
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/general/v1/users";
@@ -3236,7 +2882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetusersIdResponse> GetusersId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3251,7 +2896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeleteusersId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3266,57 +2910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutusersIdResponse> PutusersId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyprofilePic = null, [WorkflowExpression] Func<int> bodypoints = null, [WorkflowExpression] Func<int> bodycompanyId = null, [WorkflowExpression] Func<int> bodyuserRoleId = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodylastSignOutAt = null, [WorkflowExpression] Func<string> bodyposition = null, [WorkflowExpression] Func<bool> bodyprofileFlag = null, [WorkflowExpression] Func<string> bodyuserChecklist = null, [WorkflowExpression] Func<int> bodyideaLikesCount = null, [WorkflowExpression] Func<int> bodycommentsCount = null, [WorkflowExpression] Func<int> bodyxpPoints = null, [WorkflowExpression] Func<int> bodyideasCount = null, [WorkflowExpression] Func<string> bodyfunnelId = null, [WorkflowExpression] Func<int> bodylevel = null, [WorkflowExpression] Func<int> bodyxpLevel = null, [WorkflowExpression] Func<string> bodyprojectFunnelId = null, [WorkflowExpression] Func<string> bodychecklistScore = null, [WorkflowExpression] Func<string> bodyprovider = null, [WorkflowExpression] Func<string> bodyuid = null, [WorkflowExpression] Func<string> bodyemailSentAt = null, [WorkflowExpression] Func<bool> bodyblockAllNotification = null, [WorkflowExpression] Func<string> bodydbName = null, [WorkflowExpression] Func<string> bodydeptId = null, [WorkflowExpression] Func<string> bodydeptName = null, [WorkflowExpression] Func<string> bodymainImage = null, [WorkflowExpression] Func<string> bodytempImage = null, [WorkflowExpression] Func<string> bodyimageConfigs = null, [WorkflowExpression] Func<bool> bodyimageAutoGenerated = null, [WorkflowExpression] Func<string> bodyamAccount = null, [WorkflowExpression] Func<string> bodyuuid = null, [WorkflowExpression] Func<string> bodypasswordResetAttempts = null, [WorkflowExpression] Func<string> bodylastPasswordResetAt = null, [WorkflowExpression] Func<string> bodycustomDomain = null, [WorkflowExpression] Func<string> bodyuserRoleName = null, [WorkflowExpression] Func<int> bodytheme = null, [WorkflowExpression] Func<string> bodyuserType = null, [WorkflowExpression] Func<string> bodyviewSettings = null, [WorkflowExpression] Func<string> bodyreadManual = null, [WorkflowExpression] Func<string> bodyaddIdeaBox = null, [WorkflowExpression] Func<string> bodyvisitAgent = null, [WorkflowExpression] Func<string> bodyaddIdea = null, [WorkflowExpression] Func<string> bodyinvitePeople = null, [WorkflowExpression] Func<string> bodyaddBoardMission = null, [WorkflowExpression] Func<string> bodyaddProject = null, [WorkflowExpression] Func<string> bodycompletedChecklist = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyprofilePic, nameof(bodyprofilePic), required: false);
-            SourceExpression.Validate(bodypoints, nameof(bodypoints), required: false);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyuserRoleId, nameof(bodyuserRoleId), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodylastSignOutAt, nameof(bodylastSignOutAt), required: false);
-            SourceExpression.Validate(bodyposition, nameof(bodyposition), required: false);
-            SourceExpression.Validate(bodyprofileFlag, nameof(bodyprofileFlag), required: false);
-            SourceExpression.Validate(bodyuserChecklist, nameof(bodyuserChecklist), required: false);
-            SourceExpression.Validate(bodyideaLikesCount, nameof(bodyideaLikesCount), required: false);
-            SourceExpression.Validate(bodycommentsCount, nameof(bodycommentsCount), required: false);
-            SourceExpression.Validate(bodyxpPoints, nameof(bodyxpPoints), required: false);
-            SourceExpression.Validate(bodyideasCount, nameof(bodyideasCount), required: false);
-            SourceExpression.Validate(bodyfunnelId, nameof(bodyfunnelId), required: false);
-            SourceExpression.Validate(bodylevel, nameof(bodylevel), required: false);
-            SourceExpression.Validate(bodyxpLevel, nameof(bodyxpLevel), required: false);
-            SourceExpression.Validate(bodyprojectFunnelId, nameof(bodyprojectFunnelId), required: false);
-            SourceExpression.Validate(bodychecklistScore, nameof(bodychecklistScore), required: false);
-            SourceExpression.Validate(bodyprovider, nameof(bodyprovider), required: false);
-            SourceExpression.Validate(bodyuid, nameof(bodyuid), required: false);
-            SourceExpression.Validate(bodyemailSentAt, nameof(bodyemailSentAt), required: false);
-            SourceExpression.Validate(bodyblockAllNotification, nameof(bodyblockAllNotification), required: false);
-            SourceExpression.Validate(bodydbName, nameof(bodydbName), required: false);
-            SourceExpression.Validate(bodydeptId, nameof(bodydeptId), required: false);
-            SourceExpression.Validate(bodydeptName, nameof(bodydeptName), required: false);
-            SourceExpression.Validate(bodymainImage, nameof(bodymainImage), required: false);
-            SourceExpression.Validate(bodytempImage, nameof(bodytempImage), required: false);
-            SourceExpression.Validate(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            SourceExpression.Validate(bodyimageAutoGenerated, nameof(bodyimageAutoGenerated), required: false);
-            SourceExpression.Validate(bodyamAccount, nameof(bodyamAccount), required: false);
-            SourceExpression.Validate(bodyuuid, nameof(bodyuuid), required: false);
-            SourceExpression.Validate(bodypasswordResetAttempts, nameof(bodypasswordResetAttempts), required: false);
-            SourceExpression.Validate(bodylastPasswordResetAt, nameof(bodylastPasswordResetAt), required: false);
-            SourceExpression.Validate(bodycustomDomain, nameof(bodycustomDomain), required: false);
-            SourceExpression.Validate(bodyuserRoleName, nameof(bodyuserRoleName), required: false);
-            SourceExpression.Validate(bodytheme, nameof(bodytheme), required: false);
-            SourceExpression.Validate(bodyuserType, nameof(bodyuserType), required: false);
-            SourceExpression.Validate(bodyviewSettings, nameof(bodyviewSettings), required: false);
-            SourceExpression.Validate(bodyreadManual, nameof(bodyreadManual), required: false);
-            SourceExpression.Validate(bodyaddIdeaBox, nameof(bodyaddIdeaBox), required: false);
-            SourceExpression.Validate(bodyvisitAgent, nameof(bodyvisitAgent), required: false);
-            SourceExpression.Validate(bodyaddIdea, nameof(bodyaddIdea), required: false);
-            SourceExpression.Validate(bodyinvitePeople, nameof(bodyinvitePeople), required: false);
-            SourceExpression.Validate(bodyaddBoardMission, nameof(bodyaddBoardMission), required: false);
-            SourceExpression.Validate(bodyaddProject, nameof(bodyaddProject), required: false);
-            SourceExpression.Validate(bodycompletedChecklist, nameof(bodycompletedChecklist), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/general/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

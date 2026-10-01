@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<setInput> set, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<string> bgset = null, [WorkflowExpression] Func<gravatarInput> gravatar = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: true);
-            SourceExpression.Validate(set, nameof(set), required: true);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(bgset, nameof(bgset), required: false);
-            SourceExpression.Validate(gravatar, nameof(gravatar), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(text, 1));

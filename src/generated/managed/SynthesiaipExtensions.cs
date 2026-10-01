@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoListResponse> VideoList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/videos";
@@ -34,15 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoCreateResponse> VideoCreate([WorkflowExpression] Func<bodyinputInputItem[]> bodyinput, [WorkflowExpression] Func<bool> bodytest = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyvisibility = null, [WorkflowExpression] Func<string> bodyctaSettingslabel = null, [WorkflowExpression] Func<string> bodyctaSettingsurl = null, [WorkflowExpression] Func<string> bodycallbackId = null, [WorkflowExpression] Func<string> bodysoundtrack = null)
         {
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            SourceExpression.Validate(bodytest, nameof(bodytest), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: false);
-            SourceExpression.Validate(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
-            SourceExpression.Validate(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
-            SourceExpression.Validate(bodycallbackId, nameof(bodycallbackId), required: false);
-            SourceExpression.Validate(bodysoundtrack, nameof(bodysoundtrack), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/videos";
@@ -121,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoStatusResponse> VideoStatus([WorkflowExpression] Func<string> videoId)
         {
-            SourceExpression.Validate(videoId, nameof(videoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/videos/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
@@ -136,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<string> VideoDelete([WorkflowExpression] Func<string> videoId)
         {
-            SourceExpression.Validate(videoId, nameof(videoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/videos/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
@@ -151,12 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoPatchResponse> VideoPatch([WorkflowExpression] Func<string> videoId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyctaSettingslabel = null, [WorkflowExpression] Func<string> bodyctaSettingsurl = null, [WorkflowExpression] Func<string> bodyvisibility = null)
         {
-            SourceExpression.Validate(videoId, nameof(videoId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
-            SourceExpression.Validate(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
-            SourceExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/videos/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
@@ -215,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<TemplateListResponse> TemplateList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/templates";
@@ -235,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -250,13 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoCreateTemplateResponse> VideoCreateTemplate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyvisibility = null, [WorkflowExpression] Func<string> bodytemplateDataname = null, [WorkflowExpression] Func<bool> bodytest = null, [WorkflowExpression] Func<string> bodycallbackId = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: false);
-            SourceExpression.Validate(bodytemplateDataname, nameof(bodytemplateDataname), required: false);
-            SourceExpression.Validate(bodytest, nameof(bodytest), required: false);
-            SourceExpression.Validate(bodycallbackId, nameof(bodycallbackId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/videos/fromTemplate";

@@ -14,27 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyfromEmail = null, [WorkflowExpression] Func<string> bodytoEmail = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityTextInput> bodypriorityText = null, [WorkflowExpression] Func<string> bodyassociatedContactEmail = null, [WorkflowExpression] Func<bodyresourceAppNameInput> bodyresourceAppName = null, [WorkflowExpression] Func<string> bodyresourceAppUrl = null, [WorkflowExpression] Func<string> bodyresourceAppId = null, [WorkflowExpression] Func<string> bodyresourceAppData = null, [WorkflowExpression] Func<string> bodyreferenceId = null, [WorkflowExpression] Func<string> bodyreferenceData = null, [WorkflowExpression] Func<string> bodyreferenceSource = null, [WorkflowExpression] Func<string> bodyprojectName = null, [WorkflowExpression] Func<string> bodyprojectSectionName = null, [WorkflowExpression] Func<string> bodyprojectTags = null, [WorkflowExpression] Func<bodychecklistsInputItem[]> bodychecklists = null, [WorkflowExpression] Func<bodyfilesInputItem[]> bodyfiles = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyfromEmail, nameof(bodyfromEmail), required: false);
-            SourceExpression.Validate(bodytoEmail, nameof(bodytoEmail), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodypriorityText, nameof(bodypriorityText), required: false);
-            SourceExpression.Validate(bodyassociatedContactEmail, nameof(bodyassociatedContactEmail), required: false);
-            SourceExpression.Validate(bodyresourceAppName, nameof(bodyresourceAppName), required: false);
-            SourceExpression.Validate(bodyresourceAppUrl, nameof(bodyresourceAppUrl), required: false);
-            SourceExpression.Validate(bodyresourceAppId, nameof(bodyresourceAppId), required: false);
-            SourceExpression.Validate(bodyresourceAppData, nameof(bodyresourceAppData), required: false);
-            SourceExpression.Validate(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            SourceExpression.Validate(bodyreferenceData, nameof(bodyreferenceData), required: false);
-            SourceExpression.Validate(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
-            SourceExpression.Validate(bodyprojectName, nameof(bodyprojectName), required: false);
-            SourceExpression.Validate(bodyprojectSectionName, nameof(bodyprojectSectionName), required: false);
-            SourceExpression.Validate(bodyprojectTags, nameof(bodyprojectTags), required: false);
-            SourceExpression.Validate(bodychecklists, nameof(bodychecklists), required: false);
-            SourceExpression.Validate(bodyfiles, nameof(bodyfiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/CreateExternalTask";
@@ -173,12 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<AlertResponse> Alert([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodyalertToEmail, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bodyresourceNameInput> bodyresourceName = null, [WorkflowExpression] Func<string> bodyresourceUrl = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodyalertToEmail, nameof(bodyalertToEmail), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodyresourceName, nameof(bodyresourceName), required: false);
-            SourceExpression.Validate(bodyresourceUrl, nameof(bodyresourceUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/PushNotificationFromExternal";
@@ -219,19 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<string> bodyprojectName, [WorkflowExpression] Func<string> bodycreatorEmail, [WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<bodyfilesInputItem22[]> bodyfiles, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodymembers = null, [WorkflowExpression] Func<string> bodysections = null, [WorkflowExpression] Func<string> bodyreferenceId = null, [WorkflowExpression] Func<string> bodyreferenceData = null, [WorkflowExpression] Func<string> bodyreferenceSource = null)
         {
-            SourceExpression.Validate(bodyprojectName, nameof(bodyprojectName), required: true);
-            SourceExpression.Validate(bodycreatorEmail, nameof(bodycreatorEmail), required: true);
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodyfiles, nameof(bodyfiles), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
-            SourceExpression.Validate(bodysections, nameof(bodysections), required: false);
-            SourceExpression.Validate(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            SourceExpression.Validate(bodyreferenceData, nameof(bodyreferenceData), required: false);
-            SourceExpression.Validate(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/CreateExternalProject";
@@ -324,29 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodytoEmail, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyfromEmail = null, [WorkflowExpression] Func<bodytaskStatusInput> bodytaskStatus = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityTextInput> bodypriorityText = null, [WorkflowExpression] Func<string> bodyassociatedContactEmail = null, [WorkflowExpression] Func<bodyresourceAppNameInput> bodyresourceAppName = null, [WorkflowExpression] Func<string> bodyresourceAppUrl = null, [WorkflowExpression] Func<string> bodyresourceAppId = null, [WorkflowExpression] Func<string> bodyresourceAppData = null, [WorkflowExpression] Func<string> bodyreferenceId = null, [WorkflowExpression] Func<string> bodyreferenceData = null, [WorkflowExpression] Func<string> bodyreferenceSource = null, [WorkflowExpression] Func<string> bodyprojectName = null, [WorkflowExpression] Func<string> bodyprojectSectionName = null, [WorkflowExpression] Func<string> bodyprojectTags = null, [WorkflowExpression] Func<bodychecklistsInputItem[]> bodychecklists = null, [WorkflowExpression] Func<bodyfilesInputItem2222[]> bodyfiles = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodytoEmail, nameof(bodytoEmail), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyfromEmail, nameof(bodyfromEmail), required: false);
-            SourceExpression.Validate(bodytaskStatus, nameof(bodytaskStatus), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodypriorityText, nameof(bodypriorityText), required: false);
-            SourceExpression.Validate(bodyassociatedContactEmail, nameof(bodyassociatedContactEmail), required: false);
-            SourceExpression.Validate(bodyresourceAppName, nameof(bodyresourceAppName), required: false);
-            SourceExpression.Validate(bodyresourceAppUrl, nameof(bodyresourceAppUrl), required: false);
-            SourceExpression.Validate(bodyresourceAppId, nameof(bodyresourceAppId), required: false);
-            SourceExpression.Validate(bodyresourceAppData, nameof(bodyresourceAppData), required: false);
-            SourceExpression.Validate(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            SourceExpression.Validate(bodyreferenceData, nameof(bodyreferenceData), required: false);
-            SourceExpression.Validate(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
-            SourceExpression.Validate(bodyprojectName, nameof(bodyprojectName), required: false);
-            SourceExpression.Validate(bodyprojectSectionName, nameof(bodyprojectSectionName), required: false);
-            SourceExpression.Validate(bodyprojectTags, nameof(bodyprojectTags), required: false);
-            SourceExpression.Validate(bodychecklists, nameof(bodychecklists), required: false);
-            SourceExpression.Validate(bodyfiles, nameof(bodyfiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/UpdateExternalTask";
@@ -489,10 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactNote([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodyownerEmail, [WorkflowExpression] Func<string> bodycontactEmail, [WorkflowExpression] Func<string> bodynotes)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodyownerEmail, nameof(bodyownerEmail), required: true);
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: true);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalContact/CreateContactNotes";
@@ -521,17 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateCompany([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodycompanyName, [WorkflowExpression] Func<string> bodyuserEmail, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodysuiteUnitNumber = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostalCode = null, [WorkflowExpression] Func<string> bodycountryName = null, [WorkflowExpression] Func<string> bodytaxId = null, [WorkflowExpression] Func<string> bodysiteUrl = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: true);
-            SourceExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: true);
-            SourceExpression.Validate(bodystreet, nameof(bodystreet), required: false);
-            SourceExpression.Validate(bodysuiteUnitNumber, nameof(bodysuiteUnitNumber), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypostalCode, nameof(bodypostalCode), required: false);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: false);
-            SourceExpression.Validate(bodytaxId, nameof(bodytaxId), required: false);
-            SourceExpression.Validate(bodysiteUrl, nameof(bodysiteUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalCompany/CreateCompanyExternal";
@@ -606,23 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodyownerEmailAddress, [WorkflowExpression] Func<string> bodycontactEmailAddress1, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodycontactEmailAddress2 = null, [WorkflowExpression] Func<string> bodycontactEmailAddress3 = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodybirthDay = null, [WorkflowExpression] Func<int> bodybirthMonth = null, [WorkflowExpression] Func<int> bodybirthYear = null, [WorkflowExpression] Func<string> bodycontactType = null, [WorkflowExpression] Func<string> bodycompanyID1 = null, [WorkflowExpression] Func<string> bodycompanyID2 = null, [WorkflowExpression] Func<string> bodycompanyID3 = null, [WorkflowExpression] Func<string> bodyaccountNumber = null, [WorkflowExpression] Func<string> bodysocialSecurityNumber = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodyownerEmailAddress, nameof(bodyownerEmailAddress), required: true);
-            SourceExpression.Validate(bodycontactEmailAddress1, nameof(bodycontactEmailAddress1), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodycontactEmailAddress2, nameof(bodycontactEmailAddress2), required: false);
-            SourceExpression.Validate(bodycontactEmailAddress3, nameof(bodycontactEmailAddress3), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodybirthDay, nameof(bodybirthDay), required: false);
-            SourceExpression.Validate(bodybirthMonth, nameof(bodybirthMonth), required: false);
-            SourceExpression.Validate(bodybirthYear, nameof(bodybirthYear), required: false);
-            SourceExpression.Validate(bodycontactType, nameof(bodycontactType), required: false);
-            SourceExpression.Validate(bodycompanyID1, nameof(bodycompanyID1), required: false);
-            SourceExpression.Validate(bodycompanyID2, nameof(bodycompanyID2), required: false);
-            SourceExpression.Validate(bodycompanyID3, nameof(bodycompanyID3), required: false);
-            SourceExpression.Validate(bodyaccountNumber, nameof(bodyaccountNumber), required: false);
-            SourceExpression.Validate(bodysocialSecurityNumber, nameof(bodysocialSecurityNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalContact/CreateContactExternal";
@@ -729,12 +634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactPhone([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodycontactEmail, [WorkflowExpression] Func<string> bodyuserEmail, [WorkflowExpression] Func<string> bodyphone, [WorkflowExpression] Func<bodyphoneTypeInput> bodyphoneType, [WorkflowExpression] Func<string> bodyextension = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: true);
-            SourceExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: true);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: true);
-            SourceExpression.Validate(bodyphoneType, nameof(bodyphoneType), required: true);
-            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalContact/CreateContactPhoneExternal";
@@ -771,16 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactAddress([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodycontactEmail, [WorkflowExpression] Func<string> bodyuserEmail, [WorkflowExpression] Func<bodyaddressTypeInput> bodyaddressType, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodysuiteUnitNumber = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountryName = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: true);
-            SourceExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: true);
-            SourceExpression.Validate(bodyaddressType, nameof(bodyaddressType), required: true);
-            SourceExpression.Validate(bodystreet, nameof(bodystreet), required: false);
-            SourceExpression.Validate(bodysuiteUnitNumber, nameof(bodysuiteUnitNumber), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalContact/CreateContactAddressExternal";
@@ -845,16 +734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactFamily([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodycontactEmail, [WorkflowExpression] Func<string> bodyuserEmail, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<bodyrelationshipInput> bodyrelationship, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<int> bodybirthMonth = null, [WorkflowExpression] Func<int> bodybirthYear = null, [WorkflowExpression] Func<string> bodycountryName = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: true);
-            SourceExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodyrelationship, nameof(bodyrelationship), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodybirthDate, nameof(bodybirthDate), required: false);
-            SourceExpression.Validate(bodybirthMonth, nameof(bodybirthMonth), required: false);
-            SourceExpression.Validate(bodybirthYear, nameof(bodybirthYear), required: false);
-            SourceExpression.Validate(bodycountryName, nameof(bodycountryName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalContact/CreateContactFamilyExternal";
@@ -915,9 +794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetContactFolderDetailsResponse> GetContactFolderDetails([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> userEmail, [WorkflowExpression] Func<string> contactEmail)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(userEmail, nameof(userEmail), required: true);
-            SourceExpression.Validate(contactEmail, nameof(contactEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalContact/GetContactFolderDetailExternal";
@@ -935,9 +811,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetCompanyDetailExternalResponse> GetCompanyDetailExternal([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<matchByInput> matchBy, [WorkflowExpression] Func<string> matchValue)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(matchBy, nameof(matchBy), required: true);
-            SourceExpression.Validate(matchValue, nameof(matchValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalCompany/GetCompanyDetailExternal";
@@ -955,8 +828,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetTaskByResourceExtResponse> GetTaskByResourceExt([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> resourceAppId)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(resourceAppId, nameof(resourceAppId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/GetTaskByResourceExt";
@@ -973,10 +844,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateTaskCommentExtResponse> CreateTaskCommentExt([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodyuserEmail, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/CreateTaskCommentExt";
@@ -1005,18 +872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodyprojectName, [WorkflowExpression] Func<string> bodycurrentUserEmail, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<string> bodyreferenceId = null, [WorkflowExpression] Func<string> bodyreferenceData = null, [WorkflowExpression] Func<string> bodyreferenceSource = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            SourceExpression.Validate(bodyprojectName, nameof(bodyprojectName), required: true);
-            SourceExpression.Validate(bodycurrentUserEmail, nameof(bodycurrentUserEmail), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            SourceExpression.Validate(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            SourceExpression.Validate(bodyreferenceData, nameof(bodyreferenceData), required: false);
-            SourceExpression.Validate(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/UpdateProjectExt";
@@ -1113,10 +968,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetTaskExtResponse> GetTaskExt([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<getByInput> getBy, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> source = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(getBy, nameof(getBy), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(source, nameof(source), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/GetTaskExt";
@@ -1136,10 +987,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetProjectExtResponse> GetProjectExt([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<getByInput> getBy, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> source = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(getBy, nameof(getBy), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(source, nameof(source), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/GetProjectExt";
@@ -1159,8 +1006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetProjectTemplatesExtResponse> GetProjectTemplatesExt([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> userEmail)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(userEmail, nameof(userEmail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/GetProjectTemplatesExt";
@@ -1177,9 +1022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetProjectRolesExtResponse> GetProjectRolesExt([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> userEmail, [WorkflowExpression] Func<roleTypeInput> roleType = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(userEmail, nameof(userEmail), required: true);
-            SourceExpression.Validate(roleType, nameof(roleType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/GetProjectRolesExt";
@@ -1198,16 +1040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateProjectFromTemplateExtResponse> CreateProjectFromTemplateExt([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodycreatorEmail, [WorkflowExpression] Func<string> bodyprojectName, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyclientName = null, [WorkflowExpression] Func<bodymembersInputItem[]> bodymembers = null, [WorkflowExpression] Func<bodyfilesLinksInputItem[]> bodyfilesLinks = null)
         {
-            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodycreatorEmail, nameof(bodycreatorEmail), required: true);
-            SourceExpression.Validate(bodyprojectName, nameof(bodyprojectName), required: true);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyclientName, nameof(bodyclientName), required: false);
-            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
-            SourceExpression.Validate(bodyfilesLinks, nameof(bodyfilesLinks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/CreateProjectFromTemplateExt";
@@ -1268,8 +1100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<DeletetaskResponse> Deletetask([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/services/app/ExternalTask/DeleteExternalTask";
@@ -1288,12 +1118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     {
         public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse> WhenTaskIsCompleted([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, [WorkflowExpression] Func<string> projectName = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> assigneeEmail = null, [WorkflowExpression] Func<string> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(assigneeEmail, nameof(assigneeEmail), required: false);
-            SourceExpression.Validate(creatorEmail, nameof(creatorEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/GetRecentCompletedTasks";
@@ -1317,16 +1141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
         public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> userEmail, [WorkflowExpression] Func<string> projectName = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> assigneeEmail = null, [WorkflowExpression] Func<string> taskId = null, [WorkflowExpression] Func<string> oldSectionId = null, [WorkflowExpression] Func<string> oldSectoinName = null, [WorkflowExpression] Func<string> newSectionId = null, [WorkflowExpression] Func<string> newSectoinName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(userEmail, nameof(userEmail), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(assigneeEmail, nameof(assigneeEmail), required: false);
-            SourceExpression.Validate(taskId, nameof(taskId), required: false);
-            SourceExpression.Validate(oldSectionId, nameof(oldSectionId), required: false);
-            SourceExpression.Validate(oldSectoinName, nameof(oldSectoinName), required: false);
-            SourceExpression.Validate(newSectionId, nameof(newSectionId), required: false);
-            SourceExpression.Validate(newSectoinName, nameof(newSectoinName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/GetRecentModifiedSectionTasks";
@@ -1358,8 +1172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
         public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(duration, nameof(duration), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/GetRecentlyCreatedTask";
@@ -1375,9 +1187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
         public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, [WorkflowExpression] Func<string> updateFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(updateFilter, nameof(updateFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/GetRecentlyUpdatedTask";
@@ -1395,12 +1204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
         public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, [WorkflowExpression] Func<string> projectName = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> assigneeEmail = null, [WorkflowExpression] Func<string> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(assigneeEmail, nameof(assigneeEmail), required: false);
-            SourceExpression.Validate(creatorEmail, nameof(creatorEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/GetRecentlyDeletedTasks";

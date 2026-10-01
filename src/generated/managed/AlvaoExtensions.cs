@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
         public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/objects";
@@ -41,10 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
         public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users";
@@ -69,9 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     {
         public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus([WorkflowExpression] Func<string> bodyprocessName, [WorkflowExpression] Func<string> bodyticketStatusName, [WorkflowExpression] Func<string> bodyserviceName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyprocessName, nameof(bodyprocessName), required: true);
-            SourceExpression.Validate(bodyticketStatusName, nameof(bodyticketStatusName), required: true);
-            SourceExpression.Validate(bodyserviceName, nameof(bodyserviceName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/tickettransitionstostatus";

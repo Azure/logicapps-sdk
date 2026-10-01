@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject[]> ListTasks([WorkflowExpression] Func<int> comp = null)
         {
-            SourceExpression.Validate(comp, nameof(comp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks/get.php";
@@ -32,12 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject> CreateTask([WorkflowExpression] Func<string> tasktitle = null, [WorkflowExpression] Func<int> taskfolderId = null, [WorkflowExpression] Func<int> taskpriority = null, [WorkflowExpression] Func<string> tasknote = null, [WorkflowExpression] Func<string> taskdueDate = null, [WorkflowExpression] Func<string> taskdueTime = null)
         {
-            SourceExpression.Validate(tasktitle, nameof(tasktitle), required: false);
-            SourceExpression.Validate(taskfolderId, nameof(taskfolderId), required: false);
-            SourceExpression.Validate(taskpriority, nameof(taskpriority), required: false);
-            SourceExpression.Validate(tasknote, nameof(tasknote), required: false);
-            SourceExpression.Validate(taskdueDate, nameof(taskdueDate), required: false);
-            SourceExpression.Validate(taskdueTime, nameof(taskdueTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks/add.php";
@@ -94,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject> GetTaskById([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks/getById.php";
@@ -110,15 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject> UpdateTask([WorkflowExpression] Func<int> taskid = null, [WorkflowExpression] Func<string> tasktitle = null, [WorkflowExpression] Func<string> taskcompleted = null, [WorkflowExpression] Func<string> taskdueDate = null, [WorkflowExpression] Func<string> taskdueTime = null, [WorkflowExpression] Func<string> tasknote = null, [WorkflowExpression] Func<int> taskpriority = null, [WorkflowExpression] Func<int> taskfolder = null, [WorkflowExpression] Func<string> taskmodified = null)
         {
-            SourceExpression.Validate(taskid, nameof(taskid), required: false);
-            SourceExpression.Validate(tasktitle, nameof(tasktitle), required: false);
-            SourceExpression.Validate(taskcompleted, nameof(taskcompleted), required: false);
-            SourceExpression.Validate(taskdueDate, nameof(taskdueDate), required: false);
-            SourceExpression.Validate(taskdueTime, nameof(taskdueTime), required: false);
-            SourceExpression.Validate(tasknote, nameof(tasknote), required: false);
-            SourceExpression.Validate(taskpriority, nameof(taskpriority), required: false);
-            SourceExpression.Validate(taskfolder, nameof(taskfolder), required: false);
-            SourceExpression.Validate(taskmodified, nameof(taskmodified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks/edit.php";

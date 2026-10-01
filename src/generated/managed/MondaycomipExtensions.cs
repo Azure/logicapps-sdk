@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mondaycomip")]
         public IBodyWorkflowAction<JToken> CallGraphQL([WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

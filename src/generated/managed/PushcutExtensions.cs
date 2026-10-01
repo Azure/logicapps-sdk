@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
         public IWorkflowAction SendNotification([WorkflowExpression] Func<string> notificationName, [WorkflowExpression] Func<string> bodydynamicText = null, [WorkflowExpression] Func<string> bodydynamicTitle = null, [WorkflowExpression] Func<string> bodyinputParameter = null, [WorkflowExpression] Func<string[]> bodydevices = null)
         {
-            SourceExpression.Validate(notificationName, nameof(notificationName), required: true);
-            SourceExpression.Validate(bodydynamicText, nameof(bodydynamicText), required: false);
-            SourceExpression.Validate(bodydynamicTitle, nameof(bodydynamicTitle), required: false);
-            SourceExpression.Validate(bodyinputParameter, nameof(bodyinputParameter), required: false);
-            SourceExpression.Validate(bodydevices, nameof(bodydevices), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(notificationName, 1));
@@ -65,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
     {
         public IWorkflowTrigger ActionExecuted([WorkflowExpression] Func<string> bodyactionName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyactionName, nameof(bodyactionName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscriptions";

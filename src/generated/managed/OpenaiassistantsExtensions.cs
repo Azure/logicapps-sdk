@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantsGetResponse> AssistantsGet([WorkflowExpression] Func<string> openAIBeta)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/assistants";
@@ -44,13 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantPostResponse> Assistant([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null, [WorkflowExpression] Func<string[]> bodyfileIds = null)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytools, nameof(bodytools), required: false);
-            SourceExpression.Validate(bodyfileIds, nameof(bodyfileIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/assistants";
@@ -112,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantGetResponse> AssistantGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(assistantId, nameof(assistantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/assistants/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
@@ -129,8 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantDeleteResponse> AssistantDelete([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(assistantId, nameof(assistantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/assistants/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
@@ -146,8 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FilesGetResponse> FilesGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(assistantId, nameof(assistantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
@@ -163,9 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FilePostResponse> File([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId, [WorkflowExpression] Func<string> bodyfileId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(assistantId, nameof(assistantId), required: true);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1));
@@ -189,9 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FileGetResponse> FileGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId, [WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(assistantId, nameof(assistantId), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -207,9 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FileDeleteResponse> FileDelete([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId, [WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(assistantId, nameof(assistantId), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assistantId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -225,8 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadPostResponse> Thread([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads";
@@ -250,8 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadGetResponse> ThreadGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -267,8 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -284,8 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadModifyPostResponse> ThreadModify([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -315,12 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessagesGetResponse> MessagesGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -344,8 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -361,9 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageModifyPostResponse> MessageModify([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -393,10 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageFileGetResponse> MessageFileGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}/files/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -412,9 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageFilesGetResponse> MessageFilesGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -430,12 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunsGetResponse> RunsGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -459,12 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunPostResponse> Run([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyassistantId = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodyassistantId, nameof(bodyassistantId), required: false);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            SourceExpression.Validate(bodytools, nameof(bodytools), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -514,9 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunGetResponse> RunGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -532,9 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunModifyPostResponse> RunModify([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -564,10 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunToolOutputsPostResponse> RunToolOutputs([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<bodytoolOutputsInputItem[]> bodytoolOutputs = null)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
-            SourceExpression.Validate(bodytoolOutputs, nameof(bodytoolOutputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/submit_tool_outputs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -595,9 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunCancelPostResponse> RunCancel([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -613,12 +539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadRunPostResponse> ThreadRun([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> bodyassistantId = null, [WorkflowExpression] Func<bodythreadmessagesInputItem[]> bodythreadmessages = null, [WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(bodyassistantId, nameof(bodyassistantId), required: false);
-            SourceExpression.Validate(bodythreadmessages, nameof(bodythreadmessages), required: false);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            SourceExpression.Validate(bodytools, nameof(bodytools), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads/runs";
@@ -686,10 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunStepGetResponse> RunStepGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> stepId)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/steps/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
@@ -705,13 +621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunStepsGetResponse> RunStepsGet([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(openAIBeta, nameof(openAIBeta), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/steps", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));

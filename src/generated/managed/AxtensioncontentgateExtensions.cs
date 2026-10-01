@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<ListContentEntityRequirementsResponseItem[]> ListContentEntityRequirements([WorkflowExpression] Func<string> providerReferenceId, [WorkflowExpression] Func<string> externalType, [WorkflowExpression] Func<string> externalId)
         {
-            SourceExpression.Validate(providerReferenceId, nameof(providerReferenceId), required: true);
-            SourceExpression.Validate(externalType, nameof(externalType), required: true);
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/businessentities/{0}/{1}/{2}/Requirements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(providerReferenceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 1));
@@ -31,11 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IWorkflowAction CreateContentEntityRequirements([WorkflowExpression] Func<string> providerReferenceId, [WorkflowExpression] Func<string> externalType, [WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<int> bodycontentEntityTemplateId = null, [WorkflowExpression] Func<int> bodycontentEntityTemplateGroupId = null)
         {
-            SourceExpression.Validate(providerReferenceId, nameof(providerReferenceId), required: true);
-            SourceExpression.Validate(externalType, nameof(externalType), required: true);
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
-            SourceExpression.Validate(bodycontentEntityTemplateId, nameof(bodycontentEntityTemplateId), required: false);
-            SourceExpression.Validate(bodycontentEntityTemplateGroupId, nameof(bodycontentEntityTemplateGroupId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/businessentities/{0}/{1}/{2}/Requirements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(providerReferenceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 1));
@@ -82,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<ListViewsResponseItem[]> ListViews([WorkflowExpression] Func<string> businessEntityType)
         {
-            SourceExpression.Validate(businessEntityType, nameof(businessEntityType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/BusinessEntityModel/{0}/views", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessEntityType, 1));
@@ -112,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<GetSharedContentLinkResponse> GetSharedContentLink([WorkflowExpression] Func<string> contentEntityId)
         {
-            SourceExpression.Validate(contentEntityId, nameof(contentEntityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/content/{0}/sharedContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contentEntityId, 1));
@@ -141,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<ListContentEntityUserPropertiesResponseItem[]> ListContentEntityUserProperties([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/contententities/{0}/properties", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -156,9 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<string> UpdateContentEntityUserProperty([WorkflowExpression] Func<int> contentEntityId, [WorkflowExpression] Func<int> propertyId, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(contentEntityId, nameof(contentEntityId), required: true);
-            SourceExpression.Validate(propertyId, nameof(propertyId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/contententities/{0}/properties/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contentEntityId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(propertyId, 1));
@@ -202,10 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<ExecuteQueryResponse> ExecuteQuery([WorkflowExpression] Func<string> providerReferenceId, [WorkflowExpression] Func<string> externalType, [WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<int> view = null)
         {
-            SourceExpression.Validate(providerReferenceId, nameof(providerReferenceId), required: true);
-            SourceExpression.Validate(externalType, nameof(externalType), required: true);
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
-            SourceExpression.Validate(view, nameof(view), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/query/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(providerReferenceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 1));
@@ -236,15 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<SearchContentEntitiesResponse> SearchContentEntities([WorkflowExpression] Func<int[]> searchRequesttemplates = null, [WorkflowExpression] Func<int[]> searchRequeststorageProviders = null, [WorkflowExpression] Func<int[]> searchRequestbusinessEntities = null, [WorkflowExpression] Func<int[]> searchRequestbusinessEntityTypes = null, [WorkflowExpression] Func<searchRequestpropertiesInputItem[]> searchRequestproperties = null, [WorkflowExpression] Func<int> searchRequestpagingpage = null, [WorkflowExpression] Func<int> searchRequestpagingpageSize = null, [WorkflowExpression] Func<string> searchRequestpagingsortBy = null, [WorkflowExpression] Func<string> searchRequestpagingsortOrder = null)
         {
-            SourceExpression.Validate(searchRequesttemplates, nameof(searchRequesttemplates), required: false);
-            SourceExpression.Validate(searchRequeststorageProviders, nameof(searchRequeststorageProviders), required: false);
-            SourceExpression.Validate(searchRequestbusinessEntities, nameof(searchRequestbusinessEntities), required: false);
-            SourceExpression.Validate(searchRequestbusinessEntityTypes, nameof(searchRequestbusinessEntityTypes), required: false);
-            SourceExpression.Validate(searchRequestproperties, nameof(searchRequestproperties), required: false);
-            SourceExpression.Validate(searchRequestpagingpage, nameof(searchRequestpagingpage), required: false);
-            SourceExpression.Validate(searchRequestpagingpageSize, nameof(searchRequestpagingpageSize), required: false);
-            SourceExpression.Validate(searchRequestpagingsortBy, nameof(searchRequestpagingsortBy), required: false);
-            SourceExpression.Validate(searchRequestpagingsortOrder, nameof(searchRequestpagingsortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/contententities/search";
@@ -327,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<QueryResultContentEntityItem> GetContentEntity([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/contententities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -342,11 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<ExceptionResponse> AddBusinessEntityReference([WorkflowExpression] Func<int> contentEntityId, [WorkflowExpression] Func<int> bodybusinessEntityId = null, [WorkflowExpression] Func<string> bodyproviderReferenceId = null, [WorkflowExpression] Func<string> bodyexternalType = null, [WorkflowExpression] Func<string> bodyexternalId = null)
         {
-            SourceExpression.Validate(contentEntityId, nameof(contentEntityId), required: true);
-            SourceExpression.Validate(bodybusinessEntityId, nameof(bodybusinessEntityId), required: false);
-            SourceExpression.Validate(bodyproviderReferenceId, nameof(bodyproviderReferenceId), required: false);
-            SourceExpression.Validate(bodyexternalType, nameof(bodyexternalType), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/contententities/{0}/references", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contentEntityId, 1));
@@ -391,8 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<ExceptionResponse> RemoveBusinessEntityReferenceById([WorkflowExpression] Func<int> contentEntityId, [WorkflowExpression] Func<int> referenceId)
         {
-            SourceExpression.Validate(contentEntityId, nameof(contentEntityId), required: true);
-            SourceExpression.Validate(referenceId, nameof(referenceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/contententities/{0}/references/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contentEntityId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(referenceId, 1));
@@ -407,10 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
         public IBodyWorkflowAction<ExceptionResponse> RemoveBusinessEntityReferenceByExternalId([WorkflowExpression] Func<int> contentEntityId, [WorkflowExpression] Func<string> providerReference, [WorkflowExpression] Func<string> externalType, [WorkflowExpression] Func<string> externalId)
         {
-            SourceExpression.Validate(contentEntityId, nameof(contentEntityId), required: true);
-            SourceExpression.Validate(providerReference, nameof(providerReference), required: true);
-            SourceExpression.Validate(externalType, nameof(externalType), required: true);
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/contententities/{0}/references/{1}/{2}/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contentEntityId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(providerReference, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 1));
@@ -427,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
     {
         public IWorkflowTrigger WhenContentAdded([WorkflowExpression] Func<string[]> bodycontentCategories = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycontentCategories, nameof(bodycontentCategories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/subscriptions/contentcreated";
@@ -466,7 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
 
         public IWorkflowTrigger WhenContentUpdated([WorkflowExpression] Func<string[]> bodycontentCategories = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycontentCategories, nameof(bodycontentCategories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/subscriptions/contentupdated";
@@ -505,7 +464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
 
         public IWorkflowTrigger WhenContentDeleted([WorkflowExpression] Func<string[]> bodycontentCategories = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodycontentCategories, nameof(bodycontentCategories), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/subscriptions/contentdeleted";
@@ -640,8 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
 
         public IWorkflowTrigger WhenTemplateNotificationTriggered([WorkflowExpression] Func<int> bodytemplateId = null, [WorkflowExpression] Func<int[]> bodynotificationIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodynotificationIds, nameof(bodynotificationIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/subscriptions/templatenotificationtriggered";

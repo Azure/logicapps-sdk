@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         public IBodyWorkflowAction<Message> SendMessage([WorkflowExpression] Func<string> sendMessageRequestfrom, [WorkflowExpression] Func<string> sendMessageRequestto, [WorkflowExpression] Func<string> sendMessageRequestbody, [WorkflowExpression] Func<string[]> sendMessageRequestmediaUrl = null, [WorkflowExpression] Func<string> sendMessageRequeststatusCallback = null, [WorkflowExpression] Func<string> sendMessageRequestmessagingServiceSid = null, [WorkflowExpression] Func<string> sendMessageRequestapplicationSid = null, [WorkflowExpression] Func<string> sendMessageRequestmaxPrice = null, [WorkflowExpression] Func<string> sendMessageRequestvalidityPeriod = null)
         {
-            SourceExpression.Validate(sendMessageRequestfrom, nameof(sendMessageRequestfrom), required: true);
-            SourceExpression.Validate(sendMessageRequestto, nameof(sendMessageRequestto), required: true);
-            SourceExpression.Validate(sendMessageRequestbody, nameof(sendMessageRequestbody), required: true);
-            SourceExpression.Validate(sendMessageRequestmediaUrl, nameof(sendMessageRequestmediaUrl), required: false);
-            SourceExpression.Validate(sendMessageRequeststatusCallback, nameof(sendMessageRequeststatusCallback), required: false);
-            SourceExpression.Validate(sendMessageRequestmessagingServiceSid, nameof(sendMessageRequestmessagingServiceSid), required: false);
-            SourceExpression.Validate(sendMessageRequestapplicationSid, nameof(sendMessageRequestapplicationSid), required: false);
-            SourceExpression.Validate(sendMessageRequestmaxPrice, nameof(sendMessageRequestmaxPrice), required: false);
-            SourceExpression.Validate(sendMessageRequestvalidityPeriod, nameof(sendMessageRequestvalidityPeriod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Messages.json";
@@ -85,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         public IBodyWorkflowAction<Message> GetMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Messages/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -100,10 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         public IBodyWorkflowAction<MessageListV2> ListMessages([WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> dateSent = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(dateSent, nameof(dateSent), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/Messages.json";

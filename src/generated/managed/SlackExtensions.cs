@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<SetDNDResponse> SetDND([WorkflowExpression] Func<string> numMinutes = null)
         {
-            SourceExpression.Validate(numMinutes, nameof(numMinutes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dnd.setSnooze";
@@ -31,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<CreateChannelResponse> CreateChannel([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> isPrivate = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(isPrivate, nameof(isPrivate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations.create";
@@ -51,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<JoinChannelResponseV2> JoinChannel([WorkflowExpression] Func<string> channel = null)
         {
-            SourceExpression.Validate(channel, nameof(channel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations.join";
@@ -82,17 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<PostMessageResponse> PostMessage([WorkflowExpression] Func<string> messagechannelName, [WorkflowExpression] Func<string> messagemessageText, [WorkflowExpression] Func<string> messagebotName = null, [WorkflowExpression] Func<bool> messagepostAsUser = null, [WorkflowExpression] Func<messageparseModeInput> messageparseMode = null, [WorkflowExpression] Func<bool> messageslackMarkupParsing = null, [WorkflowExpression] Func<int> messagelinkNames = null, [WorkflowExpression] Func<bool> messageunfurlLinks = null, [WorkflowExpression] Func<bool> messageunfurlMedia = null, [WorkflowExpression] Func<string> messageiconUrl = null, [WorkflowExpression] Func<string> messageiconEmoji = null)
         {
-            SourceExpression.Validate(messagechannelName, nameof(messagechannelName), required: true);
-            SourceExpression.Validate(messagemessageText, nameof(messagemessageText), required: true);
-            SourceExpression.Validate(messagebotName, nameof(messagebotName), required: false);
-            SourceExpression.Validate(messagepostAsUser, nameof(messagepostAsUser), required: false);
-            SourceExpression.Validate(messageparseMode, nameof(messageparseMode), required: false);
-            SourceExpression.Validate(messageslackMarkupParsing, nameof(messageslackMarkupParsing), required: false);
-            SourceExpression.Validate(messagelinkNames, nameof(messagelinkNames), required: false);
-            SourceExpression.Validate(messageunfurlLinks, nameof(messageunfurlLinks), required: false);
-            SourceExpression.Validate(messageunfurlMedia, nameof(messageunfurlMedia), required: false);
-            SourceExpression.Validate(messageiconUrl, nameof(messageiconUrl), required: false);
-            SourceExpression.Validate(messageiconEmoji, nameof(messageiconEmoji), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/chat.postMessage";
@@ -173,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
     {
         public IBodyWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile([WorkflowExpression] Func<string> channel, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(channel, nameof(channel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/files.list";

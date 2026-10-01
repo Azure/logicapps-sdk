@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlCreateShortUrl([WorkflowExpression] Func<string> longUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> shortUrl = null, [WorkflowExpression] Func<string> generatedBy = null, [WorkflowExpression] Func<int> maxUses = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> expiryDate = null, [WorkflowExpression] Func<redirectionCodeInput> redirectionCode = null)
         {
-            SourceExpression.Validate(longUrl, nameof(longUrl), required: true);
-            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
-            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: false);
-            SourceExpression.Validate(generatedBy, nameof(generatedBy), required: false);
-            SourceExpression.Validate(maxUses, nameof(maxUses), required: false);
-            SourceExpression.Validate(password, nameof(password), required: false);
-            SourceExpression.Validate(expiryDate, nameof(expiryDate), required: false);
-            SourceExpression.Validate(redirectionCode, nameof(redirectionCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/shorturl/create";
@@ -55,10 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlDeleteShortUrl([WorkflowExpression] Func<string> shortUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey)
         {
-            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: true);
-            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/shorturl/delete";
@@ -77,10 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlGetAllShortUrls([WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> generatedBy = null)
         {
-            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
-            SourceExpression.Validate(generatedBy, nameof(generatedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/shorturl/getall";
@@ -100,15 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlModifyShortUrl([WorkflowExpression] Func<string> shortUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> newLongUrl = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<int> maxUses = null, [WorkflowExpression] Func<string> expiryDate = null, [WorkflowExpression] Func<redirectionCodeInput> redirectionCode = null)
         {
-            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: true);
-            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
-            SourceExpression.Validate(username, nameof(username), required: true);
-            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
-            SourceExpression.Validate(newLongUrl, nameof(newLongUrl), required: false);
-            SourceExpression.Validate(password, nameof(password), required: false);
-            SourceExpression.Validate(maxUses, nameof(maxUses), required: false);
-            SourceExpression.Validate(expiryDate, nameof(expiryDate), required: false);
-            SourceExpression.Validate(redirectionCode, nameof(redirectionCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/shorturl/modify";

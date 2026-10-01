@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RRSetResults[]> RRSET([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            SourceExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            SourceExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            SourceExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(aggr, nameof(aggr), required: false);
-            SourceExpression.Validate(humantime, nameof(humantime), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(value, 1));
@@ -54,17 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPE([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> rrtype, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(rrtype, nameof(rrtype), required: true);
-            SourceExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            SourceExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            SourceExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            SourceExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(aggr, nameof(aggr), required: false);
-            SourceExpression.Validate(humantime, nameof(humantime), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(value, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rrtype, 1));
@@ -95,18 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPEBAILIWICK([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> rrtype, [WorkflowExpression] Func<string> bailiwick, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(rrtype, nameof(rrtype), required: true);
-            SourceExpression.Validate(bailiwick, nameof(bailiwick), required: true);
-            SourceExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            SourceExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            SourceExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            SourceExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(aggr, nameof(aggr), required: false);
-            SourceExpression.Validate(humantime, nameof(humantime), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(value, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rrtype, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bailiwick, 1));
@@ -137,16 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RDataResults[]> RDATA([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            SourceExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            SourceExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            SourceExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(aggr, nameof(aggr), required: false);
-            SourceExpression.Validate(humantime, nameof(humantime), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(value, 1));
@@ -177,17 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RDataResults[]> RDATARRTYPE([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> rrtype, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(rrtype, nameof(rrtype), required: true);
-            SourceExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            SourceExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            SourceExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            SourceExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(aggr, nameof(aggr), required: false);
-            SourceExpression.Validate(humantime, nameof(humantime), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(value, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rrtype, 1));
@@ -218,16 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<FlexResults[]> FLEX([WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<keyInput> key, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<string> exclude = null, [WorkflowExpression] Func<double> offset = null)
         {
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            SourceExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            SourceExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            SourceExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(exclude, nameof(exclude), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(method, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(value, 1));

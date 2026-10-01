@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
         public IBodyWorkflowAction<DataflowModel> RefreshDataflow([WorkflowExpression] Func<workspaceTypeInput> workspaceType, [WorkflowExpression] Func<string> groupIdForRefreshDataflow, [WorkflowExpression] Func<string> dataflowIdForRefreshDataflow)
         {
-            SourceExpression.Validate(workspaceType, nameof(workspaceType), required: true);
-            SourceExpression.Validate(groupIdForRefreshDataflow, nameof(groupIdForRefreshDataflow), required: true);
-            SourceExpression.Validate(dataflowIdForRefreshDataflow, nameof(dataflowIdForRefreshDataflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdForRefreshDataflow, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataflowIdForRefreshDataflow, 1));
@@ -34,9 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
     {
         public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete([WorkflowExpression] Func<workspaceTypeInput> workspaceType, [WorkflowExpression] Func<string> groupIdForOnRefreshComplete, [WorkflowExpression] Func<string> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceType, nameof(workspaceType), required: true);
-            SourceExpression.Validate(groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
-            SourceExpression.Validate(dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdForOnRefreshComplete, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataflowIdForOnRefreshComplete, 1));

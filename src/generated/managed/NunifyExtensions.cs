@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
         public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodydesignation = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyticketTypeId = null)
         {
-            SourceExpression.Validate(platformId, nameof(platformId), required: true);
-            SourceExpression.Validate(domainId, nameof(domainId), required: true);
-            SourceExpression.Validate(appId, nameof(appId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodydesignation, nameof(bodydesignation), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyticketTypeId, nameof(bodyticketTypeId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
@@ -94,9 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
     {
         public IWorkflowTrigger NEWREGISTRATION([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(platformId, nameof(platformId), required: true);
-            SourceExpression.Validate(domainId, nameof(domainId), required: true);
-            SourceExpression.Validate(appId, nameof(appId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
@@ -122,9 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
         public IWorkflowTrigger NEWCHECKIN([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(platformId, nameof(platformId), required: true);
-            SourceExpression.Validate(domainId, nameof(domainId), required: true);
-            SourceExpression.Validate(appId, nameof(appId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));

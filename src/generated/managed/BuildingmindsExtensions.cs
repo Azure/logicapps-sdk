@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<PortfolioTypeWithPagination> GetPortfolios([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/portfolios";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<SiteTypeWithPagination> GetSites([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/sites";
@@ -54,8 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<BuildingTypeWithPagination> GetBuildings([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/buildings";
@@ -74,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<FloorTypeWithPagination> GetFloors([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/floors";
@@ -94,8 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<RoofsTypeWithPagination> GetRoofs([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/roofs";
@@ -114,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<FacadesTypeWithPagination> GetFacades([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/facades";
@@ -134,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<OutsideareasTypeWithPagination> GetOutsideareas([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/outsideareas";
@@ -154,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<SubareasTypeWithPagination> GetSubareas([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/subareas";
@@ -174,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<LandsTypeWithPagination> GetLands([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/lands";
@@ -194,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<SpacesTypeWithPagination> GetSpaces([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/premises/spaces";
@@ -214,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Portfolio> GetPortfolioById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/portfolios/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -229,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Site> GetSiteById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/sites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -244,7 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Building> GetBuildingById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/buildings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -259,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Floor> GetFloorById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/floors/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -274,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Roof> GetRoofById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/roofs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -289,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Facade> GetFacadeById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/facades/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -304,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Outsidearea> GetOutsideareaById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/outsideareas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -319,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Subarea> GetSubareaById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/subareas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -334,7 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Land> GetLandById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/lands/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -349,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Space> GetSpaceById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/spaces/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -364,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnPortfolio([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/portfolios/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -379,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSite([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/sites/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -394,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnBuilding([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/buildings/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -409,7 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFloor([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/floors/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -424,7 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnRoof([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/roofs/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -439,7 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFacade([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/facades/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -454,7 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnOutsidearea([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/outsideareas/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -469,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSubarea([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/subareas/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -484,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnLand([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/lands/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -499,7 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSpace([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/spaces/{0}/children/exist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -514,11 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination> GetAssociatedSpacesForSpace([WorkflowExpression] Func<spaceTypeInput> spaceType, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<associatedTypeInput> associatedType, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> top = null)
         {
-            SourceExpression.Validate(spaceType, nameof(spaceType), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(associatedType, nameof(associatedType), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/{0}/{1}/associated/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(associatedType, 1));
@@ -537,9 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IWorkflowAction GetUnassociatedSpaces([WorkflowExpression] Func<spaceTypeInput> spaceType, [WorkflowExpression] Func<associatedTypeInput> associatedType, [WorkflowExpression] Func<string> spaceid = null)
         {
-            SourceExpression.Validate(spaceType, nameof(spaceType), required: true);
-            SourceExpression.Validate(associatedType, nameof(associatedType), required: true);
-            SourceExpression.Validate(spaceid, nameof(spaceid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/premises/{0}/notassociated/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(associatedType, 1));

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddItemResponse> AddItem([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<object> bodydata = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -44,9 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetItemResponse> GetItem([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -62,9 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<DeleteItemResponse> DeleteItem([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -80,11 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<UpdateItemResponse> UpdateItem([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> bodyrowVersion = null, [WorkflowExpression] Func<object> bodydata = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyrowVersion, nameof(bodyrowVersion), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -118,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetListFieldsResponse> GetListFields([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -135,10 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<StartWorkflowResponse> StartWorkflow([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> bodyapplicantId = null, [WorkflowExpression] Func<object> bodyvariables = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(bodyapplicantId, nameof(bodyapplicantId), required: false);
-            SourceExpression.Validate(bodyvariables, nameof(bodyvariables), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflow/forms/start";
@@ -173,8 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetAgentDefinitionResponse> GetAgentDefinition([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> agentId)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(agentId, nameof(agentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1));
@@ -190,9 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<RunAgentResponse> RunAgent([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(agentId, nameof(agentId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agents/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1));
@@ -209,13 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<QueryItemsResponse> QueryItems([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string[]> bodyfields = null, [WorkflowExpression] Func<ListDataWhereRequest[]> bodyfilters = null, [WorkflowExpression] Func<bodysortsInputItem[]> bodysorts = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<int> bodypageSize = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            SourceExpression.Validate(bodyfilters, nameof(bodyfilters), required: false);
-            SourceExpression.Validate(bodysorts, nameof(bodysorts), required: false);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/query", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -287,12 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddItemFileResponse> AddItemFile([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> fieldId = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -312,8 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/files";
@@ -330,7 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetFilePropertyResponse> GetFileProperty([WorkflowExpression] Func<string> fieldValue = null)
         {
-            SourceExpression.Validate(fieldValue, nameof(fieldValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/files/properties";
@@ -346,7 +305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -361,11 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddLibraryFileResponse> AddLibraryFile([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> path = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(path, nameof(path), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -385,9 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<string> GetLibraryFile([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -405,8 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
     {
         public IBodyWorkflowTrigger<JToken> OnItemCreated([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -430,8 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
         public IBodyWorkflowTrigger<JToken> OnItemModified([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -455,8 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
         public IBodyWorkflowTrigger<JToken> OnItemCreatedModified([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/3", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -480,8 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
         public IBodyWorkflowTrigger<JToken> OnItemDeleted([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/4", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));

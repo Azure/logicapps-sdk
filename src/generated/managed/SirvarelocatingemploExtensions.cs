@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage([WorkflowExpression] Func<string> relocationId)
         {
-            SourceExpression.Validate(relocationId, nameof(relocationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/package/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relocationId, 1));
@@ -43,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation([WorkflowExpression] Func<bool> includePicture, [WorkflowExpression] Func<string> relocationId)
         {
-            SourceExpression.Validate(includePicture, nameof(includePicture), required: true);
-            SourceExpression.Validate(relocationId, nameof(relocationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relocationId, 1));
@@ -60,9 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic([WorkflowExpression] Func<string> bodyrelocationId, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bodytopicInput> bodytopic)
         {
-            SourceExpression.Validate(bodyrelocationId, nameof(bodyrelocationId), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodytopic, nameof(bodytopic), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/chat/topic";

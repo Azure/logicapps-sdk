@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Compile Remove="Build\**\*.cs" />
+    <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.BuildTasks.targets" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.BuildTasks.targets" />
     <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" />
     <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" />
     <ProjectReference Include="Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
@@ -23,7 +24,9 @@
                       GlobalPropertiesToRemove="TargetFramework;RuntimeIdentifier;SelfContained" />
   </ItemGroup>
 
-  <Target Name="IncludeWorkflowBuildTool">
+  <Import Project="Build\ConnectorValidation.targets" />
+
+  <Target Name="IncludeWorkflowBuildTool" DependsOnTargets="VerifyConnectorValidationAssembly">
     <MSBuild Projects="$(MSBuildProjectDirectory)\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
              Targets="GetTargetPath" Properties="Configuration=$(Configuration)"
              RemoveProperties="TargetFramework;RuntimeIdentifier;SelfContained">

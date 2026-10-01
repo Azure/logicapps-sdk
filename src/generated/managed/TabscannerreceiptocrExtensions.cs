@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
         public IBodyWorkflowAction<Process> Process([WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodydocumentType = null, [WorkflowExpression] Func<string> bodydefaultDateParsing = null, [WorkflowExpression] Func<string> bodydecimalPlaces = null)
         {
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            SourceExpression.Validate(bodydocumentType, nameof(bodydocumentType), required: false);
-            SourceExpression.Validate(bodydefaultDateParsing, nameof(bodydefaultDateParsing), required: false);
-            SourceExpression.Validate(bodydecimalPlaces, nameof(bodydecimalPlaces), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/2/processbase64";
@@ -69,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
         public IBodyWorkflowAction<Result> Result([WorkflowExpression] Func<string> token)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/result/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));

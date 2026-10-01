@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
         public IBodyWorkflowAction<ArchiveFilePostResponse> ArchiveFile([WorkflowExpression] Func<string[]> bodyurls, [WorkflowExpression] Func<string> output = null)
         {
-            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
-            SourceExpression.Validate(output, nameof(output), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/generate/archive/file-urls/archive-file";
@@ -40,8 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
         public IBodyWorkflowAction<ArchiveURLPostResponse> ArchiveURL([WorkflowExpression] Func<string[]> bodyurls, [WorkflowExpression] Func<string> output = null)
         {
-            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
-            SourceExpression.Validate(output, nameof(output), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/generate/archive/file-urls/archive-url";
@@ -66,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
         public IBodyWorkflowAction<UnarchiveURLPostResponse> UnarchiveURL([WorkflowExpression] Func<string> bodyurl)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/extract/archive/url/file-urls";

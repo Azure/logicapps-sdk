@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyUserProfileResponse> GetMyUserProfile([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/user/";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyBoardsResponseItem[]> GetMyBoards([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/boards";
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyOwnedTreesResponseItem[]> GetMyOwnedTrees([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/owned";
@@ -62,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyAssignedBoardsResponseItem[]> GetMyAssignedBoards([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/assigned";
@@ -78,8 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardGroupsResponseItem[]> GetBoardGroups([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardgroups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -95,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyNotificationsResponse> GetMyNotifications([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/notifications";
@@ -111,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyTasksAllResponse> GetMyTasksAll([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/tasks/all";
@@ -127,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyTasksNewResponse> GetMyTasksNew([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/tasks/new";
@@ -143,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyTasksOverdueResponse> GetMyTasksOverdue([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1.00/tasks/overdue";
@@ -159,8 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardListsResponseItem[]> GetBoardLists([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardlists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -176,8 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardCardsResponseItem[]> GetBoardCards([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardcards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -193,8 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetListCardsResponseItem[]> GetListCards([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(listUUID, nameof(listUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/listcards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listUUID, 1));
@@ -210,8 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetListResponseItem[]> GetList([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(listUUID, nameof(listUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/list/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listUUID, 1));
@@ -227,8 +209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetCardResponseItem[]> GetCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(cardUUID, nameof(cardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardUUID, 1));
@@ -244,8 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<JToken> GetBoardMessages([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/messages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -261,8 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardMembersResponse> GetBoardMembers([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/members/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -278,8 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardRecordsResponseItem[]> GetBoardRecords([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardrecords/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -295,8 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetListRecordsResponseItem[]> GetListRecords([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(listUUID, nameof(listUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/listrecords/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listUUID, 1));
@@ -312,8 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetTreeClientsResponse> GetTreeClients([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/clients/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -329,8 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardHierarchyResponseItem[]> GetBoardHierarchy([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardhierarchy/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -346,10 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddCardResponse> ActionAddCard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodylistuuid)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodylistuuid, nameof(bodylistuuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -375,9 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionDeleteCardResponse> ActionDeleteCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<int> bodyconfirmed)
         {
-            SourceExpression.Validate(cardUUID, nameof(cardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyconfirmed, nameof(bodyconfirmed), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/delete/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardUUID, 1));
@@ -401,9 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddMessageToBoardResponse> ActionAddMessageToBoard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodymessage)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/message/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -427,9 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddChecklistToCardResponse> ActionAddChecklistToCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(cardUUID, nameof(cardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/checklist/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardUUID, 1));
@@ -453,9 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddListResponse> ActionAddList([WorkflowExpression] Func<string> baordUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(baordUUID, nameof(baordUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/list/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baordUUID, 1));
@@ -479,9 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionListRenameResponse> ActionListRename([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(listUUID, nameof(listUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/rename/list/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listUUID, 1));
@@ -505,9 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionBoardRenameResponse> ActionBoardRename([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/rename/board/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -531,10 +477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAssignToCardResponse> ActionAssignToCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
         {
-            SourceExpression.Validate(cardUUID, nameof(cardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/assign/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardUUID, 1));
@@ -560,10 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAssignToBoardResponse> ActionAssignToBoard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/assign/board/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -589,10 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionUnassignFromCardResponse> ActionUnassignFromCard([WorkflowExpression] Func<string> cardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
         {
-            SourceExpression.Validate(cardUUID, nameof(cardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/unassign/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardUUID, 1));
@@ -618,10 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionUnassignFromBoardResponse> ActionUnassignFromBoard([WorkflowExpression] Func<string> boardUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyrole)
         {
-            SourceExpression.Validate(boardUUID, nameof(boardUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/unassign/board/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardUUID, 1));
@@ -647,9 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionDeleteListResponse> ActionDeleteList([WorkflowExpression] Func<string> listUUID, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<int> bodyconfirm)
         {
-            SourceExpression.Validate(listUUID, nameof(listUUID), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodyconfirm, nameof(bodyconfirm), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1.00/delete/list/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listUUID, 1));

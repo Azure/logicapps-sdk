@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
         public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction([WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandreference, [WorkflowExpression] Func<string> commandaction, [WorkflowExpression] Func<string> commandsubject = null)
         {
-            SourceExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
-            SourceExpression.Validate(commandreference, nameof(commandreference), required: true);
-            SourceExpression.Validate(commandaction, nameof(commandaction), required: true);
-            SourceExpression.Validate(commandsubject, nameof(commandsubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Contexts/DispatchAction";
@@ -58,15 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
         public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse([WorkflowExpression] Func<string> commandcontextReference, [WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandtaskTypeName, [WorkflowExpression] Func<string> commandresponseTypeName, [WorkflowExpression] Func<string> commandsentBy = null, [WorkflowExpression] Func<string> commandstartedOn = null, [WorkflowExpression] Func<string> commandsentOn = null, [WorkflowExpression] Func<string> commandsubject = null, [WorkflowExpression] Func<string> commanditemKey = null)
         {
-            SourceExpression.Validate(commandcontextReference, nameof(commandcontextReference), required: true);
-            SourceExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
-            SourceExpression.Validate(commandtaskTypeName, nameof(commandtaskTypeName), required: true);
-            SourceExpression.Validate(commandresponseTypeName, nameof(commandresponseTypeName), required: true);
-            SourceExpression.Validate(commandsentBy, nameof(commandsentBy), required: false);
-            SourceExpression.Validate(commandstartedOn, nameof(commandstartedOn), required: false);
-            SourceExpression.Validate(commandsentOn, nameof(commandsentOn), required: false);
-            SourceExpression.Validate(commandsubject, nameof(commandsubject), required: false);
-            SourceExpression.Validate(commanditemKey, nameof(commanditemKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Tasks/AddResponse";
@@ -135,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
     {
         public IWorkflowTrigger WhenTaskCreatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            SourceExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/WhenTaskCreated";
@@ -170,8 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenTaskUpdatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            SourceExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/WhenTaskUpdated";
@@ -205,8 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenTaskArchivedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            SourceExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/WhenTaskArchived";
@@ -240,8 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenMilestoneReachedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            SourceExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/WhenMilestoneReached";
@@ -275,8 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenMilestoneClearedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            SourceExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/WhenMilestoneCleared";

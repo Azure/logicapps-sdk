@@ -42,13 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
         public IBodyWorkflowAction<CreateReasonResponse> CreateReason([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string[]> bodyquestions, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodydayOfWeek = null, [WorkflowExpression] Func<bool> bodysmsOnNoAnswer = null, [WorkflowExpression] Func<string> bodysmsMessage = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyquestions, nameof(bodyquestions), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydayOfWeek, nameof(bodydayOfWeek), required: false);
-            SourceExpression.Validate(bodysmsOnNoAnswer, nameof(bodysmsOnNoAnswer), required: false);
-            SourceExpression.Validate(bodysmsMessage, nameof(bodysmsMessage), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reasons";
@@ -123,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
         public IBodyWorkflowAction<GetReasonResponse> GetReason([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reasons/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -138,14 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
         public IWorkflowAction UpdateReason([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string[]> bodyquestions, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodydayOfWeek = null, [WorkflowExpression] Func<bool> bodysmsOnNoAnswer = null, [WorkflowExpression] Func<string> bodysmsMessage = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyquestions, nameof(bodyquestions), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydayOfWeek, nameof(bodydayOfWeek), required: false);
-            SourceExpression.Validate(bodysmsOnNoAnswer, nameof(bodysmsOnNoAnswer), required: false);
-            SourceExpression.Validate(bodysmsMessage, nameof(bodysmsMessage), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reasons/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -220,10 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
         public IBodyWorkflowAction<ListCallsResponse> ListCalls([WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> reasonId = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(reasonId, nameof(reasonId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/calls";
@@ -247,16 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
         public IBodyWorkflowAction<PlaceCallResponse> PlaceCall([WorkflowExpression] Func<string> bodyreasonId, [WorkflowExpression] Func<string> bodycontactphone, [WorkflowExpression] Func<string> bodycontactname = null, [WorkflowExpression] Func<string> bodycontactemail = null, [WorkflowExpression] Func<string> bodycontactexternalId = null, [WorkflowExpression] Func<string> bodyactivityId = null, [WorkflowExpression] Func<string> bodycontentpurpose = null, [WorkflowExpression] Func<string> bodycontentgreeting = null, [WorkflowExpression] Func<string> bodycontentgoodbye = null, [WorkflowExpression] Func<string[]> bodycontentquestions = null)
         {
-            SourceExpression.Validate(bodyreasonId, nameof(bodyreasonId), required: true);
-            SourceExpression.Validate(bodycontactphone, nameof(bodycontactphone), required: true);
-            SourceExpression.Validate(bodycontactname, nameof(bodycontactname), required: false);
-            SourceExpression.Validate(bodycontactemail, nameof(bodycontactemail), required: false);
-            SourceExpression.Validate(bodycontactexternalId, nameof(bodycontactexternalId), required: false);
-            SourceExpression.Validate(bodyactivityId, nameof(bodyactivityId), required: false);
-            SourceExpression.Validate(bodycontentpurpose, nameof(bodycontentpurpose), required: false);
-            SourceExpression.Validate(bodycontentgreeting, nameof(bodycontentgreeting), required: false);
-            SourceExpression.Validate(bodycontentgoodbye, nameof(bodycontentgoodbye), required: false);
-            SourceExpression.Validate(bodycontentquestions, nameof(bodycontentquestions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/calls";
@@ -345,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
         public IBodyWorkflowAction<GetCallResponse> GetCall([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/calls/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

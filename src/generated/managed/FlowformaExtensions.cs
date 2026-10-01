@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flowforma
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flowforma")]
         public IBodyWorkflowAction<FlowCreatedResponse> CreateForm([WorkflowExpression] Func<string> connectionUrl, [WorkflowExpression] Func<string> flows, [WorkflowExpression] Func<object> question = null)
         {
-            SourceExpression.Validate(connectionUrl, nameof(connectionUrl), required: true);
-            SourceExpression.Validate(flows, nameof(flows), required: true);
-            SourceExpression.Validate(question, nameof(question), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/flowforma";

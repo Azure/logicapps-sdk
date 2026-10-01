@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
     {
         public IWorkflowTrigger CCEEventTrigger([WorkflowExpression] Func<bodyactionInput> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/register/cce";
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
         public IWorkflowTrigger HorizonEventTrigger([WorkflowExpression] Func<string> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/register/horizon";

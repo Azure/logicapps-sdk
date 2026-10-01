@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
         public IBodyWorkflowAction<string> RunCommand([WorkflowExpression] Func<string> bodycomputer, [WorkflowExpression] Func<string> bodytrigger, [WorkflowExpression] Func<string> bodyParams = null)
         {
-            SourceExpression.Validate(bodycomputer, nameof(bodycomputer), required: true);
-            SourceExpression.Validate(bodytrigger, nameof(bodytrigger), required: true);
-            SourceExpression.Validate(bodyParams, nameof(bodyParams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/oauth/flow/trigger";

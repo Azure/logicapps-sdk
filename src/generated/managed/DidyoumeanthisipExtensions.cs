@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Didyoumeanthisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "didyoumeanthisip")]
         public IBodyWorkflowAction<CheckResponse> Check([WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/did_you_mean_this";

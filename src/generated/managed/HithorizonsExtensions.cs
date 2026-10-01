@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         public IBodyWorkflowAction<CompanyDetailResultApiResponse> CompanyGet([WorkflowExpression] Func<string> hitHorizonsId)
         {
-            SourceExpression.Validate(hitHorizonsId, nameof(hitHorizonsId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Company/Get";
@@ -30,17 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearch([WorkflowExpression] Func<string> dUNSNumber = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<string> nationalId = null, [WorkflowExpression] Func<string> addressUnstructured = null, [WorkflowExpression] Func<string> addressStreet = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> stateProvince = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> showBranches = null, [WorkflowExpression] Func<string> companyTypes = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(dUNSNumber, nameof(dUNSNumber), required: false);
-            SourceExpression.Validate(companyName, nameof(companyName), required: false);
-            SourceExpression.Validate(nationalId, nameof(nationalId), required: false);
-            SourceExpression.Validate(addressUnstructured, nameof(addressUnstructured), required: false);
-            SourceExpression.Validate(addressStreet, nameof(addressStreet), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(stateProvince, nameof(stateProvince), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(showBranches, nameof(showBranches), required: false);
-            SourceExpression.Validate(companyTypes, nameof(companyTypes), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Company/Search";
@@ -79,12 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearchUnstructured([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<bool> showBranches = null, [WorkflowExpression] Func<string> companyTypes = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(showBranches, nameof(showBranches), required: false);
-            SourceExpression.Validate(companyTypes, nameof(companyTypes), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Company/SearchUnstructured";

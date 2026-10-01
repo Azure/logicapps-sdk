@@ -14,18 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<PostDocumentsResponse> CreateDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<bool> xMsDocumentdbIsUpsert = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            SourceExpression.Validate(xMsDocumentdbIsUpsert, nameof(xMsDocumentdbIsUpsert), required: false);
-            SourceExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
-            SourceExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
@@ -64,12 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<CreateStoredProcedureResponse> CreateStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> bodyfunctionDefinition = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
@@ -104,19 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            SourceExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
-            SourceExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -149,11 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<string> DeleteStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(sprocId, nameof(sprocId), required: true);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
@@ -170,13 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<JToken> ExecuteStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<string> parameters = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(sprocId, nameof(sprocId), required: true);
-            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            SourceExpression.Validate(parameters, nameof(parameters), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
@@ -196,19 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<GetDocumentV2Response> GetDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -241,18 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<GetDocumentsV3Response> GetDocuments([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
@@ -285,10 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<GetStoredProceduresResponse> GetStoredProcedures([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
@@ -305,17 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<QueryDocumentsV5Response> QueryDocuments([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> queryText = null, [WorkflowExpression] Func<string> partitionKey = null, [WorkflowExpression] Func<int> maxItemCount = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<consistencyLevelInput> consistencyLevel = null, [WorkflowExpression] Func<string> sessionToken = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(queryText, nameof(queryText), required: false);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
-            SourceExpression.Validate(maxItemCount, nameof(maxItemCount), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            SourceExpression.Validate(consistencyLevel, nameof(consistencyLevel), required: false);
-            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
-            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            SourceExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerId, 1));
@@ -346,19 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<PutDocumentResponse> ReplaceDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            SourceExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
-            SourceExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -397,13 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
         public IBodyWorkflowAction<CreateStoredProcedureResponse> ReplaceStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<string> bodyfunctionDefinition = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(sprocId, nameof(sprocId), required: true);
-            SourceExpression.Validate(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));

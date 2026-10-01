@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables([WorkflowExpression] Func<bool> ownedTables = null)
         {
-            SourceExpression.Validate(ownedTables, nameof(ownedTables), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -43,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<JToken[]> ExecuteQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -68,12 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<JToken[]> GetRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<int> skipCount = null, [WorkflowExpression] Func<int> maxCount = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<string[]> filterBy = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            SourceExpression.Validate(skipCount, nameof(skipCount), required: false);
-            SourceExpression.Validate(maxCount, nameof(maxCount), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
-            SourceExpression.Validate(filterBy, nameof(filterBy), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -125,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<JToken> InsertRow([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> setColumns = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(setColumns, nameof(setColumns), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -150,8 +139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure([WorkflowExpression] Func<string> storedProcedure, [WorkflowExpression] Func<object> storedProcedureParameters = null)
         {
-            SourceExpression.Validate(storedProcedure, nameof(storedProcedure), required: true);
-            SourceExpression.Validate(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretOutput> GetSecret([WorkflowExpression] Func<string> secretName)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -35,8 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretVersionOutput> GetSecretVersion([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> version)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -71,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretMetadataOutput> GetSecretMetadata([WorkflowExpression] Func<string> secretName)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -90,8 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretVersionMetadataOutput> GetSecretVersionMetadata([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> version)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -111,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListSecretVersionMetadataOutputItem[]> ListSecretVersionMetadata([WorkflowExpression] Func<string> secretName)
         {
-            SourceExpression.Validate(secretName, nameof(secretName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -130,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetKeyMetadataOutput> GetKeyMetadata([WorkflowExpression] Func<string> keyName)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -164,8 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetKeyVersionMetadataOutput> GetKeyVersionMetadata([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> version)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -185,7 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListKeyVersionMetadataOutputItem[]> ListKeyVersionMetadata([WorkflowExpression] Func<string> keyName)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -204,9 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<DecryptDataWithKeyOutput> DecryptDataWithKey([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<DecryptDataWithKeyInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> encryptedData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
-            SourceExpression.Validate(encryptedData, nameof(encryptedData), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -227,10 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<DecryptDataWithKeyVersionOutput> DecryptDataWithKeyVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<DecryptDataWithKeyVersionInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> encryptedData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
-            SourceExpression.Validate(encryptedData, nameof(encryptedData), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -252,9 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<EncryptDataWithKeyOutput> EncryptDataWithKey([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<EncryptDataWithKeyInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> rawData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
-            SourceExpression.Validate(rawData, nameof(rawData), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -275,10 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<EncryptDataWithKeyVersionOutput> EncryptDataWithKeyVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<EncryptDataWithKeyVersionInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> rawData)
         {
-            SourceExpression.Validate(keyName, nameof(keyName), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
-            SourceExpression.Validate(rawData, nameof(rawData), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

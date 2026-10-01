@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
         public IBodyWorkflowAction<FilescanResponse> Filescan([WorkflowExpression] Func<string> bodyfilename, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> xApiKey = null, [WorkflowExpression] Func<string> xClientId = null)
         {
-            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: false);
-            SourceExpression.Validate(xClientId, nameof(xClientId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/file/jsonupload";
@@ -52,10 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
         public IBodyWorkflowAction<EmailScanResponse> EmailScan([WorkflowExpression] Func<string> bodyfilename, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> xApiKey = null, [WorkflowExpression] Func<string> xClientId = null)
         {
-            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: false);
-            SourceExpression.Validate(xClientId, nameof(xClientId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/email/jsonupload";

@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         public IBodyWorkflowAction<AddSystemResponse> AddSystem([WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/external/systems/topics/";
@@ -55,15 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         public IWorkflowAction AddSystemAdvanced([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyfieldssystemNickname = null, [WorkflowExpression] Func<string> bodyfieldssystemOwner = null, [WorkflowExpression] Func<string> bodyfieldssystemAdministrator = null, [WorkflowExpression] Func<string> bodyfieldscostCenter = null, [WorkflowExpression] Func<string[]> bodyfieldslinkedSystems = null, [WorkflowExpression] Func<string> bodyfieldsdataSystemPurpose = null, [WorkflowExpression] Func<string[]> bodyfieldslinkedSystemProviders = null, [WorkflowExpression] Func<string> bodyfieldspartnerResponsibilityDetails = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyfieldssystemNickname, nameof(bodyfieldssystemNickname), required: false);
-            SourceExpression.Validate(bodyfieldssystemOwner, nameof(bodyfieldssystemOwner), required: false);
-            SourceExpression.Validate(bodyfieldssystemAdministrator, nameof(bodyfieldssystemAdministrator), required: false);
-            SourceExpression.Validate(bodyfieldscostCenter, nameof(bodyfieldscostCenter), required: false);
-            SourceExpression.Validate(bodyfieldslinkedSystems, nameof(bodyfieldslinkedSystems), required: false);
-            SourceExpression.Validate(bodyfieldsdataSystemPurpose, nameof(bodyfieldsdataSystemPurpose), required: false);
-            SourceExpression.Validate(bodyfieldslinkedSystemProviders, nameof(bodyfieldslinkedSystemProviders), required: false);
-            SourceExpression.Validate(bodyfieldspartnerResponsibilityDetails, nameof(bodyfieldspartnerResponsibilityDetails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/external/systems/topics/advanced/";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetIssueResponse> GetIssue([WorkflowExpression] Func<string> issueId)
         {
-            SourceExpression.Validate(issueId, nameof(issueId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueId, 1));
@@ -29,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<string> UpdateIssue([WorkflowExpression] Func<string> issueId, [WorkflowExpression] Func<string> issueissuepriority = null, [WorkflowExpression] Func<issueissuetrackerInput> issueissuetracker = null, [WorkflowExpression] Func<issueissuestatusInput> issueissuestatus = null, [WorkflowExpression] Func<string> issueissuesubject = null, [WorkflowExpression] Func<string> issueissuedescription = null)
         {
-            SourceExpression.Validate(issueId, nameof(issueId), required: true);
-            SourceExpression.Validate(issueissuepriority, nameof(issueissuepriority), required: false);
-            SourceExpression.Validate(issueissuetracker, nameof(issueissuetracker), required: false);
-            SourceExpression.Validate(issueissuestatus, nameof(issueissuestatus), required: false);
-            SourceExpression.Validate(issueissuesubject, nameof(issueissuesubject), required: false);
-            SourceExpression.Validate(issueissuedescription, nameof(issueissuedescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(issueId, 1));
@@ -93,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -122,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -152,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
         public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/new_issue_trigger/issues.json";
@@ -167,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
         public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resolved_issue_trigger/issues.json";

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<string> GetUserToken([WorkflowExpression] Func<string> externalSystemId, [WorkflowExpression] Func<string> secret, [WorkflowExpression] Func<string> externalUserName)
         {
-            SourceExpression.Validate(externalSystemId, nameof(externalSystemId), required: true);
-            SourceExpression.Validate(secret, nameof(secret), required: true);
-            SourceExpression.Validate(externalUserName, nameof(externalUserName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/User/getusertoken";
@@ -34,8 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -51,9 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction RemoveTagFromDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -69,10 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction TagDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<bool> reTag = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(reTag, nameof(reTag), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -90,11 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction AddFieldToDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> method = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(method, nameof(method), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -130,10 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction UpdateFieldOnDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -167,9 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction AddTemplateToDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/multidoc/template/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -186,16 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<QueryDocumentsResponse> QueryDocuments([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string[]> bodyobligatoryTags = null, [WorkflowExpression] Func<string[]> bodytagsInHierarchy = null, [WorkflowExpression] Func<string[]> bodyexcludeTagsInHierarchy = null, [WorkflowExpression] Func<bool> bodyincludeTotalCount = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bodyorderByInput> bodyorderBy = null, [WorkflowExpression] Func<bool> bodyorderAscending = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(bodyobligatoryTags, nameof(bodyobligatoryTags), required: false);
-            SourceExpression.Validate(bodytagsInHierarchy, nameof(bodytagsInHierarchy), required: false);
-            SourceExpression.Validate(bodyexcludeTagsInHierarchy, nameof(bodyexcludeTagsInHierarchy), required: false);
-            SourceExpression.Validate(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            SourceExpression.Validate(bodyorderBy, nameof(bodyorderBy), required: false);
-            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
-            SourceExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/meta/document/QueryDocuments";
@@ -279,8 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetTagByTagIdResponse> GetTagByTagId([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
@@ -296,8 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetTagByCodeResponse> GetTagByCode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(code, nameof(code), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/tags/tag";
@@ -314,8 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetMultipleTagsResponseItem[]> GetMultipleTags([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string[]> bodyids = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(bodyids, nameof(bodyids), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/tags/selection";
@@ -343,14 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<QueryTagsResponse> QueryTags([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodyparentTagId = null, [WorkflowExpression] Func<string> bodydirectParentTagId = null, [WorkflowExpression] Func<bool> bodyhasNoParentTag = null, [WorkflowExpression] Func<bool> bodyincludeTotalCount = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
-            SourceExpression.Validate(bodydirectParentTagId, nameof(bodydirectParentTagId), required: false);
-            SourceExpression.Validate(bodyhasNoParentTag, nameof(bodyhasNoParentTag), required: false);
-            SourceExpression.Validate(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/tags/querytags";
@@ -414,20 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<CreateFieldResponse> CreateField([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> method = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytenantId = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<int> bodyfieldType = null, [WorkflowExpression] Func<bool> bodyisRequired = null, [WorkflowExpression] Func<bool> bodyisReadOnly = null, [WorkflowExpression] Func<string> bodydefaultValue = null, [WorkflowExpression] Func<bodylabelsInputItem[]> bodylabels = null, [WorkflowExpression] Func<string> bodyvalidatingRegExp = null, [WorkflowExpression] Func<bodyvalidationMessageInputItem[]> bodyvalidationMessage = null, [WorkflowExpression] Func<int> bodyrowAmount = null, [WorkflowExpression] Func<string> bodyparentTagId = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(method, nameof(method), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytenantId, nameof(bodytenantId), required: false);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: false);
-            SourceExpression.Validate(bodyisRequired, nameof(bodyisRequired), required: false);
-            SourceExpression.Validate(bodyisReadOnly, nameof(bodyisReadOnly), required: false);
-            SourceExpression.Validate(bodydefaultValue, nameof(bodydefaultValue), required: false);
-            SourceExpression.Validate(bodylabels, nameof(bodylabels), required: false);
-            SourceExpression.Validate(bodyvalidatingRegExp, nameof(bodyvalidatingRegExp), required: false);
-            SourceExpression.Validate(bodyvalidationMessage, nameof(bodyvalidationMessage), required: false);
-            SourceExpression.Validate(bodyrowAmount, nameof(bodyrowAmount), required: false);
-            SourceExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/fields";
@@ -523,8 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetFieldByIdResponse> GetFieldById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fieldId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/fields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -540,8 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetFieldByCodeResponse> GetFieldByCode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(code, nameof(code), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/fields/field";
@@ -558,8 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetTemplateFieldsResponseItem[]> GetTemplateFields([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -575,8 +507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetTemplatebyidResponse> GetTemplatebyid([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -592,8 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetTemplatebycodeResponse> GetTemplatebycode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(code, nameof(code), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/templates/template";
@@ -610,8 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetUserByIdResponse> GetUserById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -627,16 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<QueryUsersResponse> QueryUsers([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<bool> bodyexcludeActiveUsers = null, [WorkflowExpression] Func<bool> bodyexcludeInactiveUsers = null, [WorkflowExpression] Func<bool> bodyexcludeNormalUsers = null, [WorkflowExpression] Func<bool> bodyexcludeSystemUsers = null, [WorkflowExpression] Func<string> bodycontainsEmail = null, [WorkflowExpression] Func<string[]> bodyroleIds = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(bodyexcludeActiveUsers, nameof(bodyexcludeActiveUsers), required: false);
-            SourceExpression.Validate(bodyexcludeInactiveUsers, nameof(bodyexcludeInactiveUsers), required: false);
-            SourceExpression.Validate(bodyexcludeNormalUsers, nameof(bodyexcludeNormalUsers), required: false);
-            SourceExpression.Validate(bodyexcludeSystemUsers, nameof(bodyexcludeSystemUsers), required: false);
-            SourceExpression.Validate(bodycontainsEmail, nameof(bodycontainsEmail), required: false);
-            SourceExpression.Validate(bodyroleIds, nameof(bodyroleIds), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user/queryusers";
@@ -712,8 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetExternalSystemByIdResponse> GetExternalSystemById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> externalSystemId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(externalSystemId, nameof(externalSystemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/systems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalSystemId, 1));
@@ -729,10 +643,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<ResolveContextResponse> ResolveContext([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyentityName = null, [WorkflowExpression] Func<string> bodylegalEntity = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
-            SourceExpression.Validate(bodyentityName, nameof(bodyentityName), required: false);
-            SourceExpression.Validate(bodylegalEntity, nameof(bodylegalEntity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/resolvecontext";
@@ -780,7 +690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse> AdvancedSearchQueryDocuments([WorkflowExpression] Func<string> exaAuthPlugin)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/meta/document/query/v2";
@@ -802,9 +711,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<InsertExternalFileResponse> InsertExternalFile([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> filename, [WorkflowExpression] Func<string> bodybody = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(filename, nameof(filename), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/meta/document/insertexternalfile";
@@ -833,8 +739,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -850,8 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -867,9 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction AddSiteToStorageProvider([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -886,8 +785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetDocumentMetadataByFileReferenceResponse> GetDocumentMetadataByFileReference([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}/meta/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1));
@@ -903,8 +800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<GetStorageProviderByIdResponse> GetStorageProviderById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -920,10 +815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/meta/document/content";
@@ -942,10 +833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<SetPrimaryStorageProviderResponse> SetPrimaryStorageProvider([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId, [WorkflowExpression] Func<string> storageProviderId, [WorkflowExpression] Func<bool> removeRaptorStorage = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
-            SourceExpression.Validate(storageProviderId, nameof(storageProviderId), required: true);
-            SourceExpression.Validate(removeRaptorStorage, nameof(removeRaptorStorage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Files/{0}/primarystorageprovider/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageProviderId, 1));
@@ -963,9 +850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<SetExternalSourceResponse> SetExternalSource([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}/externalsource", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1));
@@ -982,10 +866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction GenerateSiteSubscriptions([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> storageProviderId, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(storageProviderId, nameof(storageProviderId), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageProviderId, 1));
@@ -1004,14 +884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<QueryTemplatesResponse> QueryTemplates([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<int> bodylanguageCode = null, [WorkflowExpression] Func<string[]> bodycontextTags = null, [WorkflowExpression] Func<int> bodyorderBy = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: false);
-            SourceExpression.Validate(bodycontextTags, nameof(bodycontextTags), required: false);
-            SourceExpression.Validate(bodyorderBy, nameof(bodyorderBy), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
-            SourceExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/templates/querytemplates";
@@ -1075,10 +947,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IBodyWorkflowAction<FindDocumentResponse> FindDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> azureDirectoryId, [WorkflowExpression] Func<string> driveId, [WorkflowExpression] Func<string> driveItemId)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(azureDirectoryId, nameof(azureDirectoryId), required: true);
-            SourceExpression.Validate(driveId, nameof(driveId), required: true);
-            SourceExpression.Validate(driveItemId, nameof(driveItemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storageproviders/sharepoint/file/find-document";
@@ -1097,10 +965,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction DetachDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodyazureDirectoryId = null, [WorkflowExpression] Func<string> bodydriveId = null, [WorkflowExpression] Func<string> bodydriveItemId = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(bodyazureDirectoryId, nameof(bodyazureDirectoryId), required: false);
-            SourceExpression.Validate(bodydriveId, nameof(bodydriveId), required: false);
-            SourceExpression.Validate(bodydriveItemId, nameof(bodydriveItemId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storageproviders/sharepoint/file/detach";
@@ -1140,11 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction GetOrCreateTag([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<bodylabelsInputItem2[]> bodylabels = null, [WorkflowExpression] Func<string> bodyparentTagId = null)
         {
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
-            SourceExpression.Validate(bodylabels, nameof(bodylabels), required: false);
-            SourceExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/taxonomy/tags";
@@ -1185,9 +1044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
         public IWorkflowAction AddTemplateToDocumentSingle([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> exaAuthPlugin)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/template/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmessage, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(requestmessage, nameof(requestmessage), required: true);
-            SourceExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
-            SourceExpression.Validate(sendToAll, nameof(sendToAll), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -48,11 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActionReminder([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<object> requestactionId = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(actionType, nameof(actionType), required: true);
-            SourceExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
-            SourceExpression.Validate(requestactionId, nameof(requestactionId), required: false);
-            SourceExpression.Validate(sendToAll, nameof(sendToAll), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -88,11 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<PostReactionResponse> PostReaction([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestsourceGroupId = null, [WorkflowExpression] Func<string> requestmessageId = null, [WorkflowExpression] Func<requestreactionTypeInput> requestreactionType = null, [WorkflowExpression] Func<string> requestcomment = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(requestsourceGroupId, nameof(requestsourceGroupId), required: false);
-            SourceExpression.Validate(requestmessageId, nameof(requestmessageId), required: false);
-            SourceExpression.Validate(requestreactionType, nameof(requestreactionType), required: false);
-            SourceExpression.Validate(requestcomment, nameof(requestcomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/reaction", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -137,9 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendMessageResponse> SendReply([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmessageId, [WorkflowExpression] Func<string> requestmessage)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(requestmessageId, nameof(requestmessageId), required: true);
-            SourceExpression.Validate(requestmessage, nameof(requestmessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -164,12 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
         {
-            SourceExpression.Validate(requestgroupName, nameof(requestgroupName), required: true);
-            SourceExpression.Validate(requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
-            SourceExpression.Validate(requestmembers, nameof(requestmembers), required: false);
-            SourceExpression.Validate(requestgroupType, nameof(requestgroupType), required: false);
-            SourceExpression.Validate(requestshortDescription, nameof(requestshortDescription), required: false);
-            SourceExpression.Validate(requestlongDescription, nameof(requestlongDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/groups";
@@ -218,8 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddGroupToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string[]> requestsubGroups)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(requestsubGroups, nameof(requestsubGroups), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -242,13 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction CreateSubgroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(requestgroupName, nameof(requestgroupName), required: true);
-            SourceExpression.Validate(requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
-            SourceExpression.Validate(requestmembers, nameof(requestmembers), required: false);
-            SourceExpression.Validate(requestgroupType, nameof(requestgroupType), required: false);
-            SourceExpression.Validate(requestshortDescription, nameof(requestshortDescription), required: false);
-            SourceExpression.Validate(requestlongDescription, nameof(requestlongDescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -297,8 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction RemoveGroupFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> subGroupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(subGroupId, nameof(subGroupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subGroupId, 1));
@@ -313,8 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddUserToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmembers)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(requestmembers, nameof(requestmembers), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -337,8 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddSubscriberToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestsubscribers)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subscribers/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -361,8 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction RemoveUserFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -377,7 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL([WorkflowExpression] Func<string> mediaUrlmediaUrl)
         {
-            SourceExpression.Validate(mediaUrlmediaUrl, nameof(mediaUrlmediaUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/media/url";
@@ -428,7 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction DeleteTrigger([WorkflowExpression] Func<string> webhookId)
         {
-            SourceExpression.Validate(webhookId, nameof(webhookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1));
@@ -443,11 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActions([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType = null, [WorkflowExpression] Func<object> requestactionBody = null, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(actionType, nameof(actionType), required: false);
-            SourceExpression.Validate(requestactionBody, nameof(requestactionBody), required: false);
-            SourceExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
-            SourceExpression.Validate(sendToAll, nameof(sendToAll), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -487,8 +440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
     {
         public IWorkflowTrigger ActionCreatedOnGroup([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> actionPackageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(actionPackageId, nameof(actionPackageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/ActionCreated";
@@ -513,7 +464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger AnnouncementOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/Announcement";
@@ -536,7 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger GroupAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/GroupAdded";
@@ -559,7 +508,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger GroupRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/GroupRemoved";
@@ -582,7 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger MemberAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/MemberAdded";
@@ -605,7 +552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger MemberRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/MemberRemoved";
@@ -628,7 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger SurveyCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/SurveyCreated";
@@ -651,7 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger TextMessageCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
@@ -674,8 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger SurveyResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Action/SurveyResponse";
@@ -699,7 +641,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger AttachmentOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
@@ -722,9 +663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger ActionResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> actionPackageId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(actionPackageId, nameof(actionPackageId), required: true);
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook";
@@ -749,7 +687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger UserJoinedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/webhook/Group/UserJoined";

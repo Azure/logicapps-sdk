@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
         public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate([WorkflowExpression] Func<string> createUpdateProfileId, [WorkflowExpression] Func<string> createUpdateText)
         {
-            SourceExpression.Validate(createUpdateProfileId, nameof(createUpdateProfileId), required: true);
-            SourceExpression.Validate(createUpdateText, nameof(createUpdateText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/updates/create.json";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
         public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate([WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> udpateId)
         {
-            SourceExpression.Validate(profileId, nameof(profileId), required: true);
-            SourceExpression.Validate(udpateId, nameof(udpateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/updates/{0}/share.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(udpateId, 1));
@@ -51,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
     {
         public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates([WorkflowExpression] Func<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(profileId, nameof(profileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
@@ -65,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
         public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates([WorkflowExpression] Func<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(profileId, nameof(profileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));

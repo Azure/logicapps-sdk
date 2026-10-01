@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetArea([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> areaCoord, [WorkflowExpression] Func<dayRangeInput> dayRange)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(areaCoord, nameof(areaCoord), required: true);
-            SourceExpression.Validate(dayRange, nameof(dayRange), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(areaCoord, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dayRange, 1));
@@ -31,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetCountry([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<dayRangeInput> dayRange)
         {
-            SourceExpression.Validate(source, nameof(source), required: true);
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(dayRange, nameof(dayRange), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dayRange, 1));
@@ -48,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey([WorkflowExpression] Func<string> mAPKEY)
         {
-            SourceExpression.Validate(mAPKEY, nameof(mAPKEY), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mapserver/mapkey_status/";

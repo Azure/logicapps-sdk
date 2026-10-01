@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> ListModels([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> pageToken = null)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(pageToken, nameof(pageToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1));
@@ -35,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GetModel([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -51,17 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateText([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> modelType, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<string> bodypromptprompt, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<int> bodycandidateCount = null, [WorkflowExpression] Func<int> bodymaxOutputTokens = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<JToken[]> bodysafetySettings = null, [WorkflowExpression] Func<string[]> bodystopSequences = null)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(modelType, nameof(modelType), required: true);
-            SourceExpression.Validate(modelName, nameof(modelName), required: true);
-            SourceExpression.Validate(bodypromptprompt, nameof(bodypromptprompt), required: true);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodycandidateCount, nameof(bodycandidateCount), required: false);
-            SourceExpression.Validate(bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
-            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            SourceExpression.Validate(bodytopK, nameof(bodytopK), required: false);
-            SourceExpression.Validate(bodysafetySettings, nameof(bodysafetySettings), required: false);
-            SourceExpression.Validate(bodystopSequences, nameof(bodystopSequences), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}:generateText", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
@@ -134,12 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateMessage([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<bodypromptmessagesInputItem[]> bodypromptmessages = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodytopK = null)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(bodypromptmessages, nameof(bodypromptmessages), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            SourceExpression.Validate(bodytopK, nameof(bodytopK), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateMessage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
@@ -192,9 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountTextTokens([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<string> bodyprompttext = null)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(bodyprompttext, nameof(bodyprompttext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTextTokens", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
@@ -229,9 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountMessageTokens([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<bodypromptmessagesInputItem[]> bodypromptmessages = null)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(bodypromptmessages, nameof(bodypromptmessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countMessageTokens", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
@@ -266,9 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<EmbedTextResponse> EmbedText([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedText", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));

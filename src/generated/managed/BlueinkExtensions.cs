@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<JToken[]> ListBundles([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<statusInInput> statusIn = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> tagIn = null, [WorkflowExpression] Func<orderingInput> ordering = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(statusIn, nameof(statusIn), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(tagIn, nameof(tagIn), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bundles/";
@@ -46,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<ListPersonsResponseItem[]> ListPersons([WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/persons/";
@@ -77,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<ListWebhooksResponseItem[]> ListWebhooks([WorkflowExpression] Func<bool> enabled = null, [WorkflowExpression] Func<eventTypeInput> eventType = null)
         {
-            SourceExpression.Validate(enabled, nameof(enabled), required: false);
-            SourceExpression.Validate(eventType, nameof(eventType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/";
@@ -97,11 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> ListWebhookDeliveries([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<string> webhookEvent = null, [WorkflowExpression] Func<eventTypeInput> eventType = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(webhook, nameof(webhook), required: false);
-            SourceExpression.Validate(webhookEvent, nameof(webhookEvent), required: false);
-            SourceExpression.Validate(eventType, nameof(eventType), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/deliveries/";
@@ -126,11 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> ListWebhookEvents([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<eventTypeInput> eventType = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<bool> success = null, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(webhook, nameof(webhook), required: false);
-            SourceExpression.Validate(eventType, nameof(eventType), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(success, nameof(success), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/events/";
@@ -155,8 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> ListWebhookExtraHeaders([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<eventTypeInput> eventType = null)
         {
-            SourceExpression.Validate(webhook, nameof(webhook), required: false);
-            SourceExpression.Validate(eventType, nameof(eventType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/headers/";

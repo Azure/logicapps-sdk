@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<ListAgentsResponse> ListAgents([WorkflowExpression] Func<apiVersionInput> apiVersion)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/assistants";
@@ -44,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<CreateThreadResponse> CreateThread([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<Messages[]> requestBodymessages = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(requestBodymessages, nameof(requestBodymessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/threads";
@@ -89,20 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<CreateRunResponse> CreateRun([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> requestBodyassistantId, [WorkflowExpression] Func<string> requestBodymodel = null, [WorkflowExpression] Func<string> requestBodyinstructions = null, [WorkflowExpression] Func<string> requestBodyadditionalInstructions = null, [WorkflowExpression] Func<Messages[]> requestBodyadditionalMessages = null, [WorkflowExpression] Func<Tools[]> requestBodytools = null, [WorkflowExpression] Func<double> requestBodytemperature = null, [WorkflowExpression] Func<double> requestBodytopP = null, [WorkflowExpression] Func<bool> requestBodystream = null, [WorkflowExpression] Func<int> requestBodymaxPromptTokens = null, [WorkflowExpression] Func<int> requestBodymaxCompletionTokens = null, [WorkflowExpression] Func<object> requestBodytoolChoice = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(requestBodyassistantId, nameof(requestBodyassistantId), required: true);
-            SourceExpression.Validate(requestBodymodel, nameof(requestBodymodel), required: false);
-            SourceExpression.Validate(requestBodyinstructions, nameof(requestBodyinstructions), required: false);
-            SourceExpression.Validate(requestBodyadditionalInstructions, nameof(requestBodyadditionalInstructions), required: false);
-            SourceExpression.Validate(requestBodyadditionalMessages, nameof(requestBodyadditionalMessages), required: false);
-            SourceExpression.Validate(requestBodytools, nameof(requestBodytools), required: false);
-            SourceExpression.Validate(requestBodytemperature, nameof(requestBodytemperature), required: false);
-            SourceExpression.Validate(requestBodytopP, nameof(requestBodytopP), required: false);
-            SourceExpression.Validate(requestBodystream, nameof(requestBodystream), required: false);
-            SourceExpression.Validate(requestBodymaxPromptTokens, nameof(requestBodymaxPromptTokens), required: false);
-            SourceExpression.Validate(requestBodymaxCompletionTokens, nameof(requestBodymaxCompletionTokens), required: false);
-            SourceExpression.Validate(requestBodytoolChoice, nameof(requestBodytoolChoice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -236,9 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<GetRunResponse> GetRun([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(runId, nameof(runId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
@@ -254,8 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<ListMessageResponse> ListMessages([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -271,28 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<OpenAIResponse> InvokeAgent([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> bodypromptid, [WorkflowExpression] Func<bodyconversationconversationIdInput> bodyconversationconversationId, [WorkflowExpression] Func<bodyagenttypeInput> bodyagenttype, [WorkflowExpression] Func<string> bodyagentname, [WorkflowExpression] Func<string> bodyagentversion, [WorkflowExpression] Func<string> bodyuser = null, [WorkflowExpression] Func<int> bodytopLogprobs = null, [WorkflowExpression] Func<string> bodypreviousResponseId = null, [WorkflowExpression] Func<bool> bodybackground = null, [WorkflowExpression] Func<int> bodymaxOutputTokens = null, [WorkflowExpression] Func<int> bodymaxToolCalls = null, [WorkflowExpression] Func<bodytextformattypeInput> bodytextformattype = null, [WorkflowExpression] Func<OpenAITool[]> bodytools = null, [WorkflowExpression] Func<object> bodytoolChoice = null, [WorkflowExpression] Func<string> bodypromptversion = null, [WorkflowExpression] Func<bodytruncationInput> bodytruncation = null, [WorkflowExpression] Func<object> bodyinput = null, [WorkflowExpression] Func<OpenAIIncludable[]> bodyinclude = null, [WorkflowExpression] Func<bool> bodyparallelToolCalls = null, [WorkflowExpression] Func<bool> bodystore = null, [WorkflowExpression] Func<string> bodyinstructions = null)
         {
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodypromptid, nameof(bodypromptid), required: true);
-            SourceExpression.Validate(bodyconversationconversationId, nameof(bodyconversationconversationId), required: true);
-            SourceExpression.Validate(bodyagenttype, nameof(bodyagenttype), required: true);
-            SourceExpression.Validate(bodyagentname, nameof(bodyagentname), required: true);
-            SourceExpression.Validate(bodyagentversion, nameof(bodyagentversion), required: true);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
-            SourceExpression.Validate(bodytopLogprobs, nameof(bodytopLogprobs), required: false);
-            SourceExpression.Validate(bodypreviousResponseId, nameof(bodypreviousResponseId), required: false);
-            SourceExpression.Validate(bodybackground, nameof(bodybackground), required: false);
-            SourceExpression.Validate(bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
-            SourceExpression.Validate(bodymaxToolCalls, nameof(bodymaxToolCalls), required: false);
-            SourceExpression.Validate(bodytextformattype, nameof(bodytextformattype), required: false);
-            SourceExpression.Validate(bodytools, nameof(bodytools), required: false);
-            SourceExpression.Validate(bodytoolChoice, nameof(bodytoolChoice), required: false);
-            SourceExpression.Validate(bodypromptversion, nameof(bodypromptversion), required: false);
-            SourceExpression.Validate(bodytruncation, nameof(bodytruncation), required: false);
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: false);
-            SourceExpression.Validate(bodyinclude, nameof(bodyinclude), required: false);
-            SourceExpression.Validate(bodyparallelToolCalls, nameof(bodyparallelToolCalls), required: false);
-            SourceExpression.Validate(bodystore, nameof(bodystore), required: false);
-            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/openai/responses";
@@ -516,7 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<JToken> SendActivityApplication([WorkflowExpression] Func<string> myApplication)
         {
-            SourceExpression.Validate(myApplication, nameof(myApplication), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/applications/{0}/protocols/activityprotocol", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(myApplication, 1));
@@ -538,7 +493,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<JToken> SendActivity([WorkflowExpression] Func<string> agentId)
         {
-            SourceExpression.Validate(agentId, nameof(agentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agents/{0}/endpoint/protocols/activityprotocol", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1));

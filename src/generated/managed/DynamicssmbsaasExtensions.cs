@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<JToken> InvokeMCP([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> configurationName, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(configurationName, nameof(configurationName), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/configuration/{2}/mcp", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationName, 2));
@@ -85,11 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -104,11 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<JToken> ExecuteProcedure([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> procedure, [WorkflowExpression] Func<object> parameters = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(procedure, nameof(procedure), required: true);
-            SourceExpression.Validate(parameters, nameof(parameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/procedures/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
@@ -124,8 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<GetAdaptiveCardV3Response> GetAdaptiveCard([WorkflowExpression] Func<string> targeturl, [WorkflowExpression] Func<targetappInput> targetapp)
         {
-            SourceExpression.Validate(targeturl, nameof(targeturl), required: true);
-            SourceExpression.Validate(targetapp, nameof(targetapp), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/adaptivecard/forurl/{0}/forapp/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(targeturl, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(targetapp, 1));
@@ -140,11 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<string> GetBlobFromNavigation([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> blobnavigationpath, [WorkflowExpression] Func<object> pathParameters = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(blobnavigationpath, nameof(blobnavigationpath), required: true);
-            SourceExpression.Validate(pathParameters, nameof(pathParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokeget", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blobnavigationpath, 2));
@@ -160,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<CompanyList> GetCompanies([WorkflowExpression] Func<string> bcenvironment)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2));
@@ -175,15 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<JToken> GetFirstItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<bodytypeOfOrderInput> bodytypeOfOrder = null, [WorkflowExpression] Func<string> bodyorderResultsBy = null, [WorkflowExpression] Func<bool> bodycontinueWithEmptyResultWhenNoRecordWasFound = null, [WorkflowExpression] Func<FilterGroup[]> bodyfilter = null, [WorkflowExpression] Func<bool> readOnlyConnection = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(bodytypeOfOrder, nameof(bodytypeOfOrder), required: false);
-            SourceExpression.Validate(bodyorderResultsBy, nameof(bodyorderResultsBy), required: false);
-            SourceExpression.Validate(bodycontinueWithEmptyResultWhenNoRecordWasFound, nameof(bodycontinueWithEmptyResultWhenNoRecordWasFound), required: false);
-            SourceExpression.Validate(bodyfilter, nameof(bodyfilter), required: false);
-            SourceExpression.Validate(readOnlyConnection, nameof(readOnlyConnection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/first", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -240,12 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> readOnlyConnection = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(readOnlyConnection, nameof(readOnlyConnection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -262,15 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<ItemsListV3> GetItems([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> readOnlyConnection = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(readOnlyConnection, nameof(readOnlyConnection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -295,10 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<GetUrlV3Response> GetUrl([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> page, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/pages/{2}/items/{3}/url", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(page, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -313,11 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IWorkflowAction PatchBlobFromNavigation([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> blobnavigationpath, [WorkflowExpression] Func<object> pathParameters = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(blobnavigationpath, nameof(blobnavigationpath), required: true);
-            SourceExpression.Validate(pathParameters, nameof(pathParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokepatch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blobnavigationpath, 2));
@@ -333,12 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<JToken> PatchItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -354,11 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
         public IBodyWorkflowAction<JToken> PostItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -376,9 +307,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
     {
         public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateBusinessEventSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> businessevent, [WorkflowExpression] Func<string> company = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(businessevent, nameof(businessevent), required: true);
-            SourceExpression.Validate(company, nameof(company), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/businessevents/{1}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessevent, 2));
@@ -403,16 +331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateCustomerApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
@@ -482,16 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalBatchApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
@@ -561,16 +469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalLineApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
@@ -640,16 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateItemApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
@@ -719,10 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnChangedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -744,10 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnDeletedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -769,10 +649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnNewItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -794,10 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnUpdatedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -819,24 +691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreatePurchaseDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null, [WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null, [WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFirstCondition = null, [WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineSecondCondition = null, [WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineThirdCondition = null, [WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFourthCondition = null, [WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(subscriptionheaderFirstCondition, nameof(subscriptionheaderFirstCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderFirstConditionIs, nameof(subscriptionheaderFirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionheaderSecondCondition, nameof(subscriptionheaderSecondCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderSecondConditionIs, nameof(subscriptionheaderSecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionheaderThirdCondition, nameof(subscriptionheaderThirdCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderThirdConditionIs, nameof(subscriptionheaderThirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionheaderFourthCondition, nameof(subscriptionheaderFourthCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderFourthConditionIs, nameof(subscriptionheaderFourthConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineFirstCondition, nameof(subscriptionlineFirstCondition), required: false);
-            SourceExpression.Validate(subscriptionlineFirstConditionIs, nameof(subscriptionlineFirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineSecondCondition, nameof(subscriptionlineSecondCondition), required: false);
-            SourceExpression.Validate(subscriptionlineSecondConditionIs, nameof(subscriptionlineSecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineThirdCondition, nameof(subscriptionlineThirdCondition), required: false);
-            SourceExpression.Validate(subscriptionlineThirdConditionIs, nameof(subscriptionlineThirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineFourthCondition, nameof(subscriptionlineFourthCondition), required: false);
-            SourceExpression.Validate(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
@@ -954,24 +808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateSalesDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null, [WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null, [WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFirstCondition = null, [WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineSecondCondition = null, [WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineThirdCondition = null, [WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFourthCondition = null, [WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(subscriptionheaderFirstCondition, nameof(subscriptionheaderFirstCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderFirstConditionIs, nameof(subscriptionheaderFirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionheaderSecondCondition, nameof(subscriptionheaderSecondCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderSecondConditionIs, nameof(subscriptionheaderSecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionheaderThirdCondition, nameof(subscriptionheaderThirdCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderThirdConditionIs, nameof(subscriptionheaderThirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionheaderFourthCondition, nameof(subscriptionheaderFourthCondition), required: false);
-            SourceExpression.Validate(subscriptionheaderFourthConditionIs, nameof(subscriptionheaderFourthConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineFirstCondition, nameof(subscriptionlineFirstCondition), required: false);
-            SourceExpression.Validate(subscriptionlineFirstConditionIs, nameof(subscriptionlineFirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineSecondCondition, nameof(subscriptionlineSecondCondition), required: false);
-            SourceExpression.Validate(subscriptionlineSecondConditionIs, nameof(subscriptionlineSecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineThirdCondition, nameof(subscriptionlineThirdCondition), required: false);
-            SourceExpression.Validate(subscriptionlineThirdConditionIs, nameof(subscriptionlineThirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionlineFourthCondition, nameof(subscriptionlineFourthCondition), required: false);
-            SourceExpression.Validate(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
@@ -1089,16 +925,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateVendorApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));

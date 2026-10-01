@@ -42,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
         public IWorkflowAction CreateScheduleTaskRun([WorkflowExpression] Func<string> bodyrobotId, [WorkflowExpression] Func<string> bodytaskFileId)
         {
-            SourceExpression.Validate(bodyrobotId, nameof(bodyrobotId), required: true);
-            SourceExpression.Validate(bodytaskFileId, nameof(bodytaskFileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/task-schedules";

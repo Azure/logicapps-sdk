@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> SendEvent([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<SendEventInputEventDataType> eventData, [WorkflowExpression] Func<string> partitionKey = null)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(eventData, nameof(eventData), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -43,9 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> SendEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<SendEventsInputEventDatasTypeItem[]> eventDatas, [WorkflowExpression] Func<string> partitionKey = null)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(eventDatas, nameof(eventDatas), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -70,8 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> ReplicateEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<bool> skipAlreadyReplicated)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -93,8 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     {
         public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> consumerGroup = null)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -117,8 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
         public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> consumerGroup = null)
         {
-            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            SourceExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

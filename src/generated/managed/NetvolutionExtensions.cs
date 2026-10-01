@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction GetOrder([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> since)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(since, nameof(since), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdp/orders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
@@ -45,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction GetContactIdFromSuppressionList([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> listName)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(listName, nameof(listName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdp/suppression/check";
@@ -63,9 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction PutContactIdToSuppresionList([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<string> timeSpan)
         {
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
-            SourceExpression.Validate(listName, nameof(listName), required: true);
-            SourceExpression.Validate(timeSpan, nameof(timeSpan), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdp/suppression/add";
@@ -83,9 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction SendMail([WorkflowExpression] Func<string> cdpContactId = null, [WorkflowExpression] Func<string> languageId = null, [WorkflowExpression] Func<string> emailTemplate = null)
         {
-            SourceExpression.Validate(cdpContactId, nameof(cdpContactId), required: false);
-            SourceExpression.Validate(languageId, nameof(languageId), required: false);
-            SourceExpression.Validate(emailTemplate, nameof(emailTemplate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdp/mail/send";
@@ -106,9 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<CheckEventResponse> CheckEvent([WorkflowExpression] Func<eventNameInput> eventName = null, [WorkflowExpression] Func<string> contactId = null, [WorkflowExpression] Func<string> since = null)
         {
-            SourceExpression.Validate(eventName, nameof(eventName), required: false);
-            SourceExpression.Validate(contactId, nameof(contactId), required: false);
-            SourceExpression.Validate(since, nameof(since), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdp/events/checkevent";
@@ -129,7 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<GetWishListResponse> GetWishList([WorkflowExpression] Func<string> since)
         {
-            SourceExpression.Validate(since, nameof(since), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdp/wishlist/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(since, 1));
@@ -146,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     {
         public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent([WorkflowExpression] Func<eventNameInput> eventName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(eventName, nameof(eventName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/cdp/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventName, 1));
@@ -160,7 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
         public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment([WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/cdp/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/urls/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport([WorkflowExpression] Func<string> domain)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/domains/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3([WorkflowExpression] Func<string> ip)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/ip_addresses/connectorV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/analyses/connectorV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -74,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/files/connectorV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         public IBodyWorkflowAction<Convert2ModernPageResponse> Convert2ModernPage([WorkflowExpression] Func<string> requestfileContent, [WorkflowExpression] Func<string> requestsiteUrl, [WorkflowExpression] Func<string> requestpageTitle, [WorkflowExpression] Func<string> requestauthor, [WorkflowExpression] Func<string> requestfolderPath = null, [WorkflowExpression] Func<string> requestbannerImageUrl = null)
         {
-            SourceExpression.Validate(requestfileContent, nameof(requestfileContent), required: true);
-            SourceExpression.Validate(requestsiteUrl, nameof(requestsiteUrl), required: true);
-            SourceExpression.Validate(requestpageTitle, nameof(requestpageTitle), required: true);
-            SourceExpression.Validate(requestauthor, nameof(requestauthor), required: true);
-            SourceExpression.Validate(requestfolderPath, nameof(requestfolderPath), required: false);
-            SourceExpression.Validate(requestbannerImageUrl, nameof(requestbannerImageUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ConvertWord2ModernPage";
@@ -60,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         public IBodyWorkflowAction<Convert2NonModernPageResponse> Convert2NonModernPage([WorkflowExpression] Func<string> requestfileContent)
         {
-            SourceExpression.Validate(requestfileContent, nameof(requestfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ConvertWord2StaticHMTLPage";
@@ -83,9 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         public IBodyWorkflowAction<ExportList2PDFResponse> ExportList2PDF([WorkflowExpression] Func<string> requestdocumentTitle, [WorkflowExpression] Func<string> requestdata, [WorkflowExpression] Func<string> requestfieldArray)
         {
-            SourceExpression.Validate(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
-            SourceExpression.Validate(requestdata, nameof(requestdata), required: true);
-            SourceExpression.Validate(requestfieldArray, nameof(requestfieldArray), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Export2PDFFromFlow";
@@ -112,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         public IBodyWorkflowAction<ExtractWordImagesResponse> ExtractWordImages([WorkflowExpression] Func<string> requestfileContent)
         {
-            SourceExpression.Validate(requestfileContent, nameof(requestfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Extractworddocimages";
@@ -135,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         public IBodyWorkflowAction<PDFMergeResponse> PDFMerge([WorkflowExpression] Func<string> requestfileContentArray)
         {
-            SourceExpression.Validate(requestfileContentArray, nameof(requestfileContentArray), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/PDFMerge";
@@ -158,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         public IBodyWorkflowAction<WordMergeResponse> WordMerge([WorkflowExpression] Func<string> requestfileContentArray)
         {
-            SourceExpression.Validate(requestfileContentArray, nameof(requestfileContentArray), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WordMerge";
@@ -181,8 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
         public IBodyWorkflowAction<WordtopdfResponse> Wordtopdf([WorkflowExpression] Func<string> requestfileContent, [WorkflowExpression] Func<string> requestfileName)
         {
-            SourceExpression.Validate(requestfileContent, nameof(requestfileContent), required: true);
-            SourceExpression.Validate(requestfileName, nameof(requestfileName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Wordtopdf";

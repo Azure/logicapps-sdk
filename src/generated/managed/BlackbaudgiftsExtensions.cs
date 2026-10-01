@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<ConstituentApiGivingSummaryRead> GetConstituentFirstGift([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/givingsummary/first", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<ConstituentApiGivingSummaryRead> GetConstituentGreatestGift([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/givingsummary/greatest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<ConstituentApiGivingSummaryRead> GetConstituentLatestGift([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/givingsummary/latest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<ConstituentApiLifetimeGivingRead> GetConstituentLifetimeGiving([WorkflowExpression] Func<string> constituentId)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/givingsummary/lifetimegiving", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
@@ -74,10 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditGiftAcknowledgement([WorkflowExpression] Func<string> acknowledgementId, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyletter = null)
         {
-            SourceExpression.Validate(acknowledgementId, nameof(acknowledgementId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyletter, nameof(bodyletter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/giftacknowledgements/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(acknowledgementId, 1));
@@ -116,11 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditGiftReceipt([WorkflowExpression] Func<string> receiptId, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<double> bodyamountamount = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<int> bodynumber = null)
         {
-            SourceExpression.Validate(receiptId, nameof(receiptId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyamountamount, nameof(bodyamountamount), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/giftreceipts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(receiptId, 1));
@@ -173,24 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiApiCollectionOfGiftRead> ListGifts([WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<string> giftType = null, [WorkflowExpression] Func<string> constituentId = null, [WorkflowExpression] Func<string> campaignId = null, [WorkflowExpression] Func<string> fundId = null, [WorkflowExpression] Func<string> appealId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> startGiftDate = null, [WorkflowExpression] Func<string> endGiftDate = null, [WorkflowExpression] Func<double> startGiftAmount = null, [WorkflowExpression] Func<double> endGiftAmount = null, [WorkflowExpression] Func<string> postStatus = null, [WorkflowExpression] Func<string> receiptStatus = null, [WorkflowExpression] Func<string> acknowledgementStatus = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: false);
-            SourceExpression.Validate(giftType, nameof(giftType), required: false);
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: false);
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: false);
-            SourceExpression.Validate(fundId, nameof(fundId), required: false);
-            SourceExpression.Validate(appealId, nameof(appealId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(startGiftDate, nameof(startGiftDate), required: false);
-            SourceExpression.Validate(endGiftDate, nameof(endGiftDate), required: false);
-            SourceExpression.Validate(startGiftAmount, nameof(startGiftAmount), required: false);
-            SourceExpression.Validate(endGiftAmount, nameof(endGiftAmount), required: false);
-            SourceExpression.Validate(postStatus, nameof(postStatus), required: false);
-            SourceExpression.Validate(receiptStatus, nameof(receiptStatus), required: false);
-            SourceExpression.Validate(acknowledgementStatus, nameof(acknowledgementStatus), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift/v1/gifts";
@@ -241,34 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiCreatedGift> CreateGift([WorkflowExpression] Func<string> bodyconstituentId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<GiftApiGiftSplitAdd[]> bodysplits, [WorkflowExpression] Func<bodyreceiptsreceiptStatusInput> bodyreceiptsreceiptStatus, [WorkflowExpression] Func<double> bodyreceiptsamountreceiptAmount, [WorkflowExpression] Func<double> bodyamountamount = null, [WorkflowExpression] Func<bodypaymentspaymentMethodInput> bodypaymentspaymentMethod = null, [WorkflowExpression] Func<string> bodypaymentscheckNumber = null, [WorkflowExpression] Func<int> bodypaymentscheckDateday = null, [WorkflowExpression] Func<int> bodypaymentscheckDatemonth = null, [WorkflowExpression] Func<int> bodypaymentscheckDateyear = null, [WorkflowExpression] Func<string> bodypaymentsreference = null, [WorkflowExpression] Func<int> bodypaymentsreferenceDateday = null, [WorkflowExpression] Func<int> bodypaymentsreferenceDatemonth = null, [WorkflowExpression] Func<int> bodypaymentsreferenceDateyear = null, [WorkflowExpression] Func<bool> bodyisAnonymous = null, [WorkflowExpression] Func<string> bodysubtype = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<bool> bodyuseFundraiserCredits = null, [WorkflowExpression] Func<bool> bodyuseSoftCredits = null, [WorkflowExpression] Func<string> bodyconstituency = null, [WorkflowExpression] Func<string> bodybatchPrefix = null, [WorkflowExpression] Func<string> bodybatchNumber = null, [WorkflowExpression] Func<bodypostStatusInput> bodypostStatus = null, [WorkflowExpression] Func<string> bodypostDate = null, [WorkflowExpression] Func<string> bodyreceiptsreceiptDate = null)
         {
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodysplits, nameof(bodysplits), required: true);
-            SourceExpression.Validate(bodyreceiptsreceiptStatus, nameof(bodyreceiptsreceiptStatus), required: true);
-            SourceExpression.Validate(bodyreceiptsamountreceiptAmount, nameof(bodyreceiptsamountreceiptAmount), required: true);
-            SourceExpression.Validate(bodyamountamount, nameof(bodyamountamount), required: false);
-            SourceExpression.Validate(bodypaymentspaymentMethod, nameof(bodypaymentspaymentMethod), required: false);
-            SourceExpression.Validate(bodypaymentscheckNumber, nameof(bodypaymentscheckNumber), required: false);
-            SourceExpression.Validate(bodypaymentscheckDateday, nameof(bodypaymentscheckDateday), required: false);
-            SourceExpression.Validate(bodypaymentscheckDatemonth, nameof(bodypaymentscheckDatemonth), required: false);
-            SourceExpression.Validate(bodypaymentscheckDateyear, nameof(bodypaymentscheckDateyear), required: false);
-            SourceExpression.Validate(bodypaymentsreference, nameof(bodypaymentsreference), required: false);
-            SourceExpression.Validate(bodypaymentsreferenceDateday, nameof(bodypaymentsreferenceDateday), required: false);
-            SourceExpression.Validate(bodypaymentsreferenceDatemonth, nameof(bodypaymentsreferenceDatemonth), required: false);
-            SourceExpression.Validate(bodypaymentsreferenceDateyear, nameof(bodypaymentsreferenceDateyear), required: false);
-            SourceExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: false);
-            SourceExpression.Validate(bodysubtype, nameof(bodysubtype), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodyuseFundraiserCredits, nameof(bodyuseFundraiserCredits), required: false);
-            SourceExpression.Validate(bodyuseSoftCredits, nameof(bodyuseSoftCredits), required: false);
-            SourceExpression.Validate(bodyconstituency, nameof(bodyconstituency), required: false);
-            SourceExpression.Validate(bodybatchPrefix, nameof(bodybatchPrefix), required: false);
-            SourceExpression.Validate(bodybatchNumber, nameof(bodybatchNumber), required: false);
-            SourceExpression.Validate(bodypostStatus, nameof(bodypostStatus), required: false);
-            SourceExpression.Validate(bodypostDate, nameof(bodypostDate), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptDate, nameof(bodyreceiptsreceiptDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift/v1/gifts";
@@ -493,7 +434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiGiftRead> GetGift([WorkflowExpression] Func<string> giftId)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/gifts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftId, 1));
@@ -508,7 +448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiApiCollectionOfGiftAttachmentRead> ListGiftAttachments([WorkflowExpression] Func<string> giftId)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/gifts/{0}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftId, 1));
@@ -523,7 +462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiApiCollectionOfGiftCustomFieldRead> ListGiftCustomFields([WorkflowExpression] Func<string> giftId)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/gifts/{0}/customfields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftId, 1));
@@ -538,15 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiCreatedGiftAttachment> CreateGiftAttachment([WorkflowExpression] Func<string> bodygiftId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodythumbnailId = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(bodygiftId, nameof(bodygiftId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            SourceExpression.Validate(bodythumbnailId, nameof(bodythumbnailId), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift/v1/gifts/attachments";
@@ -613,11 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditGiftAttachment([WorkflowExpression] Func<string> attachmentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/gifts/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -662,11 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiCreatedGiftCustomField> CreateGiftCustomField([WorkflowExpression] Func<string> bodygiftId, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(bodygiftId, nameof(bodygiftId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift/v1/gifts/customfields";
@@ -709,11 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditGiftCustomField([WorkflowExpression] Func<string> customFieldId, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(customFieldId, nameof(customFieldId), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/gifts/customfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
@@ -758,33 +672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiBatchGiftAddResults> AddGiftToBatch([WorkflowExpression] Func<string> batchId, [WorkflowExpression] Func<double> bodygiftsamountamount, [WorkflowExpression] Func<bodygiftspaymentspaymentMethodInput> bodygiftspaymentspaymentMethod, [WorkflowExpression] Func<bodygiftsreceiptsreceiptStatusInput> bodygiftsreceiptsreceiptStatus, [WorkflowExpression] Func<double> bodygiftsreceiptsamountreceiptAmount, [WorkflowExpression] Func<string> bodygiftsconstituentId = null, [WorkflowExpression] Func<string> bodygiftsdate = null, [WorkflowExpression] Func<bodygiftstypeInput> bodygiftstype = null, [WorkflowExpression] Func<GiftApiVirtualBatchGiftSplitAdd[]> bodygiftssplits = null, [WorkflowExpression] Func<string> bodygiftspaymentscheckNumber = null, [WorkflowExpression] Func<int> bodygiftspaymentscheckDateday = null, [WorkflowExpression] Func<int> bodygiftspaymentscheckDatemonth = null, [WorkflowExpression] Func<int> bodygiftspaymentscheckDateyear = null, [WorkflowExpression] Func<string> bodygiftspaymentsreference = null, [WorkflowExpression] Func<int> bodygiftspaymentsreferenceDateday = null, [WorkflowExpression] Func<int> bodygiftspaymentsreferenceDatemonth = null, [WorkflowExpression] Func<int> bodygiftspaymentsreferenceDateyear = null, [WorkflowExpression] Func<bool> bodygiftsisAnonymous = null, [WorkflowExpression] Func<string> bodygiftssubtype = null, [WorkflowExpression] Func<string> bodygiftscomment = null, [WorkflowExpression] Func<string> bodygiftslookupId = null, [WorkflowExpression] Func<bool> bodygiftsuseFundraiserCredits = null, [WorkflowExpression] Func<bool> bodygiftsuseSoftCredits = null, [WorkflowExpression] Func<string> bodygiftsconstituency = null, [WorkflowExpression] Func<bodygiftspostStatusInput> bodygiftspostStatus = null, [WorkflowExpression] Func<string> bodygiftspostDate = null, [WorkflowExpression] Func<string> bodygiftsreceiptsreceiptDate = null)
         {
-            SourceExpression.Validate(batchId, nameof(batchId), required: true);
-            SourceExpression.Validate(bodygiftsamountamount, nameof(bodygiftsamountamount), required: true);
-            SourceExpression.Validate(bodygiftspaymentspaymentMethod, nameof(bodygiftspaymentspaymentMethod), required: true);
-            SourceExpression.Validate(bodygiftsreceiptsreceiptStatus, nameof(bodygiftsreceiptsreceiptStatus), required: true);
-            SourceExpression.Validate(bodygiftsreceiptsamountreceiptAmount, nameof(bodygiftsreceiptsamountreceiptAmount), required: true);
-            SourceExpression.Validate(bodygiftsconstituentId, nameof(bodygiftsconstituentId), required: false);
-            SourceExpression.Validate(bodygiftsdate, nameof(bodygiftsdate), required: false);
-            SourceExpression.Validate(bodygiftstype, nameof(bodygiftstype), required: false);
-            SourceExpression.Validate(bodygiftssplits, nameof(bodygiftssplits), required: false);
-            SourceExpression.Validate(bodygiftspaymentscheckNumber, nameof(bodygiftspaymentscheckNumber), required: false);
-            SourceExpression.Validate(bodygiftspaymentscheckDateday, nameof(bodygiftspaymentscheckDateday), required: false);
-            SourceExpression.Validate(bodygiftspaymentscheckDatemonth, nameof(bodygiftspaymentscheckDatemonth), required: false);
-            SourceExpression.Validate(bodygiftspaymentscheckDateyear, nameof(bodygiftspaymentscheckDateyear), required: false);
-            SourceExpression.Validate(bodygiftspaymentsreference, nameof(bodygiftspaymentsreference), required: false);
-            SourceExpression.Validate(bodygiftspaymentsreferenceDateday, nameof(bodygiftspaymentsreferenceDateday), required: false);
-            SourceExpression.Validate(bodygiftspaymentsreferenceDatemonth, nameof(bodygiftspaymentsreferenceDatemonth), required: false);
-            SourceExpression.Validate(bodygiftspaymentsreferenceDateyear, nameof(bodygiftspaymentsreferenceDateyear), required: false);
-            SourceExpression.Validate(bodygiftsisAnonymous, nameof(bodygiftsisAnonymous), required: false);
-            SourceExpression.Validate(bodygiftssubtype, nameof(bodygiftssubtype), required: false);
-            SourceExpression.Validate(bodygiftscomment, nameof(bodygiftscomment), required: false);
-            SourceExpression.Validate(bodygiftslookupId, nameof(bodygiftslookupId), required: false);
-            SourceExpression.Validate(bodygiftsuseFundraiserCredits, nameof(bodygiftsuseFundraiserCredits), required: false);
-            SourceExpression.Validate(bodygiftsuseSoftCredits, nameof(bodygiftsuseSoftCredits), required: false);
-            SourceExpression.Validate(bodygiftsconstituency, nameof(bodygiftsconstituency), required: false);
-            SourceExpression.Validate(bodygiftspostStatus, nameof(bodygiftspostStatus), required: false);
-            SourceExpression.Validate(bodygiftspostDate, nameof(bodygiftspostDate), required: false);
-            SourceExpression.Validate(bodygiftsreceiptsreceiptDate, nameof(bodygiftsreceiptsreceiptDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gift/v1/virtual/giftbatches/{0}/gifts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(batchId, 1));
@@ -1003,13 +890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftBatchApiApiCollectionOfGiftBatch> ListGiftBatches([WorkflowExpression] Func<string> batchNumber = null, [WorkflowExpression] Func<bool> approved = null, [WorkflowExpression] Func<bool> hasExceptions = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<string> createdBy = null)
         {
-            SourceExpression.Validate(batchNumber, nameof(batchNumber), required: false);
-            SourceExpression.Validate(approved, nameof(approved), required: false);
-            SourceExpression.Validate(hasExceptions, nameof(hasExceptions), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
-            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift-batch/v1/giftbatches";
@@ -1038,10 +918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftBatchApiCreatedBatch> CreateGiftBatch([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyexpectedNumber = null, [WorkflowExpression] Func<double> bodyexpectedTotal = null, [WorkflowExpression] Func<string> bodybatchNumber = null)
         {
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyexpectedNumber, nameof(bodyexpectedNumber), required: false);
-            SourceExpression.Validate(bodyexpectedTotal, nameof(bodyexpectedTotal), required: false);
-            SourceExpression.Validate(bodybatchNumber, nameof(bodybatchNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gift-batch/v1/giftbatches";
@@ -1086,7 +962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<Gift2ApiPledgeInstallmentCollection> ListPledgeInstallments([WorkflowExpression] Func<string> giftId)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gft-gifts/v2/gifts/{0}/installments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftId, 1));
@@ -1101,7 +976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<Gift2ApiPledgePaymentCollection> ListPledgePayments([WorkflowExpression] Func<string> giftId)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gft-gifts/v2/gifts/{0}/pledgepayments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftId, 1));
@@ -1116,17 +990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction SellStockGift([WorkflowExpression] Func<string> giftId, [WorkflowExpression] Func<string> bodysaleDate, [WorkflowExpression] Func<double> bodysaleValue, [WorkflowExpression] Func<double> bodybrokerFee = null, [WorkflowExpression] Func<bodypostStatusInput> bodypostStatus = null, [WorkflowExpression] Func<string> bodypostDate = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodystockIssuerissuer = null, [WorkflowExpression] Func<string> bodystockIssuerissuerSymbol = null, [WorkflowExpression] Func<int> bodystockIssuernumberOfUnits = null, [WorkflowExpression] Func<double> bodystockIssuermedianPricePerUnit = null)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
-            SourceExpression.Validate(bodysaleDate, nameof(bodysaleDate), required: true);
-            SourceExpression.Validate(bodysaleValue, nameof(bodysaleValue), required: true);
-            SourceExpression.Validate(bodybrokerFee, nameof(bodybrokerFee), required: false);
-            SourceExpression.Validate(bodypostStatus, nameof(bodypostStatus), required: false);
-            SourceExpression.Validate(bodypostDate, nameof(bodypostDate), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodystockIssuerissuer, nameof(bodystockIssuerissuer), required: false);
-            SourceExpression.Validate(bodystockIssuerissuerSymbol, nameof(bodystockIssuerissuerSymbol), required: false);
-            SourceExpression.Validate(bodystockIssuernumberOfUnits, nameof(bodystockIssuernumberOfUnits), required: false);
-            SourceExpression.Validate(bodystockIssuermedianPricePerUnit, nameof(bodystockIssuermedianPricePerUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gft-gifts/v2/gifts/{0}/stock/sell", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftId, 1));
@@ -1207,39 +1070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiCreatedGift> CreatePledge([WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<Gift2ApiNewGiftSplit[]> bodysplits, [WorkflowExpression] Func<bodyreceiptsreceiptStatusInput> bodyreceiptsreceiptStatus, [WorkflowExpression] Func<double> bodyreceiptsreceiptAmountreceiptAmount, [WorkflowExpression] Func<bodyacknowledgementsacknowledgeStatusInput> bodyacknowledgementsacknowledgeStatus, [WorkflowExpression] Func<string> bodyconstituentconstituentId = null, [WorkflowExpression] Func<double> bodyamountamount = null, [WorkflowExpression] Func<bodyschedulefrequencyInput> bodyschedulefrequency = null, [WorkflowExpression] Func<int> bodyscheduleOfInstallments = null, [WorkflowExpression] Func<string> bodyschedulestartDate = null, [WorkflowExpression] Func<bodypaymentspaymentMethodInput> bodypaymentspaymentMethod = null, [WorkflowExpression] Func<string> bodypaymentscheckNumber = null, [WorkflowExpression] Func<string> bodypaymentsreference = null, [WorkflowExpression] Func<bool> bodysendReminder = null, [WorkflowExpression] Func<bool> bodyisAnonymous = null, [WorkflowExpression] Func<string> bodygiftSubtypesubtype = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<string> bodygiftCodegiftCode = null, [WorkflowExpression] Func<string> bodygiftConstituencyconstituency = null, [WorkflowExpression] Func<bodypostStatusInput> bodypostStatus = null, [WorkflowExpression] Func<string> bodypostDate = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<int> bodygiftStatusDateday = null, [WorkflowExpression] Func<int> bodygiftStatusDatemonth = null, [WorkflowExpression] Func<int> bodygiftStatusDateyear = null, [WorkflowExpression] Func<string> bodyreceiptsreceiptDate = null, [WorkflowExpression] Func<int> bodyreceiptsreceiptNumber = null, [WorkflowExpression] Func<string> bodyreceiptsreceiptStackreceiptStack = null, [WorkflowExpression] Func<string> bodyacknowledgementsacknowledgeDate = null, [WorkflowExpression] Func<string> bodyacknowledgementsletterletter = null, [WorkflowExpression] Func<Gift2ApiNewRecognitionCredit[]> bodycredits = null, [WorkflowExpression] Func<Gift2ApiNewInstallment[]> bodyinstallments = null)
         {
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodysplits, nameof(bodysplits), required: true);
-            SourceExpression.Validate(bodyreceiptsreceiptStatus, nameof(bodyreceiptsreceiptStatus), required: true);
-            SourceExpression.Validate(bodyreceiptsreceiptAmountreceiptAmount, nameof(bodyreceiptsreceiptAmountreceiptAmount), required: true);
-            SourceExpression.Validate(bodyacknowledgementsacknowledgeStatus, nameof(bodyacknowledgementsacknowledgeStatus), required: true);
-            SourceExpression.Validate(bodyconstituentconstituentId, nameof(bodyconstituentconstituentId), required: false);
-            SourceExpression.Validate(bodyamountamount, nameof(bodyamountamount), required: false);
-            SourceExpression.Validate(bodyschedulefrequency, nameof(bodyschedulefrequency), required: false);
-            SourceExpression.Validate(bodyscheduleOfInstallments, nameof(bodyscheduleOfInstallments), required: false);
-            SourceExpression.Validate(bodyschedulestartDate, nameof(bodyschedulestartDate), required: false);
-            SourceExpression.Validate(bodypaymentspaymentMethod, nameof(bodypaymentspaymentMethod), required: false);
-            SourceExpression.Validate(bodypaymentscheckNumber, nameof(bodypaymentscheckNumber), required: false);
-            SourceExpression.Validate(bodypaymentsreference, nameof(bodypaymentsreference), required: false);
-            SourceExpression.Validate(bodysendReminder, nameof(bodysendReminder), required: false);
-            SourceExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: false);
-            SourceExpression.Validate(bodygiftSubtypesubtype, nameof(bodygiftSubtypesubtype), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodygiftCodegiftCode, nameof(bodygiftCodegiftCode), required: false);
-            SourceExpression.Validate(bodygiftConstituencyconstituency, nameof(bodygiftConstituencyconstituency), required: false);
-            SourceExpression.Validate(bodypostStatus, nameof(bodypostStatus), required: false);
-            SourceExpression.Validate(bodypostDate, nameof(bodypostDate), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodygiftStatusDateday, nameof(bodygiftStatusDateday), required: false);
-            SourceExpression.Validate(bodygiftStatusDatemonth, nameof(bodygiftStatusDatemonth), required: false);
-            SourceExpression.Validate(bodygiftStatusDateyear, nameof(bodygiftStatusDateyear), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptDate, nameof(bodyreceiptsreceiptDate), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptNumber, nameof(bodyreceiptsreceiptNumber), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptStackreceiptStack, nameof(bodyreceiptsreceiptStackreceiptStack), required: false);
-            SourceExpression.Validate(bodyacknowledgementsacknowledgeDate, nameof(bodyacknowledgementsacknowledgeDate), required: false);
-            SourceExpression.Validate(bodyacknowledgementsletterletter, nameof(bodyacknowledgementsletterletter), required: false);
-            SourceExpression.Validate(bodycredits, nameof(bodycredits), required: false);
-            SourceExpression.Validate(bodyinstallments, nameof(bodyinstallments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gft-gifts/v2/virtual/pledges";
@@ -1556,31 +1386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiCreatedGift> CreatePledgePayment([WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<Gift2ApiNewGiftSplit[]> bodysplits, [WorkflowExpression] Func<Gift2ApiNewInstallmentPayment[]> bodyapplyTo, [WorkflowExpression] Func<bodyreceiptsreceiptStatusInput> bodyreceiptsreceiptStatus, [WorkflowExpression] Func<double> bodyreceiptsreceiptAmountreceiptAmount, [WorkflowExpression] Func<bodyacknowledgementsacknowledgeStatusInput> bodyacknowledgementsacknowledgeStatus, [WorkflowExpression] Func<string> bodyconstituentconstituentId = null, [WorkflowExpression] Func<double> bodyamountamount = null, [WorkflowExpression] Func<bodypaymentspaymentMethodInput> bodypaymentspaymentMethod = null, [WorkflowExpression] Func<string> bodypaymentscheckNumber = null, [WorkflowExpression] Func<string> bodypaymentsreference = null, [WorkflowExpression] Func<bool> bodyisAnonymous = null, [WorkflowExpression] Func<string> bodygiftSubtypesubtype = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<string> bodygiftCodegiftCode = null, [WorkflowExpression] Func<string> bodygiftConstituencyconstituency = null, [WorkflowExpression] Func<bodypostStatusInput> bodypostStatus = null, [WorkflowExpression] Func<string> bodypostDate = null, [WorkflowExpression] Func<string> bodyreceiptsreceiptDate = null, [WorkflowExpression] Func<int> bodyreceiptsreceiptNumber = null, [WorkflowExpression] Func<string> bodyreceiptsreceiptStackreceiptStack = null, [WorkflowExpression] Func<string> bodyacknowledgementsacknowledgeDate = null, [WorkflowExpression] Func<string> bodyacknowledgementsletterletter = null, [WorkflowExpression] Func<Gift2ApiNewRecognitionCredit[]> bodycredits = null)
         {
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodysplits, nameof(bodysplits), required: true);
-            SourceExpression.Validate(bodyapplyTo, nameof(bodyapplyTo), required: true);
-            SourceExpression.Validate(bodyreceiptsreceiptStatus, nameof(bodyreceiptsreceiptStatus), required: true);
-            SourceExpression.Validate(bodyreceiptsreceiptAmountreceiptAmount, nameof(bodyreceiptsreceiptAmountreceiptAmount), required: true);
-            SourceExpression.Validate(bodyacknowledgementsacknowledgeStatus, nameof(bodyacknowledgementsacknowledgeStatus), required: true);
-            SourceExpression.Validate(bodyconstituentconstituentId, nameof(bodyconstituentconstituentId), required: false);
-            SourceExpression.Validate(bodyamountamount, nameof(bodyamountamount), required: false);
-            SourceExpression.Validate(bodypaymentspaymentMethod, nameof(bodypaymentspaymentMethod), required: false);
-            SourceExpression.Validate(bodypaymentscheckNumber, nameof(bodypaymentscheckNumber), required: false);
-            SourceExpression.Validate(bodypaymentsreference, nameof(bodypaymentsreference), required: false);
-            SourceExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: false);
-            SourceExpression.Validate(bodygiftSubtypesubtype, nameof(bodygiftSubtypesubtype), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodygiftCodegiftCode, nameof(bodygiftCodegiftCode), required: false);
-            SourceExpression.Validate(bodygiftConstituencyconstituency, nameof(bodygiftConstituencyconstituency), required: false);
-            SourceExpression.Validate(bodypostStatus, nameof(bodypostStatus), required: false);
-            SourceExpression.Validate(bodypostDate, nameof(bodypostDate), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptDate, nameof(bodyreceiptsreceiptDate), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptNumber, nameof(bodyreceiptsreceiptNumber), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptStackreceiptStack, nameof(bodyreceiptsreceiptStackreceiptStack), required: false);
-            SourceExpression.Validate(bodyacknowledgementsacknowledgeDate, nameof(bodyacknowledgementsacknowledgeDate), required: false);
-            SourceExpression.Validate(bodyacknowledgementsletterletter, nameof(bodyacknowledgementsletterletter), required: false);
-            SourceExpression.Validate(bodycredits, nameof(bodycredits), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gft-gifts/v2/virtual/pledgepayments";
@@ -1829,34 +1634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<GiftApiCreatedGift> CreateStock([WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<Gift2ApiNewGiftSplit[]> bodysplits, [WorkflowExpression] Func<bodyreceiptsreceiptStatusInput> bodyreceiptsreceiptStatus, [WorkflowExpression] Func<double> bodyreceiptsreceiptAmountreceiptAmount, [WorkflowExpression] Func<bodyacknowledgementsacknowledgeStatusInput> bodyacknowledgementsacknowledgeStatus, [WorkflowExpression] Func<string> bodyconstituentconstituentId = null, [WorkflowExpression] Func<double> bodyamountamount = null, [WorkflowExpression] Func<string> bodyissuerDetailsissuer = null, [WorkflowExpression] Func<string> bodyissuerDetailsissuerSymbol = null, [WorkflowExpression] Func<int> bodyissuerDetailsnumberOfUnits = null, [WorkflowExpression] Func<double> bodyissuerDetailsmedianPricePerUnit = null, [WorkflowExpression] Func<bodypaymentspaymentMethodInput> bodypaymentspaymentMethod = null, [WorkflowExpression] Func<string> bodypaymentscheckNumber = null, [WorkflowExpression] Func<string> bodypaymentsreference = null, [WorkflowExpression] Func<bool> bodyisAnonymous = null, [WorkflowExpression] Func<string> bodygiftSubtypesubtype = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodylookupId = null, [WorkflowExpression] Func<string> bodygiftCodegiftCode = null, [WorkflowExpression] Func<string> bodygiftConstituencyconstituency = null, [WorkflowExpression] Func<bodypostStatusInput> bodypostStatus = null, [WorkflowExpression] Func<string> bodypostDate = null, [WorkflowExpression] Func<string> bodyreceiptsreceiptDate = null, [WorkflowExpression] Func<int> bodyreceiptsreceiptNumber = null, [WorkflowExpression] Func<string> bodyreceiptsreceiptStackreceiptStack = null, [WorkflowExpression] Func<string> bodyacknowledgementsacknowledgeDate = null, [WorkflowExpression] Func<string> bodyacknowledgementsletterletter = null, [WorkflowExpression] Func<Gift2ApiNewRecognitionCredit[]> bodycredits = null)
         {
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodysplits, nameof(bodysplits), required: true);
-            SourceExpression.Validate(bodyreceiptsreceiptStatus, nameof(bodyreceiptsreceiptStatus), required: true);
-            SourceExpression.Validate(bodyreceiptsreceiptAmountreceiptAmount, nameof(bodyreceiptsreceiptAmountreceiptAmount), required: true);
-            SourceExpression.Validate(bodyacknowledgementsacknowledgeStatus, nameof(bodyacknowledgementsacknowledgeStatus), required: true);
-            SourceExpression.Validate(bodyconstituentconstituentId, nameof(bodyconstituentconstituentId), required: false);
-            SourceExpression.Validate(bodyamountamount, nameof(bodyamountamount), required: false);
-            SourceExpression.Validate(bodyissuerDetailsissuer, nameof(bodyissuerDetailsissuer), required: false);
-            SourceExpression.Validate(bodyissuerDetailsissuerSymbol, nameof(bodyissuerDetailsissuerSymbol), required: false);
-            SourceExpression.Validate(bodyissuerDetailsnumberOfUnits, nameof(bodyissuerDetailsnumberOfUnits), required: false);
-            SourceExpression.Validate(bodyissuerDetailsmedianPricePerUnit, nameof(bodyissuerDetailsmedianPricePerUnit), required: false);
-            SourceExpression.Validate(bodypaymentspaymentMethod, nameof(bodypaymentspaymentMethod), required: false);
-            SourceExpression.Validate(bodypaymentscheckNumber, nameof(bodypaymentscheckNumber), required: false);
-            SourceExpression.Validate(bodypaymentsreference, nameof(bodypaymentsreference), required: false);
-            SourceExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: false);
-            SourceExpression.Validate(bodygiftSubtypesubtype, nameof(bodygiftSubtypesubtype), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodylookupId, nameof(bodylookupId), required: false);
-            SourceExpression.Validate(bodygiftCodegiftCode, nameof(bodygiftCodegiftCode), required: false);
-            SourceExpression.Validate(bodygiftConstituencyconstituency, nameof(bodygiftConstituencyconstituency), required: false);
-            SourceExpression.Validate(bodypostStatus, nameof(bodypostStatus), required: false);
-            SourceExpression.Validate(bodypostDate, nameof(bodypostDate), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptDate, nameof(bodyreceiptsreceiptDate), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptNumber, nameof(bodyreceiptsreceiptNumber), required: false);
-            SourceExpression.Validate(bodyreceiptsreceiptStackreceiptStack, nameof(bodyreceiptsreceiptStackreceiptStack), required: false);
-            SourceExpression.Validate(bodyacknowledgementsacknowledgeDate, nameof(bodyacknowledgementsacknowledgeDate), required: false);
-            SourceExpression.Validate(bodyacknowledgementsletterletter, nameof(bodyacknowledgementsletterletter), required: false);
-            SourceExpression.Validate(bodycredits, nameof(bodycredits), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gft-gifts/v2/virtual/stock";
@@ -2135,9 +1912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiTaxDeclarationCollection> ListConstituentTaxDeclarations([WorkflowExpression] Func<int> constituentId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/giftaid/constituents/{0}/taxdeclarations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(constituentId, 1));
@@ -2156,18 +1930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiCreatedTaxDeclaration> CreateTaxDeclaration([WorkflowExpression] Func<int> bodyconstituentId, [WorkflowExpression] Func<string> bodydeclarationStarts, [WorkflowExpression] Func<string> bodydeclarationEnds = null, [WorkflowExpression] Func<string> bodydeclarationMade = null, [WorkflowExpression] Func<string> bodyindicator = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyconfirmationSent = null, [WorkflowExpression] Func<string> bodyconfirmationReturned = null, [WorkflowExpression] Func<bodypaysTaxInput> bodypaysTax = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodysequence = null)
         {
-            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            SourceExpression.Validate(bodydeclarationStarts, nameof(bodydeclarationStarts), required: true);
-            SourceExpression.Validate(bodydeclarationEnds, nameof(bodydeclarationEnds), required: false);
-            SourceExpression.Validate(bodydeclarationMade, nameof(bodydeclarationMade), required: false);
-            SourceExpression.Validate(bodyindicator, nameof(bodyindicator), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
-            SourceExpression.Validate(bodyconfirmationSent, nameof(bodyconfirmationSent), required: false);
-            SourceExpression.Validate(bodyconfirmationReturned, nameof(bodyconfirmationReturned), required: false);
-            SourceExpression.Validate(bodypaysTax, nameof(bodypaysTax), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodysequence, nameof(bodysequence), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/giftaid/taxdeclarations";
@@ -2252,18 +2014,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditTaxDeclaration([WorkflowExpression] Func<int> taxDeclarationId, [WorkflowExpression] Func<string> bodydeclarationStarts = null, [WorkflowExpression] Func<string> bodydeclarationEnds = null, [WorkflowExpression] Func<string> bodydeclarationMade = null, [WorkflowExpression] Func<string> bodyindicator = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyconfirmationSent = null, [WorkflowExpression] Func<string> bodyconfirmationReturned = null, [WorkflowExpression] Func<bodypaysTaxInput> bodypaysTax = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodysequence = null)
         {
-            SourceExpression.Validate(taxDeclarationId, nameof(taxDeclarationId), required: true);
-            SourceExpression.Validate(bodydeclarationStarts, nameof(bodydeclarationStarts), required: false);
-            SourceExpression.Validate(bodydeclarationEnds, nameof(bodydeclarationEnds), required: false);
-            SourceExpression.Validate(bodydeclarationMade, nameof(bodydeclarationMade), required: false);
-            SourceExpression.Validate(bodyindicator, nameof(bodyindicator), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
-            SourceExpression.Validate(bodyconfirmationSent, nameof(bodyconfirmationSent), required: false);
-            SourceExpression.Validate(bodyconfirmationReturned, nameof(bodyconfirmationReturned), required: false);
-            SourceExpression.Validate(bodypaysTax, nameof(bodypaysTax), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodysequence, nameof(bodysequence), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/giftaid/taxdeclarations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(taxDeclarationId, 1));
@@ -2350,7 +2100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiGiftIdMap> GetGiftIdFromLookupId([WorkflowExpression] Func<string> giftlookupid)
         {
-            SourceExpression.Validate(giftlookupid, nameof(giftlookupid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/giftidmap/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(giftlookupid, 1));
@@ -2365,14 +2114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftNote> CreateGiftNote([WorkflowExpression] Func<int> bodygiftId, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodydateday = null, [WorkflowExpression] Func<int> bodydatemonth = null, [WorkflowExpression] Func<int> bodydateyear = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<string> bodyauthor = null)
         {
-            SourceExpression.Validate(bodygiftId, nameof(bodygiftId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodydateday, nameof(bodydateday), required: false);
-            SourceExpression.Validate(bodydatemonth, nameof(bodydatemonth), required: false);
-            SourceExpression.Validate(bodydateyear, nameof(bodydateyear), required: false);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodyauthor, nameof(bodyauthor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/gifts/notes";
@@ -2441,14 +2182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditGiftNote([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> bodytype = null, [WorkflowExpression] Func<int> bodydateday = null, [WorkflowExpression] Func<int> bodydatemonth = null, [WorkflowExpression] Func<int> bodydateyear = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<string> bodyauthor = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodydateday, nameof(bodydateday), required: false);
-            SourceExpression.Validate(bodydatemonth, nameof(bodydatemonth), required: false);
-            SourceExpression.Validate(bodydateyear, nameof(bodydateyear), required: false);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodyauthor, nameof(bodyauthor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/gifts/notes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -2519,9 +2252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiGiftNoteCollection> ListGiftNotes([WorkflowExpression] Func<int> giftId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/gifts/{0}/notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(giftId, 1));
@@ -2540,8 +2270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftTribute> CreateGiftTribute([WorkflowExpression] Func<int> bodygiftId, [WorkflowExpression] Func<int> bodytributeId)
         {
-            SourceExpression.Validate(bodygiftId, nameof(bodygiftId), required: true);
-            SourceExpression.Validate(bodytributeId, nameof(bodytributeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/gifttribute";
@@ -2566,9 +2294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditGiftTribute([WorkflowExpression] Func<int> giftTributeId, [WorkflowExpression] Func<int> bodytributeType = null, [WorkflowExpression] Func<bodyacknowledgeStatusInput> bodyacknowledgeStatus = null)
         {
-            SourceExpression.Validate(giftTributeId, nameof(giftTributeId), required: true);
-            SourceExpression.Validate(bodytributeType, nameof(bodytributeType), required: false);
-            SourceExpression.Validate(bodyacknowledgeStatus, nameof(bodyacknowledgeStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/gifttribute/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(giftTributeId, 1));
@@ -2601,7 +2326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiGiftTributeAcknowledgeeCollection> ListGiftTributeAcknowledgees([WorkflowExpression] Func<int> giftTributeId)
         {
-            SourceExpression.Validate(giftTributeId, nameof(giftTributeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/gifttribute/{0}/acknowledgees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(giftTributeId, 1));
@@ -2616,7 +2340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IBodyWorkflowAction<NXTDataIntegrationApiGiftTributeCollection> ListGiftTributes([WorkflowExpression] Func<int> giftId)
         {
-            SourceExpression.Validate(giftId, nameof(giftId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/gifttribute/gift/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(giftId, 1));
@@ -2631,9 +2354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
         public IWorkflowAction EditGiftTributeAcknowledgee([WorkflowExpression] Func<int> giftTributeAcknowledgeeId, [WorkflowExpression] Func<int> bodyletter = null, [WorkflowExpression] Func<string> bodyletterDate = null)
         {
-            SourceExpression.Validate(giftTributeAcknowledgeeId, nameof(giftTributeAcknowledgeeId), required: true);
-            SourceExpression.Validate(bodyletter, nameof(bodyletter), required: false);
-            SourceExpression.Validate(bodyletterDate, nameof(bodyletterDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nxt-data-integration/v1/re/gifttribute/acknowledgees/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(giftTributeAcknowledgeeId, 1));

@@ -14,27 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetRatesTaxesResponse> GetRatesTaxes([WorkflowExpression] Func<string> bodyoriginAddressline1 = null, [WorkflowExpression] Func<string> bodyoriginAddressline2 = null, [WorkflowExpression] Func<string> bodyoriginAddressstate = null, [WorkflowExpression] Func<string> bodyoriginAddresscity = null, [WorkflowExpression] Func<string> bodyoriginAddresspostalCode = null, [WorkflowExpression] Func<string> bodyoriginAddresscountryAlpha2 = null, [WorkflowExpression] Func<string> bodydestinationAddressline1 = null, [WorkflowExpression] Func<string> bodydestinationAddressline2 = null, [WorkflowExpression] Func<string> bodydestinationAddressstate = null, [WorkflowExpression] Func<string> bodydestinationAddresscity = null, [WorkflowExpression] Func<string> bodydestinationAddresspostalCode = null, [WorkflowExpression] Func<string> bodydestinationAddresscountryAlpha2 = null, [WorkflowExpression] Func<string> bodyincoterms = null, [WorkflowExpression] Func<bool> bodyinsuranceisInsured = null, [WorkflowExpression] Func<int> bodyinsuranceinsuredAmount = null, [WorkflowExpression] Func<string> bodyinsuranceinsuredCurrency = null, [WorkflowExpression] Func<bool> bodycourierSelectionapplyShippingRules = null, [WorkflowExpression] Func<string> bodyshippingSettingsunitsweight = null, [WorkflowExpression] Func<string> bodyshippingSettingsunitsdimensions = null, [WorkflowExpression] Func<string> bodyshippingSettingsoutputCurrency = null, [WorkflowExpression] Func<bodyparcelsInputItem[]> bodyparcels = null)
         {
-            SourceExpression.Validate(bodyoriginAddressline1, nameof(bodyoriginAddressline1), required: false);
-            SourceExpression.Validate(bodyoriginAddressline2, nameof(bodyoriginAddressline2), required: false);
-            SourceExpression.Validate(bodyoriginAddressstate, nameof(bodyoriginAddressstate), required: false);
-            SourceExpression.Validate(bodyoriginAddresscity, nameof(bodyoriginAddresscity), required: false);
-            SourceExpression.Validate(bodyoriginAddresspostalCode, nameof(bodyoriginAddresspostalCode), required: false);
-            SourceExpression.Validate(bodyoriginAddresscountryAlpha2, nameof(bodyoriginAddresscountryAlpha2), required: false);
-            SourceExpression.Validate(bodydestinationAddressline1, nameof(bodydestinationAddressline1), required: false);
-            SourceExpression.Validate(bodydestinationAddressline2, nameof(bodydestinationAddressline2), required: false);
-            SourceExpression.Validate(bodydestinationAddressstate, nameof(bodydestinationAddressstate), required: false);
-            SourceExpression.Validate(bodydestinationAddresscity, nameof(bodydestinationAddresscity), required: false);
-            SourceExpression.Validate(bodydestinationAddresspostalCode, nameof(bodydestinationAddresspostalCode), required: false);
-            SourceExpression.Validate(bodydestinationAddresscountryAlpha2, nameof(bodydestinationAddresscountryAlpha2), required: false);
-            SourceExpression.Validate(bodyincoterms, nameof(bodyincoterms), required: false);
-            SourceExpression.Validate(bodyinsuranceisInsured, nameof(bodyinsuranceisInsured), required: false);
-            SourceExpression.Validate(bodyinsuranceinsuredAmount, nameof(bodyinsuranceinsuredAmount), required: false);
-            SourceExpression.Validate(bodyinsuranceinsuredCurrency, nameof(bodyinsuranceinsuredCurrency), required: false);
-            SourceExpression.Validate(bodycourierSelectionapplyShippingRules, nameof(bodycourierSelectionapplyShippingRules), required: false);
-            SourceExpression.Validate(bodyshippingSettingsunitsweight, nameof(bodyshippingSettingsunitsweight), required: false);
-            SourceExpression.Validate(bodyshippingSettingsunitsdimensions, nameof(bodyshippingSettingsunitsdimensions), required: false);
-            SourceExpression.Validate(bodyshippingSettingsoutputCurrency, nameof(bodyshippingSettingsoutputCurrency), required: false);
-            SourceExpression.Validate(bodyparcels, nameof(bodyparcels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/rates";
@@ -229,21 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<ListAllShipmentsResponse> ListAllShipments([WorkflowExpression] Func<string> easyshipShipmentId = null, [WorkflowExpression] Func<string> platformOrderNumber = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> createdAtFrom = null, [WorkflowExpression] Func<string> createdAtTo = null, [WorkflowExpression] Func<string> confirmedAtFrom = null, [WorkflowExpression] Func<string> confirmAtTo = null, [WorkflowExpression] Func<string> labelGeneratedAtFrom = null, [WorkflowExpression] Func<string> labelGeneratedAtTo = null, [WorkflowExpression] Func<string> shipmentState = null, [WorkflowExpression] Func<string> pickupState = null, [WorkflowExpression] Func<string> deliveryState = null, [WorkflowExpression] Func<string> labelState = null, [WorkflowExpression] Func<string> warehouseState = null)
         {
-            SourceExpression.Validate(easyshipShipmentId, nameof(easyshipShipmentId), required: false);
-            SourceExpression.Validate(platformOrderNumber, nameof(platformOrderNumber), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(createdAtFrom, nameof(createdAtFrom), required: false);
-            SourceExpression.Validate(createdAtTo, nameof(createdAtTo), required: false);
-            SourceExpression.Validate(confirmedAtFrom, nameof(confirmedAtFrom), required: false);
-            SourceExpression.Validate(confirmAtTo, nameof(confirmAtTo), required: false);
-            SourceExpression.Validate(labelGeneratedAtFrom, nameof(labelGeneratedAtFrom), required: false);
-            SourceExpression.Validate(labelGeneratedAtTo, nameof(labelGeneratedAtTo), required: false);
-            SourceExpression.Validate(shipmentState, nameof(shipmentState), required: false);
-            SourceExpression.Validate(pickupState, nameof(pickupState), required: false);
-            SourceExpression.Validate(deliveryState, nameof(deliveryState), required: false);
-            SourceExpression.Validate(labelState, nameof(labelState), required: false);
-            SourceExpression.Validate(warehouseState, nameof(warehouseState), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/shipments";
@@ -288,70 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<CreateAShipmentResponse> CreateAShipment([WorkflowExpression] Func<string> bodyoriginAddressline1 = null, [WorkflowExpression] Func<string> bodyoriginAddressline2 = null, [WorkflowExpression] Func<string> bodyoriginAddressstate = null, [WorkflowExpression] Func<string> bodyoriginAddresscity = null, [WorkflowExpression] Func<string> bodyoriginAddresspostalCode = null, [WorkflowExpression] Func<string> bodyoriginAddresscountryAlpha2 = null, [WorkflowExpression] Func<string> bodyoriginAddresscontactName = null, [WorkflowExpression] Func<string> bodyoriginAddresscompanyName = null, [WorkflowExpression] Func<string> bodyoriginAddresscontactPhone = null, [WorkflowExpression] Func<string> bodyoriginAddresscontactEmail = null, [WorkflowExpression] Func<string> bodysenderAddressline1 = null, [WorkflowExpression] Func<string> bodysenderAddressline2 = null, [WorkflowExpression] Func<string> bodysenderAddressstate = null, [WorkflowExpression] Func<string> bodysenderAddresscity = null, [WorkflowExpression] Func<string> bodysenderAddresspostalCode = null, [WorkflowExpression] Func<string> bodysenderAddresscountryAlpha2 = null, [WorkflowExpression] Func<string> bodysenderAddresscontactName = null, [WorkflowExpression] Func<string> bodysenderAddresscompanyName = null, [WorkflowExpression] Func<string> bodysenderAddresscontactPhone = null, [WorkflowExpression] Func<string> bodysenderAddresscontactEmail = null, [WorkflowExpression] Func<string> bodyreturnAddressline1 = null, [WorkflowExpression] Func<string> bodyreturnAddressline2 = null, [WorkflowExpression] Func<string> bodyreturnAddressstate = null, [WorkflowExpression] Func<string> bodyreturnAddresscity = null, [WorkflowExpression] Func<string> bodyreturnAddresspostalCode = null, [WorkflowExpression] Func<string> bodyreturnAddresscountryAlpha2 = null, [WorkflowExpression] Func<string> bodyreturnAddresscontactName = null, [WorkflowExpression] Func<string> bodyreturnAddresscompanyName = null, [WorkflowExpression] Func<string> bodyreturnAddresscontactPhone = null, [WorkflowExpression] Func<string> bodyreturnAddresscontactEmail = null, [WorkflowExpression] Func<string> bodydestinationAddressline1 = null, [WorkflowExpression] Func<string> bodydestinationAddressline2 = null, [WorkflowExpression] Func<string> bodydestinationAddressstate = null, [WorkflowExpression] Func<string> bodydestinationAddresscity = null, [WorkflowExpression] Func<string> bodydestinationAddresspostalCode = null, [WorkflowExpression] Func<string> bodydestinationAddresscountryAlpha2 = null, [WorkflowExpression] Func<string> bodydestinationAddresscontactName = null, [WorkflowExpression] Func<string> bodydestinationAddresscompanyName = null, [WorkflowExpression] Func<string> bodydestinationAddresscontactPhone = null, [WorkflowExpression] Func<string> bodydestinationAddresscontactEmail = null, [WorkflowExpression] Func<bool> bodysetAsResidential = null, [WorkflowExpression] Func<string> bodyconsigneeTaxId = null, [WorkflowExpression] Func<string> bodyeeiReference = null, [WorkflowExpression] Func<string> bodyincoterms = null, [WorkflowExpression] Func<bool> bodyinsuranceisInsured = null, [WorkflowExpression] Func<int> bodyinsuranceinsuredAmount = null, [WorkflowExpression] Func<string> bodyinsuranceinsuredCurrency = null, [WorkflowExpression] Func<string> bodyorderDataplatformName = null, [WorkflowExpression] Func<string> bodyorderDataplatformOrderNumber = null, [WorkflowExpression] Func<string[]> bodyorderDataorderTagList = null, [WorkflowExpression] Func<string> bodyorderDatasellerNotes = null, [WorkflowExpression] Func<string> bodyorderDatabuyerNotes = null, [WorkflowExpression] Func<string> bodycourierSelectionselectedCourierId = null, [WorkflowExpression] Func<bool> bodycourierSelectionallowCourierFallback = null, [WorkflowExpression] Func<bool> bodycourierSelectionapplyShippingRules = null, [WorkflowExpression] Func<string> bodyshippingSettingsunitsweight = null, [WorkflowExpression] Func<string> bodyshippingSettingsunitsdimensions = null, [WorkflowExpression] Func<string> bodyshippingSettingsprintingOptionsformat = null, [WorkflowExpression] Func<string> bodyshippingSettingsprintingOptionslabel = null, [WorkflowExpression] Func<string> bodyshippingSettingsprintingOptionscommercialInvoice = null, [WorkflowExpression] Func<string> bodyshippingSettingsprintingOptionspackingSlip = null, [WorkflowExpression] Func<bool> bodyshippingSettingsbuyLabel = null, [WorkflowExpression] Func<bool> bodyshippingSettingsbuyLabelSynchronous = null, [WorkflowExpression] Func<bodyparcelsInputItem[]> bodyparcels = null)
         {
-            SourceExpression.Validate(bodyoriginAddressline1, nameof(bodyoriginAddressline1), required: false);
-            SourceExpression.Validate(bodyoriginAddressline2, nameof(bodyoriginAddressline2), required: false);
-            SourceExpression.Validate(bodyoriginAddressstate, nameof(bodyoriginAddressstate), required: false);
-            SourceExpression.Validate(bodyoriginAddresscity, nameof(bodyoriginAddresscity), required: false);
-            SourceExpression.Validate(bodyoriginAddresspostalCode, nameof(bodyoriginAddresspostalCode), required: false);
-            SourceExpression.Validate(bodyoriginAddresscountryAlpha2, nameof(bodyoriginAddresscountryAlpha2), required: false);
-            SourceExpression.Validate(bodyoriginAddresscontactName, nameof(bodyoriginAddresscontactName), required: false);
-            SourceExpression.Validate(bodyoriginAddresscompanyName, nameof(bodyoriginAddresscompanyName), required: false);
-            SourceExpression.Validate(bodyoriginAddresscontactPhone, nameof(bodyoriginAddresscontactPhone), required: false);
-            SourceExpression.Validate(bodyoriginAddresscontactEmail, nameof(bodyoriginAddresscontactEmail), required: false);
-            SourceExpression.Validate(bodysenderAddressline1, nameof(bodysenderAddressline1), required: false);
-            SourceExpression.Validate(bodysenderAddressline2, nameof(bodysenderAddressline2), required: false);
-            SourceExpression.Validate(bodysenderAddressstate, nameof(bodysenderAddressstate), required: false);
-            SourceExpression.Validate(bodysenderAddresscity, nameof(bodysenderAddresscity), required: false);
-            SourceExpression.Validate(bodysenderAddresspostalCode, nameof(bodysenderAddresspostalCode), required: false);
-            SourceExpression.Validate(bodysenderAddresscountryAlpha2, nameof(bodysenderAddresscountryAlpha2), required: false);
-            SourceExpression.Validate(bodysenderAddresscontactName, nameof(bodysenderAddresscontactName), required: false);
-            SourceExpression.Validate(bodysenderAddresscompanyName, nameof(bodysenderAddresscompanyName), required: false);
-            SourceExpression.Validate(bodysenderAddresscontactPhone, nameof(bodysenderAddresscontactPhone), required: false);
-            SourceExpression.Validate(bodysenderAddresscontactEmail, nameof(bodysenderAddresscontactEmail), required: false);
-            SourceExpression.Validate(bodyreturnAddressline1, nameof(bodyreturnAddressline1), required: false);
-            SourceExpression.Validate(bodyreturnAddressline2, nameof(bodyreturnAddressline2), required: false);
-            SourceExpression.Validate(bodyreturnAddressstate, nameof(bodyreturnAddressstate), required: false);
-            SourceExpression.Validate(bodyreturnAddresscity, nameof(bodyreturnAddresscity), required: false);
-            SourceExpression.Validate(bodyreturnAddresspostalCode, nameof(bodyreturnAddresspostalCode), required: false);
-            SourceExpression.Validate(bodyreturnAddresscountryAlpha2, nameof(bodyreturnAddresscountryAlpha2), required: false);
-            SourceExpression.Validate(bodyreturnAddresscontactName, nameof(bodyreturnAddresscontactName), required: false);
-            SourceExpression.Validate(bodyreturnAddresscompanyName, nameof(bodyreturnAddresscompanyName), required: false);
-            SourceExpression.Validate(bodyreturnAddresscontactPhone, nameof(bodyreturnAddresscontactPhone), required: false);
-            SourceExpression.Validate(bodyreturnAddresscontactEmail, nameof(bodyreturnAddresscontactEmail), required: false);
-            SourceExpression.Validate(bodydestinationAddressline1, nameof(bodydestinationAddressline1), required: false);
-            SourceExpression.Validate(bodydestinationAddressline2, nameof(bodydestinationAddressline2), required: false);
-            SourceExpression.Validate(bodydestinationAddressstate, nameof(bodydestinationAddressstate), required: false);
-            SourceExpression.Validate(bodydestinationAddresscity, nameof(bodydestinationAddresscity), required: false);
-            SourceExpression.Validate(bodydestinationAddresspostalCode, nameof(bodydestinationAddresspostalCode), required: false);
-            SourceExpression.Validate(bodydestinationAddresscountryAlpha2, nameof(bodydestinationAddresscountryAlpha2), required: false);
-            SourceExpression.Validate(bodydestinationAddresscontactName, nameof(bodydestinationAddresscontactName), required: false);
-            SourceExpression.Validate(bodydestinationAddresscompanyName, nameof(bodydestinationAddresscompanyName), required: false);
-            SourceExpression.Validate(bodydestinationAddresscontactPhone, nameof(bodydestinationAddresscontactPhone), required: false);
-            SourceExpression.Validate(bodydestinationAddresscontactEmail, nameof(bodydestinationAddresscontactEmail), required: false);
-            SourceExpression.Validate(bodysetAsResidential, nameof(bodysetAsResidential), required: false);
-            SourceExpression.Validate(bodyconsigneeTaxId, nameof(bodyconsigneeTaxId), required: false);
-            SourceExpression.Validate(bodyeeiReference, nameof(bodyeeiReference), required: false);
-            SourceExpression.Validate(bodyincoterms, nameof(bodyincoterms), required: false);
-            SourceExpression.Validate(bodyinsuranceisInsured, nameof(bodyinsuranceisInsured), required: false);
-            SourceExpression.Validate(bodyinsuranceinsuredAmount, nameof(bodyinsuranceinsuredAmount), required: false);
-            SourceExpression.Validate(bodyinsuranceinsuredCurrency, nameof(bodyinsuranceinsuredCurrency), required: false);
-            SourceExpression.Validate(bodyorderDataplatformName, nameof(bodyorderDataplatformName), required: false);
-            SourceExpression.Validate(bodyorderDataplatformOrderNumber, nameof(bodyorderDataplatformOrderNumber), required: false);
-            SourceExpression.Validate(bodyorderDataorderTagList, nameof(bodyorderDataorderTagList), required: false);
-            SourceExpression.Validate(bodyorderDatasellerNotes, nameof(bodyorderDatasellerNotes), required: false);
-            SourceExpression.Validate(bodyorderDatabuyerNotes, nameof(bodyorderDatabuyerNotes), required: false);
-            SourceExpression.Validate(bodycourierSelectionselectedCourierId, nameof(bodycourierSelectionselectedCourierId), required: false);
-            SourceExpression.Validate(bodycourierSelectionallowCourierFallback, nameof(bodycourierSelectionallowCourierFallback), required: false);
-            SourceExpression.Validate(bodycourierSelectionapplyShippingRules, nameof(bodycourierSelectionapplyShippingRules), required: false);
-            SourceExpression.Validate(bodyshippingSettingsunitsweight, nameof(bodyshippingSettingsunitsweight), required: false);
-            SourceExpression.Validate(bodyshippingSettingsunitsdimensions, nameof(bodyshippingSettingsunitsdimensions), required: false);
-            SourceExpression.Validate(bodyshippingSettingsprintingOptionsformat, nameof(bodyshippingSettingsprintingOptionsformat), required: false);
-            SourceExpression.Validate(bodyshippingSettingsprintingOptionslabel, nameof(bodyshippingSettingsprintingOptionslabel), required: false);
-            SourceExpression.Validate(bodyshippingSettingsprintingOptionscommercialInvoice, nameof(bodyshippingSettingsprintingOptionscommercialInvoice), required: false);
-            SourceExpression.Validate(bodyshippingSettingsprintingOptionspackingSlip, nameof(bodyshippingSettingsprintingOptionspackingSlip), required: false);
-            SourceExpression.Validate(bodyshippingSettingsbuyLabel, nameof(bodyshippingSettingsbuyLabel), required: false);
-            SourceExpression.Validate(bodyshippingSettingsbuyLabelSynchronous, nameof(bodyshippingSettingsbuyLabelSynchronous), required: false);
-            SourceExpression.Validate(bodyparcels, nameof(bodyparcels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/shipments";
@@ -844,7 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<BuyAShipmentLabelResponse> BuyAShipmentLabel([WorkflowExpression] Func<bodyshipmentsInputItem[]> bodyshipments = null)
         {
-            SourceExpression.Validate(bodyshipments, nameof(bodyshipments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/label/v1/labels";
@@ -871,7 +770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<DeleteAShipmentResponse> DeleteAShipment([WorkflowExpression] Func<string> easyshipShipmentId)
         {
-            SourceExpression.Validate(easyshipShipmentId, nameof(easyshipShipmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/shipment/v1/shipments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(easyshipShipmentId, 1));
@@ -886,22 +784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<UpdateAShipmentResponse> UpdateAShipment([WorkflowExpression] Func<string> easyshipShipmentId, [WorkflowExpression] Func<string> bodydestinationCountryAlpha2 = null, [WorkflowExpression] Func<string> bodydestinationCity = null, [WorkflowExpression] Func<string> bodydestinationName = null, [WorkflowExpression] Func<string> bodydestinationAddressLine1 = null, [WorkflowExpression] Func<string> bodydestinationPhoneNumber = null, [WorkflowExpression] Func<bodyitemsInputItem[]> bodyitems = null, [WorkflowExpression] Func<string> bodyplatformName = null, [WorkflowExpression] Func<string> bodyplatformOrderNumber = null, [WorkflowExpression] Func<string> bodytaxesDutiesPaidBy = null, [WorkflowExpression] Func<bool> bodyisInsured = null, [WorkflowExpression] Func<string> bodyselectedCourierId = null, [WorkflowExpression] Func<int> bodydestinationPostalCode = null, [WorkflowExpression] Func<string> bodydestinationState = null, [WorkflowExpression] Func<string> bodydestinationAddressLine2 = null, [WorkflowExpression] Func<string> bodydestinationEmailAddress = null)
         {
-            SourceExpression.Validate(easyshipShipmentId, nameof(easyshipShipmentId), required: true);
-            SourceExpression.Validate(bodydestinationCountryAlpha2, nameof(bodydestinationCountryAlpha2), required: false);
-            SourceExpression.Validate(bodydestinationCity, nameof(bodydestinationCity), required: false);
-            SourceExpression.Validate(bodydestinationName, nameof(bodydestinationName), required: false);
-            SourceExpression.Validate(bodydestinationAddressLine1, nameof(bodydestinationAddressLine1), required: false);
-            SourceExpression.Validate(bodydestinationPhoneNumber, nameof(bodydestinationPhoneNumber), required: false);
-            SourceExpression.Validate(bodyitems, nameof(bodyitems), required: false);
-            SourceExpression.Validate(bodyplatformName, nameof(bodyplatformName), required: false);
-            SourceExpression.Validate(bodyplatformOrderNumber, nameof(bodyplatformOrderNumber), required: false);
-            SourceExpression.Validate(bodytaxesDutiesPaidBy, nameof(bodytaxesDutiesPaidBy), required: false);
-            SourceExpression.Validate(bodyisInsured, nameof(bodyisInsured), required: false);
-            SourceExpression.Validate(bodyselectedCourierId, nameof(bodyselectedCourierId), required: false);
-            SourceExpression.Validate(bodydestinationPostalCode, nameof(bodydestinationPostalCode), required: false);
-            SourceExpression.Validate(bodydestinationState, nameof(bodydestinationState), required: false);
-            SourceExpression.Validate(bodydestinationAddressLine2, nameof(bodydestinationAddressLine2), required: false);
-            SourceExpression.Validate(bodydestinationEmailAddress, nameof(bodydestinationEmailAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/shipment/v1/shipments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(easyshipShipmentId, 1));
@@ -1012,11 +894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetAShipmentResponse> GetAShipment([WorkflowExpression] Func<string> easyshipShipmentId, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> label = null, [WorkflowExpression] Func<string> commercialInvoice = null, [WorkflowExpression] Func<string> packingSlip = null)
         {
-            SourceExpression.Validate(easyshipShipmentId, nameof(easyshipShipmentId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(label, nameof(label), required: false);
-            SourceExpression.Validate(commercialInvoice, nameof(commercialInvoice), required: false);
-            SourceExpression.Validate(packingSlip, nameof(packingSlip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/shipments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(easyshipShipmentId, 1));
@@ -1039,7 +916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<UpdateWarehouseStateResponse> UpdateWarehouseState([WorkflowExpression] Func<bodyshipmentsInputItem2[]> bodyshipments = null)
         {
-            SourceExpression.Validate(bodyshipments, nameof(bodyshipments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/shipments/warehouse_state";
@@ -1066,7 +942,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetAvailablePickupSlotsResponse> GetAvailablePickupSlots([WorkflowExpression] Func<string> courierId)
         {
-            SourceExpression.Validate(courierId, nameof(courierId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pickup/v1/pickup_slots/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courierId, 1));
@@ -1081,11 +956,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<RequestAPickupResponse> RequestAPickup([WorkflowExpression] Func<string> bodycourierId = null, [WorkflowExpression] Func<string> bodypreferredDate = null, [WorkflowExpression] Func<string> bodypreferredMaxTime = null, [WorkflowExpression] Func<string> bodypreferredMinTime = null, [WorkflowExpression] Func<string[]> bodyeasyshipShipmentIds = null)
         {
-            SourceExpression.Validate(bodycourierId, nameof(bodycourierId), required: false);
-            SourceExpression.Validate(bodypreferredDate, nameof(bodypreferredDate), required: false);
-            SourceExpression.Validate(bodypreferredMaxTime, nameof(bodypreferredMaxTime), required: false);
-            SourceExpression.Validate(bodypreferredMinTime, nameof(bodypreferredMinTime), required: false);
-            SourceExpression.Validate(bodyeasyshipShipmentIds, nameof(bodyeasyshipShipmentIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pickup/v1/pickups";
@@ -1136,10 +1006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetCheckpointsResponse> GetCheckpoints([WorkflowExpression] Func<string> easyshipShipmentId, [WorkflowExpression] Func<string> platformOrderNumber = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(easyshipShipmentId, nameof(easyshipShipmentId), required: true);
-            SourceExpression.Validate(platformOrderNumber, nameof(platformOrderNumber), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/track/v1/checkpoints";
@@ -1161,10 +1027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetStatusResponse> GetStatus([WorkflowExpression] Func<string> easyshipShipmentId, [WorkflowExpression] Func<string> platformOrderNumber = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(easyshipShipmentId, nameof(easyshipShipmentId), required: true);
-            SourceExpression.Validate(platformOrderNumber, nameof(platformOrderNumber), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/track/v1/status";

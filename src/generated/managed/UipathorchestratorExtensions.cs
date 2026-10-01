@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
         public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodystartInfoprocessName = null, [WorkflowExpression] Func<int> bodystartInfojobsCount = null, [WorkflowExpression] Func<bodystartInfosourceInput> bodystartInfosource = null, [WorkflowExpression] Func<bodystartInfojobPriorityInput> bodystartInfojobPriority = null, [WorkflowExpression] Func<bodystartInforuntimeTypeInput> bodystartInforuntimeType = null, [WorkflowExpression] Func<string> bodystartInfoinputArguments = null, [WorkflowExpression] Func<string> bodystartInforeference = null)
         {
-            SourceExpression.Validate(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
-            SourceExpression.Validate(bodystartInfoprocessName, nameof(bodystartInfoprocessName), required: false);
-            SourceExpression.Validate(bodystartInfojobsCount, nameof(bodystartInfojobsCount), required: false);
-            SourceExpression.Validate(bodystartInfosource, nameof(bodystartInfosource), required: false);
-            SourceExpression.Validate(bodystartInfojobPriority, nameof(bodystartInfojobPriority), required: false);
-            SourceExpression.Validate(bodystartInforuntimeType, nameof(bodystartInforuntimeType), required: false);
-            SourceExpression.Validate(bodystartInfoinputArguments, nameof(bodystartInfoinputArguments), required: false);
-            SourceExpression.Validate(bodystartInforeference, nameof(bodystartInforeference), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
@@ -95,14 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
         public IBodyWorkflowAction<QueueItemDto> AddQueueItem([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodyitemDataname = null, [WorkflowExpression] Func<bodyitemDatapriorityInput> bodyitemDatapriority = null, [WorkflowExpression] Func<string> bodyitemDatadeferDate = null, [WorkflowExpression] Func<string> bodyitemDatadueDate = null, [WorkflowExpression] Func<string> bodyitemDatariskSLADate = null, [WorkflowExpression] Func<string> bodyitemDatareference = null, [WorkflowExpression] Func<string> bodyitemDataprogress = null)
         {
-            SourceExpression.Validate(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
-            SourceExpression.Validate(bodyitemDataname, nameof(bodyitemDataname), required: false);
-            SourceExpression.Validate(bodyitemDatapriority, nameof(bodyitemDatapriority), required: false);
-            SourceExpression.Validate(bodyitemDatadeferDate, nameof(bodyitemDatadeferDate), required: false);
-            SourceExpression.Validate(bodyitemDatadueDate, nameof(bodyitemDatadueDate), required: false);
-            SourceExpression.Validate(bodyitemDatariskSLADate, nameof(bodyitemDatariskSLADate), required: false);
-            SourceExpression.Validate(bodyitemDatareference, nameof(bodyitemDatareference), required: false);
-            SourceExpression.Validate(bodyitemDataprogress, nameof(bodyitemDataprogress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";

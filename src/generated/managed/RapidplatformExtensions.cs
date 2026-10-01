@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
         public IBodyWorkflowAction<JToken> GetAllItems([WorkflowExpression] Func<string> listNameDynamic, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> linkedTo = null)
         {
-            SourceExpression.Validate(listNameDynamic, nameof(listNameDynamic), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(linkedTo, nameof(linkedTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/All/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listNameDynamic, 1));
@@ -41,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
         public IBodyWorkflowAction<JToken[]> CreateListItem([WorkflowExpression] Func<string> listNameDynamic, [WorkflowExpression] Func<object> dynamicListSchema = null)
         {
-            SourceExpression.Validate(listNameDynamic, nameof(listNameDynamic), required: true);
-            SourceExpression.Validate(dynamicListSchema, nameof(dynamicListSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/All/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listNameDynamic, 1));
@@ -58,8 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
         public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> listNameDynamic, [WorkflowExpression] Func<int> itemId)
         {
-            SourceExpression.Validate(listNameDynamic, nameof(listNameDynamic), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listNameDynamic, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 1));
@@ -74,9 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
         public IWorkflowAction UpdateListItem([WorkflowExpression] Func<string> listNameDynamic, [WorkflowExpression] Func<int> itemId, [WorkflowExpression] Func<object> dynamicListSchema = null)
         {
-            SourceExpression.Validate(listNameDynamic, nameof(listNameDynamic), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(dynamicListSchema, nameof(dynamicListSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listNameDynamic, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 1));
@@ -92,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
         public IBodyWorkflowAction<string[]> GetInheritLinks([WorkflowExpression] Func<string> listNameDynamic, [WorkflowExpression] Func<int> itemId, [WorkflowExpression] Func<string> type)
         {
-            SourceExpression.Validate(listNameDynamic, nameof(listNameDynamic), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/items/{1}/inherited-links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listNameDynamic, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 1));
@@ -110,9 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
         public IBodyWorkflowAction<JToken> SetAttachments([WorkflowExpression] Func<string> listNameDynamic, [WorkflowExpression] Func<int> itemId, [WorkflowExpression] Func<attachmentsInputItem[]> attachments = null)
         {
-            SourceExpression.Validate(listNameDynamic, nameof(listNameDynamic), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(attachments, nameof(attachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/items/{1}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listNameDynamic, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 1));
@@ -130,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
     {
         public IWorkflowTrigger ListHookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookconfigtable = null, [WorkflowExpression] Func<requestBodyOfWebhookconfigtriggerTypeInput> requestBodyOfWebhookconfigtriggerType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookconfigtable, nameof(requestBodyOfWebhookconfigtable), required: false);
-            SourceExpression.Validate(requestBodyOfWebhookconfigtriggerType, nameof(requestBodyOfWebhookconfigtriggerType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks";

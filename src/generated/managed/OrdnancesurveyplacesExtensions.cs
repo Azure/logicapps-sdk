@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<FindResponse> Find([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<double> minmatch = null, [WorkflowExpression] Func<int> matchprecision = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(minmatch, nameof(minmatch), required: false);
-            SourceExpression.Validate(matchprecision, nameof(matchprecision), required: false);
-            SourceExpression.Validate(fq, nameof(fq), required: false);
-            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places/v1/addresses/find";
@@ -58,14 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<PostcodeResponse> Postcode([WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null)
         {
-            SourceExpression.Validate(postcode, nameof(postcode), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(fq, nameof(fq), required: false);
-            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places/v1/addresses/postcode";
@@ -95,12 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<UPRNResponse> UPRN([WorkflowExpression] Func<int> uprn, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null)
         {
-            SourceExpression.Validate(uprn, nameof(uprn), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(fq, nameof(fq), required: false);
-            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places/v1/addresses/uprn";
@@ -126,14 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<NearestResponse> Nearest([WorkflowExpression] Func<string> point, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
         {
-            SourceExpression.Validate(point, nameof(point), required: true);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(fq, nameof(fq), required: false);
-            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
-            SourceExpression.Validate(srs, nameof(srs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places/v1/addresses/nearest";
@@ -163,15 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<BBoxResponse> BBox([WorkflowExpression] Func<string> bbox, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
         {
-            SourceExpression.Validate(bbox, nameof(bbox), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(fq, nameof(fq), required: false);
-            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
-            SourceExpression.Validate(srs, nameof(srs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places/v1/addresses/bbox";
@@ -203,16 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<RadiusResponse> Radius([WorkflowExpression] Func<string> point, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
         {
-            SourceExpression.Validate(point, nameof(point), required: true);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(fq, nameof(fq), required: false);
-            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
-            SourceExpression.Validate(srs, nameof(srs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places/v1/addresses/radius";
@@ -247,17 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<PolygonResponse> Polygon([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodygeometry, [WorkflowExpression] Func<int> referencepoint = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodygeometry, nameof(bodygeometry), required: true);
-            SourceExpression.Validate(referencepoint, nameof(referencepoint), required: false);
-            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(lr, nameof(lr), required: false);
-            SourceExpression.Validate(fq, nameof(fq), required: false);
-            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
-            SourceExpression.Validate(srs, nameof(srs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/places/v1/addresses/polygon";

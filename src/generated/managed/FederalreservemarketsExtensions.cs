@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus([WorkflowExpression] Func<operationInput> operation, [WorkflowExpression] Func<statusInput> status, [WorkflowExpression] Func<includeInput> include, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(operation, nameof(operation), required: true);
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(include, nameof(include), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operation, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(status, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(include, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -32,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations([WorkflowExpression] Func<operationInput> operation, [WorkflowExpression] Func<includeInput> include, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(operation, nameof(operation), required: true);
-            SourceExpression.Validate(include, nameof(include), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/seclending/{0}/results/{1}/latest.{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operation, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(include, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));

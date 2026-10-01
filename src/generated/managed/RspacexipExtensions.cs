@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetACapsuleResponse> GetACapsule([WorkflowExpression] Func<string> capsuleId)
         {
-            SourceExpression.Validate(capsuleId, nameof(capsuleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/capsules/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(capsuleId, 1));
@@ -43,22 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryCapsulesResponse> QueryCapsules([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/capsules/query";
@@ -243,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetACoreResponse> GetACore([WorkflowExpression] Func<string> coreId)
         {
-            SourceExpression.Validate(coreId, nameof(coreId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/cores/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(coreId, 1));
@@ -258,22 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryCoresResponse> QueryCores([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/cores/query";
@@ -444,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetACrewMemberResponse> GetACrewMember([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/crew/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -459,22 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryCrewMembersResponse> QueryCrewMembers([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/crew/query";
@@ -645,7 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetADragonResponse> GetADragon([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/dragons/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -660,22 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryDragonsResponse> QueryDragons([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/dragons/query";
@@ -846,7 +778,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetAHistoryResponse> GetAHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/history/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -861,22 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryHistoryResponse> QueryHistory([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/history/query";
@@ -1047,7 +962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetALandpadResponse> GetALandpad([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/landpads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1062,22 +976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryLandpadsResponse> QueryLandpads([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/landpads/query";
@@ -1248,7 +1146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetALaunchResponse> GetALaunch([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/launches/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1263,22 +1160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryLaunchesResponse> QueryLaunches([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/launches/query";
@@ -1505,7 +1386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetALaunchpadResponse> GetALaunchpad([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/launchpads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1520,22 +1400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryLaunchpadsResponse> QueryLaunchpads([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/launchpads/query";
@@ -1706,7 +1570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetAPayloadResponse> GetAPayload([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/payloads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1721,22 +1584,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryPayloadsResponse> QueryPayloads([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/payloads/query";
@@ -1921,7 +1768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetARocketResponse> GetARocket([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/rockets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1936,22 +1782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryRocketsResponse> QueryRockets([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/rockets/query";
@@ -2122,7 +1952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetAShipResponse> GetAShip([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/ships/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2137,22 +1966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryShipsResponse> QueryShips([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/ships/query";
@@ -2323,7 +2136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<GetAStarlinkSatResponse> GetAStarlinkSat([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v4/starlink/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2338,22 +2150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
         public IBodyWorkflowAction<QueryStarlinkSatsResponse> QueryStarlinkSats([WorkflowExpression] Func<string> bodyoptionsselect = null, [WorkflowExpression] Func<string> bodyoptionssort = null, [WorkflowExpression] Func<JToken[]> bodyoptionspopulate = null, [WorkflowExpression] Func<string> bodyoptionsprojection = null, [WorkflowExpression] Func<bool> bodyoptionslean = null, [WorkflowExpression] Func<bool> bodyoptionsleanWithId = null, [WorkflowExpression] Func<int> bodyoptionsoffset = null, [WorkflowExpression] Func<int> bodyoptionspage = null, [WorkflowExpression] Func<int> bodyoptionslimit = null, [WorkflowExpression] Func<bool> bodyoptionspagination = null, [WorkflowExpression] Func<bool> bodyoptionsuseEstimatedCount = null, [WorkflowExpression] Func<bool> bodyoptionsuseCustomCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsforceCountFn = null, [WorkflowExpression] Func<bool> bodyoptionsallowDiskUse = null, [WorkflowExpression] Func<string> bodyoptionsoptionspref = null, [WorkflowExpression] Func<string> bodyoptionsoptionstags = null)
         {
-            SourceExpression.Validate(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            SourceExpression.Validate(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            SourceExpression.Validate(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            SourceExpression.Validate(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            SourceExpression.Validate(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            SourceExpression.Validate(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            SourceExpression.Validate(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            SourceExpression.Validate(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            SourceExpression.Validate(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            SourceExpression.Validate(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            SourceExpression.Validate(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            SourceExpression.Validate(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            SourceExpression.Validate(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            SourceExpression.Validate(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            SourceExpression.Validate(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/starlink/query";

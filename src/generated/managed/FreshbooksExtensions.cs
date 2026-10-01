@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Expense[]> ListExpenses([WorkflowExpression] Func<string> accountid)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
@@ -30,14 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Expense> AddExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> bodyexpenseamountamount, [WorkflowExpression] Func<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, [WorkflowExpression] Func<int> bodyexpensecategory = null, [WorkflowExpression] Func<int> bodyexpensestaff = null, [WorkflowExpression] Func<string> bodyexpensedate = null, [WorkflowExpression] Func<string> bodyexpensevendor = null, [WorkflowExpression] Func<string> bodyexpensenotes = null)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
-            SourceExpression.Validate(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: true);
-            SourceExpression.Validate(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
-            SourceExpression.Validate(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
-            SourceExpression.Validate(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
-            SourceExpression.Validate(bodyexpensedate, nameof(bodyexpensedate), required: false);
-            SourceExpression.Validate(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
-            SourceExpression.Validate(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
@@ -113,15 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IWorkflowAction UpdateExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> expenseid, [WorkflowExpression] Func<string> bodyexpenseamountamount = null, [WorkflowExpression] Func<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, [WorkflowExpression] Func<int> bodyexpensecategory = null, [WorkflowExpression] Func<int> bodyexpensestaff = null, [WorkflowExpression] Func<string> bodyexpensedate = null, [WorkflowExpression] Func<string> bodyexpensevendor = null, [WorkflowExpression] Func<string> bodyexpensenotes = null)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
-            SourceExpression.Validate(expenseid, nameof(expenseid), required: true);
-            SourceExpression.Validate(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: false);
-            SourceExpression.Validate(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
-            SourceExpression.Validate(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
-            SourceExpression.Validate(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
-            SourceExpression.Validate(bodyexpensedate, nameof(bodyexpensedate), required: false);
-            SourceExpression.Validate(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
-            SourceExpression.Validate(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseid, 1));
@@ -201,8 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IWorkflowAction DeleteExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> expenseid)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
-            SourceExpression.Validate(expenseid, nameof(expenseid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseid, 1));
@@ -234,19 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Client> AddClient([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> bodyclientfirstName = null, [WorkflowExpression] Func<string> bodyclientlastName = null, [WorkflowExpression] Func<string> bodyclientorganization = null, [WorkflowExpression] Func<string> bodyclientemailAddress = null, [WorkflowExpression] Func<string> bodyclientphoneNumber = null, [WorkflowExpression] Func<bodyclientcurrencyInput> bodyclientcurrency = null, [WorkflowExpression] Func<string> bodyclientstreetAddress1 = null, [WorkflowExpression] Func<string> bodyclientstreetAddress2 = null, [WorkflowExpression] Func<string> bodyclientcity = null, [WorkflowExpression] Func<string> bodyclientpostalCode = null, [WorkflowExpression] Func<string> bodyclientcountry = null, [WorkflowExpression] Func<string> bodyclientprovince = null)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
-            SourceExpression.Validate(bodyclientfirstName, nameof(bodyclientfirstName), required: false);
-            SourceExpression.Validate(bodyclientlastName, nameof(bodyclientlastName), required: false);
-            SourceExpression.Validate(bodyclientorganization, nameof(bodyclientorganization), required: false);
-            SourceExpression.Validate(bodyclientemailAddress, nameof(bodyclientemailAddress), required: false);
-            SourceExpression.Validate(bodyclientphoneNumber, nameof(bodyclientphoneNumber), required: false);
-            SourceExpression.Validate(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
-            SourceExpression.Validate(bodyclientstreetAddress1, nameof(bodyclientstreetAddress1), required: false);
-            SourceExpression.Validate(bodyclientstreetAddress2, nameof(bodyclientstreetAddress2), required: false);
-            SourceExpression.Validate(bodyclientcity, nameof(bodyclientcity), required: false);
-            SourceExpression.Validate(bodyclientpostalCode, nameof(bodyclientpostalCode), required: false);
-            SourceExpression.Validate(bodyclientcountry, nameof(bodyclientcountry), required: false);
-            SourceExpression.Validate(bodyclientprovince, nameof(bodyclientprovince), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/users/clients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
@@ -350,7 +317,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     {
         public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
@@ -366,7 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
         public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
@@ -381,7 +346,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
         public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountid, nameof(accountid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/payments/payments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));

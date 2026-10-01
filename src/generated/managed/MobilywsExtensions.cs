@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilyws
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobilyws")]
         public IBodyWorkflowAction<string> SendSMS([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> numbers, [WorkflowExpression] Func<string> sender, [WorkflowExpression] Func<string> msg, [WorkflowExpression] Func<string> applicationType, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> contentType)
         {
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(numbers, nameof(numbers), required: true);
-            SourceExpression.Validate(sender, nameof(sender), required: true);
-            SourceExpression.Validate(msg, nameof(msg), required: true);
-            SourceExpression.Validate(applicationType, nameof(applicationType), required: true);
-            SourceExpression.Validate(lang, nameof(lang), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/msgSend.php";

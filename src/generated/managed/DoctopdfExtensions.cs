@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
         public IBodyWorkflowAction<DocToPDFResponse> DocToPDF([WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<object> bodyfileContent = null, [WorkflowExpression] Func<string> publickey = null, [WorkflowExpression] Func<string> apikey = null)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            SourceExpression.Validate(publickey, nameof(publickey), required: false);
-            SourceExpression.Validate(apikey, nameof(apikey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/doctopdf";

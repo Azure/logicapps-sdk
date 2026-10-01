@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovesign")]
         public IBodyWorkflowAction<SignResponse> Sign([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodysigners = null, [WorkflowExpression] Func<string> bodysignersEmails = null, [WorkflowExpression] Func<string> bodysignsPositions = null, [WorkflowExpression] Func<bodysignTypeInput> bodysignType = null, [WorkflowExpression] Func<string> bodyexpirationDays = null, [WorkflowExpression] Func<bodysignerRemindersInput> bodysignerReminders = null, [WorkflowExpression] Func<string> bodysignerReminderDaysCycle = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodysize = null)
         {
-            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            SourceExpression.Validate(bodysigners, nameof(bodysigners), required: false);
-            SourceExpression.Validate(bodysignersEmails, nameof(bodysignersEmails), required: false);
-            SourceExpression.Validate(bodysignsPositions, nameof(bodysignsPositions), required: false);
-            SourceExpression.Validate(bodysignType, nameof(bodysignType), required: false);
-            SourceExpression.Validate(bodyexpirationDays, nameof(bodyexpirationDays), required: false);
-            SourceExpression.Validate(bodysignerReminders, nameof(bodysignerReminders), required: false);
-            SourceExpression.Validate(bodysignerReminderDaysCycle, nameof(bodysignerReminderDaysCycle), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sign";

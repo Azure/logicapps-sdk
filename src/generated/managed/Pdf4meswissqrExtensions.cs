@@ -14,31 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         public IBodyWorkflowAction<string> CreateSwissQrBill([WorkflowExpression] Func<bodycrAddressTypeInput> bodycrAddressType, [WorkflowExpression] Func<string> bodycrName, [WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodyiban, [WorkflowExpression] Func<string> bodyamount = null, [WorkflowExpression] Func<string> bodyav1Parameters = null, [WorkflowExpression] Func<string> bodyav2Parameters = null, [WorkflowExpression] Func<string> bodybillingInfo = null, [WorkflowExpression] Func<string> bodycrCity = null, [WorkflowExpression] Func<string> bodycrPostalCode = null, [WorkflowExpression] Func<string> bodycrStreetOrAddressLine1 = null, [WorkflowExpression] Func<string> bodycrStreetOrAddressLine2 = null, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bodylanguageTypeInput> bodylanguageType = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bodyreferenceTypeInput> bodyreferenceType = null, [WorkflowExpression] Func<bodyseperatorLineInput> bodyseperatorLine = null, [WorkflowExpression] Func<bodyudAddressTypeInput> bodyudAddressType = null, [WorkflowExpression] Func<string> bodyudCity = null, [WorkflowExpression] Func<string> bodyudName = null, [WorkflowExpression] Func<string> bodyudPostalCode = null, [WorkflowExpression] Func<string> bodyudStreetOrAddressLine1 = null, [WorkflowExpression] Func<string> bodyudStreetOrAddressLine2 = null, [WorkflowExpression] Func<string> bodyunstructuredMessage = null)
         {
-            SourceExpression.Validate(bodycrAddressType, nameof(bodycrAddressType), required: true);
-            SourceExpression.Validate(bodycrName, nameof(bodycrName), required: true);
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodyiban, nameof(bodyiban), required: true);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            SourceExpression.Validate(bodyav1Parameters, nameof(bodyav1Parameters), required: false);
-            SourceExpression.Validate(bodyav2Parameters, nameof(bodyav2Parameters), required: false);
-            SourceExpression.Validate(bodybillingInfo, nameof(bodybillingInfo), required: false);
-            SourceExpression.Validate(bodycrCity, nameof(bodycrCity), required: false);
-            SourceExpression.Validate(bodycrPostalCode, nameof(bodycrPostalCode), required: false);
-            SourceExpression.Validate(bodycrStreetOrAddressLine1, nameof(bodycrStreetOrAddressLine1), required: false);
-            SourceExpression.Validate(bodycrStreetOrAddressLine2, nameof(bodycrStreetOrAddressLine2), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodylanguageType, nameof(bodylanguageType), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodyreferenceType, nameof(bodyreferenceType), required: false);
-            SourceExpression.Validate(bodyseperatorLine, nameof(bodyseperatorLine), required: false);
-            SourceExpression.Validate(bodyudAddressType, nameof(bodyudAddressType), required: false);
-            SourceExpression.Validate(bodyudCity, nameof(bodyudCity), required: false);
-            SourceExpression.Validate(bodyudName, nameof(bodyudName), required: false);
-            SourceExpression.Validate(bodyudPostalCode, nameof(bodyudPostalCode), required: false);
-            SourceExpression.Validate(bodyudStreetOrAddressLine1, nameof(bodyudStreetOrAddressLine1), required: false);
-            SourceExpression.Validate(bodyudStreetOrAddressLine2, nameof(bodyudStreetOrAddressLine2), required: false);
-            SourceExpression.Validate(bodyunstructuredMessage, nameof(bodyunstructuredMessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/CreateSwissQrBill";
@@ -251,8 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         public IBodyWorkflowAction<string> ReadSwissQrBill([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
@@ -289,11 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response> SplitDocBySwissQrCode([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodysplitBarcodePageInput> bodysplitBarcodePage, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bool> bodycombinePagesWithSameConsecutiveBarcodes = null, [WorkflowExpression] Func<string> bodypdfRenderDpi = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodysplitBarcodePage, nameof(bodysplitBarcodePage), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodycombinePagesWithSameConsecutiveBarcodes, nameof(bodycombinePagesWithSameConsecutiveBarcodes), required: false);
-            SourceExpression.Validate(bodypdfRenderDpi, nameof(bodypdfRenderDpi), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";

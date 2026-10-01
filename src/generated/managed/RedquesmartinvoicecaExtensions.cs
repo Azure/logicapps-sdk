@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction StoreReturnDocumentConfiguration([WorkflowExpression] Func<string> bodytemplate = null, [WorkflowExpression] Func<string> bodysubject = null)
         {
-            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/configuration/return-to-issuer";
@@ -62,9 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<string> GetImage([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<int> pageIndex, [WorkflowExpression] Func<bool> isPreview = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(pageIndex, nameof(pageIndex), required: true);
-            SourceExpression.Validate(isPreview, nameof(isPreview), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}/page/{1}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageIndex, 1));
@@ -82,11 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction ReturnDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string[]> bodyadditionalDocuments = null, [WorkflowExpression] Func<string> bodyrecipientEmail = null, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<string> bodyrequestedByUserId = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodyadditionalDocuments, nameof(bodyadditionalDocuments), required: false);
-            SourceExpression.Validate(bodyrecipientEmail, nameof(bodyrecipientEmail), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            SourceExpression.Validate(bodyrequestedByUserId, nameof(bodyrequestedByUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}/return-to-issuer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -131,28 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<ApiDocumentApiListResult> ListAllDocuments([WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyfilterfileNamevalue = null, [WorkflowExpression] Func<DocumentState[]> bodyfilterstatevalues = null, [WorkflowExpression] Func<ApprovalState[]> bodyfilterapprovalStatevalues = null, [WorkflowExpression] Func<string> bodyfiltertypevalue = null, [WorkflowExpression] Func<string> bodyfiltersourceInfovalue = null, [WorkflowExpression] Func<bool> bodyfilterisPostProcessCompletedvalue = null, [WorkflowExpression] Func<bool> bodyfilterisReturnedToSendervalue = null, [WorkflowExpression] Func<DocumentSource[]> bodyfiltersourcevalues = null, [WorkflowExpression] Func<string[]> bodyfilterownerIdvalues = null, [WorkflowExpression] Func<string[]> bodyfiltervalidatorIdvalues = null, [WorkflowExpression] Func<string> bodyfiltercreatedDatefrom = null, [WorkflowExpression] Func<string> bodyfiltercreatedDateto = null, [WorkflowExpression] Func<string> bodyfiltervalidatedDatefrom = null, [WorkflowExpression] Func<string> bodyfiltervalidatedDateto = null, [WorkflowExpression] Func<string> bodyfilterapprovedDatefrom = null, [WorkflowExpression] Func<string> bodyfilterapprovedDateto = null, [WorkflowExpression] Func<int> bodycontrolskip = null, [WorkflowExpression] Func<int> bodycontroltake = null, [WorkflowExpression] Func<bodysortfieldInput> bodysortfield = null, [WorkflowExpression] Func<bodysortdirectionInput> bodysortdirection = null, [WorkflowExpression] Func<ApiDocumentScope[]> bodyscopes = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyfilterfileNamevalue, nameof(bodyfilterfileNamevalue), required: false);
-            SourceExpression.Validate(bodyfilterstatevalues, nameof(bodyfilterstatevalues), required: false);
-            SourceExpression.Validate(bodyfilterapprovalStatevalues, nameof(bodyfilterapprovalStatevalues), required: false);
-            SourceExpression.Validate(bodyfiltertypevalue, nameof(bodyfiltertypevalue), required: false);
-            SourceExpression.Validate(bodyfiltersourceInfovalue, nameof(bodyfiltersourceInfovalue), required: false);
-            SourceExpression.Validate(bodyfilterisPostProcessCompletedvalue, nameof(bodyfilterisPostProcessCompletedvalue), required: false);
-            SourceExpression.Validate(bodyfilterisReturnedToSendervalue, nameof(bodyfilterisReturnedToSendervalue), required: false);
-            SourceExpression.Validate(bodyfiltersourcevalues, nameof(bodyfiltersourcevalues), required: false);
-            SourceExpression.Validate(bodyfilterownerIdvalues, nameof(bodyfilterownerIdvalues), required: false);
-            SourceExpression.Validate(bodyfiltervalidatorIdvalues, nameof(bodyfiltervalidatorIdvalues), required: false);
-            SourceExpression.Validate(bodyfiltercreatedDatefrom, nameof(bodyfiltercreatedDatefrom), required: false);
-            SourceExpression.Validate(bodyfiltercreatedDateto, nameof(bodyfiltercreatedDateto), required: false);
-            SourceExpression.Validate(bodyfiltervalidatedDatefrom, nameof(bodyfiltervalidatedDatefrom), required: false);
-            SourceExpression.Validate(bodyfiltervalidatedDateto, nameof(bodyfiltervalidatedDateto), required: false);
-            SourceExpression.Validate(bodyfilterapprovedDatefrom, nameof(bodyfilterapprovedDatefrom), required: false);
-            SourceExpression.Validate(bodyfilterapprovedDateto, nameof(bodyfilterapprovedDateto), required: false);
-            SourceExpression.Validate(bodycontrolskip, nameof(bodycontrolskip), required: false);
-            SourceExpression.Validate(bodycontroltake, nameof(bodycontroltake), required: false);
-            SourceExpression.Validate(bodysortfield, nameof(bodysortfield), required: false);
-            SourceExpression.Validate(bodysortdirection, nameof(bodysortdirection), required: false);
-            SourceExpression.Validate(bodyscopes, nameof(bodyscopes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/documents/list";
@@ -441,7 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction DownloadFileAsync([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}/file", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -456,7 +423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -471,8 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<ApiDocument> GetDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<bool> isExternalId = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(isExternalId, nameof(isExternalId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -490,25 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<RedQueStatus> UpdateDocuments([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodydocumentId = null, [WorkflowExpression] Func<string> bodyexternalDocumentIdvalue = null, [WorkflowExpression] Func<string> bodycontainerIdvalue = null, [WorkflowExpression] Func<string> bodyfileNamevalue = null, [WorkflowExpression] Func<string> bodycontentTypevalue = null, [WorkflowExpression] Func<bodysourcevalueInput> bodysourcevalue = null, [WorkflowExpression] Func<string> bodysourceInfovalue = null, [WorkflowExpression] Func<string> bodydocumentClassvalue = null, [WorkflowExpression] Func<bool> bodyisAttachmentvalue = null, [WorkflowExpression] Func<bool> bodyeditedvalue = null, [WorkflowExpression] Func<string> bodynotevalue = null, [WorkflowExpression] Func<ApiFieldValueUpdate[]> bodyfields = null, [WorkflowExpression] Func<ApiFieldValueUpdate[][]> bodyitems = null, [WorkflowExpression] Func<string> bodyvalidatevalueuserId = null, [WorkflowExpression] Func<string> bodyapprovevalueuserId = null, [WorkflowExpression] Func<bodyapprovevaluestateInput> bodyapprovevaluestate = null, [WorkflowExpression] Func<StringApiListValueUpdate[]> bodyauthorizeUsers = null, [WorkflowExpression] Func<StringApiListValueUpdate[]> bodyduplicateDocIds = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: false);
-            SourceExpression.Validate(bodyexternalDocumentIdvalue, nameof(bodyexternalDocumentIdvalue), required: false);
-            SourceExpression.Validate(bodycontainerIdvalue, nameof(bodycontainerIdvalue), required: false);
-            SourceExpression.Validate(bodyfileNamevalue, nameof(bodyfileNamevalue), required: false);
-            SourceExpression.Validate(bodycontentTypevalue, nameof(bodycontentTypevalue), required: false);
-            SourceExpression.Validate(bodysourcevalue, nameof(bodysourcevalue), required: false);
-            SourceExpression.Validate(bodysourceInfovalue, nameof(bodysourceInfovalue), required: false);
-            SourceExpression.Validate(bodydocumentClassvalue, nameof(bodydocumentClassvalue), required: false);
-            SourceExpression.Validate(bodyisAttachmentvalue, nameof(bodyisAttachmentvalue), required: false);
-            SourceExpression.Validate(bodyeditedvalue, nameof(bodyeditedvalue), required: false);
-            SourceExpression.Validate(bodynotevalue, nameof(bodynotevalue), required: false);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            SourceExpression.Validate(bodyitems, nameof(bodyitems), required: false);
-            SourceExpression.Validate(bodyvalidatevalueuserId, nameof(bodyvalidatevalueuserId), required: false);
-            SourceExpression.Validate(bodyapprovevalueuserId, nameof(bodyapprovevalueuserId), required: false);
-            SourceExpression.Validate(bodyapprovevaluestate, nameof(bodyapprovevaluestate), required: false);
-            SourceExpression.Validate(bodyauthorizeUsers, nameof(bodyauthorizeUsers), required: false);
-            SourceExpression.Validate(bodyduplicateDocIds, nameof(bodyduplicateDocIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -749,7 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction LockDocument([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}/lock", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -764,7 +708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction UnlockDocumentAsync([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}/lock", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -779,11 +722,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction GrantDocumentAccess([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodydocumentId = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodydatamessage = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodydatamessage, nameof(bodydatamessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -830,8 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction RemoveDocumentAccess([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/{0}/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -860,9 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<StringApiValue> CreateEnum([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyisEditable = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyisEditable, nameof(bodyisEditable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/enums";
@@ -909,7 +842,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<ApiEnum> GetEnum([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/enums/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -924,10 +856,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction UpdateEnum([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyisEditable = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyisEditable, nameof(bodyisEditable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/enums/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -974,7 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction DeleteEnum([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/enums/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -989,7 +916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction GetExtractDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/extract/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1018,7 +944,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction DownloadFolderArchived([WorkflowExpression] Func<string> folderId)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/folder/{0}/archived", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -1033,7 +958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction DeleteFolder([WorkflowExpression] Func<string> folderId)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -1048,8 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<ApiFolderWithMembers> GetFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> withMembers = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(withMembers, nameof(withMembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -1067,10 +989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction UpdateContainerData([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyfolderId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodycreated = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: false);
-            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            SourceExpression.Validate(bodycreated, nameof(bodycreated), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
@@ -1173,14 +1091,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<ApiUserApiListResult> ListOfUsers([WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyfilterfirstNamevalue = null, [WorkflowExpression] Func<string> bodyfilterlastNamevalue = null, [WorkflowExpression] Func<string> bodyfilteremailvalue = null, [WorkflowExpression] Func<int> bodycontrolskip = null, [WorkflowExpression] Func<int> bodycontroltake = null, [WorkflowExpression] Func<bodysortfieldInput> bodysortfield = null, [WorkflowExpression] Func<bodysortdirectionInput> bodysortdirection = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyfilterfirstNamevalue, nameof(bodyfilterfirstNamevalue), required: false);
-            SourceExpression.Validate(bodyfilterlastNamevalue, nameof(bodyfilterlastNamevalue), required: false);
-            SourceExpression.Validate(bodyfilteremailvalue, nameof(bodyfilteremailvalue), required: false);
-            SourceExpression.Validate(bodycontrolskip, nameof(bodycontrolskip), required: false);
-            SourceExpression.Validate(bodycontroltake, nameof(bodycontroltake), required: false);
-            SourceExpression.Validate(bodysortfield, nameof(bodysortfield), required: false);
-            SourceExpression.Validate(bodysortdirection, nameof(bodysortdirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/list";
@@ -1297,10 +1207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction CreateUser([WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users";
@@ -1345,8 +1251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction ChangePassword([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}/password", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -1362,10 +1266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction ForceUserPasswordChange([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyaccountId = null, [WorkflowExpression] Func<string> bodyactivationkey = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyaccountId, nameof(bodyaccountId), required: false);
-            SourceExpression.Validate(bodyactivationkey, nameof(bodyactivationkey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}/password", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -1404,7 +1304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction DeleteUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -1419,7 +1318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IBodyWorkflowAction<ApiUser> GetUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -1434,9 +1332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction UpdateUser([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -1469,8 +1364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction AddUserPermissions([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string[]> bodypermissions = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodypermissions, nameof(bodypermissions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}/permission", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -1497,8 +1390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
         public IWorkflowAction RemoveUserPermissions([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string[]> bodypermissions = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(bodypermissions, nameof(bodypermissions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}/permission", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));

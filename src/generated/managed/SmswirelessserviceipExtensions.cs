@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smswirelessserviceip")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyrecipients = null, [WorkflowExpression] Func<string> bodyconcatenation = null, [WorkflowExpression] Func<string> bodyoriginator = null, [WorkflowExpression] Func<string> bodytest = null)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
-            SourceExpression.Validate(bodyconcatenation, nameof(bodyconcatenation), required: false);
-            SourceExpression.Validate(bodyoriginator, nameof(bodyoriginator), required: false);
-            SourceExpression.Validate(bodytest, nameof(bodytest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/message.php";

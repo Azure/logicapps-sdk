@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetLightResponse> GetLight([WorkflowExpression] Func<string> deviceId)
         {
-            SourceExpression.Validate(deviceId, nameof(deviceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
@@ -43,17 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> bodymetadataname = null, [WorkflowExpression] Func<bool> bodyonon = null, [WorkflowExpression] Func<double> bodydimmingbrightness = null, [WorkflowExpression] Func<int> bodycolorTemperaturemirek = null, [WorkflowExpression] Func<double> bodycolorxyx = null, [WorkflowExpression] Func<double> bodycolorxyy = null, [WorkflowExpression] Func<double> bodydynamicsspeed = null, [WorkflowExpression] Func<int> bodydynamicsduration = null, [WorkflowExpression] Func<string> bodyalertaction = null, [WorkflowExpression] Func<bodygradientpointsInputItem[]> bodygradientpoints = null)
         {
-            SourceExpression.Validate(deviceId, nameof(deviceId), required: true);
-            SourceExpression.Validate(bodymetadataname, nameof(bodymetadataname), required: false);
-            SourceExpression.Validate(bodyonon, nameof(bodyonon), required: false);
-            SourceExpression.Validate(bodydimmingbrightness, nameof(bodydimmingbrightness), required: false);
-            SourceExpression.Validate(bodycolorTemperaturemirek, nameof(bodycolorTemperaturemirek), required: false);
-            SourceExpression.Validate(bodycolorxyx, nameof(bodycolorxyx), required: false);
-            SourceExpression.Validate(bodycolorxyy, nameof(bodycolorxyy), required: false);
-            SourceExpression.Validate(bodydynamicsspeed, nameof(bodydynamicsspeed), required: false);
-            SourceExpression.Validate(bodydynamicsduration, nameof(bodydynamicsduration), required: false);
-            SourceExpression.Validate(bodyalertaction, nameof(bodyalertaction), required: false);
-            SourceExpression.Validate(bodygradientpoints, nameof(bodygradientpoints), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
@@ -231,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetDeviceResponse> GetDevice([WorkflowExpression] Func<string> deviceId)
         {
-            SourceExpression.Validate(deviceId, nameof(deviceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
@@ -246,10 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<bodymetadataarchetypeInput> bodymetadataarchetype = null, [WorkflowExpression] Func<string> bodymetadataname = null, [WorkflowExpression] Func<string> bodyidentifyaction = null)
         {
-            SourceExpression.Validate(deviceId, nameof(deviceId), required: true);
-            SourceExpression.Validate(bodymetadataarchetype, nameof(bodymetadataarchetype), required: false);
-            SourceExpression.Validate(bodymetadataname, nameof(bodymetadataname), required: false);
-            SourceExpression.Validate(bodyidentifyaction, nameof(bodyidentifyaction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
@@ -343,7 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetSceneResponse> GetScene([WorkflowExpression] Func<string> sceneId)
         {
-            SourceExpression.Validate(sceneId, nameof(sceneId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sceneId, 1));
@@ -358,7 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene([WorkflowExpression] Func<string> sceneId)
         {
-            SourceExpression.Validate(sceneId, nameof(sceneId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sceneId, 1));

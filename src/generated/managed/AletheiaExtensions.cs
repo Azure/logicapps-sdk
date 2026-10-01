@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> filing = null, [WorkflowExpression] Func<int> before = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(filing, nameof(filing), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EntityFilings";
@@ -36,7 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<OpenForm4Response> OpenForm4([WorkflowExpression] Func<string> filingurl)
         {
-            SourceExpression.Validate(filingurl, nameof(filingurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/OpenForm4";
@@ -52,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials([WorkflowExpression] Func<string> filingurl)
         {
-            SourceExpression.Validate(filingurl, nameof(filingurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/OpenCommonFinancials";
@@ -68,8 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(term, nameof(term), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SearchEntities";
@@ -88,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetEntityResponse> GetEntity([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetEntity";
@@ -104,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetFilingResponse> GetFiling([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> url = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetFiling";
@@ -124,13 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions([WorkflowExpression] Func<string> issuer = null, [WorkflowExpression] Func<int> owner = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<int> securitytype = null, [WorkflowExpression] Func<int> transactiontype = null, [WorkflowExpression] Func<bool> cascade = null)
         {
-            SourceExpression.Validate(issuer, nameof(issuer), required: false);
-            SourceExpression.Validate(owner, nameof(owner), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(securitytype, nameof(securitytype), required: false);
-            SourceExpression.Validate(transactiontype, nameof(transactiontype), required: false);
-            SourceExpression.Validate(cascade, nameof(cascade), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/LatestTransactions";
@@ -160,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AffiliatedOwners";
@@ -176,9 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<periodInput> period = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(period, nameof(period), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CommonFinancials";
@@ -198,11 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> label, [WorkflowExpression] Func<int> period = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(label, nameof(label), required: true);
-            SourceExpression.Validate(period, nameof(period), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FinancialFactTrend";
@@ -225,10 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls([WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(company, nameof(company), required: false);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(quarter, nameof(quarter), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SearchEarningsCalls";
@@ -251,11 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EarningsCallResponse> EarningsCall([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> begin = null, [WorkflowExpression] Func<int> end = null)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(quarter, nameof(quarter), required: false);
-            SourceExpression.Validate(begin, nameof(begin), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EarningsCall";
@@ -279,11 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<string> quarter, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(quarter, nameof(quarter), required: true);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/EarningsCallHighlights";
@@ -305,7 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote([WorkflowExpression] Func<string> symbol)
         {
-            SourceExpression.Validate(symbol, nameof(symbol), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Crypto";
@@ -321,8 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<StockDataV2Response> StockData([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(symbol, nameof(symbol), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/StockData";
@@ -364,10 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
         public IWorkflowTrigger InsiderTrading([WorkflowExpression] Func<string> bodyissuer = null, [WorkflowExpression] Func<int> bodyowner = null, [WorkflowExpression] Func<bodytransactionTypeInput> bodytransactionType = null, [WorkflowExpression] Func<bodysecurityTypeInput> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyissuer, nameof(bodyissuer), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodytransactionType, nameof(bodytransactionType), required: false);
-            SourceExpression.Validate(bodysecurityType, nameof(bodysecurityType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SubscribeToInsiderTradingWebhook";

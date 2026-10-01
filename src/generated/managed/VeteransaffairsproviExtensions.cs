@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<LocationBundle> GetLocation([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> addressCity = null, [WorkflowExpression] Func<string> addressState = null, [WorkflowExpression] Func<string> addressPostalcode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            SourceExpression.Validate(Id, nameof(Id), required: false);
-            SourceExpression.Validate(identifier, nameof(identifier), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(addressCity, nameof(addressCity), required: false);
-            SourceExpression.Validate(addressState, nameof(addressState), required: false);
-            SourceExpression.Validate(addressPostalcode, nameof(addressPostalcode), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Location";
@@ -58,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Location> GetLocationById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -73,16 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<OrganizationBundle> ListOrganizations([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> addressCity = null, [WorkflowExpression] Func<string> addressState = null, [WorkflowExpression] Func<string> addressPostalcode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            SourceExpression.Validate(Id, nameof(Id), required: false);
-            SourceExpression.Validate(identifier, nameof(identifier), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(addressCity, nameof(addressCity), required: false);
-            SourceExpression.Validate(addressState, nameof(addressState), required: false);
-            SourceExpression.Validate(addressPostalcode, nameof(addressPostalcode), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Organization";
@@ -117,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Organization> GetOrganizationById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Organization/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -132,14 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerBundle> ListPractitioners([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> family = null, [WorkflowExpression] Func<string> given = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            SourceExpression.Validate(Id, nameof(Id), required: false);
-            SourceExpression.Validate(identifier, nameof(identifier), required: false);
-            SourceExpression.Validate(family, nameof(family), required: false);
-            SourceExpression.Validate(given, nameof(given), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Practitioner";
@@ -170,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Practitioner> GetPractitionerById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -185,12 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> practitionerIdentifier = null, [WorkflowExpression] Func<string> practitionerName = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            SourceExpression.Validate(Id, nameof(Id), required: false);
-            SourceExpression.Validate(practitionerIdentifier, nameof(practitionerIdentifier), required: false);
-            SourceExpression.Validate(practitionerName, nameof(practitionerName), required: false);
-            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PractitionerRole";
@@ -217,7 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PractitionerRole/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

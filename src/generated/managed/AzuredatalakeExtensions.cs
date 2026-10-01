@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<FolderResponse> ListFiles([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> path = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(path, nameof(path), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/store/folders/webhdfs/v1/";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<OperationPerformed> CreateFolder([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/store/folders/webhdfs/v1/";
@@ -53,10 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<string> AppendFileConcurrent([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath, [WorkflowExpression] Func<appendModeInput> appendMode = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(filepath, nameof(filepath), required: true);
-            SourceExpression.Validate(appendMode, nameof(appendMode), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfsext/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
@@ -77,8 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<string> ReadFile([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(filepath, nameof(filepath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
@@ -96,10 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IWorkflowAction UploadFile([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath, [WorkflowExpression] Func<bool> overwrite = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(filepath, nameof(filepath), required: true);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
@@ -121,10 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IWorkflowAction AppendFileSequential([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(filepath, nameof(filepath), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
@@ -145,8 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<OperationPerformed> DeleteFile([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath)
         {
-            SourceExpression.Validate(account, nameof(account), required: true);
-            SourceExpression.Validate(filepath, nameof(filepath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));

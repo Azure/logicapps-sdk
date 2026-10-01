@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<BaseGist[]> GistsList([WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gists";
@@ -39,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistSimple> GistsCreate([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyPublic = null)
         {
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyPublic, nameof(bodyPublic), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gists";
@@ -91,9 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<BaseGist[]> GistsListPublic([WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gists/public";
@@ -116,9 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<BaseGist[]> GistsListStarred([WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(since, nameof(since), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gists/starred";
@@ -141,7 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistSimple> GistsGet([WorkflowExpression] Func<string> gistId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -156,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IWorkflowAction GistsDelete([WorkflowExpression] Func<string> gistId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -171,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistSimple> GistsUpdate([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<string> bodydescription)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -203,9 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistComment[]> GistsListComments([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -226,8 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistComment> GistsCreateComment([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<string> bodybody)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -250,8 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistComment> GistsGetComment([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<int> commentId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/comments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(commentId, 1));
@@ -266,8 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IWorkflowAction GistsDeleteComment([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<int> commentId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/comments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(commentId, 1));
@@ -282,9 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistComment> GistsUpdateComment([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<int> commentId, [WorkflowExpression] Func<string> bodybody)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/comments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(commentId, 1));
@@ -307,9 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistCommit[]> GistsListCommits([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/commits", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -330,9 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistSimple[]> GistsListForks([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/forks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -353,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<BaseGist> GistsFork([WorkflowExpression] Func<string> gistId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/forks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -368,7 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IWorkflowAction GistsCheckIsStarred([WorkflowExpression] Func<string> gistId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/star", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -383,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IWorkflowAction GistsUnstar([WorkflowExpression] Func<string> gistId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/star", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -398,7 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IWorkflowAction GistsStar([WorkflowExpression] Func<string> gistId)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/star", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1));
@@ -413,8 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
         public IBodyWorkflowAction<GistSimple> GistsGetRevision([WorkflowExpression] Func<string> gistId, [WorkflowExpression] Func<string> sha)
         {
-            SourceExpression.Validate(gistId, nameof(gistId), required: true);
-            SourceExpression.Validate(sha, nameof(sha), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gists/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gistId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sha, 1));

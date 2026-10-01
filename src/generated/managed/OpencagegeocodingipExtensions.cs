@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
         public IBodyWorkflowAction<ReverseGeocodingResponse> ReverseGeocoding([WorkflowExpression] Func<string> lat, [WorkflowExpression] Func<string> @long)
         {
-            SourceExpression.Validate(lat, nameof(lat), required: true);
-            SourceExpression.Validate(@long, nameof(@long), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/json/reverse";
@@ -32,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
         public IBodyWorkflowAction<ForwardGeocodingResponse> ForwardGeocoding([WorkflowExpression] Func<string> placename)
         {
-            SourceExpression.Validate(placename, nameof(placename), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/json/forward";

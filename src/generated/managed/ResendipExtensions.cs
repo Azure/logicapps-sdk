@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<EmailPostResponse> Email([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodycc = null, [WorkflowExpression] Func<string> bodybcc = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyhtml = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null, [WorkflowExpression] Func<string> bodyreplyTo = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodycc, nameof(bodycc), required: false);
-            SourceExpression.Validate(bodybcc, nameof(bodybcc), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: false);
-            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
-            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/emails";
@@ -85,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<RetrieveGetResponse> RetrieveGet([WorkflowExpression] Func<string> emailId)
         {
-            SourceExpression.Validate(emailId, nameof(emailId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/emails/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(emailId, 1));
@@ -114,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<DomainPostResponse> Domain([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyregionInput> bodyregion = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/domains";
@@ -154,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> DomainDelete([WorkflowExpression] Func<string> domainId)
         {
-            SourceExpression.Validate(domainId, nameof(domainId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1));
@@ -169,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> Verify([WorkflowExpression] Func<string> domainId)
         {
-            SourceExpression.Validate(domainId, nameof(domainId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1));

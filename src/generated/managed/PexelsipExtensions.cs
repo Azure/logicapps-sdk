@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
         public IBodyWorkflowAction<SearchPhotosResponse> SearchPhotos([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<orientationInput> orientation = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(orientation, nameof(orientation), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(color, nameof(color), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/search";
@@ -49,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
         public IBodyWorkflowAction<ListCuratedPhotosResponse> ListCuratedPhotos([WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/curated";
@@ -70,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
         public IBodyWorkflowAction<GetPhotoResponse> GetPhoto([WorkflowExpression] Func<string> photoId)
         {
-            SourceExpression.Validate(photoId, nameof(photoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/photos/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(photoId, 1));
@@ -85,12 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
         public IBodyWorkflowAction<SearchVideosResponse> SearchVideos([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<orientationInput> orientation = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(orientation, nameof(orientation), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/videos/search";
@@ -117,12 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
         public IBodyWorkflowAction<ListPopularVideosResponse> ListPopularVideos([WorkflowExpression] Func<int> minWidth = null, [WorkflowExpression] Func<int> minHeight = null, [WorkflowExpression] Func<int> minDuration = null, [WorkflowExpression] Func<int> maxDuration = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(minWidth, nameof(minWidth), required: false);
-            SourceExpression.Validate(minHeight, nameof(minHeight), required: false);
-            SourceExpression.Validate(minDuration, nameof(minDuration), required: false);
-            SourceExpression.Validate(maxDuration, nameof(maxDuration), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/videos/popular";
@@ -150,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
         public IBodyWorkflowAction<GetVideoResponse> GetVideo([WorkflowExpression] Func<int> videoId)
         {
-            SourceExpression.Validate(videoId, nameof(videoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/videos/videos/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(videoId, 1));

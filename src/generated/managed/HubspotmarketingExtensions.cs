@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/marketing/v3/forms/";
@@ -36,41 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsCreate([WorkflowExpression] Func<string> dataformType = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> datacreatedAt = null, [WorkflowExpression] Func<string> dataupdatedAt = null, [WorkflowExpression] Func<bool> dataarchived = null, [WorkflowExpression] Func<string> dataarchivedAt = null, [WorkflowExpression] Func<datafieldGroupsInputItem[]> datafieldGroups = null, [WorkflowExpression] Func<string> dataconfigurationlanguage = null, [WorkflowExpression] Func<bool> dataconfigurationcloneable = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActiontype = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActionvalue = null, [WorkflowExpression] Func<bool> dataconfigurationeditable = null, [WorkflowExpression] Func<bool> dataconfigurationarchivable = null, [WorkflowExpression] Func<bool> dataconfigurationrecaptchaEnabled = null, [WorkflowExpression] Func<bool> dataconfigurationnotifyContactOwner = null, [WorkflowExpression] Func<string[]> dataconfigurationnotifyRecipients = null, [WorkflowExpression] Func<bool> dataconfigurationcreateNewContactForNewEmail = null, [WorkflowExpression] Func<bool> dataconfigurationprePopulateKnownValues = null, [WorkflowExpression] Func<bool> dataconfigurationallowLinkToResetKnownValues = null, [WorkflowExpression] Func<bool> datadisplayOptionsrenderRawHtml = null, [WorkflowExpression] Func<string> datadisplayOptionstheme = null, [WorkflowExpression] Func<string> datadisplayOptionssubmitButtonText = null, [WorkflowExpression] Func<string> datadisplayOptionsstylefontFamily = null, [WorkflowExpression] Func<string> datadisplayOptionsstylebackgroundWidth = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitAlignment = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitFontColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitSize = null, [WorkflowExpression] Func<string> datadisplayOptionscssClass = null)
         {
-            SourceExpression.Validate(dataformType, nameof(dataformType), required: false);
-            SourceExpression.Validate(dataname, nameof(dataname), required: false);
-            SourceExpression.Validate(datacreatedAt, nameof(datacreatedAt), required: false);
-            SourceExpression.Validate(dataupdatedAt, nameof(dataupdatedAt), required: false);
-            SourceExpression.Validate(dataarchived, nameof(dataarchived), required: false);
-            SourceExpression.Validate(dataarchivedAt, nameof(dataarchivedAt), required: false);
-            SourceExpression.Validate(datafieldGroups, nameof(datafieldGroups), required: false);
-            SourceExpression.Validate(dataconfigurationlanguage, nameof(dataconfigurationlanguage), required: false);
-            SourceExpression.Validate(dataconfigurationcloneable, nameof(dataconfigurationcloneable), required: false);
-            SourceExpression.Validate(dataconfigurationpostSubmitActiontype, nameof(dataconfigurationpostSubmitActiontype), required: false);
-            SourceExpression.Validate(dataconfigurationpostSubmitActionvalue, nameof(dataconfigurationpostSubmitActionvalue), required: false);
-            SourceExpression.Validate(dataconfigurationeditable, nameof(dataconfigurationeditable), required: false);
-            SourceExpression.Validate(dataconfigurationarchivable, nameof(dataconfigurationarchivable), required: false);
-            SourceExpression.Validate(dataconfigurationrecaptchaEnabled, nameof(dataconfigurationrecaptchaEnabled), required: false);
-            SourceExpression.Validate(dataconfigurationnotifyContactOwner, nameof(dataconfigurationnotifyContactOwner), required: false);
-            SourceExpression.Validate(dataconfigurationnotifyRecipients, nameof(dataconfigurationnotifyRecipients), required: false);
-            SourceExpression.Validate(dataconfigurationcreateNewContactForNewEmail, nameof(dataconfigurationcreateNewContactForNewEmail), required: false);
-            SourceExpression.Validate(dataconfigurationprePopulateKnownValues, nameof(dataconfigurationprePopulateKnownValues), required: false);
-            SourceExpression.Validate(dataconfigurationallowLinkToResetKnownValues, nameof(dataconfigurationallowLinkToResetKnownValues), required: false);
-            SourceExpression.Validate(datadisplayOptionsrenderRawHtml, nameof(datadisplayOptionsrenderRawHtml), required: false);
-            SourceExpression.Validate(datadisplayOptionstheme, nameof(datadisplayOptionstheme), required: false);
-            SourceExpression.Validate(datadisplayOptionssubmitButtonText, nameof(datadisplayOptionssubmitButtonText), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylefontFamily, nameof(datadisplayOptionsstylefontFamily), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylebackgroundWidth, nameof(datadisplayOptionsstylebackgroundWidth), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelabelTextColor, nameof(datadisplayOptionsstylelabelTextColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelabelTextSize, nameof(datadisplayOptionsstylelabelTextSize), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylehelpTextColor, nameof(datadisplayOptionsstylehelpTextColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylehelpTextSize, nameof(datadisplayOptionsstylehelpTextSize), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelegalConsentTextColor, nameof(datadisplayOptionsstylelegalConsentTextColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelegalConsentTextSize, nameof(datadisplayOptionsstylelegalConsentTextSize), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitColor, nameof(datadisplayOptionsstylesubmitColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitAlignment, nameof(datadisplayOptionsstylesubmitAlignment), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitFontColor, nameof(datadisplayOptionsstylesubmitFontColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitSize, nameof(datadisplayOptionsstylesubmitSize), required: false);
-            SourceExpression.Validate(datadisplayOptionscssClass, nameof(datadisplayOptionscssClass), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/marketing/v3/forms/";
@@ -353,8 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsRead([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<bool> archived = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -372,7 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsArchive([WorkflowExpression] Func<string> formId)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -387,43 +347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction FormsUpdate([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> dataformType, [WorkflowExpression] Func<string> dataid, [WorkflowExpression] Func<string> datacreatedAt, [WorkflowExpression] Func<string> dataupdatedAt, [WorkflowExpression] Func<bool> dataarchived, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> dataarchivedAt = null, [WorkflowExpression] Func<datafieldGroupsInputItem[]> datafieldGroups = null, [WorkflowExpression] Func<string> dataconfigurationlanguage = null, [WorkflowExpression] Func<bool> dataconfigurationcloneable = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActiontype = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActionvalue = null, [WorkflowExpression] Func<bool> dataconfigurationeditable = null, [WorkflowExpression] Func<bool> dataconfigurationarchivable = null, [WorkflowExpression] Func<bool> dataconfigurationrecaptchaEnabled = null, [WorkflowExpression] Func<bool> dataconfigurationnotifyContactOwner = null, [WorkflowExpression] Func<string[]> dataconfigurationnotifyRecipients = null, [WorkflowExpression] Func<bool> dataconfigurationcreateNewContactForNewEmail = null, [WorkflowExpression] Func<bool> dataconfigurationprePopulateKnownValues = null, [WorkflowExpression] Func<bool> dataconfigurationallowLinkToResetKnownValues = null, [WorkflowExpression] Func<bool> datadisplayOptionsrenderRawHtml = null, [WorkflowExpression] Func<string> datadisplayOptionstheme = null, [WorkflowExpression] Func<string> datadisplayOptionssubmitButtonText = null, [WorkflowExpression] Func<string> datadisplayOptionsstylefontFamily = null, [WorkflowExpression] Func<string> datadisplayOptionsstylebackgroundWidth = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitAlignment = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitFontColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitSize = null, [WorkflowExpression] Func<string> datadisplayOptionscssClass = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(dataformType, nameof(dataformType), required: true);
-            SourceExpression.Validate(dataid, nameof(dataid), required: true);
-            SourceExpression.Validate(datacreatedAt, nameof(datacreatedAt), required: true);
-            SourceExpression.Validate(dataupdatedAt, nameof(dataupdatedAt), required: true);
-            SourceExpression.Validate(dataarchived, nameof(dataarchived), required: true);
-            SourceExpression.Validate(dataname, nameof(dataname), required: false);
-            SourceExpression.Validate(dataarchivedAt, nameof(dataarchivedAt), required: false);
-            SourceExpression.Validate(datafieldGroups, nameof(datafieldGroups), required: false);
-            SourceExpression.Validate(dataconfigurationlanguage, nameof(dataconfigurationlanguage), required: false);
-            SourceExpression.Validate(dataconfigurationcloneable, nameof(dataconfigurationcloneable), required: false);
-            SourceExpression.Validate(dataconfigurationpostSubmitActiontype, nameof(dataconfigurationpostSubmitActiontype), required: false);
-            SourceExpression.Validate(dataconfigurationpostSubmitActionvalue, nameof(dataconfigurationpostSubmitActionvalue), required: false);
-            SourceExpression.Validate(dataconfigurationeditable, nameof(dataconfigurationeditable), required: false);
-            SourceExpression.Validate(dataconfigurationarchivable, nameof(dataconfigurationarchivable), required: false);
-            SourceExpression.Validate(dataconfigurationrecaptchaEnabled, nameof(dataconfigurationrecaptchaEnabled), required: false);
-            SourceExpression.Validate(dataconfigurationnotifyContactOwner, nameof(dataconfigurationnotifyContactOwner), required: false);
-            SourceExpression.Validate(dataconfigurationnotifyRecipients, nameof(dataconfigurationnotifyRecipients), required: false);
-            SourceExpression.Validate(dataconfigurationcreateNewContactForNewEmail, nameof(dataconfigurationcreateNewContactForNewEmail), required: false);
-            SourceExpression.Validate(dataconfigurationprePopulateKnownValues, nameof(dataconfigurationprePopulateKnownValues), required: false);
-            SourceExpression.Validate(dataconfigurationallowLinkToResetKnownValues, nameof(dataconfigurationallowLinkToResetKnownValues), required: false);
-            SourceExpression.Validate(datadisplayOptionsrenderRawHtml, nameof(datadisplayOptionsrenderRawHtml), required: false);
-            SourceExpression.Validate(datadisplayOptionstheme, nameof(datadisplayOptionstheme), required: false);
-            SourceExpression.Validate(datadisplayOptionssubmitButtonText, nameof(datadisplayOptionssubmitButtonText), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylefontFamily, nameof(datadisplayOptionsstylefontFamily), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylebackgroundWidth, nameof(datadisplayOptionsstylebackgroundWidth), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelabelTextColor, nameof(datadisplayOptionsstylelabelTextColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelabelTextSize, nameof(datadisplayOptionsstylelabelTextSize), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylehelpTextColor, nameof(datadisplayOptionsstylehelpTextColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylehelpTextSize, nameof(datadisplayOptionsstylehelpTextSize), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelegalConsentTextColor, nameof(datadisplayOptionsstylelegalConsentTextColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylelegalConsentTextSize, nameof(datadisplayOptionsstylelegalConsentTextSize), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitColor, nameof(datadisplayOptionsstylesubmitColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitAlignment, nameof(datadisplayOptionsstylesubmitAlignment), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitFontColor, nameof(datadisplayOptionsstylesubmitFontColor), required: false);
-            SourceExpression.Validate(datadisplayOptionsstylesubmitSize, nameof(datadisplayOptionsstylesubmitSize), required: false);
-            SourceExpression.Validate(datadisplayOptionscssClass, nameof(datadisplayOptionscssClass), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -672,8 +595,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEventRead([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> externalAccountId)
         {
-            SourceExpression.Validate(externalEventId, nameof(externalEventId), required: true);
-            SourceExpression.Validate(externalAccountId, nameof(externalAccountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
@@ -689,8 +610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEventsArchive([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> externalAccountId)
         {
-            SourceExpression.Validate(externalEventId, nameof(externalEventId), required: true);
-            SourceExpression.Validate(externalAccountId, nameof(externalAccountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
@@ -706,18 +625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEventsUpdateCreateOrUpdate([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> dataeventName, [WorkflowExpression] Func<string> dataeventOrganizer, [WorkflowExpression] Func<string> dataexternalAccountId, [WorkflowExpression] Func<string> dataexternalEventId, [WorkflowExpression] Func<dataeventTypeInput> dataeventType = null, [WorkflowExpression] Func<string> datastartDateTime = null, [WorkflowExpression] Func<string> dataendDateTime = null, [WorkflowExpression] Func<string> dataeventDescription = null, [WorkflowExpression] Func<string> dataeventUrl = null, [WorkflowExpression] Func<bool> dataeventCancelled = null, [WorkflowExpression] Func<datacustomPropertiesInputItem[]> datacustomProperties = null)
         {
-            SourceExpression.Validate(externalEventId, nameof(externalEventId), required: true);
-            SourceExpression.Validate(dataeventName, nameof(dataeventName), required: true);
-            SourceExpression.Validate(dataeventOrganizer, nameof(dataeventOrganizer), required: true);
-            SourceExpression.Validate(dataexternalAccountId, nameof(dataexternalAccountId), required: true);
-            SourceExpression.Validate(dataexternalEventId, nameof(dataexternalEventId), required: true);
-            SourceExpression.Validate(dataeventType, nameof(dataeventType), required: false);
-            SourceExpression.Validate(datastartDateTime, nameof(datastartDateTime), required: false);
-            SourceExpression.Validate(dataendDateTime, nameof(dataendDateTime), required: false);
-            SourceExpression.Validate(dataeventDescription, nameof(dataeventDescription), required: false);
-            SourceExpression.Validate(dataeventUrl, nameof(dataeventUrl), required: false);
-            SourceExpression.Validate(dataeventCancelled, nameof(dataeventCancelled), required: false);
-            SourceExpression.Validate(datacustomProperties, nameof(datacustomProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
@@ -788,8 +695,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/marketing-emails/v1/emails";
@@ -810,7 +715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsRead([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -825,7 +729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsArchive([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -840,10 +743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodysubject = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
-            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -882,7 +781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsCampaignRead([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/email/public/v1/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -897,8 +795,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
         public IWorkflowAction MarketingEmailsCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodysubject = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/marketing-emails/v1/emails/";

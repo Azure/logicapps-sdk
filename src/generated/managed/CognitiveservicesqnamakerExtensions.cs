@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
         public IBodyWorkflowAction<GenerateAnswerResponse> GenerateAnswer([WorkflowExpression] Func<string> knowledgeBaseId, [WorkflowExpression] Func<string> serviceHost, [WorkflowExpression] Func<string> endpointKey, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<int> bodytop = null)
         {
-            SourceExpression.Validate(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
-            SourceExpression.Validate(serviceHost, nameof(serviceHost), required: true);
-            SourceExpression.Validate(endpointKey, nameof(endpointKey), required: true);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            SourceExpression.Validate(bodytop, nameof(bodytop), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/knowledgebases/{0}/generateAnswer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeBaseId, 1));
@@ -59,8 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
         public IBodyWorkflowAction<DownloadKnowledgeBaseResponse> DownloadKnowledgeBaseOld([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<string> knowledgeBaseId)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/qnamaker/v4.0/knowledgebases/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeBaseId, 1));

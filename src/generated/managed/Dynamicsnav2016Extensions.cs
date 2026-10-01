@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
         public IBodyWorkflowAction<ItemsList> GetAllSalesOrder([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> instancename, [WorkflowExpression] Func<string> salesorderservice, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(instancename, nameof(instancename), required: true);
-            SourceExpression.Validate(salesorderservice, nameof(salesorderservice), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instancename, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(salesorderservice, 1));
@@ -35,11 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
         public IBodyWorkflowAction<ItemsList> GetAllSalesLine([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> instancename, [WorkflowExpression] Func<string> salesorderservice, [WorkflowExpression] Func<string> ordernumber, [WorkflowExpression] Func<string> saleslineservice)
         {
-            SourceExpression.Validate(company, nameof(company), required: true);
-            SourceExpression.Validate(instancename, nameof(instancename), required: true);
-            SourceExpression.Validate(salesorderservice, nameof(salesorderservice), required: true);
-            SourceExpression.Validate(ordernumber, nameof(ordernumber), required: true);
-            SourceExpression.Validate(saleslineservice, nameof(saleslineservice), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instancename, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(salesorderservice, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ordernumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(saleslineservice, 1));

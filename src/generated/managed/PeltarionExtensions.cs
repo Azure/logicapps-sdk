@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "peltarion")]
         public IBodyWorkflowAction<CallapiResponse> Callapi([WorkflowExpression] Func<string> peltarionbody)
         {
-            SourceExpression.Validate(peltarionbody, nameof(peltarionbody), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/forwardcall";

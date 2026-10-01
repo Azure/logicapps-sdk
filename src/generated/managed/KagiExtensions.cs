@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SummarizePostResponse> Summarize([WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyengineInput> bodyengine = null, [WorkflowExpression] Func<bodysummaryTypeInput> bodysummaryType = null, [WorkflowExpression] Func<bodytargetLanguageInput> bodytargetLanguage = null, [WorkflowExpression] Func<bool> bodycache = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyengine, nameof(bodyengine), required: false);
-            SourceExpression.Validate(bodysummaryType, nameof(bodysummaryType), required: false);
-            SourceExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
-            SourceExpression.Validate(bodycache, nameof(bodycache), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/summarize";
@@ -96,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<FastGPTPostResponse> FastGPT([WorkflowExpression] Func<string> bodyquery)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/fastgpt";
@@ -119,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/search/";
@@ -138,7 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet([WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/enrich/web";
@@ -154,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet([WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v0/enrich/news";
@@ -170,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet([WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/smallweb/feed/";

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsEmailsResponse> EmailsGet([WorkflowExpression] Func<string> requestJobId, [WorkflowExpression] Func<requestEmailTypeInput> requestEmailType)
         {
-            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
-            SourceExpression.Validate(requestEmailType, nameof(requestEmailType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/emails";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JToken> JobApprove([WorkflowExpression] Func<string> requestsecret, [WorkflowExpression] Func<string> requestcomments = null)
         {
-            SourceExpression.Validate(requestsecret, nameof(requestsecret), required: true);
-            SourceExpression.Validate(requestcomments, nameof(requestcomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/job/approve";
@@ -62,28 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsCreateJobResponse> JobCreate([WorkflowExpression] Func<requestrecipientSourceInput> requestrecipientSource, [WorkflowExpression] Func<string> requestsendingAccount, [WorkflowExpression] Func<string> requestnewsletterTitle, [WorkflowExpression] Func<string> requestoffice365Groups = null, [WorkflowExpression] Func<string> requestattachmentContent = null, [WorkflowExpression] Func<string> requestattachmentName = null, [WorkflowExpression] Func<string> requestemailAddresses = null, [WorkflowExpression] Func<string> requestemailContent = null, [WorkflowExpression] Func<requestemailContentTypeInput> requestemailContentType = null, [WorkflowExpression] Func<string> requestemailSubject = null, [WorkflowExpression] Func<string> requestexchangeGroups = null, [WorkflowExpression] Func<requestwhenToSendTypeInput> requestwhenToSendType = null, [WorkflowExpression] Func<string> requestwhenToSend = null, [WorkflowExpression] Func<string> requestrecipientEmailField = null, [WorkflowExpression] Func<string> requestrecipientListURL = null, [WorkflowExpression] Func<string> requestrecipientFilterView = null, [WorkflowExpression] Func<bool> requestremoveDuplicates = null, [WorkflowExpression] Func<bool> requestsendReport = null, [WorkflowExpression] Func<string> requesttimeZone = null, [WorkflowExpression] Func<string> requesttemplate = null, [WorkflowExpression] Func<bool> requesttrackClicks = null, [WorkflowExpression] Func<bool> requesttrackOpens = null)
         {
-            SourceExpression.Validate(requestrecipientSource, nameof(requestrecipientSource), required: true);
-            SourceExpression.Validate(requestsendingAccount, nameof(requestsendingAccount), required: true);
-            SourceExpression.Validate(requestnewsletterTitle, nameof(requestnewsletterTitle), required: true);
-            SourceExpression.Validate(requestoffice365Groups, nameof(requestoffice365Groups), required: false);
-            SourceExpression.Validate(requestattachmentContent, nameof(requestattachmentContent), required: false);
-            SourceExpression.Validate(requestattachmentName, nameof(requestattachmentName), required: false);
-            SourceExpression.Validate(requestemailAddresses, nameof(requestemailAddresses), required: false);
-            SourceExpression.Validate(requestemailContent, nameof(requestemailContent), required: false);
-            SourceExpression.Validate(requestemailContentType, nameof(requestemailContentType), required: false);
-            SourceExpression.Validate(requestemailSubject, nameof(requestemailSubject), required: false);
-            SourceExpression.Validate(requestexchangeGroups, nameof(requestexchangeGroups), required: false);
-            SourceExpression.Validate(requestwhenToSendType, nameof(requestwhenToSendType), required: false);
-            SourceExpression.Validate(requestwhenToSend, nameof(requestwhenToSend), required: false);
-            SourceExpression.Validate(requestrecipientEmailField, nameof(requestrecipientEmailField), required: false);
-            SourceExpression.Validate(requestrecipientListURL, nameof(requestrecipientListURL), required: false);
-            SourceExpression.Validate(requestrecipientFilterView, nameof(requestrecipientFilterView), required: false);
-            SourceExpression.Validate(requestremoveDuplicates, nameof(requestremoveDuplicates), required: false);
-            SourceExpression.Validate(requestsendReport, nameof(requestsendReport), required: false);
-            SourceExpression.Validate(requesttimeZone, nameof(requesttimeZone), required: false);
-            SourceExpression.Validate(requesttemplate, nameof(requesttemplate), required: false);
-            SourceExpression.Validate(requesttrackClicks, nameof(requesttrackClicks), required: false);
-            SourceExpression.Validate(requesttrackOpens, nameof(requesttrackOpens), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/job/create";
@@ -284,7 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsJob> JobGet([WorkflowExpression] Func<string> requestJobId)
         {
-            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/job/get";
@@ -300,9 +273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsJobsResponse> JobGetAll([WorkflowExpression] Func<string> requestDateFrom = null, [WorkflowExpression] Func<string> requestDateTo = null, [WorkflowExpression] Func<int> requestLimit = null)
         {
-            SourceExpression.Validate(requestDateFrom, nameof(requestDateFrom), required: false);
-            SourceExpression.Validate(requestDateTo, nameof(requestDateTo), required: false);
-            SourceExpression.Validate(requestLimit, nameof(requestLimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/job/getlist";
@@ -323,7 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsJobReport> JobGetReport([WorkflowExpression] Func<string> requestJobId)
         {
-            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/job/getreport";
@@ -339,8 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JToken> JobReject([WorkflowExpression] Func<string> requestsecret, [WorkflowExpression] Func<string> requestcomments = null)
         {
-            SourceExpression.Validate(requestsecret, nameof(requestsecret), required: true);
-            SourceExpression.Validate(requestcomments, nameof(requestcomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/job/reject";
@@ -369,8 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsTrackerLogResponse> TrackerLogGet([WorkflowExpression] Func<string> requestJobId, [WorkflowExpression] Func<requestDataTypeInput> requestDataType)
         {
-            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
-            SourceExpression.Validate(requestDataType, nameof(requestDataType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/trackerlog";
@@ -387,7 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsUnsubscribesResponse> UnsubscribesGet([WorkflowExpression] Func<string> requestJobId = null)
         {
-            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/unsubscribes";
@@ -406,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     {
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requesttitle, nameof(requesttitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/registerwebhookjobcompleted";
@@ -430,7 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requesttitle, nameof(requesttitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/registerwebhookjobstarted";
@@ -454,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requesttitle, nameof(requesttitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1.0/registerwebhookjobsubmitted";

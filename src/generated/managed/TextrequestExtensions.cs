@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetMessagesByContactPhoneResponse> GetMessagesByContactPhone([WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> pageSize, [WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> phoneNumber)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
@@ -34,13 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<SendMessageByPhoneNumberResponse> SendMessageByPhoneNumber([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> phoneNumber, [WorkflowExpression] Func<string> bodymessageBody = null, [WorkflowExpression] Func<string> bodynameOfTheSender = null, [WorkflowExpression] Func<string> bodycallbackUrlForWhenTheMessageStatusUpdates = null, [WorkflowExpression] Func<string> bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne = null, [WorkflowExpression] Func<string[]> bodymMSMediaAttachmentsForThisMessage = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
-            SourceExpression.Validate(bodymessageBody, nameof(bodymessageBody), required: false);
-            SourceExpression.Validate(bodynameOfTheSender, nameof(bodynameOfTheSender), required: false);
-            SourceExpression.Validate(bodycallbackUrlForWhenTheMessageStatusUpdates, nameof(bodycallbackUrlForWhenTheMessageStatusUpdates), required: false);
-            SourceExpression.Validate(bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne, nameof(bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne), required: false);
-            SourceExpression.Validate(bodymMSMediaAttachmentsForThisMessage, nameof(bodymMSMediaAttachmentsForThisMessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
@@ -91,8 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<string> ArchiveConversation([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> phoneNumber)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts/{1}/conversations/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
@@ -107,8 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<string> UnarchiveConversation([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> phoneNumber)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts/{1}/conversations/unarchive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
@@ -123,8 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetContactByPhoneNumberResponse> GetContactByPhoneNumber([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> phoneNumber)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
@@ -139,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<string> DeleteContact([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> phoneNumber)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
@@ -155,20 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> phoneNumber, [WorkflowExpression] Func<string> bodyfirstNameOfContact = null, [WorkflowExpression] Func<string> bodylastNameOfContact = null, [WorkflowExpression] Func<string> bodyfullNameOfContact = null, [WorkflowExpression] Func<bool> bodywhetherMessagesFromThisContactAreSuppressed = null, [WorkflowExpression] Func<bool> bodywhetherMessagesFromThisContactAreArchived = null, [WorkflowExpression] Func<bool> bodywhetherMessagesFromThisContactAreBlocked = null, [WorkflowExpression] Func<string> bodyreasonForSuppressingThisContact = null, [WorkflowExpression] Func<string> bodycontactNote = null, [WorkflowExpression] Func<int[]> bodycontactGroups = null, [WorkflowExpression] Func<string[]> bodycontactTags = null, [WorkflowExpression] Func<bodycontactCustomFieldsInputItem[]> bodycontactCustomFields = null, [WorkflowExpression] Func<bool> bodywhetherTheCurrentConversationWithThisContactHasBeenResolved = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: true);
-            SourceExpression.Validate(bodyfirstNameOfContact, nameof(bodyfirstNameOfContact), required: false);
-            SourceExpression.Validate(bodylastNameOfContact, nameof(bodylastNameOfContact), required: false);
-            SourceExpression.Validate(bodyfullNameOfContact, nameof(bodyfullNameOfContact), required: false);
-            SourceExpression.Validate(bodywhetherMessagesFromThisContactAreSuppressed, nameof(bodywhetherMessagesFromThisContactAreSuppressed), required: false);
-            SourceExpression.Validate(bodywhetherMessagesFromThisContactAreArchived, nameof(bodywhetherMessagesFromThisContactAreArchived), required: false);
-            SourceExpression.Validate(bodywhetherMessagesFromThisContactAreBlocked, nameof(bodywhetherMessagesFromThisContactAreBlocked), required: false);
-            SourceExpression.Validate(bodyreasonForSuppressingThisContact, nameof(bodyreasonForSuppressingThisContact), required: false);
-            SourceExpression.Validate(bodycontactNote, nameof(bodycontactNote), required: false);
-            SourceExpression.Validate(bodycontactGroups, nameof(bodycontactGroups), required: false);
-            SourceExpression.Validate(bodycontactTags, nameof(bodycontactTags), required: false);
-            SourceExpression.Validate(bodycontactCustomFields, nameof(bodycontactCustomFields), required: false);
-            SourceExpression.Validate(bodywhetherTheCurrentConversationWithThisContactHasBeenResolved, nameof(bodywhetherTheCurrentConversationWithThisContactHasBeenResolved), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
@@ -261,31 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts([WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> pageSize, [WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> contactPhoneNumber = null, [WorkflowExpression] Func<string> lastMessageTimestampBeforeUtc = null, [WorkflowExpression] Func<string> lastMessageTimestampAfterUtc = null, [WorkflowExpression] Func<string> contactCreatedBefore = null, [WorkflowExpression] Func<string> contactCreatedAfter = null, [WorkflowExpression] Func<bool> isResolved = null, [WorkflowExpression] Func<bool> isBlocked = null, [WorkflowExpression] Func<bool> isArchived = null, [WorkflowExpression] Func<bool> isSuppressed = null, [WorkflowExpression] Func<bool> hasOptedOut = null, [WorkflowExpression] Func<string> lastMessageSentBefore = null, [WorkflowExpression] Func<string> lastMessageSentAfter = null, [WorkflowExpression] Func<string> lastMessageReceivedBefore = null, [WorkflowExpression] Func<string> lastMessageReceivedAfter = null, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> groups = null, [WorkflowExpression] Func<string> customFieldId1 = null, [WorkflowExpression] Func<string> customFieldValue1 = null, [WorkflowExpression] Func<string> customFieldId2 = null, [WorkflowExpression] Func<string> customFieldValue2 = null, [WorkflowExpression] Func<string> customFieldId3 = null, [WorkflowExpression] Func<string> customFieldValue3 = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(contactPhoneNumber, nameof(contactPhoneNumber), required: false);
-            SourceExpression.Validate(lastMessageTimestampBeforeUtc, nameof(lastMessageTimestampBeforeUtc), required: false);
-            SourceExpression.Validate(lastMessageTimestampAfterUtc, nameof(lastMessageTimestampAfterUtc), required: false);
-            SourceExpression.Validate(contactCreatedBefore, nameof(contactCreatedBefore), required: false);
-            SourceExpression.Validate(contactCreatedAfter, nameof(contactCreatedAfter), required: false);
-            SourceExpression.Validate(isResolved, nameof(isResolved), required: false);
-            SourceExpression.Validate(isBlocked, nameof(isBlocked), required: false);
-            SourceExpression.Validate(isArchived, nameof(isArchived), required: false);
-            SourceExpression.Validate(isSuppressed, nameof(isSuppressed), required: false);
-            SourceExpression.Validate(hasOptedOut, nameof(hasOptedOut), required: false);
-            SourceExpression.Validate(lastMessageSentBefore, nameof(lastMessageSentBefore), required: false);
-            SourceExpression.Validate(lastMessageSentAfter, nameof(lastMessageSentAfter), required: false);
-            SourceExpression.Validate(lastMessageReceivedBefore, nameof(lastMessageReceivedBefore), required: false);
-            SourceExpression.Validate(lastMessageReceivedAfter, nameof(lastMessageReceivedAfter), required: false);
-            SourceExpression.Validate(tags, nameof(tags), required: false);
-            SourceExpression.Validate(groups, nameof(groups), required: false);
-            SourceExpression.Validate(customFieldId1, nameof(customFieldId1), required: false);
-            SourceExpression.Validate(customFieldValue1, nameof(customFieldValue1), required: false);
-            SourceExpression.Validate(customFieldId2, nameof(customFieldId2), required: false);
-            SourceExpression.Validate(customFieldValue2, nameof(customFieldValue2), required: false);
-            SourceExpression.Validate(customFieldId3, nameof(customFieldId3), required: false);
-            SourceExpression.Validate(customFieldValue3, nameof(customFieldValue3), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -352,8 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<BulkUpdateContactsResponseItem[]> BulkUpdateContacts([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -369,8 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetGroupByIdResponse> GetGroupById([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> groupId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/groups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));
@@ -385,8 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<string> DeleteGroup([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> groupId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/groups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));
@@ -401,10 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<UpdateGroupResponse> UpdateGroup([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> groupId, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodygroupNote = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
-            SourceExpression.Validate(bodygroupNote, nameof(bodygroupNote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/groups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));
@@ -437,9 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetGroupsResponse> GetGroups([WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> pageSize, [WorkflowExpression] Func<int> dashboardId)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/groups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -456,9 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodygroupNote = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
-            SourceExpression.Validate(bodygroupNote, nameof(bodygroupNote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/groups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -491,9 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetTagsResponse> GetTags([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> pageSize)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -510,7 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetCustomFieldsResponseItem[]> GetCustomFields([WorkflowExpression] Func<int> dashboardId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -525,8 +447,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetPaymentResponse> GetPayment([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> paymentId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/payments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(paymentId, 1));
@@ -541,8 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<MarkPaymentPaidResponse> MarkPaymentPaid([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> paymentId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/payments/{1}/mark_as_paid", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(paymentId, 1));
@@ -557,8 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<SendPaymentReminderResponse> SendPaymentReminder([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> paymentId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/payments/{1}/resend", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(paymentId, 1));
@@ -573,8 +489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<CancelPaymentResponse> CancelPayment([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<int> paymentId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/payments/{1}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(paymentId, 1));
@@ -589,13 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetPaymentsResponse> GetPayments([WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> pageSize, [WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> referenceNumber = null, [WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> sortType = null, [WorkflowExpression] Func<string> sortDirection = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(referenceNumber, nameof(referenceNumber), required: false);
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
-            SourceExpression.Validate(sortType, nameof(sortType), required: false);
-            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/payments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -624,12 +531,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<CreatePaymentResponse> CreatePayment([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> bodypaymentDescription = null, [WorkflowExpression] Func<string> bodyrecipientPhoneNumber = null, [WorkflowExpression] Func<double> bodyamountRequestedInDollars = null, [WorkflowExpression] Func<string> bodypaymentMessageTextBody = null, [WorkflowExpression] Func<string> bodyreferenceStringOfThePayment = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(bodypaymentDescription, nameof(bodypaymentDescription), required: false);
-            SourceExpression.Validate(bodyrecipientPhoneNumber, nameof(bodyrecipientPhoneNumber), required: false);
-            SourceExpression.Validate(bodyamountRequestedInDollars, nameof(bodyamountRequestedInDollars), required: false);
-            SourceExpression.Validate(bodypaymentMessageTextBody, nameof(bodypaymentMessageTextBody), required: false);
-            SourceExpression.Validate(bodyreferenceStringOfThePayment, nameof(bodyreferenceStringOfThePayment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/payments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -680,7 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetDashboardResponse> GetDashboard([WorkflowExpression] Func<int> dashboardId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -695,7 +595,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<string> DeleteDashboard([WorkflowExpression] Func<int> dashboardId)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -710,8 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<UpdateDashboardsNameResponse> UpdateDashboardsName([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> bodydashboardName = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(bodydashboardName, nameof(bodydashboardName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -738,13 +635,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetConversationsResponse> GetConversations([WorkflowExpression] Func<int> dashboardId, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> showUnresolvedOnly = null, [WorkflowExpression] Func<string> includeArchived = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(tags, nameof(tags), required: false);
-            SourceExpression.Validate(showUnresolvedOnly, nameof(showUnresolvedOnly), required: false);
-            SourceExpression.Validate(includeArchived, nameof(includeArchived), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/conversations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dashboardId, 1));
@@ -776,8 +666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<GetDashboardsResponse> GetDashboards([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dashboards";
@@ -798,8 +686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
         public IBodyWorkflowAction<CreateDashboardResponse> CreateDashboard([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dashboards";
@@ -834,8 +720,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
     {
         public IBodyWorkflowTrigger<TextingWebhookResponse> TextingWebhook([WorkflowExpression] Func<string> dashboardId, [WorkflowExpression] Func<bodyEventInput> bodyEvent, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(dashboardId, nameof(dashboardId), required: true);
-            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dashboards/{0}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dashboardId, 1));

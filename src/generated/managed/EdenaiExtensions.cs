@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TextToSpeechResponse> TextToSpeech([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyoption = null, [WorkflowExpression] Func<double> bodyrate = null, [WorkflowExpression] Func<double> bodypitch = null, [WorkflowExpression] Func<double> bodyvolume = null, [WorkflowExpression] Func<string> bodyaudioFormat = null, [WorkflowExpression] Func<double> bodysamplingRate = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyoption, nameof(bodyoption), required: false);
-            SourceExpression.Validate(bodyrate, nameof(bodyrate), required: false);
-            SourceExpression.Validate(bodypitch, nameof(bodypitch), required: false);
-            SourceExpression.Validate(bodyvolume, nameof(bodyvolume), required: false);
-            SourceExpression.Validate(bodyaudioFormat, nameof(bodyaudioFormat), required: false);
-            SourceExpression.Validate(bodysamplingRate, nameof(bodysamplingRate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/audio/text_to_speech";
@@ -197,10 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TextGenerationResponse> TextGeneration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodymaxTokens = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/generation";
@@ -285,11 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<ChatResponse> Chat([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodychatGlobalAction = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodymaxTokens = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodychatGlobalAction, nameof(bodychatGlobalAction), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/chat";
@@ -380,9 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TopicExtractionResponse> TopicExtraction([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/topic_extraction";
@@ -443,9 +422,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<KeywordExtractionResponse> KeywordExtraction([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/keyword_extraction";
@@ -506,9 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<NamedEntityRecognitionResponse> NamedEntityRecognition([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/named_entity_recognition";
@@ -569,10 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<ImageGenerationResponse> ImageGeneration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyresolution = null, [WorkflowExpression] Func<double> bodynumImages = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyresolution, nameof(bodyresolution), required: false);
-            SourceExpression.Validate(bodynumImages, nameof(bodynumImages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/image/generation";
@@ -649,10 +618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TranslationResponse> Translation([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodysourceLanguage = null, [WorkflowExpression] Func<string> bodytargetLanguage = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodysourceLanguage, nameof(bodysourceLanguage), required: false);
-            SourceExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/translation/automatic_translation";
@@ -729,9 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TextModerationResponse> TextModeration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/moderation";
@@ -792,10 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<SummarizationResponse> Summarization([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<double> bodyoutputSentences = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodylanguage = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodyoutputSentences, nameof(bodyoutputSentences), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/summarize";
@@ -880,8 +838,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetection([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/translation/language_detection";
@@ -926,9 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/text/sentiment_analysis";

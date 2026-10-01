@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ListPscResponse> ListPsc([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -59,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> pCSId)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            SourceExpression.Validate(pCSId, nameof(pCSId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pCSId, 1));
@@ -75,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -90,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId([WorkflowExpression] Func<string> officerId)
         {
-            SourceExpression.Validate(officerId, nameof(officerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(officerId, 1));
@@ -105,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> transactionId)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
@@ -121,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -136,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> chargeId)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            SourceExpression.Validate(chargeId, nameof(chargeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chargeId, 1));
@@ -152,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -167,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -182,8 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> appointmentId)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            SourceExpression.Validate(appointmentId, nameof(appointmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appointmentId, 1));
@@ -198,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));

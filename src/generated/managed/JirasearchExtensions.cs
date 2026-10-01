@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jirasearch")]
         public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch([WorkflowExpression] Func<string> jql, [WorkflowExpression] Func<string> hostname, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<int> startAt = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            SourceExpression.Validate(jql, nameof(jql), required: true);
-            SourceExpression.Validate(hostname, nameof(hostname), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: true);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(startAt, nameof(startAt), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/rest/api/2/search";

@@ -14,35 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<TranscribePostResponse> Transcribe([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<modelInput> model = null, [WorkflowExpression] Func<tierInput> tier = null, [WorkflowExpression] Func<versionInput> version = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> detectLanguage = null, [WorkflowExpression] Func<bool> punctuate = null, [WorkflowExpression] Func<bool> profanityFilter = null, [WorkflowExpression] Func<redactInput> redact = null, [WorkflowExpression] Func<bool> diarize = null, [WorkflowExpression] Func<string> diarizeVersion = null, [WorkflowExpression] Func<bool> smartFormat = null, [WorkflowExpression] Func<bool> fillerWords = null, [WorkflowExpression] Func<bool> multichannel = null, [WorkflowExpression] Func<int> alternatives = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> replace = null, [WorkflowExpression] Func<string> callback = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<bool> paragraphs = null, [WorkflowExpression] Func<string> summarize = null, [WorkflowExpression] Func<bool> detectTopics = null, [WorkflowExpression] Func<bool> utterances = null, [WorkflowExpression] Func<double> uttSplit = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<bool> numerals = null, [WorkflowExpression] Func<bool> ner = null, [WorkflowExpression] Func<bool> measurements = null, [WorkflowExpression] Func<bool> dictation = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(model, nameof(model), required: false);
-            SourceExpression.Validate(tier, nameof(tier), required: false);
-            SourceExpression.Validate(version, nameof(version), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(detectLanguage, nameof(detectLanguage), required: false);
-            SourceExpression.Validate(punctuate, nameof(punctuate), required: false);
-            SourceExpression.Validate(profanityFilter, nameof(profanityFilter), required: false);
-            SourceExpression.Validate(redact, nameof(redact), required: false);
-            SourceExpression.Validate(diarize, nameof(diarize), required: false);
-            SourceExpression.Validate(diarizeVersion, nameof(diarizeVersion), required: false);
-            SourceExpression.Validate(smartFormat, nameof(smartFormat), required: false);
-            SourceExpression.Validate(fillerWords, nameof(fillerWords), required: false);
-            SourceExpression.Validate(multichannel, nameof(multichannel), required: false);
-            SourceExpression.Validate(alternatives, nameof(alternatives), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(replace, nameof(replace), required: false);
-            SourceExpression.Validate(callback, nameof(callback), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
-            SourceExpression.Validate(paragraphs, nameof(paragraphs), required: false);
-            SourceExpression.Validate(summarize, nameof(summarize), required: false);
-            SourceExpression.Validate(detectTopics, nameof(detectTopics), required: false);
-            SourceExpression.Validate(utterances, nameof(utterances), required: false);
-            SourceExpression.Validate(uttSplit, nameof(uttSplit), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(numerals, nameof(numerals), required: false);
-            SourceExpression.Validate(ner, nameof(ner), required: false);
-            SourceExpression.Validate(measurements, nameof(measurements), required: false);
-            SourceExpression.Validate(dictation, nameof(dictation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/listen";
@@ -135,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectGetResponse> ProjectGet([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -150,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<JToken> ProjectDelete([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -165,8 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -189,11 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestsGetResponse> RequestsGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<statusInput> status = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -216,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestGetResponse> RequestGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -232,28 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<UsageGetResponse> UsageGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> accessor = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<methodInput> method = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<bool> multichannel = null, [WorkflowExpression] Func<bool> interimResults = null, [WorkflowExpression] Func<bool> punctuate = null, [WorkflowExpression] Func<bool> ner = null, [WorkflowExpression] Func<bool> utterances = null, [WorkflowExpression] Func<bool> replace = null, [WorkflowExpression] Func<bool> profanityFilter = null, [WorkflowExpression] Func<bool> keywords = null, [WorkflowExpression] Func<bool> detectTopics = null, [WorkflowExpression] Func<bool> diarize = null, [WorkflowExpression] Func<bool> search = null, [WorkflowExpression] Func<bool> redact = null, [WorkflowExpression] Func<bool> alternatives = null, [WorkflowExpression] Func<bool> numerals = null, [WorkflowExpression] Func<bool> smartFormat = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(accessor, nameof(accessor), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(method, nameof(method), required: false);
-            SourceExpression.Validate(model, nameof(model), required: false);
-            SourceExpression.Validate(multichannel, nameof(multichannel), required: false);
-            SourceExpression.Validate(interimResults, nameof(interimResults), required: false);
-            SourceExpression.Validate(punctuate, nameof(punctuate), required: false);
-            SourceExpression.Validate(ner, nameof(ner), required: false);
-            SourceExpression.Validate(utterances, nameof(utterances), required: false);
-            SourceExpression.Validate(replace, nameof(replace), required: false);
-            SourceExpression.Validate(profanityFilter, nameof(profanityFilter), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
-            SourceExpression.Validate(detectTopics, nameof(detectTopics), required: false);
-            SourceExpression.Validate(diarize, nameof(diarize), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(redact, nameof(redact), required: false);
-            SourceExpression.Validate(alternatives, nameof(alternatives), required: false);
-            SourceExpression.Validate(numerals, nameof(numerals), required: false);
-            SourceExpression.Validate(smartFormat, nameof(smartFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -310,9 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<FieldsGetResponse> FieldsGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(start, nameof(start), required: false);
-            SourceExpression.Validate(end, nameof(end), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));

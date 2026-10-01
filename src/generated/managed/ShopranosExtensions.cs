@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<AttributeSetDTO[]> AttributeSetsGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/AttributeSets";
@@ -40,16 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<AttributeDTO> AttributesGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<bool> isFilterable = null, [WorkflowExpression] Func<bool> displayOnProduct = null, [WorkflowExpression] Func<bool> displayInList = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(isFilterable, nameof(isFilterable), required: false);
-            SourceExpression.Validate(displayOnProduct, nameof(displayOnProduct), required: false);
-            SourceExpression.Validate(displayInList, nameof(displayInList), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Attributes";
@@ -84,13 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<BrandDTO[]> BrandsGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Brands";
@@ -119,17 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<CategoryDTO[]> CategoriesGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> path = null, [WorkflowExpression] Func<string> parentIds = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(parentId, nameof(parentId), required: false);
-            SourceExpression.Validate(path, nameof(path), required: false);
-            SourceExpression.Validate(parentIds, nameof(parentIds), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Categories";
@@ -180,11 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<IcoTagDTO[]> IcoTagsGETGetAll([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/IcoTags";
@@ -209,45 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<ProblemDetails> ProductVariantsGETGetAllFlat([WorkflowExpression] Func<string> price = null, [WorkflowExpression] Func<double> maxPrice = null, [WorkflowExpression] Func<string> size1 = null, [WorkflowExpression] Func<string> size2 = null, [WorkflowExpression] Func<string> size3 = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<string> date1 = null, [WorkflowExpression] Func<string> date2 = null, [WorkflowExpression] Func<string> date3 = null, [WorkflowExpression] Func<string> date1DateRange = null, [WorkflowExpression] Func<string> date2DateRange = null, [WorkflowExpression] Func<string> date3DateRange = null, [WorkflowExpression] Func<string> insertDateRange = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> minPrice = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> availability = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> sourceTag = null, [WorkflowExpression] Func<string> privacyRule = null, [WorkflowExpression] Func<string> rule = null, [WorkflowExpression] Func<string> condition = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> priceRange = null, [WorkflowExpression] Func<string> brandCode = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> attribute = null, [WorkflowExpression] Func<string> pathCategory = null, [WorkflowExpression] Func<string> categoryId = null, [WorkflowExpression] Func<string> additionalCategoryId = null, [WorkflowExpression] Func<string> stockAvailabilityId = null, [WorkflowExpression] Func<string> attributeSetId = null, [WorkflowExpression] Func<string> priceCategoryId = null, [WorkflowExpression] Func<bool> hasMedia = null, [WorkflowExpression] Func<string> masterId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(price, nameof(price), required: false);
-            SourceExpression.Validate(maxPrice, nameof(maxPrice), required: false);
-            SourceExpression.Validate(size1, nameof(size1), required: false);
-            SourceExpression.Validate(size2, nameof(size2), required: false);
-            SourceExpression.Validate(size3, nameof(size3), required: false);
-            SourceExpression.Validate(insertDate, nameof(insertDate), required: false);
-            SourceExpression.Validate(date1, nameof(date1), required: false);
-            SourceExpression.Validate(date2, nameof(date2), required: false);
-            SourceExpression.Validate(date3, nameof(date3), required: false);
-            SourceExpression.Validate(date1DateRange, nameof(date1DateRange), required: false);
-            SourceExpression.Validate(date2DateRange, nameof(date2DateRange), required: false);
-            SourceExpression.Validate(date3DateRange, nameof(date3DateRange), required: false);
-            SourceExpression.Validate(insertDateRange, nameof(insertDateRange), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(minPrice, nameof(minPrice), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(availability, nameof(availability), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(sourceTag, nameof(sourceTag), required: false);
-            SourceExpression.Validate(privacyRule, nameof(privacyRule), required: false);
-            SourceExpression.Validate(rule, nameof(rule), required: false);
-            SourceExpression.Validate(condition, nameof(condition), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(priceRange, nameof(priceRange), required: false);
-            SourceExpression.Validate(brandCode, nameof(brandCode), required: false);
-            SourceExpression.Validate(brandId, nameof(brandId), required: false);
-            SourceExpression.Validate(attribute, nameof(attribute), required: false);
-            SourceExpression.Validate(pathCategory, nameof(pathCategory), required: false);
-            SourceExpression.Validate(categoryId, nameof(categoryId), required: false);
-            SourceExpression.Validate(additionalCategoryId, nameof(additionalCategoryId), required: false);
-            SourceExpression.Validate(stockAvailabilityId, nameof(stockAvailabilityId), required: false);
-            SourceExpression.Validate(attributeSetId, nameof(attributeSetId), required: false);
-            SourceExpression.Validate(priceCategoryId, nameof(priceCategoryId), required: false);
-            SourceExpression.Validate(hasMedia, nameof(hasMedia), required: false);
-            SourceExpression.Validate(masterId, nameof(masterId), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ProductVariants/flat";
@@ -340,8 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<RelatedProductVariantDTO> RelatedProductsGETGetRelated([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> variantId)
         {
-            SourceExpression.Validate(productId, nameof(productId), required: true);
-            SourceExpression.Validate(variantId, nameof(variantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/RelatedProducts/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(variantId, 1));
@@ -356,10 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<StockAvailabilityDTO[]> StockAvailabilityGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/StockAvailability";
@@ -382,10 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<UnitDTO[]> UnitsGETGetAll([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Units";
@@ -408,8 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<ProblemDetails> CartDELETERemoveFromCart([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> productVariantId)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(productVariantId, nameof(productVariantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Cart/{0}/Items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productVariantId, 1));
@@ -424,16 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<AssortmentValueDTO[]> AssortmentValueGETGetAll([WorkflowExpression] Func<string> customerid, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> productId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(customerid, nameof(customerid), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(productId, nameof(productId), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/assortment/{0}/values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerid, 1));
@@ -466,14 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<CustomerDTO[]> CustomersGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> salesmanId = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(salesmanId, nameof(salesmanId), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Customers";
@@ -504,7 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<InventoryLevelDTO[]> InventoryLevelsGETGetByVariantId([WorkflowExpression] Func<string> variantId)
         {
-            SourceExpression.Validate(variantId, nameof(variantId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/InventoryLevels/variant/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(variantId, 1));
@@ -519,18 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<OrderDTO[]> OrderGETGetAll([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> customerId = null, [WorkflowExpression] Func<string> orderStatus = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> customerCode = null, [WorkflowExpression] Func<string> customerTin = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(customerId, nameof(customerId), required: false);
-            SourceExpression.Validate(orderStatus, nameof(orderStatus), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(customerCode, nameof(customerCode), required: false);
-            SourceExpression.Validate(customerTin, nameof(customerTin), required: false);
-            SourceExpression.Validate(insertDate, nameof(insertDate), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Order";
@@ -571,7 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     {
         public IWorkflowTrigger ProductCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/product/created";
@@ -595,7 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger ProductUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/product/updated";
@@ -619,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger ProductDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/product/deleted";
@@ -643,7 +521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CategoryCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/category/created";
@@ -667,7 +544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CategoryUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/category/updated";
@@ -691,7 +567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CategoryDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/category/deleted";
@@ -715,7 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger BrandCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/brand/created";
@@ -739,7 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger BrandUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/brand/updated";
@@ -763,7 +636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger BrandDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/brand/deleted";
@@ -787,7 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger UnitCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/unit/created";
@@ -811,7 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger UnitUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/unit/updated";
@@ -835,7 +705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger UnitDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/unit/deleted";
@@ -859,7 +728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/attribute/created";
@@ -883,7 +751,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/attribute/updated";
@@ -907,7 +774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/attribute/deleted";
@@ -931,7 +797,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeSetCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/attributeset/created";
@@ -955,7 +820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeSetUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/attributeset/updated";
@@ -979,7 +843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeSetDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/attributeset/deleted";
@@ -1003,7 +866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CheckoutCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/checkout/created";
@@ -1027,7 +889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CheckoutCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/checkout/completed";
@@ -1051,7 +912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CustomerCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/customer/created";
@@ -1075,7 +935,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CustomerUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/customer/updated";
@@ -1099,7 +958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CustomerDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/customer/deleted";
@@ -1123,7 +981,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger OrderCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/order/created";
@@ -1147,7 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger OrderUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/order/updated";
@@ -1171,7 +1027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger OrderDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/order/deleted";
@@ -1195,7 +1050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger InventoryLevelCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/inventorylevel/created";
@@ -1219,7 +1073,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger InventoryLevelUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/inventorylevel/updated";
@@ -1243,7 +1096,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger InventoryLevelDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/inventorylevel/deleted";
@@ -1267,7 +1119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger PaymentInitiatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/payment/initiated";
@@ -1291,7 +1142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger PaymentCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/webhook/register/payment/completed";

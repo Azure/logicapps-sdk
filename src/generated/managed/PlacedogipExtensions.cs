@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Placedogip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "placedogip")]
         public IBodyWorkflowAction<GetWidthResponse> GetWidth([WorkflowExpression] Func<int> width, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(width, nameof(width), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(width, 1));
@@ -32,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Placedogip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "placedogip")]
         public IBodyWorkflowAction<GetWidthHeightResponse> GetWidthHeight([WorkflowExpression] Func<int> width, [WorkflowExpression] Func<int> height, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(width, nameof(width), required: true);
-            SourceExpression.Validate(height, nameof(height), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(width, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(height, 1));
@@ -51,10 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Placedogip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "placedogip")]
         public IBodyWorkflowAction<GetWidthHeightFilterResponse> GetWidthHeightFilter([WorkflowExpression] Func<int> width, [WorkflowExpression] Func<int> height, [WorkflowExpression] Func<filterInput> filter, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(width, nameof(width), required: true);
-            SourceExpression.Validate(height, nameof(height), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(width, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(height, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filter, 1));

@@ -28,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keepersecretsmanager")]
         public IBodyWorkflowAction<CreateSecretResponse> CreateSecret([WorkflowExpression] Func<string> bodyfolderUId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodylogin = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodynotes = null)
         {
-            SourceExpression.Validate(bodyfolderUId, nameof(bodyfolderUId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodylogin, nameof(bodylogin), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/secrets";
@@ -82,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keepersecretsmanager")]
         public IBodyWorkflowAction<SecretDetail> GetSecret([WorkflowExpression] Func<string> uid)
         {
-            SourceExpression.Validate(uid, nameof(uid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uid, 1));
@@ -97,12 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keepersecretsmanager")]
         public IBodyWorkflowAction<UpdateSecretResponse> UpdateSecret([WorkflowExpression] Func<string> uid, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylogin = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodynotes = null)
         {
-            SourceExpression.Validate(uid, nameof(uid), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodylogin, nameof(bodylogin), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uid, 1));

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         public IBodyWorkflowAction<BadRequestObjectResult> SynchronizeDocumentAttributes([WorkflowExpression] Func<string> connection, [WorkflowExpression] Func<string> documentIdentifier, [WorkflowExpression] Func<attributeSynchronizationModeldirectionInput> attributeSynchronizationModeldirection)
         {
-            SourceExpression.Validate(connection, nameof(connection), required: true);
-            SourceExpression.Validate(documentIdentifier, nameof(documentIdentifier), required: true);
-            SourceExpression.Validate(attributeSynchronizationModeldirection, nameof(attributeSynchronizationModeldirection), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/attributeSynchronization", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connection, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentIdentifier, 1));
@@ -39,10 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         public IBodyWorkflowAction<BadRequestObjectResult> UploadFile([WorkflowExpression] Func<string> connection, [WorkflowExpression] Func<string> documentIdentifier, [WorkflowExpression] Func<string> xBsFileName, [WorkflowExpression] Func<string> fileContent = null)
         {
-            SourceExpression.Validate(connection, nameof(connection), required: true);
-            SourceExpression.Validate(documentIdentifier, nameof(documentIdentifier), required: true);
-            SourceExpression.Validate(xBsFileName, nameof(xBsFileName), required: true);
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/file", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connection, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentIdentifier, 1));

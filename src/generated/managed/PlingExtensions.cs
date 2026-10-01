@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IWorkflowAction SendNotification([WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string[]> bodyaudienceUsers)
         {
-            SourceExpression.Validate(profileId, nameof(profileId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
-            SourceExpression.Validate(bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
@@ -69,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates([WorkflowExpression] Func<string> profileId)
         {
-            SourceExpression.Validate(profileId, nameof(profileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));

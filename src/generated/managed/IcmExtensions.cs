@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmIncidentResponse> GetIncident([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> GetRetrospectiveById([WorkflowExpression] Func<string> retrospectiveId)
         {
-            SourceExpression.Validate(retrospectiveId, nameof(retrospectiveId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/retrospectives/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(retrospectiveId, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> GetRetrospectiveByIncidentId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/retrospective", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmBridgesResponse> GetBridgesForAnIncident([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/bridges", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -74,9 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction AddNewIcMDiscussionEntry([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydiscussionText = null, [WorkflowExpression] Func<bodyrenderTypeInput> bodyrenderType = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydiscussionText, nameof(bodydiscussionText), required: false);
-            SourceExpression.Validate(bodyrenderType, nameof(bodyrenderType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/addDiscussionEntry", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -109,9 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmDescriptionEntriesResponse> GetDescriptionEntries([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/descriptionEntries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -132,10 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentSeverity([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyseverityInput> bodyseverity, [WorkflowExpression] Func<string> bodydescriptionEntry = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyseverity, nameof(bodyseverity), required: true);
-            SourceExpression.Validate(bodydescriptionEntry, nameof(bodydescriptionEntry), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateSeverity", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -167,9 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentTitle([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateTitle", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -195,9 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentOwner([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyowningContactAlias, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyowningContactAlias, nameof(bodyowningContactAlias), required: true);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateOwner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -223,12 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentCustomFields([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodygroupType, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields, [WorkflowExpression] Func<string> bodypublicId = null, [WorkflowExpression] Func<string> bodycontainerId = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodygroupType, nameof(bodygroupType), required: true);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: true);
-            SourceExpression.Validate(bodypublicId, nameof(bodypublicId), required: false);
-            SourceExpression.Validate(bodycontainerId, nameof(bodycontainerId), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateCustomFields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -268,10 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentSingleCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycustomField, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycustomField, nameof(bodycustomField), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateSingleCustomField", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -299,9 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentTags([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string[]> bodytags, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: true);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateTags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -327,13 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<TagUserInDiscussionResponse> TagUserInDiscussion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyrecipientEmail, [WorkflowExpression] Func<string> bodydiscussionText, [WorkflowExpression] Func<string> bodyrecipientDisplayName = null, [WorkflowExpression] Func<string> bodymentionerDisplayName = null, [WorkflowExpression] Func<string> bodymentionerAlias = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyrecipientEmail, nameof(bodyrecipientEmail), required: true);
-            SourceExpression.Validate(bodydiscussionText, nameof(bodydiscussionText), required: true);
-            SourceExpression.Validate(bodyrecipientDisplayName, nameof(bodyrecipientDisplayName), required: false);
-            SourceExpression.Validate(bodymentionerDisplayName, nameof(bodymentionerDisplayName), required: false);
-            SourceExpression.Validate(bodymentionerAlias, nameof(bodymentionerAlias), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/tagUser", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -379,26 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IncidentAddUpdateResult> CreateIcMIncident([WorkflowExpression] Func<string> bodyconnectorId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyowningTeam = null, [WorkflowExpression] Func<string> bodycorrelationId = null, [WorkflowExpression] Func<string> bodyroutingId = null, [WorkflowExpression] Func<bodyhowFoundInput> bodyhowFound = null, [WorkflowExpression] Func<bodyseverityInput> bodyseverity = null, [WorkflowExpression] Func<string> bodydiscussionEntrydiscussionText = null, [WorkflowExpression] Func<bodydiscussionEntryrenderTypeInput> bodydiscussionEntryrenderType = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<bodycloudInstanceInput> bodycloudInstance = null, [WorkflowExpression] Func<string> bodyoccurringLocationenvironment = null, [WorkflowExpression] Func<string> bodyoccurringLocationdcRegion = null, [WorkflowExpression] Func<string> bodyoccurringLocationinstanceCluster = null, [WorkflowExpression] Func<string> bodyoccurringLocationrole = null, [WorkflowExpression] Func<string> bodyoccurringLocationslice = null, [WorkflowExpression] Func<bool> bodyisRestrictedIncident = null, [WorkflowExpression] Func<bool> bodyisSecurityRisk = null, [WorkflowExpression] Func<IcmAccessClaim[]> bodyaccessRestrictedToClaims = null)
         {
-            SourceExpression.Validate(bodyconnectorId, nameof(bodyconnectorId), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyowningTeam, nameof(bodyowningTeam), required: false);
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: false);
-            SourceExpression.Validate(bodyroutingId, nameof(bodyroutingId), required: false);
-            SourceExpression.Validate(bodyhowFound, nameof(bodyhowFound), required: false);
-            SourceExpression.Validate(bodyseverity, nameof(bodyseverity), required: false);
-            SourceExpression.Validate(bodydiscussionEntrydiscussionText, nameof(bodydiscussionEntrydiscussionText), required: false);
-            SourceExpression.Validate(bodydiscussionEntryrenderType, nameof(bodydiscussionEntryrenderType), required: false);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodycloudInstance, nameof(bodycloudInstance), required: false);
-            SourceExpression.Validate(bodyoccurringLocationenvironment, nameof(bodyoccurringLocationenvironment), required: false);
-            SourceExpression.Validate(bodyoccurringLocationdcRegion, nameof(bodyoccurringLocationdcRegion), required: false);
-            SourceExpression.Validate(bodyoccurringLocationinstanceCluster, nameof(bodyoccurringLocationinstanceCluster), required: false);
-            SourceExpression.Validate(bodyoccurringLocationrole, nameof(bodyoccurringLocationrole), required: false);
-            SourceExpression.Validate(bodyoccurringLocationslice, nameof(bodyoccurringLocationslice), required: false);
-            SourceExpression.Validate(bodyisRestrictedIncident, nameof(bodyisRestrictedIncident), required: false);
-            SourceExpression.Validate(bodyisSecurityRisk, nameof(bodyisSecurityRisk), required: false);
-            SourceExpression.Validate(bodyaccessRestrictedToClaims, nameof(bodyaccessRestrictedToClaims), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/incidents";
@@ -547,11 +487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmIncidentSearchResponse> SearchIncidents([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<searchEndpointInput> searchEndpoint = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(searchEndpoint, nameof(searchEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/incidents/search";
@@ -576,13 +511,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<OmnisearchIncidentsResponse> SearchIncidentsOmnisearch([WorkflowExpression] Func<string> bodysearchString, [WorkflowExpression] Func<bool> bodyincludeCorrelated = null, [WorkflowExpression] Func<string> bodyorderColumn = null, [WorkflowExpression] Func<bodyorderDirectionInput> bodyorderDirection = null, [WorkflowExpression] Func<int> bodyskip = null, [WorkflowExpression] Func<int> bodytop = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(bodysearchString, nameof(bodysearchString), required: true);
-            SourceExpression.Validate(bodyincludeCorrelated, nameof(bodyincludeCorrelated), required: false);
-            SourceExpression.Validate(bodyorderColumn, nameof(bodyorderColumn), required: false);
-            SourceExpression.Validate(bodyorderDirection, nameof(bodyorderDirection), required: false);
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: false);
-            SourceExpression.Validate(bodytop, nameof(bodytop), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/incidents/omnisearch";
@@ -688,9 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<bool> CheckUserAccess([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> upn, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(upn, nameof(upn), required: true);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/checkuseraccess", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -709,10 +634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmTeamSearchResponse> SearchIcMTeams([WorkflowExpression] Func<string> publicId = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> includeMembers = null, [WorkflowExpression] Func<int> skip = null)
         {
-            SourceExpression.Validate(publicId, nameof(publicId), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(includeMembers, nameof(includeMembers), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/teams/search";
@@ -736,7 +657,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmCurrentOnCallResponse> GetCurrentOncallContactList([WorkflowExpression] Func<string> teamId = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/currentOnCall";
@@ -753,11 +673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction TransferIncident([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyowningTenantPublicId, [WorkflowExpression] Func<string> bodyowningTeamPublicId, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyowningTenantPublicId, nameof(bodyowningTenantPublicId), required: true);
-            SourceExpression.Validate(bodyowningTeamPublicId, nameof(bodyowningTeamPublicId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/transfer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -787,12 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction MitigateIncident([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodymitigation, [WorkflowExpression] Func<bool> bodyisCustomerImpacting = null, [WorkflowExpression] Func<bool> bodyisNoise = null, [WorkflowExpression] Func<string> bodyhowFixed = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodymitigation, nameof(bodymitigation), required: true);
-            SourceExpression.Validate(bodyisCustomerImpacting, nameof(bodyisCustomerImpacting), required: false);
-            SourceExpression.Validate(bodyisNoise, nameof(bodyisNoise), required: false);
-            SourceExpression.Validate(bodyhowFixed, nameof(bodyhowFixed), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/mitigate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -836,10 +745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction ReactivateIncident([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bool> bodydisableVoiceNotifications = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodydisableVoiceNotifications, nameof(bodydisableVoiceNotifications), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/activate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -871,11 +776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction ResolveIncident([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bool> bodyisCustomerImpacting = null, [WorkflowExpression] Func<bool> bodyisNoise = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyisCustomerImpacting, nameof(bodyisCustomerImpacting), required: false);
-            SourceExpression.Validate(bodyisNoise, nameof(bodyisNoise), required: false);
-            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/resolve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -913,9 +813,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/httprequest";
@@ -943,9 +840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     {
         public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> WhenAnIcMIncidentIsCreated([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<searchEndpointInput> searchEndpoint = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(searchEndpoint, nameof(searchEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/triggers/onIncidentCreated";
@@ -965,9 +859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
 
         public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> WhenAnIcMIncidentIsModified([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<searchEndpointInput> searchEndpoint = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(searchEndpoint, nameof(searchEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/triggers/onIncidentModified";

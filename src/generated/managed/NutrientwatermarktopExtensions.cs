@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> CompositeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkData, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatawatermarkData, nameof(inputDatawatermarkData), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/composite_watermark";
@@ -74,28 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> EllipseWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatafillColor = null, [WorkflowExpression] Func<string> inputDatalineColor = null, [WorkflowExpression] Func<string> inputDatalineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatafillColor, nameof(inputDatafillColor), required: false);
-            SourceExpression.Validate(inputDatalineColor, nameof(inputDatalineColor), required: false);
-            SourceExpression.Validate(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/ellipse_watermark";
@@ -292,29 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> ImageWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDataimage, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataimage, nameof(inputDataimage), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/image_watermark";
@@ -513,27 +464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> LineWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDataxCoordinateStart, [WorkflowExpression] Func<string> inputDatayCoordinateStart, [WorkflowExpression] Func<string> inputDataxCoordinateEnd, [WorkflowExpression] Func<string> inputDatayCoordinateEnd, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatalineColor = null, [WorkflowExpression] Func<string> inputDatalineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDataxCoordinateStart, nameof(inputDataxCoordinateStart), required: true);
-            SourceExpression.Validate(inputDatayCoordinateStart, nameof(inputDatayCoordinateStart), required: true);
-            SourceExpression.Validate(inputDataxCoordinateEnd, nameof(inputDataxCoordinateEnd), required: true);
-            SourceExpression.Validate(inputDatayCoordinateEnd, nameof(inputDatayCoordinateEnd), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatalineColor, nameof(inputDatalineColor), required: false);
-            SourceExpression.Validate(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/line_watermark";
@@ -716,37 +646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> LinearBarcodeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatabarcodeContent, [WorkflowExpression] Func<inputDatabarcodeTypeInput> inputDatabarcodeType, [WorkflowExpression] Func<inputDatadisableCheckDigitInput> inputDatadisableCheckDigit, [WorkflowExpression] Func<inputDatashowCheckDigitInput> inputDatashowCheckDigit, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<inputDataomitEncodingOfStartStopSymbolsInput> inputDataomitEncodingOfStartStopSymbols = null, [WorkflowExpression] Func<string> inputDatamargin = null, [WorkflowExpression] Func<string> inputDatafontFamily = null, [WorkflowExpression] Func<string> inputDatafontSize = null, [WorkflowExpression] Func<string> inputDatafontStyle = null, [WorkflowExpression] Func<inputDatalabelPlacementInput> inputDatalabelPlacement = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatabarcodeBackgroundColor = null, [WorkflowExpression] Func<string> inputDatabarcodeBarColor = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatabarcodeContent, nameof(inputDatabarcodeContent), required: true);
-            SourceExpression.Validate(inputDatabarcodeType, nameof(inputDatabarcodeType), required: true);
-            SourceExpression.Validate(inputDatadisableCheckDigit, nameof(inputDatadisableCheckDigit), required: true);
-            SourceExpression.Validate(inputDatashowCheckDigit, nameof(inputDatashowCheckDigit), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataomitEncodingOfStartStopSymbols, nameof(inputDataomitEncodingOfStartStopSymbols), required: false);
-            SourceExpression.Validate(inputDatamargin, nameof(inputDatamargin), required: false);
-            SourceExpression.Validate(inputDatafontFamily, nameof(inputDatafontFamily), required: false);
-            SourceExpression.Validate(inputDatafontSize, nameof(inputDatafontSize), required: false);
-            SourceExpression.Validate(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
-            SourceExpression.Validate(inputDatalabelPlacement, nameof(inputDatalabelPlacement), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatabarcodeBackgroundColor, nameof(inputDatabarcodeBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatabarcodeBarColor, nameof(inputDatabarcodeBarColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/linear_barcode_watermark";
@@ -1001,26 +900,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> PdfWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatapDFWatermark, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatapDFWatermark, nameof(inputDatapDFWatermark), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/pdf_watermark";
@@ -1201,31 +1080,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> QrCodeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatacontent, [WorkflowExpression] Func<inputDataversionInput> inputDataversion, [WorkflowExpression] Func<inputDatainputModeInput> inputDatainputMode, [WorkflowExpression] Func<inputDataerrorCorrectionLevelInput> inputDataerrorCorrectionLevel, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkForegroundColor = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatacontent, nameof(inputDatacontent), required: true);
-            SourceExpression.Validate(inputDataversion, nameof(inputDataversion), required: true);
-            SourceExpression.Validate(inputDatainputMode, nameof(inputDatainputMode), required: true);
-            SourceExpression.Validate(inputDataerrorCorrectionLevel, nameof(inputDataerrorCorrectionLevel), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkForegroundColor, nameof(inputDatawatermarkForegroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/qr_code_watermark";
@@ -1424,28 +1278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> RectangleWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/rectangle_watermark";
@@ -1642,29 +1474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> RtfWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/rtf_watermark";
@@ -1863,34 +1672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
         public IBodyWorkflowAction<OperationResponse> TextWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkContent, [WorkflowExpression] Func<string> inputDatafontFamilyName, [WorkflowExpression] Func<string> inputDatafontSize, [WorkflowExpression] Func<string> inputDatafontColor, [WorkflowExpression] Func<inputDatatextAlignmentInput> inputDatatextAlignment, [WorkflowExpression] Func<inputDatawordWrapInput> inputDatawordWrap, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatafontStyle = null, [WorkflowExpression] Func<string> inputDatafontOutlineColor = null, [WorkflowExpression] Func<string> inputDatafontOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            SourceExpression.Validate(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
-            SourceExpression.Validate(inputDatafontFamilyName, nameof(inputDatafontFamilyName), required: true);
-            SourceExpression.Validate(inputDatafontSize, nameof(inputDatafontSize), required: true);
-            SourceExpression.Validate(inputDatafontColor, nameof(inputDatafontColor), required: true);
-            SourceExpression.Validate(inputDatatextAlignment, nameof(inputDatatextAlignment), required: true);
-            SourceExpression.Validate(inputDatawordWrap, nameof(inputDatawordWrap), required: true);
-            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
-            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
-            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
-            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
-            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
-            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
-            SourceExpression.Validate(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
-            SourceExpression.Validate(inputDatafontOutlineColor, nameof(inputDatafontOutlineColor), required: false);
-            SourceExpression.Validate(inputDatafontOutlineWidth, nameof(inputDatafontOutlineWidth), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/operations/text_watermark";

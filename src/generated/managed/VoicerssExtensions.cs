@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicerss")]
         public IWorkflowAction ConvertTTS([WorkflowExpression] Func<string> hl, [WorkflowExpression] Func<string> src, [WorkflowExpression] Func<cInput> c = null, [WorkflowExpression] Func<string> f = null, [WorkflowExpression] Func<string> v = null, [WorkflowExpression] Func<int> r = null, [WorkflowExpression] Func<bool> ssml = null, [WorkflowExpression] Func<bool> b64 = null)
         {
-            SourceExpression.Validate(hl, nameof(hl), required: true);
-            SourceExpression.Validate(src, nameof(src), required: true);
-            SourceExpression.Validate(c, nameof(c), required: false);
-            SourceExpression.Validate(f, nameof(f), required: false);
-            SourceExpression.Validate(v, nameof(v), required: false);
-            SourceExpression.Validate(r, nameof(r), required: false);
-            SourceExpression.Validate(ssml, nameof(ssml), required: false);
-            SourceExpression.Validate(b64, nameof(b64), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

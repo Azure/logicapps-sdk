@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllGoalsResponse> GetAllGoals([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/goals";
@@ -30,26 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateGoalResponse> CreateGoal([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> bodygoalroleId = null, [WorkflowExpression] Func<int> bodygoalcreatorId = null, [WorkflowExpression] Func<bodygoalstatusInput> bodygoalstatus = null, [WorkflowExpression] Func<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, [WorkflowExpression] Func<bodygoaltargetFlowInput> bodygoaltargetFlow = null, [WorkflowExpression] Func<string> bodygoalaction = null, [WorkflowExpression] Func<string> bodygoaldetails = null, [WorkflowExpression] Func<double> bodygoalinitial = null, [WorkflowExpression] Func<double> bodygoalprogress = null, [WorkflowExpression] Func<double> bodygoaltarget = null, [WorkflowExpression] Func<string> bodygoalstartTime = null, [WorkflowExpression] Func<string> bodygoalendTime = null, [WorkflowExpression] Func<bodygoalweightIdInput> bodygoalweightId = null, [WorkflowExpression] Func<bodygoalisPrivateInput> bodygoalisPrivate = null, [WorkflowExpression] Func<bodygoaltrackingTypeInput> bodygoaltrackingType = null, [WorkflowExpression] Func<int> bodygoalentityTemplateId = null, [WorkflowExpression] Func<int[]> bodygoaldirectFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedFromIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedToIds = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodygoalroleId, nameof(bodygoalroleId), required: false);
-            SourceExpression.Validate(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
-            SourceExpression.Validate(bodygoalstatus, nameof(bodygoalstatus), required: false);
-            SourceExpression.Validate(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
-            SourceExpression.Validate(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
-            SourceExpression.Validate(bodygoalaction, nameof(bodygoalaction), required: false);
-            SourceExpression.Validate(bodygoaldetails, nameof(bodygoaldetails), required: false);
-            SourceExpression.Validate(bodygoalinitial, nameof(bodygoalinitial), required: false);
-            SourceExpression.Validate(bodygoalprogress, nameof(bodygoalprogress), required: false);
-            SourceExpression.Validate(bodygoaltarget, nameof(bodygoaltarget), required: false);
-            SourceExpression.Validate(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
-            SourceExpression.Validate(bodygoalendTime, nameof(bodygoalendTime), required: false);
-            SourceExpression.Validate(bodygoalweightId, nameof(bodygoalweightId), required: false);
-            SourceExpression.Validate(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
-            SourceExpression.Validate(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
-            SourceExpression.Validate(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
-            SourceExpression.Validate(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
-            SourceExpression.Validate(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
-            SourceExpression.Validate(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/goals";
@@ -194,8 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleGoalResponse> GetSingleGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/goals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -211,8 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteGoalResponse> DeleteGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/goals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -228,28 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateGoalResponse> UpdateGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> bodygoalroleId = null, [WorkflowExpression] Func<int> bodygoalcreatorId = null, [WorkflowExpression] Func<bodygoalstatusInput> bodygoalstatus = null, [WorkflowExpression] Func<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, [WorkflowExpression] Func<bodygoaltargetFlowInput> bodygoaltargetFlow = null, [WorkflowExpression] Func<string> bodygoalaction = null, [WorkflowExpression] Func<string> bodygoaldetails = null, [WorkflowExpression] Func<double> bodygoalinitial = null, [WorkflowExpression] Func<double> bodygoalprogress = null, [WorkflowExpression] Func<double> bodygoaltarget = null, [WorkflowExpression] Func<string> bodygoalstartTime = null, [WorkflowExpression] Func<string> bodygoalendTime = null, [WorkflowExpression] Func<bodygoalweightIdInput> bodygoalweightId = null, [WorkflowExpression] Func<int> bodygoalisPrivate = null, [WorkflowExpression] Func<bodygoaltrackingTypeInput> bodygoaltrackingType = null, [WorkflowExpression] Func<int> bodygoalentityTemplateId = null, [WorkflowExpression] Func<int[]> bodygoaldirectFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalinheritedFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedFromIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedToIds = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodygoalroleId, nameof(bodygoalroleId), required: false);
-            SourceExpression.Validate(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
-            SourceExpression.Validate(bodygoalstatus, nameof(bodygoalstatus), required: false);
-            SourceExpression.Validate(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
-            SourceExpression.Validate(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
-            SourceExpression.Validate(bodygoalaction, nameof(bodygoalaction), required: false);
-            SourceExpression.Validate(bodygoaldetails, nameof(bodygoaldetails), required: false);
-            SourceExpression.Validate(bodygoalinitial, nameof(bodygoalinitial), required: false);
-            SourceExpression.Validate(bodygoalprogress, nameof(bodygoalprogress), required: false);
-            SourceExpression.Validate(bodygoaltarget, nameof(bodygoaltarget), required: false);
-            SourceExpression.Validate(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
-            SourceExpression.Validate(bodygoalendTime, nameof(bodygoalendTime), required: false);
-            SourceExpression.Validate(bodygoalweightId, nameof(bodygoalweightId), required: false);
-            SourceExpression.Validate(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
-            SourceExpression.Validate(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
-            SourceExpression.Validate(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
-            SourceExpression.Validate(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
-            SourceExpression.Validate(bodygoalinheritedFocusAreaIds, nameof(bodygoalinheritedFocusAreaIds), required: false);
-            SourceExpression.Validate(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
-            SourceExpression.Validate(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/goals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -400,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllRisksResponse> GetAllRisks([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/issues";
@@ -416,16 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateRiskResponse> CreateRisk([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyissueissue = null, [WorkflowExpression] Func<bodyissueisCriticalInput> bodyissueisCritical = null, [WorkflowExpression] Func<bodyissueisResolvedInput> bodyissueisResolved = null, [WorkflowExpression] Func<int> bodyissueroleId = null, [WorkflowExpression] Func<int> bodyissuegoalId = null, [WorkflowExpression] Func<string> bodyissuedueDate = null, [WorkflowExpression] Func<int> bodyissueentityTemplateId = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011281053 = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011296755 = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyissueissue, nameof(bodyissueissue), required: false);
-            SourceExpression.Validate(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
-            SourceExpression.Validate(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
-            SourceExpression.Validate(bodyissueroleId, nameof(bodyissueroleId), required: false);
-            SourceExpression.Validate(bodyissuegoalId, nameof(bodyissuegoalId), required: false);
-            SourceExpression.Validate(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
-            SourceExpression.Validate(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
-            SourceExpression.Validate(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
-            SourceExpression.Validate(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/issues";
@@ -518,8 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleRiskResponse> GetSingleRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -535,8 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteRiskResponse> DeleteRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -552,16 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateRiskResponse> UpdateRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyissueissue = null, [WorkflowExpression] Func<bodyissueisCriticalInput> bodyissueisCritical = null, [WorkflowExpression] Func<bodyissueisResolvedInput> bodyissueisResolved = null, [WorkflowExpression] Func<int> bodyissueroleId = null, [WorkflowExpression] Func<string> bodyissuedueDate = null, [WorkflowExpression] Func<int> bodyissueentityTemplateId = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011281053 = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011296755 = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyissueissue, nameof(bodyissueissue), required: false);
-            SourceExpression.Validate(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
-            SourceExpression.Validate(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
-            SourceExpression.Validate(bodyissueroleId, nameof(bodyissueroleId), required: false);
-            SourceExpression.Validate(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
-            SourceExpression.Validate(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
-            SourceExpression.Validate(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
-            SourceExpression.Validate(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -648,7 +576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllTasksResponse> GetAllTasks([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks";
@@ -664,16 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodytasktask = null, [WorkflowExpression] Func<string> bodytaskcomment = null, [WorkflowExpression] Func<bodytaskisCompleteInput> bodytaskisComplete = null, [WorkflowExpression] Func<int> bodytaskroleId = null, [WorkflowExpression] Func<int> bodytaskgoalId = null, [WorkflowExpression] Func<string> bodytaskstartDate = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<bodytaskweightIdInput> bodytaskweightId = null, [WorkflowExpression] Func<int> bodytaskentityTemplateId = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodytasktask, nameof(bodytasktask), required: false);
-            SourceExpression.Validate(bodytaskcomment, nameof(bodytaskcomment), required: false);
-            SourceExpression.Validate(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
-            SourceExpression.Validate(bodytaskroleId, nameof(bodytaskroleId), required: false);
-            SourceExpression.Validate(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
-            SourceExpression.Validate(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
-            SourceExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            SourceExpression.Validate(bodytaskweightId, nameof(bodytaskweightId), required: false);
-            SourceExpression.Validate(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tasks";
@@ -758,8 +675,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleTaskResponse> GetSingleTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -775,8 +690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -792,17 +705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodytasktask = null, [WorkflowExpression] Func<string> bodytaskcomment = null, [WorkflowExpression] Func<bodytaskisCompleteInput> bodytaskisComplete = null, [WorkflowExpression] Func<int> bodytaskroleId = null, [WorkflowExpression] Func<int> bodytaskgoalId = null, [WorkflowExpression] Func<string> bodytaskstartDate = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<bodytaskweightIdInput> bodytaskweightId = null, [WorkflowExpression] Func<int> bodytaskentityTemplateId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodytasktask, nameof(bodytasktask), required: false);
-            SourceExpression.Validate(bodytaskcomment, nameof(bodytaskcomment), required: false);
-            SourceExpression.Validate(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
-            SourceExpression.Validate(bodytaskroleId, nameof(bodytaskroleId), required: false);
-            SourceExpression.Validate(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
-            SourceExpression.Validate(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
-            SourceExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            SourceExpression.Validate(bodytaskweightId, nameof(bodytaskweightId), required: false);
-            SourceExpression.Validate(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -887,7 +789,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllUpdatesResponse> GetAllUpdates([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updates";
@@ -903,10 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyupdatecomment = null, [WorkflowExpression] Func<int> bodyupdategoalId = null, [WorkflowExpression] Func<int> bodyupdateentityTemplateId = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
-            SourceExpression.Validate(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
-            SourceExpression.Validate(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updates";
@@ -955,8 +852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleUpdateResponse> GetSingleUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -972,8 +867,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteUpdateResponse> DeleteUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -989,14 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateUpdateResponse> UpdateUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyupdatecomment = null, [WorkflowExpression] Func<string> bodyupdatecreatedAt = null, [WorkflowExpression] Func<string> bodyupdateupdatedAt = null, [WorkflowExpression] Func<int> bodyupdategoalId = null, [WorkflowExpression] Func<int> bodyupdatedeleted = null, [WorkflowExpression] Func<int> bodyupdateentityTemplateId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
-            SourceExpression.Validate(bodyupdatecreatedAt, nameof(bodyupdatecreatedAt), required: false);
-            SourceExpression.Validate(bodyupdateupdatedAt, nameof(bodyupdateupdatedAt), required: false);
-            SourceExpression.Validate(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
-            SourceExpression.Validate(bodyupdatedeleted, nameof(bodyupdatedeleted), required: false);
-            SourceExpression.Validate(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

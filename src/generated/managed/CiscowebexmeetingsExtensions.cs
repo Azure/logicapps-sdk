@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
         public IBodyWorkflowAction<NewMeetingResponse> NewMeeting([WorkflowExpression] Func<string> bodytopic, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyattendees = null, [WorkflowExpression] Func<string> bodyagenda = null)
         {
-            SourceExpression.Validate(bodytopic, nameof(bodytopic), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
-            SourceExpression.Validate(bodyattendees, nameof(bodyattendees), required: false);
-            SourceExpression.Validate(bodyagenda, nameof(bodyagenda), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflow/meetings/create";

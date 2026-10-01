@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction GroupReportBanks([WorkflowExpression] Func<string> tenantId = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodytenantFirstName = null, [WorkflowExpression] Func<string> bodytenantLastName = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            SourceExpression.Validate(bodytenantLastName, nameof(bodytenantLastName), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/play/371c4dca-f7af-48b7-8dfa-cd6864969ba5";
@@ -78,14 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction GroupReportCUs([WorkflowExpression] Func<string> tenantId = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodytenantFirstName = null, [WorkflowExpression] Func<string> bodytenantLastName = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            SourceExpression.Validate(bodytenantLastName, nameof(bodytenantLastName), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/play/e5f00dbd-dc28-4b35-8550-1901efa36af7";
@@ -142,14 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction ReportManagementBanks([WorkflowExpression] Func<string> tenantId = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodytenantFirstName = null, [WorkflowExpression] Func<string> bodytenantLastName = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            SourceExpression.Validate(bodytenantLastName, nameof(bodytenantLastName), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/play/158ed27b-9e89-45d2-a216-617d0b2d4355";
@@ -206,14 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction ReportManagementCUs([WorkflowExpression] Func<string> tenantId = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodytenantFirstName = null, [WorkflowExpression] Func<string> bodytenantLastName = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(tenantId, nameof(tenantId), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            SourceExpression.Validate(bodytenantLastName, nameof(bodytenantLastName), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/play/b60262a8-7cf2-4526-8e78-c7fc7bd21ae9";

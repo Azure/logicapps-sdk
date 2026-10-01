@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<CreateConversationResponse> CreateConversation([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodynewTopic, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodynewTopic, nameof(bodynewTopic), required: true);
-            SourceExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            SourceExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            SourceExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            SourceExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -81,8 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<Conversation> GetGroupConversation([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> conversationId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(conversationId, nameof(conversationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(conversationId, 1));
@@ -97,8 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ListConversationThreadsResponse> ListConversationThreads([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> conversationId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(conversationId, nameof(conversationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(conversationId, 1));
@@ -113,13 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<NewConversationThreadResponse> CreateConversationThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> conversationId, [WorkflowExpression] Func<string> bodynewTopic, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(conversationId, nameof(conversationId), required: true);
-            SourceExpression.Validate(bodynewTopic, nameof(bodynewTopic), required: true);
-            SourceExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            SourceExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            SourceExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            SourceExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(conversationId, 1));
@@ -181,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ListGroupThreadsResponse> ListGroupThreads([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -196,12 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<NewConversationThreadResponse> CreateGroupThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodynewTopic, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodynewTopic, nameof(bodynewTopic), required: true);
-            SourceExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            SourceExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            SourceExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            SourceExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -263,8 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ConversationThread> GetConversationThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -279,8 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction DeleteConversationThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -295,8 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ListThreadPostsResponse> ListThreadPosts([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -311,9 +281,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<Post> GetThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -329,9 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<GetAttachmentsResponse> GetAttachments([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -346,12 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction ReplyToAThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            SourceExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            SourceExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            SourceExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/reply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -411,13 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction Reply([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
-            SourceExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            SourceExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            SourceExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            SourceExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -477,15 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(customHeader1, nameof(customHeader1), required: false);
-            SourceExpression.Validate(customHeader2, nameof(customHeader2), required: false);
-            SourceExpression.Validate(customHeader3, nameof(customHeader3), required: false);
-            SourceExpression.Validate(customHeader4, nameof(customHeader4), required: false);
-            SourceExpression.Validate(customHeader5, nameof(customHeader5), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/httprequest";
@@ -516,12 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction Forward([WorkflowExpression] Func<string> groupMail, [WorkflowExpression] Func<string> conversationId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<GetUsersGraphAction[]> bodyrecipients, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(groupMail, nameof(groupMail), required: true);
-            SourceExpression.Validate(conversationId, nameof(conversationId), required: true);
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupMail, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(conversationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -554,7 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     {
         public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/conversations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));

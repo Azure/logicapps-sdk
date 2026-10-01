@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         public IBodyWorkflowAction<ContactsSearchSimpleResponse> ContactsSearchSimple([WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<int> groupId = null, [WorkflowExpression] Func<bool> suppressed = null, [WorkflowExpression] Func<bool> held = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(groupId, nameof(groupId), required: false);
-            SourceExpression.Validate(suppressed, nameof(suppressed), required: false);
-            SourceExpression.Validate(held, nameof(held), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(sortField, nameof(sortField), required: false);
-            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts/search";
@@ -49,27 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         public IBodyWorkflowAction<ContactsSearchResponse> ContactsSearch([WorkflowExpression] Func<int> bodygroupId = null, [WorkflowExpression] Func<bool> bodysuppressed = null, [WorkflowExpression] Func<bool> bodyheld = null, [WorkflowExpression] Func<JToken[]> bodycontactIDs = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodypurl = null, [WorkflowExpression] Func<string> bodyfields = null, [WorkflowExpression] Func<int> bodypage = null, [WorkflowExpression] Func<int> bodyrpp = null, [WorkflowExpression] Func<bodysortFieldInput> bodysortField = null, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodysuppressed, nameof(bodysuppressed), required: false);
-            SourceExpression.Validate(bodyheld, nameof(bodyheld), required: false);
-            SourceExpression.Validate(bodycontactIDs, nameof(bodycontactIDs), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodypurl, nameof(bodypurl), required: false);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            SourceExpression.Validate(bodypage, nameof(bodypage), required: false);
-            SourceExpression.Validate(bodyrpp, nameof(bodyrpp), required: false);
-            SourceExpression.Validate(bodysortField, nameof(bodysortField), required: false);
-            SourceExpression.Validate(bodysortDirection, nameof(bodysortDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts/search";
@@ -229,7 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         public IBodyWorkflowAction<ContactsLookupResponse> ContactsLookup([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts/lookup";
@@ -245,31 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
         public IBodyWorkflowAction<ContactsSaveResponse> ContactsSave([WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<bool> bodysuppressed = null, [WorkflowExpression] Func<bool> bodyheld = null, [WorkflowExpression] Func<string> bodyoriginalSource = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyaddress1 = null, [WorkflowExpression] Func<string> bodyaddress2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodypurl = null, [WorkflowExpression] Func<string> bodydateOfBirth = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodymemo = null, [WorkflowExpression] Func<int[]> bodygroupIDs = null, [WorkflowExpression] Func<int[]> bodyremoveGroupIDs = null)
         {
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodysuppressed, nameof(bodysuppressed), required: false);
-            SourceExpression.Validate(bodyheld, nameof(bodyheld), required: false);
-            SourceExpression.Validate(bodyoriginalSource, nameof(bodyoriginalSource), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodyaddress1, nameof(bodyaddress1), required: false);
-            SourceExpression.Validate(bodyaddress2, nameof(bodyaddress2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodypurl, nameof(bodypurl), required: false);
-            SourceExpression.Validate(bodydateOfBirth, nameof(bodydateOfBirth), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodymemo, nameof(bodymemo), required: false);
-            SourceExpression.Validate(bodygroupIDs, nameof(bodygroupIDs), required: false);
-            SourceExpression.Validate(bodyremoveGroupIDs, nameof(bodyremoveGroupIDs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contacts/save";

@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<OperationsSearchResponse> OperationsSearch([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> pageOffset = null, [WorkflowExpression] Func<int> pageLimit = null, [WorkflowExpression] Func<changedWhenInput> changedWhen = null, [WorkflowExpression] Func<int> directParentFolderId = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(term, nameof(term), required: true);
-            SourceExpression.Validate(pageOffset, nameof(pageOffset), required: false);
-            SourceExpression.Validate(pageLimit, nameof(pageLimit), required: false);
-            SourceExpression.Validate(changedWhen, nameof(changedWhen), required: false);
-            SourceExpression.Validate(directParentFolderId, nameof(directParentFolderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -46,15 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetEnrichedSearchArtefactResponse> OperationsArtefactNls([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> simplequery = null, [WorkflowExpression] Func<string> advancedquery = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> channel = null, [WorkflowExpression] Func<int> pageOffset = null, [WorkflowExpression] Func<int> pageLimit = null, [WorkflowExpression] Func<string> facet = null, [WorkflowExpression] Func<string> highlightTags = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(simplequery, nameof(simplequery), required: false);
-            SourceExpression.Validate(advancedquery, nameof(advancedquery), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(channel, nameof(channel), required: false);
-            SourceExpression.Validate(pageOffset, nameof(pageOffset), required: false);
-            SourceExpression.Validate(pageLimit, nameof(pageLimit), required: false);
-            SourceExpression.Validate(facet, nameof(facet), required: false);
-            SourceExpression.Validate(highlightTags, nameof(highlightTags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/artefact/nls", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -85,12 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<JToken> OperationsLiveCsh([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<bool> bodyshowFirstResult = null, [WorkflowExpression] Func<bool> bodymaximizeClient = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            SourceExpression.Validate(bodyshowFirstResult, nameof(bodyshowFirstResult), required: false);
-            SourceExpression.Validate(bodymaximizeClient, nameof(bodymaximizeClient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/live/csh", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -141,13 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<JToken> OperationsLiveDocument([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<bool> bodymaximizeClient = null, [WorkflowExpression] Func<string> bodycontainerId = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodymaximizeClient, nameof(bodymaximizeClient), required: false);
-            SourceExpression.Validate(bodycontainerId, nameof(bodycontainerId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/live/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -204,12 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<JToken> OperationsLiveSearch([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<bool> bodymaximizeClient = null, [WorkflowExpression] Func<bool> bodyshowFirstResult = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            SourceExpression.Validate(bodymaximizeClient, nameof(bodymaximizeClient), required: false);
-            SourceExpression.Validate(bodyshowFirstResult, nameof(bodyshowFirstResult), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/live/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -260,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IWorkflowAction Echo([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/echo", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -275,8 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetContainerResponse> ResourcesContainerById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/container/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -291,9 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetDocumentResponse> ResourcesDocumentById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> version = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -310,8 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetEnrichedResponseResponse> ResourcesArtefactById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefact/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -326,19 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<PutArtefactResponse> PublishArtefact([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyprimaryResponse = null, [WorkflowExpression] Func<int> bodypanvivaDocumentVersion = null, [WorkflowExpression] Func<ArtefactSection[]> bodycontent = null, [WorkflowExpression] Func<TaggedSectionWithContentViewModel[]> bodytaggedSections = null, [WorkflowExpression] Func<int> bodycategoryid = null, [WorkflowExpression] Func<string> bodypanvivaDocumentId = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyprimaryQuery = null, [WorkflowExpression] Func<QueryVariationViewModel[]> bodyqueryVariations = null, [WorkflowExpression] Func<ResponseVariationViewModel[]> bodyresponseVariations = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyprimaryResponse, nameof(bodyprimaryResponse), required: false);
-            SourceExpression.Validate(bodypanvivaDocumentVersion, nameof(bodypanvivaDocumentVersion), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodytaggedSections, nameof(bodytaggedSections), required: false);
-            SourceExpression.Validate(bodycategoryid, nameof(bodycategoryid), required: false);
-            SourceExpression.Validate(bodypanvivaDocumentId, nameof(bodypanvivaDocumentId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyprimaryQuery, nameof(bodyprimaryQuery), required: false);
-            SourceExpression.Validate(bodyqueryVariations, nameof(bodyqueryVariations), required: false);
-            SourceExpression.Validate(bodyresponseVariations, nameof(bodyresponseVariations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefact/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -441,9 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetDocumentContainersResponse> ResourcesDocumentByIdContainers([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> version = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}/containers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -460,8 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetDocumentContainerRelationshipsResponse> ResourcesDocumentContainersByIdRelationships([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}/containers/relationships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -476,8 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetDocumentTranslationsResponse> ResourcesDocumentByIdTranslations([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}/translations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -492,8 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetFileResponse> ResourcesFileById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/file/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -508,8 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetFolderResponse> ResourcesFolderById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -524,8 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetFolderChildrenResponse> ResourcesFolderByIdChildren([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/{1}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -540,8 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetFolderTranslationsResponse> ResourcesFolderByIdTranslations([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/{1}/translations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -556,7 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetFolderRootResponse> ResourcesFolderRoot([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/root", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -571,8 +500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetImageResponse> ResourcesImageById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/image/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -587,7 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<GetArtefactCategoriesResponse> ResourcesArtefactCategoriesGet([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefactcategory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -602,8 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<PostArtefactCategoryResponse> ResourcesArtefactCategory([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefactcategory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -630,16 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
         public IBodyWorkflowAction<PostArtefactResponse> ResourcesCreateArtefact([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<bool> isDraft = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<ArtefactSection[]> bodycontent = null, [WorkflowExpression] Func<ResponseVariationModel[]> bodyvariations = null, [WorkflowExpression] Func<int> bodycategoryid = null, [WorkflowExpression] Func<string> bodyprimaryQuery = null, [WorkflowExpression] Func<QueryVariationModel[]> bodyqueryVariations = null, [WorkflowExpression] Func<int> bodypanvivaDocumentId = null, [WorkflowExpression] Func<int> bodypanvivaDocumentVersion = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(isDraft, nameof(isDraft), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyvariations, nameof(bodyvariations), required: false);
-            SourceExpression.Validate(bodycategoryid, nameof(bodycategoryid), required: false);
-            SourceExpression.Validate(bodyprimaryQuery, nameof(bodyprimaryQuery), required: false);
-            SourceExpression.Validate(bodyqueryVariations, nameof(bodyqueryVariations), required: false);
-            SourceExpression.Validate(bodypanvivaDocumentId, nameof(bodypanvivaDocumentId), required: false);
-            SourceExpression.Validate(bodypanvivaDocumentVersion, nameof(bodypanvivaDocumentVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefact", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));

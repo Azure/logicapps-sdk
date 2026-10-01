@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<AddSubscriptionResponse> AddSubscription([WorkflowExpression] Func<string> bodyquickadd = null)
         {
-            SourceExpression.Validate(bodyquickadd, nameof(bodyquickadd), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscription/quickadd";
@@ -41,8 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction EditSubscription([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<string> bodyt)
         {
-            SourceExpression.Validate(streamId, nameof(streamId), required: true);
-            SourceExpression.Validate(bodyt, nameof(bodyt), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscription/edit";
@@ -66,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction UnsubscribeSubscription([WorkflowExpression] Func<string> streamId)
         {
-            SourceExpression.Validate(streamId, nameof(streamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/unsubscribe/subscription/edit";
@@ -82,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction RemoveSubscriptionFromFolder([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(streamId, nameof(streamId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/remove/subscription/edit";
@@ -100,8 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction AddSubscriptionToFolder([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(streamId, nameof(streamId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add/subscription/edit";
@@ -118,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction DeleteTag([WorkflowExpression] Func<string> tagId)
         {
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/disable-tag";
@@ -134,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<UnreadCount> GetUnreadCountForStream([WorkflowExpression] Func<string> streamId)
         {
-            SourceExpression.Validate(streamId, nameof(streamId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/single/unread-count";
@@ -164,8 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<StreamContentsResponseItem[]> StreamContents([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<int> n = null)
         {
-            SourceExpression.Validate(streamId, nameof(streamId), required: true);
-            SourceExpression.Validate(n, nameof(n), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stream/contents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(streamId, 1));
@@ -197,8 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 
         public IBodyWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<int> target, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(streamId, nameof(streamId), required: true);
-            SourceExpression.Validate(target, nameof(target), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/unread-count";

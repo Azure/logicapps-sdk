@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<ApplicationNumberResponse> ApplicationNumber([WorkflowExpression] Func<string> applicationNumber = null, [WorkflowExpression] Func<string> marketingCategoryCode = null, [WorkflowExpression] Func<string> setid = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(applicationNumber, nameof(applicationNumber), required: false);
-            SourceExpression.Validate(marketingCategoryCode, nameof(marketingCategoryCode), required: false);
-            SourceExpression.Validate(setid, nameof(setid), required: false);
-            SourceExpression.Validate(pagesize, nameof(pagesize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/applicationnumbers.json";
@@ -43,13 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<DrugClassResponse> DrugClass([WorkflowExpression] Func<string> drugClassCode = null, [WorkflowExpression] Func<string> drugClassCodingSystem = null, [WorkflowExpression] Func<classCodeTypeInput> classCodeType = null, [WorkflowExpression] Func<string> className = null, [WorkflowExpression] Func<string> uniiCode = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(drugClassCode, nameof(drugClassCode), required: false);
-            SourceExpression.Validate(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
-            SourceExpression.Validate(classCodeType, nameof(classCodeType), required: false);
-            SourceExpression.Validate(className, nameof(className), required: false);
-            SourceExpression.Validate(uniiCode, nameof(uniiCode), required: false);
-            SourceExpression.Validate(pagesize, nameof(pagesize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/drugclasses.json";
@@ -79,11 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<DrugNameResponse> DrugName([WorkflowExpression] Func<string> drugName = null, [WorkflowExpression] Func<nameTypeInput> nameType = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(drugName, nameof(drugName), required: false);
-            SourceExpression.Validate(nameType, nameof(nameType), required: false);
-            SourceExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            SourceExpression.Validate(pagesize, nameof(pagesize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/drugnames.json";
@@ -109,8 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<NDCResponse> NDC([WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(pagesize, nameof(pagesize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/ndcs.json";
@@ -129,11 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<RxCUIResponse> RxCUI([WorkflowExpression] Func<rxttyInput> rxtty = null, [WorkflowExpression] Func<string> rxstring = null, [WorkflowExpression] Func<int> rxcui = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(rxtty, nameof(rxtty), required: false);
-            SourceExpression.Validate(rxstring, nameof(rxstring), required: false);
-            SourceExpression.Validate(rxcui, nameof(rxcui), required: false);
-            SourceExpression.Validate(pagesize, nameof(pagesize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/rxcuis.json";
@@ -159,24 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLAllResponse> SPLAll([WorkflowExpression] Func<string> applicationNumber = null, [WorkflowExpression] Func<bool> boxedWarning = null, [WorkflowExpression] Func<deaScheduleCodeInput> deaScheduleCode = null, [WorkflowExpression] Func<string> doctype = null, [WorkflowExpression] Func<string> drugClassCode = null, [WorkflowExpression] Func<string> drugClassCodingSystem = null, [WorkflowExpression] Func<string> drugName = null, [WorkflowExpression] Func<nameTypeInput> nameType = null, [WorkflowExpression] Func<string> labeler = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<string> marketingCategoryCode = null, [WorkflowExpression] Func<string> ndc = null, [WorkflowExpression] Func<string> publishedDate = null, [WorkflowExpression] Func<publishedDateComparisonInput> publishedDateComparison = null, [WorkflowExpression] Func<string> rxcui = null, [WorkflowExpression] Func<string> uniiCode = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(applicationNumber, nameof(applicationNumber), required: false);
-            SourceExpression.Validate(boxedWarning, nameof(boxedWarning), required: false);
-            SourceExpression.Validate(deaScheduleCode, nameof(deaScheduleCode), required: false);
-            SourceExpression.Validate(doctype, nameof(doctype), required: false);
-            SourceExpression.Validate(drugClassCode, nameof(drugClassCode), required: false);
-            SourceExpression.Validate(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
-            SourceExpression.Validate(drugName, nameof(drugName), required: false);
-            SourceExpression.Validate(nameType, nameof(nameType), required: false);
-            SourceExpression.Validate(labeler, nameof(labeler), required: false);
-            SourceExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            SourceExpression.Validate(marketingCategoryCode, nameof(marketingCategoryCode), required: false);
-            SourceExpression.Validate(ndc, nameof(ndc), required: false);
-            SourceExpression.Validate(publishedDate, nameof(publishedDate), required: false);
-            SourceExpression.Validate(publishedDateComparison, nameof(publishedDateComparison), required: false);
-            SourceExpression.Validate(rxcui, nameof(rxcui), required: false);
-            SourceExpression.Validate(uniiCode, nameof(uniiCode), required: false);
-            SourceExpression.Validate(pagesize, nameof(pagesize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/spls.json";
@@ -230,7 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLHistoryResponse> SPLHistory([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/history.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
@@ -245,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLMediaResponse> SPLMedia([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/media.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
@@ -260,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLNDCResponse> SPLNDC([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/ndcs.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
@@ -275,7 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<SPLPackagingResponse> SPLPackaging([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/packaging.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
@@ -290,13 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
         public IBodyWorkflowAction<UNIIResponse> UNII([WorkflowExpression] Func<string> activeMoiety = null, [WorkflowExpression] Func<string> drugClassCode = null, [WorkflowExpression] Func<string> drugClassCodingSystem = null, [WorkflowExpression] Func<string> rxcui = null, [WorkflowExpression] Func<string> uniiCode = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(activeMoiety, nameof(activeMoiety), required: false);
-            SourceExpression.Validate(drugClassCode, nameof(drugClassCode), required: false);
-            SourceExpression.Validate(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
-            SourceExpression.Validate(rxcui, nameof(rxcui), required: false);
-            SourceExpression.Validate(uniiCode, nameof(uniiCode), required: false);
-            SourceExpression.Validate(pagesize, nameof(pagesize), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/uniis.json";

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> xCbotFilename, [WorkflowExpression] Func<string> fileContents = null)
         {
-            SourceExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            SourceExpression.Validate(publicId, nameof(publicId), required: true);
-            SourceExpression.Validate(xCbotFilename, nameof(xCbotFilename), required: true);
-            SourceExpression.Validate(fileContents, nameof(fileContents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/services/files/temp", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publicId, 1));
@@ -35,9 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
         public IBodyWorkflowAction<string> DownloadFile([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> @ref)
         {
-            SourceExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            SourceExpression.Validate(publicId, nameof(publicId), required: true);
-            SourceExpression.Validate(@ref, nameof(@ref), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/services/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@ref, 1));
@@ -53,21 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
         public IBodyWorkflowAction<ExecuteBotResponse> ExecuteBot([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<bool> bodyasync, [WorkflowExpression] Func<string> bodydata1 = null, [WorkflowExpression] Func<string> bodydata2 = null, [WorkflowExpression] Func<string> bodydata3 = null, [WorkflowExpression] Func<string> bodydata4 = null, [WorkflowExpression] Func<string> bodydata5 = null, [WorkflowExpression] Func<string> bodydata6 = null, [WorkflowExpression] Func<string> bodydata7 = null, [WorkflowExpression] Func<string> bodydata8 = null, [WorkflowExpression] Func<string> bodydata9 = null, [WorkflowExpression] Func<string> bodydata10 = null, [WorkflowExpression] Func<string> bodyaPIParameters = null)
         {
-            SourceExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            SourceExpression.Validate(publicId, nameof(publicId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: true);
-            SourceExpression.Validate(bodydata1, nameof(bodydata1), required: false);
-            SourceExpression.Validate(bodydata2, nameof(bodydata2), required: false);
-            SourceExpression.Validate(bodydata3, nameof(bodydata3), required: false);
-            SourceExpression.Validate(bodydata4, nameof(bodydata4), required: false);
-            SourceExpression.Validate(bodydata5, nameof(bodydata5), required: false);
-            SourceExpression.Validate(bodydata6, nameof(bodydata6), required: false);
-            SourceExpression.Validate(bodydata7, nameof(bodydata7), required: false);
-            SourceExpression.Validate(bodydata8, nameof(bodydata8), required: false);
-            SourceExpression.Validate(bodydata9, nameof(bodydata9), required: false);
-            SourceExpression.Validate(bodydata10, nameof(bodydata10), required: false);
-            SourceExpression.Validate(bodyaPIParameters, nameof(bodyaPIParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/jobs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
@@ -160,9 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
     {
         public IBodyWorkflowTrigger<BotDoneResponse> BotDone([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> botId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            SourceExpression.Validate(publicId, nameof(publicId), required: true);
-            SourceExpression.Validate(botId, nameof(botId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));

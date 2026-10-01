@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            SourceExpression.Validate(number, nameof(number), required: true);
-            SourceExpression.Validate(country, nameof(country), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ni/basic/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -37,12 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> cnam = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            SourceExpression.Validate(number, nameof(number), required: true);
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(cnam, nameof(cnam), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ni/standard/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));

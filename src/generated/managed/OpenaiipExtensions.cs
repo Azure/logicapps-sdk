@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<double> bodyfrequencyPenalty = null, [WorkflowExpression] Func<double> bodypresencePenalty = null, [WorkflowExpression] Func<string[]> bodystop = null)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodyn, nameof(bodyn), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            SourceExpression.Validate(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            SourceExpression.Validate(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            SourceExpression.Validate(bodystop, nameof(bodystop), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -129,8 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<EmbeddingsResponse> Embeddings([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyinput)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/embeddings";
@@ -155,10 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<CreateImageResponse> CreateImage([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<bodysizeInput> bodysize = null, [WorkflowExpression] Func<bodyresponseFormatInput> bodyresponseFormat = null)
         {
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodyn, nameof(bodyn), required: false);
-            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
-            SourceExpression.Validate(bodyresponseFormat, nameof(bodyresponseFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/images/generations";
@@ -229,16 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<CompletionV2Response> Completion([WorkflowExpression] Func<bodyengineInput> bodyengine, [WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<int> bodybestOf = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<double> bodyfrequencyPenalty = null, [WorkflowExpression] Func<double> bodypresencePenalty = null, [WorkflowExpression] Func<string[]> bodystop = null)
         {
-            SourceExpression.Validate(bodyengine, nameof(bodyengine), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodyn, nameof(bodyn), required: false);
-            SourceExpression.Validate(bodybestOf, nameof(bodybestOf), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            SourceExpression.Validate(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            SourceExpression.Validate(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            SourceExpression.Validate(bodystop, nameof(bodystop), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/completions";

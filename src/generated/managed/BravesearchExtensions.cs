@@ -14,31 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<WebSearchGetResponse> WebSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<cacheControlInput> cacheControl = null, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> xLocLat = null, [WorkflowExpression] Func<string> xLocLong = null, [WorkflowExpression] Func<string> xLocTimezone = null, [WorkflowExpression] Func<string> xLocCity = null, [WorkflowExpression] Func<string> xLocState = null, [WorkflowExpression] Func<string> xLocStateName = null, [WorkflowExpression] Func<string> xLocCountry = null, [WorkflowExpression] Func<string> xLocPostalCode = null, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<uiLangInput> uiLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<string> freshness = null, [WorkflowExpression] Func<bool> textDecorations = null, [WorkflowExpression] Func<bool> spellcheck = null, [WorkflowExpression] Func<string> resultFilter = null, [WorkflowExpression] Func<string> gogglesId = null, [WorkflowExpression] Func<string> units = null, [WorkflowExpression] Func<bool> extraSnippets = null, [WorkflowExpression] Func<bool> summary = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(cacheControl, nameof(cacheControl), required: false);
-            SourceExpression.Validate(userAgent, nameof(userAgent), required: false);
-            SourceExpression.Validate(xLocLat, nameof(xLocLat), required: false);
-            SourceExpression.Validate(xLocLong, nameof(xLocLong), required: false);
-            SourceExpression.Validate(xLocTimezone, nameof(xLocTimezone), required: false);
-            SourceExpression.Validate(xLocCity, nameof(xLocCity), required: false);
-            SourceExpression.Validate(xLocState, nameof(xLocState), required: false);
-            SourceExpression.Validate(xLocStateName, nameof(xLocStateName), required: false);
-            SourceExpression.Validate(xLocCountry, nameof(xLocCountry), required: false);
-            SourceExpression.Validate(xLocPostalCode, nameof(xLocPostalCode), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
-            SourceExpression.Validate(uiLang, nameof(uiLang), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
-            SourceExpression.Validate(freshness, nameof(freshness), required: false);
-            SourceExpression.Validate(textDecorations, nameof(textDecorations), required: false);
-            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
-            SourceExpression.Validate(resultFilter, nameof(resultFilter), required: false);
-            SourceExpression.Validate(gogglesId, nameof(gogglesId), required: false);
-            SourceExpression.Validate(units, nameof(units), required: false);
-            SourceExpression.Validate(extraSnippets, nameof(extraSnippets), required: false);
-            SourceExpression.Validate(summary, nameof(summary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/res/v1/web/search";
@@ -108,12 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<ImageSearchGetResponse> ImageSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
-            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/res/v1/images/search";
@@ -144,12 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<VideoSearchGetResponse> VideoSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
-            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/res/v1/videos/search";
@@ -180,15 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<NewsSearchGetResponse> NewsSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null, [WorkflowExpression] Func<freshnessInput> freshness = null, [WorkflowExpression] Func<bool> extraSnippets = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
-            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
-            SourceExpression.Validate(freshness, nameof(freshness), required: false);
-            SourceExpression.Validate(extraSnippets, nameof(extraSnippets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/res/v1/news/search";
@@ -225,11 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<SuggestionSearchGetResponse> SuggestionSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<langInput> lang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<bool> rich = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(rich, nameof(rich), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/res/v1/suggest/search";
@@ -256,9 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<SpellcheckSearchGetResponse> SpellcheckSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<langInput> lang = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(lang, nameof(lang), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/res/v1/spellcheck/search";

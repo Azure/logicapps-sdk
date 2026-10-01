@@ -14,42 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signrequest")]
         public IBodyWorkflowAction<SignRequestQuickCreate> SignrequestQuickCreateCreate([WorkflowExpression] Func<Signer[]> datasigners, [WorkflowExpression] Func<int> dataautoDeleteDays = null, [WorkflowExpression] Func<int> dataautoExpireDays = null, [WorkflowExpression] Func<bool> datadisableAttachments = null, [WorkflowExpression] Func<bool> datadisableBlockchainProof = null, [WorkflowExpression] Func<bool> datadisableDate = null, [WorkflowExpression] Func<bool> datadisableEmails = null, [WorkflowExpression] Func<bool> datadisableText = null, [WorkflowExpression] Func<bool> datadisableTextSignatures = null, [WorkflowExpression] Func<bool> datadisableUploadSignatures = null, [WorkflowExpression] Func<string> datadocument = null, [WorkflowExpression] Func<string> dataeventsCallbackUrl = null, [WorkflowExpression] Func<string> dataexternalId = null, [WorkflowExpression] Func<string> dataFile = null, [WorkflowExpression] Func<string> datafileFromContent = null, [WorkflowExpression] Func<string> datafileFromContentName = null, [WorkflowExpression] Func<string> datafileFromUrl = null, [WorkflowExpression] Func<string> datafromEmail = null, [WorkflowExpression] Func<string> datafromEmailName = null, [WorkflowExpression] Func<string> datafrontendId = null, [WorkflowExpression] Func<bool> dataisBeingPrepared = null, [WorkflowExpression] Func<string> datamessage = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<InlinePrefillTags[]> dataprefillTags = null, [WorkflowExpression] Func<string> dataprepareUrl = null, [WorkflowExpression] Func<string> dataredirectUrl = null, [WorkflowExpression] Func<string> dataredirectUrlDeclined = null, [WorkflowExpression] Func<RequiredAttachment[]> datarequiredAttachments = null, [WorkflowExpression] Func<bool> datasendReminders = null, [WorkflowExpression] Func<string> datasubdomain = null, [WorkflowExpression] Func<string> datasubject = null, [WorkflowExpression] Func<string> datatemplate = null, [WorkflowExpression] Func<bool> datatextMessageVerificationLocked = null, [WorkflowExpression] Func<string> dataurl = null, [WorkflowExpression] Func<string> datauuid = null, [WorkflowExpression] Func<datawhoInput> datawho = null)
         {
-            SourceExpression.Validate(datasigners, nameof(datasigners), required: true);
-            SourceExpression.Validate(dataautoDeleteDays, nameof(dataautoDeleteDays), required: false);
-            SourceExpression.Validate(dataautoExpireDays, nameof(dataautoExpireDays), required: false);
-            SourceExpression.Validate(datadisableAttachments, nameof(datadisableAttachments), required: false);
-            SourceExpression.Validate(datadisableBlockchainProof, nameof(datadisableBlockchainProof), required: false);
-            SourceExpression.Validate(datadisableDate, nameof(datadisableDate), required: false);
-            SourceExpression.Validate(datadisableEmails, nameof(datadisableEmails), required: false);
-            SourceExpression.Validate(datadisableText, nameof(datadisableText), required: false);
-            SourceExpression.Validate(datadisableTextSignatures, nameof(datadisableTextSignatures), required: false);
-            SourceExpression.Validate(datadisableUploadSignatures, nameof(datadisableUploadSignatures), required: false);
-            SourceExpression.Validate(datadocument, nameof(datadocument), required: false);
-            SourceExpression.Validate(dataeventsCallbackUrl, nameof(dataeventsCallbackUrl), required: false);
-            SourceExpression.Validate(dataexternalId, nameof(dataexternalId), required: false);
-            SourceExpression.Validate(dataFile, nameof(dataFile), required: false);
-            SourceExpression.Validate(datafileFromContent, nameof(datafileFromContent), required: false);
-            SourceExpression.Validate(datafileFromContentName, nameof(datafileFromContentName), required: false);
-            SourceExpression.Validate(datafileFromUrl, nameof(datafileFromUrl), required: false);
-            SourceExpression.Validate(datafromEmail, nameof(datafromEmail), required: false);
-            SourceExpression.Validate(datafromEmailName, nameof(datafromEmailName), required: false);
-            SourceExpression.Validate(datafrontendId, nameof(datafrontendId), required: false);
-            SourceExpression.Validate(dataisBeingPrepared, nameof(dataisBeingPrepared), required: false);
-            SourceExpression.Validate(datamessage, nameof(datamessage), required: false);
-            SourceExpression.Validate(dataname, nameof(dataname), required: false);
-            SourceExpression.Validate(dataprefillTags, nameof(dataprefillTags), required: false);
-            SourceExpression.Validate(dataprepareUrl, nameof(dataprepareUrl), required: false);
-            SourceExpression.Validate(dataredirectUrl, nameof(dataredirectUrl), required: false);
-            SourceExpression.Validate(dataredirectUrlDeclined, nameof(dataredirectUrlDeclined), required: false);
-            SourceExpression.Validate(datarequiredAttachments, nameof(datarequiredAttachments), required: false);
-            SourceExpression.Validate(datasendReminders, nameof(datasendReminders), required: false);
-            SourceExpression.Validate(datasubdomain, nameof(datasubdomain), required: false);
-            SourceExpression.Validate(datasubject, nameof(datasubject), required: false);
-            SourceExpression.Validate(datatemplate, nameof(datatemplate), required: false);
-            SourceExpression.Validate(datatextMessageVerificationLocked, nameof(datatextMessageVerificationLocked), required: false);
-            SourceExpression.Validate(dataurl, nameof(dataurl), required: false);
-            SourceExpression.Validate(datauuid, nameof(datauuid), required: false);
-            SourceExpression.Validate(datawho, nameof(datawho), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/signrequest-quick-create/";
@@ -294,15 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
     {
         public IBodyWorkflowTrigger<WebhookSubscription> WebhooksCreate([WorkflowExpression] Func<dataeventTypeInput> dataeventType, [WorkflowExpression] Func<string> datacreated = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> datasubdomain = null, [WorkflowExpression] Func<string> datateamname = null, [WorkflowExpression] Func<string> datateamsubdomain = null, [WorkflowExpression] Func<string> datateamurl = null, [WorkflowExpression] Func<string> dataurl = null, [WorkflowExpression] Func<string> datauuid = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(dataeventType, nameof(dataeventType), required: true);
-            SourceExpression.Validate(datacreated, nameof(datacreated), required: false);
-            SourceExpression.Validate(dataname, nameof(dataname), required: false);
-            SourceExpression.Validate(datasubdomain, nameof(datasubdomain), required: false);
-            SourceExpression.Validate(datateamname, nameof(datateamname), required: false);
-            SourceExpression.Validate(datateamsubdomain, nameof(datateamsubdomain), required: false);
-            SourceExpression.Validate(datateamurl, nameof(datateamurl), required: false);
-            SourceExpression.Validate(dataurl, nameof(dataurl), required: false);
-            SourceExpression.Validate(datauuid, nameof(datauuid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/";

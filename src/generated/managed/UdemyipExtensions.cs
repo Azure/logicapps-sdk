@@ -14,25 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Udemyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "udemyip")]
         public IBodyWorkflowAction<GetCoursesResponse> GetCourses([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> subcategory = null, [WorkflowExpression] Func<string> price = null, [WorkflowExpression] Func<bool> isAffiliateAgreed = null, [WorkflowExpression] Func<bool> isDealsAgreed = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> hasClosedCaption = null, [WorkflowExpression] Func<bool> hasCodingExercises = null, [WorkflowExpression] Func<bool> hasSimpleQuiz = null, [WorkflowExpression] Func<bool> hasWorkspace = null, [WorkflowExpression] Func<string> instructionalLevel = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<double> ratings = null, [WorkflowExpression] Func<string> duration = null, [WorkflowExpression] Func<int> subsCollId = null, [WorkflowExpression] Func<string> subsFilterType = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(subcategory, nameof(subcategory), required: false);
-            SourceExpression.Validate(price, nameof(price), required: false);
-            SourceExpression.Validate(isAffiliateAgreed, nameof(isAffiliateAgreed), required: false);
-            SourceExpression.Validate(isDealsAgreed, nameof(isDealsAgreed), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(hasClosedCaption, nameof(hasClosedCaption), required: false);
-            SourceExpression.Validate(hasCodingExercises, nameof(hasCodingExercises), required: false);
-            SourceExpression.Validate(hasSimpleQuiz, nameof(hasSimpleQuiz), required: false);
-            SourceExpression.Validate(hasWorkspace, nameof(hasWorkspace), required: false);
-            SourceExpression.Validate(instructionalLevel, nameof(instructionalLevel), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(ratings, nameof(ratings), required: false);
-            SourceExpression.Validate(duration, nameof(duration), required: false);
-            SourceExpression.Validate(subsCollId, nameof(subsCollId), required: false);
-            SourceExpression.Validate(subsFilterType, nameof(subsFilterType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/courses";
@@ -85,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Udemyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "udemyip")]
         public IBodyWorkflowAction<GetCourseDetailsResponse> GetCourseDetails([WorkflowExpression] Func<int> pk)
         {
-            SourceExpression.Validate(pk, nameof(pk), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/courses/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pk, 1));
@@ -100,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Udemyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "udemyip")]
         public IBodyWorkflowAction<GetCourseReviewsResponse> GetCourseReviews([WorkflowExpression] Func<int> courseId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/courses/{0}/reviews/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(courseId, 1));
@@ -121,9 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Udemyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "udemyip")]
         public IBodyWorkflowAction<GetPublicCurriculumItemsResponse> GetPublicCurriculumItems([WorkflowExpression] Func<int> courseId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/courses/{0}/public-curriculum-items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(courseId, 1));

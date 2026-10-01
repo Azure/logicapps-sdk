@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
         public IWorkflowAction ActivateUser([WorkflowExpression] Func<productInput> product, [WorkflowExpression] Func<string> productUserId)
         {
-            SourceExpression.Validate(product, nameof(product), required: true);
-            SourceExpression.Validate(productUserId, nameof(productUserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users/activatefromproduct";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
         public IWorkflowAction DeactivateUser([WorkflowExpression] Func<productInput> product, [WorkflowExpression] Func<string> productUserId)
         {
-            SourceExpression.Validate(product, nameof(product), required: true);
-            SourceExpression.Validate(productUserId, nameof(productUserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users/deactivatefromproduct";

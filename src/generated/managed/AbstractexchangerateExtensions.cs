@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
         public IBodyWorkflowAction<LiveRatesResponse> LiveRates([WorkflowExpression] Func<string> @base, [WorkflowExpression] Func<string> target = null)
         {
-            SourceExpression.Validate(@base, nameof(@base), required: true);
-            SourceExpression.Validate(target, nameof(target), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/live/";
@@ -33,10 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
         public IBodyWorkflowAction<ConvertResponse> Convert([WorkflowExpression] Func<string> @base, [WorkflowExpression] Func<string> target, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<double> baseAmount = null)
         {
-            SourceExpression.Validate(@base, nameof(@base), required: true);
-            SourceExpression.Validate(target, nameof(target), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(baseAmount, nameof(baseAmount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/convert/";

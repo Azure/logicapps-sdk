@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<CurrentWeather> CurrentWeather([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(units, nameof(units), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/current/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -31,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<WeatherForecast> TodaysForecast([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(units, nameof(units), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forecast/today/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -48,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<WeatherForecast> TomorrowsForecast([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(units, nameof(units), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forecast/tomorrow/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -67,11 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     {
         public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<measureInput> measure, [WorkflowExpression] Func<whenInput> when, [WorkflowExpression] Func<double> target, [WorkflowExpression] Func<string> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(measure, nameof(measure), required: true);
-            SourceExpression.Validate(when, nameof(when), required: true);
-            SourceExpression.Validate(target, nameof(target), required: true);
-            SourceExpression.Validate(units, nameof(units), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/current/weather/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
@@ -89,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 
         public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(units, nameof(units), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/current/conditions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));

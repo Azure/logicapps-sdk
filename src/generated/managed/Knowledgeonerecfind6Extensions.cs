@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<QueryListResponse> QueryList([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/QueryList";
@@ -34,10 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<JToken[]> QueryTable([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> queryName = null, [WorkflowExpression] Func<string> searchText = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(queryName, nameof(queryName), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/QueryTable";
@@ -60,12 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<QueryDataResponse> QueryData([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> queryName = null, [WorkflowExpression] Func<int> startPosition = null, [WorkflowExpression] Func<int> numberOfRecords = null, [WorkflowExpression] Func<string> searchText = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(queryName, nameof(queryName), required: false);
-            SourceExpression.Validate(startPosition, nameof(startPosition), required: false);
-            SourceExpression.Validate(numberOfRecords, nameof(numberOfRecords), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/QueryData";
@@ -92,10 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<JToken[]> SavedSearch([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> savedSearchName = null, [WorkflowExpression] Func<string> queryParams = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(savedSearchName, nameof(savedSearchName), required: false);
-            SourceExpression.Validate(queryParams, nameof(queryParams), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SavedSearch";
@@ -118,14 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<SendFileResponse> SendFile([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> bodyfileContents = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycreatedDate = null, [WorkflowExpression] Func<string> bodyeDOCType = null, [WorkflowExpression] Func<bodyextraFieldsInputItem[]> bodyextraFields = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(bodyfileContents, nameof(bodyfileContents), required: false);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodycreatedDate, nameof(bodycreatedDate), required: false);
-            SourceExpression.Validate(bodyeDOCType, nameof(bodyeDOCType), required: false);
-            SourceExpression.Validate(bodyextraFields, nameof(bodyextraFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SendFile";

@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mtarget")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> msisdn, [WorkflowExpression] Func<string> msg, [WorkflowExpression] Func<string> sender = null, [WorkflowExpression] Func<int> serviceid = null, [WorkflowExpression] Func<string> timetosend = null, [WorkflowExpression] Func<string> remoteid = null)
         {
-            SourceExpression.Validate(msisdn, nameof(msisdn), required: true);
-            SourceExpression.Validate(msg, nameof(msg), required: true);
-            SourceExpression.Validate(sender, nameof(sender), required: false);
-            SourceExpression.Validate(serviceid, nameof(serviceid), required: false);
-            SourceExpression.Validate(timetosend, nameof(timetosend), required: false);
-            SourceExpression.Validate(remoteid, nameof(remoteid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flow.php";

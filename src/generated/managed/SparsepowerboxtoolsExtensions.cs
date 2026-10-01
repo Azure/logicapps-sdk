@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfStampImage> PdfStampImage([WorkflowExpression] Func<string> reqPdfStampImagepDF, [WorkflowExpression] Func<string> reqPdfStampImageimage, [WorkflowExpression] Func<double> reqPdfStampImageoptionsopacity = null, [WorkflowExpression] Func<double> reqPdfStampImageoptionsscale = null, [WorkflowExpression] Func<int> reqPdfStampImageoptionsrotate = null, [WorkflowExpression] Func<int> reqPdfStampImageoptionspositionyOffset = null, [WorkflowExpression] Func<string> reqPdfStampImageoptionspositionstartOfYOffset = null, [WorkflowExpression] Func<int> reqPdfStampImageoptionspositionxOffset = null)
         {
-            SourceExpression.Validate(reqPdfStampImagepDF, nameof(reqPdfStampImagepDF), required: true);
-            SourceExpression.Validate(reqPdfStampImageimage, nameof(reqPdfStampImageimage), required: true);
-            SourceExpression.Validate(reqPdfStampImageoptionsopacity, nameof(reqPdfStampImageoptionsopacity), required: false);
-            SourceExpression.Validate(reqPdfStampImageoptionsscale, nameof(reqPdfStampImageoptionsscale), required: false);
-            SourceExpression.Validate(reqPdfStampImageoptionsrotate, nameof(reqPdfStampImageoptionsrotate), required: false);
-            SourceExpression.Validate(reqPdfStampImageoptionspositionyOffset, nameof(reqPdfStampImageoptionspositionyOffset), required: false);
-            SourceExpression.Validate(reqPdfStampImageoptionspositionstartOfYOffset, nameof(reqPdfStampImageoptionspositionstartOfYOffset), required: false);
-            SourceExpression.Validate(reqPdfStampImageoptionspositionxOffset, nameof(reqPdfStampImageoptionspositionxOffset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/stamp/image";
@@ -158,9 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ExcelSheetAddRows> ExcelSheetAddRows([WorkflowExpression] Func<string> reqExcelSheetAddrowssheetname, [WorkflowExpression] Func<string> reqExcelSheetAddrowsexcel, [WorkflowExpression] Func<JToken[]> reqExcelSheetAddrowsdata = null)
         {
-            SourceExpression.Validate(reqExcelSheetAddrowssheetname, nameof(reqExcelSheetAddrowssheetname), required: true);
-            SourceExpression.Validate(reqExcelSheetAddrowsexcel, nameof(reqExcelSheetAddrowsexcel), required: true);
-            SourceExpression.Validate(reqExcelSheetAddrowsdata, nameof(reqExcelSheetAddrowsdata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/excel/sheet/add-rows";
@@ -191,14 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfCreateByHtml> PdfCreateByHtml([WorkflowExpression] Func<string> reqPdfCreateByHtmlhTML, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmediaType = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionspageFormat = null, [WorkflowExpression] Func<bool> reqPdfCreateByHtmloptionslandscape = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginLeft = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginRight = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginTop = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginBottom = null)
         {
-            SourceExpression.Validate(reqPdfCreateByHtmlhTML, nameof(reqPdfCreateByHtmlhTML), required: true);
-            SourceExpression.Validate(reqPdfCreateByHtmloptionsmediaType, nameof(reqPdfCreateByHtmloptionsmediaType), required: false);
-            SourceExpression.Validate(reqPdfCreateByHtmloptionspageFormat, nameof(reqPdfCreateByHtmloptionspageFormat), required: false);
-            SourceExpression.Validate(reqPdfCreateByHtmloptionslandscape, nameof(reqPdfCreateByHtmloptionslandscape), required: false);
-            SourceExpression.Validate(reqPdfCreateByHtmloptionsmarginmarginLeft, nameof(reqPdfCreateByHtmloptionsmarginmarginLeft), required: false);
-            SourceExpression.Validate(reqPdfCreateByHtmloptionsmarginmarginRight, nameof(reqPdfCreateByHtmloptionsmarginmarginRight), required: false);
-            SourceExpression.Validate(reqPdfCreateByHtmloptionsmarginmarginTop, nameof(reqPdfCreateByHtmloptionsmarginmarginTop), required: false);
-            SourceExpression.Validate(reqPdfCreateByHtmloptionsmarginmarginBottom, nameof(reqPdfCreateByHtmloptionsmarginmarginBottom), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/create/by-html";
@@ -357,8 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageMergeDrawing> ImageMergeDrawing([WorkflowExpression] Func<string> reqImageMergeDrawingbackground, [WorkflowExpression] Func<string> reqImageMergeDrawingdrawing)
         {
-            SourceExpression.Validate(reqImageMergeDrawingbackground, nameof(reqImageMergeDrawingbackground), required: true);
-            SourceExpression.Validate(reqImageMergeDrawingdrawing, nameof(reqImageMergeDrawingdrawing), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image/merge/drawing";
@@ -383,14 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfStampText> PdfStampText([WorkflowExpression] Func<string> reqPdfStampTextpDF, [WorkflowExpression] Func<string> reqPdfStampTexttext, [WorkflowExpression] Func<string> reqPdfStampTextoptionsfontColor = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionsfontSize = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionsrotate = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionspositionyOffset = null, [WorkflowExpression] Func<string> reqPdfStampTextoptionspositionstartOfYOffset = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionspositionxOffset = null)
         {
-            SourceExpression.Validate(reqPdfStampTextpDF, nameof(reqPdfStampTextpDF), required: true);
-            SourceExpression.Validate(reqPdfStampTexttext, nameof(reqPdfStampTexttext), required: true);
-            SourceExpression.Validate(reqPdfStampTextoptionsfontColor, nameof(reqPdfStampTextoptionsfontColor), required: false);
-            SourceExpression.Validate(reqPdfStampTextoptionsfontSize, nameof(reqPdfStampTextoptionsfontSize), required: false);
-            SourceExpression.Validate(reqPdfStampTextoptionsrotate, nameof(reqPdfStampTextoptionsrotate), required: false);
-            SourceExpression.Validate(reqPdfStampTextoptionspositionyOffset, nameof(reqPdfStampTextoptionspositionyOffset), required: false);
-            SourceExpression.Validate(reqPdfStampTextoptionspositionstartOfYOffset, nameof(reqPdfStampTextoptionspositionstartOfYOffset), required: false);
-            SourceExpression.Validate(reqPdfStampTextoptionspositionxOffset, nameof(reqPdfStampTextoptionspositionxOffset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/stamp/text";
@@ -527,9 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200CsvToJson> CsvToJson([WorkflowExpression] Func<string> reqCsvToJsoncSV, [WorkflowExpression] Func<bool> reqCsvToJsonoptionshasHeaders = null, [WorkflowExpression] Func<string> reqCsvToJsonoptionsdelimiter = null)
         {
-            SourceExpression.Validate(reqCsvToJsoncSV, nameof(reqCsvToJsoncSV), required: true);
-            SourceExpression.Validate(reqCsvToJsonoptionshasHeaders, nameof(reqCsvToJsonoptionshasHeaders), required: false);
-            SourceExpression.Validate(reqCsvToJsonoptionsdelimiter, nameof(reqCsvToJsonoptionsdelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/csv/to-json";
@@ -592,14 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfCreateByUrl> PdfCreateByUrl([WorkflowExpression] Func<string> reqPdfCreateByUrlhTML, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmediaType = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionspageFormat = null, [WorkflowExpression] Func<bool> reqPdfCreateByUrloptionslandscape = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginLeft = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginRight = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginTop = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginBottom = null)
         {
-            SourceExpression.Validate(reqPdfCreateByUrlhTML, nameof(reqPdfCreateByUrlhTML), required: true);
-            SourceExpression.Validate(reqPdfCreateByUrloptionsmediaType, nameof(reqPdfCreateByUrloptionsmediaType), required: false);
-            SourceExpression.Validate(reqPdfCreateByUrloptionspageFormat, nameof(reqPdfCreateByUrloptionspageFormat), required: false);
-            SourceExpression.Validate(reqPdfCreateByUrloptionslandscape, nameof(reqPdfCreateByUrloptionslandscape), required: false);
-            SourceExpression.Validate(reqPdfCreateByUrloptionsmarginmarginLeft, nameof(reqPdfCreateByUrloptionsmarginmarginLeft), required: false);
-            SourceExpression.Validate(reqPdfCreateByUrloptionsmarginmarginRight, nameof(reqPdfCreateByUrloptionsmarginmarginRight), required: false);
-            SourceExpression.Validate(reqPdfCreateByUrloptionsmarginmarginTop, nameof(reqPdfCreateByUrloptionsmarginmarginTop), required: false);
-            SourceExpression.Validate(reqPdfCreateByUrloptionsmarginmarginBottom, nameof(reqPdfCreateByUrloptionsmarginmarginBottom), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/create/by-url";
@@ -750,11 +710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageStampText> ImageStampText([WorkflowExpression] Func<string> reqImageStampTextimage = null, [WorkflowExpression] Func<string> reqImageStampTexttextToStamp = null, [WorkflowExpression] Func<string> reqImageStampTextoptionslocationOfTheStamp = null, [WorkflowExpression] Func<string> reqImageStampTextoptionsfontcolor = null, [WorkflowExpression] Func<int> reqImageStampTextoptionsfontsize = null)
         {
-            SourceExpression.Validate(reqImageStampTextimage, nameof(reqImageStampTextimage), required: false);
-            SourceExpression.Validate(reqImageStampTexttextToStamp, nameof(reqImageStampTexttextToStamp), required: false);
-            SourceExpression.Validate(reqImageStampTextoptionslocationOfTheStamp, nameof(reqImageStampTextoptionslocationOfTheStamp), required: false);
-            SourceExpression.Validate(reqImageStampTextoptionsfontcolor, nameof(reqImageStampTextoptionsfontcolor), required: false);
-            SourceExpression.Validate(reqImageStampTextoptionsfontsize, nameof(reqImageStampTextoptionsfontsize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image/stamp/text";
@@ -843,10 +798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageResize> ImageResize([WorkflowExpression] Func<string> reqImageResizeimage = null, [WorkflowExpression] Func<int> reqImageResizewidth = null, [WorkflowExpression] Func<int> reqImageResizeheight = null, [WorkflowExpression] Func<bool> reqImageResizeoptionsignoreTheAspectRation = null)
         {
-            SourceExpression.Validate(reqImageResizeimage, nameof(reqImageResizeimage), required: false);
-            SourceExpression.Validate(reqImageResizewidth, nameof(reqImageResizewidth), required: false);
-            SourceExpression.Validate(reqImageResizeheight, nameof(reqImageResizeheight), required: false);
-            SourceExpression.Validate(reqImageResizeoptionsignoreTheAspectRation, nameof(reqImageResizeoptionsignoreTheAspectRation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image/resize";
@@ -909,8 +860,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfSplitByPage> PdfSplitByPage([WorkflowExpression] Func<string> reqPdfSplitByPagepDFFile = null, [WorkflowExpression] Func<double> reqPdfSplitByPageoptionsnumberOfPages = null)
         {
-            SourceExpression.Validate(reqPdfSplitByPagepDFFile, nameof(reqPdfSplitByPagepDFFile), required: false);
-            SourceExpression.Validate(reqPdfSplitByPageoptionsnumberOfPages, nameof(reqPdfSplitByPageoptionsnumberOfPages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/split/by-page";
@@ -961,12 +910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageStampExif> ImageStampExif([WorkflowExpression] Func<string> reqImageStampExifimage = null, [WorkflowExpression] Func<string[]> reqImageStampExifoptionstags = null, [WorkflowExpression] Func<string> reqImageStampExifoptionslocationOfTheStamp = null, [WorkflowExpression] Func<string> reqImageStampExifoptionsfontcolor = null, [WorkflowExpression] Func<int> reqImageStampExifoptionsfontsize = null, [WorkflowExpression] Func<bool> reqImageStampExifoptionsprintTagName = null)
         {
-            SourceExpression.Validate(reqImageStampExifimage, nameof(reqImageStampExifimage), required: false);
-            SourceExpression.Validate(reqImageStampExifoptionstags, nameof(reqImageStampExifoptionstags), required: false);
-            SourceExpression.Validate(reqImageStampExifoptionslocationOfTheStamp, nameof(reqImageStampExifoptionslocationOfTheStamp), required: false);
-            SourceExpression.Validate(reqImageStampExifoptionsfontcolor, nameof(reqImageStampExifoptionsfontcolor), required: false);
-            SourceExpression.Validate(reqImageStampExifoptionsfontsize, nameof(reqImageStampExifoptionsfontsize), required: false);
-            SourceExpression.Validate(reqImageStampExifoptionsprintTagName, nameof(reqImageStampExifoptionsprintTagName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image/stamp/exif";
@@ -1071,7 +1014,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfFillForm> PdfFillForm([WorkflowExpression] Func<string> reqPdfFillFormpDFFile = null)
         {
-            SourceExpression.Validate(reqPdfFillFormpDFFile, nameof(reqPdfFillFormpDFFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/form/fill";
@@ -1106,7 +1048,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfGetFormData> PdfGetFormData([WorkflowExpression] Func<string> reqPdfGetFormDatapDFFile = null)
         {
-            SourceExpression.Validate(reqPdfGetFormDatapDFFile, nameof(reqPdfGetFormDatapDFFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/form/getdata";
@@ -1133,7 +1074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfMergeSimple> PdfMergeSimple([WorkflowExpression] Func<string[]> reqPdfMergeSimplepDFFile = null)
         {
-            SourceExpression.Validate(reqPdfMergeSimplepDFFile, nameof(reqPdfMergeSimplepDFFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pdf/merge/simple";

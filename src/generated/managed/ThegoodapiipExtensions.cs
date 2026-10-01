@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
         public IBodyWorkflowAction<PlantPostResponse> Plant([WorkflowExpression] Func<int> bodycount = null)
         {
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/plant/trees";

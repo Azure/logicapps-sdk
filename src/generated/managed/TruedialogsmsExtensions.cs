@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<AccountResponse> AccountGetInfo([WorkflowExpression] Func<string> accountId)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactSearchRequestItem[]> ContactSearch([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> phone)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(phone, nameof(phone), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/contact-search/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phone, 1));
@@ -45,11 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactResponse> ContactCreate([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/contact", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -95,12 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactResponse> ContactUpdate([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> contactid, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(contactid, nameof(contactid), required: true);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/contact/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactid, 1));
@@ -145,18 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<PushCampaignResponse> CampaignPush([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string[]> bodychannels, [WorkflowExpression] Func<string[]> bodytargets, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodyexecute, [WorkflowExpression] Func<string[]> bodycontactListIds = null, [WorkflowExpression] Func<string[]> bodyexcludeListIds = null, [WorkflowExpression] Func<int> bodymediaId = null, [WorkflowExpression] Func<bool> bodyignoreSingleUse = null, [WorkflowExpression] Func<bool> bodyforceOptIn = null, [WorkflowExpression] Func<string[]> bodyschedules = null, [WorkflowExpression] Func<bool> bodyignoreInvalidTargets = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
-            SourceExpression.Validate(bodychannels, nameof(bodychannels), required: true);
-            SourceExpression.Validate(bodytargets, nameof(bodytargets), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodyexecute, nameof(bodyexecute), required: true);
-            SourceExpression.Validate(bodycontactListIds, nameof(bodycontactListIds), required: false);
-            SourceExpression.Validate(bodyexcludeListIds, nameof(bodyexcludeListIds), required: false);
-            SourceExpression.Validate(bodymediaId, nameof(bodymediaId), required: false);
-            SourceExpression.Validate(bodyignoreSingleUse, nameof(bodyignoreSingleUse), required: false);
-            SourceExpression.Validate(bodyforceOptIn, nameof(bodyforceOptIn), required: false);
-            SourceExpression.Validate(bodyschedules, nameof(bodyschedules), required: false);
-            SourceExpression.Validate(bodyignoreInvalidTargets, nameof(bodyignoreInvalidTargets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/action-pushcampaign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -266,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
     {
         public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/callback", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -294,7 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -322,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-6", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -350,7 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-12", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));
@@ -378,7 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(accountId, nameof(accountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-13", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountId, 1));

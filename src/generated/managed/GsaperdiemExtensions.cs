@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaperdiem
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaperdiem")]
         public IBodyWorkflowAction<GetPerDiemRatesByCityStateAndYearResponse> GetPerDiemRatesByCityStateAndYear([WorkflowExpression] Func<string> city, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> year)
         {
-            SourceExpression.Validate(city, nameof(city), required: true);
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/rates/city/{0}/state/{1}/year/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(city, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1));
@@ -31,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaperdiem
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaperdiem")]
         public IBodyWorkflowAction<GetPerDiemRatesForAllCountiesResponse> GetPerDiemRatesForAllCounties([WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> year)
         {
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/rates/state/{0}/year/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1));
@@ -47,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaperdiem
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaperdiem")]
         public IBodyWorkflowAction<GetPerDiemRatesByZipCodeAndYearResponse> GetPerDiemRatesByZipCodeAndYear([WorkflowExpression] Func<int> zip, [WorkflowExpression] Func<string> year)
         {
-            SourceExpression.Validate(zip, nameof(zip), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/rates/zip/{0}/year/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(zip, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1));
@@ -63,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaperdiem
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaperdiem")]
         public IBodyWorkflowAction<LodgingRatesForTheContinentalUsByYearResponseItem[]> LodgingRatesForTheContinentalUsByYear([WorkflowExpression] Func<string> year)
         {
-            SourceExpression.Validate(year, nameof(year), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/rates/conus/lodging/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1));
@@ -78,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaperdiem
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaperdiem")]
         public IBodyWorkflowAction<MappingOfZIPCodeToLocationsResponseItem[]> MappingOfZIPCodeToLocations([WorkflowExpression] Func<string> year)
         {
-            SourceExpression.Validate(year, nameof(year), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/rates/conus/zipcodes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1));

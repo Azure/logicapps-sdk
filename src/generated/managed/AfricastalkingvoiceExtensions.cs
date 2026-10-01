@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
         public IBodyWorkflowAction<CallResponse> Call([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<bodyactionsInputItem[]> bodyactions)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodyactions, nameof(bodyactions), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/call";

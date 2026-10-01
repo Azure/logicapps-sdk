@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loripsumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loripsumip")]
         public IBodyWorkflowAction<string> GetText([WorkflowExpression] Func<string> parameters)
         {
-            SourceExpression.Validate(parameters, nameof(parameters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parameters, 1));

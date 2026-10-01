@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
         public IBodyWorkflowAction<Articles200Item[]> GetArticles([WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> perPage, [WorkflowExpression] Func<string> tag, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagsExclude = null, [WorkflowExpression] Func<string> username = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> collectionId = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(perPage, nameof(perPage), required: true);
-            SourceExpression.Validate(tag, nameof(tag), required: true);
-            SourceExpression.Validate(tags, nameof(tags), required: false);
-            SourceExpression.Validate(tagsExclude, nameof(tagsExclude), required: false);
-            SourceExpression.Validate(username, nameof(username), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/articles";
@@ -55,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
         public IBodyWorkflowAction<User> GetUser([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> url)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(url, nameof(url), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedResponse> Breed([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/animals/breeds/";
@@ -34,7 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedIdResponse> BreedId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -49,9 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedSpeciesResponse> BreedSpecies([WorkflowExpression] Func<string> species, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(species, nameof(species), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/search/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(species, 1));
@@ -70,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedSpeciesIdResponse> BreedSpeciesId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/animals/species/{0}/breeds/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -91,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationResponse> Organization([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/orgs/";
@@ -111,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationIdResponse> OrganizationId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -126,8 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalResponse> Animal([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/public/animals/";
@@ -146,9 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalStatusResponse> AnimalStatus([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/animals/search/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(status, 1));
@@ -167,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalIdResponse> AnimalId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/animals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -182,9 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationAnimalResponse> OrganizationAnimal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -203,10 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationAnimalStatusResponse> OrganizationAnimalStatus([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> status, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(status, nameof(status), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/search/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(status, 1));

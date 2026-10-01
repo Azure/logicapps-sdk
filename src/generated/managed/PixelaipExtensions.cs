@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<string> bodytoken = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<bodyagreeTermsOfServiceInput> bodyagreeTermsOfService = null, [WorkflowExpression] Func<bodynotMinorInput> bodynotMinor = null, [WorkflowExpression] Func<string> bodythanksCode = null)
         {
-            SourceExpression.Validate(bodytoken, nameof(bodytoken), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodyagreeTermsOfService, nameof(bodyagreeTermsOfService), required: false);
-            SourceExpression.Validate(bodynotMinor, nameof(bodynotMinor), required: false);
-            SourceExpression.Validate(bodythanksCode, nameof(bodythanksCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/";
@@ -103,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<TokenPutResponse> TokenPut([WorkflowExpression] Func<string> bodynewToken, [WorkflowExpression] Func<string> bodythanksCode = null)
         {
-            SourceExpression.Validate(bodynewToken, nameof(bodynewToken), required: true);
-            SourceExpression.Validate(bodythanksCode, nameof(bodythanksCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/";
@@ -133,13 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<ProfilePutResponse> ProfilePut([WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodygravatarIconEmail = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyaboutURL = null, [WorkflowExpression] Func<string[]> bodycontributeURLs = null, [WorkflowExpression] Func<string> bodypinnedGraphId = null)
         {
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodygravatarIconEmail, nameof(bodygravatarIconEmail), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodyaboutURL, nameof(bodyaboutURL), required: false);
-            SourceExpression.Validate(bodycontributeURLs, nameof(bodycontributeURLs), required: false);
-            SourceExpression.Validate(bodypinnedGraphId, nameof(bodypinnedGraphId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/@";
@@ -216,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<GraphDeleteResponse> GraphDelete([WorkflowExpression] Func<string> graphId)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs";
@@ -232,15 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<GraphPostResponse> Graph([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyunit, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyselfSufficient = null, [WorkflowExpression] Func<bool> bodyisSecret = null, [WorkflowExpression] Func<bool> bodypublishOptionalData = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyunit, nameof(bodyunit), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: true);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodyselfSufficient, nameof(bodyselfSufficient), required: false);
-            SourceExpression.Validate(bodyisSecret, nameof(bodyisSecret), required: false);
-            SourceExpression.Validate(bodypublishOptionalData, nameof(bodypublishOptionalData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs";
@@ -295,14 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<GraphPutResponse> GraphPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyunit = null, [WorkflowExpression] Func<bodycolorInput> bodycolor = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyselfSufficient = null, [WorkflowExpression] Func<bool> bodyisSecret = null, [WorkflowExpression] Func<bool> bodypublishOptionalData = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyunit, nameof(bodyunit), required: false);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodyselfSufficient, nameof(bodyselfSufficient), required: false);
-            SourceExpression.Validate(bodyisSecret, nameof(bodyisSecret), required: false);
-            SourceExpression.Validate(bodypublishOptionalData, nameof(bodypublishOptionalData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs";
@@ -386,7 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<GraphGetResponse> GraphGet([WorkflowExpression] Func<string> graphId)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/graph-def";
@@ -402,10 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<GraphSVGGetResponse> GraphSVGGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<appearanceInput> appearance = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(mode, nameof(mode), required: false);
-            SourceExpression.Validate(appearance, nameof(appearance), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/graphSVG";
@@ -427,10 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelsGetResponse> PixelsGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<bool> withBody = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(withBody, nameof(withBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/pixels";
@@ -452,7 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<StatsGetResponse> StatsGet([WorkflowExpression] Func<string> graphId)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/stats";
@@ -468,9 +426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelPostResponse> Pixel([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodyquantity)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/";
@@ -504,8 +459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelGetResponse> PixelGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(yyyyMMdd, nameof(yyyyMMdd), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/pixel";
@@ -522,8 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(yyyyMMdd, nameof(yyyyMMdd), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/pixel";
@@ -540,8 +491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelPutResponse> PixelPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(yyyyMMdd, nameof(yyyyMMdd), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/pixel";
@@ -558,8 +507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelRetinaGetResponse> PixelRetinaGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(yyyyMMdd, nameof(yyyyMMdd), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/pixel/retina";
@@ -576,7 +523,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelIncrementPutResponse> PixelIncrementPut([WorkflowExpression] Func<string> graphId = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/increment";
@@ -594,7 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelDecrementPutResponse> PixelDecrementPut([WorkflowExpression] Func<string> graphId = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/decrement";
@@ -612,8 +557,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelAddPutResponse> PixelAddPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<int> bodyquantity = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/add";
@@ -641,8 +584,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<PixelSubtractPutResponse> PixelSubtractPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<int> bodyquantity = null)
         {
-            SourceExpression.Validate(graphId, nameof(graphId), required: true);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/users/graphs/subtract";

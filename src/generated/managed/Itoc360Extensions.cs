@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itoc360")]
         public IBodyWorkflowAction<SendEventResponse> SendEvent([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyhost, [WorkflowExpression] Func<bodyseverityInput> bodyseverity, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodytimestamp = null)
         {
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyhost, nameof(bodyhost), required: true);
-            SourceExpression.Validate(bodyseverity, nameof(bodyseverity), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
-            SourceExpression.Validate(bodytimestamp, nameof(bodytimestamp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/events";

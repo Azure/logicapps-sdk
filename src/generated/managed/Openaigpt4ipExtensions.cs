@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<string> bodystop = null, [WorkflowExpression] Func<double> bodypresencePenalty = null, [WorkflowExpression] Func<double> bodyfrequencyPenalty = null, [WorkflowExpression] Func<string> bodyuser = null)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            SourceExpression.Validate(bodyn, nameof(bodyn), required: false);
-            SourceExpression.Validate(bodystop, nameof(bodystop), required: false);
-            SourceExpression.Validate(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            SourceExpression.Validate(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -110,11 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningPostResponse> FineTuning([WorkflowExpression] Func<string> bodytrainingFile, [WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyvalidationFile = null, [WorkflowExpression] Func<int> bodyhyperparametersnEpochs = null, [WorkflowExpression] Func<string> bodysuffix = null)
         {
-            SourceExpression.Validate(bodytrainingFile, nameof(bodytrainingFile), required: true);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodyvalidationFile, nameof(bodyvalidationFile), required: false);
-            SourceExpression.Validate(bodyhyperparametersnEpochs, nameof(bodyhyperparametersnEpochs), required: false);
-            SourceExpression.Validate(bodysuffix, nameof(bodysuffix), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/fine_tuning/jobs";
@@ -165,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningGetResponse> FineTuningGet([WorkflowExpression] Func<string> fineTuningJobId)
         {
-            SourceExpression.Validate(fineTuningJobId, nameof(fineTuningJobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fineTuningJobId, 1));
@@ -180,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancel([WorkflowExpression] Func<string> fineTuningJobId)
         {
-            SourceExpression.Validate(fineTuningJobId, nameof(fineTuningJobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fineTuningJobId, 1));
@@ -195,9 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningEventsGetResponse> FineTuningEventsGet([WorkflowExpression] Func<string> fineTuningJobId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(fineTuningJobId, nameof(fineTuningJobId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fineTuningJobId, 1));
@@ -216,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ModerationPostResponse> Moderation([WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<bodymodelInput> bodymodel = null)
         {
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/moderations";
@@ -256,10 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<EmbedPostResponse> Embed([WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<bodyencodingFormatInput> bodyencodingFormat = null, [WorkflowExpression] Func<string> bodyuser = null)
         {
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/embeddings";
@@ -320,11 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<AudioSpeechPostResponse> AudioSpeech([WorkflowExpression] Func<bodymodelInput> bodymodel, [WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<bodyvoiceInput> bodyvoice, [WorkflowExpression] Func<bodyresponseFormatInput> bodyresponseFormat = null, [WorkflowExpression] Func<double> bodyspeed = null)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            SourceExpression.Validate(bodyvoice, nameof(bodyvoice), required: true);
-            SourceExpression.Validate(bodyresponseFormat, nameof(bodyresponseFormat), required: false);
-            SourceExpression.Validate(bodyspeed, nameof(bodyspeed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/audio/speech";
@@ -383,13 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImagePostResponse> Image([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<bodyqualityInput> bodyquality = null, [WorkflowExpression] Func<bodysizeInput> bodysize = null, [WorkflowExpression] Func<bodystyleInput> bodystyle = null, [WorkflowExpression] Func<string> bodyuser = null)
         {
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodyn, nameof(bodyn), required: false);
-            SourceExpression.Validate(bodyquality, nameof(bodyquality), required: false);
-            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
-            SourceExpression.Validate(bodystyle, nameof(bodystyle), required: false);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/images/generations";

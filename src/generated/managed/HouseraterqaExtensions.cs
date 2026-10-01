@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houseraterqa")]
         public IBodyWorkflowAction<JToken> UpdateInspection([WorkflowExpression] Func<string> bodyinspectionTemplateId, [WorkflowExpression] Func<string> bodybuilderId, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string[]> bodyprograms = null, [WorkflowExpression] Func<string[]> bodyraters = null, [WorkflowExpression] Func<string> bodysharePointSubscriberId = null, [WorkflowExpression] Func<string> bodyoutlookEventId = null, [WorkflowExpression] Func<string> bodyaddress1 = null, [WorkflowExpression] Func<string> bodyaddress2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzip = null, [WorkflowExpression] Func<string> bodytimeZone = null)
         {
-            SourceExpression.Validate(bodyinspectionTemplateId, nameof(bodyinspectionTemplateId), required: true);
-            SourceExpression.Validate(bodybuilderId, nameof(bodybuilderId), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
-            SourceExpression.Validate(bodyprograms, nameof(bodyprograms), required: false);
-            SourceExpression.Validate(bodyraters, nameof(bodyraters), required: false);
-            SourceExpression.Validate(bodysharePointSubscriberId, nameof(bodysharePointSubscriberId), required: false);
-            SourceExpression.Validate(bodyoutlookEventId, nameof(bodyoutlookEventId), required: false);
-            SourceExpression.Validate(bodyaddress1, nameof(bodyaddress1), required: false);
-            SourceExpression.Validate(bodyaddress2, nameof(bodyaddress2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyzip, nameof(bodyzip), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateInspection";

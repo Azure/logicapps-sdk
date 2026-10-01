@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse> AddGlobalSuppression([WorkflowExpression] Func<string[]> recipientEmailsrecipientEmail = null)
         {
-            SourceExpression.Validate(recipientEmailsrecipientEmail, nameof(recipientEmailsrecipientEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/suppressions/global";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteGlobalSuppression([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/suppressions/global/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
@@ -56,8 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<JToken> AddRecipientToList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/contactdb/lists/{0}/recipients/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -72,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<Bounce[]> GetBounce([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
@@ -87,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteBounce([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
@@ -102,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<EmailIsUnsubscribedResponse> CheckEmailIsInUnsubscribesList([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/unsubscribes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
@@ -117,17 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<JToken> SendEmail([WorkflowExpression] Func<string> requestfrom, [WorkflowExpression] Func<string> requestto, [WorkflowExpression] Func<string> requestsubject, [WorkflowExpression] Func<string> requestemailBody, [WorkflowExpression] Func<EmailAttachment[]> requestattachment = null, [WorkflowExpression] Func<string> requestfromName = null, [WorkflowExpression] Func<string> requesttoNames = null, [WorkflowExpression] Func<string> requestcC = null, [WorkflowExpression] Func<string> requestcCNames = null, [WorkflowExpression] Func<string> requestbcc = null, [WorkflowExpression] Func<string> requestbCCNames = null)
         {
-            SourceExpression.Validate(requestfrom, nameof(requestfrom), required: true);
-            SourceExpression.Validate(requestto, nameof(requestto), required: true);
-            SourceExpression.Validate(requestsubject, nameof(requestsubject), required: true);
-            SourceExpression.Validate(requestemailBody, nameof(requestemailBody), required: true);
-            SourceExpression.Validate(requestattachment, nameof(requestattachment), required: false);
-            SourceExpression.Validate(requestfromName, nameof(requestfromName), required: false);
-            SourceExpression.Validate(requesttoNames, nameof(requesttoNames), required: false);
-            SourceExpression.Validate(requestcC, nameof(requestcC), required: false);
-            SourceExpression.Validate(requestcCNames, nameof(requestcCNames), required: false);
-            SourceExpression.Validate(requestbcc, nameof(requestbcc), required: false);
-            SourceExpression.Validate(requestbCCNames, nameof(requestbCCNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v4/mail/send";

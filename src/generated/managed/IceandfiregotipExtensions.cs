@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<BookGetResponseItem[]> BookGet([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> fromReleaseDate = null, [WorkflowExpression] Func<string> toReleaseDate = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(fromReleaseDate, nameof(fromReleaseDate), required: false);
-            SourceExpression.Validate(toReleaseDate, nameof(toReleaseDate), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/books";
@@ -44,7 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<BookGetAResponse> BookGetA([WorkflowExpression] Func<string> number)
         {
-            SourceExpression.Validate(number, nameof(number), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/books/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(number, 1));
@@ -59,14 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<CharacterGetResponseItem[]> CharacterGet([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> culture = null, [WorkflowExpression] Func<string> born = null, [WorkflowExpression] Func<string> died = null, [WorkflowExpression] Func<bool> isAlive = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(gender, nameof(gender), required: false);
-            SourceExpression.Validate(culture, nameof(culture), required: false);
-            SourceExpression.Validate(born, nameof(born), required: false);
-            SourceExpression.Validate(died, nameof(died), required: false);
-            SourceExpression.Validate(isAlive, nameof(isAlive), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/characters";
@@ -99,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<CharacterGetAResponse> CharacterGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/characters/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -114,16 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<HouseGetResponseItem[]> HouseGet([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> words = null, [WorkflowExpression] Func<bool> hasWords = null, [WorkflowExpression] Func<bool> hasTitles = null, [WorkflowExpression] Func<bool> hasSeats = null, [WorkflowExpression] Func<bool> hasDiedOut = null, [WorkflowExpression] Func<bool> hasAncestralWeapons = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
-            SourceExpression.Validate(words, nameof(words), required: false);
-            SourceExpression.Validate(hasWords, nameof(hasWords), required: false);
-            SourceExpression.Validate(hasTitles, nameof(hasTitles), required: false);
-            SourceExpression.Validate(hasSeats, nameof(hasSeats), required: false);
-            SourceExpression.Validate(hasDiedOut, nameof(hasDiedOut), required: false);
-            SourceExpression.Validate(hasAncestralWeapons, nameof(hasAncestralWeapons), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/houses";
@@ -159,7 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<HouseGetAResponse> HouseGetA([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/houses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

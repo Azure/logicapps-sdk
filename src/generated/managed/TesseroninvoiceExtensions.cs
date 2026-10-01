@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
         public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher([WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<int> bodyorderColumns = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null, [WorkflowExpression] Func<bool> bodytakeAll = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeFrom = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeTo = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityFrom = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityTo = null, [WorkflowExpression] Func<int[]> bodyadditionalSearchDatauserIds = null, [WorkflowExpression] Func<string[]> bodyadditionalSearchDataserviceArticles = null, [WorkflowExpression] Func<int> bodyadditionalSearchDataassignmentStatusId = null, [WorkflowExpression] Func<bool> bodyadditionalSearchDataisInvoice = null)
         {
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
-            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: false);
-            SourceExpression.Validate(bodyorderColumns, nameof(bodyorderColumns), required: false);
-            SourceExpression.Validate(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
-            SourceExpression.Validate(bodytakeAll, nameof(bodytakeAll), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDatadateTimeFrom, nameof(bodyadditionalSearchDatadateTimeFrom), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDatadateTimeTo, nameof(bodyadditionalSearchDatadateTimeTo), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDataquantityFrom, nameof(bodyadditionalSearchDataquantityFrom), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDataquantityTo, nameof(bodyadditionalSearchDataquantityTo), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDatauserIds, nameof(bodyadditionalSearchDatauserIds), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDataserviceArticles, nameof(bodyadditionalSearchDataserviceArticles), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDataassignmentStatusId, nameof(bodyadditionalSearchDataassignmentStatusId), required: false);
-            SourceExpression.Validate(bodyadditionalSearchDataisInvoice, nameof(bodyadditionalSearchDataisInvoice), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetServiceAssignmentsDispatcher";
@@ -151,14 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
         public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodyquantity = null, [WorkflowExpression] Func<string> bodydateTo = null, [WorkflowExpression] Func<string> bodybookText = null, [WorkflowExpression] Func<string> bodynoteText = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodyprojectPhaseId = null, [WorkflowExpression] Func<int> bodyticketid = null)
         {
-            SourceExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
-            SourceExpression.Validate(bodydateTo, nameof(bodydateTo), required: false);
-            SourceExpression.Validate(bodybookText, nameof(bodybookText), required: false);
-            SourceExpression.Validate(bodynoteText, nameof(bodynoteText), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodyprojectPhaseId, nameof(bodyprojectPhaseId), required: false);
-            SourceExpression.Validate(bodyticketid, nameof(bodyticketid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CreateActivityRecording";
@@ -223,14 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
         public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodydateTo, [WorkflowExpression] Func<int> bodypause = null, [WorkflowExpression] Func<bool> bodynoInvoice = null, [WorkflowExpression] Func<bool> bodyextraCharge = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyserviceContractId = null, [WorkflowExpression] Func<string> bodyuserName = null)
         {
-            SourceExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
-            SourceExpression.Validate(bodydateTo, nameof(bodydateTo), required: true);
-            SourceExpression.Validate(bodypause, nameof(bodypause), required: false);
-            SourceExpression.Validate(bodynoInvoice, nameof(bodynoInvoice), required: false);
-            SourceExpression.Validate(bodyextraCharge, nameof(bodyextraCharge), required: false);
-            SourceExpression.Validate(bodyhint, nameof(bodyhint), required: false);
-            SourceExpression.Validate(bodyserviceContractId, nameof(bodyserviceContractId), required: false);
-            SourceExpression.Validate(bodyuserName, nameof(bodyuserName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CreateInvoicePositionNote";

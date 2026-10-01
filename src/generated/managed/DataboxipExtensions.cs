@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "databoxip")]
         public IBodyWorkflowAction<DataPostResponse> Data([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

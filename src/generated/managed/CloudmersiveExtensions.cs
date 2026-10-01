@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
         public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite([WorkflowExpression] Func<string> inputurl = null)
         {
-            SourceExpression.Validate(inputurl, nameof(inputurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/virus/scan/website";

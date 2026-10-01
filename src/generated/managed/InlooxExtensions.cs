@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<double> top = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Contact";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetProjectsResponse> GetProjects([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<double> top = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Project";
@@ -54,24 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<ApiProject> PostProjects([WorkflowExpression] Func<string> bodyclientId = null, [WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodydivisionId = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyisArchived = null, [WorkflowExpression] Func<bool> bodyisRecycled = null, [WorkflowExpression] Func<int> bodylockMode = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodynumberIncremential = null, [WorkflowExpression] Func<string> bodynumberPrefix = null, [WorkflowExpression] Func<string> bodynumberSuffix = null, [WorkflowExpression] Func<string> bodyportfolioId = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectStatusId = null, [WorkflowExpression] Func<int> bodyriskScore = null, [WorkflowExpression] Func<int> bodysizeScore = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<int> bodyvalueScore = null)
         {
-            SourceExpression.Validate(bodyclientId, nameof(bodyclientId), required: false);
-            SourceExpression.Validate(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            SourceExpression.Validate(bodydivisionId, nameof(bodydivisionId), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyisArchived, nameof(bodyisArchived), required: false);
-            SourceExpression.Validate(bodyisRecycled, nameof(bodyisRecycled), required: false);
-            SourceExpression.Validate(bodylockMode, nameof(bodylockMode), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynumberIncremential, nameof(bodynumberIncremential), required: false);
-            SourceExpression.Validate(bodynumberPrefix, nameof(bodynumberPrefix), required: false);
-            SourceExpression.Validate(bodynumberSuffix, nameof(bodynumberSuffix), required: false);
-            SourceExpression.Validate(bodyportfolioId, nameof(bodyportfolioId), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyprojectStatusId, nameof(bodyprojectStatusId), required: false);
-            SourceExpression.Validate(bodyriskScore, nameof(bodyriskScore), required: false);
-            SourceExpression.Validate(bodysizeScore, nameof(bodysizeScore), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyvalueScore, nameof(bodyvalueScore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Project";
@@ -200,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IWorkflowAction DeleteProject([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -215,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetProjectByIdResponse> GetProjectById([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -230,25 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyclientId = null, [WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodydivisionId = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyisArchived = null, [WorkflowExpression] Func<bool> bodyisRecycled = null, [WorkflowExpression] Func<int> bodylockMode = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodynumberIncremential = null, [WorkflowExpression] Func<string> bodynumberPrefix = null, [WorkflowExpression] Func<string> bodynumberSuffix = null, [WorkflowExpression] Func<string> bodyportfolioId = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectStatusId = null, [WorkflowExpression] Func<int> bodyriskScore = null, [WorkflowExpression] Func<int> bodysizeScore = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<int> bodyvalueScore = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyclientId, nameof(bodyclientId), required: false);
-            SourceExpression.Validate(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            SourceExpression.Validate(bodydivisionId, nameof(bodydivisionId), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodyisArchived, nameof(bodyisArchived), required: false);
-            SourceExpression.Validate(bodyisRecycled, nameof(bodyisRecycled), required: false);
-            SourceExpression.Validate(bodylockMode, nameof(bodylockMode), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynumberIncremential, nameof(bodynumberIncremential), required: false);
-            SourceExpression.Validate(bodynumberPrefix, nameof(bodynumberPrefix), required: false);
-            SourceExpression.Validate(bodynumberSuffix, nameof(bodynumberSuffix), required: false);
-            SourceExpression.Validate(bodyportfolioId, nameof(bodyportfolioId), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyprojectStatusId, nameof(bodyprojectStatusId), required: false);
-            SourceExpression.Validate(bodyriskScore, nameof(bodyriskScore), required: false);
-            SourceExpression.Validate(bodysizeScore, nameof(bodysizeScore), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyvalueScore, nameof(bodyvalueScore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -377,9 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IWorkflowAction AddProjectMember([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodycontactId, [WorkflowExpression] Func<int> bodyrole)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}/AddMember", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -404,8 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetTasksResponse> GetTasks([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<double> top = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Task";
@@ -424,13 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<ApiTask> PostTask([WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodyendDateTime = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<double> bodyworkAmount = null)
         {
-            SourceExpression.Validate(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            SourceExpression.Validate(bodyendDateTime, nameof(bodyendDateTime), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodystartDateTime, nameof(bodystartDateTime), required: false);
-            SourceExpression.Validate(bodyworkAmount, nameof(bodyworkAmount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Task";
@@ -493,7 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IWorkflowAction DeleteTask([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -508,7 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetTaskByIdResponse> GetTaskById([WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -523,14 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodyendDateTime = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<double> bodyworkAmount = null)
         {
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            SourceExpression.Validate(bodyendDateTime, nameof(bodyendDateTime), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodystartDateTime, nameof(bodystartDateTime), required: false);
-            SourceExpression.Validate(bodyworkAmount, nameof(bodyworkAmount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));

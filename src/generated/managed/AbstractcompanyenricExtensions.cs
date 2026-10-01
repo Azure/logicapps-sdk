@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractcompanyenric
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractcompanyenric")]
         public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> domain)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/";

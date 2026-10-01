@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IWorkflowAction CreateAgent([WorkflowExpression] Func<string> bodyagentId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<WorkScheduleEntryV2[]> bodyworkSchedulerschedule, [WorkflowExpression] Func<bodyroleInput> bodyrole = null, [WorkflowExpression] Func<bodyloginStatusInput> bodyloginStatus = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodymobile = null, [WorkflowExpression] Func<int> bodymaximumChatCount = null, [WorkflowExpression] Func<bool> bodyawaitingApproval = null, [WorkflowExpression] Func<AgentGroupV2[]> bodygroups = null, [WorkflowExpression] Func<string[]> bodynotifications = null, [WorkflowExpression] Func<bodyemailSubscriptionsInputItem[]> bodyemailSubscriptions = null, [WorkflowExpression] Func<string> bodyworkSchedulertimeZone = null)
         {
-            SourceExpression.Validate(bodyagentId, nameof(bodyagentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyworkSchedulerschedule, nameof(bodyworkSchedulerschedule), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodyloginStatus, nameof(bodyloginStatus), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodymobile, nameof(bodymobile), required: false);
-            SourceExpression.Validate(bodymaximumChatCount, nameof(bodymaximumChatCount), required: false);
-            SourceExpression.Validate(bodyawaitingApproval, nameof(bodyawaitingApproval), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodynotifications, nameof(bodynotifications), required: false);
-            SourceExpression.Validate(bodyemailSubscriptions, nameof(bodyemailSubscriptions), required: false);
-            SourceExpression.Validate(bodyworkSchedulertimeZone, nameof(bodyworkSchedulertimeZone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3.6/configuration/action/create_agent";
@@ -161,7 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IWorkflowAction DeleteAgent([WorkflowExpression] Func<string> bodyagentId)
         {
-            SourceExpression.Validate(bodyagentId, nameof(bodyagentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3.6/configuration/action/delete_agent";

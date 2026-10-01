@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IWorkflowAction DeletePower([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -87,13 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     {
         public IWorkflowTrigger CSATReceived([WorkflowExpression] Func<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null, [WorkflowExpression] Func<string[]> fieldcsatFilterAgents = null, [WorkflowExpression] Func<string[]> fieldcsatFilterSegments = null, [WorkflowExpression] Func<string[]> fieldcsatFilterCompanies = null, [WorkflowExpression] Func<string[]> fieldcsatFilterContacts = null, [WorkflowExpression] Func<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null, [WorkflowExpression] Func<fieldcsatFilterMpInput> fieldcsatFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
-            SourceExpression.Validate(fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
-            SourceExpression.Validate(fieldcsatFilterSegments, nameof(fieldcsatFilterSegments), required: false);
-            SourceExpression.Validate(fieldcsatFilterCompanies, nameof(fieldcsatFilterCompanies), required: false);
-            SourceExpression.Validate(fieldcsatFilterContacts, nameof(fieldcsatFilterContacts), required: false);
-            SourceExpression.Validate(fieldcsatFilterComments, nameof(fieldcsatFilterComments), required: false);
-            SourceExpression.Validate(fieldcsatFilterMp, nameof(fieldcsatFilterMp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/power/CSAT/";
@@ -156,10 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
         public IWorkflowTrigger NPSReceived([WorkflowExpression] Func<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null, [WorkflowExpression] Func<string[]> fieldnpsFilterCampaigns = null, [WorkflowExpression] Func<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null, [WorkflowExpression] Func<fieldnpsFilterMpInput> fieldnpsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
-            SourceExpression.Validate(fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
-            SourceExpression.Validate(fieldnpsFilterComments, nameof(fieldnpsFilterComments), required: false);
-            SourceExpression.Validate(fieldnpsFilterMp, nameof(fieldnpsFilterMp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/power/NPS/";
@@ -204,10 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
         public IWorkflowTrigger PRJReceived([WorkflowExpression] Func<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null, [WorkflowExpression] Func<string[]> fieldprojectsFilterSurveys = null, [WorkflowExpression] Func<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null, [WorkflowExpression] Func<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
-            SourceExpression.Validate(fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
-            SourceExpression.Validate(fieldprojectsFilterComments, nameof(fieldprojectsFilterComments), required: false);
-            SourceExpression.Validate(fieldprojectsFilterMp, nameof(fieldprojectsFilterMp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/power/PRJ/";

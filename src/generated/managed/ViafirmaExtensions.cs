@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
         public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodynotificationsharedLinkemail, [WorkflowExpression] Func<string> bodynotificationtext = null, [WorkflowExpression] Func<string> bodynotificationdetail = null, [WorkflowExpression] Func<string> bodynotificationsharedLinksubject = null, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null, [WorkflowExpression] Func<string> bodycallbackMails = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodygroupCode, nameof(bodygroupCode), required: true);
-            SourceExpression.Validate(bodynotificationsharedLinkemail, nameof(bodynotificationsharedLinkemail), required: true);
-            SourceExpression.Validate(bodynotificationtext, nameof(bodynotificationtext), required: false);
-            SourceExpression.Validate(bodynotificationdetail, nameof(bodynotificationdetail), required: false);
-            SourceExpression.Validate(bodynotificationsharedLinksubject, nameof(bodynotificationsharedLinksubject), required: false);
-            SourceExpression.Validate(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
-            SourceExpression.Validate(bodycallbackMails, nameof(bodycallbackMails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/documents/api/v3/messages/";
@@ -113,10 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
         public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(bodygroupCode, nameof(bodygroupCode), required: true);
-            SourceExpression.Validate(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/documents/api/v3/messages/dispatch";

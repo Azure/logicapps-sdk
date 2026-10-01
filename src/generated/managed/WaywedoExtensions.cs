@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<ChecklistComment> CommentAdd([WorkflowExpression] Func<string> createCommentCommandchecklistInstanceId, [WorkflowExpression] Func<string> createCommentCommandstepId, [WorkflowExpression] Func<string> createCommentCommandcommentText, [WorkflowExpression] Func<int> createCommentCommanduserId = null)
         {
-            SourceExpression.Validate(createCommentCommandchecklistInstanceId, nameof(createCommentCommandchecklistInstanceId), required: true);
-            SourceExpression.Validate(createCommentCommandstepId, nameof(createCommentCommandstepId), required: true);
-            SourceExpression.Validate(createCommentCommandcommentText, nameof(createCommentCommandcommentText), required: true);
-            SourceExpression.Validate(createCommentCommanduserId, nameof(createCommentCommanduserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ChecklistInstanceComments";
@@ -52,10 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<ChecklistInstance> ChecklistInstances([WorkflowExpression] Func<int> createInstanceCommandprocedureId, [WorkflowExpression] Func<string> createInstanceCommandtitle, [WorkflowExpression] Func<int> createInstanceCommanduserId = null, [WorkflowExpression] Func<int> createInstanceCommandcompanyRoleId = null)
         {
-            SourceExpression.Validate(createInstanceCommandprocedureId, nameof(createInstanceCommandprocedureId), required: true);
-            SourceExpression.Validate(createInstanceCommandtitle, nameof(createInstanceCommandtitle), required: true);
-            SourceExpression.Validate(createInstanceCommanduserId, nameof(createInstanceCommanduserId), required: false);
-            SourceExpression.Validate(createInstanceCommandcompanyRoleId, nameof(createInstanceCommandcompanyRoleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/ChecklistInstances";
@@ -94,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<ChecklistInstance> ChecklistInstancesGet([WorkflowExpression] Func<string> instanceId)
         {
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/ChecklistInstances/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
@@ -109,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<ChecklistInstancesActivityResponseItem[]> ChecklistInstancesActivity([WorkflowExpression] Func<string> instanceId)
         {
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/ChecklistInstances/{0}/Activity", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
@@ -124,8 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<ChecklistStep[]> FindSteps([WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> query = null)
         {
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(query, nameof(query), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/ChecklistInstances/{0}/Steps", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
@@ -142,8 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<ChecklistStep> ChecklistStepsGet([WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> stepId)
         {
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/ChecklistInstances/{0}/Steps/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
@@ -158,9 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IWorkflowAction ChecklistStepsComplete([WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<int> completeStepCommanduserId)
         {
-            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
-            SourceExpression.Validate(stepId, nameof(stepId), required: true);
-            SourceExpression.Validate(completeStepCommanduserId, nameof(completeStepCommanduserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/ChecklistInstances/{0}/Steps/{1}/Complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
@@ -185,9 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<JToken> CollaboratorsAdd([WorkflowExpression] Func<string> addCollaboratorsRequestchecklistInstanceId, [WorkflowExpression] Func<int[]> addCollaboratorsRequestuserIds = null, [WorkflowExpression] Func<int[]> addCollaboratorsRequestcompanyRoleIds = null)
         {
-            SourceExpression.Validate(addCollaboratorsRequestchecklistInstanceId, nameof(addCollaboratorsRequestchecklistInstanceId), required: true);
-            SourceExpression.Validate(addCollaboratorsRequestuserIds, nameof(addCollaboratorsRequestuserIds), required: false);
-            SourceExpression.Validate(addCollaboratorsRequestcompanyRoleIds, nameof(addCollaboratorsRequestcompanyRoleIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/Collaborators";
@@ -222,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<Procedure[]> FindChecklist([WorkflowExpression] Func<string> query = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/Procedures";
@@ -240,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<Procedure> ProceduresGet([WorkflowExpression] Func<int> procedureId)
         {
-            SourceExpression.Validate(procedureId, nameof(procedureId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Procedures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(procedureId, 1));
@@ -255,8 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<ChecklistInstance[]> FindChecklistInstances([WorkflowExpression] Func<int> procedureId, [WorkflowExpression] Func<string> query = null)
         {
-            SourceExpression.Validate(procedureId, nameof(procedureId), required: true);
-            SourceExpression.Validate(query, nameof(query), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Procedures/{0}/ChecklistInstances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(procedureId, 1));
@@ -273,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<User[]> FindUser([WorkflowExpression] Func<string> query = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/Users";
@@ -290,12 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
         public IBodyWorkflowAction<JToken> Users([WorkflowExpression] Func<string> createUserCommandfirstName, [WorkflowExpression] Func<string> createUserCommandlastName, [WorkflowExpression] Func<string> createUserCommandemail, [WorkflowExpression] Func<int> createUserCommandsecurityRole, [WorkflowExpression] Func<string> createUserCommandtimeZone, [WorkflowExpression] Func<int[]> createUserCommandcompanyRoles = null)
         {
-            SourceExpression.Validate(createUserCommandfirstName, nameof(createUserCommandfirstName), required: true);
-            SourceExpression.Validate(createUserCommandlastName, nameof(createUserCommandlastName), required: true);
-            SourceExpression.Validate(createUserCommandemail, nameof(createUserCommandemail), required: true);
-            SourceExpression.Validate(createUserCommandsecurityRole, nameof(createUserCommandsecurityRole), required: true);
-            SourceExpression.Validate(createUserCommandtimeZone, nameof(createUserCommandtimeZone), required: true);
-            SourceExpression.Validate(createUserCommandcompanyRoles, nameof(createUserCommandcompanyRoles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/Users";

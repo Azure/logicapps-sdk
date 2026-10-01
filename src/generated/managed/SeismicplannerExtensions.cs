@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<CommentQueryResponse> GetComments([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string[]> creatorIds = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string[]> sort = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(creatorIds, nameof(creatorIds), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/nodes/{1}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -42,12 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<Comment> CreateComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string> bodyannotationPayload = null, [WorkflowExpression] Func<string> bodyannotationType = null, [WorkflowExpression] Func<string> bodycommentContent = null, [WorkflowExpression] Func<bool> bodyisResolved = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(bodyannotationPayload, nameof(bodyannotationPayload), required: false);
-            SourceExpression.Validate(bodyannotationType, nameof(bodyannotationType), required: false);
-            SourceExpression.Validate(bodycommentContent, nameof(bodycommentContent), required: false);
-            SourceExpression.Validate(bodyisResolved, nameof(bodyisResolved), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/nodes/{1}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1));
@@ -92,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<Comment> GetComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string> commentId)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/nodes/{1}/comments/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
@@ -109,9 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IWorkflowAction DeleteComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string> commentId)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/nodes/{1}/comments/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
@@ -126,13 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<Comment> UpdateComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> nodeId, [WorkflowExpression] Func<string> commentId, [WorkflowExpression] Func<string> bodyannotationPayload = null, [WorkflowExpression] Func<string> bodyannotationType = null, [WorkflowExpression] Func<string> bodycommentContent = null, [WorkflowExpression] Func<bool> bodyisResolved = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(nodeId, nameof(nodeId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
-            SourceExpression.Validate(bodyannotationPayload, nameof(bodyannotationPayload), required: false);
-            SourceExpression.Validate(bodyannotationType, nameof(bodyannotationType), required: false);
-            SourceExpression.Validate(bodycommentContent, nameof(bodycommentContent), required: false);
-            SourceExpression.Validate(bodyisResolved, nameof(bodyisResolved), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/nodes/{1}/comments/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nodeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
@@ -177,22 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerProjectQueryResponse> GetProjects([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> plannedEndDateFrom = null, [WorkflowExpression] Func<string> plannedEndDateTo = null, [WorkflowExpression] Func<string> plannedStartDateFrom = null, [WorkflowExpression] Func<string> plannedStartDateTo = null, [WorkflowExpression] Func<string[]> ids = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string[]> managerIds = null, [WorkflowExpression] Func<string[]> creatorIds = null, [WorkflowExpression] Func<string[]> associatedNodeIds = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string[]> sort = null, [WorkflowExpression] Func<string> customProperties = null, [WorkflowExpression] Func<string[]> followerIds = null, [WorkflowExpression] Func<bool> includeAssociations = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(plannedEndDateFrom, nameof(plannedEndDateFrom), required: false);
-            SourceExpression.Validate(plannedEndDateTo, nameof(plannedEndDateTo), required: false);
-            SourceExpression.Validate(plannedStartDateFrom, nameof(plannedStartDateFrom), required: false);
-            SourceExpression.Validate(plannedStartDateTo, nameof(plannedStartDateTo), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(managerIds, nameof(managerIds), required: false);
-            SourceExpression.Validate(creatorIds, nameof(creatorIds), required: false);
-            SourceExpression.Validate(associatedNodeIds, nameof(associatedNodeIds), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(customProperties, nameof(customProperties), required: false);
-            SourceExpression.Validate(followerIds, nameof(followerIds), required: false);
-            SourceExpression.Validate(includeAssociations, nameof(includeAssociations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -238,9 +197,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<AsyncOperationResponse> DeleteProjects([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string[]> ids, [WorkflowExpression] Func<bool> deleteTasks = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(ids, nameof(ids), required: true);
-            SourceExpression.Validate(deleteTasks, nameof(deleteTasks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -259,15 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerProject> CreateProject([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<AssociationReq[]> bodyassociations = null, [WorkflowExpression] Func<CustomPropertyValuesInput[]> bodycustomProperties = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodymanagerId = null, [WorkflowExpression] Func<int> bodyplannedDuration = null, [WorkflowExpression] Func<string> bodyplannedEndDate = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            SourceExpression.Validate(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            SourceExpression.Validate(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -336,10 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerProject> GetProject([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<int> associatedNodesDepth = null, [WorkflowExpression] Func<bool> includeWorks = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(associatedNodesDepth, nameof(associatedNodesDepth), required: false);
-            SourceExpression.Validate(includeWorks, nameof(includeWorks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/projects/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -358,9 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<AsyncOperationResponse> DeleteProject([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<bool> deleteTasks = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(deleteTasks, nameof(deleteTasks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/projects/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -378,18 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerProject> UpdateProject([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<CustomPropertyValues[]> bodycustomProperties = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyisActive = null, [WorkflowExpression] Func<string> bodymanagerId = null, [WorkflowExpression] Func<string> bodymaxRank = null, [WorkflowExpression] Func<string> bodyminRank = null, [WorkflowExpression] Func<int> bodyplannedDuration = null, [WorkflowExpression] Func<string> bodyplannedEndDate = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyisActive, nameof(bodyisActive), required: false);
-            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
-            SourceExpression.Validate(bodymaxRank, nameof(bodymaxRank), required: false);
-            SourceExpression.Validate(bodyminRank, nameof(bodyminRank), required: false);
-            SourceExpression.Validate(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            SourceExpression.Validate(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            SourceExpression.Validate(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/projects/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -470,34 +398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerRequestQueryResponse> GetRequests([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> plannedEndDateFrom = null, [WorkflowExpression] Func<string> plannedEndDateTo = null, [WorkflowExpression] Func<string> plannedStartDateFrom = null, [WorkflowExpression] Func<string> plannedStartDateTo = null, [WorkflowExpression] Func<string> createdAtFrom = null, [WorkflowExpression] Func<string> createdAtTo = null, [WorkflowExpression] Func<string> updatedAtFrom = null, [WorkflowExpression] Func<string> updatedAtTo = null, [WorkflowExpression] Func<string[]> ids = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string[]> assigneeIds = null, [WorkflowExpression] Func<prioritiesInputItem[]> priorities = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string[]> assignerIds = null, [WorkflowExpression] Func<string[]> creatorIds = null, [WorkflowExpression] Func<int[]> stepIds = null, [WorkflowExpression] Func<string> statusSchemaId = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string[]> sort = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<bool> hasProject = null, [WorkflowExpression] Func<string> customProperties = null, [WorkflowExpression] Func<string[]> followerIds = null, [WorkflowExpression] Func<string[]> associatedNodeIds = null, [WorkflowExpression] Func<string[]> contentRefs = null, [WorkflowExpression] Func<bool> includeRequestFormCustomProperties = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(plannedEndDateFrom, nameof(plannedEndDateFrom), required: false);
-            SourceExpression.Validate(plannedEndDateTo, nameof(plannedEndDateTo), required: false);
-            SourceExpression.Validate(plannedStartDateFrom, nameof(plannedStartDateFrom), required: false);
-            SourceExpression.Validate(plannedStartDateTo, nameof(plannedStartDateTo), required: false);
-            SourceExpression.Validate(createdAtFrom, nameof(createdAtFrom), required: false);
-            SourceExpression.Validate(createdAtTo, nameof(createdAtTo), required: false);
-            SourceExpression.Validate(updatedAtFrom, nameof(updatedAtFrom), required: false);
-            SourceExpression.Validate(updatedAtTo, nameof(updatedAtTo), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(assigneeIds, nameof(assigneeIds), required: false);
-            SourceExpression.Validate(priorities, nameof(priorities), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
-            SourceExpression.Validate(assignerIds, nameof(assignerIds), required: false);
-            SourceExpression.Validate(creatorIds, nameof(creatorIds), required: false);
-            SourceExpression.Validate(stepIds, nameof(stepIds), required: false);
-            SourceExpression.Validate(statusSchemaId, nameof(statusSchemaId), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(hasProject, nameof(hasProject), required: false);
-            SourceExpression.Validate(customProperties, nameof(customProperties), required: false);
-            SourceExpression.Validate(followerIds, nameof(followerIds), required: false);
-            SourceExpression.Validate(associatedNodeIds, nameof(associatedNodeIds), required: false);
-            SourceExpression.Validate(contentRefs, nameof(contentRefs), required: false);
-            SourceExpression.Validate(includeRequestFormCustomProperties, nameof(includeRequestFormCustomProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -567,9 +467,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<AsyncOperationResponse> DeleteRequests([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string[]> bodyrequestIDs = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodyrequestIDs, nameof(bodyrequestIDs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -598,19 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerRequest> CreateRequest([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyassigneeId = null, [WorkflowExpression] Func<AssociationReq[]> bodyassociations = null, [WorkflowExpression] Func<ContentRef[]> bodycontentReferences = null, [WorkflowExpression] Func<CustomPropertyValuesInput[]> bodycustomProperties = null, [WorkflowExpression] Func<object> bodyformReference = null, [WorkflowExpression] Func<int> bodyplannedDuration = null, [WorkflowExpression] Func<string> bodyplannedEndDate = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodystatusSchemaId = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
-            SourceExpression.Validate(bodycontentReferences, nameof(bodycontentReferences), required: false);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodyformReference, nameof(bodyformReference), required: false);
-            SourceExpression.Validate(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            SourceExpression.Validate(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            SourceExpression.Validate(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodystatusSchemaId, nameof(bodystatusSchemaId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -703,8 +587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerRequest> GetRequest([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -719,8 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IWorkflowAction DeleteRequest([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -735,20 +615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerRequest> UpdateRequest([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> bodyassigneeId = null, [WorkflowExpression] Func<ContentRef[]> bodycontentReferenceObjects = null, [WorkflowExpression] Func<CustomPropertyValuesInput[]> bodycustomProperties = null, [WorkflowExpression] Func<object> bodyformReference = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodyplannedDuration = null, [WorkflowExpression] Func<string> bodyplannedEndDate = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<int> bodystepId = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            SourceExpression.Validate(bodycontentReferenceObjects, nameof(bodycontentReferenceObjects), required: false);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodyformReference, nameof(bodyformReference), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            SourceExpression.Validate(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            SourceExpression.Validate(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodystepId, nameof(bodystepId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -841,13 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<StatusSchemaQueryResponse> GetStatusSchemas([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<bool> isDefault = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string[]> ids = null, [WorkflowExpression] Func<string[]> creatorIds = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(isDefault, nameof(isDefault), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(creatorIds, nameof(creatorIds), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/statusschema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -874,8 +733,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<StatusSchema> GetStatusSchema([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> statusSchemaId)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(statusSchemaId, nameof(statusSchemaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/statusschema/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(statusSchemaId, 1));
@@ -890,36 +747,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerTaskQueryResponse> GetTasks([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> plannedEndDateFrom = null, [WorkflowExpression] Func<string> plannedEndDateTo = null, [WorkflowExpression] Func<string> plannedStartDateFrom = null, [WorkflowExpression] Func<string> plannedStartDateTo = null, [WorkflowExpression] Func<string> createdAtFrom = null, [WorkflowExpression] Func<string> createdAtTo = null, [WorkflowExpression] Func<string> updatedAtFrom = null, [WorkflowExpression] Func<string> updatedAtTo = null, [WorkflowExpression] Func<string[]> ids = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string[]> assigneeIds = null, [WorkflowExpression] Func<prioritiesInputItem[]> priorities = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string[]> assignerIds = null, [WorkflowExpression] Func<int[]> stepIds = null, [WorkflowExpression] Func<string> statusSchemaId = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string[]> sort = null, [WorkflowExpression] Func<bool> recursive = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<bool> hasProject = null, [WorkflowExpression] Func<string> customProperties = null, [WorkflowExpression] Func<string[]> followerIds = null, [WorkflowExpression] Func<string[]> associatedNodeIds = null, [WorkflowExpression] Func<string[]> creatorIds = null, [WorkflowExpression] Func<bool> includeAssociations = null, [WorkflowExpression] Func<string> parentId = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(plannedEndDateFrom, nameof(plannedEndDateFrom), required: false);
-            SourceExpression.Validate(plannedEndDateTo, nameof(plannedEndDateTo), required: false);
-            SourceExpression.Validate(plannedStartDateFrom, nameof(plannedStartDateFrom), required: false);
-            SourceExpression.Validate(plannedStartDateTo, nameof(plannedStartDateTo), required: false);
-            SourceExpression.Validate(createdAtFrom, nameof(createdAtFrom), required: false);
-            SourceExpression.Validate(createdAtTo, nameof(createdAtTo), required: false);
-            SourceExpression.Validate(updatedAtFrom, nameof(updatedAtFrom), required: false);
-            SourceExpression.Validate(updatedAtTo, nameof(updatedAtTo), required: false);
-            SourceExpression.Validate(ids, nameof(ids), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(assigneeIds, nameof(assigneeIds), required: false);
-            SourceExpression.Validate(priorities, nameof(priorities), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
-            SourceExpression.Validate(assignerIds, nameof(assignerIds), required: false);
-            SourceExpression.Validate(stepIds, nameof(stepIds), required: false);
-            SourceExpression.Validate(statusSchemaId, nameof(statusSchemaId), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(recursive, nameof(recursive), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(hasProject, nameof(hasProject), required: false);
-            SourceExpression.Validate(customProperties, nameof(customProperties), required: false);
-            SourceExpression.Validate(followerIds, nameof(followerIds), required: false);
-            SourceExpression.Validate(associatedNodeIds, nameof(associatedNodeIds), required: false);
-            SourceExpression.Validate(creatorIds, nameof(creatorIds), required: false);
-            SourceExpression.Validate(includeAssociations, nameof(includeAssociations), required: false);
-            SourceExpression.Validate(parentId, nameof(parentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -992,18 +819,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerTask> CreateTask([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyassigneeId = null, [WorkflowExpression] Func<AssociationReq[]> bodyassociations = null, [WorkflowExpression] Func<CustomPropertyValuesInput[]> bodycustomProperties = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<int> bodyplannedDuration = null, [WorkflowExpression] Func<string> bodyplannedEndDate = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            SourceExpression.Validate(bodyassociations, nameof(bodyassociations), required: false);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            SourceExpression.Validate(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            SourceExpression.Validate(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -1090,8 +905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerTask> GetTask([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -1106,8 +919,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<AsyncOperationResponse> DeleteTask([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -1122,19 +933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
         public IBodyWorkflowAction<PlannerTask> UpdateTask([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> bodyassigneeId = null, [WorkflowExpression] Func<CustomPropertyValuesInput[]> bodycustomProperties = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<int> bodyplannedDuration = null, [WorkflowExpression] Func<string> bodyplannedEndDate = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<int> bodystepId = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
-            SourceExpression.Validate(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            SourceExpression.Validate(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            SourceExpression.Validate(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodystepId, nameof(bodystepId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/planner/v2/spaces/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));

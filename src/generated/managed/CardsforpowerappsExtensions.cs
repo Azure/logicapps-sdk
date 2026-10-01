@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<CreateCardResult> CreateCardInstance([WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<object> cardRequestinputs = null)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(cardRequestinputs, nameof(cardRequestinputs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}/instances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -42,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<PowerCardDescription> GetCardDescription([WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -77,8 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<GenerateCardResponse> GenerateCard([WorkflowExpression] Func<CardAction[]> generateCardRequestactions = null, [WorkflowExpression] Func<string> generateCardRequestdescription = null)
         {
-            SourceExpression.Validate(generateCardRequestactions, nameof(generateCardRequestactions), required: false);
-            SourceExpression.Validate(generateCardRequestdescription, nameof(generateCardRequestdescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards/generate/card";

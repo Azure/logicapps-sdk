@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListMachines([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/machine/";
@@ -34,7 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetMachineResponse> GetMachine([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/machine/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -49,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListLocations([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/location/";
@@ -69,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetLocationResponse> GetLocation([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/location/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -84,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListLocationAreas([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/location-area/";
@@ -104,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetLocationAreaResponse> GetLocationArea([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/location-area/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -119,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListRegions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/region/";
@@ -139,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetRegionResponse> GetRegion([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/region/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -154,8 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListEncounterMethods([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/encounter-method/";
@@ -174,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetEncounterResponse> GetEncounter([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-method/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -189,8 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListEncounterConditions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/encounter-condition/";
@@ -209,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetEncounterConditionResponse> GetEncounterCondition([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -224,8 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListEncounterConditionValues([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/encounter-condition-value/";
@@ -244,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetEncounterConditionValueResponse> GetEncounterConditionValue([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition-value/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -259,8 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListBerries([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/berry/";
@@ -279,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetBerryResponse> GetBerry([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/berry/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -294,8 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListItems([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/item/";

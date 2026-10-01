@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
         public IBodyWorkflowAction<string> EditDrawPolygon([WorkflowExpression] Func<string> requestbaseImageBytes = null, [WorkflowExpression] Func<string> requestbaseImageUrl = null, [WorkflowExpression] Func<DrawPolygonInstance[]> requestpolygonsToDraw = null)
         {
-            SourceExpression.Validate(requestbaseImageBytes, nameof(requestbaseImageBytes), required: false);
-            SourceExpression.Validate(requestbaseImageUrl, nameof(requestbaseImageUrl), required: false);
-            SourceExpression.Validate(requestpolygonsToDraw, nameof(requestpolygonsToDraw), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image/edit/draw/polygon";
@@ -55,9 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
         public IBodyWorkflowAction<string> EditDrawRectangle([WorkflowExpression] Func<string> requestbaseImageBytes = null, [WorkflowExpression] Func<string> requestbaseImageUrl = null, [WorkflowExpression] Func<DrawRectangleInstance[]> requestrectanglesToDraw = null)
         {
-            SourceExpression.Validate(requestbaseImageBytes, nameof(requestbaseImageBytes), required: false);
-            SourceExpression.Validate(requestbaseImageUrl, nameof(requestbaseImageUrl), required: false);
-            SourceExpression.Validate(requestrectanglesToDraw, nameof(requestrectanglesToDraw), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image/edit/draw/rectangle";
@@ -96,9 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
         public IBodyWorkflowAction<string> EditDrawText([WorkflowExpression] Func<string> requestbaseImageBytes = null, [WorkflowExpression] Func<string> requestbaseImageUrl = null, [WorkflowExpression] Func<DrawTextInstance[]> requesttextToDraw = null)
         {
-            SourceExpression.Validate(requestbaseImageBytes, nameof(requestbaseImageBytes), required: false);
-            SourceExpression.Validate(requestbaseImageUrl, nameof(requestbaseImageUrl), required: false);
-            SourceExpression.Validate(requesttextToDraw, nameof(requesttextToDraw), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/image/edit/draw/text";

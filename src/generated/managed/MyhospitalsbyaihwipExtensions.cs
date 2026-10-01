@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetCaveatResponse> GetCaveat([WorkflowExpression] Func<string> caveatCode)
         {
-            SourceExpression.Validate(caveatCode, nameof(caveatCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/caveats/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(caveatCode, 1));
@@ -45,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetDataSetsResponse> GetDataSets([WorkflowExpression] Func<string> measureCode = null, [WorkflowExpression] Func<string> reportedMeasureCode = null)
         {
-            SourceExpression.Validate(measureCode, nameof(measureCode), required: false);
-            SourceExpression.Validate(reportedMeasureCode, nameof(reportedMeasureCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets";
@@ -66,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetDataSetResponse> GetDataSet([WorkflowExpression] Func<int> datasetId)
         {
-            SourceExpression.Validate(datasetId, nameof(datasetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(datasetId, 1));
@@ -82,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetDatasetItemsResponse> GetDatasetItems([WorkflowExpression] Func<string> datasetId, [WorkflowExpression] Func<string> reportingUnitCode = null)
         {
-            SourceExpression.Validate(datasetId, nameof(datasetId), required: true);
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/data-items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetId, 1));
@@ -116,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleMeasureCategoryResponse> GetSingleMeasureCategory([WorkflowExpression] Func<string> measureCategoryCode)
         {
-            SourceExpression.Validate(measureCategoryCode, nameof(measureCategoryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/measure-categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureCategoryCode, 1));
@@ -132,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleMeasureCategoryMeasuresResponse> GetSingleMeasureCategoryMeasures([WorkflowExpression] Func<string> measureCategoryCode)
         {
-            SourceExpression.Validate(measureCategoryCode, nameof(measureCategoryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/measure-categories/{0}/measures", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureCategoryCode, 1));
@@ -163,7 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetReportedMeasureCategoryResponse> GetReportedMeasureCategory([WorkflowExpression] Func<string> reportedMeasureCategoryCode)
         {
-            SourceExpression.Validate(reportedMeasureCategoryCode, nameof(reportedMeasureCategoryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reported-measure-categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportedMeasureCategoryCode, 1));
@@ -179,7 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetReportedMeasureCategoryMeasuresResponse> GetReportedMeasureCategoryMeasures([WorkflowExpression] Func<string> reportedMeasureCategoryCode)
         {
-            SourceExpression.Validate(reportedMeasureCategoryCode, nameof(reportedMeasureCategoryCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reported-measure-categories/{0}/reported-measures", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportedMeasureCategoryCode, 1));
@@ -195,7 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetReportedMeasuresResponse> GetReportedMeasures([WorkflowExpression] Func<string> measureCode = null)
         {
-            SourceExpression.Validate(measureCode, nameof(measureCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reported-measures";
@@ -213,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<ReportedMeasureModel> GetSingleReportedMeasure([WorkflowExpression] Func<string> reportedMeasureCode)
         {
-            SourceExpression.Validate(reportedMeasureCode, nameof(reportedMeasureCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reported-measures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportedMeasureCode, 1));
@@ -229,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleReportedMeasureDataItemsResponse> GetSingleReportedMeasureDataItems([WorkflowExpression] Func<string> reportedMeasureCode)
         {
-            SourceExpression.Validate(reportedMeasureCode, nameof(reportedMeasureCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reported-measures/{0}/data-items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportedMeasureCode, 1));
@@ -245,7 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetReportingUnitsResponse> GetReportingUnits([WorkflowExpression] Func<string> reportingUnitTypeCode = null)
         {
-            SourceExpression.Validate(reportingUnitTypeCode, nameof(reportingUnitTypeCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/reporting-units";
@@ -263,7 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleReportingUnitResponse> GetSingleReportingUnit([WorkflowExpression] Func<string> reportingUnitCode)
         {
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reporting-units/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportingUnitCode, 1));
@@ -279,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleReportingUnitDataitemsResponse> GetSingleReportingUnitDataitems([WorkflowExpression] Func<string> reportingUnitCode)
         {
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reporting-units/{0}/data-items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportingUnitCode, 1));
@@ -295,7 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleReportingUnitMeasuresResponse> GetSingleReportingUnitMeasures([WorkflowExpression] Func<string> reportingUnitCode)
         {
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reporting-units/{0}/measures-available", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportingUnitCode, 1));
@@ -311,7 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleReportingUnitBricksResponse> GetSingleReportingUnitBricks([WorkflowExpression] Func<string> reportingUnitCode)
         {
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reporting-units/{0}/bricks-available", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportingUnitCode, 1));
@@ -342,7 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleReportingUnitTypeResponse> GetSingleReportingUnitType([WorkflowExpression] Func<string> reportingUnitTypeCode)
         {
-            SourceExpression.Validate(reportingUnitTypeCode, nameof(reportingUnitTypeCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reporting-unit-types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportingUnitTypeCode, 1));
@@ -358,7 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetSingleReportUnitTypeBricksResponse> GetSingleReportUnitTypeBricks([WorkflowExpression] Func<string> reportingUnitTypeCode)
         {
-            SourceExpression.Validate(reportingUnitTypeCode, nameof(reportingUnitTypeCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reporting-unit-types/{0}/bricks-available", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportingUnitTypeCode, 1));
@@ -373,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetMeasuresResponse> GetMeasures([WorkflowExpression] Func<string> measureCategoryCode = null)
         {
-            SourceExpression.Validate(measureCategoryCode, nameof(measureCategoryCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/measures";
@@ -391,7 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetMeasureResponse> GetMeasure([WorkflowExpression] Func<string> measureCode)
         {
-            SourceExpression.Validate(measureCode, nameof(measureCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/measures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureCode, 1));
@@ -407,7 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetReportingUnitsForMeasureResponse> GetReportingUnitsForMeasure([WorkflowExpression] Func<string> measureCode)
         {
-            SourceExpression.Validate(measureCode, nameof(measureCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/measures/{0}/reporting-units-available", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureCode, 1));
@@ -423,7 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetMeasureDataItemsResponse> GetMeasureDataItems([WorkflowExpression] Func<string> measureCode)
         {
-            SourceExpression.Validate(measureCode, nameof(measureCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/measures/{0}/data-items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureCode, 1));
@@ -454,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IWorkflowAction GetMeasureDownload([WorkflowExpression] Func<string> measureDownloadCode)
         {
-            SourceExpression.Validate(measureDownloadCode, nameof(measureDownloadCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/measure-downloads1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureDownloadCode, 1));
@@ -470,7 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IWorkflowAction GetMeasureReportingunitDownload([WorkflowExpression] Func<string> measureDownloadCode)
         {
-            SourceExpression.Validate(measureDownloadCode, nameof(measureDownloadCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/measure-downloads/across-reporting-units/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureDownloadCode, 1));
@@ -516,8 +490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IWorkflowAction GetsReportingUnitDataDownload([WorkflowExpression] Func<string> datasheetCode, [WorkflowExpression] Func<string> reportingUnitCode)
         {
-            SourceExpression.Validate(datasheetCode, nameof(datasheetCode), required: true);
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/reporting-units-downloads/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasheetCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportingUnitCode, 1));
@@ -548,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IWorkflowAction GetSimpleDownload([WorkflowExpression] Func<string> downloadCode)
         {
-            SourceExpression.Validate(downloadCode, nameof(downloadCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/simple-downloads1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(downloadCode, 1));
@@ -564,14 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetFlatFormattedDataResponse> GetFlatFormattedData([WorkflowExpression] Func<string> measureCategoryCode, [WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<int> top, [WorkflowExpression] Func<string> measureCode = null, [WorkflowExpression] Func<string> reportingUnitTypeCode = null, [WorkflowExpression] Func<string> reportingUnitCode = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(measureCategoryCode, nameof(measureCategoryCode), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(top, nameof(top), required: true);
-            SourceExpression.Validate(measureCode, nameof(measureCode), required: false);
-            SourceExpression.Validate(reportingUnitTypeCode, nameof(reportingUnitTypeCode), required: false);
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/flat-formatted-data-extract/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureCategoryCode, 1));
@@ -599,14 +562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhospitalsbyaihwip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhospitalsbyaihwip")]
         public IBodyWorkflowAction<GetFlatDataResponse> GetFlatData([WorkflowExpression] Func<string> measureCategoryCode, [WorkflowExpression] Func<int> skip, [WorkflowExpression] Func<int> top, [WorkflowExpression] Func<string> measureCode = null, [WorkflowExpression] Func<string> reportingUnitTypeCode = null, [WorkflowExpression] Func<string> reportingUnitCode = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(measureCategoryCode, nameof(measureCategoryCode), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: true);
-            SourceExpression.Validate(top, nameof(top), required: true);
-            SourceExpression.Validate(measureCode, nameof(measureCode), required: false);
-            SourceExpression.Validate(reportingUnitTypeCode, nameof(reportingUnitTypeCode), required: false);
-            SourceExpression.Validate(reportingUnitCode, nameof(reportingUnitCode), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/flat-data-extract/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureCategoryCode, 1));

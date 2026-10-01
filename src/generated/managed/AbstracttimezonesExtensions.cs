@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
         public IBodyWorkflowAction<GetCurrentTimeResponse> GetCurrentTime([WorkflowExpression] Func<string> location)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/current_time";
@@ -30,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
         public IBodyWorkflowAction<ConvertTimeResponse> ConvertTime([WorkflowExpression] Func<string> baseLocation, [WorkflowExpression] Func<string> targetLocation, [WorkflowExpression] Func<string> baseDatetime = null)
         {
-            SourceExpression.Validate(baseLocation, nameof(baseLocation), required: true);
-            SourceExpression.Validate(targetLocation, nameof(targetLocation), required: true);
-            SourceExpression.Validate(baseDatetime, nameof(baseDatetime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/convert_time";

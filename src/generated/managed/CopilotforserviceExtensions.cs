@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
         public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch([WorkflowExpression] Func<string> bodyprompt = null)
         {
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/orchestrator/connector";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
         public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill([WorkflowExpression] Func<string> bodyskillId = null)
         {
-            SourceExpression.Validate(bodyskillId, nameof(bodyskillId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/orchestrator/executeSkill";

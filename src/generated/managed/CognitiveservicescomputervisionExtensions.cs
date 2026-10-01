@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AnalyzeResponse> AnalyzeImage([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/analyze", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -37,11 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImage([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<double> maxCandidates = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(maxCandidates, nameof(maxCandidates), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -62,10 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImageContent([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<double> maxCandidates = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(maxCandidates, nameof(maxCandidates), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -85,10 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImageURL([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<double> maxCandidates = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> imageURLimageURL = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(maxCandidates, nameof(maxCandidates), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(imageURLimageURL, nameof(imageURLimageURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageURL", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -119,9 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DetectResponse> DetectObjects([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/detect", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -138,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/areaOfInterest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -157,12 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<string> GetThumbnail([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<double> width, [WorkflowExpression] Func<double> height, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> smartCropping = null, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(width, nameof(width), required: true);
-            SourceExpression.Validate(height, nameof(height), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(smartCropping, nameof(smartCropping), required: false);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -184,9 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<OCRJsonResponse> OCR([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -205,9 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<OCRTextResponse> OCRText([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
@@ -226,10 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DomainModelResponse> RecognizeDomainSpecificContent([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(model, 1));
@@ -246,9 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<TagResponse> TagImage([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/tag", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));

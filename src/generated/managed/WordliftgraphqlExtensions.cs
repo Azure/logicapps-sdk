@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordliftgraphql")]
         public IWorkflowAction ExecuteGraphQL([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

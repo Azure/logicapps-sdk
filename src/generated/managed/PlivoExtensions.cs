@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plivo")]
         public IBodyWorkflowAction<MakeCallResponse> MakeCall([WorkflowExpression] Func<string> callRequestBodyfrom, [WorkflowExpression] Func<string> callRequestBodyto, [WorkflowExpression] Func<string> callRequestBodyanswerURL, [WorkflowExpression] Func<string> callRequestBodyanswerMethod = null)
         {
-            SourceExpression.Validate(callRequestBodyfrom, nameof(callRequestBodyfrom), required: true);
-            SourceExpression.Validate(callRequestBodyto, nameof(callRequestBodyto), required: true);
-            SourceExpression.Validate(callRequestBodyanswerURL, nameof(callRequestBodyanswerURL), required: true);
-            SourceExpression.Validate(callRequestBodyanswerMethod, nameof(callRequestBodyanswerMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Account/{0}/Call/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "auth_id_value"), 1));
@@ -64,9 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plivo")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> sMSRequestBodyfrom, [WorkflowExpression] Func<string> sMSRequestBodyto, [WorkflowExpression] Func<string> sMSRequestBodymessage)
         {
-            SourceExpression.Validate(sMSRequestBodyfrom, nameof(sMSRequestBodyfrom), required: true);
-            SourceExpression.Validate(sMSRequestBodyto, nameof(sMSRequestBodyto), required: true);
-            SourceExpression.Validate(sMSRequestBodymessage, nameof(sMSRequestBodymessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Account/{0}/Message/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "auth_id_value"), 1));
@@ -93,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plivo")]
         public IBodyWorkflowAction<GetMessageResponse> GetMessage([WorkflowExpression] Func<string> messageUuid)
         {
-            SourceExpression.Validate(messageUuid, nameof(messageUuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Account/{0}/Message/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "auth_id_value"), 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageUuid, 1));

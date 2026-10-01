@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionSheet> ListSheets([WorkflowExpression] Func<string> optionalFolderId = null)
         {
-            SourceExpression.Validate(optionalFolderId, nameof(optionalFolderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sheets";
@@ -31,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SheetWithRows> GetSheet([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> columns = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(columns, nameof(columns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -49,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionColumn> GetColumns([WorkflowExpression] Func<string> sheetId)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/columns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -64,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IWorkflowAction GetColumnsSchema([WorkflowExpression] Func<string> sheetId)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/remove/sheets/{0}/columns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -79,8 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<RowsList> GetSheetData([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> columns = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(columns, nameof(columns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -97,8 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<InsertRowResponse> InsertRow([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<object> row = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(row, nameof(row), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -114,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionFolder> ListSubFolders([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/folders/{0}/folders", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -129,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> GetDiscussionsForSheet([WorkflowExpression] Func<string> sheetId)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -144,9 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToSheet([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> discussiontitle = null, [WorkflowExpression] Func<string> discussioncommenttext = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(discussiontitle, nameof(discussiontitle), required: false);
-            SourceExpression.Validate(discussioncommenttext, nameof(discussioncommenttext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -187,10 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToRow([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> rowId, [WorkflowExpression] Func<string> discussiontitle = null, [WorkflowExpression] Func<string> discussioncommenttext = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(rowId, nameof(rowId), required: true);
-            SourceExpression.Validate(discussiontitle, nameof(discussiontitle), required: false);
-            SourceExpression.Validate(discussioncommenttext, nameof(discussioncommenttext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows/{1}/discussions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowId, 1));
@@ -231,9 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<CreateCommentResponse> AddCommentToDiscussion([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> discussionId, [WorkflowExpression] Func<string> commenttext = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(discussionId, nameof(discussionId), required: true);
-            SourceExpression.Validate(commenttext, nameof(commenttext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(discussionId, 1));
@@ -260,8 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionData> GetDiscussion([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> discussionId)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(discussionId, nameof(discussionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(discussionId, 1));
@@ -278,7 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
     {
         public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet([WorkflowExpression] Func<string> optionalFolderId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(optionalFolderId, nameof(optionalFolderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/new_trigger/sheets";
@@ -294,7 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet([WorkflowExpression] Func<string> optionalFolderId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(optionalFolderId, nameof(optionalFolderId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updated_trigger/sheets";
@@ -310,7 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment([WorkflowExpression] Func<string> sheetId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/new_comment_trigger/sheets/{0}/discussions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -324,8 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> columns = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(columns, nameof(columns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updated_trigger/sheets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -341,8 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<RowResponse> OnRowCreated([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> columns = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(columns, nameof(columns), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/row_created_trigger/sheets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));
@@ -358,8 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<CommentResponse> OnCommentAdded([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> discussionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
-            SourceExpression.Validate(discussionId, nameof(discussionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/comment_added_trigger/sheets/{0}/discussions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(discussionId, 1));
@@ -373,7 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated([WorkflowExpression] Func<string> sheetId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(sheetId, nameof(sheetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/discussion_trigger/sheets/{0}/discussions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sheetId, 1));

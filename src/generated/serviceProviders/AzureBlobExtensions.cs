@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<BlobExistsOutput> BlobExists([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobName)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobName, nameof(blobName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -37,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction DeleteBlob([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobName)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobName, nameof(blobName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -58,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction DeleteBlobFromUri([WorkflowExpression] Func<string> blobUri)
         {
-            SourceExpression.Validate(blobUri, nameof(blobUri), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -77,9 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ReadBlobOutput> ReadBlob([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobName, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobName, nameof(blobName), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -104,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ReadBlobFromUriOutput> ReadBlobFromUri([WorkflowExpression] Func<string> blobUri, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(blobUri, nameof(blobUri), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -129,10 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<UploadBlobOutput> UploadBlob([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobName, [WorkflowExpression] Func<object> content, [WorkflowExpression] Func<UploadBlobInputOverrideIfExistsType> overrideIfExists = null)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobName, nameof(blobName), required: true);
-            SourceExpression.Validate(content, nameof(content), required: true);
-            SourceExpression.Validate(overrideIfExists, nameof(overrideIfExists), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -158,9 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<UploadBlobFromUriOutput> UploadBlobFromUri([WorkflowExpression] Func<string> blobUri, [WorkflowExpression] Func<object> content, [WorkflowExpression] Func<UploadBlobFromUriInputOverrideIfExistsType> overrideIfExists = null)
         {
-            SourceExpression.Validate(blobUri, nameof(blobUri), required: true);
-            SourceExpression.Validate(content, nameof(content), required: true);
-            SourceExpression.Validate(overrideIfExists, nameof(overrideIfExists), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -185,10 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListBlobsOutput> ListBlobs([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobNamePrefix = null, [WorkflowExpression] Func<string> pageMarker = null, [WorkflowExpression] Func<bool> excludeSubFolderBlobs = null)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobNamePrefix, nameof(blobNamePrefix), required: false);
-            SourceExpression.Validate(pageMarker, nameof(pageMarker), required: false);
-            SourceExpression.Validate(excludeSubFolderBlobs, nameof(excludeSubFolderBlobs), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -222,8 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListBlobsFromUriOutput> ListBlobsFromUri([WorkflowExpression] Func<string> blobUri, [WorkflowExpression] Func<string> pageMarker = null)
         {
-            SourceExpression.Validate(blobUri, nameof(blobUri), required: true);
-            SourceExpression.Validate(pageMarker, nameof(pageMarker), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -247,8 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListBlobDirectoriesOutput> ListBlobDirectories([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobNamePrefix = null)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobNamePrefix, nameof(blobNamePrefix), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -272,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListContainersOutput> ListContainers([WorkflowExpression] Func<string> pageMarker = null)
         {
-            SourceExpression.Validate(pageMarker, nameof(pageMarker), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -295,14 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobSASUriOutput> GetBlobSASUri([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobName, [WorkflowExpression] Func<string> groupPolicyIdentifier = null, [WorkflowExpression] Func<GetBlobSASUriInputPermissionsType> permissions = null, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> expiryTime = null, [WorkflowExpression] Func<GetBlobSASUriInputSharedAccessProtocolType> sharedAccessProtocol = null, [WorkflowExpression] Func<string> ipAddressRange = null)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobName, nameof(blobName), required: true);
-            SourceExpression.Validate(groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
-            SourceExpression.Validate(permissions, nameof(permissions), required: false);
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(expiryTime, nameof(expiryTime), required: false);
-            SourceExpression.Validate(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
-            SourceExpression.Validate(ipAddressRange, nameof(ipAddressRange), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -352,13 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobSASUriFromUriOutput> GetBlobSASUriFromUri([WorkflowExpression] Func<string> blobUri, [WorkflowExpression] Func<string> groupPolicyIdentifier = null, [WorkflowExpression] Func<GetBlobSASUriFromUriInputPermissionsType> permissions = null, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> expiryTime = null, [WorkflowExpression] Func<GetBlobSASUriFromUriInputSharedAccessProtocolType> sharedAccessProtocol = null, [WorkflowExpression] Func<string> ipAddressRange = null)
         {
-            SourceExpression.Validate(blobUri, nameof(blobUri), required: true);
-            SourceExpression.Validate(groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
-            SourceExpression.Validate(permissions, nameof(permissions), required: false);
-            SourceExpression.Validate(startTime, nameof(startTime), required: false);
-            SourceExpression.Validate(expiryTime, nameof(expiryTime), required: false);
-            SourceExpression.Validate(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
-            SourceExpression.Validate(ipAddressRange, nameof(ipAddressRange), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -407,8 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobMetadataOutput> GetBlobMetadata([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobName)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobName, nameof(blobName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -428,7 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobMetadataFromUriOutput> GetBlobMetadataFromUri([WorkflowExpression] Func<string> blobUri)
         {
-            SourceExpression.Validate(blobUri, nameof(blobUri), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -447,7 +403,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetContainerMetadataOutput> GetContainerMetadata([WorkflowExpression] Func<string> containerName)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -466,11 +421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<CopyBlobOutput> CopyBlob([WorkflowExpression] Func<string> sourceContainerName, [WorkflowExpression] Func<string> sourceBlobName, [WorkflowExpression] Func<string> destinationContainerName, [WorkflowExpression] Func<string> destinationBlobName, [WorkflowExpression] Func<bool> overrideIfExists = null)
         {
-            SourceExpression.Validate(sourceContainerName, nameof(sourceContainerName), required: true);
-            SourceExpression.Validate(sourceBlobName, nameof(sourceBlobName), required: true);
-            SourceExpression.Validate(destinationContainerName, nameof(destinationContainerName), required: true);
-            SourceExpression.Validate(destinationBlobName, nameof(destinationBlobName), required: true);
-            SourceExpression.Validate(overrideIfExists, nameof(overrideIfExists), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -497,9 +447,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<CopyBlobFromUriOutput> CopyBlobFromUri([WorkflowExpression] Func<string> sourceBlobUri, [WorkflowExpression] Func<string> destinationBlobUri, [WorkflowExpression] Func<bool> overrideIfExists = null)
         {
-            SourceExpression.Validate(sourceBlobUri, nameof(sourceBlobUri), required: true);
-            SourceExpression.Validate(destinationBlobUri, nameof(destinationBlobUri), required: true);
-            SourceExpression.Validate(overrideIfExists, nameof(overrideIfExists), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -524,7 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetAccessPoliciesOutputItem[]> GetAccessPolicies([WorkflowExpression] Func<string> containerName)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -543,9 +489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction SetBlobTier([WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> blobName, [WorkflowExpression] Func<SetBlobTierInputBlobAccessTierType> blobAccessTier)
         {
-            SourceExpression.Validate(containerName, nameof(containerName), required: true);
-            SourceExpression.Validate(blobName, nameof(blobName), required: true);
-            SourceExpression.Validate(blobAccessTier, nameof(blobAccessTier), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -566,8 +509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction SetBlobTierFromUri([WorkflowExpression] Func<string> blobUri, [WorkflowExpression] Func<SetBlobTierFromUriInputBlobAccessTierType> blobAccessTier)
         {
-            SourceExpression.Validate(blobUri, nameof(blobUri), required: true);
-            SourceExpression.Validate(blobAccessTier, nameof(blobAccessTier), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -587,11 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ExtractArchiveFromBlobPathOutput> ExtractArchiveFromBlobPath([WorkflowExpression] Func<string> sourceContainerName, [WorkflowExpression] Func<string> sourceBlobName, [WorkflowExpression] Func<string> destinationContainerName, [WorkflowExpression] Func<string> destinationFolderPath, [WorkflowExpression] Func<ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null)
         {
-            SourceExpression.Validate(sourceContainerName, nameof(sourceContainerName), required: true);
-            SourceExpression.Validate(sourceBlobName, nameof(sourceBlobName), required: true);
-            SourceExpression.Validate(destinationContainerName, nameof(destinationContainerName), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: true);
-            SourceExpression.Validate(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -618,9 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ExtractArchiveFromUriOutput> ExtractArchiveFromUri([WorkflowExpression] Func<string> sourceBlobUri, [WorkflowExpression] Func<string> destinationBlobUri, [WorkflowExpression] Func<ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null)
         {
-            SourceExpression.Validate(sourceBlobUri, nameof(sourceBlobUri), required: true);
-            SourceExpression.Validate(destinationBlobUri, nameof(destinationBlobUri), required: true);
-            SourceExpression.Validate(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -645,10 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ExtractArchiveFromContentOutput> ExtractArchiveFromContent([WorkflowExpression] Func<string> destinationContainerName, [WorkflowExpression] Func<string> content = null, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<ExtractArchiveFromContentInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null)
         {
-            SourceExpression.Validate(destinationContainerName, nameof(destinationContainerName), required: true);
-            SourceExpression.Validate(content, nameof(content), required: false);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -684,7 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
     {
         public IBodyWorkflowTrigger<WhenABlobIsAddedOrModifiedOutput> WhenABlobIsAddedOrModified([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

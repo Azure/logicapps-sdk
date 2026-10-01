@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         public IBodyWorkflowAction<ScanResponse> LaunchScan([WorkflowExpression] Func<string> bodyartifact, [WorkflowExpression] Func<string[]> bodyscanOn = null)
         {
-            SourceExpression.Validate(bodyartifact, nameof(bodyartifact), required: true);
-            SourceExpression.Validate(bodyscanOn, nameof(bodyscanOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/scan/launch";
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         public IBodyWorkflowAction<ScanResult> RetrieveScan([WorkflowExpression] Func<string> scanId)
         {
-            SourceExpression.Validate(scanId, nameof(scanId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/scan/result";

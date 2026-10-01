@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodypriority = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/create-job";
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IBodyWorkflowAction<JobStatusResponse> JobStatus([WorkflowExpression] Func<string> jobName)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/job-status";
@@ -60,23 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IWorkflowAction BulkPyAnalytics([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<int> batchSize, [WorkflowExpression] Func<string> bodyrequestId, [WorkflowExpression] Func<bodycurveTypeInput> bodycurveType, [WorkflowExpression] Func<string> bodypricingDate, [WorkflowExpression] Func<string> bodysettlementType, [WorkflowExpression] Func<bodyprepayTypeInput> bodyprepayType, [WorkflowExpression] Func<bool> bodycalculatePartialDurations4pt, [WorkflowExpression] Func<bool> bodycalculatePartialDurations7pt, [WorkflowExpression] Func<bool> bodyretrieveModelProjections, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<int> bodyprepayRate = null, [WorkflowExpression] Func<bool> bodyretrieveOas = null, [WorkflowExpression] Func<bodyoptionModelInput> bodyoptionModel = null, [WorkflowExpression] Func<bodyvolatilityTypeInput> bodyvolatilityType = null, [WorkflowExpression] Func<bool> bodyprepayDuration = null, [WorkflowExpression] Func<bool> bodyvolatilityDuration = null)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
-            SourceExpression.Validate(batchSize, nameof(batchSize), required: true);
-            SourceExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
-            SourceExpression.Validate(bodycurveType, nameof(bodycurveType), required: true);
-            SourceExpression.Validate(bodypricingDate, nameof(bodypricingDate), required: true);
-            SourceExpression.Validate(bodysettlementType, nameof(bodysettlementType), required: true);
-            SourceExpression.Validate(bodyprepayType, nameof(bodyprepayType), required: true);
-            SourceExpression.Validate(bodycalculatePartialDurations4pt, nameof(bodycalculatePartialDurations4pt), required: true);
-            SourceExpression.Validate(bodycalculatePartialDurations7pt, nameof(bodycalculatePartialDurations7pt), required: true);
-            SourceExpression.Validate(bodyretrieveModelProjections, nameof(bodyretrieveModelProjections), required: true);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodyprepayRate, nameof(bodyprepayRate), required: false);
-            SourceExpression.Validate(bodyretrieveOas, nameof(bodyretrieveOas), required: false);
-            SourceExpression.Validate(bodyoptionModel, nameof(bodyoptionModel), required: false);
-            SourceExpression.Validate(bodyvolatilityType, nameof(bodyvolatilityType), required: false);
-            SourceExpression.Validate(bodyprepayDuration, nameof(bodyprepayDuration), required: false);
-            SourceExpression.Validate(bodyvolatilityDuration, nameof(bodyvolatilityDuration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/bulk-py-analytics";
@@ -187,9 +167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IWorkflowAction BulkIndicData([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<int> batchSize, [WorkflowExpression] Func<string> bodyrequestId)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
-            SourceExpression.Validate(batchSize, nameof(batchSize), required: true);
-            SourceExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/bulk-indic-data";
@@ -214,9 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> UploadSecuritiesList([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<string> bodysecuritiesList, [WorkflowExpression] Func<string> bodyudiIdentifiers = null)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
-            SourceExpression.Validate(bodysecuritiesList, nameof(bodysecuritiesList), required: true);
-            SourceExpression.Validate(bodyudiIdentifiers, nameof(bodyudiIdentifiers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/upload-securities-list";
@@ -246,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IBodyWorkflowAction<CreateUdisResponse> CreateUdis([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<string> bodyuserInstruments)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
-            SourceExpression.Validate(bodyuserInstruments, nameof(bodyuserInstruments), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/create-udis";
@@ -271,7 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IWorkflowAction CloseJob([WorkflowExpression] Func<string> jobName)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/close-job";
@@ -287,9 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IBodyWorkflowAction<RetrieveBulkResultsResponse> RetrieveBulkResults([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<outputFormatInput> outputFormat, [WorkflowExpression] Func<string> bodypayload)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
-            SourceExpression.Validate(outputFormat, nameof(outputFormat), required: true);
-            SourceExpression.Validate(bodypayload, nameof(bodypayload), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
@@ -314,8 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IBodyWorkflowAction<IndicDataResponse> IndicData([WorkflowExpression] Func<string> bodyidentifier, [WorkflowExpression] Func<bodyidTypeInput> bodyidType = null)
         {
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: true);
-            SourceExpression.Validate(bodyidType, nameof(bodyidType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/indic-data";
@@ -344,23 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IBodyWorkflowAction<PyAnalyticResponse> PyAnalytics([WorkflowExpression] Func<string> bodyidentifier, [WorkflowExpression] Func<string> bodylevel, [WorkflowExpression] Func<bodycurveTypeInput> bodycurveType, [WorkflowExpression] Func<string> bodypricingDate, [WorkflowExpression] Func<string> bodysettlementType, [WorkflowExpression] Func<bodyprepayTypeInput> bodyprepayType, [WorkflowExpression] Func<bool> bodycalculatePartialDurations4pt, [WorkflowExpression] Func<bool> bodycalculatePartialDurations7pt, [WorkflowExpression] Func<bool> bodyretrieveModelProjections, [WorkflowExpression] Func<bodyvolatilityTypeInput> bodyvolatilityType, [WorkflowExpression] Func<bodyidTypeInput> bodyidType = null, [WorkflowExpression] Func<bool> bodyretrieveOas = null, [WorkflowExpression] Func<bodyoptionModelInput> bodyoptionModel = null, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<int> bodyprepayRate = null, [WorkflowExpression] Func<bool> bodyprepayDuration = null, [WorkflowExpression] Func<bool> bodyvolatilityDuration = null)
         {
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: true);
-            SourceExpression.Validate(bodylevel, nameof(bodylevel), required: true);
-            SourceExpression.Validate(bodycurveType, nameof(bodycurveType), required: true);
-            SourceExpression.Validate(bodypricingDate, nameof(bodypricingDate), required: true);
-            SourceExpression.Validate(bodysettlementType, nameof(bodysettlementType), required: true);
-            SourceExpression.Validate(bodyprepayType, nameof(bodyprepayType), required: true);
-            SourceExpression.Validate(bodycalculatePartialDurations4pt, nameof(bodycalculatePartialDurations4pt), required: true);
-            SourceExpression.Validate(bodycalculatePartialDurations7pt, nameof(bodycalculatePartialDurations7pt), required: true);
-            SourceExpression.Validate(bodyretrieveModelProjections, nameof(bodyretrieveModelProjections), required: true);
-            SourceExpression.Validate(bodyvolatilityType, nameof(bodyvolatilityType), required: true);
-            SourceExpression.Validate(bodyidType, nameof(bodyidType), required: false);
-            SourceExpression.Validate(bodyretrieveOas, nameof(bodyretrieveOas), required: false);
-            SourceExpression.Validate(bodyoptionModel, nameof(bodyoptionModel), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodyprepayRate, nameof(bodyprepayRate), required: false);
-            SourceExpression.Validate(bodyprepayDuration, nameof(bodyprepayDuration), required: false);
-            SourceExpression.Validate(bodyvolatilityDuration, nameof(bodyvolatilityDuration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v1/py-analytics";
@@ -463,29 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IWorkflowAction BulkScenarioAnalytics([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<int> batchSize, [WorkflowExpression] Func<string> bodyrequestId, [WorkflowExpression] Func<bodycurveTypeInput> bodycurveType, [WorkflowExpression] Func<string> bodypricingDate, [WorkflowExpression] Func<string> bodysettlementType, [WorkflowExpression] Func<bodyprepayTypeInput> bodyprepayType, [WorkflowExpression] Func<bool> bodycalculatePartialDurations4pt, [WorkflowExpression] Func<bool> bodycalculatePartialDurations7pt, [WorkflowExpression] Func<bool> bodyretrieveModelProjections, [WorkflowExpression] Func<bodyvolatilityTypeInput> bodyvolatilityType, [WorkflowExpression] Func<bool> bodycalculateHorizonEffectiveMeasures, [WorkflowExpression] Func<bodyhorizonPYMethodInput> bodyhorizonPYMethod, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<int> bodyprepayRate = null, [WorkflowExpression] Func<int> bodyhorizonMonths = null, [WorkflowExpression] Func<int> bodyhorizonDays = null, [WorkflowExpression] Func<bool> bodycalculateHorizonOptionMeasures = null, [WorkflowExpression] Func<bool> bodyuseForwardIndex = null, [WorkflowExpression] Func<bool> bodyimmediateForwardShift = null, [WorkflowExpression] Func<bool> bodyscenarioCashflow = null, [WorkflowExpression] Func<bool> bodycalcPrepaySensitivity = null, [WorkflowExpression] Func<ScenarioV3[]> bodyscenarios = null)
         {
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
-            SourceExpression.Validate(batchSize, nameof(batchSize), required: true);
-            SourceExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
-            SourceExpression.Validate(bodycurveType, nameof(bodycurveType), required: true);
-            SourceExpression.Validate(bodypricingDate, nameof(bodypricingDate), required: true);
-            SourceExpression.Validate(bodysettlementType, nameof(bodysettlementType), required: true);
-            SourceExpression.Validate(bodyprepayType, nameof(bodyprepayType), required: true);
-            SourceExpression.Validate(bodycalculatePartialDurations4pt, nameof(bodycalculatePartialDurations4pt), required: true);
-            SourceExpression.Validate(bodycalculatePartialDurations7pt, nameof(bodycalculatePartialDurations7pt), required: true);
-            SourceExpression.Validate(bodyretrieveModelProjections, nameof(bodyretrieveModelProjections), required: true);
-            SourceExpression.Validate(bodyvolatilityType, nameof(bodyvolatilityType), required: true);
-            SourceExpression.Validate(bodycalculateHorizonEffectiveMeasures, nameof(bodycalculateHorizonEffectiveMeasures), required: true);
-            SourceExpression.Validate(bodyhorizonPYMethod, nameof(bodyhorizonPYMethod), required: true);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodyprepayRate, nameof(bodyprepayRate), required: false);
-            SourceExpression.Validate(bodyhorizonMonths, nameof(bodyhorizonMonths), required: false);
-            SourceExpression.Validate(bodyhorizonDays, nameof(bodyhorizonDays), required: false);
-            SourceExpression.Validate(bodycalculateHorizonOptionMeasures, nameof(bodycalculateHorizonOptionMeasures), required: false);
-            SourceExpression.Validate(bodyuseForwardIndex, nameof(bodyuseForwardIndex), required: false);
-            SourceExpression.Validate(bodyimmediateForwardShift, nameof(bodyimmediateForwardShift), required: false);
-            SourceExpression.Validate(bodyscenarioCashflow, nameof(bodyscenarioCashflow), required: false);
-            SourceExpression.Validate(bodycalcPrepaySensitivity, nameof(bodycalcPrepaySensitivity), required: false);
-            SourceExpression.Validate(bodyscenarios, nameof(bodyscenarios), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-platform/v3/bulk-scenario-analytics";

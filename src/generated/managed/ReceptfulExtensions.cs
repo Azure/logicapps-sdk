@@ -17,11 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
     {
         public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents([WorkflowExpression] Func<bodyEventInput> bodyEvent, [WorkflowExpression] Func<string> bodyregionId = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodybuttonId = null, [WorkflowExpression] Func<string> bodyconfigId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
-            SourceExpression.Validate(bodyregionId, nameof(bodyregionId), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodybuttonId, nameof(bodybuttonId), required: false);
-            SourceExpression.Validate(bodyconfigId, nameof(bodyconfigId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks";

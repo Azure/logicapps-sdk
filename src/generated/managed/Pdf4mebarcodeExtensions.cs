@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<string> AddBarcode([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocName, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bodybarcodeTypeInput> bodybarcodeType, [WorkflowExpression] Func<string> bodypages, [WorkflowExpression] Func<bodyalignXInput> bodyalignX, [WorkflowExpression] Func<bodyalignYInput> bodyalignY, [WorkflowExpression] Func<string> bodyheightInMM, [WorkflowExpression] Func<string> bodywidthInMM, [WorkflowExpression] Func<string> bodymarginXInMM, [WorkflowExpression] Func<string> bodymarginYInMM, [WorkflowExpression] Func<int> bodyopacity, [WorkflowExpression] Func<string> bodydisplayText = null, [WorkflowExpression] Func<bool> bodyisTextAbove = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocName, nameof(bodydocName), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: true);
-            SourceExpression.Validate(bodyalignX, nameof(bodyalignX), required: true);
-            SourceExpression.Validate(bodyalignY, nameof(bodyalignY), required: true);
-            SourceExpression.Validate(bodyheightInMM, nameof(bodyheightInMM), required: true);
-            SourceExpression.Validate(bodywidthInMM, nameof(bodywidthInMM), required: true);
-            SourceExpression.Validate(bodymarginXInMM, nameof(bodymarginXInMM), required: true);
-            SourceExpression.Validate(bodymarginYInMM, nameof(bodymarginYInMM), required: true);
-            SourceExpression.Validate(bodyopacity, nameof(bodyopacity), required: true);
-            SourceExpression.Validate(bodydisplayText, nameof(bodydisplayText), required: false);
-            SourceExpression.Validate(bodyisTextAbove, nameof(bodyisTextAbove), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/AddBarcode";
@@ -94,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<string> Createbarcode([WorkflowExpression] Func<bodybarcodeTypeInput> bodybarcodeType, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodyhideText = null)
         {
-            SourceExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyhideText, nameof(bodyhideText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/CreateBarcode";
@@ -137,16 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<string> CreateEpcQrCode([WorkflowExpression] Func<bodyepcQrCodeActionversionInput> bodyepcQrCodeActionversion = null, [WorkflowExpression] Func<bodyepcQrCodeActioncharacterSetInput> bodyepcQrCodeActioncharacterSet = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionbic = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionreceiverName = null, [WorkflowExpression] Func<string> bodyepcQrCodeActioniban = null, [WorkflowExpression] Func<double> bodyepcQrCodeActionamount = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionpurpose = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionremittanceReference = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionremittanceText = null, [WorkflowExpression] Func<string> bodyepcQrCodeActioninformation = null)
         {
-            SourceExpression.Validate(bodyepcQrCodeActionversion, nameof(bodyepcQrCodeActionversion), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActioncharacterSet, nameof(bodyepcQrCodeActioncharacterSet), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActionbic, nameof(bodyepcQrCodeActionbic), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActionreceiverName, nameof(bodyepcQrCodeActionreceiverName), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActioniban, nameof(bodyepcQrCodeActioniban), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActionamount, nameof(bodyepcQrCodeActionamount), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActionpurpose, nameof(bodyepcQrCodeActionpurpose), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActionremittanceReference, nameof(bodyepcQrCodeActionremittanceReference), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActionremittanceText, nameof(bodyepcQrCodeActionremittanceText), required: false);
-            SourceExpression.Validate(bodyepcQrCodeActioninformation, nameof(bodyepcQrCodeActioninformation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/CreateEpcQrCode";
@@ -261,8 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<string> CreateSwissQrBill([WorkflowExpression] Func<schemaValInput> schemaVal = null, [WorkflowExpression] Func<object> operation = null)
         {
-            SourceExpression.Validate(schemaVal, nameof(schemaVal), required: false);
-            SourceExpression.Validate(operation, nameof(operation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/CreateSwissQrBillV2";
@@ -281,9 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IWorkflowAction CustomAPI([WorkflowExpression] Func<string> featurePath, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(featurePath, nameof(featurePath), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(featurePath, 1));
@@ -300,10 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<ReadBarcodesV1Response> ReadBarcodes([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodybarcodeTypeInputItem[]> bodybarcodeType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<string> bodypages = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodes";
@@ -358,8 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<ReadBarcodesFromImageV1Response> ReadBarcodesFromImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodesFromImage";
@@ -396,8 +358,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<string> ReadSwissQrBill([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
@@ -434,15 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
         public IBodyWorkflowAction<SplitDocByBarcodeV1Response> SplitDocByBarcode([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodybarcodeFilterInput> bodybarcodeFilter, [WorkflowExpression] Func<string> bodybarcodeString, [WorkflowExpression] Func<bodybarcodeTypeInput> bodybarcodeType, [WorkflowExpression] Func<bodysplitBarcodePageInput> bodysplitBarcodePage, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bool> bodycombinePagesWithSameConsecutiveBarcodes = null, [WorkflowExpression] Func<string> bodypdfRenderDpi = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodybarcodeFilter, nameof(bodybarcodeFilter), required: true);
-            SourceExpression.Validate(bodybarcodeString, nameof(bodybarcodeString), required: true);
-            SourceExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            SourceExpression.Validate(bodysplitBarcodePage, nameof(bodysplitBarcodePage), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodycombinePagesWithSameConsecutiveBarcodes, nameof(bodycombinePagesWithSameConsecutiveBarcodes), required: false);
-            SourceExpression.Validate(bodypdfRenderDpi, nameof(bodypdfRenderDpi), required: false);
-            SourceExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";

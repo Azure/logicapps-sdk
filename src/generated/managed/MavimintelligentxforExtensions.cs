@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
         public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs([WorkflowExpression] Func<string> repositoryId, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<int> logId = null, [WorkflowExpression] Func<int> range = null, [WorkflowExpression] Func<dataLanguageInput> dataLanguage = null)
         {
-            SourceExpression.Validate(repositoryId, nameof(repositoryId), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(logId, nameof(logId), required: false);
-            SourceExpression.Validate(range, nameof(range), required: false);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<LogonResponse> Logon([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodytenantname = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodytenantname, nameof(bodytenantname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Logon";
@@ -50,12 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyassignUserLoginNames, [WorkflowExpression] Func<string> bodytaskId = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
-            SourceExpression.Validate(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CloseTaskAndAssignToUsers";
@@ -96,8 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<LogoffResponse> Logoff([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Logoff";
@@ -122,10 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GetDocumentProperties";
@@ -158,10 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GetProcessProperties";
@@ -194,13 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<JToken> GetFileContent([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyversionId = null, [WorkflowExpression] Func<string> bodydocumentDataId = null, [WorkflowExpression] Func<string> bodyrenditionId = null, [WorkflowExpression] Func<bool> bodyignoreHashValidation = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyversionId, nameof(bodyversionId), required: false);
-            SourceExpression.Validate(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
-            SourceExpression.Validate(bodyrenditionId, nameof(bodyrenditionId), required: false);
-            SourceExpression.Validate(bodyignoreHashValidation, nameof(bodyignoreHashValidation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GetFileContent";
@@ -261,10 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CloseProcessResponse> CloseProcess([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Process/CloseProcess";
@@ -296,10 +265,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<LogonWithHashedPasswordResponse> LogonWithHashedPassword([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyuserName, [WorkflowExpression] Func<string> bodypasswordHashed, [WorkflowExpression] Func<string> bodytenantName = null)
         {
-            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
-            SourceExpression.Validate(bodyuserName, nameof(bodyuserName), required: true);
-            SourceExpression.Validate(bodypasswordHashed, nameof(bodypasswordHashed), required: true);
-            SourceExpression.Validate(bodytenantName, nameof(bodytenantName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Authentication/Logon";
@@ -331,12 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CloseTaskResponse> CloseTask([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<bool> bodyassignUsers, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodytaskId = null)
         {
-            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
-            SourceExpression.Validate(bodyassignUsers, nameof(bodyassignUsers), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Process/CloseTask";
@@ -376,9 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Document/GetDocument";
@@ -404,9 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetProcessResponse> GetProcess([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId)
         {
-            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Process/GetProcess";
@@ -432,15 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<JToken> GetFileContentConverted([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodytargetFormat, [WorkflowExpression] Func<string> bodyversionId = null, [WorkflowExpression] Func<string> bodydocumentDataId = null, [WorkflowExpression] Func<string> bodyrenditionId = null, [WorkflowExpression] Func<bool> bodyaddAnnotatins = null, [WorkflowExpression] Func<bool> bodyaddOverlay = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodytargetFormat, nameof(bodytargetFormat), required: true);
-            SourceExpression.Validate(bodyversionId, nameof(bodyversionId), required: false);
-            SourceExpression.Validate(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
-            SourceExpression.Validate(bodyrenditionId, nameof(bodyrenditionId), required: false);
-            SourceExpression.Validate(bodyaddAnnotatins, nameof(bodyaddAnnotatins), required: false);
-            SourceExpression.Validate(bodyaddOverlay, nameof(bodyaddOverlay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GetFileContentConverted";
@@ -519,16 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CreateProcessResponse> CreateProcess([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessTemplateName, [WorkflowExpression] Func<string> bodyprocessProperties = null, [WorkflowExpression] Func<string> bodycustomProperties = null, [WorkflowExpression] Func<string> bodydocumentIds = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyprocessTemplateName, nameof(bodyprocessTemplateName), required: true);
-            SourceExpression.Validate(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodydocumentIds, nameof(bodydocumentIds), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CreateProcess";
@@ -597,12 +531,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodywhereClause = null, [WorkflowExpression] Func<string> bodyorderByClause = null, [WorkflowExpression] Func<bool> bodyaddColumnHeaders = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
-            SourceExpression.Validate(bodywhereClause, nameof(bodywhereClause), required: false);
-            SourceExpression.Validate(bodyorderByClause, nameof(bodyorderByClause), required: false);
-            SourceExpression.Validate(bodyaddColumnHeaders, nameof(bodyaddColumnHeaders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UserTableGetRecords";
@@ -647,12 +575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodyvalues, [WorkflowExpression] Func<bool> bodydeleteAllValues = null, [WorkflowExpression] Func<bool> bodyfirstRowContainsColumnHeaders = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
-            SourceExpression.Validate(bodyvalues, nameof(bodyvalues), required: true);
-            SourceExpression.Validate(bodydeleteAllValues, nameof(bodydeleteAllValues), required: false);
-            SourceExpression.Validate(bodyfirstRowContainsColumnHeaders, nameof(bodyfirstRowContainsColumnHeaders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UserTableImportData";
@@ -713,10 +635,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodycolumnHeaders)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
-            SourceExpression.Validate(bodycolumnHeaders, nameof(bodycolumnHeaders), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UserTableCreateTable";
@@ -745,10 +663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodywhereClause = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
-            SourceExpression.Validate(bodywhereClause, nameof(bodywhereClause), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UserTableDeleteRecords";
@@ -781,11 +695,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentIdToAppend, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodydocumentIdToAppend, nameof(bodydocumentIdToAppend), required: true);
-            SourceExpression.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/MergePDFDocumentsToVersion";
@@ -820,12 +729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyconditions = null, [WorkflowExpression] Func<string> bodyresultProperties = null, [WorkflowExpression] Func<string> bodymaxSerchResults = null, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            SourceExpression.Validate(bodyresultProperties, nameof(bodyresultProperties), required: false);
-            SourceExpression.Validate(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ProcessSearch";
@@ -884,10 +787,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodyrowData)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
-            SourceExpression.Validate(bodyrowData, nameof(bodyrowData), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UserTableUpdateRow";
@@ -916,9 +815,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetSelectionResponse> GetSelection([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyselectionId)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyselectionId, nameof(bodyselectionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/GetSelection";
@@ -945,20 +841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentTitle, [WorkflowExpression] Func<string> bodyfileContent, [WorkflowExpression] Func<string> bodyimportTemplate = null, [WorkflowExpression] Func<string> bodydocumentProperties = null, [WorkflowExpression] Func<string> bodyblog = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodyinfoStore = null, [WorkflowExpression] Func<string> bodylifeCycle = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null, [WorkflowExpression] Func<bodyuploadMethodInput> bodyuploadMethod = null, [WorkflowExpression] Func<string> bodyoriginalFileFormat = null, [WorkflowExpression] Func<int> bodychunkSize = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
-            SourceExpression.Validate(bodyimportTemplate, nameof(bodyimportTemplate), required: false);
-            SourceExpression.Validate(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
-            SourceExpression.Validate(bodyblog, nameof(bodyblog), required: false);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
-            SourceExpression.Validate(bodyinfoStore, nameof(bodyinfoStore), required: false);
-            SourceExpression.Validate(bodylifeCycle, nameof(bodylifeCycle), required: false);
-            SourceExpression.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
-            SourceExpression.Validate(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
-            SourceExpression.Validate(bodyoriginalFileFormat, nameof(bodyoriginalFileFormat), required: false);
-            SourceExpression.Validate(bodychunkSize, nameof(bodychunkSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/CreateDocumentV2";
@@ -1077,13 +959,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyconditions = null, [WorkflowExpression] Func<string> bodymaxSerchResults = null, [WorkflowExpression] Func<string> bodyresultProperties = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodystores = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            SourceExpression.Validate(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
-            SourceExpression.Validate(bodyresultProperties, nameof(bodyresultProperties), required: false);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
-            SourceExpression.Validate(bodystores, nameof(bodystores), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/DocumentSearchV2";
@@ -1148,19 +1023,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodydocumentProperties = null, [WorkflowExpression] Func<string> bodyremoveDocumentProperties = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null, [WorkflowExpression] Func<string> bodyblog = null, [WorkflowExpression] Func<bodyuploadMethodInput> bodyuploadMethod = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null, [WorkflowExpression] Func<int> bodychunkSize = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            SourceExpression.Validate(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
-            SourceExpression.Validate(bodyremoveDocumentProperties, nameof(bodyremoveDocumentProperties), required: false);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
-            SourceExpression.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
-            SourceExpression.Validate(bodyblog, nameof(bodyblog), required: false);
-            SourceExpression.Validate(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            SourceExpression.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
-            SourceExpression.Validate(bodychunkSize, nameof(bodychunkSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UpdateDocumentV2";
@@ -1277,21 +1139,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyprocessProperties = null, [WorkflowExpression] Func<string> bodyremoveProcessProperties = null, [WorkflowExpression] Func<string> bodycustomProperties = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyassignUserLoginNames = null, [WorkflowExpression] Func<string> bodyaddDocumentIds = null, [WorkflowExpression] Func<string> bodyremoveDocumentIds = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null)
         {
-            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
-            SourceExpression.Validate(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
-            SourceExpression.Validate(bodyremoveProcessProperties, nameof(bodyremoveProcessProperties), required: false);
-            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: false);
-            SourceExpression.Validate(bodyaddDocumentIds, nameof(bodyaddDocumentIds), required: false);
-            SourceExpression.Validate(bodyremoveDocumentIds, nameof(bodyremoveDocumentIds), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
-            SourceExpression.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
-            SourceExpression.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/UpdateProcessV2";

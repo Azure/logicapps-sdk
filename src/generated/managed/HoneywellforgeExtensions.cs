@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
         public IBodyWorkflowAction<CloseCaseResponse> CloseServiceCaseAtForge([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> serviceCaseNumber, [WorkflowExpression] Func<string> bodysiteId, [WorkflowExpression] Func<string> bodyresolutionText, [WorkflowExpression] Func<string> bodyworkOrderIDs = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyresolutionCode = null, [WorkflowExpression] Func<string> bodyrootCauseCode = null, [WorkflowExpression] Func<int> bodyserviceCaseClosedOn = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(serviceCaseNumber, nameof(serviceCaseNumber), required: true);
-            SourceExpression.Validate(bodysiteId, nameof(bodysiteId), required: true);
-            SourceExpression.Validate(bodyresolutionText, nameof(bodyresolutionText), required: true);
-            SourceExpression.Validate(bodyworkOrderIDs, nameof(bodyworkOrderIDs), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyresolutionCode, nameof(bodyresolutionCode), required: false);
-            SourceExpression.Validate(bodyrootCauseCode, nameof(bodyrootCauseCode), required: false);
-            SourceExpression.Validate(bodyserviceCaseClosedOn, nameof(bodyserviceCaseClosedOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/service-cases/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceCaseNumber, 1));
@@ -89,13 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
         public IWorkflowAction SendEventToForge([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyeventName, [WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodyconnectorId = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyeventName, nameof(bodyeventName), required: true);
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: true);
-            SourceExpression.Validate(bodyconnectorId, nameof(bodyconnectorId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/transactionEvent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -134,8 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
     {
         public IWorkflowTrigger ServiceCaseCreated([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> connectorId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(connectorId, nameof(connectorId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/webhooks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectorId, 1));

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IBodyWorkflowAction<JToken> CPCreateExecution([WorkflowExpression] Func<string> actionReqselectAction, [WorkflowExpression] Func<object> actionReqparameters)
         {
-            SourceExpression.Validate(actionReqselectAction, nameof(actionReqselectAction), required: true);
-            SourceExpression.Validate(actionReqparameters, nameof(actionReqparameters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/executions/async";
@@ -40,8 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IWorkflowAction CPCreateWebhookExecution([WorkflowExpression] Func<string> actionReqselectAction, [WorkflowExpression] Func<object> actionReqparameters)
         {
-            SourceExpression.Validate(actionReqselectAction, nameof(actionReqselectAction), required: true);
-            SourceExpression.Validate(actionReqparameters, nameof(actionReqparameters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/webhooks/user-action";
@@ -68,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IWorkflowAction CPSetAlertCustomField([WorkflowExpression] Func<string> actionCustomReqalertId, [WorkflowExpression] Func<string> actionCustomReqselectClassification, [WorkflowExpression] Func<object> actionCustomReqselectField)
         {
-            SourceExpression.Validate(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
-            SourceExpression.Validate(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
-            SourceExpression.Validate(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/set";
@@ -97,9 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IBodyWorkflowAction<JToken> CPGetAlertCustomField([WorkflowExpression] Func<string> actionCustomReqalertId, [WorkflowExpression] Func<string> actionCustomReqselectClassification, [WorkflowExpression] Func<object> actionCustomReqselectField)
         {
-            SourceExpression.Validate(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
-            SourceExpression.Validate(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
-            SourceExpression.Validate(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/get";
@@ -126,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IBodyWorkflowAction<JToken> CPGetIncidentSummary([WorkflowExpression] Func<string> actionCustomReqincidentId, [WorkflowExpression] Func<object> actionCustomReqselectIncidentSummary)
         {
-            SourceExpression.Validate(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
-            SourceExpression.Validate(actionCustomReqselectIncidentSummary, nameof(actionCustomReqselectIncidentSummary), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/get";
@@ -152,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IWorkflowAction CPSetIncidentSummary([WorkflowExpression] Func<string> actionCustomReqincidentId, [WorkflowExpression] Func<object> actionCustomReqselectValue)
         {
-            SourceExpression.Validate(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
-            SourceExpression.Validate(actionCustomReqselectValue, nameof(actionCustomReqselectValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/set";
@@ -180,8 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
     {
         public IWorkflowTrigger CPTrigger([WorkflowExpression] Func<string> actionReqselectTrigger, [WorkflowExpression] Func<object> actionReqparameters, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(actionReqselectTrigger, nameof(actionReqselectTrigger), required: true);
-            SourceExpression.Validate(actionReqparameters, nameof(actionReqparameters), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/webhooks";

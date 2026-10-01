@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perfectwiki")]
         public IWorkflowAction QueryKnowledgebase([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> chatId)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(chatId, nameof(chatId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/chatgpt/organization/bot";

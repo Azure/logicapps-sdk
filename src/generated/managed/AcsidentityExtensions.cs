@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IBodyWorkflowAction<CreateCommunicationIdentityResponse> CreateCommunicationIdentity([WorkflowExpression] Func<TokenScopes[]> bodytokenScopes = null)
         {
-            SourceExpression.Validate(bodytokenScopes, nameof(bodytokenScopes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/identities";
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IWorkflowAction DeleteCommunicationIdentity([WorkflowExpression] Func<string> identityId)
         {
-            SourceExpression.Validate(identityId, nameof(identityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/identities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityId, 1));
@@ -58,8 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken([WorkflowExpression] Func<string> identityId, [WorkflowExpression] Func<TokenScopes[]> bodytokenScopes)
         {
-            SourceExpression.Validate(identityId, nameof(identityId), required: true);
-            SourceExpression.Validate(bodytokenScopes, nameof(bodytokenScopes), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/identities/{0}/:issueAccessToken", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityId, 1));
@@ -83,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IWorkflowAction RevokeIdentityAccessTokens([WorkflowExpression] Func<string> identityId)
         {
-            SourceExpression.Validate(identityId, nameof(identityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/identities/{0}/:revokeAccessTokens", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identityId, 1));

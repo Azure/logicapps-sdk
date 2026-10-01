@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
         public IWorkflowAction UploadProfiles([WorkflowExpression] Func<bodydInputItem[]> bodyd)
         {
-            SourceExpression.Validate(bodyd, nameof(bodyd), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/1/upload";

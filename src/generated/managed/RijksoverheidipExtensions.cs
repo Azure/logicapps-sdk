@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays([WorkflowExpression] Func<int> rows = null, [WorkflowExpression] Func<string> output = null)
         {
-            SourceExpression.Validate(rows, nameof(rows), required: false);
-            SourceExpression.Validate(output, nameof(output), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
@@ -36,8 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear([WorkflowExpression] Func<string> schoolyear, [WorkflowExpression] Func<string> output = null)
         {
-            SourceExpression.Validate(schoolyear, nameof(schoolyear), required: true);
-            SourceExpression.Validate(output, nameof(output), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(schoolyear, 1));

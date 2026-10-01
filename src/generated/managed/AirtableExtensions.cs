@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<ListRecordsResponse> ListRecords([WorkflowExpression] Func<string> baseId, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filterByFormula = null, [WorkflowExpression] Func<int> maxRecords = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> view = null, [WorkflowExpression] Func<string> cellFormat = null, [WorkflowExpression] Func<string> timeZone = null, [WorkflowExpression] Func<string> userLocale = null)
         {
-            SourceExpression.Validate(baseId, nameof(baseId), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filterByFormula, nameof(filterByFormula), required: false);
-            SourceExpression.Validate(maxRecords, nameof(maxRecords), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(view, nameof(view), required: false);
-            SourceExpression.Validate(cellFormat, nameof(cellFormat), required: false);
-            SourceExpression.Validate(timeZone, nameof(timeZone), required: false);
-            SourceExpression.Validate(userLocale, nameof(userLocale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
@@ -51,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord([WorkflowExpression] Func<string> baseId, [WorkflowExpression] Func<string> table)
         {
-            SourceExpression.Validate(baseId, nameof(baseId), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
@@ -74,9 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord([WorkflowExpression] Func<string> baseId, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(baseId, nameof(baseId), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -91,9 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord([WorkflowExpression] Func<string> baseId, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(baseId, nameof(baseId), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -108,10 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord([WorkflowExpression] Func<string> baseId, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(baseId, nameof(baseId), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));

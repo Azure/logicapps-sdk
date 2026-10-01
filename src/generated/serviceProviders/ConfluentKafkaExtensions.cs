@@ -16,12 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
         public IBodyWorkflowAction<SendMessageOutput> SendMessage([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<object> message, [WorkflowExpression] Func<string> messageKey = null, [WorkflowExpression] Func<object> headers = null, [WorkflowExpression] Func<string> schemaSubjectName = null, [WorkflowExpression] Func<bool> rawStringContent = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
-            SourceExpression.Validate(messageKey, nameof(messageKey), required: false);
-            SourceExpression.Validate(headers, nameof(headers), required: false);
-            SourceExpression.Validate(schemaSubjectName, nameof(schemaSubjectName), required: false);
-            SourceExpression.Validate(rawStringContent, nameof(rawStringContent), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -67,11 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
     {
         public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage([WorkflowExpression] Func<string> topic, [WorkflowExpression] Func<string> consumerGroup = null, [WorkflowExpression] Func<ReceiveMessageInputAuthenticationModeType> authenticationMode = null, [WorkflowExpression] Func<ReceiveMessageInputProtocolType> protocol = null, [WorkflowExpression] Func<string> avroSchema = null)
         {
-            SourceExpression.Validate(topic, nameof(topic), required: true);
-            SourceExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
-            SourceExpression.Validate(authenticationMode, nameof(authenticationMode), required: false);
-            SourceExpression.Validate(protocol, nameof(protocol), required: false);
-            SourceExpression.Validate(avroSchema, nameof(avroSchema), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

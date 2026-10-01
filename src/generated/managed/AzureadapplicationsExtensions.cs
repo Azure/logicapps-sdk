@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         public IBodyWorkflowAction<ApplicationListDefinition> ListApplications([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<countInput> count = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<int> top = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/applications";
@@ -48,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         public IBodyWorkflowAction<ApplicationDefinition> GetApplication([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -63,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         public IBodyWorkflowAction<ApplicationOwnersDefinition> GetAppOwners([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}/owners", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

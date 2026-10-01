@@ -14,21 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaSearchResponse> MediaSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> mediatypes = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> topic = null, [WorkflowExpression] Func<int> topicids = null, [WorkflowExpression] Func<string> audience = null, [WorkflowExpression] Func<string> languagename = null, [WorkflowExpression] Func<string> languageisocode = null, [WorkflowExpression] Func<string> sourcename = null, [WorkflowExpression] Func<string> sourceacronym = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> pagenum = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(mediatypes, nameof(mediatypes), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(topic, nameof(topic), required: false);
-            SourceExpression.Validate(topicids, nameof(topicids), required: false);
-            SourceExpression.Validate(audience, nameof(audience), required: false);
-            SourceExpression.Validate(languagename, nameof(languagename), required: false);
-            SourceExpression.Validate(languageisocode, nameof(languageisocode), required: false);
-            SourceExpression.Validate(sourcename, nameof(sourcename), required: false);
-            SourceExpression.Validate(sourceacronym, nameof(sourceacronym), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(pagenum, nameof(pagenum), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/media";
@@ -73,12 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaGetResponse> MediaGet([WorkflowExpression] Func<string> mediaId, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<int> pagenum = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(mediaId, nameof(mediaId), required: true);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(pagenum, nameof(pagenum), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/media/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
@@ -159,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagGetResponse> TagGet([WorkflowExpression] Func<string> tAGId)
         {
-            SourceExpression.Validate(tAGId, nameof(tAGId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGId, 1));
@@ -174,7 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaTagResponse> MediaTag([WorkflowExpression] Func<string> tAGId)
         {
-            SourceExpression.Validate(tAGId, nameof(tAGId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGId, 1));
@@ -189,7 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagRelatedResponse> TagRelated([WorkflowExpression] Func<string> tAGId)
         {
-            SourceExpression.Validate(tAGId, nameof(tAGId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGId, 1));

@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
     {
         public IWorkflowTrigger DynamicWebhookTrigger([WorkflowExpression] Func<string> triggerId, [WorkflowExpression] Func<bodyconditionInputItem[]> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(triggerId, nameof(triggerId), required: true);
-            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(triggerId, 1));

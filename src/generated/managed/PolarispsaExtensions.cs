@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IBodyWorkflowAction<ProjectDetailsResponse> BulkGetProjectDetails3([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<bodyprojectsInputItem[]> bodyprojects = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodyprojects, nameof(bodyprojects), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/ProjectService1.svc/BulkGetProjectDetails3";
@@ -43,24 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IBodyWorkflowAction<CreateProjectOrApplyModificationsResponse> CreateProjectOrApplyModifications([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodymodificationsnameToApplyvalue = null, [WorkflowExpression] Func<string> bodymodificationscodeToApplyvalue = null, [WorkflowExpression] Func<string> bodymodificationspercentCompletedToApply = null, [WorkflowExpression] Func<int> bodymodificationsstartDateToApplydateyear = null, [WorkflowExpression] Func<int> bodymodificationsstartDateToApplydatemonth = null, [WorkflowExpression] Func<int> bodymodificationsstartDateToApplydateday = null, [WorkflowExpression] Func<int> bodymodificationsendDateToApplydateyear = null, [WorkflowExpression] Func<int> bodymodificationsendDateToApplydatemonth = null, [WorkflowExpression] Func<int> bodymodificationsendDateToApplydateday = null, [WorkflowExpression] Func<string> bodymodificationsbillingTypeToApplyvalue = null, [WorkflowExpression] Func<string> bodymodificationsisProjectLeaderApprovalRequired = null, [WorkflowExpression] Func<string> bodymodificationsisTimeEntryAllowed = null, [WorkflowExpression] Func<string> bodymodificationsdefaultBillingCurrencyToApplycurrencyname = null, [WorkflowExpression] Func<string> bodymodificationsbillingContractToApplyname = null, [WorkflowExpression] Func<bodymodificationskeyValuesToApplyInputItem[]> bodymodificationskeyValuesToApply = null, [WorkflowExpression] Func<string> bodyprojectModificationOptionUri = null, [WorkflowExpression] Func<string> bodyunitOfWorkId = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodymodificationsnameToApplyvalue, nameof(bodymodificationsnameToApplyvalue), required: false);
-            SourceExpression.Validate(bodymodificationscodeToApplyvalue, nameof(bodymodificationscodeToApplyvalue), required: false);
-            SourceExpression.Validate(bodymodificationspercentCompletedToApply, nameof(bodymodificationspercentCompletedToApply), required: false);
-            SourceExpression.Validate(bodymodificationsstartDateToApplydateyear, nameof(bodymodificationsstartDateToApplydateyear), required: false);
-            SourceExpression.Validate(bodymodificationsstartDateToApplydatemonth, nameof(bodymodificationsstartDateToApplydatemonth), required: false);
-            SourceExpression.Validate(bodymodificationsstartDateToApplydateday, nameof(bodymodificationsstartDateToApplydateday), required: false);
-            SourceExpression.Validate(bodymodificationsendDateToApplydateyear, nameof(bodymodificationsendDateToApplydateyear), required: false);
-            SourceExpression.Validate(bodymodificationsendDateToApplydatemonth, nameof(bodymodificationsendDateToApplydatemonth), required: false);
-            SourceExpression.Validate(bodymodificationsendDateToApplydateday, nameof(bodymodificationsendDateToApplydateday), required: false);
-            SourceExpression.Validate(bodymodificationsbillingTypeToApplyvalue, nameof(bodymodificationsbillingTypeToApplyvalue), required: false);
-            SourceExpression.Validate(bodymodificationsisProjectLeaderApprovalRequired, nameof(bodymodificationsisProjectLeaderApprovalRequired), required: false);
-            SourceExpression.Validate(bodymodificationsisTimeEntryAllowed, nameof(bodymodificationsisTimeEntryAllowed), required: false);
-            SourceExpression.Validate(bodymodificationsdefaultBillingCurrencyToApplycurrencyname, nameof(bodymodificationsdefaultBillingCurrencyToApplycurrencyname), required: false);
-            SourceExpression.Validate(bodymodificationsbillingContractToApplyname, nameof(bodymodificationsbillingContractToApplyname), required: false);
-            SourceExpression.Validate(bodymodificationskeyValuesToApply, nameof(bodymodificationskeyValuesToApply), required: false);
-            SourceExpression.Validate(bodyprojectModificationOptionUri, nameof(bodyprojectModificationOptionUri), required: false);
-            SourceExpression.Validate(bodyunitOfWorkId, nameof(bodyunitOfWorkId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/ProjectService1.svc/CreateProjectOrApplyModifications";
@@ -296,11 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IBodyWorkflowAction<UserListServiceGetDataResponse> UserListServiceGetData([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodypage = null, [WorkflowExpression] Func<string> bodypagesize = null, [WorkflowExpression] Func<string[]> bodycolumnUris = null, [WorkflowExpression] Func<JToken[]> bodysort = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodypage, nameof(bodypage), required: false);
-            SourceExpression.Validate(bodypagesize, nameof(bodypagesize), required: false);
-            SourceExpression.Validate(bodycolumnUris, nameof(bodycolumnUris), required: false);
-            SourceExpression.Validate(bodysort, nameof(bodysort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/UserListService1.svc/GetData";
@@ -354,8 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IWorkflowAction GetDescendantTaskDetails([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodyparentUri = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodyparentUri, nameof(bodyparentUri), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/TaskService1.svc/GetDescendantTaskDetails";
@@ -383,14 +356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IBodyWorkflowAction<CreateTaskHierarchyOrApplyModificationsResponse> CreateTaskHierarchyOrApplyModifications([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodyprojecturi = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyprojectcode = null, [WorkflowExpression] Func<string> bodyprojectparameterCorrelationId = null, [WorkflowExpression] Func<bodytaskHierarchyInputItem[]> bodytaskHierarchy = null, [WorkflowExpression] Func<string> bodytaskModificationOptionUri = null, [WorkflowExpression] Func<string> bodyunitOfWorkId = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodyprojecturi, nameof(bodyprojecturi), required: false);
-            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            SourceExpression.Validate(bodyprojectcode, nameof(bodyprojectcode), required: false);
-            SourceExpression.Validate(bodyprojectparameterCorrelationId, nameof(bodyprojectparameterCorrelationId), required: false);
-            SourceExpression.Validate(bodytaskHierarchy, nameof(bodytaskHierarchy), required: false);
-            SourceExpression.Validate(bodytaskModificationOptionUri, nameof(bodytaskModificationOptionUri), required: false);
-            SourceExpression.Validate(bodyunitOfWorkId, nameof(bodyunitOfWorkId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/TaskService1.svc/CreateTaskHierarchyOrApplyModifications";
@@ -462,10 +427,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IWorkflowAction MoveTask([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodytaskUri = null, [WorkflowExpression] Func<string> bodytargetUri = null, [WorkflowExpression] Func<string> bodymoveTaskMethodUri = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodytaskUri, nameof(bodytaskUri), required: false);
-            SourceExpression.Validate(bodytargetUri, nameof(bodytargetUri), required: false);
-            SourceExpression.Validate(bodymoveTaskMethodUri, nameof(bodymoveTaskMethodUri), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/TaskService1.svc/MoveTask";
@@ -505,11 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IBodyWorkflowAction<TaskListServiceGetDataResponse> TaskListServiceGetData([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodypage = null, [WorkflowExpression] Func<string> bodypagesize = null, [WorkflowExpression] Func<string[]> bodycolumnUris = null, [WorkflowExpression] Func<JToken[]> bodysort = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodypage, nameof(bodypage), required: false);
-            SourceExpression.Validate(bodypagesize, nameof(bodypagesize), required: false);
-            SourceExpression.Validate(bodycolumnUris, nameof(bodycolumnUris), required: false);
-            SourceExpression.Validate(bodysort, nameof(bodysort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/TaskListService1.svc/GetData";
@@ -563,8 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IWorkflowAction GraphQL([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/graphql";
@@ -581,8 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IBodyWorkflowAction<GetTimesheetSummaryResponse> GetTimesheetSummary([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodytimesheetUri = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodytimesheetUri, nameof(bodytimesheetUri), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/TimesheetService1.svc/GetTimesheetSummary";
@@ -610,8 +562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
         public IBodyWorkflowAction<BulkGetTimeEnteredSummaryResponse> BulkGetTimeEnteredSummary([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string[]> bodytaskUris = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodytaskUris, nameof(bodytaskUris), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/TaskService1.svc/BulkGetTimeEnteredSummary";
@@ -655,8 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
     {
         public IBodyWorkflowTrigger<WebhookSubscriptionResponse> WebhookSubscriptionsRestAPI([WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> bodyeventType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhook-api/api/subscription";

@@ -66,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
         public IBodyWorkflowAction<EthGetBalanceResponse> EthGetBalance([WorkflowExpression] Func<string> bodyParamsaddress = null, [WorkflowExpression] Func<bodyParamsblockInput> bodyParamsblock = null)
         {
-            SourceExpression.Validate(bodyParamsaddress, nameof(bodyParamsaddress), required: false);
-            SourceExpression.Validate(bodyParamsblock, nameof(bodyParamsblock), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/eth_getBalance";

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<CarbonForecastResponse> CarbonForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
-            SourceExpression.Validate(zone, nameof(zone), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/carbon-intensity/forecast";
@@ -37,11 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<CarbonHistoryResponse> CarbonHistory([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<emissionFactorTypeInput> emissionFactorType = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            SourceExpression.Validate(zone, nameof(zone), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(emissionFactorType, nameof(emissionFactorType), required: false);
-            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/carbon-intensity/history";
@@ -66,11 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<CarbonLatestResponse> CarbonLatest([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<emissionFactorTypeInput> emissionFactorType = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            SourceExpression.Validate(zone, nameof(zone), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(emissionFactorType, nameof(emissionFactorType), required: false);
-            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/carbon-intensity/latest";
@@ -95,10 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<BreakdownHistoryResponse> BreakdownHistory([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            SourceExpression.Validate(zone, nameof(zone), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-breakdown/history";
@@ -121,10 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<BreakdownLatestResponse> BreakdownLatest([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            SourceExpression.Validate(zone, nameof(zone), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
-            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-breakdown/latest";
@@ -147,9 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<ConsumptionForecastResponse> ConsumptionForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
-            SourceExpression.Validate(zone, nameof(zone), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-consumption-breakdown/forecast";
@@ -170,9 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<BreakdownForecastResponse> BreakdownForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
-            SourceExpression.Validate(zone, nameof(zone), required: false);
-            SourceExpression.Validate(lon, nameof(lon), required: false);
-            SourceExpression.Validate(lat, nameof(lat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power-production-breakdown/forecast";

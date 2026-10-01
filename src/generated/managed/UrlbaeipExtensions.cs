@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<AccountUpdateResponse> AccountUpdate([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/account/update";
@@ -62,8 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<DomainListResponse> DomainList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/domains";
@@ -82,9 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<DomainCreateResponse> DomainCreate([WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodyredirectroot = null, [WorkflowExpression] Func<string> bodyredirect404 = null)
         {
-            SourceExpression.Validate(bodydomain, nameof(bodydomain), required: true);
-            SourceExpression.Validate(bodyredirectroot, nameof(bodyredirectroot), required: false);
-            SourceExpression.Validate(bodyredirect404, nameof(bodyredirect404), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/domain/add";
@@ -119,9 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<DomainUpdateResponse> DomainUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyredirectroot = null, [WorkflowExpression] Func<string> bodyredirect404 = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyredirectroot, nameof(bodyredirectroot), required: false);
-            SourceExpression.Validate(bodyredirect404, nameof(bodyredirect404), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domain/{0}/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -154,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<DomainDeleteResponse> DomainDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domain/{0}/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -169,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<SplashListResponse> SplashList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/splash";
@@ -189,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<CTAListResponse> CTAList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/overlay";
@@ -209,9 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkListResponse> LinkList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> order = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(order, nameof(order), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/urls";
@@ -232,7 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkGetResponse> LinkGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/url/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -247,14 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkShortenResponse> LinkShorten([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodycustom = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyexpiry = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bodygeotargetInputItem[]> bodygeotarget = null, [WorkflowExpression] Func<bodydevicetargetInputItem[]> bodydevicetarget = null, [WorkflowExpression] Func<bodyparametersInputItem[]> bodyparameters = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodycustom, nameof(bodycustom), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyexpiry, nameof(bodyexpiry), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodygeotarget, nameof(bodygeotarget), required: false);
-            SourceExpression.Validate(bodydevicetarget, nameof(bodydevicetarget), required: false);
-            SourceExpression.Validate(bodyparameters, nameof(bodyparameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/url/add";
@@ -319,15 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkUpdateResponse> LinkUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodycustom = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyexpiry = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bodygeotargetInputItem[]> bodygeotarget = null, [WorkflowExpression] Func<bodydevicetargetInputItem[]> bodydevicetarget = null, [WorkflowExpression] Func<bodyparametersInputItem[]> bodyparameters = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodycustom, nameof(bodycustom), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyexpiry, nameof(bodyexpiry), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodygeotarget, nameof(bodygeotarget), required: false);
-            SourceExpression.Validate(bodydevicetarget, nameof(bodydevicetarget), required: false);
-            SourceExpression.Validate(bodyparameters, nameof(bodyparameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/url/{0}/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -396,7 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<LinkDeleteResponse> LinkDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/url/{0}/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -411,8 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PixelListResponse> PixelList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pixels";
@@ -431,9 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PixelCreateResponse> PixelCreate([WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytag)
         {
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/pixel/add";
@@ -460,9 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PixelUpdateResponse> PixelUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytag, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pixel/{0}/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -491,7 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pixel/{0}/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -506,8 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRListResponse> QRList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/qr";
@@ -526,7 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRGetResponse> QRGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/qr/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -541,11 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRCreateResponse> QRCreate([WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodybackground = null, [WorkflowExpression] Func<string> bodyforeground = null, [WorkflowExpression] Func<string> bodylogo = null)
         {
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
-            SourceExpression.Validate(bodybackground, nameof(bodybackground), required: false);
-            SourceExpression.Validate(bodyforeground, nameof(bodyforeground), required: false);
-            SourceExpression.Validate(bodylogo, nameof(bodylogo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/qr/add";
@@ -596,12 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRUpdateResponse> QRUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodybackground = null, [WorkflowExpression] Func<string> bodyforeground = null, [WorkflowExpression] Func<string> bodylogo = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodybackground, nameof(bodybackground), required: false);
-            SourceExpression.Validate(bodyforeground, nameof(bodyforeground), required: false);
-            SourceExpression.Validate(bodylogo, nameof(bodylogo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/qr/{0}/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -648,7 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<QRDeleteResponse> QRDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/qr/{0}/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -677,10 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PlanSubscribeResponse> PlanSubscribe([WorkflowExpression] Func<string> planid, [WorkflowExpression] Func<string> userid, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodyexpiration = null)
         {
-            SourceExpression.Validate(planid, nameof(planid), required: true);
-            SourceExpression.Validate(userid, nameof(userid), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/plan/{0}/user/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userid, 1));
@@ -713,7 +648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<UserListResponse> UserList([WorkflowExpression] Func<filterInput> filter = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -730,7 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<UserGetResponse> UserGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -745,11 +678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<UserCreateResponse> UserCreate([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<int> bodyplanid = null, [WorkflowExpression] Func<string> bodyexpiration = null)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyplanid, nameof(bodyplanid), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user/add";
@@ -788,7 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<UserDeleteResponse> UserDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

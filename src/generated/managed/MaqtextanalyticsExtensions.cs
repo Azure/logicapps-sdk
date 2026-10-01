@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier([WorkflowExpression] Func<bodydataInputItem[]> bodydata = null)
         {
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/SentimentClassifier";
@@ -41,8 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber([WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodyentityList = null)
         {
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
-            SourceExpression.Validate(bodyentityList, nameof(bodyentityList), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/PIIScrubber";
@@ -75,10 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor([WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<int> bodykeyphrasesCount = null, [WorkflowExpression] Func<double> bodydiversityThreshold = null, [WorkflowExpression] Func<double> bodyaliasThreshold = null)
         {
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
-            SourceExpression.Validate(bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
-            SourceExpression.Validate(bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/KeyPhrase";

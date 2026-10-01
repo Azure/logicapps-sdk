@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateItemResponse> CreateItem([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodyitemName, [WorkflowExpression] Func<string> bodyworkspaceId = null, [WorkflowExpression] Func<string> bodyboardId = null, [WorkflowExpression] Func<object> bodycolumnValues = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            SourceExpression.Validate(bodyitemName, nameof(bodyitemName), required: true);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
-            SourceExpression.Validate(bodycolumnValues, nameof(bodycolumnValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateItem";
@@ -61,13 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<DuplicateBoardResponse> DuplicateBoard([WorkflowExpression] Func<string> bodysourceWorkspaceId, [WorkflowExpression] Func<string> bodysourceBoardId, [WorkflowExpression] Func<bodyduplicationTypeInput> bodyduplicationType, [WorkflowExpression] Func<bool> bodykeepBoardSubscribers, [WorkflowExpression] Func<string> bodyduplicatedBoardName = null, [WorkflowExpression] Func<string> bodydestinationWorkspaceId = null, [WorkflowExpression] Func<string> bodydestinationFolder = null)
         {
-            SourceExpression.Validate(bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
-            SourceExpression.Validate(bodysourceBoardId, nameof(bodysourceBoardId), required: true);
-            SourceExpression.Validate(bodyduplicationType, nameof(bodyduplicationType), required: true);
-            SourceExpression.Validate(bodykeepBoardSubscribers, nameof(bodykeepBoardSubscribers), required: true);
-            SourceExpression.Validate(bodyduplicatedBoardName, nameof(bodyduplicatedBoardName), required: false);
-            SourceExpression.Validate(bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: false);
-            SourceExpression.Validate(bodydestinationFolder, nameof(bodydestinationFolder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/DuplicateBoard";
@@ -114,8 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateBoardResponse> CreateBoard([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardName)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardName, nameof(bodyboardName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateBoard";
@@ -140,11 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateColumnResponse> CreateColumn([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodycolumnTypeInput> bodycolumnType, [WorkflowExpression] Func<string> bodyworkspaceId = null, [WorkflowExpression] Func<string> bodyboardId = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodycolumnType, nameof(bodycolumnType), required: true);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateColumn";
@@ -187,9 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyworkspaceId = null, [WorkflowExpression] Func<string> bodyboardId = null)
         {
-            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: true);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateGroup";
@@ -224,11 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<UpdateItemColumnResponse> UpdateItemColumn([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<string> bodyitemId, [WorkflowExpression] Func<string> bodycolumnId = null, [WorkflowExpression] Func<object> bodycolumnValues = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
-            SourceExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
-            SourceExpression.Validate(bodycolumnId, nameof(bodycolumnId), required: false);
-            SourceExpression.Validate(bodycolumnValues, nameof(bodycolumnValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateItemColumn";
@@ -267,11 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse> UpdateMultipleItemColumns([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<string> bodyitemId, [WorkflowExpression] Func<string> bodyitemName = null, [WorkflowExpression] Func<object> bodycolumnValues = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
-            SourceExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
-            SourceExpression.Validate(bodyitemName, nameof(bodyitemName), required: false);
-            SourceExpression.Validate(bodycolumnValues, nameof(bodycolumnValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateMultipleItemColumns";
@@ -310,10 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<MoveItemToGroupResponse> MoveItemToGroup([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodyitemId, [WorkflowExpression] Func<string> bodyworkspaceId = null, [WorkflowExpression] Func<string> bodyboardId = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            SourceExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/MoveItemToGroup";
@@ -350,9 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateNotificationResponse> CreateNotification([WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodytargetId, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            SourceExpression.Validate(bodytargetId, nameof(bodytargetId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateNotification";
@@ -379,11 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateSubitemResponse> CreateSubitem([WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<string> bodyparentItemId, [WorkflowExpression] Func<string> bodyitemName, [WorkflowExpression] Func<string> bodyworkspaceId = null, [WorkflowExpression] Func<object> bodycolumnValues = null)
         {
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
-            SourceExpression.Validate(bodyparentItemId, nameof(bodyparentItemId), required: true);
-            SourceExpression.Validate(bodyitemName, nameof(bodyitemName), required: true);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            SourceExpression.Validate(bodycolumnValues, nameof(bodycolumnValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateSubitem";
@@ -422,9 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<JToken> GetSubitems([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> itemId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getData/getSubitems";
@@ -442,11 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodyitemId, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyworkspaceId = null, [WorkflowExpression] Func<string> bodyboardId = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            SourceExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateUpdate";
@@ -485,9 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<JToken> GetItemById([WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> boardId)
         {
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getData/getItemById";
@@ -505,8 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateWorkspaceV2Response> CreateWorkspace([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateWorkspaceV2";
@@ -535,21 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<JToken> GetItems([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> filter1Column = null, [WorkflowExpression] Func<string> filter1Operator = null, [WorkflowExpression] Func<string> filter1Value = null, [WorkflowExpression] Func<string> filter2Column = null, [WorkflowExpression] Func<string> filter2Operator = null, [WorkflowExpression] Func<string> filter2Value = null, [WorkflowExpression] Func<string> filter3Column = null, [WorkflowExpression] Func<string> filter3Operator = null, [WorkflowExpression] Func<string> filter3Value = null, [WorkflowExpression] Func<string> filter4Column = null, [WorkflowExpression] Func<string> filter4Operator = null, [WorkflowExpression] Func<string> filter4Value = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(boardId, nameof(boardId), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(filter1Column, nameof(filter1Column), required: false);
-            SourceExpression.Validate(filter1Operator, nameof(filter1Operator), required: false);
-            SourceExpression.Validate(filter1Value, nameof(filter1Value), required: false);
-            SourceExpression.Validate(filter2Column, nameof(filter2Column), required: false);
-            SourceExpression.Validate(filter2Operator, nameof(filter2Operator), required: false);
-            SourceExpression.Validate(filter2Value, nameof(filter2Value), required: false);
-            SourceExpression.Validate(filter3Column, nameof(filter3Column), required: false);
-            SourceExpression.Validate(filter3Operator, nameof(filter3Operator), required: false);
-            SourceExpression.Validate(filter3Value, nameof(filter3Value), required: false);
-            SourceExpression.Validate(filter4Column, nameof(filter4Column), required: false);
-            SourceExpression.Validate(filter4Operator, nameof(filter4Operator), required: false);
-            SourceExpression.Validate(filter4Value, nameof(filter4Value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getData/getItemsV2";
@@ -621,8 +549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     {
         public IBodyWorkflowTrigger<JToken> WebhookCreateItem([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/CreateItem";
@@ -648,8 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookCreateUpdate([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/CreateUpdate";
@@ -675,8 +599,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookChangeName([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/ChangeName";
@@ -702,8 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookChangeSubitemName([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/ChangeSubitemName";
@@ -729,8 +649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookCreateSubitem([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/CreateSubitem";
@@ -756,9 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<string> bodycolumnId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
-            SourceExpression.Validate(bodycolumnId, nameof(bodycolumnId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/ColumnChanges";
@@ -786,8 +701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookAnyColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/AnyColumnChanges";
@@ -813,8 +726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookSubitemColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/registerWebhook/SubitemColumnChanges";

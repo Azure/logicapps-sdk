@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IWorkflowAction CompanyLogo([WorkflowExpression] Func<jurisdictionCodeInput> jurisdictionCode, [WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(jurisdictionCode, nameof(jurisdictionCode), required: true);
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/logo", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jurisdictionCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -30,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyDetail> GetCompany([WorkflowExpression] Func<string> jurisdictionCode, [WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(jurisdictionCode, nameof(jurisdictionCode), required: true);
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jurisdictionCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -49,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance> GetCompanyFinace([WorkflowExpression] Func<jurisdictionCodeInput> jurisdictionCode, [WorkflowExpression] Func<string> companyNumber)
         {
-            SourceExpression.Validate(jurisdictionCode, nameof(jurisdictionCode), required: true);
-            SourceExpression.Validate(companyNumber, nameof(companyNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/finance", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jurisdictionCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
@@ -65,9 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<GetWeekOfYearResponse> GetWeekOfYear([WorkflowExpression] Func<string> time, [WorkflowExpression] Func<ruleInput> rule, [WorkflowExpression] Func<firstDayOfWeekInput> firstDayOfWeek)
         {
-            SourceExpression.Validate(time, nameof(time), required: true);
-            SourceExpression.Validate(rule, nameof(rule), required: true);
-            SourceExpression.Validate(firstDayOfWeek, nameof(firstDayOfWeek), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/DateTime/GetWeekOfYear";
@@ -85,9 +75,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesAddress[]> AddressGeocode([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> region = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(region, nameof(region), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/Geospatial/address/geocode";
@@ -121,11 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<string> GetSalutation([WorkflowExpression] Func<languageInput> language, [WorkflowExpression] Func<string> surname, [WorkflowExpression] Func<genderInput> gender, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> suffix = null)
         {
-            SourceExpression.Validate(language, nameof(language), required: true);
-            SourceExpression.Validate(surname, nameof(surname), required: true);
-            SourceExpression.Validate(gender, nameof(gender), required: true);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(suffix, nameof(suffix), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/Salutations/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1));
@@ -146,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesHolidays[]> GetHolidays([WorkflowExpression] Func<string> countryIsoCode, [WorkflowExpression] Func<string> year)
         {
-            SourceExpression.Validate(countryIsoCode, nameof(countryIsoCode), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/Holidays/countries/{0}/publicHolidays/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryIsoCode, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(year, 1));

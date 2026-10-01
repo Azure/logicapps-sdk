@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth> BoothsGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -33,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth[]> BoothsGetAllBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<deletedFilterInput> deletedFilter = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(deletedFilter, nameof(deletedFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -53,8 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth[]> BoothsGetAllAvailableBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/available", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -70,8 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth[]> BoothsGetAllRentedBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/rented", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -87,13 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsRentBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> exhibitorId, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> ratePlan = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> comment = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(exhibitorId, nameof(exhibitorId), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(ratePlan, nameof(ratePlan), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(comment, nameof(comment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/rent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -117,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUnRentBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/unrent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -136,12 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsHoldBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> exhibitorName = null, [WorkflowExpression] Func<string> comment = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(exhibitorId, nameof(exhibitorId), required: false);
-            SourceExpression.Validate(exhibitorName, nameof(exhibitorName), required: false);
-            SourceExpression.Validate(comment, nameof(comment), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/hold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -164,9 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUnHoldBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/unhold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -183,9 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsRentToHold([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/rentToHold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -202,10 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsHoldToRent([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> ratePlan = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(ratePlan, nameof(ratePlan), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/holdToRent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -224,10 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsCombineBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<int> boundary, [WorkflowExpression] Func<string[]> boothNumbers = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(boundary, nameof(boundary), required: true);
-            SourceExpression.Validate(boothNumbers, nameof(boothNumbers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/combine", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -245,9 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUncombineBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/uncombine", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -264,9 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsDeleteBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string[]> boothNumbers = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(boothNumbers, nameof(boothNumbers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -283,9 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUndeleteBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string[]> boothNumbers = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(boothNumbers, nameof(boothNumbers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/undelete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -302,10 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsChangeBoothNumber([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> oldNumber, [WorkflowExpression] Func<string> newNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(oldNumber, nameof(oldNumber), required: true);
-            SourceExpression.Validate(newNumber, nameof(newNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/changenumber", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -323,10 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsSetBoothClass([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(classId, nameof(classId), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/apply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -344,10 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsClearBoothClass([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(classId, nameof(classId), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -365,10 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsSetBoothDisplayName([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> text, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(text, nameof(text), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/set", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -386,9 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsClearBoothDisplayName([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -405,10 +337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsAddChildExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> childExhibitorId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(childExhibitorId, nameof(childExhibitorId), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -426,10 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsRemoveChildExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> childExhibitorId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(childExhibitorId, nameof(childExhibitorId), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -447,9 +371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass> ClassesGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(classId, nameof(classId), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -466,8 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass[]> ClassesGetAllBoothClasses([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -483,15 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass> ClassesCreate([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothClassid, [WorkflowExpression] Func<int> boothClasskeepWhenCombined, [WorkflowExpression] Func<int> boothClasscountAsInventory, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> boothClassname = null, [WorkflowExpression] Func<string> boothClassdescription = null, [WorkflowExpression] Func<string> boothClassprioritity = null, [WorkflowExpression] Func<int> boothClasscolor = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothClassid, nameof(boothClassid), required: true);
-            SourceExpression.Validate(boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
-            SourceExpression.Validate(boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(boothClassname, nameof(boothClassname), required: false);
-            SourceExpression.Validate(boothClassdescription, nameof(boothClassdescription), required: false);
-            SourceExpression.Validate(boothClassprioritity, nameof(boothClassprioritity), required: false);
-            SourceExpression.Validate(boothClasscolor, nameof(boothClasscolor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -543,16 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass> ClassesUpdate([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothClassid, [WorkflowExpression] Func<int> boothClasskeepWhenCombined, [WorkflowExpression] Func<int> boothClasscountAsInventory, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> boothClassname = null, [WorkflowExpression] Func<string> boothClassdescription = null, [WorkflowExpression] Func<string> boothClassprioritity = null, [WorkflowExpression] Func<int> boothClasscolor = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothClassid, nameof(boothClassid), required: true);
-            SourceExpression.Validate(boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
-            SourceExpression.Validate(boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
-            SourceExpression.Validate(classId, nameof(classId), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(boothClassname, nameof(boothClassname), required: false);
-            SourceExpression.Validate(boothClassdescription, nameof(boothClassdescription), required: false);
-            SourceExpression.Validate(boothClassprioritity, nameof(boothClassprioritity), required: false);
-            SourceExpression.Validate(boothClasscolor, nameof(boothClasscolor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -605,9 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> ClassesDelete([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(classId, nameof(classId), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -624,7 +521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<ExpocadEvent[]> EventsGetAllEvents([WorkflowExpression] Func<string> clientName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -639,8 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<EventStats> EventsGetEventStatistics([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -656,8 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<ExpoEventInformation> EventsGetEventInformation([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/info", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -673,9 +565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor> ExhibitorsGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -692,8 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor[]> ExhibitorsGetAllExhibitors([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -709,43 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor> ExhibitorsAddExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> exhibitorexhibitorId, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitoraddress1 = null, [WorkflowExpression] Func<string> exhibitoraddress2 = null, [WorkflowExpression] Func<string> exhibitorcity = null, [WorkflowExpression] Func<string> exhibitorcomments = null, [WorkflowExpression] Func<string> exhibitorcomments2 = null, [WorkflowExpression] Func<string> exhibitorcontact = null, [WorkflowExpression] Func<string> exhibitorcountry = null, [WorkflowExpression] Func<string> exhibitorcellPhone = null, [WorkflowExpression] Func<string> exhibitordisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAs = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAsDisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitoremail = null, [WorkflowExpression] Func<string> exhibitorexhibitorName = null, [WorkflowExpression] Func<string> exhibitorexhibitorNameLine2 = null, [WorkflowExpression] Func<string> exhibitorfax = null, [WorkflowExpression] Func<string> exhibitorfield1 = null, [WorkflowExpression] Func<string> exhibitorfield2 = null, [WorkflowExpression] Func<string> exhibitorfield3 = null, [WorkflowExpression] Func<string> exhibitorfield4 = null, [WorkflowExpression] Func<string> exhibitorfield5 = null, [WorkflowExpression] Func<string> exhibitorfield6 = null, [WorkflowExpression] Func<string> exhibitorfield7 = null, [WorkflowExpression] Func<string> exhibitorfield8 = null, [WorkflowExpression] Func<string> exhibitorfield9 = null, [WorkflowExpression] Func<string> exhibitornickName = null, [WorkflowExpression] Func<string> exhibitorsalutation = null, [WorkflowExpression] Func<string> exhibitortitle = null, [WorkflowExpression] Func<string> exhibitorphone = null, [WorkflowExpression] Func<string> exhibitorpostalCode = null, [WorkflowExpression] Func<string> exhibitorprimaryGroup = null, [WorkflowExpression] Func<string> exhibitorpriorityPoints = null, [WorkflowExpression] Func<string> exhibitorproductDescription = null, [WorkflowExpression] Func<string> exhibitorstate = null, [WorkflowExpression] Func<string> exhibitorwebSite = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(exhibitoraddress1, nameof(exhibitoraddress1), required: false);
-            SourceExpression.Validate(exhibitoraddress2, nameof(exhibitoraddress2), required: false);
-            SourceExpression.Validate(exhibitorcity, nameof(exhibitorcity), required: false);
-            SourceExpression.Validate(exhibitorcomments, nameof(exhibitorcomments), required: false);
-            SourceExpression.Validate(exhibitorcomments2, nameof(exhibitorcomments2), required: false);
-            SourceExpression.Validate(exhibitorcontact, nameof(exhibitorcontact), required: false);
-            SourceExpression.Validate(exhibitorcountry, nameof(exhibitorcountry), required: false);
-            SourceExpression.Validate(exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
-            SourceExpression.Validate(exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
-            SourceExpression.Validate(exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
-            SourceExpression.Validate(exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
-            SourceExpression.Validate(exhibitoremail, nameof(exhibitoremail), required: false);
-            SourceExpression.Validate(exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
-            SourceExpression.Validate(exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
-            SourceExpression.Validate(exhibitorfax, nameof(exhibitorfax), required: false);
-            SourceExpression.Validate(exhibitorfield1, nameof(exhibitorfield1), required: false);
-            SourceExpression.Validate(exhibitorfield2, nameof(exhibitorfield2), required: false);
-            SourceExpression.Validate(exhibitorfield3, nameof(exhibitorfield3), required: false);
-            SourceExpression.Validate(exhibitorfield4, nameof(exhibitorfield4), required: false);
-            SourceExpression.Validate(exhibitorfield5, nameof(exhibitorfield5), required: false);
-            SourceExpression.Validate(exhibitorfield6, nameof(exhibitorfield6), required: false);
-            SourceExpression.Validate(exhibitorfield7, nameof(exhibitorfield7), required: false);
-            SourceExpression.Validate(exhibitorfield8, nameof(exhibitorfield8), required: false);
-            SourceExpression.Validate(exhibitorfield9, nameof(exhibitorfield9), required: false);
-            SourceExpression.Validate(exhibitornickName, nameof(exhibitornickName), required: false);
-            SourceExpression.Validate(exhibitorsalutation, nameof(exhibitorsalutation), required: false);
-            SourceExpression.Validate(exhibitortitle, nameof(exhibitortitle), required: false);
-            SourceExpression.Validate(exhibitorphone, nameof(exhibitorphone), required: false);
-            SourceExpression.Validate(exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
-            SourceExpression.Validate(exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
-            SourceExpression.Validate(exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
-            SourceExpression.Validate(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
-            SourceExpression.Validate(exhibitorstate, nameof(exhibitorstate), required: false);
-            SourceExpression.Validate(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -973,44 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor> ExhibitorsUpdateExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> exhibitorexhibitorId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitoraddress1 = null, [WorkflowExpression] Func<string> exhibitoraddress2 = null, [WorkflowExpression] Func<string> exhibitorcity = null, [WorkflowExpression] Func<string> exhibitorcomments = null, [WorkflowExpression] Func<string> exhibitorcomments2 = null, [WorkflowExpression] Func<string> exhibitorcontact = null, [WorkflowExpression] Func<string> exhibitorcountry = null, [WorkflowExpression] Func<string> exhibitorcellPhone = null, [WorkflowExpression] Func<string> exhibitordisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAs = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAsDisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitoremail = null, [WorkflowExpression] Func<string> exhibitorexhibitorName = null, [WorkflowExpression] Func<string> exhibitorexhibitorNameLine2 = null, [WorkflowExpression] Func<string> exhibitorfax = null, [WorkflowExpression] Func<string> exhibitorfield1 = null, [WorkflowExpression] Func<string> exhibitorfield2 = null, [WorkflowExpression] Func<string> exhibitorfield3 = null, [WorkflowExpression] Func<string> exhibitorfield4 = null, [WorkflowExpression] Func<string> exhibitorfield5 = null, [WorkflowExpression] Func<string> exhibitorfield6 = null, [WorkflowExpression] Func<string> exhibitorfield7 = null, [WorkflowExpression] Func<string> exhibitorfield8 = null, [WorkflowExpression] Func<string> exhibitorfield9 = null, [WorkflowExpression] Func<string> exhibitornickName = null, [WorkflowExpression] Func<string> exhibitorsalutation = null, [WorkflowExpression] Func<string> exhibitortitle = null, [WorkflowExpression] Func<string> exhibitorphone = null, [WorkflowExpression] Func<string> exhibitorpostalCode = null, [WorkflowExpression] Func<string> exhibitorprimaryGroup = null, [WorkflowExpression] Func<string> exhibitorpriorityPoints = null, [WorkflowExpression] Func<string> exhibitorproductDescription = null, [WorkflowExpression] Func<string> exhibitorstate = null, [WorkflowExpression] Func<string> exhibitorwebSite = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(exhibitoraddress1, nameof(exhibitoraddress1), required: false);
-            SourceExpression.Validate(exhibitoraddress2, nameof(exhibitoraddress2), required: false);
-            SourceExpression.Validate(exhibitorcity, nameof(exhibitorcity), required: false);
-            SourceExpression.Validate(exhibitorcomments, nameof(exhibitorcomments), required: false);
-            SourceExpression.Validate(exhibitorcomments2, nameof(exhibitorcomments2), required: false);
-            SourceExpression.Validate(exhibitorcontact, nameof(exhibitorcontact), required: false);
-            SourceExpression.Validate(exhibitorcountry, nameof(exhibitorcountry), required: false);
-            SourceExpression.Validate(exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
-            SourceExpression.Validate(exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
-            SourceExpression.Validate(exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
-            SourceExpression.Validate(exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
-            SourceExpression.Validate(exhibitoremail, nameof(exhibitoremail), required: false);
-            SourceExpression.Validate(exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
-            SourceExpression.Validate(exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
-            SourceExpression.Validate(exhibitorfax, nameof(exhibitorfax), required: false);
-            SourceExpression.Validate(exhibitorfield1, nameof(exhibitorfield1), required: false);
-            SourceExpression.Validate(exhibitorfield2, nameof(exhibitorfield2), required: false);
-            SourceExpression.Validate(exhibitorfield3, nameof(exhibitorfield3), required: false);
-            SourceExpression.Validate(exhibitorfield4, nameof(exhibitorfield4), required: false);
-            SourceExpression.Validate(exhibitorfield5, nameof(exhibitorfield5), required: false);
-            SourceExpression.Validate(exhibitorfield6, nameof(exhibitorfield6), required: false);
-            SourceExpression.Validate(exhibitorfield7, nameof(exhibitorfield7), required: false);
-            SourceExpression.Validate(exhibitorfield8, nameof(exhibitorfield8), required: false);
-            SourceExpression.Validate(exhibitorfield9, nameof(exhibitorfield9), required: false);
-            SourceExpression.Validate(exhibitornickName, nameof(exhibitornickName), required: false);
-            SourceExpression.Validate(exhibitorsalutation, nameof(exhibitorsalutation), required: false);
-            SourceExpression.Validate(exhibitortitle, nameof(exhibitortitle), required: false);
-            SourceExpression.Validate(exhibitorphone, nameof(exhibitorphone), required: false);
-            SourceExpression.Validate(exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
-            SourceExpression.Validate(exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
-            SourceExpression.Validate(exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
-            SourceExpression.Validate(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
-            SourceExpression.Validate(exhibitorstate, nameof(exhibitorstate), required: false);
-            SourceExpression.Validate(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1239,9 +1051,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> ExhibitorsDeleteExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1258,15 +1067,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Transaction[]> FinancialsGetAllTransactions([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> boothNumber = null, [WorkflowExpression] Func<string> expocadUser = null, [WorkflowExpression] Func<string> glCode = null, [WorkflowExpression] Func<reversedFilterInput> reversedFilter = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(exhibitorId, nameof(exhibitorId), required: false);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: false);
-            SourceExpression.Validate(expocadUser, nameof(expocadUser), required: false);
-            SourceExpression.Validate(glCode, nameof(glCode), required: false);
-            SourceExpression.Validate(reversedFilter, nameof(reversedFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/transactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1296,9 +1096,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothFinancial> FinancialsGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(boothNumber, nameof(boothNumber), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/booths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1315,10 +1112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Invoice> FinancialsGetInvoice([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> invoiceNo = null, [WorkflowExpression] Func<string> exhibitorId = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(invoiceNo, nameof(invoiceNo), required: false);
-            SourceExpression.Validate(exhibitorId, nameof(exhibitorId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1338,8 +1131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Invoice[]> FinancialsGetAllInvoices([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1355,10 +1146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<MasterRequestItem[]> FinancialsGetRequestItemList([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> glCode = null, [WorkflowExpression] Func<string> transactionCode = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(glCode, nameof(glCode), required: false);
-            SourceExpression.Validate(transactionCode, nameof(transactionCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitemlist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1378,15 +1165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<InvoiceRequestItem[]> FinancialsGetAssignedRequestItems([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> invoiceNumber = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> booth = null, [WorkflowExpression] Func<string> glCode = null, [WorkflowExpression] Func<string> transactionCode = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(exhibitorId, nameof(exhibitorId), required: false);
-            SourceExpression.Validate(invoiceNumber, nameof(invoiceNumber), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(booth, nameof(booth), required: false);
-            SourceExpression.Validate(glCode, nameof(glCode), required: false);
-            SourceExpression.Validate(transactionCode, nameof(transactionCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1416,8 +1194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<PaymentTypeItem[]> FinancialsGetPaymentTypeList([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/paymenttypelist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1433,14 +1209,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<InvoicePayment[]> FinancialsGetPayments([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> depositId = null, [WorkflowExpression] Func<string> invoiceNumber = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> paymentTypeCategory = null)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(exhibitorId, nameof(exhibitorId), required: false);
-            SourceExpression.Validate(depositId, nameof(depositId), required: false);
-            SourceExpression.Validate(invoiceNumber, nameof(invoiceNumber), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(paymentTypeCategory, nameof(paymentTypeCategory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/payments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1468,8 +1236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Pavilion[]> PavilionsGetAllPavilions([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/pavilions/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1485,8 +1251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<RatePlan> RatePlansGetDefaultRatePlan([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1502,9 +1266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> RatePlansSetDefaultRatePlan([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1521,8 +1282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<RatePlan[]> RatePlansGetAllRatePlans([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1538,14 +1297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<RatePlan> RatePlansAddRatePlan([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> ratePlanname, [WorkflowExpression] Func<string> ratePlanshortCode, [WorkflowExpression] Func<double> ratePlangrossRate, [WorkflowExpression] Func<double> ratePlanfixedDiscountRate, [WorkflowExpression] Func<double> ratePlanpercentDiscountRate, [WorkflowExpression] Func<bool> ratePlanisFixed)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
-            SourceExpression.Validate(ratePlanname, nameof(ratePlanname), required: true);
-            SourceExpression.Validate(ratePlanshortCode, nameof(ratePlanshortCode), required: true);
-            SourceExpression.Validate(ratePlangrossRate, nameof(ratePlangrossRate), required: true);
-            SourceExpression.Validate(ratePlanfixedDiscountRate, nameof(ratePlanfixedDiscountRate), required: true);
-            SourceExpression.Validate(ratePlanpercentDiscountRate, nameof(ratePlanpercentDiscountRate), required: true);
-            SourceExpression.Validate(ratePlanisFixed, nameof(ratePlanisFixed), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
@@ -1579,8 +1330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<ShowInShow[]> ShowInShowsGetAllShowinShows([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
-            SourceExpression.Validate(databaseName, nameof(databaseName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/showinshows/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));

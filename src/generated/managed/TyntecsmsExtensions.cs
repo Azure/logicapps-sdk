@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecsms")]
         public IBodyWorkflowAction<SendSMSv3Response> SendSMSv3([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttext = null)
         {
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodycontenttext, nameof(bodycontenttext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/sms/text";
@@ -67,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecsms")]
         public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -84,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
     {
         public IWorkflowTrigger Incoming([WorkflowExpression] Func<string> smsSender, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(smsSender, nameof(smsSender), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/sms/phone-numbers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smsSender, 1));

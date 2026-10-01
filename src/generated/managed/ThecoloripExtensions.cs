@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
         public IBodyWorkflowAction<ColorGetResponse> ColorGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null)
         {
-            SourceExpression.Validate(hex, nameof(hex), required: false);
-            SourceExpression.Validate(rgb, nameof(rgb), required: false);
-            SourceExpression.Validate(hsl, nameof(hsl), required: false);
-            SourceExpression.Validate(cmyk, nameof(cmyk), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/id";
@@ -41,12 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
         public IBodyWorkflowAction<SchemeGetResponse> SchemeGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<int> count = null)
         {
-            SourceExpression.Validate(hex, nameof(hex), required: false);
-            SourceExpression.Validate(rgb, nameof(rgb), required: false);
-            SourceExpression.Validate(hsl, nameof(hsl), required: false);
-            SourceExpression.Validate(cmyk, nameof(cmyk), required: false);
-            SourceExpression.Validate(mode, nameof(mode), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/scheme";

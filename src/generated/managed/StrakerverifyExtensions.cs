@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<string> GetFile([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -43,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetKeyResponse> CreateKey([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/key";
@@ -83,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetKeyResponse> GetKey([WorkflowExpression] Func<string> keyId)
         {
-            SourceExpression.Validate(keyId, nameof(keyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/key/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyId, 1));
@@ -98,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -113,11 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetSegmentResponse> GetSegments([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> languageId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(languageId, nameof(languageId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/project/{0}/segments/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(languageId, 1));
@@ -152,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetWorkflowResponse> GetWorkflow([WorkflowExpression] Func<string> workflowId)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));

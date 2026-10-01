@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicDto> SetTopicQuizSettings([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyquestionType, [WorkflowExpression] Func<int> bodycount = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyquestionType, nameof(bodyquestionType), required: true);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/quiz-settings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -45,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<IntroDto> GetTopicIntro([WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/intro", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -60,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction RemoveTopicIntro([WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/intro", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -75,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<IntroDto> SetTopicIntro([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyintroduction = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyintroduction, nameof(bodyintroduction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/intro", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -103,9 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ModuleDetailDto> SetModuleQuizSettings([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string> bodyquestionType, [WorkflowExpression] Func<int> bodycount = null)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(bodyquestionType, nameof(bodyquestionType), required: true);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/quiz-settings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -134,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<IntroDto> GetModuleIntro([WorkflowExpression] Func<string> moduleId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/intro", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -149,7 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction RemoveModuleIntro([WorkflowExpression] Func<string> moduleId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/intro", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -164,8 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<IntroDto> SetModuleIntro([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string> bodyintroduction = null)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(bodyintroduction, nameof(bodyintroduction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/intro", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -192,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<MediaDetailDto> GetMediaItem([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/media/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -207,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteMedia([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/media/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -222,9 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<MediaDetailDto> UpdateMediaMetadata([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/media/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -257,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DocumentDetailDto> GetDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -272,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -287,9 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DocumentDetailDto> UpdateDocumentMetadata([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -322,13 +298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<UserListResponse> ListUsers([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> departmentIds = null, [WorkflowExpression] Func<string> roleIds = null, [WorkflowExpression] Func<string> kind = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(departmentIds, nameof(departmentIds), required: false);
-            SourceExpression.Validate(roleIds, nameof(roleIds), required: false);
-            SourceExpression.Validate(kind, nameof(kind), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/users";
@@ -357,11 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<UserDto> CreateUser([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodyisAdmin = null, [WorkflowExpression] Func<string[]> bodydepartmentRoleIds = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            SourceExpression.Validate(bodydepartmentRoleIds, nameof(bodydepartmentRoleIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/users";
@@ -408,7 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<UserDto> ReactivateUser([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/users/{0}/reactivate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -423,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<UserDto> DeactivateUser([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/users/{0}/deactivate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -438,7 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionListResponse> ListTopicQuizQuestions([WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/quiz-questions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -453,12 +414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> AddTopicQuizQuestion([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyordinalNumber = null, [WorkflowExpression] Func<QuestionOptionInput[]> bodyoptions = null, [WorkflowExpression] Func<string> bodyexpectedAnswer = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyordinalNumber, nameof(bodyordinalNumber), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
-            SourceExpression.Validate(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/quiz-questions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -501,8 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionListResponse> ReorderTopicQuizQuestions([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string[]> bodyquestionIds)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyquestionIds, nameof(bodyquestionIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/quiz-questions/reorder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -525,9 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicDto> MoveTopic([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodytargetModuleId, [WorkflowExpression] Func<int> bodytargetOrdinalNumber = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodytargetModuleId, nameof(bodytargetModuleId), required: true);
-            SourceExpression.Validate(bodytargetOrdinalNumber, nameof(bodytargetOrdinalNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/move", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -556,10 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicLinkedDocumentListResponse> ListTopicLinkedDocuments([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/linked-documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -580,8 +526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction LinkDocumentsToTopic([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string[]> bodydocumentIds)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodydocumentIds, nameof(bodydocumentIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/linked-documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -604,7 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LearningByteListResponse> ListLearningBytesInTopic([WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/learning-bytes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -619,9 +562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LearningByteDetailDto> AddLearningByteToTopic([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/learning-bytes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -650,12 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExerciseDto> AddRpeVoiceExercise([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string> bodyavatarPictureId = null, [WorkflowExpression] Func<string> bodyavatarCharacteristics = null, [WorkflowExpression] Func<bool> bodyreverseRolePlayEnabled = null, [WorkflowExpression] Func<bool> bodyreverseRolePlayMandatory = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            SourceExpression.Validate(bodyavatarPictureId, nameof(bodyavatarPictureId), required: false);
-            SourceExpression.Validate(bodyavatarCharacteristics, nameof(bodyavatarCharacteristics), required: false);
-            SourceExpression.Validate(bodyreverseRolePlayEnabled, nameof(bodyreverseRolePlayEnabled), required: false);
-            SourceExpression.Validate(bodyreverseRolePlayMandatory, nameof(bodyreverseRolePlayMandatory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/exercises/rpe-voice", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -706,12 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExerciseDto> AddRpeVideoExercise([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string> bodyavatarPictureId = null, [WorkflowExpression] Func<string> bodyavatarCharacteristics = null, [WorkflowExpression] Func<bool> bodyreverseRolePlayEnabled = null, [WorkflowExpression] Func<bool> bodyreverseRolePlayMandatory = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            SourceExpression.Validate(bodyavatarPictureId, nameof(bodyavatarPictureId), required: false);
-            SourceExpression.Validate(bodyavatarCharacteristics, nameof(bodyavatarCharacteristics), required: false);
-            SourceExpression.Validate(bodyreverseRolePlayEnabled, nameof(bodyreverseRolePlayEnabled), required: false);
-            SourceExpression.Validate(bodyreverseRolePlayMandatory, nameof(bodyreverseRolePlayMandatory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/exercises/rpe-video", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -762,8 +690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExerciseDto> AddIleTextExercise([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/exercises/ile-text", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -790,7 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicListResponse> ListTopicsInModule([WorkflowExpression] Func<string> moduleId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/topics", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -805,9 +730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicDto> AddTopicToModule([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/topics", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -836,8 +758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicListResponse> ReorderTopicsInModule([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string[]> bodytopicIds)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(bodytopicIds, nameof(bodytopicIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/topics/reorder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -860,7 +780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionListResponse> ListModuleQuizQuestions([WorkflowExpression] Func<string> moduleId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/quiz-questions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -875,12 +794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> AddModuleQuizQuestion([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyordinalNumber = null, [WorkflowExpression] Func<QuestionOptionInput[]> bodyoptions = null, [WorkflowExpression] Func<string> bodyexpectedAnswer = null)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyordinalNumber, nameof(bodyordinalNumber), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
-            SourceExpression.Validate(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/quiz-questions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -923,8 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionListResponse> ReorderModuleQuizQuestions([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string[]> bodyquestionIds)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(bodyquestionIds, nameof(bodyquestionIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/quiz-questions/reorder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -947,11 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<MediaListResponse> ListMedia([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> kind = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(kind, nameof(kind), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/media";
@@ -976,7 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionListResponse> ListLessonQuestions([WorkflowExpression] Func<string> lessonId)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}/questions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1));
@@ -991,12 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> AddLessonQuestion([WorkflowExpression] Func<string> lessonId, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyordinalNumber = null, [WorkflowExpression] Func<QuestionOptionInput[]> bodyoptions = null, [WorkflowExpression] Func<string> bodyexpectedAnswer = null)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyordinalNumber, nameof(bodyordinalNumber), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
-            SourceExpression.Validate(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}/questions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1));
@@ -1039,8 +938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionListResponse> ReorderLessonQuestions([WorkflowExpression] Func<string> lessonId, [WorkflowExpression] Func<string[]> bodyquestionIds)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
-            SourceExpression.Validate(bodyquestionIds, nameof(bodyquestionIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}/questions/reorder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1));
@@ -1063,7 +960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LessonListResponse> ListLessonsInLearningByte([WorkflowExpression] Func<string> lbId)
         {
-            SourceExpression.Validate(lbId, nameof(lbId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/learning-bytes/{0}/lessons", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lbId, 1));
@@ -1078,8 +974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LessonDetailDto> AddLessonToLearningByte([WorkflowExpression] Func<string> lbId, [WorkflowExpression] Func<string> bodycontent)
         {
-            SourceExpression.Validate(lbId, nameof(lbId), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/learning-bytes/{0}/lessons", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lbId, 1));
@@ -1102,7 +996,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction RemoveAllRolesFromExpert([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/experts/{0}/roles", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1117,8 +1010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExpertDetailDto> AssignRolesToExpert([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string[]> bodyroleIds)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyroleIds, nameof(bodyroleIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/experts/{0}/roles", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1141,8 +1032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExpertDetailDto> AssignDocumentsToExpert([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string[]> bodydocumentIds)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydocumentIds, nameof(bodydocumentIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/experts/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1165,8 +1054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<AskResponse> AskExpert([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyquestion)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/experts/{0}/ask", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1189,11 +1076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DocumentListResponse> ListDocuments([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> mimeTypes = null, [WorkflowExpression] Func<string> status = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(mimeTypes, nameof(mimeTypes), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/documents";
@@ -1232,8 +1114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DepartmentDto> CreateDepartment([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/departments";
@@ -1262,10 +1142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DepartmentDto> CreateRoleInDepartment([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyfullName = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyfullName, nameof(bodyfullName), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/departments/{0}/roles", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1300,9 +1176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DepartmentDto> AssignUserToRole([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> roleId, [WorkflowExpression] Func<string> bodyuserId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(roleId, nameof(roleId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/departments/{0}/roles/{1}/assign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleId, 1));
@@ -1325,13 +1198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DemoTrainingListResponse> ListDemoTrainings([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> trainingTypes = null, [WorkflowExpression] Func<string> statuses = null, [WorkflowExpression] Func<string> departmentIds = null, [WorkflowExpression] Func<bool> isAvailable = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(trainingTypes, nameof(trainingTypes), required: false);
-            SourceExpression.Validate(statuses, nameof(statuses), required: false);
-            SourceExpression.Validate(departmentIds, nameof(departmentIds), required: false);
-            SourceExpression.Validate(isAvailable, nameof(isAvailable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/demo-trainings";
@@ -1360,12 +1226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DemoTrainingDto> CreateDemoTraining([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodytrainingTypeInput> bodytrainingType, [WorkflowExpression] Func<string> bodyvideoFileId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodyprocessingPrompt = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytrainingType, nameof(bodytrainingType), required: true);
-            SourceExpression.Validate(bodyvideoFileId, nameof(bodyvideoFileId), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyprocessingPrompt, nameof(bodyprocessingPrompt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/demo-trainings";
@@ -1410,8 +1270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DemoTrainingDto> ReprocessDemoTraining([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyprocessingPrompt = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyprocessingPrompt, nameof(bodyprocessingPrompt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/demo-trainings/{0}/reprocess", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1438,8 +1296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DemoTrainingDto> UpdateDemoTrainingAvailability([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodyavailable)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyavailable, nameof(bodyavailable), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/demo-trainings/{0}/availability", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1462,11 +1318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseListResponse> ListCourses([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> departmentRoleIds = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(departmentRoleIds, nameof(departmentRoleIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/courses";
@@ -1491,7 +1342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseDetailDto> CreateCourse([WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/courses";
@@ -1514,7 +1364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction RemoveAllRolesFromCourse([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/roles", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1529,8 +1378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseDetailDto> AssignRolesToCourse([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string[]> bodyroleIds)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyroleIds, nameof(bodyroleIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/roles", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1553,7 +1400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseDetailDto> PublishCourse([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/publish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1568,8 +1414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<GenerationRequestResponse> GenerateCourseContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string[]> bodytopicIds)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytopicIds, nameof(bodytopicIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/generate-content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1592,7 +1436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ModuleListResponse> ListModulesInCourse([WorkflowExpression] Func<string> courseId)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/modules", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -1607,9 +1450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ModuleDetailDto> AddModuleToCourse([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/modules", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -1638,8 +1478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ModuleListResponse> ReorderModulesInCourse([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string[]> bodymoduleIds)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(bodymoduleIds, nameof(bodymoduleIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/modules/reorder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -1662,9 +1500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<GenerationRequestResponse> RegenerateCourseItem([WorkflowExpression] Func<bodytargetInput> bodytarget, [WorkflowExpression] Func<string> bodytargetId, [WorkflowExpression] Func<bodyparentTypeInput> bodyparentType = null)
         {
-            SourceExpression.Validate(bodytarget, nameof(bodytarget), required: true);
-            SourceExpression.Validate(bodytargetId, nameof(bodytargetId), required: true);
-            SourceExpression.Validate(bodyparentType, nameof(bodyparentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/courses/regenerate-item";
@@ -1695,9 +1530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<GenerateCourseResponse> GenerateCourse([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<ModuleInput[]> bodymodules, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodymodules, nameof(bodymodules), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/courses/generate";
@@ -1728,7 +1560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<UserDto> GetUser([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1743,11 +1574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<UserDto> UpdateUser([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodyisAdmin = null, [WorkflowExpression] Func<string[]> bodydepartmentRoleIds = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            SourceExpression.Validate(bodydepartmentRoleIds, nameof(bodydepartmentRoleIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1792,7 +1618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicDto> GetTopic([WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -1807,7 +1632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteTopic([WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -1822,9 +1646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<TopicDto> UpdateTopic([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -1857,8 +1678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> GetTopicQuizQuestion([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> questionId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/quiz-questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -1873,8 +1692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteTopicQuizQuestion([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> questionId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/quiz-questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -1889,11 +1706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> UpdateTopicQuizQuestion([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<QuestionOptionInput[]> bodyoptions = null, [WorkflowExpression] Func<string> bodyexpectedAnswer = null)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
-            SourceExpression.Validate(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/quiz-questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -1932,7 +1744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ModuleDetailDto> GetModule([WorkflowExpression] Func<string> moduleId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -1947,7 +1758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteModule([WorkflowExpression] Func<string> moduleId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -1962,9 +1772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ModuleDetailDto> UpdateModule([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1));
@@ -1997,8 +1804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> GetModuleQuizQuestion([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string> questionId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/quiz-questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -2013,8 +1818,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteModuleQuizQuestion([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string> questionId)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/quiz-questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -2029,11 +1832,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> UpdateModuleQuizQuestion([WorkflowExpression] Func<string> moduleId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<QuestionOptionInput[]> bodyoptions = null, [WorkflowExpression] Func<string> bodyexpectedAnswer = null)
         {
-            SourceExpression.Validate(moduleId, nameof(moduleId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
-            SourceExpression.Validate(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/modules/{0}/quiz-questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(moduleId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -2072,7 +1870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LessonDetailDto> GetLesson([WorkflowExpression] Func<string> lessonId)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1));
@@ -2087,7 +1884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteLesson([WorkflowExpression] Func<string> lessonId)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1));
@@ -2102,8 +1898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LessonDetailDto> UpdateLesson([WorkflowExpression] Func<string> lessonId, [WorkflowExpression] Func<string> bodycontent = null)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1));
@@ -2130,8 +1924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> GetLessonQuestion([WorkflowExpression] Func<string> lessonId, [WorkflowExpression] Func<string> questionId)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}/questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -2146,8 +1938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteLessonQuestion([WorkflowExpression] Func<string> lessonId, [WorkflowExpression] Func<string> questionId)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}/questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -2162,11 +1952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<QuestionDto> UpdateLessonQuestion([WorkflowExpression] Func<string> lessonId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<QuestionOptionInput[]> bodyoptions = null, [WorkflowExpression] Func<string> bodyexpectedAnswer = null)
         {
-            SourceExpression.Validate(lessonId, nameof(lessonId), required: true);
-            SourceExpression.Validate(questionId, nameof(questionId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
-            SourceExpression.Validate(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/lessons/{0}/questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lessonId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
@@ -2205,7 +1990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LearningByteDetailDto> GetLearningByte([WorkflowExpression] Func<string> lbId)
         {
-            SourceExpression.Validate(lbId, nameof(lbId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/learning-bytes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lbId, 1));
@@ -2220,7 +2004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteLearningByte([WorkflowExpression] Func<string> lbId)
         {
-            SourceExpression.Validate(lbId, nameof(lbId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/learning-bytes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lbId, 1));
@@ -2235,9 +2018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<LearningByteDetailDto> UpdateLearningByte([WorkflowExpression] Func<string> lbId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(lbId, nameof(lbId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/learning-bytes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lbId, 1));
@@ -2270,7 +2050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExerciseDto> GetExercise([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/exercises/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2285,7 +2064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteExercise([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/exercises/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2300,18 +2078,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExerciseDto> UpdateExercise([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string> bodyavatarPictureId = null, [WorkflowExpression] Func<string> bodyavatarCharacteristics = null, [WorkflowExpression] Func<bool> bodyreverseRolePlayEnabled = null, [WorkflowExpression] Func<bool> bodyreverseRolePlayMandatory = null, [WorkflowExpression] Func<string> bodygeneratedContentscenario = null, [WorkflowExpression] Func<string> bodygeneratedContenttraineeRole = null, [WorkflowExpression] Func<string> bodygeneratedContentavatarName = null, [WorkflowExpression] Func<string> bodygeneratedContentavatarDescription = null, [WorkflowExpression] Func<string> bodygeneratedContentoperationalChallenge = null, [WorkflowExpression] Func<string> bodygeneratedContentsuccessMetric = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            SourceExpression.Validate(bodyavatarPictureId, nameof(bodyavatarPictureId), required: false);
-            SourceExpression.Validate(bodyavatarCharacteristics, nameof(bodyavatarCharacteristics), required: false);
-            SourceExpression.Validate(bodyreverseRolePlayEnabled, nameof(bodyreverseRolePlayEnabled), required: false);
-            SourceExpression.Validate(bodyreverseRolePlayMandatory, nameof(bodyreverseRolePlayMandatory), required: false);
-            SourceExpression.Validate(bodygeneratedContentscenario, nameof(bodygeneratedContentscenario), required: false);
-            SourceExpression.Validate(bodygeneratedContenttraineeRole, nameof(bodygeneratedContenttraineeRole), required: false);
-            SourceExpression.Validate(bodygeneratedContentavatarName, nameof(bodygeneratedContentavatarName), required: false);
-            SourceExpression.Validate(bodygeneratedContentavatarDescription, nameof(bodygeneratedContentavatarDescription), required: false);
-            SourceExpression.Validate(bodygeneratedContentoperationalChallenge, nameof(bodygeneratedContentoperationalChallenge), required: false);
-            SourceExpression.Validate(bodygeneratedContentsuccessMetric, nameof(bodygeneratedContentsuccessMetric), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/exercises/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2406,7 +2172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteDepartment([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/departments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2421,9 +2186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DepartmentDto> UpdateDepartment([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/departments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2456,7 +2218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DemoTrainingDto> GetDemoTraining([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/demo-trainings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2471,7 +2232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteDemoTraining([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/demo-trainings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2486,12 +2246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<DemoTrainingDto> UpdateDemoTraining([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodytrainingTypeInput> bodytrainingType = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string[]> bodyassignedRoleIds = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytrainingType, nameof(bodytrainingType), required: false);
-            SourceExpression.Validate(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            SourceExpression.Validate(bodyassignedRoleIds, nameof(bodyassignedRoleIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/demo-trainings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2542,7 +2296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseDetailDto> GetCourse([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2557,7 +2310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction DeleteCourse([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2572,8 +2324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseDetailDto> UpdateCourse([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2600,7 +2350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExerciseListResponse> ListExercisesInTopic([WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/exercises", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2615,7 +2364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CertificateListResponse> ListStudentCertificates([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/students/{0}/certificates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -2630,8 +2378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<StudentInsightsDto> GetStudentInsights([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> window = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(window, nameof(window), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/insights/students/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -2648,9 +2394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<EventListResponse> ListStudentEvents([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/insights/students/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -2683,9 +2426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExpertListResponse> ListExperts([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/experts";
@@ -2706,7 +2446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<ExpertDetailDto> GetExpert([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/experts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2721,7 +2460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<GenerationStatusResponse> GetCourseGenerationStatus([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/generation-status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2736,7 +2474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseVersionListResponse> ListCourseVersions([WorkflowExpression] Func<string> courseId)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
@@ -2751,8 +2488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CourseVersionSnapshotDto> GetCourseVersion([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<int> versionNumber)
         {
-            SourceExpression.Validate(courseId, nameof(courseId), required: true);
-            SourceExpression.Validate(versionNumber, nameof(versionNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/versions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(versionNumber, 1));
@@ -2767,7 +2502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<CertificateDto> GetCertificate([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/certificates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2782,7 +2516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IBodyWorkflowAction<JToken> DownloadCertificatePdf([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/certificates/{0}/pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2797,8 +2530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction UnlinkDocumentFromTopic([WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/topics/{0}/linked-documents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -2813,8 +2544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction RemoveRoleFromExpert([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> roleId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(roleId, nameof(roleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/experts/{0}/roles/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleId, 1));
@@ -2829,8 +2558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction UnassignDocumentFromExpert([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/experts/{0}/documents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -2845,9 +2572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction UnassignUserFromRole([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> roleId, [WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(roleId, nameof(roleId), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/departments/{0}/roles/{1}/assign/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -2862,8 +2586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
         public IWorkflowAction RemoveRoleFromCourse([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> roleId)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(roleId, nameof(roleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/courses/{0}/roles/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleId, 1));

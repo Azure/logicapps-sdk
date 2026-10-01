@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction CreatePlayer([WorkflowExpression] Func<string> bodyplayeremail = null, [WorkflowExpression] Func<string> bodyplayerprofilefirstName = null, [WorkflowExpression] Func<string> bodyplayerprofilelastName = null, [WorkflowExpression] Func<string> bodyplayerexternalRealm = null, [WorkflowExpression] Func<string> bodyplayerexternalRealmId = null)
         {
-            SourceExpression.Validate(bodyplayeremail, nameof(bodyplayeremail), required: false);
-            SourceExpression.Validate(bodyplayerprofilefirstName, nameof(bodyplayerprofilefirstName), required: false);
-            SourceExpression.Validate(bodyplayerprofilelastName, nameof(bodyplayerprofilelastName), required: false);
-            SourceExpression.Validate(bodyplayerexternalRealm, nameof(bodyplayerexternalRealm), required: false);
-            SourceExpression.Validate(bodyplayerexternalRealmId, nameof(bodyplayerexternalRealmId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/players/create_player";
@@ -87,7 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction GetPlayerAccounts([WorkflowExpression] Func<int> playerId)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/currency_accounts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1));
@@ -104,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction GetAccountBalance([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<string> accountType)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(accountType, nameof(accountType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/currency_accounts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountType, 1));
@@ -122,9 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction AddPoints([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<string> accountType, [WorkflowExpression] Func<int> amount)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(accountType, nameof(accountType), required: true);
-            SourceExpression.Validate(amount, nameof(amount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/currency_accounts/{1}/add_currency/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(amount, 1));
@@ -141,9 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction RemovePoints([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<string> accountType, [WorkflowExpression] Func<int> amount)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(accountType, nameof(accountType), required: true);
-            SourceExpression.Validate(amount, nameof(amount), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/currency_accounts/{1}/remove_currency/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(amount, 1));
@@ -160,13 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction GetBatch([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<int> newBatchSize = null, [WorkflowExpression] Func<int> newBatchMaxPicks = null, [WorkflowExpression] Func<string> newBatchKind = null, [WorkflowExpression] Func<bool> newBatchUseTiers = null, [WorkflowExpression] Func<int> newBatchTtl = null, [WorkflowExpression] Func<string> newBatchMetadata = null)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(newBatchSize, nameof(newBatchSize), required: false);
-            SourceExpression.Validate(newBatchMaxPicks, nameof(newBatchMaxPicks), required: false);
-            SourceExpression.Validate(newBatchKind, nameof(newBatchKind), required: false);
-            SourceExpression.Validate(newBatchUseTiers, nameof(newBatchUseTiers), required: false);
-            SourceExpression.Validate(newBatchTtl, nameof(newBatchTtl), required: false);
-            SourceExpression.Validate(newBatchMetadata, nameof(newBatchMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1));
@@ -211,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction GetBadge([WorkflowExpression] Func<string> rewardRef)
         {
-            SourceExpression.Validate(rewardRef, nameof(rewardRef), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/instances/rewards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rewardRef, 1));
@@ -228,8 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction IssueBadge([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<string> rewardRef)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(rewardRef, nameof(rewardRef), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/instances/rewards/issue_instance_by_ref/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rewardRef, 1));
@@ -246,8 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction ClaimInstance([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<string> rewardInstanceId)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(rewardInstanceId, nameof(rewardInstanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/instances/rewards/claim_instance_by_id/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rewardInstanceId, 1));
@@ -264,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction GetBadgesInstances([WorkflowExpression] Func<int> playerId)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/instances/rewards", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1));
@@ -281,8 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction GetBadgeInstance([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<string> rewardRef)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(rewardRef, nameof(rewardRef), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/instances/rewards/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rewardRef, 1));
@@ -299,8 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
         public IWorkflowAction AddItemInstance([WorkflowExpression] Func<int> playerId, [WorkflowExpression] Func<string> itemRef)
         {
-            SourceExpression.Validate(playerId, nameof(playerId), required: true);
-            SourceExpression.Validate(itemRef, nameof(itemRef), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/players/{0}/add_item_instance_by_ref/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(playerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemRef, 1));

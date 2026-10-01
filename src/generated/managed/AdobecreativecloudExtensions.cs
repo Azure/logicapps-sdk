@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<CreatedAssetDetails> CreateAsset([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/asset";
@@ -34,7 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<string> GetContentById([WorkflowExpression] Func<string> assetId)
         {
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/asset/id/content";
@@ -50,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<AssetMetadata> GetMetadataById([WorkflowExpression] Func<string> assetId)
         {
-            SourceExpression.Validate(assetId, nameof(assetId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/asset/id/metadata";
@@ -66,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IWorkflowAction DeleteAssetByPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/asset/path";
@@ -83,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<string> GetContentByPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/asset/path/content";
@@ -99,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<AssetMetadata> GetMetadataByPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/asset/path/metadata";
@@ -115,7 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<DirectoryListing> ListFilesInDirectory([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/directory/path/assets";
@@ -131,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<CreatedAssetDetails> CopyAsset([WorkflowExpression] Func<string> bodysourceAssetPath, [WorkflowExpression] Func<string> bodydestinationAssetPath)
         {
-            SourceExpression.Validate(bodysourceAssetPath, nameof(bodysourceAssetPath), required: true);
-            SourceExpression.Validate(bodydestinationAssetPath, nameof(bodydestinationAssetPath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storage/cc/op/copy";

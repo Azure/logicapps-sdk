@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<CommonSearchResponse> CommonSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/services/V0.1/Search";
@@ -32,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> IndividualsDetailsByIRN([WorkflowExpression] Func<string> iRN)
         {
-            SourceExpression.Validate(iRN, nameof(iRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iRN, 1));
@@ -47,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmDetailsByFRNResponse> FirmDetailsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -62,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<ProductDetailsByPRNResponse> ProductDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            SourceExpression.Validate(pRN, nameof(pRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<SubfundDetailsByPRNResponse> SubfundDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            SourceExpression.Validate(pRN, nameof(pRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Subfund", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
@@ -92,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> ProductOtherNameDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            SourceExpression.Validate(pRN, nameof(pRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Names", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
@@ -107,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> IndividualDisciplinaryHistoryByIRN([WorkflowExpression] Func<string> iRN)
         {
-            SourceExpression.Validate(iRN, nameof(iRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iRN, 1));
@@ -122,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> FirmOtherNamesByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Names", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -137,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmAddressByFRNResponse> FirmAddressByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Address", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -152,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmIndividualsByFRNResponse> FirmIndividualsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Individuals", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -167,7 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> FirmActivitiesAndPermissionsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Permissions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -182,8 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> FirmRequirementsInvestmentTypesByFRNandREQREF([WorkflowExpression] Func<string> fRN, [WorkflowExpression] Func<string> rEQREF)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
-            SourceExpression.Validate(rEQREF, nameof(rEQREF), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rEQREF, 1));
@@ -198,7 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> FirmRegulatorsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Regulators/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -213,7 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmPassportByFRNResponse> FirmPassportByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -228,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmExclusionsByFRNResponse> FirmExclusionsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Exclusions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -243,7 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> FirmDisciplinaryHistoryByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -258,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmRequirementsByFRNResponse> FirmRequirementsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -273,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmWaiverByFRNResponse> FirmWaiverByFRN([WorkflowExpression] Func<string> fRN)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Waivers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
@@ -288,8 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
         public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> FirmPassportPermissionByFRNandCountry([WorkflowExpression] Func<string> fRN, [WorkflowExpression] Func<string> country)
         {
-            SourceExpression.Validate(fRN, nameof(fRN), required: true);
-            SourceExpression.Validate(country, nameof(country), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1));

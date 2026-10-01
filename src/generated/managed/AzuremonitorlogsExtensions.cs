@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
         public IBodyWorkflowAction<TableV2> QueryData([WorkflowExpression] Func<string> subscriptions, [WorkflowExpression] Func<string> resourcegroups, [WorkflowExpression] Func<resourcetypeInput> resourcetype, [WorkflowExpression] Func<string> resourcename, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodytimeRangeType, [WorkflowExpression] Func<object> bodytimerange)
         {
-            SourceExpression.Validate(subscriptions, nameof(subscriptions), required: true);
-            SourceExpression.Validate(resourcegroups, nameof(resourcegroups), required: true);
-            SourceExpression.Validate(resourcetype, nameof(resourcetype), required: true);
-            SourceExpression.Validate(resourcename, nameof(resourcename), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodytimeRangeType, nameof(bodytimeRangeType), required: true);
-            SourceExpression.Validate(bodytimerange, nameof(bodytimerange), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/queryDataV2";
@@ -51,14 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
         public IBodyWorkflowAction<VisualizeResults> VisualizeQuery([WorkflowExpression] Func<string> subscriptions, [WorkflowExpression] Func<string> resourcegroups, [WorkflowExpression] Func<resourcetypeInput> resourcetype, [WorkflowExpression] Func<string> resourcename, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodytimeRangeType, [WorkflowExpression] Func<object> bodytimerange, [WorkflowExpression] Func<visTypeInput> visType)
         {
-            SourceExpression.Validate(subscriptions, nameof(subscriptions), required: true);
-            SourceExpression.Validate(resourcegroups, nameof(resourcegroups), required: true);
-            SourceExpression.Validate(resourcetype, nameof(resourcetype), required: true);
-            SourceExpression.Validate(resourcename, nameof(resourcename), required: true);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodytimeRangeType, nameof(bodytimeRangeType), required: true);
-            SourceExpression.Validate(bodytimerange, nameof(bodytimerange), required: true);
-            SourceExpression.Validate(visType, nameof(visType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/visualizeQueryV2";

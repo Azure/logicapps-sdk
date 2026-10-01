@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<AddUpdateTermResponse> AddUpdateTerm([WorkflowExpression] Func<bool> bodyisavailable, [WorkflowExpression] Func<string> bodytermlabel, [WorkflowExpression] Func<string> bodytermsgroup, [WorkflowExpression] Func<string> bodytermsset, [WorkflowExpression] Func<string> bodyotherlabels = null, [WorkflowExpression] Func<string> bodyparentterm = null)
         {
-            SourceExpression.Validate(bodyisavailable, nameof(bodyisavailable), required: true);
-            SourceExpression.Validate(bodytermlabel, nameof(bodytermlabel), required: true);
-            SourceExpression.Validate(bodytermsgroup, nameof(bodytermsgroup), required: true);
-            SourceExpression.Validate(bodytermsset, nameof(bodytermsset), required: true);
-            SourceExpression.Validate(bodyotherlabels, nameof(bodyotherlabels), required: false);
-            SourceExpression.Validate(bodyparentterm, nameof(bodyparentterm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddUpdateTerm";
@@ -60,13 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> AddUpdateTermByKeyValue([WorkflowExpression] Func<bool> bodyisavailable, [WorkflowExpression] Func<string> bodykeyvalue, [WorkflowExpression] Func<string> bodytermlabel, [WorkflowExpression] Func<string> bodytermsgroup, [WorkflowExpression] Func<string> bodytermsset, [WorkflowExpression] Func<string> bodyotherlabels = null, [WorkflowExpression] Func<string> bodyparentterm = null)
         {
-            SourceExpression.Validate(bodyisavailable, nameof(bodyisavailable), required: true);
-            SourceExpression.Validate(bodykeyvalue, nameof(bodykeyvalue), required: true);
-            SourceExpression.Validate(bodytermlabel, nameof(bodytermlabel), required: true);
-            SourceExpression.Validate(bodytermsgroup, nameof(bodytermsgroup), required: true);
-            SourceExpression.Validate(bodytermsset, nameof(bodytermsset), required: true);
-            SourceExpression.Validate(bodyotherlabels, nameof(bodyotherlabels), required: false);
-            SourceExpression.Validate(bodyparentterm, nameof(bodyparentterm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddUpdateTermByKeyvalue";
@@ -109,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> GetTermByKeyValue([WorkflowExpression] Func<string> searchValue)
         {
-            SourceExpression.Validate(searchValue, nameof(searchValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetTermsByProperty";
@@ -126,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<GetTermByLabelResponseItem[]> GetTermByLabel([WorkflowExpression] Func<string> searchValue)
         {
-            SourceExpression.Validate(searchValue, nameof(searchValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GetTermsByTermLabel";
@@ -142,8 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<UploadTemplateResponse> UploadTemplate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodytemplate)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/uploadtemplate";
@@ -168,8 +151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<bodyoutputformatInput> bodyoutputformat)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodyoutputformat, nameof(bodyoutputformat), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GenerateDocument";

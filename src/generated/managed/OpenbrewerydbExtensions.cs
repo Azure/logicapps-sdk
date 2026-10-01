@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery> GetBrewery([WorkflowExpression] Func<string> obdbId)
         {
-            SourceExpression.Validate(obdbId, nameof(obdbId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/breweries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(obdbId, 1));
@@ -29,15 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> ListBreweries([WorkflowExpression] Func<string> byCity = null, [WorkflowExpression] Func<string> byCountry = null, [WorkflowExpression] Func<string> byDist = null, [WorkflowExpression] Func<string> byName = null, [WorkflowExpression] Func<string> byState = null, [WorkflowExpression] Func<string> byPostal = null, [WorkflowExpression] Func<byTypeInput> byType = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(byCity, nameof(byCity), required: false);
-            SourceExpression.Validate(byCountry, nameof(byCountry), required: false);
-            SourceExpression.Validate(byDist, nameof(byDist), required: false);
-            SourceExpression.Validate(byName, nameof(byName), required: false);
-            SourceExpression.Validate(byState, nameof(byState), required: false);
-            SourceExpression.Validate(byPostal, nameof(byPostal), required: false);
-            SourceExpression.Validate(byType, nameof(byType), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/breweries";
@@ -70,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> GetRandom([WorkflowExpression] Func<int> size = null)
         {
-            SourceExpression.Validate(size, nameof(size), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/breweries/random";
@@ -87,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> SearchBreweries([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/breweries/search";
@@ -103,12 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<CountBreweriesResponse> CountBreweries([WorkflowExpression] Func<string> byCity = null, [WorkflowExpression] Func<string> byCountry = null, [WorkflowExpression] Func<string> byName = null, [WorkflowExpression] Func<string> byState = null, [WorkflowExpression] Func<string> byPostal = null, [WorkflowExpression] Func<byTypeInput> byType = null)
         {
-            SourceExpression.Validate(byCity, nameof(byCity), required: false);
-            SourceExpression.Validate(byCountry, nameof(byCountry), required: false);
-            SourceExpression.Validate(byName, nameof(byName), required: false);
-            SourceExpression.Validate(byState, nameof(byState), required: false);
-            SourceExpression.Validate(byPostal, nameof(byPostal), required: false);
-            SourceExpression.Validate(byType, nameof(byType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/breweries/meta";

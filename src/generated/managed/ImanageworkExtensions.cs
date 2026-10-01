@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetTrusteesResponse> GetTrustees([WorkflowExpression] Func<bodyobjectTypeInput> bodyobjectType, [WorkflowExpression] Func<string> bodyobjectId)
         {
-            SourceExpression.Validate(bodyobjectType, nameof(bodyobjectType), required: true);
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getTrustees";
@@ -40,9 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<UpdateDefaultSecurityResponse> UpdateDefaultSecurity([WorkflowExpression] Func<bodyobjectTypeInput> bodyobjectType, [WorkflowExpression] Func<string> bodyobjectId, [WorkflowExpression] Func<string> bodydefaultSecurity)
         {
-            SourceExpression.Validate(bodyobjectType, nameof(bodyobjectType), required: true);
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: true);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateDefaultSecurity";
@@ -69,11 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<UpdatePermissionsResponse> UpdatePermissions([WorkflowExpression] Func<bodyobjectTypeInput> bodyobjectType, [WorkflowExpression] Func<string> bodyobjectId, [WorkflowExpression] Func<bodyaccessLevelInput> bodyaccessLevel, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null)
         {
-            SourceExpression.Validate(bodyobjectType, nameof(bodyobjectType), required: true);
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: true);
-            SourceExpression.Validate(bodyaccessLevel, nameof(bodyaccessLevel), required: true);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updatePermissions";
@@ -112,8 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetPermissionsResponse> GetPermissions([WorkflowExpression] Func<bodyobjectTypeInput> bodyobjectType, [WorkflowExpression] Func<string> bodyobjectId)
         {
-            SourceExpression.Validate(bodyobjectType, nameof(bodyobjectType), required: true);
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getPermissions";
@@ -138,12 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<UpdatePermissionsResponse> CopyPermissions([WorkflowExpression] Func<bodysourceObjectTypeInput> bodysourceObjectType, [WorkflowExpression] Func<string> bodysourceObjectId, [WorkflowExpression] Func<bodytargetObjectTypeInput> bodytargetObjectType, [WorkflowExpression] Func<string> bodytargetObjectId, [WorkflowExpression] Func<bodycopyTypeInput> bodycopyType, [WorkflowExpression] Func<bool> bodycopyDefaultSecurity)
         {
-            SourceExpression.Validate(bodysourceObjectType, nameof(bodysourceObjectType), required: true);
-            SourceExpression.Validate(bodysourceObjectId, nameof(bodysourceObjectId), required: true);
-            SourceExpression.Validate(bodytargetObjectType, nameof(bodytargetObjectType), required: true);
-            SourceExpression.Validate(bodytargetObjectId, nameof(bodytargetObjectId), required: true);
-            SourceExpression.Validate(bodycopyType, nameof(bodycopyType), required: true);
-            SourceExpression.Validate(bodycopyDefaultSecurity, nameof(bodycopyDefaultSecurity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/copyPermissions";
@@ -176,48 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> CreateWorkspace([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodycreateChildrenInput> bodycreateChildren, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycustom1 = null, [WorkflowExpression] Func<string> bodycustom2 = null, [WorkflowExpression] Func<string> bodycustom3 = null, [WorkflowExpression] Func<string> bodycustom4 = null, [WorkflowExpression] Func<string> bodycustom5 = null, [WorkflowExpression] Func<string> bodycustom6 = null, [WorkflowExpression] Func<string> bodycustom7 = null, [WorkflowExpression] Func<string> bodycustom8 = null, [WorkflowExpression] Func<string> bodycustom9 = null, [WorkflowExpression] Func<string> bodycustom10 = null, [WorkflowExpression] Func<string> bodycustom11 = null, [WorkflowExpression] Func<string> bodycustom12 = null, [WorkflowExpression] Func<string> bodycustom13 = null, [WorkflowExpression] Func<string> bodycustom14 = null, [WorkflowExpression] Func<string> bodycustom15 = null, [WorkflowExpression] Func<string> bodycustom16 = null, [WorkflowExpression] Func<double> bodycustom17 = null, [WorkflowExpression] Func<double> bodycustom18 = null, [WorkflowExpression] Func<double> bodycustom19 = null, [WorkflowExpression] Func<double> bodycustom20 = null, [WorkflowExpression] Func<string> bodycustom21 = null, [WorkflowExpression] Func<string> bodycustom22 = null, [WorkflowExpression] Func<string> bodycustom23 = null, [WorkflowExpression] Func<string> bodycustom24 = null, [WorkflowExpression] Func<bool> bodycustom25 = null, [WorkflowExpression] Func<bool> bodycustom26 = null, [WorkflowExpression] Func<bool> bodycustom27 = null, [WorkflowExpression] Func<bool> bodycustom28 = null, [WorkflowExpression] Func<string> bodycustom29 = null, [WorkflowExpression] Func<string> bodycustom30 = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<string> bodyprojectCustom1 = null, [WorkflowExpression] Func<string> bodyprojectCustom2 = null, [WorkflowExpression] Func<string> bodyprojectCustom3 = null, [WorkflowExpression] Func<string> bodysubclass = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodycreateChildren, nameof(bodycreateChildren), required: true);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodycustom1, nameof(bodycustom1), required: false);
-            SourceExpression.Validate(bodycustom2, nameof(bodycustom2), required: false);
-            SourceExpression.Validate(bodycustom3, nameof(bodycustom3), required: false);
-            SourceExpression.Validate(bodycustom4, nameof(bodycustom4), required: false);
-            SourceExpression.Validate(bodycustom5, nameof(bodycustom5), required: false);
-            SourceExpression.Validate(bodycustom6, nameof(bodycustom6), required: false);
-            SourceExpression.Validate(bodycustom7, nameof(bodycustom7), required: false);
-            SourceExpression.Validate(bodycustom8, nameof(bodycustom8), required: false);
-            SourceExpression.Validate(bodycustom9, nameof(bodycustom9), required: false);
-            SourceExpression.Validate(bodycustom10, nameof(bodycustom10), required: false);
-            SourceExpression.Validate(bodycustom11, nameof(bodycustom11), required: false);
-            SourceExpression.Validate(bodycustom12, nameof(bodycustom12), required: false);
-            SourceExpression.Validate(bodycustom13, nameof(bodycustom13), required: false);
-            SourceExpression.Validate(bodycustom14, nameof(bodycustom14), required: false);
-            SourceExpression.Validate(bodycustom15, nameof(bodycustom15), required: false);
-            SourceExpression.Validate(bodycustom16, nameof(bodycustom16), required: false);
-            SourceExpression.Validate(bodycustom17, nameof(bodycustom17), required: false);
-            SourceExpression.Validate(bodycustom18, nameof(bodycustom18), required: false);
-            SourceExpression.Validate(bodycustom19, nameof(bodycustom19), required: false);
-            SourceExpression.Validate(bodycustom20, nameof(bodycustom20), required: false);
-            SourceExpression.Validate(bodycustom21, nameof(bodycustom21), required: false);
-            SourceExpression.Validate(bodycustom22, nameof(bodycustom22), required: false);
-            SourceExpression.Validate(bodycustom23, nameof(bodycustom23), required: false);
-            SourceExpression.Validate(bodycustom24, nameof(bodycustom24), required: false);
-            SourceExpression.Validate(bodycustom25, nameof(bodycustom25), required: false);
-            SourceExpression.Validate(bodycustom26, nameof(bodycustom26), required: false);
-            SourceExpression.Validate(bodycustom27, nameof(bodycustom27), required: false);
-            SourceExpression.Validate(bodycustom28, nameof(bodycustom28), required: false);
-            SourceExpression.Validate(bodycustom29, nameof(bodycustom29), required: false);
-            SourceExpression.Validate(bodycustom30, nameof(bodycustom30), required: false);
-            SourceExpression.Validate(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            SourceExpression.Validate(bodyprojectCustom1, nameof(bodyprojectCustom1), required: false);
-            SourceExpression.Validate(bodyprojectCustom2, nameof(bodyprojectCustom2), required: false);
-            SourceExpression.Validate(bodyprojectCustom3, nameof(bodyprojectCustom3), required: false);
-            SourceExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createWorkspace";
@@ -484,46 +424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> UpdateWorkspace([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodycustom1 = null, [WorkflowExpression] Func<string> bodycustom2 = null, [WorkflowExpression] Func<string> bodycustom3 = null, [WorkflowExpression] Func<string> bodycustom4 = null, [WorkflowExpression] Func<string> bodycustom5 = null, [WorkflowExpression] Func<string> bodycustom6 = null, [WorkflowExpression] Func<string> bodycustom7 = null, [WorkflowExpression] Func<string> bodycustom8 = null, [WorkflowExpression] Func<string> bodycustom9 = null, [WorkflowExpression] Func<string> bodycustom10 = null, [WorkflowExpression] Func<string> bodycustom11 = null, [WorkflowExpression] Func<string> bodycustom12 = null, [WorkflowExpression] Func<string> bodycustom13 = null, [WorkflowExpression] Func<string> bodycustom14 = null, [WorkflowExpression] Func<string> bodycustom15 = null, [WorkflowExpression] Func<string> bodycustom16 = null, [WorkflowExpression] Func<double> bodycustom17 = null, [WorkflowExpression] Func<double> bodycustom18 = null, [WorkflowExpression] Func<double> bodycustom19 = null, [WorkflowExpression] Func<double> bodycustom20 = null, [WorkflowExpression] Func<string> bodycustom21 = null, [WorkflowExpression] Func<string> bodycustom22 = null, [WorkflowExpression] Func<string> bodycustom23 = null, [WorkflowExpression] Func<string> bodycustom24 = null, [WorkflowExpression] Func<bool> bodycustom25 = null, [WorkflowExpression] Func<bool> bodycustom26 = null, [WorkflowExpression] Func<bool> bodycustom27 = null, [WorkflowExpression] Func<bool> bodycustom28 = null, [WorkflowExpression] Func<string> bodycustom29 = null, [WorkflowExpression] Func<string> bodycustom30 = null, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<string> bodyprojectCustom1 = null, [WorkflowExpression] Func<string> bodyprojectCustom2 = null, [WorkflowExpression] Func<string> bodyprojectCustom3 = null, [WorkflowExpression] Func<string> bodysubclass = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodycustom1, nameof(bodycustom1), required: false);
-            SourceExpression.Validate(bodycustom2, nameof(bodycustom2), required: false);
-            SourceExpression.Validate(bodycustom3, nameof(bodycustom3), required: false);
-            SourceExpression.Validate(bodycustom4, nameof(bodycustom4), required: false);
-            SourceExpression.Validate(bodycustom5, nameof(bodycustom5), required: false);
-            SourceExpression.Validate(bodycustom6, nameof(bodycustom6), required: false);
-            SourceExpression.Validate(bodycustom7, nameof(bodycustom7), required: false);
-            SourceExpression.Validate(bodycustom8, nameof(bodycustom8), required: false);
-            SourceExpression.Validate(bodycustom9, nameof(bodycustom9), required: false);
-            SourceExpression.Validate(bodycustom10, nameof(bodycustom10), required: false);
-            SourceExpression.Validate(bodycustom11, nameof(bodycustom11), required: false);
-            SourceExpression.Validate(bodycustom12, nameof(bodycustom12), required: false);
-            SourceExpression.Validate(bodycustom13, nameof(bodycustom13), required: false);
-            SourceExpression.Validate(bodycustom14, nameof(bodycustom14), required: false);
-            SourceExpression.Validate(bodycustom15, nameof(bodycustom15), required: false);
-            SourceExpression.Validate(bodycustom16, nameof(bodycustom16), required: false);
-            SourceExpression.Validate(bodycustom17, nameof(bodycustom17), required: false);
-            SourceExpression.Validate(bodycustom18, nameof(bodycustom18), required: false);
-            SourceExpression.Validate(bodycustom19, nameof(bodycustom19), required: false);
-            SourceExpression.Validate(bodycustom20, nameof(bodycustom20), required: false);
-            SourceExpression.Validate(bodycustom21, nameof(bodycustom21), required: false);
-            SourceExpression.Validate(bodycustom22, nameof(bodycustom22), required: false);
-            SourceExpression.Validate(bodycustom23, nameof(bodycustom23), required: false);
-            SourceExpression.Validate(bodycustom24, nameof(bodycustom24), required: false);
-            SourceExpression.Validate(bodycustom25, nameof(bodycustom25), required: false);
-            SourceExpression.Validate(bodycustom26, nameof(bodycustom26), required: false);
-            SourceExpression.Validate(bodycustom27, nameof(bodycustom27), required: false);
-            SourceExpression.Validate(bodycustom28, nameof(bodycustom28), required: false);
-            SourceExpression.Validate(bodycustom29, nameof(bodycustom29), required: false);
-            SourceExpression.Validate(bodycustom30, nameof(bodycustom30), required: false);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            SourceExpression.Validate(bodyprojectCustom1, nameof(bodyprojectCustom1), required: false);
-            SourceExpression.Validate(bodyprojectCustom2, nameof(bodyprojectCustom2), required: false);
-            SourceExpression.Validate(bodyprojectCustom3, nameof(bodyprojectCustom3), required: false);
-            SourceExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateWorkspace";
@@ -780,15 +680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetClassesResponse> GetClasses([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> alias = null, [WorkflowExpression] Func<defaultSecurityInput> defaultSecurity = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<bool> echo = null, [WorkflowExpression] Func<bool> hipaa = null, [WorkflowExpression] Func<bool> indexable = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<bool> subclassRequired = null)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
-            SourceExpression.Validate(alias, nameof(alias), required: false);
-            SourceExpression.Validate(defaultSecurity, nameof(defaultSecurity), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(echo, nameof(echo), required: false);
-            SourceExpression.Validate(hipaa, nameof(hipaa), required: false);
-            SourceExpression.Validate(indexable, nameof(indexable), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(subclassRequired, nameof(subclassRequired), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getClasses";
@@ -820,14 +711,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetSubclassesResponse> GetSubclasses([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> alias = null, [WorkflowExpression] Func<defaultSecurityInput> defaultSecurity = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<bool> echo = null, [WorkflowExpression] Func<bool> hipaa = null, [WorkflowExpression] Func<string> query = null)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
-            SourceExpression.Validate(classId, nameof(classId), required: true);
-            SourceExpression.Validate(alias, nameof(alias), required: false);
-            SourceExpression.Validate(defaultSecurity, nameof(defaultSecurity), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(echo, nameof(echo), required: false);
-            SourceExpression.Validate(hipaa, nameof(hipaa), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getSubclasses";
@@ -856,45 +739,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceTemplatesResponseBody> GetWorkspaceTemplates([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> custom1 = null, [WorkflowExpression] Func<string> custom2 = null, [WorkflowExpression] Func<string> custom3 = null, [WorkflowExpression] Func<string> custom4 = null, [WorkflowExpression] Func<string> custom5 = null, [WorkflowExpression] Func<string> custom6 = null, [WorkflowExpression] Func<string> custom7 = null, [WorkflowExpression] Func<string> custom8 = null, [WorkflowExpression] Func<string> custom9 = null, [WorkflowExpression] Func<string> custom10 = null, [WorkflowExpression] Func<string> custom11 = null, [WorkflowExpression] Func<string> custom12 = null, [WorkflowExpression] Func<double> custom17 = null, [WorkflowExpression] Func<double> custom18 = null, [WorkflowExpression] Func<double> custom19 = null, [WorkflowExpression] Func<double> custom20 = null, [WorkflowExpression] Func<string> custom21 = null, [WorkflowExpression] Func<string> custom22 = null, [WorkflowExpression] Func<string> custom23 = null, [WorkflowExpression] Func<string> custom24 = null, [WorkflowExpression] Func<string> custom21From = null, [WorkflowExpression] Func<string> custom21To = null, [WorkflowExpression] Func<string> custom21Relative = null, [WorkflowExpression] Func<string> custom22From = null, [WorkflowExpression] Func<string> custom22To = null, [WorkflowExpression] Func<string> custom22Relative = null, [WorkflowExpression] Func<string> custom23From = null, [WorkflowExpression] Func<string> custom23To = null, [WorkflowExpression] Func<string> custom23Relative = null, [WorkflowExpression] Func<string> custom24From = null, [WorkflowExpression] Func<string> custom24To = null, [WorkflowExpression] Func<string> custom24Relative = null, [WorkflowExpression] Func<bool> custom25 = null, [WorkflowExpression] Func<bool> custom26 = null, [WorkflowExpression] Func<bool> custom27 = null, [WorkflowExpression] Func<bool> custom28 = null, [WorkflowExpression] Func<string> custom29 = null, [WorkflowExpression] Func<string> custom30 = null)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
-            SourceExpression.Validate(custom1, nameof(custom1), required: false);
-            SourceExpression.Validate(custom2, nameof(custom2), required: false);
-            SourceExpression.Validate(custom3, nameof(custom3), required: false);
-            SourceExpression.Validate(custom4, nameof(custom4), required: false);
-            SourceExpression.Validate(custom5, nameof(custom5), required: false);
-            SourceExpression.Validate(custom6, nameof(custom6), required: false);
-            SourceExpression.Validate(custom7, nameof(custom7), required: false);
-            SourceExpression.Validate(custom8, nameof(custom8), required: false);
-            SourceExpression.Validate(custom9, nameof(custom9), required: false);
-            SourceExpression.Validate(custom10, nameof(custom10), required: false);
-            SourceExpression.Validate(custom11, nameof(custom11), required: false);
-            SourceExpression.Validate(custom12, nameof(custom12), required: false);
-            SourceExpression.Validate(custom17, nameof(custom17), required: false);
-            SourceExpression.Validate(custom18, nameof(custom18), required: false);
-            SourceExpression.Validate(custom19, nameof(custom19), required: false);
-            SourceExpression.Validate(custom20, nameof(custom20), required: false);
-            SourceExpression.Validate(custom21, nameof(custom21), required: false);
-            SourceExpression.Validate(custom22, nameof(custom22), required: false);
-            SourceExpression.Validate(custom23, nameof(custom23), required: false);
-            SourceExpression.Validate(custom24, nameof(custom24), required: false);
-            SourceExpression.Validate(custom21From, nameof(custom21From), required: false);
-            SourceExpression.Validate(custom21To, nameof(custom21To), required: false);
-            SourceExpression.Validate(custom21Relative, nameof(custom21Relative), required: false);
-            SourceExpression.Validate(custom22From, nameof(custom22From), required: false);
-            SourceExpression.Validate(custom22To, nameof(custom22To), required: false);
-            SourceExpression.Validate(custom22Relative, nameof(custom22Relative), required: false);
-            SourceExpression.Validate(custom23From, nameof(custom23From), required: false);
-            SourceExpression.Validate(custom23To, nameof(custom23To), required: false);
-            SourceExpression.Validate(custom23Relative, nameof(custom23Relative), required: false);
-            SourceExpression.Validate(custom24From, nameof(custom24From), required: false);
-            SourceExpression.Validate(custom24To, nameof(custom24To), required: false);
-            SourceExpression.Validate(custom24Relative, nameof(custom24Relative), required: false);
-            SourceExpression.Validate(custom25, nameof(custom25), required: false);
-            SourceExpression.Validate(custom26, nameof(custom26), required: false);
-            SourceExpression.Validate(custom27, nameof(custom27), required: false);
-            SourceExpression.Validate(custom28, nameof(custom28), required: false);
-            SourceExpression.Validate(custom29, nameof(custom29), required: false);
-            SourceExpression.Validate(custom30, nameof(custom30), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getWorkspaceTemplates";
@@ -986,8 +830,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IWorkflowAction EditNVP([WorkflowExpression] Func<bodyobjectTypeInput> bodyobjectType, [WorkflowExpression] Func<string> bodyobjectId)
         {
-            SourceExpression.Validate(bodyobjectType, nameof(bodyobjectType), required: true);
-            SourceExpression.Validate(bodyobjectId, nameof(bodyobjectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/editNVP";
@@ -1020,13 +862,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchFoldersResponseBody> SearchFolders([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodycontainerId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyworkspaceName = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodycontainerId, nameof(bodycontainerId), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodyworkspaceName, nameof(bodyworkspaceName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchFolders";
@@ -1085,8 +920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<bool> bodylatest = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodylatest, nameof(bodylatest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/downloadDocument";
@@ -1125,8 +958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetUserDetailsResponse> GetUserDetails([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyuserId)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getUserDetails";
@@ -1151,7 +982,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> GetWorkspaceProfile([WorkflowExpression] Func<string> bodyworkspaceId)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getWorkspaceProfile";
@@ -1174,8 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetContainerChildrenResponse> GetContainerChildren([WorkflowExpression] Func<string> bodycontainerId, [WorkflowExpression] Func<string> bodycursor = null)
         {
-            SourceExpression.Validate(bodycontainerId, nameof(bodycontainerId), required: true);
-            SourceExpression.Validate(bodycursor, nameof(bodycursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getContainerChildren";
@@ -1204,7 +1032,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetContainerProfileResponseBody> GetContainerProfile([WorkflowExpression] Func<string> bodycontainerId)
         {
-            SourceExpression.Validate(bodycontainerId, nameof(bodycontainerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getContainerProfile";
@@ -1243,8 +1070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<FullDocumentProfileResponseBody> GetDocumentProfile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<bool> bodylatest = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodylatest, nameof(bodylatest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getDocumentProfile";
@@ -1283,49 +1108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<ShortDocumentProfileResponseBody> UpdateDocumentProfile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyalias = null, [WorkflowExpression] Func<string> bodyauthor = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity = null, [WorkflowExpression] Func<bool> bodyisDeclared = null, [WorkflowExpression] Func<bool> bodyisHipaa = null, [WorkflowExpression] Func<string> bodyauditComment = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyOperator = null, [WorkflowExpression] Func<int> bodyretainDays = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<string> bodycustom1 = null, [WorkflowExpression] Func<string> bodycustom2 = null, [WorkflowExpression] Func<string> bodycustom3 = null, [WorkflowExpression] Func<string> bodycustom4 = null, [WorkflowExpression] Func<string> bodycustom5 = null, [WorkflowExpression] Func<string> bodycustom6 = null, [WorkflowExpression] Func<string> bodycustom7 = null, [WorkflowExpression] Func<string> bodycustom8 = null, [WorkflowExpression] Func<string> bodycustom9 = null, [WorkflowExpression] Func<string> bodycustom10 = null, [WorkflowExpression] Func<string> bodycustom11 = null, [WorkflowExpression] Func<string> bodycustom12 = null, [WorkflowExpression] Func<string> bodycustom13 = null, [WorkflowExpression] Func<string> bodycustom14 = null, [WorkflowExpression] Func<string> bodycustom15 = null, [WorkflowExpression] Func<string> bodycustom16 = null, [WorkflowExpression] Func<double> bodycustom17 = null, [WorkflowExpression] Func<double> bodycustom18 = null, [WorkflowExpression] Func<double> bodycustom19 = null, [WorkflowExpression] Func<double> bodycustom20 = null, [WorkflowExpression] Func<string> bodycustom21 = null, [WorkflowExpression] Func<string> bodycustom22 = null, [WorkflowExpression] Func<string> bodycustom23 = null, [WorkflowExpression] Func<string> bodycustom24 = null, [WorkflowExpression] Func<bool> bodycustom25 = null, [WorkflowExpression] Func<bool> bodycustom26 = null, [WorkflowExpression] Func<bool> bodycustom27 = null, [WorkflowExpression] Func<bool> bodycustom28 = null, [WorkflowExpression] Func<string> bodycustom29 = null, [WorkflowExpression] Func<string> bodycustom30 = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyalias, nameof(bodyalias), required: false);
-            SourceExpression.Validate(bodyauthor, nameof(bodyauthor), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            SourceExpression.Validate(bodyisDeclared, nameof(bodyisDeclared), required: false);
-            SourceExpression.Validate(bodyisHipaa, nameof(bodyisHipaa), required: false);
-            SourceExpression.Validate(bodyauditComment, nameof(bodyauditComment), required: false);
-            SourceExpression.Validate(bodyClass, nameof(bodyClass), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyOperator, nameof(bodyOperator), required: false);
-            SourceExpression.Validate(bodyretainDays, nameof(bodyretainDays), required: false);
-            SourceExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
-            SourceExpression.Validate(bodycustom1, nameof(bodycustom1), required: false);
-            SourceExpression.Validate(bodycustom2, nameof(bodycustom2), required: false);
-            SourceExpression.Validate(bodycustom3, nameof(bodycustom3), required: false);
-            SourceExpression.Validate(bodycustom4, nameof(bodycustom4), required: false);
-            SourceExpression.Validate(bodycustom5, nameof(bodycustom5), required: false);
-            SourceExpression.Validate(bodycustom6, nameof(bodycustom6), required: false);
-            SourceExpression.Validate(bodycustom7, nameof(bodycustom7), required: false);
-            SourceExpression.Validate(bodycustom8, nameof(bodycustom8), required: false);
-            SourceExpression.Validate(bodycustom9, nameof(bodycustom9), required: false);
-            SourceExpression.Validate(bodycustom10, nameof(bodycustom10), required: false);
-            SourceExpression.Validate(bodycustom11, nameof(bodycustom11), required: false);
-            SourceExpression.Validate(bodycustom12, nameof(bodycustom12), required: false);
-            SourceExpression.Validate(bodycustom13, nameof(bodycustom13), required: false);
-            SourceExpression.Validate(bodycustom14, nameof(bodycustom14), required: false);
-            SourceExpression.Validate(bodycustom15, nameof(bodycustom15), required: false);
-            SourceExpression.Validate(bodycustom16, nameof(bodycustom16), required: false);
-            SourceExpression.Validate(bodycustom17, nameof(bodycustom17), required: false);
-            SourceExpression.Validate(bodycustom18, nameof(bodycustom18), required: false);
-            SourceExpression.Validate(bodycustom19, nameof(bodycustom19), required: false);
-            SourceExpression.Validate(bodycustom20, nameof(bodycustom20), required: false);
-            SourceExpression.Validate(bodycustom21, nameof(bodycustom21), required: false);
-            SourceExpression.Validate(bodycustom22, nameof(bodycustom22), required: false);
-            SourceExpression.Validate(bodycustom23, nameof(bodycustom23), required: false);
-            SourceExpression.Validate(bodycustom24, nameof(bodycustom24), required: false);
-            SourceExpression.Validate(bodycustom25, nameof(bodycustom25), required: false);
-            SourceExpression.Validate(bodycustom26, nameof(bodycustom26), required: false);
-            SourceExpression.Validate(bodycustom27, nameof(bodycustom27), required: false);
-            SourceExpression.Validate(bodycustom28, nameof(bodycustom28), required: false);
-            SourceExpression.Validate(bodycustom29, nameof(bodycustom29), required: false);
-            SourceExpression.Validate(bodycustom30, nameof(bodycustom30), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateDocumentProfile";
@@ -1600,12 +1382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetGroupMembersResponse> GetGroupMembers([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<logonStatusInput> logonStatus = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> preferredLibrary = null, [WorkflowExpression] Func<string> location = null)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(logonStatus, nameof(logonStatus), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(preferredLibrary, nameof(preferredLibrary), required: false);
-            SourceExpression.Validate(location, nameof(location), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getGroupMembers";
@@ -1631,46 +1407,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchWorkspacesResponseBody> SearchWorkspaces([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyanywhere = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<string> bodycustom1 = null, [WorkflowExpression] Func<string> bodycustom2 = null, [WorkflowExpression] Func<string> bodycustom3 = null, [WorkflowExpression] Func<string> bodycustom4 = null, [WorkflowExpression] Func<string> bodycustom5 = null, [WorkflowExpression] Func<string> bodycustom6 = null, [WorkflowExpression] Func<string> bodycustom7 = null, [WorkflowExpression] Func<string> bodycustom8 = null, [WorkflowExpression] Func<string> bodycustom9 = null, [WorkflowExpression] Func<string> bodycustom10 = null, [WorkflowExpression] Func<string> bodycustom11 = null, [WorkflowExpression] Func<string> bodycustom12 = null, [WorkflowExpression] Func<string> bodycustom13 = null, [WorkflowExpression] Func<string> bodycustom14 = null, [WorkflowExpression] Func<string> bodycustom15 = null, [WorkflowExpression] Func<string> bodycustom16 = null, [WorkflowExpression] Func<string> bodycustom17 = null, [WorkflowExpression] Func<string> bodycustom18 = null, [WorkflowExpression] Func<string> bodycustom19 = null, [WorkflowExpression] Func<string> bodycustom20 = null, [WorkflowExpression] Func<string> bodycustom21From = null, [WorkflowExpression] Func<string> bodycustom21To = null, [WorkflowExpression] Func<string> bodycustom22From = null, [WorkflowExpression] Func<string> bodycustom22To = null, [WorkflowExpression] Func<string> bodycustom23From = null, [WorkflowExpression] Func<string> bodycustom23To = null, [WorkflowExpression] Func<string> bodycustom24From = null, [WorkflowExpression] Func<string> bodycustom24To = null, [WorkflowExpression] Func<bool> bodycustom25 = null, [WorkflowExpression] Func<bool> bodycustom26 = null, [WorkflowExpression] Func<bool> bodycustom27 = null, [WorkflowExpression] Func<bool> bodycustom28 = null, [WorkflowExpression] Func<string> bodycustom29 = null, [WorkflowExpression] Func<string> bodycustom30 = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            SourceExpression.Validate(bodyanywhere, nameof(bodyanywhere), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
-            SourceExpression.Validate(bodycustom1, nameof(bodycustom1), required: false);
-            SourceExpression.Validate(bodycustom2, nameof(bodycustom2), required: false);
-            SourceExpression.Validate(bodycustom3, nameof(bodycustom3), required: false);
-            SourceExpression.Validate(bodycustom4, nameof(bodycustom4), required: false);
-            SourceExpression.Validate(bodycustom5, nameof(bodycustom5), required: false);
-            SourceExpression.Validate(bodycustom6, nameof(bodycustom6), required: false);
-            SourceExpression.Validate(bodycustom7, nameof(bodycustom7), required: false);
-            SourceExpression.Validate(bodycustom8, nameof(bodycustom8), required: false);
-            SourceExpression.Validate(bodycustom9, nameof(bodycustom9), required: false);
-            SourceExpression.Validate(bodycustom10, nameof(bodycustom10), required: false);
-            SourceExpression.Validate(bodycustom11, nameof(bodycustom11), required: false);
-            SourceExpression.Validate(bodycustom12, nameof(bodycustom12), required: false);
-            SourceExpression.Validate(bodycustom13, nameof(bodycustom13), required: false);
-            SourceExpression.Validate(bodycustom14, nameof(bodycustom14), required: false);
-            SourceExpression.Validate(bodycustom15, nameof(bodycustom15), required: false);
-            SourceExpression.Validate(bodycustom16, nameof(bodycustom16), required: false);
-            SourceExpression.Validate(bodycustom17, nameof(bodycustom17), required: false);
-            SourceExpression.Validate(bodycustom18, nameof(bodycustom18), required: false);
-            SourceExpression.Validate(bodycustom19, nameof(bodycustom19), required: false);
-            SourceExpression.Validate(bodycustom20, nameof(bodycustom20), required: false);
-            SourceExpression.Validate(bodycustom21From, nameof(bodycustom21From), required: false);
-            SourceExpression.Validate(bodycustom21To, nameof(bodycustom21To), required: false);
-            SourceExpression.Validate(bodycustom22From, nameof(bodycustom22From), required: false);
-            SourceExpression.Validate(bodycustom22To, nameof(bodycustom22To), required: false);
-            SourceExpression.Validate(bodycustom23From, nameof(bodycustom23From), required: false);
-            SourceExpression.Validate(bodycustom23To, nameof(bodycustom23To), required: false);
-            SourceExpression.Validate(bodycustom24From, nameof(bodycustom24From), required: false);
-            SourceExpression.Validate(bodycustom24To, nameof(bodycustom24To), required: false);
-            SourceExpression.Validate(bodycustom25, nameof(bodycustom25), required: false);
-            SourceExpression.Validate(bodycustom26, nameof(bodycustom26), required: false);
-            SourceExpression.Validate(bodycustom27, nameof(bodycustom27), required: false);
-            SourceExpression.Validate(bodycustom28, nameof(bodycustom28), required: false);
-            SourceExpression.Validate(bodycustom29, nameof(bodycustom29), required: false);
-            SourceExpression.Validate(bodycustom30, nameof(bodycustom30), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchWorkspaces";
@@ -1927,8 +1663,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<AddDocumentReferenceResponse> AddDocumentReference([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyfolderId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addDocumentReference";
@@ -1953,8 +1687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> DeleteDocumentReference([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> folderId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteDocumentReference";
@@ -1971,12 +1703,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<MoveDocumentResponseBody> MoveDocument([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydestinationFolderId, [WorkflowExpression] Func<bool> bodyupdateProfile = null, [WorkflowExpression] Func<bool> bodyupdateSecurity = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodydestinationFolderId, nameof(bodydestinationFolderId), required: true);
-            SourceExpression.Validate(bodyupdateProfile, nameof(bodyupdateProfile), required: false);
-            SourceExpression.Validate(bodyupdateSecurity, nameof(bodyupdateSecurity), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/moveDocument";
@@ -2041,8 +1767,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<CopyDocumentResponse> CopyDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyfolderId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/copyDocument";
@@ -2067,11 +1791,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<CreateFormLinkResponse> CreateFormLink([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodysecurity, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<object> bodylinkData = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodysecurity, nameof(bodysecurity), required: true);
-            SourceExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            SourceExpression.Validate(bodylinkData, nameof(bodylinkData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createFormLink";
@@ -2110,10 +1829,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> UpdateWorkflowState([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodystate, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodystatusMessage = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodystatusMessage, nameof(bodystatusMessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/updateWorkflowState";
@@ -2150,8 +1865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<CoreEMPropertiesResponseBody> GetCoreEMPropertiesForDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<bool> bodylatest = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodylatest, nameof(bodylatest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getCoreEMPropertiesForDocument";
@@ -2190,50 +1903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<PromoteDocumentVersionResponseBody> PromoteDocumentVersion([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<int> bodyversion = null, [WorkflowExpression] Func<string> bodyjournalId = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyalias = null, [WorkflowExpression] Func<string> bodyauthor = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity = null, [WorkflowExpression] Func<bool> bodyisDeclared = null, [WorkflowExpression] Func<bool> bodyisHipaa = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyOperator = null, [WorkflowExpression] Func<int> bodyretainDays = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<string> bodycustom1 = null, [WorkflowExpression] Func<string> bodycustom2 = null, [WorkflowExpression] Func<string> bodycustom3 = null, [WorkflowExpression] Func<string> bodycustom4 = null, [WorkflowExpression] Func<string> bodycustom5 = null, [WorkflowExpression] Func<string> bodycustom6 = null, [WorkflowExpression] Func<string> bodycustom7 = null, [WorkflowExpression] Func<string> bodycustom8 = null, [WorkflowExpression] Func<string> bodycustom9 = null, [WorkflowExpression] Func<string> bodycustom10 = null, [WorkflowExpression] Func<string> bodycustom11 = null, [WorkflowExpression] Func<string> bodycustom12 = null, [WorkflowExpression] Func<string> bodycustom13 = null, [WorkflowExpression] Func<string> bodycustom14 = null, [WorkflowExpression] Func<string> bodycustom15 = null, [WorkflowExpression] Func<string> bodycustom16 = null, [WorkflowExpression] Func<double> bodycustom17 = null, [WorkflowExpression] Func<double> bodycustom18 = null, [WorkflowExpression] Func<double> bodycustom19 = null, [WorkflowExpression] Func<double> bodycustom20 = null, [WorkflowExpression] Func<string> bodycustom21 = null, [WorkflowExpression] Func<string> bodycustom22 = null, [WorkflowExpression] Func<string> bodycustom23 = null, [WorkflowExpression] Func<string> bodycustom24 = null, [WorkflowExpression] Func<bool> bodycustom25 = null, [WorkflowExpression] Func<bool> bodycustom26 = null, [WorkflowExpression] Func<bool> bodycustom27 = null, [WorkflowExpression] Func<bool> bodycustom28 = null, [WorkflowExpression] Func<string> bodycustom29 = null, [WorkflowExpression] Func<string> bodycustom30 = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
-            SourceExpression.Validate(bodyjournalId, nameof(bodyjournalId), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyalias, nameof(bodyalias), required: false);
-            SourceExpression.Validate(bodyauthor, nameof(bodyauthor), required: false);
-            SourceExpression.Validate(bodyClass, nameof(bodyClass), required: false);
-            SourceExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            SourceExpression.Validate(bodyisDeclared, nameof(bodyisDeclared), required: false);
-            SourceExpression.Validate(bodyisHipaa, nameof(bodyisHipaa), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyOperator, nameof(bodyOperator), required: false);
-            SourceExpression.Validate(bodyretainDays, nameof(bodyretainDays), required: false);
-            SourceExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
-            SourceExpression.Validate(bodycustom1, nameof(bodycustom1), required: false);
-            SourceExpression.Validate(bodycustom2, nameof(bodycustom2), required: false);
-            SourceExpression.Validate(bodycustom3, nameof(bodycustom3), required: false);
-            SourceExpression.Validate(bodycustom4, nameof(bodycustom4), required: false);
-            SourceExpression.Validate(bodycustom5, nameof(bodycustom5), required: false);
-            SourceExpression.Validate(bodycustom6, nameof(bodycustom6), required: false);
-            SourceExpression.Validate(bodycustom7, nameof(bodycustom7), required: false);
-            SourceExpression.Validate(bodycustom8, nameof(bodycustom8), required: false);
-            SourceExpression.Validate(bodycustom9, nameof(bodycustom9), required: false);
-            SourceExpression.Validate(bodycustom10, nameof(bodycustom10), required: false);
-            SourceExpression.Validate(bodycustom11, nameof(bodycustom11), required: false);
-            SourceExpression.Validate(bodycustom12, nameof(bodycustom12), required: false);
-            SourceExpression.Validate(bodycustom13, nameof(bodycustom13), required: false);
-            SourceExpression.Validate(bodycustom14, nameof(bodycustom14), required: false);
-            SourceExpression.Validate(bodycustom15, nameof(bodycustom15), required: false);
-            SourceExpression.Validate(bodycustom16, nameof(bodycustom16), required: false);
-            SourceExpression.Validate(bodycustom17, nameof(bodycustom17), required: false);
-            SourceExpression.Validate(bodycustom18, nameof(bodycustom18), required: false);
-            SourceExpression.Validate(bodycustom19, nameof(bodycustom19), required: false);
-            SourceExpression.Validate(bodycustom20, nameof(bodycustom20), required: false);
-            SourceExpression.Validate(bodycustom21, nameof(bodycustom21), required: false);
-            SourceExpression.Validate(bodycustom22, nameof(bodycustom22), required: false);
-            SourceExpression.Validate(bodycustom23, nameof(bodycustom23), required: false);
-            SourceExpression.Validate(bodycustom24, nameof(bodycustom24), required: false);
-            SourceExpression.Validate(bodycustom25, nameof(bodycustom25), required: false);
-            SourceExpression.Validate(bodycustom26, nameof(bodycustom26), required: false);
-            SourceExpression.Validate(bodycustom27, nameof(bodycustom27), required: false);
-            SourceExpression.Validate(bodycustom28, nameof(bodycustom28), required: false);
-            SourceExpression.Validate(bodycustom29, nameof(bodycustom29), required: false);
-            SourceExpression.Validate(bodycustom30, nameof(bodycustom30), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/promoteDocumentVersion";
@@ -2514,7 +2183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetDocumentVersionsResponse> GetDocumentVersions([WorkflowExpression] Func<string> bodydocumentId)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getDocumentVersions";
@@ -2537,8 +2205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<CoreEMPropertiesResponseBody> SetCoreEMPropertiesForDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<bodyemPropertiesInputItem[]> bodyemProperties)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyemProperties, nameof(bodyemProperties), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setCoreEMPropertiesForDocument";
@@ -2563,14 +2229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchCoreEMTaxonomyNodeValuesResponse> SearchCoreEMTaxonomyNodeValues([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodytaxonomyProperty, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<bodyenabledStateInput> bodyenabledState = null, [WorkflowExpression] Func<bool> bodyincludePath = null, [WorkflowExpression] Func<string> bodychildrenOfSsid = null, [WorkflowExpression] Func<bool> bodyimmediateChildrenOnly = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            SourceExpression.Validate(bodyenabledState, nameof(bodyenabledState), required: false);
-            SourceExpression.Validate(bodyincludePath, nameof(bodyincludePath), required: false);
-            SourceExpression.Validate(bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
-            SourceExpression.Validate(bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchCoreEMTaxonomyNodeValues";
@@ -2661,10 +2319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<AddDocumentHistoryEntryResponse> AddDocumentHistoryEntry([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<int> bodyactivityCode, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<int> bodyduration = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyactivityCode, nameof(bodyactivityCode), required: true);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/addDocumentHistoryEntry";
@@ -2701,7 +2355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchUsersResponse> SearchUsers([WorkflowExpression] Func<string> email = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchUsers";
@@ -2718,8 +2371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<DeleteDocumentResponseBody> DeleteDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<bool> deleteAllVersions)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(deleteAllVersions, nameof(deleteAllVersions), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteDocument";
@@ -2736,8 +2387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> CreateDocumentRelation([WorkflowExpression] Func<string> bodyprimaryDocumentId, [WorkflowExpression] Func<string> bodyrelatedDocumentId)
         {
-            SourceExpression.Validate(bodyprimaryDocumentId, nameof(bodyprimaryDocumentId), required: true);
-            SourceExpression.Validate(bodyrelatedDocumentId, nameof(bodyrelatedDocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/createDocumentRelation";
@@ -2762,8 +2411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> DeleteDocumentRelation([WorkflowExpression] Func<string> primaryDocumentId, [WorkflowExpression] Func<string> relatedDocumentId)
         {
-            SourceExpression.Validate(primaryDocumentId, nameof(primaryDocumentId), required: true);
-            SourceExpression.Validate(relatedDocumentId, nameof(relatedDocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteDocumentRelation";
@@ -2782,16 +2429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     {
         public IBodyWorkflowTrigger<SingleSelectedDocumentResponse> SingleSelectedDocument([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<bool> bodyinferFolderId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<string> bodyworkspaces = null, [WorkflowExpression] Func<string> bodyclasses = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodyinferFolderId, nameof(bodyinferFolderId), required: true);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodyworkspaces, nameof(bodyworkspaces), required: false);
-            SourceExpression.Validate(bodyclasses, nameof(bodyclasses), required: false);
-            SourceExpression.Validate(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks/register/singleSelectedDocument";
@@ -2863,15 +2500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse> MultipleSelectedDocuments([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<bool> bodyinferFolderId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<bool> bodyshowFormPerObject = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodyinferFolderId, nameof(bodyinferFolderId), required: true);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodyshowFormPerObject, nameof(bodyshowFormPerObject), required: false);
-            SourceExpression.Validate(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks/register/multipleSelectedDocuments";
@@ -2947,13 +2575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse> SingleSelectedWorkspace([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks/register/singleSelectedWorkspace";
@@ -3011,14 +2632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse> MultipleSelectedWorkspaces([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<bool> bodyshowFormPerObject = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodyshowFormPerObject, nameof(bodyshowFormPerObject), required: false);
-            SourceExpression.Validate(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks/register/multipleSelectedWorkspaces";
@@ -3092,13 +2705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<RegisterGenericWorkflowResponse> RegisterGenericWorkflow([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
-            SourceExpression.Validate(bodyusers, nameof(bodyusers), required: false);
-            SourceExpression.Validate(bodygroups, nameof(bodygroups), required: false);
-            SourceExpression.Validate(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks/register/genericWorkflow";
@@ -3156,10 +2762,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<RegisterFormWorkflowResponse> RegisterFormWorkflow([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hooks/register/formWorkflow";

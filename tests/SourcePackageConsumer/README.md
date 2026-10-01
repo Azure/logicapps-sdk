@@ -34,6 +34,11 @@ compares transformed compiler inputs and hashes the original source,
 and checks published output for leaked compiler assemblies. Build artifacts stay
 under this directory's ignored `obj`/`bin` directories. Empty local Directory.Build
 props and targets isolate the fixture from repository engineering/import behavior.
+`ConnectorConsumer` additionally references only the packaged runtime, explicitly
+excluding package build targets and analyzers. It checks immediate required-null
+and raw-delegate rejection, exact parameter names, reflection calls and a valid
+descriptor without any consumer rewriting. The shared BuildTasks targets file
+must be included in the package; Roslyn must remain absent from runtime references.
 The validation log records the supplied package SHA256, exact dotnet argument
 arrays, exit codes (including the expected generator rejection), and completed
 check markers. These are external package evidence, not xUnit/TRX results.

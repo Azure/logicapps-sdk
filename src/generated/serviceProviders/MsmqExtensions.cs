@@ -16,11 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Msmq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "msmq")]
         public IBodyWorkflowAction<SendMsmqMessageOutput> SendMsmqMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> messageBody, [WorkflowExpression] Func<string> messageLabel = null, [WorkflowExpression] Func<bool> isTransactional = null, [WorkflowExpression] Func<bool> useDeadLetterQueue = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(messageBody, nameof(messageBody), required: true);
-            SourceExpression.Validate(messageLabel, nameof(messageLabel), required: false);
-            SourceExpression.Validate(isTransactional, nameof(isTransactional), required: false);
-            SourceExpression.Validate(useDeadLetterQueue, nameof(useDeadLetterQueue), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -65,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Msmq
     {
         public IBodyWorkflowTrigger<WhenMessageIsAvailableInMsmqQueueOutput> WhenMessageIsAvailableInMsmqQueue([WorkflowExpression] Func<string> queueName)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

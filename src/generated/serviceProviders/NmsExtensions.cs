@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<PeekLockQueueMessagesActionOutput> PeekLockQueueMessagesAction([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<PeekLockQueueMessagesActionInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -41,10 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<PeekLockTopicMessagesActionOutput> PeekLockTopicMessagesAction([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<bool> durable, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<PeekLockTopicMessagesActionInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(durable, nameof(durable), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -70,8 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<ReceiveQueueMessagesActionOutput> ReceiveQueueMessagesAction([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<ReceiveQueueMessagesActionInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -95,10 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<ReceiveTopicMessagesActionOutput> ReceiveTopicMessagesAction([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<bool> durable, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<ReceiveTopicMessagesActionInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(durable, nameof(durable), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -124,11 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<SendMessageActionOutput> SendMessageAction([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<bool> isTopic, [WorkflowExpression] Func<object> contentData, [WorkflowExpression] Func<SendMessageActionInputContentTypeType> contentType, [WorkflowExpression] Func<SendMessageActionInputSendMessageOptionsType> sendMessageOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(isTopic, nameof(isTopic), required: true);
-            SourceExpression.Validate(contentData, nameof(contentData), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(sendMessageOptions, nameof(sendMessageOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -155,9 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<CheckDestinationAccessActionOutput> CheckDestinationAccessAction([WorkflowExpression] Func<CheckDestinationAccessActionInputDestinationTypeType> destinationType, [WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<bool> brokerDoesNotAutoCreateDestinations)
         {
-            SourceExpression.Validate(destinationType, nameof(destinationType), required: true);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(brokerDoesNotAutoCreateDestinations, nameof(brokerDoesNotAutoCreateDestinations), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -178,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<AcknowledgeSessionActionOutput> AcknowledgeSessionAction([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<AcknowledgeSessionActionInputAcknowledgeActionType> acknowledgeAction)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(acknowledgeAction, nameof(acknowledgeAction), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -199,8 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "nms")]
         public IBodyWorkflowAction<DeleteDurableSubscriptionActionOutput> DeleteDurableSubscriptionAction([WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> clientId = null)
         {
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(clientId, nameof(clientId), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -226,8 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
     {
         public IBodyWorkflowTrigger<PeekLockQueueMessagesTriggerOutput> PeekLockQueueMessagesTrigger([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<PeekLockQueueMessagesTriggerInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -250,10 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
 
         public IBodyWorkflowTrigger<PeekLockTopicMessagesTriggerOutput> PeekLockTopicMessagesTrigger([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<bool> durable, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<PeekLockTopicMessagesTriggerInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(durable, nameof(durable), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -278,8 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
 
         public IBodyWorkflowTrigger<ReceiveQueueMessagesTriggerOutput> ReceiveQueueMessagesTrigger([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<ReceiveQueueMessagesTriggerInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -302,10 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
 
         public IBodyWorkflowTrigger<ReceiveTopicMessagesTriggerOutput> ReceiveTopicMessagesTrigger([WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> durable, [WorkflowExpression] Func<ReceiveTopicMessagesTriggerInputGetMessagesOptionsType> getMessagesOptions = null)
         {
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(durable, nameof(durable), required: true);
-            SourceExpression.Validate(getMessagesOptions, nameof(getMessagesOptions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -330,9 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
 
         public IBodyWorkflowTrigger<PeekLockActiveMqAdvisoryTopicEventsTriggerOutput> PeekLockActiveMqAdvisoryTopicEventsTrigger([WorkflowExpression] Func<PeekLockActiveMqAdvisoryTopicEventsTriggerInputAdvisoryCategoryType> advisoryCategory, [WorkflowExpression] Func<PeekLockActiveMqAdvisoryTopicEventsTriggerInputDestinationTypeType> destinationType = null, [WorkflowExpression] Func<string> destinationName = null)
         {
-            SourceExpression.Validate(advisoryCategory, nameof(advisoryCategory), required: true);
-            SourceExpression.Validate(destinationType, nameof(destinationType), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -360,9 +321,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Nms
 
         public IBodyWorkflowTrigger<ReceiveActiveMqAdvisoryTopicEventsTriggerOutput> ReceiveActiveMqAdvisoryTopicEventsTrigger([WorkflowExpression] Func<ReceiveActiveMqAdvisoryTopicEventsTriggerInputAdvisoryCategoryType> advisoryCategory, [WorkflowExpression] Func<ReceiveActiveMqAdvisoryTopicEventsTriggerInputDestinationTypeType> destinationType = null, [WorkflowExpression] Func<string> destinationName = null)
         {
-            SourceExpression.Validate(advisoryCategory, nameof(advisoryCategory), required: true);
-            SourceExpression.Validate(destinationType, nameof(destinationType), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

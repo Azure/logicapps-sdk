@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<AdminAreasResponseItem[]> AdminAreas([WorkflowExpression] Func<string> countryCode, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/v1/adminareas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryCode, 1));
@@ -35,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<CountryListResponseItem[]> CountryList([WorkflowExpression] Func<string> regionCode, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(regionCode, nameof(regionCode), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/v1/countries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionCode, 1));
@@ -53,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<RegionListResponseItem[]> RegionList([WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations/v1/regions";
@@ -70,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<TopCitiesListResponseItem[]> TopCitiesList([WorkflowExpression] Func<groupInput> group, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(group, nameof(group), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/v1/topcities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(group, 1));
@@ -91,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<AutocompleteCitiesResponseItem[]> AutocompleteCities([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations/v1/cities/autocomplete";
@@ -110,10 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<GeopositionSearchResponse> GeopositionSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null, [WorkflowExpression] Func<bool> toplevel = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
-            SourceExpression.Validate(toplevel, nameof(toplevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations/v1/cities/geoposition/search";
@@ -135,11 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<DailyForcastsResponse> DailyForcasts([WorkflowExpression] Func<durationInput> duration, [WorkflowExpression] Func<int> locationKey, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null, [WorkflowExpression] Func<bool> metric = null)
         {
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
-            SourceExpression.Validate(metric, nameof(metric), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forecasts/v1/daily/{0}day/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(duration, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(locationKey, 1));
@@ -160,11 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<HourlyForcastsResponseItem[]> HourlyForcasts([WorkflowExpression] Func<durationInput> duration, [WorkflowExpression] Func<int> locationKey, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null, [WorkflowExpression] Func<bool> metric = null)
         {
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
-            SourceExpression.Validate(metric, nameof(metric), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forecasts/v1/hourly/{0}hour/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(duration, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(locationKey, 1));
@@ -185,9 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<CurrentConditionsResponseItem[]> CurrentConditions([WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currentconditions/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));
@@ -206,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<CurrentConditionsTopCitiesResponseItem[]> CurrentConditionsTopCities([WorkflowExpression] Func<groupInput> group, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(group, nameof(group), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currentconditions/v1/topcities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(group, 1));
@@ -224,9 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<HistoricalCurrentConditions24HResponseItem[]> HistoricalCurrentConditions24H([WorkflowExpression] Func<int> locationKey, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currentconditions/v1/{0}/historical/24", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(locationKey, 1));
@@ -245,9 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<HistoricalCurrentConditions6HResponseItem[]> HistoricalCurrentConditions6H([WorkflowExpression] Func<int> locationKey, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currentconditions/v1/{0}/historical", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(locationKey, 1));
@@ -266,11 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<DailyIndexValuesByGroupOfIndiciesResponseItem[]> DailyIndexValuesByGroupOfIndicies([WorkflowExpression] Func<durationInput> duration, [WorkflowExpression] Func<int> locationKey, [WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/indices/v1/daily/{0}day/{1}/groups/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(duration, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(locationKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -289,11 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<DailyIndexValuesBySpecificIndexResponseItem[]> DailyIndexValuesBySpecificIndex([WorkflowExpression] Func<durationInput> duration, [WorkflowExpression] Func<int> locationKey, [WorkflowExpression] Func<int> indexId, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(indexId, nameof(indexId), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/indices/v1/daily/{0}day/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(duration, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(locationKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(indexId, 1));
@@ -312,10 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<DailyIndexValuesForAllIndicesResponseItem[]> DailyIndexValuesForAllIndices([WorkflowExpression] Func<int> locationKey, [WorkflowExpression] Func<durationInput> duration, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(duration, nameof(duration), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/indices/v1/daily/{0}day/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(duration, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(locationKey, 1));
@@ -362,8 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<ListOfIndiciesInAGroupByGroupIdResponseItem[]> ListOfIndiciesInAGroupByGroupId([WorkflowExpression] Func<int> groupId, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/indices/v1/daily/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));
@@ -380,9 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<SearchLocationKeyResponse> SearchLocationKey([WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));
@@ -403,9 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<SearchLocationIPResponse> SearchLocationIP([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations/v1/cities/ipaddress";
@@ -427,8 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<AlarmOneResponseItem[]> AlarmOne([WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alarms/v1/1day/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));
@@ -445,8 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<AlarmFiveResponseItem[]> AlarmFive([WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alarms/v1/5day/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));
@@ -463,8 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<AlarmTenResponseItem[]> AlarmTen([WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alarms/v1/10day/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));
@@ -481,8 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<AlarmFifteenResponseItem[]> AlarmFifteen([WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alarms/v1/15day/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));
@@ -527,8 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<LanguageTranslationsGroupResponseItem[]> LanguageTranslationsGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/translations/v1/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -545,9 +477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<AlertLocationResponseItem[]> AlertLocation([WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> details = null)
         {
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(details, nameof(details), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alerts/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));
@@ -566,9 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
         public IBodyWorkflowAction<ImageryResponseItem[]> Imagery([WorkflowExpression] Func<string> resolution, [WorkflowExpression] Func<string> locationKey, [WorkflowExpression] Func<string> language = null)
         {
-            SourceExpression.Validate(resolution, nameof(resolution), required: true);
-            SourceExpression.Validate(locationKey, nameof(locationKey), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/imagery/v1/maps/radsat/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resolution, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationKey, 1));

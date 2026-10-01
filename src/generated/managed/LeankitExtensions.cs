@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CreateBoardResponse> CreateBoard([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/io/board";
@@ -44,22 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CreateCardResponse> CreateCard([WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylaneId = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<int> bodysize = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<string> bodyplannedFinishDate = null, [WorkflowExpression] Func<string> bodycardId = null, [WorkflowExpression] Func<bool> bodyisBlocked = null, [WorkflowExpression] Func<string> bodyblockReason = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkLabel = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkURL = null, [WorkflowExpression] Func<string[]> bodyassignees = null)
         {
-            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodylaneId, nameof(bodylaneId), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            SourceExpression.Validate(bodyplannedFinishDate, nameof(bodyplannedFinishDate), required: false);
-            SourceExpression.Validate(bodycardId, nameof(bodycardId), required: false);
-            SourceExpression.Validate(bodyisBlocked, nameof(bodyisBlocked), required: false);
-            SourceExpression.Validate(bodyblockReason, nameof(bodyblockReason), required: false);
-            SourceExpression.Validate(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
-            SourceExpression.Validate(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
-            SourceExpression.Validate(bodyassignees, nameof(bodyassignees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/io/card";
@@ -172,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CardResponse> GetCard([WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -187,22 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CardResponse> UpdateCard([WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylaneId = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<int> bodysize = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyplannedStartDateTime = null, [WorkflowExpression] Func<string> bodyplannedFinishDateTime = null, [WorkflowExpression] Func<string> bodycardId = null, [WorkflowExpression] Func<bool> bodyisBlocked = null, [WorkflowExpression] Func<string> bodyblockReason = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkLabel = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkURL = null, [WorkflowExpression] Func<string[]> bodyassignees = null)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodylaneId, nameof(bodylaneId), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodyplannedStartDateTime, nameof(bodyplannedStartDateTime), required: false);
-            SourceExpression.Validate(bodyplannedFinishDateTime, nameof(bodyplannedFinishDateTime), required: false);
-            SourceExpression.Validate(bodycardId, nameof(bodycardId), required: false);
-            SourceExpression.Validate(bodyisBlocked, nameof(bodyisBlocked), required: false);
-            SourceExpression.Validate(bodyblockReason, nameof(bodyblockReason), required: false);
-            SourceExpression.Validate(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
-            SourceExpression.Validate(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
-            SourceExpression.Validate(bodyassignees, nameof(bodyassignees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -321,7 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CardResponse> DeleteCard([WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -336,8 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<AddCommentResponse> AddComment([WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}/comment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -362,8 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
     {
         public IBodyWorkflowTrigger<CardResponse[]> TrigNewCard([WorkflowExpression] Func<string> board, [WorkflowExpression] Func<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(board, nameof(board), required: true);
-            SourceExpression.Validate(lane, nameof(lane), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add_card_trigger/io/card";
@@ -379,8 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
         public IBodyWorkflowTrigger<CardResponse[]> TrigUpdateCard([WorkflowExpression] Func<string> board, [WorkflowExpression] Func<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(board, nameof(board), required: true);
-            SourceExpression.Validate(lane, nameof(lane), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/update_card_trigger/io/card";

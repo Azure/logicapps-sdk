@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IChart[]> GetTopicCharts([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/charts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -31,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic> CreateTopicAfter([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyicon)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyicon, nameof(bodyicon), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -63,9 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic> DeleteTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -80,9 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic> GetTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -97,10 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic> UpdateTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -127,12 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic> CreateChildTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyicon)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyicon, nameof(bodyicon), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -159,9 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic[]> GetTopicChildren([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -176,9 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField[]> GetTopicFields([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -193,11 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> GetFieldByDcvAndFieldsetId([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -212,30 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateBooleanSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<bool> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/bool/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -386,30 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateTextSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/text/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -560,30 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateTextMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string[]> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multitext/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -734,30 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateNumberSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<int> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/number/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -908,30 +776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateNumberMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<int[]> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multinumber/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -1082,30 +926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateDecimalSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<double> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/decimal/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -1256,30 +1076,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateDecimalMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<double[]> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidecimal/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -1430,30 +1226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateDateSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/date/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -1604,30 +1376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateDateMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string[]> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidate/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -1778,29 +1526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateListSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodysetOrder, nameof(bodysetOrder), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodytopicId, nameof(bodytopicId), required: false);
-            SourceExpression.Validate(bodysetName, nameof(bodysetName), required: false);
-            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            SourceExpression.Validate(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: false);
-            SourceExpression.Validate(bodyReadonly, nameof(bodyReadonly), required: false);
-            SourceExpression.Validate(bodyusage, nameof(bodyusage), required: false);
-            SourceExpression.Validate(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
-            SourceExpression.Validate(bodyrelationshipCategoryicon, nameof(bodyrelationshipCategoryicon), required: false);
-            SourceExpression.Validate(bodycharacteristicdcv, nameof(bodycharacteristicdcv), required: false);
-            SourceExpression.Validate(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
-            SourceExpression.Validate(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
-            SourceExpression.Validate(bodyopenLocation, nameof(bodyopenLocation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/list/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -1961,16 +1686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateRelationshipSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodydatadcv = null, [WorkflowExpression] Func<string> bodydataname = null, [WorkflowExpression] Func<string> bodydataicon = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodydatadcv, nameof(bodydatadcv), required: false);
-            SourceExpression.Validate(bodydataname, nameof(bodydataname), required: false);
-            SourceExpression.Validate(bodydataicon, nameof(bodydataicon), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationship/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -2029,14 +1744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateRelationshipMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<RelationshipElement[]> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multirelationship/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -2075,13 +1782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateRelationshipListField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyfieldsetId = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodyfieldId, nameof(bodyfieldId), required: false);
-            SourceExpression.Validate(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationshiplist/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -2122,24 +1822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateFields([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<SingleTextField[]> bodysingleTextFields = null, [WorkflowExpression] Func<MultiTextField[]> bodymultiTextFields = null, [WorkflowExpression] Func<SingleNumberField[]> bodysingleNumberFields = null, [WorkflowExpression] Func<MultiNumberField[]> bodymultiNumberFields = null, [WorkflowExpression] Func<SingleBooleanField[]> bodysingleBooleanFields = null, [WorkflowExpression] Func<SingleDecimalField[]> bodysingleDecimalFields = null, [WorkflowExpression] Func<MultiDecimalField[]> bodymultiDecimalFields = null, [WorkflowExpression] Func<SingleDateField[]> bodysingleDateFields = null, [WorkflowExpression] Func<MultiDateField[]> bodymultiDateFields = null, [WorkflowExpression] Func<SingleListField[]> bodysingleListFields = null, [WorkflowExpression] Func<RelationshipField[]> bodysingleRelationshipFields = null, [WorkflowExpression] Func<MultiRelationshipField[]> bodymultiRelationshipFields = null, [WorkflowExpression] Func<RelationshipListField[]> bodysingleRelationshipListFields = null, [WorkflowExpression] Func<SingleHyperlinkField[]> bodysingleHyperlinkFields = null, [WorkflowExpression] Func<MultiHyperlinkField[]> bodymultiHyperlinkFields = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(bodysingleTextFields, nameof(bodysingleTextFields), required: false);
-            SourceExpression.Validate(bodymultiTextFields, nameof(bodymultiTextFields), required: false);
-            SourceExpression.Validate(bodysingleNumberFields, nameof(bodysingleNumberFields), required: false);
-            SourceExpression.Validate(bodymultiNumberFields, nameof(bodymultiNumberFields), required: false);
-            SourceExpression.Validate(bodysingleBooleanFields, nameof(bodysingleBooleanFields), required: false);
-            SourceExpression.Validate(bodysingleDecimalFields, nameof(bodysingleDecimalFields), required: false);
-            SourceExpression.Validate(bodymultiDecimalFields, nameof(bodymultiDecimalFields), required: false);
-            SourceExpression.Validate(bodysingleDateFields, nameof(bodysingleDateFields), required: false);
-            SourceExpression.Validate(bodymultiDateFields, nameof(bodymultiDateFields), required: false);
-            SourceExpression.Validate(bodysingleListFields, nameof(bodysingleListFields), required: false);
-            SourceExpression.Validate(bodysingleRelationshipFields, nameof(bodysingleRelationshipFields), required: false);
-            SourceExpression.Validate(bodymultiRelationshipFields, nameof(bodymultiRelationshipFields), required: false);
-            SourceExpression.Validate(bodysingleRelationshipListFields, nameof(bodysingleRelationshipListFields), required: false);
-            SourceExpression.Validate(bodysingleHyperlinkFields, nameof(bodysingleHyperlinkFields), required: false);
-            SourceExpression.Validate(bodymultiHyperlinkFields, nameof(bodymultiHyperlinkFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2250,12 +1932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateSingleHyperlinkField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/hyperlink/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -2282,12 +1958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IField> UpdateMultiHyperlinkField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string[]> bodydata = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(fieldsetId, nameof(fieldsetId), required: true);
-            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multihyperlink/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
@@ -2314,9 +1984,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IWorkflowAction MoveTopicToTop([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movetotop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2331,9 +1998,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IWorkflowAction MoveTopicToBottom([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movetobottom", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2348,9 +2012,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IWorkflowAction MoveTopicUp([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/moveup", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2365,9 +2026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IWorkflowAction MoveTopicDown([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movedown", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2382,9 +2040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IWorkflowAction MoveTopicLevelUp([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movelevelup", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2399,9 +2054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IWorkflowAction MoveTopicLevelDown([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/moveleveldown", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2416,9 +2068,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IRelationship[]> GetTopicRelations([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/relations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2433,11 +2082,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<IRelationship> SaveRelation([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> bodyfromElementDcv = null, [WorkflowExpression] Func<string> bodytoElementDcv = null, [WorkflowExpression] Func<bodyrelationshipTypeInput> bodyrelationshipType = null)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(bodyfromElementDcv, nameof(bodyfromElementDcv), required: false);
-            SourceExpression.Validate(bodytoElementDcv, nameof(bodytoElementDcv), required: false);
-            SourceExpression.Validate(bodyrelationshipType, nameof(bodyrelationshipType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/relation", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1));
@@ -2476,10 +2120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IWorkflowAction DeleteRelation([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> relationId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
-            SourceExpression.Validate(relationId, nameof(relationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/relation/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relationId, 1));
@@ -2494,8 +2134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic> GetTopicRoot([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/root", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1));
@@ -2510,9 +2148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopicPath> GetPathToRoot([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/path/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2527,9 +2162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic[]> GetTopicSiblings([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/siblings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2544,8 +2176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<ITopic[]> GetRelationCategories([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/categories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1));
@@ -2560,9 +2190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<JToken> GetTopicTypes([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicId, nameof(topicId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/types", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
@@ -2577,9 +2204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<JToken> GetTopicIcons([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicType)
         {
-            SourceExpression.Validate(dbId, nameof(dbId), required: true);
-            SourceExpression.Validate(dataLanguage, nameof(dataLanguage), required: true);
-            SourceExpression.Validate(topicType, nameof(topicType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/types/{2}/icons", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicType, 1));

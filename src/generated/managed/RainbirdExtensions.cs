@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<StartResponse> Start([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> kmId)
         {
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(kmId, nameof(kmId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/start/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(kmId, 1));
@@ -31,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<InjectResponse> Inject([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/inject", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -50,11 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Query([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> bodyrelationship, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyObject = null)
         {
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(bodyrelationship, nameof(bodyrelationship), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/query", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -90,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Response([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bodyanswersInputItem[]> bodyanswers = null)
         {
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(bodyanswers, nameof(bodyanswers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/response", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -120,8 +107,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Undo([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/undo", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -143,9 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<EvidenceResponse> Evidence([WorkflowExpression] Func<environmentInput> environment, [WorkflowExpression] Func<string> factId, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(environment, nameof(environment), required: true);
-            SourceExpression.Validate(factId, nameof(factId), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/analysis/evidence/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(factId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1));
@@ -161,7 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<string> Version([WorkflowExpression] Func<environmentInput> environment)
         {
-            SourceExpression.Validate(environment, nameof(environment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/version";

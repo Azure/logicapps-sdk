@@ -14,42 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAGE100CreateNewCustomerResponse> SAGE100CreateNewCustomer([WorkflowExpression] Func<string> bodyaRDivisionNo = null, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<bool> bodybatchFax = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontactCode = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<bool> bodycreditHold = null, [WorkflowExpression] Func<int> bodycreditLimit = null, [WorkflowExpression] Func<int> bodycustomerDiscountRate = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodycustomerNo = null, [WorkflowExpression] Func<string> bodycustomerType = null, [WorkflowExpression] Func<string> bodydefaultCreditCardPmtType = null, [WorkflowExpression] Func<string> bodydefaultItemCode = null, [WorkflowExpression] Func<string> bodydefaultPaymentType = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyfaxNo = null, [WorkflowExpression] Func<bool> bodyopenItemCustomer = null, [WorkflowExpression] Func<string> bodypriceLevel = null, [WorkflowExpression] Func<string> bodyprimaryShipToCode = null, [WorkflowExpression] Func<bool> bodyprintDunningMessage = null, [WorkflowExpression] Func<bool> bodyresidentialAddress = null, [WorkflowExpression] Func<string> bodysalespersonNo = null, [WorkflowExpression] Func<string> bodyshipMethod = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodystatementCycle = null, [WorkflowExpression] Func<string> bodytaxExemptNo = null, [WorkflowExpression] Func<string> bodytaxSchedule = null, [WorkflowExpression] Func<string> bodytelephoneExt = null, [WorkflowExpression] Func<string> bodytelephoneNo = null, [WorkflowExpression] Func<string> bodytermsCode = null, [WorkflowExpression] Func<string> bodyuRLAddress = null, [WorkflowExpression] Func<string> bodyzipCode = null)
         {
-            SourceExpression.Validate(bodyaRDivisionNo, nameof(bodyaRDivisionNo), required: false);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            SourceExpression.Validate(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
-            SourceExpression.Validate(bodybatchFax, nameof(bodybatchFax), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodycontactCode, nameof(bodycontactCode), required: false);
-            SourceExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: false);
-            SourceExpression.Validate(bodycreditHold, nameof(bodycreditHold), required: false);
-            SourceExpression.Validate(bodycreditLimit, nameof(bodycreditLimit), required: false);
-            SourceExpression.Validate(bodycustomerDiscountRate, nameof(bodycustomerDiscountRate), required: false);
-            SourceExpression.Validate(bodycustomerName, nameof(bodycustomerName), required: false);
-            SourceExpression.Validate(bodycustomerNo, nameof(bodycustomerNo), required: false);
-            SourceExpression.Validate(bodycustomerType, nameof(bodycustomerType), required: false);
-            SourceExpression.Validate(bodydefaultCreditCardPmtType, nameof(bodydefaultCreditCardPmtType), required: false);
-            SourceExpression.Validate(bodydefaultItemCode, nameof(bodydefaultItemCode), required: false);
-            SourceExpression.Validate(bodydefaultPaymentType, nameof(bodydefaultPaymentType), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyfaxNo, nameof(bodyfaxNo), required: false);
-            SourceExpression.Validate(bodyopenItemCustomer, nameof(bodyopenItemCustomer), required: false);
-            SourceExpression.Validate(bodypriceLevel, nameof(bodypriceLevel), required: false);
-            SourceExpression.Validate(bodyprimaryShipToCode, nameof(bodyprimaryShipToCode), required: false);
-            SourceExpression.Validate(bodyprintDunningMessage, nameof(bodyprintDunningMessage), required: false);
-            SourceExpression.Validate(bodyresidentialAddress, nameof(bodyresidentialAddress), required: false);
-            SourceExpression.Validate(bodysalespersonNo, nameof(bodysalespersonNo), required: false);
-            SourceExpression.Validate(bodyshipMethod, nameof(bodyshipMethod), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodystatementCycle, nameof(bodystatementCycle), required: false);
-            SourceExpression.Validate(bodytaxExemptNo, nameof(bodytaxExemptNo), required: false);
-            SourceExpression.Validate(bodytaxSchedule, nameof(bodytaxSchedule), required: false);
-            SourceExpression.Validate(bodytelephoneExt, nameof(bodytelephoneExt), required: false);
-            SourceExpression.Validate(bodytelephoneNo, nameof(bodytelephoneNo), required: false);
-            SourceExpression.Validate(bodytermsCode, nameof(bodytermsCode), required: false);
-            SourceExpression.Validate(bodyuRLAddress, nameof(bodyuRLAddress), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/SAGE100/customer";
@@ -286,52 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAGE100CreateNewSalesOrderResponse> SAGE100CreateNewSalesOrder([WorkflowExpression] Func<string> bodyaRDivisionNo = null, [WorkflowExpression] Func<bool> bodybatchFax = null, [WorkflowExpression] Func<string> bodybillToAddress1 = null, [WorkflowExpression] Func<string> bodybillToAddress2 = null, [WorkflowExpression] Func<string> bodybillToAddress3 = null, [WorkflowExpression] Func<string> bodybillToCity = null, [WorkflowExpression] Func<string> bodybillToCountryCode = null, [WorkflowExpression] Func<string> bodybillToName = null, [WorkflowExpression] Func<string> bodybillToState = null, [WorkflowExpression] Func<string> bodybillToZipCode = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyconfirmTo = null, [WorkflowExpression] Func<string> bodycustomerNo = null, [WorkflowExpression] Func<string> bodycustomerPONo = null, [WorkflowExpression] Func<string> bodycycleCode = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyfOB = null, [WorkflowExpression] Func<string> bodyfaxNo = null, [WorkflowExpression] Func<string> bodymasterRepeatingOrderNo = null, [WorkflowExpression] Func<int> bodynumberOfShippingLabels = null, [WorkflowExpression] Func<string> bodyorderDate = null, [WorkflowExpression] Func<string> bodyorderStatus = null, [WorkflowExpression] Func<string> bodyorderType = null, [WorkflowExpression] Func<bool> bodyprintPickingSheets = null, [WorkflowExpression] Func<bool> bodyprintSalesOrders = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<string> bodysalesOrderNo = null, [WorkflowExpression] Func<string> bodysalespersonNo = null, [WorkflowExpression] Func<string> bodyshipExpireDate = null, [WorkflowExpression] Func<string> bodyshipToAddress1 = null, [WorkflowExpression] Func<string> bodyshipToAddress2 = null, [WorkflowExpression] Func<string> bodyshipToAddress3 = null, [WorkflowExpression] Func<string> bodyshipToCity = null, [WorkflowExpression] Func<string> bodyshipToCode = null, [WorkflowExpression] Func<string> bodyshipToCountryCode = null, [WorkflowExpression] Func<string> bodyshipToName = null, [WorkflowExpression] Func<string> bodyshipToState = null, [WorkflowExpression] Func<string> bodyshipToZipCode = null, [WorkflowExpression] Func<string> bodyshipVia = null, [WorkflowExpression] Func<int> bodyshipWeight = null, [WorkflowExpression] Func<string> bodyshipZoneActual = null, [WorkflowExpression] Func<string> bodysplitCommissions = null, [WorkflowExpression] Func<string> bodytaxExemptNo = null, [WorkflowExpression] Func<string> bodytaxSchedule = null, [WorkflowExpression] Func<string> bodytermsCode = null, [WorkflowExpression] Func<string> bodywarehouseCode = null)
         {
-            SourceExpression.Validate(bodyaRDivisionNo, nameof(bodyaRDivisionNo), required: false);
-            SourceExpression.Validate(bodybatchFax, nameof(bodybatchFax), required: false);
-            SourceExpression.Validate(bodybillToAddress1, nameof(bodybillToAddress1), required: false);
-            SourceExpression.Validate(bodybillToAddress2, nameof(bodybillToAddress2), required: false);
-            SourceExpression.Validate(bodybillToAddress3, nameof(bodybillToAddress3), required: false);
-            SourceExpression.Validate(bodybillToCity, nameof(bodybillToCity), required: false);
-            SourceExpression.Validate(bodybillToCountryCode, nameof(bodybillToCountryCode), required: false);
-            SourceExpression.Validate(bodybillToName, nameof(bodybillToName), required: false);
-            SourceExpression.Validate(bodybillToState, nameof(bodybillToState), required: false);
-            SourceExpression.Validate(bodybillToZipCode, nameof(bodybillToZipCode), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyconfirmTo, nameof(bodyconfirmTo), required: false);
-            SourceExpression.Validate(bodycustomerNo, nameof(bodycustomerNo), required: false);
-            SourceExpression.Validate(bodycustomerPONo, nameof(bodycustomerPONo), required: false);
-            SourceExpression.Validate(bodycycleCode, nameof(bodycycleCode), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyfOB, nameof(bodyfOB), required: false);
-            SourceExpression.Validate(bodyfaxNo, nameof(bodyfaxNo), required: false);
-            SourceExpression.Validate(bodymasterRepeatingOrderNo, nameof(bodymasterRepeatingOrderNo), required: false);
-            SourceExpression.Validate(bodynumberOfShippingLabels, nameof(bodynumberOfShippingLabels), required: false);
-            SourceExpression.Validate(bodyorderDate, nameof(bodyorderDate), required: false);
-            SourceExpression.Validate(bodyorderStatus, nameof(bodyorderStatus), required: false);
-            SourceExpression.Validate(bodyorderType, nameof(bodyorderType), required: false);
-            SourceExpression.Validate(bodyprintPickingSheets, nameof(bodyprintPickingSheets), required: false);
-            SourceExpression.Validate(bodyprintSalesOrders, nameof(bodyprintSalesOrders), required: false);
-            SourceExpression.Validate(bodysalesOrderLineItem, nameof(bodysalesOrderLineItem), required: false);
-            SourceExpression.Validate(bodysalesOrderNo, nameof(bodysalesOrderNo), required: false);
-            SourceExpression.Validate(bodysalespersonNo, nameof(bodysalespersonNo), required: false);
-            SourceExpression.Validate(bodyshipExpireDate, nameof(bodyshipExpireDate), required: false);
-            SourceExpression.Validate(bodyshipToAddress1, nameof(bodyshipToAddress1), required: false);
-            SourceExpression.Validate(bodyshipToAddress2, nameof(bodyshipToAddress2), required: false);
-            SourceExpression.Validate(bodyshipToAddress3, nameof(bodyshipToAddress3), required: false);
-            SourceExpression.Validate(bodyshipToCity, nameof(bodyshipToCity), required: false);
-            SourceExpression.Validate(bodyshipToCode, nameof(bodyshipToCode), required: false);
-            SourceExpression.Validate(bodyshipToCountryCode, nameof(bodyshipToCountryCode), required: false);
-            SourceExpression.Validate(bodyshipToName, nameof(bodyshipToName), required: false);
-            SourceExpression.Validate(bodyshipToState, nameof(bodyshipToState), required: false);
-            SourceExpression.Validate(bodyshipToZipCode, nameof(bodyshipToZipCode), required: false);
-            SourceExpression.Validate(bodyshipVia, nameof(bodyshipVia), required: false);
-            SourceExpression.Validate(bodyshipWeight, nameof(bodyshipWeight), required: false);
-            SourceExpression.Validate(bodyshipZoneActual, nameof(bodyshipZoneActual), required: false);
-            SourceExpression.Validate(bodysplitCommissions, nameof(bodysplitCommissions), required: false);
-            SourceExpression.Validate(bodytaxExemptNo, nameof(bodytaxExemptNo), required: false);
-            SourceExpression.Validate(bodytaxSchedule, nameof(bodytaxSchedule), required: false);
-            SourceExpression.Validate(bodytermsCode, nameof(bodytermsCode), required: false);
-            SourceExpression.Validate(bodywarehouseCode, nameof(bodywarehouseCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/SAGE100/salesorder";
@@ -628,19 +546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse> CommercientCPQCreateNewCustomer([WorkflowExpression] Func<string> bodybillingCity = null, [WorkflowExpression] Func<string> bodybillingCounty = null, [WorkflowExpression] Func<string> bodybillingPostalCode = null, [WorkflowExpression] Func<string> bodybillingState = null, [WorkflowExpression] Func<string> bodybillingStreet = null, [WorkflowExpression] Func<string> bodygUId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyshippingCity = null, [WorkflowExpression] Func<string> bodyshippingCountry = null, [WorkflowExpression] Func<string> bodyshippingPostalCode = null, [WorkflowExpression] Func<string> bodyshippingState = null, [WorkflowExpression] Func<string> bodyshippingStreet = null, [WorkflowExpression] Func<string> bodyacnm = null)
         {
-            SourceExpression.Validate(bodybillingCity, nameof(bodybillingCity), required: false);
-            SourceExpression.Validate(bodybillingCounty, nameof(bodybillingCounty), required: false);
-            SourceExpression.Validate(bodybillingPostalCode, nameof(bodybillingPostalCode), required: false);
-            SourceExpression.Validate(bodybillingState, nameof(bodybillingState), required: false);
-            SourceExpression.Validate(bodybillingStreet, nameof(bodybillingStreet), required: false);
-            SourceExpression.Validate(bodygUId, nameof(bodygUId), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyshippingCity, nameof(bodyshippingCity), required: false);
-            SourceExpression.Validate(bodyshippingCountry, nameof(bodyshippingCountry), required: false);
-            SourceExpression.Validate(bodyshippingPostalCode, nameof(bodyshippingPostalCode), required: false);
-            SourceExpression.Validate(bodyshippingState, nameof(bodyshippingState), required: false);
-            SourceExpression.Validate(bodyshippingStreet, nameof(bodyshippingStreet), required: false);
-            SourceExpression.Validate(bodyacnm, nameof(bodyacnm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/commercientcpq/customer";
@@ -739,7 +644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<CommercientCPQCreateNewProductResponse> CommercientCPQCreateNewProduct([WorkflowExpression] Func<string> bodystockCode = null)
         {
-            SourceExpression.Validate(bodystockCode, nameof(bodystockCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/commercientcpq/product";
@@ -766,8 +670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<CommercientCPQCreateNewSalesOrderResponse> CommercientCPQCreateNewSalesOrder([WorkflowExpression] Func<string> bodyorderHeaderGUID = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem2[]> bodysalesOrderLineItem = null)
         {
-            SourceExpression.Validate(bodyorderHeaderGUID, nameof(bodyorderHeaderGUID), required: false);
-            SourceExpression.Validate(bodysalesOrderLineItem, nameof(bodysalesOrderLineItem), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/commercientcpq/salesorder";
@@ -800,59 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<QuickBookCreateNewCustomerResponse> QuickBookCreateNewCustomer([WorkflowExpression] Func<string> bodyaccountNumber = null, [WorkflowExpression] Func<string> bodyaltContact = null, [WorkflowExpression] Func<string> bodyaltPhone = null, [WorkflowExpression] Func<string> bodybillAddressAddr1 = null, [WorkflowExpression] Func<string> bodybillAddressAddr2 = null, [WorkflowExpression] Func<string> bodybillAddressAddr3 = null, [WorkflowExpression] Func<string> bodybillAddressAddr4 = null, [WorkflowExpression] Func<string> bodybillAddressAddr5 = null, [WorkflowExpression] Func<string> bodybillAddressCity = null, [WorkflowExpression] Func<string> bodybillAddressCountry = null, [WorkflowExpression] Func<string> bodybillAddressNote = null, [WorkflowExpression] Func<string> bodybillAddressPostalCode = null, [WorkflowExpression] Func<string> bodybillAddressState = null, [WorkflowExpression] Func<string> bodycc = null, [WorkflowExpression] Func<string> bodyclassRef = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodycontact = null, [WorkflowExpression] Func<int> bodycreditLimit = null, [WorkflowExpression] Func<string> bodycustomerTypeRef = null, [WorkflowExpression] Func<string> bodyeditSequence = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<bool> bodyisActive = null, [WorkflowExpression] Func<string> bodyitemSalesTaxRef = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodylistId = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodyopenBalance = null, [WorkflowExpression] Func<string> bodyopenBalanceDate = null, [WorkflowExpression] Func<string> bodyparentRef = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodypreferredPaymentMethodRef = null, [WorkflowExpression] Func<string> bodypriceLevelRef = null, [WorkflowExpression] Func<string> bodyresaleNumber = null, [WorkflowExpression] Func<string> bodysalesRepRef = null, [WorkflowExpression] Func<string> bodysalesTaxCodeRef = null, [WorkflowExpression] Func<string> bodysalutation = null, [WorkflowExpression] Func<string> bodyshipAddressAddr1 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr2 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr3 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr4 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr5 = null, [WorkflowExpression] Func<string> bodyshipAddressCity = null, [WorkflowExpression] Func<string> bodyshipAddressCountry = null, [WorkflowExpression] Func<string> bodyshipAddressNote = null, [WorkflowExpression] Func<string> bodyshipAddressPostalCode = null, [WorkflowExpression] Func<string> bodyshipAddressState = null, [WorkflowExpression] Func<string> bodytermsRef = null)
         {
-            SourceExpression.Validate(bodyaccountNumber, nameof(bodyaccountNumber), required: false);
-            SourceExpression.Validate(bodyaltContact, nameof(bodyaltContact), required: false);
-            SourceExpression.Validate(bodyaltPhone, nameof(bodyaltPhone), required: false);
-            SourceExpression.Validate(bodybillAddressAddr1, nameof(bodybillAddressAddr1), required: false);
-            SourceExpression.Validate(bodybillAddressAddr2, nameof(bodybillAddressAddr2), required: false);
-            SourceExpression.Validate(bodybillAddressAddr3, nameof(bodybillAddressAddr3), required: false);
-            SourceExpression.Validate(bodybillAddressAddr4, nameof(bodybillAddressAddr4), required: false);
-            SourceExpression.Validate(bodybillAddressAddr5, nameof(bodybillAddressAddr5), required: false);
-            SourceExpression.Validate(bodybillAddressCity, nameof(bodybillAddressCity), required: false);
-            SourceExpression.Validate(bodybillAddressCountry, nameof(bodybillAddressCountry), required: false);
-            SourceExpression.Validate(bodybillAddressNote, nameof(bodybillAddressNote), required: false);
-            SourceExpression.Validate(bodybillAddressPostalCode, nameof(bodybillAddressPostalCode), required: false);
-            SourceExpression.Validate(bodybillAddressState, nameof(bodybillAddressState), required: false);
-            SourceExpression.Validate(bodycc, nameof(bodycc), required: false);
-            SourceExpression.Validate(bodyclassRef, nameof(bodyclassRef), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodycontact, nameof(bodycontact), required: false);
-            SourceExpression.Validate(bodycreditLimit, nameof(bodycreditLimit), required: false);
-            SourceExpression.Validate(bodycustomerTypeRef, nameof(bodycustomerTypeRef), required: false);
-            SourceExpression.Validate(bodyeditSequence, nameof(bodyeditSequence), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyextraField, nameof(bodyextraField), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodyisActive, nameof(bodyisActive), required: false);
-            SourceExpression.Validate(bodyitemSalesTaxRef, nameof(bodyitemSalesTaxRef), required: false);
-            SourceExpression.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodylistId, nameof(bodylistId), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyopenBalance, nameof(bodyopenBalance), required: false);
-            SourceExpression.Validate(bodyopenBalanceDate, nameof(bodyopenBalanceDate), required: false);
-            SourceExpression.Validate(bodyparentRef, nameof(bodyparentRef), required: false);
-            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            SourceExpression.Validate(bodypreferredPaymentMethodRef, nameof(bodypreferredPaymentMethodRef), required: false);
-            SourceExpression.Validate(bodypriceLevelRef, nameof(bodypriceLevelRef), required: false);
-            SourceExpression.Validate(bodyresaleNumber, nameof(bodyresaleNumber), required: false);
-            SourceExpression.Validate(bodysalesRepRef, nameof(bodysalesRepRef), required: false);
-            SourceExpression.Validate(bodysalesTaxCodeRef, nameof(bodysalesTaxCodeRef), required: false);
-            SourceExpression.Validate(bodysalutation, nameof(bodysalutation), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr1, nameof(bodyshipAddressAddr1), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr2, nameof(bodyshipAddressAddr2), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr3, nameof(bodyshipAddressAddr3), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr4, nameof(bodyshipAddressAddr4), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr5, nameof(bodyshipAddressAddr5), required: false);
-            SourceExpression.Validate(bodyshipAddressCity, nameof(bodyshipAddressCity), required: false);
-            SourceExpression.Validate(bodyshipAddressCountry, nameof(bodyshipAddressCountry), required: false);
-            SourceExpression.Validate(bodyshipAddressNote, nameof(bodyshipAddressNote), required: false);
-            SourceExpression.Validate(bodyshipAddressPostalCode, nameof(bodyshipAddressPostalCode), required: false);
-            SourceExpression.Validate(bodyshipAddressState, nameof(bodyshipAddressState), required: false);
-            SourceExpression.Validate(bodytermsRef, nameof(bodytermsRef), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/quickbook/customer";
@@ -1191,43 +1040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<QuickBookCreateNewSalesOrderResponse> QuickBookCreateNewSalesOrder([WorkflowExpression] Func<string> bodybillAddressAddr1 = null, [WorkflowExpression] Func<string> bodybillAddressAddr2 = null, [WorkflowExpression] Func<string> bodybillAddressAddr3 = null, [WorkflowExpression] Func<string> bodybillAddressAddr4 = null, [WorkflowExpression] Func<string> bodybillAddressAddr5 = null, [WorkflowExpression] Func<string> bodybillAddressCity = null, [WorkflowExpression] Func<string> bodybillAddressCountry = null, [WorkflowExpression] Func<string> bodybillAddressNote = null, [WorkflowExpression] Func<string> bodybillAddressPostalCode = null, [WorkflowExpression] Func<string> bodybillAddressState = null, [WorkflowExpression] Func<string> bodyclassRef = null, [WorkflowExpression] Func<string> bodycustomerRefListId = null, [WorkflowExpression] Func<string> bodycustomerRefName = null, [WorkflowExpression] Func<string> bodycustomerSalesTaxCodeRef = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyeditSequence = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyitemSalesTaxRef = null, [WorkflowExpression] Func<string> bodylistId = null, [WorkflowExpression] Func<string> bodymemo = null, [WorkflowExpression] Func<string> bodypONumber = null, [WorkflowExpression] Func<string> bodyrefNumber = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem22[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<string> bodysalesRepRef = null, [WorkflowExpression] Func<string> bodyshipAddressAddr1 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr2 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr3 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr4 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr5 = null, [WorkflowExpression] Func<string> bodyshipAddressCity = null, [WorkflowExpression] Func<string> bodyshipAddressCountry = null, [WorkflowExpression] Func<string> bodyshipAddressNote = null, [WorkflowExpression] Func<string> bodyshipAddressPostalCode = null, [WorkflowExpression] Func<string> bodyshipAddressState = null, [WorkflowExpression] Func<string> bodytemplateRef = null, [WorkflowExpression] Func<string> bodytermsRef = null, [WorkflowExpression] Func<string> bodytxnDate = null)
         {
-            SourceExpression.Validate(bodybillAddressAddr1, nameof(bodybillAddressAddr1), required: false);
-            SourceExpression.Validate(bodybillAddressAddr2, nameof(bodybillAddressAddr2), required: false);
-            SourceExpression.Validate(bodybillAddressAddr3, nameof(bodybillAddressAddr3), required: false);
-            SourceExpression.Validate(bodybillAddressAddr4, nameof(bodybillAddressAddr4), required: false);
-            SourceExpression.Validate(bodybillAddressAddr5, nameof(bodybillAddressAddr5), required: false);
-            SourceExpression.Validate(bodybillAddressCity, nameof(bodybillAddressCity), required: false);
-            SourceExpression.Validate(bodybillAddressCountry, nameof(bodybillAddressCountry), required: false);
-            SourceExpression.Validate(bodybillAddressNote, nameof(bodybillAddressNote), required: false);
-            SourceExpression.Validate(bodybillAddressPostalCode, nameof(bodybillAddressPostalCode), required: false);
-            SourceExpression.Validate(bodybillAddressState, nameof(bodybillAddressState), required: false);
-            SourceExpression.Validate(bodyclassRef, nameof(bodyclassRef), required: false);
-            SourceExpression.Validate(bodycustomerRefListId, nameof(bodycustomerRefListId), required: false);
-            SourceExpression.Validate(bodycustomerRefName, nameof(bodycustomerRefName), required: false);
-            SourceExpression.Validate(bodycustomerSalesTaxCodeRef, nameof(bodycustomerSalesTaxCodeRef), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyeditSequence, nameof(bodyeditSequence), required: false);
-            SourceExpression.Validate(bodyextraField, nameof(bodyextraField), required: false);
-            SourceExpression.Validate(bodyitemSalesTaxRef, nameof(bodyitemSalesTaxRef), required: false);
-            SourceExpression.Validate(bodylistId, nameof(bodylistId), required: false);
-            SourceExpression.Validate(bodymemo, nameof(bodymemo), required: false);
-            SourceExpression.Validate(bodypONumber, nameof(bodypONumber), required: false);
-            SourceExpression.Validate(bodyrefNumber, nameof(bodyrefNumber), required: false);
-            SourceExpression.Validate(bodysalesOrderLineItem, nameof(bodysalesOrderLineItem), required: false);
-            SourceExpression.Validate(bodysalesRepRef, nameof(bodysalesRepRef), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr1, nameof(bodyshipAddressAddr1), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr2, nameof(bodyshipAddressAddr2), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr3, nameof(bodyshipAddressAddr3), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr4, nameof(bodyshipAddressAddr4), required: false);
-            SourceExpression.Validate(bodyshipAddressAddr5, nameof(bodyshipAddressAddr5), required: false);
-            SourceExpression.Validate(bodyshipAddressCity, nameof(bodyshipAddressCity), required: false);
-            SourceExpression.Validate(bodyshipAddressCountry, nameof(bodyshipAddressCountry), required: false);
-            SourceExpression.Validate(bodyshipAddressNote, nameof(bodyshipAddressNote), required: false);
-            SourceExpression.Validate(bodyshipAddressPostalCode, nameof(bodyshipAddressPostalCode), required: false);
-            SourceExpression.Validate(bodyshipAddressState, nameof(bodyshipAddressState), required: false);
-            SourceExpression.Validate(bodytemplateRef, nameof(bodytemplateRef), required: false);
-            SourceExpression.Validate(bodytermsRef, nameof(bodytermsRef), required: false);
-            SourceExpression.Validate(bodytxnDate, nameof(bodytxnDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/quickbook/salesorder";
@@ -1470,61 +1282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse> SAGE50UKCreateNewCustomer([WorkflowExpression] Func<string> bodyaCCOUNTOPENED = null, [WorkflowExpression] Func<string> bodyaCCOUNTREF = null, [WorkflowExpression] Func<int> bodyaCCOUNTSTATUS = null, [WorkflowExpression] Func<string> bodyaDDRESS1 = null, [WorkflowExpression] Func<string> bodyaDDRESS2 = null, [WorkflowExpression] Func<string> bodyaDDRESS3 = null, [WorkflowExpression] Func<string> bodyaDDRESS4 = null, [WorkflowExpression] Func<string> bodyaDDRESS5 = null, [WorkflowExpression] Func<string> bodyaNALYSIS1 = null, [WorkflowExpression] Func<string> bodyaNALYSIS2 = null, [WorkflowExpression] Func<string> bodyaNALYSIS3 = null, [WorkflowExpression] Func<int> bodyaVERAGEPAYDAYS = null, [WorkflowExpression] Func<int> bodybALANCE = null, [WorkflowExpression] Func<bool> bodycANAPPLYCHARGES = null, [WorkflowExpression] Func<string> bodycONTACTNAME = null, [WorkflowExpression] Func<string> bodycOUNTRYCODE = null, [WorkflowExpression] Func<string> bodycREDITAPPLIEDFOR = null, [WorkflowExpression] Func<int> bodycREDITBUREAU = null, [WorkflowExpression] Func<int> bodycREDITLIMIT = null, [WorkflowExpression] Func<int> bodycREDITPOSITION = null, [WorkflowExpression] Func<string> bodycREDITREFERENCE = null, [WorkflowExpression] Func<int> bodycURRENCY = null, [WorkflowExpression] Func<string> bodydATECREDITAPPRECEIVED = null, [WorkflowExpression] Func<string> bodydEFNOMCODE = null, [WorkflowExpression] Func<int> bodydEFTAXCODE = null, [WorkflowExpression] Func<int> bodydEPTNUMBER = null, [WorkflowExpression] Func<int> bodydISCOUNTRATE = null, [WorkflowExpression] Func<int> bodydISCOUNTTYPE = null, [WorkflowExpression] Func<string> bodydUNSNUMBER = null, [WorkflowExpression] Func<string> bodyeMAIL = null, [WorkflowExpression] Func<string> bodyeMAIL2 = null, [WorkflowExpression] Func<string> bodyeMAIL3 = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyfAX = null, [WorkflowExpression] Func<bool> bodyhOLDMAIL = null, [WorkflowExpression] Func<bool> bodyiNACTIVEFLAG = null, [WorkflowExpression] Func<bool> bodyisACCOUNTREFAutogenerate = null, [WorkflowExpression] Func<string> bodylASTCREDITREV = null, [WorkflowExpression] Func<string> bodynAME = null, [WorkflowExpression] Func<string> bodynEXTCREDITREV = null, [WorkflowExpression] Func<bool> bodyoVERRIdEPRODUCTNOMINAL = null, [WorkflowExpression] Func<bool> bodyoVERRIdEPRODUCTTAX = null, [WorkflowExpression] Func<int> bodypAYMENTDUEDAYS = null, [WorkflowExpression] Func<string> bodypRICELISTREF = null, [WorkflowExpression] Func<bool> bodypRIORITYTRADER = null, [WorkflowExpression] Func<bool> bodysENDINVOICESELECTRONICALLY = null, [WorkflowExpression] Func<bool> bodysENDLETTERSELECTRONICALLY = null, [WorkflowExpression] Func<int> bodysETTLEMENTDISCRATE = null, [WorkflowExpression] Func<int> bodysETTLEMENTDUEDAYS = null, [WorkflowExpression] Func<string> bodytELEPHONE = null, [WorkflowExpression] Func<string> bodytELEPHONE2 = null, [WorkflowExpression] Func<string> bodytERMS = null, [WorkflowExpression] Func<bool> bodytERMSAGREEDFLAG = null, [WorkflowExpression] Func<string> bodytRADECONTACT = null, [WorkflowExpression] Func<string> bodyvATREGNUMBER = null)
         {
-            SourceExpression.Validate(bodyaCCOUNTOPENED, nameof(bodyaCCOUNTOPENED), required: false);
-            SourceExpression.Validate(bodyaCCOUNTREF, nameof(bodyaCCOUNTREF), required: false);
-            SourceExpression.Validate(bodyaCCOUNTSTATUS, nameof(bodyaCCOUNTSTATUS), required: false);
-            SourceExpression.Validate(bodyaDDRESS1, nameof(bodyaDDRESS1), required: false);
-            SourceExpression.Validate(bodyaDDRESS2, nameof(bodyaDDRESS2), required: false);
-            SourceExpression.Validate(bodyaDDRESS3, nameof(bodyaDDRESS3), required: false);
-            SourceExpression.Validate(bodyaDDRESS4, nameof(bodyaDDRESS4), required: false);
-            SourceExpression.Validate(bodyaDDRESS5, nameof(bodyaDDRESS5), required: false);
-            SourceExpression.Validate(bodyaNALYSIS1, nameof(bodyaNALYSIS1), required: false);
-            SourceExpression.Validate(bodyaNALYSIS2, nameof(bodyaNALYSIS2), required: false);
-            SourceExpression.Validate(bodyaNALYSIS3, nameof(bodyaNALYSIS3), required: false);
-            SourceExpression.Validate(bodyaVERAGEPAYDAYS, nameof(bodyaVERAGEPAYDAYS), required: false);
-            SourceExpression.Validate(bodybALANCE, nameof(bodybALANCE), required: false);
-            SourceExpression.Validate(bodycANAPPLYCHARGES, nameof(bodycANAPPLYCHARGES), required: false);
-            SourceExpression.Validate(bodycONTACTNAME, nameof(bodycONTACTNAME), required: false);
-            SourceExpression.Validate(bodycOUNTRYCODE, nameof(bodycOUNTRYCODE), required: false);
-            SourceExpression.Validate(bodycREDITAPPLIEDFOR, nameof(bodycREDITAPPLIEDFOR), required: false);
-            SourceExpression.Validate(bodycREDITBUREAU, nameof(bodycREDITBUREAU), required: false);
-            SourceExpression.Validate(bodycREDITLIMIT, nameof(bodycREDITLIMIT), required: false);
-            SourceExpression.Validate(bodycREDITPOSITION, nameof(bodycREDITPOSITION), required: false);
-            SourceExpression.Validate(bodycREDITREFERENCE, nameof(bodycREDITREFERENCE), required: false);
-            SourceExpression.Validate(bodycURRENCY, nameof(bodycURRENCY), required: false);
-            SourceExpression.Validate(bodydATECREDITAPPRECEIVED, nameof(bodydATECREDITAPPRECEIVED), required: false);
-            SourceExpression.Validate(bodydEFNOMCODE, nameof(bodydEFNOMCODE), required: false);
-            SourceExpression.Validate(bodydEFTAXCODE, nameof(bodydEFTAXCODE), required: false);
-            SourceExpression.Validate(bodydEPTNUMBER, nameof(bodydEPTNUMBER), required: false);
-            SourceExpression.Validate(bodydISCOUNTRATE, nameof(bodydISCOUNTRATE), required: false);
-            SourceExpression.Validate(bodydISCOUNTTYPE, nameof(bodydISCOUNTTYPE), required: false);
-            SourceExpression.Validate(bodydUNSNUMBER, nameof(bodydUNSNUMBER), required: false);
-            SourceExpression.Validate(bodyeMAIL, nameof(bodyeMAIL), required: false);
-            SourceExpression.Validate(bodyeMAIL2, nameof(bodyeMAIL2), required: false);
-            SourceExpression.Validate(bodyeMAIL3, nameof(bodyeMAIL3), required: false);
-            SourceExpression.Validate(bodyextraField, nameof(bodyextraField), required: false);
-            SourceExpression.Validate(bodyfAX, nameof(bodyfAX), required: false);
-            SourceExpression.Validate(bodyhOLDMAIL, nameof(bodyhOLDMAIL), required: false);
-            SourceExpression.Validate(bodyiNACTIVEFLAG, nameof(bodyiNACTIVEFLAG), required: false);
-            SourceExpression.Validate(bodyisACCOUNTREFAutogenerate, nameof(bodyisACCOUNTREFAutogenerate), required: false);
-            SourceExpression.Validate(bodylASTCREDITREV, nameof(bodylASTCREDITREV), required: false);
-            SourceExpression.Validate(bodynAME, nameof(bodynAME), required: false);
-            SourceExpression.Validate(bodynEXTCREDITREV, nameof(bodynEXTCREDITREV), required: false);
-            SourceExpression.Validate(bodyoVERRIdEPRODUCTNOMINAL, nameof(bodyoVERRIdEPRODUCTNOMINAL), required: false);
-            SourceExpression.Validate(bodyoVERRIdEPRODUCTTAX, nameof(bodyoVERRIdEPRODUCTTAX), required: false);
-            SourceExpression.Validate(bodypAYMENTDUEDAYS, nameof(bodypAYMENTDUEDAYS), required: false);
-            SourceExpression.Validate(bodypRICELISTREF, nameof(bodypRICELISTREF), required: false);
-            SourceExpression.Validate(bodypRIORITYTRADER, nameof(bodypRIORITYTRADER), required: false);
-            SourceExpression.Validate(bodysENDINVOICESELECTRONICALLY, nameof(bodysENDINVOICESELECTRONICALLY), required: false);
-            SourceExpression.Validate(bodysENDLETTERSELECTRONICALLY, nameof(bodysENDLETTERSELECTRONICALLY), required: false);
-            SourceExpression.Validate(bodysETTLEMENTDISCRATE, nameof(bodysETTLEMENTDISCRATE), required: false);
-            SourceExpression.Validate(bodysETTLEMENTDUEDAYS, nameof(bodysETTLEMENTDUEDAYS), required: false);
-            SourceExpression.Validate(bodytELEPHONE, nameof(bodytELEPHONE), required: false);
-            SourceExpression.Validate(bodytELEPHONE2, nameof(bodytELEPHONE2), required: false);
-            SourceExpression.Validate(bodytERMS, nameof(bodytERMS), required: false);
-            SourceExpression.Validate(bodytERMSAGREEDFLAG, nameof(bodytERMSAGREEDFLAG), required: false);
-            SourceExpression.Validate(bodytRADECONTACT, nameof(bodytRADECONTACT), required: false);
-            SourceExpression.Validate(bodyvATREGNUMBER, nameof(bodyvATREGNUMBER), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/sage50uk/customer";
@@ -1875,50 +1632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse> SAGE50UKCreateNewSalesOrder([WorkflowExpression] Func<string> bodyaCCOUNTREF = null, [WorkflowExpression] Func<string> bodyaDDRESS1 = null, [WorkflowExpression] Func<string> bodyaDDRESS2 = null, [WorkflowExpression] Func<string> bodyaDDRESS3 = null, [WorkflowExpression] Func<string> bodyaDDRESS4 = null, [WorkflowExpression] Func<string> bodyaDDRESS5 = null, [WorkflowExpression] Func<int> bodyaMOUNTPREPAId = null, [WorkflowExpression] Func<string> bodyaNALYSIS1 = null, [WorkflowExpression] Func<string> bodyaNALYSIS2 = null, [WorkflowExpression] Func<string> bodyaNALYSIS3 = null, [WorkflowExpression] Func<int> bodycARRDEPTNUMBER = null, [WorkflowExpression] Func<int> bodycARRNET = null, [WorkflowExpression] Func<string> bodycARRNOMCODE = null, [WorkflowExpression] Func<int> bodycARRTAX = null, [WorkflowExpression] Func<int> bodycARRTAXCODE = null, [WorkflowExpression] Func<string> bodycONSIGNMENTREF = null, [WorkflowExpression] Func<string> bodycONTACTNAME = null, [WorkflowExpression] Func<int> bodycOURIER = null, [WorkflowExpression] Func<int> bodycURRENCY = null, [WorkflowExpression] Func<int> bodycUSTDISCRATE = null, [WorkflowExpression] Func<string> bodycUSTORDERNUMBER = null, [WorkflowExpression] Func<string> bodycUSTTELNUMBER = null, [WorkflowExpression] Func<int> bodydEFTAXCODE = null, [WorkflowExpression] Func<bool> bodydELETEDFLAG = null, [WorkflowExpression] Func<string> bodydELIVERYNAME = null, [WorkflowExpression] Func<string> bodydELADDRESS1 = null, [WorkflowExpression] Func<string> bodydELADDRESS2 = null, [WorkflowExpression] Func<string> bodydELADDRESS3 = null, [WorkflowExpression] Func<string> bodydELADDRESS4 = null, [WorkflowExpression] Func<string> bodydELADDRESS5 = null, [WorkflowExpression] Func<string> bodydESPATCHDATE = null, [WorkflowExpression] Func<string> bodydUNSNUMBER = null, [WorkflowExpression] Func<int> bodygLOBALDEPTNUMBER = null, [WorkflowExpression] Func<string> bodygLOBALDETAILS = null, [WorkflowExpression] Func<string> bodygLOBALNOMCODE = null, [WorkflowExpression] Func<int> bodygLOBALTAXCODE = null, [WorkflowExpression] Func<string> bodyiNVOICENUMBER = null, [WorkflowExpression] Func<string> bodynAME = null, [WorkflowExpression] Func<string> bodyoRDERDATE = null, [WorkflowExpression] Func<int> bodyoRDERNUMBER = null, [WorkflowExpression] Func<int> bodyoRDERTYPE = null, [WorkflowExpression] Func<int> bodysETTLEMENTDISCRATE = null, [WorkflowExpression] Func<int> bodysETTLEMENTDUEDAYS = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem222[]> bodysalesOrderLineItem = null)
         {
-            SourceExpression.Validate(bodyaCCOUNTREF, nameof(bodyaCCOUNTREF), required: false);
-            SourceExpression.Validate(bodyaDDRESS1, nameof(bodyaDDRESS1), required: false);
-            SourceExpression.Validate(bodyaDDRESS2, nameof(bodyaDDRESS2), required: false);
-            SourceExpression.Validate(bodyaDDRESS3, nameof(bodyaDDRESS3), required: false);
-            SourceExpression.Validate(bodyaDDRESS4, nameof(bodyaDDRESS4), required: false);
-            SourceExpression.Validate(bodyaDDRESS5, nameof(bodyaDDRESS5), required: false);
-            SourceExpression.Validate(bodyaMOUNTPREPAId, nameof(bodyaMOUNTPREPAId), required: false);
-            SourceExpression.Validate(bodyaNALYSIS1, nameof(bodyaNALYSIS1), required: false);
-            SourceExpression.Validate(bodyaNALYSIS2, nameof(bodyaNALYSIS2), required: false);
-            SourceExpression.Validate(bodyaNALYSIS3, nameof(bodyaNALYSIS3), required: false);
-            SourceExpression.Validate(bodycARRDEPTNUMBER, nameof(bodycARRDEPTNUMBER), required: false);
-            SourceExpression.Validate(bodycARRNET, nameof(bodycARRNET), required: false);
-            SourceExpression.Validate(bodycARRNOMCODE, nameof(bodycARRNOMCODE), required: false);
-            SourceExpression.Validate(bodycARRTAX, nameof(bodycARRTAX), required: false);
-            SourceExpression.Validate(bodycARRTAXCODE, nameof(bodycARRTAXCODE), required: false);
-            SourceExpression.Validate(bodycONSIGNMENTREF, nameof(bodycONSIGNMENTREF), required: false);
-            SourceExpression.Validate(bodycONTACTNAME, nameof(bodycONTACTNAME), required: false);
-            SourceExpression.Validate(bodycOURIER, nameof(bodycOURIER), required: false);
-            SourceExpression.Validate(bodycURRENCY, nameof(bodycURRENCY), required: false);
-            SourceExpression.Validate(bodycUSTDISCRATE, nameof(bodycUSTDISCRATE), required: false);
-            SourceExpression.Validate(bodycUSTORDERNUMBER, nameof(bodycUSTORDERNUMBER), required: false);
-            SourceExpression.Validate(bodycUSTTELNUMBER, nameof(bodycUSTTELNUMBER), required: false);
-            SourceExpression.Validate(bodydEFTAXCODE, nameof(bodydEFTAXCODE), required: false);
-            SourceExpression.Validate(bodydELETEDFLAG, nameof(bodydELETEDFLAG), required: false);
-            SourceExpression.Validate(bodydELIVERYNAME, nameof(bodydELIVERYNAME), required: false);
-            SourceExpression.Validate(bodydELADDRESS1, nameof(bodydELADDRESS1), required: false);
-            SourceExpression.Validate(bodydELADDRESS2, nameof(bodydELADDRESS2), required: false);
-            SourceExpression.Validate(bodydELADDRESS3, nameof(bodydELADDRESS3), required: false);
-            SourceExpression.Validate(bodydELADDRESS4, nameof(bodydELADDRESS4), required: false);
-            SourceExpression.Validate(bodydELADDRESS5, nameof(bodydELADDRESS5), required: false);
-            SourceExpression.Validate(bodydESPATCHDATE, nameof(bodydESPATCHDATE), required: false);
-            SourceExpression.Validate(bodydUNSNUMBER, nameof(bodydUNSNUMBER), required: false);
-            SourceExpression.Validate(bodygLOBALDEPTNUMBER, nameof(bodygLOBALDEPTNUMBER), required: false);
-            SourceExpression.Validate(bodygLOBALDETAILS, nameof(bodygLOBALDETAILS), required: false);
-            SourceExpression.Validate(bodygLOBALNOMCODE, nameof(bodygLOBALNOMCODE), required: false);
-            SourceExpression.Validate(bodygLOBALTAXCODE, nameof(bodygLOBALTAXCODE), required: false);
-            SourceExpression.Validate(bodyiNVOICENUMBER, nameof(bodyiNVOICENUMBER), required: false);
-            SourceExpression.Validate(bodynAME, nameof(bodynAME), required: false);
-            SourceExpression.Validate(bodyoRDERDATE, nameof(bodyoRDERDATE), required: false);
-            SourceExpression.Validate(bodyoRDERNUMBER, nameof(bodyoRDERNUMBER), required: false);
-            SourceExpression.Validate(bodyoRDERTYPE, nameof(bodyoRDERTYPE), required: false);
-            SourceExpression.Validate(bodysETTLEMENTDISCRATE, nameof(bodysETTLEMENTDISCRATE), required: false);
-            SourceExpression.Validate(bodysETTLEMENTDUEDAYS, nameof(bodysETTLEMENTDUEDAYS), required: false);
-            SourceExpression.Validate(bodysalesOrderLineItem, nameof(bodysalesOrderLineItem), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/sage50uk/salesorder";
@@ -2203,52 +1916,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse> SAGE50USCreateNewCustomer([WorkflowExpression] Func<string> bodyaccountNumber = null, [WorkflowExpression] Func<string> bodybillingCity = null, [WorkflowExpression] Func<string> bodybillingCountry = null, [WorkflowExpression] Func<string> bodybillingLastName = null, [WorkflowExpression] Func<string> bodybillingName = null, [WorkflowExpression] Func<string> bodybillingPostalCode = null, [WorkflowExpression] Func<string> bodybillingState = null, [WorkflowExpression] Func<string> bodybillingStreet = null, [WorkflowExpression] Func<bool> bodycCSalesRepresentative = null, [WorkflowExpression] Func<bool> bodychargeFinanceCharges = null, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<int> bodycreditLimit = null, [WorkflowExpression] Func<int> bodycreditStatus = null, [WorkflowExpression] Func<string> bodycustomFieldValue1 = null, [WorkflowExpression] Func<string> bodycustomFieldValue2 = null, [WorkflowExpression] Func<string> bodycustomFieldValue3 = null, [WorkflowExpression] Func<string> bodycustomFieldValue4 = null, [WorkflowExpression] Func<string> bodycustomFieldValue5 = null, [WorkflowExpression] Func<string> bodycustomerGUID = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<int> bodycustomerBalance = null, [WorkflowExpression] Func<string> bodycustomerSinceDate = null, [WorkflowExpression] Func<string> bodycustomerType = null, [WorkflowExpression] Func<int> bodydiscountDays = null, [WorkflowExpression] Func<int> bodydiscountPercent = null, [WorkflowExpression] Func<int> bodydueDays = null, [WorkflowExpression] Func<string> bodyeMailAddress = null, [WorkflowExpression] Func<string> bodyfaxNumber = null, [WorkflowExpression] Func<int> bodyformDeliveryMethod = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphoneNo1 = null, [WorkflowExpression] Func<string> bodyphoneNo2 = null, [WorkflowExpression] Func<int> bodypricingLevel = null, [WorkflowExpression] Func<string> bodysalesRepresentativeId = null, [WorkflowExpression] Func<string> bodysalesTaxCode = null, [WorkflowExpression] Func<string> bodyshippingCity = null, [WorkflowExpression] Func<string> bodyshippingCountry = null, [WorkflowExpression] Func<string> bodyshippingPostalCode = null, [WorkflowExpression] Func<string> bodyshippingState = null, [WorkflowExpression] Func<string> bodyshippingStreet = null, [WorkflowExpression] Func<bool> bodytermsType = null, [WorkflowExpression] Func<bool> bodyuseCODTerms = null, [WorkflowExpression] Func<bool> bodyuseDueMonthEndTerms = null, [WorkflowExpression] Func<bool> bodyusePrepaidTerms = null, [WorkflowExpression] Func<bool> bodyuseStandardTerms = null, [WorkflowExpression] Func<bool> bodyisInactive = null)
         {
-            SourceExpression.Validate(bodyaccountNumber, nameof(bodyaccountNumber), required: false);
-            SourceExpression.Validate(bodybillingCity, nameof(bodybillingCity), required: false);
-            SourceExpression.Validate(bodybillingCountry, nameof(bodybillingCountry), required: false);
-            SourceExpression.Validate(bodybillingLastName, nameof(bodybillingLastName), required: false);
-            SourceExpression.Validate(bodybillingName, nameof(bodybillingName), required: false);
-            SourceExpression.Validate(bodybillingPostalCode, nameof(bodybillingPostalCode), required: false);
-            SourceExpression.Validate(bodybillingState, nameof(bodybillingState), required: false);
-            SourceExpression.Validate(bodybillingStreet, nameof(bodybillingStreet), required: false);
-            SourceExpression.Validate(bodycCSalesRepresentative, nameof(bodycCSalesRepresentative), required: false);
-            SourceExpression.Validate(bodychargeFinanceCharges, nameof(bodychargeFinanceCharges), required: false);
-            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: false);
-            SourceExpression.Validate(bodycreditLimit, nameof(bodycreditLimit), required: false);
-            SourceExpression.Validate(bodycreditStatus, nameof(bodycreditStatus), required: false);
-            SourceExpression.Validate(bodycustomFieldValue1, nameof(bodycustomFieldValue1), required: false);
-            SourceExpression.Validate(bodycustomFieldValue2, nameof(bodycustomFieldValue2), required: false);
-            SourceExpression.Validate(bodycustomFieldValue3, nameof(bodycustomFieldValue3), required: false);
-            SourceExpression.Validate(bodycustomFieldValue4, nameof(bodycustomFieldValue4), required: false);
-            SourceExpression.Validate(bodycustomFieldValue5, nameof(bodycustomFieldValue5), required: false);
-            SourceExpression.Validate(bodycustomerGUID, nameof(bodycustomerGUID), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodycustomerBalance, nameof(bodycustomerBalance), required: false);
-            SourceExpression.Validate(bodycustomerSinceDate, nameof(bodycustomerSinceDate), required: false);
-            SourceExpression.Validate(bodycustomerType, nameof(bodycustomerType), required: false);
-            SourceExpression.Validate(bodydiscountDays, nameof(bodydiscountDays), required: false);
-            SourceExpression.Validate(bodydiscountPercent, nameof(bodydiscountPercent), required: false);
-            SourceExpression.Validate(bodydueDays, nameof(bodydueDays), required: false);
-            SourceExpression.Validate(bodyeMailAddress, nameof(bodyeMailAddress), required: false);
-            SourceExpression.Validate(bodyfaxNumber, nameof(bodyfaxNumber), required: false);
-            SourceExpression.Validate(bodyformDeliveryMethod, nameof(bodyformDeliveryMethod), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyphoneNo1, nameof(bodyphoneNo1), required: false);
-            SourceExpression.Validate(bodyphoneNo2, nameof(bodyphoneNo2), required: false);
-            SourceExpression.Validate(bodypricingLevel, nameof(bodypricingLevel), required: false);
-            SourceExpression.Validate(bodysalesRepresentativeId, nameof(bodysalesRepresentativeId), required: false);
-            SourceExpression.Validate(bodysalesTaxCode, nameof(bodysalesTaxCode), required: false);
-            SourceExpression.Validate(bodyshippingCity, nameof(bodyshippingCity), required: false);
-            SourceExpression.Validate(bodyshippingCountry, nameof(bodyshippingCountry), required: false);
-            SourceExpression.Validate(bodyshippingPostalCode, nameof(bodyshippingPostalCode), required: false);
-            SourceExpression.Validate(bodyshippingState, nameof(bodyshippingState), required: false);
-            SourceExpression.Validate(bodyshippingStreet, nameof(bodyshippingStreet), required: false);
-            SourceExpression.Validate(bodytermsType, nameof(bodytermsType), required: false);
-            SourceExpression.Validate(bodyuseCODTerms, nameof(bodyuseCODTerms), required: false);
-            SourceExpression.Validate(bodyuseDueMonthEndTerms, nameof(bodyuseDueMonthEndTerms), required: false);
-            SourceExpression.Validate(bodyusePrepaidTerms, nameof(bodyusePrepaidTerms), required: false);
-            SourceExpression.Validate(bodyuseStandardTerms, nameof(bodyuseStandardTerms), required: false);
-            SourceExpression.Validate(bodyisInactive, nameof(bodyisInactive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/sage50us/customer";
@@ -2545,34 +2212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse> SAGE50USCreateNewSalesOrder([WorkflowExpression] Func<string> bodyaccountsReceivableAccount = null, [WorkflowExpression] Func<string> bodyaccountsReceivableAcctGUID = null, [WorkflowExpression] Func<int> bodyaccountsReceivableAmount = null, [WorkflowExpression] Func<bool> bodyclosed = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<string> bodycustomerPO = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<int> bodydiscountAmount = null, [WorkflowExpression] Func<string> bodydisplayedTerms = null, [WorkflowExpression] Func<bool> bodydropShip = null, [WorkflowExpression] Func<string> bodygUId = null, [WorkflowExpression] Func<bool> bodynotePrintsAfterLineItems = null, [WorkflowExpression] Func<bool> bodyproposal = null, [WorkflowExpression] Func<bool> bodyproposalAccepted = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem2222[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<string> bodysalesOrderNumber = null, [WorkflowExpression] Func<string> bodysalesRepresentativeGUID = null, [WorkflowExpression] Func<string> bodysalesRepresentativeId = null, [WorkflowExpression] Func<string> bodyshipAddressCity = null, [WorkflowExpression] Func<string> bodyshipAddressCountry = null, [WorkflowExpression] Func<string> bodyshipAddressLine1 = null, [WorkflowExpression] Func<string> bodyshipAddressLine2 = null, [WorkflowExpression] Func<string> bodyshipAddressName = null, [WorkflowExpression] Func<string> bodyshipAddressState = null, [WorkflowExpression] Func<string> bodyshipAddressZipCode = null, [WorkflowExpression] Func<string> bodyshipBy = null, [WorkflowExpression] Func<string> bodyshipVIA = null, [WorkflowExpression] Func<bool> bodystatementNotePrintsBeforeInvRef = null)
         {
-            SourceExpression.Validate(bodyaccountsReceivableAccount, nameof(bodyaccountsReceivableAccount), required: false);
-            SourceExpression.Validate(bodyaccountsReceivableAcctGUID, nameof(bodyaccountsReceivableAcctGUID), required: false);
-            SourceExpression.Validate(bodyaccountsReceivableAmount, nameof(bodyaccountsReceivableAmount), required: false);
-            SourceExpression.Validate(bodyclosed, nameof(bodyclosed), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodycustomerPO, nameof(bodycustomerPO), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodydiscountAmount, nameof(bodydiscountAmount), required: false);
-            SourceExpression.Validate(bodydisplayedTerms, nameof(bodydisplayedTerms), required: false);
-            SourceExpression.Validate(bodydropShip, nameof(bodydropShip), required: false);
-            SourceExpression.Validate(bodygUId, nameof(bodygUId), required: false);
-            SourceExpression.Validate(bodynotePrintsAfterLineItems, nameof(bodynotePrintsAfterLineItems), required: false);
-            SourceExpression.Validate(bodyproposal, nameof(bodyproposal), required: false);
-            SourceExpression.Validate(bodyproposalAccepted, nameof(bodyproposalAccepted), required: false);
-            SourceExpression.Validate(bodysalesOrderLineItem, nameof(bodysalesOrderLineItem), required: false);
-            SourceExpression.Validate(bodysalesOrderNumber, nameof(bodysalesOrderNumber), required: false);
-            SourceExpression.Validate(bodysalesRepresentativeGUID, nameof(bodysalesRepresentativeGUID), required: false);
-            SourceExpression.Validate(bodysalesRepresentativeId, nameof(bodysalesRepresentativeId), required: false);
-            SourceExpression.Validate(bodyshipAddressCity, nameof(bodyshipAddressCity), required: false);
-            SourceExpression.Validate(bodyshipAddressCountry, nameof(bodyshipAddressCountry), required: false);
-            SourceExpression.Validate(bodyshipAddressLine1, nameof(bodyshipAddressLine1), required: false);
-            SourceExpression.Validate(bodyshipAddressLine2, nameof(bodyshipAddressLine2), required: false);
-            SourceExpression.Validate(bodyshipAddressName, nameof(bodyshipAddressName), required: false);
-            SourceExpression.Validate(bodyshipAddressState, nameof(bodyshipAddressState), required: false);
-            SourceExpression.Validate(bodyshipAddressZipCode, nameof(bodyshipAddressZipCode), required: false);
-            SourceExpression.Validate(bodyshipBy, nameof(bodyshipBy), required: false);
-            SourceExpression.Validate(bodyshipVIA, nameof(bodyshipVIA), required: false);
-            SourceExpression.Validate(bodystatementNotePrintsBeforeInvRef, nameof(bodystatementNotePrintsBeforeInvRef), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/sage50us/salesorder";
@@ -2761,47 +2400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse> SAPB1CreateNewCustomer([WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodybillingAddressName = null, [WorkflowExpression] Func<string> bodybillingBlock = null, [WorkflowExpression] Func<string> bodybillingCity = null, [WorkflowExpression] Func<string> bodybillingCountry = null, [WorkflowExpression] Func<string> bodybillingState = null, [WorkflowExpression] Func<string> bodybillingStreet = null, [WorkflowExpression] Func<string> bodybillingZipCode = null, [WorkflowExpression] Func<string> bodycardCode = null, [WorkflowExpression] Func<string> bodycardName = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycontactPerson = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycounty = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyfederalTaxId = null, [WorkflowExpression] Func<string> bodyfreeText = null, [WorkflowExpression] Func<int> bodygroupCode = null, [WorkflowExpression] Func<string> bodymailAddress = null, [WorkflowExpression] Func<string> bodymailCity = null, [WorkflowExpression] Func<string> bodymailCountry = null, [WorkflowExpression] Func<string> bodymailCounty = null, [WorkflowExpression] Func<string> bodymailZipCode = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<int> bodysalesPersonCode = null, [WorkflowExpression] Func<int> bodyseries = null, [WorkflowExpression] Func<string> bodyshippingAddressName = null, [WorkflowExpression] Func<string> bodyshippingBlock = null, [WorkflowExpression] Func<string> bodyshippingCity = null, [WorkflowExpression] Func<string> bodyshippingCountry = null, [WorkflowExpression] Func<string> bodyshippingState = null, [WorkflowExpression] Func<string> bodyshippingStreet = null, [WorkflowExpression] Func<string> bodyshippingZipCode = null, [WorkflowExpression] Func<string> bodywebSite = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<bodylstContactEmployeesInputItem[]> bodylstContactEmployees = null)
         {
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodybillingAddressName, nameof(bodybillingAddressName), required: false);
-            SourceExpression.Validate(bodybillingBlock, nameof(bodybillingBlock), required: false);
-            SourceExpression.Validate(bodybillingCity, nameof(bodybillingCity), required: false);
-            SourceExpression.Validate(bodybillingCountry, nameof(bodybillingCountry), required: false);
-            SourceExpression.Validate(bodybillingState, nameof(bodybillingState), required: false);
-            SourceExpression.Validate(bodybillingStreet, nameof(bodybillingStreet), required: false);
-            SourceExpression.Validate(bodybillingZipCode, nameof(bodybillingZipCode), required: false);
-            SourceExpression.Validate(bodycardCode, nameof(bodycardCode), required: false);
-            SourceExpression.Validate(bodycardName, nameof(bodycardName), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycontactPerson, nameof(bodycontactPerson), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodycounty, nameof(bodycounty), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyextraField, nameof(bodyextraField), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodyfederalTaxId, nameof(bodyfederalTaxId), required: false);
-            SourceExpression.Validate(bodyfreeText, nameof(bodyfreeText), required: false);
-            SourceExpression.Validate(bodygroupCode, nameof(bodygroupCode), required: false);
-            SourceExpression.Validate(bodymailAddress, nameof(bodymailAddress), required: false);
-            SourceExpression.Validate(bodymailCity, nameof(bodymailCity), required: false);
-            SourceExpression.Validate(bodymailCountry, nameof(bodymailCountry), required: false);
-            SourceExpression.Validate(bodymailCounty, nameof(bodymailCounty), required: false);
-            SourceExpression.Validate(bodymailZipCode, nameof(bodymailZipCode), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            SourceExpression.Validate(bodysalesPersonCode, nameof(bodysalesPersonCode), required: false);
-            SourceExpression.Validate(bodyseries, nameof(bodyseries), required: false);
-            SourceExpression.Validate(bodyshippingAddressName, nameof(bodyshippingAddressName), required: false);
-            SourceExpression.Validate(bodyshippingBlock, nameof(bodyshippingBlock), required: false);
-            SourceExpression.Validate(bodyshippingCity, nameof(bodyshippingCity), required: false);
-            SourceExpression.Validate(bodyshippingCountry, nameof(bodyshippingCountry), required: false);
-            SourceExpression.Validate(bodyshippingState, nameof(bodyshippingState), required: false);
-            SourceExpression.Validate(bodyshippingStreet, nameof(bodyshippingStreet), required: false);
-            SourceExpression.Validate(bodyshippingZipCode, nameof(bodyshippingZipCode), required: false);
-            SourceExpression.Validate(bodywebSite, nameof(bodywebSite), required: false);
-            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            SourceExpression.Validate(bodylstContactEmployees, nameof(bodylstContactEmployees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/sapb1/customer";
@@ -3068,13 +2666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SAPB1CreateNewSalesOrderResponse> SAPB1CreateNewSalesOrder([WorkflowExpression] Func<string> bodycardCode = null, [WorkflowExpression] Func<string> bodydocDate = null, [WorkflowExpression] Func<string> bodydocDueDate = null, [WorkflowExpression] Func<int> bodydocNum = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem22222[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<int> bodyseries = null, [WorkflowExpression] Func<string> bodytaxDate = null)
         {
-            SourceExpression.Validate(bodycardCode, nameof(bodycardCode), required: false);
-            SourceExpression.Validate(bodydocDate, nameof(bodydocDate), required: false);
-            SourceExpression.Validate(bodydocDueDate, nameof(bodydocDueDate), required: false);
-            SourceExpression.Validate(bodydocNum, nameof(bodydocNum), required: false);
-            SourceExpression.Validate(bodysalesOrderLineItem, nameof(bodysalesOrderLineItem), required: false);
-            SourceExpression.Validate(bodyseries, nameof(bodyseries), required: false);
-            SourceExpression.Validate(bodytaxDate, nameof(bodytaxDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/sapb1/salesorder";
@@ -3137,126 +2728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SYSPROCreateNewCustomerResponse> SYSPROCreateNewCustomer([WorkflowExpression] Func<string> bodyaddTelephone = null, [WorkflowExpression] Func<string> bodyaltMethodFlag = null, [WorkflowExpression] Func<string> bodyapplyLineDisc = null, [WorkflowExpression] Func<string> bodyapplyOrdDisc = null, [WorkflowExpression] Func<string> bodyarStatementNo = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodybackOrdReqd = null, [WorkflowExpression] Func<string> bodybalanceType = null, [WorkflowExpression] Func<string> bodybranch = null, [WorkflowExpression] Func<string> bodybuyingGroup1 = null, [WorkflowExpression] Func<string> bodybuyingGroup2 = null, [WorkflowExpression] Func<string> bodybuyingGroup3 = null, [WorkflowExpression] Func<string> bodybuyingGroup4 = null, [WorkflowExpression] Func<string> bodybuyingGroup5 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycity1 = null, [WorkflowExpression] Func<string> bodycompanyTaxNumber = null, [WorkflowExpression] Func<string> bodycontact = null, [WorkflowExpression] Func<string> bodycontractPrcReqd = null, [WorkflowExpression] Func<string> bodycounterSlsOnly = null, [WorkflowExpression] Func<string> bodycountyZip = null, [WorkflowExpression] Func<string> bodycountyZip1 = null, [WorkflowExpression] Func<string> bodycreditCheckFlag = null, [WorkflowExpression] Func<string> bodycreditLimit = null, [WorkflowExpression] Func<string> bodycreditStatus = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodycustomerClass = null, [WorkflowExpression] Func<string> bodycustomerCode = null, [WorkflowExpression] Func<string> bodycustomerOnHold = null, [WorkflowExpression] Func<string> bodydateCustAdded = null, [WorkflowExpression] Func<string> bodydefaultOrdType = null, [WorkflowExpression] Func<string> bodydeliveryTerms = null, [WorkflowExpression] Func<string> bodydeliveryTermsC = null, [WorkflowExpression] Func<string> bodydetailMoveReqd = null, [WorkflowExpression] Func<string> bodydocFax = null, [WorkflowExpression] Func<string> bodydocFaxContact = null, [WorkflowExpression] Func<string> bodyediFlag = null, [WorkflowExpression] Func<string> bodyediSenderCode = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyexemptFinChg = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyfaxInvoices = null, [WorkflowExpression] Func<string> bodyfaxQuotes = null, [WorkflowExpression] Func<string> bodyfaxStatements = null, [WorkflowExpression] Func<string> bodygstExemptFlag = null, [WorkflowExpression] Func<string> bodygstExemptNum = null, [WorkflowExpression] Func<string> bodygstLevel = null, [WorkflowExpression] Func<string> bodyhighInv = null, [WorkflowExpression] Func<string> bodyhighInvDays = null, [WorkflowExpression] Func<string> bodyhighestBalance = null, [WorkflowExpression] Func<string> bodyibtCustomer = null, [WorkflowExpression] Func<string> bodyinvCommentCode = null, [WorkflowExpression] Func<string> bodyinvDiscCode = null, [WorkflowExpression] Func<string> bodylanguageCode = null, [WorkflowExpression] Func<string> bodylineDiscCode = null, [WorkflowExpression] Func<string> bodymaintHistory = null, [WorkflowExpression] Func<string> bodymaintLastPrcPaid = null, [WorkflowExpression] Func<string> bodyminimumOrderChgCod = null, [WorkflowExpression] Func<string> bodyminimumOrderValue = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodynewCustomerCode = null, [WorkflowExpression] Func<string> bodypoNumberMandatory = null, [WorkflowExpression] Func<string> bodypriceCategoryTable = null, [WorkflowExpression] Func<string> bodypriceCode = null, [WorkflowExpression] Func<string> bodyrouteCode = null, [WorkflowExpression] Func<string> bodyrouteDistance = null, [WorkflowExpression] Func<string> bodysalesWarehouse = null, [WorkflowExpression] Func<string> bodysalesperson = null, [WorkflowExpression] Func<string> bodysalesperson1 = null, [WorkflowExpression] Func<string> bodysalesperson2 = null, [WorkflowExpression] Func<string> bodysalesperson3 = null, [WorkflowExpression] Func<string> bodyshipPostalCode = null, [WorkflowExpression] Func<string> bodyshipToAddr1 = null, [WorkflowExpression] Func<string> bodyshipToAddr2 = null, [WorkflowExpression] Func<string> bodyshipToAddr3 = null, [WorkflowExpression] Func<string> bodyshipToAddr3Loc = null, [WorkflowExpression] Func<string> bodyshipToAddr4 = null, [WorkflowExpression] Func<string> bodyshipToAddr5 = null, [WorkflowExpression] Func<string> bodyshipToGpsLat = null, [WorkflowExpression] Func<string> bodyshipToGpsLong = null, [WorkflowExpression] Func<string> bodyshippingInstrs = null, [WorkflowExpression] Func<string> bodyshippingInstrsCod = null, [WorkflowExpression] Func<string> bodyshippingLocation = null, [WorkflowExpression] Func<string> bodyshortName = null, [WorkflowExpression] Func<string> bodysoDefaultDoc = null, [WorkflowExpression] Func<string> bodysoDefaultType = null, [WorkflowExpression] Func<string> bodysoldPostalCode = null, [WorkflowExpression] Func<string> bodysoldToAddr1 = null, [WorkflowExpression] Func<string> bodysoldToAddr2 = null, [WorkflowExpression] Func<string> bodysoldToAddr3 = null, [WorkflowExpression] Func<string> bodysoldToAddr3Loc = null, [WorkflowExpression] Func<string> bodysoldToAddr4 = null, [WorkflowExpression] Func<string> bodysoldToAddr5 = null, [WorkflowExpression] Func<string> bodysoldToGpsLat = null, [WorkflowExpression] Func<string> bodysoldToGpsLong = null, [WorkflowExpression] Func<string> bodyspecialInstrs = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodystate1 = null, [WorkflowExpression] Func<string> bodystateCode = null, [WorkflowExpression] Func<string> bodystatementReqd = null, [WorkflowExpression] Func<string> bodystockInterchange = null, [WorkflowExpression] Func<string> bodytagsToDropFromXML = null, [WorkflowExpression] Func<string> bodytaxExemptNumber = null, [WorkflowExpression] Func<string> bodytaxStatus = null, [WorkflowExpression] Func<string> bodytelephone = null, [WorkflowExpression] Func<string> bodytelephoneExtn = null, [WorkflowExpression] Func<string> bodytelex = null, [WorkflowExpression] Func<string> bodytermsCode = null, [WorkflowExpression] Func<string> bodytpmCreditCheck = null, [WorkflowExpression] Func<string> bodytpmCustomerFlag = null, [WorkflowExpression] Func<string> bodytpmPricingFlag = null, [WorkflowExpression] Func<string> bodytransactionNature = null, [WorkflowExpression] Func<string> bodytransactionNatureC = null, [WorkflowExpression] Func<string> bodyukCurrency = null, [WorkflowExpression] Func<string> bodyukVatFlag = null, [WorkflowExpression] Func<string> bodyuserField1 = null, [WorkflowExpression] Func<string> bodyuserField2 = null, [WorkflowExpression] Func<string> bodywholeOrderShipFlag = null, [WorkflowExpression] Func<string> bodyeSignature = null)
         {
-            SourceExpression.Validate(bodyaddTelephone, nameof(bodyaddTelephone), required: false);
-            SourceExpression.Validate(bodyaltMethodFlag, nameof(bodyaltMethodFlag), required: false);
-            SourceExpression.Validate(bodyapplyLineDisc, nameof(bodyapplyLineDisc), required: false);
-            SourceExpression.Validate(bodyapplyOrdDisc, nameof(bodyapplyOrdDisc), required: false);
-            SourceExpression.Validate(bodyarStatementNo, nameof(bodyarStatementNo), required: false);
-            SourceExpression.Validate(bodyarea, nameof(bodyarea), required: false);
-            SourceExpression.Validate(bodybackOrdReqd, nameof(bodybackOrdReqd), required: false);
-            SourceExpression.Validate(bodybalanceType, nameof(bodybalanceType), required: false);
-            SourceExpression.Validate(bodybranch, nameof(bodybranch), required: false);
-            SourceExpression.Validate(bodybuyingGroup1, nameof(bodybuyingGroup1), required: false);
-            SourceExpression.Validate(bodybuyingGroup2, nameof(bodybuyingGroup2), required: false);
-            SourceExpression.Validate(bodybuyingGroup3, nameof(bodybuyingGroup3), required: false);
-            SourceExpression.Validate(bodybuyingGroup4, nameof(bodybuyingGroup4), required: false);
-            SourceExpression.Validate(bodybuyingGroup5, nameof(bodybuyingGroup5), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycity1, nameof(bodycity1), required: false);
-            SourceExpression.Validate(bodycompanyTaxNumber, nameof(bodycompanyTaxNumber), required: false);
-            SourceExpression.Validate(bodycontact, nameof(bodycontact), required: false);
-            SourceExpression.Validate(bodycontractPrcReqd, nameof(bodycontractPrcReqd), required: false);
-            SourceExpression.Validate(bodycounterSlsOnly, nameof(bodycounterSlsOnly), required: false);
-            SourceExpression.Validate(bodycountyZip, nameof(bodycountyZip), required: false);
-            SourceExpression.Validate(bodycountyZip1, nameof(bodycountyZip1), required: false);
-            SourceExpression.Validate(bodycreditCheckFlag, nameof(bodycreditCheckFlag), required: false);
-            SourceExpression.Validate(bodycreditLimit, nameof(bodycreditLimit), required: false);
-            SourceExpression.Validate(bodycreditStatus, nameof(bodycreditStatus), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodycustomerClass, nameof(bodycustomerClass), required: false);
-            SourceExpression.Validate(bodycustomerCode, nameof(bodycustomerCode), required: false);
-            SourceExpression.Validate(bodycustomerOnHold, nameof(bodycustomerOnHold), required: false);
-            SourceExpression.Validate(bodydateCustAdded, nameof(bodydateCustAdded), required: false);
-            SourceExpression.Validate(bodydefaultOrdType, nameof(bodydefaultOrdType), required: false);
-            SourceExpression.Validate(bodydeliveryTerms, nameof(bodydeliveryTerms), required: false);
-            SourceExpression.Validate(bodydeliveryTermsC, nameof(bodydeliveryTermsC), required: false);
-            SourceExpression.Validate(bodydetailMoveReqd, nameof(bodydetailMoveReqd), required: false);
-            SourceExpression.Validate(bodydocFax, nameof(bodydocFax), required: false);
-            SourceExpression.Validate(bodydocFaxContact, nameof(bodydocFaxContact), required: false);
-            SourceExpression.Validate(bodyediFlag, nameof(bodyediFlag), required: false);
-            SourceExpression.Validate(bodyediSenderCode, nameof(bodyediSenderCode), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyexemptFinChg, nameof(bodyexemptFinChg), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodyfaxInvoices, nameof(bodyfaxInvoices), required: false);
-            SourceExpression.Validate(bodyfaxQuotes, nameof(bodyfaxQuotes), required: false);
-            SourceExpression.Validate(bodyfaxStatements, nameof(bodyfaxStatements), required: false);
-            SourceExpression.Validate(bodygstExemptFlag, nameof(bodygstExemptFlag), required: false);
-            SourceExpression.Validate(bodygstExemptNum, nameof(bodygstExemptNum), required: false);
-            SourceExpression.Validate(bodygstLevel, nameof(bodygstLevel), required: false);
-            SourceExpression.Validate(bodyhighInv, nameof(bodyhighInv), required: false);
-            SourceExpression.Validate(bodyhighInvDays, nameof(bodyhighInvDays), required: false);
-            SourceExpression.Validate(bodyhighestBalance, nameof(bodyhighestBalance), required: false);
-            SourceExpression.Validate(bodyibtCustomer, nameof(bodyibtCustomer), required: false);
-            SourceExpression.Validate(bodyinvCommentCode, nameof(bodyinvCommentCode), required: false);
-            SourceExpression.Validate(bodyinvDiscCode, nameof(bodyinvDiscCode), required: false);
-            SourceExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: false);
-            SourceExpression.Validate(bodylineDiscCode, nameof(bodylineDiscCode), required: false);
-            SourceExpression.Validate(bodymaintHistory, nameof(bodymaintHistory), required: false);
-            SourceExpression.Validate(bodymaintLastPrcPaid, nameof(bodymaintLastPrcPaid), required: false);
-            SourceExpression.Validate(bodyminimumOrderChgCod, nameof(bodyminimumOrderChgCod), required: false);
-            SourceExpression.Validate(bodyminimumOrderValue, nameof(bodyminimumOrderValue), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynationality, nameof(bodynationality), required: false);
-            SourceExpression.Validate(bodynewCustomerCode, nameof(bodynewCustomerCode), required: false);
-            SourceExpression.Validate(bodypoNumberMandatory, nameof(bodypoNumberMandatory), required: false);
-            SourceExpression.Validate(bodypriceCategoryTable, nameof(bodypriceCategoryTable), required: false);
-            SourceExpression.Validate(bodypriceCode, nameof(bodypriceCode), required: false);
-            SourceExpression.Validate(bodyrouteCode, nameof(bodyrouteCode), required: false);
-            SourceExpression.Validate(bodyrouteDistance, nameof(bodyrouteDistance), required: false);
-            SourceExpression.Validate(bodysalesWarehouse, nameof(bodysalesWarehouse), required: false);
-            SourceExpression.Validate(bodysalesperson, nameof(bodysalesperson), required: false);
-            SourceExpression.Validate(bodysalesperson1, nameof(bodysalesperson1), required: false);
-            SourceExpression.Validate(bodysalesperson2, nameof(bodysalesperson2), required: false);
-            SourceExpression.Validate(bodysalesperson3, nameof(bodysalesperson3), required: false);
-            SourceExpression.Validate(bodyshipPostalCode, nameof(bodyshipPostalCode), required: false);
-            SourceExpression.Validate(bodyshipToAddr1, nameof(bodyshipToAddr1), required: false);
-            SourceExpression.Validate(bodyshipToAddr2, nameof(bodyshipToAddr2), required: false);
-            SourceExpression.Validate(bodyshipToAddr3, nameof(bodyshipToAddr3), required: false);
-            SourceExpression.Validate(bodyshipToAddr3Loc, nameof(bodyshipToAddr3Loc), required: false);
-            SourceExpression.Validate(bodyshipToAddr4, nameof(bodyshipToAddr4), required: false);
-            SourceExpression.Validate(bodyshipToAddr5, nameof(bodyshipToAddr5), required: false);
-            SourceExpression.Validate(bodyshipToGpsLat, nameof(bodyshipToGpsLat), required: false);
-            SourceExpression.Validate(bodyshipToGpsLong, nameof(bodyshipToGpsLong), required: false);
-            SourceExpression.Validate(bodyshippingInstrs, nameof(bodyshippingInstrs), required: false);
-            SourceExpression.Validate(bodyshippingInstrsCod, nameof(bodyshippingInstrsCod), required: false);
-            SourceExpression.Validate(bodyshippingLocation, nameof(bodyshippingLocation), required: false);
-            SourceExpression.Validate(bodyshortName, nameof(bodyshortName), required: false);
-            SourceExpression.Validate(bodysoDefaultDoc, nameof(bodysoDefaultDoc), required: false);
-            SourceExpression.Validate(bodysoDefaultType, nameof(bodysoDefaultType), required: false);
-            SourceExpression.Validate(bodysoldPostalCode, nameof(bodysoldPostalCode), required: false);
-            SourceExpression.Validate(bodysoldToAddr1, nameof(bodysoldToAddr1), required: false);
-            SourceExpression.Validate(bodysoldToAddr2, nameof(bodysoldToAddr2), required: false);
-            SourceExpression.Validate(bodysoldToAddr3, nameof(bodysoldToAddr3), required: false);
-            SourceExpression.Validate(bodysoldToAddr3Loc, nameof(bodysoldToAddr3Loc), required: false);
-            SourceExpression.Validate(bodysoldToAddr4, nameof(bodysoldToAddr4), required: false);
-            SourceExpression.Validate(bodysoldToAddr5, nameof(bodysoldToAddr5), required: false);
-            SourceExpression.Validate(bodysoldToGpsLat, nameof(bodysoldToGpsLat), required: false);
-            SourceExpression.Validate(bodysoldToGpsLong, nameof(bodysoldToGpsLong), required: false);
-            SourceExpression.Validate(bodyspecialInstrs, nameof(bodyspecialInstrs), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodystate1, nameof(bodystate1), required: false);
-            SourceExpression.Validate(bodystateCode, nameof(bodystateCode), required: false);
-            SourceExpression.Validate(bodystatementReqd, nameof(bodystatementReqd), required: false);
-            SourceExpression.Validate(bodystockInterchange, nameof(bodystockInterchange), required: false);
-            SourceExpression.Validate(bodytagsToDropFromXML, nameof(bodytagsToDropFromXML), required: false);
-            SourceExpression.Validate(bodytaxExemptNumber, nameof(bodytaxExemptNumber), required: false);
-            SourceExpression.Validate(bodytaxStatus, nameof(bodytaxStatus), required: false);
-            SourceExpression.Validate(bodytelephone, nameof(bodytelephone), required: false);
-            SourceExpression.Validate(bodytelephoneExtn, nameof(bodytelephoneExtn), required: false);
-            SourceExpression.Validate(bodytelex, nameof(bodytelex), required: false);
-            SourceExpression.Validate(bodytermsCode, nameof(bodytermsCode), required: false);
-            SourceExpression.Validate(bodytpmCreditCheck, nameof(bodytpmCreditCheck), required: false);
-            SourceExpression.Validate(bodytpmCustomerFlag, nameof(bodytpmCustomerFlag), required: false);
-            SourceExpression.Validate(bodytpmPricingFlag, nameof(bodytpmPricingFlag), required: false);
-            SourceExpression.Validate(bodytransactionNature, nameof(bodytransactionNature), required: false);
-            SourceExpression.Validate(bodytransactionNatureC, nameof(bodytransactionNatureC), required: false);
-            SourceExpression.Validate(bodyukCurrency, nameof(bodyukCurrency), required: false);
-            SourceExpression.Validate(bodyukVatFlag, nameof(bodyukVatFlag), required: false);
-            SourceExpression.Validate(bodyuserField1, nameof(bodyuserField1), required: false);
-            SourceExpression.Validate(bodyuserField2, nameof(bodyuserField2), required: false);
-            SourceExpression.Validate(bodywholeOrderShipFlag, nameof(bodywholeOrderShipFlag), required: false);
-            SourceExpression.Validate(bodyeSignature, nameof(bodyeSignature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/syspro/customer";
@@ -3997,123 +3468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
         public IBodyWorkflowAction<SYSPROCreateNewSalesOrderResponse> SYSPROCreateNewSalesOrder([WorkflowExpression] Func<string> bodyacceptEarlierShipDate = null, [WorkflowExpression] Func<string> bodyacceptKitOptional = null, [WorkflowExpression] Func<string> bodyacceptOrdersIfNoCredit = null, [WorkflowExpression] Func<string> bodyaddAttachedServiceCharges = null, [WorkflowExpression] Func<string> bodyaddDangerousGoodsText = null, [WorkflowExpression] Func<string> bodyaddStockSalesOrderText = null, [WorkflowExpression] Func<string> bodyallocationAction = null, [WorkflowExpression] Func<string> bodyallowBackOrderForNegativeMerchLine = null, [WorkflowExpression] Func<string> bodyallowBackOrderForPartialHold = null, [WorkflowExpression] Func<string> bodyallowBackOrderForSuperseded = null, [WorkflowExpression] Func<string> bodyallowChangeToZeroPrice = null, [WorkflowExpression] Func<string> bodyallowDuplicateOrderNumbers = null, [WorkflowExpression] Func<string> bodyallowManualOrderNumberToBeUsed = null, [WorkflowExpression] Func<string> bodyallowNonStockItems = null, [WorkflowExpression] Func<string> bodyallowZeroPrice = null, [WorkflowExpression] Func<string> bodyalternateReference = null, [WorkflowExpression] Func<string> bodyalwaysUsePriceEntered = null, [WorkflowExpression] Func<string> bodyapplyLeadTimeCalculation = null, [WorkflowExpression] Func<string> bodyapplyParentDiscountToComponents = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodybranch = null, [WorkflowExpression] Func<string> bodycancelReasonCode = null, [WorkflowExpression] Func<string> bodycheckForCustomerPoNumbers = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycompanyTaxNumber = null, [WorkflowExpression] Func<string> bodycountyZip = null, [WorkflowExpression] Func<string> bodycreditFailMessage = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodycustomer = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodycustomerPoNumber = null, [WorkflowExpression] Func<string> bodycustomerToUse = null, [WorkflowExpression] Func<string> bodydeliveryRoute = null, [WorkflowExpression] Func<string> bodydeliveryRouteAction = null, [WorkflowExpression] Func<string> bodydeliveryTerms = null, [WorkflowExpression] Func<string> bodydocumentFormat = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyglobalTradePromotionCodes = null, [WorkflowExpression] Func<string> bodygstExemptNumber = null, [WorkflowExpression] Func<string> bodygstExemptionStatus = null, [WorkflowExpression] Func<string> bodyheaderFreightCharges = null, [WorkflowExpression] Func<string> bodyheaderMiscCharges = null, [WorkflowExpression] Func<string> bodyignoreWarnings = null, [WorkflowExpression] Func<string> bodyinBoxMsgReqd = null, [WorkflowExpression] Func<string> bodyincludeInMrp = null, [WorkflowExpression] Func<string> bodyinvoiceDateEntered = null, [WorkflowExpression] Func<string> bodyinvoiceNumberEntered = null, [WorkflowExpression] Func<string> bodyinvoiceTerms = null, [WorkflowExpression] Func<string> bodyinvoiceWholeOrderOnly = null, [WorkflowExpression] Func<string> bodylanguageCode = null, [WorkflowExpression] Func<string> bodyminimumDaysToShip = null, [WorkflowExpression] Func<string> bodymultiShipCode = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodynewCustomerPoNumber = null, [WorkflowExpression] Func<string> bodynewSalesOrderNumber = null, [WorkflowExpression] Func<string> bodyoperatorToInform = null, [WorkflowExpression] Func<string> bodyorderActionType = null, [WorkflowExpression] Func<string> bodyorderComments = null, [WorkflowExpression] Func<string> bodyorderDate = null, [WorkflowExpression] Func<string> bodyorderDiscPercent1 = null, [WorkflowExpression] Func<string> bodyorderDiscPercent2 = null, [WorkflowExpression] Func<string> bodyorderDiscPercent3 = null, [WorkflowExpression] Func<string> bodyorderStatus = null, [WorkflowExpression] Func<string> bodyorderType = null, [WorkflowExpression] Func<string> bodyoverrideCustomerBackOrder = null, [WorkflowExpression] Func<string> bodypOSSalesOrder = null, [WorkflowExpression] Func<string> bodyprocess = null, [WorkflowExpression] Func<string> bodyprocessFlag = null, [WorkflowExpression] Func<string> bodyputEntireQuantityOnNewLoadWhenChanged = null, [WorkflowExpression] Func<string> bodyreceiverCode = null, [WorkflowExpression] Func<string> bodyrequestedShipDate = null, [WorkflowExpression] Func<string> bodyreserveStock = null, [WorkflowExpression] Func<string> bodyreserveStockRequestAllocs = null, [WorkflowExpression] Func<string> bodysalesOrder = null, [WorkflowExpression] Func<bodysalesOrderDetailsInputItem[]> bodysalesOrderDetails = null, [WorkflowExpression] Func<bodysalesOrderFooterCommentsInputItem[]> bodysalesOrderFooterComments = null, [WorkflowExpression] Func<bodysalesOrderFreightDetailsInputItem[]> bodysalesOrderFreightDetails = null, [WorkflowExpression] Func<bodysalesOrderHeaderCommentsInputItem[]> bodysalesOrderHeaderComments = null, [WorkflowExpression] Func<bodysalesOrderMiscChargesDetailsInputItem[]> bodysalesOrderMiscChargesDetails = null, [WorkflowExpression] Func<string> bodysalesOrderPromoQualifyAction = null, [WorkflowExpression] Func<string> bodysalesOrderPromoSelectAction = null, [WorkflowExpression] Func<string> bodysalesperson = null, [WorkflowExpression] Func<string> bodysenderCode = null, [WorkflowExpression] Func<string> bodyshipAddress1 = null, [WorkflowExpression] Func<string> bodyshipAddress2 = null, [WorkflowExpression] Func<string> bodyshipAddress3 = null, [WorkflowExpression] Func<string> bodyshipAddress3Locality = null, [WorkflowExpression] Func<string> bodyshipAddress4 = null, [WorkflowExpression] Func<string> bodyshipAddress5 = null, [WorkflowExpression] Func<string> bodyshipAddressPerLine = null, [WorkflowExpression] Func<string> bodyshipAddressPerLineTax = null, [WorkflowExpression] Func<string> bodyshipGpsLat = null, [WorkflowExpression] Func<string> bodyshipGpsLong = null, [WorkflowExpression] Func<string> bodyshipPostalCode = null, [WorkflowExpression] Func<string> bodyshippingInstrs = null, [WorkflowExpression] Func<string> bodyshippingInstrsCode = null, [WorkflowExpression] Func<string> bodyshippingLocation = null, [WorkflowExpression] Func<string> bodyspecialInstrs = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodystatusInProcess = null, [WorkflowExpression] Func<string> bodystatusInProcessResponse = null, [WorkflowExpression] Func<string> bodysupplier = null, [WorkflowExpression] Func<string> bodytagsToDropFromXML = null, [WorkflowExpression] Func<string> bodytaxExemptNumber = null, [WorkflowExpression] Func<string> bodytaxExemptionStatus = null, [WorkflowExpression] Func<string> bodytransactionNature = null, [WorkflowExpression] Func<string> bodytransmissionReference = null, [WorkflowExpression] Func<string> bodytransportMode = null, [WorkflowExpression] Func<string> bodytypeOfOrder = null, [WorkflowExpression] Func<string> bodyuseCustomerSalesWarehouse = null, [WorkflowExpression] Func<string> bodyuseMasterAccountForCustomerPartNo = null, [WorkflowExpression] Func<string> bodyuseStockDescSupplied = null, [WorkflowExpression] Func<string> bodyvalidateShippingInstrs = null, [WorkflowExpression] Func<string> bodywarehouse = null, [WorkflowExpression] Func<string> bodywarehouseListToUse = null, [WorkflowExpression] Func<string> bodywarnIfCustomerOnHold = null, [WorkflowExpression] Func<string> bodyeSignature = null)
         {
-            SourceExpression.Validate(bodyacceptEarlierShipDate, nameof(bodyacceptEarlierShipDate), required: false);
-            SourceExpression.Validate(bodyacceptKitOptional, nameof(bodyacceptKitOptional), required: false);
-            SourceExpression.Validate(bodyacceptOrdersIfNoCredit, nameof(bodyacceptOrdersIfNoCredit), required: false);
-            SourceExpression.Validate(bodyaddAttachedServiceCharges, nameof(bodyaddAttachedServiceCharges), required: false);
-            SourceExpression.Validate(bodyaddDangerousGoodsText, nameof(bodyaddDangerousGoodsText), required: false);
-            SourceExpression.Validate(bodyaddStockSalesOrderText, nameof(bodyaddStockSalesOrderText), required: false);
-            SourceExpression.Validate(bodyallocationAction, nameof(bodyallocationAction), required: false);
-            SourceExpression.Validate(bodyallowBackOrderForNegativeMerchLine, nameof(bodyallowBackOrderForNegativeMerchLine), required: false);
-            SourceExpression.Validate(bodyallowBackOrderForPartialHold, nameof(bodyallowBackOrderForPartialHold), required: false);
-            SourceExpression.Validate(bodyallowBackOrderForSuperseded, nameof(bodyallowBackOrderForSuperseded), required: false);
-            SourceExpression.Validate(bodyallowChangeToZeroPrice, nameof(bodyallowChangeToZeroPrice), required: false);
-            SourceExpression.Validate(bodyallowDuplicateOrderNumbers, nameof(bodyallowDuplicateOrderNumbers), required: false);
-            SourceExpression.Validate(bodyallowManualOrderNumberToBeUsed, nameof(bodyallowManualOrderNumberToBeUsed), required: false);
-            SourceExpression.Validate(bodyallowNonStockItems, nameof(bodyallowNonStockItems), required: false);
-            SourceExpression.Validate(bodyallowZeroPrice, nameof(bodyallowZeroPrice), required: false);
-            SourceExpression.Validate(bodyalternateReference, nameof(bodyalternateReference), required: false);
-            SourceExpression.Validate(bodyalwaysUsePriceEntered, nameof(bodyalwaysUsePriceEntered), required: false);
-            SourceExpression.Validate(bodyapplyLeadTimeCalculation, nameof(bodyapplyLeadTimeCalculation), required: false);
-            SourceExpression.Validate(bodyapplyParentDiscountToComponents, nameof(bodyapplyParentDiscountToComponents), required: false);
-            SourceExpression.Validate(bodyarea, nameof(bodyarea), required: false);
-            SourceExpression.Validate(bodybranch, nameof(bodybranch), required: false);
-            SourceExpression.Validate(bodycancelReasonCode, nameof(bodycancelReasonCode), required: false);
-            SourceExpression.Validate(bodycheckForCustomerPoNumbers, nameof(bodycheckForCustomerPoNumbers), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodycompanyTaxNumber, nameof(bodycompanyTaxNumber), required: false);
-            SourceExpression.Validate(bodycountyZip, nameof(bodycountyZip), required: false);
-            SourceExpression.Validate(bodycreditFailMessage, nameof(bodycreditFailMessage), required: false);
-            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            SourceExpression.Validate(bodycustomer, nameof(bodycustomer), required: false);
-            SourceExpression.Validate(bodycustomerName, nameof(bodycustomerName), required: false);
-            SourceExpression.Validate(bodycustomerPoNumber, nameof(bodycustomerPoNumber), required: false);
-            SourceExpression.Validate(bodycustomerToUse, nameof(bodycustomerToUse), required: false);
-            SourceExpression.Validate(bodydeliveryRoute, nameof(bodydeliveryRoute), required: false);
-            SourceExpression.Validate(bodydeliveryRouteAction, nameof(bodydeliveryRouteAction), required: false);
-            SourceExpression.Validate(bodydeliveryTerms, nameof(bodydeliveryTerms), required: false);
-            SourceExpression.Validate(bodydocumentFormat, nameof(bodydocumentFormat), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyglobalTradePromotionCodes, nameof(bodyglobalTradePromotionCodes), required: false);
-            SourceExpression.Validate(bodygstExemptNumber, nameof(bodygstExemptNumber), required: false);
-            SourceExpression.Validate(bodygstExemptionStatus, nameof(bodygstExemptionStatus), required: false);
-            SourceExpression.Validate(bodyheaderFreightCharges, nameof(bodyheaderFreightCharges), required: false);
-            SourceExpression.Validate(bodyheaderMiscCharges, nameof(bodyheaderMiscCharges), required: false);
-            SourceExpression.Validate(bodyignoreWarnings, nameof(bodyignoreWarnings), required: false);
-            SourceExpression.Validate(bodyinBoxMsgReqd, nameof(bodyinBoxMsgReqd), required: false);
-            SourceExpression.Validate(bodyincludeInMrp, nameof(bodyincludeInMrp), required: false);
-            SourceExpression.Validate(bodyinvoiceDateEntered, nameof(bodyinvoiceDateEntered), required: false);
-            SourceExpression.Validate(bodyinvoiceNumberEntered, nameof(bodyinvoiceNumberEntered), required: false);
-            SourceExpression.Validate(bodyinvoiceTerms, nameof(bodyinvoiceTerms), required: false);
-            SourceExpression.Validate(bodyinvoiceWholeOrderOnly, nameof(bodyinvoiceWholeOrderOnly), required: false);
-            SourceExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: false);
-            SourceExpression.Validate(bodyminimumDaysToShip, nameof(bodyminimumDaysToShip), required: false);
-            SourceExpression.Validate(bodymultiShipCode, nameof(bodymultiShipCode), required: false);
-            SourceExpression.Validate(bodynationality, nameof(bodynationality), required: false);
-            SourceExpression.Validate(bodynewCustomerPoNumber, nameof(bodynewCustomerPoNumber), required: false);
-            SourceExpression.Validate(bodynewSalesOrderNumber, nameof(bodynewSalesOrderNumber), required: false);
-            SourceExpression.Validate(bodyoperatorToInform, nameof(bodyoperatorToInform), required: false);
-            SourceExpression.Validate(bodyorderActionType, nameof(bodyorderActionType), required: false);
-            SourceExpression.Validate(bodyorderComments, nameof(bodyorderComments), required: false);
-            SourceExpression.Validate(bodyorderDate, nameof(bodyorderDate), required: false);
-            SourceExpression.Validate(bodyorderDiscPercent1, nameof(bodyorderDiscPercent1), required: false);
-            SourceExpression.Validate(bodyorderDiscPercent2, nameof(bodyorderDiscPercent2), required: false);
-            SourceExpression.Validate(bodyorderDiscPercent3, nameof(bodyorderDiscPercent3), required: false);
-            SourceExpression.Validate(bodyorderStatus, nameof(bodyorderStatus), required: false);
-            SourceExpression.Validate(bodyorderType, nameof(bodyorderType), required: false);
-            SourceExpression.Validate(bodyoverrideCustomerBackOrder, nameof(bodyoverrideCustomerBackOrder), required: false);
-            SourceExpression.Validate(bodypOSSalesOrder, nameof(bodypOSSalesOrder), required: false);
-            SourceExpression.Validate(bodyprocess, nameof(bodyprocess), required: false);
-            SourceExpression.Validate(bodyprocessFlag, nameof(bodyprocessFlag), required: false);
-            SourceExpression.Validate(bodyputEntireQuantityOnNewLoadWhenChanged, nameof(bodyputEntireQuantityOnNewLoadWhenChanged), required: false);
-            SourceExpression.Validate(bodyreceiverCode, nameof(bodyreceiverCode), required: false);
-            SourceExpression.Validate(bodyrequestedShipDate, nameof(bodyrequestedShipDate), required: false);
-            SourceExpression.Validate(bodyreserveStock, nameof(bodyreserveStock), required: false);
-            SourceExpression.Validate(bodyreserveStockRequestAllocs, nameof(bodyreserveStockRequestAllocs), required: false);
-            SourceExpression.Validate(bodysalesOrder, nameof(bodysalesOrder), required: false);
-            SourceExpression.Validate(bodysalesOrderDetails, nameof(bodysalesOrderDetails), required: false);
-            SourceExpression.Validate(bodysalesOrderFooterComments, nameof(bodysalesOrderFooterComments), required: false);
-            SourceExpression.Validate(bodysalesOrderFreightDetails, nameof(bodysalesOrderFreightDetails), required: false);
-            SourceExpression.Validate(bodysalesOrderHeaderComments, nameof(bodysalesOrderHeaderComments), required: false);
-            SourceExpression.Validate(bodysalesOrderMiscChargesDetails, nameof(bodysalesOrderMiscChargesDetails), required: false);
-            SourceExpression.Validate(bodysalesOrderPromoQualifyAction, nameof(bodysalesOrderPromoQualifyAction), required: false);
-            SourceExpression.Validate(bodysalesOrderPromoSelectAction, nameof(bodysalesOrderPromoSelectAction), required: false);
-            SourceExpression.Validate(bodysalesperson, nameof(bodysalesperson), required: false);
-            SourceExpression.Validate(bodysenderCode, nameof(bodysenderCode), required: false);
-            SourceExpression.Validate(bodyshipAddress1, nameof(bodyshipAddress1), required: false);
-            SourceExpression.Validate(bodyshipAddress2, nameof(bodyshipAddress2), required: false);
-            SourceExpression.Validate(bodyshipAddress3, nameof(bodyshipAddress3), required: false);
-            SourceExpression.Validate(bodyshipAddress3Locality, nameof(bodyshipAddress3Locality), required: false);
-            SourceExpression.Validate(bodyshipAddress4, nameof(bodyshipAddress4), required: false);
-            SourceExpression.Validate(bodyshipAddress5, nameof(bodyshipAddress5), required: false);
-            SourceExpression.Validate(bodyshipAddressPerLine, nameof(bodyshipAddressPerLine), required: false);
-            SourceExpression.Validate(bodyshipAddressPerLineTax, nameof(bodyshipAddressPerLineTax), required: false);
-            SourceExpression.Validate(bodyshipGpsLat, nameof(bodyshipGpsLat), required: false);
-            SourceExpression.Validate(bodyshipGpsLong, nameof(bodyshipGpsLong), required: false);
-            SourceExpression.Validate(bodyshipPostalCode, nameof(bodyshipPostalCode), required: false);
-            SourceExpression.Validate(bodyshippingInstrs, nameof(bodyshippingInstrs), required: false);
-            SourceExpression.Validate(bodyshippingInstrsCode, nameof(bodyshippingInstrsCode), required: false);
-            SourceExpression.Validate(bodyshippingLocation, nameof(bodyshippingLocation), required: false);
-            SourceExpression.Validate(bodyspecialInstrs, nameof(bodyspecialInstrs), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodystatusInProcess, nameof(bodystatusInProcess), required: false);
-            SourceExpression.Validate(bodystatusInProcessResponse, nameof(bodystatusInProcessResponse), required: false);
-            SourceExpression.Validate(bodysupplier, nameof(bodysupplier), required: false);
-            SourceExpression.Validate(bodytagsToDropFromXML, nameof(bodytagsToDropFromXML), required: false);
-            SourceExpression.Validate(bodytaxExemptNumber, nameof(bodytaxExemptNumber), required: false);
-            SourceExpression.Validate(bodytaxExemptionStatus, nameof(bodytaxExemptionStatus), required: false);
-            SourceExpression.Validate(bodytransactionNature, nameof(bodytransactionNature), required: false);
-            SourceExpression.Validate(bodytransmissionReference, nameof(bodytransmissionReference), required: false);
-            SourceExpression.Validate(bodytransportMode, nameof(bodytransportMode), required: false);
-            SourceExpression.Validate(bodytypeOfOrder, nameof(bodytypeOfOrder), required: false);
-            SourceExpression.Validate(bodyuseCustomerSalesWarehouse, nameof(bodyuseCustomerSalesWarehouse), required: false);
-            SourceExpression.Validate(bodyuseMasterAccountForCustomerPartNo, nameof(bodyuseMasterAccountForCustomerPartNo), required: false);
-            SourceExpression.Validate(bodyuseStockDescSupplied, nameof(bodyuseStockDescSupplied), required: false);
-            SourceExpression.Validate(bodyvalidateShippingInstrs, nameof(bodyvalidateShippingInstrs), required: false);
-            SourceExpression.Validate(bodywarehouse, nameof(bodywarehouse), required: false);
-            SourceExpression.Validate(bodywarehouseListToUse, nameof(bodywarehouseListToUse), required: false);
-            SourceExpression.Validate(bodywarnIfCustomerOnHold, nameof(bodywarnIfCustomerOnHold), required: false);
-            SourceExpression.Validate(bodyeSignature, nameof(bodyeSignature), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/syspro/salesorder";

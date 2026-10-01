@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
         public IBodyWorkflowAction<JToken> ExecuteProcedure([WorkflowExpression] Func<string> procedure, [WorkflowExpression] Func<object> parameters = null)
         {
-            SourceExpression.Validate(procedure, nameof(procedure), required: true);
-            SourceExpression.Validate(parameters, nameof(parameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/procedures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
@@ -45,12 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
         public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -75,8 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
         public IBodyWorkflowAction<JToken> PostItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -92,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
         public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -108,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
         public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -124,9 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
         public IBodyWorkflowAction<JToken> PatchItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -142,8 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
         public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery([WorkflowExpression] Func<string> queryquery = null, [WorkflowExpression] Func<object> queryactualParameters = null)
         {
-            SourceExpression.Validate(queryquery, nameof(queryquery), required: false);
-            SourceExpression.Validate(queryactualParameters, nameof(queryactualParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/query/oracle";

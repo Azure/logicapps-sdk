@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2locationip")]
         public IBodyWorkflowAction<LookupIpResponse> LookupIp([WorkflowExpression] Func<string> ip)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

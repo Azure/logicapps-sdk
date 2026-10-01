@@ -28,15 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<GetProcessedEmailsResponse> GetProcessedEmails([WorkflowExpression] Func<string> mailagentKey, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> dateFrom = null, [WorkflowExpression] Func<string> dateTo = null, [WorkflowExpression] Func<string> requestId = null, [WorkflowExpression] Func<bool> isHb = null, [WorkflowExpression] Func<bool> isSb = null)
         {
-            SourceExpression.Validate(mailagentKey, nameof(mailagentKey), required: true);
-            SourceExpression.Validate(subject, nameof(subject), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
-            SourceExpression.Validate(dateFrom, nameof(dateFrom), required: false);
-            SourceExpression.Validate(dateTo, nameof(dateTo), required: false);
-            SourceExpression.Validate(requestId, nameof(requestId), required: false);
-            SourceExpression.Validate(isHb, nameof(isHb), required: false);
-            SourceExpression.Validate(isSb, nameof(isSb), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/email";
@@ -70,18 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<SuccessMessage> SendMail([WorkflowExpression] Func<string> bodymailAgent, [WorkflowExpression] Func<string> bodyfromname, [WorkflowExpression] Func<EmailAddressItems[]> bodyto, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyfromaddressprefix = null, [WorkflowExpression] Func<string> bodyfromaddressdomain = null, [WorkflowExpression] Func<EmailAddressItems[]> bodycC = null, [WorkflowExpression] Func<EmailAddressItems[]> bodybCC = null, [WorkflowExpression] Func<bodymailTypeInput> bodymailType = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<ReplyToAddresss[]> bodyreplyTo = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            SourceExpression.Validate(bodymailAgent, nameof(bodymailAgent), required: true);
-            SourceExpression.Validate(bodyfromname, nameof(bodyfromname), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodyfromaddressprefix, nameof(bodyfromaddressprefix), required: false);
-            SourceExpression.Validate(bodyfromaddressdomain, nameof(bodyfromaddressdomain), required: false);
-            SourceExpression.Validate(bodycC, nameof(bodycC), required: false);
-            SourceExpression.Validate(bodybCC, nameof(bodybCC), required: false);
-            SourceExpression.Validate(bodymailType, nameof(bodymailType), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/email";
@@ -184,16 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<SuccessMessage> SendTemplateMail([WorkflowExpression] Func<string> bodymailAgent, [WorkflowExpression] Func<string> bodymailTemplate, [WorkflowExpression] Func<string> bodyfromname, [WorkflowExpression] Func<string> bodyfromaddressprefix = null, [WorkflowExpression] Func<string> bodyfromaddressdomain = null, [WorkflowExpression] Func<EmailAddressItems[]> bodyto = null, [WorkflowExpression] Func<EmailAddressItems[]> bodycC = null, [WorkflowExpression] Func<EmailAddressItems[]> bodybCC = null, [WorkflowExpression] Func<bodymergeInfoInputItem[]> bodymergeInfo = null, [WorkflowExpression] Func<ReplyToAddresss[]> bodyreplyTo = null)
         {
-            SourceExpression.Validate(bodymailAgent, nameof(bodymailAgent), required: true);
-            SourceExpression.Validate(bodymailTemplate, nameof(bodymailTemplate), required: true);
-            SourceExpression.Validate(bodyfromname, nameof(bodyfromname), required: true);
-            SourceExpression.Validate(bodyfromaddressprefix, nameof(bodyfromaddressprefix), required: false);
-            SourceExpression.Validate(bodyfromaddressdomain, nameof(bodyfromaddressdomain), required: false);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodycC, nameof(bodycC), required: false);
-            SourceExpression.Validate(bodybCC, nameof(bodybCC), required: false);
-            SourceExpression.Validate(bodymergeInfo, nameof(bodymergeInfo), required: false);
-            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/email/template";
@@ -278,9 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<ProcessedMailStatsResponse> ProcessedMailStats([WorkflowExpression] Func<string> mailagent, [WorkflowExpression] Func<string> fromTime = null, [WorkflowExpression] Func<string> toTime = null)
         {
-            SourceExpression.Validate(mailagent, nameof(mailagent), required: true);
-            SourceExpression.Validate(fromTime, nameof(fromTime), required: false);
-            SourceExpression.Validate(toTime, nameof(toTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/stats/email";

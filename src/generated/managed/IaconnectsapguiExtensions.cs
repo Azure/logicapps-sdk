@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPEnableScripting([WorkflowExpression] Func<string> sAPEnableScriptingworkflow, [WorkflowExpression] Func<bool> sAPEnableScriptingnotifyWhenScriptAttachesToGUI = null, [WorkflowExpression] Func<bool> sAPEnableScriptingnotifyWhenScriptOpensConnection = null, [WorkflowExpression] Func<bool> sAPEnableScriptingshowNativeWindowsDialogs = null)
         {
-            SourceExpression.Validate(sAPEnableScriptingworkflow, nameof(sAPEnableScriptingworkflow), required: true);
-            SourceExpression.Validate(sAPEnableScriptingnotifyWhenScriptAttachesToGUI, nameof(sAPEnableScriptingnotifyWhenScriptAttachesToGUI), required: false);
-            SourceExpression.Validate(sAPEnableScriptingnotifyWhenScriptOpensConnection, nameof(sAPEnableScriptingnotifyWhenScriptOpensConnection), required: false);
-            SourceExpression.Validate(sAPEnableScriptingshowNativeWindowsDialogs, nameof(sAPEnableScriptingshowNativeWindowsDialogs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPEnableScripting";
@@ -88,17 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPLaunchSAPGUIResponse> SAPLaunchSAPGUI([WorkflowExpression] Func<string> sAPLaunchSAPGUIworkflow, [WorkflowExpression] Func<string> sAPLaunchSAPGUIsAPLogonEXE = null, [WorkflowExpression] Func<string> sAPLaunchSAPGUIsAPLogonArguments = null, [WorkflowExpression] Func<bool> sAPLaunchSAPGUIenableSAPScripting = null, [WorkflowExpression] Func<bool> sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI = null, [WorkflowExpression] Func<bool> sAPLaunchSAPGUInotifyWhenScriptOpensConnection = null, [WorkflowExpression] Func<bool> sAPLaunchSAPGUIshowNativeWindowsDialogs = null, [WorkflowExpression] Func<bool> sAPLaunchSAPGUIattachAfterLaunch = null, [WorkflowExpression] Func<double> sAPLaunchSAPGUIsecondsToWait = null, [WorkflowExpression] Func<string> sAPLaunchSAPGUIsAPProgId = null, [WorkflowExpression] Func<bool> sAPLaunchSAPGUIdisableSystemMessages = null)
         {
-            SourceExpression.Validate(sAPLaunchSAPGUIworkflow, nameof(sAPLaunchSAPGUIworkflow), required: true);
-            SourceExpression.Validate(sAPLaunchSAPGUIsAPLogonEXE, nameof(sAPLaunchSAPGUIsAPLogonEXE), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUIsAPLogonArguments, nameof(sAPLaunchSAPGUIsAPLogonArguments), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUIenableSAPScripting, nameof(sAPLaunchSAPGUIenableSAPScripting), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI, nameof(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUInotifyWhenScriptOpensConnection, nameof(sAPLaunchSAPGUInotifyWhenScriptOpensConnection), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUIshowNativeWindowsDialogs, nameof(sAPLaunchSAPGUIshowNativeWindowsDialogs), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUIattachAfterLaunch, nameof(sAPLaunchSAPGUIattachAfterLaunch), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUIsecondsToWait, nameof(sAPLaunchSAPGUIsecondsToWait), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUIsAPProgId, nameof(sAPLaunchSAPGUIsAPProgId), required: false);
-            SourceExpression.Validate(sAPLaunchSAPGUIdisableSystemMessages, nameof(sAPLaunchSAPGUIdisableSystemMessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPLaunchSAPGUI";
@@ -261,9 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPAttachToSAPGUIResponse> SAPAttachToSAPGUI([WorkflowExpression] Func<string> sAPAttachToSAPGUIworkflow, [WorkflowExpression] Func<string> sAPAttachToSAPGUIsAPProgId = null, [WorkflowExpression] Func<bool> sAPAttachToSAPGUIdisableSystemMessages = null)
         {
-            SourceExpression.Validate(sAPAttachToSAPGUIworkflow, nameof(sAPAttachToSAPGUIworkflow), required: true);
-            SourceExpression.Validate(sAPAttachToSAPGUIsAPProgId, nameof(sAPAttachToSAPGUIsAPProgId), required: false);
-            SourceExpression.Validate(sAPAttachToSAPGUIdisableSystemMessages, nameof(sAPAttachToSAPGUIdisableSystemMessages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPAttachToSAPGUI";
@@ -318,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDetachFromSAPGUI([WorkflowExpression] Func<string> sAPDetachFromSAPGUIworkflow)
         {
-            SourceExpression.Validate(sAPDetachFromSAPGUIworkflow, nameof(sAPDetachFromSAPGUIworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPDetachFromSAPGUI";
@@ -341,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGUIStatusResponse> SAPGetSAPGUIStatus([WorkflowExpression] Func<string> sAPGetSAPGUIStatusworkflow)
         {
-            SourceExpression.Validate(sAPGetSAPGUIStatusworkflow, nameof(sAPGetSAPGUIStatusworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGUIStatus";
@@ -364,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPSessionsResponse> SAPGetSAPSessions([WorkflowExpression] Func<string> sAPGetSAPSessionsworkflow)
         {
-            SourceExpression.Validate(sAPGetSAPSessionsworkflow, nameof(sAPGetSAPSessionsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPSessions";
@@ -387,9 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPAttachToSessionResponse> SAPAttachToSession([WorkflowExpression] Func<string> sAPAttachToSessionworkflow, [WorkflowExpression] Func<string> sAPAttachToSessionsearchConnectionName = null, [WorkflowExpression] Func<string> sAPAttachToSessionsearchSessionName = null)
         {
-            SourceExpression.Validate(sAPAttachToSessionworkflow, nameof(sAPAttachToSessionworkflow), required: true);
-            SourceExpression.Validate(sAPAttachToSessionsearchConnectionName, nameof(sAPAttachToSessionsearchConnectionName), required: false);
-            SourceExpression.Validate(sAPAttachToSessionsearchSessionName, nameof(sAPAttachToSessionsearchSessionName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPAttachToSession";
@@ -424,10 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCloseSession([WorkflowExpression] Func<string> sAPCloseSessionworkflow, [WorkflowExpression] Func<bool> sAPCloseSessioncloseAttachedSession = null, [WorkflowExpression] Func<string> sAPCloseSessionsearchConnectionName = null, [WorkflowExpression] Func<string> sAPCloseSessionsearchSessionName = null)
         {
-            SourceExpression.Validate(sAPCloseSessionworkflow, nameof(sAPCloseSessionworkflow), required: true);
-            SourceExpression.Validate(sAPCloseSessioncloseAttachedSession, nameof(sAPCloseSessioncloseAttachedSession), required: false);
-            SourceExpression.Validate(sAPCloseSessionsearchConnectionName, nameof(sAPCloseSessionsearchConnectionName), required: false);
-            SourceExpression.Validate(sAPCloseSessionsearchSessionName, nameof(sAPCloseSessionsearchSessionName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPCloseSession";
@@ -478,7 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetAttachedSessionPropertiesResponse> SAPGetAttachedSessionProperties([WorkflowExpression] Func<string> sAPGetAttachedSessionPropertiesworkflow)
         {
-            SourceExpression.Validate(sAPGetAttachedSessionPropertiesworkflow, nameof(sAPGetAttachedSessionPropertiesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetAttachedSessionProperties";
@@ -501,9 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPWaitForAttachedSessionNotBusyResponse> SAPWaitForAttachedSessionNotBusy([WorkflowExpression] Func<double> sAPWaitForAttachedSessionNotBusysecondsToWait, [WorkflowExpression] Func<string> sAPWaitForAttachedSessionNotBusyworkflow, [WorkflowExpression] Func<bool> sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait = null)
         {
-            SourceExpression.Validate(sAPWaitForAttachedSessionNotBusysecondsToWait, nameof(sAPWaitForAttachedSessionNotBusysecondsToWait), required: true);
-            SourceExpression.Validate(sAPWaitForAttachedSessionNotBusyworkflow, nameof(sAPWaitForAttachedSessionNotBusyworkflow), required: true);
-            SourceExpression.Validate(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait, nameof(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForAttachedSessionNotBusy";
@@ -544,11 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPInputTextIntoSAPElement([WorkflowExpression] Func<string> sAPInputTextIntoSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPInputTextIntoSAPElementworkflow, [WorkflowExpression] Func<string> sAPInputTextIntoSAPElementtextToInput = null, [WorkflowExpression] Func<bool> sAPInputTextIntoSAPElementreplaceExistingValue = null, [WorkflowExpression] Func<int> sAPInputTextIntoSAPElementinsertPosition = null)
         {
-            SourceExpression.Validate(sAPInputTextIntoSAPElementsearchSAPElementId, nameof(sAPInputTextIntoSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPInputTextIntoSAPElementworkflow, nameof(sAPInputTextIntoSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPInputTextIntoSAPElementtextToInput, nameof(sAPInputTextIntoSAPElementtextToInput), required: false);
-            SourceExpression.Validate(sAPInputTextIntoSAPElementreplaceExistingValue, nameof(sAPInputTextIntoSAPElementreplaceExistingValue), required: false);
-            SourceExpression.Validate(sAPInputTextIntoSAPElementinsertPosition, nameof(sAPInputTextIntoSAPElementinsertPosition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPInputTextIntoSAPElement";
@@ -611,9 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPInputPasswordIntoSAPElement([WorkflowExpression] Func<string> sAPInputPasswordIntoSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPInputPasswordIntoSAPElementpasswordToInput, [WorkflowExpression] Func<string> sAPInputPasswordIntoSAPElementworkflow)
         {
-            SourceExpression.Validate(sAPInputPasswordIntoSAPElementsearchSAPElementId, nameof(sAPInputPasswordIntoSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPInputPasswordIntoSAPElementpasswordToInput, nameof(sAPInputPasswordIntoSAPElementpasswordToInput), required: true);
-            SourceExpression.Validate(sAPInputPasswordIntoSAPElementworkflow, nameof(sAPInputPasswordIntoSAPElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPInputPasswordIntoSAPElement";
@@ -640,8 +600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetElementPropertiesResponse> SAPGetElementProperties([WorkflowExpression] Func<string> sAPGetElementPropertiessearchSAPElementId, [WorkflowExpression] Func<string> sAPGetElementPropertiesworkflow)
         {
-            SourceExpression.Validate(sAPGetElementPropertiessearchSAPElementId, nameof(sAPGetElementPropertiessearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetElementPropertiesworkflow, nameof(sAPGetElementPropertiesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementProperties";
@@ -666,10 +624,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPWaitForElementIdResponse> SAPWaitForElementId([WorkflowExpression] Func<string> sAPWaitForElementIdsearchSAPElementId, [WorkflowExpression] Func<string> sAPWaitForElementIdworkflow, [WorkflowExpression] Func<double> sAPWaitForElementIdsecondsToWait = null, [WorkflowExpression] Func<bool> sAPWaitForElementIdraiseExceptionIfElementNotFound = null)
         {
-            SourceExpression.Validate(sAPWaitForElementIdsearchSAPElementId, nameof(sAPWaitForElementIdsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPWaitForElementIdworkflow, nameof(sAPWaitForElementIdworkflow), required: true);
-            SourceExpression.Validate(sAPWaitForElementIdsecondsToWait, nameof(sAPWaitForElementIdsecondsToWait), required: false);
-            SourceExpression.Validate(sAPWaitForElementIdraiseExceptionIfElementNotFound, nameof(sAPWaitForElementIdraiseExceptionIfElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForElementId";
@@ -726,12 +680,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPWaitForWindowResponse> SAPWaitForWindow([WorkflowExpression] Func<string> sAPWaitForWindowsearchSAPWindowTitle, [WorkflowExpression] Func<string> sAPWaitForWindowworkflow, [WorkflowExpression] Func<bool> sAPWaitForWindowsearchIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPWaitForWindowsearchIsCaseSensitive = null, [WorkflowExpression] Func<double> sAPWaitForWindowsecondsToWait = null, [WorkflowExpression] Func<bool> sAPWaitForWindowraiseExceptionIfElementNotFound = null)
         {
-            SourceExpression.Validate(sAPWaitForWindowsearchSAPWindowTitle, nameof(sAPWaitForWindowsearchSAPWindowTitle), required: true);
-            SourceExpression.Validate(sAPWaitForWindowworkflow, nameof(sAPWaitForWindowworkflow), required: true);
-            SourceExpression.Validate(sAPWaitForWindowsearchIsRegularExpression, nameof(sAPWaitForWindowsearchIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPWaitForWindowsearchIsCaseSensitive, nameof(sAPWaitForWindowsearchIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPWaitForWindowsecondsToWait, nameof(sAPWaitForWindowsecondsToWait), required: false);
-            SourceExpression.Validate(sAPWaitForWindowraiseExceptionIfElementNotFound, nameof(sAPWaitForWindowraiseExceptionIfElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForWindow";
@@ -820,8 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetElementTextValueResponse> SAPGetElementTextValue([WorkflowExpression] Func<string> sAPGetElementTextValuesearchSAPElementId, [WorkflowExpression] Func<string> sAPGetElementTextValueworkflow)
         {
-            SourceExpression.Validate(sAPGetElementTextValuesearchSAPElementId, nameof(sAPGetElementTextValuesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetElementTextValueworkflow, nameof(sAPGetElementTextValueworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementTextValue";
@@ -846,8 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPElement([WorkflowExpression] Func<string> sAPPressSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPPressSAPElementworkflow)
         {
-            SourceExpression.Validate(sAPPressSAPElementsearchSAPElementId, nameof(sAPPressSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressSAPElementworkflow, nameof(sAPPressSAPElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPElement";
@@ -872,8 +816,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPElement([WorkflowExpression] Func<string> sAPSelectSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectSAPElementworkflow)
         {
-            SourceExpression.Validate(sAPSelectSAPElementsearchSAPElementId, nameof(sAPSelectSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectSAPElementworkflow, nameof(sAPSelectSAPElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPElement";
@@ -898,8 +840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPFocusSAPElement([WorkflowExpression] Func<string> sAPFocusSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPFocusSAPElementworkflow)
         {
-            SourceExpression.Validate(sAPFocusSAPElementsearchSAPElementId, nameof(sAPFocusSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPFocusSAPElementworkflow, nameof(sAPFocusSAPElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPFocusSAPElement";
@@ -924,9 +864,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckSAPElement([WorkflowExpression] Func<string> sAPCheckSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPCheckSAPElementworkflow, [WorkflowExpression] Func<bool> sAPCheckSAPElementcheckElement = null)
         {
-            SourceExpression.Validate(sAPCheckSAPElementsearchSAPElementId, nameof(sAPCheckSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPCheckSAPElementworkflow, nameof(sAPCheckSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPCheckSAPElementcheckElement, nameof(sAPCheckSAPElementcheckElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPElement";
@@ -967,9 +904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPVisualiseSAPElement([WorkflowExpression] Func<string> sAPVisualiseSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPVisualiseSAPElementworkflow, [WorkflowExpression] Func<bool> sAPVisualiseSAPElementvisualiseOn = null)
         {
-            SourceExpression.Validate(sAPVisualiseSAPElementsearchSAPElementId, nameof(sAPVisualiseSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPVisualiseSAPElementworkflow, nameof(sAPVisualiseSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPVisualiseSAPElementvisualiseOn, nameof(sAPVisualiseSAPElementvisualiseOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPVisualiseSAPElement";
@@ -1010,10 +944,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDrawRectangleAroundSAPElement([WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPElementworkflow, [WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPElementpenColour = null, [WorkflowExpression] Func<int> sAPDrawRectangleAroundSAPElementpenThicknessPixels = null)
         {
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPElementsearchSAPElementId, nameof(sAPDrawRectangleAroundSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPElementworkflow, nameof(sAPDrawRectangleAroundSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPElementpenColour, nameof(sAPDrawRectangleAroundSAPElementpenColour), required: false);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPElementpenThicknessPixels, nameof(sAPDrawRectangleAroundSAPElementpenThicknessPixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPElement";
@@ -1070,8 +1000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSendCommand([WorkflowExpression] Func<string> sAPSendCommandsAPCommand, [WorkflowExpression] Func<string> sAPSendCommandworkflow)
         {
-            SourceExpression.Validate(sAPSendCommandsAPCommand, nameof(sAPSendCommandsAPCommand), required: true);
-            SourceExpression.Validate(sAPSendCommandworkflow, nameof(sAPSendCommandworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSendCommand";
@@ -1096,8 +1024,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPEnterTCode([WorkflowExpression] Func<string> sAPEnterTCodesAPTCode, [WorkflowExpression] Func<string> sAPEnterTCodeworkflow)
         {
-            SourceExpression.Validate(sAPEnterTCodesAPTCode, nameof(sAPEnterTCodesAPTCode), required: true);
-            SourceExpression.Validate(sAPEnterTCodeworkflow, nameof(sAPEnterTCodeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPEnterTCode";
@@ -1122,10 +1048,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSendVKey([WorkflowExpression] Func<string> sAPSendVKeysearchSAPElementId, [WorkflowExpression] Func<int> sAPSendVKeysAPVKey, [WorkflowExpression] Func<string> sAPSendVKeyworkflow, [WorkflowExpression] Func<bool> sAPSendVKeydetectParentWindowElement = null)
         {
-            SourceExpression.Validate(sAPSendVKeysearchSAPElementId, nameof(sAPSendVKeysearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSendVKeysAPVKey, nameof(sAPSendVKeysAPVKey), required: true);
-            SourceExpression.Validate(sAPSendVKeyworkflow, nameof(sAPSendVKeyworkflow), required: true);
-            SourceExpression.Validate(sAPSendVKeydetectParentWindowElement, nameof(sAPSendVKeydetectParentWindowElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSendVKey";
@@ -1168,9 +1090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSendEnterVKey([WorkflowExpression] Func<string> sAPSendEnterVKeysearchSAPElementId, [WorkflowExpression] Func<string> sAPSendEnterVKeyworkflow, [WorkflowExpression] Func<bool> sAPSendEnterVKeydetectParentWindowElement = null)
         {
-            SourceExpression.Validate(sAPSendEnterVKeysearchSAPElementId, nameof(sAPSendEnterVKeysearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSendEnterVKeyworkflow, nameof(sAPSendEnterVKeyworkflow), required: true);
-            SourceExpression.Validate(sAPSendEnterVKeydetectParentWindowElement, nameof(sAPSendEnterVKeydetectParentWindowElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSendEnterVKey";
@@ -1211,9 +1130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowRestore([WorkflowExpression] Func<string> sAPWindowRestoresearchSAPElementId, [WorkflowExpression] Func<string> sAPWindowRestoreworkflow, [WorkflowExpression] Func<bool> sAPWindowRestoredetectParentWindowElement = null)
         {
-            SourceExpression.Validate(sAPWindowRestoresearchSAPElementId, nameof(sAPWindowRestoresearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPWindowRestoreworkflow, nameof(sAPWindowRestoreworkflow), required: true);
-            SourceExpression.Validate(sAPWindowRestoredetectParentWindowElement, nameof(sAPWindowRestoredetectParentWindowElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPWindowRestore";
@@ -1254,9 +1170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowMaximise([WorkflowExpression] Func<string> sAPWindowMaximisesearchSAPElementId, [WorkflowExpression] Func<string> sAPWindowMaximiseworkflow, [WorkflowExpression] Func<bool> sAPWindowMaximisedetectParentWindowElement = null)
         {
-            SourceExpression.Validate(sAPWindowMaximisesearchSAPElementId, nameof(sAPWindowMaximisesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPWindowMaximiseworkflow, nameof(sAPWindowMaximiseworkflow), required: true);
-            SourceExpression.Validate(sAPWindowMaximisedetectParentWindowElement, nameof(sAPWindowMaximisedetectParentWindowElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPWindowMaximise";
@@ -1297,9 +1210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowMinimise([WorkflowExpression] Func<string> sAPWindowMinimisesearchSAPElementId, [WorkflowExpression] Func<string> sAPWindowMinimiseworkflow, [WorkflowExpression] Func<bool> sAPWindowMinimisedetectParentWindowElement = null)
         {
-            SourceExpression.Validate(sAPWindowMinimisesearchSAPElementId, nameof(sAPWindowMinimisesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPWindowMinimiseworkflow, nameof(sAPWindowMinimiseworkflow), required: true);
-            SourceExpression.Validate(sAPWindowMinimisedetectParentWindowElement, nameof(sAPWindowMinimisedetectParentWindowElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPWindowMinimise";
@@ -1340,9 +1250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowClose([WorkflowExpression] Func<string> sAPWindowClosesearchSAPElementId, [WorkflowExpression] Func<string> sAPWindowCloseworkflow, [WorkflowExpression] Func<bool> sAPWindowClosedetectParentWindowElement = null)
         {
-            SourceExpression.Validate(sAPWindowClosesearchSAPElementId, nameof(sAPWindowClosesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPWindowCloseworkflow, nameof(sAPWindowCloseworkflow), required: true);
-            SourceExpression.Validate(sAPWindowClosedetectParentWindowElement, nameof(sAPWindowClosedetectParentWindowElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPWindowClose";
@@ -1383,12 +1290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPBringWindowToFront([WorkflowExpression] Func<string> sAPBringWindowToFrontsearchSAPElementId, [WorkflowExpression] Func<string> sAPBringWindowToFrontworkflow, [WorkflowExpression] Func<bool> sAPBringWindowToFronttoggleWindow = null, [WorkflowExpression] Func<bool> sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPBringWindowToFronttoggleDelay = null, [WorkflowExpression] Func<bool> sAPBringWindowToFrontdetectParentWindowElement = null)
         {
-            SourceExpression.Validate(sAPBringWindowToFrontsearchSAPElementId, nameof(sAPBringWindowToFrontsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPBringWindowToFrontworkflow, nameof(sAPBringWindowToFrontworkflow), required: true);
-            SourceExpression.Validate(sAPBringWindowToFronttoggleWindow, nameof(sAPBringWindowToFronttoggleWindow), required: false);
-            SourceExpression.Validate(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent, nameof(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPBringWindowToFronttoggleDelay, nameof(sAPBringWindowToFronttoggleDelay), required: false);
-            SourceExpression.Validate(sAPBringWindowToFrontdetectParentWindowElement, nameof(sAPBringWindowToFrontdetectParentWindowElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPBringWindowToFront";
@@ -1477,16 +1378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalLeftMouseClickOnSAPElement([WorkflowExpression] Func<string> sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPGlobalLeftMouseClickOnSAPElementworkflow, [WorkflowExpression] Func<bool> sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalLeftMouseClickOnSAPElementtoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalLeftMouseClickOnSAPElementtoggleDelay = null, [WorkflowExpression] Func<int> sAPGlobalLeftMouseClickOnSAPElementclickOffsetX = null, [WorkflowExpression] Func<int> sAPGlobalLeftMouseClickOnSAPElementclickOffsetY = null, [WorkflowExpression] Func<sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo = null)
         {
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementworkflow, nameof(sAPGlobalLeftMouseClickOnSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX), required: false);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY), required: false);
-            SourceExpression.Validate(sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalLeftMouseClickOnSAPElement";
@@ -1629,16 +1520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalRightMouseClickOnSAPElement([WorkflowExpression] Func<string> sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPGlobalRightMouseClickOnSAPElementworkflow, [WorkflowExpression] Func<bool> sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalRightMouseClickOnSAPElementtoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalRightMouseClickOnSAPElementtoggleDelay = null, [WorkflowExpression] Func<int> sAPGlobalRightMouseClickOnSAPElementclickOffsetX = null, [WorkflowExpression] Func<int> sAPGlobalRightMouseClickOnSAPElementclickOffsetY = null, [WorkflowExpression] Func<sAPGlobalRightMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo = null)
         {
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementworkflow, nameof(sAPGlobalRightMouseClickOnSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalRightMouseClickOnSAPElementclickOffsetX), required: false);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalRightMouseClickOnSAPElementclickOffsetY), required: false);
-            SourceExpression.Validate(sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalRightMouseClickOnSAPElement";
@@ -1781,16 +1662,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalMiddleMouseClickOnSAPElement([WorkflowExpression] Func<string> sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPGlobalMiddleMouseClickOnSAPElementworkflow, [WorkflowExpression] Func<bool> sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay = null, [WorkflowExpression] Func<int> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX = null, [WorkflowExpression] Func<int> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY = null, [WorkflowExpression] Func<sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo = null)
         {
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementworkflow, nameof(sAPGlobalMiddleMouseClickOnSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX), required: false);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY), required: false);
-            SourceExpression.Validate(sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalMiddleMouseClickOnSAPElement";
@@ -1933,17 +1804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalDoubleLeftMouseClickOnSAPElement([WorkflowExpression] Func<string> sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay = null, [WorkflowExpression] Func<int> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX = null, [WorkflowExpression] Func<int> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY = null, [WorkflowExpression] Func<sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeToInput> sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo = null, [WorkflowExpression] Func<int> sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds = null)
         {
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftMouseClickOnSAPElement";
@@ -2102,21 +1962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalInputTextIntoSAPElement([WorkflowExpression] Func<string> sAPGlobalInputTextIntoSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPGlobalInputTextIntoSAPElementworkflow, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementtoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalInputTextIntoSAPElementtoggleDelay = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, [WorkflowExpression] Func<string> sAPGlobalInputTextIntoSAPElementtextToInput = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementsendKeyEvents = null, [WorkflowExpression] Func<int> sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds = null, [WorkflowExpression] Func<int> sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds = null, [WorkflowExpression] Func<bool> sAPGlobalInputTextIntoSAPElementdontInterpretSymbols = null)
         {
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementsearchSAPElementId, nameof(sAPGlobalInputTextIntoSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementworkflow, nameof(sAPGlobalInputTextIntoSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost, nameof(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront, nameof(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementtoggleWindow, nameof(sAPGlobalInputTextIntoSAPElementtoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementtoggleDelay, nameof(sAPGlobalInputTextIntoSAPElementtoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement, nameof(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete, nameof(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete, nameof(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementtextToInput, nameof(sAPGlobalInputTextIntoSAPElementtextToInput), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementsendKeyEvents, nameof(sAPGlobalInputTextIntoSAPElementsendKeyEvents), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds, nameof(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds, nameof(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols, nameof(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalInputTextIntoSAPElement";
@@ -2339,21 +2184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalInputPasswordIntoSAPElement([WorkflowExpression] Func<string> sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPGlobalInputPasswordIntoSAPElementpasswordToInput, [WorkflowExpression] Func<string> sAPGlobalInputPasswordIntoSAPElementworkflow, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementtoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalInputPasswordIntoSAPElementtoggleDelay = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementsendKeyEvents = null, [WorkflowExpression] Func<int> sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds = null, [WorkflowExpression] Func<int> sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds = null, [WorkflowExpression] Func<bool> sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols = null)
         {
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId, nameof(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementpasswordToInput, nameof(sAPGlobalInputPasswordIntoSAPElementpasswordToInput), required: true);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementworkflow, nameof(sAPGlobalInputPasswordIntoSAPElementworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost, nameof(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront, nameof(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementtoggleWindow, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementtoggleDelay, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement, nameof(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete, nameof(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete, nameof(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents, nameof(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds, nameof(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds, nameof(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds), required: false);
-            SourceExpression.Validate(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols, nameof(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalInputPasswordIntoSAPElement";
@@ -2572,9 +2402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetListSelectionByName([WorkflowExpression] Func<string> sAPSetListSelectionByNamesearchSAPElementId, [WorkflowExpression] Func<string> sAPSetListSelectionByNamelistItemName, [WorkflowExpression] Func<string> sAPSetListSelectionByNameworkflow)
         {
-            SourceExpression.Validate(sAPSetListSelectionByNamesearchSAPElementId, nameof(sAPSetListSelectionByNamesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetListSelectionByNamelistItemName, nameof(sAPSetListSelectionByNamelistItemName), required: true);
-            SourceExpression.Validate(sAPSetListSelectionByNameworkflow, nameof(sAPSetListSelectionByNameworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetListSelectionByName";
@@ -2601,9 +2428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetListSelectionByKey([WorkflowExpression] Func<string> sAPSetListSelectionByKeysearchSAPElementId, [WorkflowExpression] Func<string> sAPSetListSelectionByKeylistItemKey, [WorkflowExpression] Func<string> sAPSetListSelectionByKeyworkflow)
         {
-            SourceExpression.Validate(sAPSetListSelectionByKeysearchSAPElementId, nameof(sAPSetListSelectionByKeysearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetListSelectionByKeylistItemKey, nameof(sAPSetListSelectionByKeylistItemKey), required: true);
-            SourceExpression.Validate(sAPSetListSelectionByKeyworkflow, nameof(sAPSetListSelectionByKeyworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetListSelectionByKey";
@@ -2630,8 +2454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetListSelectionElementItemsResponse> SAPGetListSelectionElementItems([WorkflowExpression] Func<string> sAPGetListSelectionElementItemssearchSAPElementId, [WorkflowExpression] Func<string> sAPGetListSelectionElementItemsworkflow)
         {
-            SourceExpression.Validate(sAPGetListSelectionElementItemssearchSAPElementId, nameof(sAPGetListSelectionElementItemssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetListSelectionElementItemsworkflow, nameof(sAPGetListSelectionElementItemsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetListSelectionElementItems";
@@ -2656,12 +2478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetAllChildSAPElementPropertiesResponse> SAPGetAllChildSAPElementProperties([WorkflowExpression] Func<string> sAPGetAllChildSAPElementPropertiessearchSAPElementId, [WorkflowExpression] Func<string> sAPGetAllChildSAPElementPropertiesworkflow, [WorkflowExpression] Func<int> sAPGetAllChildSAPElementPropertiesfirstItemToReturn = null, [WorkflowExpression] Func<int> sAPGetAllChildSAPElementPropertiesmaxItemsToReturn = null, [WorkflowExpression] Func<string> sAPGetAllChildSAPElementPropertiessearchSAPElementType = null, [WorkflowExpression] Func<int> sAPGetAllChildSAPElementPropertiesmaxTextLength = null)
         {
-            SourceExpression.Validate(sAPGetAllChildSAPElementPropertiessearchSAPElementId, nameof(sAPGetAllChildSAPElementPropertiessearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetAllChildSAPElementPropertiesworkflow, nameof(sAPGetAllChildSAPElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(sAPGetAllChildSAPElementPropertiesfirstItemToReturn, nameof(sAPGetAllChildSAPElementPropertiesfirstItemToReturn), required: false);
-            SourceExpression.Validate(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn, nameof(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn), required: false);
-            SourceExpression.Validate(sAPGetAllChildSAPElementPropertiessearchSAPElementType, nameof(sAPGetAllChildSAPElementPropertiessearchSAPElementType), required: false);
-            SourceExpression.Validate(sAPGetAllChildSAPElementPropertiesmaxTextLength, nameof(sAPGetAllChildSAPElementPropertiesmaxTextLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetAllChildSAPElementProperties";
@@ -2740,11 +2556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse> SAPGetSAPSessionTopLevelSAPElementProperties([WorkflowExpression] Func<string> sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow, [WorkflowExpression] Func<int> sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn = null, [WorkflowExpression] Func<int> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn = null, [WorkflowExpression] Func<string> sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType = null, [WorkflowExpression] Func<int> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength = null)
         {
-            SourceExpression.Validate(sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn), required: false);
-            SourceExpression.Validate(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn), required: false);
-            SourceExpression.Validate(sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType), required: false);
-            SourceExpression.Validate(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPSessionTopLevelSAPElementProperties";
@@ -2821,8 +2632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPElementParentIdResponse> SAPGetSAPElementParentId([WorkflowExpression] Func<string> sAPGetSAPElementParentIdsearchSAPElementId, [WorkflowExpression] Func<string> sAPGetSAPElementParentIdworkflow)
         {
-            SourceExpression.Validate(sAPGetSAPElementParentIdsearchSAPElementId, nameof(sAPGetSAPElementParentIdsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPElementParentIdworkflow, nameof(sAPGetSAPElementParentIdworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPElementParentId";
@@ -2847,9 +2656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetElementPropertiesAsListResponse> SAPGetElementPropertiesAsList([WorkflowExpression] Func<string> sAPGetElementPropertiesAsListsearchSAPElementId, [WorkflowExpression] Func<string> sAPGetElementPropertiesAsListworkflow, [WorkflowExpression] Func<int> sAPGetElementPropertiesAsListmaxTextLength = null)
         {
-            SourceExpression.Validate(sAPGetElementPropertiesAsListsearchSAPElementId, nameof(sAPGetElementPropertiesAsListsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetElementPropertiesAsListworkflow, nameof(sAPGetElementPropertiesAsListworkflow), required: true);
-            SourceExpression.Validate(sAPGetElementPropertiesAsListmaxTextLength, nameof(sAPGetElementPropertiesAsListmaxTextLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementPropertiesAsList";
@@ -2890,9 +2696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPElementAtScreenCoordinateResponse> SAPGetSAPElementAtScreenCoordinate([WorkflowExpression] Func<int> sAPGetSAPElementAtScreenCoordinatescreenX, [WorkflowExpression] Func<int> sAPGetSAPElementAtScreenCoordinatescreenY, [WorkflowExpression] Func<string> sAPGetSAPElementAtScreenCoordinateworkflow)
         {
-            SourceExpression.Validate(sAPGetSAPElementAtScreenCoordinatescreenX, nameof(sAPGetSAPElementAtScreenCoordinatescreenX), required: true);
-            SourceExpression.Validate(sAPGetSAPElementAtScreenCoordinatescreenY, nameof(sAPGetSAPElementAtScreenCoordinatescreenY), required: true);
-            SourceExpression.Validate(sAPGetSAPElementAtScreenCoordinateworkflow, nameof(sAPGetSAPElementAtScreenCoordinateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPElementAtScreenCoordinate";
@@ -2919,11 +2722,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPOpenConnectionResponse> SAPOpenConnection([WorkflowExpression] Func<string> sAPOpenConnectionworkflow, [WorkflowExpression] Func<string> sAPOpenConnectionsAPConnectionDescription = null, [WorkflowExpression] Func<string> sAPOpenConnectionsAPConnectionAddress = null, [WorkflowExpression] Func<bool> sAPOpenConnectionconnectSynchronous = null, [WorkflowExpression] Func<bool> sAPOpenConnectionconnectToSession = null)
         {
-            SourceExpression.Validate(sAPOpenConnectionworkflow, nameof(sAPOpenConnectionworkflow), required: true);
-            SourceExpression.Validate(sAPOpenConnectionsAPConnectionDescription, nameof(sAPOpenConnectionsAPConnectionDescription), required: false);
-            SourceExpression.Validate(sAPOpenConnectionsAPConnectionAddress, nameof(sAPOpenConnectionsAPConnectionAddress), required: false);
-            SourceExpression.Validate(sAPOpenConnectionconnectSynchronous, nameof(sAPOpenConnectionconnectSynchronous), required: false);
-            SourceExpression.Validate(sAPOpenConnectionconnectToSession, nameof(sAPOpenConnectionconnectToSession), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPOpenConnection";
@@ -2990,8 +2788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPTablePropertiesResponse> SAPGetSAPTableProperties([WorkflowExpression] Func<string> sAPGetSAPTablePropertiessearchSAPElementId, [WorkflowExpression] Func<string> sAPGetSAPTablePropertiesworkflow)
         {
-            SourceExpression.Validate(sAPGetSAPTablePropertiessearchSAPElementId, nameof(sAPGetSAPTablePropertiessearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPTablePropertiesworkflow, nameof(sAPGetSAPTablePropertiesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableProperties";
@@ -3016,11 +2812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse> SAPGetSAPTableVisibleCellTextContentsAtIndex([WorkflowExpression] Func<string> sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, [WorkflowExpression] Func<string> sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow, [WorkflowExpression] Func<int> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, [WorkflowExpression] Func<int> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, [WorkflowExpression] Func<string> sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue = null)
         {
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex), required: false);
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex), required: false);
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellTextContentsAtIndex";
@@ -3093,10 +2884,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse> SAPGetSAPTableVisibleCellPropertiesAtIndex([WorkflowExpression] Func<string> sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId, [WorkflowExpression] Func<string> sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow, [WorkflowExpression] Func<int> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex = null, [WorkflowExpression] Func<int> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex = null)
         {
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex), required: false);
-            SourceExpression.Validate(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellPropertiesAtIndex";
@@ -3153,13 +2940,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPTableVisibleCellTextContentsAtIndex([WorkflowExpression] Func<string> sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, [WorkflowExpression] Func<string> sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow, [WorkflowExpression] Func<int> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, [WorkflowExpression] Func<int> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, [WorkflowExpression] Func<string> sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput = null, [WorkflowExpression] Func<bool> sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue = null, [WorkflowExpression] Func<int> sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition = null)
         {
-            SourceExpression.Validate(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex), required: false);
-            SourceExpression.Validate(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex), required: false);
-            SourceExpression.Validate(sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput), required: false);
-            SourceExpression.Validate(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue), required: false);
-            SourceExpression.Validate(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPTableVisibleCellTextContentsAtIndex";
@@ -3254,11 +3034,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckSAPTableVisibleCellCheckboxAtIndex([WorkflowExpression] Func<string> sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId, [WorkflowExpression] Func<string> sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow, [WorkflowExpression] Func<int> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex = null, [WorkflowExpression] Func<int> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex = null, [WorkflowExpression] Func<bool> sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement = null)
         {
-            SourceExpression.Validate(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex), required: false);
-            SourceExpression.Validate(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex), required: false);
-            SourceExpression.Validate(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPTableVisibleCellCheckboxAtIndex";
@@ -3331,10 +3106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPTableVisibleCellAtIndex([WorkflowExpression] Func<string> sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<string> sAPPressSAPTableVisibleCellAtIndexworkflow, [WorkflowExpression] Func<int> sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex = null, [WorkflowExpression] Func<int> sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex = null)
         {
-            SourceExpression.Validate(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId, nameof(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressSAPTableVisibleCellAtIndexworkflow, nameof(sAPPressSAPTableVisibleCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex, nameof(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex), required: false);
-            SourceExpression.Validate(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex, nameof(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPTableVisibleCellAtIndex";
@@ -3391,12 +3162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPScrollSAPTable([WorkflowExpression] Func<string> sAPScrollSAPTablesearchSAPElementId, [WorkflowExpression] Func<string> sAPScrollSAPTableworkflow, [WorkflowExpression] Func<bool> sAPScrollSAPTablemoveHorizontalScrollbar = null, [WorkflowExpression] Func<int> sAPScrollSAPTablehorizontalScrollbarPosition = null, [WorkflowExpression] Func<bool> sAPScrollSAPTablemoveVerticalScrollbar = null, [WorkflowExpression] Func<int> sAPScrollSAPTableverticalScrollbarPosition = null)
         {
-            SourceExpression.Validate(sAPScrollSAPTablesearchSAPElementId, nameof(sAPScrollSAPTablesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPScrollSAPTableworkflow, nameof(sAPScrollSAPTableworkflow), required: true);
-            SourceExpression.Validate(sAPScrollSAPTablemoveHorizontalScrollbar, nameof(sAPScrollSAPTablemoveHorizontalScrollbar), required: false);
-            SourceExpression.Validate(sAPScrollSAPTablehorizontalScrollbarPosition, nameof(sAPScrollSAPTablehorizontalScrollbarPosition), required: false);
-            SourceExpression.Validate(sAPScrollSAPTablemoveVerticalScrollbar, nameof(sAPScrollSAPTablemoveVerticalScrollbar), required: false);
-            SourceExpression.Validate(sAPScrollSAPTableverticalScrollbarPosition, nameof(sAPScrollSAPTableverticalScrollbarPosition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPScrollSAPTable";
@@ -3465,16 +3230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTableVisibleTextContentsResponse> SAPGetTableVisibleTextContents([WorkflowExpression] Func<string> sAPGetTableVisibleTextContentssearchSAPElementId, [WorkflowExpression] Func<string> sAPGetTableVisibleTextContentsworkflow, [WorkflowExpression] Func<int> sAPGetTableVisibleTextContentsfirstVisibleRowToReturn = null, [WorkflowExpression] Func<int> sAPGetTableVisibleTextContentsmaxRowsToReturn = null, [WorkflowExpression] Func<int> sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn = null, [WorkflowExpression] Func<int> sAPGetTableVisibleTextContentsmaxColumnsToReturn = null, [WorkflowExpression] Func<bool> sAPGetTableVisibleTextContentsuseColumnHeadersFromTable = null, [WorkflowExpression] Func<bool> sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection = null, [WorkflowExpression] Func<string> sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex = null, [WorkflowExpression] Func<string> sAPGetTableVisibleTextContentscheckedElementValue = null)
         {
-            SourceExpression.Validate(sAPGetTableVisibleTextContentssearchSAPElementId, nameof(sAPGetTableVisibleTextContentssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsworkflow, nameof(sAPGetTableVisibleTextContentsworkflow), required: true);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn, nameof(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn), required: false);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsmaxRowsToReturn, nameof(sAPGetTableVisibleTextContentsmaxRowsToReturn), required: false);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn, nameof(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn), required: false);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsmaxColumnsToReturn, nameof(sAPGetTableVisibleTextContentsmaxColumnsToReturn), required: false);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable, nameof(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable), required: false);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection), required: false);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex), required: false);
-            SourceExpression.Validate(sAPGetTableVisibleTextContentscheckedElementValue, nameof(sAPGetTableVisibleTextContentscheckedElementValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetTableVisibleTextContents";
@@ -3617,10 +3372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPTableRow([WorkflowExpression] Func<string> sAPSelectSAPTableRowsearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectSAPTableRowworkflow, [WorkflowExpression] Func<int> sAPSelectSAPTableRowvisibleRowIndex = null, [WorkflowExpression] Func<bool> sAPSelectSAPTableRowselect = null)
         {
-            SourceExpression.Validate(sAPSelectSAPTableRowsearchSAPElementId, nameof(sAPSelectSAPTableRowsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectSAPTableRowworkflow, nameof(sAPSelectSAPTableRowworkflow), required: true);
-            SourceExpression.Validate(sAPSelectSAPTableRowvisibleRowIndex, nameof(sAPSelectSAPTableRowvisibleRowIndex), required: false);
-            SourceExpression.Validate(sAPSelectSAPTableRowselect, nameof(sAPSelectSAPTableRowselect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPTableRow";
@@ -3677,10 +3428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPTableColumn([WorkflowExpression] Func<string> sAPSelectSAPTableColumnsearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectSAPTableColumnworkflow, [WorkflowExpression] Func<int> sAPSelectSAPTableColumnvisibleColumnIndex = null, [WorkflowExpression] Func<bool> sAPSelectSAPTableColumnselect = null)
         {
-            SourceExpression.Validate(sAPSelectSAPTableColumnsearchSAPElementId, nameof(sAPSelectSAPTableColumnsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectSAPTableColumnworkflow, nameof(sAPSelectSAPTableColumnworkflow), required: true);
-            SourceExpression.Validate(sAPSelectSAPTableColumnvisibleColumnIndex, nameof(sAPSelectSAPTableColumnvisibleColumnIndex), required: false);
-            SourceExpression.Validate(sAPSelectSAPTableColumnselect, nameof(sAPSelectSAPTableColumnselect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPTableColumn";
@@ -3737,10 +3484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeNodesResponse> SAPGetTreeNodes([WorkflowExpression] Func<string> sAPGetTreeNodessearchSAPElementId, [WorkflowExpression] Func<string> sAPGetTreeNodesworkflow, [WorkflowExpression] Func<string> sAPGetTreeNodesparentNodeKey = null, [WorkflowExpression] Func<bool> sAPGetTreeNodesprocessSubNodes = null)
         {
-            SourceExpression.Validate(sAPGetTreeNodessearchSAPElementId, nameof(sAPGetTreeNodessearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetTreeNodesworkflow, nameof(sAPGetTreeNodesworkflow), required: true);
-            SourceExpression.Validate(sAPGetTreeNodesparentNodeKey, nameof(sAPGetTreeNodesparentNodeKey), required: false);
-            SourceExpression.Validate(sAPGetTreeNodesprocessSubNodes, nameof(sAPGetTreeNodesprocessSubNodes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeNodes";
@@ -3787,17 +3530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDoubleClickTreeItem([WorkflowExpression] Func<string> sAPDoubleClickTreeItemsearchSAPElementId, [WorkflowExpression] Func<string> sAPDoubleClickTreeItemworkflow, [WorkflowExpression] Func<string> sAPDoubleClickTreeItemsearchNodeKey = null, [WorkflowExpression] Func<string> sAPDoubleClickTreeItemsearchNodePath = null, [WorkflowExpression] Func<string> sAPDoubleClickTreeItemsearchNodeText = null, [WorkflowExpression] Func<bool> sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPDoubleClickTreeItemsearchColumnName = null, [WorkflowExpression] Func<string> sAPDoubleClickTreeItemsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchSAPElementId, nameof(sAPDoubleClickTreeItemsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPDoubleClickTreeItemworkflow, nameof(sAPDoubleClickTreeItemworkflow), required: true);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchNodeKey, nameof(sAPDoubleClickTreeItemsearchNodeKey), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchNodePath, nameof(sAPDoubleClickTreeItemsearchNodePath), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchNodeText, nameof(sAPDoubleClickTreeItemsearchNodeText), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression, nameof(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchColumnName, nameof(sAPDoubleClickTreeItemsearchColumnName), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchColumnTitle, nameof(sAPDoubleClickTreeItemsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPDoubleClickTreeItem";
@@ -3916,19 +3648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectTreeItem([WorkflowExpression] Func<string> sAPSelectTreeItemsearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectTreeItemworkflow, [WorkflowExpression] Func<string> sAPSelectTreeItemsearchNodeKey = null, [WorkflowExpression] Func<string> sAPSelectTreeItemsearchNodePath = null, [WorkflowExpression] Func<string> sAPSelectTreeItemsearchNodeText = null, [WorkflowExpression] Func<bool> sAPSelectTreeItemsearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSelectTreeItemsearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPSelectTreeItemsearchColumnName = null, [WorkflowExpression] Func<string> sAPSelectTreeItemsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPSelectTreeItemsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSelectTreeItemsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPSelectTreeItemselect = null, [WorkflowExpression] Func<bool> sAPSelectTreeItemdeselectAllFirst = null)
         {
-            SourceExpression.Validate(sAPSelectTreeItemsearchSAPElementId, nameof(sAPSelectTreeItemsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectTreeItemworkflow, nameof(sAPSelectTreeItemworkflow), required: true);
-            SourceExpression.Validate(sAPSelectTreeItemsearchNodeKey, nameof(sAPSelectTreeItemsearchNodeKey), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchNodePath, nameof(sAPSelectTreeItemsearchNodePath), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchNodeText, nameof(sAPSelectTreeItemsearchNodeText), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchNodeTextIsRegularExpression, nameof(sAPSelectTreeItemsearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPSelectTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchColumnName, nameof(sAPSelectTreeItemsearchColumnName), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchColumnTitle, nameof(sAPSelectTreeItemsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPSelectTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemselect, nameof(sAPSelectTreeItemselect), required: false);
-            SourceExpression.Validate(sAPSelectTreeItemdeselectAllFirst, nameof(sAPSelectTreeItemdeselectAllFirst), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectTreeItem";
@@ -4079,14 +3798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPExpandTreeNode([WorkflowExpression] Func<string> sAPExpandTreeNodesearchSAPElementId, [WorkflowExpression] Func<string> sAPExpandTreeNodeworkflow, [WorkflowExpression] Func<string> sAPExpandTreeNodesearchNodeKey = null, [WorkflowExpression] Func<string> sAPExpandTreeNodesearchNodePath = null, [WorkflowExpression] Func<string> sAPExpandTreeNodesearchNodeText = null, [WorkflowExpression] Func<bool> sAPExpandTreeNodesearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPExpandTreeNodesearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPExpandTreeNodeexpand = null)
         {
-            SourceExpression.Validate(sAPExpandTreeNodesearchSAPElementId, nameof(sAPExpandTreeNodesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPExpandTreeNodeworkflow, nameof(sAPExpandTreeNodeworkflow), required: true);
-            SourceExpression.Validate(sAPExpandTreeNodesearchNodeKey, nameof(sAPExpandTreeNodesearchNodeKey), required: false);
-            SourceExpression.Validate(sAPExpandTreeNodesearchNodePath, nameof(sAPExpandTreeNodesearchNodePath), required: false);
-            SourceExpression.Validate(sAPExpandTreeNodesearchNodeText, nameof(sAPExpandTreeNodesearchNodeText), required: false);
-            SourceExpression.Validate(sAPExpandTreeNodesearchNodeTextIsRegularExpression, nameof(sAPExpandTreeNodesearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPExpandTreeNodesearchNodeTextIsCaseSensitive, nameof(sAPExpandTreeNodesearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPExpandTreeNodeexpand, nameof(sAPExpandTreeNodeexpand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPExpandTreeNode";
@@ -4177,8 +3888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDeselectAllTreeNodes([WorkflowExpression] Func<string> sAPDeselectAllTreeNodessearchSAPElementId, [WorkflowExpression] Func<string> sAPDeselectAllTreeNodesworkflow)
         {
-            SourceExpression.Validate(sAPDeselectAllTreeNodessearchSAPElementId, nameof(sAPDeselectAllTreeNodessearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPDeselectAllTreeNodesworkflow, nameof(sAPDeselectAllTreeNodesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPDeselectAllTreeNodes";
@@ -4203,9 +3912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressKeyOnTree([WorkflowExpression] Func<string> sAPPressKeyOnTreesearchSAPElementId, [WorkflowExpression] Func<string> sAPPressKeyOnTreekey, [WorkflowExpression] Func<string> sAPPressKeyOnTreeworkflow)
         {
-            SourceExpression.Validate(sAPPressKeyOnTreesearchSAPElementId, nameof(sAPPressKeyOnTreesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressKeyOnTreekey, nameof(sAPPressKeyOnTreekey), required: true);
-            SourceExpression.Validate(sAPPressKeyOnTreeworkflow, nameof(sAPPressKeyOnTreeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressKeyOnTree";
@@ -4232,17 +3938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPOpenContextMenuOnTreeItem([WorkflowExpression] Func<string> sAPOpenContextMenuOnTreeItemsearchSAPElementId, [WorkflowExpression] Func<string> sAPOpenContextMenuOnTreeItemworkflow, [WorkflowExpression] Func<string> sAPOpenContextMenuOnTreeItemsearchNodeKey = null, [WorkflowExpression] Func<string> sAPOpenContextMenuOnTreeItemsearchNodePath = null, [WorkflowExpression] Func<string> sAPOpenContextMenuOnTreeItemsearchNodeText = null, [WorkflowExpression] Func<bool> sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPOpenContextMenuOnTreeItemsearchColumnName = null, [WorkflowExpression] Func<string> sAPOpenContextMenuOnTreeItemsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchSAPElementId, nameof(sAPOpenContextMenuOnTreeItemsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemworkflow, nameof(sAPOpenContextMenuOnTreeItemworkflow), required: true);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchNodeKey, nameof(sAPOpenContextMenuOnTreeItemsearchNodeKey), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchNodePath, nameof(sAPOpenContextMenuOnTreeItemsearchNodePath), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchNodeText, nameof(sAPOpenContextMenuOnTreeItemsearchNodeText), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchColumnName, nameof(sAPOpenContextMenuOnTreeItemsearchColumnName), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchColumnTitle, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPOpenContextMenuOnTreeItem";
@@ -4361,15 +4056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeTextContentsResponse> SAPGetTreeTextContents([WorkflowExpression] Func<string> sAPGetTreeTextContentssearchSAPElementId, [WorkflowExpression] Func<string> sAPGetTreeTextContentsworkflow, [WorkflowExpression] Func<int> sAPGetTreeTextContentsfirstRowToReturn = null, [WorkflowExpression] Func<int> sAPGetTreeTextContentsmaxRowsToReturn = null, [WorkflowExpression] Func<int> sAPGetTreeTextContentsfirstColumnToReturn = null, [WorkflowExpression] Func<int> sAPGetTreeTextContentsmaxColumnsToReturn = null, [WorkflowExpression] Func<bool> sAPGetTreeTextContentsuseColumnHeadersFromTree = null, [WorkflowExpression] Func<bool> sAPGetTreeTextContentsreturnRowIndexInOutputCollection = null, [WorkflowExpression] Func<string> sAPGetTreeTextContentsnameOfColumnToStoreRowIndex = null)
         {
-            SourceExpression.Validate(sAPGetTreeTextContentssearchSAPElementId, nameof(sAPGetTreeTextContentssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetTreeTextContentsworkflow, nameof(sAPGetTreeTextContentsworkflow), required: true);
-            SourceExpression.Validate(sAPGetTreeTextContentsfirstRowToReturn, nameof(sAPGetTreeTextContentsfirstRowToReturn), required: false);
-            SourceExpression.Validate(sAPGetTreeTextContentsmaxRowsToReturn, nameof(sAPGetTreeTextContentsmaxRowsToReturn), required: false);
-            SourceExpression.Validate(sAPGetTreeTextContentsfirstColumnToReturn, nameof(sAPGetTreeTextContentsfirstColumnToReturn), required: false);
-            SourceExpression.Validate(sAPGetTreeTextContentsmaxColumnsToReturn, nameof(sAPGetTreeTextContentsmaxColumnsToReturn), required: false);
-            SourceExpression.Validate(sAPGetTreeTextContentsuseColumnHeadersFromTree, nameof(sAPGetTreeTextContentsuseColumnHeadersFromTree), required: false);
-            SourceExpression.Validate(sAPGetTreeTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetTreeTextContentsreturnRowIndexInOutputCollection), required: false);
-            SourceExpression.Validate(sAPGetTreeTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetTreeTextContentsnameOfColumnToStoreRowIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeTextContents";
@@ -4496,13 +4182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetTreeColumnWidth([WorkflowExpression] Func<string> sAPSetTreeColumnWidthsearchSAPElementId, [WorkflowExpression] Func<string> sAPSetTreeColumnWidthworkflow, [WorkflowExpression] Func<string> sAPSetTreeColumnWidthsearchColumnName = null, [WorkflowExpression] Func<string> sAPSetTreeColumnWidthsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<int> sAPSetTreeColumnWidthcolumnWidthInPixels = null)
         {
-            SourceExpression.Validate(sAPSetTreeColumnWidthsearchSAPElementId, nameof(sAPSetTreeColumnWidthsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetTreeColumnWidthworkflow, nameof(sAPSetTreeColumnWidthworkflow), required: true);
-            SourceExpression.Validate(sAPSetTreeColumnWidthsearchColumnName, nameof(sAPSetTreeColumnWidthsearchColumnName), required: false);
-            SourceExpression.Validate(sAPSetTreeColumnWidthsearchColumnTitle, nameof(sAPSetTreeColumnWidthsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression, nameof(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive, nameof(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPSetTreeColumnWidthcolumnWidthInPixels, nameof(sAPSetTreeColumnWidthcolumnWidthInPixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetTreeColumnWidth";
@@ -4587,18 +4266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressButtonOnTreeItem([WorkflowExpression] Func<string> sAPPressButtonOnTreeItemsearchSAPElementId, [WorkflowExpression] Func<string> sAPPressButtonOnTreeItemworkflow, [WorkflowExpression] Func<string> sAPPressButtonOnTreeItemsearchNodeKey = null, [WorkflowExpression] Func<string> sAPPressButtonOnTreeItemsearchNodePath = null, [WorkflowExpression] Func<string> sAPPressButtonOnTreeItemsearchNodeText = null, [WorkflowExpression] Func<bool> sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPPressButtonOnTreeItemsearchColumnName = null, [WorkflowExpression] Func<string> sAPPressButtonOnTreeItemsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPPressButtonOnTreeItemforce = null)
         {
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchSAPElementId, nameof(sAPPressButtonOnTreeItemsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemworkflow, nameof(sAPPressButtonOnTreeItemworkflow), required: true);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchNodeKey, nameof(sAPPressButtonOnTreeItemsearchNodeKey), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchNodePath, nameof(sAPPressButtonOnTreeItemsearchNodePath), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchNodeText, nameof(sAPPressButtonOnTreeItemsearchNodeText), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchColumnName, nameof(sAPPressButtonOnTreeItemsearchColumnName), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchColumnTitle, nameof(sAPPressButtonOnTreeItemsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPPressButtonOnTreeItemforce, nameof(sAPPressButtonOnTreeItemforce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressButtonOnTreeItem";
@@ -4733,18 +4400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPClickLinkOnTreeItem([WorkflowExpression] Func<string> sAPClickLinkOnTreeItemsearchSAPElementId, [WorkflowExpression] Func<string> sAPClickLinkOnTreeItemworkflow, [WorkflowExpression] Func<string> sAPClickLinkOnTreeItemsearchNodeKey = null, [WorkflowExpression] Func<string> sAPClickLinkOnTreeItemsearchNodePath = null, [WorkflowExpression] Func<string> sAPClickLinkOnTreeItemsearchNodeText = null, [WorkflowExpression] Func<bool> sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPClickLinkOnTreeItemsearchColumnName = null, [WorkflowExpression] Func<string> sAPClickLinkOnTreeItemsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPClickLinkOnTreeItemforce = null)
         {
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchSAPElementId, nameof(sAPClickLinkOnTreeItemsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemworkflow, nameof(sAPClickLinkOnTreeItemworkflow), required: true);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchNodeKey, nameof(sAPClickLinkOnTreeItemsearchNodeKey), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchNodePath, nameof(sAPClickLinkOnTreeItemsearchNodePath), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchNodeText, nameof(sAPClickLinkOnTreeItemsearchNodeText), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchColumnName, nameof(sAPClickLinkOnTreeItemsearchColumnName), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchColumnTitle, nameof(sAPClickLinkOnTreeItemsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPClickLinkOnTreeItemforce, nameof(sAPClickLinkOnTreeItemforce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPClickLinkOnTreeItem";
@@ -4879,19 +4534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckTreeItem([WorkflowExpression] Func<string> sAPCheckTreeItemsearchSAPElementId, [WorkflowExpression] Func<string> sAPCheckTreeItemworkflow, [WorkflowExpression] Func<string> sAPCheckTreeItemsearchNodeKey = null, [WorkflowExpression] Func<string> sAPCheckTreeItemsearchNodePath = null, [WorkflowExpression] Func<string> sAPCheckTreeItemsearchNodeText = null, [WorkflowExpression] Func<bool> sAPCheckTreeItemsearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPCheckTreeItemsearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPCheckTreeItemsearchColumnName = null, [WorkflowExpression] Func<string> sAPCheckTreeItemsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPCheckTreeItemsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPCheckTreeItemsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPCheckTreeItemcheckItem = null, [WorkflowExpression] Func<bool> sAPCheckTreeItemforce = null)
         {
-            SourceExpression.Validate(sAPCheckTreeItemsearchSAPElementId, nameof(sAPCheckTreeItemsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPCheckTreeItemworkflow, nameof(sAPCheckTreeItemworkflow), required: true);
-            SourceExpression.Validate(sAPCheckTreeItemsearchNodeKey, nameof(sAPCheckTreeItemsearchNodeKey), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchNodePath, nameof(sAPCheckTreeItemsearchNodePath), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchNodeText, nameof(sAPCheckTreeItemsearchNodeText), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchNodeTextIsRegularExpression, nameof(sAPCheckTreeItemsearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPCheckTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchColumnName, nameof(sAPCheckTreeItemsearchColumnName), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchColumnTitle, nameof(sAPCheckTreeItemsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPCheckTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemcheckItem, nameof(sAPCheckTreeItemcheckItem), required: false);
-            SourceExpression.Validate(sAPCheckTreeItemforce, nameof(sAPCheckTreeItemforce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPCheckTreeItem";
@@ -5042,8 +4684,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeColumnHeadersResponse> SAPGetTreeColumnHeaders([WorkflowExpression] Func<string> sAPGetTreeColumnHeaderssearchSAPElementId, [WorkflowExpression] Func<string> sAPGetTreeColumnHeadersworkflow)
         {
-            SourceExpression.Validate(sAPGetTreeColumnHeaderssearchSAPElementId, nameof(sAPGetTreeColumnHeaderssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetTreeColumnHeadersworkflow, nameof(sAPGetTreeColumnHeadersworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeColumnHeaders";
@@ -5068,17 +4708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeItemPropertiesResponse> SAPGetTreeItemProperties([WorkflowExpression] Func<string> sAPGetTreeItemPropertiessearchSAPElementId, [WorkflowExpression] Func<string> sAPGetTreeItemPropertiesworkflow, [WorkflowExpression] Func<string> sAPGetTreeItemPropertiessearchNodeKey = null, [WorkflowExpression] Func<string> sAPGetTreeItemPropertiessearchNodePath = null, [WorkflowExpression] Func<string> sAPGetTreeItemPropertiessearchNodeText = null, [WorkflowExpression] Func<bool> sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPGetTreeItemPropertiessearchColumnName = null, [WorkflowExpression] Func<string> sAPGetTreeItemPropertiessearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchSAPElementId, nameof(sAPGetTreeItemPropertiessearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetTreeItemPropertiesworkflow, nameof(sAPGetTreeItemPropertiesworkflow), required: true);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchNodeKey, nameof(sAPGetTreeItemPropertiessearchNodeKey), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchNodePath, nameof(sAPGetTreeItemPropertiessearchNodePath), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchNodeText, nameof(sAPGetTreeItemPropertiessearchNodeText), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression, nameof(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive, nameof(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchColumnName, nameof(sAPGetTreeItemPropertiessearchColumnName), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchColumnTitle, nameof(sAPGetTreeItemPropertiessearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression, nameof(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive, nameof(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeItemProperties";
@@ -5197,8 +4826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetShellToolbarElementsResponse> SAPGetShellToolbarElements([WorkflowExpression] Func<string> sAPGetShellToolbarElementssearchSAPElementId, [WorkflowExpression] Func<string> sAPGetShellToolbarElementsworkflow)
         {
-            SourceExpression.Validate(sAPGetShellToolbarElementssearchSAPElementId, nameof(sAPGetShellToolbarElementssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetShellToolbarElementsworkflow, nameof(sAPGetShellToolbarElementsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetShellToolbarElements";
@@ -5223,13 +4850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressShellToolbarElement([WorkflowExpression] Func<string> sAPPressShellToolbarElementsearchSAPElementId, [WorkflowExpression] Func<string> sAPPressShellToolbarElementworkflow, [WorkflowExpression] Func<string> sAPPressShellToolbarElementsearchToolbarElementId = null, [WorkflowExpression] Func<string> sAPPressShellToolbarElementsearchToolbarElementText = null, [WorkflowExpression] Func<int> sAPPressShellToolbarElementsearchToolbarElementIndex = null, [WorkflowExpression] Func<bool> sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPPressShellToolbarElementsearchSAPElementId, nameof(sAPPressShellToolbarElementsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressShellToolbarElementworkflow, nameof(sAPPressShellToolbarElementworkflow), required: true);
-            SourceExpression.Validate(sAPPressShellToolbarElementsearchToolbarElementId, nameof(sAPPressShellToolbarElementsearchToolbarElementId), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementsearchToolbarElementText, nameof(sAPPressShellToolbarElementsearchToolbarElementText), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementsearchToolbarElementIndex, nameof(sAPPressShellToolbarElementsearchToolbarElementIndex), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression, nameof(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive, nameof(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressShellToolbarElement";
@@ -5314,13 +4934,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressShellToolbarElementContextButton([WorkflowExpression] Func<string> sAPPressShellToolbarElementContextButtonsearchSAPElementId, [WorkflowExpression] Func<string> sAPPressShellToolbarElementContextButtonworkflow, [WorkflowExpression] Func<string> sAPPressShellToolbarElementContextButtonsearchToolbarElementId = null, [WorkflowExpression] Func<string> sAPPressShellToolbarElementContextButtonsearchToolbarElementText = null, [WorkflowExpression] Func<int> sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex = null, [WorkflowExpression] Func<bool> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPPressShellToolbarElementContextButtonsearchSAPElementId, nameof(sAPPressShellToolbarElementContextButtonsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressShellToolbarElementContextButtonworkflow, nameof(sAPPressShellToolbarElementContextButtonworkflow), required: true);
-            SourceExpression.Validate(sAPPressShellToolbarElementContextButtonsearchToolbarElementId, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementId), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementContextButtonsearchToolbarElementText, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementText), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressShellToolbarElementContextButton";
@@ -5405,13 +5018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectShellToolbarMenuItem([WorkflowExpression] Func<string> sAPSelectShellToolbarMenuItemsearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectShellToolbarMenuItemworkflow, [WorkflowExpression] Func<string> sAPSelectShellToolbarMenuItemsearchToolbarElementId = null, [WorkflowExpression] Func<string> sAPSelectShellToolbarMenuItemsearchToolbarElementText = null, [WorkflowExpression] Func<int> sAPSelectShellToolbarMenuItemsearchToolbarElementIndex = null, [WorkflowExpression] Func<bool> sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPSelectShellToolbarMenuItemsearchSAPElementId, nameof(sAPSelectShellToolbarMenuItemsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectShellToolbarMenuItemworkflow, nameof(sAPSelectShellToolbarMenuItemworkflow), required: true);
-            SourceExpression.Validate(sAPSelectShellToolbarMenuItemsearchToolbarElementId, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementId), required: false);
-            SourceExpression.Validate(sAPSelectShellToolbarMenuItemsearchToolbarElementText, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementText), required: false);
-            SourceExpression.Validate(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex), required: false);
-            SourceExpression.Validate(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression, nameof(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive, nameof(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectShellToolbarMenuItem";
@@ -5496,8 +5102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewPropertiesResponse> SAPGetSAPGridViewProperties([WorkflowExpression] Func<string> sAPGetSAPGridViewPropertiessearchSAPElementId, [WorkflowExpression] Func<string> sAPGetSAPGridViewPropertiesworkflow)
         {
-            SourceExpression.Validate(sAPGetSAPGridViewPropertiessearchSAPElementId, nameof(sAPGetSAPGridViewPropertiessearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewPropertiesworkflow, nameof(sAPGetSAPGridViewPropertiesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewProperties";
@@ -5522,13 +5126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewCellContentsAtIndexResponse> SAPGetSAPGridViewCellContentsAtIndex([WorkflowExpression] Func<string> sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPGetSAPGridViewCellContentsAtIndexrowIndex, [WorkflowExpression] Func<string> sAPGetSAPGridViewCellContentsAtIndexworkflow, [WorkflowExpression] Func<string> sAPGetSAPGridViewCellContentsAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewCellContentsAtIndexrowIndex, nameof(sAPGetSAPGridViewCellContentsAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewCellContentsAtIndexworkflow, nameof(sAPGetSAPGridViewCellContentsAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewCellContentsAtIndexsearchColumnName, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellContentsAtIndex";
@@ -5599,13 +5196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse> SAPGetSAPGridViewCellPropertiesAtIndex([WorkflowExpression] Func<string> sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPGetSAPGridViewCellPropertiesAtIndexrowIndex, [WorkflowExpression] Func<string> sAPGetSAPGridViewCellPropertiesAtIndexworkflow, [WorkflowExpression] Func<string> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewCellPropertiesAtIndexrowIndex, nameof(sAPGetSAPGridViewCellPropertiesAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewCellPropertiesAtIndexworkflow, nameof(sAPGetSAPGridViewCellPropertiesAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellPropertiesAtIndex";
@@ -5676,15 +5266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDrawRectangleAroundSAPGridViewCellAtIndex([WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex, [WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow, [WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour = null, [WorkflowExpression] Func<int> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels = null)
         {
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour), required: false);
-            SourceExpression.Validate(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPGridViewCellAtIndex";
@@ -5787,21 +5368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalLeftClickSAPGridViewCellAtIndex([WorkflowExpression] Func<string> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex, [WorkflowExpression] Func<string> sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow, [WorkflowExpression] Func<string> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay = null, [WorkflowExpression] Func<int> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX = null, [WorkflowExpression] Func<int> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY = null, [WorkflowExpression] Func<sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput> sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY), required: false);
-            SourceExpression.Validate(sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalLeftClickSAPGridViewCellAtIndex";
@@ -5990,21 +5556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalRightClickSAPGridViewCellAtIndex([WorkflowExpression] Func<string> sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex, [WorkflowExpression] Func<string> sAPGlobalRightClickSAPGridViewCellAtIndexworkflow, [WorkflowExpression] Func<string> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay = null, [WorkflowExpression] Func<int> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX = null, [WorkflowExpression] Func<int> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY = null, [WorkflowExpression] Func<sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeToInput> sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY), required: false);
-            SourceExpression.Validate(sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalRightClickSAPGridViewCellAtIndex";
@@ -6193,22 +5744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex([WorkflowExpression] Func<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex, [WorkflowExpression] Func<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow, [WorkflowExpression] Func<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow = null, [WorkflowExpression] Func<bool> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay = null, [WorkflowExpression] Func<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX = null, [WorkflowExpression] Func<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY = null, [WorkflowExpression] Func<sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null, [WorkflowExpression] Func<int> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds = null)
         {
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
-            SourceExpression.Validate(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex";
@@ -6413,8 +5948,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewColumnHeadersResponse> SAPGetSAPGridViewColumnHeaders([WorkflowExpression] Func<string> sAPGetSAPGridViewColumnHeaderssearchSAPElementId, [WorkflowExpression] Func<string> sAPGetSAPGridViewColumnHeadersworkflow)
         {
-            SourceExpression.Validate(sAPGetSAPGridViewColumnHeaderssearchSAPElementId, nameof(sAPGetSAPGridViewColumnHeaderssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetSAPGridViewColumnHeadersworkflow, nameof(sAPGetSAPGridViewColumnHeadersworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewColumnHeaders";
@@ -6439,13 +5972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPClickSAPGridViewCellAtIndex([WorkflowExpression] Func<string> sAPClickSAPGridViewCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPClickSAPGridViewCellAtIndexrowIndex, [WorkflowExpression] Func<string> sAPClickSAPGridViewCellAtIndexworkflow, [WorkflowExpression] Func<string> sAPClickSAPGridViewCellAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPClickSAPGridViewCellAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPClickSAPGridViewCellAtIndexrowIndex, nameof(sAPClickSAPGridViewCellAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPClickSAPGridViewCellAtIndexworkflow, nameof(sAPClickSAPGridViewCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPClickSAPGridViewCellAtIndex";
@@ -6516,13 +6042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDoubleClickSAPGridViewCellAtIndex([WorkflowExpression] Func<string> sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPDoubleClickSAPGridViewCellAtIndexrowIndex, [WorkflowExpression] Func<string> sAPDoubleClickSAPGridViewCellAtIndexworkflow, [WorkflowExpression] Func<string> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPDoubleClickSAPGridViewCellAtIndexrowIndex, nameof(sAPDoubleClickSAPGridViewCellAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPDoubleClickSAPGridViewCellAtIndexworkflow, nameof(sAPDoubleClickSAPGridViewCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPDoubleClickSAPGridViewCellAtIndex";
@@ -6593,13 +6112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPGridViewCellButtonAtIndex([WorkflowExpression] Func<string> sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPPressSAPGridViewCellButtonAtIndexrowIndex, [WorkflowExpression] Func<string> sAPPressSAPGridViewCellButtonAtIndexworkflow, [WorkflowExpression] Func<string> sAPPressSAPGridViewCellButtonAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressSAPGridViewCellButtonAtIndexrowIndex, nameof(sAPPressSAPGridViewCellButtonAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPPressSAPGridViewCellButtonAtIndexworkflow, nameof(sAPPressSAPGridViewCellButtonAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPPressSAPGridViewCellButtonAtIndexsearchColumnName, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPGridViewCellButtonAtIndex";
@@ -6670,14 +6182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckSAPGridViewCellCheckboxAtIndex([WorkflowExpression] Func<string> sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex, [WorkflowExpression] Func<string> sAPCheckSAPGridViewCellCheckboxAtIndexworkflow, [WorkflowExpression] Func<string> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement = null)
         {
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexworkflow, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPGridViewCellCheckboxAtIndex";
@@ -6764,14 +6268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPModifySAPGridViewCellAtIndexResponse> SAPModifySAPGridViewCellAtIndex([WorkflowExpression] Func<string> sAPModifySAPGridViewCellAtIndexsearchSAPElementId, [WorkflowExpression] Func<int> sAPModifySAPGridViewCellAtIndexrowIndex, [WorkflowExpression] Func<string> sAPModifySAPGridViewCellAtIndexworkflow, [WorkflowExpression] Func<string> sAPModifySAPGridViewCellAtIndexsearchColumnName = null, [WorkflowExpression] Func<string> sAPModifySAPGridViewCellAtIndexsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<string> sAPModifySAPGridViewCellAtIndexnewValue = null)
         {
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPModifySAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexrowIndex, nameof(sAPModifySAPGridViewCellAtIndexrowIndex), required: true);
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexworkflow, nameof(sAPModifySAPGridViewCellAtIndexworkflow), required: true);
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexsearchColumnName, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnName), required: false);
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPModifySAPGridViewCellAtIndexnewValue, nameof(sAPModifySAPGridViewCellAtIndexnewValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPModifySAPGridViewCellAtIndex";
@@ -6848,9 +6344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPGridViewCurrentRow([WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentRowsearchSAPElementId, [WorkflowExpression] Func<int> sAPSetSAPGridViewCurrentRowrowIndex, [WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentRowworkflow)
         {
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentRowsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentRowsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentRowrowIndex, nameof(sAPSetSAPGridViewCurrentRowrowIndex), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentRowworkflow, nameof(sAPSetSAPGridViewCurrentRowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentRow";
@@ -6877,12 +6370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPGridViewColumnHeader([WorkflowExpression] Func<string> sAPPressSAPGridViewColumnHeadersearchSAPElementId, [WorkflowExpression] Func<string> sAPPressSAPGridViewColumnHeaderworkflow, [WorkflowExpression] Func<string> sAPPressSAPGridViewColumnHeadersearchColumnName = null, [WorkflowExpression] Func<string> sAPPressSAPGridViewColumnHeadersearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPPressSAPGridViewColumnHeadersearchSAPElementId, nameof(sAPPressSAPGridViewColumnHeadersearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPPressSAPGridViewColumnHeaderworkflow, nameof(sAPPressSAPGridViewColumnHeaderworkflow), required: true);
-            SourceExpression.Validate(sAPPressSAPGridViewColumnHeadersearchColumnName, nameof(sAPPressSAPGridViewColumnHeadersearchColumnName), required: false);
-            SourceExpression.Validate(sAPPressSAPGridViewColumnHeadersearchColumnTitle, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPGridViewColumnHeader";
@@ -6951,9 +6438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleRowResponse> SAPSetSAPGridViewFirstVisibleRow([WorkflowExpression] Func<string> sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId, [WorkflowExpression] Func<int> sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex, [WorkflowExpression] Func<string> sAPSetSAPGridViewFirstVisibleRowworkflow)
         {
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId, nameof(sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex, nameof(sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleRowworkflow, nameof(sAPSetSAPGridViewFirstVisibleRowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleRow";
@@ -6980,10 +6464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPGridViewRow([WorkflowExpression] Func<string> sAPSelectSAPGridViewRowsearchSAPElementId, [WorkflowExpression] Func<int> sAPSelectSAPGridViewRowrowIndex, [WorkflowExpression] Func<string> sAPSelectSAPGridViewRowworkflow, [WorkflowExpression] Func<bool> sAPSelectSAPGridViewRowsetAsCurrentRow = null)
         {
-            SourceExpression.Validate(sAPSelectSAPGridViewRowsearchSAPElementId, nameof(sAPSelectSAPGridViewRowsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectSAPGridViewRowrowIndex, nameof(sAPSelectSAPGridViewRowrowIndex), required: true);
-            SourceExpression.Validate(sAPSelectSAPGridViewRowworkflow, nameof(sAPSelectSAPGridViewRowworkflow), required: true);
-            SourceExpression.Validate(sAPSelectSAPGridViewRowsetAsCurrentRow, nameof(sAPSelectSAPGridViewRowsetAsCurrentRow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewRow";
@@ -7026,9 +6506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPGridViewMultipleRows([WorkflowExpression] Func<string> sAPSelectSAPGridViewMultipleRowssearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectSAPGridViewMultipleRowsrowsToSelect, [WorkflowExpression] Func<string> sAPSelectSAPGridViewMultipleRowsworkflow)
         {
-            SourceExpression.Validate(sAPSelectSAPGridViewMultipleRowssearchSAPElementId, nameof(sAPSelectSAPGridViewMultipleRowssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectSAPGridViewMultipleRowsrowsToSelect, nameof(sAPSelectSAPGridViewMultipleRowsrowsToSelect), required: true);
-            SourceExpression.Validate(sAPSelectSAPGridViewMultipleRowsworkflow, nameof(sAPSelectSAPGridViewMultipleRowsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewMultipleRows";
@@ -7055,12 +6532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPGridViewCurrentColumn([WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentColumnsearchSAPElementId, [WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentColumnworkflow, [WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentColumnsearchColumnName = null, [WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentColumnsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentColumnsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentColumnsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentColumnworkflow, nameof(sAPSetSAPGridViewCurrentColumnworkflow), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentColumnsearchColumnName, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnName), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentColumnsearchColumnTitle, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentColumn";
@@ -7129,13 +6600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPGridViewCurrentCell([WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentCellsearchSAPElementId, [WorkflowExpression] Func<int> sAPSetSAPGridViewCurrentCellrowIndex, [WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentCellworkflow, [WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentCellsearchColumnName = null, [WorkflowExpression] Func<string> sAPSetSAPGridViewCurrentCellsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentCellsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentCellsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentCellrowIndex, nameof(sAPSetSAPGridViewCurrentCellrowIndex), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentCellworkflow, nameof(sAPSetSAPGridViewCurrentCellworkflow), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentCellsearchColumnName, nameof(sAPSetSAPGridViewCurrentCellsearchColumnName), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentCellsearchColumnTitle, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentCell";
@@ -7206,15 +6670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPGridViewColumn([WorkflowExpression] Func<string> sAPSelectSAPGridViewColumnsearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectSAPGridViewColumnworkflow, [WorkflowExpression] Func<string> sAPSelectSAPGridViewColumnsearchColumnName = null, [WorkflowExpression] Func<string> sAPSelectSAPGridViewColumnsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<bool> sAPSelectSAPGridViewColumnselectColumn = null, [WorkflowExpression] Func<bool> sAPSelectSAPGridViewColumnsetAsCurrentColumn = null, [WorkflowExpression] Func<bool> sAPSelectSAPGridViewColumnclearSelectionFirst = null)
         {
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnsearchSAPElementId, nameof(sAPSelectSAPGridViewColumnsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnworkflow, nameof(sAPSelectSAPGridViewColumnworkflow), required: true);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnsearchColumnName, nameof(sAPSelectSAPGridViewColumnsearchColumnName), required: false);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnsearchColumnTitle, nameof(sAPSelectSAPGridViewColumnsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression, nameof(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnselectColumn, nameof(sAPSelectSAPGridViewColumnselectColumn), required: false);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnsetAsCurrentColumn, nameof(sAPSelectSAPGridViewColumnsetAsCurrentColumn), required: false);
-            SourceExpression.Validate(sAPSelectSAPGridViewColumnclearSelectionFirst, nameof(sAPSelectSAPGridViewColumnclearSelectionFirst), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewColumn";
@@ -7331,8 +6786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGridViewSelectAll([WorkflowExpression] Func<string> sAPGridViewSelectAllsearchSAPElementId, [WorkflowExpression] Func<string> sAPGridViewSelectAllworkflow)
         {
-            SourceExpression.Validate(sAPGridViewSelectAllsearchSAPElementId, nameof(sAPGridViewSelectAllsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGridViewSelectAllworkflow, nameof(sAPGridViewSelectAllworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewSelectAll";
@@ -7357,8 +6810,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGridViewDeselectAll([WorkflowExpression] Func<string> sAPGridViewDeselectAllsearchSAPElementId, [WorkflowExpression] Func<string> sAPGridViewDeselectAllworkflow)
         {
-            SourceExpression.Validate(sAPGridViewDeselectAllsearchSAPElementId, nameof(sAPGridViewDeselectAllsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGridViewDeselectAllworkflow, nameof(sAPGridViewDeselectAllworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewDeselectAll";
@@ -7383,12 +6834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleColumnResponse> SAPSetSAPGridViewFirstVisibleColumn([WorkflowExpression] Func<string> sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId, [WorkflowExpression] Func<string> sAPSetSAPGridViewFirstVisibleColumnworkflow, [WorkflowExpression] Func<string> sAPSetSAPGridViewFirstVisibleColumnsearchColumnName = null, [WorkflowExpression] Func<string> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleColumnworkflow, nameof(sAPSetSAPGridViewFirstVisibleColumnworkflow), required: true);
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleColumnsearchColumnName, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnName), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleColumn";
@@ -7457,13 +6902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGridViewOpenContextMenu([WorkflowExpression] Func<string> sAPGridViewOpenContextMenusearchSAPElementId, [WorkflowExpression] Func<int> sAPGridViewOpenContextMenurowIndex, [WorkflowExpression] Func<string> sAPGridViewOpenContextMenuworkflow, [WorkflowExpression] Func<string> sAPGridViewOpenContextMenusearchColumnName = null, [WorkflowExpression] Func<string> sAPGridViewOpenContextMenusearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive = null)
         {
-            SourceExpression.Validate(sAPGridViewOpenContextMenusearchSAPElementId, nameof(sAPGridViewOpenContextMenusearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGridViewOpenContextMenurowIndex, nameof(sAPGridViewOpenContextMenurowIndex), required: true);
-            SourceExpression.Validate(sAPGridViewOpenContextMenuworkflow, nameof(sAPGridViewOpenContextMenuworkflow), required: true);
-            SourceExpression.Validate(sAPGridViewOpenContextMenusearchColumnName, nameof(sAPGridViewOpenContextMenusearchColumnName), required: false);
-            SourceExpression.Validate(sAPGridViewOpenContextMenusearchColumnTitle, nameof(sAPGridViewOpenContextMenusearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression, nameof(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive, nameof(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewOpenContextMenu";
@@ -7534,19 +6972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetGridViewTextContentsResponse> SAPGetGridViewTextContents([WorkflowExpression] Func<string> sAPGetGridViewTextContentssearchSAPElementId, [WorkflowExpression] Func<string> sAPGetGridViewTextContentsworkflow, [WorkflowExpression] Func<int> sAPGetGridViewTextContentsfirstRowToReturn = null, [WorkflowExpression] Func<int> sAPGetGridViewTextContentsmaxRowsToReturn = null, [WorkflowExpression] Func<string> sAPGetGridViewTextContentsfirstSearchColumnName = null, [WorkflowExpression] Func<string> sAPGetGridViewTextContentsfirstSearchColumnTitle = null, [WorkflowExpression] Func<bool> sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression = null, [WorkflowExpression] Func<bool> sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive = null, [WorkflowExpression] Func<int> sAPGetGridViewTextContentsmaxColumnsToReturn = null, [WorkflowExpression] Func<bool> sAPGetGridViewTextContentsuseColumnHeadersFromTable = null, [WorkflowExpression] Func<bool> sAPGetGridViewTextContentsreturnRowIndexInOutputCollection = null, [WorkflowExpression] Func<string> sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex = null, [WorkflowExpression] Func<string> sAPGetGridViewTextContentscheckedElementValue = null)
         {
-            SourceExpression.Validate(sAPGetGridViewTextContentssearchSAPElementId, nameof(sAPGetGridViewTextContentssearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPGetGridViewTextContentsworkflow, nameof(sAPGetGridViewTextContentsworkflow), required: true);
-            SourceExpression.Validate(sAPGetGridViewTextContentsfirstRowToReturn, nameof(sAPGetGridViewTextContentsfirstRowToReturn), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsmaxRowsToReturn, nameof(sAPGetGridViewTextContentsmaxRowsToReturn), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsfirstSearchColumnName, nameof(sAPGetGridViewTextContentsfirstSearchColumnName), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsfirstSearchColumnTitle, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitle), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsmaxColumnsToReturn, nameof(sAPGetGridViewTextContentsmaxColumnsToReturn), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsuseColumnHeadersFromTable, nameof(sAPGetGridViewTextContentsuseColumnHeadersFromTable), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex), required: false);
-            SourceExpression.Validate(sAPGetGridViewTextContentscheckedElementValue, nameof(sAPGetGridViewTextContentscheckedElementValue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPGetGridViewTextContents";
@@ -7717,10 +7142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectCalendarMonth([WorkflowExpression] Func<string> sAPSelectCalendarMonthsearchSAPElementId, [WorkflowExpression] Func<int> sAPSelectCalendarMonthmonth, [WorkflowExpression] Func<int> sAPSelectCalendarMonthyear, [WorkflowExpression] Func<string> sAPSelectCalendarMonthworkflow)
         {
-            SourceExpression.Validate(sAPSelectCalendarMonthsearchSAPElementId, nameof(sAPSelectCalendarMonthsearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectCalendarMonthmonth, nameof(sAPSelectCalendarMonthmonth), required: true);
-            SourceExpression.Validate(sAPSelectCalendarMonthyear, nameof(sAPSelectCalendarMonthyear), required: true);
-            SourceExpression.Validate(sAPSelectCalendarMonthworkflow, nameof(sAPSelectCalendarMonthworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarMonth";
@@ -7749,10 +7170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectCalendarWeek([WorkflowExpression] Func<string> sAPSelectCalendarWeeksearchSAPElementId, [WorkflowExpression] Func<int> sAPSelectCalendarWeekweek, [WorkflowExpression] Func<int> sAPSelectCalendarWeekyear, [WorkflowExpression] Func<string> sAPSelectCalendarWeekworkflow)
         {
-            SourceExpression.Validate(sAPSelectCalendarWeeksearchSAPElementId, nameof(sAPSelectCalendarWeeksearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectCalendarWeekweek, nameof(sAPSelectCalendarWeekweek), required: true);
-            SourceExpression.Validate(sAPSelectCalendarWeekyear, nameof(sAPSelectCalendarWeekyear), required: true);
-            SourceExpression.Validate(sAPSelectCalendarWeekworkflow, nameof(sAPSelectCalendarWeekworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarWeek";
@@ -7781,10 +7198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectCalendarRange([WorkflowExpression] Func<string> sAPSelectCalendarRangesearchSAPElementId, [WorkflowExpression] Func<string> sAPSelectCalendarRangefromDateYYYYMMDD, [WorkflowExpression] Func<string> sAPSelectCalendarRangetoDateYYYYMMDD, [WorkflowExpression] Func<string> sAPSelectCalendarRangeworkflow)
         {
-            SourceExpression.Validate(sAPSelectCalendarRangesearchSAPElementId, nameof(sAPSelectCalendarRangesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPSelectCalendarRangefromDateYYYYMMDD, nameof(sAPSelectCalendarRangefromDateYYYYMMDD), required: true);
-            SourceExpression.Validate(sAPSelectCalendarRangetoDateYYYYMMDD, nameof(sAPSelectCalendarRangetoDateYYYYMMDD), required: true);
-            SourceExpression.Validate(sAPSelectCalendarRangeworkflow, nameof(sAPSelectCalendarRangeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarRange";
@@ -7813,9 +7226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPFocusCalendarDate([WorkflowExpression] Func<string> sAPFocusCalendarDatesearchSAPElementId, [WorkflowExpression] Func<string> sAPFocusCalendarDatedateYYYYMMDD, [WorkflowExpression] Func<string> sAPFocusCalendarDateworkflow)
         {
-            SourceExpression.Validate(sAPFocusCalendarDatesearchSAPElementId, nameof(sAPFocusCalendarDatesearchSAPElementId), required: true);
-            SourceExpression.Validate(sAPFocusCalendarDatedateYYYYMMDD, nameof(sAPFocusCalendarDatedateYYYYMMDD), required: true);
-            SourceExpression.Validate(sAPFocusCalendarDateworkflow, nameof(sAPFocusCalendarDateworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SAPGUI/SAPFocusCalendarDate";

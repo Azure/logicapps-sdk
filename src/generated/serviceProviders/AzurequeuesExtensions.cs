@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         public IOutputWorkflowAction<PutMessageOutput> PutMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<string> timeToLive = null, [WorkflowExpression] Func<string> visibilityTimeout = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
-            SourceExpression.Validate(timeToLive, nameof(timeToLive), required: false);
-            SourceExpression.Validate(visibilityTimeout, nameof(visibilityTimeout), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -49,9 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<GetMessagesOutputItem[]> GetMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> messageCount = null, [WorkflowExpression] Func<string> visibilityTimeout = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(messageCount, nameof(messageCount), required: false);
-            SourceExpression.Validate(visibilityTimeout, nameof(visibilityTimeout), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -84,9 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         public IOutputWorkflowAction<JToken> DeleteMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> popReceipt)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(popReceipt, nameof(popReceipt), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -107,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         public IOutputWorkflowAction<JToken> PutQueue([WorkflowExpression] Func<string> queueName)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -126,9 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<ListQueuesOutput> ListQueues([WorkflowExpression] Func<string> prefix = null, [WorkflowExpression] Func<int> maxCount = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            SourceExpression.Validate(prefix, nameof(prefix), required: false);
-            SourceExpression.Validate(maxCount, nameof(maxCount), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -163,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
     {
         public IBodyWorkflowTrigger<ReceiveQueueMessagesOutput> ReceiveQueueMessages([WorkflowExpression] Func<object> queueName)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -181,8 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 
         public IBodyWorkflowTrigger<int> SpecifiedNumberOfMessagesAvailable([WorkflowExpression] Func<object> queueName, [WorkflowExpression] Func<int> threshold, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(threshold, nameof(threshold), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

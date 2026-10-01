@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<AirQualityHealthIndexResponse> AirQualityHealthIndex([WorkflowExpression] Func<string> o3, [WorkflowExpression] Func<string> nO2, [WorkflowExpression] Func<string> pM)
         {
-            SourceExpression.Validate(o3, nameof(o3), required: true);
-            SourceExpression.Validate(nO2, nameof(nO2), required: true);
-            SourceExpression.Validate(pM, nameof(pM), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AirQualityHealthIndex";
@@ -34,8 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<TreeEquivalentResponse> TreeEquivalent([WorkflowExpression] Func<string> weight, [WorkflowExpression] Func<unitInput> unit)
         {
-            SourceExpression.Validate(weight, nameof(weight), required: true);
-            SourceExpression.Validate(unit, nameof(unit), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/TreeEquivalent";
@@ -52,8 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<TraditionalHydroToCarbonFootprintResponse> TraditionalHydroToCarbonFootprint([WorkflowExpression] Func<string> consumption, [WorkflowExpression] Func<locationInput> location)
         {
-            SourceExpression.Validate(consumption, nameof(consumption), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/TraditionalHydroToCarbonFootprint";
@@ -70,8 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CleanHydroToCarbonFootprintResponse> CleanHydroToCarbonFootprint([WorkflowExpression] Func<energyInput> energy, [WorkflowExpression] Func<string> consumption)
         {
-            SourceExpression.Validate(energy, nameof(energy), required: true);
-            SourceExpression.Validate(consumption, nameof(consumption), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CleanHydroToCarbonFootprint";
@@ -88,8 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<FuelToCO2eResponse> FuelToCO2e([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> litres)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(litres, nameof(litres), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/FuelToCO2e";
@@ -106,8 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromCarTravelResponse> CarbonFootprintFromCarTravel([WorkflowExpression] Func<string> distance, [WorkflowExpression] Func<vehicleInput> vehicle)
         {
-            SourceExpression.Validate(distance, nameof(distance), required: true);
-            SourceExpression.Validate(vehicle, nameof(vehicle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CarbonFootprintFromCarTravel";
@@ -124,8 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromFlightResponse> CarbonFootprintFromFlight([WorkflowExpression] Func<string> distance, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(distance, nameof(distance), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CarbonFootprintFromFlight";
@@ -142,8 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse> CarbonFootprintFromMotorBike([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> distance)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(distance, nameof(distance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CarbonFootprintFromMotorBike";
@@ -160,8 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse> CarbonFootprintFromPublicTransit([WorkflowExpression] Func<string> distance, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(distance, nameof(distance), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CarbonFootprintFromPublicTransit";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<Survey> GetSurvey([WorkflowExpression] Func<string> surveyId)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/surveys/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
@@ -29,10 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<SurveyMessageResponse> SendMessage([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> bodyscheduledDate = null)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
-            SourceExpression.Validate(collectorId, nameof(collectorId), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectorId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -60,9 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
-            SourceExpression.Validate(questionIds, nameof(questionIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
@@ -80,9 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
-            SourceExpression.Validate(responseId, nameof(responseId), required: true);
-            SourceExpression.Validate(questionIds, nameof(questionIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
@@ -115,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
@@ -129,8 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
-            SourceExpression.Validate(collectorId, nameof(collectorId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectorId, 1));
@@ -145,7 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
@@ -159,9 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> pageIds = null, [WorkflowExpression] Func<string> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
-            SourceExpression.Validate(pageIds, nameof(pageIds), required: false);
-            SourceExpression.Validate(questionIds, nameof(questionIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));

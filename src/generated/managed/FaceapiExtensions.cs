@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<AddPersonFaceResponse> AddFaceToFaceList([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> faceListId, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> targetFace = null, [WorkflowExpression] Func<string> userData = null)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(faceListId, nameof(faceListId), required: true);
-            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            SourceExpression.Validate(targetFace, nameof(targetFace), required: false);
-            SourceExpression.Validate(userData, nameof(userData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/facelists/{1}/persistedFaces", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(faceListId, 1));
@@ -49,12 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<AddPersonFaceResponse> AddPersonFace([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<string> bodyimageUrl, [WorkflowExpression] Func<string> targetFace = null, [WorkflowExpression] Func<string> userData = null)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(personGroupId, nameof(personGroupId), required: true);
-            SourceExpression.Validate(personId, nameof(personId), required: true);
-            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: true);
-            SourceExpression.Validate(targetFace, nameof(targetFace), required: false);
-            SourceExpression.Validate(userData, nameof(userData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons/{2}/persistedFaces", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
@@ -81,10 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IWorkflowAction CreateFaceList([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> faceListId, [WorkflowExpression] Func<string> bodyfaceListName, [WorkflowExpression] Func<string> bodyuserData = null)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(faceListId, nameof(faceListId), required: true);
-            SourceExpression.Validate(bodyfaceListName, nameof(bodyfaceListName), required: true);
-            SourceExpression.Validate(bodyuserData, nameof(bodyuserData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/facelists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(faceListId, 1));
@@ -113,10 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<CreatePersonResponse> CreatePerson([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyuserData = null)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(personGroupId, nameof(personGroupId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyuserData, nameof(bodyuserData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1));
@@ -145,10 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IWorkflowAction CreatePersonGroup([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyuserData = null)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(personGroupId, nameof(personGroupId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyuserData, nameof(bodyuserData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1));
@@ -177,8 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<DetectResponseItem[]> Detect([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> bodyimageUrl)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/detect", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2));
@@ -204,8 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<GetFaceListResponse> GetFaceList([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> faceListId)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(faceListId, nameof(faceListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/facelists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(faceListId, 1));
@@ -220,9 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<GetPersonResponse> GetPerson([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(personGroupId, nameof(personGroupId), required: true);
-            SourceExpression.Validate(personId, nameof(personId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons/{2}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
@@ -237,10 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<GetPersonFaceResponse> GetPersonFace([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<string> persistedFaceId)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(personGroupId, nameof(personGroupId), required: true);
-            SourceExpression.Validate(personId, nameof(personId), required: true);
-            SourceExpression.Validate(persistedFaceId, nameof(persistedFaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons/{2}/persistedFaces/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(persistedFaceId, 1));
@@ -255,8 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<GetPersonGroupResponse> GetPersonGroup([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(personGroupId, nameof(personGroupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1));
@@ -271,10 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
         public IBodyWorkflowAction<VerifyResponse> Verify([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> bodyfaceId, [WorkflowExpression] Func<string> bodypersonGroupId, [WorkflowExpression] Func<string> bodypersonId)
         {
-            SourceExpression.Validate(subdomain, nameof(subdomain), required: true);
-            SourceExpression.Validate(bodyfaceId, nameof(bodyfaceId), required: true);
-            SourceExpression.Validate(bodypersonGroupId, nameof(bodypersonGroupId), required: true);
-            SourceExpression.Validate(bodypersonId, nameof(bodypersonId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/verify", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2));

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IWorkflowAction InvokeMCP([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            SourceExpression.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/runtime/webhooks/mcp";
@@ -82,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<GetDocumentsResponse[]> GetDocuments([WorkflowExpression] Func<string> reqexecutionId)
         {
-            SourceExpression.Validate(reqexecutionId, nameof(reqexecutionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Documents";
@@ -105,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<FlowExecutionResponse> GetExecutionStatus([WorkflowExpression] Func<string> reqexecutionId)
         {
-            SourceExpression.Validate(reqexecutionId, nameof(reqexecutionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ExecutionStatus";
@@ -128,7 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> reqdocumentId)
         {
-            SourceExpression.Validate(reqdocumentId, nameof(reqdocumentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/DownloadDocument";
@@ -151,10 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<FlowExecutionResponse> ExecuteFlow([WorkflowExpression] Func<string> reqflowId, [WorkflowExpression] Func<object> reqexecutionData, [WorkflowExpression] Func<int> reqpriority = null, [WorkflowExpression] Func<bool> reqenableAsynchronousRequestReplyPattern = null)
         {
-            SourceExpression.Validate(reqflowId, nameof(reqflowId), required: true);
-            SourceExpression.Validate(reqexecutionData, nameof(reqexecutionData), required: true);
-            SourceExpression.Validate(reqpriority, nameof(reqpriority), required: false);
-            SourceExpression.Validate(reqenableAsynchronousRequestReplyPattern, nameof(reqenableAsynchronousRequestReplyPattern), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ExecuteFlow";
@@ -201,12 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<string> ExportPackage([WorkflowExpression] Func<reqrecordTypeInput> reqrecordType, [WorkflowExpression] Func<reqexportModeInput> reqexportMode, [WorkflowExpression] Func<bool> reqincludeAllDependencies, [WorkflowExpression] Func<object> reqrecords = null, [WorkflowExpression] Func<bool> reqincludeTemplateHistory = null, [WorkflowExpression] Func<bool> reqincludeSamples = null)
         {
-            SourceExpression.Validate(reqrecordType, nameof(reqrecordType), required: true);
-            SourceExpression.Validate(reqexportMode, nameof(reqexportMode), required: true);
-            SourceExpression.Validate(reqincludeAllDependencies, nameof(reqincludeAllDependencies), required: true);
-            SourceExpression.Validate(reqrecords, nameof(reqrecords), required: false);
-            SourceExpression.Validate(reqincludeTemplateHistory, nameof(reqincludeTemplateHistory), required: false);
-            SourceExpression.Validate(reqincludeSamples, nameof(reqincludeSamples), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Export";
@@ -271,8 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<string> BackupPackage([WorkflowExpression] Func<bool> reqincludeHistory, [WorkflowExpression] Func<bool> req00000000000000000000000000000000 = null)
         {
-            SourceExpression.Validate(reqincludeHistory, nameof(reqincludeHistory), required: true);
-            SourceExpression.Validate(req00000000000000000000000000000000, nameof(req00000000000000000000000000000000), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Backup";

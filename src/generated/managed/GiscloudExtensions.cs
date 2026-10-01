@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
         public IBodyWorkflowAction<Error> DeleteFileAtPath([WorkflowExpression] Func<string> aPIKey, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> pathToAFile)
         {
-            SourceExpression.Validate(aPIKey, nameof(aPIKey), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(pathToAFile, nameof(pathToAFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pathToAFile, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileName, 1));

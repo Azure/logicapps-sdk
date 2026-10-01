@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<UserDetailResponse> GetUser([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -29,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<MemberListResponse> GetMembers([WorkflowExpression] Func<string> group = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/member/";
@@ -53,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<MemberResponse> GetMember([WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/member/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -68,7 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<AttachmentResponse> GetAttachment([WorkflowExpression] Func<string> attachId)
         {
-            SourceExpression.Validate(attachId, nameof(attachId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attachment/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachId, 1));
@@ -83,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> attachId)
         {
-            SourceExpression.Validate(attachId, nameof(attachId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/attachment/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachId, 1));
@@ -98,9 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<AttachmentListResponse> GetAttachments([WorkflowExpression] Func<string> group = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/attachment/";
@@ -122,11 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction PostAttachment([WorkflowExpression] Func<string> bodygroup, [WorkflowExpression] Func<string> bodypdfFile, [WorkflowExpression] Func<string> bodyfilename, [WorkflowExpression] Func<string> bodyuser = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: true);
-            SourceExpression.Validate(bodypdfFile, nameof(bodypdfFile), required: true);
-            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: true);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/attachment/";
@@ -165,7 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<GetDocumentFieldsResponseItem[]> GetDocumentFields([WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/fields/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -180,7 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<object> GetDocumentAuditLog([WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/auditlog/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -195,7 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<object> GetDocumentPdf([WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pdf/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -210,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/delete/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -225,7 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<DocumentResponseDetail> GetDocument([WorkflowExpression] Func<string> docId)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -240,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction UpdateArchiveDocument([WorkflowExpression] Func<string> docId, [WorkflowExpression] Func<string> email = null)
         {
-            SourceExpression.Validate(docId, nameof(docId), required: true);
-            SourceExpression.Validate(email, nameof(email), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docId, 1));
@@ -258,7 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<SignerResponse> GetRecipient([WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signer/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -273,8 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction PostSignerReminder([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodytext = null)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signer/{0}/send-reminder/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -301,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction GetSignerLink([WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signer/{0}/new-link/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -316,7 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<GetSignerFieldsResponseItem[]> GetSignerFields([WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signer/{0}/fields1/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -331,7 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<GetSignerRejectionResponse> GetSignerRejection([WorkflowExpression] Func<string> recipientId)
         {
-            SourceExpression.Validate(recipientId, nameof(recipientId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signer/{0}/rejection/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
@@ -346,15 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<DocumentListResponse> GetDocuments([WorkflowExpression] Func<string> group, [WorkflowExpression] Func<string> archived = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> nosigners = null, [WorkflowExpression] Func<string> createdGt = null, [WorkflowExpression] Func<string> modifiedGt = null)
         {
-            SourceExpression.Validate(group, nameof(group), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(nosigners, nameof(nosigners), required: false);
-            SourceExpression.Validate(createdGt, nameof(createdGt), required: false);
-            SourceExpression.Validate(modifiedGt, nameof(modifiedGt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document/";
@@ -387,27 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction PostDocument([WorkflowExpression] Func<string> bodygroup, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytemplatepdf, [WorkflowExpression] Func<DocumentSignerPost[]> bodysigners, [WorkflowExpression] Func<int> bodysignatureType = null, [WorkflowExpression] Func<bool> bodyappendPdf = null, [WorkflowExpression] Func<bool> bodyautoArchive = null, [WorkflowExpression] Func<bool> bodydoEmail = null, [WorkflowExpression] Func<string> bodyccEmails = null, [WorkflowExpression] Func<bool> bodyconvertSenderToSigner = null, [WorkflowExpression] Func<string> bodypdfPassword = null, [WorkflowExpression] Func<bodypdfPasswordTypeInput> bodypdfPasswordType = null, [WorkflowExpression] Func<string> bodyredirect = null, [WorkflowExpression] Func<string> bodyreminders = null, [WorkflowExpression] Func<bool> bodyreturnSignerLinks = null, [WorkflowExpression] Func<bool> bodysignersInOrder = null, [WorkflowExpression] Func<bool> bodystrictFields = null, [WorkflowExpression] Func<string> bodytag = null, [WorkflowExpression] Func<string> bodytag1 = null, [WorkflowExpression] Func<string> bodytag2 = null, [WorkflowExpression] Func<string> bodyuser = null)
         {
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytemplatepdf, nameof(bodytemplatepdf), required: true);
-            SourceExpression.Validate(bodysigners, nameof(bodysigners), required: true);
-            SourceExpression.Validate(bodysignatureType, nameof(bodysignatureType), required: false);
-            SourceExpression.Validate(bodyappendPdf, nameof(bodyappendPdf), required: false);
-            SourceExpression.Validate(bodyautoArchive, nameof(bodyautoArchive), required: false);
-            SourceExpression.Validate(bodydoEmail, nameof(bodydoEmail), required: false);
-            SourceExpression.Validate(bodyccEmails, nameof(bodyccEmails), required: false);
-            SourceExpression.Validate(bodyconvertSenderToSigner, nameof(bodyconvertSenderToSigner), required: false);
-            SourceExpression.Validate(bodypdfPassword, nameof(bodypdfPassword), required: false);
-            SourceExpression.Validate(bodypdfPasswordType, nameof(bodypdfPasswordType), required: false);
-            SourceExpression.Validate(bodyredirect, nameof(bodyredirect), required: false);
-            SourceExpression.Validate(bodyreminders, nameof(bodyreminders), required: false);
-            SourceExpression.Validate(bodyreturnSignerLinks, nameof(bodyreturnSignerLinks), required: false);
-            SourceExpression.Validate(bodysignersInOrder, nameof(bodysignersInOrder), required: false);
-            SourceExpression.Validate(bodystrictFields, nameof(bodystrictFields), required: false);
-            SourceExpression.Validate(bodytag, nameof(bodytag), required: false);
-            SourceExpression.Validate(bodytag1, nameof(bodytag1), required: false);
-            SourceExpression.Validate(bodytag2, nameof(bodytag2), required: false);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document/";
@@ -614,7 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<TemplatePdfResponse> GetPdfTemplate([WorkflowExpression] Func<string> pdfId)
         {
-            SourceExpression.Validate(pdfId, nameof(pdfId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templatepdf/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pdfId, 1));
@@ -629,9 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction GetPdfTemplateEditLink([WorkflowExpression] Func<string> pdfId, [WorkflowExpression] Func<bool> hideSenderFields = null, [WorkflowExpression] Func<string> cssBodyBackgroundcolor = null)
         {
-            SourceExpression.Validate(pdfId, nameof(pdfId), required: true);
-            SourceExpression.Validate(hideSenderFields, nameof(hideSenderFields), required: false);
-            SourceExpression.Validate(cssBodyBackgroundcolor, nameof(cssBodyBackgroundcolor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templatepdf/{0}/edit-link/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pdfId, 1));
@@ -650,9 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<TemplatePdfListResponse> GetPdfTemplates([WorkflowExpression] Func<string> group = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/templatepdf/";
@@ -674,12 +609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IWorkflowAction PostPdfTemplate([WorkflowExpression] Func<string> bodygroup, [WorkflowExpression] Func<string> bodypdfFile, [WorkflowExpression] Func<bool> bodyarchiveUponSend = null, [WorkflowExpression] Func<bool> bodyprocessTags = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyuser = null)
         {
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: true);
-            SourceExpression.Validate(bodypdfFile, nameof(bodypdfFile), required: true);
-            SourceExpression.Validate(bodyarchiveUponSend, nameof(bodyarchiveUponSend), required: false);
-            SourceExpression.Validate(bodyprocessTags, nameof(bodyprocessTags), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/templatepdf/";
@@ -738,8 +667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
         public IBodyWorkflowAction<GroupListResponse> GetGroups([WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/group/";
@@ -760,8 +687,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
     {
         public IWorkflowTrigger RecipientTrigger([WorkflowExpression] Func<bodyeventFilterInput> bodyeventFilter, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyeventFilter, nameof(bodyeventFilter), required: true);
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscribe/recipient/";
@@ -794,8 +719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
         public IWorkflowTrigger DocumentTrigger([WorkflowExpression] Func<bodyeventFilterInput> bodyeventFilter, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyeventFilter, nameof(bodyeventFilter), required: true);
-            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscribe/";

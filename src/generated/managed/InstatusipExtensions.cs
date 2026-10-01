@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PagesGetResponseItem[]> PagesGet([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/pages";
@@ -34,39 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PagePostResponse> Page([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodysubdomain = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodylogoUrl = null, [WorkflowExpression] Func<string> bodyfaviconUrl = null, [WorkflowExpression] Func<string> bodywebsiteUrl = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyuseLargeHeader = null, [WorkflowExpression] Func<string> bodybrandColor = null, [WorkflowExpression] Func<string> bodyokColor = null, [WorkflowExpression] Func<string> bodydisruptedColor = null, [WorkflowExpression] Func<string> bodydegradedColor = null, [WorkflowExpression] Func<string> bodydownColor = null, [WorkflowExpression] Func<string> bodynoticeColor = null, [WorkflowExpression] Func<string> bodyunknownColor = null, [WorkflowExpression] Func<string> bodygoogleAnalytics = null, [WorkflowExpression] Func<bool> bodysubscribeBySms = null, [WorkflowExpression] Func<string> bodysmsService = null, [WorkflowExpression] Func<string> bodytwilioSid = null, [WorkflowExpression] Func<string> bodytwilioToken = null, [WorkflowExpression] Func<string> bodytwilioSender = null, [WorkflowExpression] Func<string> bodyhtmlInMeta = null, [WorkflowExpression] Func<string> bodyhtmlAboveHeader = null, [WorkflowExpression] Func<string> bodyhtmlBelowHeader = null, [WorkflowExpression] Func<string> bodyhtmlAboveFooter = null, [WorkflowExpression] Func<string> bodyhtmlBelowFooter = null, [WorkflowExpression] Func<string> bodyhtmlBelowSummary = null, [WorkflowExpression] Func<string> bodycssGlobal = null, [WorkflowExpression] Func<string> bodylaunchDate = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<string> bodydateFormatShort = null, [WorkflowExpression] Func<string> bodytimeFormat = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodysubdomain, nameof(bodysubdomain), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodylogoUrl, nameof(bodylogoUrl), required: false);
-            SourceExpression.Validate(bodyfaviconUrl, nameof(bodyfaviconUrl), required: false);
-            SourceExpression.Validate(bodywebsiteUrl, nameof(bodywebsiteUrl), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyuseLargeHeader, nameof(bodyuseLargeHeader), required: false);
-            SourceExpression.Validate(bodybrandColor, nameof(bodybrandColor), required: false);
-            SourceExpression.Validate(bodyokColor, nameof(bodyokColor), required: false);
-            SourceExpression.Validate(bodydisruptedColor, nameof(bodydisruptedColor), required: false);
-            SourceExpression.Validate(bodydegradedColor, nameof(bodydegradedColor), required: false);
-            SourceExpression.Validate(bodydownColor, nameof(bodydownColor), required: false);
-            SourceExpression.Validate(bodynoticeColor, nameof(bodynoticeColor), required: false);
-            SourceExpression.Validate(bodyunknownColor, nameof(bodyunknownColor), required: false);
-            SourceExpression.Validate(bodygoogleAnalytics, nameof(bodygoogleAnalytics), required: false);
-            SourceExpression.Validate(bodysubscribeBySms, nameof(bodysubscribeBySms), required: false);
-            SourceExpression.Validate(bodysmsService, nameof(bodysmsService), required: false);
-            SourceExpression.Validate(bodytwilioSid, nameof(bodytwilioSid), required: false);
-            SourceExpression.Validate(bodytwilioToken, nameof(bodytwilioToken), required: false);
-            SourceExpression.Validate(bodytwilioSender, nameof(bodytwilioSender), required: false);
-            SourceExpression.Validate(bodyhtmlInMeta, nameof(bodyhtmlInMeta), required: false);
-            SourceExpression.Validate(bodyhtmlAboveHeader, nameof(bodyhtmlAboveHeader), required: false);
-            SourceExpression.Validate(bodyhtmlBelowHeader, nameof(bodyhtmlBelowHeader), required: false);
-            SourceExpression.Validate(bodyhtmlAboveFooter, nameof(bodyhtmlAboveFooter), required: false);
-            SourceExpression.Validate(bodyhtmlBelowFooter, nameof(bodyhtmlBelowFooter), required: false);
-            SourceExpression.Validate(bodyhtmlBelowSummary, nameof(bodyhtmlBelowSummary), required: false);
-            SourceExpression.Validate(bodycssGlobal, nameof(bodycssGlobal), required: false);
-            SourceExpression.Validate(bodylaunchDate, nameof(bodylaunchDate), required: false);
-            SourceExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            SourceExpression.Validate(bodydateFormatShort, nameof(bodydateFormatShort), required: false);
-            SourceExpression.Validate(bodytimeFormat, nameof(bodytimeFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pages";
@@ -285,7 +250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PageDeleteResponse> PageDelete([WorkflowExpression] Func<string> pageId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -300,43 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PagePutResponse> PagePut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodysubdomain = null, [WorkflowExpression] Func<string> bodylogoUrl = null, [WorkflowExpression] Func<string> bodyfaviconUrl = null, [WorkflowExpression] Func<string> bodywebsiteUrl = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodypublicEmail = null, [WorkflowExpression] Func<bool> bodyuseLargeHeader = null, [WorkflowExpression] Func<string> bodybrandColor = null, [WorkflowExpression] Func<string> bodyokColor = null, [WorkflowExpression] Func<string> bodydisruptedColor = null, [WorkflowExpression] Func<string> bodydegradedColor = null, [WorkflowExpression] Func<string> bodydownColor = null, [WorkflowExpression] Func<string> bodynoticeColor = null, [WorkflowExpression] Func<string> bodyunknownColor = null, [WorkflowExpression] Func<string> bodygoogleAnalytics = null, [WorkflowExpression] Func<bool> bodysubscribeBySms = null, [WorkflowExpression] Func<string> bodysmsService = null, [WorkflowExpression] Func<string> bodytwilioSid = null, [WorkflowExpression] Func<string> bodytwilioToken = null, [WorkflowExpression] Func<string> bodytwilioSender = null, [WorkflowExpression] Func<string> bodyhtmlInMeta = null, [WorkflowExpression] Func<string> bodyhtmlAboveHeader = null, [WorkflowExpression] Func<string> bodyhtmlBelowHeader = null, [WorkflowExpression] Func<string> bodyhtmlAboveFooter = null, [WorkflowExpression] Func<string> bodyhtmlBelowFooter = null, [WorkflowExpression] Func<string> bodyhtmlBelowSummary = null, [WorkflowExpression] Func<string> bodycssGlobal = null, [WorkflowExpression] Func<string> bodylaunchDate = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<string> bodydateFormatShort = null, [WorkflowExpression] Func<string> bodytimeFormat = null, [WorkflowExpression] Func<bool> bodyPrivate = null, [WorkflowExpression] Func<bool> bodyuseAllowList = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodysubdomain, nameof(bodysubdomain), required: false);
-            SourceExpression.Validate(bodylogoUrl, nameof(bodylogoUrl), required: false);
-            SourceExpression.Validate(bodyfaviconUrl, nameof(bodyfaviconUrl), required: false);
-            SourceExpression.Validate(bodywebsiteUrl, nameof(bodywebsiteUrl), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodypublicEmail, nameof(bodypublicEmail), required: false);
-            SourceExpression.Validate(bodyuseLargeHeader, nameof(bodyuseLargeHeader), required: false);
-            SourceExpression.Validate(bodybrandColor, nameof(bodybrandColor), required: false);
-            SourceExpression.Validate(bodyokColor, nameof(bodyokColor), required: false);
-            SourceExpression.Validate(bodydisruptedColor, nameof(bodydisruptedColor), required: false);
-            SourceExpression.Validate(bodydegradedColor, nameof(bodydegradedColor), required: false);
-            SourceExpression.Validate(bodydownColor, nameof(bodydownColor), required: false);
-            SourceExpression.Validate(bodynoticeColor, nameof(bodynoticeColor), required: false);
-            SourceExpression.Validate(bodyunknownColor, nameof(bodyunknownColor), required: false);
-            SourceExpression.Validate(bodygoogleAnalytics, nameof(bodygoogleAnalytics), required: false);
-            SourceExpression.Validate(bodysubscribeBySms, nameof(bodysubscribeBySms), required: false);
-            SourceExpression.Validate(bodysmsService, nameof(bodysmsService), required: false);
-            SourceExpression.Validate(bodytwilioSid, nameof(bodytwilioSid), required: false);
-            SourceExpression.Validate(bodytwilioToken, nameof(bodytwilioToken), required: false);
-            SourceExpression.Validate(bodytwilioSender, nameof(bodytwilioSender), required: false);
-            SourceExpression.Validate(bodyhtmlInMeta, nameof(bodyhtmlInMeta), required: false);
-            SourceExpression.Validate(bodyhtmlAboveHeader, nameof(bodyhtmlAboveHeader), required: false);
-            SourceExpression.Validate(bodyhtmlBelowHeader, nameof(bodyhtmlBelowHeader), required: false);
-            SourceExpression.Validate(bodyhtmlAboveFooter, nameof(bodyhtmlAboveFooter), required: false);
-            SourceExpression.Validate(bodyhtmlBelowFooter, nameof(bodyhtmlBelowFooter), required: false);
-            SourceExpression.Validate(bodyhtmlBelowSummary, nameof(bodyhtmlBelowSummary), required: false);
-            SourceExpression.Validate(bodycssGlobal, nameof(bodycssGlobal), required: false);
-            SourceExpression.Validate(bodylaunchDate, nameof(bodylaunchDate), required: false);
-            SourceExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            SourceExpression.Validate(bodydateFormatShort, nameof(bodydateFormatShort), required: false);
-            SourceExpression.Validate(bodytimeFormat, nameof(bodytimeFormat), required: false);
-            SourceExpression.Validate(bodyPrivate, nameof(bodyPrivate), required: false);
-            SourceExpression.Validate(bodyuseAllowList, nameof(bodyuseAllowList), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -573,9 +500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentsGetResponseItem[]> ComponentsGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/components", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -594,13 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentPostResponse> Component([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<bool> bodyshowUptime = null, [WorkflowExpression] Func<bool> bodygrouped = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodyshowUptime, nameof(bodyshowUptime), required: false);
-            SourceExpression.Validate(bodygrouped, nameof(bodygrouped), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/components", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -657,8 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentGetResponse> ComponentGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> componentId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(componentId, nameof(componentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentId, 1));
@@ -673,8 +588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentDeleteResponse> ComponentDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> componentId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(componentId, nameof(componentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentId, 1));
@@ -689,14 +602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentPutResponse> ComponentPut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> componentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<bool> bodyshowUptime = null, [WorkflowExpression] Func<bool> bodygrouped = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(componentId, nameof(componentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyorder, nameof(bodyorder), required: false);
-            SourceExpression.Validate(bodyshowUptime, nameof(bodyshowUptime), required: false);
-            SourceExpression.Validate(bodygrouped, nameof(bodygrouped), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(componentId, 1));
@@ -753,10 +658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentsGetResponseItem[]> IncidentsGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -777,14 +678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentPostResponse> Incident([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystarted = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystarted, nameof(bodystarted), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -847,8 +740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentGetResponse> IncidentGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -863,8 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentDeleteResponse> IncidentDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -879,14 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentPutResponse> IncidentPut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystarted = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystarted, nameof(bodystarted), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -943,8 +824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentTemplatePostResponse> IncidentTemplate([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> template)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(template, nameof(template), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/{0}/incidents/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 1));
@@ -959,9 +838,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateGetResponse> IncidentUpdateGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> incidentUpdateId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(incidentUpdateId, nameof(incidentUpdateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentUpdateId, 1));
@@ -976,9 +852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateDeleteResponse> IncidentUpdateDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> incidentUpdateId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(incidentUpdateId, nameof(incidentUpdateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentUpdateId, 1));
@@ -993,15 +866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdatePutResponse> IncidentUpdatePut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> incidentUpdateId, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystarted = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(incidentUpdateId, nameof(incidentUpdateId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystarted, nameof(bodystarted), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentUpdateId, 1));
@@ -1058,14 +922,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdatePostResponse> IncidentUpdate([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystarted = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystarted, nameof(bodystarted), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1));
@@ -1122,9 +978,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse> IncidentUpdateTemplate([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> template)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(incidentId, nameof(incidentId), required: true);
-            SourceExpression.Validate(template, nameof(template), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/{0}/incidents/{1}/incident-updates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(incidentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 1));
@@ -1139,9 +992,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancesGetResponseItem[]> MaintenancesGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1160,22 +1010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancePostResponse> Maintenance([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<bool> bodynotifyStart = null, [WorkflowExpression] Func<bool> bodynotifyEnd = null, [WorkflowExpression] Func<bool> bodynotifyEarly = null, [WorkflowExpression] Func<int> bodynotifyMinutes = null, [WorkflowExpression] Func<bool> bodyautoStart = null, [WorkflowExpression] Func<bool> bodyautoEnd = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodynotifyStart, nameof(bodynotifyStart), required: false);
-            SourceExpression.Validate(bodynotifyEnd, nameof(bodynotifyEnd), required: false);
-            SourceExpression.Validate(bodynotifyEarly, nameof(bodynotifyEarly), required: false);
-            SourceExpression.Validate(bodynotifyMinutes, nameof(bodynotifyMinutes), required: false);
-            SourceExpression.Validate(bodyautoStart, nameof(bodyautoStart), required: false);
-            SourceExpression.Validate(bodyautoEnd, nameof(bodyautoEnd), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1286,8 +1120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceGetResponse> MaintenanceGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> maintenanceId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(maintenanceId, nameof(maintenanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
@@ -1302,8 +1134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceDeleteResponse> MaintenanceDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> maintenanceId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(maintenanceId, nameof(maintenanceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
@@ -1318,16 +1148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancePutResponse> MaintenancePut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> maintenanceId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(maintenanceId, nameof(maintenanceId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
@@ -1396,9 +1216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdateGetResponse> MaintenanceUpdateGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> maintenanceId, [WorkflowExpression] Func<string> maintenanceUpdateId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(maintenanceId, nameof(maintenanceId), required: true);
-            SourceExpression.Validate(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceUpdateId, 1));
@@ -1413,9 +1230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdateDeleteResponse> MaintenanceUpdateDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> maintenanceId, [WorkflowExpression] Func<string> maintenanceUpdateId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(maintenanceId, nameof(maintenanceId), required: true);
-            SourceExpression.Validate(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceUpdateId, 1));
@@ -1430,16 +1244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdatePutResponse> MaintenanceUpdatePut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> maintenanceId, [WorkflowExpression] Func<string> maintenanceUpdateId, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystarted = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(maintenanceId, nameof(maintenanceId), required: true);
-            SourceExpression.Validate(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystarted, nameof(bodystarted), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceUpdateId, 1));
@@ -1502,15 +1306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdatePostResponse> MaintenanceUpdate([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> maintenanceId, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string[]> bodycomponents = null, [WorkflowExpression] Func<string> bodystarted = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(maintenanceId, nameof(maintenanceId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
-            SourceExpression.Validate(bodystarted, nameof(bodystarted), required: false);
-            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(maintenanceId, 1));
@@ -1573,9 +1368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PageTemplatesGetResponseItem[]> PageTemplatesGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1594,14 +1386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodysubdomain = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodycomponentsInputItem[]> bodycomponents = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodysubdomain, nameof(bodysubdomain), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1664,8 +1448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -1680,8 +1462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplateDeleteResponse> TemplateDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -1696,14 +1476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplatePutResponse> TemplatePut([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bodycomponentsInputItem[]> bodycomponents = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodynotify, nameof(bodynotify), required: false);
-            SourceExpression.Validate(bodycomponents, nameof(bodycomponents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -1760,9 +1532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TeammatesGetResponseItem[]> TeammatesGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/team", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1781,8 +1550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> TeamMember([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/team", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1809,8 +1576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> TeamMemberDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> memberId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/team/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
@@ -1825,9 +1590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<SubscribersGetResponseItem[]> SubscribersGet([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1846,10 +1608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<SubscriberPostResponse> Subscriber([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<bool> bodyall = null, [WorkflowExpression] Func<bool> bodyautoConfirm = null)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyall, nameof(bodyall), required: false);
-            SourceExpression.Validate(bodyautoConfirm, nameof(bodyautoConfirm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
@@ -1888,8 +1646,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> SubscriberDelete([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> subscriberId)
         {
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
-            SourceExpression.Validate(subscriberId, nameof(subscriberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));

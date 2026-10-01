@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptString([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/String";
@@ -45,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptNumber([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/Number";
@@ -76,10 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptForm([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<bodyformFieldsInputItem[]> bodyformFields, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
-            SourceExpression.Validate(bodyformFields, nameof(bodyformFields), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/Form";
@@ -117,8 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptBoolean([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/Bool";
@@ -148,9 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptChoice([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<bodyoptionsInputItem[]> bodyoptions = null)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/Choice";
@@ -186,9 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptFile([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string[]> bodycontentTypes = null)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            SourceExpression.Validate(bodycontentTypes, nameof(bodycontentTypes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/File";
@@ -224,9 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PostMessage([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/Message";
@@ -260,7 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction FlowComplete([WorkflowExpression] Func<string> resumptionToken)
         {
-            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flowCallback/Done";
@@ -278,8 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
     {
         public IWorkflowTrigger IntentRecognized([WorkflowExpression] Func<string> subscriptionbot, [WorkflowExpression] Func<string> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(subscriptionbot, nameof(subscriptionbot), required: true);
-            SourceExpression.Validate(subscriptionflow, nameof(subscriptionflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flows/subscribe";

@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 
         public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/channels/videos";

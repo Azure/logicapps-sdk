@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> GetContentPropertyValues([WorkflowExpression] Func<string> contentPropertyId)
         {
-            SourceExpression.Validate(contentPropertyId, nameof(contentPropertyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/contentProperties/{0}/values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contentPropertyId, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> AddContentPropertyValues([WorkflowExpression] Func<string> contentPropertyId, [WorkflowExpression] Func<string[]> body = null)
         {
-            SourceExpression.Validate(contentPropertyId, nameof(contentPropertyId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/contentProperties/{0}/values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contentPropertyId, 1));
@@ -46,8 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicContentPropertiesContentProperty[]> GetContentProperties([WorkflowExpression] Func<string> teamsiteId = null, [WorkflowExpression] Func<bool> includeValues = null)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: false);
-            SourceExpression.Validate(includeValues, nameof(includeValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/v2/contentProperties";
@@ -67,10 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse> AddContentProperty([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string[]> bodycontentPropertyValues, [WorkflowExpression] Func<SeismicContentManagerContentPropertyTeamSiteInfo[]> bodyteamsiteIds)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodycontentPropertyValues, nameof(bodycontentPropertyValues), required: true);
-            SourceExpression.Validate(bodyteamsiteIds, nameof(bodyteamsiteIds), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/v2/contentProperties";
@@ -99,8 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicPrivacyManagementGdprEmailSettingResponse> GetGdprEmails([WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/v2/system/optouts";
@@ -119,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IWorkflowAction DeleteGdprEmail([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/system/optouts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
@@ -148,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse> GetTeamsiteDetails([WorkflowExpression] Func<string> teamsiteId)
         {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/teamsites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
@@ -177,8 +164,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicDocCenterContentProfileResponse[]> GetUserProfiles([WorkflowExpression] Func<string> application = null, [WorkflowExpression] Func<bool> isPredictiveOnly = null)
         {
-            SourceExpression.Validate(application, nameof(application), required: false);
-            SourceExpression.Validate(isPredictiveOnly, nameof(isPredictiveOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/v2/users/profiles";

@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
         public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<int> month = null, [WorkflowExpression] Func<int> day = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> before = null, [WorkflowExpression] Func<bool> after = null, [WorkflowExpression] Func<bool> @public = null, [WorkflowExpression] Func<string> timezone = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(year, nameof(year), required: true);
-            SourceExpression.Validate(month, nameof(month), required: false);
-            SourceExpression.Validate(day, nameof(day), required: false);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(@public, nameof(@public), required: false);
-            SourceExpression.Validate(timezone, nameof(timezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/holidays";
@@ -57,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
         public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet([WorkflowExpression] Func<string> code = null)
         {
-            SourceExpression.Validate(code, nameof(code), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/countries";

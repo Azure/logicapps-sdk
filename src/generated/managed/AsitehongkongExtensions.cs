@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
         public IBodyWorkflowAction<string> FILEDOWNLOADBYURL([WorkflowExpression] Func<string> downloadUrl)
         {
-            SourceExpression.Validate(downloadUrl, nameof(downloadUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/downloadFileByUrl";
@@ -30,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
         public IBodyWorkflowAction<string> SETFILEMETADATA([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<object> items = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(items, nameof(items), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/saveMetadataForUpload";
@@ -50,11 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
         public IBodyWorkflowAction<JToken> UPLOADBINARYFILE([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> fileBinary = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
-            SourceExpression.Validate(fileBinary, nameof(fileBinary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/uploadFileFromExternalSystem";
@@ -76,8 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
     {
         public IWorkflowTrigger ASITETRIGGEREVENT([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/asitePullDataWebhook";
@@ -105,8 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
 
         public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/asitePullAppFormDataWebhook";

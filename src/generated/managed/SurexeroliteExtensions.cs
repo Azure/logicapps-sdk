@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<GetInvoicesResponse> GetInvoices([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> where = null, [WorkflowExpression] Func<string> statuses = null, [WorkflowExpression] Func<string> iDs = null, [WorkflowExpression] Func<string> invoiceNumbers = null, [WorkflowExpression] Func<string> contactIDs = null, [WorkflowExpression] Func<bool> summaryOnly = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
-            SourceExpression.Validate(where, nameof(where), required: false);
-            SourceExpression.Validate(statuses, nameof(statuses), required: false);
-            SourceExpression.Validate(iDs, nameof(iDs), required: false);
-            SourceExpression.Validate(invoiceNumbers, nameof(invoiceNumbers), required: false);
-            SourceExpression.Validate(contactIDs, nameof(contactIDs), required: false);
-            SourceExpression.Validate(summaryOnly, nameof(summaryOnly), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api.xro/2.0/Invoices";
@@ -67,19 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<bodylineItemsInputItem[]> bodylineItems, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodycontactcontactId = null, [WorkflowExpression] Func<string> bodylineAmountTypes = null, [WorkflowExpression] Func<string> bodyinvoiceNumber = null, [WorkflowExpression] Func<string> bodycurrencyCode = null, [WorkflowExpression] Func<double> bodycurrencyRate = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyexpectedPaymentDate = null)
         {
-            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodylineItems, nameof(bodylineItems), required: true);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodycontactcontactId, nameof(bodycontactcontactId), required: false);
-            SourceExpression.Validate(bodylineAmountTypes, nameof(bodylineAmountTypes), required: false);
-            SourceExpression.Validate(bodyinvoiceNumber, nameof(bodyinvoiceNumber), required: false);
-            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: false);
-            SourceExpression.Validate(bodycurrencyRate, nameof(bodycurrencyRate), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyexpectedPaymentDate, nameof(bodyexpectedPaymentDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api.xro/2.0/Invoices";
@@ -175,13 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> where = null, [WorkflowExpression] Func<string> iDs = null, [WorkflowExpression] Func<bool> summaryOnly = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<bool> includeArchived = null, [WorkflowExpression] Func<string> searchTerm = null)
         {
-            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
-            SourceExpression.Validate(where, nameof(where), required: false);
-            SourceExpression.Validate(iDs, nameof(iDs), required: false);
-            SourceExpression.Validate(summaryOnly, nameof(summaryOnly), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(includeArchived, nameof(includeArchived), required: false);
-            SourceExpression.Validate(searchTerm, nameof(searchTerm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api.xro/2.0/Contacts";
@@ -210,8 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<PostContactsResponse> PostContacts([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<bodycontactsInputItem[]> bodycontacts)
         {
-            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
-            SourceExpression.Validate(bodycontacts, nameof(bodycontacts), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api.xro/2.0/Contacts";

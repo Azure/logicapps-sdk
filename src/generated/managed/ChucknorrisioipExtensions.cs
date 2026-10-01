@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
         public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact([WorkflowExpression] Func<string> category = null)
         {
-            SourceExpression.Validate(category, nameof(category), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/random";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
         public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts([WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";

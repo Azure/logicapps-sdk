@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smslink")]
         public IBodyWorkflowAction<SMSLinkSendSMSResponse> SMSLinkSendSMS([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage)
         {
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms/gateway/integration/powerautomate.php";

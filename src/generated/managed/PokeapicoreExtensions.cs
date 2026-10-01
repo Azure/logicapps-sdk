@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListAbilities([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/ability/";
@@ -34,7 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetAbilityResponse> GetAbility([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/ability/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -49,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListCharacteristics([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/characteristic/";
@@ -69,7 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetCharacteristicsResponse> GetCharacteristics([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/characteristic/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -84,8 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListGenders([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/gender/";
@@ -104,8 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListGrowthRates([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/growth-rate/";
@@ -124,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetGenderResponse> GetGender([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/gender/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -139,7 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetGrowthRatesResponse> GetGrowthRates([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/growth-rate/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -154,8 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListPokemon([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/pokemon/";
@@ -174,7 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetPokemonResponse> GetPokemon([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/pokemon/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -189,8 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListTypes([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/type/";
@@ -209,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetTypeResponse> GetType([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/type/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));
@@ -224,8 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListEvolutionChains([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/evolution-chain/";
@@ -244,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetEvolutionChainResponse> GetEvolutionChain([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/evolution-chain/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -259,8 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<ListResults> ListEvolutionTriggers([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/evolution-trigger/";
@@ -279,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
         public IBodyWorkflowAction<GetEvolutionTriggerResponse> GetEvolutionTrigger([WorkflowExpression] Func<string> idOrName)
         {
-            SourceExpression.Validate(idOrName, nameof(idOrName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/evolution-trigger/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(idOrName, 1));

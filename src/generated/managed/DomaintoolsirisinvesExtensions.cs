@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseIP([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/reverse-ip/";
@@ -39,10 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotNameserverIP([WorkflowExpression] Func<string> nameserverIp, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(nameserverIp, nameof(nameserverIp), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/nameserver-ip";
@@ -64,10 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> InvestigateDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/investigate_domain";
@@ -89,10 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotMXIP([WorkflowExpression] Func<string> mailserverIp, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(mailserverIp, nameof(mailserverIp), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/mx-ip";
@@ -114,10 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseEmail([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/reverse-email";
@@ -139,10 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> LoadSearchHash([WorkflowExpression] Func<string> searchHash, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(searchHash, nameof(searchHash), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/search-hash";
@@ -164,10 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotSSLHash([WorkflowExpression] Func<string> sslHash, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(sslHash, nameof(sslHash), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/ssl-hash";
@@ -189,10 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantOrg([WorkflowExpression] Func<string> registrantOrg, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(registrantOrg, nameof(registrantOrg), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/registrant-org";
@@ -214,10 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantName([WorkflowExpression] Func<string> registrant, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(registrant, nameof(registrant), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/registrant";
@@ -239,10 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseEmailDomain([WorkflowExpression] Func<string> emailDomain, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(emailDomain, nameof(emailDomain), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/email-domain";
@@ -264,10 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotSSLEmail([WorkflowExpression] Func<string> sslEmail, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(sslEmail, nameof(sslEmail), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/ssl-email/";
@@ -289,10 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotNameserverHost([WorkflowExpression] Func<string> nameserverHost, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(nameserverHost, nameof(nameserverHost), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/nameserver-host/";
@@ -314,10 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotMXHost([WorkflowExpression] Func<string> mailserverHost, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(mailserverHost, nameof(mailserverHost), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/mailserver-host/";
@@ -339,10 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAny([WorkflowExpression] Func<string> taggedWithAny, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(taggedWithAny, nameof(taggedWithAny), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/tagged-any/";
@@ -364,10 +308,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAll([WorkflowExpression] Func<string> taggedWithAll, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            SourceExpression.Validate(taggedWithAll, nameof(taggedWithAll), required: true);
-            SourceExpression.Validate(active, nameof(active), required: false);
-            SourceExpression.Validate(createDate, nameof(createDate), required: false);
-            SourceExpression.Validate(expirationDate, nameof(expirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/iris-investigate/tagged-all/";

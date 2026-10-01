@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IBodyWorkflowAction<string> ExportForm([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodypages = null)
         {
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}/exports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
@@ -49,13 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IWorkflowAction CreateForm([WorkflowExpression] Func<bool> runCalculations = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyoverrideDefaultFormName = null, [WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<string> bodyassignmentid = null, [WorkflowExpression] Func<string> bodyassignmenttype = null, [WorkflowExpression] Func<string> bodyassignmenturl = null)
         {
-            SourceExpression.Validate(runCalculations, nameof(runCalculations), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyoverrideDefaultFormName, nameof(bodyoverrideDefaultFormName), required: false);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodyassignmentid, nameof(bodyassignmentid), required: false);
-            SourceExpression.Validate(bodyassignmenttype, nameof(bodyassignmenttype), required: false);
-            SourceExpression.Validate(bodyassignmenturl, nameof(bodyassignmenturl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/formz";
@@ -131,7 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IBodyWorkflowAction<FormDto> GetForm([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -148,9 +137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
     {
         public IWorkflowTrigger FormCompleted([WorkflowExpression] Func<string> bodyentityId, [WorkflowExpression] Func<string> bodyeventType = null, [WorkflowExpression] Func<bool> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyentityId, nameof(bodyentityId), required: true);
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
-            SourceExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/webhooks";

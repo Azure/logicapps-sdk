@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
         public IBodyWorkflowAction<GetUpdatesResponse> GetUpdates([WorkflowExpression] Func<string> token)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bot{0}/getupdates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
         public IBodyWorkflowAction<GetMeResponse> GetMe([WorkflowExpression] Func<string> token)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bot{0}/getMe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));
@@ -44,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> bodychatId = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyparseMode = null)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(bodychatId, nameof(bodychatId), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodyparseMode, nameof(bodyparseMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bot{0}/sendMessage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));
@@ -86,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
         public IBodyWorkflowAction<Message> SendPhoto([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> bodychatId = null, [WorkflowExpression] Func<string> bodyphoto = null)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(bodychatId, nameof(bodychatId), required: false);
-            SourceExpression.Validate(bodyphoto, nameof(bodyphoto), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bot{0}/sendPhoto", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));
@@ -121,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
         public IBodyWorkflowAction<Message> GetChat([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> bodychatId = null)
         {
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(bodychatId, nameof(bodychatId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bot{0}/getChat", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));

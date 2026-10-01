@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMedia([WorkflowExpression] Func<string> bodycontent)
         {
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/uploads";
@@ -38,8 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
         public IBodyWorkflowAction<SendPostcardResponse> SendPostcard([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string[]> bodyfileUrls)
         {
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            SourceExpression.Validate(bodyfileUrls, nameof(bodyfileUrls), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/post/postcards/send";

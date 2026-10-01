@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<BusinessSearchResponse> BusinessSearch([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<double> latitude = null, [WorkflowExpression] Func<double> longtitude = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<sortByInput> sortBy = null, [WorkflowExpression] Func<bool> openNow = null)
         {
-            SourceExpression.Validate(term, nameof(term), required: true);
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longtitude, nameof(longtitude), required: false);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(openNow, nameof(openNow), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/businesses/search";
@@ -59,8 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<PhoneSearchResponse> PhoneSearch([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> locale = null)
         {
-            SourceExpression.Validate(phone, nameof(phone), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/businesses/search/phone";
@@ -78,8 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<BusinessDetailsResponse> BusinessDetails([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/businesses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -96,20 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<BusinessMatchResponseItem[]> BusinessMatch([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> address1, [WorkflowExpression] Func<string> city, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<double> latitude = null, [WorkflowExpression] Func<double> longitude = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> zipCode = null, [WorkflowExpression] Func<string> yelpBusinessId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<matchThresholdInput> matchThreshold = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(address1, nameof(address1), required: true);
-            SourceExpression.Validate(city, nameof(city), required: true);
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(address2, nameof(address2), required: false);
-            SourceExpression.Validate(address3, nameof(address3), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(zipCode, nameof(zipCode), required: false);
-            SourceExpression.Validate(yelpBusinessId, nameof(yelpBusinessId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(matchThreshold, nameof(matchThreshold), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/businesses/matches";
@@ -147,8 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<ReviewsResponse> Reviews([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> locale = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/businesses/{0}/reviews", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -165,10 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<AutocompleteResponse> Autocomplete([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<string> locale = null)
         {
-            SourceExpression.Validate(text, nameof(text), required: true);
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3/autocomplete";

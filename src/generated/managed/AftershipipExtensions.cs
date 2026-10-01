@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<DetectCourierResponse> DetectCourier([WorkflowExpression] Func<string> bodytrackingtrackingNumber = null)
         {
-            SourceExpression.Validate(bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/couriers/detect";
@@ -95,20 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<CreateTrackingResponse> CreateTracking([WorkflowExpression] Func<string> bodytrackingslug = null, [WorkflowExpression] Func<string> bodytrackingtrackingNumber = null, [WorkflowExpression] Func<string> bodytrackingtitle = null, [WorkflowExpression] Func<JToken[]> bodytrackingsmses = null, [WorkflowExpression] Func<JToken[]> bodytrackingemails = null, [WorkflowExpression] Func<string> bodytrackingorderId = null, [WorkflowExpression] Func<string> bodytrackingorderIdPath = null, [WorkflowExpression] Func<string> bodytrackingcustomFieldsproductName = null, [WorkflowExpression] Func<string> bodytrackingcustomFieldsproductPrice = null, [WorkflowExpression] Func<string> bodytrackinglanguage = null, [WorkflowExpression] Func<string> bodytrackingorderPromisedDeliveryDate = null, [WorkflowExpression] Func<string> bodytrackingdeliveryType = null, [WorkflowExpression] Func<string> bodytrackingpickupLocation = null, [WorkflowExpression] Func<string> bodytrackingpickupNote = null)
         {
-            SourceExpression.Validate(bodytrackingslug, nameof(bodytrackingslug), required: false);
-            SourceExpression.Validate(bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
-            SourceExpression.Validate(bodytrackingtitle, nameof(bodytrackingtitle), required: false);
-            SourceExpression.Validate(bodytrackingsmses, nameof(bodytrackingsmses), required: false);
-            SourceExpression.Validate(bodytrackingemails, nameof(bodytrackingemails), required: false);
-            SourceExpression.Validate(bodytrackingorderId, nameof(bodytrackingorderId), required: false);
-            SourceExpression.Validate(bodytrackingorderIdPath, nameof(bodytrackingorderIdPath), required: false);
-            SourceExpression.Validate(bodytrackingcustomFieldsproductName, nameof(bodytrackingcustomFieldsproductName), required: false);
-            SourceExpression.Validate(bodytrackingcustomFieldsproductPrice, nameof(bodytrackingcustomFieldsproductPrice), required: false);
-            SourceExpression.Validate(bodytrackinglanguage, nameof(bodytrackinglanguage), required: false);
-            SourceExpression.Validate(bodytrackingorderPromisedDeliveryDate, nameof(bodytrackingorderPromisedDeliveryDate), required: false);
-            SourceExpression.Validate(bodytrackingdeliveryType, nameof(bodytrackingdeliveryType), required: false);
-            SourceExpression.Validate(bodytrackingpickupLocation, nameof(bodytrackingpickupLocation), required: false);
-            SourceExpression.Validate(bodytrackingpickupNote, nameof(bodytrackingpickupNote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trackings";
@@ -230,8 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetATrackingResponse> GetATracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -247,8 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<DeleteATrackingResponse> DeleteATracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -264,10 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<UpdateATrackingResponse> UpdateATracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber, [WorkflowExpression] Func<string> bodytrackingtitle = null, [WorkflowExpression] Func<string> bodytrackingnote = null)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
-            SourceExpression.Validate(bodytrackingtitle, nameof(bodytrackingtitle), required: false);
-            SourceExpression.Validate(bodytrackingnote, nameof(bodytrackingnote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -309,8 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse> RetrackAnExpiredTracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/retrack", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -326,9 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<MarkTrackingAsCompletedResponse> MarkTrackingAsCompleted([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber, [WorkflowExpression] Func<bodyreasonInput> bodyreason = null)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/mark-as-completed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -356,8 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetTrackingNotificationResponse> GetTrackingNotification([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -373,8 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<AddANotificationResponse> AddANotification([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -420,8 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<RemoveANotificationResponse> RemoveANotification([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
@@ -467,8 +433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetLastCheckpointResponse> GetLastCheckpoint([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            SourceExpression.Validate(slug, nameof(slug), required: true);
-            SourceExpression.Validate(trackingNumber, nameof(trackingNumber), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/last_checkpoint/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));

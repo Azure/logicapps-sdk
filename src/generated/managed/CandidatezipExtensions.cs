@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> ParseResumeStandardViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseResumeBinary-Standard";
@@ -40,8 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> ParseResumeDetailViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseResumeBinary";
@@ -66,8 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> ParseResumeDetailViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseResume";
@@ -92,8 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseJDViaFileContentResponse> ParseJDViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseJDBinary";
@@ -118,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> ParseResumeStandardViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseResume-Standard";
@@ -144,8 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseJDViaUrlResponse> ParseJDViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseJD";
@@ -170,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> ParseResumeBasicViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseResumeBinary-Basic";
@@ -196,8 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> ParseResumeBasicViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ParseResume-Basic";

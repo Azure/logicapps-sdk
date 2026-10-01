@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse> GetCurationPropertiesForDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<bool> bodylatest)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodylatest, nameof(bodylatest), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getCurationPropertiesForDocument";
@@ -40,26 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody> SetCurationPropertiesForDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyapprover = null, [WorkflowExpression] Func<string> bodydraftingNotes = null, [WorkflowExpression] Func<bool> bodyisMaintained = null, [WorkflowExpression] Func<string> bodyknowledgeOwner = null, [WorkflowExpression] Func<string> bodyknowledgeType = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodylastReviewDate = null, [WorkflowExpression] Func<string> bodyminiSummary = null, [WorkflowExpression] Func<string> bodynextReviewDate = null, [WorkflowExpression] Func<string> bodyotherNoteworthy = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodysubmitDate = null, [WorkflowExpression] Func<string> bodytaxonomy1 = null, [WorkflowExpression] Func<string> bodytaxonomy2 = null, [WorkflowExpression] Func<string> bodytaxonomy3 = null, [WorkflowExpression] Func<string> bodytaxonomy4 = null, [WorkflowExpression] Func<string> bodytaxonomy5 = null, [WorkflowExpression] Func<string> bodysubmitter = null, [WorkflowExpression] Func<string> bodysubmittedDocId = null)
         {
-            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            SourceExpression.Validate(bodyapprover, nameof(bodyapprover), required: false);
-            SourceExpression.Validate(bodydraftingNotes, nameof(bodydraftingNotes), required: false);
-            SourceExpression.Validate(bodyisMaintained, nameof(bodyisMaintained), required: false);
-            SourceExpression.Validate(bodyknowledgeOwner, nameof(bodyknowledgeOwner), required: false);
-            SourceExpression.Validate(bodyknowledgeType, nameof(bodyknowledgeType), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodylastReviewDate, nameof(bodylastReviewDate), required: false);
-            SourceExpression.Validate(bodyminiSummary, nameof(bodyminiSummary), required: false);
-            SourceExpression.Validate(bodynextReviewDate, nameof(bodynextReviewDate), required: false);
-            SourceExpression.Validate(bodyotherNoteworthy, nameof(bodyotherNoteworthy), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodysubmitDate, nameof(bodysubmitDate), required: false);
-            SourceExpression.Validate(bodytaxonomy1, nameof(bodytaxonomy1), required: false);
-            SourceExpression.Validate(bodytaxonomy2, nameof(bodytaxonomy2), required: false);
-            SourceExpression.Validate(bodytaxonomy3, nameof(bodytaxonomy3), required: false);
-            SourceExpression.Validate(bodytaxonomy4, nameof(bodytaxonomy4), required: false);
-            SourceExpression.Validate(bodytaxonomy5, nameof(bodytaxonomy5), required: false);
-            SourceExpression.Validate(bodysubmitter, nameof(bodysubmitter), required: false);
-            SourceExpression.Validate(bodysubmittedDocId, nameof(bodysubmittedDocId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/setCurationPropertiesForDocument";
@@ -196,7 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<GetKnowledgeTypesResponse> GetKnowledgeTypes([WorkflowExpression] Func<string> libraryId)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getKnowledgeTypes";
@@ -212,7 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<GetCurationConfigurationResponse> GetCurationConfiguration([WorkflowExpression] Func<string> libraryId)
         {
-            SourceExpression.Validate(libraryId, nameof(libraryId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/getCurationConfiguration";
@@ -228,14 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse> SearchCurationTaxonomyNodeValues([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodytaxonomyProperty, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<bodyenabledStateInput> bodyenabledState = null, [WorkflowExpression] Func<bool> bodyincludePath = null, [WorkflowExpression] Func<string> bodychildrenOfSsid = null, [WorkflowExpression] Func<bool> bodyimmediateChildrenOnly = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            SourceExpression.Validate(bodyenabledState, nameof(bodyenabledState), required: false);
-            SourceExpression.Validate(bodyincludePath, nameof(bodyincludePath), required: false);
-            SourceExpression.Validate(bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
-            SourceExpression.Validate(bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchCurationTaxonomyNodeValues";
@@ -326,10 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<SearchKnowledgeDocumentsResponse> SearchKnowledgeDocuments([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodycontainerId = null, [WorkflowExpression] Func<bool> bodyincludeSubfolders = null, [WorkflowExpression] Func<bodysearchFiltersInputItem[]> bodysearchFilters = null)
         {
-            SourceExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            SourceExpression.Validate(bodycontainerId, nameof(bodycontainerId), required: false);
-            SourceExpression.Validate(bodyincludeSubfolders, nameof(bodyincludeSubfolders), required: false);
-            SourceExpression.Validate(bodysearchFilters, nameof(bodysearchFilters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/searchKnowledgeDocuments";

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
         public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> province = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(province, nameof(province), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/company/search/";

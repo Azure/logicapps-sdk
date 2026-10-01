@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IBodyWorkflowAction<FindExpirationResponse> FindExpiration([WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> name = null)
         {
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/expirationitems/find";
@@ -38,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IWorkflowAction CreateContact([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/contacts";
@@ -73,9 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IBodyWorkflowAction<RenewExpirationResponse> RenewExpiration([WorkflowExpression] Func<string> expirationItemId, [WorkflowExpression] Func<string> bodyexpirationDate = null, [WorkflowExpression] Func<string> bodydetails = null)
         {
-            SourceExpression.Validate(expirationItemId, nameof(expirationItemId), required: true);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            SourceExpression.Validate(bodydetails, nameof(bodydetails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/expirationitems/{0}/renew", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(expirationItemId, 1));
@@ -109,9 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IBodyWorkflowAction<CreateExpirationItemResponse> CreateExpirationItem([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycategoryName = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycategoryName, nameof(bodycategoryName), required: false);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/expirationitems";

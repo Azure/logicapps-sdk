@@ -42,9 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> CaseSingular([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<caseTypeInput> caseType, [WorkflowExpression] Func<languageInput> language)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(caseType, nameof(caseType), required: true);
-            SourceExpression.Validate(language, nameof(language), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Case";
@@ -62,9 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ClassifyGetResponse> ClassifyGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<categoriesInput> categories, [WorkflowExpression] Func<languageInput> language = null)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(categories, nameof(categories), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Classify";
@@ -84,9 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalFloat> CompareGet([WorkflowExpression] Func<string> input1, [WorkflowExpression] Func<string> input2, [WorkflowExpression] Func<comparisonAlgorithmInput> comparisonAlgorithm)
         {
-            SourceExpression.Validate(input1, nameof(input1), required: true);
-            SourceExpression.Validate(input2, nameof(input2), required: true);
-            SourceExpression.Validate(comparisonAlgorithm, nameof(comparisonAlgorithm), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Compare";
@@ -104,9 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<CongruenceResultSingle> EmailCongruenceGet([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<string> lastName)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
-            SourceExpression.Validate(firstName, nameof(firstName), required: true);
-            SourceExpression.Validate(lastName, nameof(lastName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Congruence/Email";
@@ -124,9 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<CongruenceResultSingle> CountryCongruenceGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<actionTypeInput> actionType)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(actionType, nameof(actionType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Congruence/Country";
@@ -144,9 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<CongruenceResultSingle> SalutationCongruenceGet([WorkflowExpression] Func<string> salutation, [WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<languageInput> language)
         {
-            SourceExpression.Validate(salutation, nameof(salutation), required: true);
-            SourceExpression.Validate(firstName, nameof(firstName), required: true);
-            SourceExpression.Validate(language, nameof(language), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Congruence/Salutation";
@@ -164,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DeriveGenderGetResponse> DeriveGenderGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Derive/Gender";
@@ -180,7 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DeriveCityGetResponse> DeriveCityGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Derive/CountryFromCity";
@@ -196,8 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DerivePostCodeGetResponse> DerivePostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Derive/FromPostalCode";
@@ -214,7 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DeriveEmailGetResponse> DeriveEmailGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Derive/EmailType";
@@ -230,14 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DeriveISOGetResponse> DeriveISOGet([WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> threshold = null, [WorkflowExpression] Func<bool> onlyReturnBest = null, [WorkflowExpression] Func<bool> defaultToCountry = null)
         {
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(url, nameof(url), required: false);
-            SourceExpression.Validate(phone, nameof(phone), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(threshold, nameof(threshold), required: false);
-            SourceExpression.Validate(onlyReturnBest, nameof(onlyReturnBest), required: false);
-            SourceExpression.Validate(defaultToCountry, nameof(defaultToCountry), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DeriveISO";
@@ -271,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> FormatEmailGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Format/Email";
@@ -287,8 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> FormatPostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Format/PostCode";
@@ -305,8 +271,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> FormatE164Get([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Format/TelephoneE164";
@@ -323,8 +287,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> FormatInternationalGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Format/TelephoneInternational";
@@ -341,8 +303,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> FormatNationalGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Format/TelephoneNational";
@@ -359,8 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> FormatRFC3966Get([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Format/TelephoneRFC3966";
@@ -377,8 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> FormatURLGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> uRLPrefix)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(uRLPrefix, nameof(uRLPrefix), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Format/UrlAddress";
@@ -395,7 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<GeneratePatternResponse> GeneratePattern([WorkflowExpression] Func<inputInputItem[]> input = null)
         {
-            SourceExpression.Validate(input, nameof(input), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Generate";
@@ -411,9 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> GenerateTokenGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<generateAlgorithmTypeInput> generateAlgorithmType, [WorkflowExpression] Func<languageInput> language = null)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(generateAlgorithmType, nameof(generateAlgorithmType), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GenerateToken";
@@ -433,8 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ParsePhoneGetResponse> ParsePhoneGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Parse/PhoneNumber";
@@ -451,7 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ParseEmailGetResponse> ParseEmailGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Parse/Email";
@@ -467,7 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ParseURLGetResponse> ParseURLGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Parse/URL";
@@ -483,7 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ScoringResponse> Scoring([WorkflowExpression] Func<inputInputItem2[]> input = null)
         {
-            SourceExpression.Validate(input, nameof(input), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Scoring";
@@ -499,10 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> TransformGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<operationTypeInput> operationType, [WorkflowExpression] Func<languageInput> language = null)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(entityType, nameof(entityType), required: true);
-            SourceExpression.Validate(operationType, nameof(operationType), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Transform";
@@ -523,7 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform([WorkflowExpression] Func<inputInputItem22[]> input = null)
         {
-            SourceExpression.Validate(input, nameof(input), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/SequenceTransform";
@@ -539,7 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> ValidateEmailGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Validate/Email";
@@ -555,8 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> ValidatePostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Validate/PostCode";
@@ -573,7 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> ValidateURLGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Validate/UrlAddress";
@@ -589,8 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> ValidatePhoneGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Validate/Telephone";
@@ -607,8 +543,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> ValidateDateTimeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> dateTimeFormat)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(dateTimeFormat, nameof(dateTimeFormat), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Validate/DateTime";
@@ -625,7 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ValidatePlusEmailGetResponse> ValidatePlusEmailGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ValidatePlus/Email";
@@ -641,8 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> ValidatePlusPostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ValidatePlus/PostCode";
@@ -659,7 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<ValidatePlusURLGetResponse> ValidatePlusURLGet([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ValidatePlus/UrlAddress";
@@ -675,15 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<VerifyAddressGetResponse> VerifyAddressGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> countryIdentifier, [WorkflowExpression] Func<bool> geocode, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
-            SourceExpression.Validate(geocode, nameof(geocode), required: true);
-            SourceExpression.Validate(line1, nameof(line1), required: false);
-            SourceExpression.Validate(line2, nameof(line2), required: false);
-            SourceExpression.Validate(line3, nameof(line3), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Verify/Address/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -712,9 +633,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SearchAddressFindResponse> SearchAddressFind([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(query, nameof(query), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Search/Address/Find/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -731,9 +649,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SearchAddressRetrieveResponse> SearchAddressRetrieve([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Search/Address/Retrieve/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -750,17 +665,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressDeceasedResponse> SuppressDeceased([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> countryIdentifier, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(lastName, nameof(lastName), required: true);
-            SourceExpression.Validate(postcode, nameof(postcode), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(line1, nameof(line1), required: false);
-            SourceExpression.Validate(line2, nameof(line2), required: false);
-            SourceExpression.Validate(line3, nameof(line3), required: false);
-            SourceExpression.Validate(town, nameof(town), required: false);
-            SourceExpression.Validate(county, nameof(county), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Deceased/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -792,17 +696,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressGoneAwayResponse> SuppressGoneAway([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> iSO2, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(lastName, nameof(lastName), required: true);
-            SourceExpression.Validate(postcode, nameof(postcode), required: true);
-            SourceExpression.Validate(iSO2, nameof(iSO2), required: true);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(line1, nameof(line1), required: false);
-            SourceExpression.Validate(line2, nameof(line2), required: false);
-            SourceExpression.Validate(line3, nameof(line3), required: false);
-            SourceExpression.Validate(town, nameof(town), required: false);
-            SourceExpression.Validate(county, nameof(county), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Address/GoneAway/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -834,17 +727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressRelocatedResponse> SuppressRelocated([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> iSO2, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(lastName, nameof(lastName), required: true);
-            SourceExpression.Validate(postcode, nameof(postcode), required: true);
-            SourceExpression.Validate(iSO2, nameof(iSO2), required: true);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(line1, nameof(line1), required: false);
-            SourceExpression.Validate(line2, nameof(line2), required: false);
-            SourceExpression.Validate(line3, nameof(line3), required: false);
-            SourceExpression.Validate(town, nameof(town), required: false);
-            SourceExpression.Validate(county, nameof(county), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Relocated/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -876,9 +758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressPhonePersonalResponse> SuppressPhonePersonal([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Personal/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -895,9 +774,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<SuppressPhoneCorporateResponse> SuppressPhoneCorporate([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Corporate/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -914,8 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<AuthenticateEmailGetResponse> AuthenticateEmailGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Authenticate/Email/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -931,9 +805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<AuthenticatePhoneGetResponse> AuthenticatePhoneGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            SourceExpression.Validate(provider, nameof(provider), required: true);
-            SourceExpression.Validate(phone, nameof(phone), required: true);
-            SourceExpression.Validate(countryIdentifier, nameof(countryIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Authenticate/Phone/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
@@ -950,7 +821,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllUpper([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsAllUpper";
@@ -966,7 +836,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllLower([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsAllLower";
@@ -982,7 +851,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsMixedCase([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsMixedCase";
@@ -998,7 +866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsAlphaNumeric([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsAlphaNumeric";
@@ -1014,7 +881,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsNumeric([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsNumeric";
@@ -1030,7 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO4217([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsISO4217CurrencyCode";
@@ -1046,7 +911,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO2([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsISO2Code";
@@ -1062,7 +926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO3([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/IsISO3Code";
@@ -1078,9 +941,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtRemoveLeading([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> valToRemove, [WorkflowExpression] Func<bool> leaveOneAtStart)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(valToRemove, nameof(valToRemove), required: true);
-            SourceExpression.Validate(leaveOneAtStart, nameof(leaveOneAtStart), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/RemoveLeading";
@@ -1098,8 +958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtRemoveChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<characterTypeInput> characterType)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(characterType, nameof(characterType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/RemoveCharacters";
@@ -1116,7 +974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtRemoveSingleWords([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/RemoveSingleCharacterWords";
@@ -1132,9 +989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtReplaceRepeatingText([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> repeatingValue, [WorkflowExpression] Func<string> replacement)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(repeatingValue, nameof(repeatingValue), required: true);
-            SourceExpression.Validate(replacement, nameof(replacement), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/ReplaceAdjacentRepeatingText";
@@ -1152,9 +1006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtReplaceEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> stringToReplace, [WorkflowExpression] Func<string> replacement)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(stringToReplace, nameof(stringToReplace), required: true);
-            SourceExpression.Validate(replacement, nameof(replacement), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/ReplaceIfEndsWith";
@@ -1172,9 +1023,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtReplaceStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> stringToReplace, [WorkflowExpression] Func<string> replacement)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(stringToReplace, nameof(stringToReplace), required: true);
-            SourceExpression.Validate(replacement, nameof(replacement), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/ReplaceIfStartsWith";
@@ -1192,7 +1040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtStringToBinary([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/StringToBinary";
@@ -1208,7 +1055,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtBinaryToString([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/BinaryToString";
@@ -1224,7 +1070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtStringToHex([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/StringToHex";
@@ -1240,7 +1085,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtHexToString([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/HexToString";
@@ -1256,7 +1100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtReverse([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/Reverse";
@@ -1272,7 +1115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtNormWhiteSpace([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/NormalizeWhiteSpace";
@@ -1288,7 +1130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtNormPhone([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/NormalizeAlphaNumericPhone";
@@ -1304,9 +1145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<bool> collapseNumerics, [WorkflowExpression] Func<int> maximumRepeat = null)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(collapseNumerics, nameof(collapseNumerics), required: true);
-            SourceExpression.Validate(maximumRepeat, nameof(maximumRepeat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedCharacters";
@@ -1325,9 +1163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> maximumRepeat, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(maximumRepeat, nameof(maximumRepeat), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedType";
@@ -1345,7 +1180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtRemoveStopWords([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/FilterStopWords";
@@ -1361,9 +1195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtRetainChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> replacement, [WorkflowExpression] Func<string> charactersToRetain)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(replacement, nameof(replacement), required: true);
-            SourceExpression.Validate(charactersToRetain, nameof(charactersToRetain), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/RetainCharacters";
@@ -1381,9 +1212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtExtractChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> extractLength, [WorkflowExpression] Func<extractFromInput> extractFrom)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(extractLength, nameof(extractLength), required: true);
-            SourceExpression.Validate(extractFrom, nameof(extractFrom), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/ExtractCharacters";
@@ -1401,9 +1229,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtExtractWords([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> extractLength, [WorkflowExpression] Func<extractFromInput> extractFrom)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(extractLength, nameof(extractLength), required: true);
-            SourceExpression.Validate(extractFrom, nameof(extractFrom), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/ExtractWords";
@@ -1421,7 +1246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtRemoveHTML([WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/RemoveHTML";
@@ -1437,8 +1261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkfor)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(checkfor, nameof(checkfor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/EndsWith";
@@ -1455,8 +1277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkfor)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(checkfor, nameof(checkfor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/StartsWith";
@@ -1473,8 +1293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtEnsureEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(checkFor, nameof(checkFor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/EnsureEndsWith";
@@ -1491,8 +1309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(checkFor, nameof(checkFor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/EnsureStartsAndEndsWith";
@@ -1509,8 +1325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(checkFor, nameof(checkFor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/EnsureStartsWith";
@@ -1527,8 +1341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtStartWithType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/StartsWithType";
@@ -1545,8 +1357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWithType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(input, nameof(input), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/StringExtension/EndsWithType";
@@ -1563,9 +1373,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<GetUsageV2> UsageGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<summariseByInput> summariseBy = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(summariseBy, nameof(summariseBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Account/Usage/v2.0";

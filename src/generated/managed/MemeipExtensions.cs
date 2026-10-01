@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
         public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit([WorkflowExpression] Func<string> subreddit)
         {
-            SourceExpression.Validate(subreddit, nameof(subreddit), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gimme/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subreddit, 1));

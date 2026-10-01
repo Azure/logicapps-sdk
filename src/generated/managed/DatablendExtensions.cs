@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         public IBodyWorkflowAction<GroupSearch> GroupsSearch([WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null)
         {
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyorders, nameof(bodyorders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/groups/search";
@@ -75,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         public IBodyWorkflowAction<QueryExecutionResults> GetQueryExecutionById([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query-executions/{0}/results", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -90,12 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         public IBodyWorkflowAction<WorkflowExecutionsSearch> WorkflowExecutionsSearch([WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null, [WorkflowExpression] Func<string> bodypredicatepath = null, [WorkflowExpression] Func<string> bodypredicatevalue = null, [WorkflowExpression] Func<string> bodypredicatecomparator = null)
         {
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodyorders, nameof(bodyorders), required: false);
-            SourceExpression.Validate(bodypredicatepath, nameof(bodypredicatepath), required: false);
-            SourceExpression.Validate(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
-            SourceExpression.Validate(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflow-executions/search";
@@ -200,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         public IBodyWorkflowAction<WorkflowExecutions> WorkflowExecutions([WorkflowExpression] Func<string> bodyparentid = null)
         {
-            SourceExpression.Validate(bodyparentid, nameof(bodyparentid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflow-executions";
@@ -235,11 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
         public IBodyWorkflowAction<WorkflowsSearch> WorkflowsSearch([WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null, [WorkflowExpression] Func<string> bodypredicatepath = null, [WorkflowExpression] Func<string> bodypredicatevalue = null, [WorkflowExpression] Func<string> bodypredicatecomparator = null)
         {
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodyorders, nameof(bodyorders), required: false);
-            SourceExpression.Validate(bodypredicatepath, nameof(bodypredicatepath), required: false);
-            SourceExpression.Validate(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
-            SourceExpression.Validate(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflows/search";

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction LiveWhoisLookup([WorkflowExpression] Func<string> domainName, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(domainName, nameof(domainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/whois/live";
@@ -32,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction HistoricalWhoisLookup([WorkflowExpression] Func<string> domainName, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(domainName, nameof(domainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/whois";
@@ -51,9 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction LiveDnsLookup([WorkflowExpression] Func<string> domainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(domainName, nameof(domainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/dns/live";
@@ -73,10 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction HitoricalDnsLookup([WorkflowExpression] Func<string> domainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(domainName, nameof(domainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/dns/historical";
@@ -99,11 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction ReverseDnsLookup([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<bool> exact = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(exact, nameof(exact), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.1/dns/reverse";
@@ -129,9 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction DomainAvailabilityLookup([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> sug = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(sug, nameof(sug), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/domain/availability";
@@ -151,9 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction BulkDomainAvailabilityLookup([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string[]> bodydomainNames, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodydomainNames, nameof(bodydomainNames), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/domain/availability";
@@ -180,7 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction TyposquattingLookup([WorkflowExpression] Func<string> keyword)
         {
-            SourceExpression.Validate(keyword, nameof(keyword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v3.0/domain/typos";
@@ -196,10 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction SSLLookup([WorkflowExpression] Func<string> domainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> chain = null, [WorkflowExpression] Func<bool> sslRaw = null)
         {
-            SourceExpression.Validate(domainName, nameof(domainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(chain, nameof(chain), required: false);
-            SourceExpression.Validate(sslRaw, nameof(sslRaw), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/ssl/live";
@@ -222,7 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction IPGeolocationLookup([WorkflowExpression] Func<string> ip)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/geolocation";
@@ -238,8 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction BulkIpGeolocationLookup([WorkflowExpression] Func<string[]> bodyips, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(bodyips, nameof(bodyips), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/geolocation";
@@ -265,9 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction SubdomainLookup([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(domain, nameof(domain), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/subdomains";
@@ -287,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction IPReputationLookup([WorkflowExpression] Func<string> ip)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/security";
@@ -303,8 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction BulkIpReputationLookup([WorkflowExpression] Func<string[]> bodyips, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(bodyips, nameof(bodyips), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/security";
@@ -330,8 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction DomainReputationLookup([WorkflowExpression] Func<string> domainName, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(domainName, nameof(domainName), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/domain/security";
@@ -348,7 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction ReverseWhoisLookup([WorkflowExpression] Func<string> keyword)
         {
-            SourceExpression.Validate(keyword, nameof(keyword), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/whois/reverse";
@@ -364,9 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction BulkWhoisLookup([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string[]> bodydomainNames, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodydomainNames, nameof(bodydomainNames), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/bulkwhois/live";
@@ -393,11 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction BulkDomainLookup([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string[]> bodydomainNames, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string[]> bodyipAddresses = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodydomainNames, nameof(bodydomainNames), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodyipAddresses, nameof(bodyipAddresses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/dns/bulk/live";
@@ -433,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction IPWhois([WorkflowExpression] Func<string> ip)
         {
-            SourceExpression.Validate(ip, nameof(ip), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1.0/ip-whois";
@@ -491,8 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
         public IWorkflowAction AsnWhois([WorkflowExpression] Func<string> asn, [WorkflowExpression] Func<formatInput> format)
         {
-            SourceExpression.Validate(asn, nameof(asn), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/asn-whois";

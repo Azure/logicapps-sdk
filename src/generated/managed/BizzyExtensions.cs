@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<BotReplyResponse> SendReply([WorkflowExpression] Func<string> contentreplyText, [WorkflowExpression] Func<string> contentreplyActivity, [WorkflowExpression] Func<bool> contentshowInChat = null, [WorkflowExpression] Func<string> contentcustomChannelData = null, [WorkflowExpression] Func<string> contentsignalResponseJSON = null, [WorkflowExpression] Func<string> contentmessageId = null)
         {
-            SourceExpression.Validate(contentreplyText, nameof(contentreplyText), required: true);
-            SourceExpression.Validate(contentreplyActivity, nameof(contentreplyActivity), required: true);
-            SourceExpression.Validate(contentshowInChat, nameof(contentshowInChat), required: false);
-            SourceExpression.Validate(contentcustomChannelData, nameof(contentcustomChannelData), required: false);
-            SourceExpression.Validate(contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
-            SourceExpression.Validate(contentmessageId, nameof(contentmessageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/reply";
@@ -78,8 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCard([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> content = null)
         {
-            SourceExpression.Validate(selectedCard, nameof(selectedCard), required: true);
-            SourceExpression.Validate(content, nameof(content), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
@@ -95,8 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<JToken> GenerateAdaptiveCard([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> content = null)
         {
-            SourceExpression.Validate(selectedCard, nameof(selectedCard), required: true);
-            SourceExpression.Validate(content, nameof(content), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
@@ -112,11 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCardSet([WorkflowExpression] Func<cardSetdisplayStyleInput> cardSetdisplayStyle, [WorkflowExpression] Func<string> cardSetreplyActivity, [WorkflowExpression] Func<bool> cardSetshowInTab = null, [WorkflowExpression] Func<string> cardSettabButtonLabel = null, [WorkflowExpression] Func<string> cardSettabButtonMessage = null)
         {
-            SourceExpression.Validate(cardSetdisplayStyle, nameof(cardSetdisplayStyle), required: true);
-            SourceExpression.Validate(cardSetreplyActivity, nameof(cardSetreplyActivity), required: true);
-            SourceExpression.Validate(cardSetshowInTab, nameof(cardSetshowInTab), required: false);
-            SourceExpression.Validate(cardSettabButtonLabel, nameof(cardSettabButtonLabel), required: false);
-            SourceExpression.Validate(cardSettabButtonMessage, nameof(cardSettabButtonMessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/sendCardSet";
@@ -177,7 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<BotReplyResponse> UpdateAdaptiveCard([WorkflowExpression] Func<string> cardInforeplyActivity)
         {
-            SourceExpression.Validate(cardInforeplyActivity, nameof(cardInforeplyActivity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/updateCard";
@@ -208,9 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<BotConversationStartResponse> StartConversation([WorkflowExpression] Func<string> contenttargetBot, [WorkflowExpression] Func<string> contentconversationText, [WorkflowExpression] Func<string> contentuser)
         {
-            SourceExpression.Validate(contenttargetBot, nameof(contenttargetBot), required: true);
-            SourceExpression.Validate(contentconversationText, nameof(contentconversationText), required: true);
-            SourceExpression.Validate(contentuser, nameof(contentuser), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/startConversation";
@@ -237,9 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<BotGroupConversationStartResponse> StartGroupConversation([WorkflowExpression] Func<string> contenttargetBot, [WorkflowExpression] Func<string> contentchannelName, [WorkflowExpression] Func<string> contentconversationText)
         {
-            SourceExpression.Validate(contenttargetBot, nameof(contenttargetBot), required: true);
-            SourceExpression.Validate(contentchannelName, nameof(contentchannelName), required: true);
-            SourceExpression.Validate(contentconversationText, nameof(contentconversationText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/startGroupConversation";
@@ -274,7 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IWorkflowAction SendBridgeEvent([WorkflowExpression] Func<string> contentreplyActivity)
         {
-            SourceExpression.Validate(contentreplyActivity, nameof(contentreplyActivity), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/sendBridgeEvent";
@@ -305,11 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponse([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
         {
-            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse";
@@ -390,13 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseDATE([WorkflowExpression] Func<webHookdateScopeInput> webHookdateScope, [WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
         {
-            SourceExpression.Validate(webHookdateScope, nameof(webHookdateScope), required: true);
-            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Date";
@@ -495,14 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICE([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookchoiceValues, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
         {
-            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            SourceExpression.Validate(webHookchoiceValues, nameof(webHookchoiceValues), required: true);
-            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            SourceExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Choice";
@@ -617,14 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICELIST([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookiconURL = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
         {
-            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHookiconURL, nameof(webHookiconURL), required: false);
-            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            SourceExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_ChoiceList";
@@ -751,15 +700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponsePEOPLE([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<webHookmodeInput> webHookmode, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHooksearchString = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
         {
-            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            SourceExpression.Validate(webHookmode, nameof(webHookmode), required: true);
-            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHooksearchString, nameof(webHooksearchString), required: false);
-            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            SourceExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_People";
@@ -880,13 +820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseINTENTVECTOR([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHooklUISIntentVector, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
         {
-            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            SourceExpression.Validate(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: true);
-            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_IntentVector";
@@ -985,15 +918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseMEMORY([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookmemoryType, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookiconURL = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<string> webHooktargetUser = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
         {
-            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            SourceExpression.Validate(webHookmemoryType, nameof(webHookmemoryType), required: true);
-            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHookiconURL, nameof(webHookiconURL), required: false);
-            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            SourceExpression.Validate(webHooktargetUser, nameof(webHooktargetUser), required: false);
-            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Memory";
@@ -1104,8 +1028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseADAPTIVECARD([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> webHook = null)
         {
-            SourceExpression.Validate(selectedCard, nameof(selectedCard), required: true);
-            SourceExpression.Validate(webHook, nameof(webHook), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_AdaptiveCard";
@@ -1122,10 +1044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<WebHook> WebHookRegistrationsInitiateBridge([WorkflowExpression] Func<webHookparticipantsInputItem[]> webHookparticipants, [WorkflowExpression] Func<string> webHookendChatCommand, [WorkflowExpression] Func<int> webHookidleTimeout, [WorkflowExpression] Func<string[]> webHookfilters = null)
         {
-            SourceExpression.Validate(webHookparticipants, nameof(webHookparticipants), required: true);
-            SourceExpression.Validate(webHookendChatCommand, nameof(webHookendChatCommand), required: true);
-            SourceExpression.Validate(webHookidleTimeout, nameof(webHookidleTimeout), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerBridge";
@@ -1176,10 +1094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<ResponseSaveBotMemory> SaveBotMemory([WorkflowExpression] Func<string> contentuserPrincipalName, [WorkflowExpression] Func<string> contentmemoryType, [WorkflowExpression] Func<string> contenttitle, [WorkflowExpression] Func<string> contentvalue)
         {
-            SourceExpression.Validate(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
-            SourceExpression.Validate(contentmemoryType, nameof(contentmemoryType), required: true);
-            SourceExpression.Validate(contenttitle, nameof(contenttitle), required: true);
-            SourceExpression.Validate(contentvalue, nameof(contentvalue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/saveBotMemory";
@@ -1208,9 +1122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<ResponseDeleteBotMemory> DeleteBotMemory([WorkflowExpression] Func<string> contentuserPrincipalName, [WorkflowExpression] Func<string> contentmemoryType, [WorkflowExpression] Func<string> contentvalue)
         {
-            SourceExpression.Validate(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
-            SourceExpression.Validate(contentmemoryType, nameof(contentmemoryType), required: true);
-            SourceExpression.Validate(contentvalue, nameof(contentvalue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/deleteBotMemory";
@@ -1237,8 +1148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
         public IBodyWorkflowAction<MemoryItem[]> GetMemoryItemsByType([WorkflowExpression] Func<string> checkMemoryInfouserPrincipalName, [WorkflowExpression] Func<string> checkMemoryInfomemoryType)
         {
-            SourceExpression.Validate(checkMemoryInfouserPrincipalName, nameof(checkMemoryInfouserPrincipalName), required: true);
-            SourceExpression.Validate(checkMemoryInfomemoryType, nameof(checkMemoryInfomemoryType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/CheckMemoryByType";
@@ -1265,13 +1174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     {
         public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost([WorkflowExpression] Func<string> webHooktriggerDescription, [WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookkeywords = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISAPIKey = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISApp = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISIntent = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
-            SourceExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHookkeywords, nameof(webHookkeywords), required: false);
-            SourceExpression.Validate(webHookDeprecatedLUISAPIKey, nameof(webHookDeprecatedLUISAPIKey), required: false);
-            SourceExpression.Validate(webHookDeprecatedLUISApp, nameof(webHookDeprecatedLUISApp), required: false);
-            SourceExpression.Validate(webHookDeprecatedLUISIntent, nameof(webHookDeprecatedLUISIntent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/register";
@@ -1343,11 +1245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
         public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost([WorkflowExpression] Func<string> webHooktriggerDescription, [WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHooklUISIntentVector = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
-            SourceExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
-            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            SourceExpression.Validate(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: false);
-            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/webhooks/registerVector";

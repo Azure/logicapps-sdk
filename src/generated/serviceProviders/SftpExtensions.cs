@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<GetFileContentOutput> GetFileContent([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -45,10 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<AppendFileOutput> AppendFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<string> content, [WorkflowExpression] Func<bool> fetchMetadata = null, [WorkflowExpression] Func<bool> createFile = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(content, nameof(content), required: true);
-            SourceExpression.Validate(fetchMetadata, nameof(fetchMetadata), required: false);
-            SourceExpression.Validate(createFile, nameof(createFile), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -86,9 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<UploadFileContentOutput> UploadFileContent([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> overWriteFileIfExists, [WorkflowExpression] Func<string> content = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(overWriteFileIfExists, nameof(overWriteFileIfExists), required: true);
-            SourceExpression.Validate(content, nameof(content), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -113,7 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IOutputWorkflowAction<JToken> GetMetadata([WorkflowExpression] Func<string> fileOrFolderPath)
         {
-            SourceExpression.Validate(fileOrFolderPath, nameof(fileOrFolderPath), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -132,8 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> filesOnly = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(filesOnly, nameof(filesOnly), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -157,8 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<DeleteFileOutput> DeleteFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> skipDelete = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(skipDelete, nameof(skipDelete), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -186,7 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<CreateFolderOutput> CreateFolder([WorkflowExpression] Func<string> folderPath)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -205,9 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<RenameFileOutput> RenameFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<string> newFileName, [WorkflowExpression] Func<bool> fetchMetadata = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(newFileName, nameof(newFileName), required: true);
-            SourceExpression.Validate(fetchMetadata, nameof(fetchMetadata), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -236,9 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<CopyFileOutput> CopyFile([WorkflowExpression] Func<string> sourceFilePath, [WorkflowExpression] Func<string> destinationFilePath, [WorkflowExpression] Func<bool> overWriteFileIfExists = null)
         {
-            SourceExpression.Validate(sourceFilePath, nameof(sourceFilePath), required: true);
-            SourceExpression.Validate(destinationFilePath, nameof(destinationFilePath), required: true);
-            SourceExpression.Validate(overWriteFileIfExists, nameof(overWriteFileIfExists), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -263,8 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<JToken> GetFileContentV2([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
         {
-            SourceExpression.Validate(filePath, nameof(filePath), required: true);
-            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -292,10 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> filePath = null, [WorkflowExpression] Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null, [WorkflowExpression] Func<string> content = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(filePath, nameof(filePath), required: false);
-            SourceExpression.Validate(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
-            SourceExpression.Validate(content, nameof(content), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -329,8 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IWorkflowAction DeleteFolder([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> recursiveDelete = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(recursiveDelete, nameof(recursiveDelete), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -356,11 +327,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
     {
         public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> includeFileContent = null, [WorkflowExpression] Func<int> maxFileCount = null, [WorkflowExpression] Func<string> oldFilesCutoffTimestamp = null, [WorkflowExpression] Func<string[]> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(includeFileContent, nameof(includeFileContent), required: false);
-            SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
-            SourceExpression.Validate(oldFilesCutoffTimestamp, nameof(oldFilesCutoffTimestamp), required: false);
-            SourceExpression.Validate(ignoreFileExtensions, nameof(ignoreFileExtensions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -402,10 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
 
         public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput> WhenFileIsAddedOrModified([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> includeFileContent = null, [WorkflowExpression] Func<string> oldFilesCutoffTimestamp = null, [WorkflowExpression] Func<string[]> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(includeFileContent, nameof(includeFileContent), required: false);
-            SourceExpression.Validate(oldFilesCutoffTimestamp, nameof(oldFilesCutoffTimestamp), required: false);
-            SourceExpression.Validate(ignoreFileExtensions, nameof(ignoreFileExtensions), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

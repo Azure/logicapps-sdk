@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<InsertDocumentResponse> InsertDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/insertOne";
@@ -53,9 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<FindDocumentResponse> FindDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/findOne";
@@ -101,10 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<bool> bodyupsert = null)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            SourceExpression.Validate(bodyupsert, nameof(bodyupsert), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/updateOne";
@@ -155,9 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<DeleteDocumentResponse> DeleteDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/deleteOne";
@@ -194,10 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<InsertMultipleDocumentsResponse> InsertMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<JToken[]> bodydocuments)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/insertMany";
@@ -228,11 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<FindMultipleDocumentsResponse> FindMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<int> bodyskip = null)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/find";
@@ -298,10 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> UpdateMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<bool> bodyupsert = null)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            SourceExpression.Validate(bodyupsert, nameof(bodyupsert), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/updateMany";
@@ -352,9 +326,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<DeleteManyDocumentsResponse> DeleteManyDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/deleteMany";
@@ -391,10 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<RunAggregationPipelineResponse> RunAggregationPipeline([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<JToken[]> bodypipeline)
         {
-            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            SourceExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            SourceExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            SourceExpression.Validate(bodypipeline, nameof(bodypipeline), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/action/aggregate";

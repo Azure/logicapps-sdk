@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIAutocompleteSchoolResult> AutocompleteGetSchools([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<bool> qSearchCityStateName = null, [WorkflowExpression] Func<string> st = null, [WorkflowExpression] Func<levelInput> level = null, [WorkflowExpression] Func<double> boxLatitudeNW = null, [WorkflowExpression] Func<double> boxLongitudeNW = null, [WorkflowExpression] Func<double> boxLatitudeSE = null, [WorkflowExpression] Func<double> boxLongitudeSE = null, [WorkflowExpression] Func<int> returnCount = null)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
-            SourceExpression.Validate(qSearchCityStateName, nameof(qSearchCityStateName), required: false);
-            SourceExpression.Validate(st, nameof(st), required: false);
-            SourceExpression.Validate(level, nameof(level), required: false);
-            SourceExpression.Validate(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            SourceExpression.Validate(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            SourceExpression.Validate(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            SourceExpression.Validate(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            SourceExpression.Validate(returnCount, nameof(returnCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/autocomplete/schools";
@@ -54,23 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrictList2> DistrictsGetAllDistricts2([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<double> nearLatitude = null, [WorkflowExpression] Func<double> nearLongitude = null, [WorkflowExpression] Func<string> boundaryAddress = null, [WorkflowExpression] Func<int> distanceMiles = null, [WorkflowExpression] Func<bool> isInBoundaryOnly = null, [WorkflowExpression] Func<double> boxLatitudeNW = null, [WorkflowExpression] Func<double> boxLongitudeNW = null, [WorkflowExpression] Func<double> boxLatitudeSE = null, [WorkflowExpression] Func<double> boxLongitudeSE = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<sortByInput> sortBy = null, [WorkflowExpression] Func<bool> includeUnrankedDistrictsInRankSort = null)
         {
-            SourceExpression.Validate(st, nameof(st), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(nearLatitude, nameof(nearLatitude), required: false);
-            SourceExpression.Validate(nearLongitude, nameof(nearLongitude), required: false);
-            SourceExpression.Validate(boundaryAddress, nameof(boundaryAddress), required: false);
-            SourceExpression.Validate(distanceMiles, nameof(distanceMiles), required: false);
-            SourceExpression.Validate(isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
-            SourceExpression.Validate(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            SourceExpression.Validate(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            SourceExpression.Validate(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            SourceExpression.Validate(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(includeUnrankedDistrictsInRankSort, nameof(includeUnrankedDistrictsInRankSort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/districts";
@@ -118,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrict12> DistrictsGetDistrict2([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/districts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -133,11 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchoolListRank2> RankingGet([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<levelInput> level = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(st, nameof(st), required: true);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(level, nameof(level), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/schools/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(st, 1));
@@ -160,10 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrictListRank2> DistrictRanking([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(st, nameof(st), required: true);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/districts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(st, 1));
@@ -184,34 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchoolList2> SchoolsGetAllSchools20([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<bool> qSearchSchoolNameOnly = null, [WorkflowExpression] Func<string> districtId = null, [WorkflowExpression] Func<levelInput> level = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<bool> isMagnet = null, [WorkflowExpression] Func<bool> isCharter = null, [WorkflowExpression] Func<bool> isVirtual = null, [WorkflowExpression] Func<bool> isTitleI = null, [WorkflowExpression] Func<bool> isTitleISchoolwide = null, [WorkflowExpression] Func<double> nearLatitude = null, [WorkflowExpression] Func<double> nearLongitude = null, [WorkflowExpression] Func<string> nearAddress = null, [WorkflowExpression] Func<int> distanceMiles = null, [WorkflowExpression] Func<double> boundaryLatitude = null, [WorkflowExpression] Func<double> boundaryLongitude = null, [WorkflowExpression] Func<string> boundaryAddress = null, [WorkflowExpression] Func<bool> isInBoundaryOnly = null, [WorkflowExpression] Func<double> boxLatitudeNW = null, [WorkflowExpression] Func<double> boxLongitudeNW = null, [WorkflowExpression] Func<double> boxLatitudeSE = null, [WorkflowExpression] Func<double> boxLongitudeSE = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<sortByInput> sortBy = null, [WorkflowExpression] Func<bool> includeUnrankedSchoolsInRankSort = null)
         {
-            SourceExpression.Validate(st, nameof(st), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(qSearchSchoolNameOnly, nameof(qSearchSchoolNameOnly), required: false);
-            SourceExpression.Validate(districtId, nameof(districtId), required: false);
-            SourceExpression.Validate(level, nameof(level), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(zip, nameof(zip), required: false);
-            SourceExpression.Validate(isMagnet, nameof(isMagnet), required: false);
-            SourceExpression.Validate(isCharter, nameof(isCharter), required: false);
-            SourceExpression.Validate(isVirtual, nameof(isVirtual), required: false);
-            SourceExpression.Validate(isTitleI, nameof(isTitleI), required: false);
-            SourceExpression.Validate(isTitleISchoolwide, nameof(isTitleISchoolwide), required: false);
-            SourceExpression.Validate(nearLatitude, nameof(nearLatitude), required: false);
-            SourceExpression.Validate(nearLongitude, nameof(nearLongitude), required: false);
-            SourceExpression.Validate(nearAddress, nameof(nearAddress), required: false);
-            SourceExpression.Validate(distanceMiles, nameof(distanceMiles), required: false);
-            SourceExpression.Validate(boundaryLatitude, nameof(boundaryLatitude), required: false);
-            SourceExpression.Validate(boundaryLongitude, nameof(boundaryLongitude), required: false);
-            SourceExpression.Validate(boundaryAddress, nameof(boundaryAddress), required: false);
-            SourceExpression.Validate(isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
-            SourceExpression.Validate(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            SourceExpression.Validate(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            SourceExpression.Validate(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            SourceExpression.Validate(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(includeUnrankedSchoolsInRankSort, nameof(includeUnrankedSchoolsInRankSort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2.0/schools";
@@ -281,7 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchool20Full> SchoolsGetSchool20([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/schools/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

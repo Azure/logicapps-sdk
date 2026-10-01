@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileXlsx([WorkflowExpression] Func<string> docname)
         {
-            SourceExpression.Validate(docname, nameof(docname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileAllXml([WorkflowExpression] Func<string> docname)
         {
-            SourceExpression.Validate(docname, nameof(docname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileZnr([WorkflowExpression] Func<string> docname)
         {
-            SourceExpression.Validate(docname, nameof(docname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));

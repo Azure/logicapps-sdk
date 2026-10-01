@@ -35,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction GetInboundFlow([WorkflowExpression] Func<string> inboundFlowId, [WorkflowExpression] Func<string> accessToken = null)
         {
-            SourceExpression.Validate(inboundFlowId, nameof(inboundFlowId), required: true);
-            SourceExpression.Validate(accessToken, nameof(accessToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/external/industryData/inboundFlows/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inboundFlowId, 1));
@@ -54,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction GetDataconnectorList([WorkflowExpression] Func<string> accessToken)
         {
-            SourceExpression.Validate(accessToken, nameof(accessToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/external/industryData/dataConnectors";
@@ -70,8 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CallGetuploadsession([WorkflowExpression] Func<string> createdDataConnectorId, [WorkflowExpression] Func<string> accessToken)
         {
-            SourceExpression.Validate(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
-            SourceExpression.Validate(accessToken, nameof(accessToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/external/industryData/dataConnectors('{0}')/microsoft.graph.industryData.azureDataLakeConnector/microsoft.graph.industryData.getUploadSession()", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(createdDataConnectorId, 1));
@@ -87,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CallValidate([WorkflowExpression] Func<string> createdDataConnectorId, [WorkflowExpression] Func<string> accessToken)
         {
-            SourceExpression.Validate(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
-            SourceExpression.Validate(accessToken, nameof(accessToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/external/industryData/dataConnectors/{0}/validate()", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(createdDataConnectorId, 1));
@@ -105,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CheckValidationResult([WorkflowExpression] Func<string> validationOperationUri, [WorkflowExpression] Func<string> accessToken)
         {
-            SourceExpression.Validate(validationOperationUri, nameof(validationOperationUri), required: true);
-            SourceExpression.Validate(accessToken, nameof(accessToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

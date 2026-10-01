@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Client> CreateClient([WorkflowExpression] Func<string> bodyname)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/clients/zapier";
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Client[]> FindClient([WorkflowExpression] Func<string> clientName)
         {
-            SourceExpression.Validate(clientName, nameof(clientName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/clients/getByName";
@@ -53,10 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Project> CreateProject([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodyclientId = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodyautoAssignUserId = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyclientId, nameof(bodyclientId), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyautoAssignUserId, nameof(bodyautoAssignUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Projects";
@@ -99,7 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Project> FindProject([WorkflowExpression] Func<string> projectName)
         {
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Projects/getByNameForPA";
@@ -115,10 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<ProjectTask> CreateProjectTask([WorkflowExpression] Func<int> projectId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodylistName = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodylistName, nameof(bodylistName), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Projects/taskForPA";
@@ -164,8 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<ProjectTask> FindTask([WorkflowExpression] Func<string> projectTaskName, [WorkflowExpression] Func<int> projectId)
         {
-            SourceExpression.Validate(projectTaskName, nameof(projectTaskName), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Projects/getProjectTaskByNamePowerAutomate";
@@ -182,8 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Tag> CreateTag([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyhexColor)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyhexColor, nameof(bodyhexColor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/tags";
@@ -208,7 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Tag> FindTag([WorkflowExpression] Func<string> tagName)
         {
-            SourceExpression.Validate(tagName, nameof(tagName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/tags/getByNamePowerAutomate";
@@ -224,14 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<TimeLog> CreateLog([WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodytaskId = null, [WorkflowExpression] Func<int> bodytagId = null)
         {
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
-            SourceExpression.Validate(bodytagId, nameof(bodytagId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/logs/powerautomate";
@@ -296,8 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<ActivityReportResponse> GetTimeLogs([WorkflowExpression] Func<string> dateFrom, [WorkflowExpression] Func<string> dateTo)
         {
-            SourceExpression.Validate(dateFrom, nameof(dateFrom), required: true);
-            SourceExpression.Validate(dateTo, nameof(dateTo), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/reports/activityPowerAutomate";

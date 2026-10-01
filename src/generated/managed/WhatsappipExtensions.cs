@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatsappip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatsappip")]
         public IWorkflowAction SendMessage([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<int> phoneNumberId, [WorkflowExpression] Func<string> bodymessagingProduct = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodytemplatename = null, [WorkflowExpression] Func<string> bodytemplatelanguagecode = null, [WorkflowExpression] Func<bodytemplatecomponentsInputItem[]> bodytemplatecomponents = null)
         {
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(phoneNumberId, nameof(phoneNumberId), required: true);
-            SourceExpression.Validate(bodymessagingProduct, nameof(bodymessagingProduct), required: false);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodytemplatename, nameof(bodytemplatename), required: false);
-            SourceExpression.Validate(bodytemplatelanguagecode, nameof(bodytemplatelanguagecode), required: false);
-            SourceExpression.Validate(bodytemplatecomponents, nameof(bodytemplatecomponents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(phoneNumberId, 1));

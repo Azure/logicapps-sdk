@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails([WorkflowExpression] Func<string> x, [WorkflowExpression] Func<string> y)
         {
-            SourceExpression.Validate(x, nameof(x), required: true);
-            SourceExpression.Validate(y, nameof(y), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
@@ -44,12 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap([WorkflowExpression] Func<string> x, [WorkflowExpression] Func<string> y, [WorkflowExpression] Func<int> width, [WorkflowExpression] Func<int> height, [WorkflowExpression] Func<int> size, [WorkflowExpression] Func<bool> publication)
         {
-            SourceExpression.Validate(x, nameof(x), required: true);
-            SourceExpression.Validate(y, nameof(y), required: true);
-            SourceExpression.Validate(width, nameof(width), required: true);
-            SourceExpression.Validate(height, nameof(height), required: true);
-            SourceExpression.Validate(size, nameof(size), required: true);
-            SourceExpression.Validate(publication, nameof(publication), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
@@ -68,11 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetTilesResponse> GetId([WorkflowExpression] Func<string> x1, [WorkflowExpression] Func<string> x2, [WorkflowExpression] Func<string> y1, [WorkflowExpression] Func<string> y2, [WorkflowExpression] Func<string> include)
         {
-            SourceExpression.Validate(x1, nameof(x1), required: true);
-            SourceExpression.Validate(x2, nameof(x2), required: true);
-            SourceExpression.Validate(y1, nameof(y1), required: true);
-            SourceExpression.Validate(y2, nameof(y2), required: true);
-            SourceExpression.Validate(include, nameof(include), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/tiles";

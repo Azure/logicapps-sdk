@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IBodyWorkflowAction<ListObjectsS3Response> ListObjectsS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> bucketlistType = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> delimiter = null, [WorkflowExpression] Func<string> prefix = null, [WorkflowExpression] Func<string> encodingType = null, [WorkflowExpression] Func<string> fetchOwner = null, [WorkflowExpression] Func<double> maxKeys = null, [WorkflowExpression] Func<string> startAfter = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bucket, nameof(bucket), required: true);
-            SourceExpression.Validate(bucketlistType, nameof(bucketlistType), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            SourceExpression.Validate(delimiter, nameof(delimiter), required: false);
-            SourceExpression.Validate(prefix, nameof(prefix), required: false);
-            SourceExpression.Validate(encodingType, nameof(encodingType), required: false);
-            SourceExpression.Validate(fetchOwner, nameof(fetchOwner), required: false);
-            SourceExpression.Validate(maxKeys, nameof(maxKeys), required: false);
-            SourceExpression.Validate(startAfter, nameof(startAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1));
@@ -55,9 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IWorkflowAction DeleteObjectS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bucket, nameof(bucket), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -72,9 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IWorkflowAction GetObjectS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bucket, nameof(bucket), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -89,10 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IWorkflowAction PutObjectS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bucket, nameof(bucket), required: true);
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));

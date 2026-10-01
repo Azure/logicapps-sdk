@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<CreateBlankDocxResponse> EditDocumentDocxCreateBlankDocument([WorkflowExpression] Func<string> inputinitialText = null)
         {
-            SourceExpression.Validate(inputinitialText, nameof(inputinitialText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/create/blank";
@@ -41,10 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> EditDocumentDocxDeletePages([WorkflowExpression] Func<int> reqConfigendDeletePageNumber = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<int> reqConfigstartDeletePageNumber = null)
         {
-            SourceExpression.Validate(reqConfigendDeletePageNumber, nameof(reqConfigendDeletePageNumber), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigstartDeletePageNumber, nameof(reqConfigstartDeletePageNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/delete-pages";
@@ -89,10 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<DeleteDocxTableRowResponse> EditDocumentDocxDeleteTableRow([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigtablePath = null, [WorkflowExpression] Func<int> reqConfigtableRowRowIndex = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigtablePath, nameof(reqConfigtablePath), required: false);
-            SourceExpression.Validate(reqConfigtableRowRowIndex, nameof(reqConfigtableRowRowIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/delete-table-row";
@@ -137,11 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<DeleteDocxTableRowRangeResponse> EditDocumentDocxDeleteTableRowRange([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigtablePath = null, [WorkflowExpression] Func<int> reqConfigtableRowRowIndexEnd = null, [WorkflowExpression] Func<int> reqConfigtableRowRowIndexStart = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigtablePath, nameof(reqConfigtablePath), required: false);
-            SourceExpression.Validate(reqConfigtableRowRowIndexEnd, nameof(reqConfigtableRowRowIndexEnd), required: false);
-            SourceExpression.Validate(reqConfigtableRowRowIndexStart, nameof(reqConfigtableRowRowIndexStart), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/delete-table-row/range";
@@ -192,8 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxBodyResponse> EditDocumentDocxBody([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-body";
@@ -226,8 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxCommentsHierarchicalResponse> EditDocumentDocxGetCommentsHierarchical([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-comments/hierarchical";
@@ -260,8 +242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxHeadersAndFootersResponse> EditDocumentDocxGetHeadersAndFooters([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-headers-and-footers";
@@ -294,8 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxImagesResponse> EditDocumentDocxGetImages([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-images";
@@ -328,8 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxPagesResponse> EditDocumentDocxPages([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-pages";
@@ -362,8 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxSectionsResponse> EditDocumentDocxGetSections([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-sections";
@@ -396,8 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxStylesResponse> EditDocumentDocxGetStyles([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-styles";
@@ -430,10 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxTableRowResponse> EditDocumentDocxGetTableRow([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigtablePath = null, [WorkflowExpression] Func<int> reqConfigtableRowRowIndex = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigtablePath, nameof(reqConfigtablePath), required: false);
-            SourceExpression.Validate(reqConfigtableRowRowIndex, nameof(reqConfigtableRowRowIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-table-row";
@@ -478,9 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxTableByIndexResponse> EditDocumentDocxGetTableByIndex([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<int> reqConfigtableIndex = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigtableIndex, nameof(reqConfigtableIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-table/by-index";
@@ -519,8 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetDocxTablesResponse> EditDocumentDocxGetTables([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-tables";
@@ -553,18 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<InsertDocxCommentOnParagraphResponse> EditDocumentDocxInsertCommentOnParagraph([WorkflowExpression] Func<string> reqConfigcommentToInsertauthor = null, [WorkflowExpression] Func<string> reqConfigcommentToInsertauthorInitials = null, [WorkflowExpression] Func<string> reqConfigcommentToInsertcommentDate = null, [WorkflowExpression] Func<string> reqConfigcommentToInsertcommentText = null, [WorkflowExpression] Func<bool> reqConfigcommentToInsertdone = null, [WorkflowExpression] Func<bool> reqConfigcommentToInsertisReply = null, [WorkflowExpression] Func<bool> reqConfigcommentToInsertisTopLevel = null, [WorkflowExpression] Func<string> reqConfigcommentToInsertparentCommentPath = null, [WorkflowExpression] Func<string> reqConfigcommentToInsertpath = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigparagraphPath = null)
         {
-            SourceExpression.Validate(reqConfigcommentToInsertauthor, nameof(reqConfigcommentToInsertauthor), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertauthorInitials, nameof(reqConfigcommentToInsertauthorInitials), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertcommentDate, nameof(reqConfigcommentToInsertcommentDate), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertcommentText, nameof(reqConfigcommentToInsertcommentText), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertdone, nameof(reqConfigcommentToInsertdone), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertisReply, nameof(reqConfigcommentToInsertisReply), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertisTopLevel, nameof(reqConfigcommentToInsertisTopLevel), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertparentCommentPath, nameof(reqConfigcommentToInsertparentCommentPath), required: false);
-            SourceExpression.Validate(reqConfigcommentToInsertpath, nameof(reqConfigcommentToInsertpath), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigparagraphPath, nameof(reqConfigparagraphPath), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/insert-comment/on/paragraph";
@@ -665,27 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<DocxInsertImageResponse> EditDocumentDocxInsertImage([WorkflowExpression] Func<int> reqConfigheightInEMUs = null, [WorkflowExpression] Func<string> reqConfigimageToAddimageContentsURL = null, [WorkflowExpression] Func<string> reqConfigimageToAddimageDataContentType = null, [WorkflowExpression] Func<string> reqConfigimageToAddimageDataEmbedId = null, [WorkflowExpression] Func<string> reqConfigimageToAddimageDescription = null, [WorkflowExpression] Func<int> reqConfigimageToAddimageHeight = null, [WorkflowExpression] Func<int> reqConfigimageToAddimageId = null, [WorkflowExpression] Func<string> reqConfigimageToAddimageInternalFileName = null, [WorkflowExpression] Func<string> reqConfigimageToAddimageName = null, [WorkflowExpression] Func<int> reqConfigimageToAddimageWidth = null, [WorkflowExpression] Func<bool> reqConfigimageToAddinlineWithText = null, [WorkflowExpression] Func<string> reqConfigimageToAddpath = null, [WorkflowExpression] Func<int> reqConfigimageToAddxOffset = null, [WorkflowExpression] Func<int> reqConfigimageToAddyOffset = null, [WorkflowExpression] Func<string> reqConfiginputDocumentFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputDocumentFileUrl = null, [WorkflowExpression] Func<string> reqConfiginputImageFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputImageFileUrl = null, [WorkflowExpression] Func<string> reqConfiginsertPath = null, [WorkflowExpression] Func<string> reqConfiginsertPlacement = null, [WorkflowExpression] Func<int> reqConfigwidthInEMUs = null)
         {
-            SourceExpression.Validate(reqConfigheightInEMUs, nameof(reqConfigheightInEMUs), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageContentsURL, nameof(reqConfigimageToAddimageContentsURL), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageDataContentType, nameof(reqConfigimageToAddimageDataContentType), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageDataEmbedId, nameof(reqConfigimageToAddimageDataEmbedId), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageDescription, nameof(reqConfigimageToAddimageDescription), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageHeight, nameof(reqConfigimageToAddimageHeight), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageId, nameof(reqConfigimageToAddimageId), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageInternalFileName, nameof(reqConfigimageToAddimageInternalFileName), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageName, nameof(reqConfigimageToAddimageName), required: false);
-            SourceExpression.Validate(reqConfigimageToAddimageWidth, nameof(reqConfigimageToAddimageWidth), required: false);
-            SourceExpression.Validate(reqConfigimageToAddinlineWithText, nameof(reqConfigimageToAddinlineWithText), required: false);
-            SourceExpression.Validate(reqConfigimageToAddpath, nameof(reqConfigimageToAddpath), required: false);
-            SourceExpression.Validate(reqConfigimageToAddxOffset, nameof(reqConfigimageToAddxOffset), required: false);
-            SourceExpression.Validate(reqConfigimageToAddyOffset, nameof(reqConfigimageToAddyOffset), required: false);
-            SourceExpression.Validate(reqConfiginputDocumentFileBytes, nameof(reqConfiginputDocumentFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputDocumentFileUrl, nameof(reqConfiginputDocumentFileUrl), required: false);
-            SourceExpression.Validate(reqConfiginputImageFileBytes, nameof(reqConfiginputImageFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputImageFileUrl, nameof(reqConfiginputImageFileUrl), required: false);
-            SourceExpression.Validate(reqConfiginsertPath, nameof(reqConfiginsertPath), required: false);
-            SourceExpression.Validate(reqConfiginsertPlacement, nameof(reqConfiginsertPlacement), required: false);
-            SourceExpression.Validate(reqConfigwidthInEMUs, nameof(reqConfigwidthInEMUs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/insert-image";
@@ -840,14 +770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<InsertDocxInsertParagraphResponse> EditDocumentDocxInsertParagraph([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfiginsertPath = null, [WorkflowExpression] Func<string> reqConfiginsertPlacement = null, [WorkflowExpression] Func<DocxRun[]> reqConfigparagraphToInsertcontentRuns = null, [WorkflowExpression] Func<int> reqConfigparagraphToInsertparagraphIndex = null, [WorkflowExpression] Func<string> reqConfigparagraphToInsertpath = null, [WorkflowExpression] Func<string> reqConfigparagraphToInsertstyleId = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfiginsertPath, nameof(reqConfiginsertPath), required: false);
-            SourceExpression.Validate(reqConfiginsertPlacement, nameof(reqConfiginsertPlacement), required: false);
-            SourceExpression.Validate(reqConfigparagraphToInsertcontentRuns, nameof(reqConfigparagraphToInsertcontentRuns), required: false);
-            SourceExpression.Validate(reqConfigparagraphToInsertparagraphIndex, nameof(reqConfigparagraphToInsertparagraphIndex), required: false);
-            SourceExpression.Validate(reqConfigparagraphToInsertpath, nameof(reqConfigparagraphToInsertpath), required: false);
-            SourceExpression.Validate(reqConfigparagraphToInsertstyleId, nameof(reqConfigparagraphToInsertstyleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/insert-paragraph";
@@ -924,49 +846,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<InsertDocxTablesResponse> EditDocumentDocxInsertTable([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfiginsertPath = null, [WorkflowExpression] Func<string> reqConfiginsertPlacement = null, [WorkflowExpression] Func<string> reqConfigtableToInsertbottomBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInsertbottomBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInsertbottomBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInsertbottomBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInsertcellHorizontalBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInsertcellHorizontalBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInsertcellHorizontalBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInsertcellHorizontalBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInsertcellVerticalBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInsertcellVerticalBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInsertcellVerticalBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInsertcellVerticalBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInsertendBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInsertendBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInsertendBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInsertendBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInsertleftBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInsertleftBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInsertleftBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInsertleftBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInsertpath = null, [WorkflowExpression] Func<string> reqConfigtableToInsertrightBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInsertrightBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInsertrightBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInsertrightBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInsertstartBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInsertstartBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInsertstartBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInsertstartBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInserttableId = null, [WorkflowExpression] Func<string> reqConfigtableToInserttableIndentationMode = null, [WorkflowExpression] Func<int> reqConfigtableToInserttableIndentationWidth = null, [WorkflowExpression] Func<DocxTableRow[]> reqConfigtableToInserttableRows = null, [WorkflowExpression] Func<string> reqConfigtableToInserttopBorderColor = null, [WorkflowExpression] Func<int> reqConfigtableToInserttopBorderSize = null, [WorkflowExpression] Func<int> reqConfigtableToInserttopBorderSpace = null, [WorkflowExpression] Func<string> reqConfigtableToInserttopBorderType = null, [WorkflowExpression] Func<string> reqConfigtableToInsertwidth = null, [WorkflowExpression] Func<string> reqConfigtableToInsertwidthType = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfiginsertPath, nameof(reqConfiginsertPath), required: false);
-            SourceExpression.Validate(reqConfiginsertPlacement, nameof(reqConfiginsertPlacement), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertbottomBorderColor, nameof(reqConfigtableToInsertbottomBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertbottomBorderSize, nameof(reqConfigtableToInsertbottomBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertbottomBorderSpace, nameof(reqConfigtableToInsertbottomBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertbottomBorderType, nameof(reqConfigtableToInsertbottomBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellHorizontalBorderColor, nameof(reqConfigtableToInsertcellHorizontalBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellHorizontalBorderSize, nameof(reqConfigtableToInsertcellHorizontalBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellHorizontalBorderSpace, nameof(reqConfigtableToInsertcellHorizontalBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellHorizontalBorderType, nameof(reqConfigtableToInsertcellHorizontalBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellVerticalBorderColor, nameof(reqConfigtableToInsertcellVerticalBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellVerticalBorderSize, nameof(reqConfigtableToInsertcellVerticalBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellVerticalBorderSpace, nameof(reqConfigtableToInsertcellVerticalBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertcellVerticalBorderType, nameof(reqConfigtableToInsertcellVerticalBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertendBorderColor, nameof(reqConfigtableToInsertendBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertendBorderSize, nameof(reqConfigtableToInsertendBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertendBorderSpace, nameof(reqConfigtableToInsertendBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertendBorderType, nameof(reqConfigtableToInsertendBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertleftBorderColor, nameof(reqConfigtableToInsertleftBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertleftBorderSize, nameof(reqConfigtableToInsertleftBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertleftBorderSpace, nameof(reqConfigtableToInsertleftBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertleftBorderType, nameof(reqConfigtableToInsertleftBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertpath, nameof(reqConfigtableToInsertpath), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertrightBorderColor, nameof(reqConfigtableToInsertrightBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertrightBorderSize, nameof(reqConfigtableToInsertrightBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertrightBorderSpace, nameof(reqConfigtableToInsertrightBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertrightBorderType, nameof(reqConfigtableToInsertrightBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertstartBorderColor, nameof(reqConfigtableToInsertstartBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertstartBorderSize, nameof(reqConfigtableToInsertstartBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertstartBorderSpace, nameof(reqConfigtableToInsertstartBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertstartBorderType, nameof(reqConfigtableToInsertstartBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttableId, nameof(reqConfigtableToInserttableId), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttableIndentationMode, nameof(reqConfigtableToInserttableIndentationMode), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttableIndentationWidth, nameof(reqConfigtableToInserttableIndentationWidth), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttableRows, nameof(reqConfigtableToInserttableRows), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttopBorderColor, nameof(reqConfigtableToInserttopBorderColor), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttopBorderSize, nameof(reqConfigtableToInserttopBorderSize), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttopBorderSpace, nameof(reqConfigtableToInserttopBorderSpace), required: false);
-            SourceExpression.Validate(reqConfigtableToInserttopBorderType, nameof(reqConfigtableToInserttopBorderType), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertwidth, nameof(reqConfigtableToInsertwidth), required: false);
-            SourceExpression.Validate(reqConfigtableToInsertwidthType, nameof(reqConfigtableToInsertwidthType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/insert-table";
@@ -1253,13 +1132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<InsertDocxTableRowResponse> EditDocumentDocxInsertTableRow([WorkflowExpression] Func<string> reqConfigexistingTablePath = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfiginsertPlacement = null, [WorkflowExpression] Func<string> reqConfigrowToInsertpath = null, [WorkflowExpression] Func<DocxTableCell[]> reqConfigrowToInsertrowCells = null, [WorkflowExpression] Func<int> reqConfigrowToInsertrowIndex = null)
         {
-            SourceExpression.Validate(reqConfigexistingTablePath, nameof(reqConfigexistingTablePath), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfiginsertPlacement, nameof(reqConfiginsertPlacement), required: false);
-            SourceExpression.Validate(reqConfigrowToInsertpath, nameof(reqConfigrowToInsertpath), required: false);
-            SourceExpression.Validate(reqConfigrowToInsertrowCells, nameof(reqConfigrowToInsertrowCells), required: false);
-            SourceExpression.Validate(reqConfigrowToInsertrowIndex, nameof(reqConfigrowToInsertrowIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/insert-table-row";
@@ -1330,10 +1202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<RemoveDocxHeadersAndFootersResponse> EditDocumentDocxRemoveHeadersAndFooters([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<bool> reqConfigremoveFooters = null, [WorkflowExpression] Func<bool> reqConfigremoveHeaders = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigremoveFooters, nameof(reqConfigremoveFooters), required: false);
-            SourceExpression.Validate(reqConfigremoveHeaders, nameof(reqConfigremoveHeaders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/remove-headers-and-footers";
@@ -1378,9 +1246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<DocxRemoveObjectResponse> EditDocumentDocxRemoveObject([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigpathToObjectToRemove = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigpathToObjectToRemove, nameof(reqConfigpathToObjectToRemove), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/remove-object";
@@ -1419,11 +1284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> EditDocumentDocxReplace([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<bool> reqConfigmatchCase = null, [WorkflowExpression] Func<string> reqConfigmatchString = null, [WorkflowExpression] Func<string> reqConfigreplaceString = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigmatchCase, nameof(reqConfigmatchCase), required: false);
-            SourceExpression.Validate(reqConfigmatchString, nameof(reqConfigmatchString), required: false);
-            SourceExpression.Validate(reqConfigreplaceString, nameof(reqConfigreplaceString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/replace-all";
@@ -1474,11 +1334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<DocxSetFooterResponse> EditDocumentDocxSetFooter([WorkflowExpression] Func<DocxParagraph[]> reqConfigfooterToApplyparagraphs = null, [WorkflowExpression] Func<string> reqConfigfooterToApplypath = null, [WorkflowExpression] Func<DocxSection[]> reqConfigfooterToApplysectionsWithFooter = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfigfooterToApplyparagraphs, nameof(reqConfigfooterToApplyparagraphs), required: false);
-            SourceExpression.Validate(reqConfigfooterToApplypath, nameof(reqConfigfooterToApplypath), required: false);
-            SourceExpression.Validate(reqConfigfooterToApplysectionsWithFooter, nameof(reqConfigfooterToApplysectionsWithFooter), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/set-footer";
@@ -1537,9 +1392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<DocxSetFooterResponse> EditDocumentDocxSetFooterAddPageNumber([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigprependText = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigprependText, nameof(reqConfigprependText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/set-footer/add-page-number";
@@ -1578,11 +1430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<DocxSetHeaderResponse> EditDocumentDocxSetHeader([WorkflowExpression] Func<DocxParagraph[]> reqConfigheaderToApplyparagraphs = null, [WorkflowExpression] Func<string> reqConfigheaderToApplypath = null, [WorkflowExpression] Func<DocxSection[]> reqConfigheaderToApplysectionsWithHeader = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfigheaderToApplyparagraphs, nameof(reqConfigheaderToApplyparagraphs), required: false);
-            SourceExpression.Validate(reqConfigheaderToApplypath, nameof(reqConfigheaderToApplypath), required: false);
-            SourceExpression.Validate(reqConfigheaderToApplysectionsWithHeader, nameof(reqConfigheaderToApplysectionsWithHeader), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/set-header";
@@ -1641,19 +1488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<UpdateDocxTableCellResponse> EditDocumentDocxUpdateTableCell([WorkflowExpression] Func<int> reqConfigcellToUpdatecellIndex = null, [WorkflowExpression] Func<string> reqConfigcellToUpdatecellShadingColor = null, [WorkflowExpression] Func<string> reqConfigcellToUpdatecellShadingFill = null, [WorkflowExpression] Func<string> reqConfigcellToUpdatecellShadingPattern = null, [WorkflowExpression] Func<string> reqConfigcellToUpdatecellWidth = null, [WorkflowExpression] Func<string> reqConfigcellToUpdatecellWidthMode = null, [WorkflowExpression] Func<DocxParagraph[]> reqConfigcellToUpdateparagraphs = null, [WorkflowExpression] Func<string> reqConfigcellToUpdatepath = null, [WorkflowExpression] Func<string> reqConfigexistingTablePath = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<int> reqConfigtableCellIndex = null, [WorkflowExpression] Func<int> reqConfigtableRowIndex = null)
         {
-            SourceExpression.Validate(reqConfigcellToUpdatecellIndex, nameof(reqConfigcellToUpdatecellIndex), required: false);
-            SourceExpression.Validate(reqConfigcellToUpdatecellShadingColor, nameof(reqConfigcellToUpdatecellShadingColor), required: false);
-            SourceExpression.Validate(reqConfigcellToUpdatecellShadingFill, nameof(reqConfigcellToUpdatecellShadingFill), required: false);
-            SourceExpression.Validate(reqConfigcellToUpdatecellShadingPattern, nameof(reqConfigcellToUpdatecellShadingPattern), required: false);
-            SourceExpression.Validate(reqConfigcellToUpdatecellWidth, nameof(reqConfigcellToUpdatecellWidth), required: false);
-            SourceExpression.Validate(reqConfigcellToUpdatecellWidthMode, nameof(reqConfigcellToUpdatecellWidthMode), required: false);
-            SourceExpression.Validate(reqConfigcellToUpdateparagraphs, nameof(reqConfigcellToUpdateparagraphs), required: false);
-            SourceExpression.Validate(reqConfigcellToUpdatepath, nameof(reqConfigcellToUpdatepath), required: false);
-            SourceExpression.Validate(reqConfigexistingTablePath, nameof(reqConfigexistingTablePath), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigtableCellIndex, nameof(reqConfigtableCellIndex), required: false);
-            SourceExpression.Validate(reqConfigtableRowIndex, nameof(reqConfigtableRowIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/update-table-cell";
@@ -1760,13 +1594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<UpdateDocxTableRowResponse> EditDocumentDocxUpdateTableRow([WorkflowExpression] Func<string> reqConfigexistingTablePath = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigrowToUpdatepath = null, [WorkflowExpression] Func<DocxTableCell[]> reqConfigrowToUpdaterowCells = null, [WorkflowExpression] Func<int> reqConfigrowToUpdaterowIndex = null, [WorkflowExpression] Func<int> reqConfigtableRowIndex = null)
         {
-            SourceExpression.Validate(reqConfigexistingTablePath, nameof(reqConfigexistingTablePath), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigrowToUpdatepath, nameof(reqConfigrowToUpdatepath), required: false);
-            SourceExpression.Validate(reqConfigrowToUpdaterowCells, nameof(reqConfigrowToUpdaterowCells), required: false);
-            SourceExpression.Validate(reqConfigrowToUpdaterowIndex, nameof(reqConfigrowToUpdaterowIndex), required: false);
-            SourceExpression.Validate(reqConfigtableRowIndex, nameof(reqConfigtableRowIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/update-table-row";
@@ -1837,7 +1664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> EditDocumentFinishEditing([WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/finish-editing";
@@ -1864,10 +1690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> EditDocumentPptxDeleteSlides([WorkflowExpression] Func<int> reqConfigendDeleteSlideNumber = null, [WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<int> reqConfigstartDeleteSlideNumber = null)
         {
-            SourceExpression.Validate(reqConfigendDeleteSlideNumber, nameof(reqConfigendDeleteSlideNumber), required: false);
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigstartDeleteSlideNumber, nameof(reqConfigstartDeleteSlideNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/pptx/delete-slides";
@@ -1912,11 +1734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> EditDocumentPptxReplace([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<bool> reqConfigmatchCase = null, [WorkflowExpression] Func<string> reqConfigmatchString = null, [WorkflowExpression] Func<string> reqConfigreplaceString = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigmatchCase, nameof(reqConfigmatchCase), required: false);
-            SourceExpression.Validate(reqConfigmatchString, nameof(reqConfigmatchString), required: false);
-            SourceExpression.Validate(reqConfigreplaceString, nameof(reqConfigreplaceString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/pptx/replace-all";
@@ -1967,12 +1784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<ClearXlsxCellResponse> EditDocumentXlsxClearCellByIndex([WorkflowExpression] Func<int> inputcellIndex = null, [WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<int> inputrowIndex = null, [WorkflowExpression] Func<string> inputworksheetToUpdatepath = null, [WorkflowExpression] Func<string> inputworksheetToUpdateworksheetName = null)
         {
-            SourceExpression.Validate(inputcellIndex, nameof(inputcellIndex), required: false);
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputrowIndex, nameof(inputrowIndex), required: false);
-            SourceExpression.Validate(inputworksheetToUpdatepath, nameof(inputworksheetToUpdatepath), required: false);
-            SourceExpression.Validate(inputworksheetToUpdateworksheetName, nameof(inputworksheetToUpdateworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/clear-cell/by-index";
@@ -2037,7 +1848,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<CreateBlankSpreadsheetResponse> EditDocumentXlsxCreateBlankSpreadsheet([WorkflowExpression] Func<string> inputworksheetName = null)
         {
-            SourceExpression.Validate(inputworksheetName, nameof(inputworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/create/blank";
@@ -2064,8 +1874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<CreateSpreadsheetFromDataResponse> EditDocumentXlsxCreateSpreadsheetFromData([WorkflowExpression] Func<XlsxSpreadsheetRow[]> inputrows = null, [WorkflowExpression] Func<string> inputworksheetName = null)
         {
-            SourceExpression.Validate(inputrows, nameof(inputrows), required: false);
-            SourceExpression.Validate(inputworksheetName, nameof(inputworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/create/from/data";
@@ -2098,10 +1906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<JToken> EditDocumentXlsxDeleteWorksheet([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null, [WorkflowExpression] Func<string> reqConfigworksheetToRemovepath = null, [WorkflowExpression] Func<string> reqConfigworksheetToRemoveworksheetName = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
-            SourceExpression.Validate(reqConfigworksheetToRemovepath, nameof(reqConfigworksheetToRemovepath), required: false);
-            SourceExpression.Validate(reqConfigworksheetToRemoveworksheetName, nameof(reqConfigworksheetToRemoveworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/delete-worksheet";
@@ -2154,11 +1958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetXlsxCellByIdentifierResponse> EditDocumentXlsxGetCellByIdentifier([WorkflowExpression] Func<string> inputcellIdentifier = null, [WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<string> inputworksheetToQuerypath = null, [WorkflowExpression] Func<string> inputworksheetToQueryworksheetName = null)
         {
-            SourceExpression.Validate(inputcellIdentifier, nameof(inputcellIdentifier), required: false);
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputworksheetToQuerypath, nameof(inputworksheetToQuerypath), required: false);
-            SourceExpression.Validate(inputworksheetToQueryworksheetName, nameof(inputworksheetToQueryworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/get-cell/by-identifier";
@@ -2217,12 +2016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetXlsxCellResponse> EditDocumentXlsxGetCellByIndex([WorkflowExpression] Func<int> inputcellIndex = null, [WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<int> inputrowIndex = null, [WorkflowExpression] Func<string> inputworksheetToQuerypath = null, [WorkflowExpression] Func<string> inputworksheetToQueryworksheetName = null)
         {
-            SourceExpression.Validate(inputcellIndex, nameof(inputcellIndex), required: false);
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputrowIndex, nameof(inputrowIndex), required: false);
-            SourceExpression.Validate(inputworksheetToQuerypath, nameof(inputworksheetToQuerypath), required: false);
-            SourceExpression.Validate(inputworksheetToQueryworksheetName, nameof(inputworksheetToQueryworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/get-cell/by-index";
@@ -2287,10 +2080,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetXlsxColumnsResponse> EditDocumentXlsxGetColumns([WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<string> inputworksheetToQuerypath = null, [WorkflowExpression] Func<string> inputworksheetToQueryworksheetName = null)
         {
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputworksheetToQuerypath, nameof(inputworksheetToQuerypath), required: false);
-            SourceExpression.Validate(inputworksheetToQueryworksheetName, nameof(inputworksheetToQueryworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/get-columns";
@@ -2343,10 +2132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetXlsxImagesResponse> EditDocumentXlsxGetImages([WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<string> inputworksheetToQuerypath = null, [WorkflowExpression] Func<string> inputworksheetToQueryworksheetName = null)
         {
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputworksheetToQuerypath, nameof(inputworksheetToQuerypath), required: false);
-            SourceExpression.Validate(inputworksheetToQueryworksheetName, nameof(inputworksheetToQueryworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/get-images";
@@ -2399,10 +2184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetXlsxRowsAndCellsResponse> EditDocumentXlsxGetRowsAndCells([WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<string> inputworksheetToQuerypath = null, [WorkflowExpression] Func<string> inputworksheetToQueryworksheetName = null)
         {
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputworksheetToQuerypath, nameof(inputworksheetToQuerypath), required: false);
-            SourceExpression.Validate(inputworksheetToQueryworksheetName, nameof(inputworksheetToQueryworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/get-rows-and-cells";
@@ -2455,8 +2236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetXlsxStylesResponse> EditDocumentXlsxGetStyles([WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null)
         {
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/get-styles";
@@ -2489,8 +2268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<GetXlsxWorksheetsResponse> EditDocumentXlsxGetWorksheets([WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null)
         {
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/get-worksheets";
@@ -2523,10 +2300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<InsertXlsxWorksheetResponse> EditDocumentXlsxInsertWorksheet([WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<string> inputworksheetToInsertpath = null, [WorkflowExpression] Func<string> inputworksheetToInsertworksheetName = null)
         {
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputworksheetToInsertpath, nameof(inputworksheetToInsertpath), required: false);
-            SourceExpression.Validate(inputworksheetToInsertworksheetName, nameof(inputworksheetToInsertworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/insert-worksheet";
@@ -2579,16 +2352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<SetXlsxCellByIdentifierResponse> EditDocumentXlsxSetCellByIdentifier([WorkflowExpression] Func<string> inputcellIdentifier = null, [WorkflowExpression] Func<string> inputcellValuecellIdentifier = null, [WorkflowExpression] Func<string> inputcellValueformula = null, [WorkflowExpression] Func<string> inputcellValuepath = null, [WorkflowExpression] Func<int> inputcellValuestyleIndex = null, [WorkflowExpression] Func<string> inputcellValuetextValue = null, [WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<string> inputworksheetToUpdatepath = null, [WorkflowExpression] Func<string> inputworksheetToUpdateworksheetName = null)
         {
-            SourceExpression.Validate(inputcellIdentifier, nameof(inputcellIdentifier), required: false);
-            SourceExpression.Validate(inputcellValuecellIdentifier, nameof(inputcellValuecellIdentifier), required: false);
-            SourceExpression.Validate(inputcellValueformula, nameof(inputcellValueformula), required: false);
-            SourceExpression.Validate(inputcellValuepath, nameof(inputcellValuepath), required: false);
-            SourceExpression.Validate(inputcellValuestyleIndex, nameof(inputcellValuestyleIndex), required: false);
-            SourceExpression.Validate(inputcellValuetextValue, nameof(inputcellValuetextValue), required: false);
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputworksheetToUpdatepath, nameof(inputworksheetToUpdatepath), required: false);
-            SourceExpression.Validate(inputworksheetToUpdateworksheetName, nameof(inputworksheetToUpdateworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/set-cell/by-identifier";
@@ -2685,17 +2448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<SetXlsxCellResponse> EditDocumentXlsxSetCellByIndex([WorkflowExpression] Func<int> inputcellIndex = null, [WorkflowExpression] Func<string> inputcellValuecellIdentifier = null, [WorkflowExpression] Func<string> inputcellValueformula = null, [WorkflowExpression] Func<string> inputcellValuepath = null, [WorkflowExpression] Func<int> inputcellValuestyleIndex = null, [WorkflowExpression] Func<string> inputcellValuetextValue = null, [WorkflowExpression] Func<string> inputinputFileBytes = null, [WorkflowExpression] Func<string> inputinputFileUrl = null, [WorkflowExpression] Func<int> inputrowIndex = null, [WorkflowExpression] Func<string> inputworksheetToUpdatepath = null, [WorkflowExpression] Func<string> inputworksheetToUpdateworksheetName = null)
         {
-            SourceExpression.Validate(inputcellIndex, nameof(inputcellIndex), required: false);
-            SourceExpression.Validate(inputcellValuecellIdentifier, nameof(inputcellValuecellIdentifier), required: false);
-            SourceExpression.Validate(inputcellValueformula, nameof(inputcellValueformula), required: false);
-            SourceExpression.Validate(inputcellValuepath, nameof(inputcellValuepath), required: false);
-            SourceExpression.Validate(inputcellValuestyleIndex, nameof(inputcellValuestyleIndex), required: false);
-            SourceExpression.Validate(inputcellValuetextValue, nameof(inputcellValuetextValue), required: false);
-            SourceExpression.Validate(inputinputFileBytes, nameof(inputinputFileBytes), required: false);
-            SourceExpression.Validate(inputinputFileUrl, nameof(inputinputFileUrl), required: false);
-            SourceExpression.Validate(inputrowIndex, nameof(inputrowIndex), required: false);
-            SourceExpression.Validate(inputworksheetToUpdatepath, nameof(inputworksheetToUpdatepath), required: false);
-            SourceExpression.Validate(inputworksheetToUpdateworksheetName, nameof(inputworksheetToUpdateworksheetName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/xlsx/set-cell/by-index";
@@ -2798,7 +2550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> ConvertWebHtmlToDocx([WorkflowExpression] Func<string> inputRequesthtml = null)
         {
-            SourceExpression.Validate(inputRequesthtml, nameof(inputRequesthtml), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/html/to/docx";
@@ -2845,9 +2596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<HtmlTemplateApplicationResponse> ConvertTemplateApplyHtmlTemplate([WorkflowExpression] Func<string> valuehtmlTemplate = null, [WorkflowExpression] Func<string> valuehtmlTemplateUrl = null, [WorkflowExpression] Func<HtmlTemplateOperation[]> valueoperations = null)
         {
-            SourceExpression.Validate(valuehtmlTemplate, nameof(valuehtmlTemplate), required: false);
-            SourceExpression.Validate(valuehtmlTemplateUrl, nameof(valuehtmlTemplateUrl), required: false);
-            SourceExpression.Validate(valueoperations, nameof(valueoperations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/template/html/apply";
@@ -2886,8 +2634,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> ConvertWebHtmlToPdf([WorkflowExpression] Func<int> inputextraLoadingWait = null, [WorkflowExpression] Func<string> inputhtml = null)
         {
-            SourceExpression.Validate(inputextraLoadingWait, nameof(inputextraLoadingWait), required: false);
-            SourceExpression.Validate(inputhtml, nameof(inputhtml), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/web/html/to/pdf";
@@ -2920,10 +2666,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<JToken> ConvertWebHtmlToPng([WorkflowExpression] Func<int> inputextraLoadingWait = null, [WorkflowExpression] Func<string> inputhtml = null, [WorkflowExpression] Func<int> inputscreenshotHeight = null, [WorkflowExpression] Func<int> inputscreenshotWidth = null)
         {
-            SourceExpression.Validate(inputextraLoadingWait, nameof(inputextraLoadingWait), required: false);
-            SourceExpression.Validate(inputhtml, nameof(inputhtml), required: false);
-            SourceExpression.Validate(inputscreenshotHeight, nameof(inputscreenshotHeight), required: false);
-            SourceExpression.Validate(inputscreenshotWidth, nameof(inputscreenshotWidth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/web/html/to/png";
@@ -2968,7 +2710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<HtmlToTextResponse> ConvertWebHtmlToTxt([WorkflowExpression] Func<string> inputhtml = null)
         {
-            SourceExpression.Validate(inputhtml, nameof(inputhtml), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/web/html/to/txt";
@@ -2995,10 +2736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> ConvertWebUrlToPdf([WorkflowExpression] Func<int> inputextraLoadingWait = null, [WorkflowExpression] Func<int> inputscreenshotHeight = null, [WorkflowExpression] Func<int> inputscreenshotWidth = null, [WorkflowExpression] Func<string> inputurl = null)
         {
-            SourceExpression.Validate(inputextraLoadingWait, nameof(inputextraLoadingWait), required: false);
-            SourceExpression.Validate(inputscreenshotHeight, nameof(inputscreenshotHeight), required: false);
-            SourceExpression.Validate(inputscreenshotWidth, nameof(inputscreenshotWidth), required: false);
-            SourceExpression.Validate(inputurl, nameof(inputurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/web/url/to/pdf";
@@ -3043,10 +2780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<string> ConvertWebUrlToScreenshot([WorkflowExpression] Func<int> inputextraLoadingWait = null, [WorkflowExpression] Func<int> inputscreenshotHeight = null, [WorkflowExpression] Func<int> inputscreenshotWidth = null, [WorkflowExpression] Func<string> inputurl = null)
         {
-            SourceExpression.Validate(inputextraLoadingWait, nameof(inputextraLoadingWait), required: false);
-            SourceExpression.Validate(inputscreenshotHeight, nameof(inputscreenshotHeight), required: false);
-            SourceExpression.Validate(inputscreenshotWidth, nameof(inputscreenshotWidth), required: false);
-            SourceExpression.Validate(inputurl, nameof(inputurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/web/url/to/screenshot";
@@ -3091,7 +2824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
         public IBodyWorkflowAction<UrlToTextResponse> ConvertWebUrlToTxt([WorkflowExpression] Func<string> inputurl = null)
         {
-            SourceExpression.Validate(inputurl, nameof(inputurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/web/url/to/txt";

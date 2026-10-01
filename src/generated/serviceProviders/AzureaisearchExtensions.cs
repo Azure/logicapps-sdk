@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> IndexDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documents)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(documents, nameof(documents), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -37,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> IndexDocument([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<object> document)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(document, nameof(document), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -58,12 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> VectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<VectorSearchInputSearchVectorType> searchVector, [WorkflowExpression] Func<int> kNearestNeighbors, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<VectorSearchInputSearchModeType> searchMode = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(searchVector, nameof(searchVector), required: true);
-            SourceExpression.Validate(kNearestNeighbors, nameof(kNearestNeighbors), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(searchMode, nameof(searchMode), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -99,13 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> IntegratedVectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> searchText, [WorkflowExpression] Func<int> kNearestNeighbors, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<JToken[]> vectorizedSearchFields = null, [WorkflowExpression] Func<JToken[]> selectFields = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(searchText, nameof(searchText), required: true);
-            SourceExpression.Validate(kNearestNeighbors, nameof(kNearestNeighbors), required: true);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(vectorizedSearchFields, nameof(vectorizedSearchFields), required: false);
-            SourceExpression.Validate(selectFields, nameof(selectFields), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -176,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> GetIndexSchema([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -195,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<string[]> GetEmbeddingFields([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -214,8 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> DeleteDocument([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<object> document)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(document, nameof(document), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -235,8 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> DeleteDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documents)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(documents, nameof(documents), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -256,8 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> MergeDocument([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<object> document)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(document, nameof(document), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -277,9 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<KnowledgeAgentRetrievalOutput> KnowledgeAgentRetrieval([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> agentName, [WorkflowExpression] Func<KnowledgeAgentRetrievalInputAgentMessageContentTypeItem[]> agentMessageContent)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(agentName, nameof(agentName), required: true);
-            SourceExpression.Validate(agentMessageContent, nameof(agentMessageContent), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

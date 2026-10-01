@@ -28,12 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> CampaignPostValue([WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodyexpires, [WorkflowExpression] Func<double> bodybudget, [WorkflowExpression] Func<string> bodystartdate = null, [WorkflowExpression] Func<string> bodypromotype = null, [WorkflowExpression] Func<string> bodymanager = null)
         {
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: true);
-            SourceExpression.Validate(bodybudget, nameof(bodybudget), required: true);
-            SourceExpression.Validate(bodystartdate, nameof(bodystartdate), required: false);
-            SourceExpression.Validate(bodypromotype, nameof(bodypromotype), required: false);
-            SourceExpression.Validate(bodymanager, nameof(bodymanager), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Campaign";
@@ -78,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<CampaignGetValueResponse> CampaignGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Campaign/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -93,13 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> CampaignPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartdate = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<double> bodybudget = null, [WorkflowExpression] Func<string> bodymanager = null, [WorkflowExpression] Func<bool> bodyhistory = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodystartdate, nameof(bodystartdate), required: false);
-            SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
-            SourceExpression.Validate(bodybudget, nameof(bodybudget), required: false);
-            SourceExpression.Validate(bodymanager, nameof(bodymanager), required: false);
-            SourceExpression.Validate(bodyhistory, nameof(bodyhistory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Campaign/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -170,20 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> ComLogPostValue([WorkflowExpression] Func<string> bodycontactid = null, [WorkflowExpression] Func<string> bodyleadid = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyemployee = null, [WorkflowExpression] Func<string> bodystarttime = null, [WorkflowExpression] Func<string> bodyendtime = null, [WorkflowExpression] Func<string> bodyworkorder = null, [WorkflowExpression] Func<string> bodyproject = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<double> bodylength = null, [WorkflowExpression] Func<bool> bodybilled = null, [WorkflowExpression] Func<bool> bodyinbound = null)
         {
-            SourceExpression.Validate(bodycontactid, nameof(bodycontactid), required: false);
-            SourceExpression.Validate(bodyleadid, nameof(bodyleadid), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyemployee, nameof(bodyemployee), required: false);
-            SourceExpression.Validate(bodystarttime, nameof(bodystarttime), required: false);
-            SourceExpression.Validate(bodyendtime, nameof(bodyendtime), required: false);
-            SourceExpression.Validate(bodyworkorder, nameof(bodyworkorder), required: false);
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            SourceExpression.Validate(bodylength, nameof(bodylength), required: false);
-            SourceExpression.Validate(bodybilled, nameof(bodybilled), required: false);
-            SourceExpression.Validate(bodyinbound, nameof(bodyinbound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ComLog";
@@ -288,7 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<ComLogGetValueResponse> ComLogGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ComLog/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -303,19 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IWorkflowAction ComLogPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyemployee = null, [WorkflowExpression] Func<string> bodystarttime = null, [WorkflowExpression] Func<string> bodyendtime = null, [WorkflowExpression] Func<string> bodyworkorder = null, [WorkflowExpression] Func<string> bodyproject = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<double> bodylength = null, [WorkflowExpression] Func<bool> bodybilled = null, [WorkflowExpression] Func<bool> bodyinbound = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyemployee, nameof(bodyemployee), required: false);
-            SourceExpression.Validate(bodystarttime, nameof(bodystarttime), required: false);
-            SourceExpression.Validate(bodyendtime, nameof(bodyendtime), required: false);
-            SourceExpression.Validate(bodyworkorder, nameof(bodyworkorder), required: false);
-            SourceExpression.Validate(bodyproject, nameof(bodyproject), required: false);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            SourceExpression.Validate(bodylength, nameof(bodylength), required: false);
-            SourceExpression.Validate(bodybilled, nameof(bodybilled), required: false);
-            SourceExpression.Validate(bodyinbound, nameof(bodyinbound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ComLog/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -422,38 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> ContactPostValue([WorkflowExpression] Func<string> bodyaccount = null, [WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
         {
-            SourceExpression.Validate(bodyaccount, nameof(bodyaccount), required: false);
-            SourceExpression.Validate(bodysal, nameof(bodysal), required: false);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            SourceExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            SourceExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            SourceExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            SourceExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            SourceExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            SourceExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            SourceExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            SourceExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            SourceExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            SourceExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            SourceExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            SourceExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Contact";
@@ -666,7 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> ContactGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -681,38 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> ContactPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodysal, nameof(bodysal), required: false);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            SourceExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            SourceExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            SourceExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            SourceExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            SourceExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            SourceExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            SourceExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            SourceExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            SourceExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            SourceExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            SourceExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            SourceExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -933,16 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> FollowUpPostValue([WorkflowExpression] Func<string> bodycontactid = null, [WorkflowExpression] Func<string> bodyleadid = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodysetby = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<bool> bodyurgent = null, [WorkflowExpression] Func<double> bodyreminderminutes = null, [WorkflowExpression] Func<bool> bodycleared = null)
         {
-            SourceExpression.Validate(bodycontactid, nameof(bodycontactid), required: false);
-            SourceExpression.Validate(bodyleadid, nameof(bodyleadid), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            SourceExpression.Validate(bodysetby, nameof(bodysetby), required: false);
-            SourceExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            SourceExpression.Validate(bodyurgent, nameof(bodyurgent), required: false);
-            SourceExpression.Validate(bodyreminderminutes, nameof(bodyreminderminutes), required: false);
-            SourceExpression.Validate(bodycleared, nameof(bodycleared), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/FollowUp";
@@ -1023,7 +906,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<FollowUpGetValueResponse> FollowUpGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/FollowUp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1038,15 +920,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IWorkflowAction FollowUpPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodysetby = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<string> bodyurgent = null, [WorkflowExpression] Func<double> bodyreminderminutes = null, [WorkflowExpression] Func<bool> bodycleared = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            SourceExpression.Validate(bodysetby, nameof(bodysetby), required: false);
-            SourceExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            SourceExpression.Validate(bodyurgent, nameof(bodyurgent), required: false);
-            SourceExpression.Validate(bodyreminderminutes, nameof(bodyreminderminutes), required: false);
-            SourceExpression.Validate(bodycleared, nameof(bodycleared), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/FollowUp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1129,12 +1002,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<ItemListPostValueResponse> ItemListPostValue([WorkflowExpression] Func<string> bodymodelno = null, [WorkflowExpression] Func<string> bodydescrip = null, [WorkflowExpression] Func<bodyitemtypeInput> bodyitemtype = null, [WorkflowExpression] Func<double> bodyprice = null, [WorkflowExpression] Func<double> bodycost = null, [WorkflowExpression] Func<string> bodyvendor = null)
         {
-            SourceExpression.Validate(bodymodelno, nameof(bodymodelno), required: false);
-            SourceExpression.Validate(bodydescrip, nameof(bodydescrip), required: false);
-            SourceExpression.Validate(bodyitemtype, nameof(bodyitemtype), required: false);
-            SourceExpression.Validate(bodyprice, nameof(bodyprice), required: false);
-            SourceExpression.Validate(bodycost, nameof(bodycost), required: false);
-            SourceExpression.Validate(bodyvendor, nameof(bodyvendor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ItemList";
@@ -1191,7 +1058,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<ItemListGetValueResponse> ItemListGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ItemList/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1206,11 +1072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IWorkflowAction ItemListPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescrip = null, [WorkflowExpression] Func<double> bodyprice = null, [WorkflowExpression] Func<double> bodycost = null, [WorkflowExpression] Func<string> bodyvendor = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodydescrip, nameof(bodydescrip), required: false);
-            SourceExpression.Validate(bodyprice, nameof(bodyprice), required: false);
-            SourceExpression.Validate(bodycost, nameof(bodycost), required: false);
-            SourceExpression.Validate(bodyvendor, nameof(bodyvendor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ItemList/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1269,38 +1130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> LeadPostValue([WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
         {
-            SourceExpression.Validate(bodysal, nameof(bodysal), required: false);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            SourceExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            SourceExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            SourceExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            SourceExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            SourceExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            SourceExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            SourceExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            SourceExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            SourceExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            SourceExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            SourceExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            SourceExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Lead";
@@ -1513,7 +1342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<LeadGetValueResponse> LeadGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1528,39 +1356,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> LeadPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodysal, nameof(bodysal), required: false);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            SourceExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            SourceExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            SourceExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            SourceExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            SourceExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            SourceExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            SourceExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            SourceExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            SourceExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            SourceExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            SourceExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            SourceExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            SourceExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            SourceExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            SourceExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            SourceExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            SourceExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            SourceExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1773,7 +1568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[]> MembersGetValues([WorkflowExpression] Func<typeInput> type)
         {
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Members";
@@ -1789,9 +1583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> MembersPostValue([WorkflowExpression] Func<string> bodypromoid = null, [WorkflowExpression] Func<bodyrecordtypeInput> bodyrecordtype = null, [WorkflowExpression] Func<string> bodyrecordid = null)
         {
-            SourceExpression.Validate(bodypromoid, nameof(bodypromoid), required: false);
-            SourceExpression.Validate(bodyrecordtype, nameof(bodyrecordtype), required: false);
-            SourceExpression.Validate(bodyrecordid, nameof(bodyrecordid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Members";
@@ -1830,7 +1621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<MembersGetValueResponse> MembersGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Members/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1845,11 +1635,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> MembersPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyoperationInput> bodyoperation = null, [WorkflowExpression] Func<bodyrecordtypeInput> bodyrecordtype = null, [WorkflowExpression] Func<string> bodypromoid = null, [WorkflowExpression] Func<string> bodyrecordid = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyoperation, nameof(bodyoperation), required: false);
-            SourceExpression.Validate(bodyrecordtype, nameof(bodyrecordtype), required: false);
-            SourceExpression.Validate(bodypromoid, nameof(bodypromoid), required: false);
-            SourceExpression.Validate(bodyrecordid, nameof(bodyrecordid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Members/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1908,18 +1693,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> ShippingPostValue([WorkflowExpression] Func<string> bodyorderid = null, [WorkflowExpression] Func<string> bodyshipdate = null, [WorkflowExpression] Func<string> bodycarrier = null, [WorkflowExpression] Func<string> bodymethod = null, [WorkflowExpression] Func<double> bodyweight = null, [WorkflowExpression] Func<string> bodypackagetype = null, [WorkflowExpression] Func<string> bodyreference1 = null, [WorkflowExpression] Func<string> bodyreference2 = null, [WorkflowExpression] Func<string> bodytrackingnumber = null, [WorkflowExpression] Func<string> bodytrackingurl = null, [WorkflowExpression] Func<double> bodyshippingcost = null, [WorkflowExpression] Func<bool> bodytohistory = null)
         {
-            SourceExpression.Validate(bodyorderid, nameof(bodyorderid), required: false);
-            SourceExpression.Validate(bodyshipdate, nameof(bodyshipdate), required: false);
-            SourceExpression.Validate(bodycarrier, nameof(bodycarrier), required: false);
-            SourceExpression.Validate(bodymethod, nameof(bodymethod), required: false);
-            SourceExpression.Validate(bodyweight, nameof(bodyweight), required: false);
-            SourceExpression.Validate(bodypackagetype, nameof(bodypackagetype), required: false);
-            SourceExpression.Validate(bodyreference1, nameof(bodyreference1), required: false);
-            SourceExpression.Validate(bodyreference2, nameof(bodyreference2), required: false);
-            SourceExpression.Validate(bodytrackingnumber, nameof(bodytrackingnumber), required: false);
-            SourceExpression.Validate(bodytrackingurl, nameof(bodytrackingurl), required: false);
-            SourceExpression.Validate(bodyshippingcost, nameof(bodyshippingcost), required: false);
-            SourceExpression.Validate(bodytohistory, nameof(bodytohistory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Shipping";
@@ -2012,7 +1785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<ShippingGetValueResponse> ShippingGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Shipping/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2027,17 +1799,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IWorkflowAction ShippingPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyshipdate = null, [WorkflowExpression] Func<string> bodycarrier = null, [WorkflowExpression] Func<string> bodymethod = null, [WorkflowExpression] Func<double> bodyweight = null, [WorkflowExpression] Func<string> bodypackagetype = null, [WorkflowExpression] Func<string> bodyreference1 = null, [WorkflowExpression] Func<string> bodyreference2 = null, [WorkflowExpression] Func<string> bodytrackingnumber = null, [WorkflowExpression] Func<string> bodytrackingurl = null, [WorkflowExpression] Func<double> bodyshippingcost = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyshipdate, nameof(bodyshipdate), required: false);
-            SourceExpression.Validate(bodycarrier, nameof(bodycarrier), required: false);
-            SourceExpression.Validate(bodymethod, nameof(bodymethod), required: false);
-            SourceExpression.Validate(bodyweight, nameof(bodyweight), required: false);
-            SourceExpression.Validate(bodypackagetype, nameof(bodypackagetype), required: false);
-            SourceExpression.Validate(bodyreference1, nameof(bodyreference1), required: false);
-            SourceExpression.Validate(bodyreference2, nameof(bodyreference2), required: false);
-            SourceExpression.Validate(bodytrackingnumber, nameof(bodytrackingnumber), required: false);
-            SourceExpression.Validate(bodytrackingurl, nameof(bodytrackingurl), required: false);
-            SourceExpression.Validate(bodyshippingcost, nameof(bodyshippingcost), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Shipping/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2132,46 +1893,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> SOPostValue([WorkflowExpression] Func<string> bodyorderid = null, [WorkflowExpression] Func<string> bodyorderdate = null, [WorkflowExpression] Func<string> bodyorderdescription = null, [WorkflowExpression] Func<string> bodyaccount = null, [WorkflowExpression] Func<string> bodyaccountname = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodybillemail = null, [WorkflowExpression] Func<string> bodybilladdr1 = null, [WorkflowExpression] Func<string> bodybilladdr2 = null, [WorkflowExpression] Func<string> bodybillcity = null, [WorkflowExpression] Func<string> bodybillstate = null, [WorkflowExpression] Func<string> bodybillzipcode = null, [WorkflowExpression] Func<string> bodybillcountry = null, [WorkflowExpression] Func<string> bodybillphone = null, [WorkflowExpression] Func<string> bodybillfax = null, [WorkflowExpression] Func<string> bodyshipcompany = null, [WorkflowExpression] Func<string> bodyshipcontact = null, [WorkflowExpression] Func<string> bodyshipaddr1 = null, [WorkflowExpression] Func<string> bodyshipaddr2 = null, [WorkflowExpression] Func<string> bodyshipcity = null, [WorkflowExpression] Func<string> bodyshipstate = null, [WorkflowExpression] Func<string> bodyshipzipcode = null, [WorkflowExpression] Func<string> bodyshipcountry = null, [WorkflowExpression] Func<string> bodyshipphone = null, [WorkflowExpression] Func<string> bodyshipemail = null, [WorkflowExpression] Func<bodyorderstatusInput> bodyorderstatus = null, [WorkflowExpression] Func<string> bodycustomstatus = null, [WorkflowExpression] Func<string> bodytaxdistrict = null, [WorkflowExpression] Func<double> bodytaxrate = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodyordertax = null, [WorkflowExpression] Func<string> bodyshippingcost = null, [WorkflowExpression] Func<string> bodyshippingmethod = null, [WorkflowExpression] Func<double> bodycouponamount = null, [WorkflowExpression] Func<string> bodycouponcode = null, [WorkflowExpression] Func<string> bodypaymentmethod = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<bodylinedataInputItem[]> bodylinedata = null)
         {
-            SourceExpression.Validate(bodyorderid, nameof(bodyorderid), required: false);
-            SourceExpression.Validate(bodyorderdate, nameof(bodyorderdate), required: false);
-            SourceExpression.Validate(bodyorderdescription, nameof(bodyorderdescription), required: false);
-            SourceExpression.Validate(bodyaccount, nameof(bodyaccount), required: false);
-            SourceExpression.Validate(bodyaccountname, nameof(bodyaccountname), required: false);
-            SourceExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodybillemail, nameof(bodybillemail), required: false);
-            SourceExpression.Validate(bodybilladdr1, nameof(bodybilladdr1), required: false);
-            SourceExpression.Validate(bodybilladdr2, nameof(bodybilladdr2), required: false);
-            SourceExpression.Validate(bodybillcity, nameof(bodybillcity), required: false);
-            SourceExpression.Validate(bodybillstate, nameof(bodybillstate), required: false);
-            SourceExpression.Validate(bodybillzipcode, nameof(bodybillzipcode), required: false);
-            SourceExpression.Validate(bodybillcountry, nameof(bodybillcountry), required: false);
-            SourceExpression.Validate(bodybillphone, nameof(bodybillphone), required: false);
-            SourceExpression.Validate(bodybillfax, nameof(bodybillfax), required: false);
-            SourceExpression.Validate(bodyshipcompany, nameof(bodyshipcompany), required: false);
-            SourceExpression.Validate(bodyshipcontact, nameof(bodyshipcontact), required: false);
-            SourceExpression.Validate(bodyshipaddr1, nameof(bodyshipaddr1), required: false);
-            SourceExpression.Validate(bodyshipaddr2, nameof(bodyshipaddr2), required: false);
-            SourceExpression.Validate(bodyshipcity, nameof(bodyshipcity), required: false);
-            SourceExpression.Validate(bodyshipstate, nameof(bodyshipstate), required: false);
-            SourceExpression.Validate(bodyshipzipcode, nameof(bodyshipzipcode), required: false);
-            SourceExpression.Validate(bodyshipcountry, nameof(bodyshipcountry), required: false);
-            SourceExpression.Validate(bodyshipphone, nameof(bodyshipphone), required: false);
-            SourceExpression.Validate(bodyshipemail, nameof(bodyshipemail), required: false);
-            SourceExpression.Validate(bodyorderstatus, nameof(bodyorderstatus), required: false);
-            SourceExpression.Validate(bodycustomstatus, nameof(bodycustomstatus), required: false);
-            SourceExpression.Validate(bodytaxdistrict, nameof(bodytaxdistrict), required: false);
-            SourceExpression.Validate(bodytaxrate, nameof(bodytaxrate), required: false);
-            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            SourceExpression.Validate(bodyordertax, nameof(bodyordertax), required: false);
-            SourceExpression.Validate(bodyshippingcost, nameof(bodyshippingcost), required: false);
-            SourceExpression.Validate(bodyshippingmethod, nameof(bodyshippingmethod), required: false);
-            SourceExpression.Validate(bodycouponamount, nameof(bodycouponamount), required: false);
-            SourceExpression.Validate(bodycouponcode, nameof(bodycouponcode), required: false);
-            SourceExpression.Validate(bodypaymentmethod, nameof(bodypaymentmethod), required: false);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodylinedata, nameof(bodylinedata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/SO";
@@ -2432,7 +2153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<SOGetValueResponse> SOGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/SO/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2447,10 +2167,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IWorkflowAction SOPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycustomstatus = null, [WorkflowExpression] Func<bodyorderstatusInput> bodyorderstatus = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            SourceExpression.Validate(bodycustomstatus, nameof(bodycustomstatus), required: false);
-            SourceExpression.Validate(bodyorderstatus, nameof(bodyorderstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/SO/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2503,36 +2219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<JToken> WorkOrderPostValue([WorkflowExpression] Func<string> bodyfromaddress = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompanyname = null, [WorkflowExpression] Func<string> bodybilladdr1 = null, [WorkflowExpression] Func<string> bodybilladdr2 = null, [WorkflowExpression] Func<string> bodybillcity = null, [WorkflowExpression] Func<string> bodybillstate = null, [WorkflowExpression] Func<string> bodybillzipcode = null, [WorkflowExpression] Func<string> bodybillcountry = null, [WorkflowExpression] Func<string> bodybillphone = null, [WorkflowExpression] Func<string> bodybillfax = null, [WorkflowExpression] Func<string> bodyserviceaddr1 = null, [WorkflowExpression] Func<string> bodyserviceaddr2 = null, [WorkflowExpression] Func<string> bodyservicecity = null, [WorkflowExpression] Func<string> bodyservicestate = null, [WorkflowExpression] Func<string> bodyservicezipcode = null, [WorkflowExpression] Func<string> bodyservicecountry = null, [WorkflowExpression] Func<string> bodyservicephone = null, [WorkflowExpression] Func<string> bodyreceiveddate = null, [WorkflowExpression] Func<string> bodyponumber = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyreasoncode = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodybackup = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null)
         {
-            SourceExpression.Validate(bodyfromaddress, nameof(bodyfromaddress), required: false);
-            SourceExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            SourceExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            SourceExpression.Validate(bodycompanyname, nameof(bodycompanyname), required: false);
-            SourceExpression.Validate(bodybilladdr1, nameof(bodybilladdr1), required: false);
-            SourceExpression.Validate(bodybilladdr2, nameof(bodybilladdr2), required: false);
-            SourceExpression.Validate(bodybillcity, nameof(bodybillcity), required: false);
-            SourceExpression.Validate(bodybillstate, nameof(bodybillstate), required: false);
-            SourceExpression.Validate(bodybillzipcode, nameof(bodybillzipcode), required: false);
-            SourceExpression.Validate(bodybillcountry, nameof(bodybillcountry), required: false);
-            SourceExpression.Validate(bodybillphone, nameof(bodybillphone), required: false);
-            SourceExpression.Validate(bodybillfax, nameof(bodybillfax), required: false);
-            SourceExpression.Validate(bodyserviceaddr1, nameof(bodyserviceaddr1), required: false);
-            SourceExpression.Validate(bodyserviceaddr2, nameof(bodyserviceaddr2), required: false);
-            SourceExpression.Validate(bodyservicecity, nameof(bodyservicecity), required: false);
-            SourceExpression.Validate(bodyservicestate, nameof(bodyservicestate), required: false);
-            SourceExpression.Validate(bodyservicezipcode, nameof(bodyservicezipcode), required: false);
-            SourceExpression.Validate(bodyservicecountry, nameof(bodyservicecountry), required: false);
-            SourceExpression.Validate(bodyservicephone, nameof(bodyservicephone), required: false);
-            SourceExpression.Validate(bodyreceiveddate, nameof(bodyreceiveddate), required: false);
-            SourceExpression.Validate(bodyponumber, nameof(bodyponumber), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyreasoncode, nameof(bodyreasoncode), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
-            SourceExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            SourceExpression.Validate(bodybackup, nameof(bodybackup), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WorkOrder";
@@ -2733,7 +2419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<WorkOrderGetValueResponse> WorkOrderGetValue([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/WorkOrder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2748,18 +2433,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IWorkflowAction WorkOrderPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyponumber = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyreasoncode = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodybackup = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<bool> bodyhistory = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyponumber, nameof(bodyponumber), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyreasoncode, nameof(bodyreasoncode), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
-            SourceExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            SourceExpression.Validate(bodybackup, nameof(bodybackup), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodyhistory, nameof(bodyhistory), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/WorkOrder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2874,7 +2547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads([WorkflowExpression] Func<int> promotionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(promotionId, nameof(promotionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/new_members_leads";
@@ -2915,7 +2587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> OrderStatusChanged([WorkflowExpression] Func<string> status, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/order_status";
@@ -3021,7 +2692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> WorkOrderStatusChanged([WorkflowExpression] Func<string> status, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/wo_status";

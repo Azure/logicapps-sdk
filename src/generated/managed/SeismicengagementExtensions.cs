@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> GetListOfDeliveryOptions([WorkflowExpression] Func<bool> enabled = null)
         {
-            SourceExpression.Validate(enabled, nameof(enabled), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/delivery";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs([WorkflowExpression] Func<string> deliveryOptionId)
         {
-            SourceExpression.Validate(deliveryOptionId, nameof(deliveryOptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customDelivery/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliveryOptionId, 1));
@@ -46,10 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IWorkflowAction DeliverViaCustomDelivery([WorkflowExpression] Func<string> bodydeliveryOption = null, [WorkflowExpression] Func<string> bodydeliveryOptionId = null, [WorkflowExpression] Func<SeismicDeliveryCustomDeliveryAdHocInput[]> bodyadHocInput = null, [WorkflowExpression] Func<SeismicDeliveryCustomDeliveryContent[]> bodycontent = null)
         {
-            SourceExpression.Validate(bodydeliveryOption, nameof(bodydeliveryOption), required: false);
-            SourceExpression.Validate(bodydeliveryOptionId, nameof(bodydeliveryOptionId), required: false);
-            SourceExpression.Validate(bodyadHocInput, nameof(bodyadHocInput), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/customDelivery";
@@ -94,8 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> SaveToWorkspace([WorkflowExpression] Func<string> bodyworkspaceOptionsworkspaceFolderId = null, [WorkflowExpression] Func<SeismicDeliveryCustomDelContent[]> bodycontent = null)
         {
-            SourceExpression.Validate(bodyworkspaceOptionsworkspaceFolderId, nameof(bodyworkspaceOptionsworkspaceFolderId), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/saveToWorkspace";
@@ -136,13 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> CreateLiveSendLink([WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodysettingsexpiresAt = null, [WorkflowExpression] Func<string> bodysettingspassword = null, [WorkflowExpression] Func<bool> bodysettingsallowDownload = null, [WorkflowExpression] Func<string> bodysettingsnotificationType = null, [WorkflowExpression] Func<bool> bodysettingssingleView = null, [WorkflowExpression] Func<SeismicLiveSendLiveSendLinkContent[]> bodycontent = null)
         {
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodysettingsexpiresAt, nameof(bodysettingsexpiresAt), required: false);
-            SourceExpression.Validate(bodysettingspassword, nameof(bodysettingspassword), required: false);
-            SourceExpression.Validate(bodysettingsallowDownload, nameof(bodysettingsallowDownload), required: false);
-            SourceExpression.Validate(bodysettingsnotificationType, nameof(bodysettingsnotificationType), required: false);
-            SourceExpression.Validate(bodysettingssingleView, nameof(bodysettingssingleView), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/liveSend/links";

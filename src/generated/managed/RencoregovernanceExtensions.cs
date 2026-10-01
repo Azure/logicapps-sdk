@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencoregovernance")]
         public IBodyWorkflowAction<GetViolationsResponse> GetViolations([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> checkId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(checkId, nameof(checkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));
@@ -33,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
     {
         public IWorkflowTrigger CheckNotificationTrigger([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> checkId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(checkId, nameof(checkId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));

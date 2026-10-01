@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
         public IBodyWorkflowAction<QueueMessageMetadata> SendMessageToQueue([WorkflowExpression] Func<int> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, [WorkflowExpression] Func<string> sendMessageOperationInputmessageContent = null)
         {
-            SourceExpression.Validate(sendMessageOperationInputmessageVisibilityDelayInSeconds, nameof(sendMessageOperationInputmessageVisibilityDelayInSeconds), required: false);
-            SourceExpression.Validate(sendMessageOperationInputmessageContent, nameof(sendMessageOperationInputmessageContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/message";
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
         public IWorkflowAction DeleteMessageFromQueue([WorkflowExpression] Func<string> messageReceiptHandle)
         {
-            SourceExpression.Validate(messageReceiptHandle, nameof(messageReceiptHandle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/message";
@@ -66,9 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
     {
         public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue([WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
-            SourceExpression.Validate(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
-            SourceExpression.Validate(messageAttributeNames, nameof(messageAttributeNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/message";
@@ -89,10 +83,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 
         public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<int> maximumNumberOfMessages = null, [WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(maximumNumberOfMessages, nameof(maximumNumberOfMessages), required: false);
-            SourceExpression.Validate(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
-            SourceExpression.Validate(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
-            SourceExpression.Validate(messageAttributeNames, nameof(messageAttributeNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages";

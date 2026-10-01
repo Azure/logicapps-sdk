@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListWorkspacesResponse> ListWorkspaces([WorkflowExpression] Func<typeInput> type = null)
         {
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workspaces";
@@ -31,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<CreateAWorkspaceResponse> CreateAWorkspace([WorkflowExpression] Func<string> bodyworkspacename, [WorkflowExpression] Func<bodyworkspacetypeInput> bodyworkspacetype, [WorkflowExpression] Func<string> bodyworkspacedescription = null)
         {
-            SourceExpression.Validate(bodyworkspacename, nameof(bodyworkspacename), required: true);
-            SourceExpression.Validate(bodyworkspacetype, nameof(bodyworkspacetype), required: true);
-            SourceExpression.Validate(bodyworkspacedescription, nameof(bodyworkspacedescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workspaces";
@@ -73,7 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetWorkspaceResponse> GetWorkspace([WorkflowExpression] Func<string> workspaceId)
         {
-            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workspaces/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
@@ -102,7 +97,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListEnvironmentsResponse> ListEnvironments([WorkflowExpression] Func<string> workspace = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/environments";
@@ -119,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetEnvironmentResponse> GetEnvironment([WorkflowExpression] Func<string> environmentId)
         {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
@@ -134,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListCollectionsResponse> ListCollections([WorkflowExpression] Func<string> workspace = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/collections";
@@ -151,8 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetCollectionResponse> GetCollection([WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> accessKey = null)
         {
-            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
-            SourceExpression.Validate(accessKey, nameof(accessKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
@@ -169,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ImportOpenApiResponse> ImportOpenApi([WorkflowExpression] Func<string> workspace = null)
         {
-            SourceExpression.Validate(workspace, nameof(workspace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/import/openapi";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToHtmlResponse> MarkdownToHtml([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toHtml";
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToJsonResponse> MarkdownToJson([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toJson";
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToXmlResponse> MarkdownToXml([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toXml";
@@ -83,7 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToPlainTextResponse> MarkdownToPlainText([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toPlainText";
@@ -106,7 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToCsvResponse> MarkdownToCsv([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toCsv";
@@ -129,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToLaTeXResponse> MarkdownToLaTeX([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toLaTeX";
@@ -152,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse> MarkdownToAdaptiveCard([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toAdaptiveCard";
@@ -175,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToYamlResponse> MarkdownToYaml([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toYaml";
@@ -198,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToEmailResponse> MarkdownToEmail([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toEmail";
@@ -221,7 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToSvgResponse> MarkdownToSvg([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toSvg";
@@ -244,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToRssResponse> MarkdownToRss([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toRss";
@@ -267,7 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToWikiResponse> MarkdownToWiki([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toWiki";
@@ -290,7 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToPngResponse> MarkdownToPng([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toPng";
@@ -313,7 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToChartResponse> MarkdownToChart([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toChart";
@@ -336,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToDiagramResponse> MarkdownToDiagram([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toDiagram";
@@ -359,7 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownStatsResponse> MarkdownStats([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/statistics";
@@ -382,7 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToQrResponse> MarkdownToQr([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toQr";
@@ -405,7 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToJpegResponse> MarkdownToJpeg([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toJpeg";
@@ -428,7 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToBadgeResponse> MarkdownToBadge([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toBadge";
@@ -451,7 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToInfographicResponse> MarkdownToInfographic([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toInfographic";
@@ -474,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToLogResponse> MarkdownToLog([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toLog";
@@ -497,7 +476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToMetricsResponse> MarkdownToMetrics([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toMetrics";
@@ -520,7 +498,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToSyslogResponse> MarkdownToSyslog([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toSyslog";
@@ -543,7 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToJsDocResponse> MarkdownToJsDoc([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toJsDoc";
@@ -566,7 +542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToXmlDocResponse> MarkdownToXmlDoc([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toXmlDoc";
@@ -589,7 +564,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToReadmeResponse> MarkdownToReadme([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toReadme";
@@ -612,7 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToChangelogResponse> MarkdownToChangelog([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toChangelog";
@@ -635,7 +608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToTableOfContentsResponse> MarkdownToTableOfContents([WorkflowExpression] Func<string> bodymarkdownContent)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toTableOfContents";
@@ -658,8 +630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToStyledHtmlResponse> MarkdownToStyledHtml([WorkflowExpression] Func<string> bodymarkdownContent, [WorkflowExpression] Func<string> bodytheme = null)
         {
-            SourceExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            SourceExpression.Validate(bodytheme, nameof(bodytheme), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/toStyledHtml";

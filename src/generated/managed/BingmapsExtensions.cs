@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<GetLocationResponse> GetLocationByPoint([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<string> includeEntityTypes = null, [WorkflowExpression] Func<bool> includeNeighborhood = null, [WorkflowExpression] Func<bool> include = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(includeEntityTypes, nameof(includeEntityTypes), required: false);
-            SourceExpression.Validate(includeNeighborhood, nameof(includeNeighborhood), required: false);
-            SourceExpression.Validate(include, nameof(include), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/REST/v1/Locations/pointPlaceHolder";
@@ -43,11 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<GetLocationResponse> GetLocationByAddress([WorkflowExpression] Func<string> addressLine = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> adminDistrict = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> countryRegion = null)
         {
-            SourceExpression.Validate(addressLine, nameof(addressLine), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(adminDistrict, nameof(adminDistrict), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(countryRegion, nameof(countryRegion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/REST/v1/Locations";
@@ -72,16 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<string> GetMap([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<imagerySetInput> imagerySet, [WorkflowExpression] Func<string> zoomLevel, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> mapSize = null, [WorkflowExpression] Func<double> pushpinLatitude = null, [WorkflowExpression] Func<double> pushpinLongitude = null, [WorkflowExpression] Func<int> pushpinIconStyle = null, [WorkflowExpression] Func<string> pushpinLabel = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(imagerySet, nameof(imagerySet), required: true);
-            SourceExpression.Validate(zoomLevel, nameof(zoomLevel), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(mapSize, nameof(mapSize), required: false);
-            SourceExpression.Validate(pushpinLatitude, nameof(pushpinLatitude), required: false);
-            SourceExpression.Validate(pushpinLongitude, nameof(pushpinLongitude), required: false);
-            SourceExpression.Validate(pushpinIconStyle, nameof(pushpinIconStyle), required: false);
-            SourceExpression.Validate(pushpinLabel, nameof(pushpinLabel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(imagerySet, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(zoomLevel, 1));
@@ -110,19 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<GetRouteResponse> GetRoute([WorkflowExpression] Func<string> wp0, [WorkflowExpression] Func<string> wp1, [WorkflowExpression] Func<travelModeInput> travelMode, [WorkflowExpression] Func<bool> avoidHighways = null, [WorkflowExpression] Func<bool> avoidTolls = null, [WorkflowExpression] Func<bool> avoidFerry = null, [WorkflowExpression] Func<bool> avoidMinimizeHighways = null, [WorkflowExpression] Func<bool> avoidMinimizeTolls = null, [WorkflowExpression] Func<bool> avoidBorderCrossing = null, [WorkflowExpression] Func<optimizeInput> optimize = null, [WorkflowExpression] Func<distanceUnitInput> distanceUnit = null, [WorkflowExpression] Func<string> dateTime = null, [WorkflowExpression] Func<timeTypeInput> timeType = null)
         {
-            SourceExpression.Validate(wp0, nameof(wp0), required: true);
-            SourceExpression.Validate(wp1, nameof(wp1), required: true);
-            SourceExpression.Validate(travelMode, nameof(travelMode), required: true);
-            SourceExpression.Validate(avoidHighways, nameof(avoidHighways), required: false);
-            SourceExpression.Validate(avoidTolls, nameof(avoidTolls), required: false);
-            SourceExpression.Validate(avoidFerry, nameof(avoidFerry), required: false);
-            SourceExpression.Validate(avoidMinimizeHighways, nameof(avoidMinimizeHighways), required: false);
-            SourceExpression.Validate(avoidMinimizeTolls, nameof(avoidMinimizeTolls), required: false);
-            SourceExpression.Validate(avoidBorderCrossing, nameof(avoidBorderCrossing), required: false);
-            SourceExpression.Validate(optimize, nameof(optimize), required: false);
-            SourceExpression.Validate(distanceUnit, nameof(distanceUnit), required: false);
-            SourceExpression.Validate(dateTime, nameof(dateTime), required: false);
-            SourceExpression.Validate(timeType, nameof(timeType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/V3/REST/V1/Routes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(travelMode, 1));

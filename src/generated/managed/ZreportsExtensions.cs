@@ -30,8 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
     {
         public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(brandId, nameof(brandId), required: true);
-            SourceExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/despatch-advice-hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
@@ -59,8 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
         public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(brandId, nameof(brandId), required: true);
-            SourceExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/invoice-hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));

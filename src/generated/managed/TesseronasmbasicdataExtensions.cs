@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         public IBodyWorkflowAction<ApiEnterpriseGetEnterprisesResponse> ApiEnterpriseGetEnterprises([WorkflowExpression] Func<string> searchParam, [WorkflowExpression] Func<int> take, [WorkflowExpression] Func<int> skip = null)
         {
-            SourceExpression.Validate(searchParam, nameof(searchParam), required: true);
-            SourceExpression.Validate(take, nameof(take), required: true);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ApiEnterprise/GetEnterprises";
@@ -36,8 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         public IBodyWorkflowAction<SetEnterpriseStatusResponse> SetEnterpriseStatus([WorkflowExpression] Func<int> bodyenterpriseId, [WorkflowExpression] Func<int> bodystatusId)
         {
-            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: true);
-            SourceExpression.Validate(bodystatusId, nameof(bodystatusId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ApiEnterprise/SetEnterpriseStatus";
@@ -62,36 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         public IBodyWorkflowAction<ApiContactCreateContactResponse> ApiContactCreateContact([WorkflowExpression] Func<string> bodyenterpriseReferenceNumber, [WorkflowExpression] Func<string> bodyforeName, [WorkflowExpression] Func<string> bodysurName, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyformOfAddress = null, [WorkflowExpression] Func<string> bodyforeName2 = null, [WorkflowExpression] Func<string> bodysearchname = null, [WorkflowExpression] Func<string> bodyexternalNumber = null, [WorkflowExpression] Func<string> bodyinitials = null, [WorkflowExpression] Func<string> bodymemo = null, [WorkflowExpression] Func<string> bodyinfoOnTicketView = null, [WorkflowExpression] Func<string> bodyinfoOnServiceAssignment = null, [WorkflowExpression] Func<string> bodyinfoOnTicketCreate = null, [WorkflowExpression] Func<string> bodydepartmentName = null, [WorkflowExpression] Func<bool> bodyisVip = null, [WorkflowExpression] Func<int> bodyenterpriseContactType = null, [WorkflowExpression] Func<bool> bodyisAddressFromMainEnterprise = null, [WorkflowExpression] Func<string> bodyaddressstreet = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddresspostcode = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddressaddress3 = null, [WorkflowExpression] Func<string> bodyaddresspostbox = null, [WorkflowExpression] Func<string> bodyaddresscounty = null, [WorkflowExpression] Func<string> bodyaddresscountyShort = null, [WorkflowExpression] Func<string> bodyaddresscountryCode = null, [WorkflowExpression] Func<string> bodyaddresscountryName = null, [WorkflowExpression] Func<bodyphoneNumbersInputItem[]> bodyphoneNumbers = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            SourceExpression.Validate(bodyenterpriseReferenceNumber, nameof(bodyenterpriseReferenceNumber), required: true);
-            SourceExpression.Validate(bodyforeName, nameof(bodyforeName), required: true);
-            SourceExpression.Validate(bodysurName, nameof(bodysurName), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyformOfAddress, nameof(bodyformOfAddress), required: false);
-            SourceExpression.Validate(bodyforeName2, nameof(bodyforeName2), required: false);
-            SourceExpression.Validate(bodysearchname, nameof(bodysearchname), required: false);
-            SourceExpression.Validate(bodyexternalNumber, nameof(bodyexternalNumber), required: false);
-            SourceExpression.Validate(bodyinitials, nameof(bodyinitials), required: false);
-            SourceExpression.Validate(bodymemo, nameof(bodymemo), required: false);
-            SourceExpression.Validate(bodyinfoOnTicketView, nameof(bodyinfoOnTicketView), required: false);
-            SourceExpression.Validate(bodyinfoOnServiceAssignment, nameof(bodyinfoOnServiceAssignment), required: false);
-            SourceExpression.Validate(bodyinfoOnTicketCreate, nameof(bodyinfoOnTicketCreate), required: false);
-            SourceExpression.Validate(bodydepartmentName, nameof(bodydepartmentName), required: false);
-            SourceExpression.Validate(bodyisVip, nameof(bodyisVip), required: false);
-            SourceExpression.Validate(bodyenterpriseContactType, nameof(bodyenterpriseContactType), required: false);
-            SourceExpression.Validate(bodyisAddressFromMainEnterprise, nameof(bodyisAddressFromMainEnterprise), required: false);
-            SourceExpression.Validate(bodyaddressstreet, nameof(bodyaddressstreet), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddresspostcode, nameof(bodyaddresspostcode), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddressaddress3, nameof(bodyaddressaddress3), required: false);
-            SourceExpression.Validate(bodyaddresspostbox, nameof(bodyaddresspostbox), required: false);
-            SourceExpression.Validate(bodyaddresscounty, nameof(bodyaddresscounty), required: false);
-            SourceExpression.Validate(bodyaddresscountyShort, nameof(bodyaddresscountyShort), required: false);
-            SourceExpression.Validate(bodyaddresscountryCode, nameof(bodyaddresscountryCode), required: false);
-            SourceExpression.Validate(bodyaddresscountryName, nameof(bodyaddresscountryName), required: false);
-            SourceExpression.Validate(bodyphoneNumbers, nameof(bodyphoneNumbers), required: false);
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ApiContact/CreateContact";
@@ -298,36 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         public IBodyWorkflowAction<ApiContactUpdateContactResponse> ApiContactUpdateContact([WorkflowExpression] Func<string> bodyenterpriseReferenceNumber, [WorkflowExpression] Func<string> bodyforeName, [WorkflowExpression] Func<string> bodysurName, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyformOfAddress = null, [WorkflowExpression] Func<string> bodyforeName2 = null, [WorkflowExpression] Func<string> bodysearchname = null, [WorkflowExpression] Func<string> bodyexternalNumber = null, [WorkflowExpression] Func<string> bodyinitials = null, [WorkflowExpression] Func<string> bodymemo = null, [WorkflowExpression] Func<string> bodyinfoOnTicketView = null, [WorkflowExpression] Func<string> bodyinfoOnServiceAssignment = null, [WorkflowExpression] Func<string> bodyinfoOnTicketCreate = null, [WorkflowExpression] Func<string> bodydepartmentName = null, [WorkflowExpression] Func<bool> bodyisVip = null, [WorkflowExpression] Func<bool> bodyisAddressFromMainEnterprise = null, [WorkflowExpression] Func<string> bodyaddressstreet = null, [WorkflowExpression] Func<string> bodyaddresscity = null, [WorkflowExpression] Func<string> bodyaddresspostcode = null, [WorkflowExpression] Func<string> bodyaddressaddress1 = null, [WorkflowExpression] Func<string> bodyaddressaddress2 = null, [WorkflowExpression] Func<string> bodyaddressaddress3 = null, [WorkflowExpression] Func<string> bodyaddresspostbox = null, [WorkflowExpression] Func<string> bodyaddresscounty = null, [WorkflowExpression] Func<string> bodyaddresscountyShort = null, [WorkflowExpression] Func<string> bodyaddresscountryCode = null, [WorkflowExpression] Func<string> bodyaddresscountryName = null, [WorkflowExpression] Func<bodyphoneNumbersInputItem[]> bodyphoneNumbers = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            SourceExpression.Validate(bodyenterpriseReferenceNumber, nameof(bodyenterpriseReferenceNumber), required: true);
-            SourceExpression.Validate(bodyforeName, nameof(bodyforeName), required: true);
-            SourceExpression.Validate(bodysurName, nameof(bodysurName), required: true);
-            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodyformOfAddress, nameof(bodyformOfAddress), required: false);
-            SourceExpression.Validate(bodyforeName2, nameof(bodyforeName2), required: false);
-            SourceExpression.Validate(bodysearchname, nameof(bodysearchname), required: false);
-            SourceExpression.Validate(bodyexternalNumber, nameof(bodyexternalNumber), required: false);
-            SourceExpression.Validate(bodyinitials, nameof(bodyinitials), required: false);
-            SourceExpression.Validate(bodymemo, nameof(bodymemo), required: false);
-            SourceExpression.Validate(bodyinfoOnTicketView, nameof(bodyinfoOnTicketView), required: false);
-            SourceExpression.Validate(bodyinfoOnServiceAssignment, nameof(bodyinfoOnServiceAssignment), required: false);
-            SourceExpression.Validate(bodyinfoOnTicketCreate, nameof(bodyinfoOnTicketCreate), required: false);
-            SourceExpression.Validate(bodydepartmentName, nameof(bodydepartmentName), required: false);
-            SourceExpression.Validate(bodyisVip, nameof(bodyisVip), required: false);
-            SourceExpression.Validate(bodyisAddressFromMainEnterprise, nameof(bodyisAddressFromMainEnterprise), required: false);
-            SourceExpression.Validate(bodyaddressstreet, nameof(bodyaddressstreet), required: false);
-            SourceExpression.Validate(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            SourceExpression.Validate(bodyaddresspostcode, nameof(bodyaddresspostcode), required: false);
-            SourceExpression.Validate(bodyaddressaddress1, nameof(bodyaddressaddress1), required: false);
-            SourceExpression.Validate(bodyaddressaddress2, nameof(bodyaddressaddress2), required: false);
-            SourceExpression.Validate(bodyaddressaddress3, nameof(bodyaddressaddress3), required: false);
-            SourceExpression.Validate(bodyaddresspostbox, nameof(bodyaddresspostbox), required: false);
-            SourceExpression.Validate(bodyaddresscounty, nameof(bodyaddresscounty), required: false);
-            SourceExpression.Validate(bodyaddresscountyShort, nameof(bodyaddresscountyShort), required: false);
-            SourceExpression.Validate(bodyaddresscountryCode, nameof(bodyaddresscountryCode), required: false);
-            SourceExpression.Validate(bodyaddresscountryName, nameof(bodyaddresscountryName), required: false);
-            SourceExpression.Validate(bodyphoneNumbers, nameof(bodyphoneNumbers), required: false);
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ApiContact/UpdateContact";
@@ -534,10 +469,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
         public IBodyWorkflowAction<ApiContactGetContactsResponse> ApiContactGetContacts([WorkflowExpression] Func<int> take, [WorkflowExpression] Func<string> searchParam, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<int> skip = null)
         {
-            SourceExpression.Validate(take, nameof(take), required: true);
-            SourceExpression.Validate(searchParam, nameof(searchParam), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ApiContact/GetContacts";

@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         public IBodyWorkflowAction<object> Download([WorkflowExpression] Func<downloadTypeInput> downloadType, [WorkflowExpression] Func<int> translationId)
         {
-            SourceExpression.Validate(downloadType, nameof(downloadType), required: true);
-            SourceExpression.Validate(translationId, nameof(translationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dts/translate/download";
@@ -32,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         public IBodyWorkflowAction<RetrieveResponse> Retrieve([WorkflowExpression] Func<int> translationId)
         {
-            SourceExpression.Validate(translationId, nameof(translationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dts/translate/retrieve";
@@ -48,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
         public IBodyWorkflowAction<object> AlignDownload([WorkflowExpression] Func<string> filename)
         {
-            SourceExpression.Validate(filename, nameof(filename), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dts/align/download";

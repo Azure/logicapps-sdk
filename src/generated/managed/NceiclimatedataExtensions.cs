@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetsGetResponse> DatasetsGet([WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(datatypeid, nameof(datatypeid), required: false);
-            SourceExpression.Validate(locationid, nameof(locationid), required: false);
-            SourceExpression.Validate(stationid, nameof(stationid), required: false);
-            SourceExpression.Validate(startdate, nameof(startdate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
-            SourceExpression.Validate(sortfield, nameof(sortfield), required: false);
-            SourceExpression.Validate(sortorder, nameof(sortorder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdo-web/api/v2/datasets";
@@ -57,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetGetResponse> DatasetGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datasets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -72,15 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<CatagoriesGetResponse> CatagoriesGet([WorkflowExpression] Func<string> datatsetid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(datatsetid, nameof(datatsetid), required: false);
-            SourceExpression.Validate(locationid, nameof(locationid), required: false);
-            SourceExpression.Validate(stationid, nameof(stationid), required: false);
-            SourceExpression.Validate(startdate, nameof(startdate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
-            SourceExpression.Validate(sortfield, nameof(sortfield), required: false);
-            SourceExpression.Validate(sortorder, nameof(sortorder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdo-web/api/v2/datacategories";
@@ -115,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<CategoryGetResponse> CategoryGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datacategories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -130,16 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<TypesGetResponse> TypesGet([WorkflowExpression] Func<string> datatsetid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<string> datacategoryid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(datatsetid, nameof(datatsetid), required: false);
-            SourceExpression.Validate(locationid, nameof(locationid), required: false);
-            SourceExpression.Validate(stationid, nameof(stationid), required: false);
-            SourceExpression.Validate(datacategoryid, nameof(datacategoryid), required: false);
-            SourceExpression.Validate(startdate, nameof(startdate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
-            SourceExpression.Validate(sortfield, nameof(sortfield), required: false);
-            SourceExpression.Validate(sortorder, nameof(sortorder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdo-web/api/v2/datatypes";
@@ -176,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<TypeGetResponse> TypeGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datatypes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -191,13 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationCategoriesGetResponse> LocationCategoriesGet([WorkflowExpression] Func<string> datasetid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(datasetid, nameof(datasetid), required: false);
-            SourceExpression.Validate(startdate, nameof(startdate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
-            SourceExpression.Validate(sortfield, nameof(sortfield), required: false);
-            SourceExpression.Validate(sortorder, nameof(sortorder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdo-web/api/v2/locationcategories";
@@ -228,7 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationCategoryGetResponse> LocationCategoryGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/locationcategories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -243,15 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationsGetResponse> LocationsGet([WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> locationcategoryid = null, [WorkflowExpression] Func<string> datacategoryid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(datatypeid, nameof(datatypeid), required: false);
-            SourceExpression.Validate(locationcategoryid, nameof(locationcategoryid), required: false);
-            SourceExpression.Validate(datacategoryid, nameof(datacategoryid), required: false);
-            SourceExpression.Validate(startdate, nameof(startdate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
-            SourceExpression.Validate(sortfield, nameof(sortfield), required: false);
-            SourceExpression.Validate(sortorder, nameof(sortorder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdo-web/api/v2/locations";
@@ -286,7 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationGetResponse> LocationGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/locations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -301,17 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationsGetResponse> StationsGet([WorkflowExpression] Func<string> datasetid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> datacategoryid = null, [WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> extent = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(datasetid, nameof(datasetid), required: false);
-            SourceExpression.Validate(locationid, nameof(locationid), required: false);
-            SourceExpression.Validate(datacategoryid, nameof(datacategoryid), required: false);
-            SourceExpression.Validate(datatypeid, nameof(datatypeid), required: false);
-            SourceExpression.Validate(extent, nameof(extent), required: false);
-            SourceExpression.Validate(startdate, nameof(startdate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
-            SourceExpression.Validate(sortfield, nameof(sortfield), required: false);
-            SourceExpression.Validate(sortorder, nameof(sortorder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdo-web/api/v2/stations";
@@ -350,7 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationGetResponse> StationGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/stations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -365,18 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DataGetResponse> DataGet([WorkflowExpression] Func<string> datasetid, [WorkflowExpression] Func<string> startdate, [WorkflowExpression] Func<string> enddate, [WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<unitsInput> units = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> includemetadata = null)
         {
-            SourceExpression.Validate(datasetid, nameof(datasetid), required: true);
-            SourceExpression.Validate(startdate, nameof(startdate), required: true);
-            SourceExpression.Validate(enddate, nameof(enddate), required: true);
-            SourceExpression.Validate(datatypeid, nameof(datatypeid), required: false);
-            SourceExpression.Validate(locationid, nameof(locationid), required: false);
-            SourceExpression.Validate(stationid, nameof(stationid), required: false);
-            SourceExpression.Validate(units, nameof(units), required: false);
-            SourceExpression.Validate(sortfield, nameof(sortfield), required: false);
-            SourceExpression.Validate(sortorder, nameof(sortorder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(includemetadata, nameof(includemetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cdo-web/api/v2/data";
@@ -415,17 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetsSearchGetResponse> DatasetsSearchGet([WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> boundingBox = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> dataTypes = null, [WorkflowExpression] Func<string> stations = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> available = null)
         {
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(startDate, nameof(startDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(boundingBox, nameof(boundingBox), required: false);
-            SourceExpression.Validate(keywords, nameof(keywords), required: false);
-            SourceExpression.Validate(text, nameof(text), required: false);
-            SourceExpression.Validate(dataTypes, nameof(dataTypes), required: false);
-            SourceExpression.Validate(stations, nameof(stations), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(available, nameof(available), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/access/services/search/v1/data";
@@ -462,10 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationHistoricalGetResponse> StationHistoricalGet([WorkflowExpression] Func<string> stationid, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> begindate = null, [WorkflowExpression] Func<string> enddate = null)
         {
-            SourceExpression.Validate(stationid, nameof(stationid), required: true);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(begindate, nameof(begindate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/access/homr/services/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationid, 1));
@@ -487,22 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationHistoricSearchGetResponse> StationHistoricSearchGet([WorkflowExpression] Func<string> qid = null, [WorkflowExpression] Func<string> qidMod = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> county = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> nameMod = null, [WorkflowExpression] Func<string> platform = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> begindate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<bool> current = null, [WorkflowExpression] Func<string> headersOnly = null, [WorkflowExpression] Func<bool> phrData = null, [WorkflowExpression] Func<bool> definitions = null)
         {
-            SourceExpression.Validate(qid, nameof(qid), required: false);
-            SourceExpression.Validate(qidMod, nameof(qidMod), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(county, nameof(county), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(nameMod, nameof(nameMod), required: false);
-            SourceExpression.Validate(platform, nameof(platform), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(begindate, nameof(begindate), required: false);
-            SourceExpression.Validate(enddate, nameof(enddate), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(current, nameof(current), required: false);
-            SourceExpression.Validate(headersOnly, nameof(headersOnly), required: false);
-            SourceExpression.Validate(phrData, nameof(phrData), required: false);
-            SourceExpression.Validate(definitions, nameof(definitions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/access/homr/services/station/search";

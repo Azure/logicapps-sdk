@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoColorsListResponse> LegoColorsList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/lego/colors/";
@@ -37,8 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoColorsReadResponse> LegoColorsRead([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/colors/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -55,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoElementsReadResponse> LegoElementsRead([WorkflowExpression] Func<string> elementId)
         {
-            SourceExpression.Validate(elementId, nameof(elementId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/elements/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(elementId, 1));
@@ -70,14 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoMinifigsListResponse> LegoMinifigsList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<double> minParts = null, [WorkflowExpression] Func<double> maxParts = null, [WorkflowExpression] Func<string> inSetNum = null, [WorkflowExpression] Func<string> inThemeId = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(minParts, nameof(minParts), required: false);
-            SourceExpression.Validate(maxParts, nameof(maxParts), required: false);
-            SourceExpression.Validate(inSetNum, nameof(inSetNum), required: false);
-            SourceExpression.Validate(inThemeId, nameof(inThemeId), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/lego/minifigs/";
@@ -108,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoMinifigsReadResponse> LegoMinifigsRead([WorkflowExpression] Func<string> setNum)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/minifigs/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -123,9 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoMinifigsPartsListResponse> LegoMinifigsPartsList([WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/minifigs/{0}/parts/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -144,10 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoMinifigsSetsListResponse> LegoMinifigsSetsList([WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/minifigs/{0}/sets/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -168,9 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoPartCategoriesListResponse> LegoPartCategoriesList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/lego/part_categories/";
@@ -191,8 +166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoPartCategoriesReadResponse> LegoPartCategoriesRead([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/part_categories/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -209,18 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoPartsListResponse> LegoPartsList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> partNum = null, [WorkflowExpression] Func<string> partNums = null, [WorkflowExpression] Func<string> partCatId = null, [WorkflowExpression] Func<string> colorId = null, [WorkflowExpression] Func<string> bricklinkId = null, [WorkflowExpression] Func<string> brickowlId = null, [WorkflowExpression] Func<string> legoId = null, [WorkflowExpression] Func<string> ldrawId = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(partNum, nameof(partNum), required: false);
-            SourceExpression.Validate(partNums, nameof(partNums), required: false);
-            SourceExpression.Validate(partCatId, nameof(partCatId), required: false);
-            SourceExpression.Validate(colorId, nameof(colorId), required: false);
-            SourceExpression.Validate(bricklinkId, nameof(bricklinkId), required: false);
-            SourceExpression.Validate(brickowlId, nameof(brickowlId), required: false);
-            SourceExpression.Validate(legoId, nameof(legoId), required: false);
-            SourceExpression.Validate(ldrawId, nameof(ldrawId), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/lego/parts/";
@@ -259,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoPartsReadResponse> LegoPartsRead([WorkflowExpression] Func<string> partNum)
         {
-            SourceExpression.Validate(partNum, nameof(partNum), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/parts/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partNum, 1));
@@ -274,10 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoPartsColorsListResponse> LegoPartsColorsList([WorkflowExpression] Func<string> partNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(partNum, nameof(partNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/parts/{0}/colors/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partNum, 1));
@@ -298,8 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoPartsColorsReadResponse> LegoPartsColorsRead([WorkflowExpression] Func<string> colorId, [WorkflowExpression] Func<string> partNum)
         {
-            SourceExpression.Validate(colorId, nameof(colorId), required: true);
-            SourceExpression.Validate(partNum, nameof(partNum), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/parts/{0}/colors/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partNum, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(colorId, 1));
@@ -314,11 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoPartsColorsSetsListResponse> LegoPartsColorsSetsList([WorkflowExpression] Func<string> colorId, [WorkflowExpression] Func<string> partNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(colorId, nameof(colorId), required: true);
-            SourceExpression.Validate(partNum, nameof(partNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/parts/{0}/colors/{1}/sets/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partNum, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(colorId, 1));
@@ -339,15 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoSetsListResponse> LegoSetsList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> themeId = null, [WorkflowExpression] Func<double> minYear = null, [WorkflowExpression] Func<double> maxYear = null, [WorkflowExpression] Func<double> minParts = null, [WorkflowExpression] Func<double> maxParts = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(themeId, nameof(themeId), required: false);
-            SourceExpression.Validate(minYear, nameof(minYear), required: false);
-            SourceExpression.Validate(maxYear, nameof(maxYear), required: false);
-            SourceExpression.Validate(minParts, nameof(minParts), required: false);
-            SourceExpression.Validate(maxParts, nameof(maxParts), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/lego/sets/";
@@ -380,7 +320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoSetsReadResponse> LegoSetsRead([WorkflowExpression] Func<string> setNum)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/sets/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -395,10 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoSetsAlternatesListResponse> LegoSetsAlternatesList([WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/sets/{0}/alternates/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -419,9 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoSetsMinifigsListResponse> LegoSetsMinifigsList([WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/sets/{0}/minifigs/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -440,9 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoSetsPartsListResponse> LegoSetsPartsList([WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/sets/{0}/parts/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -461,9 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoSetsSetsListResponse> LegoSetsSetsList([WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/sets/{0}/sets/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -482,9 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoThemesListResponse> LegoThemesList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/lego/themes/";
@@ -505,8 +428,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<LegoThemesReadResponse> LegoThemesRead([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/lego/themes/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -523,7 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersTokenCreateResponse> UsersTokenCreate([WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/users/_token/";
@@ -540,9 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersBadgesListResponse> UsersBadgesList([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/users/badges/";
@@ -563,8 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersBadgesReadResponse> UsersBadgesRead([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/badges/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -581,12 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersAllpartsListResponse> UsersAllpartsList([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> partNum = null, [WorkflowExpression] Func<double> partCatId = null, [WorkflowExpression] Func<double> colorId = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(partNum, nameof(partNum), required: false);
-            SourceExpression.Validate(partCatId, nameof(partCatId), required: false);
-            SourceExpression.Validate(colorId, nameof(colorId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/allparts/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));
@@ -611,8 +520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersBuildReadResponse> UsersBuildRead([WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<string> userToken)
         {
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/build/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -627,10 +534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersLostPartsListResponse> UsersLostPartsList([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/lost_parts/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));
@@ -651,9 +554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IWorkflowAction UsersLostPartsDelete([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/lost_parts/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -670,12 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersMinifigsListResponse> UsersMinifigsList([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> figSetNum = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(figSetNum, nameof(figSetNum), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/minifigs/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));
@@ -700,9 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersPartlistsListResponse> UsersPartlistsList([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/partlists/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));
@@ -721,8 +612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersPartlistsReadResponse> UsersPartlistsRead([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> userToken)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/partlists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -737,8 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IWorkflowAction UsersPartlistsDelete([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> userToken)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/partlists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -753,11 +640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersPartlistsUpdateResponse> UsersPartlistsUpdate([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyisBuildable = null, [WorkflowExpression] Func<int> bodynumParts = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyisBuildable, nameof(bodyisBuildable), required: false);
-            SourceExpression.Validate(bodynumParts, nameof(bodynumParts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/partlists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -792,11 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersPartlistsPartsListResponse> UsersPartlistsPartsList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/partlists/{1}/parts/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -817,11 +694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersPartlistsPartsReadResponse> UsersPartlistsPartsRead([WorkflowExpression] Func<string> colorId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> partNum, [WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(colorId, nameof(colorId), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(partNum, nameof(partNum), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/partlists/{1}/parts/{2}/{3}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partNum, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(colorId, 1));
@@ -838,11 +710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IWorkflowAction UsersPartlistsPartsDelete([WorkflowExpression] Func<string> colorId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> partNum, [WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(colorId, nameof(colorId), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(partNum, nameof(partNum), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/partlists/{1}/parts/{2}/{3}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partNum, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(colorId, 1));
@@ -859,14 +726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersPartsListResponse> UsersPartsList([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> partNum = null, [WorkflowExpression] Func<double> partCatId = null, [WorkflowExpression] Func<double> colorId = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(partNum, nameof(partNum), required: false);
-            SourceExpression.Validate(partCatId, nameof(partCatId), required: false);
-            SourceExpression.Validate(colorId, nameof(colorId), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/parts/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));
@@ -895,7 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersProfileReadResponse> UsersProfileRead([WorkflowExpression] Func<string> userToken)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/profile/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));
@@ -910,9 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersSetlistsListResponse> UsersSetlistsList([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/setlists/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));
@@ -931,8 +786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersSetlistsReadResponse> UsersSetlistsRead([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> userToken)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/setlists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -947,8 +800,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IWorkflowAction UsersSetlistsDelete([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> userToken)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/setlists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -963,11 +814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersSetlistsPartialUpdateResponse> UsersSetlistsPartialUpdate([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<bool> bodyisBuildable = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodynumSets = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyisBuildable, nameof(bodyisBuildable), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynumSets, nameof(bodynumSets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/setlists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1006,11 +852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersSetlistsSetsListResponse> UsersSetlistsSetsList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/setlists/{1}/sets/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
@@ -1031,10 +872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersSetlistsSetsReadResponse> UsersSetlistsSetsRead([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/setlists/{1}/sets/{2}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -1051,10 +888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IWorkflowAction UsersSetlistsSetsDelete([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> setNum, [WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<string> ordering = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(setNum, nameof(setNum), required: true);
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/setlists/{1}/sets/{2}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(setNum, 1));
@@ -1071,17 +904,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
         public IBodyWorkflowAction<UsersSetsListResponse> UsersSetsList([WorkflowExpression] Func<string> userToken, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> setNum = null, [WorkflowExpression] Func<double> themeId = null, [WorkflowExpression] Func<double> minYear = null, [WorkflowExpression] Func<double> maxYear = null, [WorkflowExpression] Func<double> minParts = null, [WorkflowExpression] Func<double> maxParts = null, [WorkflowExpression] Func<string> ordering = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(userToken, nameof(userToken), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(setNum, nameof(setNum), required: false);
-            SourceExpression.Validate(themeId, nameof(themeId), required: false);
-            SourceExpression.Validate(minYear, nameof(minYear), required: false);
-            SourceExpression.Validate(maxYear, nameof(maxYear), required: false);
-            SourceExpression.Validate(minParts, nameof(minParts), required: false);
-            SourceExpression.Validate(maxParts, nameof(maxParts), required: false);
-            SourceExpression.Validate(ordering, nameof(ordering), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/users/{0}/sets/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userToken, 1));

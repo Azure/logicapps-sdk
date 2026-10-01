@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Penneosignsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "penneosignsandbox")]
         public IBodyWorkflowAction<CaseFileDetails> GetCaseFileDetails([WorkflowExpression] Func<int> caseFileId)
         {
-            SourceExpression.Validate(caseFileId, nameof(caseFileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/casefiles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(caseFileId, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Penneosignsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "penneosignsandbox")]
         public IBodyWorkflowAction<DocumentContentInfo> DownloadDocument([WorkflowExpression] Func<int> documentId, [WorkflowExpression] Func<bool> signed = null)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
-            SourceExpression.Validate(signed, nameof(signed), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));

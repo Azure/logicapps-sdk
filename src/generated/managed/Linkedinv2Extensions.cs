@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         public IBodyWorkflowAction<ShareResponseV2> PostCompanyUpdate([WorkflowExpression] Func<string> bodycompany, [WorkflowExpression] Func<string> bodycommentary, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility, [WorkflowExpression] Func<string> bodycontentarticleuRLOfTheArticle, [WorkflowExpression] Func<string> bodycontentarticletitle, [WorkflowExpression] Func<bool> bodyisReshareDisabledByAuthor = null, [WorkflowExpression] Func<string> bodycontentarticledescription = null, [WorkflowExpression] Func<string> bodycontentarticlethumbnailURL = null)
         {
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: true);
-            SourceExpression.Validate(bodycommentary, nameof(bodycommentary), required: true);
-            SourceExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: true);
-            SourceExpression.Validate(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            SourceExpression.Validate(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            SourceExpression.Validate(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            SourceExpression.Validate(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            SourceExpression.Validate(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/company/rest/posts/v2";
@@ -132,13 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         public IBodyWorkflowAction<ShareResponseV2> PostUpdate([WorkflowExpression] Func<string> bodycommentary, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility, [WorkflowExpression] Func<string> bodycontentarticleuRLOfTheArticle, [WorkflowExpression] Func<string> bodycontentarticletitle, [WorkflowExpression] Func<bool> bodyisReshareDisabledByAuthor = null, [WorkflowExpression] Func<string> bodycontentarticledescription = null, [WorkflowExpression] Func<string> bodycontentarticlethumbnailURL = null)
         {
-            SourceExpression.Validate(bodycommentary, nameof(bodycommentary), required: true);
-            SourceExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: true);
-            SourceExpression.Validate(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            SourceExpression.Validate(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            SourceExpression.Validate(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            SourceExpression.Validate(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            SourceExpression.Validate(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/people/rest/posts/v2";

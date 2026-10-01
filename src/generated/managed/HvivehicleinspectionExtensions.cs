@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
         public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle([WorkflowExpression] Func<string> sv, [WorkflowExpression] Func<string> bodymasterEmail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyvehicleNumber, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate)
         {
-            SourceExpression.Validate(sv, nameof(sv), required: true);
-            SourceExpression.Validate(bodymasterEmail, nameof(bodymasterEmail), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodyvehicleNumber, nameof(bodyvehicleNumber), required: true);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";

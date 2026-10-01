@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListFlightsResponse> ListFlights([WorkflowExpression] Func<string> flag = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> arrIata = null)
         {
-            SourceExpression.Validate(flag, nameof(flag), required: false);
-            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
-            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
-            SourceExpression.Validate(depIcao, nameof(depIcao), required: false);
-            SourceExpression.Validate(depIata, nameof(depIata), required: false);
-            SourceExpression.Validate(arrIcao, nameof(arrIcao), required: false);
-            SourceExpression.Validate(arrIata, nameof(arrIata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flights";
@@ -49,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<GetFlightResponse> GetFlight([WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> flightIcao = null)
         {
-            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
-            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flight";
@@ -69,13 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListAirlinesResponse> ListAirlines([WorkflowExpression] Func<string> iataCode = null, [WorkflowExpression] Func<string> iataPrefix = null, [WorkflowExpression] Func<string> iataAccounting = null, [WorkflowExpression] Func<string> icaoCode = null, [WorkflowExpression] Func<string> callsign = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            SourceExpression.Validate(iataCode, nameof(iataCode), required: false);
-            SourceExpression.Validate(iataPrefix, nameof(iataPrefix), required: false);
-            SourceExpression.Validate(iataAccounting, nameof(iataAccounting), required: false);
-            SourceExpression.Validate(icaoCode, nameof(icaoCode), required: false);
-            SourceExpression.Validate(callsign, nameof(callsign), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(Fields, nameof(Fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airlines";
@@ -104,15 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListRoutesResponse> ListRoutes([WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            SourceExpression.Validate(depIata, nameof(depIata), required: false);
-            SourceExpression.Validate(depIcao, nameof(depIcao), required: false);
-            SourceExpression.Validate(arrIata, nameof(arrIata), required: false);
-            SourceExpression.Validate(arrIcao, nameof(arrIcao), required: false);
-            SourceExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
-            SourceExpression.Validate(airlineIata, nameof(airlineIata), required: false);
-            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
-            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
-            SourceExpression.Validate(Fields, nameof(Fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/routes";
@@ -145,15 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListSchedulesResponse> ListSchedules([WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            SourceExpression.Validate(depIata, nameof(depIata), required: false);
-            SourceExpression.Validate(depIcao, nameof(depIcao), required: false);
-            SourceExpression.Validate(arrIata, nameof(arrIata), required: false);
-            SourceExpression.Validate(arrIcao, nameof(arrIcao), required: false);
-            SourceExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
-            SourceExpression.Validate(airlineIata, nameof(airlineIata), required: false);
-            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
-            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
-            SourceExpression.Validate(Fields, nameof(Fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/schedules";
@@ -186,11 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListAirportsResponse> ListAirports([WorkflowExpression] Func<string> iataCode = null, [WorkflowExpression] Func<string> icaoCode = null, [WorkflowExpression] Func<string> cityCode = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            SourceExpression.Validate(iataCode, nameof(iataCode), required: false);
-            SourceExpression.Validate(icaoCode, nameof(icaoCode), required: false);
-            SourceExpression.Validate(cityCode, nameof(cityCode), required: false);
-            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
-            SourceExpression.Validate(Fields, nameof(Fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/airports";
@@ -215,10 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListCountriesResponse> ListCountries([WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> code3 = null, [WorkflowExpression] Func<string> continent = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            SourceExpression.Validate(code, nameof(code), required: false);
-            SourceExpression.Validate(code3, nameof(code3), required: false);
-            SourceExpression.Validate(continent, nameof(continent), required: false);
-            SourceExpression.Validate(Fields, nameof(Fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/countries";

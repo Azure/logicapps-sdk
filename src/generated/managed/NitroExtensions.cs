@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
         public IBodyWorkflowAction<Error> TemplateSignatureRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> dynamicSchema = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(dynamicSchema, nameof(dynamicSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

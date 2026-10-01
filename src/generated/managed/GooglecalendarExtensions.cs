@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<CalendarList> ListCalendars([WorkflowExpression] Func<minAccessRoleInput> minAccessRole = null)
         {
-            SourceExpression.Validate(minAccessRole, nameof(minAccessRole), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users/me/calendarList";
@@ -31,10 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<CalendarEventList> ListEvents([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> timeMin = null, [WorkflowExpression] Func<string> timeMax = null, [WorkflowExpression] Func<string> q = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(timeMin, nameof(timeMin), required: false);
-            SourceExpression.Validate(timeMax, nameof(timeMax), required: false);
-            SourceExpression.Validate(q, nameof(q), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
@@ -55,15 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> CreateEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> newEventstartTime, [WorkflowExpression] Func<string> newEventendTime, [WorkflowExpression] Func<string> newEventtitle = null, [WorkflowExpression] Func<string> newEventdescription = null, [WorkflowExpression] Func<string> newEventlocation = null, [WorkflowExpression] Func<string> newEventattendees = null, [WorkflowExpression] Func<newEventstatusInput> newEventstatus = null, [WorkflowExpression] Func<bool> newEventisAllDay = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(newEventstartTime, nameof(newEventstartTime), required: true);
-            SourceExpression.Validate(newEventendTime, nameof(newEventendTime), required: true);
-            SourceExpression.Validate(newEventtitle, nameof(newEventtitle), required: false);
-            SourceExpression.Validate(newEventdescription, nameof(newEventdescription), required: false);
-            SourceExpression.Validate(newEventlocation, nameof(newEventlocation), required: false);
-            SourceExpression.Validate(newEventattendees, nameof(newEventattendees), required: false);
-            SourceExpression.Validate(newEventstatus, nameof(newEventstatus), required: false);
-            SourceExpression.Validate(newEventisAllDay, nameof(newEventisAllDay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
@@ -124,8 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> GetEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -140,8 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<JToken> DeleteEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -156,16 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> UpdateEvent([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<string> eventId, [WorkflowExpression] Func<string> updatedEventtitle = null, [WorkflowExpression] Func<string> updatedEventstartTime = null, [WorkflowExpression] Func<string> updatedEventendTime = null, [WorkflowExpression] Func<string> updatedEventdescription = null, [WorkflowExpression] Func<string> updatedEventlocation = null, [WorkflowExpression] Func<string> updatedEventattendees = null, [WorkflowExpression] Func<updatedEventstatusInput> updatedEventstatus = null, [WorkflowExpression] Func<bool> updatedEventisAllDay = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
-            SourceExpression.Validate(updatedEventtitle, nameof(updatedEventtitle), required: false);
-            SourceExpression.Validate(updatedEventstartTime, nameof(updatedEventstartTime), required: false);
-            SourceExpression.Validate(updatedEventendTime, nameof(updatedEventendTime), required: false);
-            SourceExpression.Validate(updatedEventdescription, nameof(updatedEventdescription), required: false);
-            SourceExpression.Validate(updatedEventlocation, nameof(updatedEventlocation), required: false);
-            SourceExpression.Validate(updatedEventattendees, nameof(updatedEventattendees), required: false);
-            SourceExpression.Validate(updatedEventstatus, nameof(updatedEventstatus), required: false);
-            SourceExpression.Validate(updatedEventisAllDay, nameof(updatedEventisAllDay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -236,7 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     {
         public IBodyWorkflowTrigger<CalendarEventList> OnNewEventInCalendar([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger1/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
@@ -250,7 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnUpdatedEventInCalendar([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger2/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
@@ -264,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnDeletedEventInCalendar([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger3/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
@@ -278,8 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventChangedList> OnChangedEventInCalendar([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<bool> singleEvents = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
-            SourceExpression.Validate(singleEvents, nameof(singleEvents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger4/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));
@@ -295,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnEventStarted([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(calendarId, nameof(calendarId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/eventstarted/calendars/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(calendarId, 1));

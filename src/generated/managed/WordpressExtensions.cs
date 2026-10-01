@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<SiteStatsModel> SiteStats([WorkflowExpression] Func<string> siteId)
         {
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
@@ -30,8 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<PostModel> Get([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> postId)
         {
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -46,11 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<PostModel> Create([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> posttitle = null, [WorkflowExpression] Func<string> postcontent = null, [WorkflowExpression] Func<poststatusInput> poststatus = null, [WorkflowExpression] Func<string> posttags = null)
         {
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
-            SourceExpression.Validate(posttitle, nameof(posttitle), required: false);
-            SourceExpression.Validate(postcontent, nameof(postcontent), required: false);
-            SourceExpression.Validate(poststatus, nameof(poststatus), required: false);
-            SourceExpression.Validate(posttags, nameof(posttags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));

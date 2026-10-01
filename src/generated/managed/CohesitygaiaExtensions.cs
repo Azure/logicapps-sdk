@@ -42,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         public IBodyWorkflowAction<QueryResponse> SendQuery([WorkflowExpression] Func<string> bodyllmName, [WorkflowExpression] Func<string> bodyllmId, [WorkflowExpression] Func<string[]> bodydatasetNames, [WorkflowExpression] Func<string> bodyqueryString)
         {
-            SourceExpression.Validate(bodyllmName, nameof(bodyllmName), required: true);
-            SourceExpression.Validate(bodyllmId, nameof(bodyllmId), required: true);
-            SourceExpression.Validate(bodydatasetNames, nameof(bodydatasetNames), required: true);
-            SourceExpression.Validate(bodyqueryString, nameof(bodyqueryString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mcm/gaia/ask";

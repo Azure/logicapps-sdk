@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
         public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent([WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> uid = null, [WorkflowExpression] Func<string> lastModified = null, [WorkflowExpression] Func<string> popularity = null, [WorkflowExpression] Func<string> level = null, [WorkflowExpression] Func<string> role = null, [WorkflowExpression] Func<string> product = null, [WorkflowExpression] Func<string> subject = null)
         {
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(uid, nameof(uid), required: false);
-            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
-            SourceExpression.Validate(popularity, nameof(popularity), required: false);
-            SourceExpression.Validate(level, nameof(level), required: false);
-            SourceExpression.Validate(role, nameof(role), required: false);
-            SourceExpression.Validate(product, nameof(product), required: false);
-            SourceExpression.Validate(subject, nameof(subject), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

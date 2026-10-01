@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetWorkOrdersResponseItem[]> GetWorkOrders([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/workorder";
@@ -52,9 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateUpdateWorkOrderResponse> CreateUpdateWorkOrder([WorkflowExpression] Func<bodyInputItem[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/workorder";
@@ -74,9 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<DeleteOrderResponse> DeleteOrder([WorkflowExpression] Func<bodyInputItem2[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/order";
@@ -98,9 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<SetOrderCompleteResponse> SetOrderComplete([WorkflowExpression] Func<bodyInputItem22[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/order/complete";
@@ -120,9 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<SetOrderStatusResponse> SetOrderStatus([WorkflowExpression] Func<bodyInputItem222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/order/status";
@@ -142,9 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<string> AssignOrder([WorkflowExpression] Func<bodyInputItem2222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/order/assignment";
@@ -164,13 +141,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetInventoryResponseItem[]> GetInventory([WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> binNumber = null, [WorkflowExpression] Func<string> allocationSetName = null, [WorkflowExpression] Func<string> warehouseName = null, [WorkflowExpression] Func<string> coreValue = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(binNumber, nameof(binNumber), required: false);
-            SourceExpression.Validate(allocationSetName, nameof(allocationSetName), required: false);
-            SourceExpression.Validate(warehouseName, nameof(warehouseName), required: false);
-            SourceExpression.Validate(coreValue, nameof(coreValue), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/inventory";
@@ -199,9 +169,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateInventoryRequestResponse> CreateInventoryRequest([WorkflowExpression] Func<bodyInputItem22222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/inventory/request";
@@ -221,9 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateInventoryAdjustmentResponse> CreateInventoryAdjustment([WorkflowExpression] Func<bodyInputItem222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/inventory/adjustment";
@@ -243,9 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<DeleteInboundRequestResponse> DeleteInboundRequest([WorkflowExpression] Func<bodyInputItem2222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/purchaseorder";
@@ -267,9 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateInboundRequestResponse> CreateInboundRequest([WorkflowExpression] Func<bodyInputItem22222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/purchaseorder";
@@ -289,9 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<string> CreateSite([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem222222222[]> body = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/warehouse";
@@ -309,9 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateItemResponse> CreateItem([WorkflowExpression] Func<bodyInputItem2222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/item";
@@ -331,15 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetInboundRequestResponseItem[]> GetInboundRequest([WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<pOStatusInput> pOStatus = null, [WorkflowExpression] Func<lineReceiptStatusInput> lineReceiptStatus = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> pONumber = null, [WorkflowExpression] Func<string> pOType = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(pOStatus, nameof(pOStatus), required: false);
-            SourceExpression.Validate(lineReceiptStatus, nameof(lineReceiptStatus), required: false);
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(pONumber, nameof(pONumber), required: false);
-            SourceExpression.Validate(pOType, nameof(pOType), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/purchaseorder/filter";
@@ -372,9 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<InboundCompleteResponse> InboundComplete([WorkflowExpression] Func<bodyInputItem22[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/purchaseorder/complete";
@@ -394,9 +334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateLocationResponse> CreateLocation([WorkflowExpression] Func<bodyInputItem22222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/bins";
@@ -416,9 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<ReceiptCompleteResponse> ReceiptComplete([WorkflowExpression] Func<bodyInputItem222222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/purchaseorder/receipt/complete";
@@ -438,14 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetSalesOrdersResponseItem[]> GetSalesOrders([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/salesorder";
@@ -476,9 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateUpdateSalesOrderResponse> CreateUpdateSalesOrder([WorkflowExpression] Func<bodyInputItem2222222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/salesorder";
@@ -498,9 +421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<string> ConsumeInventory([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem22222222222222[]> body = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/workorder/consumption";
@@ -518,9 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetBarcodeInfoResponse> GetBarcodeInfo([WorkflowExpression] Func<string> barcode, [WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse)
         {
-            SourceExpression.Validate(barcode, nameof(barcode), required: true);
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/barcode";
@@ -538,9 +455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<SingleScanInventoryLookupResponseItem[]> SingleScanInventoryLookup([WorkflowExpression] Func<string> barcode, [WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse)
         {
-            SourceExpression.Validate(barcode, nameof(barcode), required: true);
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/po/container";
@@ -558,14 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetTransferOrdersResponseItem[]> GetTransferOrders([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/transferorder";
@@ -596,9 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateUpdateTransferOrderResponse> CreateUpdateTransferOrder([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem222222222222222[]> body = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/transferorder";
@@ -616,14 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetPurchaseOrderResponseItem[]> GetPurchaseOrder([WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<pOStatusInput> pOStatus = null, [WorkflowExpression] Func<lineReceiptStatusInput> lineReceiptStatus = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> pONumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(pOStatus, nameof(pOStatus), required: false);
-            SourceExpression.Validate(lineReceiptStatus, nameof(lineReceiptStatus), required: false);
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(pONumber, nameof(pONumber), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/purchaseorder/po";
@@ -654,9 +549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreatePurchaseOrderResponse> CreatePurchaseOrder([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem2222222222222222[]> body = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: true);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/purchaseorder/po";
@@ -674,14 +566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetManufacturingOrderResponseItem[]> GetManufacturingOrder([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/manufacturingorder";
@@ -712,9 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse> CreateUpdateManufacturingOrder([WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null, [WorkflowExpression] Func<bodyInputItem22222222222222222[]> body = null)
         {
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/manufacturingorder";
@@ -734,11 +615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
         public IBodyWorkflowAction<GetInventoryAggregateResponseItem[]> GetInventoryAggregate([WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> warehouseName = null, [WorkflowExpression] Func<string> allocationSetName = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
         {
-            SourceExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            SourceExpression.Validate(warehouseName, nameof(warehouseName), required: false);
-            SourceExpression.Validate(allocationSetName, nameof(allocationSetName), required: false);
-            SourceExpression.Validate(userName, nameof(userName), required: false);
-            SourceExpression.Validate(warehouse, nameof(warehouse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/inventory/quantity";

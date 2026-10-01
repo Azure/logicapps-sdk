@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlogGetResponse> BlogGet([WorkflowExpression] Func<string> blogIdentifier)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/info", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlocksGetResponse> BlocksGet([WorkflowExpression] Func<string> blogIdentifier)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -44,9 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<string> PostUnblock([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyblockedTumblelog = null, [WorkflowExpression] Func<bool> bodyanonymousOnly = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
-            SourceExpression.Validate(bodyanonymousOnly, nameof(bodyanonymousOnly), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -79,9 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<string> PostBlock([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyblockedTumblelog = null, [WorkflowExpression] Func<string> bodypostId = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
-            SourceExpression.Validate(bodypostId, nameof(bodypostId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -114,9 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<string> PostsBlock([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyblockedTumblelogs = null, [WorkflowExpression] Func<bool> bodyforce = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(bodyblockedTumblelogs, nameof(bodyblockedTumblelogs), required: false);
-            SourceExpression.Validate(bodyforce, nameof(bodyforce), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks/bulk", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -149,11 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlogLikesGetResponse> BlogLikesGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/likes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -176,9 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlogFollowingGetResponse> BlogFollowingGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/following", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -197,9 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlogFollowersGetResponse> BlogFollowersGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -218,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlogFollowCheckGetResponse> BlogFollowCheckGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> query)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(query, nameof(query), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followed_by", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -235,10 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostsQueuedGetResponse> PostsQueuedGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -259,9 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<string> PostQueuedReorder([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodypostId = null, [WorkflowExpression] Func<string> bodyinsertAfter = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(bodypostId, nameof(bodypostId), required: false);
-            SourceExpression.Validate(bodyinsertAfter, nameof(bodyinsertAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/reorder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -294,7 +263,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<string> PostQueuedShuffle([WorkflowExpression] Func<string> blogIdentifier)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/shuffle", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -309,9 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostDraftsGetResponse> PostDraftsGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<double> beforeId = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(beforeId, nameof(beforeId), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -330,9 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostSubmissionGetResponse> PostSubmissionGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> offset = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/submission", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -351,10 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<ActivityFeedGetResponse> ActivityFeedGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> types = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<bool> rollups = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(types, nameof(types), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(rollups, nameof(rollups), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notifications", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -375,22 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostCreatePostResponse> PostCreate([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<bodycontentInputItem[]> bodycontent = null, [WorkflowExpression] Func<bodylayoutInputItem[]> bodylayout = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypublishedOn = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodysourceUrl = null, [WorkflowExpression] Func<bool> bodysendToTwitter = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyinteractabilityReblog = null, [WorkflowExpression] Func<string> bodyparentTumblelogUuid = null, [WorkflowExpression] Func<int> bodyparentPostId = null, [WorkflowExpression] Func<string> bodyreblogKey = null, [WorkflowExpression] Func<bool> bodyhideTrail = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodylayout, nameof(bodylayout), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypublishedOn, nameof(bodypublishedOn), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodysourceUrl, nameof(bodysourceUrl), required: false);
-            SourceExpression.Validate(bodysendToTwitter, nameof(bodysendToTwitter), required: false);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
-            SourceExpression.Validate(bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
-            SourceExpression.Validate(bodyparentPostId, nameof(bodyparentPostId), required: false);
-            SourceExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: false);
-            SourceExpression.Validate(bodyhideTrail, nameof(bodyhideTrail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -501,9 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostRetrieveGetResponse> PostRetrieveGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<postFormatInput> postFormat = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -521,23 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostEditPutResponse> PostEditPut([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<bodycontentInputItem[]> bodycontent = null, [WorkflowExpression] Func<bodylayoutInputItem[]> bodylayout = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypublishedOn = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodysourceUrl = null, [WorkflowExpression] Func<bool> bodysendToTwitter = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyinteractabilityReblog = null, [WorkflowExpression] Func<string> bodyparentTumblelogUuid = null, [WorkflowExpression] Func<int> bodyparentPostId = null, [WorkflowExpression] Func<string> bodyreblogKey = null, [WorkflowExpression] Func<bool> bodyhideTrail = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(postId, nameof(postId), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodylayout, nameof(bodylayout), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodypublishedOn, nameof(bodypublishedOn), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodysourceUrl, nameof(bodysourceUrl), required: false);
-            SourceExpression.Validate(bodysendToTwitter, nameof(bodysendToTwitter), required: false);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            SourceExpression.Validate(bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
-            SourceExpression.Validate(bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
-            SourceExpression.Validate(bodyparentPostId, nameof(bodyparentPostId), required: false);
-            SourceExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: false);
-            SourceExpression.Validate(bodyhideTrail, nameof(bodyhideTrail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
@@ -648,8 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostDeleteResponse> PostDelete([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyid)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/post/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -672,10 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostNotesGetResponse> PostNotesGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<double> id, [WorkflowExpression] Func<double> beforeTimestamp = null, [WorkflowExpression] Func<modeInput> mode = null)
         {
-            SourceExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(beforeTimestamp, nameof(beforeTimestamp), required: false);
-            SourceExpression.Validate(mode, nameof(mode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blogIdentifier, 1));
@@ -766,8 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlogFollowPostResponse> BlogFollow([WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/user/follow";
@@ -800,7 +714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<BlogUnfollowPostResponse> BlogUnfollow([WorkflowExpression] Func<string> bodyurl = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/user/unfollow";
@@ -827,8 +740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<string> PostLike([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyreblogKey)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/user/like";
@@ -853,8 +764,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<string> PostUnlike([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyreblogKey)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/user/unlike";
@@ -879,10 +788,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<PostTagGetResponseItem[]> PostTagGet([WorkflowExpression] Func<string> tag, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(tag, nameof(tag), required: true);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/tagged";

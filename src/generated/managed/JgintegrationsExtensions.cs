@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<HASHHMACResponse> HASHHMAC([WorkflowExpression] Func<bodyalgoInput> bodyalgo, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string> bodykey)
         {
-            SourceExpression.Validate(bodyalgo, nameof(bodyalgo), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
-            SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/crypto/hash_hmac";
@@ -45,9 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<PREGREPLACEResponse> PREGREPLACE([WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyreplacement = null)
         {
-            SourceExpression.Validate(bodypattern, nameof(bodypattern), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodyreplacement, nameof(bodyreplacement), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/preg_replace";
@@ -90,8 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<MANUALResponse> MANUAL([WorkflowExpression] Func<string> bodyfunction, [WorkflowExpression] Func<string> bodydata)
         {
-            SourceExpression.Validate(bodyfunction, nameof(bodyfunction), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/manual_func";
@@ -118,10 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<JToken> HTMLTOPDF([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodylandscape, [WorkflowExpression] Func<bodypagesizeInput> bodypagesize)
         {
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodylandscape, nameof(bodylandscape), required: true);
-            SourceExpression.Validate(bodypagesize, nameof(bodypagesize), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/html_to_pdf";
@@ -152,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<FILESTRINGResponse> FILESTRING([WorkflowExpression] Func<string> bodysubject)
         {
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/text/file_string";

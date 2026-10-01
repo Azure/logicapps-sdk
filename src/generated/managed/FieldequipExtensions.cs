@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateCustomer([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/customer/create";
@@ -37,10 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateCustomer([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/customer/update";
@@ -60,10 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateWorkOrders([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/workorder/create";
@@ -83,10 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateWorkOrders([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v3/workorder/update";
@@ -106,10 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateItems([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem22[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/item/create";
@@ -129,10 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateItems([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<bodyInputItem22[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/item/update";
@@ -152,11 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateInventory([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<string> warehouseRefNum = null, [WorkflowExpression] Func<bodyInputItem222[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(warehouseRefNum, nameof(warehouseRefNum), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/warehouse/inventory";
@@ -178,11 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateItemAdjustment([WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> companyId = null, [WorkflowExpression] Func<string> warehouseRefNum = null, [WorkflowExpression] Func<bodyInputItem2222[]> body = null)
         {
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(companyId, nameof(companyId), required: false);
-            SourceExpression.Validate(warehouseRefNum, nameof(warehouseRefNum), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/warehouse/inventory/adjustment";
@@ -204,10 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateLocations([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<bodyInputItem22222[]> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/location/create";
@@ -226,10 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateLocations([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<bodyInputItem22222[]> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/location/update";
@@ -248,10 +206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateUsers([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<bodyInputItem222222[]> body = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/user/create";
@@ -270,22 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateUsers([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> xApiKey, [WorkflowExpression] Func<string> xOrigin, [WorkflowExpression] Func<string> bodycompanyId = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodybusinessUnitCode = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodypayrollCode = null, [WorkflowExpression] Func<string> bodyplantId = null, [WorkflowExpression] Func<string> bodyempId = null, [WorkflowExpression] Func<string> bodymobileNumber = null, [WorkflowExpression] Func<string> bodyreportingManager = null, [WorkflowExpression] Func<string> bodyempType = null, [WorkflowExpression] Func<string> bodystateCode = null)
         {
-            SourceExpression.Validate(companyId, nameof(companyId), required: true);
-            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: true);
-            SourceExpression.Validate(xOrigin, nameof(xOrigin), required: true);
-            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodybusinessUnitCode, nameof(bodybusinessUnitCode), required: false);
-            SourceExpression.Validate(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
-            SourceExpression.Validate(bodypayrollCode, nameof(bodypayrollCode), required: false);
-            SourceExpression.Validate(bodyplantId, nameof(bodyplantId), required: false);
-            SourceExpression.Validate(bodyempId, nameof(bodyempId), required: false);
-            SourceExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: false);
-            SourceExpression.Validate(bodyreportingManager, nameof(bodyreportingManager), required: false);
-            SourceExpression.Validate(bodyempType, nameof(bodyempType), required: false);
-            SourceExpression.Validate(bodystateCode, nameof(bodystateCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/user/update";

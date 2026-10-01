@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataSourceModel> GETDataSource([WorkflowExpression] Func<string> dataSourceId)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataSourceId, 1));
@@ -71,8 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<JToken[]> GETDataSourceDefinitionValues([WorkflowExpression] Func<string> dataSourceId, [WorkflowExpression] Func<string> dataSourceVersion)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            SourceExpression.Validate(dataSourceVersion, nameof(dataSourceVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataSourceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataSourceVersion, 1));
@@ -87,9 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataSourceVersionModel> PUTDataSourceDefinitionValues([WorkflowExpression] Func<string> dataSourceId, [WorkflowExpression] Func<string> dataSourceVersion, [WorkflowExpression] Func<JToken[]> values = null)
         {
-            SourceExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            SourceExpression.Validate(dataSourceVersion, nameof(dataSourceVersion), required: true);
-            SourceExpression.Validate(values, nameof(values), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataSourceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataSourceVersion, 1));
@@ -119,7 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<SmapModel> GETSmap([WorkflowExpression] Func<string> smapId)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1));
@@ -134,10 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataRecordApi[]> GETSmapDataFormat([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Data.{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -157,9 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<string> GETSmapDataReport([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Data.pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1));
@@ -179,11 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataRecordApi[]> GETSmapVersionData([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
@@ -206,9 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IWorkflowAction DELETESmapVersionData([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
@@ -225,12 +203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataRecordApi> POSTSmapsDataVersion([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> tasktitle, [WorkflowExpression] Func<string> taskuserEmail = null, [WorkflowExpression] Func<string> taskcomment = null, [WorkflowExpression] Func<bool> taskhasPriority = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(tasktitle, nameof(tasktitle), required: true);
-            SourceExpression.Validate(taskuserEmail, nameof(taskuserEmail), required: false);
-            SourceExpression.Validate(taskcomment, nameof(taskcomment), required: false);
-            SourceExpression.Validate(taskhasPriority, nameof(taskhasPriority), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
@@ -279,10 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<string> GETSmapVersionDataReport([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<stateInput> state = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data.pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
@@ -302,12 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<string> GETSmapVersionRecordReport([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<bool> useDefault = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            SourceExpression.Validate(useDefault, nameof(useDefault), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}.{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -328,11 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataRecordApi> GETSmapVersionRecordFormat([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> markAsExported = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(markAsExported, nameof(markAsExported), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -353,9 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IWorkflowAction DELETESmapVersionDataRecord([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -370,9 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<SingleFileValue[]> GETSmapVersionRecordFiles([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -387,10 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IWorkflowAction GETSmapVersionRecordFile([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -405,11 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataRecordApi> PUTSmapVersionTaskState([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<stateactionInput> stateaction = null, [WorkflowExpression] Func<string> stateuserEmail = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
-            SourceExpression.Validate(stateaction, nameof(stateaction), required: false);
-            SourceExpression.Validate(stateuserEmail, nameof(stateuserEmail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Tasks/{2}/State", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -442,8 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<SmapVersionModel> PUTSmapVersionsCurrentDataSourcesUpdate([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<bool> updateEditVersion = null)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(updateEditVersion, nameof(updateEditVersion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/Current/DataSources/Update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1));
@@ -461,7 +401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<SmapVersionModel[]> GETSmapVersions([WorkflowExpression] Func<string> smapId)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1));
@@ -476,8 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<SmapVersionModel> GETSmapVersion([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
@@ -492,8 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<JToken> GETSmapVersionSchema([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version)
         {
-            SourceExpression.Validate(smapId, nameof(smapId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(smapId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));

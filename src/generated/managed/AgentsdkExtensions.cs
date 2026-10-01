@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agentsdk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agentsdk")]
         public IBodyWorkflowAction<JToken> SendActivity([WorkflowExpression] Func<string> agentEndpoint)
         {
-            SourceExpression.Validate(agentEndpoint, nameof(agentEndpoint), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/messages";

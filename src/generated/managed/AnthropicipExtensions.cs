@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
         public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<bodymodelInput> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<int> bodymaxTokens, [WorkflowExpression] Func<bool> bodythinkingtype = null, [WorkflowExpression] Func<int> bodythinkingbudgetTokens = null, [WorkflowExpression] Func<string[]> bodystopSequences = null, [WorkflowExpression] Func<string> bodysystem = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<double> bodytopP = null)
         {
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: true);
-            SourceExpression.Validate(bodythinkingtype, nameof(bodythinkingtype), required: false);
-            SourceExpression.Validate(bodythinkingbudgetTokens, nameof(bodythinkingbudgetTokens), required: false);
-            SourceExpression.Validate(bodystopSequences, nameof(bodystopSequences), required: false);
-            SourceExpression.Validate(bodysystem, nameof(bodysystem), required: false);
-            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            SourceExpression.Validate(bodytools, nameof(bodytools), required: false);
-            SourceExpression.Validate(bodytopK, nameof(bodytopK), required: false);
-            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/messages";

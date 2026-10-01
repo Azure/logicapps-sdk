@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "objectiveconnect")]
         public IBodyWorkflowAction<GetParticipantsResponseItem[]> GetParticipants([WorkflowExpression] Func<string> userUuid = null)
         {
-            SourceExpression.Validate(userUuid, nameof(userUuid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/participants";
@@ -33,11 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "objectiveconnect")]
         public IBodyWorkflowAction<AddParticipantResponseItem[]> AddParticipant([WorkflowExpression] Func<string[]> bodyemails, [WorkflowExpression] Func<string> bodyshareUuid, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<bodyrolesInputItem[]> bodyroles = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null)
         {
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: true);
-            SourceExpression.Validate(bodyshareUuid, nameof(bodyshareUuid), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodyroles, nameof(bodyroles), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/participants/batch";
@@ -93,7 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "objectiveconnect")]
         public IWorkflowAction DeleteParticipant([WorkflowExpression] Func<string> uuid)
         {
-            SourceExpression.Validate(uuid, nameof(uuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/participants/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
@@ -110,13 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "objectiveconnect")]
         public IBodyWorkflowAction<ShareResponse[]> ListWorkspaces([WorkflowExpression] Func<int> length = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> ownerUuid = null, [WorkflowExpression] Func<string> participantUuid = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> workgroupUuid = null)
         {
-            SourceExpression.Validate(length, nameof(length), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(ownerUuid, nameof(ownerUuid), required: false);
-            SourceExpression.Validate(participantUuid, nameof(participantUuid), required: false);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(workgroupUuid, nameof(workgroupUuid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/shares";
@@ -145,12 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "objectiveconnect")]
         public IBodyWorkflowAction<UserResponse[]> GetUser([WorkflowExpression] Func<string> emailAddress = null, [WorkflowExpression] Func<int> length = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> orgUuid = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string[]> uuids = null)
         {
-            SourceExpression.Validate(emailAddress, nameof(emailAddress), required: false);
-            SourceExpression.Validate(length, nameof(length), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(orgUuid, nameof(orgUuid), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(uuids, nameof(uuids), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";

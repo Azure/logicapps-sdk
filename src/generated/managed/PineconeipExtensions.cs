@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery([WorkflowExpression] Func<bool> bodyincludeValues = null, [WorkflowExpression] Func<bool> bodyincludeMetadata = null, [WorkflowExpression] Func<int[]> bodysparseVectorindices = null, [WorkflowExpression] Func<int[]> bodysparseVectorvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<int[]> bodyvector = null, [WorkflowExpression] Func<string> bodyid = null)
         {
-            SourceExpression.Validate(bodyincludeValues, nameof(bodyincludeValues), required: false);
-            SourceExpression.Validate(bodyincludeMetadata, nameof(bodyincludeMetadata), required: false);
-            SourceExpression.Validate(bodysparseVectorindices, nameof(bodysparseVectorindices), required: false);
-            SourceExpression.Validate(bodysparseVectorvalues, nameof(bodysparseVectorvalues), required: false);
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
-            SourceExpression.Validate(bodytopK, nameof(bodytopK), required: false);
-            SourceExpression.Validate(bodyvector, nameof(bodyvector), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query";
@@ -112,9 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> VectorDelete([WorkflowExpression] Func<bool> bodydeleteAll = null, [WorkflowExpression] Func<string[]> bodyids = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
-            SourceExpression.Validate(bodydeleteAll, nameof(bodydeleteAll), required: false);
-            SourceExpression.Validate(bodyids, nameof(bodyids), required: false);
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vectors/delete";
@@ -153,8 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<VectorsGetResponse> VectorsGet([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> @namespace = null)
         {
-            SourceExpression.Validate(ids, nameof(ids), required: true);
-            SourceExpression.Validate(@namespace, nameof(@namespace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fetch";
@@ -172,11 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> VectorUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double[]> bodyvalues = null, [WorkflowExpression] Func<int[]> bodysparseValuesindices = null, [WorkflowExpression] Func<double[]> bodysparseValuesvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
-            SourceExpression.Validate(bodyvalues, nameof(bodyvalues), required: false);
-            SourceExpression.Validate(bodysparseValuesindices, nameof(bodysparseValuesindices), required: false);
-            SourceExpression.Validate(bodysparseValuesvalues, nameof(bodysparseValuesvalues), required: false);
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vectors/update";
@@ -231,8 +213,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert([WorkflowExpression] Func<bodyvectorsInputItem[]> bodyvectors = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
-            SourceExpression.Validate(bodyvectors, nameof(bodyvectors), required: false);
-            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vectors/upsert";
@@ -279,8 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> CollectionCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodysource)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/collections";
@@ -305,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<CollectionGetResponse> CollectionGet([WorkflowExpression] Func<string> collectionName)
         {
-            SourceExpression.Validate(collectionName, nameof(collectionName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
@@ -320,7 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> CollectionDelete([WorkflowExpression] Func<string> collectionName)
         {
-            SourceExpression.Validate(collectionName, nameof(collectionName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
@@ -349,13 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> Index([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodydimension, [WorkflowExpression] Func<string> bodymetric = null, [WorkflowExpression] Func<int> bodypods = null, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null, [WorkflowExpression] Func<string> bodysourceCollection = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydimension, nameof(bodydimension), required: true);
-            SourceExpression.Validate(bodymetric, nameof(bodymetric), required: false);
-            SourceExpression.Validate(bodypods, nameof(bodypods), required: false);
-            SourceExpression.Validate(bodyreplicas, nameof(bodyreplicas), required: false);
-            SourceExpression.Validate(bodypodType, nameof(bodypodType), required: false);
-            SourceExpression.Validate(bodysourceCollection, nameof(bodysourceCollection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/databases";
@@ -410,7 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<IndexGetResponse> IndexGet([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
@@ -425,7 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> IndexDelete([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
@@ -440,9 +407,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string> IndexPatch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(bodyreplicas, nameof(bodyreplicas), required: false);
-            SourceExpression.Validate(bodypodType, nameof(bodypodType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));

@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationsResponse> GetStations([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<string> state = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations";
@@ -49,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationResponse> GetStation([WorkflowExpression] Func<string> stationCode)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -64,15 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetNearbyWeatherStationsResponse> GetNearbyWeatherStations([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<string> state = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: true);
-            SourceExpression.Validate(longitude, nameof(longitude), required: true);
-            SourceExpression.Validate(radius, nameof(radius), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(group, nameof(group), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stations/nearby";
@@ -103,12 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationRainfallResponse> GetStationRainfall([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> summerStartDate = null, [WorkflowExpression] Func<string> growingSeasonStartDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> forecastDate = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
-            SourceExpression.Validate(summerStartDate, nameof(summerStartDate), required: false);
-            SourceExpression.Validate(growingSeasonStartDate, nameof(growingSeasonStartDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(forecastDate, nameof(forecastDate), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/rainfall/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCode, 1));
@@ -133,15 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetPotentialYieldResponse> GetPotentialYield([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<double> latitude = null, [WorkflowExpression] Func<double> longitude = null, [WorkflowExpression] Func<string> summerStartDate = null, [WorkflowExpression] Func<string> growingSeasonStartDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> forecastDate = null, [WorkflowExpression] Func<int> waterUseEfficiency = null, [WorkflowExpression] Func<int> evaporation = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(summerStartDate, nameof(summerStartDate), required: false);
-            SourceExpression.Validate(growingSeasonStartDate, nameof(growingSeasonStartDate), required: false);
-            SourceExpression.Validate(endDate, nameof(endDate), required: false);
-            SourceExpression.Validate(forecastDate, nameof(forecastDate), required: false);
-            SourceExpression.Validate(waterUseEfficiency, nameof(waterUseEfficiency), required: false);
-            SourceExpression.Validate(evaporation, nameof(evaporation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/potential-yield";
@@ -174,22 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetSoilWaterResponse> GetSoilWater([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<soilTypeInput> soilType, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<double> latitude = null, [WorkflowExpression] Func<double> longitude = null, [WorkflowExpression] Func<int> faoInitialisationDays = null, [WorkflowExpression] Func<double> faoInitialisationCropCoefficient = null, [WorkflowExpression] Func<int> faoDevelopmentDays = null, [WorkflowExpression] Func<double> faoDevelopmentCropCoefficient = null, [WorkflowExpression] Func<int> faoMidSeasonDays = null, [WorkflowExpression] Func<double> faoMidSeasonCropCoefficient = null, [WorkflowExpression] Func<int> faoLateSeasonDays = null, [WorkflowExpression] Func<double> faoLateSeasonCropCoefficient = null, [WorkflowExpression] Func<int> faoBreakOfSeason3Days25April = null, [WorkflowExpression] Func<int> faoBreakOfSeason3Days5June = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(soilType, nameof(soilType), required: true);
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(faoInitialisationDays, nameof(faoInitialisationDays), required: false);
-            SourceExpression.Validate(faoInitialisationCropCoefficient, nameof(faoInitialisationCropCoefficient), required: false);
-            SourceExpression.Validate(faoDevelopmentDays, nameof(faoDevelopmentDays), required: false);
-            SourceExpression.Validate(faoDevelopmentCropCoefficient, nameof(faoDevelopmentCropCoefficient), required: false);
-            SourceExpression.Validate(faoMidSeasonDays, nameof(faoMidSeasonDays), required: false);
-            SourceExpression.Validate(faoMidSeasonCropCoefficient, nameof(faoMidSeasonCropCoefficient), required: false);
-            SourceExpression.Validate(faoLateSeasonDays, nameof(faoLateSeasonDays), required: false);
-            SourceExpression.Validate(faoLateSeasonCropCoefficient, nameof(faoLateSeasonCropCoefficient), required: false);
-            SourceExpression.Validate(faoBreakOfSeason3Days25April, nameof(faoBreakOfSeason3Days25April), required: false);
-            SourceExpression.Validate(faoBreakOfSeason3Days5June, nameof(faoBreakOfSeason3Days5June), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/soilwater";
@@ -233,9 +185,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetYellowSpotResponse> GetYellowSpot([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/yellowspot";

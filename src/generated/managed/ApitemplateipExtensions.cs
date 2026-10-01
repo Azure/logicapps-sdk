@@ -14,18 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccessPDFFile> PDF([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> exportType = null, [WorkflowExpression] Func<int> expiration = null, [WorkflowExpression] Func<string> outputHtml = null, [WorkflowExpression] Func<string> outputFormat = null, [WorkflowExpression] Func<string> filename = null, [WorkflowExpression] Func<string> imageResampleRes = null, [WorkflowExpression] Func<string> isCmyk = null, [WorkflowExpression] Func<int> cloudStorage = null, [WorkflowExpression] Func<string> meta = null, [WorkflowExpression] Func<string> async = null, [WorkflowExpression] Func<string> webhookUrl = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(exportType, nameof(exportType), required: false);
-            SourceExpression.Validate(expiration, nameof(expiration), required: false);
-            SourceExpression.Validate(outputHtml, nameof(outputHtml), required: false);
-            SourceExpression.Validate(outputFormat, nameof(outputFormat), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
-            SourceExpression.Validate(imageResampleRes, nameof(imageResampleRes), required: false);
-            SourceExpression.Validate(isCmyk, nameof(isCmyk), required: false);
-            SourceExpression.Validate(cloudStorage, nameof(cloudStorage), required: false);
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(async, nameof(async), required: false);
-            SourceExpression.Validate(webhookUrl, nameof(webhookUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/create-pdf";
@@ -69,11 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccessImageFile> Image([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<int> expiration = null, [WorkflowExpression] Func<int> cloudStorage = null, [WorkflowExpression] Func<string> outputImageType = null, [WorkflowExpression] Func<string> meta = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(expiration, nameof(expiration), required: false);
-            SourceExpression.Validate(cloudStorage, nameof(cloudStorage), required: false);
-            SourceExpression.Validate(outputImageType, nameof(outputImageType), required: false);
-            SourceExpression.Validate(meta, nameof(meta), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/create-image";
@@ -103,10 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccessListObjects> ObjectsGet([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> offset = null, [WorkflowExpression] Func<string> templateId = null, [WorkflowExpression] Func<string> transactionType = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(templateId, nameof(templateId), required: false);
-            SourceExpression.Validate(transactionType, nameof(transactionType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/list-objects";
@@ -129,7 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccessDeleteObject> ObjectDelete([WorkflowExpression] Func<string> transactionRef)
         {
-            SourceExpression.Validate(transactionRef, nameof(transactionRef), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/delete-object";
@@ -145,12 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccessListTemplates> TemplatesGet([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> offset = null, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> templateId = null, [WorkflowExpression] Func<string> groupName = null, [WorkflowExpression] Func<string> withLayerInfo = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(templateId, nameof(templateId), required: false);
-            SourceExpression.Validate(groupName, nameof(groupName), required: false);
-            SourceExpression.Validate(withLayerInfo, nameof(withLayerInfo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/list-templates";
@@ -177,7 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccessTemplate> TemplateGet([WorkflowExpression] Func<string> templateId = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/get-template";
@@ -194,9 +165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccess> TemplateUpdate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodycss = null)
         {
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
-            SourceExpression.Validate(bodycss, nameof(bodycss), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/update-template";
@@ -231,11 +199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
         public IBodyWorkflowAction<ResponseSuccessSingleFile> PDFMerge([WorkflowExpression] Func<string[]> bodyurls, [WorkflowExpression] Func<string> meta = null, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<int> bodycloudStorage = null)
         {
-            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
-            SourceExpression.Validate(meta, nameof(meta), required: false);
-            SourceExpression.Validate(bodyexportType, nameof(bodyexportType), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodycloudStorage, nameof(bodycloudStorage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/merge-pdfs";

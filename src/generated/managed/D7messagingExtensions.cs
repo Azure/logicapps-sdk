@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<NumberLookupResponse> NumberLookup([WorkflowExpression] Func<string> bodyrecipient)
         {
-            SourceExpression.Validate(bodyrecipient, nameof(bodyrecipient), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/hlr/v1/lookup";
@@ -51,17 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<OTPSendOTPResponse> OTPSendOTP([WorkflowExpression] Func<string> bodyoriginator, [WorkflowExpression] Func<string> bodyrecipient, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<bodydataCodingInput> bodydataCoding, [WorkflowExpression] Func<string> bodyexpiry = null, [WorkflowExpression] Func<string> bodyretryDelay = null, [WorkflowExpression] Func<string> bodyretryCount = null, [WorkflowExpression] Func<string> bodyotpCodeLength = null, [WorkflowExpression] Func<bodyotpTypeInput> bodyotpType = null, [WorkflowExpression] Func<string> bodysuccessUrl = null, [WorkflowExpression] Func<string> bodyfailureUrl = null)
         {
-            SourceExpression.Validate(bodyoriginator, nameof(bodyoriginator), required: true);
-            SourceExpression.Validate(bodyrecipient, nameof(bodyrecipient), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
-            SourceExpression.Validate(bodydataCoding, nameof(bodydataCoding), required: true);
-            SourceExpression.Validate(bodyexpiry, nameof(bodyexpiry), required: false);
-            SourceExpression.Validate(bodyretryDelay, nameof(bodyretryDelay), required: false);
-            SourceExpression.Validate(bodyretryCount, nameof(bodyretryCount), required: false);
-            SourceExpression.Validate(bodyotpCodeLength, nameof(bodyotpCodeLength), required: false);
-            SourceExpression.Validate(bodyotpType, nameof(bodyotpType), required: false);
-            SourceExpression.Validate(bodysuccessUrl, nameof(bodysuccessUrl), required: false);
-            SourceExpression.Validate(bodyfailureUrl, nameof(bodyfailureUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/verify/v1/otp/send-otp";
@@ -132,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<OTPResendOTPResponse> OTPResendOTP([WorkflowExpression] Func<string> bodyotpId)
         {
-            SourceExpression.Validate(bodyotpId, nameof(bodyotpId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/verify/v1/otp/resend-otp";
@@ -155,8 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<OTPVerifyOTPResponse> OTPVerifyOTP([WorkflowExpression] Func<string> bodyotpCode, [WorkflowExpression] Func<string> bodyotpId = null)
         {
-            SourceExpression.Validate(bodyotpCode, nameof(bodyotpCode), required: true);
-            SourceExpression.Validate(bodyotpId, nameof(bodyotpId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/verify/v1/otp/verify-otp";

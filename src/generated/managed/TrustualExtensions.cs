@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
         public IBodyWorkflowAction<CertificationOutput> CertifyFile([WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
         {
-            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            SourceExpression.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/certify_file";
@@ -79,11 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
         public IBodyWorkflowAction<CertificationOutput> CertifyHash([WorkflowExpression] Func<string> bodyhash = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
         {
-            SourceExpression.Validate(bodyhash, nameof(bodyhash), required: false);
-            SourceExpression.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/certify_hash";

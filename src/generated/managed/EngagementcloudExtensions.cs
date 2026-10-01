@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<CreateAddressBookResponse> CreateAddressBook([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/address-books";
@@ -56,12 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> addressBook, [WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodydataFieldsInputItem[]> bodydataFields = null, [WorkflowExpression] Func<bodyemailTypeInput> bodyemailType = null, [WorkflowExpression] Func<bodyoptInTypeInput> bodyoptInType = null)
         {
-            SourceExpression.Validate(addressBook, nameof(addressBook), required: true);
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodydataFields, nameof(bodydataFields), required: false);
-            SourceExpression.Validate(bodyemailType, nameof(bodyemailType), required: false);
-            SourceExpression.Validate(bodyoptInType, nameof(bodyoptInType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/address-books/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(addressBook, 1));
@@ -123,11 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignId, [WorkflowExpression] Func<int[]> bodyaddressBookIDs = null, [WorkflowExpression] Func<int[]> bodycontactIDs = null, [WorkflowExpression] Func<string> bodysendDate = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: true);
-            SourceExpression.Validate(bodyaddressBookIDs, nameof(bodyaddressBookIDs), required: false);
-            SourceExpression.Validate(bodycontactIDs, nameof(bodycontactIDs), required: false);
-            SourceExpression.Validate(bodysendDate, nameof(bodysendDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/campaigns/send";
@@ -169,10 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignId, [WorkflowExpression] Func<string[]> bodytoAddresses, [WorkflowExpression] Func<bodypersonalizationValuesInputItem[]> bodypersonalizationValues = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: true);
-            SourceExpression.Validate(bodytoAddresses, nameof(bodytoAddresses), required: true);
-            SourceExpression.Validate(bodypersonalizationValues, nameof(bodypersonalizationValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/email/triggered-campaign";
@@ -204,10 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodyprogramId, [WorkflowExpression] Func<int[]> bodyaddressBooks = null, [WorkflowExpression] Func<int[]> bodycontacts = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodyprogramId, nameof(bodyprogramId), required: true);
-            SourceExpression.Validate(bodyaddressBooks, nameof(bodyaddressBooks), required: false);
-            SourceExpression.Validate(bodycontacts, nameof(bodycontacts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/programs/enrolments";
@@ -243,9 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction SendSmsMessage([WorkflowExpression] Func<string> telephoneNumber, [WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> bodymessage)
         {
-            SourceExpression.Validate(telephoneNumber, nameof(telephoneNumber), required: true);
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/sms-messages/send-to/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(telephoneNumber, 1));
@@ -269,7 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction GetContactsImportStatus([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contacts/import/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -284,7 +258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction GetContactsImportReport([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contacts/import/{0}/report", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

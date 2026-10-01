@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<ConstituentDetailResponseDto[]> ConstituentSearch([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset, [WorkflowExpression] Func<string> lastModifiedDate = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortDirection = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: true);
-            SourceExpression.Validate(lastModifiedDate, nameof(lastModifiedDate), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/constituents/search";
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<ConstituentDetailResponseDto> ConstituentDetail([WorkflowExpression] Func<string> sDioceseId)
         {
-            SourceExpression.Validate(sDioceseId, nameof(sDioceseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/constituents/detail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sDioceseId, 1));
@@ -58,32 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FamilySearchResponseDto[]> FamilySearch([WorkflowExpression] Func<int> bodypageNumber, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyfamilyId = null, [WorkflowExpression] Func<int> bodydioceseId = null, [WorkflowExpression] Func<bool> bodymembershipStatus = null, [WorkflowExpression] Func<int> bodyfamilyGroupId = null, [WorkflowExpression] Func<int[]> bodyorganizations = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodyhasAFamilyEmailAddress = null, [WorkflowExpression] Func<bool> bodysendContributionEnvelopes = null, [WorkflowExpression] Func<string> bodyregistrationStart = null, [WorkflowExpression] Func<string> bodyregistrationEnd = null, [WorkflowExpression] Func<string> bodystreetAddress = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodypostalCode = null, [WorkflowExpression] Func<bool> bodysendNoMail = null, [WorkflowExpression] Func<bool> bodydoNotPublish = null, [WorkflowExpression] Func<bool> bodyhasEmail = null, [WorkflowExpression] Func<string> bodyfamilyGroupName = null, [WorkflowExpression] Func<string> bodyenvelopeNumber = null, [WorkflowExpression] Func<string> bodyprimaryAddressPhoneNumber = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<int> bodyregisteredOrganizationId = null, [WorkflowExpression] Func<string> bodylastModified = null)
         {
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: true);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodyfamilyId, nameof(bodyfamilyId), required: false);
-            SourceExpression.Validate(bodydioceseId, nameof(bodydioceseId), required: false);
-            SourceExpression.Validate(bodymembershipStatus, nameof(bodymembershipStatus), required: false);
-            SourceExpression.Validate(bodyfamilyGroupId, nameof(bodyfamilyGroupId), required: false);
-            SourceExpression.Validate(bodyorganizations, nameof(bodyorganizations), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodyhasAFamilyEmailAddress, nameof(bodyhasAFamilyEmailAddress), required: false);
-            SourceExpression.Validate(bodysendContributionEnvelopes, nameof(bodysendContributionEnvelopes), required: false);
-            SourceExpression.Validate(bodyregistrationStart, nameof(bodyregistrationStart), required: false);
-            SourceExpression.Validate(bodyregistrationEnd, nameof(bodyregistrationEnd), required: false);
-            SourceExpression.Validate(bodystreetAddress, nameof(bodystreetAddress), required: false);
-            SourceExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
-            SourceExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
-            SourceExpression.Validate(bodypostalCode, nameof(bodypostalCode), required: false);
-            SourceExpression.Validate(bodysendNoMail, nameof(bodysendNoMail), required: false);
-            SourceExpression.Validate(bodydoNotPublish, nameof(bodydoNotPublish), required: false);
-            SourceExpression.Validate(bodyhasEmail, nameof(bodyhasEmail), required: false);
-            SourceExpression.Validate(bodyfamilyGroupName, nameof(bodyfamilyGroupName), required: false);
-            SourceExpression.Validate(bodyenvelopeNumber, nameof(bodyenvelopeNumber), required: false);
-            SourceExpression.Validate(bodyprimaryAddressPhoneNumber, nameof(bodyprimaryAddressPhoneNumber), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyregisteredOrganizationId, nameof(bodyregisteredOrganizationId), required: false);
-            SourceExpression.Validate(bodylastModified, nameof(bodylastModified), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/families/search";
@@ -252,7 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FamilySearchResponseDto> FamilyDetail([WorkflowExpression] Func<int> familyId)
         {
-            SourceExpression.Validate(familyId, nameof(familyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/families/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(familyId, 1));
@@ -267,7 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FamilyMemberResponseDto[]> FamilyMemberList([WorkflowExpression] Func<int> familyId)
         {
-            SourceExpression.Validate(familyId, nameof(familyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/families/{0}/member/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(familyId, 1));
@@ -282,7 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FamilyMinistryResponseDto[]> FamilyMinistriesList([WorkflowExpression] Func<int> familyId)
         {
-            SourceExpression.Validate(familyId, nameof(familyId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/families/{0}/ministry/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(familyId, 1));
@@ -311,8 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FamilyWorkGroupResponseDto[]> FamilyWorkGroupList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/families/workgroup/list";
@@ -333,44 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<string> FamilyUpdateContactInfo([WorkflowExpression] Func<int> familyId, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodymailingName = null, [WorkflowExpression] Func<string> bodyinformalMailingName = null, [WorkflowExpression] Func<string> bodyformalSalutation = null, [WorkflowExpression] Func<string> bodyinformalSalutation = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyprimaryPhone = null, [WorkflowExpression] Func<string> bodyemergencyPhone = null, [WorkflowExpression] Func<string> bodyprimaryAddress = null, [WorkflowExpression] Func<string> bodyhomeStreetAddress = null, [WorkflowExpression] Func<string> bodyhomeStreetAddress2 = null, [WorkflowExpression] Func<string> bodyhomeAddressCity = null, [WorkflowExpression] Func<string> bodyhomeAddressState = null, [WorkflowExpression] Func<string> bodyhomeAddressCountry = null, [WorkflowExpression] Func<string> bodyhomeAddressPostalCode = null, [WorkflowExpression] Func<string> bodyhomeAddressPostalCodeExtension = null, [WorkflowExpression] Func<string> bodyhomeAddressPhone = null, [WorkflowExpression] Func<string> bodymailingStreetAddress = null, [WorkflowExpression] Func<string> bodymailingStreetAddress2 = null, [WorkflowExpression] Func<string> bodymailingAddressCity = null, [WorkflowExpression] Func<string> bodymailingAddressState = null, [WorkflowExpression] Func<string> bodymailingAddressCountry = null, [WorkflowExpression] Func<string> bodymailingAddressPostalCode = null, [WorkflowExpression] Func<string> bodymailingAddressPostalCodeExtension = null, [WorkflowExpression] Func<string> bodymailingAddressPhone = null, [WorkflowExpression] Func<string> bodyotherStreetAddress = null, [WorkflowExpression] Func<string> bodyotherStreetAddress2 = null, [WorkflowExpression] Func<string> bodyotherAddressCity = null, [WorkflowExpression] Func<string> bodyotherAddressState = null, [WorkflowExpression] Func<string> bodyotherAddressCountry = null, [WorkflowExpression] Func<string> bodyotherAddressPostalCode = null, [WorkflowExpression] Func<string> bodyotherAddressPostalCodeExtension = null, [WorkflowExpression] Func<string> bodyotherAddressPhone = null, [WorkflowExpression] Func<string> bodyotherAddressFromDate = null, [WorkflowExpression] Func<string> bodyotherAddressToDate = null, [WorkflowExpression] Func<string> bodysDiocesanId = null)
         {
-            SourceExpression.Validate(familyId, nameof(familyId), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodymailingName, nameof(bodymailingName), required: false);
-            SourceExpression.Validate(bodyinformalMailingName, nameof(bodyinformalMailingName), required: false);
-            SourceExpression.Validate(bodyformalSalutation, nameof(bodyformalSalutation), required: false);
-            SourceExpression.Validate(bodyinformalSalutation, nameof(bodyinformalSalutation), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodyprimaryPhone, nameof(bodyprimaryPhone), required: false);
-            SourceExpression.Validate(bodyemergencyPhone, nameof(bodyemergencyPhone), required: false);
-            SourceExpression.Validate(bodyprimaryAddress, nameof(bodyprimaryAddress), required: false);
-            SourceExpression.Validate(bodyhomeStreetAddress, nameof(bodyhomeStreetAddress), required: false);
-            SourceExpression.Validate(bodyhomeStreetAddress2, nameof(bodyhomeStreetAddress2), required: false);
-            SourceExpression.Validate(bodyhomeAddressCity, nameof(bodyhomeAddressCity), required: false);
-            SourceExpression.Validate(bodyhomeAddressState, nameof(bodyhomeAddressState), required: false);
-            SourceExpression.Validate(bodyhomeAddressCountry, nameof(bodyhomeAddressCountry), required: false);
-            SourceExpression.Validate(bodyhomeAddressPostalCode, nameof(bodyhomeAddressPostalCode), required: false);
-            SourceExpression.Validate(bodyhomeAddressPostalCodeExtension, nameof(bodyhomeAddressPostalCodeExtension), required: false);
-            SourceExpression.Validate(bodyhomeAddressPhone, nameof(bodyhomeAddressPhone), required: false);
-            SourceExpression.Validate(bodymailingStreetAddress, nameof(bodymailingStreetAddress), required: false);
-            SourceExpression.Validate(bodymailingStreetAddress2, nameof(bodymailingStreetAddress2), required: false);
-            SourceExpression.Validate(bodymailingAddressCity, nameof(bodymailingAddressCity), required: false);
-            SourceExpression.Validate(bodymailingAddressState, nameof(bodymailingAddressState), required: false);
-            SourceExpression.Validate(bodymailingAddressCountry, nameof(bodymailingAddressCountry), required: false);
-            SourceExpression.Validate(bodymailingAddressPostalCode, nameof(bodymailingAddressPostalCode), required: false);
-            SourceExpression.Validate(bodymailingAddressPostalCodeExtension, nameof(bodymailingAddressPostalCodeExtension), required: false);
-            SourceExpression.Validate(bodymailingAddressPhone, nameof(bodymailingAddressPhone), required: false);
-            SourceExpression.Validate(bodyotherStreetAddress, nameof(bodyotherStreetAddress), required: false);
-            SourceExpression.Validate(bodyotherStreetAddress2, nameof(bodyotherStreetAddress2), required: false);
-            SourceExpression.Validate(bodyotherAddressCity, nameof(bodyotherAddressCity), required: false);
-            SourceExpression.Validate(bodyotherAddressState, nameof(bodyotherAddressState), required: false);
-            SourceExpression.Validate(bodyotherAddressCountry, nameof(bodyotherAddressCountry), required: false);
-            SourceExpression.Validate(bodyotherAddressPostalCode, nameof(bodyotherAddressPostalCode), required: false);
-            SourceExpression.Validate(bodyotherAddressPostalCodeExtension, nameof(bodyotherAddressPostalCodeExtension), required: false);
-            SourceExpression.Validate(bodyotherAddressPhone, nameof(bodyotherAddressPhone), required: false);
-            SourceExpression.Validate(bodyotherAddressFromDate, nameof(bodyotherAddressFromDate), required: false);
-            SourceExpression.Validate(bodyotherAddressToDate, nameof(bodyotherAddressToDate), required: false);
-            SourceExpression.Validate(bodysDiocesanId, nameof(bodysDiocesanId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/families/{0}/contact", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(familyId, 1));
@@ -613,8 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<string> FamilyUpdateAutoFill([WorkflowExpression] Func<int> familyId, [WorkflowExpression] Func<int> bodyorganizationId)
         {
-            SourceExpression.Validate(familyId, nameof(familyId), required: true);
-            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/families/{0}/autofill", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(familyId, 1));
@@ -637,8 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FamilyChangeListResponseDto[]> FamilyChangeList([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/families/change/list";
@@ -655,34 +576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<MemberSearchResponseDto[]> MemberSearch([WorkflowExpression] Func<int> bodypageNumber, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<string> bodysearchText = null, [WorkflowExpression] Func<bool> bodyincludeDeletedMembers = null, [WorkflowExpression] Func<int[]> bodyorganizationIdS = null, [WorkflowExpression] Func<int> bodymemberAgeFrom = null, [WorkflowExpression] Func<int> bodymemberAgeTo = null, [WorkflowExpression] Func<string> bodylastModified = null, [WorkflowExpression] Func<int> bodyfamilyRegistrationStatus = null, [WorkflowExpression] Func<string> bodymemberStatusName = null, [WorkflowExpression] Func<int> bodysearchByContains = null, [WorkflowExpression] Func<bool> bodyincludeFamilyDioceseId = null, [WorkflowExpression] Func<bool> bodyincludeMemberDioceseId = null, [WorkflowExpression] Func<bool> bodyincludeFamilyLastName = null, [WorkflowExpression] Func<bool> bodyincludeFamilyAddress = null, [WorkflowExpression] Func<bool> bodyincludeFamilyAddressCity = null, [WorkflowExpression] Func<bool> bodyincludeFamilyAddressState = null, [WorkflowExpression] Func<bool> bodyincludeFamilyAddressPostalCode = null, [WorkflowExpression] Func<bool> bodyincludeFamilyAddressZipPlus = null, [WorkflowExpression] Func<bool> bodyincludeMemberName = null, [WorkflowExpression] Func<bool> bodyincludeMemberType = null, [WorkflowExpression] Func<bool> bodyincludeMemberGender = null, [WorkflowExpression] Func<bool> bodyincludeMemberAge = null, [WorkflowExpression] Func<bool> bodyincludeEnvelopeNumber = null, [WorkflowExpression] Func<bool> bodyincludeEmailAddress = null, [WorkflowExpression] Func<bool> bodyincludeHomePhone = null, [WorkflowExpression] Func<bool> bodyincludeMobilePhone = null, [WorkflowExpression] Func<bool> bodyincludeWorkPhone = null)
         {
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: true);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodysearchText, nameof(bodysearchText), required: false);
-            SourceExpression.Validate(bodyincludeDeletedMembers, nameof(bodyincludeDeletedMembers), required: false);
-            SourceExpression.Validate(bodyorganizationIdS, nameof(bodyorganizationIdS), required: false);
-            SourceExpression.Validate(bodymemberAgeFrom, nameof(bodymemberAgeFrom), required: false);
-            SourceExpression.Validate(bodymemberAgeTo, nameof(bodymemberAgeTo), required: false);
-            SourceExpression.Validate(bodylastModified, nameof(bodylastModified), required: false);
-            SourceExpression.Validate(bodyfamilyRegistrationStatus, nameof(bodyfamilyRegistrationStatus), required: false);
-            SourceExpression.Validate(bodymemberStatusName, nameof(bodymemberStatusName), required: false);
-            SourceExpression.Validate(bodysearchByContains, nameof(bodysearchByContains), required: false);
-            SourceExpression.Validate(bodyincludeFamilyDioceseId, nameof(bodyincludeFamilyDioceseId), required: false);
-            SourceExpression.Validate(bodyincludeMemberDioceseId, nameof(bodyincludeMemberDioceseId), required: false);
-            SourceExpression.Validate(bodyincludeFamilyLastName, nameof(bodyincludeFamilyLastName), required: false);
-            SourceExpression.Validate(bodyincludeFamilyAddress, nameof(bodyincludeFamilyAddress), required: false);
-            SourceExpression.Validate(bodyincludeFamilyAddressCity, nameof(bodyincludeFamilyAddressCity), required: false);
-            SourceExpression.Validate(bodyincludeFamilyAddressState, nameof(bodyincludeFamilyAddressState), required: false);
-            SourceExpression.Validate(bodyincludeFamilyAddressPostalCode, nameof(bodyincludeFamilyAddressPostalCode), required: false);
-            SourceExpression.Validate(bodyincludeFamilyAddressZipPlus, nameof(bodyincludeFamilyAddressZipPlus), required: false);
-            SourceExpression.Validate(bodyincludeMemberName, nameof(bodyincludeMemberName), required: false);
-            SourceExpression.Validate(bodyincludeMemberType, nameof(bodyincludeMemberType), required: false);
-            SourceExpression.Validate(bodyincludeMemberGender, nameof(bodyincludeMemberGender), required: false);
-            SourceExpression.Validate(bodyincludeMemberAge, nameof(bodyincludeMemberAge), required: false);
-            SourceExpression.Validate(bodyincludeEnvelopeNumber, nameof(bodyincludeEnvelopeNumber), required: false);
-            SourceExpression.Validate(bodyincludeEmailAddress, nameof(bodyincludeEmailAddress), required: false);
-            SourceExpression.Validate(bodyincludeHomePhone, nameof(bodyincludeHomePhone), required: false);
-            SourceExpression.Validate(bodyincludeMobilePhone, nameof(bodyincludeMobilePhone), required: false);
-            SourceExpression.Validate(bodyincludeWorkPhone, nameof(bodyincludeWorkPhone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/members/search";
@@ -863,7 +756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<MemberSearchResponseDto> MemberDetail([WorkflowExpression] Func<int> memberId)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/members/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(memberId, 1));
@@ -878,8 +770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<SacramentDto[]> MemberSacramentList([WorkflowExpression] Func<int> memberId, [WorkflowExpression] Func<int> type)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/members/{0}/sacrament/{1}/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(memberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(type, 1));
@@ -936,13 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<MemberContactListResponseDto[]> MemberContactList([WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodypageNumber, [WorkflowExpression] Func<string> bodymemberFirstName = null, [WorkflowExpression] Func<string> bodymemberLastName = null, [WorkflowExpression] Func<string> bodymemberEmailAddress = null, [WorkflowExpression] Func<string> bodymemberMobilePhone = null, [WorkflowExpression] Func<int[]> bodyorganizationIdS = null)
         {
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: true);
-            SourceExpression.Validate(bodymemberFirstName, nameof(bodymemberFirstName), required: false);
-            SourceExpression.Validate(bodymemberLastName, nameof(bodymemberLastName), required: false);
-            SourceExpression.Validate(bodymemberEmailAddress, nameof(bodymemberEmailAddress), required: false);
-            SourceExpression.Validate(bodymemberMobilePhone, nameof(bodymemberMobilePhone), required: false);
-            SourceExpression.Validate(bodyorganizationIdS, nameof(bodyorganizationIdS), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/members/contact/list";
@@ -997,22 +880,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IWorkflowAction MemberUpdateContact([WorkflowExpression] Func<int> memberId, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodynickName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodymaidenName = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodydateOfDeath = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyhomePhone = null, [WorkflowExpression] Func<string> bodymobilePhone = null, [WorkflowExpression] Func<string> bodyworkPhone = null, [WorkflowExpression] Func<string> bodypager = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodygender = null)
         {
-            SourceExpression.Validate(memberId, nameof(memberId), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodynickName, nameof(bodynickName), required: false);
-            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodymaidenName, nameof(bodymaidenName), required: false);
-            SourceExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
-            SourceExpression.Validate(bodydateOfDeath, nameof(bodydateOfDeath), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyhomePhone, nameof(bodyhomePhone), required: false);
-            SourceExpression.Validate(bodymobilePhone, nameof(bodymobilePhone), required: false);
-            SourceExpression.Validate(bodyworkPhone, nameof(bodyworkPhone), required: false);
-            SourceExpression.Validate(bodypager, nameof(bodypager), required: false);
-            SourceExpression.Validate(bodyfax, nameof(bodyfax), required: false);
-            SourceExpression.Validate(bodygender, nameof(bodygender), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/members/{0}/contact", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(memberId, 1));
@@ -1123,7 +990,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FundListResponseDto[]> OfferingFundList([WorkflowExpression] Func<int> organizationId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/offering/{0}/funds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(organizationId, 1));
@@ -1138,7 +1004,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<GiverListResponseDto[]> OfferingGiverList([WorkflowExpression] Func<int> organizationId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/offering/{0}/givers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(organizationId, 1));
@@ -1153,22 +1018,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<FamilyContributionSummaryResponseDto[]> OfferingFamilyContributionSearch([WorkflowExpression] Func<int> organizationId, [WorkflowExpression] Func<int> bodypageNumber, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int[]> bodyfamilyIdS = null, [WorkflowExpression] Func<int[]> bodyfundIdS = null, [WorkflowExpression] Func<int> bodygroupId = null, [WorkflowExpression] Func<bool> bodyregisteredFamilies = null, [WorkflowExpression] Func<string> bodycontributionStartDate = null, [WorkflowExpression] Func<string> bodycontributionEndDate = null, [WorkflowExpression] Func<double> bodycontributionLowAmount = null, [WorkflowExpression] Func<double> bodycontributionHighAmount = null, [WorkflowExpression] Func<double> bodytotalContributionLowAmount = null, [WorkflowExpression] Func<double> bodytotalContributionHighAmount = null, [WorkflowExpression] Func<bool> bodyincludeDeleted = null, [WorkflowExpression] Func<bool> bodyincludeZeroContributions = null, [WorkflowExpression] Func<bool> bodyincludeNonGivers = null)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
-            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: true);
-            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
-            SourceExpression.Validate(bodyfamilyIdS, nameof(bodyfamilyIdS), required: false);
-            SourceExpression.Validate(bodyfundIdS, nameof(bodyfundIdS), required: false);
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            SourceExpression.Validate(bodyregisteredFamilies, nameof(bodyregisteredFamilies), required: false);
-            SourceExpression.Validate(bodycontributionStartDate, nameof(bodycontributionStartDate), required: false);
-            SourceExpression.Validate(bodycontributionEndDate, nameof(bodycontributionEndDate), required: false);
-            SourceExpression.Validate(bodycontributionLowAmount, nameof(bodycontributionLowAmount), required: false);
-            SourceExpression.Validate(bodycontributionHighAmount, nameof(bodycontributionHighAmount), required: false);
-            SourceExpression.Validate(bodytotalContributionLowAmount, nameof(bodytotalContributionLowAmount), required: false);
-            SourceExpression.Validate(bodytotalContributionHighAmount, nameof(bodytotalContributionHighAmount), required: false);
-            SourceExpression.Validate(bodyincludeDeleted, nameof(bodyincludeDeleted), required: false);
-            SourceExpression.Validate(bodyincludeZeroContributions, nameof(bodyincludeZeroContributions), required: false);
-            SourceExpression.Validate(bodyincludeNonGivers, nameof(bodyincludeNonGivers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/offering/{0}/contribution/summary/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(organizationId, 1));
@@ -1271,9 +1120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<OrganizationDetailResponseDto[]> OrganizationSearch([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string[]> bodyorganizationTypeList = null, [WorkflowExpression] Func<string> bodyvicariate = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyorganizationTypeList, nameof(bodyorganizationTypeList), required: false);
-            SourceExpression.Validate(bodyvicariate, nameof(bodyvicariate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/organizations/search";
@@ -1312,7 +1158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
         public IBodyWorkflowAction<OrganizationDetailResponseDto> OrganizationDetail([WorkflowExpression] Func<int> organizationId)
         {
-            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/organizations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(organizationId, 1));

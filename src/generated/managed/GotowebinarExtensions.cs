@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
         public IBodyWorkflowAction<Webinar> GetWebinar([WorkflowExpression] Func<string> webinarKey)
         {
-            SourceExpression.Validate(webinarKey, nameof(webinarKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarKey, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
         public IBodyWorkflowAction<RegistrantSummary[]> ListRegistrations([WorkflowExpression] Func<string> webinarKey)
         {
-            SourceExpression.Validate(webinarKey, nameof(webinarKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarKey, 1));
@@ -44,10 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
         public IBodyWorkflowAction<RegistrationResult> AddRegistrant([WorkflowExpression] Func<string> webinarKey, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            SourceExpression.Validate(webinarKey, nameof(webinarKey), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarKey, 1));
@@ -86,8 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
         public IBodyWorkflowAction<Registrant> GetRegistrant([WorkflowExpression] Func<string> webinarKey, [WorkflowExpression] Func<string> registrantKey)
         {
-            SourceExpression.Validate(webinarKey, nameof(webinarKey), required: true);
-            SourceExpression.Validate(registrantKey, nameof(registrantKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(registrantKey, 1));
@@ -131,7 +123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
 
         public IBodyWorkflowTrigger<RegistrantSummary[]> OnNewRegistration([WorkflowExpression] Func<string> webinarKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(webinarKey, nameof(webinarKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/organizers/organizerKey/webinars/{0}/registrants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarKey, 1));

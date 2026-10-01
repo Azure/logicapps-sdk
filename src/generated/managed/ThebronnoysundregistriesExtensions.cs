@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetAllSearchResponse> GetAllSearch([WorkflowExpression] Func<string> navn = null, [WorkflowExpression] Func<string> fraRegistreringsdatoEnhetsregisteret = null, [WorkflowExpression] Func<string> tilRegistreringsdatoEnhetsregisteret = null, [WorkflowExpression] Func<bool> konkurs = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(navn, nameof(navn), required: false);
-            SourceExpression.Validate(fraRegistreringsdatoEnhetsregisteret, nameof(fraRegistreringsdatoEnhetsregisteret), required: false);
-            SourceExpression.Validate(tilRegistreringsdatoEnhetsregisteret, nameof(tilRegistreringsdatoEnhetsregisteret), required: false);
-            SourceExpression.Validate(konkurs, nameof(konkurs), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enhetsregisteret/api/enheter";
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetByOrganizationNumberResponse> GetByOrganizationNumber([WorkflowExpression] Func<string> orgnr)
         {
-            SourceExpression.Validate(orgnr, nameof(orgnr), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orgnr, 1));
@@ -58,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetEntityRolesResponse> GetEntityRoles([WorkflowExpression] Func<string> orgnr)
         {
-            SourceExpression.Validate(orgnr, nameof(orgnr), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}/roller", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orgnr, 1));
@@ -74,8 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetAllSearchSubResponse> GetAllSearchSub([WorkflowExpression] Func<string> navn = null, [WorkflowExpression] Func<string> sort = null)
         {
-            SourceExpression.Validate(navn, nameof(navn), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enhetsregisteret/api/underenheter";
@@ -94,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> GetSubByOrganizationNumber([WorkflowExpression] Func<string> orgnr)
         {
-            SourceExpression.Validate(orgnr, nameof(orgnr), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/underenheter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orgnr, 1));
@@ -109,8 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetEntitiesUpdatesResponse> GetEntitiesUpdates([WorkflowExpression] Func<string> dato = null, [WorkflowExpression] Func<int> oppdateringsid = null)
         {
-            SourceExpression.Validate(dato, nameof(dato), required: false);
-            SourceExpression.Validate(oppdateringsid, nameof(oppdateringsid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enhetsregisteret/api/oppdateringer/enheter";
@@ -129,8 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse> GetSubEntitiesUpdates([WorkflowExpression] Func<string> dato = null, [WorkflowExpression] Func<int> oppdateringsid = null)
         {
-            SourceExpression.Validate(dato, nameof(dato), required: false);
-            SourceExpression.Validate(oppdateringsid, nameof(oppdateringsid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/enhetsregisteret/api/oppdateringer/underenheter";

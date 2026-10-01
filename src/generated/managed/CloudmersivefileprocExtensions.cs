@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<GetDocxCommentsResponse> EditDocumentDocxGetComments([WorkflowExpression] Func<string> reqConfiginputFileBytes = null, [WorkflowExpression] Func<string> reqConfiginputFileUrl = null)
         {
-            SourceExpression.Validate(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
-            SourceExpression.Validate(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/docx/get-comments/flat-list";
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<Base64DetectResponse> EditTextBase64Detect([WorkflowExpression] Func<string> requestbase64ContentToDetect = null)
         {
-            SourceExpression.Validate(requestbase64ContentToDetect, nameof(requestbase64ContentToDetect), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/encoding/base64/detect";
@@ -75,7 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<Base64EncodeResponse> EditTextBase64Encode([WorkflowExpression] Func<string> requestcontentToEncode = null)
         {
-            SourceExpression.Validate(requestcontentToEncode, nameof(requestcontentToEncode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/encoding/base64/encode";
@@ -102,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<Base64DecodeResponse> EditTextBase64Decode([WorkflowExpression] Func<string> requestbase64ContentToDecode = null)
         {
-            SourceExpression.Validate(requestbase64ContentToDecode, nameof(requestbase64ContentToDecode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/encoding/base64/decode";
@@ -129,8 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<FindStringSimpleResponse> EditTextFindSimple([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requesttargetString = null)
         {
-            SourceExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
-            SourceExpression.Validate(requesttargetString, nameof(requesttargetString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/find/string";
@@ -163,9 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<FindStringRegexResponse> EditTextFindRegex([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requesttargetRegex = null, [WorkflowExpression] Func<bool> requestmatchCase = null)
         {
-            SourceExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
-            SourceExpression.Validate(requesttargetRegex, nameof(requesttargetRegex), required: false);
-            SourceExpression.Validate(requestmatchCase, nameof(requestmatchCase), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/find/regex";
@@ -204,9 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<ReplaceStringSimpleResponse> EditTextReplaceSimple([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requesttargetString = null, [WorkflowExpression] Func<string> requestreplaceWithString = null)
         {
-            SourceExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
-            SourceExpression.Validate(requesttargetString, nameof(requesttargetString), required: false);
-            SourceExpression.Validate(requestreplaceWithString, nameof(requestreplaceWithString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/replace/string";
@@ -245,9 +232,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<ReplaceStringRegexResponse> EditTextReplaceRegex([WorkflowExpression] Func<string> requesttextContent = null, [WorkflowExpression] Func<string> requestregularExpressionString = null, [WorkflowExpression] Func<string> requestreplaceWithString = null)
         {
-            SourceExpression.Validate(requesttextContent, nameof(requesttextContent), required: false);
-            SourceExpression.Validate(requestregularExpressionString, nameof(requestregularExpressionString), required: false);
-            SourceExpression.Validate(requestreplaceWithString, nameof(requestreplaceWithString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/replace/regex";
@@ -286,7 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<RemoveHtmlFromTextResponse> EditTextRemoveHtml([WorkflowExpression] Func<string> requesttextContainingHtml = null)
         {
-            SourceExpression.Validate(requesttextContainingHtml, nameof(requesttextContainingHtml), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/remove/html";
@@ -313,7 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextRemoveAllWhitespace([WorkflowExpression] Func<string> requesttextContainingWhitespace = null)
         {
-            SourceExpression.Validate(requesttextContainingWhitespace, nameof(requesttextContainingWhitespace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/remove/whitespace/all";
@@ -340,7 +322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextTrimWhitespace([WorkflowExpression] Func<string> requesttextContainingWhitespace = null)
         {
-            SourceExpression.Validate(requesttextContainingWhitespace, nameof(requesttextContainingWhitespace), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/edit/text/remove/whitespace/trim";
@@ -367,8 +348,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<JToken> ZipArchiveZipCreateAdvanced([WorkflowExpression] Func<ZipFile[]> requestfilesInZip = null, [WorkflowExpression] Func<ZipDirectory[]> requestdirectoriesInZip = null)
         {
-            SourceExpression.Validate(requestfilesInZip, nameof(requestfilesInZip), required: false);
-            SourceExpression.Validate(requestdirectoriesInZip, nameof(requestdirectoriesInZip), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/archive/zip/create/advanced";
@@ -401,9 +380,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<JToken> ZipArchiveZipEncryptAdvanced([WorkflowExpression] Func<string> encryptionRequestinputFileContents = null, [WorkflowExpression] Func<string> encryptionRequestpassword = null, [WorkflowExpression] Func<string> encryptionRequestencryptionAlgorithm = null)
         {
-            SourceExpression.Validate(encryptionRequestinputFileContents, nameof(encryptionRequestinputFileContents), required: false);
-            SourceExpression.Validate(encryptionRequestpassword, nameof(encryptionRequestpassword), required: false);
-            SourceExpression.Validate(encryptionRequestencryptionAlgorithm, nameof(encryptionRequestencryptionAlgorithm), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/convert/archive/zip/encrypt/advanced";

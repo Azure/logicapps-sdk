@@ -16,14 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> CallRfc([WorkflowExpression] Func<CallRfcInputInputBodyTypeType> inputBodyType = null, [WorkflowExpression] Func<string> rfcName = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<bool> safeType = null, [WorkflowExpression] Func<CallRfcInputOutputBodyTypeType> outputBodyType = null)
         {
-            SourceExpression.Validate(inputBodyType, nameof(inputBodyType), required: false);
-            SourceExpression.Validate(rfcName, nameof(rfcName), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
-            SourceExpression.Validate(autoCommit, nameof(autoCommit), required: false);
-            SourceExpression.Validate(safeType, nameof(safeType), required: false);
-            SourceExpression.Validate(outputBodyType, nameof(outputBodyType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -89,7 +81,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> GetCallRfcInputVariantSchemaSwagger([WorkflowExpression] Func<string> inputBodyType = null)
         {
-            SourceExpression.Validate(inputBodyType, nameof(inputBodyType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -112,7 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> GetCallRfcOutputVariantSchemaSwagger([WorkflowExpression] Func<string> outputBodyType = null)
         {
-            SourceExpression.Validate(outputBodyType, nameof(outputBodyType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -135,8 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction([WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null)
         {
-            SourceExpression.Validate(tId, nameof(tId), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -160,8 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetRfcTransactionOutput> GetRfcTransaction([WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null)
         {
-            SourceExpression.Validate(tId, nameof(tId), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -185,10 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<AddRfcToTransactionOutput> AddRfcToTransaction([WorkflowExpression] Func<object> body, [WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<bool> autoCommit = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: true);
-            SourceExpression.Validate(tId, nameof(tId), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
-            SourceExpression.Validate(autoCommit, nameof(autoCommit), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -218,8 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<CommitRfcTransactionOutput> CommitRfcTransaction([WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null)
         {
-            SourceExpression.Validate(tId, nameof(tId), required: true);
-            SourceExpression.Validate(queueName, nameof(queueName), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -243,7 +223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction ConfirmTransactionId([WorkflowExpression] Func<string> tId)
         {
-            SourceExpression.Validate(tId, nameof(tId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -262,10 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<SendIDocOutput> SendIDoc([WorkflowExpression] Func<SendIDocInputIdocFormatType> idocFormat, [WorkflowExpression] Func<bool> confirmTid, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<bool> allowUnreleasedSegmentV2 = null)
         {
-            SourceExpression.Validate(idocFormat, nameof(idocFormat), required: true);
-            SourceExpression.Validate(confirmTid, nameof(confirmTid), required: true);
-            SourceExpression.Validate(tId, nameof(tId), required: false);
-            SourceExpression.Validate(allowUnreleasedSegmentV2, nameof(allowUnreleasedSegmentV2), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -299,7 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> GetSendIDocInputSwagger([WorkflowExpression] Func<string> idocFormat)
         {
-            SourceExpression.Validate(idocFormat, nameof(idocFormat), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -318,12 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod([WorkflowExpression] Func<string> businessObject, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<bool> autoCommit, [WorkflowExpression] Func<object> body, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> safeType = null)
         {
-            SourceExpression.Validate(businessObject, nameof(businessObject), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(autoCommit, nameof(autoCommit), required: true);
-            SourceExpression.Validate(body, nameof(body), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(safeType, nameof(safeType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -370,7 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<string[]> GetMethodsForBusinessObject([WorkflowExpression] Func<string> businessObject = null)
         {
-            SourceExpression.Validate(businessObject, nameof(businessObject), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -408,7 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction CloseSession([WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -427,9 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiCommitOutput> BapiCommit([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> wait, [WorkflowExpression] Func<bool> closeSession)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(wait, nameof(wait), required: true);
-            SourceExpression.Validate(closeSession, nameof(closeSession), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -450,8 +413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiRollbackOutput> BapiRollback([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> closeSession)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(closeSession, nameof(closeSession), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -471,13 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<ReadTableOutput> ReadTable([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string[]> fieldNames = null, [WorkflowExpression] Func<string[]> whereFilters = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> numberOfRowsToRead = null, [WorkflowExpression] Func<string> delimiter = null, [WorkflowExpression] Func<ReadTableInputReturnFormatType> returnFormat = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(fieldNames, nameof(fieldNames), required: false);
-            SourceExpression.Validate(whereFilters, nameof(whereFilters), required: false);
-            SourceExpression.Validate(startIndex, nameof(startIndex), required: false);
-            SourceExpression.Validate(numberOfRowsToRead, nameof(numberOfRowsToRead), required: false);
-            SourceExpression.Validate(delimiter, nameof(delimiter), required: false);
-            SourceExpression.Validate(returnFormat, nameof(returnFormat), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -530,9 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> ReadTableResponseDyanmicSchema([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string[]> fieldNames = null, [WorkflowExpression] Func<ReadTableResponseDyanmicSchemaInputReturnFormatType> returnFormat = null)
         {
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(fieldNames, nameof(fieldNames), required: false);
-            SourceExpression.Validate(returnFormat, nameof(returnFormat), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -565,8 +516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> GetSchema([WorkflowExpression] Func<GetSchemaInputOperationTypeType> operationType, [WorkflowExpression] Func<string> fileNamePrefix = null)
         {
-            SourceExpression.Validate(operationType, nameof(operationType), required: true);
-            SourceExpression.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -590,8 +539,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> GetSchemaV2([WorkflowExpression] Func<GetSchemaV2InputOperationTypeType> operationType, [WorkflowExpression] Func<string> fileNamePrefix = null)
         {
-            SourceExpression.Validate(operationType, nameof(operationType), required: true);
-            SourceExpression.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -615,7 +562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> GetSchemaInputSwagger([WorkflowExpression] Func<string> operationType = null)
         {
-            SourceExpression.Validate(operationType, nameof(operationType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -638,8 +584,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> GetSchemaResponseDyanmicSchema([WorkflowExpression] Func<GetSchemaResponseDyanmicSchemaInputOperationTypeType> operationType, [WorkflowExpression] Func<string> fileNamePrefix = null)
         {
-            SourceExpression.Validate(operationType, nameof(operationType), required: true);
-            SourceExpression.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -663,8 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetIDocListOutput> GetIDocList([WorkflowExpression] Func<GetIDocListInputDirectionType> direction, [WorkflowExpression] Func<string> tId)
         {
-            SourceExpression.Validate(direction, nameof(direction), required: true);
-            SourceExpression.Validate(tId, nameof(tId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -684,7 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetIDocStatusOutput> GetIDocStatus([WorkflowExpression] Func<int> iDocNumber)
         {
-            SourceExpression.Validate(iDocNumber, nameof(iDocNumber), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -778,8 +719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction RespondToSapServer([WorkflowExpression] Func<string> body, [WorkflowExpression] Func<bool> safeType = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: true);
-            SourceExpression.Validate(safeType, nameof(safeType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -803,12 +742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction SendExceptionToSapServer([WorkflowExpression] Func<string> sendExceptionToSapServerErrorMessage, [WorkflowExpression] Func<string> sendExceptionToSapServerExceptionName = null, [WorkflowExpression] Func<string> sendExceptionToSapServerMessageType = null, [WorkflowExpression] Func<string> sendExceptionToSapServerMessageClass = null, [WorkflowExpression] Func<string> sendExceptionToSapServerMessageNumber = null, [WorkflowExpression] Func<bool> sendExceptionToSapServerIsAbapMessage = null)
         {
-            SourceExpression.Validate(sendExceptionToSapServerErrorMessage, nameof(sendExceptionToSapServerErrorMessage), required: true);
-            SourceExpression.Validate(sendExceptionToSapServerExceptionName, nameof(sendExceptionToSapServerExceptionName), required: false);
-            SourceExpression.Validate(sendExceptionToSapServerMessageType, nameof(sendExceptionToSapServerMessageType), required: false);
-            SourceExpression.Validate(sendExceptionToSapServerMessageClass, nameof(sendExceptionToSapServerMessageClass), required: false);
-            SourceExpression.Validate(sendExceptionToSapServerMessageNumber, nameof(sendExceptionToSapServerMessageNumber), required: false);
-            SourceExpression.Validate(sendExceptionToSapServerIsAbapMessage, nameof(sendExceptionToSapServerIsAbapMessage), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -852,8 +785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> SendMessage([WorkflowExpression] Func<string> sapAction, [WorkflowExpression] Func<string> body)
         {
-            SourceExpression.Validate(sapAction, nameof(sapAction), required: true);
-            SourceExpression.Validate(body, nameof(body), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -873,7 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> RunDiagnostics([WorkflowExpression] Func<RunDiagnosticsInputOperationTypeType> operationType)
         {
-            SourceExpression.Validate(operationType, nameof(operationType), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -892,7 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> RunDiagnosticsInputSchema([WorkflowExpression] Func<string> operationType = null)
         {
-            SourceExpression.Validate(operationType, nameof(operationType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -915,7 +844,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> RunDiagnosticsOutputSchema([WorkflowExpression] Func<string> operationType = null)
         {
-            SourceExpression.Validate(operationType, nameof(operationType), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -938,7 +866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IOutputWorkflowAction<JToken> SapTriggerInputSchema([WorkflowExpression] Func<SapTriggerInputSchemaInputIdocFormatType> idocFormat)
         {
-            SourceExpression.Validate(idocFormat, nameof(idocFormat), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -959,16 +886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     {
         public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger([WorkflowExpression] Func<SapTriggerInputIdocFormatType> idocFormat, [WorkflowExpression] Func<int> degreeOfParallelism, [WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<bool> receiveIDocsWithUnreleasedSegmentsV2 = null, [WorkflowExpression] Func<string> defaultIDocRelease = null, [WorkflowExpression] Func<string> receivedIDocTypeReleaseMapping = null, [WorkflowExpression] Func<bool> gatewayWithoutWorkProcess = null)
         {
-            SourceExpression.Validate(idocFormat, nameof(idocFormat), required: true);
-            SourceExpression.Validate(degreeOfParallelism, nameof(degreeOfParallelism), required: true);
-            SourceExpression.Validate(gatewayHost, nameof(gatewayHost), required: true);
-            SourceExpression.Validate(gatewayService, nameof(gatewayService), required: true);
-            SourceExpression.Validate(programId, nameof(programId), required: true);
-            SourceExpression.Validate(sncPartnerNames, nameof(sncPartnerNames), required: false);
-            SourceExpression.Validate(receiveIDocsWithUnreleasedSegmentsV2, nameof(receiveIDocsWithUnreleasedSegmentsV2), required: false);
-            SourceExpression.Validate(defaultIDocRelease, nameof(defaultIDocRelease), required: false);
-            SourceExpression.Validate(receivedIDocTypeReleaseMapping, nameof(receivedIDocTypeReleaseMapping), required: false);
-            SourceExpression.Validate(gatewayWithoutWorkProcess, nameof(gatewayWithoutWorkProcess), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

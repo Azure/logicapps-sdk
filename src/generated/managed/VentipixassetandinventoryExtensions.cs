@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
         public IBodyWorkflowAction<JToken> GetListItems([WorkflowExpression] Func<string> listIdDynamic, [WorkflowExpression] Func<string> barcodeValue, [WorkflowExpression] Func<string> location = null)
         {
-            SourceExpression.Validate(listIdDynamic, nameof(listIdDynamic), required: true);
-            SourceExpression.Validate(barcodeValue, nameof(barcodeValue), required: true);
-            SourceExpression.Validate(location, nameof(location), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIdDynamic, 1));
@@ -34,8 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
         public IWorkflowAction CreateListItem([WorkflowExpression] Func<string> listIdDynamic, [WorkflowExpression] Func<object> dynamicListSchema = null)
         {
-            SourceExpression.Validate(listIdDynamic, nameof(listIdDynamic), required: true);
-            SourceExpression.Validate(dynamicListSchema, nameof(dynamicListSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIdDynamic, 1));

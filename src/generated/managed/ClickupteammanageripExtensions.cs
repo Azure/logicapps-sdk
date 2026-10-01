@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateAFolderResponse> CreateAFolder([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyfolderName = null, [WorkflowExpression] Func<int> bodyorderIndex = null, [WorkflowExpression] Func<bool> bodyoverrideStatuses = null, [WorkflowExpression] Func<bool> bodyhiddenFolder = null, [WorkflowExpression] Func<string> bodytaskCount = null, [WorkflowExpression] Func<bool> bodyarchived = null, [WorkflowExpression] Func<JToken[]> bodystatuses = null, [WorkflowExpression] Func<string> bodypermissionLevel = null)
         {
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyfolderName, nameof(bodyfolderName), required: false);
-            SourceExpression.Validate(bodyorderIndex, nameof(bodyorderIndex), required: false);
-            SourceExpression.Validate(bodyoverrideStatuses, nameof(bodyoverrideStatuses), required: false);
-            SourceExpression.Validate(bodyhiddenFolder, nameof(bodyhiddenFolder), required: false);
-            SourceExpression.Validate(bodytaskCount, nameof(bodytaskCount), required: false);
-            SourceExpression.Validate(bodyarchived, nameof(bodyarchived), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
-            SourceExpression.Validate(bodypermissionLevel, nameof(bodypermissionLevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/space/{0}/folder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -120,21 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> bodyspaceName = null, [WorkflowExpression] Func<bool> bodymultipleAssignees = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesdueDates = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesstartDate = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesremapDueDate = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesremapClosedDueDate = null, [WorkflowExpression] Func<bool> bodyfeaturestimeTrackingtimeTracking = null, [WorkflowExpression] Func<bool> bodyfeaturestagstags = null, [WorkflowExpression] Func<bool> bodyfeaturestimeEstimatestimeEstimates = null, [WorkflowExpression] Func<bool> bodyfeatureschecklistschecklist = null, [WorkflowExpression] Func<bool> bodyfeaturescustomFieldscustomFields = null, [WorkflowExpression] Func<bool> bodyfeaturesremapDependenciesremapDependencies = null, [WorkflowExpression] Func<bool> bodyfeaturesdependencyWarningdependencyWarning = null, [WorkflowExpression] Func<bool> bodyfeaturesportfoliosportfolios = null)
         {
-            SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(bodyspaceName, nameof(bodyspaceName), required: false);
-            SourceExpression.Validate(bodymultipleAssignees, nameof(bodymultipleAssignees), required: false);
-            SourceExpression.Validate(bodyfeaturesdueDatesdueDates, nameof(bodyfeaturesdueDatesdueDates), required: false);
-            SourceExpression.Validate(bodyfeaturesdueDatesstartDate, nameof(bodyfeaturesdueDatesstartDate), required: false);
-            SourceExpression.Validate(bodyfeaturesdueDatesremapDueDate, nameof(bodyfeaturesdueDatesremapDueDate), required: false);
-            SourceExpression.Validate(bodyfeaturesdueDatesremapClosedDueDate, nameof(bodyfeaturesdueDatesremapClosedDueDate), required: false);
-            SourceExpression.Validate(bodyfeaturestimeTrackingtimeTracking, nameof(bodyfeaturestimeTrackingtimeTracking), required: false);
-            SourceExpression.Validate(bodyfeaturestagstags, nameof(bodyfeaturestagstags), required: false);
-            SourceExpression.Validate(bodyfeaturestimeEstimatestimeEstimates, nameof(bodyfeaturestimeEstimatestimeEstimates), required: false);
-            SourceExpression.Validate(bodyfeatureschecklistschecklist, nameof(bodyfeatureschecklistschecklist), required: false);
-            SourceExpression.Validate(bodyfeaturescustomFieldscustomFields, nameof(bodyfeaturescustomFieldscustomFields), required: false);
-            SourceExpression.Validate(bodyfeaturesremapDependenciesremapDependencies, nameof(bodyfeaturesremapDependenciesremapDependencies), required: false);
-            SourceExpression.Validate(bodyfeaturesdependencyWarningdependencyWarning, nameof(bodyfeaturesdependencyWarningdependencyWarning), required: false);
-            SourceExpression.Validate(bodyfeaturesportfoliosportfolios, nameof(bodyfeaturesportfoliosportfolios), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/team/{0}/space", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
@@ -319,11 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateAListResponse> CreateAList([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyorderIndex = null, [WorkflowExpression] Func<bool> bodydueDate2 = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyorderIndex, nameof(bodyorderIndex), required: false);
-            SourceExpression.Validate(bodydueDate2, nameof(bodydueDate2), required: false);
-            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/folder/{0}/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));

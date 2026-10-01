@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documotor")]
         public IBodyWorkflowAction<string> GenerateDoc([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<acceptInput> accept, [WorkflowExpression] Func<string> stageId = null)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: true);
-            SourceExpression.Validate(stageId, nameof(stageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/template/{0}/generate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));

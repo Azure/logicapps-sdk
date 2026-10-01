@@ -42,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore([WorkflowExpression] Func<int> bodystoreId = null, [WorkflowExpression] Func<string> bodyrefreshDate = null)
         {
-            SourceExpression.Validate(bodystoreId, nameof(bodystoreId), required: false);
-            SourceExpression.Validate(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stores/refreshstore";

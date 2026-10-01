@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
         public IBodyWorkflowAction<InlineResponse200> Lnkadd([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodylink, [WorkflowExpression] Func<string> bodyimage = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodylink, nameof(bodylink), required: true);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lnk/add";

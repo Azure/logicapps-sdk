@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
         public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea([WorkflowExpression] Func<int> bodystormid, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<bodycolorInput> bodycolor)
         {
-            SourceExpression.Validate(bodystormid, nameof(bodystormid), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
-            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ideas";
@@ -47,10 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
         public IBodyWorkflowAction<CreateStormResponse> CreateStorm([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyplan, [WorkflowExpression] Func<string> bodygoals = null, [WorkflowExpression] Func<bool> bodyideacreator = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyplan, nameof(bodyplan), required: true);
-            SourceExpression.Validate(bodygoals, nameof(bodygoals), required: false);
-            SourceExpression.Validate(bodyideacreator, nameof(bodyideacreator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/storms";

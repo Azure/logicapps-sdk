@@ -14,34 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requests")]
         public IWorkflowAction RepfabricCreateContact([WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<string> bodycontactFirstName, [WorkflowExpression] Func<string> bodycontactLastName, [WorkflowExpression] Func<string> bodycontactTitle = null, [WorkflowExpression] Func<string> bodycontactBackground = null, [WorkflowExpression] Func<string> bodycontactCompanyName = null, [WorkflowExpression] Func<bool> bodycontactPrimary = null, [WorkflowExpression] Func<string> bodycontactCompanyTypeName = null, [WorkflowExpression] Func<string> bodycontactEmailAddressWork = null, [WorkflowExpression] Func<string> bodycontactEmailAddressPersonal = null, [WorkflowExpression] Func<string> bodycontactEmailAddressAlternate = null, [WorkflowExpression] Func<string> bodycontactEmailAddressOther = null, [WorkflowExpression] Func<string> bodycontactPhoneNumberWork = null, [WorkflowExpression] Func<string> bodycontactPhoneNumberHome = null, [WorkflowExpression] Func<string> bodycontactPhoneNumberMobile = null, [WorkflowExpression] Func<string> bodycontactPhoneNumberAlternate = null, [WorkflowExpression] Func<string> bodycontactFax = null, [WorkflowExpression] Func<string> bodycontactBusinessStreet = null, [WorkflowExpression] Func<string> bodycontactBusinessCity = null, [WorkflowExpression] Func<string> bodycontactBusinessState = null, [WorkflowExpression] Func<string> bodycontactBusinessZip = null, [WorkflowExpression] Func<string> bodycontactBusinessCountry = null, [WorkflowExpression] Func<string> bodycontactHomeStreet = null, [WorkflowExpression] Func<string> bodycontactHomeCity = null, [WorkflowExpression] Func<string> bodycontactHomeState = null, [WorkflowExpression] Func<string> bodycontactHomeZip = null, [WorkflowExpression] Func<string> bodycontactHomeCountry = null, [WorkflowExpression] Func<string[]> bodycontactTags = null)
         {
-            SourceExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
-            SourceExpression.Validate(bodycontactFirstName, nameof(bodycontactFirstName), required: true);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: true);
-            SourceExpression.Validate(bodycontactTitle, nameof(bodycontactTitle), required: false);
-            SourceExpression.Validate(bodycontactBackground, nameof(bodycontactBackground), required: false);
-            SourceExpression.Validate(bodycontactCompanyName, nameof(bodycontactCompanyName), required: false);
-            SourceExpression.Validate(bodycontactPrimary, nameof(bodycontactPrimary), required: false);
-            SourceExpression.Validate(bodycontactCompanyTypeName, nameof(bodycontactCompanyTypeName), required: false);
-            SourceExpression.Validate(bodycontactEmailAddressWork, nameof(bodycontactEmailAddressWork), required: false);
-            SourceExpression.Validate(bodycontactEmailAddressPersonal, nameof(bodycontactEmailAddressPersonal), required: false);
-            SourceExpression.Validate(bodycontactEmailAddressAlternate, nameof(bodycontactEmailAddressAlternate), required: false);
-            SourceExpression.Validate(bodycontactEmailAddressOther, nameof(bodycontactEmailAddressOther), required: false);
-            SourceExpression.Validate(bodycontactPhoneNumberWork, nameof(bodycontactPhoneNumberWork), required: false);
-            SourceExpression.Validate(bodycontactPhoneNumberHome, nameof(bodycontactPhoneNumberHome), required: false);
-            SourceExpression.Validate(bodycontactPhoneNumberMobile, nameof(bodycontactPhoneNumberMobile), required: false);
-            SourceExpression.Validate(bodycontactPhoneNumberAlternate, nameof(bodycontactPhoneNumberAlternate), required: false);
-            SourceExpression.Validate(bodycontactFax, nameof(bodycontactFax), required: false);
-            SourceExpression.Validate(bodycontactBusinessStreet, nameof(bodycontactBusinessStreet), required: false);
-            SourceExpression.Validate(bodycontactBusinessCity, nameof(bodycontactBusinessCity), required: false);
-            SourceExpression.Validate(bodycontactBusinessState, nameof(bodycontactBusinessState), required: false);
-            SourceExpression.Validate(bodycontactBusinessZip, nameof(bodycontactBusinessZip), required: false);
-            SourceExpression.Validate(bodycontactBusinessCountry, nameof(bodycontactBusinessCountry), required: false);
-            SourceExpression.Validate(bodycontactHomeStreet, nameof(bodycontactHomeStreet), required: false);
-            SourceExpression.Validate(bodycontactHomeCity, nameof(bodycontactHomeCity), required: false);
-            SourceExpression.Validate(bodycontactHomeState, nameof(bodycontactHomeState), required: false);
-            SourceExpression.Validate(bodycontactHomeZip, nameof(bodycontactHomeZip), required: false);
-            SourceExpression.Validate(bodycontactHomeCountry, nameof(bodycontactHomeCountry), required: false);
-            SourceExpression.Validate(bodycontactTags, nameof(bodycontactTags), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Contact";
@@ -218,28 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requests")]
         public IWorkflowAction RepfabricCreateCompany([WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<int> bodycompanyTypeId = null, [WorkflowExpression] Func<string> bodycompanyType = null, [WorkflowExpression] Func<int> bodycompanyClassId = null, [WorkflowExpression] Func<string> bodycompanyClass = null, [WorkflowExpression] Func<int> bodycompanyCategoryId = null, [WorkflowExpression] Func<string> bodycompanyCategory = null, [WorkflowExpression] Func<string> bodycompanyPhone1 = null, [WorkflowExpression] Func<string> bodycompanyPhone2 = null, [WorkflowExpression] Func<string> bodycompanyFax = null, [WorkflowExpression] Func<string> bodycompanyRegion = null, [WorkflowExpression] Func<string> bodycompanyStreet = null, [WorkflowExpression] Func<string> bodycompanyCity = null, [WorkflowExpression] Func<string> bodycompanyState = null, [WorkflowExpression] Func<string> bodycompanyZip = null, [WorkflowExpression] Func<string> bodycompanyCountry = null, [WorkflowExpression] Func<string> bodycompanyPoBox = null, [WorkflowExpression] Func<string> bodycompanyWebsite = null, [WorkflowExpression] Func<string> bodycompanyComments = null, [WorkflowExpression] Func<int> bodycompanySalesTeamId = null, [WorkflowExpression] Func<string> bodycompanySalesTeam = null)
         {
-            SourceExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodycompanyTypeId, nameof(bodycompanyTypeId), required: false);
-            SourceExpression.Validate(bodycompanyType, nameof(bodycompanyType), required: false);
-            SourceExpression.Validate(bodycompanyClassId, nameof(bodycompanyClassId), required: false);
-            SourceExpression.Validate(bodycompanyClass, nameof(bodycompanyClass), required: false);
-            SourceExpression.Validate(bodycompanyCategoryId, nameof(bodycompanyCategoryId), required: false);
-            SourceExpression.Validate(bodycompanyCategory, nameof(bodycompanyCategory), required: false);
-            SourceExpression.Validate(bodycompanyPhone1, nameof(bodycompanyPhone1), required: false);
-            SourceExpression.Validate(bodycompanyPhone2, nameof(bodycompanyPhone2), required: false);
-            SourceExpression.Validate(bodycompanyFax, nameof(bodycompanyFax), required: false);
-            SourceExpression.Validate(bodycompanyRegion, nameof(bodycompanyRegion), required: false);
-            SourceExpression.Validate(bodycompanyStreet, nameof(bodycompanyStreet), required: false);
-            SourceExpression.Validate(bodycompanyCity, nameof(bodycompanyCity), required: false);
-            SourceExpression.Validate(bodycompanyState, nameof(bodycompanyState), required: false);
-            SourceExpression.Validate(bodycompanyZip, nameof(bodycompanyZip), required: false);
-            SourceExpression.Validate(bodycompanyCountry, nameof(bodycompanyCountry), required: false);
-            SourceExpression.Validate(bodycompanyPoBox, nameof(bodycompanyPoBox), required: false);
-            SourceExpression.Validate(bodycompanyWebsite, nameof(bodycompanyWebsite), required: false);
-            SourceExpression.Validate(bodycompanyComments, nameof(bodycompanyComments), required: false);
-            SourceExpression.Validate(bodycompanySalesTeamId, nameof(bodycompanySalesTeamId), required: false);
-            SourceExpression.Validate(bodycompanySalesTeam, nameof(bodycompanySalesTeam), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Company";
@@ -388,37 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requests")]
         public IWorkflowAction RepfabricCreateQuote([WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<string> bodyquotesBaseUrl, [WorkflowExpression] Func<string> bodyauthQuotes, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<int> bodycompanyTypeId = null, [WorkflowExpression] Func<string> bodycompanyType = null, [WorkflowExpression] Func<string> bodycompanyPhone1 = null, [WorkflowExpression] Func<string> bodycompanyStreet = null, [WorkflowExpression] Func<string> bodycompanyCity = null, [WorkflowExpression] Func<string> bodycompanyState = null, [WorkflowExpression] Func<string> bodycompanyZip = null, [WorkflowExpression] Func<string> bodycompanyWebsite = null, [WorkflowExpression] Func<string> bodycontactFirstName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<string> bodycontactEmailAddressWork = null, [WorkflowExpression] Func<string> bodycontactPhoneNumberWork = null, [WorkflowExpression] Func<string> bodycontactTitle = null, [WorkflowExpression] Func<string> bodyquoteNumber = null, [WorkflowExpression] Func<string> bodyquoteDate = null, [WorkflowExpression] Func<string> bodyexpiryDate = null, [WorkflowExpression] Func<string> bodyfollowUp = null, [WorkflowExpression] Func<string> bodyprogram = null, [WorkflowExpression] Func<string> bodyprincipalName = null, [WorkflowExpression] Func<string> bodyvalue = null, [WorkflowExpression] Func<string> bodylineItempartNum = null, [WorkflowExpression] Func<string> bodylineItemcustPart = null, [WorkflowExpression] Func<string> bodylineItemdescription = null, [WorkflowExpression] Func<string> bodylineItemorderQty = null, [WorkflowExpression] Func<string> bodylineItemunitPrice = null, [WorkflowExpression] Func<string> bodylineItemextPrice = null, [WorkflowExpression] Func<string> bodylineItemproductLine = null)
         {
-            SourceExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
-            SourceExpression.Validate(bodyquotesBaseUrl, nameof(bodyquotesBaseUrl), required: true);
-            SourceExpression.Validate(bodyauthQuotes, nameof(bodyauthQuotes), required: true);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodycompanyTypeId, nameof(bodycompanyTypeId), required: false);
-            SourceExpression.Validate(bodycompanyType, nameof(bodycompanyType), required: false);
-            SourceExpression.Validate(bodycompanyPhone1, nameof(bodycompanyPhone1), required: false);
-            SourceExpression.Validate(bodycompanyStreet, nameof(bodycompanyStreet), required: false);
-            SourceExpression.Validate(bodycompanyCity, nameof(bodycompanyCity), required: false);
-            SourceExpression.Validate(bodycompanyState, nameof(bodycompanyState), required: false);
-            SourceExpression.Validate(bodycompanyZip, nameof(bodycompanyZip), required: false);
-            SourceExpression.Validate(bodycompanyWebsite, nameof(bodycompanyWebsite), required: false);
-            SourceExpression.Validate(bodycontactFirstName, nameof(bodycontactFirstName), required: false);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            SourceExpression.Validate(bodycontactEmailAddressWork, nameof(bodycontactEmailAddressWork), required: false);
-            SourceExpression.Validate(bodycontactPhoneNumberWork, nameof(bodycontactPhoneNumberWork), required: false);
-            SourceExpression.Validate(bodycontactTitle, nameof(bodycontactTitle), required: false);
-            SourceExpression.Validate(bodyquoteNumber, nameof(bodyquoteNumber), required: false);
-            SourceExpression.Validate(bodyquoteDate, nameof(bodyquoteDate), required: false);
-            SourceExpression.Validate(bodyexpiryDate, nameof(bodyexpiryDate), required: false);
-            SourceExpression.Validate(bodyfollowUp, nameof(bodyfollowUp), required: false);
-            SourceExpression.Validate(bodyprogram, nameof(bodyprogram), required: false);
-            SourceExpression.Validate(bodyprincipalName, nameof(bodyprincipalName), required: false);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            SourceExpression.Validate(bodylineItempartNum, nameof(bodylineItempartNum), required: false);
-            SourceExpression.Validate(bodylineItemcustPart, nameof(bodylineItemcustPart), required: false);
-            SourceExpression.Validate(bodylineItemdescription, nameof(bodylineItemdescription), required: false);
-            SourceExpression.Validate(bodylineItemorderQty, nameof(bodylineItemorderQty), required: false);
-            SourceExpression.Validate(bodylineItemunitPrice, nameof(bodylineItemunitPrice), required: false);
-            SourceExpression.Validate(bodylineItemextPrice, nameof(bodylineItemextPrice), required: false);
-            SourceExpression.Validate(bodylineItemproductLine, nameof(bodylineItemproductLine), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Quote";

@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> GetItemByExternalId([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> externalIdField, [WorkflowExpression] Func<string> externalId)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(externalIdField, nameof(externalIdField), required: true);
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/externalIdFields/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalIdField, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 2));
@@ -45,12 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -75,11 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableAccount([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/tables/account/items";
@@ -104,11 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableUser([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/tables/user/items";
@@ -133,11 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableCase([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/tables/case/items";
@@ -162,11 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableOpportunity([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/tables/opportunity/items";
@@ -191,11 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableProduct2([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/tables/product2/items";
@@ -220,11 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableContact([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/datasets/default/tables/contact/items";
@@ -249,8 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -265,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> ExecuteSoqlQuery([WorkflowExpression] Func<string> queryParameterssOQLQuery)
         {
-            SourceExpression.Validate(queryParameterssOQLQuery, nameof(queryParameterssOQLQuery), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/soql/executesoqlquery";
@@ -296,10 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<GetAllJobsResponse> GetAllJobs([WorkflowExpression] Func<concurrenyModeInput> concurrenyMode = null, [WorkflowExpression] Func<bool> isPkChunkingEnabled = null, [WorkflowExpression] Func<jobTypeInput> jobType = null, [WorkflowExpression] Func<string> queryLocator = null)
         {
-            SourceExpression.Validate(concurrenyMode, nameof(concurrenyMode), required: false);
-            SourceExpression.Validate(isPkChunkingEnabled, nameof(isPkChunkingEnabled), required: false);
-            SourceExpression.Validate(jobType, nameof(jobType), required: false);
-            SourceExpression.Validate(queryLocator, nameof(queryLocator), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/jobs/ingest";
@@ -323,8 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction UploadJobData([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/batches", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -340,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<CheckJobResponse> GetJobInfo([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -355,8 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JobInfo> CloseJob([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<bodystateInput> bodystate)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -379,7 +328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction DeleteJob([WorkflowExpression] Func<string> jobId)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -394,8 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<string> GetJobRecordResults([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<resultTypeInput> resultType)
         {
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
-            SourceExpression.Validate(resultType, nameof(resultType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/results", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
@@ -411,7 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<SOSLSearchQueryResponse> ExecuteSOSLQuery([WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/search";
@@ -427,15 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            SourceExpression.Validate(uri, nameof(uri), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(customHeader1, nameof(customHeader1), required: false);
-            SourceExpression.Validate(customHeader2, nameof(customHeader2), required: false);
-            SourceExpression.Validate(customHeader3, nameof(customHeader3), required: false);
-            SourceExpression.Validate(customHeader4, nameof(customHeader4), required: false);
-            SourceExpression.Validate(customHeader5, nameof(customHeader5), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/codeless/httprequest";
@@ -466,10 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<MCPQueryResponse> McpSalesforceManagement([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mcp/SalesforceManagement";
@@ -534,12 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> parametersObject, [WorkflowExpression] Func<parametersoperationInput> parametersoperation, [WorkflowExpression] Func<string> parameterscolumnDelimiter = null, [WorkflowExpression] Func<string> parametersexternalIdFieldName = null, [WorkflowExpression] Func<string> parameterslineEnding = null, [WorkflowExpression] Func<string> parameterscontentType = null)
         {
-            SourceExpression.Validate(parametersObject, nameof(parametersObject), required: true);
-            SourceExpression.Validate(parametersoperation, nameof(parametersoperation), required: true);
-            SourceExpression.Validate(parameterscolumnDelimiter, nameof(parameterscolumnDelimiter), required: false);
-            SourceExpression.Validate(parametersexternalIdFieldName, nameof(parametersexternalIdFieldName), required: false);
-            SourceExpression.Validate(parameterslineEnding, nameof(parameterslineEnding), required: false);
-            SourceExpression.Validate(parameterscontentType, nameof(parameterscontentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bulk/createjob";
@@ -588,9 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -607,10 +530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PatchItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/datasets/default/tables/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
@@ -628,10 +547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PatchItemByExternalId([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> externalIdField, [WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(externalIdField, nameof(externalIdField), required: true);
-            SourceExpression.Validate(externalId, nameof(externalId), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/externalIdFields/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalIdField, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalId, 2));
@@ -647,8 +562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PostItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> item = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -666,10 +579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     {
         public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onnewitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -689,10 +598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onupdateditems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));

@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vitacloudquotes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vitacloudquotes")]
         public IBodyWorkflowAction<VwAuthor> GetAuthor([WorkflowExpression] Func<string> authortag)
         {
-            SourceExpression.Validate(authortag, nameof(authortag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Authors/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(authortag, 1));
@@ -85,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vitacloudquotes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vitacloudquotes")]
         public IBodyWorkflowAction<VwQuote[]> GetRandomQuotesByNum([WorkflowExpression] Func<int> number)
         {
-            SourceExpression.Validate(number, nameof(number), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Quotes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(number, 1));
@@ -100,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vitacloudquotes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vitacloudquotes")]
         public IBodyWorkflowAction<VwQuote[]> GetRandomQuotesByAuthor([WorkflowExpression] Func<string> authortag)
         {
-            SourceExpression.Validate(authortag, nameof(authortag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Quotes/Author/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(authortag, 1));
@@ -115,8 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vitacloudquotes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vitacloudquotes")]
         public IBodyWorkflowAction<VwQuote[]> GetRandomQuotesByAuthorAndNum([WorkflowExpression] Func<string> authortag, [WorkflowExpression] Func<int> number)
         {
-            SourceExpression.Validate(authortag, nameof(authortag), required: true);
-            SourceExpression.Validate(number, nameof(number), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Quotes/Author/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(authortag, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(number, 1));
@@ -131,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vitacloudquotes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vitacloudquotes")]
         public IBodyWorkflowAction<VwQuote[]> GetRandomQuotesByTheme([WorkflowExpression] Func<string> themetag)
         {
-            SourceExpression.Validate(themetag, nameof(themetag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Quotes/Theme/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(themetag, 1));
@@ -146,8 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vitacloudquotes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vitacloudquotes")]
         public IBodyWorkflowAction<VwQuote[]> GetRandomQuotesByThemeAndNum([WorkflowExpression] Func<string> themetag, [WorkflowExpression] Func<int> number)
         {
-            SourceExpression.Validate(themetag, nameof(themetag), required: true);
-            SourceExpression.Validate(number, nameof(number), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Quotes/Theme/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(themetag, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(number, 1));
@@ -176,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vitacloudquotes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vitacloudquotes")]
         public IBodyWorkflowAction<VwTheme> GetTheme([WorkflowExpression] Func<string> themetag)
         {
-            SourceExpression.Validate(themetag, nameof(themetag), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Themes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(themetag, 1));

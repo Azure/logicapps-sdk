@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<EnginesListGetResponseItem[]> EnginesListGet([WorkflowExpression] Func<string> organization = null)
         {
-            SourceExpression.Validate(organization, nameof(organization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/engines/list";
@@ -59,17 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationTextImagePostResponse> GenerationTextImage([WorkflowExpression] Func<string> engineId, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<bodytextPromptsInputItem[]> bodytextPrompts = null, [WorkflowExpression] Func<int> bodycfgScale = null, [WorkflowExpression] Func<string> bodyclipGuidancePreset = null, [WorkflowExpression] Func<string> bodysampler = null, [WorkflowExpression] Func<int> bodysamples = null, [WorkflowExpression] Func<int> bodyseed = null, [WorkflowExpression] Func<int> bodysteps = null)
         {
-            SourceExpression.Validate(engineId, nameof(engineId), required: true);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodytextPrompts, nameof(bodytextPrompts), required: false);
-            SourceExpression.Validate(bodycfgScale, nameof(bodycfgScale), required: false);
-            SourceExpression.Validate(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            SourceExpression.Validate(bodysampler, nameof(bodysampler), required: false);
-            SourceExpression.Validate(bodysamples, nameof(bodysamples), required: false);
-            SourceExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            SourceExpression.Validate(bodysteps, nameof(bodysteps), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/text-to-image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(engineId, 1));
@@ -148,20 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationImageImagePostResponse> GenerationImageImage([WorkflowExpression] Func<string> engineId, [WorkflowExpression] Func<string> bodyinitImage, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<bodytextPromptsInputItem[]> bodytextPrompts = null, [WorkflowExpression] Func<bodyinitImageModeInput> bodyinitImageMode = null, [WorkflowExpression] Func<double> bodyimageStrength = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodycfgScale = null, [WorkflowExpression] Func<string> bodyclipGuidancePreset = null, [WorkflowExpression] Func<string> bodysampler = null, [WorkflowExpression] Func<int> bodysamples = null, [WorkflowExpression] Func<int> bodyseed = null, [WorkflowExpression] Func<int> bodysteps = null)
         {
-            SourceExpression.Validate(engineId, nameof(engineId), required: true);
-            SourceExpression.Validate(bodyinitImage, nameof(bodyinitImage), required: true);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(bodytextPrompts, nameof(bodytextPrompts), required: false);
-            SourceExpression.Validate(bodyinitImageMode, nameof(bodyinitImageMode), required: false);
-            SourceExpression.Validate(bodyimageStrength, nameof(bodyimageStrength), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodycfgScale, nameof(bodycfgScale), required: false);
-            SourceExpression.Validate(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            SourceExpression.Validate(bodysampler, nameof(bodysampler), required: false);
-            SourceExpression.Validate(bodysamples, nameof(bodysamples), required: false);
-            SourceExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            SourceExpression.Validate(bodysteps, nameof(bodysteps), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/image-to-image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(engineId, 1));
@@ -254,11 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationUpscalePostResponse> GenerationUpscale([WorkflowExpression] Func<string> engineId, [WorkflowExpression] Func<string> bodyimage, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<int> bodywidth = null)
         {
-            SourceExpression.Validate(engineId, nameof(engineId), required: true);
-            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: true);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/image-to-image/upscale", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(engineId, 1));
@@ -297,20 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationMaskPostResponse> GenerationMask([WorkflowExpression] Func<string> engineId, [WorkflowExpression] Func<string> bodyinitImage, [WorkflowExpression] Func<bodymaskSourceInput> bodymaskSource, [WorkflowExpression] Func<string> bodymaskImage, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<bodytextPromptsInputItem[]> bodytextPrompts = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodycfgScale = null, [WorkflowExpression] Func<string> bodyclipGuidancePreset = null, [WorkflowExpression] Func<string> bodysampler = null, [WorkflowExpression] Func<int> bodysamples = null, [WorkflowExpression] Func<int> bodyseed = null, [WorkflowExpression] Func<int> bodysteps = null)
         {
-            SourceExpression.Validate(engineId, nameof(engineId), required: true);
-            SourceExpression.Validate(bodyinitImage, nameof(bodyinitImage), required: true);
-            SourceExpression.Validate(bodymaskSource, nameof(bodymaskSource), required: true);
-            SourceExpression.Validate(bodymaskImage, nameof(bodymaskImage), required: true);
-            SourceExpression.Validate(organization, nameof(organization), required: false);
-            SourceExpression.Validate(bodytextPrompts, nameof(bodytextPrompts), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodycfgScale, nameof(bodycfgScale), required: false);
-            SourceExpression.Validate(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            SourceExpression.Validate(bodysampler, nameof(bodysampler), required: false);
-            SourceExpression.Validate(bodysamples, nameof(bodysamples), required: false);
-            SourceExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            SourceExpression.Validate(bodysteps, nameof(bodysteps), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/image-to-image/masking", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(engineId, 1));
@@ -395,11 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<StableImageCorePostResponse> StableImageCore([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<bodyaspectRatioInput> bodyaspectRatio = null, [WorkflowExpression] Func<string> bodynegativePrompt = null, [WorkflowExpression] Func<int> bodyseed = null, [WorkflowExpression] Func<bodystylePresetInput> bodystylePreset = null)
         {
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
-            SourceExpression.Validate(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            SourceExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            SourceExpression.Validate(bodystylePreset, nameof(bodystylePreset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/core";
@@ -456,12 +406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<StableDiffusionPostResponse> StableDiffusion([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<bodyaspectRatioInput> bodyaspectRatio = null, [WorkflowExpression] Func<string> bodynegativePrompt = null, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<int> bodyseed = null, [WorkflowExpression] Func<bodystylePresetInput> bodystylePreset = null)
         {
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
-            SourceExpression.Validate(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            SourceExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            SourceExpression.Validate(bodystylePreset, nameof(bodystylePreset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/sd3";

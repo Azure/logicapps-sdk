@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishDocxResponse> PublishDocx([WorkflowExpression] Func<string> requestBodydocName = null, [WorkflowExpression] Func<string> requestBodydocumentTemplateData = null, [WorkflowExpression] Func<string> requestBodyjsonData = null, [WorkflowExpression] Func<string> requestBodylogLevel = null, [WorkflowExpression] Func<string> requestBodylanguage = null, [WorkflowExpression] Func<string> requestBodycountry = null, [WorkflowExpression] Func<string> requestBodyclientType = null)
         {
-            SourceExpression.Validate(requestBodydocName, nameof(requestBodydocName), required: false);
-            SourceExpression.Validate(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
-            SourceExpression.Validate(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
-            SourceExpression.Validate(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
-            SourceExpression.Validate(requestBodylanguage, nameof(requestBodylanguage), required: false);
-            SourceExpression.Validate(requestBodycountry, nameof(requestBodycountry), required: false);
-            SourceExpression.Validate(requestBodyclientType, nameof(requestBodyclientType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/dynamicdoc/docx";
@@ -83,13 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishPDFResponse> PublishPDF([WorkflowExpression] Func<string> requestBodydocName = null, [WorkflowExpression] Func<string> requestBodydocumentTemplateData = null, [WorkflowExpression] Func<string> requestBodyjsonData = null, [WorkflowExpression] Func<string> requestBodylogLevel = null, [WorkflowExpression] Func<string> requestBodylanguage = null, [WorkflowExpression] Func<string> requestBodycountry = null, [WorkflowExpression] Func<string> requestBodyclientType = null)
         {
-            SourceExpression.Validate(requestBodydocName, nameof(requestBodydocName), required: false);
-            SourceExpression.Validate(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
-            SourceExpression.Validate(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
-            SourceExpression.Validate(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
-            SourceExpression.Validate(requestBodylanguage, nameof(requestBodylanguage), required: false);
-            SourceExpression.Validate(requestBodycountry, nameof(requestBodycountry), required: false);
-            SourceExpression.Validate(requestBodyclientType, nameof(requestBodyclientType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/dynamicdoc/pdf";
@@ -152,13 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishHtmlResponse> PublishHtml([WorkflowExpression] Func<string> requestBodydocName = null, [WorkflowExpression] Func<string> requestBodydocumentTemplateData = null, [WorkflowExpression] Func<string> requestBodyjsonData = null, [WorkflowExpression] Func<string> requestBodylogLevel = null, [WorkflowExpression] Func<string> requestBodylanguage = null, [WorkflowExpression] Func<string> requestBodycountry = null, [WorkflowExpression] Func<string> requestBodyclientType = null)
         {
-            SourceExpression.Validate(requestBodydocName, nameof(requestBodydocName), required: false);
-            SourceExpression.Validate(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
-            SourceExpression.Validate(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
-            SourceExpression.Validate(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
-            SourceExpression.Validate(requestBodylanguage, nameof(requestBodylanguage), required: false);
-            SourceExpression.Validate(requestBodycountry, nameof(requestBodycountry), required: false);
-            SourceExpression.Validate(requestBodyclientType, nameof(requestBodyclientType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/dynamicdoc/html";

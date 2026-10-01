@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<ExchangeData> GetExchanges([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/exchange/v1/exchanges";
@@ -32,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<URLExchangeData> GetExchangesUsinglink([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/exchange/fake/exchanges";
@@ -48,8 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<AECData> GetAECDesigns([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/design/v1/designs";
@@ -66,7 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<AECData> GetAECDesignsUsinglink([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/design/v2/designs";
@@ -82,14 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponse> GetFilteredPropertiesCodeBehind([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<getlatestInput> getlatest, [WorkflowExpression] Func<filterByInput> filterBy, [WorkflowExpression] Func<string> filterValue = null, [WorkflowExpression] Func<string> parameterfilterValue = null, [WorkflowExpression] Func<selectedUnitTypeInput> selectedUnitType = null, [WorkflowExpression] Func<string> selectedUnit = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(getlatest, nameof(getlatest), required: true);
-            SourceExpression.Validate(filterBy, nameof(filterBy), required: true);
-            SourceExpression.Validate(filterValue, nameof(filterValue), required: false);
-            SourceExpression.Validate(parameterfilterValue, nameof(parameterfilterValue), required: false);
-            SourceExpression.Validate(selectedUnitType, nameof(selectedUnitType), required: false);
-            SourceExpression.Validate(selectedUnit, nameof(selectedUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fakeGraphQL/GetFilteredParameters";
@@ -117,12 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponse> GetFilteredPropertiesUsingLink([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<filterByInput> filterBy, [WorkflowExpression] Func<string> filterValue = null, [WorkflowExpression] Func<string> parameterfilterValue = null, [WorkflowExpression] Func<selectedUnitTypeInput> selectedUnitType = null, [WorkflowExpression] Func<string> selectedUnit = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(filterBy, nameof(filterBy), required: true);
-            SourceExpression.Validate(filterValue, nameof(filterValue), required: false);
-            SourceExpression.Validate(parameterfilterValue, nameof(parameterfilterValue), required: false);
-            SourceExpression.Validate(selectedUnitType, nameof(selectedUnitType), required: false);
-            SourceExpression.Validate(selectedUnit, nameof(selectedUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fakeGraphQL/url/GetFilteredParameters";
@@ -148,13 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> GetFilteredPropertiesCodeBehindAEC([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<filterByInput> filterBy, [WorkflowExpression] Func<string> filterValue = null, [WorkflowExpression] Func<string> parameterfilterValue = null, [WorkflowExpression] Func<selectedUnitTypeInput> selectedUnitType = null, [WorkflowExpression] Func<string> selectedUnit = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(filterBy, nameof(filterBy), required: true);
-            SourceExpression.Validate(filterValue, nameof(filterValue), required: false);
-            SourceExpression.Validate(parameterfilterValue, nameof(parameterfilterValue), required: false);
-            SourceExpression.Validate(selectedUnitType, nameof(selectedUnitType), required: false);
-            SourceExpression.Validate(selectedUnit, nameof(selectedUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fakeGraphQL/GetFilteredParametersAEC";
@@ -181,12 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> GetFilteredPropertiesAECUsingLink([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<filterByInput> filterBy, [WorkflowExpression] Func<string> filterValue = null, [WorkflowExpression] Func<string> parameterfilterValue = null, [WorkflowExpression] Func<selectedUnitTypeInput> selectedUnitType = null, [WorkflowExpression] Func<string> selectedUnit = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(filterBy, nameof(filterBy), required: true);
-            SourceExpression.Validate(filterValue, nameof(filterValue), required: false);
-            SourceExpression.Validate(parameterfilterValue, nameof(parameterfilterValue), required: false);
-            SourceExpression.Validate(selectedUnitType, nameof(selectedUnitType), required: false);
-            SourceExpression.Validate(selectedUnit, nameof(selectedUnit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fakeGraphQL/URL/GetFilteredParametersAEC";
@@ -212,7 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> GetAECpropertyDefinitionsUsingLink([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fakeGraphQL/url/GetAECProperties";
@@ -228,7 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> GetDXpropertyDefinitionsUsingLink([WorkflowExpression] Func<string> fileId)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fakeGraphQL/url/GetDXProperties";
@@ -246,10 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
     {
         public IWorkflowTrigger RegisterWebhookExchangeModified([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> hubId, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(hubId, nameof(hubId), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/webhook";
@@ -275,10 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
 
         public IWorkflowTrigger RegisterWebhookExchangeAdded([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> hubId, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(hubId, nameof(hubId), required: true);
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/webhookModified";
@@ -304,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
 
         public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl([WorkflowExpression] Func<string> fileId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/connector/webhookModifiedByUrl";

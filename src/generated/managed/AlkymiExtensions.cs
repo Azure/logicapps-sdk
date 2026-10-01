@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<PaginatedDatasetList> DatasetsRetrieve([WorkflowExpression] Func<string> uuid)
         {
-            SourceExpression.Validate(uuid, nameof(uuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/datasets/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<Document> DocumentsRetrieve([WorkflowExpression] Func<string> uuid)
         {
-            SourceExpression.Validate(uuid, nameof(uuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/documents/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
@@ -72,7 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<string> DocumentsDownloadOriginalRetrieve([WorkflowExpression] Func<string> uuid)
         {
-            SourceExpression.Validate(uuid, nameof(uuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/documents/{0}/download_original/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
@@ -87,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<string> DocumentsDownloadPdfRetrieve([WorkflowExpression] Func<string> uuid)
         {
-            SourceExpression.Validate(uuid, nameof(uuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/documents/{0}/download_pdf/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
@@ -102,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<PaginatedExecutionList> ExecutionsList([WorkflowExpression] Func<documentStatusInputItem[]> documentStatus = null)
         {
-            SourceExpression.Validate(documentStatus, nameof(documentStatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/executions/";
@@ -119,7 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<Execution> ExecutionsRetrieve([WorkflowExpression] Func<string> uuid)
         {
-            SourceExpression.Validate(uuid, nameof(uuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/executions/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
@@ -148,7 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<PipelineConfiguration> PipelinesRetrieve([WorkflowExpression] Func<string> name)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/pipelines/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
@@ -163,12 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<PaginatedRecordList> RecordsList([WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<documentStatusInputItem[]> documentStatus = null, [WorkflowExpression] Func<string> pipeline = null, [WorkflowExpression] Func<bool> removed = null, [WorkflowExpression] Func<bool> reviewed = null, [WorkflowExpression] Func<string> schema = null)
         {
-            SourceExpression.Validate(dataset, nameof(dataset), required: false);
-            SourceExpression.Validate(documentStatus, nameof(documentStatus), required: false);
-            SourceExpression.Validate(pipeline, nameof(pipeline), required: false);
-            SourceExpression.Validate(removed, nameof(removed), required: false);
-            SourceExpression.Validate(reviewed, nameof(reviewed), required: false);
-            SourceExpression.Validate(schema, nameof(schema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/records/";
@@ -195,7 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
         public IBodyWorkflowAction<Record> RecordsRetrieve([WorkflowExpression] Func<string> uuid)
         {
-            SourceExpression.Validate(uuid, nameof(uuid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/records/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
@@ -212,8 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
     {
         public IBodyWorkflowTrigger<WebHookCreatedResponse> EventListener([WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodyevents, nameof(bodyevents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/webhooks/";

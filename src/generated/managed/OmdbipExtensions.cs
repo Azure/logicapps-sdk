@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "omdbip")]
         public IBodyWorkflowAction<GetSearchResultsResponse> GetSearchResults([WorkflowExpression] Func<string> apikey, [WorkflowExpression] Func<string> s = null, [WorkflowExpression] Func<string> i = null, [WorkflowExpression] Func<int> y = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(apikey, nameof(apikey), required: true);
-            SourceExpression.Validate(s, nameof(s), required: false);
-            SourceExpression.Validate(i, nameof(i), required: false);
-            SourceExpression.Validate(y, nameof(y), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/";

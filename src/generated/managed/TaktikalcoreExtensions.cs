@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcessActivityLogWrapper[]> GetSigningProcessActivityactivityProcessKeyGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> processKey, [WorkflowExpression] Func<string> user = null, [WorkflowExpression] Func<flowTypeInput> flowType = null, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> flowKey = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(processKey, nameof(processKey), required: true);
-            SourceExpression.Validate(user, nameof(user), required: false);
-            SourceExpression.Validate(flowType, nameof(flowType), required: false);
-            SourceExpression.Validate(take, nameof(take), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(flowKey, nameof(flowKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signing/activity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(processKey, 1));
@@ -48,14 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcessActivityLogWrapper[]> GetSigningProcessActivityForUseractivityuserGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> user = null, [WorkflowExpression] Func<string> processKey = null, [WorkflowExpression] Func<flowTypeInput> flowType = null, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> flowKey = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(user, nameof(user), required: false);
-            SourceExpression.Validate(processKey, nameof(processKey), required: false);
-            SourceExpression.Validate(flowType, nameof(flowType), required: false);
-            SourceExpression.Validate(take, nameof(take), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(flowKey, nameof(flowKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/signing/activity/user/";
@@ -84,13 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcessActivityLogWrapper[]> GetSigningProcessActivityByCompanyactivitycompanyGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> user = null, [WorkflowExpression] Func<flowTypeInput> flowType = null, [WorkflowExpression] Func<string> flowKey = null)
         {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            SourceExpression.Validate(take, nameof(take), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(user, nameof(user), required: false);
-            SourceExpression.Validate(flowType, nameof(flowType), required: false);
-            SourceExpression.Validate(flowKey, nameof(flowKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/signing/activity/company";
@@ -117,10 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SealingResponse> SealingRequestsealing([WorkflowExpression] Func<string> bodypdfDocument, [WorkflowExpression] Func<string> bodyflowKey, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<string> bodylanguageType = null)
         {
-            SourceExpression.Validate(bodypdfDocument, nameof(bodypdfDocument), required: true);
-            SourceExpression.Validate(bodyflowKey, nameof(bodyflowKey), required: true);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            SourceExpression.Validate(bodylanguageType, nameof(bodylanguageType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/management/sealing";
@@ -157,8 +130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcess> CancelSigningProcesssigningDelete([WorkflowExpression] Func<string> processKey = null, [WorkflowExpression] Func<string> user = null)
         {
-            SourceExpression.Validate(processKey, nameof(processKey), required: false);
-            SourceExpression.Validate(user, nameof(user), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/management/signing";
@@ -177,20 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcess> CreateSigningProcesssigning([WorkflowExpression] Func<string> bodyflowKey, [WorkflowExpression] Func<string> bodypdfDocument = null, [WorkflowExpression] Func<string> bodypdfFileName = null, [WorkflowExpression] Func<CreateSignee[]> bodycreateSignees = null, [WorkflowExpression] Func<SigningAttachment[]> bodyattachments = null, [WorkflowExpression] Func<AttachmentReference[]> bodyattachmentReferences = null, [WorkflowExpression] Func<bool> bodyrequiresAuth = null, [WorkflowExpression] Func<bool> bodysignInOrder = null, [WorkflowExpression] Func<bodysignatureLocationInput> bodysignatureLocation = null, [WorkflowExpression] Func<string> bodyuser = null, [WorkflowExpression] Func<string> bodysequenceKey = null, [WorkflowExpression] Func<string> bodyactivityDisplayName = null, [WorkflowExpression] Func<bool> bodyflattenDocument = null, [WorkflowExpression] Func<string> bodyreminderRule = null)
         {
-            SourceExpression.Validate(bodyflowKey, nameof(bodyflowKey), required: true);
-            SourceExpression.Validate(bodypdfDocument, nameof(bodypdfDocument), required: false);
-            SourceExpression.Validate(bodypdfFileName, nameof(bodypdfFileName), required: false);
-            SourceExpression.Validate(bodycreateSignees, nameof(bodycreateSignees), required: false);
-            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
-            SourceExpression.Validate(bodyattachmentReferences, nameof(bodyattachmentReferences), required: false);
-            SourceExpression.Validate(bodyrequiresAuth, nameof(bodyrequiresAuth), required: false);
-            SourceExpression.Validate(bodysignInOrder, nameof(bodysignInOrder), required: false);
-            SourceExpression.Validate(bodysignatureLocation, nameof(bodysignatureLocation), required: false);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
-            SourceExpression.Validate(bodysequenceKey, nameof(bodysequenceKey), required: false);
-            SourceExpression.Validate(bodyactivityDisplayName, nameof(bodyactivityDisplayName), required: false);
-            SourceExpression.Validate(bodyflattenDocument, nameof(bodyflattenDocument), required: false);
-            SourceExpression.Validate(bodyreminderRule, nameof(bodyreminderRule), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/management/signing";
@@ -299,8 +256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<JToken> SealingXmlRequestsealingxml([WorkflowExpression] Func<string> bodyxmlDocument, [WorkflowExpression] Func<string> bodyflowKey)
         {
-            SourceExpression.Validate(bodyxmlDocument, nameof(bodyxmlDocument), required: true);
-            SourceExpression.Validate(bodyflowKey, nameof(bodyflowKey), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/management/sealing/xml";
@@ -325,8 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SequentialSigning> CancelSequenceSigningsigningsequentialDelete([WorkflowExpression] Func<string> sequenceKey, [WorkflowExpression] Func<string> user)
         {
-            SourceExpression.Validate(sequenceKey, nameof(sequenceKey), required: true);
-            SourceExpression.Validate(user, nameof(user), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/management/signing/sequential";
@@ -343,10 +296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SequentialSigning> CreateSequentialSigningsigningsequential([WorkflowExpression] Func<CreateSigningProcess[]> bodycreateSigningProcesses, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodyrequiresAuth = null, [WorkflowExpression] Func<bool> bodysignInOrder = null)
         {
-            SourceExpression.Validate(bodycreateSigningProcesses, nameof(bodycreateSigningProcesses), required: true);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            SourceExpression.Validate(bodyrequiresAuth, nameof(bodyrequiresAuth), required: false);
-            SourceExpression.Validate(bodysignInOrder, nameof(bodysignInOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/management/signing/sequential";
@@ -383,10 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<StartAuthResponse> AuthStartStart([WorkflowExpression] Func<string> bodyflowKey, [WorkflowExpression] Func<bodyauthenticationContextTypeInput> bodyauthenticationContextType, [WorkflowExpression] Func<string> bodyssn = null, [WorkflowExpression] Func<string> bodyphoneNumber = null)
         {
-            SourceExpression.Validate(bodyflowKey, nameof(bodyflowKey), required: true);
-            SourceExpression.Validate(bodyauthenticationContextType, nameof(bodyauthenticationContextType), required: true);
-            SourceExpression.Validate(bodyssn, nameof(bodyssn), required: false);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Auth/Start";
@@ -423,9 +368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<PollCustomer> AuthPollPoll([WorkflowExpression] Func<string> bodyauthRequestId, [WorkflowExpression] Func<string> bodyflowKey, [WorkflowExpression] Func<bodylookupTypeInput> bodylookupType)
         {
-            SourceExpression.Validate(bodyauthRequestId, nameof(bodyauthRequestId), required: true);
-            SourceExpression.Validate(bodyflowKey, nameof(bodyflowKey), required: true);
-            SourceExpression.Validate(bodylookupType, nameof(bodylookupType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Auth/Poll";
@@ -452,10 +394,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<StartAuthResponse> RequestToViewSequenceStartsequentialSequenceKeyauth([WorkflowExpression] Func<string> sequenceKey, [WorkflowExpression] Func<string> bodysequenceKey, [WorkflowExpression] Func<string> bodyloginHint, [WorkflowExpression] Func<bodyauthenticationContextTypeInput> bodyauthenticationContextType)
         {
-            SourceExpression.Validate(sequenceKey, nameof(sequenceKey), required: true);
-            SourceExpression.Validate(bodysequenceKey, nameof(bodysequenceKey), required: true);
-            SourceExpression.Validate(bodyloginHint, nameof(bodyloginHint), required: true);
-            SourceExpression.Validate(bodyauthenticationContextType, nameof(bodyauthenticationContextType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signing/sequential/{0}/auth", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sequenceKey, 1));
@@ -482,9 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<SigningProcess> GetSigningProcessBySigneeProcessKeysigneeSigneeKeyGet([WorkflowExpression] Func<string> processKey, [WorkflowExpression] Func<string> signeeKey, [WorkflowExpression] Func<string> userAgent = null)
         {
-            SourceExpression.Validate(processKey, nameof(processKey), required: true);
-            SourceExpression.Validate(signeeKey, nameof(signeeKey), required: true);
-            SourceExpression.Validate(userAgent, nameof(userAgent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signing/{0}/signee/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(processKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeKey, 1));
@@ -501,16 +436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
         public IBodyWorkflowAction<Signee> UpdateSigneeProcessKeysigneeSigneeKeyCreate([WorkflowExpression] Func<string> signeeKey, [WorkflowExpression] Func<string> processKey, [WorkflowExpression] Func<string> bodysigneeKey, [WorkflowExpression] Func<string> bodyprocessKey, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodypostalCode = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<string> bodyuser = null)
         {
-            SourceExpression.Validate(signeeKey, nameof(signeeKey), required: true);
-            SourceExpression.Validate(processKey, nameof(processKey), required: true);
-            SourceExpression.Validate(bodysigneeKey, nameof(bodysigneeKey), required: true);
-            SourceExpression.Validate(bodyprocessKey, nameof(bodyprocessKey), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            SourceExpression.Validate(bodypostalCode, nameof(bodypostalCode), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signing/{0}/signee/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(processKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signeeKey, 1));

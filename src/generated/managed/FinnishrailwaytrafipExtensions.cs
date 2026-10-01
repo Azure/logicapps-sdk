@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules([WorkflowExpression] Func<string> departureStation, [WorkflowExpression] Func<string> arrivalStation, [WorkflowExpression] Func<string> departureDate = null)
         {
-            SourceExpression.Validate(departureStation, nameof(departureStation), required: true);
-            SourceExpression.Validate(arrivalStation, nameof(arrivalStation), required: true);
-            SourceExpression.Validate(departureDate, nameof(departureDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(departureStation, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(arrivalStation, 1));
@@ -47,9 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures([WorkflowExpression] Func<string> trainStation, [WorkflowExpression] Func<int> arrivingTrains = null, [WorkflowExpression] Func<int> departingTrains = null)
         {
-            SourceExpression.Validate(trainStation, nameof(trainStation), required: true);
-            SourceExpression.Validate(arrivingTrains, nameof(arrivingTrains), required: false);
-            SourceExpression.Validate(departingTrains, nameof(departingTrains), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainStation, 1));

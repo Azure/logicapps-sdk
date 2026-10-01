@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> RelationshipsGet([WorkflowExpression] Func<bool> includeIntersectional = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(includeIntersectional, nameof(includeIntersectional), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/Relationships";
@@ -53,11 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> Relationships([WorkflowExpression] Func<string> bodyrelationshipTypeId, [WorkflowExpression] Func<string> bodyleadModelItemId, [WorkflowExpression] Func<string> bodymemberModelItemId, [WorkflowExpression] Func<string> bodymodelId, [WorkflowExpression] Func<string> bodyrelationshipTypePairId = null)
         {
-            SourceExpression.Validate(bodyrelationshipTypeId, nameof(bodyrelationshipTypeId), required: true);
-            SourceExpression.Validate(bodyleadModelItemId, nameof(bodyleadModelItemId), required: true);
-            SourceExpression.Validate(bodymemberModelItemId, nameof(bodymemberModelItemId), required: true);
-            SourceExpression.Validate(bodymodelId, nameof(bodymodelId), required: true);
-            SourceExpression.Validate(bodyrelationshipTypePairId, nameof(bodyrelationshipTypePairId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/Relationships";
@@ -100,9 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> RelationshipsGetSingle([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -121,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> RelationshipsDelete([WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -136,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> RelationshipsPatch([WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -165,13 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> ObjectsGet([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/Objects";
@@ -200,8 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> Objects([WorkflowExpression] Func<string> bodyobjectTypeId, [WorkflowExpression] Func<string> bodymodelId)
         {
-            SourceExpression.Validate(bodyobjectTypeId, nameof(bodyobjectTypeId), required: true);
-            SourceExpression.Validate(bodymodelId, nameof(bodymodelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/Objects";
@@ -234,9 +207,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> ObjectsGetSingle([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(expand, nameof(expand), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -255,7 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> ObjectsDelete([WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -270,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> ObjectsPatch([WorkflowExpression] Func<string> key)
         {
-            SourceExpression.Validate(key, nameof(key), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
@@ -301,9 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
     {
         public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks([WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodysecret = null, [WorkflowExpression] Func<string> bodyexpirationDate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
-            SourceExpression.Validate(bodysecret, nameof(bodysecret), required: false);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/odata/Webhooks";

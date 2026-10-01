@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<JToken[]> input)
         {
-            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            SourceExpression.Validate(input, nameof(input), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -37,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         public IBodyWorkflowAction<GetSingleEmbeddingOutput> GetSingleEmbedding([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string> input)
         {
-            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            SourceExpression.Validate(input, nameof(input), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -58,13 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         public IBodyWorkflowAction<GetChatCompletionsOutput> GetChatCompletions([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<GetChatCompletionsInputMessagesTypeItem[]> messages, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            SourceExpression.Validate(messages, nameof(messages), required: true);
-            SourceExpression.Validate(temperature, nameof(temperature), required: false);
-            SourceExpression.Validate(topP, nameof(topP), required: false);
-            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -113,14 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> GetChatCompletionsUsingPromptTemplate([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string> promptTemplateInput, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<object> promptTemplateInputVariables = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            SourceExpression.Validate(promptTemplateInput, nameof(promptTemplateInput), required: true);
-            SourceExpression.Validate(temperature, nameof(temperature), required: false);
-            SourceExpression.Validate(promptTemplateInputVariables, nameof(promptTemplateInputVariables), required: false);
-            SourceExpression.Validate(topP, nameof(topP), required: false);
-            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -174,14 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> GetMultipleChatCompletions([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<GetMultipleChatCompletionsInputMessagesTypeItem[]> messages, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<int> n = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            SourceExpression.Validate(messages, nameof(messages), required: true);
-            SourceExpression.Validate(temperature, nameof(temperature), required: false);
-            SourceExpression.Validate(topP, nameof(topP), required: false);
-            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            SourceExpression.Validate(n, nameof(n), required: false);
-            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -239,13 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
         public IBodyWorkflowAction<GetCompletionOutput> GetCompletion([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string[]> prompts, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<string[]> stopSequences = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            SourceExpression.Validate(prompts, nameof(prompts), required: true);
-            SourceExpression.Validate(temperature, nameof(temperature), required: false);
-            SourceExpression.Validate(stopSequences, nameof(stopSequences), required: false);
-            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

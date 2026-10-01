@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<DirectCarbonResponse> DirectCarbon([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodyweightvalue = null, [WorkflowExpression] Func<bodyweightunitsInput> bodyweightunits = null, [WorkflowExpression] Func<string[]> bodyprojectMatchlocationlatlng = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodyweightvalue, nameof(bodyweightvalue), required: false);
-            SourceExpression.Validate(bodyweightunits, nameof(bodyweightunits), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationlatlng, nameof(bodyprojectMatchlocationlatlng), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/carbon", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -87,12 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<DirectTransactionResponse> DirectTransaction([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodycurrencyvalue = null, [WorkflowExpression] Func<string> bodycurrencyunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodyunitCostUsdCents = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
-            SourceExpression.Validate(bodycurrencyunits, nameof(bodycurrencyunits), required: false);
-            SourceExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodyunitCostUsdCents, nameof(bodyunitCostUsdCents), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/currency", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -159,21 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculatePackageResponse> CalculatePackage([WorkflowExpression] Func<string> transaction, [WorkflowExpression] Func<double> bodyweightvalue = null, [WorkflowExpression] Func<string> bodyweightunits = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<double> bodydistancevalue = null, [WorkflowExpression] Func<string> bodydistanceunits = null, [WorkflowExpression] Func<string> bodyfrompostalCode = null, [WorkflowExpression] Func<string> bodyfromcountry = null, [WorkflowExpression] Func<string> bodytopostalCode = null, [WorkflowExpression] Func<string> bodytocountry = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodyweightvalue, nameof(bodyweightvalue), required: false);
-            SourceExpression.Validate(bodyweightunits, nameof(bodyweightunits), required: false);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodydistancevalue, nameof(bodydistancevalue), required: false);
-            SourceExpression.Validate(bodydistanceunits, nameof(bodydistanceunits), required: false);
-            SourceExpression.Validate(bodyfrompostalCode, nameof(bodyfrompostalCode), required: false);
-            SourceExpression.Validate(bodyfromcountry, nameof(bodyfromcountry), required: false);
-            SourceExpression.Validate(bodytopostalCode, nameof(bodytopostalCode), required: false);
-            SourceExpression.Validate(bodytocountry, nameof(bodytocountry), required: false);
-            SourceExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            SourceExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/shipping", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -326,15 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateMCCResponse> CalculateMCC([WorkflowExpression] Func<string> transaction, [WorkflowExpression] Func<int> bodymccCode = null, [WorkflowExpression] Func<double> bodycurrencyvalue = null, [WorkflowExpression] Func<string> bodycurrencyunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodymccCode, nameof(bodymccCode), required: false);
-            SourceExpression.Validate(bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
-            SourceExpression.Validate(bodycurrencyunits, nameof(bodycurrencyunits), required: false);
-            SourceExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            SourceExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/mcc", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -427,18 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateFreightResponse> CalculateFreight([WorkflowExpression] Func<string> transaction, [WorkflowExpression] Func<double> bodyweightvalue, [WorkflowExpression] Func<string> bodyweightunits, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodydistancevalue = null, [WorkflowExpression] Func<string> bodydistanceunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodyweightvalue, nameof(bodyweightvalue), required: true);
-            SourceExpression.Validate(bodyweightunits, nameof(bodyweightunits), required: true);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodydistancevalue, nameof(bodydistancevalue), required: false);
-            SourceExpression.Validate(bodydistanceunits, nameof(bodydistanceunits), required: false);
-            SourceExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            SourceExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/freight", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -549,13 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateFlightResponse> CalculateFlight([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<string[]> bodyairports, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodyairports, nameof(bodyairports), required: true);
-            SourceExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            SourceExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/flight", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -624,17 +570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateVehicleResponse> CalculateVehicle([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodydistancevalue = null, [WorkflowExpression] Func<string> bodydistanceunits = null, [WorkflowExpression] Func<double> bodyfuelEfficiencyvalue = null, [WorkflowExpression] Func<string> bodyfuelEfficiencyunits = null, [WorkflowExpression] Func<string> bodyfuelEfficiencyof = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodydistancevalue, nameof(bodydistancevalue), required: false);
-            SourceExpression.Validate(bodydistanceunits, nameof(bodydistanceunits), required: false);
-            SourceExpression.Validate(bodyfuelEfficiencyvalue, nameof(bodyfuelEfficiencyvalue), required: false);
-            SourceExpression.Validate(bodyfuelEfficiencyunits, nameof(bodyfuelEfficiencyunits), required: false);
-            SourceExpression.Validate(bodyfuelEfficiencyof, nameof(bodyfuelEfficiencyof), required: false);
-            SourceExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            SourceExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/vehicle", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -747,14 +682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateElectricityResponse> CalculateElectricity([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodyenergyvalue = null, [WorkflowExpression] Func<bodyenergyunitsInput> bodyenergyunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(transaction, nameof(transaction), required: true);
-            SourceExpression.Validate(bodyenergyvalue, nameof(bodyenergyvalue), required: false);
-            SourceExpression.Validate(bodyenergyunits, nameof(bodyenergyunits), required: false);
-            SourceExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            SourceExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            SourceExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/electricity", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transaction, 1));
@@ -841,7 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -856,7 +782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<PortfolioDetailsResponse> PortfolioDetails([WorkflowExpression] Func<string> portfolioId)
         {
-            SourceExpression.Validate(portfolioId, nameof(portfolioId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/portfolio/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(portfolioId, 1));
@@ -899,7 +824,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<ConvertEstimateResponse> ConvertEstimate([WorkflowExpression] Func<string> bodytransactionId)
         {
-            SourceExpression.Validate(bodytransactionId, nameof(bodytransactionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/purchases";

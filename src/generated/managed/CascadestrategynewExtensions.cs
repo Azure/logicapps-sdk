@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<double> bodymeasureValue, [WorkflowExpression] Func<string> measureId)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(bodymeasureValue, nameof(bodymeasureValue), required: true);
-            SourceExpression.Validate(measureId, nameof(measureId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/measures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureId, 1));
@@ -44,10 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> measureId, [WorkflowExpression] Func<bodyhistoricalDataInputItem[]> bodyhistoricalData = null)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(measureId, nameof(measureId), required: true);
-            SourceExpression.Validate(bodyhistoricalData, nameof(bodyhistoricalData), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/measures/historical/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureId, 1));
@@ -78,10 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<double> bodyactionValue, [WorkflowExpression] Func<string> actionId)
         {
-            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            SourceExpression.Validate(bodyactionValue, nameof(bodyactionValue), required: true);
-            SourceExpression.Validate(actionId, nameof(actionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));

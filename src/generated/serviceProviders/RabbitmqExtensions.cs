@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         public IBodyWorkflowAction<SendRabbitMQMessageOutput> SendRabbitMQMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<object> message, [WorkflowExpression] Func<string> exchangeName = null, [WorkflowExpression] Func<string> routingKey = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
-            SourceExpression.Validate(exchangeName, nameof(exchangeName), required: false);
-            SourceExpression.Validate(routingKey, nameof(routingKey), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -49,11 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         public IBodyWorkflowAction<CreateQueueOutput> CreateQueue([WorkflowExpression] Func<object> queueName, [WorkflowExpression] Func<bool> durable, [WorkflowExpression] Func<string> exchangeName, [WorkflowExpression] Func<CreateQueueInputExchangeTypeType> exchangeType, [WorkflowExpression] Func<string> bindingKey)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(durable, nameof(durable), required: true);
-            SourceExpression.Validate(exchangeName, nameof(exchangeName), required: true);
-            SourceExpression.Validate(exchangeType, nameof(exchangeType), required: true);
-            SourceExpression.Validate(bindingKey, nameof(bindingKey), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -76,10 +67,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         public IOutputWorkflowAction<JToken> CompleteMessage([WorkflowExpression] Func<int> deliveryTag, [WorkflowExpression] Func<string> consumerTag, [WorkflowExpression] Func<CompleteMessageInputAcknowledgementType> acknowledgement, [WorkflowExpression] Func<bool> requeueOnReject = null)
         {
-            SourceExpression.Validate(deliveryTag, nameof(deliveryTag), required: true);
-            SourceExpression.Validate(consumerTag, nameof(consumerTag), required: true);
-            SourceExpression.Validate(acknowledgement, nameof(acknowledgement), required: true);
-            SourceExpression.Validate(requeueOnReject, nameof(requeueOnReject), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -111,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
     {
         public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> ReceiveRabbitMQMessages([WorkflowExpression] Func<object> queueName)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -129,7 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
 
         public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages([WorkflowExpression] Func<object> queueName)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

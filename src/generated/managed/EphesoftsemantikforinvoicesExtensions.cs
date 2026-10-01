@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<string> DeleteSemantikWebhook([WorkflowExpression] Func<string> configurationId)
         {
-            SourceExpression.Validate(configurationId, nameof(configurationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/settings/integrations/configurations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationId, 1));
@@ -29,8 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<CreateDocumentUploadResponse> CreateDocumentUpload([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<bodytypeInput> bodytype)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/documents/uploads";
@@ -55,8 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<UpdateDocumentUploadResponse> UpdateDocumentUpload([WorkflowExpression] Func<string> uploadId, [WorkflowExpression] Func<bodystatusInput> bodystatus)
         {
-            SourceExpression.Validate(uploadId, nameof(uploadId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/documents/uploads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uploadId, 1));
@@ -79,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<UploadCreatedResponse> CreateVendorUpload([WorkflowExpression] Func<string> bodyfileName)
         {
-            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/vendors/uploads";
@@ -104,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
     {
         public IBodyWorkflowTrigger<UploadCreatedResponse> TrigSemantikInvoiceCompleted([WorkflowExpression] Func<string> bodyintegrationName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyintegrationName, nameof(bodyintegrationName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/settings/integrations/configurations";

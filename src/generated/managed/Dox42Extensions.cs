@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dox42
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dox42")]
         public IWorkflowAction Dox42Call([WorkflowExpression] Func<string> domainname, [WorkflowExpression] Func<string> querystring, [WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> accept = null)
         {
-            SourceExpression.Validate(domainname, nameof(domainname), required: true);
-            SourceExpression.Validate(querystring, nameof(querystring), required: true);
-            SourceExpression.Validate(token, nameof(token), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dox42RestService.ashx";

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetSpacesResponse> GetSpaces([WorkflowExpression] Func<string> cloudId)
         {
-            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPages([WorkflowExpression] Func<string> cloudId)
         {
-            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1));
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace([WorkflowExpression] Func<string> cloudId, [WorkflowExpression] Func<string> spaceId)
         {
-            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
@@ -60,9 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata([WorkflowExpression] Func<string> cloudId, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> pageId)
         {
-            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
-            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
-            SourceExpression.Validate(pageId, nameof(pageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction CreateOrder([WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/orders";
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction RatingRequest([WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/quotes";
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction EventsCallback([WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/events/callback/here";
@@ -65,7 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction GenerateLabel([WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/labels";

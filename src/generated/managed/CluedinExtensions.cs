@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
         public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse([WorkflowExpression] Func<string> bodyresultapproval = null, [WorkflowExpression] Func<string> bodyresultreason = null, [WorkflowExpression] Func<string> bodyresultreviewedBy = null)
         {
-            SourceExpression.Validate(bodyresultapproval, nameof(bodyresultapproval), required: false);
-            SourceExpression.Validate(bodyresultreason, nameof(bodyresultreason), required: false);
-            SourceExpression.Validate(bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/callback";

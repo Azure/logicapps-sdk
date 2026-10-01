@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETAdverseEventResponse> GETAdverseEvent([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AdverseEvent";
@@ -37,20 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTAdverseEventResponse> POSTAdverseEvent([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyidentifiersystem = null, [WorkflowExpression] Func<string> bodyidentifiervalue = null, [WorkflowExpression] Func<string> bodyactuality = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodyEventcodingInputItem[]> bodyEventcoding = null, [WorkflowExpression] Func<string> bodyEventtext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bodyseriousnesscodingInputItem[]> bodyseriousnesscoding = null, [WorkflowExpression] Func<bodyseveritycodingInputItem[]> bodyseveritycoding = null, [WorkflowExpression] Func<string> bodyrecorderreference = null, [WorkflowExpression] Func<bodysuspectEntityInputItem[]> bodysuspectEntity = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodyidentifiersystem, nameof(bodyidentifiersystem), required: false);
-            SourceExpression.Validate(bodyidentifiervalue, nameof(bodyidentifiervalue), required: false);
-            SourceExpression.Validate(bodyactuality, nameof(bodyactuality), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyEventcoding, nameof(bodyEventcoding), required: false);
-            SourceExpression.Validate(bodyEventtext, nameof(bodyEventtext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyseriousnesscoding, nameof(bodyseriousnesscoding), required: false);
-            SourceExpression.Validate(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            SourceExpression.Validate(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            SourceExpression.Validate(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AdverseEvent";
@@ -203,9 +186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETAdverseEventIdResponse> GETAdverseEventId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -224,23 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEAdverseEventIdResponse> DELETEAdverseEventId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodyidentifiersystem = null, [WorkflowExpression] Func<string> bodyidentifiervalue = null, [WorkflowExpression] Func<string> bodyactuality = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodyEventcodingInputItem[]> bodyEventcoding = null, [WorkflowExpression] Func<string> bodyEventtext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bodyseriousnesscodingInputItem[]> bodyseriousnesscoding = null, [WorkflowExpression] Func<bodyseveritycodingInputItem[]> bodyseveritycoding = null, [WorkflowExpression] Func<string> bodyrecorderreference = null, [WorkflowExpression] Func<bodysuspectEntityInputItem[]> bodysuspectEntity = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodyidentifiersystem, nameof(bodyidentifiersystem), required: false);
-            SourceExpression.Validate(bodyidentifiervalue, nameof(bodyidentifiervalue), required: false);
-            SourceExpression.Validate(bodyactuality, nameof(bodyactuality), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyEventcoding, nameof(bodyEventcoding), required: false);
-            SourceExpression.Validate(bodyEventtext, nameof(bodyEventtext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyseriousnesscoding, nameof(bodyseriousnesscoding), required: false);
-            SourceExpression.Validate(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            SourceExpression.Validate(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            SourceExpression.Validate(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -413,23 +376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTAdverseEventIdResponse> PUTAdverseEventId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodyidentifiersystem = null, [WorkflowExpression] Func<string> bodyidentifiervalue = null, [WorkflowExpression] Func<string> bodyactuality = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodyEventcodingInputItem[]> bodyEventcoding = null, [WorkflowExpression] Func<string> bodyEventtext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bodyseriousnesscodingInputItem[]> bodyseriousnesscoding = null, [WorkflowExpression] Func<bodyseveritycodingInputItem[]> bodyseveritycoding = null, [WorkflowExpression] Func<string> bodyrecorderreference = null, [WorkflowExpression] Func<bodysuspectEntityInputItem[]> bodysuspectEntity = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodyidentifiersystem, nameof(bodyidentifiersystem), required: false);
-            SourceExpression.Validate(bodyidentifiervalue, nameof(bodyidentifiervalue), required: false);
-            SourceExpression.Validate(bodyactuality, nameof(bodyactuality), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyEventcoding, nameof(bodyEventcoding), required: false);
-            SourceExpression.Validate(bodyEventtext, nameof(bodyEventtext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
-            SourceExpression.Validate(bodyseriousnesscoding, nameof(bodyseriousnesscoding), required: false);
-            SourceExpression.Validate(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            SourceExpression.Validate(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            SourceExpression.Validate(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -602,9 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETAllergyIntoleranceResponse> GETAllergyIntolerance([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AllergyIntolerance";
@@ -625,21 +568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTAllergyIntoleranceResponse> POSTAllergyIntolerance([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodyclinicalStatuscodingInputItem[]> bodyclinicalStatuscoding = null, [WorkflowExpression] Func<bodyverificationStatuscodingInputItem[]> bodyverificationStatuscoding = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string[]> bodycategory = null, [WorkflowExpression] Func<string> bodycriticality = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodypatientreference = null, [WorkflowExpression] Func<string> bodyrecordedDate = null, [WorkflowExpression] Func<string> bodyrecorderreference = null, [WorkflowExpression] Func<bodyreactionInputItem[]> bodyreaction = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            SourceExpression.Validate(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycriticality, nameof(bodycriticality), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodypatientreference, nameof(bodypatientreference), required: false);
-            SourceExpression.Validate(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
-            SourceExpression.Validate(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            SourceExpression.Validate(bodyreaction, nameof(bodyreaction), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AllergyIntolerance";
@@ -806,9 +734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETAllergyIntoleranceIdResponse> GETAllergyIntoleranceId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -827,20 +752,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEAllergyIntoleranceIdResponse> DELETEAllergyIntoleranceId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyclinicalStatuscodingInputItem2[]> bodyclinicalStatuscoding = null, [WorkflowExpression] Func<bodyverificationStatuscodingInputItem2[]> bodyverificationStatuscoding = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string[]> bodycategory = null, [WorkflowExpression] Func<string> bodycriticality = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodypatientreference = null, [WorkflowExpression] Func<string> bodyrecordedDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            SourceExpression.Validate(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycriticality, nameof(bodycriticality), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodypatientreference, nameof(bodypatientreference), required: false);
-            SourceExpression.Validate(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -979,20 +890,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTAllergyIntoleranceIdResponse> PUTAllergyIntoleranceId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyclinicalStatuscodingInputItem2[]> bodyclinicalStatuscoding = null, [WorkflowExpression] Func<bodyverificationStatuscodingInputItem2[]> bodyverificationStatuscoding = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string[]> bodycategory = null, [WorkflowExpression] Func<string> bodycriticality = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodypatientreference = null, [WorkflowExpression] Func<string> bodyrecordedDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            SourceExpression.Validate(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycriticality, nameof(bodycriticality), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodypatientreference, nameof(bodypatientreference), required: false);
-            SourceExpression.Validate(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1131,9 +1028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETCarePlanResponse> GETCarePlan([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CarePlan";
@@ -1154,23 +1048,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTCarePlanResponse> POSTCarePlan([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyintent = null, [WorkflowExpression] Func<bodycategoryInputItem2[]> bodycategory = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyencounterreference = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<bodycareTeamInputItem[]> bodycareTeam = null, [WorkflowExpression] Func<bodyaddressesInputItem[]> bodyaddresses = null, [WorkflowExpression] Func<bodyactivityInputItem[]> bodyactivity = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyintent, nameof(bodyintent), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodyperiodend, nameof(bodyperiodend), required: false);
-            SourceExpression.Validate(bodycareTeam, nameof(bodycareTeam), required: false);
-            SourceExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
-            SourceExpression.Validate(bodyactivity, nameof(bodyactivity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CarePlan";
@@ -1333,9 +1210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETCarePlanIdResponse> GETCarePlanId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1354,22 +1228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETECarePlanIdResponse> DELETECarePlanId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodycontainedInputItem[]> bodycontained = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyintent = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<bodycareTeamInputItem[]> bodycareTeam = null, [WorkflowExpression] Func<bodyaddressesInputItem2[]> bodyaddresses = null, [WorkflowExpression] Func<bodygoalInputItem[]> bodygoal = null, [WorkflowExpression] Func<bodyactivityInputItem2[]> bodyactivity = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyintent, nameof(bodyintent), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodycareTeam, nameof(bodycareTeam), required: false);
-            SourceExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodyactivity, nameof(bodyactivity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1512,22 +1370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTCarePlanIdResponse> PUTCarePlanId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodycontainedInputItem[]> bodycontained = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyintent = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<bodycareTeamInputItem[]> bodycareTeam = null, [WorkflowExpression] Func<bodyaddressesInputItem2[]> bodyaddresses = null, [WorkflowExpression] Func<bodygoalInputItem[]> bodygoal = null, [WorkflowExpression] Func<bodyactivityInputItem2[]> bodyactivity = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyintent, nameof(bodyintent), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            SourceExpression.Validate(bodycareTeam, nameof(bodycareTeam), required: false);
-            SourceExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
-            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            SourceExpression.Validate(bodyactivity, nameof(bodyactivity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1670,9 +1512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETConditionResponse> GETCondition([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Condition";
@@ -1693,18 +1532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTConditionResponse> POSTCondition([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodyclinicalStatuscodingInputItem2[]> bodyclinicalStatuscoding = null, [WorkflowExpression] Func<bodyverificationStatuscodingInputItem2[]> bodyverificationStatuscoding = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodyseveritycodingInputItem[]> bodyseveritycoding = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<bodybodySiteInputItem[]> bodybodySite = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyonsetDateTime = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            SourceExpression.Validate(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodybodySite, nameof(bodybodySite), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Condition";
@@ -1845,9 +1672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETConditionIdResponse> GETConditionId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Condition/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1866,21 +1690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEConditionIdResponse> DELETEConditionId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodyclinicalStatuscodingInputItem2[]> bodyclinicalStatuscoding = null, [WorkflowExpression] Func<bodyverificationStatuscodingInputItem2[]> bodyverificationStatuscoding = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodyseveritycodingInputItem[]> bodyseveritycoding = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<bodybodySiteInputItem[]> bodybodySite = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyonsetDateTime = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            SourceExpression.Validate(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodybodySite, nameof(bodybodySite), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Condition/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2041,21 +1850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTConditionIdResponse> PUTConditionId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodyclinicalStatuscodingInputItem2[]> bodyclinicalStatuscoding = null, [WorkflowExpression] Func<bodyverificationStatuscodingInputItem2[]> bodyverificationStatuscoding = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodyseveritycodingInputItem[]> bodyseveritycoding = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<bodybodySiteInputItem[]> bodybodySite = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyonsetDateTime = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            SourceExpression.Validate(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodybodySite, nameof(bodybodySite), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Condition/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2216,9 +2010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETDiagnosticReportResponse> GETDiagnosticReport([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DiagnosticReport";
@@ -2239,20 +2030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTDiagnosticReportResponse> POSTDiagnosticReport([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bodybasedOnInputItem[]> bodybasedOn = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyissued = null, [WorkflowExpression] Func<bodyperformerInputItem[]> bodyperformer = null, [WorkflowExpression] Func<bodyresultInputItem[]> bodyresult = null, [WorkflowExpression] Func<string> bodyconclusion = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodybasedOn, nameof(bodybasedOn), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyissued, nameof(bodyissued), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyresult, nameof(bodyresult), required: false);
-            SourceExpression.Validate(bodyconclusion, nameof(bodyconclusion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/DiagnosticReport";
@@ -2381,9 +2158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETDiagnosticReportIdResponse> GETDiagnosticReportId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2402,23 +2176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEDiagnosticReportIdResponse> DELETEDiagnosticReportId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bodybasedOnInputItem[]> bodybasedOn = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyissued = null, [WorkflowExpression] Func<bodyperformerInputItem[]> bodyperformer = null, [WorkflowExpression] Func<bodyresultInputItem[]> bodyresult = null, [WorkflowExpression] Func<string> bodyconclusion = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodybasedOn, nameof(bodybasedOn), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyissued, nameof(bodyissued), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyresult, nameof(bodyresult), required: false);
-            SourceExpression.Validate(bodyconclusion, nameof(bodyconclusion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2567,23 +2324,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTDiagnosticReportIdResponse> PUTDiagnosticReportId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bodybasedOnInputItem[]> bodybasedOn = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyissued = null, [WorkflowExpression] Func<bodyperformerInputItem[]> bodyperformer = null, [WorkflowExpression] Func<bodyresultInputItem[]> bodyresult = null, [WorkflowExpression] Func<string> bodyconclusion = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodybasedOn, nameof(bodybasedOn), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyissued, nameof(bodyissued), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyresult, nameof(bodyresult), required: false);
-            SourceExpression.Validate(bodyconclusion, nameof(bodyconclusion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2732,9 +2472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationResponse> GETMedication([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Medication";
@@ -2755,17 +2492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTMedicationResponse> POSTMedication([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodycontainedInputItem2[]> bodycontained = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymanufacturerreference = null, [WorkflowExpression] Func<bodyformcodingInputItem[]> bodyformcoding = null, [WorkflowExpression] Func<bodyingredientInputItem[]> bodyingredient = null, [WorkflowExpression] Func<string> bodybatchlotNumber = null, [WorkflowExpression] Func<string> bodybatchexpirationDate = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymanufacturerreference, nameof(bodymanufacturerreference), required: false);
-            SourceExpression.Validate(bodyformcoding, nameof(bodyformcoding), required: false);
-            SourceExpression.Validate(bodyingredient, nameof(bodyingredient), required: false);
-            SourceExpression.Validate(bodybatchlotNumber, nameof(bodybatchlotNumber), required: false);
-            SourceExpression.Validate(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Medication";
@@ -2892,9 +2618,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationIdResponse> GETMedicationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Medication/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -2913,20 +2636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEMedicationIdResponse> DELETEMedicationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodycontainedInputItem2[]> bodycontained = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymanufacturerreference = null, [WorkflowExpression] Func<bodyformcodingInputItem[]> bodyformcoding = null, [WorkflowExpression] Func<bodyingredientInputItem[]> bodyingredient = null, [WorkflowExpression] Func<string> bodybatchlotNumber = null, [WorkflowExpression] Func<string> bodybatchexpirationDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymanufacturerreference, nameof(bodymanufacturerreference), required: false);
-            SourceExpression.Validate(bodyformcoding, nameof(bodyformcoding), required: false);
-            SourceExpression.Validate(bodyingredient, nameof(bodyingredient), required: false);
-            SourceExpression.Validate(bodybatchlotNumber, nameof(bodybatchlotNumber), required: false);
-            SourceExpression.Validate(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Medication/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3073,19 +2782,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTMedicationIdResponse> PUTMedicationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodycontainedInputItem2[]> bodycontained = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymanufacturerreference = null, [WorkflowExpression] Func<bodyformcodingInputItem[]> bodyformcoding = null, [WorkflowExpression] Func<bodyingredientInputItem[]> bodyingredient = null, [WorkflowExpression] Func<string> bodybatchlotNumber = null, [WorkflowExpression] Func<string> bodybatchexpirationDate = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodytextdiv, nameof(bodytextdiv), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymanufacturerreference, nameof(bodymanufacturerreference), required: false);
-            SourceExpression.Validate(bodyformcoding, nameof(bodyformcoding), required: false);
-            SourceExpression.Validate(bodyingredient, nameof(bodyingredient), required: false);
-            SourceExpression.Validate(bodybatchlotNumber, nameof(bodybatchlotNumber), required: false);
-            SourceExpression.Validate(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Medication/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3218,9 +2914,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationRequestResponse> GETMedicationRequest([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MedicationRequest";
@@ -3241,38 +2934,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTMedicationRequestResponse> POSTMedicationRequest([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodycontainedInputItem22[]> bodycontained = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyintent = null, [WorkflowExpression] Func<bodymedicationCodeableConceptcodingInputItem[]> bodymedicationCodeableConceptcoding = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyencounterreference = null, [WorkflowExpression] Func<string> bodyencounterdisplay = null, [WorkflowExpression] Func<bodysupportingInformationInputItem[]> bodysupportingInformation = null, [WorkflowExpression] Func<string> bodyauthoredOn = null, [WorkflowExpression] Func<string> bodyrequesterreference = null, [WorkflowExpression] Func<string> bodyrequesterdisplay = null, [WorkflowExpression] Func<bodyreasonCodeInputItem[]> bodyreasonCode = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null, [WorkflowExpression] Func<bodydosageInstructionInputItem[]> bodydosageInstruction = null, [WorkflowExpression] Func<string> bodydispenseRequestvalidityPeriodstart = null, [WorkflowExpression] Func<string> bodydispenseRequestvalidityPeriodend = null, [WorkflowExpression] Func<int> bodydispenseRequestnumberOfRepeatsAllowed = null, [WorkflowExpression] Func<int> bodydispenseRequestquantityvalue = null, [WorkflowExpression] Func<string> bodydispenseRequestquantityunit = null, [WorkflowExpression] Func<string> bodydispenseRequestquantitysystem = null, [WorkflowExpression] Func<string> bodydispenseRequestquantitycode = null, [WorkflowExpression] Func<int> bodydispenseRequestexpectedSupplyDurationvalue = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationunit = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationsystem = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationcode = null, [WorkflowExpression] Func<bool> bodysubstitutionallowedBoolean = null, [WorkflowExpression] Func<bodysubstitutionreasoncodingInputItem[]> bodysubstitutionreasoncoding = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyintent, nameof(bodyintent), required: false);
-            SourceExpression.Validate(bodymedicationCodeableConceptcoding, nameof(bodymedicationCodeableConceptcoding), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            SourceExpression.Validate(bodyencounterdisplay, nameof(bodyencounterdisplay), required: false);
-            SourceExpression.Validate(bodysupportingInformation, nameof(bodysupportingInformation), required: false);
-            SourceExpression.Validate(bodyauthoredOn, nameof(bodyauthoredOn), required: false);
-            SourceExpression.Validate(bodyrequesterreference, nameof(bodyrequesterreference), required: false);
-            SourceExpression.Validate(bodyrequesterdisplay, nameof(bodyrequesterdisplay), required: false);
-            SourceExpression.Validate(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodydosageInstruction, nameof(bodydosageInstruction), required: false);
-            SourceExpression.Validate(bodydispenseRequestvalidityPeriodstart, nameof(bodydispenseRequestvalidityPeriodstart), required: false);
-            SourceExpression.Validate(bodydispenseRequestvalidityPeriodend, nameof(bodydispenseRequestvalidityPeriodend), required: false);
-            SourceExpression.Validate(bodydispenseRequestnumberOfRepeatsAllowed, nameof(bodydispenseRequestnumberOfRepeatsAllowed), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantityvalue, nameof(bodydispenseRequestquantityvalue), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantityunit, nameof(bodydispenseRequestquantityunit), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantitysystem, nameof(bodydispenseRequestquantitysystem), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantitycode, nameof(bodydispenseRequestquantitycode), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationvalue, nameof(bodydispenseRequestexpectedSupplyDurationvalue), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationunit, nameof(bodydispenseRequestexpectedSupplyDurationunit), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationsystem, nameof(bodydispenseRequestexpectedSupplyDurationsystem), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationcode, nameof(bodydispenseRequestexpectedSupplyDurationcode), required: false);
-            SourceExpression.Validate(bodysubstitutionallowedBoolean, nameof(bodysubstitutionallowedBoolean), required: false);
-            SourceExpression.Validate(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MedicationRequest";
@@ -3573,9 +3234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationRequestIdResponse> GETMedicationRequestId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3594,39 +3252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEMedicationRequestIdResponse> DELETEMedicationRequestId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodycontainedInputItem22[]> bodycontained = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyintent = null, [WorkflowExpression] Func<string> bodymedicationReferencereference = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyencounterreference = null, [WorkflowExpression] Func<string> bodyencounterdisplay = null, [WorkflowExpression] Func<bodysupportingInformationInputItem[]> bodysupportingInformation = null, [WorkflowExpression] Func<string> bodyauthoredOn = null, [WorkflowExpression] Func<string> bodyrequesterreference = null, [WorkflowExpression] Func<string> bodyrequesterdisplay = null, [WorkflowExpression] Func<bodyreasonCodeInputItem[]> bodyreasonCode = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null, [WorkflowExpression] Func<bodydosageInstructionInputItem[]> bodydosageInstruction = null, [WorkflowExpression] Func<string> bodydispenseRequestvalidityPeriodstart = null, [WorkflowExpression] Func<string> bodydispenseRequestvalidityPeriodend = null, [WorkflowExpression] Func<int> bodydispenseRequestnumberOfRepeatsAllowed = null, [WorkflowExpression] Func<int> bodydispenseRequestquantityvalue = null, [WorkflowExpression] Func<string> bodydispenseRequestquantityunit = null, [WorkflowExpression] Func<string> bodydispenseRequestquantitysystem = null, [WorkflowExpression] Func<string> bodydispenseRequestquantitycode = null, [WorkflowExpression] Func<int> bodydispenseRequestexpectedSupplyDurationvalue = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationunit = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationsystem = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationcode = null, [WorkflowExpression] Func<bool> bodysubstitutionallowedBoolean = null, [WorkflowExpression] Func<bodysubstitutionreasoncodingInputItem[]> bodysubstitutionreasoncoding = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyintent, nameof(bodyintent), required: false);
-            SourceExpression.Validate(bodymedicationReferencereference, nameof(bodymedicationReferencereference), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            SourceExpression.Validate(bodyencounterdisplay, nameof(bodyencounterdisplay), required: false);
-            SourceExpression.Validate(bodysupportingInformation, nameof(bodysupportingInformation), required: false);
-            SourceExpression.Validate(bodyauthoredOn, nameof(bodyauthoredOn), required: false);
-            SourceExpression.Validate(bodyrequesterreference, nameof(bodyrequesterreference), required: false);
-            SourceExpression.Validate(bodyrequesterdisplay, nameof(bodyrequesterdisplay), required: false);
-            SourceExpression.Validate(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodydosageInstruction, nameof(bodydosageInstruction), required: false);
-            SourceExpression.Validate(bodydispenseRequestvalidityPeriodstart, nameof(bodydispenseRequestvalidityPeriodstart), required: false);
-            SourceExpression.Validate(bodydispenseRequestvalidityPeriodend, nameof(bodydispenseRequestvalidityPeriodend), required: false);
-            SourceExpression.Validate(bodydispenseRequestnumberOfRepeatsAllowed, nameof(bodydispenseRequestnumberOfRepeatsAllowed), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantityvalue, nameof(bodydispenseRequestquantityvalue), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantityunit, nameof(bodydispenseRequestquantityunit), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantitysystem, nameof(bodydispenseRequestquantitysystem), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantitycode, nameof(bodydispenseRequestquantitycode), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationvalue, nameof(bodydispenseRequestexpectedSupplyDurationvalue), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationunit, nameof(bodydispenseRequestexpectedSupplyDurationunit), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationsystem, nameof(bodydispenseRequestexpectedSupplyDurationsystem), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationcode, nameof(bodydispenseRequestexpectedSupplyDurationcode), required: false);
-            SourceExpression.Validate(bodysubstitutionallowedBoolean, nameof(bodysubstitutionallowedBoolean), required: false);
-            SourceExpression.Validate(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -3927,39 +3552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTMedicationRequestIdResponse> PUTMedicationRequestId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<bodycontainedInputItem22[]> bodycontained = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyintent = null, [WorkflowExpression] Func<string> bodymedicationReferencereference = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyencounterreference = null, [WorkflowExpression] Func<string> bodyencounterdisplay = null, [WorkflowExpression] Func<bodysupportingInformationInputItem[]> bodysupportingInformation = null, [WorkflowExpression] Func<string> bodyauthoredOn = null, [WorkflowExpression] Func<string> bodyrequesterreference = null, [WorkflowExpression] Func<string> bodyrequesterdisplay = null, [WorkflowExpression] Func<bodyreasonCodeInputItem[]> bodyreasonCode = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null, [WorkflowExpression] Func<bodydosageInstructionInputItem[]> bodydosageInstruction = null, [WorkflowExpression] Func<string> bodydispenseRequestvalidityPeriodstart = null, [WorkflowExpression] Func<string> bodydispenseRequestvalidityPeriodend = null, [WorkflowExpression] Func<int> bodydispenseRequestnumberOfRepeatsAllowed = null, [WorkflowExpression] Func<int> bodydispenseRequestquantityvalue = null, [WorkflowExpression] Func<string> bodydispenseRequestquantityunit = null, [WorkflowExpression] Func<string> bodydispenseRequestquantitysystem = null, [WorkflowExpression] Func<string> bodydispenseRequestquantitycode = null, [WorkflowExpression] Func<int> bodydispenseRequestexpectedSupplyDurationvalue = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationunit = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationsystem = null, [WorkflowExpression] Func<string> bodydispenseRequestexpectedSupplyDurationcode = null, [WorkflowExpression] Func<bool> bodysubstitutionallowedBoolean = null, [WorkflowExpression] Func<bodysubstitutionreasoncodingInputItem[]> bodysubstitutionreasoncoding = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodycontained, nameof(bodycontained), required: false);
-            SourceExpression.Validate(bodyidentifier, nameof(bodyidentifier), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyintent, nameof(bodyintent), required: false);
-            SourceExpression.Validate(bodymedicationReferencereference, nameof(bodymedicationReferencereference), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            SourceExpression.Validate(bodyencounterdisplay, nameof(bodyencounterdisplay), required: false);
-            SourceExpression.Validate(bodysupportingInformation, nameof(bodysupportingInformation), required: false);
-            SourceExpression.Validate(bodyauthoredOn, nameof(bodyauthoredOn), required: false);
-            SourceExpression.Validate(bodyrequesterreference, nameof(bodyrequesterreference), required: false);
-            SourceExpression.Validate(bodyrequesterdisplay, nameof(bodyrequesterdisplay), required: false);
-            SourceExpression.Validate(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodydosageInstruction, nameof(bodydosageInstruction), required: false);
-            SourceExpression.Validate(bodydispenseRequestvalidityPeriodstart, nameof(bodydispenseRequestvalidityPeriodstart), required: false);
-            SourceExpression.Validate(bodydispenseRequestvalidityPeriodend, nameof(bodydispenseRequestvalidityPeriodend), required: false);
-            SourceExpression.Validate(bodydispenseRequestnumberOfRepeatsAllowed, nameof(bodydispenseRequestnumberOfRepeatsAllowed), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantityvalue, nameof(bodydispenseRequestquantityvalue), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantityunit, nameof(bodydispenseRequestquantityunit), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantitysystem, nameof(bodydispenseRequestquantitysystem), required: false);
-            SourceExpression.Validate(bodydispenseRequestquantitycode, nameof(bodydispenseRequestquantitycode), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationvalue, nameof(bodydispenseRequestexpectedSupplyDurationvalue), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationunit, nameof(bodydispenseRequestexpectedSupplyDurationunit), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationsystem, nameof(bodydispenseRequestexpectedSupplyDurationsystem), required: false);
-            SourceExpression.Validate(bodydispenseRequestexpectedSupplyDurationcode, nameof(bodydispenseRequestexpectedSupplyDurationcode), required: false);
-            SourceExpression.Validate(bodysubstitutionallowedBoolean, nameof(bodysubstitutionallowedBoolean), required: false);
-            SourceExpression.Validate(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -4260,9 +3852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationStatementResponse> GETMedicationStatement([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MedicationStatement";
@@ -4283,20 +3872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTMedicationStatementResponse> POSTMedicationStatement([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymedicationCodeableConcepttext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyeffectiveDateTime = null, [WorkflowExpression] Func<string> bodydateAsserted = null, [WorkflowExpression] Func<string> bodyinformationSourcereference = null, [WorkflowExpression] Func<string> bodyinformationSourcedisplay = null, [WorkflowExpression] Func<bodyreasonReferenceInputItem[]> bodyreasonReference = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null, [WorkflowExpression] Func<bodydosageInputItem[]> bodydosage = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymedicationCodeableConcepttext, nameof(bodymedicationCodeableConcepttext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyeffectiveDateTime, nameof(bodyeffectiveDateTime), required: false);
-            SourceExpression.Validate(bodydateAsserted, nameof(bodydateAsserted), required: false);
-            SourceExpression.Validate(bodyinformationSourcereference, nameof(bodyinformationSourcereference), required: false);
-            SourceExpression.Validate(bodyinformationSourcedisplay, nameof(bodyinformationSourcedisplay), required: false);
-            SourceExpression.Validate(bodyreasonReference, nameof(bodyreasonReference), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodydosage, nameof(bodydosage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/MedicationStatement";
@@ -4433,9 +4008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETMedicationStatementIdResponse> GETMedicationStatementId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -4454,21 +4026,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IWorkflowAction DELETEMedicationStatementId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymedicationCodeableConcepttext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyeffectiveDateTime = null, [WorkflowExpression] Func<string> bodydateAsserted = null, [WorkflowExpression] Func<string> bodyinformationSourcereference = null, [WorkflowExpression] Func<string> bodyinformationSourcedisplay = null, [WorkflowExpression] Func<bodyreasonReferenceInputItem[]> bodyreasonReference = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null, [WorkflowExpression] Func<bodydosageInputItem[]> bodydosage = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymedicationCodeableConcepttext, nameof(bodymedicationCodeableConcepttext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyeffectiveDateTime, nameof(bodyeffectiveDateTime), required: false);
-            SourceExpression.Validate(bodydateAsserted, nameof(bodydateAsserted), required: false);
-            SourceExpression.Validate(bodyinformationSourcereference, nameof(bodyinformationSourcereference), required: false);
-            SourceExpression.Validate(bodyinformationSourcedisplay, nameof(bodyinformationSourcedisplay), required: false);
-            SourceExpression.Validate(bodyreasonReference, nameof(bodyreasonReference), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodydosage, nameof(bodydosage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -4605,21 +4162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTMedicationStatementIdResponse> PUTMedicationStatementId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymedicationCodeableConcepttext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyeffectiveDateTime = null, [WorkflowExpression] Func<string> bodydateAsserted = null, [WorkflowExpression] Func<string> bodyinformationSourcereference = null, [WorkflowExpression] Func<string> bodyinformationSourcedisplay = null, [WorkflowExpression] Func<bodyreasonReferenceInputItem[]> bodyreasonReference = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null, [WorkflowExpression] Func<bodydosageInputItem[]> bodydosage = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymedicationCodeableConcepttext, nameof(bodymedicationCodeableConcepttext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyeffectiveDateTime, nameof(bodyeffectiveDateTime), required: false);
-            SourceExpression.Validate(bodydateAsserted, nameof(bodydateAsserted), required: false);
-            SourceExpression.Validate(bodyinformationSourcereference, nameof(bodyinformationSourcereference), required: false);
-            SourceExpression.Validate(bodyinformationSourcedisplay, nameof(bodyinformationSourcedisplay), required: false);
-            SourceExpression.Validate(bodyreasonReference, nameof(bodyreasonReference), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodydosage, nameof(bodydosage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -4756,10 +4298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETObservationResponse> GETObservation([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null, [WorkflowExpression] Func<string> encounter = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
-            SourceExpression.Validate(encounter, nameof(encounter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Observation";
@@ -4782,26 +4320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTObservationResponse> POSTObservation([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyencounterreference = null, [WorkflowExpression] Func<string> bodyissued = null, [WorkflowExpression] Func<bodyperformerInputItem2[]> bodyperformer = null, [WorkflowExpression] Func<int> bodyvalueQuantityvalue = null, [WorkflowExpression] Func<string> bodyvalueQuantityunit = null, [WorkflowExpression] Func<string> bodyvalueQuantitysystem = null, [WorkflowExpression] Func<string> bodyvalueQuantitycode = null, [WorkflowExpression] Func<bodyinterpretationInputItem[]> bodyinterpretation = null, [WorkflowExpression] Func<bodybodySitecodingInputItem[]> bodybodySitecoding = null, [WorkflowExpression] Func<bodymethodcodingInputItem[]> bodymethodcoding = null, [WorkflowExpression] Func<bodyreferenceRangeInputItem[]> bodyreferenceRange = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            SourceExpression.Validate(bodyissued, nameof(bodyissued), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyvalueQuantityvalue, nameof(bodyvalueQuantityvalue), required: false);
-            SourceExpression.Validate(bodyvalueQuantityunit, nameof(bodyvalueQuantityunit), required: false);
-            SourceExpression.Validate(bodyvalueQuantitysystem, nameof(bodyvalueQuantitysystem), required: false);
-            SourceExpression.Validate(bodyvalueQuantitycode, nameof(bodyvalueQuantitycode), required: false);
-            SourceExpression.Validate(bodyinterpretation, nameof(bodyinterpretation), required: false);
-            SourceExpression.Validate(bodybodySitecoding, nameof(bodybodySitecoding), required: false);
-            SourceExpression.Validate(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            SourceExpression.Validate(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Observation";
@@ -4998,9 +4516,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETObservationIdResponse> GETObservationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Observation/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -5019,26 +4534,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEObservationIdResponse> DELETEObservationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyissued = null, [WorkflowExpression] Func<bodyperformerInputItem2[]> bodyperformer = null, [WorkflowExpression] Func<int> bodyvalueQuantityvalue = null, [WorkflowExpression] Func<string> bodyvalueQuantityunit = null, [WorkflowExpression] Func<string> bodyvalueQuantitysystem = null, [WorkflowExpression] Func<string> bodyvalueQuantitycode = null, [WorkflowExpression] Func<bodyinterpretationInputItem[]> bodyinterpretation = null, [WorkflowExpression] Func<bodybodySitecodingInputItem[]> bodybodySitecoding = null, [WorkflowExpression] Func<bodymethodcodingInputItem[]> bodymethodcoding = null, [WorkflowExpression] Func<bodyreferenceRangeInputItem[]> bodyreferenceRange = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyissued, nameof(bodyissued), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyvalueQuantityvalue, nameof(bodyvalueQuantityvalue), required: false);
-            SourceExpression.Validate(bodyvalueQuantityunit, nameof(bodyvalueQuantityunit), required: false);
-            SourceExpression.Validate(bodyvalueQuantitysystem, nameof(bodyvalueQuantitysystem), required: false);
-            SourceExpression.Validate(bodyvalueQuantitycode, nameof(bodyvalueQuantitycode), required: false);
-            SourceExpression.Validate(bodyinterpretation, nameof(bodyinterpretation), required: false);
-            SourceExpression.Validate(bodybodySitecoding, nameof(bodybodySitecoding), required: false);
-            SourceExpression.Validate(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            SourceExpression.Validate(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Observation/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -5221,26 +4716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTObservationIdResponse> PUTObservationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyissued = null, [WorkflowExpression] Func<bodyperformerInputItem2[]> bodyperformer = null, [WorkflowExpression] Func<int> bodyvalueQuantityvalue = null, [WorkflowExpression] Func<string> bodyvalueQuantityunit = null, [WorkflowExpression] Func<string> bodyvalueQuantitysystem = null, [WorkflowExpression] Func<string> bodyvalueQuantitycode = null, [WorkflowExpression] Func<bodyinterpretationInputItem[]> bodyinterpretation = null, [WorkflowExpression] Func<bodybodySitecodingInputItem[]> bodybodySitecoding = null, [WorkflowExpression] Func<bodymethodcodingInputItem[]> bodymethodcoding = null, [WorkflowExpression] Func<bodyreferenceRangeInputItem[]> bodyreferenceRange = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            SourceExpression.Validate(bodyissued, nameof(bodyissued), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyvalueQuantityvalue, nameof(bodyvalueQuantityvalue), required: false);
-            SourceExpression.Validate(bodyvalueQuantityunit, nameof(bodyvalueQuantityunit), required: false);
-            SourceExpression.Validate(bodyvalueQuantitysystem, nameof(bodyvalueQuantitysystem), required: false);
-            SourceExpression.Validate(bodyvalueQuantitycode, nameof(bodyvalueQuantitycode), required: false);
-            SourceExpression.Validate(bodyinterpretation, nameof(bodyinterpretation), required: false);
-            SourceExpression.Validate(bodybodySitecoding, nameof(bodybodySitecoding), required: false);
-            SourceExpression.Validate(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            SourceExpression.Validate(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Observation/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -5423,9 +4898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETProcedureResponse> GETProcedure([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Procedure";
@@ -5446,22 +4918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTProcedureResponse> POSTProcedure([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyperformedDateTime = null, [WorkflowExpression] Func<string> bodyrecorderreference = null, [WorkflowExpression] Func<string> bodyrecorderdisplay = null, [WorkflowExpression] Func<string> bodyasserterreference = null, [WorkflowExpression] Func<string> bodyasserterdisplay = null, [WorkflowExpression] Func<bodyperformerInputItem22[]> bodyperformer = null, [WorkflowExpression] Func<bodyreasonCodeInputItem2[]> bodyreasonCode = null, [WorkflowExpression] Func<bodyfollowUpInputItem[]> bodyfollowUp = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyperformedDateTime, nameof(bodyperformedDateTime), required: false);
-            SourceExpression.Validate(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            SourceExpression.Validate(bodyrecorderdisplay, nameof(bodyrecorderdisplay), required: false);
-            SourceExpression.Validate(bodyasserterreference, nameof(bodyasserterreference), required: false);
-            SourceExpression.Validate(bodyasserterdisplay, nameof(bodyasserterdisplay), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            SourceExpression.Validate(bodyfollowUp, nameof(bodyfollowUp), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Procedure";
@@ -5618,9 +5074,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETProcedureIdResponse> GETProcedureId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -5639,25 +5092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETEProcedureIdResponse> DELETEProcedureId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyperformedDateTime = null, [WorkflowExpression] Func<string> bodyrecorderreference = null, [WorkflowExpression] Func<string> bodyrecorderdisplay = null, [WorkflowExpression] Func<string> bodyasserterreference = null, [WorkflowExpression] Func<string> bodyasserterdisplay = null, [WorkflowExpression] Func<bodyperformerInputItem22[]> bodyperformer = null, [WorkflowExpression] Func<bodyreasonCodeInputItem2[]> bodyreasonCode = null, [WorkflowExpression] Func<bodyfollowUpInputItem[]> bodyfollowUp = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyperformedDateTime, nameof(bodyperformedDateTime), required: false);
-            SourceExpression.Validate(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            SourceExpression.Validate(bodyrecorderdisplay, nameof(bodyrecorderdisplay), required: false);
-            SourceExpression.Validate(bodyasserterreference, nameof(bodyasserterreference), required: false);
-            SourceExpression.Validate(bodyasserterdisplay, nameof(bodyasserterdisplay), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            SourceExpression.Validate(bodyfollowUp, nameof(bodyfollowUp), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -5834,25 +5268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTProcedureIdResponse> PUTProcedureId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyperformedDateTime = null, [WorkflowExpression] Func<string> bodyrecorderreference = null, [WorkflowExpression] Func<string> bodyrecorderdisplay = null, [WorkflowExpression] Func<string> bodyasserterreference = null, [WorkflowExpression] Func<string> bodyasserterdisplay = null, [WorkflowExpression] Func<bodyperformerInputItem22[]> bodyperformer = null, [WorkflowExpression] Func<bodyreasonCodeInputItem2[]> bodyreasonCode = null, [WorkflowExpression] Func<bodyfollowUpInputItem[]> bodyfollowUp = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            SourceExpression.Validate(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodycodecoding, nameof(bodycodecoding), required: false);
-            SourceExpression.Validate(bodycodetext, nameof(bodycodetext), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyperformedDateTime, nameof(bodyperformedDateTime), required: false);
-            SourceExpression.Validate(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            SourceExpression.Validate(bodyrecorderdisplay, nameof(bodyrecorderdisplay), required: false);
-            SourceExpression.Validate(bodyasserterreference, nameof(bodyasserterreference), required: false);
-            SourceExpression.Validate(bodyasserterdisplay, nameof(bodyasserterdisplay), required: false);
-            SourceExpression.Validate(bodyperformer, nameof(bodyperformer), required: false);
-            SourceExpression.Validate(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            SourceExpression.Validate(bodyfollowUp, nameof(bodyfollowUp), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -6029,9 +5444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETRiskAssessmentResponse> GETRiskAssessment([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RiskAssessment";
@@ -6052,16 +5464,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<POSTRiskAssessmentResponse> POSTRiskAssessment([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodymethodcodingInputItem2[]> bodymethodcoding = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyoccurrenceDateTime = null, [WorkflowExpression] Func<bodybasisInputItem[]> bodybasis = null, [WorkflowExpression] Func<bodypredictionInputItem[]> bodyprediction = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null)
         {
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyoccurrenceDateTime, nameof(bodyoccurrenceDateTime), required: false);
-            SourceExpression.Validate(bodybasis, nameof(bodybasis), required: false);
-            SourceExpression.Validate(bodyprediction, nameof(bodyprediction), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RiskAssessment";
@@ -6166,9 +5568,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETRiskAssessmentIdResponse> GETRiskAssessmentId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -6187,17 +5586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<DELETERiskAssessmentIdResponse> DELETERiskAssessmentId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodymethodcodingInputItem2[]> bodymethodcoding = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyoccurrenceDateTime = null, [WorkflowExpression] Func<bodybasisInputItem[]> bodybasis = null, [WorkflowExpression] Func<bodypredictionInputItem[]> bodyprediction = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyoccurrenceDateTime, nameof(bodyoccurrenceDateTime), required: false);
-            SourceExpression.Validate(bodybasis, nameof(bodybasis), required: false);
-            SourceExpression.Validate(bodyprediction, nameof(bodyprediction), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -6302,17 +5690,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<PUTRiskAssessmentIdResponse> PUTRiskAssessmentId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodymethodcodingInputItem2[]> bodymethodcoding = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodyoccurrenceDateTime = null, [WorkflowExpression] Func<bodybasisInputItem[]> bodybasis = null, [WorkflowExpression] Func<bodypredictionInputItem[]> bodyprediction = null, [WorkflowExpression] Func<bodynoteInputItem[]> bodynote = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: false);
-            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
-            SourceExpression.Validate(bodytextstatus, nameof(bodytextstatus), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            SourceExpression.Validate(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            SourceExpression.Validate(bodyoccurrenceDateTime, nameof(bodyoccurrenceDateTime), required: false);
-            SourceExpression.Validate(bodybasis, nameof(bodybasis), required: false);
-            SourceExpression.Validate(bodyprediction, nameof(bodyprediction), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -6417,9 +5794,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETCareTeamResponse> GETCareTeam([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            SourceExpression.Validate(Count, nameof(Count), required: false);
-            SourceExpression.Validate(Sort, nameof(Sort), required: false);
-            SourceExpression.Validate(patient, nameof(patient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/CareTeam";
@@ -6440,7 +5814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
         public IBodyWorkflowAction<GETCareTeamIdResponse> GETCareTeamId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/CareTeam/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

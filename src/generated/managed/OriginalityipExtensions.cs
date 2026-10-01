@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetCreditBalanceResponse> GetCreditBalance([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/account/credits/balance";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetCreditUsageResponse> GetCreditUsage([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/account/credits/content_scan_usage";
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetPaymentResponse> GetPayment([WorkflowExpression] Func<string> accept)
         {
-            SourceExpression.Validate(accept, nameof(accept), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/account/credits/payments";
@@ -62,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<PostAIDetectionResponse> PostAIDetection([WorkflowExpression] Func<string> bodycontent = null)
         {
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/scan/ai";
@@ -89,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<PostUrlAIDetectionResponse> PostUrlAIDetection([WorkflowExpression] Func<string> bodyurl = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/scan/url";

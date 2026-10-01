@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> queryquery = null, [WorkflowExpression] Func<object> queryactualParameters = null)
         {
-            SourceExpression.Validate(server, nameof(server), required: true);
-            SourceExpression.Validate(database, nameof(database), required: true);
-            SourceExpression.Validate(queryquery, nameof(queryquery), required: false);
-            SourceExpression.Validate(queryactualParameters, nameof(queryactualParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/query/sql", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2));
@@ -58,10 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<JToken> ExecuteProcedure([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> procedure, [WorkflowExpression] Func<object> parameters = null)
         {
-            SourceExpression.Validate(server, nameof(server), required: true);
-            SourceExpression.Validate(database, nameof(database), required: true);
-            SourceExpression.Validate(procedure, nameof(procedure), required: true);
-            SourceExpression.Validate(parameters, nameof(parameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/procedures/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
@@ -77,14 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<ItemsListV2> GetItems([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> select = null)
         {
-            SourceExpression.Validate(server, nameof(server), required: true);
-            SourceExpression.Validate(database, nameof(database), required: true);
-            SourceExpression.Validate(table, nameof(table), required: true);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/tables/{2}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
@@ -109,8 +93,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<TablesList> GetTables([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database)
         {
-            SourceExpression.Validate(server, nameof(server), required: true);
-            SourceExpression.Validate(database, nameof(database), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2));

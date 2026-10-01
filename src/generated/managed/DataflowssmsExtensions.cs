@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<SMSResponse> SendSMSGet([WorkflowExpression] Func<string> recipient, [WorkflowExpression] Func<string> senderId, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<string> type = null)
         {
-            SourceExpression.Validate(recipient, nameof(recipient), required: true);
-            SourceExpression.Validate(senderId, nameof(senderId), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms/send";
@@ -38,8 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<SMSList> ListSMS([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms";

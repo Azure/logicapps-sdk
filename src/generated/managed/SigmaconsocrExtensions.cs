@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ProcessjobResponse> Processjob([WorkflowExpression] Func<string> applicationURL, [WorkflowExpression] Func<string> bodyprocess, [WorkflowExpression] Func<string> bodyaction, [WorkflowExpression] Func<string> bodycustomerCode, [WorkflowExpression] Func<bool> bodywaitForResult = null)
         {
-            SourceExpression.Validate(applicationURL, nameof(applicationURL), required: true);
-            SourceExpression.Validate(bodyprocess, nameof(bodyprocess), required: true);
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: true);
-            SourceExpression.Validate(bodycustomerCode, nameof(bodycustomerCode), required: true);
-            SourceExpression.Validate(bodywaitForResult, nameof(bodywaitForResult), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/job/process";
@@ -52,10 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ConsolidationjobResponse> Consolidationjob([WorkflowExpression] Func<string> applicationURL, [WorkflowExpression] Func<string> bodyconsoCode, [WorkflowExpression] Func<string> bodycustomerCode, [WorkflowExpression] Func<bool> bodywaitForResult = null)
         {
-            SourceExpression.Validate(applicationURL, nameof(applicationURL), required: true);
-            SourceExpression.Validate(bodyconsoCode, nameof(bodyconsoCode), required: true);
-            SourceExpression.Validate(bodycustomerCode, nameof(bodycustomerCode), required: true);
-            SourceExpression.Validate(bodywaitForResult, nameof(bodywaitForResult), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/job/consolidation";
@@ -87,10 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ScheduledjobResponse> Scheduledjob([WorkflowExpression] Func<string> applicationURL, [WorkflowExpression] Func<string> bodyjobScheduleName, [WorkflowExpression] Func<string> bodycustomerCode, [WorkflowExpression] Func<bool> bodywaitForResult = null)
         {
-            SourceExpression.Validate(applicationURL, nameof(applicationURL), required: true);
-            SourceExpression.Validate(bodyjobScheduleName, nameof(bodyjobScheduleName), required: true);
-            SourceExpression.Validate(bodycustomerCode, nameof(bodycustomerCode), required: true);
-            SourceExpression.Validate(bodywaitForResult, nameof(bodywaitForResult), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/job/scheduledjob";
@@ -122,11 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ImportFileResponse> ImportFile([WorkflowExpression] Func<string> applicationURL, [WorkflowExpression] Func<string> bodyimportStructureCode, [WorkflowExpression] Func<string> bodycustomerCode, [WorkflowExpression] Func<string> bodybase64File, [WorkflowExpression] Func<bool> bodywaitForResult = null)
         {
-            SourceExpression.Validate(applicationURL, nameof(applicationURL), required: true);
-            SourceExpression.Validate(bodyimportStructureCode, nameof(bodyimportStructureCode), required: true);
-            SourceExpression.Validate(bodycustomerCode, nameof(bodycustomerCode), required: true);
-            SourceExpression.Validate(bodybase64File, nameof(bodybase64File), required: true);
-            SourceExpression.Validate(bodywaitForResult, nameof(bodywaitForResult), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/hub/import";

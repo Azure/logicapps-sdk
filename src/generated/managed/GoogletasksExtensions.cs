@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskListEntry> CreateTaskList([WorkflowExpression] Func<string> listtitle)
         {
-            SourceExpression.Validate(listtitle, nameof(listtitle), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users/@me/lists";
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskList> ListTasks([WorkflowExpression] Func<string> taskListId)
         {
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
@@ -66,10 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskObject> CraeteTask([WorkflowExpression] Func<string> taskListId, [WorkflowExpression] Func<string> tasktitle, [WorkflowExpression] Func<string> tasknotes = null, [WorkflowExpression] Func<string> taskdue = null)
         {
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
-            SourceExpression.Validate(tasktitle, nameof(tasktitle), required: true);
-            SourceExpression.Validate(tasknotes, nameof(tasknotes), required: false);
-            SourceExpression.Validate(taskdue, nameof(taskdue), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
@@ -104,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskObject> ListTask([WorkflowExpression] Func<string> taskListId, [WorkflowExpression] Func<string> taskId)
         {
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
-            SourceExpression.Validate(taskId, nameof(taskId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
@@ -135,7 +127,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
         public IBodyWorkflowTrigger<TaskList> OnNewTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger2/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
@@ -149,7 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
         public IBodyWorkflowTrigger<TaskList> OnDueTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger4/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
@@ -163,7 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
         public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger5/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));

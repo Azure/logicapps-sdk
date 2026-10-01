@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         public IBodyWorkflowAction<GetIdeaResponse> GetIdea([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v1/ideas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -43,14 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         public IBodyWorkflowAction<IdeasResponse> Ideas([WorkflowExpression] Func<string> publishedAfter = null, [WorkflowExpression] Func<string> lastStageChangeAfter = null, [WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<string> afterCursor = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(publishedAfter, nameof(publishedAfter), required: false);
-            SourceExpression.Validate(lastStageChangeAfter, nameof(lastStageChangeAfter), required: false);
-            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
-            SourceExpression.Validate(stageId, nameof(stageId), required: false);
-            SourceExpression.Validate(sortField, nameof(sortField), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(afterCursor, nameof(afterCursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/integration/v1/ideas";
@@ -86,8 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     {
         public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger([WorkflowExpression] Func<string> ideaboxId, [WorkflowExpression] Func<string> stageId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: true);
-            SourceExpression.Validate(stageId, nameof(stageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
@@ -103,9 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
         public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, [WorkflowExpression] Func<string> statusId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
-            SourceExpression.Validate(stageId, nameof(stageId), required: false);
-            SourceExpression.Validate(statusId, nameof(statusId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
@@ -125,8 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
         public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
-            SourceExpression.Validate(stageId, nameof(stageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
@@ -144,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
         public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
-            SourceExpression.Validate(stageId, nameof(stageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aweber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aweber")]
         public IBodyWorkflowAction<string> CreateSubscriber([WorkflowExpression] Func<int> listid, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null)
         {
-            SourceExpression.Validate(listid, nameof(listid), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.0/accounts/accountid/lists/{0}/subscribers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(listid, 1));
@@ -52,8 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aweber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aweber")]
         public IBodyWorkflowAction<UnsubscribeEmailResponse> UnsubscribeEmail([WorkflowExpression] Func<int> listid, [WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(listid, nameof(listid), required: true);
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.0/accounts/accountid/lists/{0}/subscribers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(listid, 1));

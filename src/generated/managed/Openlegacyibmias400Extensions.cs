@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Cobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-AS400Cobol";
@@ -34,9 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Rpg([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-AS400Rpg";
@@ -54,9 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400DataQueue([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-AS400DataQueue";
@@ -74,9 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Db2Queries([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-AS400Db2Queries";
@@ -94,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Db2Executables([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/dummy-AS400Db2Executables";

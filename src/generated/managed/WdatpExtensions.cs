@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<AdvancedHuntingResponse> AdvancedHunting([WorkflowExpression] Func<string> bodyquery)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/advancedqueries/run";
@@ -37,14 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<Alert> CreateAlertByReference([WorkflowExpression] Func<string> bodymachineId, [WorkflowExpression] Func<string> bodyreportId, [WorkflowExpression] Func<string> bodyeventTime, [WorkflowExpression] Func<bodyseverityInput> bodyseverity, [WorkflowExpression] Func<bodycategoryInput> bodycategory, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodyrecommendedAction)
         {
-            SourceExpression.Validate(bodymachineId, nameof(bodymachineId), required: true);
-            SourceExpression.Validate(bodyreportId, nameof(bodyreportId), required: true);
-            SourceExpression.Validate(bodyeventTime, nameof(bodyeventTime), required: true);
-            SourceExpression.Validate(bodyseverity, nameof(bodyseverity), required: true);
-            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyrecommendedAction, nameof(bodyrecommendedAction), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/alerts/createAlertByReference";
@@ -81,13 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetAlertsResponse> GetAlerts([WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(expand, nameof(expand), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/alerts";
@@ -116,7 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<Alert> GetSingleAlert([WorkflowExpression] Func<string> alertId)
         {
-            SourceExpression.Validate(alertId, nameof(alertId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/alerts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(alertId, 1));
@@ -131,11 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<Alert> PatchAlert([WorkflowExpression] Func<string> alertId, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<bodyclassificationInput> bodyclassification = null, [WorkflowExpression] Func<bodydeterminationInput> bodydetermination = null)
         {
-            SourceExpression.Validate(alertId, nameof(alertId), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            SourceExpression.Validate(bodyclassification, nameof(bodyclassification), required: false);
-            SourceExpression.Validate(bodydetermination, nameof(bodydetermination), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/alerts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(alertId, 1));
@@ -180,8 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<InitiateInvestigationResponse> InitiateInvestigation([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/initiateInvestigation", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -204,8 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<Investigation> StartInvestigation([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/startInvestigation", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -228,7 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> GetSingleMachineAction([WorkflowExpression] Func<string> machineActionId)
         {
-            SourceExpression.Validate(machineActionId, nameof(machineActionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machineactions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineActionId, 1));
@@ -243,8 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> CancelSingleMachineAction([WorkflowExpression] Func<string> machineActionId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(machineActionId, nameof(machineActionId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machineactions/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineActionId, 1));
@@ -267,8 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetLiveResponseDownloadLinkResponse> GetLiveResponseDownloadLink([WorkflowExpression] Func<string> machineActionId, [WorkflowExpression] Func<int> commandIndex)
         {
-            SourceExpression.Validate(machineActionId, nameof(machineActionId), required: true);
-            SourceExpression.Validate(commandIndex, nameof(commandIndex), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machineactions/{0}/GetLiveResponseResultDownloadLink(index={1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineActionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(commandIndex, 1));
@@ -283,12 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetMachineActionsResponse> GetMachineActions([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/machineactions";
@@ -315,8 +278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<FileStats> GetFileStats([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<int> lookBackHours = null)
         {
-            SourceExpression.Validate(fileId, nameof(fileId), required: true);
-            SourceExpression.Validate(lookBackHours, nameof(lookBackHours), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/files/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
@@ -334,8 +295,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<DomainStats> GetDomainStats([WorkflowExpression] Func<string> domainName, [WorkflowExpression] Func<int> lookBackHours = null)
         {
-            SourceExpression.Validate(domainName, nameof(domainName), required: true);
-            SourceExpression.Validate(lookBackHours, nameof(lookBackHours), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/domains/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainName, 1));
@@ -353,8 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<IpStats> GetIpStats([WorkflowExpression] Func<string> ipAddress, [WorkflowExpression] Func<int> lookBackHours = null)
         {
-            SourceExpression.Validate(ipAddress, nameof(ipAddress), required: true);
-            SourceExpression.Validate(lookBackHours, nameof(lookBackHours), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ips/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ipAddress, 1));
@@ -372,7 +329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<Investigation> GetSingleInvestigation([WorkflowExpression] Func<string> investigationId)
         {
-            SourceExpression.Validate(investigationId, nameof(investigationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/investigations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(investigationId, 1));
@@ -387,12 +343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetInvestigationsResponse> GetInvestigations([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/investigations";
@@ -419,8 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> CollectInvestigationPackage([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/collectInvestigationPackage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -443,7 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetInvestigationPackageUriResponse> GetInvestigationPackageUri([WorkflowExpression] Func<string> machineActionId)
         {
-            SourceExpression.Validate(machineActionId, nameof(machineActionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machineactions/{0}/getPackageUri", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineActionId, 1));
@@ -458,9 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> IsolateMachine([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment, [WorkflowExpression] Func<bodyisolationTypeInput> bodyisolationType)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
-            SourceExpression.Validate(bodyisolationType, nameof(bodyisolationType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/isolate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -485,8 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> UnisolateMachine([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/unisolate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -509,8 +451,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> RestrictAppExecution([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/restrictCodeExecution", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -533,8 +473,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> UnrestrictAppExecution([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/unrestrictCodeExecution", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -557,9 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> RunAntivirusScan([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment, [WorkflowExpression] Func<bodyscanTypeInput> bodyscanType)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
-            SourceExpression.Validate(bodyscanType, nameof(bodyscanType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/runAntiVirusScan", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -584,9 +519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<MachineAction> RunLiveResponse([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodycomment, [WorkflowExpression] Func<LiveResponseCommand[]> bodycommands)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: true);
-            SourceExpression.Validate(bodycommands, nameof(bodycommands), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/runliveresponse", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -611,12 +543,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetRemediationActivitiesResponse> GetRemediationActivities([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/remediationtasks";
@@ -643,7 +569,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<RemediationActivity> GetSingleRemediationActivity([WorkflowExpression] Func<string> remediationId)
         {
-            SourceExpression.Validate(remediationId, nameof(remediationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/remediationtasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(remediationId, 1));
@@ -658,7 +583,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetRemediationActivityMachineListResponse> GetRemediationActivityMachineList([WorkflowExpression] Func<string> remediationId)
         {
-            SourceExpression.Validate(remediationId, nameof(remediationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/remediationtasks/{0}/machinereferences", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(remediationId, 1));
@@ -673,12 +597,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<GetMachinesResponse> GetMachines([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(select, nameof(select), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(count, nameof(count), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/machines";
@@ -705,7 +623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<Machine> GetSingleMachine([WorkflowExpression] Func<string> machineId)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));
@@ -720,9 +637,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
         public IBodyWorkflowAction<Machine> MachineTag([WorkflowExpression] Func<string> machineId, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodyactionInput> bodyaction)
         {
-            SourceExpression.Validate(machineId, nameof(machineId), required: true);
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/machines/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(machineId, 1));

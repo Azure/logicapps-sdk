@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<IssuePostResponse> Issue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sticker/share";
@@ -39,7 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet([WorkflowExpression] Func<string> username)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/stickers";
@@ -55,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet([WorkflowExpression] Func<string> user)
         {
-            SourceExpression.Validate(user, nameof(user), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user/board";

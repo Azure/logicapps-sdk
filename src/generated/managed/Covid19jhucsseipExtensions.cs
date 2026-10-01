@@ -112,7 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet([WorkflowExpression] Func<string> countryName)
         {
-            SourceExpression.Validate(countryName, nameof(countryName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/country/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryName, 1));
@@ -127,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet([WorkflowExpression] Func<string> @case)
         {
-            SourceExpression.Validate(@case, nameof(@case), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/timeseries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@case, 1));

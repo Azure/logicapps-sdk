@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectGoodService([WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/good";
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectBadService([WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bad";
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<AppendDocumentResponse> WordAppendDocuments([WorkflowExpression] Func<string[]> bodyappendDocumentList = null)
         {
-            SourceExpression.Validate(bodyappendDocumentList, nameof(bodyappendDocumentList), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WordAppendDocuments";
@@ -95,9 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<ExtractContentByHeadingResponse> WordExtractContentByHeading([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodyheadingStyleName = null)
         {
-            SourceExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            SourceExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            SourceExpression.Validate(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WordExtractContent/ByHeading";
@@ -144,11 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<ExtractSectionByTitleResponse> WordExtractContentByTitle([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodyheadingText = null, [WorkflowExpression] Func<string> bodyheadingStyleName = null, [WorkflowExpression] Func<string[]> bodyheadingEscapeStyleNames = null)
         {
-            SourceExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            SourceExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            SourceExpression.Validate(bodyheadingText, nameof(bodyheadingText), required: false);
-            SourceExpression.Validate(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
-            SourceExpression.Validate(bodyheadingEscapeStyleNames, nameof(bodyheadingEscapeStyleNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WordExtractContent/ByTitle";
@@ -207,10 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<ExtractContentByBookMarksResponse> WordExtractContentByBookmarks([WorkflowExpression] Func<string> bodystartBookMark = null, [WorkflowExpression] Func<string> bodyendBookMark = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null)
         {
-            SourceExpression.Validate(bodystartBookMark, nameof(bodystartBookMark), required: false);
-            SourceExpression.Validate(bodyendBookMark, nameof(bodyendBookMark), required: false);
-            SourceExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            SourceExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WordExtractContent/ByBookMarks";
@@ -263,11 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<InsertDocumentResponse> WordInsertDocuments([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string[]> bodyinsertDocumentList = null, [WorkflowExpression] Func<string> bodybookmarkName = null, [WorkflowExpression] Func<bool> bodydeleteBookmark = null)
         {
-            SourceExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            SourceExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            SourceExpression.Validate(bodyinsertDocumentList, nameof(bodyinsertDocumentList), required: false);
-            SourceExpression.Validate(bodybookmarkName, nameof(bodybookmarkName), required: false);
-            SourceExpression.Validate(bodydeleteBookmark, nameof(bodydeleteBookmark), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WordInsertDocuments";
@@ -326,10 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
         public IBodyWorkflowAction<ApplyStylesResponse> WordApplyStyleToDocument([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodydestinationDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodydestinationDocumentdocumentName = null)
         {
-            SourceExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            SourceExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            SourceExpression.Validate(bodydestinationDocumentdocumentContent, nameof(bodydestinationDocumentdocumentContent), required: false);
-            SourceExpression.Validate(bodydestinationDocumentdocumentName, nameof(bodydestinationDocumentdocumentName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/WordStyles/ApplyStyleToDocument";

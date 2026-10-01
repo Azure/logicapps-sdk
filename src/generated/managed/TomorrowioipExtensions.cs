@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
         public IBodyWorkflowAction<ForecastGetResponse> ForecastGet([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<string[]> timesteps = null, [WorkflowExpression] Func<unitsInput> units = null)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(timesteps, nameof(timesteps), required: false);
-            SourceExpression.Validate(units, nameof(units), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/weather/forecast";
@@ -36,8 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
         public IBodyWorkflowAction<RealtimeGetResponse> RealtimeGet([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units = null)
         {
-            SourceExpression.Validate(location, nameof(location), required: true);
-            SourceExpression.Validate(units, nameof(units), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/weather/realtime";
@@ -55,13 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
         public IBodyWorkflowAction<TimelinePostResponse> Timeline([WorkflowExpression] Func<string> bodylocation, [WorkflowExpression] Func<string[]> bodyfields, [WorkflowExpression] Func<bodyunitsInput> bodyunits = null, [WorkflowExpression] Func<string[]> bodytimesteps = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodytimezone = null)
         {
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
-            SourceExpression.Validate(bodyunits, nameof(bodyunits), required: false);
-            SourceExpression.Validate(bodytimesteps, nameof(bodytimesteps), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/timelines";
@@ -116,11 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
         public IBodyWorkflowAction<MapGetResponse> MapGet([WorkflowExpression] Func<string> zoom, [WorkflowExpression] Func<string> x, [WorkflowExpression] Func<string> y, [WorkflowExpression] Func<string> field, [WorkflowExpression] Func<string> time)
         {
-            SourceExpression.Validate(zoom, nameof(zoom), required: true);
-            SourceExpression.Validate(x, nameof(x), required: true);
-            SourceExpression.Validate(y, nameof(y), required: true);
-            SourceExpression.Validate(field, nameof(field), required: true);
-            SourceExpression.Validate(time, nameof(time), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/map/tile/{0}/{1}/{2}/{3}/{4}.{5}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(zoom, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(field, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(time, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(SourceExpression.Literal(1, "png"), 1));

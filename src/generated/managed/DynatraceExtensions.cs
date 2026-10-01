@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetProblemsResponse> GetProblems([WorkflowExpression] Func<string> from = null)
         {
-            SourceExpression.Validate(from, nameof(from), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/problems";
@@ -33,7 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetProblemByIdResponse> GetProblemById([WorkflowExpression] Func<string> problemId)
         {
-            SourceExpression.Validate(problemId, nameof(problemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(problemId, 1));
@@ -49,7 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IWorkflowAction GetProblemComments([WorkflowExpression] Func<string> problemId)
         {
-            SourceExpression.Validate(problemId, nameof(problemId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(problemId, 1));
@@ -64,9 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IWorkflowAction PostProblemComment([WorkflowExpression] Func<string> problemId, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycontext = null)
         {
-            SourceExpression.Validate(problemId, nameof(problemId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            SourceExpression.Validate(bodycontext, nameof(bodycontext), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(problemId, 1));
@@ -100,8 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> GetProblemCommentByProblemIdAndCommentId([WorkflowExpression] Func<string> problemId, [WorkflowExpression] Func<string> commentId)
         {
-            SourceExpression.Validate(problemId, nameof(problemId), required: true);
-            SourceExpression.Validate(commentId, nameof(commentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(problemId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
@@ -117,7 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetEventsResponse> GetEvents([WorkflowExpression] Func<string> from = null)
         {
-            SourceExpression.Validate(from, nameof(from), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/events";
@@ -135,8 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetEntitiesResponse> GetEntities([WorkflowExpression] Func<string> entitySelector, [WorkflowExpression] Func<string> from = null)
         {
-            SourceExpression.Validate(entitySelector, nameof(entitySelector), required: true);
-            SourceExpression.Validate(from, nameof(from), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/entities";
@@ -155,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetEntityByIdResponse> GetEntityById([WorkflowExpression] Func<string> entityId)
         {
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/entities/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityId, 1));
@@ -170,12 +158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IWorkflowAction PostEventIngest([WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodytimeout = null, [WorkflowExpression] Func<string> bodyentitySelector = null)
         {
-            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodytimeout, nameof(bodytimeout), required: false);
-            SourceExpression.Validate(bodyentitySelector, nameof(bodyentitySelector), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/events/ingest";
@@ -233,8 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetSecurityProblemsResponse> GetSecurityProblems([WorkflowExpression] Func<string> securityProblemSelector = null, [WorkflowExpression] Func<string> from = null)
         {
-            SourceExpression.Validate(securityProblemSelector, nameof(securityProblemSelector), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/securityProblems";
@@ -255,8 +235,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> GetSecurityProblemsById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/securityProblems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

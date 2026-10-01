@@ -38,11 +38,43 @@ output from BPM's `src\tools\CodefulSdkGenerator`. The active C# targets are
 service-provider/DurableTask target does not generate these SDK wrappers.
 
 Use a generator revision that emits `[WorkflowExpression] Func<T>` parameters,
-immediate `SourceExpression.Validate` calls, the appropriate
-`SourceExpressionConverter` methods, and deferred `BuildSourceInput` factories.
+the appropriate `SourceExpressionConverter` methods, and deferred
+`BuildSourceInput` factories, without explicit `SourceExpression.Validate` calls.
 These sources compile into the SDK assembly and can use its internal APIs.
 This connector generation is separate from the consuming project's workflow
 source-expression compiler.
+
+The SDK's own build injects validation into temporary connector sources under
+`$(IntermediateOutputPath)\connector-validation`. It compiles those copies into
+the SDK assembly without editing generated source files. Every annotated
+parameter is checked at method entry, in declaration order, with its original
+parameter name. Parameters without a default are required; null-default
+parameters are optional. The migration audited this rule against every existing
+generated validation flag. Trigger methods are included even when they have no
+`ConnectorOperation` attribute.
+
+This protects direct, method-group, reflection and precompiled callers without
+requiring consumer rewriting. All call arguments are evaluated before validation.
+Authoring delegates are never executed; capture snapshots and late workflow-name
+resolution retain their existing behavior. The runtime validation helper and
+descriptor converters are unchanged.
+
+`Build\ConnectorValidation.targets` uses the existing Roslyn build tool through
+its separate `inject-connector-validation` command. Normal SDK builds require
+the tool; unsupported parameter/method shapes, explicit validation in generated
+inputs and missing transformation outputs are errors, not fallback compilation.
+Design-time builds retain original sources and report that injection is deferred.
+Package creation verifies the SDK assembly against its successful validation-build
+receipt, including `pack --no-build`. The SDK runtime remains netstandard2.0 and
+does not acquire a Roslyn dependency.
+
+Validation-free generated output requires this injection-enabled SDK build.
+Do not compile it through an older SDK build pipeline. During migration, old BPM
+output that still emits validation is rejected rather than duplicated. The managed
+and modern service-provider generators must omit those calls; the SDK owns their
+compiled implementation. Keep regeneration gated by unchanged SDK tests and
+baseline-versus-candidate hosted comparisons. There is no released package version
+implied by this source-build capability requirement.
 
 Pin the generator revision and Swagger/service-provider manifest inputs.
 Generate into a separate directory, review operation inventories, skipped

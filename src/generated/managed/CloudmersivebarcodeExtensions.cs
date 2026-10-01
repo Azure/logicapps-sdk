@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         public IBodyWorkflowAction<BarcodeLookupResponse> BarcodeLookupEanLookup([WorkflowExpression] Func<string> value = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/barcode/lookup/ean";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         public IBodyWorkflowAction<string> GenerateBarcodeQRCode([WorkflowExpression] Func<string> value = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/barcode/generate/qrcode";
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         public IBodyWorkflowAction<string> GenerateBarcodeUPCA([WorkflowExpression] Func<string> value = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/barcode/generate/upc-a";
@@ -62,7 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         public IBodyWorkflowAction<string> GenerateBarcodeUPCE([WorkflowExpression] Func<string> value = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/barcode/generate/upc-e";
@@ -78,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         public IBodyWorkflowAction<string> GenerateBarcodeEAN13([WorkflowExpression] Func<string> value = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/barcode/generate/ean-13";
@@ -94,7 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         public IBodyWorkflowAction<string> GenerateBarcodeEAN8([WorkflowExpression] Func<string> value = null)
         {
-            SourceExpression.Validate(value, nameof(value), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/barcode/generate/ean-8";

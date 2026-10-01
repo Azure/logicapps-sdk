@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
         public IBodyWorkflowAction<AssignFormResponse> AssignForm([WorkflowExpression] Func<string> formAssignBodyuser, [WorkflowExpression] Func<string> formAssignBodyform, [WorkflowExpression] Func<object> formAssignBodyfields = null)
         {
-            SourceExpression.Validate(formAssignBodyuser, nameof(formAssignBodyuser), required: true);
-            SourceExpression.Validate(formAssignBodyform, nameof(formAssignBodyform), required: true);
-            SourceExpression.Validate(formAssignBodyfields, nameof(formAssignBodyfields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/external/Form";
@@ -47,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
         public IBodyWorkflowAction<string> AddData([WorkflowExpression] Func<string> formDataBodyform, [WorkflowExpression] Func<object> formDataBodyfields = null)
         {
-            SourceExpression.Validate(formDataBodyform, nameof(formDataBodyform), required: true);
-            SourceExpression.Validate(formDataBodyfields, nameof(formDataBodyfields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/external/FormData";
@@ -79,7 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     {
         public IWorkflowTrigger TrigNewResponse([WorkflowExpression] Func<string> requestBodyOfWebhookform, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/external/WebHook";

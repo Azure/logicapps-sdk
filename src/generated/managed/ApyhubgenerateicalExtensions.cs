@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
         public IBodyWorkflowAction<string> File([WorkflowExpression] Func<string> output = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyorganizerEmail = null, [WorkflowExpression] Func<string[]> bodyattendeesEmails = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodymeetingDate = null, [WorkflowExpression] Func<bool> bodyrecurring = null, [WorkflowExpression] Func<bodyrecurrencefrequencyInput> bodyrecurrencefrequency = null, [WorkflowExpression] Func<int> bodyrecurrencecount = null)
         {
-            SourceExpression.Validate(output, nameof(output), required: false);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
-            SourceExpression.Validate(bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodymeetingDate, nameof(bodymeetingDate), required: false);
-            SourceExpression.Validate(bodyrecurring, nameof(bodyrecurring), required: false);
-            SourceExpression.Validate(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
-            SourceExpression.Validate(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/file";
@@ -129,19 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
         public IBodyWorkflowAction<URLPostResponse> URL([WorkflowExpression] Func<string> output = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyorganizerEmail = null, [WorkflowExpression] Func<string[]> bodyattendeesEmails = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodymeetingDate = null, [WorkflowExpression] Func<bool> bodyrecurring = null, [WorkflowExpression] Func<bodyrecurrencefrequencyInput> bodyrecurrencefrequency = null, [WorkflowExpression] Func<int> bodyrecurrencecount = null)
         {
-            SourceExpression.Validate(output, nameof(output), required: false);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
-            SourceExpression.Validate(bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
-            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            SourceExpression.Validate(bodymeetingDate, nameof(bodymeetingDate), required: false);
-            SourceExpression.Validate(bodyrecurring, nameof(bodyrecurring), required: false);
-            SourceExpression.Validate(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
-            SourceExpression.Validate(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/url";

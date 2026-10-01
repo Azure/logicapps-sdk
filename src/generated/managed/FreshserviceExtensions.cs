@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
         public IBodyWorkflowAction<AddNoteResponseV2> AddNote([WorkflowExpression] Func<int> ticketId, [WorkflowExpression] Func<string> bodynote, [WorkflowExpression] Func<bool> bodyisPrivate = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: true);
-            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/tickets/{0}/notes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(ticketId, 1));
@@ -45,17 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
         public IBodyWorkflowAction<CreateUpdateTicketResponseV2> CreateTicket([WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<bodypriorityInput> bodypriority, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<int> bodyrequesterId = null, [WorkflowExpression] Func<string> bodyrequesterEmail = null, [WorkflowExpression] Func<string> bodyrequesterPhone = null, [WorkflowExpression] Func<string> bodyrequesterName = null, [WorkflowExpression] Func<bodyurgencyInput> bodyurgency = null, [WorkflowExpression] Func<bodyimpactInput> bodyimpact = null, [WorkflowExpression] Func<bodysourceInput> bodysource = null)
         {
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            SourceExpression.Validate(bodyrequesterId, nameof(bodyrequesterId), required: false);
-            SourceExpression.Validate(bodyrequesterEmail, nameof(bodyrequesterEmail), required: false);
-            SourceExpression.Validate(bodyrequesterPhone, nameof(bodyrequesterPhone), required: false);
-            SourceExpression.Validate(bodyrequesterName, nameof(bodyrequesterName), required: false);
-            SourceExpression.Validate(bodyurgency, nameof(bodyurgency), required: false);
-            SourceExpression.Validate(bodyimpact, nameof(bodyimpact), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/tickets";
@@ -126,14 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
         public IBodyWorkflowAction<CreateUpdateTicketResponseV2> UpdateTicket([WorkflowExpression] Func<int> ticketId, [WorkflowExpression] Func<int> bodyrequesterId = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<bodyurgencyInput> bodyurgency = null, [WorkflowExpression] Func<bodyimpactInput> bodyimpact = null, [WorkflowExpression] Func<bodysourceInput> bodysource = null)
         {
-            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
-            SourceExpression.Validate(bodyrequesterId, nameof(bodyrequesterId), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyurgency, nameof(bodyurgency), required: false);
-            SourceExpression.Validate(bodyimpact, nameof(bodyimpact), required: false);
-            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(ticketId, 1));

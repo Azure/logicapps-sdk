@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<GovernmentRegion[]> GetGovernmentRegionsByFederalStateDE([WorkflowExpression] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalStateKey, nameof(federalStateKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/GovernmentRegions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalStateKey, 1));
@@ -49,9 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<District[]> GetDistrictsByFederalStateDE([WorkflowExpression] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalStateKey, nameof(federalStateKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Districts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalStateKey, 1));
@@ -70,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<District[]> GetDistrictsByGovernmentRegionDE([WorkflowExpression] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(governmentRegionKey, nameof(governmentRegionKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Districts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(governmentRegionKey, 1));
@@ -91,9 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByFederalStateDE([WorkflowExpression] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalStateKey, nameof(federalStateKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Municipalities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalStateKey, 1));
@@ -112,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByGovernmentRegionDE([WorkflowExpression] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(governmentRegionKey, nameof(governmentRegionKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Municipalities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(governmentRegionKey, 1));
@@ -133,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByDistrictDE([WorkflowExpression] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(districtKey, nameof(districtKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/Municipalities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(districtKey, 1));
@@ -154,9 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByFederalStateDE([WorkflowExpression] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalStateKey, nameof(federalStateKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/MunicipalAssociations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalStateKey, 1));
@@ -175,9 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByGovernmentRegionDE([WorkflowExpression] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(governmentRegionKey, nameof(governmentRegionKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/MunicipalAssociations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(governmentRegionKey, 1));
@@ -196,9 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByDistrictDE([WorkflowExpression] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(districtKey, nameof(districtKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/MunicipalAssociations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(districtKey, 1));
@@ -217,9 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> GetLocalitiesByFederalStateDE([WorkflowExpression] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalStateKey, nameof(federalStateKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Localities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalStateKey, 1));
@@ -238,9 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> GetLocalitiesByGovernmentRegionDE([WorkflowExpression] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(governmentRegionKey, nameof(governmentRegionKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Localities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(governmentRegionKey, 1));
@@ -259,9 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> GetLocalitiesByDistrictDE([WorkflowExpression] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(districtKey, nameof(districtKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/Localities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(districtKey, 1));
@@ -280,10 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> SearchLocalitiesDE([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/de/Localities";
@@ -306,11 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Street[]> SearchStreetsDE([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/de/Streets";
@@ -335,9 +290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Street[]> FullTextSearchDE([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(searchTerm, nameof(searchTerm), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/de/FullTextSearch";
@@ -371,10 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityLI[]> SearchLocalitiesLI([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/li/Localities";
@@ -397,11 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetLI[]> SearchStreetsLI([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/li/Streets";
@@ -426,9 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetLI[]> FullTextSearchLI([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(searchTerm, nameof(searchTerm), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/li/FullTextSearch";
@@ -462,9 +402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<DistrictCH[]> GetDistrictsByCantonCH([WorkflowExpression] Func<string> cantonKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(cantonKey, nameof(cantonKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Districts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cantonKey, 1));
@@ -483,9 +420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<CommuneCH[]> GetCommunesByCantonCH([WorkflowExpression] Func<string> cantonKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(cantonKey, nameof(cantonKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Communes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cantonKey, 1));
@@ -504,9 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<CommuneCH[]> GetCommunesByDistrictCH([WorkflowExpression] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(districtKey, nameof(districtKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ch/Districts/{0}/Communes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(districtKey, 1));
@@ -525,9 +456,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByCantonCH([WorkflowExpression] Func<string> cantonKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(cantonKey, nameof(cantonKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Localities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cantonKey, 1));
@@ -546,9 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByDistrictCH([WorkflowExpression] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(districtKey, nameof(districtKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ch/Districts/{0}/Localities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(districtKey, 1));
@@ -567,10 +492,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityCH[]> SearchLocalitiesCH([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ch/Localities";
@@ -593,11 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetCH[]> SearchStreetsCH([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ch/Streets";
@@ -622,9 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetCH[]> FullTextSearchCH([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(searchTerm, nameof(searchTerm), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ch/FullTextSearch";
@@ -658,9 +571,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<DistrictAT[]> GetDistrictsByFederalProvinceAT([WorkflowExpression] Func<string> federalProvinceKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalProvinceKey, nameof(federalProvinceKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Districts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalProvinceKey, 1));
@@ -679,9 +589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByFederalProvinceAT([WorkflowExpression] Func<string> federalProvinceKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalProvinceKey, nameof(federalProvinceKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Municipalities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalProvinceKey, 1));
@@ -700,9 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByDistrictAT([WorkflowExpression] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(districtKey, nameof(districtKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/at/Districts/{0}/Municipalities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(districtKey, 1));
@@ -721,9 +625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByFederalProvinceAT([WorkflowExpression] Func<string> federalProvinceKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(federalProvinceKey, nameof(federalProvinceKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Localities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federalProvinceKey, 1));
@@ -742,9 +643,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByDistrictAT([WorkflowExpression] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(districtKey, nameof(districtKey), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/at/Districts/{0}/Localities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(districtKey, 1));
@@ -763,10 +661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityAT[]> SearchLocalitiesAT([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/at/Localities";
@@ -789,11 +683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetAT[]> SearchStreetsAT([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/at/Streets";
@@ -818,9 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetAT[]> FullTextSearchAT([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(searchTerm, nameof(searchTerm), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/at/FullTextSearch";

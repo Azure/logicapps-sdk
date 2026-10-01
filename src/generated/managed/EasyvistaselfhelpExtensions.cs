@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IWorkflowAction Execute([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> scenarioId)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(scenarioId, nameof(scenarioId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/execute/";
@@ -32,9 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IWorkflowAction GetPausedProcedureList([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> versionId)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: true);
-            SourceExpression.Validate(versionId, nameof(versionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/paused/";
@@ -52,9 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<GetProcedureListResponse> GetProcedureList([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> versionId)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: true);
-            SourceExpression.Validate(versionId, nameof(versionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/project/";
@@ -72,9 +64,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<GetProjectListResponse> GetProjectList([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> mode = null)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: true);
-            SourceExpression.Validate(mode, nameof(mode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/projects/";
@@ -93,10 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> pattern, [WorkflowExpression] Func<string> versionId = null)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: true);
-            SourceExpression.Validate(pattern, nameof(pattern), required: true);
-            SourceExpression.Validate(versionId, nameof(versionId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/search/";
@@ -116,7 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/user/";
@@ -132,9 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IWorkflowAction Login([WorkflowExpression] Func<string> login, [WorkflowExpression] Func<string> password, [WorkflowExpression] Func<string> locale = null)
         {
-            SourceExpression.Validate(login, nameof(login), required: true);
-            SourceExpression.Validate(password, nameof(password), required: true);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/livedesk/CHECK";

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> CompressImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyimageTypeInput> bodyimageType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bodycompressionLevelInput> bodycompressionLevel = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodyimageType, nameof(bodyimageType), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            SourceExpression.Validate(bodycompressionLevel, nameof(bodycompressionLevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/CompressImage";
@@ -62,10 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> ConvertImageFormat([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodycurrentImageFormatInput> bodycurrentImageFormat, [WorkflowExpression] Func<bodynewImageFormatInput> bodynewImageFormat, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodycurrentImageFormat, nameof(bodycurrentImageFormat), required: true);
-            SourceExpression.Validate(bodynewImageFormat, nameof(bodynewImageFormat), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ConvertImageFormat";
@@ -106,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> CropImage([WorkflowExpression] Func<schemaValInput> schemaVal = null, [WorkflowExpression] Func<object> operation = null)
         {
-            SourceExpression.Validate(schemaVal, nameof(schemaVal), required: false);
-            SourceExpression.Validate(operation, nameof(operation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/CropImage";
@@ -126,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IWorkflowAction CustomAPI([WorkflowExpression] Func<string> featurePath, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(featurePath, nameof(featurePath), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(featurePath, 1));
@@ -144,9 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> FlipImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyorientationTypeInput> bodyorientationType, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodyorientationType, nameof(bodyorientationType), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/FlipImage";
@@ -185,9 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<ImageExtractTextV1Response> ImageExtractText([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyimageTypeExtractInput> bodyimageTypeExtract, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodyimageTypeExtract, nameof(bodyimageTypeExtract), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ImageExtractText";
@@ -226,9 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> RemoveExifTagsFromImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyimageTypeInput> bodyimageType, [WorkflowExpression] Func<string> bodydocumentname = null)
         {
-            SourceExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            SourceExpression.Validate(bodyimageType, nameof(bodyimageType), required: true);
-            SourceExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/RemoveEXIFTagsFromImage";
@@ -267,8 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> ResizeImage([WorkflowExpression] Func<schemaValInput> schemaVal = null, [WorkflowExpression] Func<object> operation = null)
         {
-            SourceExpression.Validate(schemaVal, nameof(schemaVal), required: false);
-            SourceExpression.Validate(operation, nameof(operation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/FlowV2/ResizeImage";

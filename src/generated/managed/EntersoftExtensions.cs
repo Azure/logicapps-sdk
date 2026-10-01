@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsInfo([WorkflowExpression] Func<string> routeid)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/Info/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> ES00DocumentsInfoByEntityGid([WorkflowExpression] Func<string> routeid)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/InfoByEntityGid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsBlobDataByGid([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> webapitoken = null)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
-            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/BlobDataByGid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -62,9 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsDownloadBlobDataByGId([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
-            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/DownloadBlobDataByGID/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -83,10 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsGetES00Blob([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> extType = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
-            SourceExpression.Validate(extType, nameof(extType), required: false);
-            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00Blob/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -107,12 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsGetES00BlobFromObject([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> keyid, [WorkflowExpression] Func<int> typeid, [WorkflowExpression] Func<string> extType = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
-            SourceExpression.Validate(keyid, nameof(keyid), required: true);
-            SourceExpression.Validate(typeid, nameof(typeid), required: true);
-            SourceExpression.Validate(extType, nameof(extType), required: false);
-            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00BlobFromObject/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -135,13 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob([WorkflowExpression] Func<string> blobInfogId = null, [WorkflowExpression] Func<string> blobInfoobjectId = null, [WorkflowExpression] Func<string> blobInfokeyId = null, [WorkflowExpression] Func<int> blobInfotypeId = null, [WorkflowExpression] Func<string> blobInfoext = null, [WorkflowExpression] Func<string> blobInfotextBody = null, [WorkflowExpression] Func<bool> blobInfoisNew = null)
         {
-            SourceExpression.Validate(blobInfogId, nameof(blobInfogId), required: false);
-            SourceExpression.Validate(blobInfoobjectId, nameof(blobInfoobjectId), required: false);
-            SourceExpression.Validate(blobInfokeyId, nameof(blobInfokeyId), required: false);
-            SourceExpression.Validate(blobInfotypeId, nameof(blobInfotypeId), required: false);
-            SourceExpression.Validate(blobInfoext, nameof(blobInfoext), required: false);
-            SourceExpression.Validate(blobInfotextBody, nameof(blobInfotextBody), required: false);
-            SourceExpression.Validate(blobInfoisNew, nameof(blobInfoisNew), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
@@ -204,9 +180,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> ES00DocumentsGetBodyFromES00Blob([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> keyid = null, [WorkflowExpression] Func<int> typeid = null)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
-            SourceExpression.Validate(keyid, nameof(keyid), required: false);
-            SourceExpression.Validate(typeid, nameof(typeid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetBodyFromES00Blob/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -225,34 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document([WorkflowExpression] Func<string> paramsgId = null, [WorkflowExpression] Func<string> paramscode = null, [WorkflowExpression] Func<string> paramstitle = null, [WorkflowExpression] Func<string> paramsdescription = null, [WorkflowExpression] Func<string> paramscaption = null, [WorkflowExpression] Func<string> paramseDate = null, [WorkflowExpression] Func<string> paramsfType = null, [WorkflowExpression] Func<string> paramstableId = null, [WorkflowExpression] Func<string> paramstableName = null, [WorkflowExpression] Func<string> paramsfGId = null, [WorkflowExpression] Func<string> paramsfDetailLineGId = null, [WorkflowExpression] Func<string> paramsuNCPath = null, [WorkflowExpression] Func<string> paramsoriginalPath = null, [WorkflowExpression] Func<string> paramsoriginalFN = null, [WorkflowExpression] Func<string> paramsfDocCategoryCode = null, [WorkflowExpression] Func<string> paramsfDocGroupCode = null, [WorkflowExpression] Func<string> paramsfCompanyCode = null, [WorkflowExpression] Func<string> paramsfDocumentCategoryCode = null, [WorkflowExpression] Func<string> paramsfDocumentLocationCode = null, [WorkflowExpression] Func<string> paramseSDModified = null, [WorkflowExpression] Func<string> paramseSUModified = null, [WorkflowExpression] Func<string> paramseSDCreated = null, [WorkflowExpression] Func<string> paramseSUCreated = null, [WorkflowExpression] Func<bool> paramsisBLOB = null, [WorkflowExpression] Func<bool> paramsingoing = null, [WorkflowExpression] Func<string> paramsfRLSNodeGId = null, [WorkflowExpression] Func<int> paramsbLOBDATALength = null, [WorkflowExpression] Func<string> paramsbLOBDATA = null)
         {
-            SourceExpression.Validate(paramsgId, nameof(paramsgId), required: false);
-            SourceExpression.Validate(paramscode, nameof(paramscode), required: false);
-            SourceExpression.Validate(paramstitle, nameof(paramstitle), required: false);
-            SourceExpression.Validate(paramsdescription, nameof(paramsdescription), required: false);
-            SourceExpression.Validate(paramscaption, nameof(paramscaption), required: false);
-            SourceExpression.Validate(paramseDate, nameof(paramseDate), required: false);
-            SourceExpression.Validate(paramsfType, nameof(paramsfType), required: false);
-            SourceExpression.Validate(paramstableId, nameof(paramstableId), required: false);
-            SourceExpression.Validate(paramstableName, nameof(paramstableName), required: false);
-            SourceExpression.Validate(paramsfGId, nameof(paramsfGId), required: false);
-            SourceExpression.Validate(paramsfDetailLineGId, nameof(paramsfDetailLineGId), required: false);
-            SourceExpression.Validate(paramsuNCPath, nameof(paramsuNCPath), required: false);
-            SourceExpression.Validate(paramsoriginalPath, nameof(paramsoriginalPath), required: false);
-            SourceExpression.Validate(paramsoriginalFN, nameof(paramsoriginalFN), required: false);
-            SourceExpression.Validate(paramsfDocCategoryCode, nameof(paramsfDocCategoryCode), required: false);
-            SourceExpression.Validate(paramsfDocGroupCode, nameof(paramsfDocGroupCode), required: false);
-            SourceExpression.Validate(paramsfCompanyCode, nameof(paramsfCompanyCode), required: false);
-            SourceExpression.Validate(paramsfDocumentCategoryCode, nameof(paramsfDocumentCategoryCode), required: false);
-            SourceExpression.Validate(paramsfDocumentLocationCode, nameof(paramsfDocumentLocationCode), required: false);
-            SourceExpression.Validate(paramseSDModified, nameof(paramseSDModified), required: false);
-            SourceExpression.Validate(paramseSUModified, nameof(paramseSUModified), required: false);
-            SourceExpression.Validate(paramseSDCreated, nameof(paramseSDCreated), required: false);
-            SourceExpression.Validate(paramseSUCreated, nameof(paramseSUCreated), required: false);
-            SourceExpression.Validate(paramsisBLOB, nameof(paramsisBLOB), required: false);
-            SourceExpression.Validate(paramsingoing, nameof(paramsingoing), required: false);
-            SourceExpression.Validate(paramsfRLSNodeGId, nameof(paramsfRLSNodeGId), required: false);
-            SourceExpression.Validate(paramsbLOBDATALength, nameof(paramsbLOBDATALength), required: false);
-            SourceExpression.Validate(paramsbLOBDATA, nameof(paramsbLOBDATA), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
@@ -441,34 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument([WorkflowExpression] Func<string> inDocgId = null, [WorkflowExpression] Func<string> inDoccode = null, [WorkflowExpression] Func<string> inDoctitle = null, [WorkflowExpression] Func<string> inDocdescription = null, [WorkflowExpression] Func<string> inDoccaption = null, [WorkflowExpression] Func<string> inDoceDate = null, [WorkflowExpression] Func<string> inDocfType = null, [WorkflowExpression] Func<string> inDoctableId = null, [WorkflowExpression] Func<string> inDoctableName = null, [WorkflowExpression] Func<string> inDocfGId = null, [WorkflowExpression] Func<string> inDocfDetailLineGId = null, [WorkflowExpression] Func<string> inDocuNCPath = null, [WorkflowExpression] Func<string> inDocoriginalPath = null, [WorkflowExpression] Func<string> inDocoriginalFN = null, [WorkflowExpression] Func<string> inDocfDocCategoryCode = null, [WorkflowExpression] Func<string> inDocfDocGroupCode = null, [WorkflowExpression] Func<string> inDocfCompanyCode = null, [WorkflowExpression] Func<string> inDocfDocumentCategoryCode = null, [WorkflowExpression] Func<string> inDocfDocumentLocationCode = null, [WorkflowExpression] Func<string> inDoceSDModified = null, [WorkflowExpression] Func<string> inDoceSUModified = null, [WorkflowExpression] Func<string> inDoceSDCreated = null, [WorkflowExpression] Func<string> inDoceSUCreated = null, [WorkflowExpression] Func<bool> inDocisBLOB = null, [WorkflowExpression] Func<bool> inDocingoing = null, [WorkflowExpression] Func<string> inDocfRLSNodeGId = null, [WorkflowExpression] Func<int> inDocbLOBDATALength = null, [WorkflowExpression] Func<string> inDocbLOBDATA = null)
         {
-            SourceExpression.Validate(inDocgId, nameof(inDocgId), required: false);
-            SourceExpression.Validate(inDoccode, nameof(inDoccode), required: false);
-            SourceExpression.Validate(inDoctitle, nameof(inDoctitle), required: false);
-            SourceExpression.Validate(inDocdescription, nameof(inDocdescription), required: false);
-            SourceExpression.Validate(inDoccaption, nameof(inDoccaption), required: false);
-            SourceExpression.Validate(inDoceDate, nameof(inDoceDate), required: false);
-            SourceExpression.Validate(inDocfType, nameof(inDocfType), required: false);
-            SourceExpression.Validate(inDoctableId, nameof(inDoctableId), required: false);
-            SourceExpression.Validate(inDoctableName, nameof(inDoctableName), required: false);
-            SourceExpression.Validate(inDocfGId, nameof(inDocfGId), required: false);
-            SourceExpression.Validate(inDocfDetailLineGId, nameof(inDocfDetailLineGId), required: false);
-            SourceExpression.Validate(inDocuNCPath, nameof(inDocuNCPath), required: false);
-            SourceExpression.Validate(inDocoriginalPath, nameof(inDocoriginalPath), required: false);
-            SourceExpression.Validate(inDocoriginalFN, nameof(inDocoriginalFN), required: false);
-            SourceExpression.Validate(inDocfDocCategoryCode, nameof(inDocfDocCategoryCode), required: false);
-            SourceExpression.Validate(inDocfDocGroupCode, nameof(inDocfDocGroupCode), required: false);
-            SourceExpression.Validate(inDocfCompanyCode, nameof(inDocfCompanyCode), required: false);
-            SourceExpression.Validate(inDocfDocumentCategoryCode, nameof(inDocfDocumentCategoryCode), required: false);
-            SourceExpression.Validate(inDocfDocumentLocationCode, nameof(inDocfDocumentLocationCode), required: false);
-            SourceExpression.Validate(inDoceSDModified, nameof(inDoceSDModified), required: false);
-            SourceExpression.Validate(inDoceSUModified, nameof(inDoceSUModified), required: false);
-            SourceExpression.Validate(inDoceSDCreated, nameof(inDoceSDCreated), required: false);
-            SourceExpression.Validate(inDoceSUCreated, nameof(inDoceSUCreated), required: false);
-            SourceExpression.Validate(inDocisBLOB, nameof(inDocisBLOB), required: false);
-            SourceExpression.Validate(inDocingoing, nameof(inDocingoing), required: false);
-            SourceExpression.Validate(inDocfRLSNodeGId, nameof(inDocfRLSNodeGId), required: false);
-            SourceExpression.Validate(inDocbLOBDATALength, nameof(inDocbLOBDATALength), required: false);
-            SourceExpression.Validate(inDocbLOBDATA, nameof(inDocbLOBDATA), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
@@ -657,10 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESAsset2FetchWebAsset([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<bool> base64 = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
-            SourceExpression.Validate(base64, nameof(base64), required: false);
-            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/asset2/fetchWebAsset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -681,9 +594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESAsset2DownloadAsset([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
-            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/asset2/downloadAsset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -702,7 +612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> ESBudgetESBGBudgetSheet([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESBudget/ESBGBudgetSheet/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -717,8 +626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage([WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string> msgmessage = null)
         {
-            SourceExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
-            SourceExpression.Validate(msgmessage, nameof(msgmessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/collaboration/BroadcastMessage/";
@@ -751,10 +658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESCollaborationSendEmail([WorkflowExpression] Func<string> msgfromEmailAddr = null, [WorkflowExpression] Func<string> msgtoEmailAddr = null, [WorkflowExpression] Func<string> msgsubject = null, [WorkflowExpression] Func<string> msgbody = null)
         {
-            SourceExpression.Validate(msgfromEmailAddr, nameof(msgfromEmailAddr), required: false);
-            SourceExpression.Validate(msgtoEmailAddr, nameof(msgtoEmailAddr), required: false);
-            SourceExpression.Validate(msgsubject, nameof(msgsubject), required: false);
-            SourceExpression.Validate(msgbody, nameof(msgbody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/collaboration/SendEmail/";
@@ -799,9 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string[]> ESCollaborationSendSMS([WorkflowExpression] Func<string> msgbody = null, [WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string[]> msgusers = null)
         {
-            SourceExpression.Validate(msgbody, nameof(msgbody), required: false);
-            SourceExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
-            SourceExpression.Validate(msgusers, nameof(msgusers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/collaboration/SendSMS/";
@@ -840,17 +740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage([WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string> msgdateToSend = null, [WorkflowExpression] Func<int> msgexpiresInSecs = null, [WorkflowExpression] Func<string> msgexpiryText = null, [WorkflowExpression] Func<string> msgfReferenceId = null, [WorkflowExpression] Func<bool> msgcallback = null, [WorkflowExpression] Func<string> msgbody = null, [WorkflowExpression] Func<string> msgimage = null, [WorkflowExpression] Func<string> msgbuttonAction = null, [WorkflowExpression] Func<string> msgbuttonCaption = null, [WorkflowExpression] Func<string> msgsMSFallbacksMSText = null)
         {
-            SourceExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
-            SourceExpression.Validate(msgdateToSend, nameof(msgdateToSend), required: false);
-            SourceExpression.Validate(msgexpiresInSecs, nameof(msgexpiresInSecs), required: false);
-            SourceExpression.Validate(msgexpiryText, nameof(msgexpiryText), required: false);
-            SourceExpression.Validate(msgfReferenceId, nameof(msgfReferenceId), required: false);
-            SourceExpression.Validate(msgcallback, nameof(msgcallback), required: false);
-            SourceExpression.Validate(msgbody, nameof(msgbody), required: false);
-            SourceExpression.Validate(msgimage, nameof(msgimage), required: false);
-            SourceExpression.Validate(msgbuttonAction, nameof(msgbuttonAction), required: false);
-            SourceExpression.Validate(msgbuttonCaption, nameof(msgbuttonCaption), required: false);
-            SourceExpression.Validate(msgsMSFallbacksMSText, nameof(msgsMSFallbacksMSText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/collaboration/SendViberMessage/";
@@ -953,22 +842,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESCollaborationCreateRFARequest([WorkflowExpression] Func<string> rFARequestid, [WorkflowExpression] Func<string> rFARequestcode, [WorkflowExpression] Func<string> rFARequestrequestedBy, [WorkflowExpression] Func<bool> rFARequestisExternal, [WorkflowExpression] Func<rFARequestpriorityInput> rFARequestpriority = null, [WorkflowExpression] Func<string> rFARequestrequestClass = null, [WorkflowExpression] Func<string> rFARequestrequestCategory = null, [WorkflowExpression] Func<double> rFARequestnumericValue = null, [WorkflowExpression] Func<string> rFARequesttitle = null, [WorkflowExpression] Func<string[]> rFARequestrecipientUsers = null, [WorkflowExpression] Func<string[]> rFARequestrecipientGroups = null, [WorkflowExpression] Func<string> rFARequestrecipienteMail = null, [WorkflowExpression] Func<string> rFARequestrecipientPhone = null, [WorkflowExpression] Func<string> rFARequestrequestedOnUTC = null, [WorkflowExpression] Func<string> rFARequestexpiresOnUTC = null, [WorkflowExpression] Func<string> rFARequesttriggeredOn = null)
         {
-            SourceExpression.Validate(rFARequestid, nameof(rFARequestid), required: true);
-            SourceExpression.Validate(rFARequestcode, nameof(rFARequestcode), required: true);
-            SourceExpression.Validate(rFARequestrequestedBy, nameof(rFARequestrequestedBy), required: true);
-            SourceExpression.Validate(rFARequestisExternal, nameof(rFARequestisExternal), required: true);
-            SourceExpression.Validate(rFARequestpriority, nameof(rFARequestpriority), required: false);
-            SourceExpression.Validate(rFARequestrequestClass, nameof(rFARequestrequestClass), required: false);
-            SourceExpression.Validate(rFARequestrequestCategory, nameof(rFARequestrequestCategory), required: false);
-            SourceExpression.Validate(rFARequestnumericValue, nameof(rFARequestnumericValue), required: false);
-            SourceExpression.Validate(rFARequesttitle, nameof(rFARequesttitle), required: false);
-            SourceExpression.Validate(rFARequestrecipientUsers, nameof(rFARequestrecipientUsers), required: false);
-            SourceExpression.Validate(rFARequestrecipientGroups, nameof(rFARequestrecipientGroups), required: false);
-            SourceExpression.Validate(rFARequestrecipienteMail, nameof(rFARequestrecipienteMail), required: false);
-            SourceExpression.Validate(rFARequestrecipientPhone, nameof(rFARequestrecipientPhone), required: false);
-            SourceExpression.Validate(rFARequestrequestedOnUTC, nameof(rFARequestrequestedOnUTC), required: false);
-            SourceExpression.Validate(rFARequestexpiresOnUTC, nameof(rFARequestexpiresOnUTC), required: false);
-            SourceExpression.Validate(rFARequesttriggeredOn, nameof(rFARequesttriggeredOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/collaboration/CreateRFARequest/";
@@ -1089,12 +962,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESCollaborationRespondToRFARequest([WorkflowExpression] Func<string> rFAResponseid, [WorkflowExpression] Func<string> rFAResponsecode, [WorkflowExpression] Func<string> rFAResponseresponseBy, [WorkflowExpression] Func<string> rFAResponseresponseOrigin, [WorkflowExpression] Func<string> rFAResponseresponseOnUTC, [WorkflowExpression] Func<string> rFAResponseresponseComments = null)
         {
-            SourceExpression.Validate(rFAResponseid, nameof(rFAResponseid), required: true);
-            SourceExpression.Validate(rFAResponsecode, nameof(rFAResponsecode), required: true);
-            SourceExpression.Validate(rFAResponseresponseBy, nameof(rFAResponseresponseBy), required: true);
-            SourceExpression.Validate(rFAResponseresponseOrigin, nameof(rFAResponseresponseOrigin), required: true);
-            SourceExpression.Validate(rFAResponseresponseOnUTC, nameof(rFAResponseresponseOnUTC), required: true);
-            SourceExpression.Validate(rFAResponseresponseComments, nameof(rFAResponseresponseComments), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/collaboration/RespondToRFARequest/";
@@ -1131,7 +998,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> ESCollaborationFetchRequest([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/collaboration/FetchRequest/";
@@ -1147,7 +1013,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string> ESRPCPingServer([WorkflowExpression] Func<string> routeid)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/PingServer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -1162,7 +1027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESTestEBSConnectionTest([WorkflowExpression] Func<string> routeid)
         {
-            SourceExpression.Validate(routeid, nameof(routeid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/esapi/estest/EBSConnectionTest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
@@ -1177,8 +1041,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityDeleteEntityById([WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/DeleteEntityByID/";
@@ -1195,8 +1057,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityDeleteEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(entityType, nameof(entityType), required: true);
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/DeleteEntityByType/";
@@ -1213,8 +1073,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityUpdateEntityById([WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/UpdateEntityByID/";
@@ -1237,8 +1095,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityUpdateEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(entityType, nameof(entityType), required: true);
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/UpdateEntityByType/";
@@ -1261,7 +1117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityById([WorkflowExpression] Func<string> entityId)
         {
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/CreateEntityByID/";
@@ -1283,7 +1138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByType([WorkflowExpression] Func<entityTypeInput> entityType)
         {
-            SourceExpression.Validate(entityType, nameof(entityType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/CreateEntityByType/";
@@ -1305,8 +1159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityById([WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/EntityByID/";
@@ -1323,8 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(entityType, nameof(entityType), required: true);
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/EntityByType/";
@@ -1341,11 +1191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesById([WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string[]> fetchOptionsselectFields = null, [WorkflowExpression] Func<string[]> fetchOptionsorderByFields = null, [WorkflowExpression] Func<int> fetchOptionspage = null, [WorkflowExpression] Func<int> fetchOptionspageSize = null)
         {
-            SourceExpression.Validate(entityId, nameof(entityId), required: true);
-            SourceExpression.Validate(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
-            SourceExpression.Validate(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
-            SourceExpression.Validate(fetchOptionspage, nameof(fetchOptionspage), required: false);
-            SourceExpression.Validate(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/EntitiesByID/";
@@ -1419,11 +1264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string[]> fetchOptionsselectFields = null, [WorkflowExpression] Func<string[]> fetchOptionsorderByFields = null, [WorkflowExpression] Func<int> fetchOptionspage = null, [WorkflowExpression] Func<int> fetchOptionspageSize = null)
         {
-            SourceExpression.Validate(entityType, nameof(entityType), required: true);
-            SourceExpression.Validate(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
-            SourceExpression.Validate(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
-            SourceExpression.Validate(fetchOptionspage, nameof(fetchOptionspage), required: false);
-            SourceExpression.Validate(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/EntitiesByType/";
@@ -1497,8 +1337,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESEntityEntityAutomationNew([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> operation)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(operation, nameof(operation), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/EntityAutomationNew/";
@@ -1521,10 +1359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdate([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> field, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operation)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(field, nameof(field), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(operation, nameof(operation), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/EntityAutomationUpdate/";
@@ -1549,9 +1383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdateByCode([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operation)
         {
-            SourceExpression.Validate(entity, nameof(entity), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(operation, nameof(operation), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/esentity/EntityAutomationUpdateByCode/";
@@ -1575,7 +1406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> ESFinancialsESFIDocumentTrade([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentTrade/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1590,7 +1420,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> ESFinancialsESFIItemExpenses([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpenses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1605,7 +1434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> ESFinancialsESFICreditor([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICreditor/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1620,7 +1448,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> ESFinancialsESFIDocumentCash([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentCash/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1635,7 +1462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> ESFinancialsESMMStockOrderPlan([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESMMStockOrderPlan/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1650,7 +1476,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> ESFinancialsESFISupplier([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISupplier/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1665,7 +1490,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> ESFinancialsESFIItemExpense([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpense/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1680,7 +1504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> ESFinancialsESFISalesPerson([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISalesPerson/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1695,7 +1518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> ESFinancialsESFIPaymentMethod([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPaymentMethod/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1710,7 +1532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> ESFinancialsESFIItem([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItem/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1725,7 +1546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> ESFinancialsESFISpecialAccount([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISpecialAccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1740,7 +1560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> ESFinancialsESFIDocumentStock([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentStock/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1755,7 +1574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> ESFinancialsESFINote([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFINote/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1770,7 +1588,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> ESFinancialsESFITradeAccountContract([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccountContract/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1785,7 +1602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> ESFinancialsESFIVoucher([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIVoucher/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1800,7 +1616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> ESFinancialsESFICustomer([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICustomer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1815,7 +1630,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> ESFinancialsESFIDebtor([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDebtor/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1830,7 +1644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> ESFinancialsESFIPricelist([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPricelist/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1845,7 +1658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> ESFinancialsESFIItemService([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemService/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1860,7 +1672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> ESFinancialsESFICashAccount([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICashAccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1875,7 +1686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> ESFinancialsESFIDocumentAdjustment([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentAdjustment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1890,7 +1700,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> ESFinancialsESFITradeAccount([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1905,7 +1714,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> ESFixedAssetESFAFixedAsset([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFixedAsset/ESFAFixedAsset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1920,7 +1728,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> ESGlobalObjectsESGOPerson([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOPerson/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1935,7 +1742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> ESGlobalObjectsES00Device([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ES00Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1950,7 +1756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> ESGlobalObjectsESGOWebUser([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOWebUser/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1965,7 +1770,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> ESGlobalObjectsESGOUser([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOUser/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -1980,7 +1784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookGet([WorkflowExpression] Func<string> hookId)
         {
-            SourceExpression.Validate(hookId, nameof(hookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/businesshook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookId, 1));
@@ -1995,7 +1798,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookGet([WorkflowExpression] Func<string> hookId)
         {
-            SourceExpression.Validate(hookId, nameof(hookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/podhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookId, 1));
@@ -2010,7 +1812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookGet([WorkflowExpression] Func<string> hookId)
         {
-            SourceExpression.Validate(hookId, nameof(hookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rfahook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookId, 1));
@@ -2025,7 +1826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookGet([WorkflowExpression] Func<string> hookId)
         {
-            SourceExpression.Validate(hookId, nameof(hookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/hook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookId, 1));
@@ -2040,7 +1840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookGet([WorkflowExpression] Func<string> hookId)
         {
-            SourceExpression.Validate(hookId, nameof(hookId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/systemhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookId, 1));
@@ -2055,7 +1854,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> ESMachineLearningESMLModel([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMachineLearning/ESMLModel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2070,7 +1868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> ESMaterialManagementESMMSerialNumber([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSerialNumber/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2085,7 +1882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> ESMaterialManagementESMMCatalogueItem([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2100,7 +1896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> ESMaterialManagementESMMStorageLocation([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStorageLocation/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2115,7 +1910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> ESMaterialManagementESMMStockItem([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStockItem/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2130,7 +1924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> ESMaterialManagementESMMCommercialProfile([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2145,7 +1938,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> ESMaterialManagementESMMSortiment([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSortiment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2160,7 +1952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> ESMaterialManagementESMMLot([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMLot/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2175,7 +1966,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> ESMaterialManagementESMMProductionPlan([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMProductionPlan/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2190,7 +1980,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESDeviceFetchDeviceInfo([WorkflowExpression] Func<string> deviceCode)
         {
-            SourceExpression.Validate(deviceCode, nameof(deviceCode), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/device/fetchDeviceInfo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceCode, 1));
@@ -2205,7 +1994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> ESRPCFetchPropertySet([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchPropertySet/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2220,7 +2008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScale> ESRPCFetchESScale([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchESScale/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2235,7 +2022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> ESRPCPublicQueryLayout([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/PublicQueryLayout/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2250,10 +2036,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<int> pqOptionsPage = null, [WorkflowExpression] Func<int> pqOptionsPageSize = null, [WorkflowExpression] Func<bool> pqOptionsWithCount = null)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
-            SourceExpression.Validate(pqOptionsPage, nameof(pqOptionsPage), required: false);
-            SourceExpression.Validate(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
-            SourceExpression.Validate(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2274,7 +2056,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string> ESRPCFIImportDocument([WorkflowExpression] Func<string> inputXMLAsString = null)
         {
-            SourceExpression.Validate(inputXMLAsString, nameof(inputXMLAsString), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/rpc/FIImportDocument/";
@@ -2290,10 +2071,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData2([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<int> pqOptionsPage = null, [WorkflowExpression] Func<int> pqOptionsPageSize = null, [WorkflowExpression] Func<bool> pqOptionsWithCount = null)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
-            SourceExpression.Validate(pqOptionsPage, nameof(pqOptionsPage), required: false);
-            SourceExpression.Validate(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
-            SourceExpression.Validate(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2320,9 +2097,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<bool> ESRPCLog([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<severityInput> severity = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(severity, nameof(severity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/rpc/Log/";
@@ -2342,7 +2116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> ESRPCFetchCompanyParam([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParam/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2357,7 +2130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESRPCParameterValue([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/ParameterValue/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2372,7 +2144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> ESRPCFetchCompanyParams([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParams/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2387,14 +2158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand([WorkflowExpression] Func<string> eSScrollerCommandscrollerId, [WorkflowExpression] Func<string> eSScrollerCommandcommandId, [WorkflowExpression] Func<string> eSScrollerCommandscrollerDatasetJson = null, [WorkflowExpression] Func<bool> eSScrollerCommandrequiresTransaction = null, [WorkflowExpression] Func<bool> eSScrollerCommandonlyPrepareTargetDatasets = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnTargetDatasets = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnScrollerDataset = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnEntersoftDatasets = null)
         {
-            SourceExpression.Validate(eSScrollerCommandscrollerId, nameof(eSScrollerCommandscrollerId), required: true);
-            SourceExpression.Validate(eSScrollerCommandcommandId, nameof(eSScrollerCommandcommandId), required: true);
-            SourceExpression.Validate(eSScrollerCommandscrollerDatasetJson, nameof(eSScrollerCommandscrollerDatasetJson), required: false);
-            SourceExpression.Validate(eSScrollerCommandrequiresTransaction, nameof(eSScrollerCommandrequiresTransaction), required: false);
-            SourceExpression.Validate(eSScrollerCommandonlyPrepareTargetDatasets, nameof(eSScrollerCommandonlyPrepareTargetDatasets), required: false);
-            SourceExpression.Validate(eSScrollerCommandreturnTargetDatasets, nameof(eSScrollerCommandreturnTargetDatasets), required: false);
-            SourceExpression.Validate(eSScrollerCommandreturnScrollerDataset, nameof(eSScrollerCommandreturnScrollerDataset), required: false);
-            SourceExpression.Validate(eSScrollerCommandreturnEntersoftDatasets, nameof(eSScrollerCommandreturnEntersoftDatasets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
@@ -2487,8 +2250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand([WorkflowExpression] Func<string> eSCommandInscrollerId, [WorkflowExpression] Func<string> eSCommandIncommandId)
         {
-            SourceExpression.Validate(eSCommandInscrollerId, nameof(eSCommandInscrollerId), required: true);
-            SourceExpression.Validate(eSCommandIncommandId, nameof(eSCommandIncommandId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/rpc/ExecuteCommand/";
@@ -2529,21 +2290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand([WorkflowExpression] Func<string> formCommandentityId = null, [WorkflowExpression] Func<string> formCommandcommandId = null, [WorkflowExpression] Func<string> formCommandentityDatasetJson = null, [WorkflowExpression] Func<string> formCommandentityGId = null, [WorkflowExpression] Func<string[]> formCommandentityGIDs = null, [WorkflowExpression] Func<string> formCommandentityCode = null, [WorkflowExpression] Func<string[]> formCommandentityCodes = null, [WorkflowExpression] Func<string> formCommandentityScrollerId = null, [WorkflowExpression] Func<bool> formCommandrequiresTransaction = null, [WorkflowExpression] Func<bool> formCommandcreateNewEmptySourceEntity = null, [WorkflowExpression] Func<bool> formCommandonlyPrepareTargetDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnSourceDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnTargetDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnMap = null, [WorkflowExpression] Func<bool> formCommandreturnEntersoftDatasets = null)
         {
-            SourceExpression.Validate(formCommandentityId, nameof(formCommandentityId), required: false);
-            SourceExpression.Validate(formCommandcommandId, nameof(formCommandcommandId), required: false);
-            SourceExpression.Validate(formCommandentityDatasetJson, nameof(formCommandentityDatasetJson), required: false);
-            SourceExpression.Validate(formCommandentityGId, nameof(formCommandentityGId), required: false);
-            SourceExpression.Validate(formCommandentityGIDs, nameof(formCommandentityGIDs), required: false);
-            SourceExpression.Validate(formCommandentityCode, nameof(formCommandentityCode), required: false);
-            SourceExpression.Validate(formCommandentityCodes, nameof(formCommandentityCodes), required: false);
-            SourceExpression.Validate(formCommandentityScrollerId, nameof(formCommandentityScrollerId), required: false);
-            SourceExpression.Validate(formCommandrequiresTransaction, nameof(formCommandrequiresTransaction), required: false);
-            SourceExpression.Validate(formCommandcreateNewEmptySourceEntity, nameof(formCommandcreateNewEmptySourceEntity), required: false);
-            SourceExpression.Validate(formCommandonlyPrepareTargetDatasets, nameof(formCommandonlyPrepareTargetDatasets), required: false);
-            SourceExpression.Validate(formCommandreturnSourceDatasets, nameof(formCommandreturnSourceDatasets), required: false);
-            SourceExpression.Validate(formCommandreturnTargetDatasets, nameof(formCommandreturnTargetDatasets), required: false);
-            SourceExpression.Validate(formCommandreturnMap, nameof(formCommandreturnMap), required: false);
-            SourceExpression.Validate(formCommandreturnEntersoftDatasets, nameof(formCommandreturnEntersoftDatasets), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/rpc/ExecuteFormCommand/";
@@ -2694,7 +2440,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> GETESRPCEbsService2([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2709,7 +2454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> POSTESRPCEbsService2([WorkflowExpression] Func<string> routeId)
         {
-            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
@@ -2724,7 +2468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> ESTaskManagementESTMMobileTaskType([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMMobileTaskType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2739,7 +2482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> ESTaskManagementESTMServiceRequest([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMServiceRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2754,7 +2496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> ESTaskManagementESTMRFMModel([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMRFMModel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2769,7 +2510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> ESTaskManagementESTMNewsletterRecipient([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2784,7 +2524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> ESTaskManagementESTMInteraction([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMInteraction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2799,7 +2538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> ESTaskManagementESTMObjectRating([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMObjectRating/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2814,7 +2552,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> ESTaskManagementESTMTask([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMTask/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2829,7 +2566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> ESTaskManagementESTMResource([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMResource/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2844,7 +2580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> ESTaskManagementESTMCampaign([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMCampaign/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2859,7 +2594,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> ESTaskManagementESTMSMActivity([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMSMActivity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2874,7 +2608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> ESTaskManagementESTMOpportunity([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMOpportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2889,7 +2622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> ESWarehouseManagementESWMTransportAction([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMTransportAction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2904,7 +2636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> ESWarehouseManagementESWMAction([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMAction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2919,7 +2650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> ESWarehouseManagementESWMShipment([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMShipment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2934,7 +2664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> ESWarehouseManagementESWMWorkPackage([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2949,7 +2678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> ESWarehouseManagementESWMRequest([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2964,7 +2692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> ESWarehouseManagementESWMContainer([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMContainer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2979,7 +2706,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> ESWorkInProgressESWPTaskRequest([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPTaskRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -2994,7 +2720,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> ESWorkInProgressESWPWorkPackage([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPWorkPackage/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -3009,7 +2734,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> ESWorkInProgressESWPActualTask([WorkflowExpression] Func<string> pK)
         {
-            SourceExpression.Validate(pK, nameof(pK), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPActualTask/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
@@ -3026,12 +2750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     {
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost([WorkflowExpression] Func<registrationbusinessEventTypeInput> registrationbusinessEventType, [WorkflowExpression] Func<string> registrationcontext = null, [WorkflowExpression] Func<double> registrationvalue = null, [WorkflowExpression] Func<string> registrationexternalId = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
-            SourceExpression.Validate(registrationcontext, nameof(registrationcontext), required: false);
-            SourceExpression.Validate(registrationvalue, nameof(registrationvalue), required: false);
-            SourceExpression.Validate(registrationexternalId, nameof(registrationexternalId), required: false);
-            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/businesshook";
@@ -3105,15 +2823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost([WorkflowExpression] Func<registrationstateInput> registrationstate = null, [WorkflowExpression] Func<registrationpackageTypeInput> registrationpackageType = null, [WorkflowExpression] Func<string> registrationconveyanceLicencePlate = null, [WorkflowExpression] Func<string> registrationbranchId = null, [WorkflowExpression] Func<string> registrationtradeAccountName = null, [WorkflowExpression] Func<string> registrationdriverCode = null, [WorkflowExpression] Func<string> registrationexternalId = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(registrationstate, nameof(registrationstate), required: false);
-            SourceExpression.Validate(registrationpackageType, nameof(registrationpackageType), required: false);
-            SourceExpression.Validate(registrationconveyanceLicencePlate, nameof(registrationconveyanceLicencePlate), required: false);
-            SourceExpression.Validate(registrationbranchId, nameof(registrationbranchId), required: false);
-            SourceExpression.Validate(registrationtradeAccountName, nameof(registrationtradeAccountName), required: false);
-            SourceExpression.Validate(registrationdriverCode, nameof(registrationdriverCode), required: false);
-            SourceExpression.Validate(registrationexternalId, nameof(registrationexternalId), required: false);
-            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/podhook";
@@ -3219,14 +2928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost([WorkflowExpression] Func<string> registrationrequestedBy = null, [WorkflowExpression] Func<registrationpriorityInput> registrationpriority = null, [WorkflowExpression] Func<string> registrationrequestClass = null, [WorkflowExpression] Func<string> registrationrequestCategory = null, [WorkflowExpression] Func<double> registrationnumericValue = null, [WorkflowExpression] Func<string> registrationexternalId = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(registrationrequestedBy, nameof(registrationrequestedBy), required: false);
-            SourceExpression.Validate(registrationpriority, nameof(registrationpriority), required: false);
-            SourceExpression.Validate(registrationrequestClass, nameof(registrationrequestClass), required: false);
-            SourceExpression.Validate(registrationrequestCategory, nameof(registrationrequestCategory), required: false);
-            SourceExpression.Validate(registrationnumericValue, nameof(registrationnumericValue), required: false);
-            SourceExpression.Validate(registrationexternalId, nameof(registrationexternalId), required: false);
-            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/rfahook";
@@ -3316,11 +3017,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost([WorkflowExpression] Func<registrationentityTypeInput> registrationentityType, [WorkflowExpression] Func<registrationeventTypeInput> registrationeventType, [WorkflowExpression] Func<string> registrationexternalId = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(registrationentityType, nameof(registrationentityType), required: true);
-            SourceExpression.Validate(registrationeventType, nameof(registrationeventType), required: true);
-            SourceExpression.Validate(registrationexternalId, nameof(registrationexternalId), required: false);
-            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/hook";
@@ -3374,11 +3070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost([WorkflowExpression] Func<registrationsystemEventTypeInputItem[]> registrationsystemEventType, [WorkflowExpression] Func<string> registrationotherEvent = null, [WorkflowExpression] Func<string> registrationexternalId = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(registrationsystemEventType, nameof(registrationsystemEventType), required: true);
-            SourceExpression.Validate(registrationotherEvent, nameof(registrationotherEvent), required: false);
-            SourceExpression.Validate(registrationexternalId, nameof(registrationexternalId), required: false);
-            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/systemhook";

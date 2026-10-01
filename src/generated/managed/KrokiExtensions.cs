@@ -14,23 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kroki")]
         public IBodyWorkflowAction<DiagramPostResponse> Diagram([WorkflowExpression] Func<libraryInput> library, [WorkflowExpression] Func<string> output, [WorkflowExpression] Func<string> bodydiagramSource, [WorkflowExpression] Func<string> bodydiagramOptionskey = null, [WorkflowExpression] Func<string> bodydiagramOptionsantialias = null, [WorkflowExpression] Func<string> bodydiagramOptionsnoTransparency = null, [WorkflowExpression] Func<string> bodydiagramOptionssize = null, [WorkflowExpression] Func<string> bodydiagramOptionsnoDoctype = null, [WorkflowExpression] Func<string> bodydiagramOptionstheme = null, [WorkflowExpression] Func<string> bodydiagramOptionssketch = null, [WorkflowExpression] Func<string> bodydiagramOptionslayout = null, [WorkflowExpression] Func<int> bodydiagramOptionsscale = null, [WorkflowExpression] Func<string> bodydiagramOptionsviewKey = null, [WorkflowExpression] Func<string> bodydiagramOptionsbackground = null, [WorkflowExpression] Func<string> bodydiagramOptionsfontFamily = null, [WorkflowExpression] Func<int> bodydiagramOptionsfontSize = null, [WorkflowExpression] Func<int> bodydiagramOptionsstrokeWidth = null)
         {
-            SourceExpression.Validate(library, nameof(library), required: true);
-            SourceExpression.Validate(output, nameof(output), required: true);
-            SourceExpression.Validate(bodydiagramSource, nameof(bodydiagramSource), required: true);
-            SourceExpression.Validate(bodydiagramOptionskey, nameof(bodydiagramOptionskey), required: false);
-            SourceExpression.Validate(bodydiagramOptionsantialias, nameof(bodydiagramOptionsantialias), required: false);
-            SourceExpression.Validate(bodydiagramOptionsnoTransparency, nameof(bodydiagramOptionsnoTransparency), required: false);
-            SourceExpression.Validate(bodydiagramOptionssize, nameof(bodydiagramOptionssize), required: false);
-            SourceExpression.Validate(bodydiagramOptionsnoDoctype, nameof(bodydiagramOptionsnoDoctype), required: false);
-            SourceExpression.Validate(bodydiagramOptionstheme, nameof(bodydiagramOptionstheme), required: false);
-            SourceExpression.Validate(bodydiagramOptionssketch, nameof(bodydiagramOptionssketch), required: false);
-            SourceExpression.Validate(bodydiagramOptionslayout, nameof(bodydiagramOptionslayout), required: false);
-            SourceExpression.Validate(bodydiagramOptionsscale, nameof(bodydiagramOptionsscale), required: false);
-            SourceExpression.Validate(bodydiagramOptionsviewKey, nameof(bodydiagramOptionsviewKey), required: false);
-            SourceExpression.Validate(bodydiagramOptionsbackground, nameof(bodydiagramOptionsbackground), required: false);
-            SourceExpression.Validate(bodydiagramOptionsfontFamily, nameof(bodydiagramOptionsfontFamily), required: false);
-            SourceExpression.Validate(bodydiagramOptionsfontSize, nameof(bodydiagramOptionsfontSize), required: false);
-            SourceExpression.Validate(bodydiagramOptionsstrokeWidth, nameof(bodydiagramOptionsstrokeWidth), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(library, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(output, 1));

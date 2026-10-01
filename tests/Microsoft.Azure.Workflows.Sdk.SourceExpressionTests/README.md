@@ -48,6 +48,58 @@ Historical coverage ledgers, recorded host/package/IDE output, and tests that
 only authenticate those recordings are not part of this project's regression
 suite. Keep new run reports outside the repository.
 
+## Generated connector validation contract
+
+`ConnectorValidationContractTests` characterizes observable behavior, not the
+presence of `SourceExpression.Validate` in generated source. Any replacement
+must pass these tests unchanged. The parameter matrix covers managed actions,
+managed triggers, service-provider actions and service-provider triggers, with
+path/query/body/header inputs and string/object/array/enum/integer delegates.
+
+| Boundary | Required behavior |
+| --- | --- |
+| Required null delegate | `ArgumentNullException` with the connector parameter name, before an action or trigger is returned. |
+| Required literal null | Exact `ArgumentException` with the connector parameter name, including JSON-null and boxed/token-wrapped nulls. |
+| Optional null and valid defaults | Accepted; omitted optional queries stay omitted, and empty strings and numeric zero are not newly rejected. |
+| Raw or multicast delegates | Immediate `NotSupportedException`, without invoking any delegate, for required and optional parameters alike. |
+| Invocation paths | Validation also applies to direct calls, method groups, reflection and separately compiled, untransformed callers. Transformed inline, captured-null and source-factory arguments retain the same contract. |
+| Timing and error precedence | All call arguments are evaluated before validation; argument-evaluation exceptions win, then invalid parameters fail in declaration order rather than named-argument order. |
+| Deferred expressions | Native expressions and workflow references are not evaluated or rejected based on their eventual runtime value. Captures remain snapshots; renamed workflow references resolve when rendered. |
+
+Run this focused gate with:
+
+```powershell
+dotnet test .\tests\Microsoft.Azure.Workflows.Sdk.SourceExpressionTests `
+  --filter FullyQualifiedName~ConnectorValidationContractTests
+```
+
+These cases were also run against a removal-only SDK before injection was added:
+63 of the 98 independent cases failed, while the valid-input controls remained
+green. There is deliberately no normal-build switch that produces an
+unvalidated SDK. Do not change these assertions to accept deferred errors or
+missing exceptions.
+
+`ConnectorValidationTransformerTests` and `ConnectorValidationCommandTests`
+exercise symbol binding, parameter order, unsupported inputs, original error
+locations, write-if-changed output and stale-manifest rejection. The real MSBuild
+integration fixture is documented in `tests\GeneratedConnectorParity\README.md`.
+Generated source substitution remains available through the parity hook and
+passes through SDK-build injection.
+
+The pre-existing regression cases are
+`RuntimeDescriptorTests.RawDelegatesFailWithoutExecuting`,
+`RuntimeDescriptorTests.RequiredArgumentsRejectNullButOptionalFieldsAreOmitted`,
+and, in the CSharpExpressionTests project,
+`GeneratedConnectorCSharpExpressionTests.Office365ReplyTo_BodyOmissionDoesNotSkipRequiredArgumentValidation`.
+The independent matrix cases prevent one failed assertion from hiding other
+connector families or optional-argument failures.
+
+This is a representative behavioral gate, not an exhaustive catalog proof or a
+hosted E2E run. A replacement still needs the full expression suites and E2E
+definition comparison. If it derives requiredness from method signatures, audit
+that rule against the entire generated catalog rather than assuming it matches
+the existing validation flags.
+
 Related executable harnesses:
 
 - `tests\SourcePackageConsumer`: packaged-SDK, compilation-matrix, language-service,

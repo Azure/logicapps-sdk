@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<JToken> InvokeAPI([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<methodInput> method)
         {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            SourceExpression.Validate(method, nameof(method), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(url, 1));
@@ -37,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<object> DownloadCompletionCertificate([WorkflowExpression] Func<int> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/completioncertificate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1));
@@ -52,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<object> DownloadDocument([WorkflowExpression] Func<int> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1));
@@ -67,8 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<object> DownloadFile([WorkflowExpression] Func<int> requestId, [WorkflowExpression] Func<int> documentId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(documentId, 1));
@@ -83,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<GetFormDataResponse> GetFormData([WorkflowExpression] Func<int> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/fielddata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1));
@@ -98,7 +91,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IWorkflowAction RecallDocument([WorkflowExpression] Func<int> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/recall", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1));
@@ -113,7 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IWorkflowAction RemindDocumentRecipients([WorkflowExpression] Func<int> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/remind", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1));
@@ -128,7 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<int> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1));
@@ -143,7 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<int> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(requestId, 1));
@@ -158,16 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument([WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> bodyrequestsrequestTypeId = null, [WorkflowExpression] Func<string> bodyrequestsrequestName = null, [WorkflowExpression] Func<bodyrequestsactionsInputItem[]> bodyrequestsactions = null, [WorkflowExpression] Func<int> bodyrequestsexpirationDays = null, [WorkflowExpression] Func<bool> bodyrequestsisSequential = null, [WorkflowExpression] Func<bool> bodyrequestsemailReminders = null, [WorkflowExpression] Func<int> bodyrequestsreminderPeriod = null, [WorkflowExpression] Func<string> bodyrequestsfolderId = null, [WorkflowExpression] Func<string> bodyrequestsnotes = null)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(bodyrequestsrequestTypeId, nameof(bodyrequestsrequestTypeId), required: false);
-            SourceExpression.Validate(bodyrequestsrequestName, nameof(bodyrequestsrequestName), required: false);
-            SourceExpression.Validate(bodyrequestsactions, nameof(bodyrequestsactions), required: false);
-            SourceExpression.Validate(bodyrequestsexpirationDays, nameof(bodyrequestsexpirationDays), required: false);
-            SourceExpression.Validate(bodyrequestsisSequential, nameof(bodyrequestsisSequential), required: false);
-            SourceExpression.Validate(bodyrequestsemailReminders, nameof(bodyrequestsemailReminders), required: false);
-            SourceExpression.Validate(bodyrequestsreminderPeriod, nameof(bodyrequestsreminderPeriod), required: false);
-            SourceExpression.Validate(bodyrequestsfolderId, nameof(bodyrequestsfolderId), required: false);
-            SourceExpression.Validate(bodyrequestsnotes, nameof(bodyrequestsnotes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -290,7 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest([WorkflowExpression] Func<string> requestId)
         {
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/requests/{0}/submit", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
@@ -305,7 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
         public IWorkflowAction GetTemplateDetails([WorkflowExpression] Func<string> templateId)
         {
-            SourceExpression.Validate(templateId, nameof(templateId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
@@ -336,7 +313,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     {
         public IWorkflowTrigger ZohoSignTriggers([WorkflowExpression] Func<bodywebhookActionsInput> bodywebhookActions, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodywebhookActions, nameof(bodywebhookActions), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/internal/accounts/webhooks";

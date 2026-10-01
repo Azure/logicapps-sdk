@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<DatabasesResponse> Databases([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Databases";
@@ -37,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<Database> DatabaseById([WorkflowExpression] Func<int> databaseId)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1));
@@ -52,10 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<CubesResponse> Cubes([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Cubes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1));
@@ -76,8 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<Cube> CubeById([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> cubeId)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(cubeId, nameof(cubeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Cubes({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(cubeId, 1));
@@ -92,15 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<CubeCellsResponse> CubeCells([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> cubeId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<bool> baseonly = null, [WorkflowExpression] Func<bool> userules = null, [WorkflowExpression] Func<bool> zerosupression = null, [WorkflowExpression] Func<bool> disablepaging = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(cubeId, nameof(cubeId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(baseonly, nameof(baseonly), required: false);
-            SourceExpression.Validate(userules, nameof(userules), required: false);
-            SourceExpression.Validate(zerosupression, nameof(zerosupression), required: false);
-            SourceExpression.Validate(disablepaging, nameof(disablepaging), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Cubes({1})/Cells", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(cubeId, 1));
@@ -133,10 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<DimensionsResponse> Dimensions([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Dimensions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1));
@@ -157,8 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<Dimension> DimensionById([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> dimensionId)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(dimensionId, nameof(dimensionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Dimensions({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dimensionId, 1));
@@ -173,11 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<ElementsResponse> Elements([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> dimensionId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(dimensionId, nameof(dimensionId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Dimensions({1})/Elements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dimensionId, 1));
@@ -198,9 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<Element> ElementById([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> dimensionId, [WorkflowExpression] Func<int> elementId)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(dimensionId, nameof(dimensionId), required: true);
-            SourceExpression.Validate(elementId, nameof(elementId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Dimensions({1})/Elements({2})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(dimensionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(elementId, 1));
@@ -215,10 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<ViewsResponse> Views([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Views", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1));
@@ -239,8 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<View> ViewById([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<string> viewId)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(viewId, nameof(viewId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Views({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(viewId, 1));
@@ -255,15 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<ViewCellsResponse> ViewCells([WorkflowExpression] Func<int> databaseId, [WorkflowExpression] Func<string> viewId, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<bool> baseonly = null, [WorkflowExpression] Func<bool> userules = null, [WorkflowExpression] Func<bool> zerosupression = null, [WorkflowExpression] Func<bool> disablepaging = null)
         {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(viewId, nameof(viewId), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(baseonly, nameof(baseonly), required: false);
-            SourceExpression.Validate(userules, nameof(userules), required: false);
-            SourceExpression.Validate(zerosupression, nameof(zerosupression), required: false);
-            SourceExpression.Validate(disablepaging, nameof(disablepaging), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Databases({0})/Views({1})/Cells", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(viewId, 1));
@@ -296,9 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorProjectGroupsResponse> IntegratorProjectGroups([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Integrator";
@@ -319,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorProjectGroup> IntegratorProjectsById([WorkflowExpression] Func<string> groupIdentifier)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1));
@@ -334,10 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorProjectsResponse> IntegratorProjects([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1));
@@ -358,8 +302,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorProject> IntegratorProjectsByName([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1));
@@ -374,11 +316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<ExtractsResponse> Extracts([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Extracts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1));
@@ -399,9 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorComponent> ExtractByName([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> extractName)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(extractName, nameof(extractName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Extracts('{2}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(extractName, 1));
@@ -416,12 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<ExtractRowsResponse> ExtractRows([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> extractName, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(extractName, nameof(extractName), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Extracts('{2}')/Rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(extractName, 1));
@@ -442,11 +370,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<JobsResponse> Jobs([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Jobs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1));
@@ -467,9 +390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorComponent> JobByName([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> jobName)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Jobs('{2}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobName, 1));
@@ -484,9 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorRunResult> RunJob([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> jobName)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Jobs('{2}')/Run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobName, 1));
@@ -501,10 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorRunResult> RunJobWithVariables([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<string> variables)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(jobName, nameof(jobName), required: true);
-            SourceExpression.Validate(variables, nameof(variables), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Jobs('{2}')/Run(Variables='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(variables, 2));
@@ -519,11 +432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<LoadsResponse> Loads([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Loads", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1));
@@ -544,9 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorComponent> LoadByName([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> loadName)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(loadName, nameof(loadName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Loads('{2}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(loadName, 1));
@@ -561,9 +466,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorRunResult> RunLoad([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> loadName)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(loadName, nameof(loadName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Loads('{2}')/Run()", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(loadName, 1));
@@ -578,10 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorRunResult> RunLoadWithVariables([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> loadName, [WorkflowExpression] Func<string> variables)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(loadName, nameof(loadName), required: true);
-            SourceExpression.Validate(variables, nameof(variables), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Loads('{2}')/Run(Variables='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(loadName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(variables, 2));
@@ -596,11 +494,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<TransformsResponse> Transforms([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Transforms", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1));
@@ -621,9 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<IntegratorComponent> TransformByName([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> transformName)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(transformName, nameof(transformName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Transforms('{2}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transformName, 1));
@@ -638,12 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jedoxodatahub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jedoxodatahub")]
         public IBodyWorkflowAction<TransformRowsResponse> TransformRows([WorkflowExpression] Func<string> groupIdentifier, [WorkflowExpression] Func<string> projectName, [WorkflowExpression] Func<string> transformName, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> filter = null)
         {
-            SourceExpression.Validate(groupIdentifier, nameof(groupIdentifier), required: true);
-            SourceExpression.Validate(projectName, nameof(projectName), required: true);
-            SourceExpression.Validate(transformName, nameof(transformName), required: true);
-            SourceExpression.Validate(top, nameof(top), required: false);
-            SourceExpression.Validate(skip, nameof(skip), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Integrator('{0}')/Projects('{1}')/Transforms('{2}')/Rows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdentifier, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transformName, 1));

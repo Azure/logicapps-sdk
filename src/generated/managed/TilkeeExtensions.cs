@@ -14,18 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ProjectCreateResponse> ProjectCreate([WorkflowExpression] Func<string> bodyprojectid = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<bool> bodyprojectcanBeDownloaded = null, [WorkflowExpression] Func<bool> bodyprojectconsultable = null, [WorkflowExpression] Func<string> bodyprojectconsultableUntil = null, [WorkflowExpression] Func<string[]> bodyprojecttags = null, [WorkflowExpression] Func<JToken[]> bodyprojectcollaborators = null, [WorkflowExpression] Func<bool> bodyprojectisTemplate = null, [WorkflowExpression] Func<string> bodyprojectexternalId = null, [WorkflowExpression] Func<int> bodyprojectthemeid = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null, [WorkflowExpression] Func<bodypersonInputItem[]> bodyperson = null)
         {
-            SourceExpression.Validate(bodyprojectid, nameof(bodyprojectid), required: false);
-            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            SourceExpression.Validate(bodyprojectcanBeDownloaded, nameof(bodyprojectcanBeDownloaded), required: false);
-            SourceExpression.Validate(bodyprojectconsultable, nameof(bodyprojectconsultable), required: false);
-            SourceExpression.Validate(bodyprojectconsultableUntil, nameof(bodyprojectconsultableUntil), required: false);
-            SourceExpression.Validate(bodyprojecttags, nameof(bodyprojecttags), required: false);
-            SourceExpression.Validate(bodyprojectcollaborators, nameof(bodyprojectcollaborators), required: false);
-            SourceExpression.Validate(bodyprojectisTemplate, nameof(bodyprojectisTemplate), required: false);
-            SourceExpression.Validate(bodyprojectexternalId, nameof(bodyprojectexternalId), required: false);
-            SourceExpression.Validate(bodyprojectthemeid, nameof(bodyprojectthemeid), required: false);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
-            SourceExpression.Validate(bodyperson, nameof(bodyperson), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/wrapper/token_from_files";
@@ -157,14 +145,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ProjectListResponse> ProjectList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset, [WorkflowExpression] Func<string> order, [WorkflowExpression] Func<bool> isTemplate, [WorkflowExpression] Func<bool> isOwner, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagOperator = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: true);
-            SourceExpression.Validate(order, nameof(order), required: true);
-            SourceExpression.Validate(isTemplate, nameof(isTemplate), required: true);
-            SourceExpression.Validate(isOwner, nameof(isOwner), required: true);
-            SourceExpression.Validate(tags, nameof(tags), required: false);
-            SourceExpression.Validate(tagOperator, nameof(tagOperator), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/projects";
@@ -193,7 +173,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ProjectGetResponse> ProjectGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -212,22 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ProjectUpdateResponse> ProjectUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodycanBeDownloaded = null, [WorkflowExpression] Func<bool> bodyconsultable = null, [WorkflowExpression] Func<string> bodyconsultableUntil = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<bool> bodystarred = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<bodyverdictInput> bodyverdict = null, [WorkflowExpression] Func<JToken[]> bodycollaborators = null, [WorkflowExpression] Func<bool> bodyisTemplate = null, [WorkflowExpression] Func<int> bodyvcardId = null, [WorkflowExpression] Func<bool> bodyalertOn = null, [WorkflowExpression] Func<string[]> bodyemailCible = null, [WorkflowExpression] Func<int> bodythemeid = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycanBeDownloaded, nameof(bodycanBeDownloaded), required: false);
-            SourceExpression.Validate(bodyconsultable, nameof(bodyconsultable), required: false);
-            SourceExpression.Validate(bodyconsultableUntil, nameof(bodyconsultableUntil), required: false);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            SourceExpression.Validate(bodystarred, nameof(bodystarred), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodyverdict, nameof(bodyverdict), required: false);
-            SourceExpression.Validate(bodycollaborators, nameof(bodycollaborators), required: false);
-            SourceExpression.Validate(bodyisTemplate, nameof(bodyisTemplate), required: false);
-            SourceExpression.Validate(bodyvcardId, nameof(bodyvcardId), required: false);
-            SourceExpression.Validate(bodyalertOn, nameof(bodyalertOn), required: false);
-            SourceExpression.Validate(bodyemailCible, nameof(bodyemailCible), required: false);
-            SourceExpression.Validate(bodythemeid, nameof(bodythemeid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -349,8 +312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<AccessLinkCreateResponse> AccessLinkCreate([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<bodyaccessLinkInputItem[]> bodyaccessLink = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyaccessLink, nameof(bodyaccessLink), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/tokens", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -380,8 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<AddItemToProjectResponseItem[]> AddItemToProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<bodyitemsInputItem[]> bodyitems = null)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
-            SourceExpression.Validate(bodyitems, nameof(bodyitems), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/add_items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -413,11 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ItemListResponse> ItemList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagOperator = null, [WorkflowExpression] Func<string> search = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: true);
-            SourceExpression.Validate(offset, nameof(offset), required: true);
-            SourceExpression.Validate(tags, nameof(tags), required: false);
-            SourceExpression.Validate(tagOperator, nameof(tagOperator), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/items";
@@ -443,7 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ItemCreateResponseItem[]> ItemCreate([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/items";
@@ -462,9 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<DirectUploadInformationResponse> DirectUploadInformation([WorkflowExpression] Func<string> filename, [WorkflowExpression] Func<string> originalFilename, [WorkflowExpression] Func<bool> checkExisting = null)
         {
-            SourceExpression.Validate(filename, nameof(filename), required: true);
-            SourceExpression.Validate(originalFilename, nameof(originalFilename), required: true);
-            SourceExpression.Validate(checkExisting, nameof(checkExisting), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/direct_upload_data";
@@ -488,9 +438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     {
         public IBodyWorkflowTrigger<JToken> OnTilkeeEvent([WorkflowExpression] Func<bodyruleInput> bodyrule, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyrule, nameof(bodyrule), required: true);
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notifications";
@@ -531,8 +478,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
         public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notifications/connexion_ended";
@@ -573,8 +518,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
         public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notifications/token_signed";

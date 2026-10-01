@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<CreateDocumentDeprecatedResponse> CreateDocumentDeprecated([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> fileContent = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/documents";
@@ -32,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/metadata/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -47,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<string> GetDocument([WorkflowExpression] Func<string> documentId)
         {
-            SourceExpression.Validate(documentId, nameof(documentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
@@ -62,13 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> ParseDocumentDeprecated([WorkflowExpression] Func<string> requestmodel, [WorkflowExpression] Func<string> requestdocumentId, [WorkflowExpression] Func<requestpostprocessingtheOutputFormatInput> requestpostprocessingtheOutputFormat = null, [WorkflowExpression] Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, [WorkflowExpression] Func<bool> requestpreprocessingautoRotate = null, [WorkflowExpression] Func<int> requestpreprocessingmaxPages = null, [WorkflowExpression] Func<string> requestpreprocessingimageQuality = null)
         {
-            SourceExpression.Validate(requestmodel, nameof(requestmodel), required: true);
-            SourceExpression.Validate(requestdocumentId, nameof(requestdocumentId), required: true);
-            SourceExpression.Validate(requestpostprocessingtheOutputFormat, nameof(requestpostprocessingtheOutputFormat), required: false);
-            SourceExpression.Validate(requestpostprocessingtheStrategyUsedForAggregatingPredictions, nameof(requestpostprocessingtheStrategyUsedForAggregatingPredictions), required: false);
-            SourceExpression.Validate(requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
-            SourceExpression.Validate(requestpreprocessingmaxPages, nameof(requestpreprocessingmaxPages), required: false);
-            SourceExpression.Validate(requestpreprocessingimageQuality, nameof(requestpreprocessingimageQuality), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/predictions";
@@ -159,12 +148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<JToken> CreateRun([WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<string> actionId = null, [WorkflowExpression] Func<int> maxWaitInterval = null, [WorkflowExpression] Func<string> variables = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> document = null)
         {
-            SourceExpression.Validate(agentId, nameof(agentId), required: true);
-            SourceExpression.Validate(actionId, nameof(actionId), required: false);
-            SourceExpression.Validate(maxWaitInterval, nameof(maxWaitInterval), required: false);
-            SourceExpression.Validate(variables, nameof(variables), required: false);
-            SourceExpression.Validate(title, nameof(title), required: false);
-            SourceExpression.Validate(document, nameof(document), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/agents";
@@ -209,9 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> CreateExecutionDeprecated([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> requestinputdocumentId, [WorkflowExpression] Func<string> requestinputtitle = null)
         {
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(requestinputdocumentId, nameof(requestinputdocumentId), required: true);
-            SourceExpression.Validate(requestinputtitle, nameof(requestinputtitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/workflows";
@@ -259,7 +239,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     {
         public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted([WorkflowExpression] Func<string> actionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(actionId, nameof(actionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/actions";

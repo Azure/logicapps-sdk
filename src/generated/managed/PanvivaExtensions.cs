@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetSearchResponse> OperationsSearch([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> pageOffset = null, [WorkflowExpression] Func<int> pageLimit = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(term, nameof(term), required: true);
-            SourceExpression.Validate(pageOffset, nameof(pageOffset), required: false);
-            SourceExpression.Validate(pageLimit, nameof(pageLimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -37,14 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetSearchArtefactResponse> OperationsArtefactNls([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> simplequery = null, [WorkflowExpression] Func<string> advancedquery = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> channel = null, [WorkflowExpression] Func<int> pageOffset = null, [WorkflowExpression] Func<int> pageLimit = null, [WorkflowExpression] Func<string> facet = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(simplequery, nameof(simplequery), required: false);
-            SourceExpression.Validate(advancedquery, nameof(advancedquery), required: false);
-            SourceExpression.Validate(filter, nameof(filter), required: false);
-            SourceExpression.Validate(channel, nameof(channel), required: false);
-            SourceExpression.Validate(pageOffset, nameof(pageOffset), required: false);
-            SourceExpression.Validate(pageLimit, nameof(pageLimit), required: false);
-            SourceExpression.Validate(facet, nameof(facet), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/artefact/nls", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -73,12 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<JToken> OperationsLiveCsh([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> postLiveCshRequestusername = null, [WorkflowExpression] Func<string> postLiveCshRequestuserId = null, [WorkflowExpression] Func<string> postLiveCshRequestquery = null, [WorkflowExpression] Func<bool> postLiveCshRequestshowFirstResult = null, [WorkflowExpression] Func<bool> postLiveCshRequestmaximizeClient = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(postLiveCshRequestusername, nameof(postLiveCshRequestusername), required: false);
-            SourceExpression.Validate(postLiveCshRequestuserId, nameof(postLiveCshRequestuserId), required: false);
-            SourceExpression.Validate(postLiveCshRequestquery, nameof(postLiveCshRequestquery), required: false);
-            SourceExpression.Validate(postLiveCshRequestshowFirstResult, nameof(postLiveCshRequestshowFirstResult), required: false);
-            SourceExpression.Validate(postLiveCshRequestmaximizeClient, nameof(postLiveCshRequestmaximizeClient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/live/csh", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -129,12 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<JToken> OperationsLiveDocument([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> postLiveDocumentRequestusername = null, [WorkflowExpression] Func<string> postLiveDocumentRequestuserId = null, [WorkflowExpression] Func<string> postLiveDocumentRequestid = null, [WorkflowExpression] Func<string> postLiveDocumentRequestlocation = null, [WorkflowExpression] Func<bool> postLiveDocumentRequestmaximizeClient = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(postLiveDocumentRequestusername, nameof(postLiveDocumentRequestusername), required: false);
-            SourceExpression.Validate(postLiveDocumentRequestuserId, nameof(postLiveDocumentRequestuserId), required: false);
-            SourceExpression.Validate(postLiveDocumentRequestid, nameof(postLiveDocumentRequestid), required: false);
-            SourceExpression.Validate(postLiveDocumentRequestlocation, nameof(postLiveDocumentRequestlocation), required: false);
-            SourceExpression.Validate(postLiveDocumentRequestmaximizeClient, nameof(postLiveDocumentRequestmaximizeClient), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/live/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -185,12 +161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<JToken> OperationsLiveSearch([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> postLiveSearchRequestusername = null, [WorkflowExpression] Func<string> postLiveSearchRequestuserId = null, [WorkflowExpression] Func<string> postLiveSearchRequestquery = null, [WorkflowExpression] Func<bool> postLiveSearchRequestmaximizeClient = null, [WorkflowExpression] Func<bool> postLiveSearchRequestshowFirstResult = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(postLiveSearchRequestusername, nameof(postLiveSearchRequestusername), required: false);
-            SourceExpression.Validate(postLiveSearchRequestuserId, nameof(postLiveSearchRequestuserId), required: false);
-            SourceExpression.Validate(postLiveSearchRequestquery, nameof(postLiveSearchRequestquery), required: false);
-            SourceExpression.Validate(postLiveSearchRequestmaximizeClient, nameof(postLiveSearchRequestmaximizeClient), required: false);
-            SourceExpression.Validate(postLiveSearchRequestshowFirstResult, nameof(postLiveSearchRequestshowFirstResult), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/operations/live/search", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -241,8 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetContainerResponse> ResourcesContainerById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/container/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -257,9 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetDocumentResponse> ResourcesDocumentById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> version = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -276,8 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetResponseResponse> ResourcesArtefactById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefact/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -292,8 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetDocumentContainersResponse> ResourcesDocumentByIdContainers([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}/containers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -308,8 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetDocumentContainerRelationshipsResponse> ResourcesDocumentByIdContainersRelationships([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}/containers/relationships", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -324,8 +283,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetDocumentTranslationsResponse> ResourcesDocumentByIdTranslations([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/document/{1}/translations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -340,8 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetFileResponse> ResourcesFileById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/file/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -356,8 +311,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetFolderResponse> ResourcesFolderById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -372,8 +325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetFolderChildrenResponse> ResourcesFolderByIdChildren([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/{1}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -388,8 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetFolderTranslationsResponse> ResourcesFolderByIdTranslations([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/{1}/translations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -404,7 +353,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetFolderRootResponse> ResourcesFolderRoot([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/folder/root", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -419,8 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetImageResponse> ResourcesImageById([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/image/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -435,7 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<GetArtefactCategoriesResponse> ResourcesArtefactCategoriesGet([WorkflowExpression] Func<string> instance)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefactcategory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));
@@ -450,8 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
         public IBodyWorkflowAction<PostArtefactCategoryResponse> ResourcesArtefactCategory([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> postArtefactCategoryRequestname = null)
         {
-            SourceExpression.Validate(instance, nameof(instance), required: true);
-            SourceExpression.Validate(postArtefactCategoryRequestname, nameof(postArtefactCategoryRequestname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/resources/artefactcategory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instance, 1));

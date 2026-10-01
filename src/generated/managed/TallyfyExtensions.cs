@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<GetUserTasksResponse> GetUserTasks([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<int> userId, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(q, nameof(q), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(tag, nameof(tag), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/users/{1}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(userId, 1));
@@ -48,12 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<InviteUserToOrganizationResponse> InviteUserToOrganization([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bodyroleInput> bodyrole)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/users/invite", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1));
@@ -84,10 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<CreateRunResponse> CreateRun([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodychecklistId, [WorkflowExpression] Func<string> bodysummary = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodychecklistId, nameof(bodychecklistId), required: true);
-            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/runs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1));
@@ -118,9 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> CompletedOneOffTask([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<bool> bodyisApproved = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodyisApproved, nameof(bodyisApproved), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/completed-tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1));
@@ -149,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> ReopenOneOffTask([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> task)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(task, nameof(task), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/completed-tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(task, 1));
@@ -165,10 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> CompletedProcessTask([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> run, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<bool> bodyisApproved = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(run, nameof(run), required: true);
-            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            SourceExpression.Validate(bodyisApproved, nameof(bodyisApproved), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/runs/{1}/completed-tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(run, 1));
@@ -197,9 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> ReopenProcessTask([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> run, [WorkflowExpression] Func<string> task)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(run, nameof(run), required: true);
-            SourceExpression.Validate(task, nameof(task), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/runs/{1}/completed-tasks/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(run, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(task, 1));
@@ -214,10 +184,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> CommentTask([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> task, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<bodylabelInput> bodylabel)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(task, nameof(task), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
-            SourceExpression.Validate(bodylabel, nameof(bodylabel), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}/tasks/{1}/comment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(task, 1));
@@ -242,13 +208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType, [WorkflowExpression] Func<string> bodydeadline, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int[]> bodyownersusers = null, [WorkflowExpression] Func<string[]> bodyownersguests = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: true);
-            SourceExpression.Validate(bodydeadline, nameof(bodydeadline), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyownersusers, nameof(bodyownersusers), required: false);
-            SourceExpression.Validate(bodyownersguests, nameof(bodyownersguests), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/processes/micro-functions/organizations/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1));
@@ -301,9 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> EditTaskDeadline([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> task, [WorkflowExpression] Func<string> bodydeadline = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(task, nameof(task), required: true);
-            SourceExpression.Validate(bodydeadline, nameof(bodydeadline), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/processes/micro-functions/organizations/{0}/tasks/{1}/edit-deadline", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(task, 1));
@@ -330,9 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> RemoveGuest([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> task, [WorkflowExpression] Func<string> guest)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(task, nameof(task), required: true);
-            SourceExpression.Validate(guest, nameof(guest), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/processes/micro-functions/organizations/{0}/tasks/{1}/remove-guest/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(task, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(guest, 1));
@@ -347,9 +300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> RemoveAssignee([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> task, [WorkflowExpression] Func<string> member)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(task, nameof(task), required: true);
-            SourceExpression.Validate(member, nameof(member), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/processes/micro-functions/organizations/{0}/tasks/{1}/remove-assignee/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(task, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(member, 1));
@@ -364,10 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
         public IBodyWorkflowAction<JToken> EditStepType([WorkflowExpression] Func<string> org, [WorkflowExpression] Func<string> blueprint, [WorkflowExpression] Func<string> step, [WorkflowExpression] Func<bodystepTypeInput> bodystepType = null)
         {
-            SourceExpression.Validate(org, nameof(org), required: true);
-            SourceExpression.Validate(blueprint, nameof(blueprint), required: true);
-            SourceExpression.Validate(step, nameof(step), required: true);
-            SourceExpression.Validate(bodystepType, nameof(bodystepType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/processes/micro-functions/organizations/{0}/blueprints/{1}/steps/{2}/edit-step-type", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(org, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blueprint, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(step, 1));

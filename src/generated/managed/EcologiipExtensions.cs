@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<PurchaseTreesResponse> PurchaseTrees([WorkflowExpression] Func<int> bodynumber, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodytest = null)
         {
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodytest, nameof(bodytest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/impact/trees";
@@ -51,9 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<PurchaseOffsetsResponse> PurchaseOffsets([WorkflowExpression] Func<int> bodynumber, [WorkflowExpression] Func<string> bodyunits, [WorkflowExpression] Func<bool> bodytest = null)
         {
-            SourceExpression.Validate(bodynumber, nameof(bodynumber), required: true);
-            SourceExpression.Validate(bodyunits, nameof(bodyunits), required: true);
-            SourceExpression.Validate(bodytest, nameof(bodytest), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/impact/carbon";
@@ -84,7 +78,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetImpactResponse> GetImpact([WorkflowExpression] Func<string> username)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/impact", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -99,7 +92,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetTreesResponse> GetTrees([WorkflowExpression] Func<string> username)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/trees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
@@ -114,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetOffsetResponse> GetOffset([WorkflowExpression] Func<string> username)
         {
-            SourceExpression.Validate(username, nameof(username), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/carbon-offset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));

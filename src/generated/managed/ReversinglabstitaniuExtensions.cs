@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileReputationSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<bool> extended = null, [WorkflowExpression] Func<bool> showHashes = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(extended, nameof(extended), required: false);
-            SourceExpression.Validate(showHashes, nameof(showHashes), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -42,11 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileReputationBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bool> extended = null, [WorkflowExpression] Func<bool> showHashes = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(extended, nameof(extended), required: false);
-            SourceExpression.Validate(showHashes, nameof(showHashes), required: false);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/bulk_query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -99,10 +89,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetHistoricalAvRecordsSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<bool> history = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(history, nameof(history), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/xref/v2/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -123,11 +109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetHistoricalAvRecordsBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bool> history = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(history, nameof(history), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/xref/v2/bulk_query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -181,9 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -201,9 +179,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/bulk_query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -252,8 +227,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisNonMaliciousSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -268,9 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisNonMaliciousBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/bulk_query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -319,9 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisMerged([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -339,9 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisLatest([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -359,10 +323,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisSpecific([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> analysisId, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(analysisId, nameof(analysisId), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(analysisId, 1));
@@ -380,9 +340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisArchiveMerged([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -400,9 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisArchiveLatest([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -420,8 +374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DownloadSample([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -436,11 +388,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetSampleDownloadStatus([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/status/bulk_query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -495,8 +442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction UploadSample([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> contentType)
         {
-            SourceExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sha1Value, 1));
@@ -518,10 +463,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction UploadSampleMetadata([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> subscribe = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(subscribe, nameof(subscribe), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}/meta", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sha1Value, 1));
@@ -540,9 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DeleteSampleSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> deleteOn = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(deleteOn, nameof(deleteOn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -559,10 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DeleteSamplesBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string> bodyrlquerydeleteOn = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlquerydeleteOn, nameof(bodyrlquerydeleteOn), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/bulk_query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -617,8 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ReanalyzeSampleSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -633,10 +565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ReanalyzeSampleBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/bulk_query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -688,9 +616,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SubscribeToReputationChanges([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -739,9 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction UnsubscribeFromReputationChanges([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            SourceExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -790,8 +712,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SetStartTimeForReputationChanges([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue)
         {
-            SourceExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            SourceExpression.Validate(timeValue, nameof(timeValue), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/start/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeFormat, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeValue, 1));
@@ -806,9 +726,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetReputationDataChanges([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> events = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(events, nameof(events), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/feed/data_change/v3/pull";
@@ -830,10 +747,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetContinuousReputationDataChanges([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> events = null)
         {
-            SourceExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            SourceExpression.Validate(timeValue, nameof(timeValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(events, nameof(events), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeFormat, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeValue, 1));
@@ -853,12 +766,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SubmitSampleForDynamicAnalysis([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<string> bodyrlsha1 = null, [WorkflowExpression] Func<string> bodyrlurl = null, [WorkflowExpression] Func<string> bodyrlplatform = null, [WorkflowExpression] Func<bodyrlresponseFormatInput> bodyrlresponseFormat = null, [WorkflowExpression] Func<string> bodyrloptionalParameters = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlsha1, nameof(bodyrlsha1), required: false);
-            SourceExpression.Validate(bodyrlurl, nameof(bodyrlurl), required: false);
-            SourceExpression.Validate(bodyrlplatform, nameof(bodyrlplatform), required: false);
-            SourceExpression.Validate(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
-            SourceExpression.Validate(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -927,11 +834,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SubmitArchiveForDynamicAnalysis([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<string> bodyrlsha1 = null, [WorkflowExpression] Func<string> bodyrlplatform = null, [WorkflowExpression] Func<string> bodyrlresponseFormat = null, [WorkflowExpression] Func<string> bodyrloptionalParameters = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlsha1, nameof(bodyrlsha1), required: false);
-            SourceExpression.Validate(bodyrlplatform, nameof(bodyrlplatform), required: false);
-            SourceExpression.Validate(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
-            SourceExpression.Validate(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/archive/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -984,9 +886,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction URIToHashSearchSha1FirstPage([WorkflowExpression] Func<string> uriSha1, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> classification = null)
         {
-            SourceExpression.Validate(uriSha1, nameof(uriSha1), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(classification, nameof(classification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uriSha1, 1));
@@ -1006,10 +905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction URIToHashSearchSha1Paging([WorkflowExpression] Func<string> uriSha1, [WorkflowExpression] Func<string> nextPageSha1, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> classification = null)
         {
-            SourceExpression.Validate(uriSha1, nameof(uriSha1), required: true);
-            SourceExpression.Validate(nextPageSha1, nameof(nextPageSha1), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(classification, nameof(classification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uriSha1, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nextPageSha1, 1));
@@ -1029,10 +924,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction URIToHashSearchTextPaging([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> bodyrlqueryuri = null, [WorkflowExpression] Func<string> bodyrlquerynextPageSha1 = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(bodyrlqueryuri, nameof(bodyrlqueryuri), required: false);
-            SourceExpression.Validate(bodyrlquerynextPageSha1, nameof(bodyrlquerynextPageSha1), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/uri_index/v1/query";
@@ -1085,9 +976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetURLReport([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryurl = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/report/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1136,15 +1024,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListFilesFromURL([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryurl = null, [WorkflowExpression] Func<string> bodyrlqueryanalysisId = null, [WorkflowExpression] Func<bool> bodyrlquerylastAnalysis = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<bool> bodyrlqueryextended = null, [WorkflowExpression] Func<string> bodyrlqueryclassification = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
-            SourceExpression.Validate(bodyrlqueryanalysisId, nameof(bodyrlqueryanalysisId), required: false);
-            SourceExpression.Validate(bodyrlquerylastAnalysis, nameof(bodyrlquerylastAnalysis), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
-            SourceExpression.Validate(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/downloaded_files/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1239,8 +1118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetLatestURLAnalysesFirst([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/networking/url/v1/notifications/query/latest";
@@ -1260,9 +1137,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetLatestURLAnalysesPaging([WorkflowExpression] Func<string> page, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/latest/page/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(page, 1));
@@ -1282,10 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetTimestampedURLAnalysesFirst([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> startTime, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            SourceExpression.Validate(startTime, nameof(startTime), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeFormat, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(startTime, 1));
@@ -1305,11 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetTimestampedURLAnalysesPaging([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> startTime, [WorkflowExpression] Func<string> page, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            SourceExpression.Validate(startTime, nameof(startTime), required: true);
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeFormat, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(startTime, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(page, 1));
@@ -1329,9 +1194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction AnalyzeURL([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryurl = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/analyze/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1390,9 +1252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDomainReport([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/domain/report/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1451,13 +1310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListFilesFromDomain([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<bool> bodyrlqueryextended = null, [WorkflowExpression] Func<string> bodyrlqueryclassification = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
-            SourceExpression.Validate(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/domain/downloaded_files/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1540,11 +1392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetURLFromDomain([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/domain/urls/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1615,11 +1462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDomainResolutions([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/domain/resolutions/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1690,11 +1532,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDomainRelatedDomains([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/domain/related_domains/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1765,9 +1602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetIPAddressReport([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/ip/report/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1826,13 +1660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListFilesFromIPAddress([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<bool> bodyrlqueryextended = null, [WorkflowExpression] Func<string> bodyrlqueryclassification = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
-            SourceExpression.Validate(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/ip/downloaded_files/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1915,11 +1742,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetURLFromIPAddress([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/ip/urls/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -1990,11 +1812,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetIPAddressResolutions([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            SourceExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            SourceExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/ip/resolutions/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
@@ -2065,10 +1882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DailyAPIUsageUser([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/daily";
@@ -2092,10 +1905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DailyAPIUsageCompany([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/daily";
@@ -2119,10 +1928,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction MonthlyAPIUsageUser([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(month, nameof(month), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/monthly";
@@ -2146,10 +1951,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction MonthlyAPIUsageCompany([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(month, nameof(month), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/monthly";
@@ -2173,7 +1974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DateRangeAPIUsageUser([WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/date_range";
@@ -2191,7 +1991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DateRangeAPIUsageCompany([WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/date_range";
@@ -2209,7 +2008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetActiveYARARulesets([WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/yara";
@@ -2227,7 +2025,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetAPIQuotaLimitsUser([WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/limits";
@@ -2245,7 +2042,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetAPIQuotaLimitsCompany([WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/customer_usage/v1/limits/company";
@@ -2263,9 +2059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction NetworkReputationApi([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlquerynetworkLocationsInputItem[]> bodyrlquerynetworkLocations, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlquerynetworkLocations, nameof(bodyrlquerynetworkLocations), required: true);
-            SourceExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/reputation/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -2320,8 +2113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListUserOverride([WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> nextNetworkLocation = null)
         {
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(nextNetworkLocation, nameof(nextNetworkLocation), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/networking/user_override/v1/query/list_overrides";
@@ -2341,9 +2132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction NetworkReputationUserOverride([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]> bodyrlqueryuserOverrideoverrideNetworkLocations = null, [WorkflowExpression] Func<string> bodyrlresponseFormat = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlqueryuserOverrideoverrideNetworkLocations, nameof(bodyrlqueryuserOverrideoverrideNetworkLocations), required: false);
-            SourceExpression.Validate(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/networking/user_override/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -2410,10 +2198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlSha1([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> specificReport, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            SourceExpression.Validate(specificReport, nameof(specificReport), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sha1Value, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(specificReport, 1));
@@ -2434,10 +2218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlBase64([WorkflowExpression] Func<string> base64Value, [WorkflowExpression] Func<string> specificReport, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(base64Value, nameof(base64Value), required: true);
-            SourceExpression.Validate(specificReport, nameof(specificReport), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(base64Value, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(specificReport, 1));
@@ -2458,8 +2238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisReportForUrlSha1([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sha1Value, 1));
@@ -2477,8 +2255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisReportForUrlBase64([WorkflowExpression] Func<string> base64Value, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(base64Value, nameof(base64Value), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(base64Value, 1));
@@ -2496,7 +2272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRulesetInformation([WorkflowExpression] Func<string> rulesetName)
         {
-            SourceExpression.Validate(rulesetName, nameof(rulesetName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rulesetName, 1));
@@ -2511,7 +2286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DeleteYaraRuleset([WorkflowExpression] Func<string> rulesetName)
         {
-            SourceExpression.Validate(rulesetName, nameof(rulesetName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rulesetName, 1));
@@ -2526,7 +2300,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRulesetText([WorkflowExpression] Func<string> rulesetName)
         {
-            SourceExpression.Validate(rulesetName, nameof(rulesetName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/text", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rulesetName, 1));
@@ -2541,9 +2314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraMatchesFeed([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            SourceExpression.Validate(timeValue, nameof(timeValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/feed/yara/v1/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeFormat, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeValue, 1));
@@ -2561,10 +2331,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction CreateYaraRuleset([WorkflowExpression] Func<string> bodyrulesetName, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodysampleAvailable, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(bodyrulesetName, nameof(bodyrulesetName), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodysampleAvailable, nameof(bodysampleAvailable), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset";
@@ -2594,7 +2360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRetroHuntingStatus([WorkflowExpression] Func<string> rulesetName)
         {
-            SourceExpression.Validate(rulesetName, nameof(rulesetName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rulesetName, 1));
@@ -2609,9 +2374,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRetroMatchesFeed([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            SourceExpression.Validate(timeValue, nameof(timeValue), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/feed/yara/retro/v1/query/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeFormat, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(timeValue, 1));
@@ -2629,8 +2391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction StartYaraRetroHunt([WorkflowExpression] Func<string> bodyrulesetName, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(bodyrulesetName, nameof(bodyrulesetName), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset/start-retro-hunt";
@@ -2656,8 +2416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction CancelYaraRetroHunt([WorkflowExpression] Func<string> bodyrulesetName, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(bodyrulesetName, nameof(bodyrulesetName), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset/cancel-retro-hunt";
@@ -2683,12 +2441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction AdvancedSearch([WorkflowExpression] Func<bodyqueryInputItem[]> bodyquery, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<int> bodyrecordsPerPage = null, [WorkflowExpression] Func<int> bodypage = null, [WorkflowExpression] Func<string> bodysort = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodyrecordsPerPage, nameof(bodyrecordsPerPage), required: false);
-            SourceExpression.Validate(bodypage, nameof(bodypage), required: false);
-            SourceExpression.Validate(bodysort, nameof(bodysort), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/search/v1/query";
@@ -2768,14 +2520,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GroupByRha1SingleQuery([WorkflowExpression] Func<string> rha1Type, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> nextPageSha1, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> extended = null, [WorkflowExpression] Func<classificationInput> classification = null)
         {
-            SourceExpression.Validate(rha1Type, nameof(rha1Type), required: true);
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(nextPageSha1, nameof(nextPageSha1), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(extended, nameof(extended), required: false);
-            SourceExpression.Validate(classification, nameof(classification), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/group_by_rha1/v1/query/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rha1Type, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nextPageSha1, 1));
@@ -2803,9 +2547,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ImportHashSimilarity([WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1));
@@ -2825,10 +2566,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ImportHashSimilarityPaginated([WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> nextPageSha1, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashValue, nameof(hashValue), required: true);
-            SourceExpression.Validate(nextPageSha1, nameof(nextPageSha1), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}/start_sha1/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashValue, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(nextPageSha1, 1));
@@ -2848,9 +2585,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction FileReputationUserOverride([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryoverrideSamplesInputItem[]> bodyrlqueryoverrideSamples = null, [WorkflowExpression] Func<bodyrlqueryremoveOverrideInputItem[]> bodyrlqueryremoveOverride = null)
         {
-            SourceExpression.Validate(postFormat, nameof(postFormat), required: true);
-            SourceExpression.Validate(bodyrlqueryoverrideSamples, nameof(bodyrlqueryoverrideSamples), required: false);
-            SourceExpression.Validate(bodyrlqueryremoveOverride, nameof(bodyrlqueryremoveOverride), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postFormat, 1));
@@ -2899,9 +2633,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction FileReputationListUserOverrides([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> startHash = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            SourceExpression.Validate(hashType, nameof(hashType), required: true);
-            SourceExpression.Validate(startHash, nameof(startHash), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/list_hashes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hashType, 1));

@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<GetUsersIdResponse> GetUsersId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction DeleteUsersId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -44,18 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PatchUsersIdResponse> PatchUsersId([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<bodyauthenticationMethodInput> bodyauthenticationMethod = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodygroupIds = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bool> bodyrequirePasswordChange = null, [WorkflowExpression] Func<string> bodyuserHome = null, [WorkflowExpression] Func<string> bodyuserRoot = null, [WorkflowExpression] Func<string> bodyusername = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyauthenticationMethod, nameof(bodyauthenticationMethod), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodygroupIds, nameof(bodygroupIds), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyrequirePasswordChange, nameof(bodyrequirePasswordChange), required: false);
-            SourceExpression.Validate(bodyuserHome, nameof(bodyuserHome), required: false);
-            SourceExpression.Validate(bodyuserRoot, nameof(bodyuserRoot), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -156,17 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PostUsersResponse> PostUsers([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<bodyauthenticationMethodInput> bodyauthenticationMethod = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodygroupIds = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bool> bodyrequirePasswordChange = null, [WorkflowExpression] Func<string> bodyuserHome = null, [WorkflowExpression] Func<string> bodyuserRoot = null)
         {
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyauthenticationMethod, nameof(bodyauthenticationMethod), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodygroupIds, nameof(bodygroupIds), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyrequirePasswordChange, nameof(bodyrequirePasswordChange), required: false);
-            SourceExpression.Validate(bodyuserHome, nameof(bodyuserHome), required: false);
-            SourceExpression.Validate(bodyuserRoot, nameof(bodyuserRoot), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/users";
@@ -249,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<GetBundleDownloadsResponseItem[]> GetBundleDownloads([WorkflowExpression] Func<int> bundleId = null)
         {
-            SourceExpression.Validate(bundleId, nameof(bundleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bundle_downloads";
@@ -266,7 +240,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<GetBundleNotificationsIdResponse> GetBundleNotificationsId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bundle_notifications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -281,7 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction DeleteBundleNotificationsId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bundle_notifications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -296,9 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PatchBundleNotificationsIdResponse> PatchBundleNotificationsId([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<bool> bodynotifyOnRegistration = null, [WorkflowExpression] Func<bool> bodynotifyOnUpload = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodynotifyOnRegistration, nameof(bodynotifyOnRegistration), required: false);
-            SourceExpression.Validate(bodynotifyOnUpload, nameof(bodynotifyOnUpload), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bundle_notifications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -345,8 +314,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PostBundleNotificationsResponse> PostBundleNotifications([WorkflowExpression] Func<int> bodybundleId, [WorkflowExpression] Func<int> bodynotifyUserId = null)
         {
-            SourceExpression.Validate(bodybundleId, nameof(bodybundleId), required: true);
-            SourceExpression.Validate(bodynotifyUserId, nameof(bodynotifyUserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bundle_notifications";
@@ -375,7 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<GetBundleRecipientsResponseItem[]> GetBundleRecipients([WorkflowExpression] Func<int> bundleId)
         {
-            SourceExpression.Validate(bundleId, nameof(bundleId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bundle_recipients";
@@ -391,11 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PostBundleRecipientsResponse> PostBundleRecipients([WorkflowExpression] Func<int> bodybundleId, [WorkflowExpression] Func<string> bodyrecipient, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            SourceExpression.Validate(bodybundleId, nameof(bodybundleId), required: true);
-            SourceExpression.Validate(bodyrecipient, nameof(bodyrecipient), required: true);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bundle_recipients";
@@ -438,7 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<GetBundleRegistrationsResponseItem[]> GetBundleRegistrations([WorkflowExpression] Func<int> bundleId = null)
         {
-            SourceExpression.Validate(bundleId, nameof(bundleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bundle_registrations";
@@ -455,7 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<GetBundlesIdResponse> GetBundlesId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bundles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -470,7 +429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction DeleteBundlesId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bundles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -485,9 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PatchBundlesIdResponse> PatchBundlesId([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<bodypermissionsInput> bodypermissions = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            SourceExpression.Validate(bodypermissions, nameof(bodypermissions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bundles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -534,14 +489,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PostBundlesResponse> PostBundles([WorkflowExpression] Func<string[]> bodypaths, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<int> bodymaxUses = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bodypermissionsInput> bodypermissions = null, [WorkflowExpression] Func<bool> bodyrequireRegistration = null)
         {
-            SourceExpression.Validate(bodypaths, nameof(bodypaths), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            SourceExpression.Validate(bodymaxUses, nameof(bodymaxUses), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodypermissions, nameof(bodypermissions), required: false);
-            SourceExpression.Validate(bodyrequireRegistration, nameof(bodyrequireRegistration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/bundles";
@@ -606,7 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction DeleteFilesPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -621,7 +567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<FileActionFindResponse> FileActionFind([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file_actions/metadata/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -636,9 +581,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<FileActionCopyResponse> FileActionCopy([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> bodydestinationFolderPath = null, [WorkflowExpression] Func<string> bodydestinationName = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(bodydestinationFolderPath, nameof(bodydestinationFolderPath), required: false);
-            SourceExpression.Validate(bodydestinationName, nameof(bodydestinationName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file_actions/copy/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -671,9 +613,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<FileActionMoveResponse> FileActionMove([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> bodydestinationFolderPath = null, [WorkflowExpression] Func<string> bodydestinationName = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(bodydestinationFolderPath, nameof(bodydestinationFolderPath), required: false);
-            SourceExpression.Validate(bodydestinationName, nameof(bodydestinationName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file_actions/move/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -706,7 +645,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<FolderListForPathResponseItem[]> FolderListForPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -721,7 +659,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PostFoldersPathResponse> PostFoldersPath([WorkflowExpression] Func<string> path)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -736,18 +673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PostGroupsGroupIdUsersResponse> PostGroupsGroupIdUsers([WorkflowExpression] Func<int> groupId, [WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<bodyauthenticationMethodInput> bodyauthenticationMethod = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodygroupIds = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bool> bodyrequirePasswordChange = null, [WorkflowExpression] Func<string> bodyuserHome = null, [WorkflowExpression] Func<string> bodyuserRoot = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            SourceExpression.Validate(bodyauthenticationMethod, nameof(bodyauthenticationMethod), required: false);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodygroupIds, nameof(bodygroupIds), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyrequirePasswordChange, nameof(bodyrequirePasswordChange), required: false);
-            SourceExpression.Validate(bodyuserHome, nameof(bodyuserHome), required: false);
-            SourceExpression.Validate(bodyuserRoot, nameof(bodyuserRoot), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(groupId, 1));
@@ -830,7 +755,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<GetGroupsIdResponse> GetGroupsId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -845,7 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction DeleteGroupsId([WorkflowExpression] Func<int> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -860,11 +783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PatchGroupsIdResponse> PatchGroupsId([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> bodyadminIds = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyuserIds = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyadminIds, nameof(bodyadminIds), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyuserIds, nameof(bodyuserIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
@@ -923,10 +841,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<PostGroupsResponse> PostGroups([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyadminIds = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyuserIds = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyadminIds, nameof(bodyadminIds), required: false);
-            SourceExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            SourceExpression.Validate(bodyuserIds, nameof(bodyuserIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/groups";
@@ -967,8 +881,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<string> DownloadFileContentUsingPath([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<bool> forceOctetStream = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(forceOctetStream, nameof(forceOctetStream), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file_contents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -986,8 +898,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction UploadFile([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(path, nameof(path), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file_contents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(path, 1));
@@ -1003,10 +913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction UploadFileToRemoteServer([WorkflowExpression] Func<int> remoteServerId, [WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(remoteServerId, nameof(remoteServerId), required: true);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/upload_to_remote_server";
@@ -1026,13 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<CopyFileToRemoteServerResponse> CopyFileToRemoteServer([WorkflowExpression] Func<string> sourcePath, [WorkflowExpression] Func<int> remoteServerId, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> destinationName = null, [WorkflowExpression] Func<bool> overwrite = null, [WorkflowExpression] Func<bool> copyBehaviors = null, [WorkflowExpression] Func<bool> structure = null)
         {
-            SourceExpression.Validate(sourcePath, nameof(sourcePath), required: true);
-            SourceExpression.Validate(remoteServerId, nameof(remoteServerId), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
-            SourceExpression.Validate(copyBehaviors, nameof(copyBehaviors), required: false);
-            SourceExpression.Validate(structure, nameof(structure), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/copy_to_remote_server";
@@ -1059,11 +958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<MoveFileToRemoteServerResponse> MoveFileToRemoteServer([WorkflowExpression] Func<string> sourcePath, [WorkflowExpression] Func<int> remoteServerId, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> destinationName = null, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(sourcePath, nameof(sourcePath), required: true);
-            SourceExpression.Validate(remoteServerId, nameof(remoteServerId), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/move_to_remote_server";
@@ -1086,10 +980,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction UploadFileToSnapshot([WorkflowExpression] Func<int> snapshotId, [WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(snapshotId, nameof(snapshotId), required: true);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/upload_to_snapshot";
@@ -1109,13 +999,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<CopyFileToSnapshotResponse> CopyFileToSnapshot([WorkflowExpression] Func<string> sourcePath, [WorkflowExpression] Func<int> snapshotId, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> destinationName = null, [WorkflowExpression] Func<bool> overwrite = null, [WorkflowExpression] Func<bool> copyBehaviors = null, [WorkflowExpression] Func<bool> structure = null)
         {
-            SourceExpression.Validate(sourcePath, nameof(sourcePath), required: true);
-            SourceExpression.Validate(snapshotId, nameof(snapshotId), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
-            SourceExpression.Validate(copyBehaviors, nameof(copyBehaviors), required: false);
-            SourceExpression.Validate(structure, nameof(structure), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/copy_to_snapshot";
@@ -1142,11 +1025,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<MoveFileToSnapshotResponse> MoveFileToSnapshot([WorkflowExpression] Func<string> sourcePath, [WorkflowExpression] Func<int> snapshotId, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> destinationName = null, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(sourcePath, nameof(sourcePath), required: true);
-            SourceExpression.Validate(snapshotId, nameof(snapshotId), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/move_to_snapshot";
@@ -1169,10 +1047,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IWorkflowAction UploadFileToChildSite([WorkflowExpression] Func<int> siteId, [WorkflowExpression] Func<string> destinationName, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/upload_to_child_site";
@@ -1192,13 +1066,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<CopyFileToChildSiteResponse> CopyFileToChildSite([WorkflowExpression] Func<string> sourcePath, [WorkflowExpression] Func<int> siteId, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> destinationName = null, [WorkflowExpression] Func<bool> overwrite = null, [WorkflowExpression] Func<bool> copyBehaviors = null, [WorkflowExpression] Func<bool> structure = null)
         {
-            SourceExpression.Validate(sourcePath, nameof(sourcePath), required: true);
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
-            SourceExpression.Validate(copyBehaviors, nameof(copyBehaviors), required: false);
-            SourceExpression.Validate(structure, nameof(structure), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/copy_to_child_site";
@@ -1225,11 +1092,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
         public IBodyWorkflowAction<MoveFileToChildSiteResponse> MoveFileToChildSite([WorkflowExpression] Func<string> sourcePath, [WorkflowExpression] Func<int> siteId, [WorkflowExpression] Func<string> destinationFolderPath = null, [WorkflowExpression] Func<string> destinationName = null, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            SourceExpression.Validate(sourcePath, nameof(sourcePath), required: true);
-            SourceExpression.Validate(siteId, nameof(siteId), required: true);
-            SourceExpression.Validate(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            SourceExpression.Validate(destinationName, nameof(destinationName), required: false);
-            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/_power_automate_underscore/move_to_child_site";

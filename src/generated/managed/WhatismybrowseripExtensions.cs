@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
         public IBodyWorkflowAction<DetectPostResponse> Detect([WorkflowExpression] Func<bodyheadersInputItem[]> bodyheaders = null)
         {
-            SourceExpression.Validate(bodyheaders, nameof(bodyheaders), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/detect";

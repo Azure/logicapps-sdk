@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<Item> Delete([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null)
         {
-            SourceExpression.Validate(optionsqueue, nameof(optionsqueue), required: false);
-            SourceExpression.Validate(optionsmessageId, nameof(optionsmessageId), required: false);
-            SourceExpression.Validate(optionscorrelationId, nameof(optionscorrelationId), required: false);
-            SourceExpression.Validate(optionsgroupId, nameof(optionsgroupId), required: false);
-            SourceExpression.Validate(optionsmessageToken, nameof(optionsmessageToken), required: false);
-            SourceExpression.Validate(optionsoffset, nameof(optionsoffset), required: false);
-            SourceExpression.Validate(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            SourceExpression.Validate(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            SourceExpression.Validate(optionstimeout, nameof(optionstimeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/delete";
@@ -107,16 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<ItemsList> DeleteAll([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null, [WorkflowExpression] Func<double> optionsbatchSize = null)
         {
-            SourceExpression.Validate(optionsqueue, nameof(optionsqueue), required: false);
-            SourceExpression.Validate(optionsmessageId, nameof(optionsmessageId), required: false);
-            SourceExpression.Validate(optionscorrelationId, nameof(optionscorrelationId), required: false);
-            SourceExpression.Validate(optionsgroupId, nameof(optionsgroupId), required: false);
-            SourceExpression.Validate(optionsmessageToken, nameof(optionsmessageToken), required: false);
-            SourceExpression.Validate(optionsoffset, nameof(optionsoffset), required: false);
-            SourceExpression.Validate(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            SourceExpression.Validate(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            SourceExpression.Validate(optionstimeout, nameof(optionstimeout), required: false);
-            SourceExpression.Validate(optionsbatchSize, nameof(optionsbatchSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/deleteall";
@@ -207,15 +188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<Item> Read([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null)
         {
-            SourceExpression.Validate(optionsqueue, nameof(optionsqueue), required: false);
-            SourceExpression.Validate(optionsmessageId, nameof(optionsmessageId), required: false);
-            SourceExpression.Validate(optionscorrelationId, nameof(optionscorrelationId), required: false);
-            SourceExpression.Validate(optionsgroupId, nameof(optionsgroupId), required: false);
-            SourceExpression.Validate(optionsmessageToken, nameof(optionsmessageToken), required: false);
-            SourceExpression.Validate(optionsoffset, nameof(optionsoffset), required: false);
-            SourceExpression.Validate(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            SourceExpression.Validate(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            SourceExpression.Validate(optionstimeout, nameof(optionstimeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/read";
@@ -300,16 +272,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<ItemsList> ReadAll([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null, [WorkflowExpression] Func<double> optionsbatchSize = null)
         {
-            SourceExpression.Validate(optionsqueue, nameof(optionsqueue), required: false);
-            SourceExpression.Validate(optionsmessageId, nameof(optionsmessageId), required: false);
-            SourceExpression.Validate(optionscorrelationId, nameof(optionscorrelationId), required: false);
-            SourceExpression.Validate(optionsgroupId, nameof(optionsgroupId), required: false);
-            SourceExpression.Validate(optionsmessageToken, nameof(optionsmessageToken), required: false);
-            SourceExpression.Validate(optionsoffset, nameof(optionsoffset), required: false);
-            SourceExpression.Validate(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            SourceExpression.Validate(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            SourceExpression.Validate(optionstimeout, nameof(optionstimeout), required: false);
-            SourceExpression.Validate(optionsbatchSize, nameof(optionsbatchSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/readall";
@@ -400,15 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<Item> Receive([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null)
         {
-            SourceExpression.Validate(optionsqueue, nameof(optionsqueue), required: false);
-            SourceExpression.Validate(optionsmessageId, nameof(optionsmessageId), required: false);
-            SourceExpression.Validate(optionscorrelationId, nameof(optionscorrelationId), required: false);
-            SourceExpression.Validate(optionsgroupId, nameof(optionsgroupId), required: false);
-            SourceExpression.Validate(optionsmessageToken, nameof(optionsmessageToken), required: false);
-            SourceExpression.Validate(optionsoffset, nameof(optionsoffset), required: false);
-            SourceExpression.Validate(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            SourceExpression.Validate(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            SourceExpression.Validate(optionstimeout, nameof(optionstimeout), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/receive";
@@ -493,16 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<ItemsList> ReceiveAll([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null, [WorkflowExpression] Func<double> optionsbatchSize = null)
         {
-            SourceExpression.Validate(optionsqueue, nameof(optionsqueue), required: false);
-            SourceExpression.Validate(optionsmessageId, nameof(optionsmessageId), required: false);
-            SourceExpression.Validate(optionscorrelationId, nameof(optionscorrelationId), required: false);
-            SourceExpression.Validate(optionsgroupId, nameof(optionsgroupId), required: false);
-            SourceExpression.Validate(optionsmessageToken, nameof(optionsmessageToken), required: false);
-            SourceExpression.Validate(optionsoffset, nameof(optionsoffset), required: false);
-            SourceExpression.Validate(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            SourceExpression.Validate(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            SourceExpression.Validate(optionstimeout, nameof(optionstimeout), required: false);
-            SourceExpression.Validate(optionsbatchSize, nameof(optionsbatchSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/receiveall";
@@ -593,16 +536,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendV2Response> Send([WorkflowExpression] Func<string> messagemessage, [WorkflowExpression] Func<string> messagequeue = null, [WorkflowExpression] Func<messagemessageTypeInput> messagemessageType = null, [WorkflowExpression] Func<string> messagecorrelationId = null, [WorkflowExpression] Func<string> messagemessageId = null, [WorkflowExpression] Func<string> messagereplyToQueue = null, [WorkflowExpression] Func<string> messagereplyToQueueManager = null, [WorkflowExpression] Func<double> messagecodeCharSetId = null, [WorkflowExpression] Func<double> messageoffset = null, [WorkflowExpression] Func<string> messageformat = null)
         {
-            SourceExpression.Validate(messagemessage, nameof(messagemessage), required: true);
-            SourceExpression.Validate(messagequeue, nameof(messagequeue), required: false);
-            SourceExpression.Validate(messagemessageType, nameof(messagemessageType), required: false);
-            SourceExpression.Validate(messagecorrelationId, nameof(messagecorrelationId), required: false);
-            SourceExpression.Validate(messagemessageId, nameof(messagemessageId), required: false);
-            SourceExpression.Validate(messagereplyToQueue, nameof(messagereplyToQueue), required: false);
-            SourceExpression.Validate(messagereplyToQueueManager, nameof(messagereplyToQueueManager), required: false);
-            SourceExpression.Validate(messagecodeCharSetId, nameof(messagecodeCharSetId), required: false);
-            SourceExpression.Validate(messageoffset, nameof(messageoffset), required: false);
-            SourceExpression.Validate(messageformat, nameof(messageformat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/send";

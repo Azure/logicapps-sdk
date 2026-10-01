@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Films[]> GetFilms([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/films";
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Films[]> GetFilm([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/films/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -52,8 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<People[]> GetPeople([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/people";
@@ -72,8 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<People[]> GetPerson([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/people/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -90,8 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Locations[]> GetLocations([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations";
@@ -110,8 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Locations[]> GetLocation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/locations/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -128,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Species[]> GetSpecies([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/species";
@@ -148,8 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Species[]> GetASpecies([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/species/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -166,8 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Vehicles[]> GetVehicles([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vehicles";
@@ -186,8 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Vehicles[]> GetVehicle([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/vehicles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

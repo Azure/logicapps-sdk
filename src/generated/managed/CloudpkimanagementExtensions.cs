@@ -14,20 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryCertificatesResponseItem[]> QueryCertificates([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<timevalidInput> timevalid = null, [WorkflowExpression] Func<string> important = null, [WorkflowExpression] Func<string> renewalstatus = null, [WorkflowExpression] Func<int> expiring = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> serialnumber = null, [WorkflowExpression] Func<string> ski = null, [WorkflowExpression] Func<string> aki = null, [WorkflowExpression] Func<string> keytype = null, [WorkflowExpression] Func<int> keylength = null, [WorkflowExpression] Func<string> owneremail = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(timevalid, nameof(timevalid), required: false);
-            SourceExpression.Validate(important, nameof(important), required: false);
-            SourceExpression.Validate(renewalstatus, nameof(renewalstatus), required: false);
-            SourceExpression.Validate(expiring, nameof(expiring), required: false);
-            SourceExpression.Validate(subject, nameof(subject), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(serialnumber, nameof(serialnumber), required: false);
-            SourceExpression.Validate(ski, nameof(ski), required: false);
-            SourceExpression.Validate(aki, nameof(aki), required: false);
-            SourceExpression.Validate(keytype, nameof(keytype), required: false);
-            SourceExpression.Validate(keylength, nameof(keylength), required: false);
-            SourceExpression.Validate(owneremail, nameof(owneremail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/certificates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -66,9 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetCertificateResponse> GetCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> thumbprint)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(thumbprint, nameof(thumbprint), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/certificates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thumbprint, 1));
@@ -83,16 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<UpdateCertificateResponse> UpdateCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> thumbprint, [WorkflowExpression] Func<powerappsInput> powerapps, [WorkflowExpression] Func<bodyimportantInput> bodyimportant = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<bodyrenewalstatusInput> bodyrenewalstatus = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodyowneremail = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(thumbprint, nameof(thumbprint), required: true);
-            SourceExpression.Validate(powerapps, nameof(powerapps), required: true);
-            SourceExpression.Validate(bodyimportant, nameof(bodyimportant), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodyowneremail, nameof(bodyowneremail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/certificates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thumbprint, 1));
@@ -151,9 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetTemplateResponse> GetTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> templateid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(templateid, nameof(templateid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/templates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateid, 1));
@@ -168,15 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<UpdateTemplateResponse> UpdateTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> templateid, [WorkflowExpression] Func<powerappsInput> powerapps, [WorkflowExpression] Func<bodyimportantInput> bodyimportant = null, [WorkflowExpression] Func<bodyrenewalstatusInput> bodyrenewalstatus = null, [WorkflowExpression] Func<bodyhiddenInput> bodyhidden = null, [WorkflowExpression] Func<string> bodyowneremail = null, [WorkflowExpression] Func<string> bodyautoapproveid = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(templateid, nameof(templateid), required: true);
-            SourceExpression.Validate(powerapps, nameof(powerapps), required: true);
-            SourceExpression.Validate(bodyimportant, nameof(bodyimportant), required: false);
-            SourceExpression.Validate(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
-            SourceExpression.Validate(bodyhidden, nameof(bodyhidden), required: false);
-            SourceExpression.Validate(bodyowneremail, nameof(bodyowneremail), required: false);
-            SourceExpression.Validate(bodyautoapproveid, nameof(bodyautoapproveid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/templates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateid, 1));
@@ -229,17 +190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryTemplatesResponseItem[]> QueryTemplates([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<versionInput> version = null, [WorkflowExpression] Func<string> templateoid = null, [WorkflowExpression] Func<keytypeInput> keytype = null, [WorkflowExpression] Func<int> minMinkeylength = null, [WorkflowExpression] Func<int> maxMinkeylength = null, [WorkflowExpression] Func<int> minValidity = null, [WorkflowExpression] Func<int> maxValidity = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(version, nameof(version), required: false);
-            SourceExpression.Validate(templateoid, nameof(templateoid), required: false);
-            SourceExpression.Validate(keytype, nameof(keytype), required: false);
-            SourceExpression.Validate(minMinkeylength, nameof(minMinkeylength), required: false);
-            SourceExpression.Validate(maxMinkeylength, nameof(maxMinkeylength), required: false);
-            SourceExpression.Validate(minValidity, nameof(minValidity), required: false);
-            SourceExpression.Validate(maxValidity, nameof(maxValidity), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -272,9 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetCRLResponse> GetCRL([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> crlid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(crlid, nameof(crlid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/crls/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(crlid, 1));
@@ -289,16 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryCRLsResponseItem[]> QueryCRLs([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> crlid = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> issued = null, [WorkflowExpression] Func<int> expiring = null, [WorkflowExpression] Func<string> crlnumber = null, [WorkflowExpression] Func<string> crlnumberdecimal = null, [WorkflowExpression] Func<string> aki = null, [WorkflowExpression] Func<string> serialnumber = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(crlid, nameof(crlid), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(issued, nameof(issued), required: false);
-            SourceExpression.Validate(expiring, nameof(expiring), required: false);
-            SourceExpression.Validate(crlnumber, nameof(crlnumber), required: false);
-            SourceExpression.Validate(crlnumberdecimal, nameof(crlnumberdecimal), required: false);
-            SourceExpression.Validate(aki, nameof(aki), required: false);
-            SourceExpression.Validate(serialnumber, nameof(serialnumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/crls", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -329,15 +266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryRequestsResponseItem[]> QueryRequests([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> approverid = null, [WorkflowExpression] Func<string> approveremail = null, [WorkflowExpression] Func<string> submitterid = null, [WorkflowExpression] Func<string> submitteremail = null, [WorkflowExpression] Func<string> owneremail = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(source, nameof(source), required: false);
-            SourceExpression.Validate(approverid, nameof(approverid), required: false);
-            SourceExpression.Validate(approveremail, nameof(approveremail), required: false);
-            SourceExpression.Validate(submitterid, nameof(submitterid), required: false);
-            SourceExpression.Validate(submitteremail, nameof(submitteremail), required: false);
-            SourceExpression.Validate(owneremail, nameof(owneremail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -366,19 +294,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<NewRequestResponse> NewRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<powerappsInput> powerapps, [WorkflowExpression] Func<string> bodycsr, [WorkflowExpression] Func<string> bodytemplateid = null, [WorkflowExpression] Func<string> bodyowneremail = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<bodyurgentInput> bodyurgent = null, [WorkflowExpression] Func<bodyimportantInput> bodyimportant = null, [WorkflowExpression] Func<bodyrenewalInput> bodyrenewal = null, [WorkflowExpression] Func<string> bodypreviouscertificate = null, [WorkflowExpression] Func<bodyrenewalstatusInput> bodyrenewalstatus = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(powerapps, nameof(powerapps), required: true);
-            SourceExpression.Validate(bodycsr, nameof(bodycsr), required: true);
-            SourceExpression.Validate(bodytemplateid, nameof(bodytemplateid), required: false);
-            SourceExpression.Validate(bodyowneremail, nameof(bodyowneremail), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyurgent, nameof(bodyurgent), required: false);
-            SourceExpression.Validate(bodyimportant, nameof(bodyimportant), required: false);
-            SourceExpression.Validate(bodyrenewal, nameof(bodyrenewal), required: false);
-            SourceExpression.Validate(bodypreviouscertificate, nameof(bodypreviouscertificate), required: false);
-            SourceExpression.Validate(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -506,9 +421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetRequestResponse> GetRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> requestid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(requestid, nameof(requestid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestid, 1));
@@ -523,18 +435,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> requestid, [WorkflowExpression] Func<powerappsInput> powerapps, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bodyurgentInput> bodyurgent = null, [WorkflowExpression] Func<bodyimportantInput> bodyimportant = null, [WorkflowExpression] Func<bodyrenewalstatusInput> bodyrenewalstatus = null, [WorkflowExpression] Func<string> bodytemplateid = null, [WorkflowExpression] Func<string> bodyowneremail = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(requestid, nameof(requestid), required: true);
-            SourceExpression.Validate(powerapps, nameof(powerapps), required: true);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
-            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodyurgent, nameof(bodyurgent), required: false);
-            SourceExpression.Validate(bodyimportant, nameof(bodyimportant), required: false);
-            SourceExpression.Validate(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
-            SourceExpression.Validate(bodytemplateid, nameof(bodytemplateid), required: false);
-            SourceExpression.Validate(bodyowneremail, nameof(bodyowneremail), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/requests/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestid, 1));
@@ -601,11 +501,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<QueryHooksResponseItem[]> QueryHooks([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<@eventInput> @event = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(@event, nameof(@event), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -626,13 +521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<NewHookResponse> NewHook([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<powerappsInput> powerapps, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodycallbackurl = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(powerapps, nameof(powerapps), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyevents, nameof(bodyevents), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodycallbackurl, nameof(bodycallbackurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -670,9 +558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetHookResponse> GetHook([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> hookid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(hookid, nameof(hookid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookid, 1));
@@ -687,9 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<string> DeleteHook([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> hookid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(hookid, nameof(hookid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookid, 1));
@@ -704,9 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<string> GetPublishedCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> thumbprint)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(thumbprint, nameof(thumbprint), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/published/certificates/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thumbprint, 1));
@@ -721,8 +600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetPublishedTemplatesResponseItem[]> GetPublishedTemplates([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/published/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -737,9 +614,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetConnectorActionResponse> GetConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, [WorkflowExpression] Func<string> connectoractionid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
-            SourceExpression.Validate(connectoractionid, nameof(connectoractionid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/connectoractions/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectoractionid, 1));
@@ -754,8 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<GetActionsResponseItem[]> GetActions([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -786,8 +658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     {
         public IBodyWorkflowTrigger<AddedHookResponse> AddedHook([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/added-hook", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -813,8 +683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<RemovedHookResponse> RemovedHook([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/removed-hook", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -840,8 +708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<IssuedCertificateResponse> IssuedCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/issued-certificate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -867,8 +733,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<RevokedCertificateResponse> RevokedCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/revoked-certificate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -894,8 +758,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UpdatedCertificateResponse> UpdatedCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/updated-certificate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -921,8 +783,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<ExpiringCertificateResponse> ExpiringCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/expiring-certificate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -948,8 +808,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<ExpiredCertificateResponse> ExpiredCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/expired-certificate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -975,8 +833,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<RenewingCertificateResponse> RenewingCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/renewing-certificate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1002,8 +858,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<PendingRequestResponse> PendingRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/pending-request", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1029,8 +883,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<ApprovedRequestResponse> ApprovedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/approved-request", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1056,8 +908,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<DeniedRequestResponse> DeniedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/denied-request", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1083,8 +933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UpdatedRequestResponse> UpdatedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/updated-request", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1110,8 +958,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<FailedRequestResponse> FailedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/failed-request", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1137,8 +983,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<PublishedTemplateResponse> PublishedTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/published-template", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1164,8 +1008,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UnpublishedTemplateResponse> UnpublishedTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/unpublished-template", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1191,8 +1033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<UpdatedTemplateResponse> UpdatedTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/updated-template", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1218,8 +1058,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<IssuedCRLResponse> IssuedCRL([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/issued-crl", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1245,8 +1083,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<NewConnectorActionResponse> NewConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/new-connectoraction", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1272,8 +1108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<CompletedConnectorActionResponse> CompletedConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/completed-action", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1299,8 +1133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<FailedConnectorActionResponse> FailedConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/failed-connectoraction", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));
@@ -1326,8 +1158,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         public IBodyWorkflowTrigger<StalledConnectorActionResponse> StalledConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(regionid, nameof(regionid), required: true);
-            SourceExpression.Validate(deploymentid, nameof(deploymentid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/deployments/{1}/hooks/stalled-connectoraction", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(regionid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deploymentid, 1));

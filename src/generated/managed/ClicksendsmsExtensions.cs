@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<SmsSendResponse> SmsSend([WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages)
         {
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sms/send";
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<CreateListResponse> CreateList([WorkflowExpression] Func<string> bodylistName)
         {
-            SourceExpression.Validate(bodylistName, nameof(bodylistName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lists";
@@ -60,8 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<GetContactListsResponse> GetContactLists([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lists";
@@ -80,7 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<SendVoiceResponse> SendVoice([WorkflowExpression] Func<bodymessagesInputItem2[]> bodymessages)
         {
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/voice/send";
@@ -103,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<DeleteListResponse> DeleteList([WorkflowExpression] Func<int> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(listId, 1));
@@ -118,23 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<CreateListContactResponse> CreateListContact([WorkflowExpression] Func<int> listId, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfaxNumber = null, [WorkflowExpression] Func<string> bodyorganizationName = null, [WorkflowExpression] Func<string> bodyaddressCountry = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodycustom1 = null, [WorkflowExpression] Func<string> bodycustom3 = null, [WorkflowExpression] Func<string> bodyaddressPostalCode = null, [WorkflowExpression] Func<string> bodycustom2 = null, [WorkflowExpression] Func<string> bodycustom4 = null, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyfaxNumber, nameof(bodyfaxNumber), required: false);
-            SourceExpression.Validate(bodyorganizationName, nameof(bodyorganizationName), required: false);
-            SourceExpression.Validate(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            SourceExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
-            SourceExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
-            SourceExpression.Validate(bodycustom1, nameof(bodycustom1), required: false);
-            SourceExpression.Validate(bodycustom3, nameof(bodycustom3), required: false);
-            SourceExpression.Validate(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            SourceExpression.Validate(bodycustom2, nameof(bodycustom2), required: false);
-            SourceExpression.Validate(bodycustom4, nameof(bodycustom4), required: false);
-            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(listId, 1));
@@ -239,7 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<ViewListContactsResponse> ViewListContacts([WorkflowExpression] Func<int> listId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(listId, 1));
@@ -254,8 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<DeleteListContactResponse> DeleteListContact([WorkflowExpression] Func<int> listId, [WorkflowExpression] Func<int> contactId)
         {
-            SourceExpression.Validate(listId, nameof(listId), required: true);
-            SourceExpression.Validate(contactId, nameof(contactId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(contactId, 1));
@@ -270,8 +244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<SendMmsResponse> SendMms([WorkflowExpression] Func<bodymessagesInputItem222[]> bodymessages, [WorkflowExpression] Func<string> bodymediaFile)
         {
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodymediaFile, nameof(bodymediaFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mms/send";
@@ -296,8 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<SendFaxResponse> SendFax([WorkflowExpression] Func<bodymessagesInputItem2222[]> bodymessages, [WorkflowExpression] Func<string> bodyfileUrl)
         {
-            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/fax/send";
@@ -322,8 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMedia([WorkflowExpression] Func<convertInput> convert, [WorkflowExpression] Func<string> bodycontent)
         {
-            SourceExpression.Validate(convert, nameof(convert), required: true);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/uploads";
@@ -347,7 +315,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<SearchContactListResponse> SearchContactList([WorkflowExpression] Func<string> q)
         {
-            SourceExpression.Validate(q, nameof(q), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search/contacts-lists";
@@ -363,12 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<SendLetterResponse> SendLetter([WorkflowExpression] Func<string> bodyfileUrl, [WorkflowExpression] Func<bodycolourInput> bodycolour, [WorkflowExpression] Func<bodyduplexInput> bodyduplex, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<bodytemplateUsedInput> bodytemplateUsed = null, [WorkflowExpression] Func<bodypriorityPostInput> bodypriorityPost = null)
         {
-            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: true);
-            SourceExpression.Validate(bodycolour, nameof(bodycolour), required: true);
-            SourceExpression.Validate(bodyduplex, nameof(bodyduplex), required: true);
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            SourceExpression.Validate(bodytemplateUsed, nameof(bodytemplateUsed), required: false);
-            SourceExpression.Validate(bodypriorityPost, nameof(bodypriorityPost), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/post/letters/send";
@@ -411,8 +372,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<SendPostcardResponse> SendPostcard([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string[]> bodyfileUrls)
         {
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            SourceExpression.Validate(bodyfileUrls, nameof(bodyfileUrls), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/post/postcards/send";

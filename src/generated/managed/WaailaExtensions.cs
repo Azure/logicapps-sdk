@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots([WorkflowExpression] Func<string> wauth)
         {
-            SourceExpression.Validate(wauth, nameof(wauth), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/depots";
@@ -30,9 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite([WorkflowExpression] Func<string> depot, [WorkflowExpression] Func<string> testsuite, [WorkflowExpression] Func<string> wauth)
         {
-            SourceExpression.Validate(depot, nameof(depot), required: true);
-            SourceExpression.Validate(testsuite, nameof(testsuite), required: true);
-            SourceExpression.Validate(wauth, nameof(wauth), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(depot, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testsuite, 1));
@@ -48,8 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetTokenResponse> GetToken([WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(bodycode, nameof(bodycode), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/auth/exchange-api-code";

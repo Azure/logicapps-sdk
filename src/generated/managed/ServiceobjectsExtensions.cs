@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<AVIGetAddressInfoResponse> AVIGetAddressInfo([WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> administrativeArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> outputLanguage = null)
         {
-            SourceExpression.Validate(address1, nameof(address1), required: false);
-            SourceExpression.Validate(address2, nameof(address2), required: false);
-            SourceExpression.Validate(address3, nameof(address3), required: false);
-            SourceExpression.Validate(address4, nameof(address4), required: false);
-            SourceExpression.Validate(address5, nameof(address5), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(administrativeArea, nameof(administrativeArea), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(outputLanguage, nameof(outputLanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AVI/api.svc/json/GetAddressInfo";
@@ -58,20 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<AGIPlaceSearchResponse> AGIPlaceSearch([WorkflowExpression] Func<string> singleLine = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> administrativeArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> boundaries = null, [WorkflowExpression] Func<string> maxResults = null, [WorkflowExpression] Func<string> searchType = null, [WorkflowExpression] Func<string> extras = null)
         {
-            SourceExpression.Validate(singleLine, nameof(singleLine), required: false);
-            SourceExpression.Validate(address1, nameof(address1), required: false);
-            SourceExpression.Validate(address2, nameof(address2), required: false);
-            SourceExpression.Validate(address3, nameof(address3), required: false);
-            SourceExpression.Validate(address4, nameof(address4), required: false);
-            SourceExpression.Validate(address5, nameof(address5), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(administrativeArea, nameof(administrativeArea), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(boundaries, nameof(boundaries), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
-            SourceExpression.Validate(searchType, nameof(searchType), required: false);
-            SourceExpression.Validate(extras, nameof(extras), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AGI/api.svc/json/PlaceSearch";
@@ -114,12 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<AGIReverseSearchResponse> AGIReverseSearch([WorkflowExpression] Func<string> latitude = null, [WorkflowExpression] Func<string> longitude = null, [WorkflowExpression] Func<string> searchRadius = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> maxResults = null, [WorkflowExpression] Func<string> searchType = null)
         {
-            SourceExpression.Validate(latitude, nameof(latitude), required: false);
-            SourceExpression.Validate(longitude, nameof(longitude), required: false);
-            SourceExpression.Validate(searchRadius, nameof(searchRadius), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
-            SourceExpression.Validate(searchType, nameof(searchType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AGI/api.svc/json/ReverseSearch";
@@ -146,8 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> PE2IGetInternationalExchangeInfo([WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> country = null)
         {
-            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/PE2/web.svc/json/GetInternationalExchangeInfo";
@@ -166,31 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> LVIValidateLeadInternational([WorkflowExpression] Func<string> fullName = null, [WorkflowExpression] Func<string> salutation = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> businessName = null, [WorkflowExpression] Func<string> businessDomain = null, [WorkflowExpression] Func<string> businessEIN = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> adminArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> phone1 = null, [WorkflowExpression] Func<string> phone2 = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> iPAddress = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> dateOfBirth = null, [WorkflowExpression] Func<string> uTCCaptureTime = null, [WorkflowExpression] Func<string> outputLanguage = null, [WorkflowExpression] Func<string> testType = null)
         {
-            SourceExpression.Validate(fullName, nameof(fullName), required: false);
-            SourceExpression.Validate(salutation, nameof(salutation), required: false);
-            SourceExpression.Validate(firstName, nameof(firstName), required: false);
-            SourceExpression.Validate(lastName, nameof(lastName), required: false);
-            SourceExpression.Validate(businessName, nameof(businessName), required: false);
-            SourceExpression.Validate(businessDomain, nameof(businessDomain), required: false);
-            SourceExpression.Validate(businessEIN, nameof(businessEIN), required: false);
-            SourceExpression.Validate(address1, nameof(address1), required: false);
-            SourceExpression.Validate(address2, nameof(address2), required: false);
-            SourceExpression.Validate(address3, nameof(address3), required: false);
-            SourceExpression.Validate(address4, nameof(address4), required: false);
-            SourceExpression.Validate(address5, nameof(address5), required: false);
-            SourceExpression.Validate(locality, nameof(locality), required: false);
-            SourceExpression.Validate(adminArea, nameof(adminArea), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(phone1, nameof(phone1), required: false);
-            SourceExpression.Validate(phone2, nameof(phone2), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(iPAddress, nameof(iPAddress), required: false);
-            SourceExpression.Validate(gender, nameof(gender), required: false);
-            SourceExpression.Validate(dateOfBirth, nameof(dateOfBirth), required: false);
-            SourceExpression.Validate(uTCCaptureTime, nameof(uTCCaptureTime), required: false);
-            SourceExpression.Validate(outputLanguage, nameof(outputLanguage), required: false);
-            SourceExpression.Validate(testType, nameof(testType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/LVI/api.svc/json/ValidateLeadInternational";
@@ -255,12 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<AV3GetBestMatchesResponse> AV3GetBestMatches([WorkflowExpression] Func<string> businessName = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> postalCode = null)
         {
-            SourceExpression.Validate(businessName, nameof(businessName), required: false);
-            SourceExpression.Validate(address, nameof(address), required: false);
-            SourceExpression.Validate(address2, nameof(address2), required: false);
-            SourceExpression.Validate(city, nameof(city), required: false);
-            SourceExpression.Validate(state, nameof(state), required: false);
-            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AV3/api.svc/GetBestMatchesJson";
@@ -287,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIP([WorkflowExpression] Func<string> iPAddress = null)
         {
-            SourceExpression.Validate(iPAddress, nameof(iPAddress), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";

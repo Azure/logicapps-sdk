@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cmi")]
         public IWorkflowAction HttpRequest([WorkflowExpression] Func<string> xCMITENANTNAME, [WorkflowExpression] Func<parametersmethodInput> parametersmethod, [WorkflowExpression] Func<string> parameterspath, [WorkflowExpression] Func<string> parametersbody = null)
         {
-            SourceExpression.Validate(xCMITENANTNAME, nameof(xCMITENANTNAME), required: true);
-            SourceExpression.Validate(parametersmethod, nameof(parametersmethod), required: true);
-            SourceExpression.Validate(parameterspath, nameof(parameterspath), required: true);
-            SourceExpression.Validate(parametersbody, nameof(parametersbody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/virtual/httprequest";

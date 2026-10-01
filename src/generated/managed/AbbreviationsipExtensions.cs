@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abbreviationsip")]
         public IBodyWorkflowAction<AbbrGetResponse> AbbrGet([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<string> categoryid = null, [WorkflowExpression] Func<sortbyInput> sortby = null, [WorkflowExpression] Func<searchtypeInput> searchtype = null)
         {
-            SourceExpression.Validate(term, nameof(term), required: true);
-            SourceExpression.Validate(categoryid, nameof(categoryid), required: false);
-            SourceExpression.Validate(sortby, nameof(sortby), required: false);
-            SourceExpression.Validate(searchtype, nameof(searchtype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/abbr.php";

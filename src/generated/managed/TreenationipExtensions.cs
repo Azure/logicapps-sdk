@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ProjectListResponseItem[]> ProjectList([WorkflowExpression] Func<string> status)
         {
-            SourceExpression.Validate(status, nameof(status), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/projects";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -45,7 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SitesListResponseItem[]> SitesList([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/planting-sites", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -60,7 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList([WorkflowExpression] Func<string> projectId)
         {
-            SourceExpression.Validate(projectId, nameof(projectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/species", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -75,7 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails([WorkflowExpression] Func<string> speciesId)
         {
-            SourceExpression.Validate(speciesId, nameof(speciesId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/species/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(speciesId, 1));
@@ -90,7 +85,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails([WorkflowExpression] Func<string> userId)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -105,8 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount([WorkflowExpression] Func<string> userSlug, [WorkflowExpression] Func<string> period)
         {
-            SourceExpression.Validate(userSlug, nameof(userSlug), required: true);
-            SourceExpression.Validate(period, nameof(period), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forests/{0}/tree_counter/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userSlug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
@@ -121,11 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<PlantResponse> Plant([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null, [WorkflowExpression] Func<int> bodyplanterId = null, [WorkflowExpression] Func<int> bodyspeciesId = null, [WorkflowExpression] Func<int> bodyquantity = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
-            SourceExpression.Validate(bodyplanterId, nameof(bodyplanterId), required: false);
-            SourceExpression.Validate(bodyspeciesId, nameof(bodyspeciesId), required: false);
-            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/plant";
@@ -176,12 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyresponsibleName = null, [WorkflowExpression] Func<string> bodyorganizationWebsite = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyresponsibleName, nameof(bodyresponsibleName), required: false);
-            SourceExpression.Validate(bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/user/b2b";
@@ -238,7 +219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails([WorkflowExpression] Func<string> planterId)
         {
-            SourceExpression.Validate(planterId, nameof(planterId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
@@ -253,8 +233,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate([WorkflowExpression] Func<string> planterId, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            SourceExpression.Validate(planterId, nameof(planterId), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
@@ -281,8 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<BuyCreditResponse> BuyCredit([WorkflowExpression] Func<int> bodyplanterId = null, [WorkflowExpression] Func<int> bodyamount = null)
         {
-            SourceExpression.Validate(bodyplanterId, nameof(bodyplanterId), required: false);
-            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/credit";

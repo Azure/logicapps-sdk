@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetIdeasResponseItem[]> GetIdeas([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> networkId = null)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/data/connector/innovate/activity";
@@ -33,8 +31,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetVotesResponseItem[]> GetVotes([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> networkId = null)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/data/connector/vote/activity";
@@ -52,8 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetExploreResponsesResponseItem[]> GetExploreResponses([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> networkId = null)
         {
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/data/connector/explore/activity";
@@ -85,8 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> GetActivities([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<activityTypeInput> activityType)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: true);
-            SourceExpression.Validate(activityType, nameof(activityType), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1));
@@ -102,9 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeaResponse> AddIdea([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> bodytext)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: true);
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -127,9 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeasResponseItem[]> AddIdeas([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: true);
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -147,9 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
     {
         public IWorkflowTrigger IdeaTrigger([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: true);
-            SourceExpression.Validate(activityId, nameof(activityId), required: true);
-            SourceExpression.Validate(bodyeventTypes, nameof(bodyeventTypes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(networkId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
@@ -177,8 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 
         public IWorkflowTrigger UserActivityTrigger([WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(networkId, nameof(networkId), required: false);
-            SourceExpression.Validate(bodyeventTypes, nameof(bodyeventTypes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";

@@ -42,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/causes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet([WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/contributions";
@@ -77,8 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<DonationsGetResponse> DonationsGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(userId, nameof(userId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/donations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
@@ -95,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<GiftsGetResponse> GiftsGet([WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/gifts";
@@ -112,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet([WorkflowExpression] Func<string> ein)
         {
-            SourceExpression.Validate(ein, nameof(ein), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/non_profits/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));

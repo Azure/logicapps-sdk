@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itautomate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itautomate")]
         public IBodyWorkflowAction<JToken> RunCommand([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<object> commandInput = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(commandInput, nameof(commandInput), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RunCommand";

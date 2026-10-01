@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<DocumentPolicyResult> ApplyRules([WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<PolicyRule[]> bodyrules = null, [WorkflowExpression] Func<string> bodyrecognitionMode = null)
         {
-            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
-            SourceExpression.Validate(bodyrules, nameof(bodyrules), required: false);
-            SourceExpression.Validate(bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document-ai/document/analyze/enforce-policy";
@@ -55,11 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<DocumentQuestionAnswersResult> AnswerQuestions([WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<DocumentQuestionBoolean[]> bodyquestionsYesNo = null, [WorkflowExpression] Func<DocumentQuestionMultipleChoice[]> bodyquestionsMultipleChoice = null, [WorkflowExpression] Func<DocumentQuestionFreeResponse[]> bodyquestionsFreeResponse = null, [WorkflowExpression] Func<string> bodyrecognitionMode = null)
         {
-            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
-            SourceExpression.Validate(bodyquestionsYesNo, nameof(bodyquestionsYesNo), required: false);
-            SourceExpression.Validate(bodyquestionsMultipleChoice, nameof(bodyquestionsMultipleChoice), required: false);
-            SourceExpression.Validate(bodyquestionsFreeResponse, nameof(bodyquestionsFreeResponse), required: false);
-            SourceExpression.Validate(bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document-ai/document/analyze/answer-questions";
@@ -110,13 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractFieldsAdvancedResponse> ExtractFieldsAdvanced([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<FieldToExtract[]> bodyfieldsToExtract = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
-            SourceExpression.Validate(bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
-            SourceExpression.Validate(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
-            SourceExpression.Validate(bodypreprocessing, nameof(bodypreprocessing), required: false);
-            SourceExpression.Validate(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
-            SourceExpression.Validate(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document-ai/document/extract/fields/advanced";
@@ -175,13 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<DocumentAdvancedClassificationResult> ExtractClassificationAdvanced([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<DocumentCategories[]> bodycategories = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
-            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            SourceExpression.Validate(bodypreprocessing, nameof(bodypreprocessing), required: false);
-            SourceExpression.Validate(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
-            SourceExpression.Validate(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
-            SourceExpression.Validate(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document-ai/document/extract/classify/advanced";
@@ -240,13 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractFieldsFromDocumentAdvancedBatchJob([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<FieldToExtract[]> bodyfieldsToExtract = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
-            SourceExpression.Validate(bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
-            SourceExpression.Validate(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
-            SourceExpression.Validate(bodypreprocessing, nameof(bodypreprocessing), required: false);
-            SourceExpression.Validate(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
-            SourceExpression.Validate(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document-ai/document/batch-job/extract/fields/advanced";
@@ -305,7 +276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentJobStatusResult> GetAsyncJobStatus([WorkflowExpression] Func<string> asyncJobId = null)
         {
-            SourceExpression.Validate(asyncJobId, nameof(asyncJobId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document-ai/document/batch-job/batch-job/status";

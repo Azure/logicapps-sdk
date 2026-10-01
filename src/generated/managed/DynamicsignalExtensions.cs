@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<UserRequestResponse> GetUserByEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string[]> bodyinclude = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyinclude, nameof(bodyinclude), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/user/email";
@@ -72,10 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<DocumentInfoResponse> PutDocument([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
-            SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -93,21 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<UserRequestResponse> PreregisterUser([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyexternalSsoUserId = null, [WorkflowExpression] Func<string> bodyhandle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<int[]> bodydivisionIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null, [WorkflowExpression] Func<UserTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<bool> bodysendInvitationEmail = null, [WorkflowExpression] Func<string> bodyinvitationMessage = null, [WorkflowExpression] Func<bodynotificationsDefaultInput> bodynotificationsDefault = null, [WorkflowExpression] Func<bool> bodyvaluecanSharePosts = null, [WorkflowExpression] Func<bool> bodyvaluecanCommentPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanSubmitPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanManageOrganization = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyexternalSsoUserId, nameof(bodyexternalSsoUserId), required: false);
-            SourceExpression.Validate(bodyhandle, nameof(bodyhandle), required: false);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodydivisionIDs, nameof(bodydivisionIDs), required: false);
-            SourceExpression.Validate(bodytargetIDs, nameof(bodytargetIDs), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodysendInvitationEmail, nameof(bodysendInvitationEmail), required: false);
-            SourceExpression.Validate(bodyinvitationMessage, nameof(bodyinvitationMessage), required: false);
-            SourceExpression.Validate(bodynotificationsDefault, nameof(bodynotificationsDefault), required: false);
-            SourceExpression.Validate(bodyvaluecanSharePosts, nameof(bodyvaluecanSharePosts), required: false);
-            SourceExpression.Validate(bodyvaluecanCommentPosts, nameof(bodyvaluecanCommentPosts), required: false);
-            SourceExpression.Validate(bodyvaluecanSubmitPosts, nameof(bodyvaluecanSubmitPosts), required: false);
-            SourceExpression.Validate(bodyvaluecanManageOrganization, nameof(bodyvaluecanManageOrganization), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/manage/preregister";
@@ -226,8 +205,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<UploadImageResponse> ManageImage([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/manage/images";
@@ -244,8 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<PostResponse> Get([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> userId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(userId, nameof(userId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -262,33 +237,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<PostResponse> Create([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytagLine = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodycreatorComments = null, [WorkflowExpression] Func<string> bodypermaLink = null, [WorkflowExpression] Func<bool> bodyinternalDiscussionsEnabled = null, [WorkflowExpression] Func<string> bodymemberVideoUrl = null, [WorkflowExpression] Func<bodypostTypeInput> bodypostType = null, [WorkflowExpression] Func<bodyapprovalStateInput> bodyapprovalState = null, [WorkflowExpression] Func<bodydisplayModeInput> bodydisplayMode = null, [WorkflowExpression] Func<bool> bodysharable = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodysuggestedShareText = null, [WorkflowExpression] Func<string> bodyshortSuggestedShareText = null, [WorkflowExpression] Func<int> bodysharePoints = null, [WorkflowExpression] Func<int> bodyclickPoints = null, [WorkflowExpression] Func<bool> bodyshareWithImages = null, [WorkflowExpression] Func<bool> bodyshareImagesOnly = null, [WorkflowExpression] Func<PostTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string[]> bodydocuments = null, [WorkflowExpression] Func<int> bodycreatorId = null, [WorkflowExpression] Func<bool> bodydisplayCreator = null, [WorkflowExpression] Func<int[]> bodycategoryIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytagLine, nameof(bodytagLine), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodycreatorComments, nameof(bodycreatorComments), required: false);
-            SourceExpression.Validate(bodypermaLink, nameof(bodypermaLink), required: false);
-            SourceExpression.Validate(bodyinternalDiscussionsEnabled, nameof(bodyinternalDiscussionsEnabled), required: false);
-            SourceExpression.Validate(bodymemberVideoUrl, nameof(bodymemberVideoUrl), required: false);
-            SourceExpression.Validate(bodypostType, nameof(bodypostType), required: false);
-            SourceExpression.Validate(bodyapprovalState, nameof(bodyapprovalState), required: false);
-            SourceExpression.Validate(bodydisplayMode, nameof(bodydisplayMode), required: false);
-            SourceExpression.Validate(bodysharable, nameof(bodysharable), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            SourceExpression.Validate(bodysuggestedShareText, nameof(bodysuggestedShareText), required: false);
-            SourceExpression.Validate(bodyshortSuggestedShareText, nameof(bodyshortSuggestedShareText), required: false);
-            SourceExpression.Validate(bodysharePoints, nameof(bodysharePoints), required: false);
-            SourceExpression.Validate(bodyclickPoints, nameof(bodyclickPoints), required: false);
-            SourceExpression.Validate(bodyshareWithImages, nameof(bodyshareWithImages), required: false);
-            SourceExpression.Validate(bodyshareImagesOnly, nameof(bodyshareImagesOnly), required: false);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
-            SourceExpression.Validate(bodycreatorId, nameof(bodycreatorId), required: false);
-            SourceExpression.Validate(bodydisplayCreator, nameof(bodydisplayCreator), required: false);
-            SourceExpression.Validate(bodycategoryIDs, nameof(bodycategoryIDs), required: false);
-            SourceExpression.Validate(bodytargetIDs, nameof(bodytargetIDs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/post";
@@ -467,9 +415,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<SuccessResponse> PutImageTo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -486,8 +431,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<SuccessResponse> AddImageTo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyurl)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/imageurl", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -510,14 +453,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<PostResponse> Update([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytagLine = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodycreatorComments = null, [WorkflowExpression] Func<string> bodypermaLink = null, [WorkflowExpression] Func<bool> bodyinternalDiscussionsEnabled = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodytagLine, nameof(bodytagLine), required: false);
-            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodycreatorComments, nameof(bodycreatorComments), required: false);
-            SourceExpression.Validate(bodypermaLink, nameof(bodypermaLink), required: false);
-            SourceExpression.Validate(bodyinternalDiscussionsEnabled, nameof(bodyinternalDiscussionsEnabled), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/manage/post/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -622,12 +557,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<SuccessResponse> ManagePosts([WorkflowExpression] Func<string[]> bodypostIDs, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<int[]> bodydivisionIDs = null, [WorkflowExpression] Func<int[]> bodycategoryIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null, [WorkflowExpression] Func<bodyapprovalStateInput> bodyapprovalState = null)
         {
-            SourceExpression.Validate(bodypostIDs, nameof(bodypostIDs), required: true);
-            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
-            SourceExpression.Validate(bodydivisionIDs, nameof(bodydivisionIDs), required: false);
-            SourceExpression.Validate(bodycategoryIDs, nameof(bodycategoryIDs), required: false);
-            SourceExpression.Validate(bodytargetIDs, nameof(bodytargetIDs), required: false);
-            SourceExpression.Validate(bodyapprovalState, nameof(bodyapprovalState), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/manage/posts";

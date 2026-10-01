@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<ApplePayRegisterResponse> ApplePayRegister([WorkflowExpression] Func<string> bodydomainName)
         {
-            SourceExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/apple-pay/domains";
@@ -37,11 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CardListResponse> CardList([WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> customerId = null, [WorkflowExpression] Func<bool> includeDisabled = null, [WorkflowExpression] Func<string> referenceId = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(customerId, nameof(customerId), required: false);
-            SourceExpression.Validate(includeDisabled, nameof(includeDisabled), required: false);
-            SourceExpression.Validate(referenceId, nameof(referenceId), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards";
@@ -67,17 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CardCreateResponse> CardCreate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<string> bodycardbillingAddressaddressLine1 = null, [WorkflowExpression] Func<string> bodycardbillingAddressaddressLine2 = null, [WorkflowExpression] Func<string> bodycardbillingAddresslocality = null, [WorkflowExpression] Func<string> bodycardbillingAddressadministrativeDistrictLevel1 = null, [WorkflowExpression] Func<string> bodycardbillingAddresspostalCode = null, [WorkflowExpression] Func<string> bodycardbillingAddresscountry = null, [WorkflowExpression] Func<string> bodycardcardholderName = null, [WorkflowExpression] Func<string> bodycardcustomerId = null, [WorkflowExpression] Func<string> bodycardreferenceId = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodycardbillingAddressaddressLine1, nameof(bodycardbillingAddressaddressLine1), required: false);
-            SourceExpression.Validate(bodycardbillingAddressaddressLine2, nameof(bodycardbillingAddressaddressLine2), required: false);
-            SourceExpression.Validate(bodycardbillingAddresslocality, nameof(bodycardbillingAddresslocality), required: false);
-            SourceExpression.Validate(bodycardbillingAddressadministrativeDistrictLevel1, nameof(bodycardbillingAddressadministrativeDistrictLevel1), required: false);
-            SourceExpression.Validate(bodycardbillingAddresspostalCode, nameof(bodycardbillingAddresspostalCode), required: false);
-            SourceExpression.Validate(bodycardbillingAddresscountry, nameof(bodycardbillingAddresscountry), required: false);
-            SourceExpression.Validate(bodycardcardholderName, nameof(bodycardcardholderName), required: false);
-            SourceExpression.Validate(bodycardcustomerId, nameof(bodycardcustomerId), required: false);
-            SourceExpression.Validate(bodycardreferenceId, nameof(bodycardreferenceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/cards";
@@ -180,7 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CardRetrieveResponse> CardRetrieve([WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -195,7 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CardDisableResponse> CardDisable([WorkflowExpression] Func<string> cardId)
         {
-            SourceExpression.Validate(cardId, nameof(cardId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/{0}/disable", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
@@ -210,7 +191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogBatchDeleteResponse> CatalogBatchDelete([WorkflowExpression] Func<string[]> bodyobjectIds = null)
         {
-            SourceExpression.Validate(bodyobjectIds, nameof(bodyobjectIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/batch-delete";
@@ -237,9 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogBatchRetrieveResponse> CatalogBatchRetrieve([WorkflowExpression] Func<string[]> bodyobjectIds = null, [WorkflowExpression] Func<int> bodycatalogVersion = null, [WorkflowExpression] Func<bool> bodyincludeRelatedObjects = null)
         {
-            SourceExpression.Validate(bodyobjectIds, nameof(bodyobjectIds), required: false);
-            SourceExpression.Validate(bodycatalogVersion, nameof(bodycatalogVersion), required: false);
-            SourceExpression.Validate(bodyincludeRelatedObjects, nameof(bodyincludeRelatedObjects), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/batch-retrieve";
@@ -278,8 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogBatchUpsertResponse> CatalogBatchUpsert([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<bodybatchesInputItem[]> bodybatches = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodybatches, nameof(bodybatches), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/batch-upsert";
@@ -326,8 +301,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogListResponse> CatalogList([WorkflowExpression] Func<int> cursor = null, [WorkflowExpression] Func<string> types = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(types, nameof(types), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/list";
@@ -346,13 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogUpsertResponse> CatalogUpsert([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodyObjectid = null, [WorkflowExpression] Func<string> bodyObjecttype = null, [WorkflowExpression] Func<string> bodyObjectitemDataabbreviation = null, [WorkflowExpression] Func<string> bodyObjectitemDatatitle = null, [WorkflowExpression] Func<string> bodyObjectitemDataname = null, [WorkflowExpression] Func<bodyObjectitemDatavariationsInputItem[]> bodyObjectitemDatavariations = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyObjectid, nameof(bodyObjectid), required: false);
-            SourceExpression.Validate(bodyObjecttype, nameof(bodyObjecttype), required: false);
-            SourceExpression.Validate(bodyObjectitemDataabbreviation, nameof(bodyObjectitemDataabbreviation), required: false);
-            SourceExpression.Validate(bodyObjectitemDatatitle, nameof(bodyObjectitemDatatitle), required: false);
-            SourceExpression.Validate(bodyObjectitemDataname, nameof(bodyObjectitemDataname), required: false);
-            SourceExpression.Validate(bodyObjectitemDatavariations, nameof(bodyObjectitemDatavariations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/object";
@@ -431,8 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogRetrieveResponse> CatalogRetrieve([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<bool> includeRelatedObjects = null)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
-            SourceExpression.Validate(includeRelatedObjects, nameof(includeRelatedObjects), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/catalog/object/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -449,7 +413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogDeleteResponse> CatalogDelete([WorkflowExpression] Func<string> objectId)
         {
-            SourceExpression.Validate(objectId, nameof(objectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/catalog/object/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(objectId, 1));
@@ -464,10 +427,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogSearchResponse> CatalogSearch([WorkflowExpression] Func<string[]> bodyobjectTypes = null, [WorkflowExpression] Func<string> bodyqueryprefixQueryattributeName = null, [WorkflowExpression] Func<string> bodyqueryprefixQueryattributePrefix = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodyobjectTypes, nameof(bodyobjectTypes), required: false);
-            SourceExpression.Validate(bodyqueryprefixQueryattributeName, nameof(bodyqueryprefixQueryattributeName), required: false);
-            SourceExpression.Validate(bodyqueryprefixQueryattributePrefix, nameof(bodyqueryprefixQueryattributePrefix), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/search";
@@ -528,9 +487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogUpdateModifierResponse> CatalogUpdateModifier([WorkflowExpression] Func<string[]> bodyitemIds = null, [WorkflowExpression] Func<string[]> bodymodifierListsToEnable = null, [WorkflowExpression] Func<string[]> bodymodifierListsToDisable = null)
         {
-            SourceExpression.Validate(bodyitemIds, nameof(bodyitemIds), required: false);
-            SourceExpression.Validate(bodymodifierListsToEnable, nameof(bodymodifierListsToEnable), required: false);
-            SourceExpression.Validate(bodymodifierListsToDisable, nameof(bodymodifierListsToDisable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/update-item-modifier-lists";
@@ -569,9 +525,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CatalogUpdateTaxesResponse> CatalogUpdateTaxes([WorkflowExpression] Func<string[]> bodyitemIds = null, [WorkflowExpression] Func<string[]> bodytaxesToEnable = null, [WorkflowExpression] Func<string[]> bodytaxesToDisable = null)
         {
-            SourceExpression.Validate(bodyitemIds, nameof(bodyitemIds), required: false);
-            SourceExpression.Validate(bodytaxesToEnable, nameof(bodytaxesToEnable), required: false);
-            SourceExpression.Validate(bodytaxesToDisable, nameof(bodytaxesToDisable), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/catalog/update-item-taxes";
@@ -624,7 +577,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomGroupCreateResponse> CustomGroupCreate([WorkflowExpression] Func<string> bodygroupname = null)
         {
-            SourceExpression.Validate(bodygroupname, nameof(bodygroupname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/customers/groups";
@@ -659,7 +611,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerGroupRetrieveResponse> CustomerGroupRetrieve([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -674,7 +625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<JToken> CustomerGroupDelete([WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -689,8 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerGroupUpdateResponse> CustomerGroupUpdate([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodygroupname = null)
         {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodygroupname, nameof(bodygroupname), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -725,8 +673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerSegmentListResponse> CustomerSegmentList([WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/customers/segments";
@@ -745,7 +691,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerSegmentRetrieveResponse> CustomerSegmentRetrieve([WorkflowExpression] Func<string> segmentId)
         {
-            SourceExpression.Validate(segmentId, nameof(segmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/segments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(segmentId, 1));
@@ -760,10 +705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerListResponse> CustomerList([WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sortField, nameof(sortField), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/customers";
@@ -788,21 +729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerCreateResponse> CustomerCreate([WorkflowExpression] Func<string> bodygivenName = null, [WorkflowExpression] Func<string> bodyfamilyName = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodynickname = null, [WorkflowExpression] Func<string> bodyaddressaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddresslocality = null, [WorkflowExpression] Func<string> bodyaddressadministrativeDistrictLevel1 = null, [WorkflowExpression] Func<string> bodyaddresspostalCode = null, [WorkflowExpression] Func<string> bodyaddresscountry = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyreferenceId = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<string> bodybirthday = null)
         {
-            SourceExpression.Validate(bodygivenName, nameof(bodygivenName), required: false);
-            SourceExpression.Validate(bodyfamilyName, nameof(bodyfamilyName), required: false);
-            SourceExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            SourceExpression.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
-            SourceExpression.Validate(bodynickname, nameof(bodynickname), required: false);
-            SourceExpression.Validate(bodyaddressaddressLine1, nameof(bodyaddressaddressLine1), required: false);
-            SourceExpression.Validate(bodyaddressaddressLine2, nameof(bodyaddressaddressLine2), required: false);
-            SourceExpression.Validate(bodyaddresslocality, nameof(bodyaddresslocality), required: false);
-            SourceExpression.Validate(bodyaddressadministrativeDistrictLevel1, nameof(bodyaddressadministrativeDistrictLevel1), required: false);
-            SourceExpression.Validate(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            SourceExpression.Validate(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            SourceExpression.Validate(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodybirthday, nameof(bodybirthday), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/customers";
@@ -921,15 +847,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerSearchResponse> CustomerSearch([WorkflowExpression] Func<string> bodyqueryfilteremailAddressfuzzy = null, [WorkflowExpression] Func<string[]> bodyqueryfiltercreationSourcevalues = null, [WorkflowExpression] Func<string> bodyqueryfiltercreationSourcerule = null, [WorkflowExpression] Func<string> bodyqueryfiltercreatedAtstartAt = null, [WorkflowExpression] Func<string> bodyqueryfiltercreatedAtendAt = null, [WorkflowExpression] Func<string[]> bodyqueryfiltergroupIdsall = null, [WorkflowExpression] Func<string> bodyquerysortfield = null, [WorkflowExpression] Func<string> bodyquerysortorder = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            SourceExpression.Validate(bodyqueryfilteremailAddressfuzzy, nameof(bodyqueryfilteremailAddressfuzzy), required: false);
-            SourceExpression.Validate(bodyqueryfiltercreationSourcevalues, nameof(bodyqueryfiltercreationSourcevalues), required: false);
-            SourceExpression.Validate(bodyqueryfiltercreationSourcerule, nameof(bodyqueryfiltercreationSourcerule), required: false);
-            SourceExpression.Validate(bodyqueryfiltercreatedAtstartAt, nameof(bodyqueryfiltercreatedAtstartAt), required: false);
-            SourceExpression.Validate(bodyqueryfiltercreatedAtendAt, nameof(bodyqueryfiltercreatedAtendAt), required: false);
-            SourceExpression.Validate(bodyqueryfiltergroupIdsall, nameof(bodyqueryfiltergroupIdsall), required: false);
-            SourceExpression.Validate(bodyquerysortfield, nameof(bodyquerysortfield), required: false);
-            SourceExpression.Validate(bodyquerysortorder, nameof(bodyquerysortorder), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/customers/search";
@@ -1060,7 +977,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerRetrieveResponse> CustomerRetrieve([WorkflowExpression] Func<string> customerId)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1));
@@ -1075,7 +991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<JToken> CustomerDelete([WorkflowExpression] Func<string> customerId)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1));
@@ -1090,7 +1005,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<CustomerUpdateResponse> CustomerUpdate([WorkflowExpression] Func<string> customerId)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1));
@@ -1105,8 +1019,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<JToken> CustomerRemoveGroup([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/{0}/groups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -1121,8 +1033,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<JToken> CustomerAddGroup([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> groupId)
         {
-            SourceExpression.Validate(customerId, nameof(customerId), required: true);
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customers/{0}/groups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -1137,9 +1047,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<DisputeListResponse> DisputeList([WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<statesInput> states = null, [WorkflowExpression] Func<string> locationId = null)
         {
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(states, nameof(states), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/disputes";
@@ -1160,7 +1067,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<DisputeRetrieveResponse> DisputeRetrieve([WorkflowExpression] Func<string> disputeId)
         {
-            SourceExpression.Validate(disputeId, nameof(disputeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/disputes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(disputeId, 1));
@@ -1175,7 +1081,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<DisputeAcceptResponse> DisputeAccept([WorkflowExpression] Func<string> disputeId)
         {
-            SourceExpression.Validate(disputeId, nameof(disputeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/disputes/{0}/accept", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(disputeId, 1));
@@ -1190,7 +1095,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<DisputeListEvidenceResponse> DisputeListEvidence([WorkflowExpression] Func<string> disputeId)
         {
-            SourceExpression.Validate(disputeId, nameof(disputeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/disputes/{0}/evidence", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(disputeId, 1));
@@ -1205,10 +1109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<DisputeCreateEvidenceTextResponse> DisputeCreateEvidenceText([WorkflowExpression] Func<string> disputeId, [WorkflowExpression] Func<bodyevidenceTypeInput> bodyevidenceType = null, [WorkflowExpression] Func<string> bodyevidenceText = null, [WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(disputeId, nameof(disputeId), required: true);
-            SourceExpression.Validate(bodyevidenceType, nameof(bodyevidenceType), required: false);
-            SourceExpression.Validate(bodyevidenceText, nameof(bodyevidenceText), required: false);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/disputes/{0}/evidence-text", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(disputeId, 1));
@@ -1247,8 +1147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<DisputeRetrieveEvidenceResponse> DisputeRetrieveEvidence([WorkflowExpression] Func<string> disputeId, [WorkflowExpression] Func<string> evidenceId)
         {
-            SourceExpression.Validate(disputeId, nameof(disputeId), required: true);
-            SourceExpression.Validate(evidenceId, nameof(evidenceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/disputes/{0}/evidence/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(disputeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(evidenceId, 1));
@@ -1263,8 +1161,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<JToken> DisputeDeleteEvidence([WorkflowExpression] Func<string> disputeId, [WorkflowExpression] Func<string> evidenceId)
         {
-            SourceExpression.Validate(disputeId, nameof(disputeId), required: true);
-            SourceExpression.Validate(evidenceId, nameof(evidenceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/disputes/{0}/evidence/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(disputeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(evidenceId, 1));
@@ -1279,7 +1175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<EvidenceSubmitResponse> EvidenceSubmit([WorkflowExpression] Func<string> disputeId)
         {
-            SourceExpression.Validate(disputeId, nameof(disputeId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/disputes/{0}/submit-evidence", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(disputeId, 1));
@@ -1294,7 +1189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InventoryRetrieveAdjustmentResponse> InventoryRetrieveAdjustment([WorkflowExpression] Func<string> adjustmentId)
         {
-            SourceExpression.Validate(adjustmentId, nameof(adjustmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/inventory/adjustments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(adjustmentId, 1));
@@ -1309,9 +1203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InventoryBatchChangeResponse> InventoryBatchChange([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<bodychangesInputItem[]> bodychanges = null, [WorkflowExpression] Func<bool> bodyignoreUnchangedCounts = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodychanges, nameof(bodychanges), required: false);
-            SourceExpression.Validate(bodyignoreUnchangedCounts, nameof(bodyignoreUnchangedCounts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/inventory/changes/batch-create";
@@ -1350,12 +1241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InventoryBatchRetrieveChangesResponse> InventoryBatchRetrieveChanges([WorkflowExpression] Func<string[]> bodycatalogObjectIds = null, [WorkflowExpression] Func<string[]> bodylocationIds = null, [WorkflowExpression] Func<string[]> bodytypes = null, [WorkflowExpression] Func<string[]> bodystates = null, [WorkflowExpression] Func<string> bodyupdatedAfter = null, [WorkflowExpression] Func<string> bodyupdatedBefore = null)
         {
-            SourceExpression.Validate(bodycatalogObjectIds, nameof(bodycatalogObjectIds), required: false);
-            SourceExpression.Validate(bodylocationIds, nameof(bodylocationIds), required: false);
-            SourceExpression.Validate(bodytypes, nameof(bodytypes), required: false);
-            SourceExpression.Validate(bodystates, nameof(bodystates), required: false);
-            SourceExpression.Validate(bodyupdatedAfter, nameof(bodyupdatedAfter), required: false);
-            SourceExpression.Validate(bodyupdatedBefore, nameof(bodyupdatedBefore), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/inventory/changes/batch-retrieve";
@@ -1412,9 +1297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InventoryBatchRetrieveCountsResponse> InventoryBatchRetrieveCounts([WorkflowExpression] Func<string[]> bodycatalogObjectIds = null, [WorkflowExpression] Func<string[]> bodylocationIds = null, [WorkflowExpression] Func<string> bodyupdatedAfter = null)
         {
-            SourceExpression.Validate(bodycatalogObjectIds, nameof(bodycatalogObjectIds), required: false);
-            SourceExpression.Validate(bodylocationIds, nameof(bodylocationIds), required: false);
-            SourceExpression.Validate(bodyupdatedAfter, nameof(bodyupdatedAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/inventory/counts/batch-retrieve";
@@ -1453,7 +1335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InventoryRetrievePhysicalCountResponse> InventoryRetrievePhysicalCount([WorkflowExpression] Func<string> physicalCountId)
         {
-            SourceExpression.Validate(physicalCountId, nameof(physicalCountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/inventory/physical-counts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(physicalCountId, 1));
@@ -1468,7 +1349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InventoryRetrieveTransferResponse> InventoryRetrieveTransfer([WorkflowExpression] Func<string> transferId)
         {
-            SourceExpression.Validate(transferId, nameof(transferId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/inventory/transfers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transferId, 1));
@@ -1483,9 +1363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InventoryRetrieveCountResponse> InventoryRetrieveCount([WorkflowExpression] Func<string> catalogObjectId, [WorkflowExpression] Func<string> locationIds = null, [WorkflowExpression] Func<string> cursor = null)
         {
-            SourceExpression.Validate(catalogObjectId, nameof(catalogObjectId), required: true);
-            SourceExpression.Validate(locationIds, nameof(locationIds), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/inventory/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogObjectId, 1));
@@ -1504,9 +1381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InvoiceListResponse> InvoiceList([WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoices";
@@ -1527,21 +1401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InvoiceCreateResponse> InvoiceCreate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodyinvoicelocationId = null, [WorkflowExpression] Func<string> bodyinvoiceorderId = null, [WorkflowExpression] Func<string> bodyinvoicescheduledAt = null, [WorkflowExpression] Func<string> bodyinvoiceprimaryRecipientcustomerId = null, [WorkflowExpression] Func<string> bodyinvoicedeliveryMethod = null, [WorkflowExpression] Func<bodyinvoicepaymentRequestsInputItem[]> bodyinvoicepaymentRequests = null, [WorkflowExpression] Func<string> bodyinvoiceinvoiceNumber = null, [WorkflowExpression] Func<string> bodyinvoicetitle = null, [WorkflowExpression] Func<string> bodyinvoicedescription = null, [WorkflowExpression] Func<bool> bodyinvoiceacceptedPaymentMethodscard = null, [WorkflowExpression] Func<bool> bodyinvoiceacceptedPaymentMethodssquareGiftCard = null, [WorkflowExpression] Func<bool> bodyinvoiceacceptedPaymentMethodsbankAccount = null, [WorkflowExpression] Func<bodyinvoicecustomFieldsInputItem[]> bodyinvoicecustomFields = null, [WorkflowExpression] Func<string> bodyinvoicesaleOrServiceDate = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyinvoicelocationId, nameof(bodyinvoicelocationId), required: false);
-            SourceExpression.Validate(bodyinvoiceorderId, nameof(bodyinvoiceorderId), required: false);
-            SourceExpression.Validate(bodyinvoicescheduledAt, nameof(bodyinvoicescheduledAt), required: false);
-            SourceExpression.Validate(bodyinvoiceprimaryRecipientcustomerId, nameof(bodyinvoiceprimaryRecipientcustomerId), required: false);
-            SourceExpression.Validate(bodyinvoicedeliveryMethod, nameof(bodyinvoicedeliveryMethod), required: false);
-            SourceExpression.Validate(bodyinvoicepaymentRequests, nameof(bodyinvoicepaymentRequests), required: false);
-            SourceExpression.Validate(bodyinvoiceinvoiceNumber, nameof(bodyinvoiceinvoiceNumber), required: false);
-            SourceExpression.Validate(bodyinvoicetitle, nameof(bodyinvoicetitle), required: false);
-            SourceExpression.Validate(bodyinvoicedescription, nameof(bodyinvoicedescription), required: false);
-            SourceExpression.Validate(bodyinvoiceacceptedPaymentMethodscard, nameof(bodyinvoiceacceptedPaymentMethodscard), required: false);
-            SourceExpression.Validate(bodyinvoiceacceptedPaymentMethodssquareGiftCard, nameof(bodyinvoiceacceptedPaymentMethodssquareGiftCard), required: false);
-            SourceExpression.Validate(bodyinvoiceacceptedPaymentMethodsbankAccount, nameof(bodyinvoiceacceptedPaymentMethodsbankAccount), required: false);
-            SourceExpression.Validate(bodyinvoicecustomFields, nameof(bodyinvoicecustomFields), required: false);
-            SourceExpression.Validate(bodyinvoicesaleOrServiceDate, nameof(bodyinvoicesaleOrServiceDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoices";
@@ -1676,11 +1535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InvoiceSearchResponse> InvoiceSearch([WorkflowExpression] Func<string[]> bodyqueryfilterlocationIds = null, [WorkflowExpression] Func<string[]> bodyqueryfiltercustomerIds = null, [WorkflowExpression] Func<string> bodyquerysortfield = null, [WorkflowExpression] Func<string> bodyquerysortorder = null, [WorkflowExpression] Func<int> bodyquerylimit = null)
         {
-            SourceExpression.Validate(bodyqueryfilterlocationIds, nameof(bodyqueryfilterlocationIds), required: false);
-            SourceExpression.Validate(bodyqueryfiltercustomerIds, nameof(bodyqueryfiltercustomerIds), required: false);
-            SourceExpression.Validate(bodyquerysortfield, nameof(bodyquerysortfield), required: false);
-            SourceExpression.Validate(bodyquerysortorder, nameof(bodyquerysortorder), required: false);
-            SourceExpression.Validate(bodyquerylimit, nameof(bodyquerylimit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/invoices/search";
@@ -1755,7 +1609,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InvoiceGetResponse> InvoiceGet([WorkflowExpression] Func<string> invoiceId)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
@@ -1770,8 +1623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<JToken> InvoiceDelete([WorkflowExpression] Func<string> invoiceId, [WorkflowExpression] Func<int> version = null)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
-            SourceExpression.Validate(version, nameof(version), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
@@ -1788,10 +1639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InvoiceUpdateResponse> InvoiceUpdate([WorkflowExpression] Func<string> invoiceId, [WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<bodyinvoicepaymentRequestsInputItem2[]> bodyinvoicepaymentRequests = null, [WorkflowExpression] Func<string[]> bodyfieldsToClear = null)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyinvoicepaymentRequests, nameof(bodyinvoicepaymentRequests), required: false);
-            SourceExpression.Validate(bodyfieldsToClear, nameof(bodyfieldsToClear), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
@@ -1838,8 +1685,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InvoiceCancelResponse> InvoiceCancel([WorkflowExpression] Func<string> invoiceId, [WorkflowExpression] Func<int> bodyversion = null)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
@@ -1866,9 +1711,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<InvoicePublishResponse> InvoicePublish([WorkflowExpression] Func<string> invoiceId, [WorkflowExpression] Func<int> bodyversion = null, [WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(invoiceId, nameof(invoiceId), required: true);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/publish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(invoiceId, 1));
@@ -1901,12 +1743,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderCreateResponse> OrderCreate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodyorderreferenceId = null, [WorkflowExpression] Func<string> bodyorderlocationId = null, [WorkflowExpression] Func<bodyorderlineItemsInputItem[]> bodyorderlineItems = null, [WorkflowExpression] Func<bodyordertaxesInputItem[]> bodyordertaxes = null, [WorkflowExpression] Func<bodyorderdiscountsInputItem[]> bodyorderdiscounts = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyorderreferenceId, nameof(bodyorderreferenceId), required: false);
-            SourceExpression.Validate(bodyorderlocationId, nameof(bodyorderlocationId), required: false);
-            SourceExpression.Validate(bodyorderlineItems, nameof(bodyorderlineItems), required: false);
-            SourceExpression.Validate(bodyordertaxes, nameof(bodyordertaxes), required: false);
-            SourceExpression.Validate(bodyorderdiscounts, nameof(bodyorderdiscounts), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/orders";
@@ -1971,8 +1807,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderBatchRetrieveResponse> OrderBatchRetrieve([WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string[]> bodyorderIds = null)
         {
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodyorderIds, nameof(bodyorderIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/orders/batch-retrieve";
@@ -2005,10 +1839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderCalculateResponse> OrderCalculate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodyorderlocationId = null, [WorkflowExpression] Func<bodyorderdiscountsInputItem2[]> bodyorderdiscounts = null, [WorkflowExpression] Func<bodyorderlineItemsInputItem2[]> bodyorderlineItems = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyorderlocationId, nameof(bodyorderlocationId), required: false);
-            SourceExpression.Validate(bodyorderdiscounts, nameof(bodyorderdiscounts), required: false);
-            SourceExpression.Validate(bodyorderlineItems, nameof(bodyorderlineItems), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/orders/calculate";
@@ -2061,9 +1891,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderCloneResponse> OrderClone([WorkflowExpression] Func<string> bodyorderId = null, [WorkflowExpression] Func<int> bodyversion = null, [WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(bodyorderId, nameof(bodyorderId), required: false);
-            SourceExpression.Validate(bodyversion, nameof(bodyversion), required: false);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/orders/clone";
@@ -2102,14 +1929,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderSearchResponse> OrderSearch([WorkflowExpression] Func<bool> bodyreturnEntries = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string[]> bodylocationIds = null, [WorkflowExpression] Func<string> bodyqueryfilterdateTimeFilterclosedAtstartAt = null, [WorkflowExpression] Func<string> bodyqueryfilterdateTimeFilterclosedAtendAt = null, [WorkflowExpression] Func<string[]> bodyqueryfilterstateFilterstates = null, [WorkflowExpression] Func<string> bodyquerysortsortField = null, [WorkflowExpression] Func<string> bodyquerysortsortOrder = null)
         {
-            SourceExpression.Validate(bodyreturnEntries, nameof(bodyreturnEntries), required: false);
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodylocationIds, nameof(bodylocationIds), required: false);
-            SourceExpression.Validate(bodyqueryfilterdateTimeFilterclosedAtstartAt, nameof(bodyqueryfilterdateTimeFilterclosedAtstartAt), required: false);
-            SourceExpression.Validate(bodyqueryfilterdateTimeFilterclosedAtendAt, nameof(bodyqueryfilterdateTimeFilterclosedAtendAt), required: false);
-            SourceExpression.Validate(bodyqueryfilterstateFilterstates, nameof(bodyqueryfilterstateFilterstates), required: false);
-            SourceExpression.Validate(bodyquerysortsortField, nameof(bodyquerysortsortField), required: false);
-            SourceExpression.Validate(bodyquerysortsortOrder, nameof(bodyquerysortsortOrder), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/orders/search";
@@ -2226,7 +2045,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderRetrieveResponse> OrderRetrieve([WorkflowExpression] Func<string> orderId)
         {
-            SourceExpression.Validate(orderId, nameof(orderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/orders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orderId, 1));
@@ -2241,11 +2059,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderUpdateResponse> OrderUpdate([WorkflowExpression] Func<string> orderId, [WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<int> bodyorderversion = null, [WorkflowExpression] Func<bodyorderlineItemsInputItem22[]> bodyorderlineItems = null, [WorkflowExpression] Func<string[]> bodyfieldsToClear = null)
         {
-            SourceExpression.Validate(orderId, nameof(orderId), required: true);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyorderversion, nameof(bodyorderversion), required: false);
-            SourceExpression.Validate(bodyorderlineItems, nameof(bodyorderlineItems), required: false);
-            SourceExpression.Validate(bodyfieldsToClear, nameof(bodyfieldsToClear), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/orders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orderId, 1));
@@ -2298,9 +2111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<OrderPayResponse> OrderPay([WorkflowExpression] Func<string> orderId, [WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string[]> bodypaymentIds = null)
         {
-            SourceExpression.Validate(orderId, nameof(orderId), required: true);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodypaymentIds, nameof(bodypaymentIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/orders/{0}/pay", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(orderId, 1));
@@ -2333,15 +2143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<PaymentListResponse> PaymentList([WorkflowExpression] Func<string> beginTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<int> total = null, [WorkflowExpression] Func<string> last4 = null, [WorkflowExpression] Func<string> cardBrand = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(beginTime, nameof(beginTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(total, nameof(total), required: false);
-            SourceExpression.Validate(last4, nameof(last4), required: false);
-            SourceExpression.Validate(cardBrand, nameof(cardBrand), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/payments";
@@ -2375,17 +2176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<PaymentCreateResponse> PaymentCreate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<int> bodyamountMoneyamount = null, [WorkflowExpression] Func<string> bodyamountMoneycurrency = null, [WorkflowExpression] Func<string> bodysourceId = null, [WorkflowExpression] Func<bool> bodyautocomplete = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyreferenceId = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodyappFeeMoneyamount = null, [WorkflowExpression] Func<string> bodyappFeeMoneycurrency = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyamountMoneyamount, nameof(bodyamountMoneyamount), required: false);
-            SourceExpression.Validate(bodyamountMoneycurrency, nameof(bodyamountMoneycurrency), required: false);
-            SourceExpression.Validate(bodysourceId, nameof(bodysourceId), required: false);
-            SourceExpression.Validate(bodyautocomplete, nameof(bodyautocomplete), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
-            SourceExpression.Validate(bodyappFeeMoneyamount, nameof(bodyappFeeMoneyamount), required: false);
-            SourceExpression.Validate(bodyappFeeMoneycurrency, nameof(bodyappFeeMoneycurrency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/payments";
@@ -2488,7 +2278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<JToken> PaymentCancelIdempotency([WorkflowExpression] Func<string> bodyidempotencyKey = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/payments/cancel";
@@ -2515,7 +2304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<PaymentGetResponse> PaymentGet([WorkflowExpression] Func<string> paymentId)
         {
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/payments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(paymentId, 1));
@@ -2530,13 +2318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<PaymentUpdateResponse> PaymentUpdate([WorkflowExpression] Func<string> paymentId, [WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<int> bodypaymentamountMoneyamount = null, [WorkflowExpression] Func<string> bodypaymentamountMoneycurrency = null, [WorkflowExpression] Func<int> bodypaymenttipMoneyamount = null, [WorkflowExpression] Func<string> bodypaymenttipMoneycurrency = null, [WorkflowExpression] Func<string> bodypaymentversionToken = null)
         {
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodypaymentamountMoneyamount, nameof(bodypaymentamountMoneyamount), required: false);
-            SourceExpression.Validate(bodypaymentamountMoneycurrency, nameof(bodypaymentamountMoneycurrency), required: false);
-            SourceExpression.Validate(bodypaymenttipMoneyamount, nameof(bodypaymenttipMoneyamount), required: false);
-            SourceExpression.Validate(bodypaymenttipMoneycurrency, nameof(bodypaymenttipMoneycurrency), required: false);
-            SourceExpression.Validate(bodypaymentversionToken, nameof(bodypaymentversionToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/payments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(paymentId, 1));
@@ -2617,7 +2398,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<PaymentCancelResponse> PaymentCancel([WorkflowExpression] Func<string> paymentId)
         {
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/payments/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(paymentId, 1));
@@ -2632,7 +2412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<PaymentCompleteResponse> PaymentComplete([WorkflowExpression] Func<string> paymentId)
         {
-            SourceExpression.Validate(paymentId, nameof(paymentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/payments/{0}/complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(paymentId, 1));
@@ -2647,14 +2426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<RefundListResponse> RefundList([WorkflowExpression] Func<string> beginTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<string> cursor = null, [WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> sourceType = null, [WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(beginTime, nameof(beginTime), required: false);
-            SourceExpression.Validate(endTime, nameof(endTime), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(cursor, nameof(cursor), required: false);
-            SourceExpression.Validate(locationId, nameof(locationId), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(sourceType, nameof(sourceType), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/refunds";
@@ -2686,13 +2457,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<RefundPaymentResponse> RefundPayment([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodypaymentId = null, [WorkflowExpression] Func<int> bodyamountMoneyamount = null, [WorkflowExpression] Func<string> bodyamountMoneycurrency = null, [WorkflowExpression] Func<int> bodyappFeeMoneyamount = null, [WorkflowExpression] Func<string> bodyappFeeMoneycurrency = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodypaymentId, nameof(bodypaymentId), required: false);
-            SourceExpression.Validate(bodyamountMoneyamount, nameof(bodyamountMoneyamount), required: false);
-            SourceExpression.Validate(bodyamountMoneycurrency, nameof(bodyamountMoneycurrency), required: false);
-            SourceExpression.Validate(bodyappFeeMoneyamount, nameof(bodyappFeeMoneyamount), required: false);
-            SourceExpression.Validate(bodyappFeeMoneycurrency, nameof(bodyappFeeMoneycurrency), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/refunds";
@@ -2771,7 +2535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<RefundGetResponse> RefundGet([WorkflowExpression] Func<string> refundId)
         {
-            SourceExpression.Validate(refundId, nameof(refundId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/refunds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(refundId, 1));
@@ -2786,17 +2549,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<SubscriptionCreateResponse> SubscriptionCreate([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyplanId = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<string> bodycardId = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodytaxPercentage = null, [WorkflowExpression] Func<int> bodypriceOverrideMoneyamount = null, [WorkflowExpression] Func<string> bodypriceOverrideMoneycurrency = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodysourcename = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: false);
-            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
-            SourceExpression.Validate(bodycardId, nameof(bodycardId), required: false);
-            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodytaxPercentage, nameof(bodytaxPercentage), required: false);
-            SourceExpression.Validate(bodypriceOverrideMoneyamount, nameof(bodypriceOverrideMoneyamount), required: false);
-            SourceExpression.Validate(bodypriceOverrideMoneycurrency, nameof(bodypriceOverrideMoneycurrency), required: false);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            SourceExpression.Validate(bodysourcename, nameof(bodysourcename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscriptions";
@@ -2899,9 +2651,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<SubscriptionSearchResponse> SubscriptionSearch([WorkflowExpression] Func<string[]> bodyqueryfilterlocationIds = null, [WorkflowExpression] Func<string[]> bodyqueryfiltercustomerIds = null, [WorkflowExpression] Func<string[]> bodyqueryfiltersourceNames = null)
         {
-            SourceExpression.Validate(bodyqueryfilterlocationIds, nameof(bodyqueryfilterlocationIds), required: false);
-            SourceExpression.Validate(bodyqueryfiltercustomerIds, nameof(bodyqueryfiltercustomerIds), required: false);
-            SourceExpression.Validate(bodyqueryfiltersourceNames, nameof(bodyqueryfiltersourceNames), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscriptions/search";
@@ -2956,7 +2705,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<SubscriptionRetrieveResponse> SubscriptionRetrieve([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -2971,11 +2719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<SubscriptionUpdateResponse> SubscriptionUpdate([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<int> bodysubscriptionversion = null, [WorkflowExpression] Func<string> bodysubscriptiontaxPercentage = null, [WorkflowExpression] Func<int> bodysubscriptionpriceOverrideMoneyamount = null, [WorkflowExpression] Func<string> bodysubscriptionpriceOverrideMoneycurrency = null)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(bodysubscriptionversion, nameof(bodysubscriptionversion), required: false);
-            SourceExpression.Validate(bodysubscriptiontaxPercentage, nameof(bodysubscriptiontaxPercentage), required: false);
-            SourceExpression.Validate(bodysubscriptionpriceOverrideMoneyamount, nameof(bodysubscriptionpriceOverrideMoneyamount), required: false);
-            SourceExpression.Validate(bodysubscriptionpriceOverrideMoneycurrency, nameof(bodysubscriptionpriceOverrideMoneycurrency), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -3036,7 +2779,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<SubscriptionCancelResponse> SubscriptionCancel([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -3051,7 +2793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<SubscriptionListEventsResponse> SubscriptionListEvents([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -3066,7 +2807,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<SubscriptionResumeResponse> SubscriptionResume([WorkflowExpression] Func<string> subscriptionId)
         {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resume", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
@@ -3087,12 +2827,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalCreateCheckoutResponse> TerminalCreateCheckout([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<int> bodycheckoutamountMoneyamount = null, [WorkflowExpression] Func<string> bodycheckoutamountMoneycurrency = null, [WorkflowExpression] Func<string> bodycheckoutreferenceId = null, [WorkflowExpression] Func<string> bodycheckoutdeviceOptionsdeviceId = null, [WorkflowExpression] Func<string> bodycheckoutnote = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodycheckoutamountMoneyamount, nameof(bodycheckoutamountMoneyamount), required: false);
-            SourceExpression.Validate(bodycheckoutamountMoneycurrency, nameof(bodycheckoutamountMoneycurrency), required: false);
-            SourceExpression.Validate(bodycheckoutreferenceId, nameof(bodycheckoutreferenceId), required: false);
-            SourceExpression.Validate(bodycheckoutdeviceOptionsdeviceId, nameof(bodycheckoutdeviceOptionsdeviceId), required: false);
-            SourceExpression.Validate(bodycheckoutnote, nameof(bodycheckoutnote), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/terminals/checkouts";
@@ -3173,8 +2907,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalSearchCheckoutsResponse> TerminalSearchCheckouts([WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodyqueryfilterstatus = null)
         {
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyqueryfilterstatus, nameof(bodyqueryfilterstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/terminals/checkouts/search";
@@ -3223,7 +2955,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalGetCheckoutResponse> TerminalGetCheckout([WorkflowExpression] Func<string> checkoutId)
         {
-            SourceExpression.Validate(checkoutId, nameof(checkoutId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/terminals/checkouts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkoutId, 1));
@@ -3238,7 +2969,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalCancelCheckoutResponse> TerminalCancelCheckout([WorkflowExpression] Func<string> checkoutId)
         {
-            SourceExpression.Validate(checkoutId, nameof(checkoutId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/terminals/checkouts/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkoutId, 1));
@@ -3259,12 +2989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalCreateRefundResponse> TerminalCreateRefund([WorkflowExpression] Func<string> bodyidempotencyKey = null, [WorkflowExpression] Func<int> bodyrefundamountMoneyamount = null, [WorkflowExpression] Func<string> bodyrefundamountMoneycurrency = null, [WorkflowExpression] Func<string> bodyrefunddeviceId = null, [WorkflowExpression] Func<string> bodyrefundreason = null, [WorkflowExpression] Func<string> bodyrefundpaymentId = null)
         {
-            SourceExpression.Validate(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            SourceExpression.Validate(bodyrefundamountMoneyamount, nameof(bodyrefundamountMoneyamount), required: false);
-            SourceExpression.Validate(bodyrefundamountMoneycurrency, nameof(bodyrefundamountMoneycurrency), required: false);
-            SourceExpression.Validate(bodyrefunddeviceId, nameof(bodyrefunddeviceId), required: false);
-            SourceExpression.Validate(bodyrefundreason, nameof(bodyrefundreason), required: false);
-            SourceExpression.Validate(bodyrefundpaymentId, nameof(bodyrefundpaymentId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/terminals/refunds";
@@ -3337,8 +3061,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalSearchRefundsResponse> TerminalSearchRefunds([WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodyqueryfilterstatus = null)
         {
-            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            SourceExpression.Validate(bodyqueryfilterstatus, nameof(bodyqueryfilterstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/terminals/refunds/search";
@@ -3387,7 +3109,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalGetRefundResponse> TerminalGetRefund([WorkflowExpression] Func<string> terminalRefundId)
         {
-            SourceExpression.Validate(terminalRefundId, nameof(terminalRefundId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/terminals/refunds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(terminalRefundId, 1));
@@ -3402,7 +3123,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
         public IBodyWorkflowAction<TerminalCancelRefundResponse> TerminalCancelRefund([WorkflowExpression] Func<string> terminalRefundId)
         {
-            SourceExpression.Validate(terminalRefundId, nameof(terminalRefundId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/terminals/refunds/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(terminalRefundId, 1));

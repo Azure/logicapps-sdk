@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<ListActiveResponse> ListActive([WorkflowExpression] Func<int> page, [WorkflowExpression] Func<int> pageSize, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortMethod = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortMethod, nameof(sortMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(page, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(pageSize, 1));
@@ -36,8 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<ListDetailsResponse> ListDetails([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<bool> withStatistics = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(withStatistics, nameof(withStatistics), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/details.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -54,9 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<ListCreateResponse> ListCreate([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyconfirmationPage = null, [WorkflowExpression] Func<string> bodyredirectAfterUnsubscribePage = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyconfirmationPage, nameof(bodyconfirmationPage), required: false);
-            SourceExpression.Validate(bodyredirectAfterUnsubscribePage, nameof(bodyredirectAfterUnsubscribePage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lists/create.json";
@@ -95,10 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<ListUpdateResponse> ListUpdate([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyconfirmationPage = null, [WorkflowExpression] Func<string> bodyredirectAfterUnsubscribePage = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyconfirmationPage, nameof(bodyconfirmationPage), required: false);
-            SourceExpression.Validate(bodyredirectAfterUnsubscribePage, nameof(bodyredirectAfterUnsubscribePage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/update.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -137,7 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<ListDeleteResponse> ListDelete([WorkflowExpression] Func<string> mailingListId)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/delete.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -152,10 +138,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<FieldCreateResponse> FieldCreate([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycustomFieldType = null, [WorkflowExpression] Func<string> bodyoptions = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycustomFieldType, nameof(bodycustomFieldType), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/customfields/create.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -194,11 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<FieldUpdateResponse> FieldUpdate([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> customFieldId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycustomFieldType = null, [WorkflowExpression] Func<string> bodyoptions = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(customFieldId, nameof(customFieldId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodycustomFieldType, nameof(bodycustomFieldType), required: false);
-            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/customfields/{1}/update.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
@@ -237,8 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<FieldDeleteResponse> FieldDelete([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> customFieldId)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(customFieldId, nameof(customFieldId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/customfields/{1}/delete.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
@@ -253,9 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<SubscriberListResponse> SubscriberList([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscribers/Subscribed.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -274,8 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<SubscriberGetEmailResponse> SubscriberGetEmail([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/view.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -291,8 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<SubscriberGetIdResponse> SubscriberGetId([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> subscriberId)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(subscriberId, nameof(subscriberId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/find/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
@@ -307,11 +275,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<SubscriberAddResponse> SubscriberAdd([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<bool> bodyhasExternalDoubleOptIn = null, [WorkflowExpression] Func<string[]> bodycustomFields = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyhasExternalDoubleOptIn, nameof(bodyhasExternalDoubleOptIn), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/subscribe.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -356,9 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<SubscriberAddBulkResponse> SubscriberAddBulk([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<bool> bodyhasExternalDoubleOptIn = null, [WorkflowExpression] Func<bodysubscribersInputItem[]> bodysubscribers = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(bodyhasExternalDoubleOptIn, nameof(bodyhasExternalDoubleOptIn), required: false);
-            SourceExpression.Validate(bodysubscribers, nameof(bodysubscribers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/subscribe_many.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -391,12 +351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> subscriberId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyhasExternalDoubleOptIn = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string[]> bodycustomFields = null)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(subscriberId, nameof(subscriberId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyhasExternalDoubleOptIn, nameof(bodyhasExternalDoubleOptIn), required: false);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/update/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
@@ -441,7 +395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<UnsubscribeAccountResponse> UnsubscribeAccount([WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/subscribers/unsubscribe.json";
@@ -464,8 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<UnsubscribeListResponse> UnsubscribeList([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/unsubscribe.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -488,8 +439,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<UnsubscribeRemoveResponse> UnsubscribeRemove([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> bodyemail)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/remove.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -512,8 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<UnsubscribeRemoveBulkResponse> UnsubscribeRemoveBulk([WorkflowExpression] Func<string> mailingListId, [WorkflowExpression] Func<string> bodyemails)
         {
-            SourceExpression.Validate(mailingListId, nameof(mailingListId), required: true);
-            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/remove_many.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailingListId, 1));
@@ -536,10 +483,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignGetResponse> CampaignGet([WorkflowExpression] Func<string> page, [WorkflowExpression] Func<string> pageSize, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortMethod = null)
         {
-            SourceExpression.Validate(page, nameof(page), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortMethod, nameof(sortMethod), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(page, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageSize, 1));
@@ -558,7 +501,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignGetDetailsResponse> CampaignGetDetails([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/view.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -587,7 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<SenderGetEmailResponse> SenderGetEmail([WorkflowExpression] Func<string> email)
         {
-            SourceExpression.Validate(email, nameof(email), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/senders/find_one.json";
@@ -603,7 +544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignCloneResponse> CampaignClone([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/clone.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -618,19 +558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignCreateResponse> CampaignCreate([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodysenderEmail = null, [WorkflowExpression] Func<string> bodyreplyToEmail = null, [WorkflowExpression] Func<string> bodyconfirmationToEmail = null, [WorkflowExpression] Func<string> bodywebLocation = null, [WorkflowExpression] Func<bodymailingListsInputItem[]> bodymailingLists = null, [WorkflowExpression] Func<string> bodyisAB = null, [WorkflowExpression] Func<string> bodyaBCampaignType = null, [WorkflowExpression] Func<string> bodywebLocationB = null, [WorkflowExpression] Func<string> bodyhoursToTest = null, [WorkflowExpression] Func<string> bodylistPercentage = null, [WorkflowExpression] Func<string> bodyaBWinnerSelectionType = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodysenderEmail, nameof(bodysenderEmail), required: false);
-            SourceExpression.Validate(bodyreplyToEmail, nameof(bodyreplyToEmail), required: false);
-            SourceExpression.Validate(bodyconfirmationToEmail, nameof(bodyconfirmationToEmail), required: false);
-            SourceExpression.Validate(bodywebLocation, nameof(bodywebLocation), required: false);
-            SourceExpression.Validate(bodymailingLists, nameof(bodymailingLists), required: false);
-            SourceExpression.Validate(bodyisAB, nameof(bodyisAB), required: false);
-            SourceExpression.Validate(bodyaBCampaignType, nameof(bodyaBCampaignType), required: false);
-            SourceExpression.Validate(bodywebLocationB, nameof(bodywebLocationB), required: false);
-            SourceExpression.Validate(bodyhoursToTest, nameof(bodyhoursToTest), required: false);
-            SourceExpression.Validate(bodylistPercentage, nameof(bodylistPercentage), required: false);
-            SourceExpression.Validate(bodyaBWinnerSelectionType, nameof(bodyaBWinnerSelectionType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/campaigns/create.json";
@@ -729,20 +656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignUpdateResponse> CampaignUpdate([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodysenderEmail = null, [WorkflowExpression] Func<string> bodyreplyToEmail = null, [WorkflowExpression] Func<string> bodyconfirmationToEmail = null, [WorkflowExpression] Func<string> bodywebLocation = null, [WorkflowExpression] Func<bodymailingListsInputItem[]> bodymailingLists = null, [WorkflowExpression] Func<string> bodyisAB = null, [WorkflowExpression] Func<string> bodyaBCampaignType = null, [WorkflowExpression] Func<string> bodywebLocationB = null, [WorkflowExpression] Func<string> bodyhoursToTest = null, [WorkflowExpression] Func<string> bodylistPercentage = null, [WorkflowExpression] Func<string> bodyaBWinnerSelectionType = null)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            SourceExpression.Validate(bodysenderEmail, nameof(bodysenderEmail), required: false);
-            SourceExpression.Validate(bodyreplyToEmail, nameof(bodyreplyToEmail), required: false);
-            SourceExpression.Validate(bodyconfirmationToEmail, nameof(bodyconfirmationToEmail), required: false);
-            SourceExpression.Validate(bodywebLocation, nameof(bodywebLocation), required: false);
-            SourceExpression.Validate(bodymailingLists, nameof(bodymailingLists), required: false);
-            SourceExpression.Validate(bodyisAB, nameof(bodyisAB), required: false);
-            SourceExpression.Validate(bodyaBCampaignType, nameof(bodyaBCampaignType), required: false);
-            SourceExpression.Validate(bodywebLocationB, nameof(bodywebLocationB), required: false);
-            SourceExpression.Validate(bodyhoursToTest, nameof(bodyhoursToTest), required: false);
-            SourceExpression.Validate(bodylistPercentage, nameof(bodylistPercentage), required: false);
-            SourceExpression.Validate(bodyaBWinnerSelectionType, nameof(bodyaBWinnerSelectionType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/update.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -841,7 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignDeleteResponse> CampaignDelete([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/delete.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -856,8 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignTestResponse> CampaignTest([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string[]> bodytestEmails)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(bodytestEmails, nameof(bodytestEmails), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/send_test.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -880,7 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignSendResponse> CampaignSend([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/send.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -895,12 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignStatsResponse> CampaignStats([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
-            SourceExpression.Validate(from, nameof(from), required: false);
-            SourceExpression.Validate(to, nameof(to), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/stats/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
@@ -923,7 +826,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignSummaryResponse> CampaignSummary([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/view_summary.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -938,7 +840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignActivityLocationResponse> CampaignActivityLocation([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/stats/countries.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -953,7 +854,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignActivityLinkResponse> CampaignActivityLink([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/stats/links.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -968,9 +868,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignScheduleResponse> CampaignSchedule([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodytimezone = null)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
-            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/schedule.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -999,7 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignUnscheduleResponse> CampaignUnschedule([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/unschedule.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
@@ -1014,7 +910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
         public IBodyWorkflowAction<CampaignABSummaryResponse> CampaignABSummary([WorkflowExpression] Func<string> campaignId)
         {
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/view_ab_summary.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));

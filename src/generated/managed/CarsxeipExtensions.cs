@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<SpecGetResponse> SpecGet([WorkflowExpression] Func<string> vin)
         {
-            SourceExpression.Validate(vin, nameof(vin), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/specs";
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<ValueGetResponse> ValueGet([WorkflowExpression] Func<string> vin)
         {
-            SourceExpression.Validate(vin, nameof(vin), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/marketvalue";
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<HistoryGetResponse> HistoryGet([WorkflowExpression] Func<string> vin)
         {
-            SourceExpression.Validate(vin, nameof(vin), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/history";
@@ -62,9 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<PlateDecodeResponse> PlateDecode([WorkflowExpression] Func<string> plate, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<countryInput> country = null)
         {
-            SourceExpression.Validate(plate, nameof(plate), required: true);
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/platedecoder";
@@ -83,16 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> make, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> trim = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<bool> transparent = null, [WorkflowExpression] Func<angleInput> angle = null, [WorkflowExpression] Func<photoTypeInput> photoType = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<licenseInput> license = null)
         {
-            SourceExpression.Validate(make, nameof(make), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(year, nameof(year), required: false);
-            SourceExpression.Validate(trim, nameof(trim), required: false);
-            SourceExpression.Validate(color, nameof(color), required: false);
-            SourceExpression.Validate(transparent, nameof(transparent), required: false);
-            SourceExpression.Validate(angle, nameof(angle), required: false);
-            SourceExpression.Validate(photoType, nameof(photoType), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(license, nameof(license), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/images";
@@ -126,7 +110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<PlateRecogResponse> PlateRecog([WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/platerecognition";
@@ -143,7 +126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<CodeGetResponse> CodeGet([WorkflowExpression] Func<string> code)
         {
-            SourceExpression.Validate(code, nameof(code), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/obdcodesdecoder";

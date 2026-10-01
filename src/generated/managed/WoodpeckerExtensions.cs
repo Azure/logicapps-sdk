@@ -14,14 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> activity = null, [WorkflowExpression] Func<string> campaignId = null, [WorkflowExpression] Func<bool> campaignsDetail = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(activity, nameof(activity), required: false);
-            SourceExpression.Validate(campaignId, nameof(campaignId), required: false);
-            SourceExpression.Validate(campaignsDetail, nameof(campaignsDetail), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/prospects";
@@ -53,8 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<string> ProspectsDelete([WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<int> campaignsId = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(campaignsId, nameof(campaignsId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/prospects";
@@ -73,9 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<ProspectsPostResponse> Prospects([WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem[]> bodyprospects = null)
         {
-            SourceExpression.Validate(bodyupdate, nameof(bodyupdate), required: false);
-            SourceExpression.Validate(bodyforce, nameof(bodyforce), required: false);
-            SourceExpression.Validate(bodyprospects, nameof(bodyprospects), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add_prospects_list";
@@ -114,10 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign([WorkflowExpression] Func<int> bodycampaigncampaignId = null, [WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem2[]> bodyprospects = null)
         {
-            SourceExpression.Validate(bodycampaigncampaignId, nameof(bodycampaigncampaignId), required: false);
-            SourceExpression.Validate(bodyupdate, nameof(bodyupdate), required: false);
-            SourceExpression.Validate(bodyforce, nameof(bodyforce), required: false);
-            SourceExpression.Validate(bodyprospects, nameof(bodyprospects), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/add_prospects_campaign";
@@ -170,8 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> id = null)
         {
-            SourceExpression.Validate(status, nameof(status), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/campaign_list";

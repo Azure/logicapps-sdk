@@ -14,17 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<HtmlToPdfResponse> HtmlToPdf([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymargins = null, [WorkflowExpression] Func<bodypaperSizeInput> bodypaperSize = null, [WorkflowExpression] Func<bodyorientationInput> bodyorientation = null, [WorkflowExpression] Func<bool> bodyprintBackground = null, [WorkflowExpression] Func<string> bodyheader = null, [WorkflowExpression] Func<string> bodyfooter = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodymargins, nameof(bodymargins), required: false);
-            SourceExpression.Validate(bodypaperSize, nameof(bodypaperSize), required: false);
-            SourceExpression.Validate(bodyorientation, nameof(bodyorientation), required: false);
-            SourceExpression.Validate(bodyprintBackground, nameof(bodyprintBackground), required: false);
-            SourceExpression.Validate(bodyheader, nameof(bodyheader), required: false);
-            SourceExpression.Validate(bodyfooter, nameof(bodyfooter), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/from/html";
@@ -167,16 +156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<UrlToPdfResponse> UrlToPdf([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodymargins = null, [WorkflowExpression] Func<string> bodypaperSize = null, [WorkflowExpression] Func<bodyorientationInput> bodyorientation = null, [WorkflowExpression] Func<bool> bodyprintBackground = null, [WorkflowExpression] Func<string> bodyheader = null, [WorkflowExpression] Func<string> bodyfooter = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodymargins, nameof(bodymargins), required: false);
-            SourceExpression.Validate(bodypaperSize, nameof(bodypaperSize), required: false);
-            SourceExpression.Validate(bodyorientation, nameof(bodyorientation), required: false);
-            SourceExpression.Validate(bodyprintBackground, nameof(bodyprintBackground), required: false);
-            SourceExpression.Validate(bodyheader, nameof(bodyheader), required: false);
-            SourceExpression.Validate(bodyfooter, nameof(bodyfooter), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/from/url";
@@ -313,15 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PdfFillerResponse> PdfFiller([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyannotationsString = null, [WorkflowExpression] Func<string> bodyimagesString = null, [WorkflowExpression] Func<string> bodyfieldsString = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyannotationsString, nameof(bodyannotationsString), required: false);
-            SourceExpression.Validate(bodyimagesString, nameof(bodyimagesString), required: false);
-            SourceExpression.Validate(bodyfieldsString, nameof(bodyfieldsString), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/edit/add";
@@ -422,10 +392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<MergePdfSimplifiedResponse> MergePdfSimplified([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/merge";
@@ -486,10 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<MergePdfResponse> MergePdf([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/merge2";
@@ -550,13 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<SplitPdfResponse> SplitPdf([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodypages, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/split";
@@ -641,17 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<SplitPdf2Response> SplitPdf2([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodysearchString, [WorkflowExpression] Func<bool> bodyexcludeKeyPages = null, [WorkflowExpression] Func<bool> bodyregexSearch = null, [WorkflowExpression] Func<bool> bodycaseSensitive = null, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodysearchString, nameof(bodysearchString), required: true);
-            SourceExpression.Validate(bodyexcludeKeyPages, nameof(bodyexcludeKeyPages), required: false);
-            SourceExpression.Validate(bodyregexSearch, nameof(bodyregexSearch), required: false);
-            SourceExpression.Validate(bodycaseSensitive, nameof(bodycaseSensitive), required: false);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/split2";
@@ -800,15 +744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFSerarchTextResponse> PDFSerarchText([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodysearchString, [WorkflowExpression] Func<bool> bodyregexSearch = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<bodywordMatchingModeInput> bodywordMatchingMode = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodysearchString, nameof(bodysearchString), required: true);
-            SourceExpression.Validate(bodyregexSearch, nameof(bodyregexSearch), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodywordMatchingMode, nameof(bodywordMatchingMode), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/find";
@@ -905,14 +840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<DocumentParserResponse> DocumentParser([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat, [WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: true);
-            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/documentparser";
@@ -983,7 +910,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<JobCheckResponse> JobCheck([WorkflowExpression] Func<string> bodyjobid)
         {
-            SourceExpression.Validate(bodyjobid, nameof(bodyjobid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/job/check";
@@ -1006,13 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<BarcodeGeneratorResponse> BarcodeGenerator([WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydecorationImage = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodydecorationImage, nameof(bodydecorationImage), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/barcode/generate";
@@ -1087,11 +1006,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<BarcodeReaderResponse> BarcodeReader([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodytypes, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodytypes, nameof(bodytypes), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/barcode/read/from/url";
@@ -1144,10 +1058,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFInfoReaderResponse> PDFInfoReader([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/info";
@@ -1188,10 +1098,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFFormsInfoReaderResponse> PDFFormsInfoReader([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/info/fields";
@@ -1242,13 +1148,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFFindTableResponse> PDFFindTable([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/find/table";
@@ -1337,17 +1236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<SearchAndReplaceResponse> SearchAndReplace([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string[]> bodysearchStrings, [WorkflowExpression] Func<string[]> bodyreplaceStrings = null, [WorkflowExpression] Func<bool> bodycaseSensitive = null, [WorkflowExpression] Func<int> bodyreplacementLimit = null, [WorkflowExpression] Func<bool> bodyregex = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodysearchStrings, nameof(bodysearchStrings), required: true);
-            SourceExpression.Validate(bodyreplaceStrings, nameof(bodyreplaceStrings), required: false);
-            SourceExpression.Validate(bodycaseSensitive, nameof(bodycaseSensitive), required: false);
-            SourceExpression.Validate(bodyreplacementLimit, nameof(bodyreplacementLimit), required: false);
-            SourceExpression.Validate(bodyregex, nameof(bodyregex), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/edit/replace-text";
@@ -1446,16 +1334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<SearchAndReplaceWithImageResponse> SearchAndReplaceWithImage([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodysearchString, [WorkflowExpression] Func<string> bodyreplaceImage, [WorkflowExpression] Func<bool> bodycaseSensitive = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<bool> bodyregex = null, [WorkflowExpression] Func<int> bodyreplacementLimit = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodysearchString, nameof(bodysearchString), required: true);
-            SourceExpression.Validate(bodyreplaceImage, nameof(bodyreplaceImage), required: true);
-            SourceExpression.Validate(bodycaseSensitive, nameof(bodycaseSensitive), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyregex, nameof(bodyregex), required: false);
-            SourceExpression.Validate(bodyreplacementLimit, nameof(bodyreplacementLimit), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/edit/replace-text-with-image";
@@ -1574,17 +1452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<SearchAndDeleteTextResponse> SearchAndDeleteText([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string[]> bodysearchStrings, [WorkflowExpression] Func<bool> bodycaseSensitive = null, [WorkflowExpression] Func<bool> bodyregex = null, [WorkflowExpression] Func<int> bodyreplacementLimit = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodysearchStrings, nameof(bodysearchStrings), required: true);
-            SourceExpression.Validate(bodycaseSensitive, nameof(bodycaseSensitive), required: false);
-            SourceExpression.Validate(bodyregex, nameof(bodyregex), required: false);
-            SourceExpression.Validate(bodyreplacementLimit, nameof(bodyreplacementLimit), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/edit/delete-text";
@@ -1703,12 +1570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFSearchableResponse> PDFSearchable([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/makesearchable";
@@ -1771,11 +1632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFUnSearchableResponse> PDFUnSearchable([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/makeunsearchable";
@@ -1822,17 +1678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToCSVResponse> PDFToCSV([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<bodyunwrapInput> bodyunwrap = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylineGrouping = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyunwrap, nameof(bodyunwrap), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylineGrouping, nameof(bodylineGrouping), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/csv";
@@ -1945,17 +1790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToJSONResponse> PDFToJSON([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<bodyunwrapInput> bodyunwrap = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylineGrouping = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyunwrap, nameof(bodyunwrap), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylineGrouping, nameof(bodylineGrouping), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/json2";
@@ -2068,17 +1902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToJSONMetaResponse> PDFToJSONMeta([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<bodyunwrapInput> bodyunwrap = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylineGrouping = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyunwrap, nameof(bodyunwrap), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylineGrouping, nameof(bodylineGrouping), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/json-meta";
@@ -2191,17 +2014,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToTextResponse> PDFToText([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<bodyunwrapInput> bodyunwrap = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylineGrouping = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyunwrap, nameof(bodyunwrap), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylineGrouping, nameof(bodylineGrouping), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/text";
@@ -2314,12 +2126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToTextSimpleResponse> PDFToTextSimple([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/text-simple";
@@ -2402,16 +2208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToXLSResponse> PDFToXLS([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bodyunwrapInput> bodyunwrap = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylineGrouping = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyunwrap, nameof(bodyunwrap), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylineGrouping, nameof(bodylineGrouping), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/xls";
@@ -2508,16 +2304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToXLSXResponse> PDFToXLSX([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bodyunwrapInput> bodyunwrap = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylineGrouping = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyunwrap, nameof(bodyunwrap), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylineGrouping, nameof(bodylineGrouping), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/xlsx";
@@ -2614,17 +2400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToXMLResponse> PDFToXML([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<bodyunwrapInput> bodyunwrap = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylineGrouping = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyunwrap, nameof(bodyunwrap), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodylineGrouping, nameof(bodylineGrouping), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/xml";
@@ -2737,13 +2512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToJPGResponse> PDFToJPG([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/jpg";
@@ -2812,13 +2580,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToPNGResponse> PDFToPNG([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/png";
@@ -2887,13 +2648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToWEBPResponse> PDFToWEBP([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/webp";
@@ -2962,13 +2716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFToTIFFResponse> PDFToTIFF([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyrect = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyrect, nameof(bodyrect), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/to/tiff";
@@ -3037,12 +2784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFFromCSVResponse> PDFFromCSV([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/from/csv";
@@ -3105,12 +2846,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFFromDocResponse> PDFFromDoc([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/from/doc";
@@ -3173,11 +2908,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFFromImagesResponse> PDFFromImages([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/from/image";
@@ -3234,16 +2964,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFFromEmailResponse> PDFFromEmail([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyembedAttachments = null, [WorkflowExpression] Func<bool> bodyconvertAttachments = null, [WorkflowExpression] Func<string> bodymargins = null, [WorkflowExpression] Func<string> bodypaperSize = null, [WorkflowExpression] Func<bodyorientationInput> bodyorientation = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyembedAttachments, nameof(bodyembedAttachments), required: false);
-            SourceExpression.Validate(bodyconvertAttachments, nameof(bodyconvertAttachments), required: false);
-            SourceExpression.Validate(bodymargins, nameof(bodymargins), required: false);
-            SourceExpression.Validate(bodypaperSize, nameof(bodypaperSize), required: false);
-            SourceExpression.Validate(bodyorientation, nameof(bodyorientation), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/convert/from/email";
@@ -3330,22 +3050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFAddSecurityResponse> PDFAddSecurity([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyownerPassword, [WorkflowExpression] Func<string> bodyuserPassword = null, [WorkflowExpression] Func<bodyencryptionAlgorithmInput> bodyencryptionAlgorithm = null, [WorkflowExpression] Func<bool> bodyallowAccessibilitySupport = null, [WorkflowExpression] Func<bool> bodyallowAssemblyDocument = null, [WorkflowExpression] Func<bool> bodyallowPrintDocument = null, [WorkflowExpression] Func<bool> bodyallowFillForms = null, [WorkflowExpression] Func<bool> bodyallowModifyDocument = null, [WorkflowExpression] Func<bool> bodyallowContentExtraction = null, [WorkflowExpression] Func<bool> bodyallowModifyAnnotations = null, [WorkflowExpression] Func<bodyprintQualityInput> bodyprintQuality = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyownerPassword, nameof(bodyownerPassword), required: true);
-            SourceExpression.Validate(bodyuserPassword, nameof(bodyuserPassword), required: false);
-            SourceExpression.Validate(bodyencryptionAlgorithm, nameof(bodyencryptionAlgorithm), required: false);
-            SourceExpression.Validate(bodyallowAccessibilitySupport, nameof(bodyallowAccessibilitySupport), required: false);
-            SourceExpression.Validate(bodyallowAssemblyDocument, nameof(bodyallowAssemblyDocument), required: false);
-            SourceExpression.Validate(bodyallowPrintDocument, nameof(bodyallowPrintDocument), required: false);
-            SourceExpression.Validate(bodyallowFillForms, nameof(bodyallowFillForms), required: false);
-            SourceExpression.Validate(bodyallowModifyDocument, nameof(bodyallowModifyDocument), required: false);
-            SourceExpression.Validate(bodyallowContentExtraction, nameof(bodyallowContentExtraction), required: false);
-            SourceExpression.Validate(bodyallowModifyAnnotations, nameof(bodyallowModifyAnnotations), required: false);
-            SourceExpression.Validate(bodyprintQuality, nameof(bodyprintQuality), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/security/add";
@@ -3464,12 +3168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFSecurityRemoveResponse> PDFSecurityRemove([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/security/remove";
@@ -3528,12 +3226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFFromXLSXLSXResponse> PDFFromXLSXLSX([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyworksheetIndex = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyworksheetIndex, nameof(bodyworksheetIndex), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/xls/convert/to/pdf";
@@ -3606,14 +3298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<XLStoCSVResponse> XLStoCSV([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyworksheetIndex = null, [WorkflowExpression] Func<string> bodyquotationSymbol = null, [WorkflowExpression] Func<string> bodyseparatorSymbol = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyworksheetIndex, nameof(bodyworksheetIndex), required: false);
-            SourceExpression.Validate(bodyquotationSymbol, nameof(bodyquotationSymbol), required: false);
-            SourceExpression.Validate(bodyseparatorSymbol, nameof(bodyseparatorSymbol), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/xls/convert/to/csv";
@@ -3698,12 +3382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<XLStoJSONResponse> XLStoJSON([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyworksheetIndex = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyworksheetIndex, nameof(bodyworksheetIndex), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/xls/convert/to/json";
@@ -3776,12 +3454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<XLStoHTMLResponse> XLStoHTML([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyworksheetIndex = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyworksheetIndex, nameof(bodyworksheetIndex), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/xls/convert/to/html";
@@ -3854,12 +3526,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<XLStoTXTResponse> XLStoTXT([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyworksheetIndex = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyworksheetIndex, nameof(bodyworksheetIndex), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/xls/convert/to/txt";
@@ -3932,12 +3598,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<XLStoXMLResponse> XLStoXML([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyworksheetIndex = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<bool> bodyasync = null, [WorkflowExpression] Func<string> bodyprofiles = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyworksheetIndex, nameof(bodyworksheetIndex), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/xls/convert/to/xml";
@@ -4010,13 +3670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFRotatePagesResponse> PDFRotatePages([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bodyangleInput> bodyangle = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyangle, nameof(bodyangle), required: false);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/edit/rotate";
@@ -4095,12 +3748,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFAutoRotatePagesResponse> PDFAutoRotatePages([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodylang = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/edit/rotate/auto";
@@ -4183,12 +3830,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFDeletePagesResponse> PDFDeletePages([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/edit/delete-pages";
@@ -4261,12 +3902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFCompressResponse> PDFCompress([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/optimize";
@@ -4339,15 +3974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFClassifierResponse> PDFClassifier([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyrulescsv = null, [WorkflowExpression] Func<string> bodyrulescsvurl = null, [WorkflowExpression] Func<bool> bodycaseSensitive = null, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyrulescsv, nameof(bodyrulescsv), required: false);
-            SourceExpression.Validate(bodyrulescsvurl, nameof(bodyrulescsvurl), required: false);
-            SourceExpression.Validate(bodycaseSensitive, nameof(bodycaseSensitive), required: false);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/classifier";
@@ -4458,18 +4084,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<EmailSendResponse> EmailSend([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodysmtpserver, [WorkflowExpression] Func<string> bodysmtpport, [WorkflowExpression] Func<string> bodysmtpusername, [WorkflowExpression] Func<string> bodysmtppassword, [WorkflowExpression] Func<string> bodybodytext = null, [WorkflowExpression] Func<string> bodybodyhtml = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            SourceExpression.Validate(bodysmtpserver, nameof(bodysmtpserver), required: true);
-            SourceExpression.Validate(bodysmtpport, nameof(bodysmtpport), required: true);
-            SourceExpression.Validate(bodysmtpusername, nameof(bodysmtpusername), required: true);
-            SourceExpression.Validate(bodysmtppassword, nameof(bodysmtppassword), required: true);
-            SourceExpression.Validate(bodybodytext, nameof(bodybodytext), required: false);
-            SourceExpression.Validate(bodybodyhtml, nameof(bodybodyhtml), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/email/send";
@@ -4540,9 +4154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<EmailDecodeResponse> EmailDecode([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/email/decode";
@@ -4587,9 +4198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<EmailAttachmentExtractionResponse> EmailAttachmentExtraction([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/email/extract-attachments";
@@ -4634,12 +4242,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
         public IBodyWorkflowAction<PDFAttachmentExtractionResponse> PDFAttachmentExtraction([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bool> bodyinline = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyprofiles = null, [WorkflowExpression] Func<bool> bodyasync = null)
         {
-            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            SourceExpression.Validate(bodyinline, nameof(bodyinline), required: false);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            SourceExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
-            SourceExpression.Validate(bodyasync, nameof(bodyasync), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/pdf/attachments/extract";

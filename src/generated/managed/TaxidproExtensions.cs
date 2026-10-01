@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> tin, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<bool> isIrs = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(tin, nameof(tin), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(isIrs, nameof(isIrs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/validate";
@@ -41,11 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         public IBodyWorkflowAction<LookupResponse> Lookup([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> tin, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<bool> isIrs = null)
         {
-            SourceExpression.Validate(country, nameof(country), required: true);
-            SourceExpression.Validate(tin, nameof(tin), required: true);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(locale, nameof(locale), required: false);
-            SourceExpression.Validate(isIrs, nameof(isIrs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/lookup";

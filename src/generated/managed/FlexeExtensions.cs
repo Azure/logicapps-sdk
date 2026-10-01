@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
         public IWorkflowAction NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProducts([WorkflowExpression] Func<bodydatadropoffListInputItem[]> bodydatadropoffList = null, [WorkflowExpression] Func<string> bodymetacorrelationId = null)
         {
-            SourceExpression.Validate(bodydatadropoffList, nameof(bodydatadropoffList), required: false);
-            SourceExpression.Validate(bodymetacorrelationId, nameof(bodymetacorrelationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/shipper/dropoff/container";
@@ -64,16 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
         public IWorkflowAction GetInboundShipmentsContainingNonPalletizedProducts([WorkflowExpression] Func<string> continuationToken, [WorkflowExpression] Func<string> pageSize, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> createdAtFrom, [WorkflowExpression] Func<string> createdAtTo, [WorkflowExpression] Func<string> updatedAtFrom, [WorkflowExpression] Func<string> updatedAtTo, [WorkflowExpression] Func<string> customerUUID, [WorkflowExpression] Func<string> purchaseOrder, [WorkflowExpression] Func<string> reservations)
         {
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: true);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: true);
-            SourceExpression.Validate(state, nameof(state), required: true);
-            SourceExpression.Validate(createdAtFrom, nameof(createdAtFrom), required: true);
-            SourceExpression.Validate(createdAtTo, nameof(createdAtTo), required: true);
-            SourceExpression.Validate(updatedAtFrom, nameof(updatedAtFrom), required: true);
-            SourceExpression.Validate(updatedAtTo, nameof(updatedAtTo), required: true);
-            SourceExpression.Validate(customerUUID, nameof(customerUUID), required: true);
-            SourceExpression.Validate(purchaseOrder, nameof(purchaseOrder), required: true);
-            SourceExpression.Validate(reservations, nameof(reservations), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/shipper/dropoff/containers";
@@ -98,13 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
         public IWorkflowAction RequestACountOfInventoryBySkuFromFlexe([WorkflowExpression] Func<string> reservationId = null, [WorkflowExpression] Func<string> clientRequestId = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> everInUse = null, [WorkflowExpression] Func<string> inUseSince = null, [WorkflowExpression] Func<string> itemIds = null, [WorkflowExpression] Func<string> skus = null)
         {
-            SourceExpression.Validate(reservationId, nameof(reservationId), required: false);
-            SourceExpression.Validate(clientRequestId, nameof(clientRequestId), required: false);
-            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            SourceExpression.Validate(everInUse, nameof(everInUse), required: false);
-            SourceExpression.Validate(inUseSince, nameof(inUseSince), required: false);
-            SourceExpression.Validate(itemIds, nameof(itemIds), required: false);
-            SourceExpression.Validate(skus, nameof(skus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v1/shipper/inventory";
@@ -133,39 +114,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
         public IWorkflowAction CreateRetailFulfillmentOrder([WorkflowExpression] Func<string> bodydatareservationid, [WorkflowExpression] Func<string> bodydatareservationtype, [WorkflowExpression] Func<string> bodydatashipmentcustomerUUID, [WorkflowExpression] Func<bodydatashipmentinventoryInputItem[]> bodydatashipmentinventory, [WorkflowExpression] Func<string> bodydatashipmenttype, [WorkflowExpression] Func<string> bodydatashipmentshipToaddressLine1 = null, [WorkflowExpression] Func<string> bodydatashipmentshipTocountry = null, [WorkflowExpression] Func<string> bodydatashipmentshipTolocality = null, [WorkflowExpression] Func<string> bodydatashipmentshipToname = null, [WorkflowExpression] Func<string> bodydatashipmentshipTopostcode = null, [WorkflowExpression] Func<string> bodydatashipmentshipToregion = null, [WorkflowExpression] Func<string> bodydatashipmentshipToaddressLine2 = null, [WorkflowExpression] Func<string> bodydatashipmentshipToaddressLine3 = null, [WorkflowExpression] Func<string> bodydatashipmentshipTophone = null, [WorkflowExpression] Func<string> bodydatashipmentshipToemail = null, [WorkflowExpression] Func<string> bodydatashipmentshipWithinend = null, [WorkflowExpression] Func<string> bodydatashipmentshipWithinstart = null, [WorkflowExpression] Func<string> bodydatashipmentshipmentType = null, [WorkflowExpression] Func<string> bodydatashipmentshipmentMethod = null, [WorkflowExpression] Func<string> bodydatashipmentpurchaseOrder = null, [WorkflowExpression] Func<string> bodydatashipmentrouteBy = null, [WorkflowExpression] Func<string> bodydatashipmentinstructions = null, [WorkflowExpression] Func<string> bodydatashipmentlabelGenerationDatacarrier = null, [WorkflowExpression] Func<string> bodydatashipmentlabelGenerationDatacarrierServiceType = null, [WorkflowExpression] Func<string> bodydatashipmentlabelGenerationDatacarrierBillingAccountId = null, [WorkflowExpression] Func<string> bodydatashipmentbolGenerationDatags1usnumber = null, [WorkflowExpression] Func<string> bodydatashipmentbolGenerationDatags1usshipTovalue = null, [WorkflowExpression] Func<string> bodydatashipmentbolGenerationDatags1usbillTovalue = null, [WorkflowExpression] Func<string> bodydatashipmentbolGenerationDatatype = null, [WorkflowExpression] Func<string> bodydatashipmentroutingDetailsId = null, [WorkflowExpression] Func<string> bodydatashipmentdestinationType = null, [WorkflowExpression] Func<string> bodydatashipmentdestinationRetailer = null, [WorkflowExpression] Func<string> bodymetacorrelationId = null)
         {
-            SourceExpression.Validate(bodydatareservationid, nameof(bodydatareservationid), required: true);
-            SourceExpression.Validate(bodydatareservationtype, nameof(bodydatareservationtype), required: true);
-            SourceExpression.Validate(bodydatashipmentcustomerUUID, nameof(bodydatashipmentcustomerUUID), required: true);
-            SourceExpression.Validate(bodydatashipmentinventory, nameof(bodydatashipmentinventory), required: true);
-            SourceExpression.Validate(bodydatashipmenttype, nameof(bodydatashipmenttype), required: true);
-            SourceExpression.Validate(bodydatashipmentshipToaddressLine1, nameof(bodydatashipmentshipToaddressLine1), required: false);
-            SourceExpression.Validate(bodydatashipmentshipTocountry, nameof(bodydatashipmentshipTocountry), required: false);
-            SourceExpression.Validate(bodydatashipmentshipTolocality, nameof(bodydatashipmentshipTolocality), required: false);
-            SourceExpression.Validate(bodydatashipmentshipToname, nameof(bodydatashipmentshipToname), required: false);
-            SourceExpression.Validate(bodydatashipmentshipTopostcode, nameof(bodydatashipmentshipTopostcode), required: false);
-            SourceExpression.Validate(bodydatashipmentshipToregion, nameof(bodydatashipmentshipToregion), required: false);
-            SourceExpression.Validate(bodydatashipmentshipToaddressLine2, nameof(bodydatashipmentshipToaddressLine2), required: false);
-            SourceExpression.Validate(bodydatashipmentshipToaddressLine3, nameof(bodydatashipmentshipToaddressLine3), required: false);
-            SourceExpression.Validate(bodydatashipmentshipTophone, nameof(bodydatashipmentshipTophone), required: false);
-            SourceExpression.Validate(bodydatashipmentshipToemail, nameof(bodydatashipmentshipToemail), required: false);
-            SourceExpression.Validate(bodydatashipmentshipWithinend, nameof(bodydatashipmentshipWithinend), required: false);
-            SourceExpression.Validate(bodydatashipmentshipWithinstart, nameof(bodydatashipmentshipWithinstart), required: false);
-            SourceExpression.Validate(bodydatashipmentshipmentType, nameof(bodydatashipmentshipmentType), required: false);
-            SourceExpression.Validate(bodydatashipmentshipmentMethod, nameof(bodydatashipmentshipmentMethod), required: false);
-            SourceExpression.Validate(bodydatashipmentpurchaseOrder, nameof(bodydatashipmentpurchaseOrder), required: false);
-            SourceExpression.Validate(bodydatashipmentrouteBy, nameof(bodydatashipmentrouteBy), required: false);
-            SourceExpression.Validate(bodydatashipmentinstructions, nameof(bodydatashipmentinstructions), required: false);
-            SourceExpression.Validate(bodydatashipmentlabelGenerationDatacarrier, nameof(bodydatashipmentlabelGenerationDatacarrier), required: false);
-            SourceExpression.Validate(bodydatashipmentlabelGenerationDatacarrierServiceType, nameof(bodydatashipmentlabelGenerationDatacarrierServiceType), required: false);
-            SourceExpression.Validate(bodydatashipmentlabelGenerationDatacarrierBillingAccountId, nameof(bodydatashipmentlabelGenerationDatacarrierBillingAccountId), required: false);
-            SourceExpression.Validate(bodydatashipmentbolGenerationDatags1usnumber, nameof(bodydatashipmentbolGenerationDatags1usnumber), required: false);
-            SourceExpression.Validate(bodydatashipmentbolGenerationDatags1usshipTovalue, nameof(bodydatashipmentbolGenerationDatags1usshipTovalue), required: false);
-            SourceExpression.Validate(bodydatashipmentbolGenerationDatags1usbillTovalue, nameof(bodydatashipmentbolGenerationDatags1usbillTovalue), required: false);
-            SourceExpression.Validate(bodydatashipmentbolGenerationDatatype, nameof(bodydatashipmentbolGenerationDatatype), required: false);
-            SourceExpression.Validate(bodydatashipmentroutingDetailsId, nameof(bodydatashipmentroutingDetailsId), required: false);
-            SourceExpression.Validate(bodydatashipmentdestinationType, nameof(bodydatashipmentdestinationType), required: false);
-            SourceExpression.Validate(bodydatashipmentdestinationRetailer, nameof(bodydatashipmentdestinationRetailer), required: false);
-            SourceExpression.Validate(bodymetacorrelationId, nameof(bodymetacorrelationId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/shipper/fulfillment/retail";
@@ -452,11 +400,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
         public IWorkflowAction UpdateExistingRetailFulfillmentOrder([WorkflowExpression] Func<string> shipmentId, [WorkflowExpression] Func<string> bodydatastate = null, [WorkflowExpression] Func<string> bodydatascac = null, [WorkflowExpression] Func<string> bodydatabolNumber = null, [WorkflowExpression] Func<string> bodymeta = null)
         {
-            SourceExpression.Validate(shipmentId, nameof(shipmentId), required: true);
-            SourceExpression.Validate(bodydatastate, nameof(bodydatastate), required: false);
-            SourceExpression.Validate(bodydatascac, nameof(bodydatascac), required: false);
-            SourceExpression.Validate(bodydatabolNumber, nameof(bodydatabolNumber), required: false);
-            SourceExpression.Validate(bodymeta, nameof(bodymeta), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/shipper/fulfillment/retail/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(shipmentId, 1));
@@ -511,7 +454,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
     {
         public IBodyWorkflowTrigger<WebhookResponse> Webhook([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/v2/webhooks";

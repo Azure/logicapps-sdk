@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken[]> GetTopicSubcriptions([WorkflowExpression] Func<string> topicName)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -80,8 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> SendMessage([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<SendMessageInputMessageType> message)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(message, nameof(message), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -101,8 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> SendMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<SendMessagesInputMessagesTypeItem[]> messages)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(messages, nameof(messages), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -122,8 +117,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> ReplicateMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<bool> skipAlreadyReplicated)
         {
-            SourceExpression.Validate(entityName, nameof(entityName), required: true);
-            SourceExpression.Validate(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -143,7 +136,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CompleteMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -162,7 +154,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> AbandonMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -181,9 +172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeadLetterMessage([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -212,7 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewLockMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -231,10 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CreateTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> topicSubscriptionName, [WorkflowExpression] Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType> topicSubscriptionFilterType, [WorkflowExpression] Func<object> topicSubscriptionCorrelationFilter = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
-            SourceExpression.Validate(topicSubscriptionFilterType, nameof(topicSubscriptionFilterType), required: true);
-            SourceExpression.Validate(topicSubscriptionCorrelationFilter, nameof(topicSubscriptionCorrelationFilter), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -260,8 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeleteTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> topicSubscriptionName)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -281,7 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeferMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -300,8 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromQueueOutput> GetDeferredMessageFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -321,9 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromTopicOutput> GetDeferredMessageFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -344,8 +319,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromQueueOutputItem[]> GetMessagesFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessages = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -369,9 +342,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromTopicOutputItem[]> GetMessagesFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessages = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -396,8 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CompleteMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -421,8 +389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> AbandonMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -446,10 +412,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeadLetterMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: false);
-            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -483,8 +445,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeferMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -508,10 +468,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -541,11 +497,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -576,10 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<int> maxMessages = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
-            SourceExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -609,11 +556,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<int> maxMessages = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
-            SourceExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -644,8 +586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -665,9 +605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -688,8 +625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CloseQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -709,9 +644,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CloseTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -732,8 +664,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CompleteQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -753,8 +683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> AbandonQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -774,10 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -807,8 +731,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -828,8 +750,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeferQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -849,9 +769,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CompleteTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -872,9 +789,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> AbandonTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -895,11 +809,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -930,9 +839,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -953,9 +859,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeferTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -976,8 +879,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessages = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1001,8 +902,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1022,9 +921,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessages = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1049,9 +945,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1074,9 +967,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
     {
         public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1108,10 +998,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1144,9 +1030,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1178,10 +1061,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1214,9 +1093,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<PeekLockQueueMessagesOutputItem[]> PeekLockQueueMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1248,10 +1124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<PeekLockTopicMessagesOutputItem[]> PeekLockTopicMessages([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1284,8 +1156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1308,9 +1178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1334,9 +1201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<int> maxMessages = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1364,10 +1228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<int> maxMessages = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1396,8 +1256,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -1420,9 +1278,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
         public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();

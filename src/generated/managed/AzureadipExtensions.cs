@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IWorkflowAction ConfirmRiskUser([WorkflowExpression] Func<string[]> bodyuserIds = null)
         {
-            SourceExpression.Validate(bodyuserIds, nameof(bodyuserIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/riskyUsers/confirmCompromised";
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskDetection> RiskDetections([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/riskDetections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -71,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IWorkflowAction DismissRiskUser([WorkflowExpression] Func<string[]> bodyuserIds = null)
         {
-            SourceExpression.Validate(bodyuserIds, nameof(bodyuserIds), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/beta/riskyUsers/dismiss";
@@ -98,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

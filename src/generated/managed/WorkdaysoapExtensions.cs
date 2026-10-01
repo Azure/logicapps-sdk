@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> SOAPOperation([WorkflowExpression] Func<serviceInput> service, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> requestBody = null)
         {
-            SourceExpression.Validate(service, nameof(service), required: true);
-            SourceExpression.Validate(version, nameof(version), required: true);
-            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
@@ -32,10 +29,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> RaaSOperation([WorkflowExpression] Func<string> accountName, [WorkflowExpression] Func<string> reportName, [WorkflowExpression] Func<string> reportInstanceName, [WorkflowExpression] Func<string> requestBody = null)
         {
-            SourceExpression.Validate(accountName, nameof(accountName), required: true);
-            SourceExpression.Validate(reportName, nameof(reportName), required: true);
-            SourceExpression.Validate(reportInstanceName, nameof(reportInstanceName), required: true);
-            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportInstanceName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
@@ -51,10 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> RESTOperation([WorkflowExpression] Func<string> relativePath, [WorkflowExpression] Func<methodInput> method = null, [WorkflowExpression] Func<contentTypeInput> contentType = null, [WorkflowExpression] Func<string> body = null)
         {
-            SourceExpression.Validate(relativePath, nameof(relativePath), required: true);
-            SourceExpression.Validate(method, nameof(method), required: false);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RESTOperation";
@@ -77,9 +66,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<InboxTasksResponse> GetWorkerInboxTasks([WorkflowExpression] Func<string> workerId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(workerId, nameof(workerId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RESTOperation/workers/{0}/inboxTasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workerId, 1));
@@ -98,11 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<JobChangeResponse> TransferEmployee([WorkflowExpression] Func<string> workerId, [WorkflowExpression] Func<string> bodyeffectiveDate, [WorkflowExpression] Func<string> bodysupervisoryOrganizationid = null, [WorkflowExpression] Func<string> bodyjobChangeReasonid = null, [WorkflowExpression] Func<bool> bodymoveManagerSTeam = null)
         {
-            SourceExpression.Validate(workerId, nameof(workerId), required: true);
-            SourceExpression.Validate(bodyeffectiveDate, nameof(bodyeffectiveDate), required: true);
-            SourceExpression.Validate(bodysupervisoryOrganizationid, nameof(bodysupervisoryOrganizationid), required: false);
-            SourceExpression.Validate(bodyjobChangeReasonid, nameof(bodyjobChangeReasonid), required: false);
-            SourceExpression.Validate(bodymoveManagerSTeam, nameof(bodymoveManagerSTeam), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RESTOperation/workers/{0}/jobChanges", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workerId, 1));
@@ -159,12 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<RequestFeedbackResponse> RequestFeedback([WorkflowExpression] Func<string> workerId, [WorkflowExpression] Func<WorkdayObjectReference[]> bodyfeedbackResponders, [WorkflowExpression] Func<string> bodyfeedbackTemplateid = null, [WorkflowExpression] Func<bool> bodyconfidential = null, [WorkflowExpression] Func<bool> bodyshowProviderName = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            SourceExpression.Validate(workerId, nameof(workerId), required: true);
-            SourceExpression.Validate(bodyfeedbackResponders, nameof(bodyfeedbackResponders), required: true);
-            SourceExpression.Validate(bodyfeedbackTemplateid, nameof(bodyfeedbackTemplateid), required: false);
-            SourceExpression.Validate(bodyconfidential, nameof(bodyconfidential), required: false);
-            SourceExpression.Validate(bodyshowProviderName, nameof(bodyshowProviderName), required: false);
-            SourceExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RESTOperation/workers/{0}/requestedFeedbackOnWorkerEvents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workerId, 1));
@@ -219,11 +194,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<FeedbackTemplatesResponse> GetFeedbackTemplates([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> templateType = null, [WorkflowExpression] Func<string> worker = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(templateType, nameof(templateType), required: false);
-            SourceExpression.Validate(worker, nameof(worker), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RESTOperation/feedbackTemplates";
@@ -248,9 +218,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<WorkerSummaryResponse> SearchWorkers([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/RESTOperation/workers";
@@ -285,9 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<SupervisoryOrganizationsResponse> GetSupervisoryOrganizationsManaged([WorkflowExpression] Func<string> workerId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(workerId, nameof(workerId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RESTOperation/workers/{0}/supervisoryOrganizationsManaged", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workerId, 1));
@@ -306,9 +270,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<DirectReportsResponse> GetWorkerDirectReports([WorkflowExpression] Func<string> workerId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(workerId, nameof(workerId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RESTOperation/workers/{0}/directReports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workerId, 1));
@@ -327,9 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<PaySlipsResponse> GetWorkerPaySlips([WorkflowExpression] Func<string> workerId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(workerId, nameof(workerId), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RESTOperation/workers/{0}/paySlips", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workerId, 1));

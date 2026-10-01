@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetConversationsInboxesResponse> GetConversationsInboxes([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> defaultPageLength = null)
         {
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(defaultPageLength, nameof(defaultPageLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/conversations/inboxes";
@@ -40,9 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleThreadResponse> GetASingleThread([WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -61,7 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<string> ArchivesAThread([WorkflowExpression] Func<string> threadId)
         {
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -76,10 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<UpdateAThreadResponse> UpdateAThread([WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodyarchived = null)
         {
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            SourceExpression.Validate(bodyarchived, nameof(bodyarchived), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -114,9 +102,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetTheOriginalContentOfASingleMessageResponse> GetTheOriginalContentOfASingleMessage([WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -133,12 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetMessageHistoryForAThreadResponse> GetMessageHistoryForAThread([WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
@@ -163,12 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetChannelAccountsResponse> GetChannelAccounts([WorkflowExpression] Func<string> channelId = null, [WorkflowExpression] Func<string> inboxId = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> defaultPageLength = null)
         {
-            SourceExpression.Validate(channelId, nameof(channelId), required: false);
-            SourceExpression.Validate(inboxId, nameof(inboxId), required: false);
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(defaultPageLength, nameof(defaultPageLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/conversations/channel-accounts";
@@ -195,7 +168,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelResponse> GetASingleChannel([WorkflowExpression] Func<string> channelId)
         {
-            SourceExpression.Validate(channelId, nameof(channelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channels/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
@@ -210,9 +182,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleMessageResponse> GetASingleMessage([WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(threadId, nameof(threadId), required: true);
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -229,10 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetChannelsResponse> GetChannels([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> defaultPageLength = null)
         {
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(defaultPageLength, nameof(defaultPageLength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/conversations/channels";
@@ -255,8 +220,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleActorResponse> GetASingleActor([WorkflowExpression] Func<string> actorId, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(actorId, nameof(actorId), required: true);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/actors/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actorId, 1));
@@ -273,15 +236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetThreadsResponse> GetThreads([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> inboxId = null, [WorkflowExpression] Func<string> associatedContactId = null, [WorkflowExpression] Func<string> threadStatus = null, [WorkflowExpression] Func<string> latestMessageTimestampAfter = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
-            SourceExpression.Validate(after, nameof(after), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(inboxId, nameof(inboxId), required: false);
-            SourceExpression.Validate(associatedContactId, nameof(associatedContactId), required: false);
-            SourceExpression.Validate(threadStatus, nameof(threadStatus), required: false);
-            SourceExpression.Validate(latestMessageTimestampAfter, nameof(latestMessageTimestampAfter), required: false);
-            SourceExpression.Validate(archived, nameof(archived), required: false);
-            SourceExpression.Validate(property, nameof(property), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/conversations/threads";
@@ -314,7 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelAccountResponse> GetASingleChannelAccount([WorkflowExpression] Func<string> channelAccountId)
         {
-            SourceExpression.Validate(channelAccountId, nameof(channelAccountId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channel-accounts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelAccountId, 1));
@@ -329,7 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleConversationsInboxResponse> GetASingleConversationsInbox([WorkflowExpression] Func<string> inboxId)
         {
-            SourceExpression.Validate(inboxId, nameof(inboxId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/inboxes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inboxId, 1));

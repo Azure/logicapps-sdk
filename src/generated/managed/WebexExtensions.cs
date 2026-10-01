@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<CreateSpaceMemberResponse> CreateSpaceMember([WorkflowExpression] Func<bool> bodyisModerator, [WorkflowExpression] Func<string> bodyroomId, [WorkflowExpression] Func<string> bodypersonEmail = null, [WorkflowExpression] Func<string> bodypersonId = null)
         {
-            SourceExpression.Validate(bodyisModerator, nameof(bodyisModerator), required: true);
-            SourceExpression.Validate(bodyroomId, nameof(bodyroomId), required: true);
-            SourceExpression.Validate(bodypersonEmail, nameof(bodypersonEmail), required: false);
-            SourceExpression.Validate(bodypersonId, nameof(bodypersonId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/memberships";
@@ -54,11 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetMessagesResponse> GetMessages([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> mentionedPeople = null, [WorkflowExpression] Func<string> beforeMessage = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<int> max = null)
         {
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
-            SourceExpression.Validate(mentionedPeople, nameof(mentionedPeople), required: false);
-            SourceExpression.Validate(beforeMessage, nameof(beforeMessage), required: false);
-            SourceExpression.Validate(before, nameof(before), required: false);
-            SourceExpression.Validate(max, nameof(max), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/messages";
@@ -82,12 +73,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string[]> bodyfiles = null, [WorkflowExpression] Func<string> bodymarkdown = null, [WorkflowExpression] Func<string> bodyroomId = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodytoPersonEmail = null, [WorkflowExpression] Func<string> bodytoPersonId = null)
         {
-            SourceExpression.Validate(bodyfiles, nameof(bodyfiles), required: false);
-            SourceExpression.Validate(bodymarkdown, nameof(bodymarkdown), required: false);
-            SourceExpression.Validate(bodyroomId, nameof(bodyroomId), required: false);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
-            SourceExpression.Validate(bodytoPersonEmail, nameof(bodytoPersonEmail), required: false);
-            SourceExpression.Validate(bodytoPersonId, nameof(bodytoPersonId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/messages";
@@ -144,7 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetMessageDetailsResponse> GetMessageDetails([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
@@ -159,8 +143,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetPeopleResponse> GetPeople([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> email = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(email, nameof(email), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/people";
@@ -193,9 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetSpacesResponse> GetSpaces([WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<sortByInput> sortBy = null)
         {
-            SourceExpression.Validate(max, nameof(max), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/rooms";
@@ -217,8 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyteamId = null)
         {
-            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            SourceExpression.Validate(bodyteamId, nameof(bodyteamId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/rooms";
@@ -247,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetSpaceDetailResponse> GetSpaceDetail([WorkflowExpression] Func<string> roomId)
         {
-            SourceExpression.Validate(roomId, nameof(roomId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/rooms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
@@ -262,10 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<CreateTeamMemberResponse> CreateTeamMember([WorkflowExpression] Func<bool> bodyisModerator, [WorkflowExpression] Func<string> bodyteamId, [WorkflowExpression] Func<string> bodypersonEmail = null, [WorkflowExpression] Func<string> bodypersonId = null)
         {
-            SourceExpression.Validate(bodyisModerator, nameof(bodyisModerator), required: true);
-            SourceExpression.Validate(bodyteamId, nameof(bodyteamId), required: true);
-            SourceExpression.Validate(bodypersonEmail, nameof(bodypersonEmail), required: false);
-            SourceExpression.Validate(bodypersonId, nameof(bodypersonId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/team/memberships";

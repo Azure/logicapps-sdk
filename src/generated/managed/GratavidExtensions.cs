@@ -14,15 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodycomments, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycustomUserId = null, [WorkflowExpression] Func<string> bodycustomAccountId = null, [WorkflowExpression] Func<string> bodytextOptIn = null, [WorkflowExpression] Func<string> bodycellNumber = null, [WorkflowExpression] Func<string> bodyassignedTo = null)
         {
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodycustomUserId, nameof(bodycustomUserId), required: false);
-            SourceExpression.Validate(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
-            SourceExpression.Validate(bodytextOptIn, nameof(bodytextOptIn), required: false);
-            SourceExpression.Validate(bodycellNumber, nameof(bodycellNumber), required: false);
-            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -91,14 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
         public IBodyWorkflowAction<SendNoteResponse> SendNote([WorkflowExpression] Func<string> bodynoteId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycustomUserId = null, [WorkflowExpression] Func<string> bodycustomAccountId = null, [WorkflowExpression] Func<string> bodytextOptIn = null, [WorkflowExpression] Func<string> bodycellNumber = null)
         {
-            SourceExpression.Validate(bodynoteId, nameof(bodynoteId), required: true);
-            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            SourceExpression.Validate(bodycustomUserId, nameof(bodycustomUserId), required: false);
-            SourceExpression.Validate(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
-            SourceExpression.Validate(bodytextOptIn, nameof(bodytextOptIn), required: false);
-            SourceExpression.Validate(bodycellNumber, nameof(bodycellNumber), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -163,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     {
         public IWorkflowTrigger NewEvent([WorkflowExpression] Func<webookHookEventInput> webookHookEvent, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(webookHookEvent, nameof(webookHookEvent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/manageIntegrations";

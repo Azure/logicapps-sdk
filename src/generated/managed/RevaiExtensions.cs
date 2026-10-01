@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<TranscriptionGetResponse> TranscriptionGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/speechtotext/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<string> TranscriptionDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/speechtotext/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<TranscriptionsGetResponseItem[]> TranscriptionsGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> startingAfter = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(startingAfter, nameof(startingAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/speechtotext/v1/jobs";
@@ -65,29 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<TranscriptionPostResponse> Transcription([WorkflowExpression] Func<string> bodysourceConfigurl, [WorkflowExpression] Func<string> bodysourceConfigauthHeadersauthorization = null, [WorkflowExpression] Func<string> bodymetadata = null, [WorkflowExpression] Func<string> bodynotificationConfigurl = null, [WorkflowExpression] Func<string> bodynotificationConfigauthHeadersauthorization = null, [WorkflowExpression] Func<int> bodydeleteAfterSeconds = null, [WorkflowExpression] Func<string> bodytranscriber = null, [WorkflowExpression] Func<bool> bodyverbatim = null, [WorkflowExpression] Func<bool> bodyrush = null, [WorkflowExpression] Func<bool> bodytestMode = null, [WorkflowExpression] Func<bodysegmentsToTranscribeInputItem[]> bodysegmentsToTranscribe = null, [WorkflowExpression] Func<bodyspeakersNamesInputItem[]> bodyspeakersNames = null, [WorkflowExpression] Func<bool> bodyskipDiarization = null, [WorkflowExpression] Func<bool> bodyskipPostprocessing = null, [WorkflowExpression] Func<bool> bodyskipPunctuation = null, [WorkflowExpression] Func<bool> bodyremoveDisfluencies = null, [WorkflowExpression] Func<bool> bodyremoveAtmospherics = null, [WorkflowExpression] Func<bool> bodyfilterProfanity = null, [WorkflowExpression] Func<int> bodyspeakerChannelsCount = null, [WorkflowExpression] Func<int> bodyspeakersCount = null, [WorkflowExpression] Func<string> bodycustomVocabularyId = null, [WorkflowExpression] Func<bodycustomVocabulariesInputItem[]> bodycustomVocabularies = null, [WorkflowExpression] Func<string> bodylanguage = null)
         {
-            SourceExpression.Validate(bodysourceConfigurl, nameof(bodysourceConfigurl), required: true);
-            SourceExpression.Validate(bodysourceConfigauthHeadersauthorization, nameof(bodysourceConfigauthHeadersauthorization), required: false);
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
-            SourceExpression.Validate(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            SourceExpression.Validate(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            SourceExpression.Validate(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            SourceExpression.Validate(bodytranscriber, nameof(bodytranscriber), required: false);
-            SourceExpression.Validate(bodyverbatim, nameof(bodyverbatim), required: false);
-            SourceExpression.Validate(bodyrush, nameof(bodyrush), required: false);
-            SourceExpression.Validate(bodytestMode, nameof(bodytestMode), required: false);
-            SourceExpression.Validate(bodysegmentsToTranscribe, nameof(bodysegmentsToTranscribe), required: false);
-            SourceExpression.Validate(bodyspeakersNames, nameof(bodyspeakersNames), required: false);
-            SourceExpression.Validate(bodyskipDiarization, nameof(bodyskipDiarization), required: false);
-            SourceExpression.Validate(bodyskipPostprocessing, nameof(bodyskipPostprocessing), required: false);
-            SourceExpression.Validate(bodyskipPunctuation, nameof(bodyskipPunctuation), required: false);
-            SourceExpression.Validate(bodyremoveDisfluencies, nameof(bodyremoveDisfluencies), required: false);
-            SourceExpression.Validate(bodyremoveAtmospherics, nameof(bodyremoveAtmospherics), required: false);
-            SourceExpression.Validate(bodyfilterProfanity, nameof(bodyfilterProfanity), required: false);
-            SourceExpression.Validate(bodyspeakerChannelsCount, nameof(bodyspeakerChannelsCount), required: false);
-            SourceExpression.Validate(bodyspeakersCount, nameof(bodyspeakersCount), required: false);
-            SourceExpression.Validate(bodycustomVocabularyId, nameof(bodycustomVocabularyId), required: false);
-            SourceExpression.Validate(bodycustomVocabularies, nameof(bodycustomVocabularies), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/speechtotext/v1/jobs";
@@ -274,7 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<TranscriptGetResponse> TranscriptGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/speechtotext/v1/jobs/{0}/transcript", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -289,8 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<string> CaptionsGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<acceptInput> accept = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(accept, nameof(accept), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/speechtotext/v1/jobs/{0}/captions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -322,7 +292,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<VocabulariesGetResponseItem[]> VocabulariesGet([WorkflowExpression] Func<int> limit = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/speechtotext/v1/vocabularies";
@@ -340,10 +309,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<VocabularyPostResponse> Vocabulary([WorkflowExpression] Func<string> bodymetadata = null, [WorkflowExpression] Func<string> bodynotificationConfigurl = null, [WorkflowExpression] Func<string> bodynotificationConfigauthHeadersauthorization = null, [WorkflowExpression] Func<bodycustomVocabulariesInputItem[]> bodycustomVocabularies = null)
         {
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
-            SourceExpression.Validate(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            SourceExpression.Validate(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            SourceExpression.Validate(bodycustomVocabularies, nameof(bodycustomVocabularies), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/speechtotext/v1/vocabularies";
@@ -404,7 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<VocabularyGetResponse> VocabularyGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/speechtotext/v1/vocabularies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -419,7 +383,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<string> VocabularyDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/speechtotext/v1/vocabularies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -434,8 +397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<ExtractionsGetResponseItem[]> ExtractionsGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> startingAfter = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(startingAfter, nameof(startingAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/topic_extraction/v1/jobs";
@@ -455,12 +416,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<ExtractionPostResponse> Extraction([WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodymetadata = null, [WorkflowExpression] Func<string> bodynotificationConfigurl = null, [WorkflowExpression] Func<string> bodynotificationConfigauthHeadersauthorization = null, [WorkflowExpression] Func<int> bodydeleteAfterSeconds = null, [WorkflowExpression] Func<bodyjsonmonologuesInputItem[]> bodyjsonmonologues = null)
         {
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
-            SourceExpression.Validate(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            SourceExpression.Validate(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            SourceExpression.Validate(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            SourceExpression.Validate(bodyjsonmonologues, nameof(bodyjsonmonologues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/topic_extraction/v1/jobs";
@@ -541,7 +496,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<ExtractionGetResponse> ExtractionGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/topic_extraction/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -556,7 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<string> ExtractionDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/topic_extraction/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -571,8 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<ExtractionResultGetResponse> ExtractionResultGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<double> threshold = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(threshold, nameof(threshold), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/topic_extraction/v1/jobs/{0}/result", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -589,8 +540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IWorkflowAction AnalysisesGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> startingAfter = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(startingAfter, nameof(startingAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sentiment_analysis/v1/jobs";
@@ -610,12 +559,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<AnalysisPostResponse> Analysis([WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodymetadata = null, [WorkflowExpression] Func<string> bodynotificationConfigurl = null, [WorkflowExpression] Func<string> bodynotificationConfigauthHeadersauthorization = null, [WorkflowExpression] Func<int> bodydeleteAfterSeconds = null, [WorkflowExpression] Func<bodyjsonmonologuesInputItem[]> bodyjsonmonologues = null)
         {
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
-            SourceExpression.Validate(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            SourceExpression.Validate(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            SourceExpression.Validate(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            SourceExpression.Validate(bodyjsonmonologues, nameof(bodyjsonmonologues), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sentiment_analysis/v1/jobs";
@@ -696,7 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<AnalysisGetResponse> AnalysisGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sentiment_analysis/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -711,7 +653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<string> AnalysisDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sentiment_analysis/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -726,8 +667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<AnalysisResultGetResponse> AnalysisResultGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<filterForInput> filterFor = null)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(filterFor, nameof(filterFor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sentiment_analysis/v1/jobs/{0}/result", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -744,8 +683,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<IdentificationsGetResponseItem[]> IdentificationsGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> startingAfter = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(startingAfter, nameof(startingAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/languageid/v1/jobs";
@@ -765,10 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<IdentificationPostResponse> Identification([WorkflowExpression] Func<string> bodymetadata = null, [WorkflowExpression] Func<string> bodynotificationConfigurl = null, [WorkflowExpression] Func<int> bodydeleteAfterSeconds = null, [WorkflowExpression] Func<string> bodysourceConfigurl = null)
         {
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
-            SourceExpression.Validate(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            SourceExpression.Validate(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            SourceExpression.Validate(bodysourceConfigurl, nameof(bodysourceConfigurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/languageid/v1/jobs";
@@ -829,7 +762,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<IdentificationGetResponse> IdentificationGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/languageid/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -844,7 +776,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<string> IdentificationDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/languageid/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -859,7 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<IdentificationResultGetResponse> IdentificationResultGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/languageid/v1/jobs/{0}/result", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -874,8 +804,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<AlignmentsGetResponseItem[]> AlignmentsGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> startingAfter = null)
         {
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(startingAfter, nameof(startingAfter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/alignment/v1/jobs";
@@ -895,12 +823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<AlignmentPostResponse> Alignment([WorkflowExpression] Func<string> bodymetadata = null, [WorkflowExpression] Func<string> bodynotificationConfigurl = null, [WorkflowExpression] Func<int> bodydeleteAfterSeconds = null, [WorkflowExpression] Func<string> bodysourceConfigurl = null, [WorkflowExpression] Func<string> bodytranscriptText = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null)
         {
-            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
-            SourceExpression.Validate(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            SourceExpression.Validate(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            SourceExpression.Validate(bodysourceConfigurl, nameof(bodysourceConfigurl), required: false);
-            SourceExpression.Validate(bodytranscriptText, nameof(bodytranscriptText), required: false);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/alignment/v1/jobs";
@@ -983,7 +905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<AlignmentGetResponse> AlignmentGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alignment/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -998,7 +919,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<string> AlignmentDelete([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alignment/v1/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -1013,7 +933,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
         public IBodyWorkflowAction<AlignmentTranscriptGetResponse> AlignmentTranscriptGet([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/alignment/v1/jobs/{0}/transcript", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));

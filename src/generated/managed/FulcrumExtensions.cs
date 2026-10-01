@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<AttachmentsResponse> GetAllAttachments([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<string> ownerType = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(ownerType, nameof(ownerType), required: false);
-            SourceExpression.Validate(sort, nameof(sort), required: false);
-            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/attachments";
@@ -45,7 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<Attachment> GetSingleAttachment([WorkflowExpression] Func<string> attachmentId)
         {
-            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
@@ -60,14 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<AudiosResponse> AudioGetAll([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
-            SourceExpression.Validate(processed, nameof(processed), required: false);
-            SourceExpression.Validate(stored, nameof(stored), required: false);
-            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/audio.json";
@@ -100,7 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> AudioGetOriginalFile([WorkflowExpression] Func<string> audioId)
         {
-            SourceExpression.Validate(audioId, nameof(audioId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/audio/{0}.mp4", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(audioId, 1));
@@ -115,14 +100,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<PhotosResponse> PhotosGetAllMetadata([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
-            SourceExpression.Validate(processed, nameof(processed), required: false);
-            SourceExpression.Validate(stored, nameof(stored), required: false);
-            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/photos.json";
@@ -155,7 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> PhotosGetSingleFile([WorkflowExpression] Func<string> photoId)
         {
-            SourceExpression.Validate(photoId, nameof(photoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.jpg", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(photoId, 1));
@@ -170,7 +146,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SinglePhotoResponse> PhotosGetSingleMetadata([WorkflowExpression] Func<string> photoId)
         {
-            SourceExpression.Validate(photoId, nameof(photoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(photoId, 1));
@@ -185,11 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IWorkflowAction Query([WorkflowExpression] Func<string> bodyq, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<string> bodytableName = null)
         {
-            SourceExpression.Validate(bodyq, nameof(bodyq), required: true);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
-            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            SourceExpression.Validate(bodytableName, nameof(bodytableName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/query";
@@ -230,21 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<RecordsResponse> RecordsGetAll([WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<string> boundingBox = null, [WorkflowExpression] Func<string> changesetId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> clientCreatedBefore = null, [WorkflowExpression] Func<string> clientCreatedSince = null, [WorkflowExpression] Func<string> clientUpdatedBefore = null, [WorkflowExpression] Func<string> clientUpdatedSince = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> createdSince = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> updatedSince = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
-            SourceExpression.Validate(boundingBox, nameof(boundingBox), required: false);
-            SourceExpression.Validate(changesetId, nameof(changesetId), required: false);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(clientCreatedBefore, nameof(clientCreatedBefore), required: false);
-            SourceExpression.Validate(clientCreatedSince, nameof(clientCreatedSince), required: false);
-            SourceExpression.Validate(clientUpdatedBefore, nameof(clientUpdatedBefore), required: false);
-            SourceExpression.Validate(clientUpdatedSince, nameof(clientUpdatedSince), required: false);
-            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
-            SourceExpression.Validate(createdSince, nameof(createdSince), required: false);
-            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
-            SourceExpression.Validate(updatedSince, nameof(updatedSince), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/records.json";
@@ -291,17 +246,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsCreate([WorkflowExpression] Func<object> bodyRecordgeometrycoordinates, [WorkflowExpression] Func<bodyRecordgeometrytypeInput> bodyRecordgeometrytype, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null, [WorkflowExpression] Func<string> bodyRecordassignedToId = null, [WorkflowExpression] Func<string> bodyRecordformId = null, [WorkflowExpression] Func<double> bodyRecordlatitude = null, [WorkflowExpression] Func<double> bodyRecordlongitude = null, [WorkflowExpression] Func<string> bodyRecordprojectId = null, [WorkflowExpression] Func<string> bodyRecordstatus = null)
         {
-            SourceExpression.Validate(bodyRecordgeometrycoordinates, nameof(bodyRecordgeometrycoordinates), required: true);
-            SourceExpression.Validate(bodyRecordgeometrytype, nameof(bodyRecordgeometrytype), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            SourceExpression.Validate(bodyRecordassignedToId, nameof(bodyRecordassignedToId), required: false);
-            SourceExpression.Validate(bodyRecordformId, nameof(bodyRecordformId), required: false);
-            SourceExpression.Validate(bodyRecordlatitude, nameof(bodyRecordlatitude), required: false);
-            SourceExpression.Validate(bodyRecordlongitude, nameof(bodyRecordlongitude), required: false);
-            SourceExpression.Validate(bodyRecordprojectId, nameof(bodyRecordprojectId), required: false);
-            SourceExpression.Validate(bodyRecordstatus, nameof(bodyRecordstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/records.json";
@@ -395,9 +339,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsDelete([WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -418,7 +359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsGetSingle([WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -433,17 +373,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsPartialUpdate([WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> bodyRecordgeometrycoordinates, [WorkflowExpression] Func<bodyRecordgeometrytypeInput> bodyRecordgeometrytype, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null, [WorkflowExpression] Func<string> bodyRecordassignedToId = null, [WorkflowExpression] Func<double> bodyRecordlatitude = null, [WorkflowExpression] Func<double> bodyRecordlongitude = null, [WorkflowExpression] Func<string> bodyRecordprojectId = null, [WorkflowExpression] Func<string> bodyRecordstatus = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(bodyRecordgeometrycoordinates, nameof(bodyRecordgeometrycoordinates), required: true);
-            SourceExpression.Validate(bodyRecordgeometrytype, nameof(bodyRecordgeometrytype), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            SourceExpression.Validate(bodyRecordassignedToId, nameof(bodyRecordassignedToId), required: false);
-            SourceExpression.Validate(bodyRecordlatitude, nameof(bodyRecordlatitude), required: false);
-            SourceExpression.Validate(bodyRecordlongitude, nameof(bodyRecordlongitude), required: false);
-            SourceExpression.Validate(bodyRecordprojectId, nameof(bodyRecordprojectId), required: false);
-            SourceExpression.Validate(bodyRecordstatus, nameof(bodyRecordstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -531,18 +460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IWorkflowAction RecordsUpdate([WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> bodyRecordgeometrycoordinates, [WorkflowExpression] Func<bodyRecordgeometrytypeInput> bodyRecordgeometrytype, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null, [WorkflowExpression] Func<string> bodyRecordassignedToId = null, [WorkflowExpression] Func<string> bodyRecordformId = null, [WorkflowExpression] Func<double> bodyRecordlatitude = null, [WorkflowExpression] Func<double> bodyRecordlongitude = null, [WorkflowExpression] Func<string> bodyRecordprojectId = null, [WorkflowExpression] Func<string> bodyRecordstatus = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
-            SourceExpression.Validate(bodyRecordgeometrycoordinates, nameof(bodyRecordgeometrycoordinates), required: true);
-            SourceExpression.Validate(bodyRecordgeometrytype, nameof(bodyRecordgeometrytype), required: true);
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            SourceExpression.Validate(bodyRecordassignedToId, nameof(bodyRecordassignedToId), required: false);
-            SourceExpression.Validate(bodyRecordformId, nameof(bodyRecordformId), required: false);
-            SourceExpression.Validate(bodyRecordlatitude, nameof(bodyRecordlatitude), required: false);
-            SourceExpression.Validate(bodyRecordlongitude, nameof(bodyRecordlongitude), required: false);
-            SourceExpression.Validate(bodyRecordprojectId, nameof(bodyRecordprojectId), required: false);
-            SourceExpression.Validate(bodyRecordstatus, nameof(bodyRecordstatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -636,7 +553,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<RecordHistoryResponse> RecordsGetHistory([WorkflowExpression] Func<string> recordId)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}/history.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
@@ -651,8 +567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<ReportResponse> ReportsCreate([WorkflowExpression] Func<string> bodyreportrecordId = null, [WorkflowExpression] Func<string> bodyreporttemplateId = null)
         {
-            SourceExpression.Validate(bodyreportrecordId, nameof(bodyreportrecordId), required: false);
-            SourceExpression.Validate(bodyreporttemplateId, nameof(bodyreporttemplateId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/reports.json";
@@ -693,7 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> ReportsFile([WorkflowExpression] Func<string> reportId)
         {
-            SourceExpression.Validate(reportId, nameof(reportId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/reports/{0}.pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
@@ -708,14 +621,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SignaturesResponse> SignaturesGetAll([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
-            SourceExpression.Validate(processed, nameof(processed), required: false);
-            SourceExpression.Validate(stored, nameof(stored), required: false);
-            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/signatures.json";
@@ -748,7 +653,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleSignatureResponse> SignaturesGetSingleMetadata([WorkflowExpression] Func<string> signatureId)
         {
-            SourceExpression.Validate(signatureId, nameof(signatureId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureId, 1));
@@ -763,7 +667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> SignaturesGetSingleFile([WorkflowExpression] Func<string> signatureId)
         {
-            SourceExpression.Validate(signatureId, nameof(signatureId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.png", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureId, 1));
@@ -778,14 +681,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SketchesResponse> SketchesGetAllMetadata([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
-            SourceExpression.Validate(processed, nameof(processed), required: false);
-            SourceExpression.Validate(stored, nameof(stored), required: false);
-            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/sketches.json";
@@ -818,7 +713,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> SketchesGetSingleFile([WorkflowExpression] Func<string> sketchId)
         {
-            SourceExpression.Validate(sketchId, nameof(sketchId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.jpg", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sketchId, 1));
@@ -833,7 +727,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleSketchResponse> SketchesGetSingleMetadata([WorkflowExpression] Func<string> sketchId)
         {
-            SourceExpression.Validate(sketchId, nameof(sketchId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sketchId, 1));
@@ -848,14 +741,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<VideosResponse> VideosGetAll([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            SourceExpression.Validate(recordId, nameof(recordId), required: false);
-            SourceExpression.Validate(formId, nameof(formId), required: false);
-            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
-            SourceExpression.Validate(processed, nameof(processed), required: false);
-            SourceExpression.Validate(stored, nameof(stored), required: false);
-            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(perPage, nameof(perPage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/videos.json";
@@ -888,7 +773,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> VideosGetOriginalFile([WorkflowExpression] Func<string> videoId)
         {
-            SourceExpression.Validate(videoId, nameof(videoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/videos/{0}.mp4", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
@@ -905,10 +789,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     {
         public IBodyWorkflowTrigger<OnFulcrumEventResponse> OnFulcrumEvent([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> bodywebhookactive = null, [WorkflowExpression] Func<string> bodywebhookwebhookName = null, [WorkflowExpression] Func<bool> bodywebhookrunForBulkActions = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(contentType, nameof(contentType), required: false);
-            SourceExpression.Validate(bodywebhookactive, nameof(bodywebhookactive), required: false);
-            SourceExpression.Validate(bodywebhookwebhookName, nameof(bodywebhookwebhookName), required: false);
-            SourceExpression.Validate(bodywebhookrunForBulkActions, nameof(bodywebhookrunForBulkActions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/webhooks.json";

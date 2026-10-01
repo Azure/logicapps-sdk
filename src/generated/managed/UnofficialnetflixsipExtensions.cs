@@ -14,19 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<TitleSearchResponse> TitleSearch([WorkflowExpression] Func<int> query = null, [WorkflowExpression] Func<int> type = null, [WorkflowExpression] Func<int> genrelist = null, [WorkflowExpression] Func<string> countrylist = null, [WorkflowExpression] Func<int> startYear = null, [WorkflowExpression] Func<int> endYear = null, [WorkflowExpression] Func<string> audio = null, [WorkflowExpression] Func<string> audiosubtitleAndor = null, [WorkflowExpression] Func<string> subtitle = null, [WorkflowExpression] Func<string> countryAndorunique = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(query, nameof(query), required: false);
-            SourceExpression.Validate(type, nameof(type), required: false);
-            SourceExpression.Validate(genrelist, nameof(genrelist), required: false);
-            SourceExpression.Validate(countrylist, nameof(countrylist), required: false);
-            SourceExpression.Validate(startYear, nameof(startYear), required: false);
-            SourceExpression.Validate(endYear, nameof(endYear), required: false);
-            SourceExpression.Validate(audio, nameof(audio), required: false);
-            SourceExpression.Validate(audiosubtitleAndor, nameof(audiosubtitleAndor), required: false);
-            SourceExpression.Validate(subtitle, nameof(subtitle), required: false);
-            SourceExpression.Validate(countryAndorunique, nameof(countryAndorunique), required: false);
-            SourceExpression.Validate(orderby, nameof(orderby), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/search";
@@ -67,10 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<PeopleSearchResponse> PeopleSearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> netflixId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(name, nameof(name), required: false);
-            SourceExpression.Validate(netflixId, nameof(netflixId), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/people";
@@ -93,11 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<DeletedSearchResponse> DeletedSearch([WorkflowExpression] Func<int> netflixId = null, [WorkflowExpression] Func<string> countryList = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(netflixId, nameof(netflixId), required: false);
-            SourceExpression.Validate(countryList, nameof(countryList), required: false);
-            SourceExpression.Validate(date, nameof(date), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/titlesdel";
@@ -150,8 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<TitleDetailResponse> TitleDetail([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> imdbid)
         {
-            SourceExpression.Validate(netflixid, nameof(netflixid), required: true);
-            SourceExpression.Validate(imdbid, nameof(imdbid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/title";
@@ -168,7 +144,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<TitleCountryResponse> TitleCountry([WorkflowExpression] Func<int> netflixid)
         {
-            SourceExpression.Validate(netflixid, nameof(netflixid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/titlecountries";
@@ -184,7 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<TitleGenreResponse> TitleGenre([WorkflowExpression] Func<int> netflixid)
         {
-            SourceExpression.Validate(netflixid, nameof(netflixid), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/titlegenres";
@@ -200,9 +174,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<TitleEpisodeResponse> TitleEpisode([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> seasonid, [WorkflowExpression] Func<int> episodeid = null)
         {
-            SourceExpression.Validate(netflixid, nameof(netflixid), required: true);
-            SourceExpression.Validate(seasonid, nameof(seasonid), required: true);
-            SourceExpression.Validate(episodeid, nameof(episodeid), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/episodes";
@@ -221,9 +192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<TitleImageResponse> TitleImage([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(netflixid, nameof(netflixid), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/images";
@@ -243,9 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<TitleExpiringResponse> TitleExpiring([WorkflowExpression] Func<int> countrylist, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            SourceExpression.Validate(countrylist, nameof(countrylist), required: true);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/expiring";

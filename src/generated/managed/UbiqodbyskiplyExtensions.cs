@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
     {
         public IWorkflowTrigger DataIn([WorkflowExpression] Func<int> bodygroupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/key/subscribe";

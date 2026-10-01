@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticlePostResponse> Article([WorkflowExpression] Func<bodymodeInput> bodymode, [WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodysubheadings = null, [WorkflowExpression] Func<bool> bodyundetectable = null, [WorkflowExpression] Func<string> bodytone = null, [WorkflowExpression] Func<int> bodylength = null)
         {
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: true);
-            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            SourceExpression.Validate(bodysubheadings, nameof(bodysubheadings), required: false);
-            SourceExpression.Validate(bodyundetectable, nameof(bodyundetectable), required: false);
-            SourceExpression.Validate(bodytone, nameof(bodytone), required: false);
-            SourceExpression.Validate(bodylength, nameof(bodylength), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/create_article";
@@ -75,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet([WorkflowExpression] Func<string> bodyarticleId = null)
         {
-            SourceExpression.Validate(bodyarticleId, nameof(bodyarticleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get_article";
@@ -102,7 +94,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticlesPostResponseItem[]> Articles([WorkflowExpression] Func<int> bodycursor = null)
         {
-            SourceExpression.Validate(bodycursor, nameof(bodycursor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/list_articles";

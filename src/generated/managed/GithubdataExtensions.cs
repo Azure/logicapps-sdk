@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubdata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubdata")]
         public IBodyWorkflowAction<string> RetrieveData([WorkflowExpression] Func<string> githubname, [WorkflowExpression] Func<string> reponame, [WorkflowExpression] Func<string> filewithpath)
         {
-            SourceExpression.Validate(githubname, nameof(githubname), required: true);
-            SourceExpression.Validate(reponame, nameof(reponame), required: true);
-            SourceExpression.Validate(filewithpath, nameof(filewithpath), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(githubname, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reponame, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filewithpath, 1));

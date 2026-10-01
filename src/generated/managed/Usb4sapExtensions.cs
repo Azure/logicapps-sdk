@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usb4sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usb4sap")]
         public IWorkflowAction GetCallExtractMetadata([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> format = null)
         {
-            SourceExpression.Validate(filter, nameof(filter), required: true);
-            SourceExpression.Validate(format, nameof(format), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";

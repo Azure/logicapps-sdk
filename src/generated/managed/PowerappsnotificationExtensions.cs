@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerappsnotification")]
         public IWorkflowAction SendPushNotification([WorkflowExpression] Func<string[]> payloadrecipients = null, [WorkflowExpression] Func<string> payloadmessage = null, [WorkflowExpression] Func<bool> payloadopenApp = null)
         {
-            SourceExpression.Validate(payloadrecipients, nameof(payloadrecipients), required: false);
-            SourceExpression.Validate(payloadmessage, nameof(payloadmessage), required: false);
-            SourceExpression.Validate(payloadopenApp, nameof(payloadopenApp), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";

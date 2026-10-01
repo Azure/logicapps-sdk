@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymSearchPostResponse> AcronymSearch([WorkflowExpression] Func<bodyrequestsInputItem[]> bodyrequests = null)
         {
-            SourceExpression.Validate(bodyrequests, nameof(bodyrequests), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query";
@@ -55,11 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymPostResponse> Acronym([WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodystandsFor, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodywebUrl = null, [WorkflowExpression] Func<bodystateInput> bodystate = null)
         {
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodystandsFor, nameof(bodystandsFor), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodywebUrl, nameof(bodywebUrl), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/acronyms";
@@ -112,7 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymGetResponse> AcronymGet([WorkflowExpression] Func<string> acronymsId)
         {
-            SourceExpression.Validate(acronymsId, nameof(acronymsId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(acronymsId, 1));
@@ -127,7 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<string> AcronymDelete([WorkflowExpression] Func<string> acronymsId)
         {
-            SourceExpression.Validate(acronymsId, nameof(acronymsId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(acronymsId, 1));
@@ -142,12 +134,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<string> AcronymPatch([WorkflowExpression] Func<string> acronymsId, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodystandsFor = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodywebUrl = null, [WorkflowExpression] Func<bodystateInput> bodystate = null)
         {
-            SourceExpression.Validate(acronymsId, nameof(acronymsId), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            SourceExpression.Validate(bodystandsFor, nameof(bodystandsFor), required: false);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodywebUrl, nameof(bodywebUrl), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(acronymsId, 1));

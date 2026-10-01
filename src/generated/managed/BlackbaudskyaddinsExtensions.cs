@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken([WorkflowExpression] Func<string> bodyuserIdentityToken, [WorkflowExpression] Func<string> bodyapplicationId)
         {
-            SourceExpression.Validate(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
-            SourceExpression.Validate(bodyapplicationId, nameof(bodyapplicationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
@@ -40,9 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         public IWorkflowAction SendHttpRequest([WorkflowExpression] Func<bodymethodInput> bodymethod, [WorkflowExpression] Func<string> bodyrelativePath, [WorkflowExpression] Func<string> bodybody = null)
         {
-            SourceExpression.Validate(bodymethod, nameof(bodymethod), required: true);
-            SourceExpression.Validate(bodyrelativePath, nameof(bodyrelativePath), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/virtual/httprequest";

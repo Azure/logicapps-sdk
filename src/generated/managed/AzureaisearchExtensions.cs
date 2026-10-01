@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> IndexDocument([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/indexDocument";
@@ -36,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> IndexDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documentToIndex = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(documentToIndex, nameof(documentToIndex), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/indexDocuments";
@@ -54,7 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken[]> GetIndexesSchema([WorkflowExpression] Func<bool> onlyIntegratedVectorIndexes = null)
         {
-            SourceExpression.Validate(onlyIntegratedVectorIndexes, nameof(onlyIntegratedVectorIndexes), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/indexesSchema";
@@ -72,7 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> GetIndexStatistics([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/indexStatistics/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
@@ -87,15 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken[]> IntegratedVectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> integratedVectorSearchRequestsearchText = null, [WorkflowExpression] Func<string[]> integratedVectorSearchRequestvectorizedSearchFields = null, [WorkflowExpression] Func<string[]> integratedVectorSearchRequestselectFields = null, [WorkflowExpression] Func<string> integratedVectorSearchRequestfilterCondition = null, [WorkflowExpression] Func<string> integratedVectorSearchRequestsessionId = null, [WorkflowExpression] Func<int> integratedVectorSearchRequestnearestNeighbors = null, [WorkflowExpression] Func<int> integratedVectorSearchRequesttopSearches = null, [WorkflowExpression] Func<int> integratedVectorSearchRequestskipSearches = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(integratedVectorSearchRequestsearchText, nameof(integratedVectorSearchRequestsearchText), required: false);
-            SourceExpression.Validate(integratedVectorSearchRequestvectorizedSearchFields, nameof(integratedVectorSearchRequestvectorizedSearchFields), required: false);
-            SourceExpression.Validate(integratedVectorSearchRequestselectFields, nameof(integratedVectorSearchRequestselectFields), required: false);
-            SourceExpression.Validate(integratedVectorSearchRequestfilterCondition, nameof(integratedVectorSearchRequestfilterCondition), required: false);
-            SourceExpression.Validate(integratedVectorSearchRequestsessionId, nameof(integratedVectorSearchRequestsessionId), required: false);
-            SourceExpression.Validate(integratedVectorSearchRequestnearestNeighbors, nameof(integratedVectorSearchRequestnearestNeighbors), required: false);
-            SourceExpression.Validate(integratedVectorSearchRequesttopSearches, nameof(integratedVectorSearchRequesttopSearches), required: false);
-            SourceExpression.Validate(integratedVectorSearchRequestskipSearches, nameof(integratedVectorSearchRequestskipSearches), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integratedVectorSearch/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
@@ -164,16 +150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken[]> SemanticHybridSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> semanticHybridSearchRequestsearchText = null, [WorkflowExpression] Func<string[]> semanticHybridSearchRequestvectorizedSearchFields = null, [WorkflowExpression] Func<string> semanticHybridSearchRequestsemanticConfiguration = null, [WorkflowExpression] Func<string[]> semanticHybridSearchRequestselectFields = null, [WorkflowExpression] Func<string> semanticHybridSearchRequestfilterCondition = null, [WorkflowExpression] Func<string> semanticHybridSearchRequestsessionId = null, [WorkflowExpression] Func<int> semanticHybridSearchRequestnearestNeighbors = null, [WorkflowExpression] Func<int> semanticHybridSearchRequesttopSearches = null, [WorkflowExpression] Func<int> semanticHybridSearchRequestskipSearches = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(semanticHybridSearchRequestsearchText, nameof(semanticHybridSearchRequestsearchText), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequestvectorizedSearchFields, nameof(semanticHybridSearchRequestvectorizedSearchFields), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequestsemanticConfiguration, nameof(semanticHybridSearchRequestsemanticConfiguration), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequestselectFields, nameof(semanticHybridSearchRequestselectFields), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequestfilterCondition, nameof(semanticHybridSearchRequestfilterCondition), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequestsessionId, nameof(semanticHybridSearchRequestsessionId), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequestnearestNeighbors, nameof(semanticHybridSearchRequestnearestNeighbors), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequesttopSearches, nameof(semanticHybridSearchRequesttopSearches), required: false);
-            SourceExpression.Validate(semanticHybridSearchRequestskipSearches, nameof(semanticHybridSearchRequestskipSearches), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/semanticHybridSearch/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
@@ -248,7 +224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteDocument";
@@ -270,8 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IWorkflowAction DeleteDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documentsToDelete = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(documentsToDelete, nameof(documentsToDelete), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteDocuments";
@@ -288,7 +261,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IWorkflowAction MergeDocument([WorkflowExpression] Func<string> indexName)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mergeDocument";
@@ -310,13 +282,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<string[]> VectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> vectorFieldsName, [WorkflowExpression] Func<int> nearestNeighbors, [WorkflowExpression] Func<double[]> vectorFieldsValue = null, [WorkflowExpression] Func<string> searchQuery = null, [WorkflowExpression] Func<searchModeInput> searchMode = null, [WorkflowExpression] Func<string> filterCondition = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(vectorFieldsName, nameof(vectorFieldsName), required: true);
-            SourceExpression.Validate(nearestNeighbors, nameof(nearestNeighbors), required: true);
-            SourceExpression.Validate(vectorFieldsValue, nameof(vectorFieldsValue), required: false);
-            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: false);
-            SourceExpression.Validate(searchMode, nameof(searchMode), required: false);
-            SourceExpression.Validate(filterCondition, nameof(filterCondition), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/vectorSearch";
@@ -341,9 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<AgenticRetrievalOutput> KnowledgeAgentRetrieval([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> agentName, [WorkflowExpression] Func<AgenticRetrievalInput[]> userQuery = null)
         {
-            SourceExpression.Validate(indexName, nameof(indexName), required: true);
-            SourceExpression.Validate(agentName, nameof(agentName), required: true);
-            SourceExpression.Validate(userQuery, nameof(userQuery), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/knowledgeAgentRetrieval";

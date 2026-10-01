@@ -14,39 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricjob
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "repfabricjob")]
         public IWorkflowAction RepfabricCreateJob([WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<string> bodyjobName, [WorkflowExpression] Func<string> bodycompany, [WorkflowExpression] Func<string> bodycontactFirstName, [WorkflowExpression] Func<string> bodyjobNumber = null, [WorkflowExpression] Func<string> bodyjobBidDate = null, [WorkflowExpression] Func<string> bodyjobOrderDate = null, [WorkflowExpression] Func<string> bodyjobTypeName = null, [WorkflowExpression] Func<string> bodyjobStage = null, [WorkflowExpression] Func<string> bodyjobValue = null, [WorkflowExpression] Func<string> bodystreet1 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzip = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodyjobUrl = null, [WorkflowExpression] Func<string> bodycompanyPhone1 = null, [WorkflowExpression] Func<string> bodycompanyFax = null, [WorkflowExpression] Func<string> bodycompanyType = null, [WorkflowExpression] Func<string> bodycompanyWebsite = null, [WorkflowExpression] Func<string> bodycompanySalesTeam = null, [WorkflowExpression] Func<int> bodycompanySalesTeamId = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<string> bodycontactFullName = null, [WorkflowExpression] Func<string> bodycontactTitle = null, [WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodycontactPhone = null, [WorkflowExpression] Func<string> bodycontactFax = null, [WorkflowExpression] Func<string> bodycontactStreet1 = null, [WorkflowExpression] Func<string> bodycontactCity = null, [WorkflowExpression] Func<string> bodycontactState = null, [WorkflowExpression] Func<string> bodycontactZip = null, [WorkflowExpression] Func<bool> bodycontactPrimaryContact = null)
         {
-            SourceExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
-            SourceExpression.Validate(bodyjobName, nameof(bodyjobName), required: true);
-            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: true);
-            SourceExpression.Validate(bodycontactFirstName, nameof(bodycontactFirstName), required: true);
-            SourceExpression.Validate(bodyjobNumber, nameof(bodyjobNumber), required: false);
-            SourceExpression.Validate(bodyjobBidDate, nameof(bodyjobBidDate), required: false);
-            SourceExpression.Validate(bodyjobOrderDate, nameof(bodyjobOrderDate), required: false);
-            SourceExpression.Validate(bodyjobTypeName, nameof(bodyjobTypeName), required: false);
-            SourceExpression.Validate(bodyjobStage, nameof(bodyjobStage), required: false);
-            SourceExpression.Validate(bodyjobValue, nameof(bodyjobValue), required: false);
-            SourceExpression.Validate(bodystreet1, nameof(bodystreet1), required: false);
-            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
-            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
-            SourceExpression.Validate(bodyzip, nameof(bodyzip), required: false);
-            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            SourceExpression.Validate(bodyjobUrl, nameof(bodyjobUrl), required: false);
-            SourceExpression.Validate(bodycompanyPhone1, nameof(bodycompanyPhone1), required: false);
-            SourceExpression.Validate(bodycompanyFax, nameof(bodycompanyFax), required: false);
-            SourceExpression.Validate(bodycompanyType, nameof(bodycompanyType), required: false);
-            SourceExpression.Validate(bodycompanyWebsite, nameof(bodycompanyWebsite), required: false);
-            SourceExpression.Validate(bodycompanySalesTeam, nameof(bodycompanySalesTeam), required: false);
-            SourceExpression.Validate(bodycompanySalesTeamId, nameof(bodycompanySalesTeamId), required: false);
-            SourceExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            SourceExpression.Validate(bodycontactFullName, nameof(bodycontactFullName), required: false);
-            SourceExpression.Validate(bodycontactTitle, nameof(bodycontactTitle), required: false);
-            SourceExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            SourceExpression.Validate(bodycontactPhone, nameof(bodycontactPhone), required: false);
-            SourceExpression.Validate(bodycontactFax, nameof(bodycontactFax), required: false);
-            SourceExpression.Validate(bodycontactStreet1, nameof(bodycontactStreet1), required: false);
-            SourceExpression.Validate(bodycontactCity, nameof(bodycontactCity), required: false);
-            SourceExpression.Validate(bodycontactState, nameof(bodycontactState), required: false);
-            SourceExpression.Validate(bodycontactZip, nameof(bodycontactZip), required: false);
-            SourceExpression.Validate(bodycontactPrimaryContact, nameof(bodycontactPrimaryContact), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/default/jobs";

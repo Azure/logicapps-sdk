@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<bool> onlyFinished = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            SourceExpression.Validate(modelId, nameof(modelId), required: true);
-            SourceExpression.Validate(onlyFinished, nameof(onlyFinished), required: false);
-            SourceExpression.Validate(page, nameof(page), required: false);
-            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
@@ -38,16 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagePostResponse> Image([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<string> bodynegativePrompt = null, [WorkflowExpression] Func<int> bodysteps = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<int> bodynumberOfImages = null, [WorkflowExpression] Func<int> bodypromptStrength = null, [WorkflowExpression] Func<int> bodyseed = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
         {
-            SourceExpression.Validate(modelId, nameof(modelId), required: true);
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            SourceExpression.Validate(bodysteps, nameof(bodysteps), required: false);
-            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            SourceExpression.Validate(bodynumberOfImages, nameof(bodynumberOfImages), required: false);
-            SourceExpression.Validate(bodypromptStrength, nameof(bodypromptStrength), required: false);
-            SourceExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            SourceExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
@@ -118,8 +104,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<string> inferenceId)
         {
-            SourceExpression.Validate(modelId, nameof(modelId), required: true);
-            SourceExpression.Validate(inferenceId, nameof(inferenceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inferenceId, 1));
@@ -134,8 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<string> ImageDelete([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<string> inferenceId)
         {
-            SourceExpression.Validate(modelId, nameof(modelId), required: true);
-            SourceExpression.Validate(inferenceId, nameof(inferenceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inferenceId, 1));
@@ -150,11 +132,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelPostResponse> Model([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodysubjectKeyword = null, [WorkflowExpression] Func<string> bodysubjectType = null, [WorkflowExpression] Func<string> bodywebhookUrl = null, [WorkflowExpression] Func<string[]> bodyimageSampleUrls = null)
         {
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodysubjectKeyword, nameof(bodysubjectKeyword), required: false);
-            SourceExpression.Validate(bodysubjectType, nameof(bodysubjectType), required: false);
-            SourceExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
-            SourceExpression.Validate(bodyimageSampleUrls, nameof(bodyimageSampleUrls), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/images/models/new";
@@ -219,7 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet([WorkflowExpression] Func<modelIdInput> modelId)
         {
-            SourceExpression.Validate(modelId, nameof(modelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
@@ -234,7 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelDeleteResponse> ModelDelete([WorkflowExpression] Func<modelIdInput> modelId)
         {
-            SourceExpression.Validate(modelId, nameof(modelId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelId, 1));
@@ -263,9 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicPostResponse> Music([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<bodymodeInput> bodymode, [WorkflowExpression] Func<int> bodyduration)
         {
-            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            SourceExpression.Validate(bodymode, nameof(bodymode), required: true);
-            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/music";
@@ -292,7 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicGetResponse> MusicGet([WorkflowExpression] Func<string> inferenceId)
         {
-            SourceExpression.Validate(inferenceId, nameof(inferenceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/music/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inferenceId, 1));

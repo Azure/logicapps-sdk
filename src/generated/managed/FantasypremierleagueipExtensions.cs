@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<ManagerUsersHistoryResponse> ManagerUsersHistory([WorkflowExpression] Func<string> managerId)
         {
-            SourceExpression.Validate(managerId, nameof(managerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/entry/{0}/history/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(managerId, 1));
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<ManagerUsersBasicInformationResponse> ManagerUsersBasicInformation([WorkflowExpression] Func<string> managerId)
         {
-            SourceExpression.Validate(managerId, nameof(managerId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/entry/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(managerId, 1));
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<GameWeekLiveDataResponse> GameWeekLiveData([WorkflowExpression] Func<string> eventId)
         {
-            SourceExpression.Validate(eventId, nameof(eventId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/event/{0}/live/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(eventId, 1));
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<PlayersDetailedDataResponse> PlayersDetailedData([WorkflowExpression] Func<string> elementId)
         {
-            SourceExpression.Validate(elementId, nameof(elementId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/element-summary/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(elementId, 1));
@@ -102,7 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<ClassicLeagueStandingsResponse> ClassicLeagueStandings([WorkflowExpression] Func<string> leagueId)
         {
-            SourceExpression.Validate(leagueId, nameof(leagueId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/leagues-classic/{0}/standings/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(leagueId, 1));

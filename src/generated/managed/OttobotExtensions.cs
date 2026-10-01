@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
         public IWorkflowAction SendAttachmentsToUrl([WorkflowExpression] Func<string> bodyaPIURL, [WorkflowExpression] Func<string> bodyattachmentURL, [WorkflowExpression] Func<string> bodyattachmentFileName)
         {
-            SourceExpression.Validate(bodyaPIURL, nameof(bodyaPIURL), required: true);
-            SourceExpression.Validate(bodyattachmentURL, nameof(bodyattachmentURL), required: true);
-            SourceExpression.Validate(bodyattachmentFileName, nameof(bodyattachmentFileName), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/attachments";
@@ -59,15 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
         public IBodyWorkflowAction<Response> ReturnResultsToBot([WorkflowExpression] Func<string> returnResultURL, [WorkflowExpression] Func<string> bodyadaptiveCardadaptiveCardSchema, [WorkflowExpression] Func<string> bodyadaptiveCardadaptiveCardType, [WorkflowExpression] Func<string> bodyadaptiveCardadaptiveCardVersion, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodyendRequest, [WorkflowExpression] Func<JToken[]> bodyadaptiveCardadaptiveCardActions = null, [WorkflowExpression] Func<JToken[]> bodyadaptiveCardadaptiveCardBody = null, [WorkflowExpression] Func<bool> bodyrenderPreformattedText = null)
         {
-            SourceExpression.Validate(returnResultURL, nameof(returnResultURL), required: true);
-            SourceExpression.Validate(bodyadaptiveCardadaptiveCardSchema, nameof(bodyadaptiveCardadaptiveCardSchema), required: true);
-            SourceExpression.Validate(bodyadaptiveCardadaptiveCardType, nameof(bodyadaptiveCardadaptiveCardType), required: true);
-            SourceExpression.Validate(bodyadaptiveCardadaptiveCardVersion, nameof(bodyadaptiveCardadaptiveCardVersion), required: true);
-            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
-            SourceExpression.Validate(bodyendRequest, nameof(bodyendRequest), required: true);
-            SourceExpression.Validate(bodyadaptiveCardadaptiveCardActions, nameof(bodyadaptiveCardadaptiveCardActions), required: false);
-            SourceExpression.Validate(bodyadaptiveCardadaptiveCardBody, nameof(bodyadaptiveCardadaptiveCardBody), required: false);
-            SourceExpression.Validate(bodyrenderPreformattedText, nameof(bodyrenderPreformattedText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/skills/results";

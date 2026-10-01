@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
         public IWorkflowAction SendSmsMessage([WorkflowExpression] Func<bool> autoUnicode, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<int> bodylongMessageMaxParts, [WorkflowExpression] Func<string> bodyfrom = null)
         {
-            SourceExpression.Validate(autoUnicode, nameof(autoUnicode), required: true);
-            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
-            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
-            SourceExpression.Validate(bodylongMessageMaxParts, nameof(bodylongMessageMaxParts), required: true);
-            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v1/messages";

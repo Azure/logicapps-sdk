@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIADoesTopLevelWindowExistResponse> UIADoesTopLevelWindowExist([WorkflowExpression] Func<string> uIADoesTopLevelWindowExistworkflow, [WorkflowExpression] Func<string> uIADoesTopLevelWindowExistsearchClassName = null, [WorkflowExpression] Func<string> uIADoesTopLevelWindowExistsearchWindowTitle = null, [WorkflowExpression] Func<int> uIADoesTopLevelWindowExistsearchProcessId = null, [WorkflowExpression] Func<int> uIADoesTopLevelWindowExistmatchIndex = null, [WorkflowExpression] Func<string> uIADoesTopLevelWindowExistsearchFilter = null)
         {
-            SourceExpression.Validate(uIADoesTopLevelWindowExistworkflow, nameof(uIADoesTopLevelWindowExistworkflow), required: true);
-            SourceExpression.Validate(uIADoesTopLevelWindowExistsearchClassName, nameof(uIADoesTopLevelWindowExistsearchClassName), required: false);
-            SourceExpression.Validate(uIADoesTopLevelWindowExistsearchWindowTitle, nameof(uIADoesTopLevelWindowExistsearchWindowTitle), required: false);
-            SourceExpression.Validate(uIADoesTopLevelWindowExistsearchProcessId, nameof(uIADoesTopLevelWindowExistsearchProcessId), required: false);
-            SourceExpression.Validate(uIADoesTopLevelWindowExistmatchIndex, nameof(uIADoesTopLevelWindowExistmatchIndex), required: false);
-            SourceExpression.Validate(uIADoesTopLevelWindowExistsearchFilter, nameof(uIADoesTopLevelWindowExistsearchFilter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/DoesTopLevelWindowExist";
@@ -82,14 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetHandleForTopLevelWindowResponse> UIAGetHandleForTopLevelWindow([WorkflowExpression] Func<string> uIAGetHandleForTopLevelWindowworkflow, [WorkflowExpression] Func<string> uIAGetHandleForTopLevelWindowsearchClassName = null, [WorkflowExpression] Func<string> uIAGetHandleForTopLevelWindowsearchWindowTitle = null, [WorkflowExpression] Func<int> uIAGetHandleForTopLevelWindowsearchProcessId = null, [WorkflowExpression] Func<int> uIAGetHandleForTopLevelWindowmatchIndex = null, [WorkflowExpression] Func<string> uIAGetHandleForTopLevelWindowsearchFilter = null, [WorkflowExpression] Func<string> uIAGetHandleForTopLevelWindowsortByColumn = null, [WorkflowExpression] Func<bool> uIAGetHandleForTopLevelWindowmatchIndexAscending = null)
         {
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowworkflow, nameof(uIAGetHandleForTopLevelWindowworkflow), required: true);
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowsearchClassName, nameof(uIAGetHandleForTopLevelWindowsearchClassName), required: false);
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowsearchWindowTitle, nameof(uIAGetHandleForTopLevelWindowsearchWindowTitle), required: false);
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowsearchProcessId, nameof(uIAGetHandleForTopLevelWindowsearchProcessId), required: false);
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowmatchIndex, nameof(uIAGetHandleForTopLevelWindowmatchIndex), required: false);
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowsearchFilter, nameof(uIAGetHandleForTopLevelWindowsearchFilter), required: false);
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowsortByColumn, nameof(uIAGetHandleForTopLevelWindowsortByColumn), required: false);
-            SourceExpression.Validate(uIAGetHandleForTopLevelWindowmatchIndexAscending, nameof(uIAGetHandleForTopLevelWindowmatchIndexAscending), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetHandleForTopLevelWindow";
@@ -174,16 +160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForTopLevelWindowResponse> UIAWaitForTopLevelWindow([WorkflowExpression] Func<int> uIAWaitForTopLevelWindowsecondsToWait, [WorkflowExpression] Func<string> uIAWaitForTopLevelWindowworkflow, [WorkflowExpression] Func<string> uIAWaitForTopLevelWindowsearchClassName = null, [WorkflowExpression] Func<string> uIAWaitForTopLevelWindowsearchWindowTitle = null, [WorkflowExpression] Func<int> uIAWaitForTopLevelWindowsearchProcessId = null, [WorkflowExpression] Func<int> uIAWaitForTopLevelWindowmatchIndex = null, [WorkflowExpression] Func<string> uIAWaitForTopLevelWindowsearchFilter = null, [WorkflowExpression] Func<string> uIAWaitForTopLevelWindowsortByColumn = null, [WorkflowExpression] Func<bool> uIAWaitForTopLevelWindowmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound = null)
         {
-            SourceExpression.Validate(uIAWaitForTopLevelWindowsecondsToWait, nameof(uIAWaitForTopLevelWindowsecondsToWait), required: true);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowworkflow, nameof(uIAWaitForTopLevelWindowworkflow), required: true);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowsearchClassName, nameof(uIAWaitForTopLevelWindowsearchClassName), required: false);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowsearchWindowTitle, nameof(uIAWaitForTopLevelWindowsearchWindowTitle), required: false);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowsearchProcessId, nameof(uIAWaitForTopLevelWindowsearchProcessId), required: false);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowmatchIndex, nameof(uIAWaitForTopLevelWindowmatchIndex), required: false);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowsearchFilter, nameof(uIAWaitForTopLevelWindowsearchFilter), required: false);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowsortByColumn, nameof(uIAWaitForTopLevelWindowsortByColumn), required: false);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowmatchIndexAscending, nameof(uIAWaitForTopLevelWindowmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound, nameof(uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/WaitForTopLevelWindow";
@@ -286,8 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIADoesProcessHaveWindowResponse> UIADoesProcessHaveWindow([WorkflowExpression] Func<string> uIADoesProcessHaveWindowsearchProcessName, [WorkflowExpression] Func<string> uIADoesProcessHaveWindowworkflow)
         {
-            SourceExpression.Validate(uIADoesProcessHaveWindowsearchProcessName, nameof(uIADoesProcessHaveWindowsearchProcessName), required: true);
-            SourceExpression.Validate(uIADoesProcessHaveWindowworkflow, nameof(uIADoesProcessHaveWindowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/DoesProcessHaveWindow";
@@ -312,8 +286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetHandleForProcessMainWindowResponse> UIAGetHandleForProcessMainWindow([WorkflowExpression] Func<string> uIAGetHandleForProcessMainWindowsearchProcessName, [WorkflowExpression] Func<string> uIAGetHandleForProcessMainWindowworkflow)
         {
-            SourceExpression.Validate(uIAGetHandleForProcessMainWindowsearchProcessName, nameof(uIAGetHandleForProcessMainWindowsearchProcessName), required: true);
-            SourceExpression.Validate(uIAGetHandleForProcessMainWindowworkflow, nameof(uIAGetHandleForProcessMainWindowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetHandleForProcessMainWindow";
@@ -338,9 +310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForProcessMainWindowResponse> UIAWaitForProcessMainWindow([WorkflowExpression] Func<string> uIAWaitForProcessMainWindowsearchProcessName, [WorkflowExpression] Func<int> uIAWaitForProcessMainWindowsecondsToWait, [WorkflowExpression] Func<string> uIAWaitForProcessMainWindowworkflow)
         {
-            SourceExpression.Validate(uIAWaitForProcessMainWindowsearchProcessName, nameof(uIAWaitForProcessMainWindowsearchProcessName), required: true);
-            SourceExpression.Validate(uIAWaitForProcessMainWindowsecondsToWait, nameof(uIAWaitForProcessMainWindowsecondsToWait), required: true);
-            SourceExpression.Validate(uIAWaitForProcessMainWindowworkflow, nameof(uIAWaitForProcessMainWindowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/WaitForProcessMainWindow";
@@ -367,8 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetHandleForProcessIdMainWindowResponse> UIAGetHandleForProcessIdMainWindow([WorkflowExpression] Func<int> uIAGetHandleForProcessIdMainWindowprocessId, [WorkflowExpression] Func<string> uIAGetHandleForProcessIdMainWindowworkflow)
         {
-            SourceExpression.Validate(uIAGetHandleForProcessIdMainWindowprocessId, nameof(uIAGetHandleForProcessIdMainWindowprocessId), required: true);
-            SourceExpression.Validate(uIAGetHandleForProcessIdMainWindowworkflow, nameof(uIAGetHandleForProcessIdMainWindowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetHandleForProcessIdMainWindow";
@@ -393,9 +360,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForProcessIdMainWindowResponse> UIAWaitForProcessIdMainWindow([WorkflowExpression] Func<int> uIAWaitForProcessIdMainWindowprocessId, [WorkflowExpression] Func<int> uIAWaitForProcessIdMainWindowsecondsToWait, [WorkflowExpression] Func<string> uIAWaitForProcessIdMainWindowworkflow)
         {
-            SourceExpression.Validate(uIAWaitForProcessIdMainWindowprocessId, nameof(uIAWaitForProcessIdMainWindowprocessId), required: true);
-            SourceExpression.Validate(uIAWaitForProcessIdMainWindowsecondsToWait, nameof(uIAWaitForProcessIdMainWindowsecondsToWait), required: true);
-            SourceExpression.Validate(uIAWaitForProcessIdMainWindowworkflow, nameof(uIAWaitForProcessIdMainWindowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/WaitForProcessIdMainWindow";
@@ -422,7 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetHandleForFocussedElementResponse> UIAGetHandleForFocussedElement([WorkflowExpression] Func<string> uIAGetHandleForFocussedElementworkflow)
         {
-            SourceExpression.Validate(uIAGetHandleForFocussedElementworkflow, nameof(uIAGetHandleForFocussedElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetHandleForFocussedElement";
@@ -445,7 +408,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetHandleForMainWindowOfFocussedElementResponse> UIAGetHandleForMainWindowOfFocussedElement([WorkflowExpression] Func<string> uIAGetHandleForMainWindowOfFocussedElementworkflow)
         {
-            SourceExpression.Validate(uIAGetHandleForMainWindowOfFocussedElementworkflow, nameof(uIAGetHandleForMainWindowOfFocussedElementworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetHandleForMainWindowOfFocussedElement";
@@ -468,7 +430,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetHandleForDesktopResponse> UIAGetHandleForDesktop([WorkflowExpression] Func<string> uIAGetHandleForDesktopworkflow)
         {
-            SourceExpression.Validate(uIAGetHandleForDesktopworkflow, nameof(uIAGetHandleForDesktopworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetHandleForDesktop";
@@ -491,11 +452,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIASetForegroundWindow([WorkflowExpression] Func<int> uIASetForegroundWindowwindowHandle, [WorkflowExpression] Func<string> uIASetForegroundWindowworkflow, [WorkflowExpression] Func<bool> uIASetForegroundWindowtoggleWindow = null, [WorkflowExpression] Func<bool> uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent = null, [WorkflowExpression] Func<double> uIASetForegroundWindowtoggleDelay = null)
         {
-            SourceExpression.Validate(uIASetForegroundWindowwindowHandle, nameof(uIASetForegroundWindowwindowHandle), required: true);
-            SourceExpression.Validate(uIASetForegroundWindowworkflow, nameof(uIASetForegroundWindowworkflow), required: true);
-            SourceExpression.Validate(uIASetForegroundWindowtoggleWindow, nameof(uIASetForegroundWindowtoggleWindow), required: false);
-            SourceExpression.Validate(uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent, nameof(uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            SourceExpression.Validate(uIASetForegroundWindowtoggleDelay, nameof(uIASetForegroundWindowtoggleDelay), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/SetForegroundWindow";
@@ -568,8 +524,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAMaximiseWindow([WorkflowExpression] Func<int> uIAMaximiseWindowwindowHandle, [WorkflowExpression] Func<string> uIAMaximiseWindowworkflow)
         {
-            SourceExpression.Validate(uIAMaximiseWindowwindowHandle, nameof(uIAMaximiseWindowwindowHandle), required: true);
-            SourceExpression.Validate(uIAMaximiseWindowworkflow, nameof(uIAMaximiseWindowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/MaximiseWindow";
@@ -594,8 +548,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAMinimiseWindow([WorkflowExpression] Func<int> uIAMinimiseWindowwindowHandle, [WorkflowExpression] Func<string> uIAMinimiseWindowworkflow)
         {
-            SourceExpression.Validate(uIAMinimiseWindowwindowHandle, nameof(uIAMinimiseWindowwindowHandle), required: true);
-            SourceExpression.Validate(uIAMinimiseWindowworkflow, nameof(uIAMinimiseWindowworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/MinimiseWindow";
@@ -620,8 +572,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIASetWindowToNormal([WorkflowExpression] Func<int> uIASetWindowToNormalwindowHandle, [WorkflowExpression] Func<string> uIASetWindowToNormalworkflow)
         {
-            SourceExpression.Validate(uIASetWindowToNormalwindowHandle, nameof(uIASetWindowToNormalwindowHandle), required: true);
-            SourceExpression.Validate(uIASetWindowToNormalworkflow, nameof(uIASetWindowToNormalworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/SetWindowToNormal";
@@ -646,24 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIADoesElementExistResponse> UIADoesElementExist([WorkflowExpression] Func<int> uIADoesElementExistparentWindowHandle, [WorkflowExpression] Func<string> uIADoesElementExistworkflow, [WorkflowExpression] Func<string> uIADoesElementExistsearchElementName = null, [WorkflowExpression] Func<string> uIADoesElementExistsearchElementClassName = null, [WorkflowExpression] Func<string> uIADoesElementExistsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIADoesElementExistsearchLocalizedControlType = null, [WorkflowExpression] Func<int> uIADoesElementExistsearchProcessId = null, [WorkflowExpression] Func<bool> uIADoesElementExistsearchSubTree = null, [WorkflowExpression] Func<bool> uIADoesElementExistreturnElementHandle = null, [WorkflowExpression] Func<int> uIADoesElementExistmatchIndex = null, [WorkflowExpression] Func<string> uIADoesElementExistsearchFilter = null, [WorkflowExpression] Func<string> uIADoesElementExistsortByColumn = null, [WorkflowExpression] Func<bool> uIADoesElementExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIADoesElementExistincludeChildProcesses = null, [WorkflowExpression] Func<int> uIADoesElementExistmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIADoesElementExistmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIADoesElementExistmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIADoesElementExistelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIADoesElementExistparentWindowHandle, nameof(uIADoesElementExistparentWindowHandle), required: true);
-            SourceExpression.Validate(uIADoesElementExistworkflow, nameof(uIADoesElementExistworkflow), required: true);
-            SourceExpression.Validate(uIADoesElementExistsearchElementName, nameof(uIADoesElementExistsearchElementName), required: false);
-            SourceExpression.Validate(uIADoesElementExistsearchElementClassName, nameof(uIADoesElementExistsearchElementClassName), required: false);
-            SourceExpression.Validate(uIADoesElementExistsearchElementAutomationId, nameof(uIADoesElementExistsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIADoesElementExistsearchLocalizedControlType, nameof(uIADoesElementExistsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIADoesElementExistsearchProcessId, nameof(uIADoesElementExistsearchProcessId), required: false);
-            SourceExpression.Validate(uIADoesElementExistsearchSubTree, nameof(uIADoesElementExistsearchSubTree), required: false);
-            SourceExpression.Validate(uIADoesElementExistreturnElementHandle, nameof(uIADoesElementExistreturnElementHandle), required: false);
-            SourceExpression.Validate(uIADoesElementExistmatchIndex, nameof(uIADoesElementExistmatchIndex), required: false);
-            SourceExpression.Validate(uIADoesElementExistsearchFilter, nameof(uIADoesElementExistsearchFilter), required: false);
-            SourceExpression.Validate(uIADoesElementExistsortByColumn, nameof(uIADoesElementExistsortByColumn), required: false);
-            SourceExpression.Validate(uIADoesElementExistmatchIndexAscending, nameof(uIADoesElementExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIADoesElementExistincludeChildProcesses, nameof(uIADoesElementExistincludeChildProcesses), required: false);
-            SourceExpression.Validate(uIADoesElementExistmaxElementsToSearch, nameof(uIADoesElementExistmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIADoesElementExistmaxRelativeSearchDepth, nameof(uIADoesElementExistmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIADoesElementExistmaxChildElementsToSearchPerNode, nameof(uIADoesElementExistmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIADoesElementExistelementLocalizedControlTypesNotToTraverse, nameof(uIADoesElementExistelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/DoesElementExist";
@@ -864,23 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIADoesDesktopElementExistResponse> UIADoesDesktopElementExist([WorkflowExpression] Func<string> uIADoesDesktopElementExistworkflow, [WorkflowExpression] Func<string> uIADoesDesktopElementExistsearchElementName = null, [WorkflowExpression] Func<string> uIADoesDesktopElementExistsearchElementClassName = null, [WorkflowExpression] Func<string> uIADoesDesktopElementExistsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIADoesDesktopElementExistsearchLocalizedControlType = null, [WorkflowExpression] Func<int> uIADoesDesktopElementExistsearchProcessId = null, [WorkflowExpression] Func<bool> uIADoesDesktopElementExistsearchSubTree = null, [WorkflowExpression] Func<bool> uIADoesDesktopElementExistreturnElementHandle = null, [WorkflowExpression] Func<int> uIADoesDesktopElementExistmatchIndex = null, [WorkflowExpression] Func<string> uIADoesDesktopElementExistsearchFilter = null, [WorkflowExpression] Func<string> uIADoesDesktopElementExistsortByColumn = null, [WorkflowExpression] Func<bool> uIADoesDesktopElementExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIADoesDesktopElementExistincludeChildProcesses = null, [WorkflowExpression] Func<int> uIADoesDesktopElementExistmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIADoesDesktopElementExistmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIADoesDesktopElementExistmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIADoesDesktopElementExistworkflow, nameof(uIADoesDesktopElementExistworkflow), required: true);
-            SourceExpression.Validate(uIADoesDesktopElementExistsearchElementName, nameof(uIADoesDesktopElementExistsearchElementName), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistsearchElementClassName, nameof(uIADoesDesktopElementExistsearchElementClassName), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistsearchElementAutomationId, nameof(uIADoesDesktopElementExistsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistsearchLocalizedControlType, nameof(uIADoesDesktopElementExistsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistsearchProcessId, nameof(uIADoesDesktopElementExistsearchProcessId), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistsearchSubTree, nameof(uIADoesDesktopElementExistsearchSubTree), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistreturnElementHandle, nameof(uIADoesDesktopElementExistreturnElementHandle), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistmatchIndex, nameof(uIADoesDesktopElementExistmatchIndex), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistsearchFilter, nameof(uIADoesDesktopElementExistsearchFilter), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistsortByColumn, nameof(uIADoesDesktopElementExistsortByColumn), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistmatchIndexAscending, nameof(uIADoesDesktopElementExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistincludeChildProcesses, nameof(uIADoesDesktopElementExistincludeChildProcesses), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistmaxElementsToSearch, nameof(uIADoesDesktopElementExistmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistmaxRelativeSearchDepth, nameof(uIADoesDesktopElementExistmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistmaxChildElementsToSearchPerNode, nameof(uIADoesDesktopElementExistmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse, nameof(uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/DoesDesktopElementExist";
@@ -1079,26 +994,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForElementResponse> UIAWaitForElement([WorkflowExpression] Func<int> uIAWaitForElementparentWindowHandle, [WorkflowExpression] Func<int> uIAWaitForElementsecondsToWait, [WorkflowExpression] Func<string> uIAWaitForElementworkflow, [WorkflowExpression] Func<string> uIAWaitForElementsearchElementName = null, [WorkflowExpression] Func<string> uIAWaitForElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAWaitForElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAWaitForElementsearchLocalizedControlType = null, [WorkflowExpression] Func<int> uIAWaitForElementsearchProcessId = null, [WorkflowExpression] Func<bool> uIAWaitForElementsearchSubTree = null, [WorkflowExpression] Func<bool> uIAWaitForElementreturnElementHandle = null, [WorkflowExpression] Func<int> uIAWaitForElementmatchIndex = null, [WorkflowExpression] Func<string> uIAWaitForElementsearchFilter = null, [WorkflowExpression] Func<string> uIAWaitForElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAWaitForElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAWaitForElementincludeChildProcesses = null, [WorkflowExpression] Func<bool> uIAWaitForElementraiseExceptionIfElementNotFound = null, [WorkflowExpression] Func<int> uIAWaitForElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAWaitForElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAWaitForElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAWaitForElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAWaitForElementparentWindowHandle, nameof(uIAWaitForElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAWaitForElementsecondsToWait, nameof(uIAWaitForElementsecondsToWait), required: true);
-            SourceExpression.Validate(uIAWaitForElementworkflow, nameof(uIAWaitForElementworkflow), required: true);
-            SourceExpression.Validate(uIAWaitForElementsearchElementName, nameof(uIAWaitForElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAWaitForElementsearchElementClassName, nameof(uIAWaitForElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAWaitForElementsearchElementAutomationId, nameof(uIAWaitForElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAWaitForElementsearchLocalizedControlType, nameof(uIAWaitForElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAWaitForElementsearchProcessId, nameof(uIAWaitForElementsearchProcessId), required: false);
-            SourceExpression.Validate(uIAWaitForElementsearchSubTree, nameof(uIAWaitForElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAWaitForElementreturnElementHandle, nameof(uIAWaitForElementreturnElementHandle), required: false);
-            SourceExpression.Validate(uIAWaitForElementmatchIndex, nameof(uIAWaitForElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAWaitForElementsearchFilter, nameof(uIAWaitForElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAWaitForElementsortByColumn, nameof(uIAWaitForElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAWaitForElementmatchIndexAscending, nameof(uIAWaitForElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAWaitForElementincludeChildProcesses, nameof(uIAWaitForElementincludeChildProcesses), required: false);
-            SourceExpression.Validate(uIAWaitForElementraiseExceptionIfElementNotFound, nameof(uIAWaitForElementraiseExceptionIfElementNotFound), required: false);
-            SourceExpression.Validate(uIAWaitForElementmaxElementsToSearch, nameof(uIAWaitForElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAWaitForElementmaxRelativeSearchDepth, nameof(uIAWaitForElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAWaitForElementmaxChildElementsToSearchPerNode, nameof(uIAWaitForElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAWaitForElementelementLocalizedControlTypesNotToTraverse, nameof(uIAWaitForElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/WaitForElement";
@@ -1317,25 +1212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForDesktopElementResponse> UIAWaitForDesktopElement([WorkflowExpression] Func<int> uIAWaitForDesktopElementsecondsToWait, [WorkflowExpression] Func<string> uIAWaitForDesktopElementworkflow, [WorkflowExpression] Func<string> uIAWaitForDesktopElementsearchElementName = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementsearchLocalizedControlType = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementsearchProcessId = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementsearchSubTree = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementreturnElementHandle = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementmatchIndex = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementsearchFilter = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementincludeChildProcesses = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementraiseExceptionIfElementNotFound = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAWaitForDesktopElementsecondsToWait, nameof(uIAWaitForDesktopElementsecondsToWait), required: true);
-            SourceExpression.Validate(uIAWaitForDesktopElementworkflow, nameof(uIAWaitForDesktopElementworkflow), required: true);
-            SourceExpression.Validate(uIAWaitForDesktopElementsearchElementName, nameof(uIAWaitForDesktopElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementsearchElementClassName, nameof(uIAWaitForDesktopElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementsearchElementAutomationId, nameof(uIAWaitForDesktopElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementsearchLocalizedControlType, nameof(uIAWaitForDesktopElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementsearchProcessId, nameof(uIAWaitForDesktopElementsearchProcessId), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementsearchSubTree, nameof(uIAWaitForDesktopElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementreturnElementHandle, nameof(uIAWaitForDesktopElementreturnElementHandle), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementmatchIndex, nameof(uIAWaitForDesktopElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementsearchFilter, nameof(uIAWaitForDesktopElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementsortByColumn, nameof(uIAWaitForDesktopElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementmatchIndexAscending, nameof(uIAWaitForDesktopElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementincludeChildProcesses, nameof(uIAWaitForDesktopElementincludeChildProcesses), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementraiseExceptionIfElementNotFound, nameof(uIAWaitForDesktopElementraiseExceptionIfElementNotFound), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementmaxElementsToSearch, nameof(uIAWaitForDesktopElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementmaxRelativeSearchDepth, nameof(uIAWaitForDesktopElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementmaxChildElementsToSearchPerNode, nameof(uIAWaitForDesktopElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse, nameof(uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/WaitForDesktopElement";
@@ -1562,25 +1438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForElementToNotExistResponse> UIAWaitForElementToNotExist([WorkflowExpression] Func<int> uIAWaitForElementToNotExistparentWindowHandle, [WorkflowExpression] Func<int> uIAWaitForElementToNotExistsecondsToWait, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistworkflow, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistsearchElementName = null, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistsearchElementClassName = null, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistsearchLocalizedControlType = null, [WorkflowExpression] Func<int> uIAWaitForElementToNotExistsearchProcessId = null, [WorkflowExpression] Func<bool> uIAWaitForElementToNotExistsearchSubTree = null, [WorkflowExpression] Func<int> uIAWaitForElementToNotExistmatchIndex = null, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistsearchFilter = null, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistsortByColumn = null, [WorkflowExpression] Func<bool> uIAWaitForElementToNotExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAWaitForElementToNotExistincludeChildProcesses = null, [WorkflowExpression] Func<bool> uIAWaitForElementToNotExistraiseExceptionIfElementStillExists = null, [WorkflowExpression] Func<int> uIAWaitForElementToNotExistmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAWaitForElementToNotExistmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAWaitForElementToNotExistparentWindowHandle, nameof(uIAWaitForElementToNotExistparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsecondsToWait, nameof(uIAWaitForElementToNotExistsecondsToWait), required: true);
-            SourceExpression.Validate(uIAWaitForElementToNotExistworkflow, nameof(uIAWaitForElementToNotExistworkflow), required: true);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsearchElementName, nameof(uIAWaitForElementToNotExistsearchElementName), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsearchElementClassName, nameof(uIAWaitForElementToNotExistsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsearchElementAutomationId, nameof(uIAWaitForElementToNotExistsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsearchLocalizedControlType, nameof(uIAWaitForElementToNotExistsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsearchProcessId, nameof(uIAWaitForElementToNotExistsearchProcessId), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsearchSubTree, nameof(uIAWaitForElementToNotExistsearchSubTree), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistmatchIndex, nameof(uIAWaitForElementToNotExistmatchIndex), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsearchFilter, nameof(uIAWaitForElementToNotExistsearchFilter), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistsortByColumn, nameof(uIAWaitForElementToNotExistsortByColumn), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistmatchIndexAscending, nameof(uIAWaitForElementToNotExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistincludeChildProcesses, nameof(uIAWaitForElementToNotExistincludeChildProcesses), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistraiseExceptionIfElementStillExists, nameof(uIAWaitForElementToNotExistraiseExceptionIfElementStillExists), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistmaxElementsToSearch, nameof(uIAWaitForElementToNotExistmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistmaxRelativeSearchDepth, nameof(uIAWaitForElementToNotExistmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode, nameof(uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse, nameof(uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAWaitForElementToNotExist";
@@ -1783,24 +1640,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForDesktopElementToNotExistResponse> UIAWaitForDesktopElementToNotExist([WorkflowExpression] Func<int> uIAWaitForDesktopElementToNotExistsecondsToWait, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistworkflow, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistsearchElementName = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistsearchElementClassName = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistsearchLocalizedControlType = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementToNotExistsearchProcessId = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementToNotExistsearchSubTree = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementToNotExistmatchIndex = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistsearchFilter = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistsortByColumn = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementToNotExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementToNotExistincludeChildProcesses = null, [WorkflowExpression] Func<bool> uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementToNotExistmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsecondsToWait, nameof(uIAWaitForDesktopElementToNotExistsecondsToWait), required: true);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistworkflow, nameof(uIAWaitForDesktopElementToNotExistworkflow), required: true);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsearchElementName, nameof(uIAWaitForDesktopElementToNotExistsearchElementName), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsearchElementClassName, nameof(uIAWaitForDesktopElementToNotExistsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsearchElementAutomationId, nameof(uIAWaitForDesktopElementToNotExistsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsearchLocalizedControlType, nameof(uIAWaitForDesktopElementToNotExistsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsearchProcessId, nameof(uIAWaitForDesktopElementToNotExistsearchProcessId), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsearchSubTree, nameof(uIAWaitForDesktopElementToNotExistsearchSubTree), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistmatchIndex, nameof(uIAWaitForDesktopElementToNotExistmatchIndex), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsearchFilter, nameof(uIAWaitForDesktopElementToNotExistsearchFilter), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistsortByColumn, nameof(uIAWaitForDesktopElementToNotExistsortByColumn), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistmatchIndexAscending, nameof(uIAWaitForDesktopElementToNotExistmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistincludeChildProcesses, nameof(uIAWaitForDesktopElementToNotExistincludeChildProcesses), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists, nameof(uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistmaxElementsToSearch, nameof(uIAWaitForDesktopElementToNotExistmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth, nameof(uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode, nameof(uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse, nameof(uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAWaitForDesktopElementToNotExist";
@@ -2001,25 +1840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAPressElement([WorkflowExpression] Func<int> uIAPressElementparentWindowHandle, [WorkflowExpression] Func<string> uIAPressElementworkflow, [WorkflowExpression] Func<string> uIAPressElementsearchElementName = null, [WorkflowExpression] Func<string> uIAPressElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAPressElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAPressElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAPressElementsearchSubTree = null, [WorkflowExpression] Func<bool> uIAPressElementwait = null, [WorkflowExpression] Func<bool> uIAPressElementwin32ClickButton = null, [WorkflowExpression] Func<int> uIAPressElementmatchIndex = null, [WorkflowExpression] Func<string> uIAPressElementsearchFilter = null, [WorkflowExpression] Func<string> uIAPressElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAPressElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAPressElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAPressElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAPressElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAPressElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAPressElementtryInvokePattern = null, [WorkflowExpression] Func<bool> uIAPressElementtryLegacyPattern = null)
         {
-            SourceExpression.Validate(uIAPressElementparentWindowHandle, nameof(uIAPressElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAPressElementworkflow, nameof(uIAPressElementworkflow), required: true);
-            SourceExpression.Validate(uIAPressElementsearchElementName, nameof(uIAPressElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAPressElementsearchElementClassName, nameof(uIAPressElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAPressElementsearchElementAutomationId, nameof(uIAPressElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAPressElementsearchLocalizedControlType, nameof(uIAPressElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAPressElementsearchSubTree, nameof(uIAPressElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAPressElementwait, nameof(uIAPressElementwait), required: false);
-            SourceExpression.Validate(uIAPressElementwin32ClickButton, nameof(uIAPressElementwin32ClickButton), required: false);
-            SourceExpression.Validate(uIAPressElementmatchIndex, nameof(uIAPressElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAPressElementsearchFilter, nameof(uIAPressElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAPressElementsortByColumn, nameof(uIAPressElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAPressElementmatchIndexAscending, nameof(uIAPressElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAPressElementmaxElementsToSearch, nameof(uIAPressElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAPressElementmaxRelativeSearchDepth, nameof(uIAPressElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAPressElementmaxChildElementsToSearchPerNode, nameof(uIAPressElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAPressElementelementLocalizedControlTypesNotToTraverse, nameof(uIAPressElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAPressElementtryInvokePattern, nameof(uIAPressElementtryInvokePattern), required: false);
-            SourceExpression.Validate(uIAPressElementtryLegacyPattern, nameof(uIAPressElementtryLegacyPattern), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/PressElement";
@@ -2246,26 +2066,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAGlobalMouseClickOnElement([WorkflowExpression] Func<int> uIAGlobalMouseClickOnElementparentWindowHandle, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementworkflow, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGlobalMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<bool> uIAGlobalMouseClickOnElementfocusElementFirst = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAGlobalMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<uIAGlobalMouseClickOnElementoffsetRelativeToInput> uIAGlobalMouseClickOnElementoffsetRelativeTo = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickOnElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickOnElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementparentWindowHandle, nameof(uIAGlobalMouseClickOnElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementworkflow, nameof(uIAGlobalMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementsearchElementName, nameof(uIAGlobalMouseClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementsearchElementClassName, nameof(uIAGlobalMouseClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementsearchElementAutomationId, nameof(uIAGlobalMouseClickOnElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementsearchLocalizedControlType, nameof(uIAGlobalMouseClickOnElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementsearchSubTree, nameof(uIAGlobalMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementfocusElementFirst, nameof(uIAGlobalMouseClickOnElementfocusElementFirst), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementmatchIndex, nameof(uIAGlobalMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementsearchFilter, nameof(uIAGlobalMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementsortByColumn, nameof(uIAGlobalMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementmatchIndexAscending, nameof(uIAGlobalMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementclickOffsetX, nameof(uIAGlobalMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementclickOffsetY, nameof(uIAGlobalMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementoffsetRelativeTo, nameof(uIAGlobalMouseClickOnElementoffsetRelativeTo), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementmaxElementsToSearch, nameof(uIAGlobalMouseClickOnElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementmaxRelativeSearchDepth, nameof(uIAGlobalMouseClickOnElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode, nameof(uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse, nameof(uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary, nameof(uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GlobalMouseClickOnElement";
@@ -2498,26 +2298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAGlobalRightMouseClickOnElement([WorkflowExpression] Func<int> uIAGlobalRightMouseClickOnElementparentWindowHandle, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementworkflow, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGlobalRightMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<bool> uIAGlobalRightMouseClickOnElementfocusElementFirst = null, [WorkflowExpression] Func<int> uIAGlobalRightMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAGlobalRightMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGlobalRightMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> uIAGlobalRightMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<uIAGlobalRightMouseClickOnElementoffsetRelativeToInput> uIAGlobalRightMouseClickOnElementoffsetRelativeTo = null, [WorkflowExpression] Func<int> uIAGlobalRightMouseClickOnElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementparentWindowHandle, nameof(uIAGlobalRightMouseClickOnElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementworkflow, nameof(uIAGlobalRightMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementsearchElementName, nameof(uIAGlobalRightMouseClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementsearchElementClassName, nameof(uIAGlobalRightMouseClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementsearchElementAutomationId, nameof(uIAGlobalRightMouseClickOnElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementsearchLocalizedControlType, nameof(uIAGlobalRightMouseClickOnElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementsearchSubTree, nameof(uIAGlobalRightMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementfocusElementFirst, nameof(uIAGlobalRightMouseClickOnElementfocusElementFirst), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementmatchIndex, nameof(uIAGlobalRightMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementsearchFilter, nameof(uIAGlobalRightMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementsortByColumn, nameof(uIAGlobalRightMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementmatchIndexAscending, nameof(uIAGlobalRightMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementclickOffsetX, nameof(uIAGlobalRightMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementclickOffsetY, nameof(uIAGlobalRightMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementoffsetRelativeTo, nameof(uIAGlobalRightMouseClickOnElementoffsetRelativeTo), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementmaxElementsToSearch, nameof(uIAGlobalRightMouseClickOnElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth, nameof(uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode, nameof(uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse, nameof(uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary, nameof(uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GlobalRightMouseClickOnElement";
@@ -2750,26 +2530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAGlobalMiddleMouseClickOnElement([WorkflowExpression] Func<int> uIAGlobalMiddleMouseClickOnElementparentWindowHandle, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementworkflow, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGlobalMiddleMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<bool> uIAGlobalMiddleMouseClickOnElementfocusElementFirst = null, [WorkflowExpression] Func<int> uIAGlobalMiddleMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAGlobalMiddleMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGlobalMiddleMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> uIAGlobalMiddleMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<uIAGlobalMiddleMouseClickOnElementoffsetRelativeToInput> uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo = null, [WorkflowExpression] Func<int> uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementparentWindowHandle, nameof(uIAGlobalMiddleMouseClickOnElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementworkflow, nameof(uIAGlobalMiddleMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementsearchElementName, nameof(uIAGlobalMiddleMouseClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementsearchElementClassName, nameof(uIAGlobalMiddleMouseClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId, nameof(uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType, nameof(uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementsearchSubTree, nameof(uIAGlobalMiddleMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementfocusElementFirst, nameof(uIAGlobalMiddleMouseClickOnElementfocusElementFirst), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementmatchIndex, nameof(uIAGlobalMiddleMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementsearchFilter, nameof(uIAGlobalMiddleMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementsortByColumn, nameof(uIAGlobalMiddleMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementmatchIndexAscending, nameof(uIAGlobalMiddleMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementclickOffsetX, nameof(uIAGlobalMiddleMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementclickOffsetY, nameof(uIAGlobalMiddleMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo, nameof(uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch, nameof(uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth, nameof(uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode, nameof(uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse, nameof(uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary, nameof(uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GlobalMiddleMouseClickOnElement";
@@ -3002,27 +2762,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAGlobalDoubleLeftMouseClickOnElement([WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementparentWindowHandle, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementworkflow, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementsearchElementName = null, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds = null, [WorkflowExpression] Func<bool> uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst = null, [WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementmatchIndex = null, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementsearchFilter = null, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX = null, [WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY = null, [WorkflowExpression] Func<uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput> uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo = null, [WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementparentWindowHandle, nameof(uIAGlobalDoubleLeftMouseClickOnElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementworkflow, nameof(uIAGlobalDoubleLeftMouseClickOnElementworkflow), required: true);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementsearchElementName, nameof(uIAGlobalDoubleLeftMouseClickOnElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName, nameof(uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId, nameof(uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType, nameof(uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree, nameof(uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds, nameof(uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst, nameof(uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementmatchIndex, nameof(uIAGlobalDoubleLeftMouseClickOnElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementsearchFilter, nameof(uIAGlobalDoubleLeftMouseClickOnElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementsortByColumn, nameof(uIAGlobalDoubleLeftMouseClickOnElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending, nameof(uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX, nameof(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY, nameof(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo, nameof(uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch, nameof(uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth, nameof(uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode, nameof(uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse, nameof(uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary, nameof(uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GlobalDoubleLeftMouseClickOnElement";
@@ -3271,21 +3010,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIASelectElement([WorkflowExpression] Func<int> uIASelectElementparentWindowHandle, [WorkflowExpression] Func<string> uIASelectElementworkflow, [WorkflowExpression] Func<string> uIASelectElementsearchElementName = null, [WorkflowExpression] Func<string> uIASelectElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIASelectElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIASelectElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIASelectElementsearchSubTree = null, [WorkflowExpression] Func<int> uIASelectElementmatchIndex = null, [WorkflowExpression] Func<string> uIASelectElementsearchFilter = null, [WorkflowExpression] Func<string> uIASelectElementsortByColumn = null, [WorkflowExpression] Func<bool> uIASelectElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIASelectElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIASelectElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIASelectElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIASelectElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIASelectElementparentWindowHandle, nameof(uIASelectElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIASelectElementworkflow, nameof(uIASelectElementworkflow), required: true);
-            SourceExpression.Validate(uIASelectElementsearchElementName, nameof(uIASelectElementsearchElementName), required: false);
-            SourceExpression.Validate(uIASelectElementsearchElementClassName, nameof(uIASelectElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIASelectElementsearchElementAutomationId, nameof(uIASelectElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIASelectElementsearchLocalizedControlType, nameof(uIASelectElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIASelectElementsearchSubTree, nameof(uIASelectElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIASelectElementmatchIndex, nameof(uIASelectElementmatchIndex), required: false);
-            SourceExpression.Validate(uIASelectElementsearchFilter, nameof(uIASelectElementsearchFilter), required: false);
-            SourceExpression.Validate(uIASelectElementsortByColumn, nameof(uIASelectElementsortByColumn), required: false);
-            SourceExpression.Validate(uIASelectElementmatchIndexAscending, nameof(uIASelectElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIASelectElementmaxElementsToSearch, nameof(uIASelectElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIASelectElementmaxRelativeSearchDepth, nameof(uIASelectElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIASelectElementmaxChildElementsToSearchPerNode, nameof(uIASelectElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIASelectElementelementLocalizedControlTypesNotToTraverse, nameof(uIASelectElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/SelectElement";
@@ -3448,25 +3172,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAInputPasswordIntoElement([WorkflowExpression] Func<int> uIAInputPasswordIntoElementparentWindowHandle, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementpasswordToInput, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementworkflow, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementsearchElementName = null, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAInputPasswordIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAInputPasswordIntoElementmatchIndex = null, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementsearchFilter = null, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAInputPasswordIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAInputPasswordIntoElementpasswordContainsStoredPassword = null, [WorkflowExpression] Func<int> uIAInputPasswordIntoElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAInputPasswordIntoElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAInputPasswordIntoElementtryValuePattern = null, [WorkflowExpression] Func<bool> uIAInputPasswordIntoElementtryLegacyPattern = null)
         {
-            SourceExpression.Validate(uIAInputPasswordIntoElementparentWindowHandle, nameof(uIAInputPasswordIntoElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAInputPasswordIntoElementpasswordToInput, nameof(uIAInputPasswordIntoElementpasswordToInput), required: true);
-            SourceExpression.Validate(uIAInputPasswordIntoElementworkflow, nameof(uIAInputPasswordIntoElementworkflow), required: true);
-            SourceExpression.Validate(uIAInputPasswordIntoElementsearchElementName, nameof(uIAInputPasswordIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementsearchElementClassName, nameof(uIAInputPasswordIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementsearchElementAutomationId, nameof(uIAInputPasswordIntoElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementsearchLocalizedControlType, nameof(uIAInputPasswordIntoElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementsearchSubTree, nameof(uIAInputPasswordIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementmatchIndex, nameof(uIAInputPasswordIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementsearchFilter, nameof(uIAInputPasswordIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementsortByColumn, nameof(uIAInputPasswordIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementmatchIndexAscending, nameof(uIAInputPasswordIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementpasswordContainsStoredPassword, nameof(uIAInputPasswordIntoElementpasswordContainsStoredPassword), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementmaxElementsToSearch, nameof(uIAInputPasswordIntoElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementmaxRelativeSearchDepth, nameof(uIAInputPasswordIntoElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode, nameof(uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse, nameof(uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementtryValuePattern, nameof(uIAInputPasswordIntoElementtryValuePattern), required: false);
-            SourceExpression.Validate(uIAInputPasswordIntoElementtryLegacyPattern, nameof(uIAInputPasswordIntoElementtryLegacyPattern), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/InputPasswordIntoElement";
@@ -3679,27 +3384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAInputTextIntoElement([WorkflowExpression] Func<int> uIAInputTextIntoElementparentWindowHandle, [WorkflowExpression] Func<string> uIAInputTextIntoElementworkflow, [WorkflowExpression] Func<string> uIAInputTextIntoElementsearchElementName = null, [WorkflowExpression] Func<string> uIAInputTextIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAInputTextIntoElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAInputTextIntoElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAInputTextIntoElementsearchSubTree = null, [WorkflowExpression] Func<string> uIAInputTextIntoElementtextToInput = null, [WorkflowExpression] Func<int> uIAInputTextIntoElementmatchIndex = null, [WorkflowExpression] Func<string> uIAInputTextIntoElementsearchFilter = null, [WorkflowExpression] Func<string> uIAInputTextIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAInputTextIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAInputTextIntoElementreplaceExistingValue = null, [WorkflowExpression] Func<int> uIAInputTextIntoElementinsertPosition = null, [WorkflowExpression] Func<int> uIAInputTextIntoElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAInputTextIntoElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAInputTextIntoElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAInputTextIntoElementraiseExceptionIfInputValidationFails = null, [WorkflowExpression] Func<bool> uIAInputTextIntoElementtryValuePattern = null, [WorkflowExpression] Func<bool> uIAInputTextIntoElementtryLegacyPattern = null)
         {
-            SourceExpression.Validate(uIAInputTextIntoElementparentWindowHandle, nameof(uIAInputTextIntoElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAInputTextIntoElementworkflow, nameof(uIAInputTextIntoElementworkflow), required: true);
-            SourceExpression.Validate(uIAInputTextIntoElementsearchElementName, nameof(uIAInputTextIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementsearchElementClassName, nameof(uIAInputTextIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementsearchElementAutomationId, nameof(uIAInputTextIntoElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementsearchLocalizedControlType, nameof(uIAInputTextIntoElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementsearchSubTree, nameof(uIAInputTextIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementtextToInput, nameof(uIAInputTextIntoElementtextToInput), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementmatchIndex, nameof(uIAInputTextIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementsearchFilter, nameof(uIAInputTextIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementsortByColumn, nameof(uIAInputTextIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementmatchIndexAscending, nameof(uIAInputTextIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementreplaceExistingValue, nameof(uIAInputTextIntoElementreplaceExistingValue), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementinsertPosition, nameof(uIAInputTextIntoElementinsertPosition), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementmaxElementsToSearch, nameof(uIAInputTextIntoElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementmaxRelativeSearchDepth, nameof(uIAInputTextIntoElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementmaxChildElementsToSearchPerNode, nameof(uIAInputTextIntoElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse, nameof(uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementraiseExceptionIfInputValidationFails, nameof(uIAInputTextIntoElementraiseExceptionIfInputValidationFails), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementtryValuePattern, nameof(uIAInputTextIntoElementtryValuePattern), required: false);
-            SourceExpression.Validate(uIAInputTextIntoElementtryLegacyPattern, nameof(uIAInputTextIntoElementtryLegacyPattern), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/InputTextIntoElement";
@@ -3948,8 +3632,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAInputTextIntoMultipleElements([WorkflowExpression] Func<string> uIAInputTextIntoMultipleElementsinputElementsJSON, [WorkflowExpression] Func<string> uIAInputTextIntoMultipleElementsworkflow)
         {
-            SourceExpression.Validate(uIAInputTextIntoMultipleElementsinputElementsJSON, nameof(uIAInputTextIntoMultipleElementsinputElementsJSON), required: true);
-            SourceExpression.Validate(uIAInputTextIntoMultipleElementsworkflow, nameof(uIAInputTextIntoMultipleElementsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAInputTextIntoMultipleElements";
@@ -3974,26 +3656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAInputReturnIntoElement([WorkflowExpression] Func<int> uIAInputReturnIntoElementparentWindowHandle, [WorkflowExpression] Func<string> uIAInputReturnIntoElementworkflow, [WorkflowExpression] Func<string> uIAInputReturnIntoElementsearchElementName = null, [WorkflowExpression] Func<string> uIAInputReturnIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAInputReturnIntoElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAInputReturnIntoElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAInputReturnIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAInputReturnIntoElementmatchIndex = null, [WorkflowExpression] Func<string> uIAInputReturnIntoElementsearchFilter = null, [WorkflowExpression] Func<string> uIAInputReturnIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAInputReturnIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAInputReturnIntoElementreplaceExistingValue = null, [WorkflowExpression] Func<int> uIAInputReturnIntoElementinsertPosition = null, [WorkflowExpression] Func<int> uIAInputReturnIntoElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAInputReturnIntoElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAInputReturnIntoElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAInputReturnIntoElementraiseExceptionIfInputValidationFails = null, [WorkflowExpression] Func<bool> uIAInputReturnIntoElementtryValuePattern = null, [WorkflowExpression] Func<bool> uIAInputReturnIntoElementtryLegacyPattern = null)
         {
-            SourceExpression.Validate(uIAInputReturnIntoElementparentWindowHandle, nameof(uIAInputReturnIntoElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAInputReturnIntoElementworkflow, nameof(uIAInputReturnIntoElementworkflow), required: true);
-            SourceExpression.Validate(uIAInputReturnIntoElementsearchElementName, nameof(uIAInputReturnIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementsearchElementClassName, nameof(uIAInputReturnIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementsearchElementAutomationId, nameof(uIAInputReturnIntoElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementsearchLocalizedControlType, nameof(uIAInputReturnIntoElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementsearchSubTree, nameof(uIAInputReturnIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementmatchIndex, nameof(uIAInputReturnIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementsearchFilter, nameof(uIAInputReturnIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementsortByColumn, nameof(uIAInputReturnIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementmatchIndexAscending, nameof(uIAInputReturnIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementreplaceExistingValue, nameof(uIAInputReturnIntoElementreplaceExistingValue), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementinsertPosition, nameof(uIAInputReturnIntoElementinsertPosition), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementmaxElementsToSearch, nameof(uIAInputReturnIntoElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementmaxRelativeSearchDepth, nameof(uIAInputReturnIntoElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementmaxChildElementsToSearchPerNode, nameof(uIAInputReturnIntoElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse, nameof(uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementraiseExceptionIfInputValidationFails, nameof(uIAInputReturnIntoElementraiseExceptionIfInputValidationFails), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementtryValuePattern, nameof(uIAInputReturnIntoElementtryValuePattern), required: false);
-            SourceExpression.Validate(uIAInputReturnIntoElementtryLegacyPattern, nameof(uIAInputReturnIntoElementtryLegacyPattern), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/InputReturnIntoElement";
@@ -4226,21 +3888,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAFocusElement([WorkflowExpression] Func<int> uIAFocusElementparentWindowHandle, [WorkflowExpression] Func<string> uIAFocusElementworkflow, [WorkflowExpression] Func<string> uIAFocusElementsearchElementName = null, [WorkflowExpression] Func<string> uIAFocusElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAFocusElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAFocusElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAFocusElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAFocusElementmatchIndex = null, [WorkflowExpression] Func<string> uIAFocusElementsearchFilter = null, [WorkflowExpression] Func<string> uIAFocusElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAFocusElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAFocusElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAFocusElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAFocusElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAFocusElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAFocusElementparentWindowHandle, nameof(uIAFocusElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAFocusElementworkflow, nameof(uIAFocusElementworkflow), required: true);
-            SourceExpression.Validate(uIAFocusElementsearchElementName, nameof(uIAFocusElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAFocusElementsearchElementClassName, nameof(uIAFocusElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAFocusElementsearchElementAutomationId, nameof(uIAFocusElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAFocusElementsearchLocalizedControlType, nameof(uIAFocusElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAFocusElementsearchSubTree, nameof(uIAFocusElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAFocusElementmatchIndex, nameof(uIAFocusElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAFocusElementsearchFilter, nameof(uIAFocusElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAFocusElementsortByColumn, nameof(uIAFocusElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAFocusElementmatchIndexAscending, nameof(uIAFocusElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAFocusElementmaxElementsToSearch, nameof(uIAFocusElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAFocusElementmaxRelativeSearchDepth, nameof(uIAFocusElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAFocusElementmaxChildElementsToSearchPerNode, nameof(uIAFocusElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAFocusElementelementLocalizedControlTypesNotToTraverse, nameof(uIAFocusElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/FocusElement";
@@ -4403,21 +4050,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAToggleElement([WorkflowExpression] Func<int> uIAToggleElementparentWindowHandle, [WorkflowExpression] Func<string> uIAToggleElementworkflow, [WorkflowExpression] Func<string> uIAToggleElementsearchElementName = null, [WorkflowExpression] Func<string> uIAToggleElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAToggleElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAToggleElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAToggleElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAToggleElementmatchIndex = null, [WorkflowExpression] Func<string> uIAToggleElementsearchFilter = null, [WorkflowExpression] Func<string> uIAToggleElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAToggleElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAToggleElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAToggleElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAToggleElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAToggleElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAToggleElementparentWindowHandle, nameof(uIAToggleElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAToggleElementworkflow, nameof(uIAToggleElementworkflow), required: true);
-            SourceExpression.Validate(uIAToggleElementsearchElementName, nameof(uIAToggleElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAToggleElementsearchElementClassName, nameof(uIAToggleElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAToggleElementsearchElementAutomationId, nameof(uIAToggleElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAToggleElementsearchLocalizedControlType, nameof(uIAToggleElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAToggleElementsearchSubTree, nameof(uIAToggleElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAToggleElementmatchIndex, nameof(uIAToggleElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAToggleElementsearchFilter, nameof(uIAToggleElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAToggleElementsortByColumn, nameof(uIAToggleElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAToggleElementmatchIndexAscending, nameof(uIAToggleElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAToggleElementmaxElementsToSearch, nameof(uIAToggleElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAToggleElementmaxRelativeSearchDepth, nameof(uIAToggleElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAToggleElementmaxChildElementsToSearchPerNode, nameof(uIAToggleElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAToggleElementelementLocalizedControlTypesNotToTraverse, nameof(uIAToggleElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/ToggleElement";
@@ -4580,22 +4212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIACheckElement([WorkflowExpression] Func<int> uIACheckElementparentWindowHandle, [WorkflowExpression] Func<string> uIACheckElementworkflow, [WorkflowExpression] Func<string> uIACheckElementsearchElementName = null, [WorkflowExpression] Func<string> uIACheckElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIACheckElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIACheckElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIACheckElementsearchSubTree = null, [WorkflowExpression] Func<bool> uIACheckElementcheckElement = null, [WorkflowExpression] Func<int> uIACheckElementmatchIndex = null, [WorkflowExpression] Func<string> uIACheckElementsearchFilter = null, [WorkflowExpression] Func<string> uIACheckElementsortByColumn = null, [WorkflowExpression] Func<bool> uIACheckElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIACheckElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIACheckElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIACheckElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIACheckElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIACheckElementparentWindowHandle, nameof(uIACheckElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIACheckElementworkflow, nameof(uIACheckElementworkflow), required: true);
-            SourceExpression.Validate(uIACheckElementsearchElementName, nameof(uIACheckElementsearchElementName), required: false);
-            SourceExpression.Validate(uIACheckElementsearchElementClassName, nameof(uIACheckElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIACheckElementsearchElementAutomationId, nameof(uIACheckElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIACheckElementsearchLocalizedControlType, nameof(uIACheckElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIACheckElementsearchSubTree, nameof(uIACheckElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIACheckElementcheckElement, nameof(uIACheckElementcheckElement), required: false);
-            SourceExpression.Validate(uIACheckElementmatchIndex, nameof(uIACheckElementmatchIndex), required: false);
-            SourceExpression.Validate(uIACheckElementsearchFilter, nameof(uIACheckElementsearchFilter), required: false);
-            SourceExpression.Validate(uIACheckElementsortByColumn, nameof(uIACheckElementsortByColumn), required: false);
-            SourceExpression.Validate(uIACheckElementmatchIndexAscending, nameof(uIACheckElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIACheckElementmaxElementsToSearch, nameof(uIACheckElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIACheckElementmaxRelativeSearchDepth, nameof(uIACheckElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIACheckElementmaxChildElementsToSearchPerNode, nameof(uIACheckElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIACheckElementelementLocalizedControlTypesNotToTraverse, nameof(uIACheckElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/CheckElement";
@@ -4774,8 +4390,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIACheckMultipleElements([WorkflowExpression] Func<string> uIACheckMultipleElementsinputElementsJSON, [WorkflowExpression] Func<string> uIACheckMultipleElementsworkflow)
         {
-            SourceExpression.Validate(uIACheckMultipleElementsinputElementsJSON, nameof(uIACheckMultipleElementsinputElementsJSON), required: true);
-            SourceExpression.Validate(uIACheckMultipleElementsworkflow, nameof(uIACheckMultipleElementsworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIACheckMultipleElements";
@@ -4800,21 +4414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAIsElementCheckedResponse> UIAIsElementChecked([WorkflowExpression] Func<int> uIAIsElementCheckedparentWindowHandle, [WorkflowExpression] Func<string> uIAIsElementCheckedworkflow, [WorkflowExpression] Func<string> uIAIsElementCheckedsearchElementName = null, [WorkflowExpression] Func<string> uIAIsElementCheckedsearchElementClassName = null, [WorkflowExpression] Func<string> uIAIsElementCheckedsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAIsElementCheckedsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAIsElementCheckedsearchSubTree = null, [WorkflowExpression] Func<int> uIAIsElementCheckedmatchIndex = null, [WorkflowExpression] Func<string> uIAIsElementCheckedsearchFilter = null, [WorkflowExpression] Func<string> uIAIsElementCheckedsortByColumn = null, [WorkflowExpression] Func<bool> uIAIsElementCheckedmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAIsElementCheckedmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAIsElementCheckedmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAIsElementCheckedmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAIsElementCheckedparentWindowHandle, nameof(uIAIsElementCheckedparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAIsElementCheckedworkflow, nameof(uIAIsElementCheckedworkflow), required: true);
-            SourceExpression.Validate(uIAIsElementCheckedsearchElementName, nameof(uIAIsElementCheckedsearchElementName), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedsearchElementClassName, nameof(uIAIsElementCheckedsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedsearchElementAutomationId, nameof(uIAIsElementCheckedsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedsearchLocalizedControlType, nameof(uIAIsElementCheckedsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedsearchSubTree, nameof(uIAIsElementCheckedsearchSubTree), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedmatchIndex, nameof(uIAIsElementCheckedmatchIndex), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedsearchFilter, nameof(uIAIsElementCheckedsearchFilter), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedsortByColumn, nameof(uIAIsElementCheckedsortByColumn), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedmatchIndexAscending, nameof(uIAIsElementCheckedmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedmaxElementsToSearch, nameof(uIAIsElementCheckedmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedmaxRelativeSearchDepth, nameof(uIAIsElementCheckedmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedmaxChildElementsToSearchPerNode, nameof(uIAIsElementCheckedmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse, nameof(uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAIsElementChecked";
@@ -4977,21 +4576,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIACloseElementWindow([WorkflowExpression] Func<int> uIACloseElementWindowparentWindowHandle, [WorkflowExpression] Func<string> uIACloseElementWindowworkflow, [WorkflowExpression] Func<string> uIACloseElementWindowsearchElementName = null, [WorkflowExpression] Func<string> uIACloseElementWindowsearchElementClassName = null, [WorkflowExpression] Func<string> uIACloseElementWindowsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIACloseElementWindowsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIACloseElementWindowsearchSubTree = null, [WorkflowExpression] Func<int> uIACloseElementWindowmatchIndex = null, [WorkflowExpression] Func<string> uIACloseElementWindowsearchFilter = null, [WorkflowExpression] Func<string> uIACloseElementWindowsortByColumn = null, [WorkflowExpression] Func<bool> uIACloseElementWindowmatchIndexAscending = null, [WorkflowExpression] Func<int> uIACloseElementWindowmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIACloseElementWindowmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIACloseElementWindowmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIACloseElementWindowelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIACloseElementWindowparentWindowHandle, nameof(uIACloseElementWindowparentWindowHandle), required: true);
-            SourceExpression.Validate(uIACloseElementWindowworkflow, nameof(uIACloseElementWindowworkflow), required: true);
-            SourceExpression.Validate(uIACloseElementWindowsearchElementName, nameof(uIACloseElementWindowsearchElementName), required: false);
-            SourceExpression.Validate(uIACloseElementWindowsearchElementClassName, nameof(uIACloseElementWindowsearchElementClassName), required: false);
-            SourceExpression.Validate(uIACloseElementWindowsearchElementAutomationId, nameof(uIACloseElementWindowsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIACloseElementWindowsearchLocalizedControlType, nameof(uIACloseElementWindowsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIACloseElementWindowsearchSubTree, nameof(uIACloseElementWindowsearchSubTree), required: false);
-            SourceExpression.Validate(uIACloseElementWindowmatchIndex, nameof(uIACloseElementWindowmatchIndex), required: false);
-            SourceExpression.Validate(uIACloseElementWindowsearchFilter, nameof(uIACloseElementWindowsearchFilter), required: false);
-            SourceExpression.Validate(uIACloseElementWindowsortByColumn, nameof(uIACloseElementWindowsortByColumn), required: false);
-            SourceExpression.Validate(uIACloseElementWindowmatchIndexAscending, nameof(uIACloseElementWindowmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIACloseElementWindowmaxElementsToSearch, nameof(uIACloseElementWindowmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIACloseElementWindowmaxRelativeSearchDepth, nameof(uIACloseElementWindowmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIACloseElementWindowmaxChildElementsToSearchPerNode, nameof(uIACloseElementWindowmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIACloseElementWindowelementLocalizedControlTypesNotToTraverse, nameof(uIACloseElementWindowelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/CloseElementWindow";
@@ -5154,21 +4738,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementTextValueResponse> UIAGetElementTextValue([WorkflowExpression] Func<int> uIAGetElementTextValueparentWindowHandle, [WorkflowExpression] Func<string> uIAGetElementTextValueworkflow, [WorkflowExpression] Func<string> uIAGetElementTextValuesearchElementName = null, [WorkflowExpression] Func<string> uIAGetElementTextValuesearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetElementTextValuesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetElementTextValuesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetElementTextValuesearchSubTree = null, [WorkflowExpression] Func<int> uIAGetElementTextValuematchIndex = null, [WorkflowExpression] Func<string> uIAGetElementTextValuesearchFilter = null, [WorkflowExpression] Func<string> uIAGetElementTextValuesortByColumn = null, [WorkflowExpression] Func<bool> uIAGetElementTextValuematchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetElementTextValuemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetElementTextValuemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetElementTextValuemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetElementTextValueparentWindowHandle, nameof(uIAGetElementTextValueparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetElementTextValueworkflow, nameof(uIAGetElementTextValueworkflow), required: true);
-            SourceExpression.Validate(uIAGetElementTextValuesearchElementName, nameof(uIAGetElementTextValuesearchElementName), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuesearchElementClassName, nameof(uIAGetElementTextValuesearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuesearchElementAutomationId, nameof(uIAGetElementTextValuesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuesearchLocalizedControlType, nameof(uIAGetElementTextValuesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuesearchSubTree, nameof(uIAGetElementTextValuesearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuematchIndex, nameof(uIAGetElementTextValuematchIndex), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuesearchFilter, nameof(uIAGetElementTextValuesearchFilter), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuesortByColumn, nameof(uIAGetElementTextValuesortByColumn), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuematchIndexAscending, nameof(uIAGetElementTextValuematchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuemaxElementsToSearch, nameof(uIAGetElementTextValuemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuemaxRelativeSearchDepth, nameof(uIAGetElementTextValuemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetElementTextValuemaxChildElementsToSearchPerNode, nameof(uIAGetElementTextValuemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse, nameof(uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetElementTextValue";
@@ -5331,21 +4900,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementValueResponse> UIAGetElementValue([WorkflowExpression] Func<int> uIAGetElementValueparentWindowHandle, [WorkflowExpression] Func<string> uIAGetElementValueworkflow, [WorkflowExpression] Func<string> uIAGetElementValuesearchElementName = null, [WorkflowExpression] Func<string> uIAGetElementValuesearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetElementValuesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetElementValuesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetElementValuesearchSubTree = null, [WorkflowExpression] Func<int> uIAGetElementValuematchIndex = null, [WorkflowExpression] Func<string> uIAGetElementValuesearchFilter = null, [WorkflowExpression] Func<string> uIAGetElementValuesortByColumn = null, [WorkflowExpression] Func<bool> uIAGetElementValuematchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetElementValuemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetElementValuemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetElementValuemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetElementValueelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetElementValueparentWindowHandle, nameof(uIAGetElementValueparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetElementValueworkflow, nameof(uIAGetElementValueworkflow), required: true);
-            SourceExpression.Validate(uIAGetElementValuesearchElementName, nameof(uIAGetElementValuesearchElementName), required: false);
-            SourceExpression.Validate(uIAGetElementValuesearchElementClassName, nameof(uIAGetElementValuesearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetElementValuesearchElementAutomationId, nameof(uIAGetElementValuesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetElementValuesearchLocalizedControlType, nameof(uIAGetElementValuesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetElementValuesearchSubTree, nameof(uIAGetElementValuesearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetElementValuematchIndex, nameof(uIAGetElementValuematchIndex), required: false);
-            SourceExpression.Validate(uIAGetElementValuesearchFilter, nameof(uIAGetElementValuesearchFilter), required: false);
-            SourceExpression.Validate(uIAGetElementValuesortByColumn, nameof(uIAGetElementValuesortByColumn), required: false);
-            SourceExpression.Validate(uIAGetElementValuematchIndexAscending, nameof(uIAGetElementValuematchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetElementValuemaxElementsToSearch, nameof(uIAGetElementValuemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetElementValuemaxRelativeSearchDepth, nameof(uIAGetElementValuemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetElementValuemaxChildElementsToSearchPerNode, nameof(uIAGetElementValuemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetElementValueelementLocalizedControlTypesNotToTraverse, nameof(uIAGetElementValueelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetElementValue";
@@ -5508,21 +5062,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementLabelValueResponse> UIAGetElementLabelValue([WorkflowExpression] Func<int> uIAGetElementLabelValueparentWindowHandle, [WorkflowExpression] Func<string> uIAGetElementLabelValueworkflow, [WorkflowExpression] Func<string> uIAGetElementLabelValuesearchElementName = null, [WorkflowExpression] Func<string> uIAGetElementLabelValuesearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetElementLabelValuesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetElementLabelValuesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetElementLabelValuesearchSubTree = null, [WorkflowExpression] Func<int> uIAGetElementLabelValuematchIndex = null, [WorkflowExpression] Func<string> uIAGetElementLabelValuesearchFilter = null, [WorkflowExpression] Func<string> uIAGetElementLabelValuesortByColumn = null, [WorkflowExpression] Func<bool> uIAGetElementLabelValuematchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetElementLabelValuemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetElementLabelValuemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetElementLabelValuemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetElementLabelValueparentWindowHandle, nameof(uIAGetElementLabelValueparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetElementLabelValueworkflow, nameof(uIAGetElementLabelValueworkflow), required: true);
-            SourceExpression.Validate(uIAGetElementLabelValuesearchElementName, nameof(uIAGetElementLabelValuesearchElementName), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuesearchElementClassName, nameof(uIAGetElementLabelValuesearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuesearchElementAutomationId, nameof(uIAGetElementLabelValuesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuesearchLocalizedControlType, nameof(uIAGetElementLabelValuesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuesearchSubTree, nameof(uIAGetElementLabelValuesearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuematchIndex, nameof(uIAGetElementLabelValuematchIndex), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuesearchFilter, nameof(uIAGetElementLabelValuesearchFilter), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuesortByColumn, nameof(uIAGetElementLabelValuesortByColumn), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuematchIndexAscending, nameof(uIAGetElementLabelValuematchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuemaxElementsToSearch, nameof(uIAGetElementLabelValuemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuemaxRelativeSearchDepth, nameof(uIAGetElementLabelValuemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValuemaxChildElementsToSearchPerNode, nameof(uIAGetElementLabelValuemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse, nameof(uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetElementLabelValue";
@@ -5685,24 +5224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementPropertiesResponse> UIAGetElementProperties([WorkflowExpression] Func<int> uIAGetElementPropertiesparentWindowHandle, [WorkflowExpression] Func<string> uIAGetElementPropertiesworkflow, [WorkflowExpression] Func<string> uIAGetElementPropertiessearchElementName = null, [WorkflowExpression] Func<string> uIAGetElementPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetElementPropertiessearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetElementPropertiessearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetElementPropertiessearchSubTree = null, [WorkflowExpression] Func<bool> uIAGetElementPropertiesreturnElementHandle = null, [WorkflowExpression] Func<bool> uIAGetElementPropertiesreturnElementValue = null, [WorkflowExpression] Func<int> uIAGetElementPropertiesmatchIndex = null, [WorkflowExpression] Func<string> uIAGetElementPropertiessearchFilter = null, [WorkflowExpression] Func<string> uIAGetElementPropertiessortByColumn = null, [WorkflowExpression] Func<bool> uIAGetElementPropertiesmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetElementPropertiesmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetElementPropertiesmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetElementPropertiesmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary = null)
         {
-            SourceExpression.Validate(uIAGetElementPropertiesparentWindowHandle, nameof(uIAGetElementPropertiesparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetElementPropertiesworkflow, nameof(uIAGetElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(uIAGetElementPropertiessearchElementName, nameof(uIAGetElementPropertiessearchElementName), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiessearchElementClassName, nameof(uIAGetElementPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiessearchElementAutomationId, nameof(uIAGetElementPropertiessearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiessearchLocalizedControlType, nameof(uIAGetElementPropertiessearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiessearchSubTree, nameof(uIAGetElementPropertiessearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesreturnElementHandle, nameof(uIAGetElementPropertiesreturnElementHandle), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesreturnElementValue, nameof(uIAGetElementPropertiesreturnElementValue), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesmatchIndex, nameof(uIAGetElementPropertiesmatchIndex), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiessearchFilter, nameof(uIAGetElementPropertiessearchFilter), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiessortByColumn, nameof(uIAGetElementPropertiessortByColumn), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesmatchIndexAscending, nameof(uIAGetElementPropertiesmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesmaxElementsToSearch, nameof(uIAGetElementPropertiesmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesmaxRelativeSearchDepth, nameof(uIAGetElementPropertiesmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesmaxChildElementsToSearchPerNode, nameof(uIAGetElementPropertiesmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse, nameof(uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary, nameof(uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetElementProperties";
@@ -5913,14 +5434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetMultipleElementPropertiesResponse> UIAGetMultipleElementProperties([WorkflowExpression] Func<int> uIAGetMultipleElementPropertiesparentWindowHandle, [WorkflowExpression] Func<string> uIAGetMultipleElementPropertiesworkflow, [WorkflowExpression] Func<string> uIAGetMultipleElementPropertiessearchElementLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetMultipleElementPropertiessearchDescendants = null, [WorkflowExpression] Func<bool> uIAGetMultipleElementPropertiesreturnElementHandle = null, [WorkflowExpression] Func<bool> uIAGetMultipleElementPropertiesreturnElementValue = null, [WorkflowExpression] Func<int> uIAGetMultipleElementPropertiesfirstItemToReturn = null, [WorkflowExpression] Func<int> uIAGetMultipleElementPropertiesmaxItemsToReturn = null)
         {
-            SourceExpression.Validate(uIAGetMultipleElementPropertiesparentWindowHandle, nameof(uIAGetMultipleElementPropertiesparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetMultipleElementPropertiesworkflow, nameof(uIAGetMultipleElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(uIAGetMultipleElementPropertiessearchElementLocalizedControlType, nameof(uIAGetMultipleElementPropertiessearchElementLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementPropertiessearchDescendants, nameof(uIAGetMultipleElementPropertiessearchDescendants), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementPropertiesreturnElementHandle, nameof(uIAGetMultipleElementPropertiesreturnElementHandle), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementPropertiesreturnElementValue, nameof(uIAGetMultipleElementPropertiesreturnElementValue), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementPropertiesfirstItemToReturn, nameof(uIAGetMultipleElementPropertiesfirstItemToReturn), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementPropertiesmaxItemsToReturn, nameof(uIAGetMultipleElementPropertiesmaxItemsToReturn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetMultipleElementProperties";
@@ -6031,13 +5544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetDesktopElementsResponse> UIAGetDesktopElements([WorkflowExpression] Func<string> uIAGetDesktopElementsworkflow, [WorkflowExpression] Func<string> uIAGetDesktopElementssearchElementLocalizedControlType = null, [WorkflowExpression] Func<int> uIAGetDesktopElementssearchProcessId = null, [WorkflowExpression] Func<bool> uIAGetDesktopElementsreturnElementHandle = null, [WorkflowExpression] Func<int> uIAGetDesktopElementsfirstItemToReturn = null, [WorkflowExpression] Func<int> uIAGetDesktopElementsmaxItemsToReturn = null, [WorkflowExpression] Func<bool> uIAGetDesktopElementsincludeChildProcesses = null)
         {
-            SourceExpression.Validate(uIAGetDesktopElementsworkflow, nameof(uIAGetDesktopElementsworkflow), required: true);
-            SourceExpression.Validate(uIAGetDesktopElementssearchElementLocalizedControlType, nameof(uIAGetDesktopElementssearchElementLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetDesktopElementssearchProcessId, nameof(uIAGetDesktopElementssearchProcessId), required: false);
-            SourceExpression.Validate(uIAGetDesktopElementsreturnElementHandle, nameof(uIAGetDesktopElementsreturnElementHandle), required: false);
-            SourceExpression.Validate(uIAGetDesktopElementsfirstItemToReturn, nameof(uIAGetDesktopElementsfirstItemToReturn), required: false);
-            SourceExpression.Validate(uIAGetDesktopElementsmaxItemsToReturn, nameof(uIAGetDesktopElementsmaxItemsToReturn), required: false);
-            SourceExpression.Validate(uIAGetDesktopElementsincludeChildProcesses, nameof(uIAGetDesktopElementsincludeChildProcesses), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetDesktopElements";
@@ -6146,21 +5652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAExpandElement([WorkflowExpression] Func<int> uIAExpandElementparentWindowHandle, [WorkflowExpression] Func<string> uIAExpandElementworkflow, [WorkflowExpression] Func<string> uIAExpandElementsearchElementName = null, [WorkflowExpression] Func<string> uIAExpandElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAExpandElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAExpandElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAExpandElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAExpandElementmatchIndex = null, [WorkflowExpression] Func<string> uIAExpandElementsearchFilter = null, [WorkflowExpression] Func<string> uIAExpandElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAExpandElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAExpandElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAExpandElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAExpandElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAExpandElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAExpandElementparentWindowHandle, nameof(uIAExpandElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAExpandElementworkflow, nameof(uIAExpandElementworkflow), required: true);
-            SourceExpression.Validate(uIAExpandElementsearchElementName, nameof(uIAExpandElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAExpandElementsearchElementClassName, nameof(uIAExpandElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAExpandElementsearchElementAutomationId, nameof(uIAExpandElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAExpandElementsearchLocalizedControlType, nameof(uIAExpandElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAExpandElementsearchSubTree, nameof(uIAExpandElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAExpandElementmatchIndex, nameof(uIAExpandElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAExpandElementsearchFilter, nameof(uIAExpandElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAExpandElementsortByColumn, nameof(uIAExpandElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAExpandElementmatchIndexAscending, nameof(uIAExpandElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAExpandElementmaxElementsToSearch, nameof(uIAExpandElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAExpandElementmaxRelativeSearchDepth, nameof(uIAExpandElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAExpandElementmaxChildElementsToSearchPerNode, nameof(uIAExpandElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAExpandElementelementLocalizedControlTypesNotToTraverse, nameof(uIAExpandElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/ExpandElement";
@@ -6323,21 +5814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIACollapseElement([WorkflowExpression] Func<int> uIACollapseElementparentWindowHandle, [WorkflowExpression] Func<string> uIACollapseElementworkflow, [WorkflowExpression] Func<string> uIACollapseElementsearchElementName = null, [WorkflowExpression] Func<string> uIACollapseElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIACollapseElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIACollapseElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIACollapseElementsearchSubTree = null, [WorkflowExpression] Func<int> uIACollapseElementmatchIndex = null, [WorkflowExpression] Func<string> uIACollapseElementsearchFilter = null, [WorkflowExpression] Func<string> uIACollapseElementsortByColumn = null, [WorkflowExpression] Func<bool> uIACollapseElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIACollapseElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIACollapseElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIACollapseElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIACollapseElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIACollapseElementparentWindowHandle, nameof(uIACollapseElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIACollapseElementworkflow, nameof(uIACollapseElementworkflow), required: true);
-            SourceExpression.Validate(uIACollapseElementsearchElementName, nameof(uIACollapseElementsearchElementName), required: false);
-            SourceExpression.Validate(uIACollapseElementsearchElementClassName, nameof(uIACollapseElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIACollapseElementsearchElementAutomationId, nameof(uIACollapseElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIACollapseElementsearchLocalizedControlType, nameof(uIACollapseElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIACollapseElementsearchSubTree, nameof(uIACollapseElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIACollapseElementmatchIndex, nameof(uIACollapseElementmatchIndex), required: false);
-            SourceExpression.Validate(uIACollapseElementsearchFilter, nameof(uIACollapseElementsearchFilter), required: false);
-            SourceExpression.Validate(uIACollapseElementsortByColumn, nameof(uIACollapseElementsortByColumn), required: false);
-            SourceExpression.Validate(uIACollapseElementmatchIndexAscending, nameof(uIACollapseElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIACollapseElementmaxElementsToSearch, nameof(uIACollapseElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIACollapseElementmaxRelativeSearchDepth, nameof(uIACollapseElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIACollapseElementmaxChildElementsToSearchPerNode, nameof(uIACollapseElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIACollapseElementelementLocalizedControlTypesNotToTraverse, nameof(uIACollapseElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/CollapseElement";
@@ -6500,23 +5976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIATakeScreenShotOfElementLocationResponse> UIATakeScreenShotOfElementLocation([WorkflowExpression] Func<int> uIATakeScreenShotOfElementLocationparentWindowHandle, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationworkflow, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationsearchElementName = null, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationsearchElementClassName = null, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIATakeScreenShotOfElementLocationsearchSubTree = null, [WorkflowExpression] Func<uIATakeScreenShotOfElementLocationimageFormatInput> uIATakeScreenShotOfElementLocationimageFormat = null, [WorkflowExpression] Func<int> uIATakeScreenShotOfElementLocationmatchIndex = null, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationsearchFilter = null, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationsortByColumn = null, [WorkflowExpression] Func<bool> uIATakeScreenShotOfElementLocationmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIATakeScreenShotOfElementLocationhideAgent = null, [WorkflowExpression] Func<int> uIATakeScreenShotOfElementLocationmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationparentWindowHandle, nameof(uIATakeScreenShotOfElementLocationparentWindowHandle), required: true);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationworkflow, nameof(uIATakeScreenShotOfElementLocationworkflow), required: true);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationsearchElementName, nameof(uIATakeScreenShotOfElementLocationsearchElementName), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationsearchElementClassName, nameof(uIATakeScreenShotOfElementLocationsearchElementClassName), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationsearchElementAutomationId, nameof(uIATakeScreenShotOfElementLocationsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationsearchLocalizedControlType, nameof(uIATakeScreenShotOfElementLocationsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationsearchSubTree, nameof(uIATakeScreenShotOfElementLocationsearchSubTree), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationimageFormat, nameof(uIATakeScreenShotOfElementLocationimageFormat), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationmatchIndex, nameof(uIATakeScreenShotOfElementLocationmatchIndex), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationsearchFilter, nameof(uIATakeScreenShotOfElementLocationsearchFilter), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationsortByColumn, nameof(uIATakeScreenShotOfElementLocationsortByColumn), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationmatchIndexAscending, nameof(uIATakeScreenShotOfElementLocationmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationhideAgent, nameof(uIATakeScreenShotOfElementLocationhideAgent), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationmaxElementsToSearch, nameof(uIATakeScreenShotOfElementLocationmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth, nameof(uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode, nameof(uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse, nameof(uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/TakeScreenShotOfElementLocation";
@@ -6701,23 +6160,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIADrawRectangleAroundElement([WorkflowExpression] Func<int> uIADrawRectangleAroundElementparentWindowHandle, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementworkflow, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementsearchElementName = null, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIADrawRectangleAroundElementsearchSubTree = null, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementpenColour = null, [WorkflowExpression] Func<int> uIADrawRectangleAroundElementpenThicknessPixels = null, [WorkflowExpression] Func<int> uIADrawRectangleAroundElementmatchIndex = null, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementsearchFilter = null, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementsortByColumn = null, [WorkflowExpression] Func<bool> uIADrawRectangleAroundElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIADrawRectangleAroundElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIADrawRectangleAroundElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIADrawRectangleAroundElementparentWindowHandle, nameof(uIADrawRectangleAroundElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIADrawRectangleAroundElementworkflow, nameof(uIADrawRectangleAroundElementworkflow), required: true);
-            SourceExpression.Validate(uIADrawRectangleAroundElementsearchElementName, nameof(uIADrawRectangleAroundElementsearchElementName), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementsearchElementClassName, nameof(uIADrawRectangleAroundElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementsearchElementAutomationId, nameof(uIADrawRectangleAroundElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementsearchLocalizedControlType, nameof(uIADrawRectangleAroundElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementsearchSubTree, nameof(uIADrawRectangleAroundElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementpenColour, nameof(uIADrawRectangleAroundElementpenColour), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementpenThicknessPixels, nameof(uIADrawRectangleAroundElementpenThicknessPixels), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementmatchIndex, nameof(uIADrawRectangleAroundElementmatchIndex), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementsearchFilter, nameof(uIADrawRectangleAroundElementsearchFilter), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementsortByColumn, nameof(uIADrawRectangleAroundElementsortByColumn), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementmatchIndexAscending, nameof(uIADrawRectangleAroundElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementmaxElementsToSearch, nameof(uIADrawRectangleAroundElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementmaxRelativeSearchDepth, nameof(uIADrawRectangleAroundElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode, nameof(uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse, nameof(uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/DrawRectangleAroundElement";
@@ -6912,8 +6354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetParentElementHandleResponse> UIAGetParentElementHandle([WorkflowExpression] Func<int> uIAGetParentElementHandleelementHandle, [WorkflowExpression] Func<string> uIAGetParentElementHandleworkflow)
         {
-            SourceExpression.Validate(uIAGetParentElementHandleelementHandle, nameof(uIAGetParentElementHandleelementHandle), required: true);
-            SourceExpression.Validate(uIAGetParentElementHandleworkflow, nameof(uIAGetParentElementHandleworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetParentElementHandle";
@@ -6938,39 +6378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetDataGridElementContentsResponse> UIAGetDataGridElementContents([WorkflowExpression] Func<string> uIAGetDataGridElementContentsworkflow, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsparentWindowHandle = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentssearchElementName = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentssearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentssearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentssearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentssearchSubTree = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentsonScreenColumnsOnly = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentsonScreenRowsOnly = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentsreturnNullValuesAsBlank = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentsalternativeHeaderRowName = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentsreturnRowUIAName = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsmatchIndex = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentssearchFilter = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentssortByColumn = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentsmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsfirstItemToReturn = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsmaxItemsToReturn = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentsreadTableAsThread = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsretrieveOutputDataFromThreadId = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentssecondsToWaitForThread = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsminimumDataGridRowsForScrolling = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementContentsraiseExceptionIfCannotScroll = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentsalternativeVerticalScrollbarName = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetDataGridElementContentsworkflow, nameof(uIAGetDataGridElementContentsworkflow), required: true);
-            SourceExpression.Validate(uIAGetDataGridElementContentsparentWindowHandle, nameof(uIAGetDataGridElementContentsparentWindowHandle), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssearchElementName, nameof(uIAGetDataGridElementContentssearchElementName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssearchElementClassName, nameof(uIAGetDataGridElementContentssearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssearchElementAutomationId, nameof(uIAGetDataGridElementContentssearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssearchLocalizedControlType, nameof(uIAGetDataGridElementContentssearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssearchSubTree, nameof(uIAGetDataGridElementContentssearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsonScreenColumnsOnly, nameof(uIAGetDataGridElementContentsonScreenColumnsOnly), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsonScreenRowsOnly, nameof(uIAGetDataGridElementContentsonScreenRowsOnly), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsreturnNullValuesAsBlank, nameof(uIAGetDataGridElementContentsreturnNullValuesAsBlank), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsalternativeHeaderRowName, nameof(uIAGetDataGridElementContentsalternativeHeaderRowName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsreturnRowUIAName, nameof(uIAGetDataGridElementContentsreturnRowUIAName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName, nameof(uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsmatchIndex, nameof(uIAGetDataGridElementContentsmatchIndex), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssearchFilter, nameof(uIAGetDataGridElementContentssearchFilter), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssortByColumn, nameof(uIAGetDataGridElementContentssortByColumn), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsmatchIndexAscending, nameof(uIAGetDataGridElementContentsmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsfirstItemToReturn, nameof(uIAGetDataGridElementContentsfirstItemToReturn), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsmaxItemsToReturn, nameof(uIAGetDataGridElementContentsmaxItemsToReturn), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows, nameof(uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsreadTableAsThread, nameof(uIAGetDataGridElementContentsreadTableAsThread), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsretrieveOutputDataFromThreadId, nameof(uIAGetDataGridElementContentsretrieveOutputDataFromThreadId), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentssecondsToWaitForThread, nameof(uIAGetDataGridElementContentssecondsToWaitForThread), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent, nameof(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows, nameof(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle, nameof(uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsminimumDataGridRowsForScrolling, nameof(uIAGetDataGridElementContentsminimumDataGridRowsForScrolling), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsraiseExceptionIfCannotScroll, nameof(uIAGetDataGridElementContentsraiseExceptionIfCannotScroll), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsalternativeVerticalScrollbarName, nameof(uIAGetDataGridElementContentsalternativeVerticalScrollbarName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsmaxElementsToSearch, nameof(uIAGetDataGridElementContentsmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsmaxRelativeSearchDepth, nameof(uIAGetDataGridElementContentsmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode, nameof(uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse, nameof(uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetDataGridElementContents";
@@ -7385,22 +6792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetDataGridElementPropertiesResponse> UIAGetDataGridElementProperties([WorkflowExpression] Func<int> uIAGetDataGridElementPropertiesparentWindowHandle, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiesworkflow, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiessearchElementName = null, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiessearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiessearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiessearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementPropertiessearchSubTree = null, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiesalternativeHeaderRowName = null, [WorkflowExpression] Func<int> uIAGetDataGridElementPropertiesmatchIndex = null, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiessearchFilter = null, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertiessortByColumn = null, [WorkflowExpression] Func<bool> uIAGetDataGridElementPropertiesmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetDataGridElementPropertiesmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetDataGridElementPropertiesmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesparentWindowHandle, nameof(uIAGetDataGridElementPropertiesparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesworkflow, nameof(uIAGetDataGridElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiessearchElementName, nameof(uIAGetDataGridElementPropertiessearchElementName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiessearchElementClassName, nameof(uIAGetDataGridElementPropertiessearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiessearchElementAutomationId, nameof(uIAGetDataGridElementPropertiessearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiessearchLocalizedControlType, nameof(uIAGetDataGridElementPropertiessearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiessearchSubTree, nameof(uIAGetDataGridElementPropertiessearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesalternativeHeaderRowName, nameof(uIAGetDataGridElementPropertiesalternativeHeaderRowName), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesmatchIndex, nameof(uIAGetDataGridElementPropertiesmatchIndex), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiessearchFilter, nameof(uIAGetDataGridElementPropertiessearchFilter), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiessortByColumn, nameof(uIAGetDataGridElementPropertiessortByColumn), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesmatchIndexAscending, nameof(uIAGetDataGridElementPropertiesmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesmaxElementsToSearch, nameof(uIAGetDataGridElementPropertiesmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesmaxRelativeSearchDepth, nameof(uIAGetDataGridElementPropertiesmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode, nameof(uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse, nameof(uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetDataGridElementProperties";
@@ -7569,25 +6960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetListElementItemsResponse> UIAGetListElementItems([WorkflowExpression] Func<int> uIAGetListElementItemsparentWindowHandle, [WorkflowExpression] Func<string> uIAGetListElementItemsworkflow, [WorkflowExpression] Func<string> uIAGetListElementItemssearchElementName = null, [WorkflowExpression] Func<string> uIAGetListElementItemssearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetListElementItemssearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetListElementItemssearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetListElementItemssearchSubTree = null, [WorkflowExpression] Func<bool> uIAGetListElementItemsexpandFirst = null, [WorkflowExpression] Func<bool> uIAGetListElementItemscollapseAfter = null, [WorkflowExpression] Func<bool> uIAGetListElementItemscheckForSelectedItems = null, [WorkflowExpression] Func<double> uIAGetListElementItemssecondsBetweenExpandCollapse = null, [WorkflowExpression] Func<int> uIAGetListElementItemsmatchIndex = null, [WorkflowExpression] Func<string> uIAGetListElementItemssearchFilter = null, [WorkflowExpression] Func<string> uIAGetListElementItemssortByColumn = null, [WorkflowExpression] Func<bool> uIAGetListElementItemsmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetListElementItemsmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetListElementItemsmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetListElementItemsmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetListElementItemselementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetListElementItemsparentWindowHandle, nameof(uIAGetListElementItemsparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetListElementItemsworkflow, nameof(uIAGetListElementItemsworkflow), required: true);
-            SourceExpression.Validate(uIAGetListElementItemssearchElementName, nameof(uIAGetListElementItemssearchElementName), required: false);
-            SourceExpression.Validate(uIAGetListElementItemssearchElementClassName, nameof(uIAGetListElementItemssearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetListElementItemssearchElementAutomationId, nameof(uIAGetListElementItemssearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetListElementItemssearchLocalizedControlType, nameof(uIAGetListElementItemssearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetListElementItemssearchSubTree, nameof(uIAGetListElementItemssearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetListElementItemsexpandFirst, nameof(uIAGetListElementItemsexpandFirst), required: false);
-            SourceExpression.Validate(uIAGetListElementItemscollapseAfter, nameof(uIAGetListElementItemscollapseAfter), required: false);
-            SourceExpression.Validate(uIAGetListElementItemscheckForSelectedItems, nameof(uIAGetListElementItemscheckForSelectedItems), required: false);
-            SourceExpression.Validate(uIAGetListElementItemssecondsBetweenExpandCollapse, nameof(uIAGetListElementItemssecondsBetweenExpandCollapse), required: false);
-            SourceExpression.Validate(uIAGetListElementItemsmatchIndex, nameof(uIAGetListElementItemsmatchIndex), required: false);
-            SourceExpression.Validate(uIAGetListElementItemssearchFilter, nameof(uIAGetListElementItemssearchFilter), required: false);
-            SourceExpression.Validate(uIAGetListElementItemssortByColumn, nameof(uIAGetListElementItemssortByColumn), required: false);
-            SourceExpression.Validate(uIAGetListElementItemsmatchIndexAscending, nameof(uIAGetListElementItemsmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetListElementItemsmaxElementsToSearch, nameof(uIAGetListElementItemsmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetListElementItemsmaxRelativeSearchDepth, nameof(uIAGetListElementItemsmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetListElementItemsmaxChildElementsToSearchPerNode, nameof(uIAGetListElementItemsmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetListElementItemselementLocalizedControlTypesNotToTraverse, nameof(uIAGetListElementItemselementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetListElementItems";
@@ -7814,25 +7186,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAClickListElementItemByName([WorkflowExpression] Func<int> uIAClickListElementItemByNameparentWindowHandle, [WorkflowExpression] Func<string> uIAClickListElementItemByNameworkflow, [WorkflowExpression] Func<string> uIAClickListElementItemByNamesearchElementName = null, [WorkflowExpression] Func<string> uIAClickListElementItemByNamesearchElementClassName = null, [WorkflowExpression] Func<string> uIAClickListElementItemByNamesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAClickListElementItemByNamesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByNamesearchSubTree = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByNameexpandFirst = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByNamecollapseAfter = null, [WorkflowExpression] Func<string> uIAClickListElementItemByNameitemName = null, [WorkflowExpression] Func<double> uIAClickListElementItemByNamesecondsBetweenExpandCollapse = null, [WorkflowExpression] Func<int> uIAClickListElementItemByNamematchIndex = null, [WorkflowExpression] Func<string> uIAClickListElementItemByNamesearchFilter = null, [WorkflowExpression] Func<string> uIAClickListElementItemByNamesortByColumn = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByNamematchIndexAscending = null, [WorkflowExpression] Func<int> uIAClickListElementItemByNamemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAClickListElementItemByNamemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAClickListElementItemByNamemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAClickListElementItemByNameparentWindowHandle, nameof(uIAClickListElementItemByNameparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAClickListElementItemByNameworkflow, nameof(uIAClickListElementItemByNameworkflow), required: true);
-            SourceExpression.Validate(uIAClickListElementItemByNamesearchElementName, nameof(uIAClickListElementItemByNamesearchElementName), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamesearchElementClassName, nameof(uIAClickListElementItemByNamesearchElementClassName), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamesearchElementAutomationId, nameof(uIAClickListElementItemByNamesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamesearchLocalizedControlType, nameof(uIAClickListElementItemByNamesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamesearchSubTree, nameof(uIAClickListElementItemByNamesearchSubTree), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNameexpandFirst, nameof(uIAClickListElementItemByNameexpandFirst), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamecollapseAfter, nameof(uIAClickListElementItemByNamecollapseAfter), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNameitemName, nameof(uIAClickListElementItemByNameitemName), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamesecondsBetweenExpandCollapse, nameof(uIAClickListElementItemByNamesecondsBetweenExpandCollapse), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamematchIndex, nameof(uIAClickListElementItemByNamematchIndex), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamesearchFilter, nameof(uIAClickListElementItemByNamesearchFilter), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamesortByColumn, nameof(uIAClickListElementItemByNamesortByColumn), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamematchIndexAscending, nameof(uIAClickListElementItemByNamematchIndexAscending), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamemaxElementsToSearch, nameof(uIAClickListElementItemByNamemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamemaxRelativeSearchDepth, nameof(uIAClickListElementItemByNamemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNamemaxChildElementsToSearchPerNode, nameof(uIAClickListElementItemByNamemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse, nameof(uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/ClickListElementItemByName";
@@ -8039,25 +7392,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAClickListElementItemByIndex([WorkflowExpression] Func<int> uIAClickListElementItemByIndexparentWindowHandle, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexworkflow, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexsearchElementName = null, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexsearchElementClassName = null, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByIndexsearchSubTree = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByIndexexpandFirst = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByIndexcollapseAfter = null, [WorkflowExpression] Func<int> uIAClickListElementItemByIndexitemIndex = null, [WorkflowExpression] Func<double> uIAClickListElementItemByIndexsecondsBetweenExpandCollapse = null, [WorkflowExpression] Func<int> uIAClickListElementItemByIndexmatchIndex = null, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexsearchFilter = null, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexsortByColumn = null, [WorkflowExpression] Func<bool> uIAClickListElementItemByIndexmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAClickListElementItemByIndexmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAClickListElementItemByIndexmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAClickListElementItemByIndexparentWindowHandle, nameof(uIAClickListElementItemByIndexparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAClickListElementItemByIndexworkflow, nameof(uIAClickListElementItemByIndexworkflow), required: true);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsearchElementName, nameof(uIAClickListElementItemByIndexsearchElementName), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsearchElementClassName, nameof(uIAClickListElementItemByIndexsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsearchElementAutomationId, nameof(uIAClickListElementItemByIndexsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsearchLocalizedControlType, nameof(uIAClickListElementItemByIndexsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsearchSubTree, nameof(uIAClickListElementItemByIndexsearchSubTree), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexexpandFirst, nameof(uIAClickListElementItemByIndexexpandFirst), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexcollapseAfter, nameof(uIAClickListElementItemByIndexcollapseAfter), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexitemIndex, nameof(uIAClickListElementItemByIndexitemIndex), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsecondsBetweenExpandCollapse, nameof(uIAClickListElementItemByIndexsecondsBetweenExpandCollapse), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexmatchIndex, nameof(uIAClickListElementItemByIndexmatchIndex), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsearchFilter, nameof(uIAClickListElementItemByIndexsearchFilter), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexsortByColumn, nameof(uIAClickListElementItemByIndexsortByColumn), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexmatchIndexAscending, nameof(uIAClickListElementItemByIndexmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexmaxElementsToSearch, nameof(uIAClickListElementItemByIndexmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexmaxRelativeSearchDepth, nameof(uIAClickListElementItemByIndexmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode, nameof(uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse, nameof(uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/ClickListElementItemByIndex";
@@ -8274,25 +7608,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIASetElementToNumericValue([WorkflowExpression] Func<int> uIASetElementToNumericValueparentWindowHandle, [WorkflowExpression] Func<int> uIASetElementToNumericValuenewValue, [WorkflowExpression] Func<string> uIASetElementToNumericValueworkflow, [WorkflowExpression] Func<string> uIASetElementToNumericValuesearchElementName = null, [WorkflowExpression] Func<string> uIASetElementToNumericValuesearchElementClassName = null, [WorkflowExpression] Func<string> uIASetElementToNumericValuesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIASetElementToNumericValuesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIASetElementToNumericValuesearchSubTree = null, [WorkflowExpression] Func<int> uIASetElementToNumericValuematchIndex = null, [WorkflowExpression] Func<string> uIASetElementToNumericValuesearchFilter = null, [WorkflowExpression] Func<string> uIASetElementToNumericValuesortByColumn = null, [WorkflowExpression] Func<bool> uIASetElementToNumericValuematchIndexAscending = null, [WorkflowExpression] Func<int> uIASetElementToNumericValuemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIASetElementToNumericValuemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIASetElementToNumericValuemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIASetElementToNumericValueraiseExceptionIfInputValidationFails = null, [WorkflowExpression] Func<bool> uIASetElementToNumericValuetryValuePattern = null, [WorkflowExpression] Func<bool> uIASetElementToNumericValuetryLegacyPattern = null)
         {
-            SourceExpression.Validate(uIASetElementToNumericValueparentWindowHandle, nameof(uIASetElementToNumericValueparentWindowHandle), required: true);
-            SourceExpression.Validate(uIASetElementToNumericValuenewValue, nameof(uIASetElementToNumericValuenewValue), required: true);
-            SourceExpression.Validate(uIASetElementToNumericValueworkflow, nameof(uIASetElementToNumericValueworkflow), required: true);
-            SourceExpression.Validate(uIASetElementToNumericValuesearchElementName, nameof(uIASetElementToNumericValuesearchElementName), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuesearchElementClassName, nameof(uIASetElementToNumericValuesearchElementClassName), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuesearchElementAutomationId, nameof(uIASetElementToNumericValuesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuesearchLocalizedControlType, nameof(uIASetElementToNumericValuesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuesearchSubTree, nameof(uIASetElementToNumericValuesearchSubTree), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuematchIndex, nameof(uIASetElementToNumericValuematchIndex), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuesearchFilter, nameof(uIASetElementToNumericValuesearchFilter), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuesortByColumn, nameof(uIASetElementToNumericValuesortByColumn), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuematchIndexAscending, nameof(uIASetElementToNumericValuematchIndexAscending), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuemaxElementsToSearch, nameof(uIASetElementToNumericValuemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuemaxRelativeSearchDepth, nameof(uIASetElementToNumericValuemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuemaxChildElementsToSearchPerNode, nameof(uIASetElementToNumericValuemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse, nameof(uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValueraiseExceptionIfInputValidationFails, nameof(uIASetElementToNumericValueraiseExceptionIfInputValidationFails), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuetryValuePattern, nameof(uIASetElementToNumericValuetryValuePattern), required: false);
-            SourceExpression.Validate(uIASetElementToNumericValuetryLegacyPattern, nameof(uIASetElementToNumericValuetryLegacyPattern), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIASetElementToNumericValue";
@@ -8505,23 +7820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIASetElementToNumericRangeValue([WorkflowExpression] Func<int> uIASetElementToNumericRangeValueparentWindowHandle, [WorkflowExpression] Func<double> uIASetElementToNumericRangeValuenewValue, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValueworkflow, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValuesearchElementName = null, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValuesearchElementClassName = null, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValuesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValuesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIASetElementToNumericRangeValuesearchSubTree = null, [WorkflowExpression] Func<int> uIASetElementToNumericRangeValuematchIndex = null, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValuesearchFilter = null, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValuesortByColumn = null, [WorkflowExpression] Func<bool> uIASetElementToNumericRangeValuematchIndexAscending = null, [WorkflowExpression] Func<bool> uIASetElementToNumericRangeValuenewValueIsPercentage = null, [WorkflowExpression] Func<int> uIASetElementToNumericRangeValuemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIASetElementToNumericRangeValuemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIASetElementToNumericRangeValueparentWindowHandle, nameof(uIASetElementToNumericRangeValueparentWindowHandle), required: true);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuenewValue, nameof(uIASetElementToNumericRangeValuenewValue), required: true);
-            SourceExpression.Validate(uIASetElementToNumericRangeValueworkflow, nameof(uIASetElementToNumericRangeValueworkflow), required: true);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuesearchElementName, nameof(uIASetElementToNumericRangeValuesearchElementName), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuesearchElementClassName, nameof(uIASetElementToNumericRangeValuesearchElementClassName), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuesearchElementAutomationId, nameof(uIASetElementToNumericRangeValuesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuesearchLocalizedControlType, nameof(uIASetElementToNumericRangeValuesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuesearchSubTree, nameof(uIASetElementToNumericRangeValuesearchSubTree), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuematchIndex, nameof(uIASetElementToNumericRangeValuematchIndex), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuesearchFilter, nameof(uIASetElementToNumericRangeValuesearchFilter), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuesortByColumn, nameof(uIASetElementToNumericRangeValuesortByColumn), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuematchIndexAscending, nameof(uIASetElementToNumericRangeValuematchIndexAscending), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuenewValueIsPercentage, nameof(uIASetElementToNumericRangeValuenewValueIsPercentage), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuemaxElementsToSearch, nameof(uIASetElementToNumericRangeValuemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuemaxRelativeSearchDepth, nameof(uIASetElementToNumericRangeValuemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode, nameof(uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse, nameof(uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIASetElementToNumericRangeValue";
@@ -8702,7 +8000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAResetAllElementHandles([WorkflowExpression] Func<string> uIAResetAllElementHandlesworkflow)
         {
-            SourceExpression.Validate(uIAResetAllElementHandlesworkflow, nameof(uIAResetAllElementHandlesworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAResetAllElementHandles";
@@ -8725,31 +8022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAGlobalPasswordInputIntoElement([WorkflowExpression] Func<int> uIAGlobalPasswordInputIntoElementparentWindowHandle, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementpasswordToInput, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementworkflow, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementsearchElementName = null, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAGlobalPasswordInputIntoElementmatchIndex = null, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementsearchFilter = null, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementfocusElement = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementsendKeyEvents = null, [WorkflowExpression] Func<int> uIAGlobalPasswordInputIntoElementinterval = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementdontInterpretSymbols = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword = null, [WorkflowExpression] Func<int> uIAGlobalPasswordInputIntoElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary = null)
         {
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementparentWindowHandle, nameof(uIAGlobalPasswordInputIntoElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementpasswordToInput, nameof(uIAGlobalPasswordInputIntoElementpasswordToInput), required: true);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementworkflow, nameof(uIAGlobalPasswordInputIntoElementworkflow), required: true);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsearchElementName, nameof(uIAGlobalPasswordInputIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsearchElementClassName, nameof(uIAGlobalPasswordInputIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsearchElementAutomationId, nameof(uIAGlobalPasswordInputIntoElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsearchLocalizedControlType, nameof(uIAGlobalPasswordInputIntoElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsearchSubTree, nameof(uIAGlobalPasswordInputIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementmatchIndex, nameof(uIAGlobalPasswordInputIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsearchFilter, nameof(uIAGlobalPasswordInputIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsortByColumn, nameof(uIAGlobalPasswordInputIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementmatchIndexAscending, nameof(uIAGlobalPasswordInputIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementfocusElement, nameof(uIAGlobalPasswordInputIntoElementfocusElement), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement, nameof(uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete, nameof(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete, nameof(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementsendKeyEvents, nameof(uIAGlobalPasswordInputIntoElementsendKeyEvents), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementinterval, nameof(uIAGlobalPasswordInputIntoElementinterval), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementdontInterpretSymbols, nameof(uIAGlobalPasswordInputIntoElementdontInterpretSymbols), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword, nameof(uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementmaxElementsToSearch, nameof(uIAGlobalPasswordInputIntoElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth, nameof(uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode, nameof(uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse, nameof(uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary, nameof(uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGlobalPasswordInputIntoElement";
@@ -9058,30 +8330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIAGlobalTextInputIntoElement([WorkflowExpression] Func<int> uIAGlobalTextInputIntoElementparentWindowHandle, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementworkflow, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementsearchElementName = null, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAGlobalTextInputIntoElementmatchIndex = null, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementsearchFilter = null, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementfocusElement = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementglobalMouseClickOnElement = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete = null, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementtextToInput = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementsendKeyEvents = null, [WorkflowExpression] Func<int> uIAGlobalTextInputIntoElementinterval = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementdontInterpretSymbols = null, [WorkflowExpression] Func<int> uIAGlobalTextInputIntoElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGlobalTextInputIntoElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<bool> uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary = null)
         {
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementparentWindowHandle, nameof(uIAGlobalTextInputIntoElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementworkflow, nameof(uIAGlobalTextInputIntoElementworkflow), required: true);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsearchElementName, nameof(uIAGlobalTextInputIntoElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsearchElementClassName, nameof(uIAGlobalTextInputIntoElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsearchElementAutomationId, nameof(uIAGlobalTextInputIntoElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsearchLocalizedControlType, nameof(uIAGlobalTextInputIntoElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsearchSubTree, nameof(uIAGlobalTextInputIntoElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementmatchIndex, nameof(uIAGlobalTextInputIntoElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsearchFilter, nameof(uIAGlobalTextInputIntoElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsortByColumn, nameof(uIAGlobalTextInputIntoElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementmatchIndexAscending, nameof(uIAGlobalTextInputIntoElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementfocusElement, nameof(uIAGlobalTextInputIntoElementfocusElement), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementglobalMouseClickOnElement, nameof(uIAGlobalTextInputIntoElementglobalMouseClickOnElement), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete, nameof(uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete, nameof(uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementtextToInput, nameof(uIAGlobalTextInputIntoElementtextToInput), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementsendKeyEvents, nameof(uIAGlobalTextInputIntoElementsendKeyEvents), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementinterval, nameof(uIAGlobalTextInputIntoElementinterval), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementdontInterpretSymbols, nameof(uIAGlobalTextInputIntoElementdontInterpretSymbols), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementmaxElementsToSearch, nameof(uIAGlobalTextInputIntoElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementmaxRelativeSearchDepth, nameof(uIAGlobalTextInputIntoElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode, nameof(uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse, nameof(uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary, nameof(uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGlobalTextInputIntoElement";
@@ -9378,8 +8626,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementPropertiesAsListResponse> UIAGetElementPropertiesAsList([WorkflowExpression] Func<int> uIAGetElementPropertiesAsListelementHandle, [WorkflowExpression] Func<string> uIAGetElementPropertiesAsListworkflow)
         {
-            SourceExpression.Validate(uIAGetElementPropertiesAsListelementHandle, nameof(uIAGetElementPropertiesAsListelementHandle), required: true);
-            SourceExpression.Validate(uIAGetElementPropertiesAsListworkflow, nameof(uIAGetElementPropertiesAsListworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGetElementPropertiesAsList";
@@ -9404,8 +8650,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IWorkflowAction UIASetTransactionTimeout([WorkflowExpression] Func<double> uIASetTransactionTimeouttimeoutInSeconds, [WorkflowExpression] Func<string> uIASetTransactionTimeoutworkflow)
         {
-            SourceExpression.Validate(uIASetTransactionTimeouttimeoutInSeconds, nameof(uIASetTransactionTimeouttimeoutInSeconds), required: true);
-            SourceExpression.Validate(uIASetTransactionTimeoutworkflow, nameof(uIASetTransactionTimeoutworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIASetTransactionTimeout";
@@ -9430,10 +8674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementAtCoordinatesResponse> UIAGetElementAtCoordinates([WorkflowExpression] Func<string> uIAGetElementAtCoordinatesworkflow, [WorkflowExpression] Func<int> uIAGetElementAtCoordinatesxCoord = null, [WorkflowExpression] Func<int> uIAGetElementAtCoordinatesyCoord = null, [WorkflowExpression] Func<bool> uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound = null)
         {
-            SourceExpression.Validate(uIAGetElementAtCoordinatesworkflow, nameof(uIAGetElementAtCoordinatesworkflow), required: true);
-            SourceExpression.Validate(uIAGetElementAtCoordinatesxCoord, nameof(uIAGetElementAtCoordinatesxCoord), required: false);
-            SourceExpression.Validate(uIAGetElementAtCoordinatesyCoord, nameof(uIAGetElementAtCoordinatesyCoord), required: false);
-            SourceExpression.Validate(uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound, nameof(uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGetElementAtCoordinates";
@@ -9504,9 +8744,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetMultipleParentElementPropertiesResponse> UIAGetMultipleParentElementProperties([WorkflowExpression] Func<int> uIAGetMultipleParentElementPropertieselementHandle, [WorkflowExpression] Func<string> uIAGetMultipleParentElementPropertiesworkflow, [WorkflowExpression] Func<int> uIAGetMultipleParentElementPropertiesmaxParentsToProcess = null)
         {
-            SourceExpression.Validate(uIAGetMultipleParentElementPropertieselementHandle, nameof(uIAGetMultipleParentElementPropertieselementHandle), required: true);
-            SourceExpression.Validate(uIAGetMultipleParentElementPropertiesworkflow, nameof(uIAGetMultipleParentElementPropertiesworkflow), required: true);
-            SourceExpression.Validate(uIAGetMultipleParentElementPropertiesmaxParentsToProcess, nameof(uIAGetMultipleParentElementPropertiesmaxParentsToProcess), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGetMultipleParentElementProperties";
@@ -9547,12 +8784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIASearchForFirstParentElementResponse> UIASearchForFirstParentElement([WorkflowExpression] Func<int> uIASearchForFirstParentElementelementHandle, [WorkflowExpression] Func<string> uIASearchForFirstParentElementworkflow, [WorkflowExpression] Func<string> uIASearchForFirstParentElementsearchParentLocalizedControlType = null, [WorkflowExpression] Func<int> uIASearchForFirstParentElementsearchParentControlType = null, [WorkflowExpression] Func<int> uIASearchForFirstParentElementmaxParentsToProcess = null, [WorkflowExpression] Func<bool> uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound = null)
         {
-            SourceExpression.Validate(uIASearchForFirstParentElementelementHandle, nameof(uIASearchForFirstParentElementelementHandle), required: true);
-            SourceExpression.Validate(uIASearchForFirstParentElementworkflow, nameof(uIASearchForFirstParentElementworkflow), required: true);
-            SourceExpression.Validate(uIASearchForFirstParentElementsearchParentLocalizedControlType, nameof(uIASearchForFirstParentElementsearchParentLocalizedControlType), required: false);
-            SourceExpression.Validate(uIASearchForFirstParentElementsearchParentControlType, nameof(uIASearchForFirstParentElementsearchParentControlType), required: false);
-            SourceExpression.Validate(uIASearchForFirstParentElementmaxParentsToProcess, nameof(uIASearchForFirstParentElementmaxParentsToProcess), required: false);
-            SourceExpression.Validate(uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound, nameof(uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIASearchForFirstParentElement";
@@ -9621,43 +8852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetMultipleElementsAsTableResponse> UIAGetMultipleElementsAsTable([WorkflowExpression] Func<string> uIAGetMultipleElementsAsTableworkflow, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTableparentWindowHandle = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesearchElementName = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetMultipleElementsAsTablesearchSubTree = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablematchIndex = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesearchFilter = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesortByColumn = null, [WorkflowExpression] Func<bool> uIAGetMultipleElementsAsTablematchIndexAscending = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablesearchCellSubElementControlType = null, [WorkflowExpression] Func<bool> uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablefirstCellSubElementToReturn = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablerequestedNumberOfColumns = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablecellSubElementValuePriority = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablecellSubElementTextValuePriority = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablecellSubElementNameValuePriority = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTableminimumCellSubElementWidth = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTableminimumCellSubElementHeight = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom = null, [WorkflowExpression] Func<bool> uIAGetMultipleElementsAsTablereadTableAsThread = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablesecondsToWaitForThread = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetMultipleElementsAsTableworkflow, nameof(uIAGetMultipleElementsAsTableworkflow), required: true);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTableparentWindowHandle, nameof(uIAGetMultipleElementsAsTableparentWindowHandle), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchElementName, nameof(uIAGetMultipleElementsAsTablesearchElementName), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchElementClassName, nameof(uIAGetMultipleElementsAsTablesearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchElementAutomationId, nameof(uIAGetMultipleElementsAsTablesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchLocalizedControlType, nameof(uIAGetMultipleElementsAsTablesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchSubTree, nameof(uIAGetMultipleElementsAsTablesearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablematchIndex, nameof(uIAGetMultipleElementsAsTablematchIndex), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchFilter, nameof(uIAGetMultipleElementsAsTablesearchFilter), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesortByColumn, nameof(uIAGetMultipleElementsAsTablesortByColumn), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablematchIndexAscending, nameof(uIAGetMultipleElementsAsTablematchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType, nameof(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType, nameof(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType, nameof(uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellSubElementControlType, nameof(uIAGetMultipleElementsAsTablesearchCellSubElementControlType), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements, nameof(uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn, nameof(uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn, nameof(uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablefirstCellSubElementToReturn, nameof(uIAGetMultipleElementsAsTablefirstCellSubElementToReturn), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn, nameof(uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablerequestedNumberOfColumns, nameof(uIAGetMultipleElementsAsTablerequestedNumberOfColumns), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablecellSubElementValuePriority, nameof(uIAGetMultipleElementsAsTablecellSubElementValuePriority), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablecellSubElementTextValuePriority, nameof(uIAGetMultipleElementsAsTablecellSubElementTextValuePriority), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablecellSubElementNameValuePriority, nameof(uIAGetMultipleElementsAsTablecellSubElementNameValuePriority), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTableminimumCellSubElementWidth, nameof(uIAGetMultipleElementsAsTableminimumCellSubElementWidth), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTableminimumCellSubElementHeight, nameof(uIAGetMultipleElementsAsTableminimumCellSubElementHeight), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft, nameof(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight, nameof(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop, nameof(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom, nameof(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablereadTableAsThread, nameof(uIAGetMultipleElementsAsTablereadTableAsThread), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId, nameof(uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablesecondsToWaitForThread, nameof(uIAGetMultipleElementsAsTablesecondsToWaitForThread), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablemaxElementsToSearch, nameof(uIAGetMultipleElementsAsTablemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablemaxRelativeSearchDepth, nameof(uIAGetMultipleElementsAsTablemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode, nameof(uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse, nameof(uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGetMultipleElementsAsTable";
@@ -10126,26 +9320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIASetElementScrollPercentageResponse> UIASetElementScrollPercentage([WorkflowExpression] Func<int> uIASetElementScrollPercentageparentWindowHandle, [WorkflowExpression] Func<string> uIASetElementScrollPercentageworkflow, [WorkflowExpression] Func<string> uIASetElementScrollPercentagesearchElementName = null, [WorkflowExpression] Func<string> uIASetElementScrollPercentagesearchElementClassName = null, [WorkflowExpression] Func<string> uIASetElementScrollPercentagesearchElementAutomationId = null, [WorkflowExpression] Func<string> uIASetElementScrollPercentagesearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIASetElementScrollPercentagesearchSubTree = null, [WorkflowExpression] Func<int> uIASetElementScrollPercentagematchIndex = null, [WorkflowExpression] Func<string> uIASetElementScrollPercentagesearchFilter = null, [WorkflowExpression] Func<string> uIASetElementScrollPercentagesortByColumn = null, [WorkflowExpression] Func<bool> uIASetElementScrollPercentagematchIndexAscending = null, [WorkflowExpression] Func<double> uIASetElementScrollPercentagehorizontalScrollPercentage = null, [WorkflowExpression] Func<double> uIASetElementScrollPercentageverticalScrollPercentage = null, [WorkflowExpression] Func<bool> uIASetElementScrollPercentagetryScrollPattern = null, [WorkflowExpression] Func<bool> uIASetElementScrollPercentagetryRangeValuePattern = null, [WorkflowExpression] Func<bool> uIASetElementScrollPercentagetryValuePattern = null, [WorkflowExpression] Func<int> uIASetElementScrollPercentagemaxElementsToSearch = null, [WorkflowExpression] Func<int> uIASetElementScrollPercentagemaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIASetElementScrollPercentagemaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIASetElementScrollPercentageparentWindowHandle, nameof(uIASetElementScrollPercentageparentWindowHandle), required: true);
-            SourceExpression.Validate(uIASetElementScrollPercentageworkflow, nameof(uIASetElementScrollPercentageworkflow), required: true);
-            SourceExpression.Validate(uIASetElementScrollPercentagesearchElementName, nameof(uIASetElementScrollPercentagesearchElementName), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagesearchElementClassName, nameof(uIASetElementScrollPercentagesearchElementClassName), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagesearchElementAutomationId, nameof(uIASetElementScrollPercentagesearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagesearchLocalizedControlType, nameof(uIASetElementScrollPercentagesearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagesearchSubTree, nameof(uIASetElementScrollPercentagesearchSubTree), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagematchIndex, nameof(uIASetElementScrollPercentagematchIndex), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagesearchFilter, nameof(uIASetElementScrollPercentagesearchFilter), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagesortByColumn, nameof(uIASetElementScrollPercentagesortByColumn), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagematchIndexAscending, nameof(uIASetElementScrollPercentagematchIndexAscending), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagehorizontalScrollPercentage, nameof(uIASetElementScrollPercentagehorizontalScrollPercentage), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentageverticalScrollPercentage, nameof(uIASetElementScrollPercentageverticalScrollPercentage), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagetryScrollPattern, nameof(uIASetElementScrollPercentagetryScrollPattern), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagetryRangeValuePattern, nameof(uIASetElementScrollPercentagetryRangeValuePattern), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagetryValuePattern, nameof(uIASetElementScrollPercentagetryValuePattern), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagemaxElementsToSearch, nameof(uIASetElementScrollPercentagemaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagemaxRelativeSearchDepth, nameof(uIASetElementScrollPercentagemaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentagemaxChildElementsToSearchPerNode, nameof(uIASetElementScrollPercentagemaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse, nameof(uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIASetElementScrollPercentage";
@@ -10388,29 +9562,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementSearchColourRegionResponse> UIAGetElementSearchColourRegion([WorkflowExpression] Func<int> uIAGetElementSearchColourRegionparentWindowHandle, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionsearchColour, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionmaxColourDeviation, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionworkflow, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionsearchElementName = null, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetElementSearchColourRegionsearchSubTree = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionmatchIndex = null, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionsearchFilter = null, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionsortByColumn = null, [WorkflowExpression] Func<bool> uIAGetElementSearchColourRegionmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionleftPixelXOffset = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionrightPixelXOffset = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegiontopPixelYOffset = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionbottomPixelYOffset = null, [WorkflowExpression] Func<bool> uIAGetElementSearchColourRegionhideAgent = null, [WorkflowExpression] Func<bool> uIAGetElementSearchColourRegionreturnPhysicalCoordinates = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetElementSearchColourRegionparentWindowHandle, nameof(uIAGetElementSearchColourRegionparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsearchColour, nameof(uIAGetElementSearchColourRegionsearchColour), required: true);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionmaxColourDeviation, nameof(uIAGetElementSearchColourRegionmaxColourDeviation), required: true);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionworkflow, nameof(uIAGetElementSearchColourRegionworkflow), required: true);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsearchElementName, nameof(uIAGetElementSearchColourRegionsearchElementName), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsearchElementClassName, nameof(uIAGetElementSearchColourRegionsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsearchElementAutomationId, nameof(uIAGetElementSearchColourRegionsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsearchLocalizedControlType, nameof(uIAGetElementSearchColourRegionsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsearchSubTree, nameof(uIAGetElementSearchColourRegionsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionmatchIndex, nameof(uIAGetElementSearchColourRegionmatchIndex), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsearchFilter, nameof(uIAGetElementSearchColourRegionsearchFilter), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionsortByColumn, nameof(uIAGetElementSearchColourRegionsortByColumn), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionmatchIndexAscending, nameof(uIAGetElementSearchColourRegionmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionleftPixelXOffset, nameof(uIAGetElementSearchColourRegionleftPixelXOffset), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionrightPixelXOffset, nameof(uIAGetElementSearchColourRegionrightPixelXOffset), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegiontopPixelYOffset, nameof(uIAGetElementSearchColourRegiontopPixelYOffset), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionbottomPixelYOffset, nameof(uIAGetElementSearchColourRegionbottomPixelYOffset), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionhideAgent, nameof(uIAGetElementSearchColourRegionhideAgent), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionreturnPhysicalCoordinates, nameof(uIAGetElementSearchColourRegionreturnPhysicalCoordinates), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionmaxElementsToSearch, nameof(uIAGetElementSearchColourRegionmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionmaxRelativeSearchDepth, nameof(uIAGetElementSearchColourRegionmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode, nameof(uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse, nameof(uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGetElementSearchColourRegion";
@@ -10633,33 +9784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGlobalMouseClickElementSearchColourRegionResponse> UIAGlobalMouseClickElementSearchColourRegion([WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionparentWindowHandle, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionsearchColour, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionmaxColourDeviation, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionworkflow, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionsearchElementName = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGlobalMouseClickElementSearchColourRegionsearchSubTree = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionmatchIndex = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionsearchFilter = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionsortByColumn = null, [WorkflowExpression] Func<bool> uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset = null, [WorkflowExpression] Func<uIAGlobalMouseClickElementSearchColourRegionmouseButtonInput> uIAGlobalMouseClickElementSearchColourRegionmouseButton = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionclickOffsetX = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionclickOffsetY = null, [WorkflowExpression] Func<uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeToInput> uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds = null, [WorkflowExpression] Func<bool> uIAGlobalMouseClickElementSearchColourRegionhideAgent = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionparentWindowHandle, nameof(uIAGlobalMouseClickElementSearchColourRegionparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsearchColour, nameof(uIAGlobalMouseClickElementSearchColourRegionsearchColour), required: true);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionmaxColourDeviation, nameof(uIAGlobalMouseClickElementSearchColourRegionmaxColourDeviation), required: true);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionworkflow, nameof(uIAGlobalMouseClickElementSearchColourRegionworkflow), required: true);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsearchElementName, nameof(uIAGlobalMouseClickElementSearchColourRegionsearchElementName), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName, nameof(uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId, nameof(uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType, nameof(uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsearchSubTree, nameof(uIAGlobalMouseClickElementSearchColourRegionsearchSubTree), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionmatchIndex, nameof(uIAGlobalMouseClickElementSearchColourRegionmatchIndex), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsearchFilter, nameof(uIAGlobalMouseClickElementSearchColourRegionsearchFilter), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionsortByColumn, nameof(uIAGlobalMouseClickElementSearchColourRegionsortByColumn), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending, nameof(uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset, nameof(uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset, nameof(uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset, nameof(uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset, nameof(uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionmouseButton, nameof(uIAGlobalMouseClickElementSearchColourRegionmouseButton), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionclickOffsetX, nameof(uIAGlobalMouseClickElementSearchColourRegionclickOffsetX), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionclickOffsetY, nameof(uIAGlobalMouseClickElementSearchColourRegionclickOffsetY), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo, nameof(uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds, nameof(uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionhideAgent, nameof(uIAGlobalMouseClickElementSearchColourRegionhideAgent), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch, nameof(uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth, nameof(uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode, nameof(uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse, nameof(uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGlobalMouseClickElementSearchColourRegion";
@@ -10946,21 +10070,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetWin32WindowsResponse> UIAGetWin32Windows([WorkflowExpression] Func<string> uIAGetWin32Windowsworkflow, [WorkflowExpression] Func<string> uIAGetWin32WindowssearchClassName = null, [WorkflowExpression] Func<string> uIAGetWin32WindowssearchWindowTitle = null, [WorkflowExpression] Func<bool> uIAGetWin32WindowstopLevelWindowsOnly = null, [WorkflowExpression] Func<bool> uIAGetWin32WindowsvisibleWindowsOnly = null, [WorkflowExpression] Func<bool> uIAGetWin32WindowswindowsWithTitlebarOnly = null, [WorkflowExpression] Func<bool> uIAGetWin32WindowswindowsWithTitleOnly = null, [WorkflowExpression] Func<bool> uIAGetWin32WindowsignoreTransparentWindows = null, [WorkflowExpression] Func<int> uIAGetWin32WindowssearchProcessId = null, [WorkflowExpression] Func<string> uIAGetWin32WindowssearchFilter = null, [WorkflowExpression] Func<string> uIAGetWin32WindowssortByColumn = null, [WorkflowExpression] Func<bool> uIAGetWin32WindowsmatchIndexAscending = null, [WorkflowExpression] Func<bool> uIAGetWin32WindowsreturnElementHandle = null, [WorkflowExpression] Func<int> uIAGetWin32WindowsfirstItemToReturn = null, [WorkflowExpression] Func<int> uIAGetWin32WindowsmaxItemsToReturn = null)
         {
-            SourceExpression.Validate(uIAGetWin32Windowsworkflow, nameof(uIAGetWin32Windowsworkflow), required: true);
-            SourceExpression.Validate(uIAGetWin32WindowssearchClassName, nameof(uIAGetWin32WindowssearchClassName), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowssearchWindowTitle, nameof(uIAGetWin32WindowssearchWindowTitle), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowstopLevelWindowsOnly, nameof(uIAGetWin32WindowstopLevelWindowsOnly), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowsvisibleWindowsOnly, nameof(uIAGetWin32WindowsvisibleWindowsOnly), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowswindowsWithTitlebarOnly, nameof(uIAGetWin32WindowswindowsWithTitlebarOnly), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowswindowsWithTitleOnly, nameof(uIAGetWin32WindowswindowsWithTitleOnly), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowsignoreTransparentWindows, nameof(uIAGetWin32WindowsignoreTransparentWindows), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowssearchProcessId, nameof(uIAGetWin32WindowssearchProcessId), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowssearchFilter, nameof(uIAGetWin32WindowssearchFilter), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowssortByColumn, nameof(uIAGetWin32WindowssortByColumn), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowsmatchIndexAscending, nameof(uIAGetWin32WindowsmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowsreturnElementHandle, nameof(uIAGetWin32WindowsreturnElementHandle), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowsfirstItemToReturn, nameof(uIAGetWin32WindowsfirstItemToReturn), required: false);
-            SourceExpression.Validate(uIAGetWin32WindowsmaxItemsToReturn, nameof(uIAGetWin32WindowsmaxItemsToReturn), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetWin32Windows";
@@ -11157,8 +10266,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<SetUIAElementSearchModeResponse> SetUIAElementSearchMode([WorkflowExpression] Func<setUIAElementSearchModeuIAElementSearchModeInput> setUIAElementSearchModeuIAElementSearchMode, [WorkflowExpression] Func<string> setUIAElementSearchModeworkflow)
         {
-            SourceExpression.Validate(setUIAElementSearchModeuIAElementSearchMode, nameof(setUIAElementSearchModeuIAElementSearchMode), required: true);
-            SourceExpression.Validate(setUIAElementSearchModeworkflow, nameof(setUIAElementSearchModeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/SetUIAElementSearchMode";
@@ -11183,7 +10290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<GetUIAElementSearchModeResponse> GetUIAElementSearchMode([WorkflowExpression] Func<string> getUIAElementSearchModeworkflow)
         {
-            SourceExpression.Validate(getUIAElementSearchModeworkflow, nameof(getUIAElementSearchModeworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/GetUIAElementSearchMode";
@@ -11206,21 +10312,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAGetElementPatternsResponse> UIAGetElementPatterns([WorkflowExpression] Func<int> uIAGetElementPatternsparentWindowHandle, [WorkflowExpression] Func<string> uIAGetElementPatternsworkflow, [WorkflowExpression] Func<string> uIAGetElementPatternssearchElementName = null, [WorkflowExpression] Func<string> uIAGetElementPatternssearchElementClassName = null, [WorkflowExpression] Func<string> uIAGetElementPatternssearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAGetElementPatternssearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAGetElementPatternssearchSubTree = null, [WorkflowExpression] Func<int> uIAGetElementPatternsmatchIndex = null, [WorkflowExpression] Func<string> uIAGetElementPatternssearchFilter = null, [WorkflowExpression] Func<string> uIAGetElementPatternssortByColumn = null, [WorkflowExpression] Func<bool> uIAGetElementPatternsmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAGetElementPatternsmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAGetElementPatternsmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAGetElementPatternsmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAGetElementPatternselementLocalizedControlTypesNotToTraverse = null)
         {
-            SourceExpression.Validate(uIAGetElementPatternsparentWindowHandle, nameof(uIAGetElementPatternsparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAGetElementPatternsworkflow, nameof(uIAGetElementPatternsworkflow), required: true);
-            SourceExpression.Validate(uIAGetElementPatternssearchElementName, nameof(uIAGetElementPatternssearchElementName), required: false);
-            SourceExpression.Validate(uIAGetElementPatternssearchElementClassName, nameof(uIAGetElementPatternssearchElementClassName), required: false);
-            SourceExpression.Validate(uIAGetElementPatternssearchElementAutomationId, nameof(uIAGetElementPatternssearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAGetElementPatternssearchLocalizedControlType, nameof(uIAGetElementPatternssearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetElementPatternssearchSubTree, nameof(uIAGetElementPatternssearchSubTree), required: false);
-            SourceExpression.Validate(uIAGetElementPatternsmatchIndex, nameof(uIAGetElementPatternsmatchIndex), required: false);
-            SourceExpression.Validate(uIAGetElementPatternssearchFilter, nameof(uIAGetElementPatternssearchFilter), required: false);
-            SourceExpression.Validate(uIAGetElementPatternssortByColumn, nameof(uIAGetElementPatternssortByColumn), required: false);
-            SourceExpression.Validate(uIAGetElementPatternsmatchIndexAscending, nameof(uIAGetElementPatternsmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAGetElementPatternsmaxElementsToSearch, nameof(uIAGetElementPatternsmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAGetElementPatternsmaxRelativeSearchDepth, nameof(uIAGetElementPatternsmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAGetElementPatternsmaxChildElementsToSearchPerNode, nameof(uIAGetElementPatternsmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAGetElementPatternselementLocalizedControlTypesNotToTraverse, nameof(uIAGetElementPatternselementLocalizedControlTypesNotToTraverse), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAGetElementPatterns";
@@ -11383,25 +10474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAMoveElementResponse> UIAMoveElement([WorkflowExpression] Func<int> uIAMoveElementparentWindowHandle, [WorkflowExpression] Func<int> uIAMoveElementhorizontalPosition, [WorkflowExpression] Func<int> uIAMoveElementverticalPosition, [WorkflowExpression] Func<string> uIAMoveElementworkflow, [WorkflowExpression] Func<string> uIAMoveElementsearchElementName = null, [WorkflowExpression] Func<string> uIAMoveElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAMoveElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAMoveElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAMoveElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAMoveElementmatchIndex = null, [WorkflowExpression] Func<string> uIAMoveElementsearchFilter = null, [WorkflowExpression] Func<string> uIAMoveElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAMoveElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAMoveElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAMoveElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAMoveElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAMoveElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<uIAMoveElementhorizontalMovementTypeInput> uIAMoveElementhorizontalMovementType = null, [WorkflowExpression] Func<uIAMoveElementverticalMovementTypeInput> uIAMoveElementverticalMovementType = null)
         {
-            SourceExpression.Validate(uIAMoveElementparentWindowHandle, nameof(uIAMoveElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAMoveElementhorizontalPosition, nameof(uIAMoveElementhorizontalPosition), required: true);
-            SourceExpression.Validate(uIAMoveElementverticalPosition, nameof(uIAMoveElementverticalPosition), required: true);
-            SourceExpression.Validate(uIAMoveElementworkflow, nameof(uIAMoveElementworkflow), required: true);
-            SourceExpression.Validate(uIAMoveElementsearchElementName, nameof(uIAMoveElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAMoveElementsearchElementClassName, nameof(uIAMoveElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAMoveElementsearchElementAutomationId, nameof(uIAMoveElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAMoveElementsearchLocalizedControlType, nameof(uIAMoveElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAMoveElementsearchSubTree, nameof(uIAMoveElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAMoveElementmatchIndex, nameof(uIAMoveElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAMoveElementsearchFilter, nameof(uIAMoveElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAMoveElementsortByColumn, nameof(uIAMoveElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAMoveElementmatchIndexAscending, nameof(uIAMoveElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAMoveElementmaxElementsToSearch, nameof(uIAMoveElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAMoveElementmaxRelativeSearchDepth, nameof(uIAMoveElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAMoveElementmaxChildElementsToSearchPerNode, nameof(uIAMoveElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAMoveElementelementLocalizedControlTypesNotToTraverse, nameof(uIAMoveElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAMoveElementhorizontalMovementType, nameof(uIAMoveElementhorizontalMovementType), required: false);
-            SourceExpression.Validate(uIAMoveElementverticalMovementType, nameof(uIAMoveElementverticalMovementType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAMoveElement";
@@ -11600,25 +10672,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAResizeElementResponse> UIAResizeElement([WorkflowExpression] Func<int> uIAResizeElementparentWindowHandle, [WorkflowExpression] Func<int> uIAResizeElementnewWidth, [WorkflowExpression] Func<int> uIAResizeElementnewHeight, [WorkflowExpression] Func<string> uIAResizeElementworkflow, [WorkflowExpression] Func<string> uIAResizeElementsearchElementName = null, [WorkflowExpression] Func<string> uIAResizeElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAResizeElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAResizeElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAResizeElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAResizeElementmatchIndex = null, [WorkflowExpression] Func<string> uIAResizeElementsearchFilter = null, [WorkflowExpression] Func<string> uIAResizeElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAResizeElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAResizeElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAResizeElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAResizeElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAResizeElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<uIAResizeElementresizeWidthTypeInput> uIAResizeElementresizeWidthType = null, [WorkflowExpression] Func<uIAResizeElementresizeHeightTypeInput> uIAResizeElementresizeHeightType = null)
         {
-            SourceExpression.Validate(uIAResizeElementparentWindowHandle, nameof(uIAResizeElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIAResizeElementnewWidth, nameof(uIAResizeElementnewWidth), required: true);
-            SourceExpression.Validate(uIAResizeElementnewHeight, nameof(uIAResizeElementnewHeight), required: true);
-            SourceExpression.Validate(uIAResizeElementworkflow, nameof(uIAResizeElementworkflow), required: true);
-            SourceExpression.Validate(uIAResizeElementsearchElementName, nameof(uIAResizeElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAResizeElementsearchElementClassName, nameof(uIAResizeElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAResizeElementsearchElementAutomationId, nameof(uIAResizeElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAResizeElementsearchLocalizedControlType, nameof(uIAResizeElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAResizeElementsearchSubTree, nameof(uIAResizeElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAResizeElementmatchIndex, nameof(uIAResizeElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAResizeElementsearchFilter, nameof(uIAResizeElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAResizeElementsortByColumn, nameof(uIAResizeElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAResizeElementmatchIndexAscending, nameof(uIAResizeElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAResizeElementmaxElementsToSearch, nameof(uIAResizeElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAResizeElementmaxRelativeSearchDepth, nameof(uIAResizeElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAResizeElementmaxChildElementsToSearchPerNode, nameof(uIAResizeElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAResizeElementelementLocalizedControlTypesNotToTraverse, nameof(uIAResizeElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAResizeElementresizeWidthType, nameof(uIAResizeElementresizeWidthType), required: false);
-            SourceExpression.Validate(uIAResizeElementresizeHeightType, nameof(uIAResizeElementresizeHeightType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAResizeElement";
@@ -11817,39 +10870,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIALocateVisibleSearchImageWithinElementResponse> UIALocateVisibleSearchImageWithinElement([WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementparentWindowHandle, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementworkflow, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementsearchElementName = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIALocateVisibleSearchImageWithinElementsearchSubTree = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementmatchIndex = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementsearchFilter = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementsortByColumn = null, [WorkflowExpression] Func<bool> uIALocateVisibleSearchImageWithinElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<uIALocateVisibleSearchImageWithinElementsearchImageTypeInput> uIALocateVisibleSearchImageWithinElementsearchImageType = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementsearchImage = null, [WorkflowExpression] Func<uIALocateVisibleSearchImageWithinElementaltSearchImageTypeInput> uIALocateVisibleSearchImageWithinElementaltSearchImageType = null, [WorkflowExpression] Func<string> uIALocateVisibleSearchImageWithinElementaltSearchImage = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementmaxColourDeviation = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementmaxPixelDifferences = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementleftPixelXOffset = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementrightPixelXOffset = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementtopPixelYOffset = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementbottomPixelYOffset = null, [WorkflowExpression] Func<uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnitInput> uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit = null, [WorkflowExpression] Func<uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnitInput> uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit = null, [WorkflowExpression] Func<int> uIALocateVisibleSearchImageWithinElementsearchImageIndex = null, [WorkflowExpression] Func<uIALocateVisibleSearchImageWithinElementimageSearchDirectionInput> uIALocateVisibleSearchImageWithinElementimageSearchDirection = null, [WorkflowExpression] Func<bool> uIALocateVisibleSearchImageWithinElementhideAgent = null, [WorkflowExpression] Func<bool> uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates = null, [WorkflowExpression] Func<bool> uIALocateVisibleSearchImageWithinElementshowHighlightRectangle = null)
         {
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementparentWindowHandle, nameof(uIALocateVisibleSearchImageWithinElementparentWindowHandle), required: true);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementworkflow, nameof(uIALocateVisibleSearchImageWithinElementworkflow), required: true);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchElementName, nameof(uIALocateVisibleSearchImageWithinElementsearchElementName), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchElementClassName, nameof(uIALocateVisibleSearchImageWithinElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchElementAutomationId, nameof(uIALocateVisibleSearchImageWithinElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType, nameof(uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchSubTree, nameof(uIALocateVisibleSearchImageWithinElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmatchIndex, nameof(uIALocateVisibleSearchImageWithinElementmatchIndex), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchFilter, nameof(uIALocateVisibleSearchImageWithinElementsearchFilter), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsortByColumn, nameof(uIALocateVisibleSearchImageWithinElementsortByColumn), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmatchIndexAscending, nameof(uIALocateVisibleSearchImageWithinElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmaxElementsToSearch, nameof(uIALocateVisibleSearchImageWithinElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth, nameof(uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode, nameof(uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse, nameof(uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchImageType, nameof(uIALocateVisibleSearchImageWithinElementsearchImageType), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchImage, nameof(uIALocateVisibleSearchImageWithinElementsearchImage), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementaltSearchImageType, nameof(uIALocateVisibleSearchImageWithinElementaltSearchImageType), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementaltSearchImage, nameof(uIALocateVisibleSearchImageWithinElementaltSearchImage), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmaxColourDeviation, nameof(uIALocateVisibleSearchImageWithinElementmaxColourDeviation), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmaxPixelDifferences, nameof(uIALocateVisibleSearchImageWithinElementmaxPixelDifferences), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences, nameof(uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementleftPixelXOffset, nameof(uIALocateVisibleSearchImageWithinElementleftPixelXOffset), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementrightPixelXOffset, nameof(uIALocateVisibleSearchImageWithinElementrightPixelXOffset), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementtopPixelYOffset, nameof(uIALocateVisibleSearchImageWithinElementtopPixelYOffset), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementbottomPixelYOffset, nameof(uIALocateVisibleSearchImageWithinElementbottomPixelYOffset), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit, nameof(uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit, nameof(uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementsearchImageIndex, nameof(uIALocateVisibleSearchImageWithinElementsearchImageIndex), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementimageSearchDirection, nameof(uIALocateVisibleSearchImageWithinElementimageSearchDirection), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementhideAgent, nameof(uIALocateVisibleSearchImageWithinElementhideAgent), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates, nameof(uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates), required: false);
-            SourceExpression.Validate(uIALocateVisibleSearchImageWithinElementshowHighlightRectangle, nameof(uIALocateVisibleSearchImageWithinElementshowHighlightRectangle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIALocateVisibleSearchImageWithinElement";
@@ -12230,44 +11250,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForVisibleSearchImageWithinElementResponse> UIAWaitForVisibleSearchImageWithinElement([WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementworkflow, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementparentWindowHandle = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementsearchElementName = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageWithinElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmatchIndex = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementsearchFilter = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageWithinElementsearchImageTypeInput> uIAWaitForVisibleSearchImageWithinElementsearchImageType = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementsearchImage = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageWithinElementaltSearchImageTypeInput> uIAWaitForVisibleSearchImageWithinElementaltSearchImageType = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageWithinElementaltSearchImage = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnitInput> uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnitInput> uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementsearchImageIndex = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageWithinElementimageSearchDirectionInput> uIAWaitForVisibleSearchImageWithinElementimageSearchDirection = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageWithinElementhideAgent = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementsecondsToWait = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageWithinElementwaitForThread = null)
         {
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementworkflow, nameof(uIAWaitForVisibleSearchImageWithinElementworkflow), required: true);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementparentWindowHandle, nameof(uIAWaitForVisibleSearchImageWithinElementparentWindowHandle), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchElementName, nameof(uIAWaitForVisibleSearchImageWithinElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchElementClassName, nameof(uIAWaitForVisibleSearchImageWithinElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId, nameof(uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType, nameof(uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchSubTree, nameof(uIAWaitForVisibleSearchImageWithinElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmatchIndex, nameof(uIAWaitForVisibleSearchImageWithinElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchFilter, nameof(uIAWaitForVisibleSearchImageWithinElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsortByColumn, nameof(uIAWaitForVisibleSearchImageWithinElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending, nameof(uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch, nameof(uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth, nameof(uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode, nameof(uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse, nameof(uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchImageType, nameof(uIAWaitForVisibleSearchImageWithinElementsearchImageType), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchImage, nameof(uIAWaitForVisibleSearchImageWithinElementsearchImage), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementaltSearchImageType, nameof(uIAWaitForVisibleSearchImageWithinElementaltSearchImageType), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementaltSearchImage, nameof(uIAWaitForVisibleSearchImageWithinElementaltSearchImage), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation, nameof(uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences, nameof(uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences, nameof(uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset, nameof(uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset, nameof(uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset, nameof(uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset, nameof(uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit, nameof(uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit, nameof(uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsearchImageIndex, nameof(uIAWaitForVisibleSearchImageWithinElementsearchImageIndex), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementimageSearchDirection, nameof(uIAWaitForVisibleSearchImageWithinElementimageSearchDirection), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementhideAgent, nameof(uIAWaitForVisibleSearchImageWithinElementhideAgent), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates, nameof(uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle, nameof(uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementsecondsToWait, nameof(uIAWaitForVisibleSearchImageWithinElementsecondsToWait), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches, nameof(uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound, nameof(uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId, nameof(uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageWithinElementwaitForThread, nameof(uIAWaitForVisibleSearchImageWithinElementwaitForThread), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAWaitForVisibleSearchImageWithinElement";
@@ -12722,43 +11704,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
         public IBodyWorkflowAction<UIAWaitForVisibleSearchImageToNotExistWithinElementResponse> UIAWaitForVisibleSearchImageToNotExistWithinElement([WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementworkflow, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageTypeInput> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageTypeInput> uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType = null, [WorkflowExpression] Func<string> uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnitInput> uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnitInput> uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex = null, [WorkflowExpression] Func<uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirectionInput> uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent = null, [WorkflowExpression] Func<int> uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId = null, [WorkflowExpression] Func<bool> uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread = null)
         {
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementworkflow, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementworkflow), required: true);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId), required: false);
-            SourceExpression.Validate(uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/UIAControl/UIAWaitForVisibleSearchImageToNotExistWithinElement";

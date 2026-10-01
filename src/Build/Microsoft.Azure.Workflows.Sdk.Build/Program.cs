@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 
 namespace Microsoft.Azure.Workflows.Sdk.Build;
 
@@ -21,6 +21,11 @@ internal static class Program
 
     public static int Main(string[] args)
     {
+        if (args.Length > 0 && args[0] == "inject-connector-validation")
+        {
+            return RunConnectorValidation(args);
+        }
+
         if (args.Length > 0 && args[0] == "validate-deployment")
         {
             return RunDeploymentValidation(args);
@@ -42,6 +47,61 @@ internal static class Program
         catch (Exception error) when (error is IOException or InvalidDataException or UnauthorizedAccessException or JsonException or ArgumentException)
         {
             Console.Error.WriteLine($"error WFBUILD100: {error.Message}");
+            return 1;
+        }
+    }
+
+    private static int RunConnectorValidation(string[] args)
+    {
+        if (args.Length != 4)
+        {
+            Console.Error.WriteLine("error WFSDK1101: Expected inject-connector-validation <compilation-manifest> <connector-source-list> <output-directory>.");
+            return 1;
+        }
+        try
+        {
+            var directory = Path.GetFullPath(args[3]);
+            Directory.CreateDirectory(directory);
+            var listPath = Path.Combine(directory, "compiled-files.txt");
+            File.Delete(listPath);
+            var manifest = JsonSerializer.Deserialize<CompilationManifest>(File.ReadAllText(args[1]), JsonOptions)
+                ?? throw new InvalidDataException("Compilation manifest is empty.");
+            if (manifest.SchemaFiles is not { Length: 0 })
+                throw new InvalidDataException("SDK connector injection does not generate consumer schemas.");
+            var (compilation, _) = CreateCompilation(manifest, directory);
+            var errors = compilation.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error).ToArray();
+            foreach (var error in errors) Console.Error.WriteLine(error);
+            if (errors.Length != 0) return 1;
+            var result = ConnectorValidationTransformer.Transform(compilation, File.ReadAllLines(args[2]));
+            foreach (var diagnostic in result.Diagnostics) Console.Error.WriteLine(diagnostic);
+            if (result.Diagnostics.Any(d => d.Severity == DiagnosticSeverity.Error)) return 1;
+            var paths = new List<string>();
+            foreach (var tree in compilation.SyntaxTrees)
+            {
+                if (!result.Sources.TryGetValue(tree.FilePath, out var source))
+                {
+                    paths.Add(tree.FilePath);
+                    continue;
+                }
+                var hash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(tree.FilePath)))[..16];
+                var path = Path.Combine(directory, hash + "_" + Path.GetFileName(tree.FilePath));
+                if (!File.Exists(path) || File.ReadAllText(path) != source)
+                    File.WriteAllText(path, source, new UTF8Encoding(false));
+                paths.Add(path);
+            }
+            File.WriteAllText(Path.Combine(directory, "validation-summary.json"), JsonSerializer.Serialize(new
+            {
+                result.MethodCount,
+                result.ValidationCount,
+                TransformedFiles = result.Sources.Count,
+            }, JsonOptions));
+            File.WriteAllLines(listPath, paths);
+            Console.WriteLine($"Injected {result.ValidationCount} connector validations into {result.MethodCount} methods.");
+            return 0;
+        }
+        catch (Exception error) when (error is IOException or InvalidDataException or UnauthorizedAccessException or JsonException or ArgumentException or BadImageFormatException)
+        {
+            Console.Error.WriteLine($"error WFSDK1101: {error.Message}");
             return 1;
         }
     }

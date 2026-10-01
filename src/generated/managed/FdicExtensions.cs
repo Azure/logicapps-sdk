@@ -14,16 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<InstitutionsResponse> SearchInstitutions([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/institutions";
@@ -62,15 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<LocationsResponse> SearchLocations([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/locations";
@@ -107,19 +88,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<HistoryResponse> GetHistory([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(search, nameof(search), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(aggBy, nameof(aggBy), required: false);
-            SourceExpression.Validate(aggTermFields, nameof(aggTermFields), required: false);
-            SourceExpression.Validate(aggLimit, nameof(aggLimit), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/history";
@@ -165,19 +133,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<FinancialsResponse> GetFinancials([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(aggBy, nameof(aggBy), required: false);
-            SourceExpression.Validate(aggTermFields, nameof(aggTermFields), required: false);
-            SourceExpression.Validate(aggSumFields, nameof(aggSumFields), required: false);
-            SourceExpression.Validate(aggLimit, nameof(aggLimit), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/financials";
@@ -222,21 +177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<SummaryResponse> GetHistorical([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<string> maxValue = null, [WorkflowExpression] Func<string> maxValueBy = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(aggBy, nameof(aggBy), required: false);
-            SourceExpression.Validate(aggTermFields, nameof(aggTermFields), required: false);
-            SourceExpression.Validate(aggSumFields, nameof(aggSumFields), required: false);
-            SourceExpression.Validate(aggLimit, nameof(aggLimit), required: false);
-            SourceExpression.Validate(maxValue, nameof(maxValue), required: false);
-            SourceExpression.Validate(maxValueBy, nameof(maxValueBy), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/summary";
@@ -285,21 +225,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<FailuresResponse> GetFailures([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> totalFields = null, [WorkflowExpression] Func<string> subtotalBy = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(totalFields, nameof(totalFields), required: false);
-            SourceExpression.Validate(subtotalBy, nameof(subtotalBy), required: false);
-            SourceExpression.Validate(aggBy, nameof(aggBy), required: false);
-            SourceExpression.Validate(aggTermFields, nameof(aggTermFields), required: false);
-            SourceExpression.Validate(aggSumFields, nameof(aggSumFields), required: false);
-            SourceExpression.Validate(aggLimit, nameof(aggLimit), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/failures";
@@ -349,19 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<SodResponse> GetSod([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(fields, nameof(fields), required: false);
-            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
-            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
-            SourceExpression.Validate(aggBy, nameof(aggBy), required: false);
-            SourceExpression.Validate(aggTermFields, nameof(aggTermFields), required: false);
-            SourceExpression.Validate(aggSumFields, nameof(aggSumFields), required: false);
-            SourceExpression.Validate(aggLimit, nameof(aggLimit), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/sod";
@@ -406,10 +318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<DemographicsResponse> GetDemographics([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            SourceExpression.Validate(filters, nameof(filters), required: false);
-            SourceExpression.Validate(format, nameof(format), required: false);
-            SourceExpression.Validate(download, nameof(download), required: false);
-            SourceExpression.Validate(filename, nameof(filename), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/demographics";

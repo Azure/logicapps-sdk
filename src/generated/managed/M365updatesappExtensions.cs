@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
     {
         public IBodyWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition([WorkflowExpression] Func<string> reportDefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(reportDefinitionId, nameof(reportDefinitionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/connector/powerautomate/triggers/{0}/reports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportDefinitionId, 1));
